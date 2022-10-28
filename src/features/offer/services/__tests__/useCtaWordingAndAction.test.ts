@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 
 import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
+import { OfferModal } from 'features/offer/services/enums'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
@@ -36,8 +37,8 @@ describe('getCtaWordingAndAction', () => {
       })
 
       expect(result).toEqual({
-        ...result,
-        modalToDisplay: 'authentication',
+        isDisabled: false,
+        modalToDisplay: OfferModal.AUTHENTICATION,
         wording: 'Réserver l’offre',
       })
     })
@@ -130,145 +131,142 @@ describe('getCtaWordingAndAction', () => {
       }) || { wording: '' }
 
     it('CTA="Offre épuisée" if offer is sold out', () => {
-      const { wording, onPress, navigateTo, externalNav } = getCta({ isSoldOut: true })
-      expect(wording).toEqual('Offre épuisée')
-      expect(onPress === undefined).toBeTruthy()
-      expect(navigateTo === undefined).toBeTruthy()
-      expect(externalNav === undefined).toBeTruthy()
+      const result = getCta({ isSoldOut: true })
+      expect(result).toEqual({
+        wording: 'Offre épuisée',
+        isDisabled: true,
+      })
     })
 
     it('CTA="Offre expirée" if offer is expired and sold out', () => {
-      const { wording, onPress, navigateTo, externalNav } = getCta({
-        isExpired: true,
-        isSoldOut: true,
+      const result = getCta({ isExpired: true, isSoldOut: true })
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
       })
-      expect(wording).toEqual('Offre expirée')
-      expect(onPress === undefined).toBeTruthy()
-      expect(navigateTo === undefined).toBeTruthy()
-      expect(externalNav === undefined).toBeTruthy()
     })
 
     it('CTA="Offre expirée" if offer is expired', () => {
-      const { wording, onPress, navigateTo, externalNav } = getCta({ isExpired: true })
-      expect(wording).toEqual('Offre expirée')
-      expect(onPress === undefined).toBeTruthy()
-      expect(navigateTo === undefined).toBeTruthy()
-      expect(externalNav === undefined).toBeTruthy()
+      const result = getCta({ isExpired: true })
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
+      })
     })
 
-    it('CTA="Offre expirée" if offer is expired', () => {
-      const { wording, onPress, navigateTo, externalNav } = getCta({ isReleased: false })
-      expect(wording).toEqual('Offre expirée')
-      expect(onPress === undefined).toBeTruthy()
-      expect(navigateTo === undefined).toBeTruthy()
-      expect(externalNav === undefined).toBeTruthy()
+    it('CTA="Offre expirée" if offer is not released', () => {
+      const result = getCta({ isReleased: false })
+      expect(result).toEqual({
+        wording: 'Offre expirée',
+        isDisabled: true,
+      })
     })
 
     it('CTA="Réserver l’offre" if offer is an ended booking', () => {
-      const { wording, onPress, modalToDisplay, navigateTo, externalNav } = getCta(
-        {},
-        { isEndedUsedBooking: true }
-      )
-      expect(wording).toEqual('Réserver l’offre')
-      expect(onPress).toBeTruthy()
-      expect(modalToDisplay).toEqual('booking')
-      expect(navigateTo === undefined).toBeTruthy()
-      expect(externalNav === undefined).toBeTruthy()
+      const result = getCta({}, { isEndedUsedBooking: true })
+      expect(result).toEqual({
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        isDisabled: false,
+        ...result,
+      })
     })
 
     // offer price is 5
     it.each`
-      isEvent  | hasEnoughCredit | expected                     | disabled | modalToDisplay
-      ${false} | ${true}         | ${'Réserver l’offre'}        | ${false} | ${'booking'}
-      ${true}  | ${true}         | ${'Voir les disponibilités'} | ${false} | ${'booking'}
+      isEvent  | hasEnoughCredit | wording                      | isDisabled | modalToDisplay
+      ${false} | ${true}         | ${'Réserver l’offre'}        | ${false}   | ${OfferModal.BOOKING}
+      ${true}  | ${true}         | ${'Voir les disponibilités'} | ${false}   | ${OfferModal.BOOKING}
     `(
-      'If credit is enough, only iOS user cannot book on Thing type offers | $isEvent => $expected - digital offers',
-      ({ disabled, expected, hasEnoughCredit, isEvent, modalToDisplay: mustShowBookingModal }) => {
-        const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
+      'If credit is enough, only iOS user cannot book on Thing type offers | $isEvent => $wording - digital offers',
+      ({ isDisabled, wording, hasEnoughCredit, isEvent, modalToDisplay }) => {
+        const result = getCta(
           { isDigital: true },
           { hasEnoughCredit, isUnderageBeneficiary: false },
           { isEvent }
         )
-        expect(wording).toEqual(expected)
-        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
-          disabled
-        )
-        expect(modalToDisplay).toEqual(mustShowBookingModal)
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
     // offer price is 5
     it.each`
-      hasEnoughCredit | isDigital | expected                          | disabled | isUnderageBeneficiary | modalToDisplay
-      ${false}        | ${true}   | ${'Crédit numérique insuffisant'} | ${true}  | ${false}              | ${undefined}
-      ${true}         | ${true}   | ${'Réserver l’offre'}             | ${false} | ${false}              | ${'booking'}
-      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}  | ${false}              | ${undefined}
-      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}  | ${true}               | ${undefined}
-      ${true}         | ${false}  | ${'Réserver l’offre'}             | ${false} | ${false}              | ${'booking'}
+      hasEnoughCredit | isDigital | wording                           | isDisabled | isUnderageBeneficiary | modalToDisplay
+      ${false}        | ${true}   | ${'Crédit numérique insuffisant'} | ${true}    | ${false}              | ${undefined}
+      ${true}         | ${true}   | ${'Réserver l’offre'}             | ${false}   | ${false}              | ${OfferModal.BOOKING}
+      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}    | ${false}              | ${undefined}
+      ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}    | ${true}               | ${undefined}
+      ${true}         | ${false}  | ${'Réserver l’offre'}             | ${false}   | ${false}              | ${OfferModal.BOOKING}
     `(
-      'check is credit is enough | non event x $isDigital => $expected',
+      'check is credit is enough | non event x $isDigital => $wording',
       ({
-        disabled,
-        expected,
+        isDisabled,
+        wording,
         hasEnoughCredit,
         isDigital,
         isUnderageBeneficiary,
-        modalToDisplay: mustShowBookingModal,
+        modalToDisplay,
       }) => {
-        const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
+        const result = getCta(
           { isDigital },
           { hasEnoughCredit, isUnderageBeneficiary },
           { isEvent: false }
         )
-        expect(wording).toEqual(expected)
-        expect(modalToDisplay).toEqual(mustShowBookingModal)
-        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
-          disabled
-        )
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
     // offer price is 5
     it.each`
-      isEvent  | hasEnoughCredit | expected                     | disabled | modalToDisplay
-      ${false} | ${false}        | ${'Crédit insuffisant'}      | ${true}  | ${undefined}
-      ${false} | ${true}         | ${'Réserver l’offre'}        | ${false} | ${'booking'}
-      ${true}  | ${false}        | ${'Crédit insuffisant'}      | ${true}  | ${undefined}
-      ${true}  | ${true}         | ${'Voir les disponibilités'} | ${false} | ${'booking'}
+      isEvent  | hasEnoughCredit | wording                      | isDisabled | modalToDisplay
+      ${false} | ${false}        | ${'Crédit insuffisant'}      | ${true}    | ${undefined}
+      ${false} | ${true}         | ${'Réserver l’offre'}        | ${false}   | ${OfferModal.BOOKING}
+      ${true}  | ${false}        | ${'Crédit insuffisant'}      | ${true}    | ${undefined}
+      ${true}  | ${true}         | ${'Voir les disponibilités'} | ${false}   | ${OfferModal.BOOKING}
     `(
-      'check if Credit is enough for the category | $isEvent | creditThing=$creditThing | creditEvent=$creditEvent => $expected',
-      ({ disabled, expected, hasEnoughCredit, isEvent, modalToDisplay: mustShowBookingModal }) => {
-        const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
-          {},
-          { hasEnoughCredit },
-          { isEvent }
-        )
-        expect(wording).toEqual(expected)
-        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
-          disabled
-        )
-        expect(modalToDisplay).toEqual(mustShowBookingModal)
+      'check if Credit is enough for the category | $isEvent | creditThing=$creditThing | creditEvent=$creditEvent => $wording',
+      ({ isDisabled, wording, hasEnoughCredit, isEvent, modalToDisplay }) => {
+        const result = getCta({}, { hasEnoughCredit }, { isEvent })
+
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
     // offer price is 5
     it.each`
-      hasEnoughCredit | expected                          | disabled | modalToDisplay
-      ${false}        | ${'Crédit numérique insuffisant'} | ${true}  | ${undefined}
-      ${true}         | ${'Réserver l’offre'}             | ${false} | ${'booking'}
+      hasEnoughCredit | wording                           | isDisabled | modalToDisplay
+      ${false}        | ${'Crédit numérique insuffisant'} | ${true}    | ${undefined}
+      ${true}         | ${'Réserver l’offre'}             | ${false}   | ${OfferModal.BOOKING}
     `(
-      'check if Credit is enough for digital offers | creditThing=$creditThing => $expected',
-      ({ disabled, expected, hasEnoughCredit, modalToDisplay: mustShowBookingModal }) => {
-        const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
+      'check if Credit is enough for digital offers | creditThing=$creditThing => $wording',
+      ({ isDisabled, wording, hasEnoughCredit, modalToDisplay }) => {
+        const result = getCta(
           { isDigital: true },
           { hasEnoughCredit, isUnderageBeneficiary: false },
           { isEvent: false }
         )
-        expect(wording).toEqual(expected)
-        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
-          disabled
-        )
-        expect(modalToDisplay).toBe(mustShowBookingModal)
+
+        expect(result).toEqual({
+          wording,
+          modalToDisplay,
+          isDisabled,
+          ...result,
+        })
       }
     )
 
@@ -276,11 +274,11 @@ describe('getCtaWordingAndAction', () => {
     describe('underage beneficiary', () => {
       it.each`
         isEvent  | expected                     | disabled | isDigital | category                          | price | isForbiddenToUnderage | modalToDisplay
-        ${false} | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20} | ${false}              | ${'booking'}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20} | ${false}              | ${'booking'}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}  | ${false}              | ${'booking'}
-        ${false} | ${'Réserver l’offre'}        | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}  | ${false}              | ${'booking'}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${false}              | ${'booking'}
+        ${false} | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20} | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20} | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}  | ${false}              | ${OfferModal.BOOKING}
+        ${false} | ${'Réserver l’offre'}        | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}  | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${false}              | ${OfferModal.BOOKING}
         ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${true}               | ${undefined}
       `(
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, isForbiddenToUnderage=$isForbiddenToUnderage, category=$category and price=$price',

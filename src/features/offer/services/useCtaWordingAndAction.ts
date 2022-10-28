@@ -1,6 +1,7 @@
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
+import { OfferModal } from 'features/offer/services/enums'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
@@ -26,14 +27,16 @@ interface Props {
   bookedOffers: UserProfileResponse['bookedOffers']
   isUnderageBeneficiary: boolean
   isEndedUsedBooking?: boolean
+  isDisabled?: boolean
 }
 interface ICTAWordingAndAction {
-  modalToDisplay?: 'booking' | 'authentication'
+  modalToDisplay?: OfferModal
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
   isEndedUsedBooking?: boolean
+  isDisabled?: boolean
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
@@ -52,28 +55,25 @@ export const getCtaWordingAndAction = ({
 
   if (!isLoggedIn) {
     return {
-      modalToDisplay: 'authentication',
+      modalToDisplay: OfferModal.AUTHENTICATION,
       wording: 'Réserver l’offre',
-      onPress() {
-        return false
-      },
+      isDisabled: false,
     }
   }
 
   if (isEndedUsedBooking) {
     return {
-      modalToDisplay: 'booking',
+      modalToDisplay: OfferModal.BOOKING,
       wording: 'Réserver l’offre',
       isEndedUsedBooking,
-      onPress() {
-        return false
-      },
+      isDisabled: false,
     }
   }
 
   if (isAlreadyBookedOffer) {
     return {
       wording: 'Voir ma réservation',
+      isDisabled: false,
       navigateTo: {
         screen: 'BookingDetails',
         params: { id: bookedOffers[offer.id] },
@@ -91,23 +91,25 @@ export const getCtaWordingAndAction = ({
     return {
       wording: 'Accéder au site partenaire',
       externalNav: { url: externalTicketOfficeUrl },
+      isDisabled: false,
     }
   }
 
   // Beneficiary
-  if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée' }
-  if (offer.isSoldOut) return { wording: 'Offre épuisée' }
+  if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée', isDisabled: true }
+  if (offer.isSoldOut) return { wording: 'Offre épuisée', isDisabled: true }
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
       if (offer.isDigital && !isUnderageBeneficiary)
-        return { wording: 'Crédit numérique insuffisant' }
-      return { wording: 'Crédit insuffisant' }
+        return { wording: 'Crédit numérique insuffisant', isDisabled: true }
+      return { wording: 'Crédit insuffisant', isDisabled: true }
     }
 
     return {
-      modalToDisplay: 'booking',
+      modalToDisplay: OfferModal.BOOKING,
       wording: 'Réserver l’offre',
+      isDisabled: false,
       onPress: () => {
         analytics.logClickBookOffer(offer.id)
       },
@@ -115,11 +117,12 @@ export const getCtaWordingAndAction = ({
   }
 
   if (subcategory.isEvent) {
-    if (!hasEnoughCredit) return { wording: 'Crédit insuffisant' }
+    if (!hasEnoughCredit) return { wording: 'Crédit insuffisant', isDisabled: true }
 
     return {
-      modalToDisplay: 'booking',
+      modalToDisplay: OfferModal.BOOKING,
       wording: 'Voir les disponibilités',
+      isDisabled: false,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
       },

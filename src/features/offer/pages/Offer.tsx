@@ -8,6 +8,7 @@ import { useOffer } from 'features/offer/api/useOffer'
 import { OfferHeader } from 'features/offer/components'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
 import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
+import { OfferModal } from 'features/offer/services/enums'
 import { useCtaWordingAndAction } from 'features/offer/services/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -61,6 +62,7 @@ export const Offer: FunctionComponent = () => {
     externalNav,
     modalToDisplay,
     isEndedUsedBooking,
+    isDisabled,
   } = useCtaWordingAndAction({ offerId }) || {}
 
   useFocusEffect(
@@ -80,10 +82,10 @@ export const Offer: FunctionComponent = () => {
 
   const onPress = () => {
     onPressCTA && onPressCTA()
-    if (modalToDisplay === 'booking') {
+    if (modalToDisplay === OfferModal.BOOKING) {
       showBookingOfferModal()
     }
-    if (modalToDisplay === 'authentication') {
+    if (modalToDisplay === OfferModal.AUTHENTICATION) {
       showAuthenticationModal()
     }
   }
@@ -104,14 +106,11 @@ export const Offer: FunctionComponent = () => {
               as={ButtonWithLinearGradient}
               wording={wording}
               onBeforeNavigate={onPress}
+              isDisabled={isDisabled}
               {...navigationProps}
             />
           ) : (
-            <ButtonWithLinearGradient
-              wording={wording}
-              onPress={onPress}
-              isDisabled={onPressCTA === undefined}
-            />
+            <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
           )}
         </CallToActionContainer>
       )}
