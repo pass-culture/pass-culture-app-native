@@ -17,26 +17,26 @@ jest.mock('react-query')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 describe('<VerifyEligibility />', () => {
-  it('should show the correct deposit amount', async () => {
+  it('should show the correct deposit amount', () => {
     const VerifyEligibilityComponent = render(<VerifyEligibility />)
     expect(VerifyEligibilityComponent).toMatchSnapshot()
   })
 
-  it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { findByText } = render(<VerifyEligibility />)
+  it('should redirect to home page WHEN "Vérifier mon identité plus tard" button is clicked', () => {
+    const { getByText } = render(<VerifyEligibility />)
 
-    const button = await findByText('Retourner à l’accueil')
+    const button = getByText('Vérifier mon identité plus tard')
     fireEvent.press(button)
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
 
-  it('should navigate to nextBeneficiaryValidationStep WHEN clicking on "Vérifier mon éligibilité" button', async () => {
+  it('should navigate to nextBeneficiaryValidationStep WHEN clicking on "Commencer la vérification" button', async () => {
     const setError = jest.fn()
     const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
-    const { findByText } = render(<VerifyEligibility />)
+    const { getByText } = render(<VerifyEligibility />)
 
-    const button = await findByText('Commencer la vérification')
+    const button = getByText('Commencer la vérification')
     fireEvent.press(button)
 
     await waitForExpect(() => {

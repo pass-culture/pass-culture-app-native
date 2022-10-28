@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericOfficialPage } from 'ui/pages/GenericOfficialPage'
-import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
@@ -21,7 +21,7 @@ export const VerifyEligibility: FunctionComponent = () => {
 
   return (
     <GenericOfficialPage
-      title="Vérifie ton identité"
+      title="Vérifie ton identité pour débloquer ton crédit"
       buttons={[
         !!nextBeneficiaryValidationStepNavConfig && (
           <TouchableLink
@@ -34,8 +34,8 @@ export const VerifyEligibility: FunctionComponent = () => {
         <TouchableLink
           key={2}
           as={ButtonTertiaryBlack}
-          icon={PlainArrowPrevious}
-          wording="Retourner à l’accueil"
+          icon={PlainArrowNext}
+          wording="Vérifier mon identité plus tard"
           navigateTo={navigateToHomeConfig}
         />,
       ]}>

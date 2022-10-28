@@ -16,17 +16,17 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 describe('<NotYetUnderageEligibility />', () => {
-  it('should render properly', async () => {
+  it('should render properly', () => {
     const NotYetUnderageEligibilityComponent = render(
       <NotYetUnderageEligibility {...navigationProps} />
     )
     expect(NotYetUnderageEligibilityComponent).toMatchSnapshot()
   })
 
-  it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { findByText } = render(<NotYetUnderageEligibility {...navigationProps} />)
+  it('should redirect to home page WHEN go back to home button is clicked', () => {
+    const { getByText } = render(<NotYetUnderageEligibility {...navigationProps} />)
 
-    const button = await findByText("Retourner à l'accueil")
+    const button = getByText("Retourner à l'accueil")
     fireEvent.press(button)
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
