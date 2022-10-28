@@ -16,6 +16,7 @@ import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { locationSchema } from 'features/search/pages/schema/locationSchema'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
+import { useGetFullscreenModalSliderLength } from 'features/search/pages/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/pages/useSetFocusWithCondition'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SearchState } from 'features/search/types'
@@ -91,7 +92,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 }) => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport, appContentWidth, forms, slider, modal } = useTheme()
+  const { isDesktopViewport, modal } = useTheme()
   const { searchState } = useSearch()
   const {
     position,
@@ -101,6 +102,7 @@ export const LocationModal: FunctionComponent<Props> = ({
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useGeolocation()
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
+  const { sliderLength } = useGetFullscreenModalSliderLength()
 
   const {
     showModal: showGeolocPermissionModal,
@@ -320,17 +322,6 @@ export const LocationModal: FunctionComponent<Props> = ({
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
-
-  const baseSliderContainerWidth = isDesktopViewport ? modal.desktopMaxWidth : appContentWidth
-  /**
-   * This hack is used to avoid the slider to be cropped.
-   * FIXME(PC-17652): We should create a slider that automatically scales ? Without defining any width
-   */
-  const fixedBaseSliderContainerWidth = isDesktopViewport
-    ? baseSliderContainerWidth
-    : Math.min(appContentWidth, forms.maxWidth + modal.spacing.MD * 2)
-
-  const sliderLength = fixedBaseSliderContainerWidth - modal.spacing.MD * 2 - slider.markerSize
 
   const onValuesChange = useCallback(
     (newValues: number[]) => {
