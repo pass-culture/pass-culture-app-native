@@ -27,8 +27,12 @@ export function ButtonInsideTextInner({
       color: color ?? theme.colors.primary,
     }))``
 
+  const hasIcon = !!Icon
+  const paddingIcon = typography === 'Caption' ? getSpacing(1) : getSpacing(1.25)
+  const paddingForIcon = (hasIcon && Platform.OS) === 'web' ? paddingIcon : 0
+
   return (
-    <Container hasIcon={!!Icon}>
+    <Container paddingForIcon={paddingForIcon}>
       {!!StyledIcon && (
         <React.Fragment>
           <StyledIcon testID="button-icon" />
@@ -43,10 +47,10 @@ export function ButtonInsideTextInner({
 }
 
 const Container = styled.View<{
-  hasIcon: boolean
-}>(({ hasIcon }) => ({
+  paddingForIcon: number
+}>(({ paddingForIcon }) => ({
   flexDirection: 'row',
-  top: hasIcon && Platform.OS === 'web' ? getSpacing(1) : 0,
+  top: paddingForIcon,
 }))
 
 const StyledText = styled.Text<{

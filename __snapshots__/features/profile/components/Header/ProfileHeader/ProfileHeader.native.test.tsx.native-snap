@@ -256,7 +256,7 @@ Array [
               }
             >
               <View
-                hasIcon={true}
+                paddingForIcon={0}
                 style={
                   Array [
                     Object {

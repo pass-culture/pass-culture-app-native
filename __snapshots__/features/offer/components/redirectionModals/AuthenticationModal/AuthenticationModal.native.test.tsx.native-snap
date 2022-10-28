@@ -507,7 +507,7 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
                       }
                     >
                       <View
-                        hasIcon={true}
+                        paddingForIcon={0}
                         style={
                           Array [
                             Object {
