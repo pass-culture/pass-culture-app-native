@@ -250,7 +250,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           disabled={shouldDisableLoginButton}
         />
       </Form.MaxWidth>
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={8} />
       <AuthenticationButton type="signup" />
     </BottomContentPage>
   )
