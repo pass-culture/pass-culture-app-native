@@ -23,11 +23,12 @@ export type CulturalSurveyRootStackParamList = {
 
 export type IdentityCheckRootStackParamList = {
   // Cheatcodes
-  ThematicHomeHeaderCheatcode: undefined
-  NavigationSignUp: undefined
   NavigationErrors: undefined
   NavigationIdentityCheck: undefined
+  NavigationShareApp: undefined
+  NavigationSignUp: undefined
   NewIdentificationFlow: undefined
+  ThematicHomeHeaderCheatcode: undefined
   // Stepper
   IdentityCheckStepper: undefined
   // PhoneValidation
