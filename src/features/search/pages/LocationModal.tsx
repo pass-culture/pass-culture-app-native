@@ -452,6 +452,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                                     max={MAX_RADIUS}
                                     onValuesChange={onValuesChange}
                                     shouldShowMinMaxValues
+                                    minMaxValuesComplement={`\u00a0km`}
                                     sliderLength={sliderLength}
                                   />
                                 </View>

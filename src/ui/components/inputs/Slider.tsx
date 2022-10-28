@@ -18,6 +18,7 @@ interface Props {
   minLabel?: string
   maxLabel?: string
   shouldShowMinMaxValues?: boolean
+  minMaxValuesComplement?: string
 }
 
 const DEFAULT_MIN = 0
@@ -37,6 +38,7 @@ export function Slider(props: Props) {
   const minLabel = props.minLabel ?? 'Minimum\u00a0:'
   const maxLabel = props.maxLabel ?? 'Maximum\u00a0:'
   const shouldShowMinMaxValues = props.shouldShowMinMaxValues ?? false
+  const minMaxValuesComplement = props.minMaxValuesComplement ?? ''
 
   const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
@@ -157,8 +159,8 @@ export function Slider(props: Props) {
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
           <MinMaxContainer>
-            <MinMaxValue>{`${min}\u00a0km`}</MinMaxValue>
-            <MinMaxValue>{`${max}\u00a0km`}</MinMaxValue>
+            <MinMaxValue>{`${min}${minMaxValuesComplement}`}</MinMaxValue>
+            <MinMaxValue>{`${max}${minMaxValuesComplement}`}</MinMaxValue>
           </MinMaxContainer>
         </React.Fragment>
       )}
