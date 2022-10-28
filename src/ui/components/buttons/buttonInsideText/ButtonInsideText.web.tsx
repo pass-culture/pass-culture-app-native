@@ -8,6 +8,7 @@ import {
 } from 'ui/components/buttons/AppButton/types'
 import { ButtonInsideTextInner } from 'ui/components/buttons/buttonInsideText/ButtonInsideTextInner'
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export function ButtonInsideText({
@@ -83,6 +84,7 @@ const webStyle = ({
     width: 'fit-content',
     margin: 0,
     padding: 0,
+    ...customFocusOutline({ color: color ?? theme.colors.primary, noOffset: true }),
     ...getHoverStyle(color ?? theme.colors.primary),
   } as CSSObject)
 

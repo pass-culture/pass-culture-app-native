@@ -111,7 +111,7 @@ const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   maxHeight: height,
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline(theme, theme.colors.black, isFocus),
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))
 
 const VenueTypeTile = styled.View<{ width: number; height: number }>(

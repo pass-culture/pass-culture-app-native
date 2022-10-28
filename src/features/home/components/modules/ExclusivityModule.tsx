@@ -94,7 +94,7 @@ const ImageContainer = styled.View({
 const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   borderRadius: theme.borderRadius.radius,
   maxHeight: LENGTH_XL,
-  ...customFocusOutline(theme, theme.colors.black, isFocus),
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))
 
 const Image = styled(FastImage)(({ theme }) => ({
