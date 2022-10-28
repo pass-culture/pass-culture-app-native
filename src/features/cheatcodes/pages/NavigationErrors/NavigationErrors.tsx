@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
+import { Row } from 'features/cheatcodes/components/Row'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -11,7 +12,7 @@ import { AsyncError, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { padding, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 
@@ -114,11 +115,6 @@ const StyledContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))
 
 const CenteredText = styled(Typo.Caption)({
   width: '100%',

@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
+import { Row } from 'features/cheatcodes/components/Row'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ApplicationProcessingModal } from 'features/offer/components/redirectionModals/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
@@ -11,7 +12,7 @@ import { FinishSubscriptionModal } from 'features/offer/components/redirectionMo
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { padding, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export function NavigationSignUp(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -123,8 +124,3 @@ const StyledContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
-  width: half ? '50%' : '100%',
-  ...padding(2, 0.5),
-}))
