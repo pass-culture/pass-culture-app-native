@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import {
   shareAppModalInformations,
-  ShareAppModalType,
+  ShareAppModal,
 } from 'libs/share/shareApp/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -13,7 +13,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   visible: boolean
   hideModal: () => void
-  modalType: ShareAppModalType
+  modalType: ShareAppModal
 }
 
 export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {

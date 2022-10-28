@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ShareAppModalType } from 'libs/share/shareApp/shareAppModalInformations'
+import { ShareAppModal } from 'libs/share/shareApp/shareAppModalInformations'
 import { ShareAppModalNew } from 'libs/share/shareApp/ShareAppModalNew'
 import { fireEvent, render } from 'tests/utils'
 
@@ -13,7 +13,7 @@ describe('ShareAppModalNew', () => {
       <ShareAppModalNew
         visible={visible}
         hideModal={hideModal}
-        modalType={ShareAppModalType.UNDERAGE}
+        modalType={ShareAppModal.NOT_ELIGIBLE}
       />
     )
     expect(renderAPI).toMatchSnapshot()
@@ -24,7 +24,7 @@ describe('ShareAppModalNew', () => {
       <ShareAppModalNew
         visible={visible}
         hideModal={hideModal}
-        modalType={ShareAppModalType.BENEFICIARY}
+        modalType={ShareAppModal.BENEFICIARY}
       />
     )
     expect(renderAPI).toMatchSnapshot()
@@ -35,7 +35,7 @@ describe('ShareAppModalNew', () => {
       <ShareAppModalNew
         visible={visible}
         hideModal={hideModal}
-        modalType={ShareAppModalType.BOOKING}
+        modalType={ShareAppModal.ON_BOOKING_SUCCESS}
       />
     )
     expect(renderAPI).toMatchSnapshot()
@@ -46,7 +46,7 @@ describe('ShareAppModalNew', () => {
       <ShareAppModalNew
         visible={visible}
         hideModal={hideModal}
-        modalType={ShareAppModalType.UNDERAGE}
+        modalType={ShareAppModal.NOT_ELIGIBLE}
       />
     )
 
