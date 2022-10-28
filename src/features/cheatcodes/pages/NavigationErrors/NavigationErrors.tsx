@@ -77,6 +77,12 @@ export const NavigationErrors: FunctionComponent = () => {
         </Row>
         <Row half>
           <ButtonPrimary
+            wording="Offre inexistante"
+            onPress={() => navigate('Offer', { id: 0, from: 'search' })}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
             wording="Maintenance Page"
             onPress={() =>
               setScreenError(
