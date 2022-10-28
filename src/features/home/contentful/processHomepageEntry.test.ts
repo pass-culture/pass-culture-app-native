@@ -1,5 +1,5 @@
 import { AlgoliaParameters, ContentTypes } from 'features/home/contentful/contentful'
-import { adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
+import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
 
 import { buildSearchParams, parseOfferId, processHomepageEntry } from './processHomepageEntry'
 

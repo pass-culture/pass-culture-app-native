@@ -22,7 +22,7 @@ jest.mock('features/profile/api', () => ({
 }))
 
 jest.mock('features/home/api', () => ({
-  useHomepageModules: () => ({
+  useHomepageData: () => ({
     modules: [],
     homeEntryId: 'fakeEntryId',
   }),

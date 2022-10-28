@@ -3,16 +3,15 @@ import { rest } from 'msw'
 
 import { processHomepageEntry } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
-import {
-  homepageEntriesAPIResponse,
-  adaptedHomepageEntry,
-  adaptedSecondHomepageEntry,
-} from 'tests/fixtures/homepageEntries'
+import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
+import { adaptedSecondHomepageEntry } from 'tests/fixtures/adaptedSecondHomepageEntry'
+import { adaptedThematicHomepageEntry } from 'tests/fixtures/adaptedThematicHomepageEntry'
+import { homepageEntriesAPIResponse } from 'tests/fixtures/homepageEntriesAPIResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { getEntries, BASE_URL, PARAMS, useHomepageModules } from './api'
+import { BASE_URL, getEntries, PARAMS, useHomepageData } from './api'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
@@ -34,32 +33,52 @@ describe('Home api calls', () => {
 
   describe('useHomepageModules', () => {
     it('calls the API and returns the data', async () => {
-      const { result } = renderHook(useHomepageModules, {
+      const { result } = renderHook(useHomepageData, {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.modules.length > 0)
-      expect(result.current).toEqual({
-        modules: processHomepageEntry(adaptedHomepageEntry),
-        homeEntryId: '16PgpnlCOYYIhUTclR0oO4',
+      await waitFor(() => {
+        expect(result.current).toEqual({
+          modules: processHomepageEntry(adaptedHomepageEntry),
+          homeEntryId: '16PgpnlCOYYIhUTclR0oO4',
+          thematicHomeHeader: undefined,
+        })
       })
     })
 
     it('calls the API and returns the data with specified entryId', async () => {
-      const { result } = renderHook(() => useHomepageModules(entryId), {
+      const { result } = renderHook(() => useHomepageData(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await waitFor(() => result.current.modules.length > 0)
+      await waitFor(() => {
+        expect(result.current).toEqual({
+          modules: processHomepageEntry(adaptedSecondHomepageEntry),
+          homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
+          thematicHomeHeader: undefined,
+        })
+      })
+    })
+    it('calls the API and returns the data of a thematic home page', async () => {
+      const thematicHomeId = '7IuIeovqUykM1uvWwwPPh8'
+      const { result } = renderHook(() => useHomepageData(thematicHomeId), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
 
-      expect(result.current).toEqual({
-        modules: processHomepageEntry(adaptedSecondHomepageEntry),
-        homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
+      await waitFor(() => {
+        expect(result.current).toEqual({
+          modules: processHomepageEntry(adaptedThematicHomepageEntry),
+          homeEntryId: '7IuIeovqUykM1uvWwwPPh8',
+          thematicHeader: {
+            title: 'cinéma',
+            subtitle: 'Fais le plein de cinéma',
+          },
+        })
       })
     })
 
     it('should log ConsultHome with specified entryId', async () => {
-      renderHook(() => useHomepageModules(entryId), {
+      renderHook(() => useHomepageData(entryId), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 

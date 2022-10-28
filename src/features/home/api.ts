@@ -1,15 +1,15 @@
 import resolveResponse from 'contentful-resolve-response'
-import { useMemo, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
 import {
-  EntryCollection,
-  EntryFields,
-  processHomepageEntry,
-  HomepageEntry,
   ContentTypes,
+  EntryCollection,
+  HomepageEntry,
+  processHomepageEntry,
 } from 'features/home/contentful'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
@@ -27,7 +27,7 @@ export const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access
 export async function getEntries() {
   const url = `${BASE_URL}/entries${PARAMS}`
   try {
-    const json = await getExternal<EntryCollection<EntryFields, ContentTypes.HOMEPAGE_NATIF>>(url)
+    const json = await getExternal<EntryCollection<HomepageEntry, ContentTypes.HOMEPAGE_NATIF>>(url)
     return resolveResponse(json)
   } catch (e) {
     const error = e as Error
@@ -35,7 +35,18 @@ export async function getEntries() {
   }
 }
 
-export function useHomepageModules(paramsHomepageEntryId?: string) {
+interface HomepageData {
+  homeEntryId: string | undefined
+  modules: ProcessedModule[]
+  thematicHeader:
+    | {
+        title: string | undefined
+        subtitle: string | undefined
+      }
+    | undefined
+}
+
+export const useHomepageData = (paramsHomepageEntryId?: string): HomepageData => {
   const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
   // this fetches all homepages available in contentful
   const { data: homepageEntries } = useQuery<HomepageEntry[]>(
@@ -48,6 +59,16 @@ export function useHomepageModules(paramsHomepageEntryId?: string) {
 
   const homepageEntry = selectHomepageEntry(homepageEntries || [])
   const homepageEntryId = homepageEntry?.sys.id
+  const homepageData = {
+    homeEntryId: homepageEntryId,
+    modules: homepageEntry ? processHomepageEntry(homepageEntry) : [],
+    thematicHeader: homepageEntry?.fields.thematicHeaderTitle
+      ? {
+          title: homepageEntry?.fields.thematicHeaderTitle,
+          subtitle: homepageEntry?.fields.thematicHeaderSubtitle,
+        }
+      : undefined,
+  }
 
   useEffect(() => {
     if (homepageEntryId) {
@@ -56,10 +77,7 @@ export function useHomepageModules(paramsHomepageEntryId?: string) {
   }, [homepageEntryId])
 
   return useMemo(
-    () =>
-      homepageEntry
-        ? { modules: processHomepageEntry(homepageEntry), homeEntryId: homepageEntryId }
-        : { modules: [] },
+    () => ({ ...homepageData }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [homepageEntryId]
   )
