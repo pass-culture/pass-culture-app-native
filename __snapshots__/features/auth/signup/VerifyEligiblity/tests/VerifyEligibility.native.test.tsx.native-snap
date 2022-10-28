@@ -150,7 +150,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         ]
       }
     >
-      Vérifie ton identité
+      Vérifie ton identité pour débloquer ton crédit
     </Text>
     <View
       numberOfSpaces={5}
@@ -316,7 +316,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <View
-        accessibilityLabel="Retourner à l’accueil"
+        accessibilityLabel="Vérifier mon identité plus tard"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -345,7 +345,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "width": "100%",
           }
         }
-        testID="Retourner à l’accueil"
+        testID="Vérifier mon identité plus tard"
       >
         <View
           style={
@@ -382,7 +382,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             ]
           }
         >
-          Retourner à l’accueil
+          Vérifier mon identité plus tard
         </Text>
       </View>
     </View>
