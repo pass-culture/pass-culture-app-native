@@ -16,12 +16,12 @@ mockFetch.mockResolvedValue(
 )
 
 describe('useEduconnectLogin', () => {
-  it('should open new tab when calling openEduConnectTab method', () => {
+  it('should open new tab when calling openEduConnectTab method', async () => {
     const { result } = renderHook(() => useEduConnectLogin())
 
     result.current.openEduConnectTab()
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(globalThis.window.open).toHaveBeenCalled()
     })
   })
