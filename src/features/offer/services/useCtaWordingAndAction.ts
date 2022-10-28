@@ -28,7 +28,7 @@ interface Props {
   isEndedUsedBooking?: boolean
 }
 interface ICTAWordingAndAction {
-  showBookingModal?: boolean
+  modalToDisplay?: 'booking' | 'authentication'
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
@@ -50,10 +50,20 @@ export const getCtaWordingAndAction = ({
   const { externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
 
+  if (!isLoggedIn) {
+    return {
+      modalToDisplay: 'authentication',
+      wording: 'Réserver l’offre',
+      onPress() {
+        return false
+      },
+    }
+  }
+
   if (isEndedUsedBooking) {
     return {
-      showBookingModal: true,
-      wording: 'Réserver',
+      modalToDisplay: 'booking',
+      wording: 'Réserver l’offre',
       isEndedUsedBooking,
       onPress() {
         return false
@@ -63,7 +73,6 @@ export const getCtaWordingAndAction = ({
 
   if (isAlreadyBookedOffer) {
     return {
-      showBookingModal: false,
       wording: 'Voir ma réservation',
       navigateTo: {
         screen: 'BookingDetails',
@@ -80,15 +89,13 @@ export const getCtaWordingAndAction = ({
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
-      showBookingModal: false,
       wording: 'Accéder au site partenaire',
       externalNav: { url: externalTicketOfficeUrl },
     }
   }
 
   // Beneficiary
-  if (!offer.isReleased) return { wording: 'Offre expirée' }
-  if (offer.isExpired) return { wording: 'Offre expirée' }
+  if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée' }
   if (offer.isSoldOut) return { wording: 'Offre épuisée' }
 
   if (!subcategory.isEvent) {
@@ -99,8 +106,8 @@ export const getCtaWordingAndAction = ({
     }
 
     return {
-      showBookingModal: true,
-      wording: 'Réserver',
+      modalToDisplay: 'booking',
+      wording: 'Réserver l’offre',
       onPress: () => {
         analytics.logClickBookOffer(offer.id)
       },
@@ -111,7 +118,7 @@ export const getCtaWordingAndAction = ({
     if (!hasEnoughCredit) return { wording: 'Crédit insuffisant' }
 
     return {
-      showBookingModal: true,
+      modalToDisplay: 'booking',
       wording: 'Voir les disponibilités',
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)

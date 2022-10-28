@@ -7,6 +7,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useOffer } from 'features/offer/api/useOffer'
 import { OfferHeader } from 'features/offer/components'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
+import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
 import { useCtaWordingAndAction } from 'features/offer/services/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -35,6 +36,11 @@ export const Offer: FunctionComponent = () => {
     showModal: showBookingOfferModal,
     hideModal: dismissBookingOfferModal,
   } = useModal(false)
+  const {
+    visible: authenticationModalVisible,
+    showModal: showAuthenticationModal,
+    hideModal: hideAuthenticationModal,
+  } = useModal(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     if (offerResponse) {
@@ -53,7 +59,7 @@ export const Offer: FunctionComponent = () => {
     onPress: onPressCTA,
     navigateTo,
     externalNav,
-    showBookingModal,
+    modalToDisplay,
     isEndedUsedBooking,
   } = useCtaWordingAndAction({ offerId }) || {}
 
@@ -71,10 +77,14 @@ export const Offer: FunctionComponent = () => {
     ? { externalNav, isOnPressDebounced: true, icon: ExternalSite }
     : undefined
   const navigationProps = navigateTo ? { navigateTo, isOnPressDebounced: true } : externalNavProps
+
   const onPress = () => {
     onPressCTA && onPressCTA()
-    if (showBookingModal) {
+    if (modalToDisplay === 'booking') {
       showBookingOfferModal()
+    }
+    if (modalToDisplay === 'authentication') {
+      showAuthenticationModal()
     }
   }
 
@@ -111,6 +121,10 @@ export const Offer: FunctionComponent = () => {
         dismissModal={dismissBookingOfferModal}
         offerId={offerResponse.id}
         isEndedUsedBooking={isEndedUsedBooking}
+      />
+      <AuthenticationModal
+        visible={authenticationModalVisible}
+        hideModal={hideAuthenticationModal}
       />
     </Container>
   )
