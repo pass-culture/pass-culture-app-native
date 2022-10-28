@@ -20,12 +20,16 @@ interface Props {
 export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   const { icon: Icon, label } = step
 
+  // we need to update opacity inside component definition since it does not update properly in BaseTouchableLink
+  const StyledTouchableLink = styled(BaseTouchableLink)({
+    opacity: state === 'disabled' ? 0.5 : 1,
+  })
+
   return (
     <StyledTouchableLink
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={state !== 'current'}
-      state={state}
       {...accessibilityAndTestId(undefined, label)}>
       <IconContainer>
         <Icon />
@@ -44,15 +48,12 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   )
 }
 
-const StyledTouchableLink = styled(TouchableLink)<{
-  state: StepButtonState
-}>(({ state, theme }) => ({
+const BaseTouchableLink = styled(TouchableLink)(({ theme }) => ({
   height: getSpacing(24),
   marginTop: getSpacing(2),
   width: '100%',
   backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,
-  opacity: state === 'disabled' ? 0.5 : 1,
   flexDirection: 'row',
   alignItems: 'center',
 }))
