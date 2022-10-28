@@ -9,6 +9,7 @@ import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { BicolorShout } from 'ui/svg/icons/BicolorShout'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
@@ -31,17 +32,18 @@ import { UserError } from 'ui/svg/icons/UserError'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 
 export const BicolorIllustrations = {
+  BicolorBookingHold,
   BicolorBrokenConnection,
-  BicolorRingingBell,
   BicolorCircledCheck,
   BicolorEmailSent,
   BicolorError,
-  BicolorIdCardWithMagnifyingGlass,
   BicolorIdCardError,
   BicolorIdCardInvalid,
+  BicolorIdCardWithMagnifyingGlass,
   BicolorPhonePending,
+  BicolorRingingBell,
+  BicolorShout,
   BicolorUserIdentification,
-  BicolorBookingHold,
 }
 
 export const UniqueColorIllustrations = {
