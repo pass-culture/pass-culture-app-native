@@ -369,12 +369,13 @@ exports[`SearchPrice component should render modal correctly after animation and
                     Object {
                       "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
-                      "borderRadius": 4,
+                      "borderRadius": 8,
                       "display": "flex",
                       "flexDirection": "row",
-                      "paddingLeft": 12,
-                      "paddingRight": 20,
-                      "paddingVertical": 16,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
                     },
                   ]
                 }
@@ -398,11 +399,11 @@ exports[`SearchPrice component should render modal correctly after animation and
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={3}
+                  numberOfSpaces={4}
                   style={
                     Array [
                       Object {
-                        "width": 12,
+                        "width": 16,
                       },
                     ]
                   }
