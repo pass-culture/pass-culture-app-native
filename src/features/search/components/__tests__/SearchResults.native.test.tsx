@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
-import { LocationFilter } from 'features/search/types'
+import { LocationFilter, SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -295,7 +295,7 @@ describe('SearchResults component', () => {
     expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
   })
 
-  it.only.each`
+  it.each`
     locationType               | locationFilter                                                                   | position            | locationButtonLabel
     ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
     ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Localisation'}
@@ -323,6 +323,63 @@ describe('SearchResults component', () => {
       await act(async () => {
         expect(queryByText(locationButtonLabel)).toBeTruthy()
       })
+    }
+  )
+
+  it('should display dates and hours filter button', async () => {
+    const { queryByTestId } = render(<SearchResults />)
+    await act(async () => {
+      expect(queryByTestId('datesHoursButton')).toBeTruthy()
+    })
+  })
+
+  it('should update the staged search state with the actual search state when pressing the dates and hours filter button', async () => {
+    const { getByTestId } = render(<SearchResults />)
+    const datesHoursButton = getByTestId('datesHoursButton')
+
+    await act(async () => {
+      fireEvent.press(datesHoursButton)
+    })
+
+    expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
+      type: 'SET_STATE_FROM_DEFAULT',
+      payload: mockSearchState,
+    })
+  })
+
+  it('should redirect to the general filters page when pressing the dates and hours filter button', async () => {
+    const { getByTestId } = render(<SearchResults />)
+    const datesHoursButton = getByTestId('datesHoursButton')
+
+    await act(async () => {
+      fireEvent.press(datesHoursButton)
+    })
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+  })
+
+  it.each`
+    type       | params
+    ${'date'}  | ${{ date: { option: 'today', selectedDate: new Date() } }}
+    ${'hours'} | ${{ timeRange: [8, 24] }}
+  `(
+    'should display an icon and change color in dates and hours filter button when has $type selected',
+    async ({ params }: { params: SearchState }) => {
+      useRoute.mockReturnValueOnce({
+        params,
+      })
+      const { getByTestId } = render(<SearchResults />)
+
+      const datesHoursButtonIcon = getByTestId('datesHoursButtonIcon')
+      await act(async () => {
+        expect(datesHoursButtonIcon).toBeTruthy()
+      })
+
+      const datesHoursButton = getByTestId('datesHoursButton')
+      expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
+
+      const datesHoursButtonLabel = getByTestId('datesHoursButtonLabel')
+      expect(datesHoursButtonLabel).toHaveStyle({ color: theme.colors.primary })
     }
   )
 })
