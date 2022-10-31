@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useReportOfferModalContent } from 'features/offer/components/useReportOfferModalContent/useReportOfferModalContent'
+import { useReportOfferModalContent } from 'features/offer/helpers/useReportOfferModalContent/useReportOfferModalContent'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'

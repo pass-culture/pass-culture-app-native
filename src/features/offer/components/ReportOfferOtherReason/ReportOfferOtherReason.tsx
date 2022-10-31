@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { useReportOfferMutation } from 'features/offer/helpers/useReportOffer'
+import { useReportOfferMutation } from 'features/offer/api/useReportOffer'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
