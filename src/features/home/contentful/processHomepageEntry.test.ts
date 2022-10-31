@@ -1,13 +1,8 @@
 import { AlgoliaParameters, ContentTypes } from 'features/home/contentful/contentful'
-import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
 
 import { buildSearchParams, parseOfferId, processHomepageEntry } from './processHomepageEntry'
 
 describe('processHomepageEntry', () => {
-  it('should format homepage entries so we can use it to display infos on home page', () => {
-    expect(processHomepageEntry(adaptedHomepageEntry)).toMatchSnapshot()
-  })
-
   it('should format homepage entries: no fields case', () => {
     const homepageNatifType: ContentTypes = ContentTypes.HOMEPAGE_NATIF
     const sys = {
@@ -86,7 +81,7 @@ describe('parseOfferId', () => {
   it.each`
     offerId      | expected
     ${'12345'}   | ${12345}
-    ${'A120934'} | ${null}
+    ${'A120934'} | ${undefined}
   `(
     'parseOfferId($offerId) = $expected',
     ({ offerId, expected }: { offerId: string; expected: number | null }) => {

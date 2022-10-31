@@ -46,7 +46,8 @@ const UnmemoizedExclusivityModule = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offerId])
 
-  const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position, maxPrice)
+  const shouldModuleBeDisplayed =
+    offerId === undefined || shouldDisplayExcluOffer(display, offer, position, maxPrice)
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {

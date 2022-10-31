@@ -66,8 +66,8 @@ export class ExclusivityPane {
   title: string
   alt: string
   image: string
-  offerId: number
   moduleId: string
+  offerId?: number
   display?: ExclusivityDisplayParametersFields
   constructor({
     title,
@@ -80,8 +80,8 @@ export class ExclusivityPane {
     title: string
     alt: string
     image: string
-    offerId: number
     moduleId: string
+    offerId?: number
     display?: ExclusivityDisplayParametersFields
   }) {
     this.title = title
