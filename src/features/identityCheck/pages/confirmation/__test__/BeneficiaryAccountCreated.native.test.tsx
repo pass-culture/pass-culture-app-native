@@ -2,8 +2,8 @@ import React from 'react'
 
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
+import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
 import { BatchUser } from 'libs/react-native-batch'
-import { ShareAppModal } from 'libs/share/shareApp/shareAppModalInformations'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')

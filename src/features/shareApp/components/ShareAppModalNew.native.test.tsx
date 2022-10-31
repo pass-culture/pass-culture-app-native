@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ShareAppModal } from 'libs/share/shareApp/shareAppModalInformations'
-import { ShareAppModalNew } from 'libs/share/shareApp/ShareAppModalNew'
+import { ShareAppModalNew } from 'features/shareApp/components/ShareAppModalNew'
+import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
 import { fireEvent, render } from 'tests/utils'
 
 const visible = true
