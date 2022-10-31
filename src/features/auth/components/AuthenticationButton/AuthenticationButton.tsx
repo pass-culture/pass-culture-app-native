@@ -54,7 +54,8 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
 }
 
 const AuthenticationContainer = styled.View({
-  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'row',
 })
 
 const StyledBody = styled(Typo.Body)({

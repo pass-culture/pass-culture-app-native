@@ -9,6 +9,7 @@ import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllus
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
   visible: boolean
@@ -20,7 +21,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
   return (
     <AppModalWithIllustration
       visible={visible}
-      title={'Identifie-toi pour réserver l’offre'}
+      title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
       hideModal={hideModal}>
       <Typo.ButtonText>Tu as entre 15 et 18 ans&nbsp;?</Typo.ButtonText>
