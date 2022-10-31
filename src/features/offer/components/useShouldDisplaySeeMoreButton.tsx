@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { getContentFromOffer } from '../pages/OfferDescription'
+import { getContentFromOffer } from 'features/offer/pages/OfferDescription/OfferDescription'
 
 export const useShouldDisplaySeeMoreButton = (
   maxTheoricalDisplayedDescriptionLines: number,

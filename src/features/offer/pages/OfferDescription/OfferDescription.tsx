@@ -5,12 +5,11 @@ import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { useOffer } from 'features/offer/api/useOffer'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
-
-import { useOffer } from '../api/useOffer'
 
 type ExtraDataKeys = keyof Required<OfferExtraData>
 export type ExtendedKeys = ExtraDataKeys | 'description' | 'photoCredit'

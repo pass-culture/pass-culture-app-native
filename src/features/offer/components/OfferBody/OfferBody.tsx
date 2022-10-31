@@ -3,11 +3,13 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
+import { useOffer } from 'features/offer/api/useOffer'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
+import { useTrackOfferSeenDuration } from 'features/offer/services/useTrackOfferSeenDuration'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import {
@@ -27,10 +29,6 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Flag as DefaultFlag } from 'ui/svg/icons/Flag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-import { useOffer } from '../api/useOffer'
-
-import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
 interface Props {
   offerId: number

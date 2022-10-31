@@ -17,7 +17,7 @@ import {
   ExtendedKeys,
   formatValue,
   getContentFromOffer,
-} from '../OfferDescription'
+} from './OfferDescription'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))

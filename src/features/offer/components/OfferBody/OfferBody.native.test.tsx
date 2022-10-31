@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { OfferBody } from 'features/offer/pages/OfferBody'
+import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { analytics } from 'libs/firebase/analytics'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
@@ -9,7 +9,7 @@ jest.mock('react-query')
 jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
-jest.mock('features/offer/pages/useTrackOfferSeenDuration')
+jest.mock('features/offer/services/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
 
 describe('<OfferBody />', () => {

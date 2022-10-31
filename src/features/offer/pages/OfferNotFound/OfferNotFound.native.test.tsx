@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferNotFound } from 'features/offer/pages/OfferNotFound'
+import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { render } from 'tests/utils'
 
 const resetErrorBoundary = () => null

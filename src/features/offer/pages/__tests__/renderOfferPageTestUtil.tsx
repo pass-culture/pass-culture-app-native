@@ -6,12 +6,11 @@ import waitForExpect from 'wait-for-expect'
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { RootStack } from 'features/navigation/RootNavigator'
+import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { Offer } from 'features/offer/pages/Offer/Offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
-
-import { Offer } from '../Offer'
-import { OfferBody } from '../OfferBody'
 
 jest.mock('libs/geolocation')
 

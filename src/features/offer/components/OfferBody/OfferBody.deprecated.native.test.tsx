@@ -1,11 +1,13 @@
 import mockdate from 'mockdate'
 
 import { api } from 'api/api'
+import {
+  offerId,
+  renderOfferBodyPage,
+} from 'features/offer/pages/__tests__/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { act, cleanup, fireEvent } from 'tests/utils'
-
-import { offerId, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
 jest.mock('api/api')
 jest.mock('features/offer/api/useOffer')

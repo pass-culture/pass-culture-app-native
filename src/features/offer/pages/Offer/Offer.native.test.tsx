@@ -1,7 +1,6 @@
 import { useAuthContext } from 'features/auth/AuthContext'
+import { renderOfferPage } from 'features/offer/pages/__tests__/renderOfferPageTestUtil'
 import { act, fireEvent } from 'tests/utils'
-
-import { renderOfferPage } from './renderOfferPageTestUtil'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
