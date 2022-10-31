@@ -1,8 +1,8 @@
 import React from 'react'
 import { Animated, Platform, Share } from 'react-native'
 
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { OfferHeader } from 'features/offer/components/OfferHeader'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { getOfferUrl } from 'features/offer/services/useShareOffer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, superFlushWithAct } from 'tests/utils'

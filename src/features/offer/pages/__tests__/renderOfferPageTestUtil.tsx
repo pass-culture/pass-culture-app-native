@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 

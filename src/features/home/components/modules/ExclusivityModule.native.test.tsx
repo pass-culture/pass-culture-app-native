@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { ContentTypes } from 'features/home/contentful'
-import { offerResponseSnap as mockOffer } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 

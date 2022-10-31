@@ -2,7 +2,7 @@ import { rest } from 'msw'
 
 import { OfferReportReasons } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { offerReportReasonSnap } from 'features/offer/api/snaps/offerReportReasonSnap'
+import { offerReportReasonResponseSnap } from 'features/offer/fixtures/offerReportReasonResponse'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -19,7 +19,7 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 server.use(
   rest.get<OfferReportReasons>(
     env.API_BASE_URL + '/native/v1/offer/report/reasons',
-    (req, res, ctx) => res(ctx.status(200), ctx.json(offerReportReasonSnap))
+    (req, res, ctx) => res(ctx.status(200), ctx.json(offerReportReasonResponseSnap))
   )
 )
 
@@ -40,7 +40,9 @@ describe('useReasonsForReporting hook', () => {
     expect(result.current.isFetching).toEqual(true)
 
     await waitFor(() => {
-      expect(result.current.data?.reasons.length).toEqual(offerReportReasonSnap.reasons.length)
+      expect(result.current.data?.reasons.length).toEqual(
+        offerReportReasonResponseSnap.reasons.length
+      )
     })
   })
 

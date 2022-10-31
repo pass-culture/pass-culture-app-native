@@ -1,7 +1,7 @@
 import React from 'react'
 import { QueryClient } from 'react-query'
 
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render } from 'tests/utils'
 

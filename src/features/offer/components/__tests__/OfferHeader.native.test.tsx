@@ -10,7 +10,7 @@ import {
   addFavoriteJsonResponseSnap,
 } from 'features/favorites/fixtures/favoritesResponse'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'

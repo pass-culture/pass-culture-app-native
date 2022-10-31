@@ -1,8 +1,8 @@
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { offerResponseSnap } from '../snaps/offerResponseSnap'
-import { useOffer } from '../useOffer'
+import { useOffer } from './useOffer'
 
 describe('useOffer', () => {
   it('should call API otherwise', async () => {

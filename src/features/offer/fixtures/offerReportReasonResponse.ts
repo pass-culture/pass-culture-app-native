@@ -1,6 +1,6 @@
 import { OfferReportReasons } from 'api/gen'
 
-export const offerReportReasonSnap: OfferReportReasons = {
+export const offerReportReasonResponseSnap: OfferReportReasons = {
   reasons: {
     IMPROPER: {
       description: 'La date ne correspond pas, mauvaise description...',

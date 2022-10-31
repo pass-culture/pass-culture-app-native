@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

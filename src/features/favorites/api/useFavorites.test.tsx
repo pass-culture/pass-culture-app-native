@@ -9,7 +9,7 @@ import {
   addFavoriteJsonResponseSnap,
   paginatedFavoritesResponseSnap,
 } from 'features/favorites/fixtures/favoritesResponse'
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
