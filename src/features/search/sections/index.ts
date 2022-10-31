@@ -1,21 +1,15 @@
 import { Category } from './Category'
-import { Date } from './Date'
-import { Hour } from './Hour'
+import { DateHour } from './DateHour'
 import { Location } from './Location'
 import { NewOffer } from './NewOffer'
-import { OfferDate } from './OfferDate'
 import { OfferType } from './OfferType'
 import { Price } from './Price'
-import { TimeSlot } from './TimeSlot'
 
 export default {
   Category,
-  Date,
-  Hour,
+  DateHour,
+  Location,
   NewOffer,
-  OfferDate,
   OfferType,
   Price,
-  TimeSlot,
-  Location,
 }
