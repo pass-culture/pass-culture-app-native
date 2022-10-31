@@ -1,7 +1,7 @@
 import {
   ReportSteps,
   useReportOfferModalContent,
-} from 'features/offer/components/useReportOfferModalContent'
+} from 'features/offer/components/useReportOfferModalContent/useReportOfferModalContent'
 
 describe('useReportOfferModalContent hook description', () => {
   const setReportStep = jest.fn()

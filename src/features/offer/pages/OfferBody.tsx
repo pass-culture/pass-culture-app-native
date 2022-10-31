@@ -4,7 +4,9 @@ import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
+import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
+import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
+import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
@@ -27,7 +29,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { useOffer } from '../api/useOffer'
-import { OfferIconCaptions, OfferPartialDescription } from '../components'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 

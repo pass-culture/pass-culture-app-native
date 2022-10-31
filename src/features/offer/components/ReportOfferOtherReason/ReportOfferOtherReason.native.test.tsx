@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason'
+import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason/ReportOfferOtherReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'

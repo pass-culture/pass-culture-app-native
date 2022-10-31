@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils/web'
 
-import { OfferHeader } from '../OfferHeader'
+import { OfferHeader } from '../OfferHeader/OfferHeader'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>

@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { ReportOfferDescription } from 'features/offer/components/ReportOfferDescription'
-import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason'
-import { ReportOfferReason } from 'features/offer/components/ReportOfferReason'
+import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason/ReportOfferOtherReason'
+import { ReportOfferReason } from 'features/offer/components/ReportOfferReason/ReportOfferReason'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { LINE_BREAK } from 'ui/theme/constants'

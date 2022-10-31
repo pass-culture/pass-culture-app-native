@@ -1,0 +1,380 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReportOffer General modal behavior Report offer snapshots should display report offer modal if isVisible is true 1`] = `
+<Modal
+  accessibilityRole="none"
+  animationType="none"
+  aria-labelledby="testUuidV4"
+  aria-modal={true}
+  deviceHeight={1334}
+  deviceWidth={750}
+  hardwareAccelerated={false}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[MockFunction]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
+  onRequestClose={[Function]}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={true}
+  supportedOrientations={
+    Array [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  testID="modal"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    forwardedRef={[Function]}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "height": 1334,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "width": 750,
+      }
+    }
+  />
+  <View
+    accessibilityRole="none"
+    aria-labelledby="testUuidV4"
+    aria-modal={true}
+    collapsable={false}
+    deviceHeight={1334}
+    deviceWidth={750}
+    forwardedRef={[Function]}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[MockFunction]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    panResponderThreshold={4}
+    pointerEvents="box-none"
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "flex": 1,
+        "justifyContent": "center",
+        "left": 0,
+        "margin": "auto",
+        "position": "absolute",
+        "right": 0,
+        "top": "auto",
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+    supportedOrientations={
+      Array [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+  >
+    <View
+      height={428}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomEndRadius": 0,
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderTopEndRadius": 16,
+            "borderTopLeftRadius": 20,
+            "borderTopRightRadius": 20,
+            "borderTopStartRadius": 16,
+            "flexDirection": "column",
+            "height": 428,
+            "justifyContent": "center",
+            "maxHeight": 650,
+            "maxWidth": 960,
+            "paddingBottom": 32,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalContainer"
+    >
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "width": "100%",
+            },
+          ]
+        }
+        testID="modalHeader"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              accessibilityLabel="Revenir en arrière"
+              height={20}
+              testID="leftIcon"
+              width={20}
+            >
+              <Text>
+                leftIcon-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.8,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            nativeID="testUuidV4"
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="modalHeaderTitle"
+          >
+            Titre modale
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Fermer la modale"
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
+                "userSelect": "auto",
+              }
+            }
+            testID="Fermer la modale"
+          >
+            <View
+              height={20}
+              testID="rightIcon"
+              width={20}
+            >
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <View
+        backdropColor="#00000080"
+        paddingBottom={8}
+        style={
+          Array [
+            Object {
+              "maxHeight": "100%",
+              "maxWidth": 480,
+              "paddingBottom": 8,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RCTScrollView
+          contentContainerStyle={Object {}}
+          onContentSizeChange={[Function]}
+          scrollEnabled={true}
+          testID="modalScrollView"
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text>
+                Composant modale
+              </Text>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+</Modal>
+`;
+
+exports[`ReportOffer General modal behavior Report offer snapshots should not display report offer modal if isVisible is false 1`] = `
+<Modal
+  accessibilityRole="none"
+  animationType="none"
+  aria-labelledby="testUuidV4"
+  aria-modal={true}
+  deviceHeight={1334}
+  deviceWidth={750}
+  hardwareAccelerated={false}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[MockFunction]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
+  onRequestClose={[Function]}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={true}
+  supportedOrientations={
+    Array [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  testID="modal"
+  transparent={true}
+  visible={false}
+/>
+`;

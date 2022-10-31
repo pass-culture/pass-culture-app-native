@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated, Platform, Share } from 'react-native'
 
-import { OfferHeader } from 'features/offer/components/OfferHeader'
+import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { getOfferUrl } from 'features/offer/services/useShareOffer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,12 +10,11 @@ import { fireEvent, render, superFlushWithAct } from 'tests/utils'
 const url = getOfferUrl(offerResponseSnap.id)
 const title = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
 const message = `Retrouve "${offerResponseSnap.name}" chez "${offerResponseSnap.venue.name}" sur le pass Culture`
-const messageWithUrl = `${message}\n\n${url}`
 
 describe('<OfferHeader />', () => {
-  Platform.OS = 'android'
+  Platform.OS = 'ios'
 
-  it('should call Share with the right arguments on Android', async () => {
+  it('should call Share with the right arguments on IOS', async () => {
     const share = jest.spyOn(Share, 'share')
     const { getByTestId } = await renderOfferHeader()
 
@@ -25,7 +24,7 @@ describe('<OfferHeader />', () => {
 
     expect(share).toHaveBeenNthCalledWith(
       1,
-      { message: messageWithUrl, title, url },
+      { message, title, url },
       { dialogTitle: title, subject: title }
     )
   })

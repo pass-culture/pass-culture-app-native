@@ -5,7 +5,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { CustomRenderOptions, render } from 'tests/utils/web'
 
-import { OfferPartialDescription } from '../OfferPartialDescription'
+import { OfferPartialDescription } from '../OfferPartialDescription/OfferPartialDescription'
 
 const defaultDescription =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua: https://google.com'

@@ -2,7 +2,7 @@ import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { ReportOfferReason } from 'features/offer/components/ReportOfferReason'
+import { ReportOfferReason } from 'features/offer/components/ReportOfferReason/ReportOfferReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'

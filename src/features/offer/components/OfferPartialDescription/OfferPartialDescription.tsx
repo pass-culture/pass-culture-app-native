@@ -4,11 +4,10 @@ import styled from 'styled-components/native'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useOffer } from '../api/useOffer'
-import { OfferSeeMore } from '../atoms/OfferSeeMore'
-import { getContentFromOffer } from '../pages/OfferDescription'
-
-import { useShouldDisplaySeeMoreButton } from './useShouldDisplaySeeMoreButton'
+import { useOffer } from '../../api/useOffer'
+import { OfferSeeMore } from '../../atoms/OfferSeeMore'
+import { getContentFromOffer } from '../../pages/OfferDescription'
+import { useShouldDisplaySeeMoreButton } from '../useShouldDisplaySeeMoreButton'
 
 interface Props {
   id: number
