@@ -23,6 +23,15 @@ describe('<DatePickerDropDown />', () => {
     props.onChange.mockReset()
   })
 
+  it('should render null', () => {
+    const renderAPI = render(<DatePickerDropDown {...props} />)
+    fireEvent.change(renderAPI.getByTestId('select-Jour'), { target: { value: '1' } })
+    fireEvent.change(renderAPI.getByTestId('select-Mois'), { target: { value: 'Janvier' } })
+    fireEvent.change(renderAPI.getByTestId('select-Année'), { target: { value: '1994' } })
+
+    expect(renderAPI.container).toBeEmptyDOMElement()
+  })
+
   it('should call onChange with undefined date when a date is not selected', () => {
     const { getByTestId } = render(<DatePickerDropDown {...props} />)
 

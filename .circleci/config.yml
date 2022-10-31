@@ -533,7 +533,6 @@ jobs:
           steps:
             - notify-slack:
                 channel: shérif
-      - sonarcloud-scanner
 
   test-web:
     executor: node
@@ -549,6 +548,22 @@ jobs:
           steps:
             - notify-slack:
                 channel: shérif
+      - sonarcloud-scanner
+
+  sonar-scan:
+    executor: node
+    working_directory: ~/pass-culture
+    resource_class: large
+    steps:
+      - checkout
+      - install_node_modules
+      - when:
+          condition:
+            equal: ['master', << pipeline.git.branch >>]
+          steps:
+            - notify-slack:
+              channel: shérif
+      - sonarcloud-scanner
 
   notify-hard-testing-release:
     executor: node
@@ -980,13 +995,14 @@ workflows:
             tags:
               only: /.*/
           context:
-            - SonarCloud
             - Slack
       - test-web:
           filters:
             tags:
               only: /.*/
-          context: Slack
+          context:
+            - SonarCloud
+            - Slack
       - deploy-soft-testing:
           filters:
             branches:
