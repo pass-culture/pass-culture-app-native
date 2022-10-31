@@ -22,29 +22,29 @@ const UnmemoizedExclusivityModule = ({
   title,
   alt,
   image: imageURL,
-  id,
+  offerId,
   moduleId,
   display,
   homeEntryId,
   index,
 }: ExclusivityModuleProps) => {
   const [isFocus, setIsFocus] = useState(false)
-  const { data: offer } = useExcluOffer(id)
+  const { data: offer } = useExcluOffer(offerId)
   const { position } = useGeolocation()
   const maxPrice = useMaxPrice()
 
   const handlePressExclu = useCallback(() => {
-    if (typeof id !== 'number') return
+    if (typeof offerId !== 'number') return
     analytics.logExclusivityBlockClicked({ moduleName: title, moduleId, homeEntryId })
     analytics.logConsultOffer({
-      offerId: id,
+      offerId: offerId,
       moduleName: title,
       moduleId,
       from: 'exclusivity',
       homeEntryId,
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
+  }, [offerId])
 
   const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position, maxPrice)
 
@@ -64,7 +64,9 @@ const UnmemoizedExclusivityModule = ({
         <StyledTouchableLink
           highlight
           navigateTo={
-            typeof id === 'number' ? { screen: 'Offer', params: { id, from: 'home' } } : undefined
+            typeof offerId === 'number'
+              ? { screen: 'Offer', params: { id: offerId, from: 'home' } }
+              : undefined
           }
           onAfterNavigate={handlePressExclu}
           onFocus={() => setIsFocus(true)}
