@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useOffer } from 'features/offer/api/useOffer'
 import { OfferSeeMore } from 'features/offer/components/OfferSeeMore/OfferSeeMore'
-import { useShouldDisplaySeeMoreButton } from 'features/offer/components/useShouldDisplaySeeMoreButton'
+import { useShouldDisplaySeeMoreButton } from 'features/offer/helpers/useShouldDisplaySeeMoreButton'
 import { getContentFromOffer } from 'features/offer/pages/OfferDescription/OfferDescription'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
