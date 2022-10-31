@@ -7,8 +7,10 @@ import {
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
+import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { ShareAppModal } from 'libs/share/shareApp/shareAppModalInformations'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -18,13 +20,14 @@ import { Typo } from 'ui/theme'
 export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
   const culturalSurveyRoute = useCulturalSurveyRoute()
+  const { showShareAppModal } = useShareAppContext()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
-  const trackValidatedAccount = useCallback(
-    () => BatchUser.trackEvent(BatchEvent.hasValidatedAccount),
-    []
-  )
+  const onBeforeNavigate = useCallback(() => {
+    BatchUser.trackEvent(BatchEvent.hasValidatedAccount)
+    showShareAppModal(ShareAppModal.NOT_ELIGIBLE)
+  }, [showShareAppModal])
 
   useEffect(() => {
     if (user?.id)
@@ -43,7 +46,7 @@ export function AccountCreated() {
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
-          onBeforeNavigate={trackValidatedAccount}
+          onBeforeNavigate={onBeforeNavigate}
         />,
       ]}>
       {!!shouldNavigateToCulturalSurvey && (

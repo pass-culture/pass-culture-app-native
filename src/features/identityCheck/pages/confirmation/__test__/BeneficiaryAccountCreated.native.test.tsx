@@ -1,7 +1,9 @@
 import React from 'react'
 
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
+import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
 import { BatchUser } from 'libs/react-native-batch'
+import { ShareAppModal } from 'libs/share/shareApp/shareAppModalInformations'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
@@ -15,19 +17,33 @@ jest.mock('features/profile/utils', () => {
   }
 })
 
+const mockShowAppModal = jest.fn()
+jest.mock('features/shareApp/context/ShareAppWrapper', () => ({
+  ...jest.requireActual('features/shareApp/context/ShareAppWrapper'),
+  useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
+}))
+
 describe('<BeneficiaryAccountCreated/>', () => {
   it('should render correctly for underage beneficiaries', () => {
-    const renderAPI = render(<BeneficiaryAccountCreated />)
+    const renderAPI = renderBeneficiaryAccountCreated()
     expect(renderAPI).toMatchSnapshot()
   })
   it('should render correctly for 18 year-old beneficiaries', () => {
     mockIsUserUnderageBeneficiary = false
-    const renderAPI = render(<BeneficiaryAccountCreated />)
+    const renderAPI = renderBeneficiaryAccountCreated()
     expect(renderAPI).toMatchSnapshot()
   })
   it('should track Batch event when button is clicked', async () => {
-    const { getByText } = render(<BeneficiaryAccountCreated />)
+    const { getByText } = renderBeneficiaryAccountCreated()
     fireEvent.press(getByText('Je découvre les offres'))
     expect(BatchUser.trackEvent).toBeCalledWith('has_validated_subscription')
   })
+  it('should show beneficiary share app modal when button is clicked', async () => {
+    const { getByText } = renderBeneficiaryAccountCreated()
+    fireEvent.press(getByText('Je découvre les offres'))
+    expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModal.BENEFICIARY)
+  })
 })
+
+const renderBeneficiaryAccountCreated = () =>
+  render(<BeneficiaryAccountCreated />, { wrapper: ShareAppWrapper })

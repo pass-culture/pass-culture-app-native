@@ -16,8 +16,10 @@ import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helper
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { ShareAppModal } from 'libs/share/shareApp/shareAppModalInformations'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -34,16 +36,17 @@ export function BeneficiaryAccountCreated() {
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const culturalSurveyRoute = useCulturalSurveyRoute()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
+  const { showShareAppModal } = useShareAppContext()
 
   const subtitle = `${maxPrice}\u00a0€ viennent d'être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!'
     : 'Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!'
 
-  const trackValidatedSubscription = useCallback(
-    () => BatchUser.trackEvent(BatchEvent.hasValidatedSubscription),
-    []
-  )
+  const onBeforeNavigate = useCallback(() => {
+    BatchUser.trackEvent(BatchEvent.hasValidatedSubscription)
+    showShareAppModal(ShareAppModal.BENEFICIARY)
+  }, [showShareAppModal])
 
   useEnterKeyAction(navigateToHome)
 
@@ -71,7 +74,7 @@ export function BeneficiaryAccountCreated() {
           navigateTo={
             shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
           }
-          onBeforeNavigate={trackValidatedSubscription}
+          onBeforeNavigate={onBeforeNavigate}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>

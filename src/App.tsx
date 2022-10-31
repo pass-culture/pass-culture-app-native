@@ -19,6 +19,7 @@ import { SubscriptionContextProvider } from 'features/identityCheck/context/Subs
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
+import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { campaignTracker } from 'libs/campaign'
@@ -79,11 +80,13 @@ const App: FunctionComponent = function () {
                               <SubscriptionContextProvider>
                                 <SplashScreenProvider>
                                   <PushNotificationsWrapper>
-                                    <OfflineModeContainer>
-                                      <ScreenErrorProvider>
-                                        <AppNavigationContainer />
-                                      </ScreenErrorProvider>
-                                    </OfflineModeContainer>
+                                    <ShareAppWrapper>
+                                      <OfflineModeContainer>
+                                        <ScreenErrorProvider>
+                                          <AppNavigationContainer />
+                                        </ScreenErrorProvider>
+                                      </OfflineModeContainer>
+                                    </ShareAppWrapper>
                                   </PushNotificationsWrapper>
                                 </SplashScreenProvider>
                               </SubscriptionContextProvider>
