@@ -1,5 +1,4 @@
 import { parse, format } from 'date-fns'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -7,6 +6,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
