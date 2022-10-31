@@ -1,5 +1,4 @@
 import { useFocusEffect } from '@react-navigation/native'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useCallback, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { URL } from 'react-native-url-polyfill'
@@ -13,6 +12,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { eduConnectClient } from 'libs/eduConnectClient'
 
 export const IdentityCheckEduConnectForm = () => {

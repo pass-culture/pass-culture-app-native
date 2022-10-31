@@ -1,10 +1,10 @@
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'

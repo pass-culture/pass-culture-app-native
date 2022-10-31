@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { Country, CountryCode } from 'react-native-country-picker-modal'
@@ -17,6 +16,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
