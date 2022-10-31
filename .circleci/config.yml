@@ -555,6 +555,9 @@ jobs:
     resource_class: large
     steps:
       - checkout
+      - install_node_modules
+      - unit_test_native
+      - unit_test_web
       - sonarcloud-scanner
 
   notify-hard-testing-release:
