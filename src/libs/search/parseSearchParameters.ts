@@ -32,10 +32,12 @@ export const parseSearchParameters = (
   if (!locationFilter) return
 
   const beginningDatetime = parameters.beginningDatetime
-    ? new Date(parameters.beginningDatetime)
+    ? new Date(parameters.beginningDatetime).toISOString()
     : null
 
-  const endingDatetime = parameters.endingDatetime ? new Date(parameters.endingDatetime) : null
+  const endingDatetime = parameters.endingDatetime
+    ? new Date(parameters.endingDatetime).toISOString()
+    : null
 
   // We receive category labels from contentful. We first have to map to facetFilters used for search
   const offerCategories = (parameters.categories || [])
@@ -47,8 +49,8 @@ export const parseSearchParameters = (
   )
 
   return {
-    beginningDatetime: beginningDatetime,
-    endingDatetime: endingDatetime,
+    beginningDatetime,
+    endingDatetime,
     hitsPerPage: parameters.hitsPerPage || null,
     locationFilter,
     offerCategories,
