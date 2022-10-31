@@ -3,15 +3,10 @@ import React from 'react'
 import { ReportOfferDescription } from 'features/offer/components/ReportOfferDescription'
 import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason/ReportOfferOtherReason'
 import { ReportOfferReason } from 'features/offer/components/ReportOfferReason/ReportOfferReason'
+import { ReportSteps } from 'features/offer/enums'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { LINE_BREAK } from 'ui/theme/constants'
-
-export enum ReportSteps {
-  REPORT_OFFER_DESCRIPTION = 0,
-  REPORT_OFFER_REASON = 1,
-  REPORT_OFFER_OTHER_REASON = 2,
-}
 
 interface Props {
   offerId: number

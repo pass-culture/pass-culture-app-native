@@ -1,7 +1,5 @@
-import {
-  ReportSteps,
-  useReportOfferModalContent,
-} from 'features/offer/helpers/useReportOfferModalContent/useReportOfferModalContent'
+import { ReportSteps } from 'features/offer/enums'
+import { useReportOfferModalContent } from 'features/offer/helpers/useReportOfferModalContent/useReportOfferModalContent'
 
 describe('useReportOfferModalContent hook description', () => {
   const setReportStep = jest.fn()

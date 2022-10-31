@@ -3,15 +3,8 @@ import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import {
-  CategoryIdEnum,
-  ExpenseDomain,
-  OfferResponse,
-  OfferStockResponse,
-  OfferVenueResponse,
-  SubcategoryIdEnum,
-} from 'api/gen'
-import { Referrals } from 'features/navigation/RootNavigator'
+import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'
+import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/firebase/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -22,27 +15,6 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export interface OfferTileProps {
-  categoryId: CategoryIdEnum | null | undefined
-  categoryLabel: string | null
-  subcategoryId: SubcategoryIdEnum
-  distance?: string
-  date?: string
-  name?: string
-  isDuo?: boolean
-  offerId: number
-  venueId?: number
-  price: string
-  thumbUrl?: string
-  isBeneficiary?: boolean
-  analyticsFrom: Referrals
-  moduleName?: string
-  moduleId?: string
-  homeEntryId?: string
-  width: number
-  height: number
-}
 
 type PartialOffer = Pick<
   OfferTileProps,
