@@ -548,7 +548,6 @@ jobs:
           steps:
             - notify-slack:
                 channel: shérif
-      - sonarcloud-scanner
 
   sonar-scan:
     executor: node
@@ -556,13 +555,6 @@ jobs:
     resource_class: large
     steps:
       - checkout
-      - install_node_modules
-      - when:
-          condition:
-            equal: ['master', << pipeline.git.branch >>]
-          steps:
-            - notify-slack:
-              channel: shérif
       - sonarcloud-scanner
 
   notify-hard-testing-release:
@@ -995,6 +987,7 @@ workflows:
             tags:
               only: /.*/
           context:
+            - SonarCloud
             - Slack
       - test-web:
           filters:
@@ -1003,6 +996,15 @@ workflows:
           context:
             - SonarCloud
             - Slack
+      - sonar-scan:
+          filters:
+            tags:
+              only: /.*/
+          context:
+            - SonarCloud
+          requires:
+            - test-native
+            - test-web
       - deploy-soft-testing:
           filters:
             branches:
