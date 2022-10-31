@@ -161,54 +161,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               },
             ]
           }
-        >
-          <View
-            accessibilityRole="button"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              accessibilityLabel="Revenir en arrière"
-              height={20}
-              testID="leftIcon"
-              width={20}
-            >
-              <Text>
-                leftIcon-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
+        />
         <View
           style={
             Array [
@@ -240,7 +193,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             }
             testID="modalHeaderTitle"
           >
-            Titre modale
+            Signaler une offre
           </Text>
         </View>
         <View
@@ -333,9 +286,194 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 ]
               }
             >
-              <Text>
-                Composant modale
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Bien que l’ensemble du catalogue soit vérifié par nos soins, il n’est pas impossible que certaines offres ne respectent pas les CGU.
               </Text>
+              <View
+                numberOfSpaces={8}
+                style={
+                  Array [
+                    Object {
+                      "height": 32,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={3.75}
+                  style={
+                    Array [
+                      Object {
+                        "width": 15,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs.
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={8}
+                style={
+                  Array [
+                    Object {
+                      "height": 32,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={3.75}
+                  style={
+                    Array [
+                      Object {
+                        "width": 15,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Ton identité restera anonyme auprès des acteurs culturels.
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={13}
+                style={
+                  Array [
+                    Object {
+                      "height": 52,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Signaler l'offre"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="go-to-reason-report-button"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Signaler l'offre
+                </Text>
+              </View>
             </View>
           </View>
         </RCTScrollView>
