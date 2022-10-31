@@ -193,8 +193,8 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Identifie-toi 
- pour réserver l’offre
+            Identifie-toi
+pour réserver l’offre
           </Text>
         </View>
         <View

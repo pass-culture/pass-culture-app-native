@@ -21,7 +21,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
   return (
     <AppModalWithIllustration
       visible={visible}
-      title={`Identifie-toi ${LINE_BREAK} pour réserver l’offre`}
+      title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
       hideModal={hideModal}>
       <Typo.ButtonText>Tu as entre 15 et 18 ans&nbsp;?</Typo.ButtonText>
