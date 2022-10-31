@@ -25,6 +25,7 @@ SliderWithMinMaxValues.args = {
   max: 100,
   showValues: false,
   shouldShowMinMaxValues: true,
+  minMaxValuesComplement: `\u00a0km`,
 }
 
 export const SliderWithFormattedValues = Template.bind({})

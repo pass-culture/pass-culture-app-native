@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -333,7 +333,7 @@ describe('SearchResults component', () => {
     })
   })
 
-  it('should update the staged search state with the actual search state when pressing the dates and hours filter button', async () => {
+  it('should open the type filter modal when pressing the type filter button', async () => {
     const { getByTestId } = render(<SearchResults />)
     const datesHoursButton = getByTestId('datesHoursButton')
 
@@ -341,21 +341,9 @@ describe('SearchResults component', () => {
       fireEvent.press(datesHoursButton)
     })
 
-    expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-      type: 'SET_STATE_FROM_DEFAULT',
-      payload: mockSearchState,
-    })
-  })
+    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 
-  it('should redirect to the general filters page when pressing the dates and hours filter button', async () => {
-    const { getByTestId } = render(<SearchResults />)
-    const datesHoursButton = getByTestId('datesHoursButton')
-
-    await act(async () => {
-      fireEvent.press(datesHoursButton)
-    })
-
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+    expect(fullscreenModalScrollView).toBeTruthy()
   })
 
   it.each`

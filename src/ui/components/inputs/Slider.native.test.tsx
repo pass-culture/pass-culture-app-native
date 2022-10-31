@@ -43,12 +43,25 @@ describe('<Slider />', () => {
       const { queryByText } = render(
         <Slider values={[100]} shouldShowMinMaxValues min={0} showValues={false} />
       )
-      expect(queryByText('0\u00a0km')).toBeTruthy()
+      expect(queryByText('0')).toBeTruthy()
     })
 
     it('should show maximim value if shouldShowMinMaxValues is true', () => {
       const { queryByText } = render(
         <Slider values={[100]} shouldShowMinMaxValues max={100} showValues={false} />
+      )
+      expect(queryByText('100')).toBeTruthy()
+    })
+
+    it('should show minimum and maximum complement when defined', () => {
+      const { queryByText } = render(
+        <Slider
+          values={[100]}
+          shouldShowMinMaxValues
+          max={100}
+          showValues={false}
+          minMaxValuesComplement={`\u00a0km`}
+        />
       )
       expect(queryByText('100\u00a0km')).toBeTruthy()
     })
