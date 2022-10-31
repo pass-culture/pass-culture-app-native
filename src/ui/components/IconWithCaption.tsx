@@ -7,9 +7,9 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface IconWithCaptionProps {
   Icon: React.FC<AccessibleIcon>
   caption: string
-  accessibilityLabel: string | undefined
+  accessibilityLabel?: string
   testID?: string
-  isDisabled?: boolean | false
+  isDisabled?: boolean
 }
 
 export const IconWithCaption = ({
@@ -17,7 +17,7 @@ export const IconWithCaption = ({
   caption,
   accessibilityLabel,
   testID,
-  isDisabled,
+  isDisabled = false,
 }: IconWithCaptionProps) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.standard,
@@ -27,7 +27,7 @@ export const IconWithCaption = ({
   return (
     <Container>
       <IconContainer>
-        <StyledIcon testID={testID} accessibilityLabel={accessibilityLabel} />
+        <StyledIcon accessibilityLabel={accessibilityLabel} testID={testID} />
       </IconContainer>
       <Spacer.Column numberOfSpaces={1} />
       <Caption testID={`caption-${testID}`} disabled={isDisabled}>
@@ -37,9 +37,14 @@ export const IconWithCaption = ({
   )
 }
 
-const Container = styled.View({ flex: 1, alignItems: 'center' })
+const Container = styled.View({
+  flex: 1,
+  alignItems: 'center',
+})
 
-const IconContainer = styled.View({ padding: getSpacing(1) })
+const IconContainer = styled.View({
+  padding: getSpacing(1),
+})
 
 const Caption = styled(Typo.Caption)<{ disabled?: boolean }>(({ disabled, theme }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
