@@ -2,14 +2,14 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
-import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { FUTUR_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils'
 
 const onChange = jest.fn()
 
 describe('<DateChoice />', () => {
   beforeEach(() => {
-    mockdate.set(CURRENT_DATE)
+    mockdate.set(FUTUR_DATE)
     onChange.mockReset()
     jest.useFakeTimers()
   })

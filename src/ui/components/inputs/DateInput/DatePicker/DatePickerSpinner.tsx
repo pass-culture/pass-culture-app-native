@@ -3,6 +3,7 @@ import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { CURRENT_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -17,6 +18,10 @@ export function DatePickerSpinner(props: DatePickerProps) {
     props.onChange(date)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
+
+  if (date?.getTime() === CURRENT_DATE.getTime()) {
+    return null
+  }
 
   return (
     <React.Fragment>

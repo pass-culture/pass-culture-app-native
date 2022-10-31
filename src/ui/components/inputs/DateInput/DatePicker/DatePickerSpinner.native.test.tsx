@@ -28,6 +28,15 @@ describe('<DatePickerSpinner />', () => {
   })
 
   describe('- navigation -', () => {
+    it('should render null', () => {
+      const renderAPI = render(<DatePickerSpinner {...props} />)
+
+      const datePicker = renderAPI.getByTestId('date-picker-spinner-native')
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
+
+      expect(renderAPI.queryByTestId('date-picker-spinner-native')).toBeNull()
+    })
+
     it('should keep disabled the button "Continuer" when the date is not selected', () => {
       const { getByTestId } = render(<DatePickerSpinner {...props} />)
 
