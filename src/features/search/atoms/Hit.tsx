@@ -2,7 +2,7 @@ import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { mergeOfferData } from 'features/offer/atoms/OfferTile'
+import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'

@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OfferTile component should render correctly 1`] = `
+<View>
+  <View
+    accessibilityLabel="Offre La nuit des temps de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
+    accessibilityRole="link"
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+        Object {
+          "borderRadius": 8,
+          "height": 172,
+          "marginVertical": 4,
+        },
+      ]
+    }
+    testID="offre La nuit des temps"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "column-reverse",
+          },
+        ]
+      }
+    >
+      <View
+        imageWidth={100}
+        style={
+          Array [
+            Object {
+              "marginTop": 8,
+              "maxWidth": 100,
+            },
+          ]
+        }
+      >
+        <Text
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        >
+          La nuit des temps
+        </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        >
+          Dès le 12 mars 2020
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+          testID="priceIsDuo"
+        >
+          28 €
+        </Text>
+      </View>
+      <View>
+        <View
+          style={
+            Array [
+              Object {
+                "overflow": "hidden",
+              },
+              Array [
+                Object {
+                  "backgroundColor": "#F1F1F4",
+                },
+                Object {
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "height": 76,
+                  "width": 100,
+                },
+              ],
+            ]
+          }
+        >
+          <FastImageView
+            resizeMode="cover"
+            source={
+              Object {
+                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
+              }
+            }
+            style={
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+            testID="tileImage"
+          />
+        </View>
+        <View
+          height={24}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#161617",
+                "borderBottomLeftRadius": 8,
+                "borderBottomRightRadius": 8,
+                "flexDirection": "row",
+                "height": 24,
+                "width": 100,
+              },
+            ]
+          }
+          width={100}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "paddingHorizontal": 2,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="categoryImageCaption"
+            >
+              MUSIQUE
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "height": 16,
+                  "width": 1,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                  "paddingHorizontal": 2,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="distanceImageCaption"
+            >
+              1,2km
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

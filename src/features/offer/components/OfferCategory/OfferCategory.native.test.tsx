@@ -3,7 +3,7 @@ import React from 'react'
 import { CategoryIdEnum } from 'api/gen'
 import { render } from 'tests/utils'
 
-import { OfferCategory } from '../OfferCategory'
+import { OfferCategory } from './OfferCategory'
 
 describe('OfferCategory', () => {
   it('renders correctly', () => {

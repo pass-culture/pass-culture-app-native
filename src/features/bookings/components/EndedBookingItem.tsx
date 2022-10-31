@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
 import { BookingItemProps } from 'features/bookings/types'
-import { mergeOfferData } from 'features/offer/atoms/OfferTile'
+import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'

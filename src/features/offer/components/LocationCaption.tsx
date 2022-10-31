@@ -2,16 +2,15 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
+import { getLocationName } from 'features/offer/services/getLocationName'
 import { Digital as DefaultDigital } from 'ui/svg/icons/Digital'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
+
 type Props = {
   venue: OfferVenueResponse
   isDigital: boolean
 }
-
-export const getLocationName = (venue: OfferVenueResponse, isDigital: boolean): string =>
-  isDigital ? venue.offerer.name : venue.publicName || venue.name
 
 export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: Props) => {
   const locationName = getLocationName(venue, isDigital)

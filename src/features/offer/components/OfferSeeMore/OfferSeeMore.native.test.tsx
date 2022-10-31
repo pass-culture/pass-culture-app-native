@@ -3,7 +3,7 @@ import React from 'react'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
-import { OfferSeeMore } from '../OfferSeeMore'
+import { OfferSeeMore } from './OfferSeeMore'
 
 const offerId = 116656
 
