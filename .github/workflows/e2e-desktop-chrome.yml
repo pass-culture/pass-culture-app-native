@@ -1,0 +1,9 @@
+name: Tests e2e Desktop Chrome
+
+on:
+  workflow_dispatch:
+    inputs:
+      tbd:
+        description: "tbd"
+        required: false
+        type: string

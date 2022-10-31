@@ -1,0 +1,9 @@
+name: Tests e2e iOS Safari
+
+on:
+  workflow_dispatch:
+    inputs:
+      tbd:
+        description: "tbd"
+        required: false
+        type: string
