@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const base = require('./jest.config')
+const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFrom.config')
 
 module.exports = {
   ...base,
@@ -11,10 +11,7 @@ module.exports = {
     ...base.setupFiles,
     '<rootDir>/jest/jest.web.setup.ts',
   ],
-  setupFilesAfterEnv: [
-    ...base.setupFilesAfterEnv,
-    '<rootDir>/jest/jest.web.setupAfterEnv.ts'
-  ],
+  setupFilesAfterEnv: [...base.setupFilesAfterEnv, '<rootDir>/jest/jest.web.setupAfterEnv.ts'],
   testRegex: '(?<!.(?:native|ios|android)).(?:test|spec).(?:tsx?|js)$',
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {
@@ -29,7 +26,7 @@ module.exports = {
     // temporary mock things until implemented
     'react-native-fast-image': '<rootDir>/__mocks__/fragmentMock.ts',
   },
-  collectCoverageFrom: [...base.collectCoverageFrom, '!**/*.(native|ios|android).*'],
+  collectCoverageFrom: ['src/**/*.web.{js,jsx,ts,tsx}', ...excludeCollectCoverageFrom],
   testPathIgnorePatterns: [
     ...base.testPathIgnorePatterns,
     '.*(/tests?/.*.(native|ios|android).(test|spec)).(tsx?)$',
