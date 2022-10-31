@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -42,8 +42,7 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 
 export const SearchFilter: React.FC = () => {
   const { searchState } = useStagedSearch()
-  const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
-  const [scrollEnabled, setScrollEnabled] = useState(true)
+  const { scrollViewRef } = useScrollToEndOnTimeOrDateActivation()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const onGoBack = useCallback(() => {
@@ -64,7 +63,7 @@ export const SearchFilter: React.FC = () => {
         onGoBack={onGoBack}
       />
       <React.Fragment>
-        <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>
+        <StyledScrollView ref={scrollViewRef} scrollEnabled>
           {/* Localisation */}
           <VerticalUl>
             <StyledLi>
@@ -97,47 +96,10 @@ export const SearchFilter: React.FC = () => {
               <Separator marginVertical={getSpacing(4)} />
             </StyledLi>
 
-            {/* Uniquement les nouveautés */}
+            {/* Date & Heure */}
             <StyledLi>
-              <ToggleContainer>
-                <Section.NewOffer />
-              </ToggleContainer>
+              <Section.DateHour />
               <Separator marginVertical={getSpacing(4)} />
-            </StyledLi>
-
-            {/* Date */}
-            <StyledLi>
-              <ToggleContainer>
-                <Section.Date />
-              </ToggleContainer>
-              <Separator marginVertical={getSpacing(4)} />
-
-              {/* Date de l'offre */}
-              {!!searchState.date && (
-                <React.Fragment>
-                  <Section.OfferDate setScrollEnabled={setScrollEnabled} />
-                  <Separator marginVertical={getSpacing(4)} />
-                  <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
-                </React.Fragment>
-              )}
-            </StyledLi>
-
-            {/* Heure */}
-            <StyledLi>
-              <ToggleContainer>
-                <Section.Hour />
-              </ToggleContainer>
-
-              {/*Créneau horaire */}
-              {!!searchState.timeRange && (
-                <React.Fragment>
-                  <Separator marginVertical={getSpacing(4)} />
-                  <Section.TimeSlot />
-                  <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
-                </React.Fragment>
-              )}
-
-              <Spacer.Column numberOfSpaces={30} />
             </StyledLi>
           </VerticalUl>
         </StyledScrollView>
@@ -159,6 +121,7 @@ const Container = styled.View(({ theme }) => ({
 const StyledScrollView = styled(ScrollView)({
   flex: 1,
 })
+
 const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVertical = 0 }) => ({
   width: theme.appContentWidth - getSpacing(2 * 6),
   height: 2,
@@ -166,15 +129,13 @@ const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVerti
   alignSelf: 'center',
   marginVertical: marginVertical,
 }))
+
 const ShowResultsContainer = styled.View({
   width: '100%',
   position: 'absolute',
   bottom: getSpacing(6),
   paddingHorizontal: getSpacing(6),
   alignItems: 'center',
-})
-const ToggleContainer = styled.View({
-  marginHorizontal: getSpacing(6),
 })
 
 const StyledLi = styled(Li)({
