@@ -27,7 +27,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({ visible, hideM
   return (
     <AppModalWithIllustration
       visible={visible}
-      title={`Tu n’as pas encore obtenu ${LINE_BREAK} ton crédit`}
+      title={'Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit'}
       Illustration={BicolorUserError}
       hideModal={hideModal}>
       <StyledBody>

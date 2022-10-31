@@ -193,8 +193,8 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Tu n’as pas encore obtenu 
- ton crédit
+            Tu n’as pas encore obtenu
+ton crédit
           </Text>
         </View>
         <View
