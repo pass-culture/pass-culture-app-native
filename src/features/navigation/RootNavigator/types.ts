@@ -21,7 +21,7 @@ export type CulturalSurveyRootStackParamList = {
   CulturalSurveyThanks: undefined
 }
 
-export type IdentityCheckRootStackParamList = {
+export type SubscriptionRootStackParamList = {
   // Cheatcodes
   NavigationErrors: undefined
   NavigationIdentityCheck: undefined
@@ -156,7 +156,7 @@ export type RootStackParamList = {
   Venue: { id: number }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
-} & IdentityCheckRootStackParamList &
+} & SubscriptionRootStackParamList &
   CulturalSurveyRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList

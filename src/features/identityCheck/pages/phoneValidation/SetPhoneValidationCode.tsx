@@ -17,7 +17,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/utils'
 import {
-  IdentityCheckRootStackParamList,
+  SubscriptionRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { amplitude } from 'libs/amplitude'
@@ -32,7 +32,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
 
 export type SetPhoneValidationCodeProps = StackScreenProps<
-  IdentityCheckRootStackParamList,
+  SubscriptionRootStackParamList,
   'SetPhoneValidationCode'
 >
 

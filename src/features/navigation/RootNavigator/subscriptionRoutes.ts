@@ -37,11 +37,11 @@ import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
   GenericRoute,
-  IdentityCheckRootStackParamList,
+  SubscriptionRootStackParamList,
 } from 'features/navigation/RootNavigator/types'
 
 // Try to keep those routes in the same order as the user flow
-export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[] = [
+export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
   {
     // debug route: in navigation component
     name: 'NavigationSignUp',

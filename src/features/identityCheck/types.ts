@@ -1,4 +1,4 @@
-import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigator'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export enum IdentityCheckStep {
@@ -9,11 +9,11 @@ export enum IdentityCheckStep {
   END = 'end',
 }
 
-export type IdentityCheckScreen = keyof IdentityCheckRootStackParamList
+export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 
 export interface StepConfig {
   name: IdentityCheckStep
   label: string
   icon: React.FC<IconInterface>
-  screens: IdentityCheckScreen[]
+  screens: SubscriptionScreen[]
 }

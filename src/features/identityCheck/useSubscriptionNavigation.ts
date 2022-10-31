@@ -4,22 +4,22 @@ import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/api'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { IdentityCheckScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { SubscriptionScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
 import {
-  IdentityCheckRootStackParamList,
+  SubscriptionRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
-import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
+import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
-type NextScreenOrStep = { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null
+type NextScreenOrStep = { screen: SubscriptionScreen } | { step: IdentityCheckStep } | null
 
-const isSubscriptionRoute = (name: string): name is IdentityCheckScreen =>
-  identityCheckRoutes.map((route) => route.name).includes(name as IdentityCheckScreen)
+const isSubscriptionRoute = (name: string): name is SubscriptionScreen =>
+  subscriptionRoutes.map((route) => route.name).includes(name as SubscriptionScreen)
 
-const getCurrentStep = (steps: StepConfig[], currentRoute: keyof IdentityCheckRootStackParamList) =>
+const getCurrentStep = (steps: StepConfig[], currentRoute: keyof SubscriptionRootStackParamList) =>
   steps.find((step) => step.screens.includes(currentRoute)) || null
 
 const useCurrentSubscriptionStep = (): IdentityCheckStep | null => {
@@ -82,7 +82,7 @@ export const useSubscriptionNavigation = (): {
 
 export const getNextScreenOrStep = (
   steps: StepConfig[],
-  currentRoute: IdentityCheckScreen | null
+  currentRoute: SubscriptionScreen | null
 ): NextScreenOrStep => {
   if (!currentRoute) return null
   const currentStep = getCurrentStep(steps, currentRoute)
