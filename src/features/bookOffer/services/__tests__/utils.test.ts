@@ -6,7 +6,7 @@ import {
   getStatusFromStocks,
   OfferStatus,
 } from 'features/bookOffer/services/utils'
-import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
@@ -51,8 +51,8 @@ describe('getStatusFromStocks()', () => {
   it('should return NOT_BOOKABLE if no bookable stock', () => {
     const status = getStatusFromStocks(
       [
-        { ...notExpiredStock, isBookable: false, price: 200 },
-        { ...notExpiredStock, isBookable: false, price: 2000 },
+        { ...offerStockResponseSnap, isBookable: false, price: 200 },
+        { ...offerStockResponseSnap, isBookable: false, price: 2000 },
       ],
       1000
     )
@@ -61,8 +61,8 @@ describe('getStatusFromStocks()', () => {
   it('should return NOT_BOOKABLE if the bookable stocks are too expensive', () => {
     const status = getStatusFromStocks(
       [
-        { ...notExpiredStock, isBookable: false, price: 200 },
-        { ...notExpiredStock, isBookable: true, price: 2000 },
+        { ...offerStockResponseSnap, isBookable: false, price: 200 },
+        { ...offerStockResponseSnap, isBookable: true, price: 2000 },
       ],
       1000
     )
@@ -71,9 +71,9 @@ describe('getStatusFromStocks()', () => {
   it('should return BOOKABLE if one bookable stock is under the user credit', () => {
     const status = getStatusFromStocks(
       [
-        { ...notExpiredStock, isBookable: false, price: 200 },
-        { ...notExpiredStock, isBookable: true, price: 2000 },
-        { ...notExpiredStock, isBookable: true, price: 4000 },
+        { ...offerStockResponseSnap, isBookable: false, price: 200 },
+        { ...offerStockResponseSnap, isBookable: true, price: 2000 },
+        { ...offerStockResponseSnap, isBookable: true, price: 4000 },
       ],
       2000
     )

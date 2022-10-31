@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
-import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
+import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'

@@ -1,7 +1,7 @@
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
-import { OfferModal } from 'features/offer/services/enums'
+import { OfferModal } from 'features/offer/enums'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
@@ -9,9 +9,8 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
-import { useOffer } from '../api/useOffer'
-
-import { useHasEnoughCredit } from './useHasEnoughCredit'
+import { useOffer } from '../../api/useOffer'
+import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],

@@ -20,7 +20,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
 
-import { useShareOffer } from '../../services/useShareOffer'
+import { useShareOffer } from '../../helpers/useShareOffer'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation

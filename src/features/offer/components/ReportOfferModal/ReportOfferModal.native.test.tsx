@@ -4,7 +4,7 @@ import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/Rep
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
-jest.mock('features/offer/services/useReportOffer')
+jest.mock('features/offer/helpers/useReportOffer')
 jest.mock('features/offer/components/useReportOfferModalContent/useReportOfferModalContent')
 
 describe('ReportOffer', () => {

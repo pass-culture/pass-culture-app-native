@@ -1,7 +1,8 @@
 import mockdate from 'mockdate'
 
-import { useGetDepositAmountsByAge } from 'features/offer/services/useGetDepositAmountsByAge'
 import { renderHook } from 'tests/utils'
+
+import { useGetDepositAmountsByAge } from './useGetDepositAmountsByAge'
 
 const TODAY = '2022-10-24'
 mockdate.set(new Date(TODAY))

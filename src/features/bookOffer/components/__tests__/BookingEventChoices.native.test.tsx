@@ -42,7 +42,7 @@ jest.mock('features/profile/api', () => ({
   })),
 }))
 
-jest.mock('features/offer/services/useHasEnoughCredit', () => ({
+jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => ({
   useCreditForOffer: jest.fn(() => 50000),
 }))
 

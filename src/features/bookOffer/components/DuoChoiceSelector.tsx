@@ -7,7 +7,7 @@ import {
   useBookingOffer,
   useBookingStock,
 } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
+import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
 import { IconInterface } from 'ui/svg/icons/types'

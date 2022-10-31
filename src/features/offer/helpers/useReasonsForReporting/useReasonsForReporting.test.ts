@@ -9,7 +9,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useReasonsForReporting } from '../useReasonsForReporting'
+import { useReasonsForReporting } from './useReasonsForReporting'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>

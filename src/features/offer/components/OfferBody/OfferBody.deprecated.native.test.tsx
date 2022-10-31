@@ -11,7 +11,7 @@ import { act, cleanup, fireEvent } from 'tests/utils'
 
 jest.mock('api/api')
 jest.mock('features/offer/api/useOffer')
-jest.mock('features/offer/services/useReasonsForReporting', () => ({
+jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting', () => ({
   useReasonsForReporting: jest.fn(() => ({
     data: {
       reasons: {

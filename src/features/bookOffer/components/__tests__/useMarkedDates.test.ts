@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { useMarkedDates } from 'features/bookOffer/components/Calendar/useMarkedDates'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
-import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { renderHook } from 'tests/utils'
 
 const mockBookingState: BookingState = {
@@ -28,24 +28,24 @@ describe('useMarkedDates()', () => {
   })
 
   it('should mark selected date correctly', () => {
-    let hook = renderHook(() => useMarkedDates([notExpiredStock], credit))
+    let hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
     expect(hook.result.current['2021-01-01'].selected).toBeTruthy()
 
     mockBookingState.date = new Date(2021, 4, 4)
-    hook = renderHook(() => useMarkedDates([notExpiredStock], credit))
+    hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
     expect(hook.result.current['2021-01-01'].selected).toBeFalsy()
   })
 
   it('should skip stocks without date', () => {
-    const stock = { ...notExpiredStock, beginningDatetime: null }
+    const stock = { ...offerStockResponseSnap, beginningDatetime: null }
     const { result } = renderHook(() => useMarkedDates([stock], credit))
     expect(result.current).toStrictEqual({})
   })
 
   it('should select the bookable stock for a particular date', () => {
     const stocks = [
-      { ...notExpiredStock, isBookable: false, price: 200 },
-      { ...notExpiredStock, isBookable: true, price: 2000 },
+      { ...offerStockResponseSnap, isBookable: false, price: 200 },
+      { ...offerStockResponseSnap, isBookable: true, price: 2000 },
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
     expect(result.current['2021-01-01'].price).toEqual(2000)
@@ -54,8 +54,8 @@ describe('useMarkedDates()', () => {
 
   it('should return the correct status and price for non bookable stocks', () => {
     const stocks = [
-      { ...notExpiredStock, isBookable: false, price: 200 },
-      { ...notExpiredStock, isBookable: false, price: 2000 },
+      { ...offerStockResponseSnap, isBookable: false, price: 200 },
+      { ...offerStockResponseSnap, isBookable: false, price: 2000 },
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
     expect(result.current['2021-01-01'].price).toEqual(200)
@@ -64,8 +64,8 @@ describe('useMarkedDates()', () => {
 
   it('should select the bookable stock for a particular date even if not enough credit', () => {
     const stocks = [
-      { ...notExpiredStock, isBookable: false, price: 200 },
-      { ...notExpiredStock, isBookable: true, price: 2000 },
+      { ...offerStockResponseSnap, isBookable: false, price: 200 },
+      { ...offerStockResponseSnap, isBookable: true, price: 2000 },
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 200))
     expect(result.current['2021-01-01'].price).toEqual(2000)

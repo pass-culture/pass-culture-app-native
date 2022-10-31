@@ -1,5 +1,5 @@
 import { useDepositAmountsByAge } from 'features/auth/api'
-import { getAge } from 'features/offer/services/getAge'
+import { getAge } from 'features/offer/helpers/getAge/getAge'
 
 export const useGetDepositAmountsByAge = (birthDate?: string | null): string | undefined => {
   const {

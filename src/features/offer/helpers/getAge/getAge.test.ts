@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { getAge } from 'features/offer/services/getAge'
+import { getAge } from 'features/offer/helpers/getAge/getAge'
 import { renderHook } from 'tests/utils'
 
 const TODAY = '2022-10-24'

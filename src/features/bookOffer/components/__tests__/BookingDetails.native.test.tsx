@@ -8,7 +8,7 @@ import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
-import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { useIsUserUnderage } from 'features/profile/utils'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
@@ -98,13 +98,13 @@ describe('<BookingDetails />', () => {
     }
     mockBookingStock = undefined
 
-    await renderBookingDetails([{ ...notExpiredStock, isBookable: false, id: 123456 }])
+    await renderBookingDetails([{ ...offerStockResponseSnap, isBookable: false, id: 123456 }])
     expect(mockDispatch).not.toHaveBeenCalled()
 
     await renderBookingDetails([
-      { ...notExpiredStock, isBookable: false, id: 123456 },
-      { ...notExpiredStock, isBookable: true, id: 1234567 },
-      { ...notExpiredStock, isBookable: true, id: 12345678 },
+      { ...offerStockResponseSnap, isBookable: false, id: 123456 },
+      { ...offerStockResponseSnap, isBookable: true, id: 1234567 },
+      { ...offerStockResponseSnap, isBookable: true, id: 12345678 },
     ])
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1234567 })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })

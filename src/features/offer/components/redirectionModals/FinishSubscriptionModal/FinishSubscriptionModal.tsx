@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGetDepositAmountsByAge } from 'features/offer/services/useGetDepositAmountsByAge'
+import { useGetDepositAmountsByAge } from 'features/offer/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
 import { useUserProfileInfo } from 'features/profile/api'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'

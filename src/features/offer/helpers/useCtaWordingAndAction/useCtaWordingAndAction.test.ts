@@ -1,13 +1,13 @@
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
+import { OfferModal } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
-import { OfferModal } from 'features/offer/services/enums'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
 
-import { getCtaWordingAndAction } from '../useCtaWordingAndAction'
+import { getCtaWordingAndAction } from './useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 

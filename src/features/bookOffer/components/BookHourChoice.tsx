@@ -10,7 +10,7 @@ import {
 } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
-import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
+import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'

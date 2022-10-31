@@ -9,7 +9,7 @@ jest.mock('react-query')
 jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
-jest.mock('features/offer/services/useTrackOfferSeenDuration')
+jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
 
 describe('<OfferBody />', () => {

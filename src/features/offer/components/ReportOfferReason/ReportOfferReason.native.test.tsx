@@ -22,7 +22,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
-jest.mock('features/offer/services/useReasonsForReporting', () => ({
+jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting', () => ({
   useReasonsForReporting: jest.fn(() => ({
     data: {
       reasons: {

@@ -2,7 +2,7 @@ import { FavoriteOfferResponse, OfferResponse, UserProfileResponse } from 'api/g
 import { useOffer } from 'features/offer/api/useOffer'
 import { useUserProfileInfo } from 'features/profile/api'
 
-import { getOfferPrice } from './getOfferPrice'
+import { getOfferPrice } from '../getOfferPrice/getOfferPrice'
 
 export const hasEnoughCredit = (
   domains: OfferResponse['expenseDomains'] | FavoriteOfferResponse['expenseDomains'],
