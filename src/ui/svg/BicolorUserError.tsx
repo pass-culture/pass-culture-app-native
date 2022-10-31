@@ -52,3 +52,9 @@ const BicolorUserErrorSvg: React.FunctionComponent<AccessibleIcon> = ({
 export const BicolorUserError = styled(BicolorUserErrorSvg).attrs(({ size, theme }) => ({
   size: size ?? theme.illustrations.sizes.medium,
 }))``
+
+export const UserError = styled(BicolorUserErrorSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  color2: color ?? theme.colors.black,
+  size: size ?? theme.illustrations.sizes.medium,
+}))``
