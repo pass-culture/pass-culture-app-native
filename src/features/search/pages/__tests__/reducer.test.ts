@@ -211,7 +211,10 @@ describe('Search reducer', () => {
 
   it('should handle TOGGLE_DATE', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_DATE' })
-    expect(newState.date).toStrictEqual({ option: DATE_FILTER_OPTIONS.TODAY, selectedDate: Today })
+    expect(newState.date).toStrictEqual({
+      option: DATE_FILTER_OPTIONS.TODAY,
+      selectedDate: Today.toISOString(),
+    })
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
     expect(newState.date).toBeNull()
   })
@@ -265,7 +268,7 @@ describe('Search reducer', () => {
     // 2. We choose another date after enabling section Date de l'offre
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
     newState = searchReducer(newState, { type: 'SELECT_DATE', payload: Tomorrow })
-    expect(newState.date?.selectedDate).toStrictEqual(Tomorrow)
+    expect(newState.date?.selectedDate).toStrictEqual(Tomorrow.toISOString())
   })
 
   it('should handle SET_CATEGORY', () => {

@@ -105,7 +105,7 @@ describe('DatesHoursModal component', () => {
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       params: {
         ...mockSearchState,
-        date: { selectedDate: TOMORROW, option: DATE_FILTER_OPTIONS.USER_PICK },
+        date: { selectedDate: TOMORROW.toISOString(), option: DATE_FILTER_OPTIONS.USER_PICK },
         view: SearchView.Results,
       },
       screen: 'Search',

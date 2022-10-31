@@ -142,7 +142,10 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
     }: DatesHoursModalFormData) => {
       const additionalSearchState: SearchState = {
         ...searchState,
-        date: hasSelectedDate && selectedDate ? { selectedDate, option: selectedDateChoice } : null,
+        date:
+          hasSelectedDate && selectedDate
+            ? { selectedDate: selectedDate.toISOString(), option: selectedDateChoice }
+            : null,
         timeRange: hasSelectedHours && selectedHours ? selectedHours : null,
       }
 

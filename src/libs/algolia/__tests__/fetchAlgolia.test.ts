@@ -910,7 +910,7 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate },
+            date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: selectedDate.toISOString() },
           } as SearchParametersQuery,
           userLocation: null,
           isUserUnderage: false,
@@ -940,7 +940,10 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK, selectedDate },
+            date: {
+              option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
+              selectedDate: selectedDate.toISOString(),
+            },
           } as SearchParametersQuery,
           userLocation: null,
           isUserUnderage: false,
@@ -970,7 +973,10 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
+            date: {
+              option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
+              selectedDate: selectedDate.toISOString(),
+            },
           } as SearchParametersQuery,
           userLocation: null,
           isUserUnderage: false,
@@ -1000,7 +1006,10 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
+            date: {
+              option: DATE_FILTER_OPTIONS.USER_PICK,
+              selectedDate: selectedDate.toISOString(),
+            },
           } as SearchParametersQuery,
           userLocation: null,
           isUserUnderage: false,
@@ -1055,7 +1064,7 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate },
+            date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: selectedDate.toISOString() },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
           userLocation: null,
@@ -1088,7 +1097,10 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK, selectedDate },
+            date: {
+              option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
+              selectedDate: selectedDate.toISOString(),
+            },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
           userLocation: null,
@@ -1123,7 +1135,10 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
+            date: {
+              option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
+              selectedDate: selectedDate.toISOString(),
+            },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
           userLocation: null,
@@ -1158,7 +1173,10 @@ describe('fetchOffer', () => {
           parameters: {
             ...baseParams,
             query,
-            date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
+            date: {
+              option: DATE_FILTER_OPTIONS.USER_PICK,
+              selectedDate: selectedDate.toISOString(),
+            },
             timeRange: timeRange as Range<number>,
           } as SearchParametersQuery,
           userLocation: null,
@@ -1186,7 +1204,7 @@ describe('fetchOffer', () => {
       mockGetLastOfDate.mockReturnValue(987654321)
       const query = ''
       const offerIsFree = true
-      const selectedDate = new Date(2020, 3, 19, 11)
+      const selectedDate = new Date(2020, 3, 19, 11).toISOString()
 
       fetchOffer({
         parameters: {
@@ -1243,12 +1261,15 @@ describe('fetchOffer', () => {
       ])
       const query = ''
       const offerIsFree = true
-      const selectedDate = new Date(2020, 3, 19, 11)
+      const selectedDate = new Date(2020, 3, 19, 11).toISOString()
 
       fetchOffer({
         parameters: {
           ...baseParams,
-          date: { option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END, selectedDate },
+          date: {
+            option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
+            selectedDate,
+          },
           timeRange: [18, 22],
           offerIsFree,
         } as SearchParametersQuery,
@@ -1437,7 +1458,7 @@ describe('fetchOffer', () => {
 
   describe('beginningDatetime & endingDatetime', () => {
     it('should fetch from the beginning datetime', () => {
-      const beginningDatetime = new Date(2020, 8, 1)
+      const beginningDatetime = new Date(2020, 8, 1).toISOString()
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
@@ -1458,7 +1479,7 @@ describe('fetchOffer', () => {
     })
 
     it('should fetch until the ending datetime', () => {
-      const endingDatetime = new Date(2020, 8, 1)
+      const endingDatetime = new Date(2020, 8, 1).toISOString()
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
@@ -1479,8 +1500,8 @@ describe('fetchOffer', () => {
     })
 
     it('should fetch from the beginning datetime to the ending datetime', () => {
-      const beginningDatetime = new Date(2020, 8, 1)
-      const endingDatetime = new Date(2020, 8, 2)
+      const beginningDatetime = new Date(2020, 8, 1).toISOString()
+      const endingDatetime = new Date(2020, 8, 2).toISOString()
 
       const query = ''
       mockGetFromDate.mockReturnValueOnce(1596240000).mockReturnValueOnce(1596326400)

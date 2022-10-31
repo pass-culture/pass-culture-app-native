@@ -107,7 +107,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         ...state,
         date: {
           option: DATE_FILTER_OPTIONS.TODAY,
-          selectedDate: new Date(),
+          selectedDate: new Date().toISOString(),
         },
       }
     case 'TOGGLE_HOUR':
@@ -121,7 +121,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return { ...state, date: { ...state.date, option: action.payload } }
     case 'SELECT_DATE':
       if (!state.date) return state
-      return { ...state, date: { ...state.date, selectedDate: action.payload } }
+      return { ...state, date: { ...state.date, selectedDate: action.payload.toISOString() } }
     case 'SET_LOCATION_AROUND_ME':
       return {
         ...state,

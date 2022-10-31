@@ -8,7 +8,7 @@ import { LocationType } from './enums'
 
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
-  selectedDate: Date
+  selectedDate: string
 }
 
 export type LocationFilter =
