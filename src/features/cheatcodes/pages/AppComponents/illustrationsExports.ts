@@ -1,6 +1,7 @@
 import { BicolorBookingHold } from 'ui/svg/BicolorBookingHold'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
+import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { BicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
@@ -43,6 +44,7 @@ export const BicolorIllustrations = {
   BicolorPhonePending,
   BicolorRingingBell,
   BicolorShout,
+  BicolorUserError,
   BicolorUserIdentification,
 }
 
