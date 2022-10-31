@@ -724,6 +724,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           />
           <Text
+            disabled={false}
             style={
               Array [
                 Object {

@@ -46,6 +46,7 @@ exports[`VenueType should render correctly 1`] = `
     }
   />
   <Text
+    disabled={false}
     style={
       Array [
         Object {

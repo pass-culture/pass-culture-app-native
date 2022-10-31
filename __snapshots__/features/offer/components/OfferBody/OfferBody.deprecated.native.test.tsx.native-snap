@@ -651,16 +651,17 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={2}
+                                numberOfSpaces={1}
                                 style={
                                   Array [
                                     Object {
-                                      "height": 8,
+                                      "height": 4,
                                     },
                                   ]
                                 }
                               />
                               <Text
+                                disabled={false}
                                 style={
                                   Array [
                                     Object {
@@ -727,16 +728,17 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={2}
+                                numberOfSpaces={1}
                                 style={
                                   Array [
                                     Object {
-                                      "height": 8,
+                                      "height": 4,
                                     },
                                   ]
                                 }
                               />
                               <Text
+                                disabled={false}
                                 style={
                                   Array [
                                     Object {
@@ -2737,16 +2739,17 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={2}
+                                numberOfSpaces={1}
                                 style={
                                   Array [
                                     Object {
-                                      "height": 8,
+                                      "height": 4,
                                     },
                                   ]
                                 }
                               />
                               <Text
+                                disabled={false}
                                 style={
                                   Array [
                                     Object {
@@ -2812,16 +2815,17 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={2}
+                                numberOfSpaces={1}
                                 style={
                                   Array [
                                     Object {
-                                      "height": 8,
+                                      "height": 4,
                                     },
                                   ]
                                 }
                               />
                               <Text
+                                disabled={false}
                                 style={
                                   Array [
                                     Object {
@@ -2888,16 +2892,17 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={2}
+                                numberOfSpaces={1}
                                 style={
                                   Array [
                                     Object {
-                                      "height": 8,
+                                      "height": 4,
                                     },
                                   ]
                                 }
                               />
                               <Text
+                                disabled={false}
                                 style={
                                   Array [
                                     Object {
