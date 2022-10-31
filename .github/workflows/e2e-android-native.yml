@@ -3,14 +3,152 @@ name: Tests e2e Android Native
 on:
   workflow_dispatch:
     inputs:
-      tbd:
-        description: "tbd"
-        required: false
-        type: string
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
 
 jobs:
-  tbd:
-    runs-on: ubuntu-latest
+  e2e-android-native:
+    runs-on: macos-12
+    strategy:
+      matrix:
+        api-level: [27]
+        target: [default]
+#        api-level: [27, 29, 31]
+#        target: [default, google_apis]
+    environment: ${{ inputs.environment }}
+
     steps:
-      - name: Hello World
-        run: echo "Hello World"
+      - uses: actions/checkout@v3
+
+#      - name: Gradle cache
+#        uses: gradle/gradle-build-action@v2
+#
+#      - name: AVD cache
+#        uses: actions/cache@v3
+#        id: avd-cache
+#        with:
+#          path: |
+#            ~/.android/avd/*
+#            ~/.android/adb*
+#          key: avd-${{ matrix.api-level }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      # avd needs Java 1.8
+      - name: Create Android emulator
+        run: |
+          brew install intel-haxm
+          # Install AVD files
+          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-${{ matrix.api-level }};${{ matrix.target }};x86_64'
+          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+
+          # Create emulator
+          $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_API_29_AOSP -d pixel --package 'system-images;android-${{ matrix.api-level }};${{ matrix.target }};x86_64'
+          $ANDROID_HOME/emulator/emulator -list-avds
+          if false; then
+          emulator_config=~/.android/avd/Pixel_API_29_AOSP.avd/config.ini
+          # The following madness is to support empty OR populated config.ini files,
+          # the state of which is dependant on the version of the emulator used (which we don't control),
+          # so let's be defensive to be safe.
+          # Replace existing config (NOTE we're on MacOS so sed works differently!)
+          sed -i .bak 's/hw.lcd.density=.*/hw.lcd.density=420/' "$emulator_config"
+          sed -i .bak 's/hw.lcd.height=.*/hw.lcd.height=1920/' "$emulator_config"
+          sed -i .bak 's/hw.lcd.width=.*/hw.lcd.width=1080/' "$emulator_config"
+          # Or, add new config
+          if ! grep -q "hw.lcd.density" "$emulator_config"; then
+            echo "hw.lcd.density=420" >> "$emulator_config"
+          fi
+          if ! grep -q "hw.lcd.height" "$emulator_config"; then
+            echo "hw.lcd.height=1920" >> "$emulator_config"
+          fi
+          if ! grep -q "hw.lcd.width" "$emulator_config"; then
+            echo "hw.lcd.width=1080" >> "$emulator_config"
+          fi
+          echo "Emulator settings ($emulator_config)"
+          cat "$emulator_config"
+          fi
+
+      - name: Start Android emulator
+        run: |
+          echo "Starting emulator and waiting for boot to complete...."
+          ls -la $ANDROID_HOME/emulator
+          nohup $ANDROID_HOME/tools/emulator -avd Pixel_API_29_AOSP -gpu host -no-audio -no-boot-anim -camera-back none -camera-front none -qemu -m 2048 2>&1 &
+          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do echo "wait..."; sleep 5; done; input keyevent 82'
+          echo "Emulator has finished booting"
+          $ANDROID_HOME/platform-tools/adb devices
+          sleep 30
+
+      # React Native Android build needs Java 11
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+
+      - uses: ruby/setup-ruby@v1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Setup sentry credentials
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat <<EOT >> ~/.sentryclirc
+          [defaults]
+          url=https://sentry.passculture.team/
+          org=sentry
+          project=application-native
+
+          [auth]
+          token=$SENTRY_AUTH_TOKEN
+          EOT
+
+      - name: Setup android keystore for ${{ inputs.environment }} environment
+        env:
+          ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
+          ANDROID_KEYSTORE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_STORE_PASSWORD }}
+          ANDROID_KEYSTORE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_KEY_PASSWORD }}
+        run: |
+          mkdir -p android/keystores
+          echo "${ANDROID_KEYSTORE}" | sed 's/[^A-Za-z0-9+/=]//g' | base64 -d > android/keystores/${{ inputs.environment }}.keystore
+          cat <<EOT >> android/keystores/${{ inputs.environment }}.keystore.properties
+          keyAlias=passculture
+          storeFile=${{ inputs.environment }}.keystore
+          storePassword=${ANDROID_KEYSTORE_STORE_PASSWORD}
+          keyPassword=${ANDROID_KEYSTORE_KEY_PASSWORD}
+          EOT
+
+      - name: Setup android Google services config
+        env:
+          ANDROID_GOOGLE_SERVICES_JSON: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON }}
+        run: echo ${ANDROID_GOOGLE_SERVICES_JSON} > android/app/google-services.json
+
+      - name: Build Android app for ${{ inputs.environment }} environment
+        run: |
+          if [[ ${{ inputs.environment }} = "testing" ]]; then
+            ANDROID_GRADLE_TASK=assembleApptestingRelease
+          else
+            ANDROID_GRADLE_TASK=assembleStagingRelease
+          fi
+          echo "It will run ${ANDROID_GRADLE_TASK} gradle task"
+          ./android/gradlew ${ANDROID_GRADLE_TASK} -p android
+
+      - name: Install and run Appium 2 in the background
+        run: |
+          npm install -g appium@next
+          appium driver install uiautomator2
+          appium &>/dev/null &
+
+      - name: Run e2e Android tests
+        run: |
+          if [[ ${{ inputs.environment }} = "testing" ]]; then
+            ANDROID_APK_PATH=android/app/build/outputs/apk/apptesting/release/app-apptesting-release.apk
+          else
+            ANDROID_APK_PATH=android/app/build/outputs/apk/staging/release/app-staging-release.apk
+          fi
+          ANDROID_APK_PATH=${ANDROID_APK_PATH} ANDROID_APP_ID=app.passculture.${{ inputs.environment }} yarn test:e2e:android:native
