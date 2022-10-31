@@ -42,7 +42,13 @@ module.exports = {
   ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!**/node_modules/**', '!**/coverage/**'],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx,ts,tsx}',
+    '!src/**/*.web.*',
+    '!**/node_modules/**',
+    '!**/coverage/**',
+    '!src/**/*.stories.{js,jsx,ts,tsx}',
+  ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
 }
