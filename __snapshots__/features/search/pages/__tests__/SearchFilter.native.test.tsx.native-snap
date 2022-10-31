@@ -1053,20 +1053,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             transparent={true}
             visible={false}
           />
-          <View
-            marginVertical={16}
-            style={
-              Array [
-                Object {
-                  "alignSelf": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "height": 2,
-                  "marginVertical": 16,
-                  "width": 912,
-                },
-              ]
-            }
-          />
         </View>
       </View>
     </View>

@@ -99,7 +99,6 @@ export const SearchFilter: React.FC = () => {
             {/* Date & Heure */}
             <StyledLi>
               <Section.DateHour />
-              <Separator marginVertical={getSpacing(4)} />
             </StyledLi>
           </VerticalUl>
         </StyledScrollView>

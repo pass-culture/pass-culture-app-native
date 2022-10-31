@@ -1,12 +1,10 @@
 import React from 'react'
 
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { render } from 'tests/utils'
 
 import { DateHour } from '..//DateHour'
-
-const mockStagedDispatch = jest.fn()
 
 const mockSearchState = jest.fn().mockReturnValue({
   searchState: initialSearchState,
@@ -14,10 +12,6 @@ const mockSearchState = jest.fn().mockReturnValue({
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
-  useStagedSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockStagedDispatch,
-  }),
 }))
 
 describe('DateHour component', () => {

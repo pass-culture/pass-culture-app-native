@@ -1,9 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
 import { OfferType } from 'features/search/enums'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { RadioButtonLocation } from 'features/search/pages/LocationModal'
 import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
@@ -65,50 +63,5 @@ describe('Analytics - logUseFilter', () => {
     fireEvent.press(getByTestId('Interrupteur'))
     fireEvent.press(getByTestId('Interrupteur'))
     expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.New)
-  })
-
-  it('should log UseFilter once when changing date filter', () => {
-    const { getByTestId } = render(<Section.Date />)
-    fireEvent.press(getByTestId('Interrupteur'))
-    fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Date)
-  })
-
-  it('should log UseFilter once when changing OfferDate filter', () => {
-    mockSearchState.date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: Today }
-    const { getByText } = render(<Section.OfferDate />)
-    fireEvent.press(getByText('Cette semaine'))
-    fireEvent.press(getByText('Ce week-end'))
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.OfferDate)
-  })
-
-  it('should log UseFilter once when changing hour filter', () => {
-    const { getByTestId } = render(<Section.Hour />)
-    fireEvent.press(getByTestId('Interrupteur'))
-    fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Hour)
-  })
-
-  it('should log UseFilter once when sliding the time range', () => {
-    const { getByTestId } = render(<Section.TimeSlot />)
-    const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChangeFinish([8, 21])
-    slider.props.onValuesChangeFinish([18, 21])
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.TimeSlot)
-  })
-
-  it('should log UseFilter once for each changed filter', () => {
-    const { getByTestId } = render(<Section.TimeSlot />)
-    const slider = getByTestId('slider').children[0] as ReactTestInstance
-    const hourSwitch = render(<Section.Hour />).getByTestId('Interrupteur')
-
-    fireEvent.press(hourSwitch)
-    fireEvent.press(hourSwitch)
-
-    slider.props.onValuesChangeFinish([8, 21])
-    slider.props.onValuesChangeFinish([18, 21])
-
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Hour)
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(2, SectionTitle.TimeSlot)
   })
 })
