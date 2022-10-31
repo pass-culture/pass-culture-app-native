@@ -2,7 +2,7 @@ import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogi
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/eduConnectClient')
-jest.mock('features/identityCheck/useIdentityCheckNavigation')
+jest.mock('features/identityCheck/useSubscriptionNavigation')
 const mockFetch = jest.spyOn(global, 'fetch')
 
 mockFetch.mockResolvedValue(

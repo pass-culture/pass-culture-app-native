@@ -9,8 +9,8 @@ import { render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))

@@ -7,7 +7,7 @@ import { render } from 'tests/utils/web'
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ ...mockState }),
 }))
-jest.mock('features/identityCheck/useIdentityCheckNavigation')
+jest.mock('features/identityCheck/useSubscriptionNavigation')
 
 describe('<SetName/>', () => {
   it('should render correctly', () => {

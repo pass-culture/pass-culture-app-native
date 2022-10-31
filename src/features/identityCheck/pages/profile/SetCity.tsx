@@ -1,3 +1,4 @@
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -9,7 +10,6 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring'
@@ -36,7 +36,7 @@ const noPostalCodeFound =
 
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
   const { dispatch, profile } = useSubscriptionContext()
   const [query, setQuery] = useState(profile.city?.postalCode || '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)

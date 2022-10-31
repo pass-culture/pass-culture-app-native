@@ -16,8 +16,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 let mockIsSavingCheckpoint = false
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     isSavingCheckpoint: mockIsSavingCheckpoint,
   }),
 }))

@@ -26,8 +26,8 @@ jest.mock('features/profile/api', () => ({
 }))
 
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))

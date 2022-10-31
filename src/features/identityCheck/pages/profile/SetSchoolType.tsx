@@ -1,3 +1,4 @@
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,7 +12,6 @@ import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/utils'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -27,7 +27,7 @@ export const SetSchoolType = () => {
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(
     profile.schoolType || null
   )
-  const { navigateToNextScreen, isSavingCheckpoint } = useIdentityCheckNavigation()
+  const { navigateToNextScreen, isSavingCheckpoint } = useSubscriptionNavigation()
 
   const onPressContinue = async () => {
     if (!selectedSchoolTypeId) return

@@ -7,8 +7,8 @@ import { fireEvent, render } from 'tests/utils'
 import { IdentityCheckValidation } from './IdentityCheckValidation'
 
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))

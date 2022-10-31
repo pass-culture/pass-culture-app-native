@@ -16,16 +16,16 @@ import { QueryKeys } from 'libs/queryKeys'
 
 type NextScreenOrStep = { screen: IdentityCheckScreen } | { step: IdentityCheckStep } | null
 
-const isIdentityCheckRoute = (name: string): name is IdentityCheckScreen =>
+const isSubscriptionRoute = (name: string): name is IdentityCheckScreen =>
   identityCheckRoutes.map((route) => route.name).includes(name as IdentityCheckScreen)
 
 const getCurrentStep = (steps: StepConfig[], currentRoute: keyof IdentityCheckRootStackParamList) =>
   steps.find((step) => step.screens.includes(currentRoute)) || null
 
-const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
+const useCurrentSubscriptionStep = (): IdentityCheckStep | null => {
   const { name } = useRoute()
   const steps = useSubscriptionSteps()
-  const currentRoute = isIdentityCheckRoute(name) ? name : null
+  const currentRoute = isSubscriptionRoute(name) ? name : null
   const currentStep = currentRoute ? getCurrentStep(steps, currentRoute) : null
   return currentStep ? currentStep.name : null
 }
@@ -33,17 +33,17 @@ const useCurrentIdentityCheckStep = (): IdentityCheckStep | null => {
 const useNextScreenOrStep = (): NextScreenOrStep => {
   const { name } = useRoute()
   const steps = useSubscriptionSteps()
-  const currentRoute = isIdentityCheckRoute(name) ? name : null
+  const currentRoute = isSubscriptionRoute(name) ? name : null
   return getNextScreenOrStep(steps, currentRoute)
 }
 
-export const useIdentityCheckNavigation = (): {
+export const useSubscriptionNavigation = (): {
   navigateToNextScreen: () => void
   isSavingCheckpoint: boolean
 } => {
   const { dispatch } = useSubscriptionContext()
   const { navigate } = useNavigation<UseNavigationType>()
-  const currentStep = useCurrentIdentityCheckStep()
+  const currentStep = useCurrentSubscriptionStep()
   const nextScreenOrStep = useNextScreenOrStep()
   const queryClient = useQueryClient()
 

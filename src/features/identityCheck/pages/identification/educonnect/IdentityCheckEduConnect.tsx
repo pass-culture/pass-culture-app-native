@@ -6,7 +6,7 @@ import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogi
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -16,7 +16,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
   const { dispatch } = useSubscriptionContext()
   const { goBack } = useGoBack(...homeNavConfig)
 

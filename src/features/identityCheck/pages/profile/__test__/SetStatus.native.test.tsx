@@ -18,8 +18,8 @@ jest.mock('features/identityCheck/pages/profile/utils')
 
 const mockNavigateToNextScreen = jest.fn()
 let mockIsSavingCheckpoint = false
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
     isSavingCheckpoint: mockIsSavingCheckpoint,
   }),

@@ -1,5 +1,5 @@
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { getNextScreenOrStep } from 'features/identityCheck/useIdentityCheckNavigation'
+import { getNextScreenOrStep } from 'features/identityCheck/useSubscriptionNavigation'
 
 const steps = [
   {

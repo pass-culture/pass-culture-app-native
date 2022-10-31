@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -13,7 +13,7 @@ import { IdentityCheckStartContentDesktop } from './IdentityCheckStartContentDes
 export const IdentityCheckStart = () => {
   const { isMobileViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal(false)
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
 
   const onPressContinue = () => {
     hideModal()
