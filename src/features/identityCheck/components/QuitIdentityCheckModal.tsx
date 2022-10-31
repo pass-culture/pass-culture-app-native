@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -22,7 +22,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   hideModal,
   testIdSuffix,
 }) => {
-  const context = useIdentityCheckContext()
+  const context = useSubscriptionContext()
 
   function quitIdentityCheck() {
     if (context.step) analytics.logConfirmQuitIdentityCheck(context.step)

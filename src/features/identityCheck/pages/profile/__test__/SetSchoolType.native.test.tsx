@@ -1,23 +1,23 @@
 import React from 'react'
 
 import { ActivityIdEnum } from 'api/gen'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/auth/api')
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),
     ...mockState,
   })),
 }))
 
 let mockIsSavingCheckpoint = false
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     isSavingCheckpoint: mockIsSavingCheckpoint,
   }),
 }))
@@ -37,7 +37,7 @@ jest.mock('features/identityCheck/api/api', () => {
   }
 })
 
-const mockUseIdentityCheckContext = useIdentityCheckContext as jest.Mock
+const mockUseIdentityCheckContext = useSubscriptionContext as jest.Mock
 
 jest.mock('react-query')
 

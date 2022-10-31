@@ -4,8 +4,8 @@ import { render, superFlushWithAct } from 'tests/utils'
 
 import { IdentityCheckEduConnectForm } from './IdentityCheckEduConnectForm'
 
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider')
-jest.mock('features/identityCheck/useIdentityCheckNavigation')
+jest.mock('features/identityCheck/context/SubscriptionContextProvider')
+jest.mock('features/identityCheck/useSubscriptionNavigation')
 jest.mock('libs/eduConnectClient')
 
 describe('<IdentityCheckEduConnectForm />', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
@@ -9,8 +9,8 @@ import { useIsUserUnderage } from 'features/profile/utils'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/auth/api')
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
 }))
 jest.mock('react-query')
 jest.mock('features/profile/utils')
@@ -18,8 +18,8 @@ jest.mock('features/identityCheck/pages/profile/utils')
 
 const mockNavigateToNextScreen = jest.fn()
 let mockIsSavingCheckpoint = false
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
     isSavingCheckpoint: mockIsSavingCheckpoint,
   }),

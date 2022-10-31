@@ -12,7 +12,7 @@ import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/C
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
@@ -58,14 +58,14 @@ export function App() {
                           <SearchWrapper>
                             <SnackBarProvider>
                               <CulturalSurveyContextProvider>
-                                <IdentityCheckContextProvider>
+                                <SubscriptionContextProvider>
                                   <AppWebHead />
                                   <ScreenErrorProvider>
                                     <Suspense fallback={<LoadingPage />}>
                                       <AppNavigationContainer />
                                     </Suspense>
                                   </ScreenErrorProvider>
-                                </IdentityCheckContextProvider>
+                                </SubscriptionContextProvider>
                               </CulturalSurveyContextProvider>
                             </SnackBarProvider>
                           </SearchWrapper>

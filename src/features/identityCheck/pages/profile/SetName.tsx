@@ -1,10 +1,10 @@
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -15,10 +15,10 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 
 export const SetName = () => {
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useSubscriptionContext()
   const [firstName, setFirstName] = useState(profile.name?.firstName ?? '')
   const [lastName, setLastName] = useState(profile.name?.lastName ?? '')
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
 
   const isValidFirstName = isNameValid(firstName)
   const isValidLastName = isNameValid(lastName)

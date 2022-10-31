@@ -8,11 +8,11 @@ import { hasOngoingCredit } from 'features/home/services/useAvailableCredit'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useIdentityCheckSteps } from 'features/identityCheck/useIdentityCheckSteps'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/useSetCurrentSubscriptionStep'
-import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
+import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
+import { getStepState } from 'features/identityCheck/utils/getStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
@@ -30,9 +30,10 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const steps = useIdentityCheckSteps()
-  const getStepState = useGetStepState()
-  const context = useIdentityCheckContext()
+  const steps = useSubscriptionSteps()
+  const context = useSubscriptionContext()
+  const currentStep = context.step
+
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetch } = useUserProfileInfo()
@@ -43,12 +44,6 @@ export const IdentityCheckStepper = () => {
     showModal: showEduConnectModal,
     hideModal: hideEduConnectModal,
   } = useModal(false)
-
-  useEffect(() => {
-    if (context.step === null && steps[0])
-      context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [steps.length])
 
   useEffect(() => {
     const showMaintenance = () => {
@@ -117,7 +112,7 @@ export const IdentityCheckStepper = () => {
               <Li key={step.name}>
                 <StepButton
                   step={step}
-                  state={getStepState(step.name)}
+                  state={getStepState(steps, step.name, currentStep)}
                   navigateTo={
                     step.name === IdentityCheckStep.IDENTIFICATION &&
                     context.identification.method === null

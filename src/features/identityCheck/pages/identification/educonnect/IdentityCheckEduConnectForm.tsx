@@ -1,4 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useCallback, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { URL } from 'react-native-url-polyfill'
@@ -8,16 +9,15 @@ import styled from 'styled-components/native'
 
 import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { eduConnectClient } from 'libs/eduConnectClient'
 
 export const IdentityCheckEduConnectForm = () => {
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch } = useIdentityCheckContext()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { dispatch } = useSubscriptionContext()
 
   const webViewRef = useRef<WebView>(null)
   const [webViewSource, setWebViewSource] = useState<WebViewSource>()

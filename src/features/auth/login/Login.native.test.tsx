@@ -26,8 +26,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
   useStagedSearch: jest.fn(() => ({ dispatch: mockStagedSearchDispatch })),
 }))
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock

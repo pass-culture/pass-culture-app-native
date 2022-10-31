@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckMethod } from 'api/gen'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
-import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
 import { fireEvent, render } from 'tests/utils'
 
@@ -11,8 +11,8 @@ const hideModalMock = jest.fn()
 const mockDispatch = jest.fn()
 
 jest.mock('features/auth/api')
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: jest.fn(() => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({
     dispatch: mockDispatch,
     ...mockState,
   })),

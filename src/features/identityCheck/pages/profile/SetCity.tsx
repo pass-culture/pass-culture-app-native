@@ -1,3 +1,4 @@
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -7,9 +8,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring'
@@ -36,8 +36,8 @@ const noPostalCodeFound =
 
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { dispatch, profile } = useSubscriptionContext()
   const [query, setQuery] = useState(profile.city?.postalCode || '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
   const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city || null)

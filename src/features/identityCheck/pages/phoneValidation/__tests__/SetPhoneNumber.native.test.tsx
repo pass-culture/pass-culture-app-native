@@ -22,16 +22,16 @@ jest.mock('features/identityCheck/api/api', () => {
   }
 })
 const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => ({
-  useIdentityCheckContext: () => ({
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({
     dispatch: mockDispatch,
     phoneValidation: { phoneNumber: undefined, country: undefined },
   }),
 }))
 
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useIdentityCheckNavigation', () => ({
-  useIdentityCheckNavigation: () => ({
+jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))

@@ -1,5 +1,5 @@
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { getStepState } from 'features/identityCheck/utils/useGetStepState'
+import { getStepState } from 'features/identityCheck/utils/getStepState'
 
 const steps = [
   { name: IdentityCheckStep.PROFILE },
@@ -7,7 +7,7 @@ const steps = [
   { name: IdentityCheckStep.CONFIRMATION },
 ] as StepConfig[]
 
-describe('useGetStepState', () => {
+describe('getStepState', () => {
   it('when profile is ongoing', () => {
     const contextStep = IdentityCheckStep.PROFILE
     expect(getStepState(steps, IdentityCheckStep.PROFILE, contextStep)).toBe('current')

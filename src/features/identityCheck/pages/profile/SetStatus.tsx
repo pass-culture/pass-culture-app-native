@@ -1,3 +1,4 @@
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React, { useCallback, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
@@ -7,9 +8,8 @@ import { ActivityIdEnum } from 'api/gen'
 import { useProfileOptions } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -25,9 +25,9 @@ type StatusForm = {
 
 export const SetStatus = () => {
   const { activities } = useProfileOptions()
-  const { dispatch, profile } = useIdentityCheckContext()
+  const { dispatch, profile } = useSubscriptionContext()
   const isUserUnderage = useIsUserUnderage()
-  const { navigateToNextScreen, isSavingCheckpoint } = useIdentityCheckNavigation()
+  const { navigateToNextScreen, isSavingCheckpoint } = useSubscriptionNavigation()
   const titleID = uuidv4()
   const { control, handleSubmit, watch } = useForm<StatusForm>({
     mode: 'onChange',

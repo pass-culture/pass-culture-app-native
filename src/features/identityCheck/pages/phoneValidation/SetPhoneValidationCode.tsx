@@ -13,11 +13,11 @@ import {
 } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/utils'
 import {
-  IdentityCheckRootStackParamList,
+  SubscriptionRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator'
 import { amplitude } from 'libs/amplitude'
@@ -32,12 +32,12 @@ import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
 
 export type SetPhoneValidationCodeProps = StackScreenProps<
-  IdentityCheckRootStackParamList,
+  SubscriptionRootStackParamList,
   'SetPhoneValidationCode'
 >
 
 export const SetPhoneValidationCode = () => {
-  const { phoneValidation } = useIdentityCheckContext()
+  const { phoneValidation } = useSubscriptionContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
     ? formatPhoneNumberForDisplay(
         phoneValidation?.phoneNumber,

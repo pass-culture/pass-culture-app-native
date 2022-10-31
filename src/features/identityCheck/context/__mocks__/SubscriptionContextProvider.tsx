@@ -14,6 +14,6 @@ const profile = {
   hasSchoolTypes: false,
   schoolType: null,
 }
-export const useIdentityCheckContext = jest
+export const useSubscriptionContext = jest
   .fn()
   .mockReturnValue({ dispatch, identification, profile })

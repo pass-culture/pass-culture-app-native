@@ -15,7 +15,7 @@ import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/C
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
@@ -76,7 +76,7 @@ const App: FunctionComponent = function () {
                         <SnackBarProvider>
                           <NetInfoWrapper>
                             <CulturalSurveyContextProvider>
-                              <IdentityCheckContextProvider>
+                              <SubscriptionContextProvider>
                                 <SplashScreenProvider>
                                   <PushNotificationsWrapper>
                                     <OfflineModeContainer>
@@ -86,7 +86,7 @@ const App: FunctionComponent = function () {
                                     </OfflineModeContainer>
                                   </PushNotificationsWrapper>
                                 </SplashScreenProvider>
-                              </IdentityCheckContextProvider>
+                              </SubscriptionContextProvider>
                             </CulturalSurveyContextProvider>
                           </NetInfoWrapper>
                         </SnackBarProvider>

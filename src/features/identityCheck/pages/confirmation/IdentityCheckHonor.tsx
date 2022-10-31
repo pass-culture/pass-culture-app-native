@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
@@ -9,7 +10,6 @@ import { usePostHonorStatement } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
 import { QueryKeys } from 'libs/queryKeys'
@@ -20,7 +20,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 export const IdentityCheckHonor = () => {
   const theme = useTheme()
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()

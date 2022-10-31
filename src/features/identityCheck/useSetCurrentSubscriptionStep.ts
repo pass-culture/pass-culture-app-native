@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react'
 
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'
 
@@ -21,7 +21,7 @@ export const getIdentityCheckStep = (
 }
 
 export const useSetSubscriptionStepAndMethod = () => {
-  const context = useIdentityCheckContext()
+  const context = useSubscriptionContext()
   const { refetch } = useNextSubscriptionStep()
   const [subscription, setSubscription] = useState<NextSubscriptionStepResponse | undefined>()
 

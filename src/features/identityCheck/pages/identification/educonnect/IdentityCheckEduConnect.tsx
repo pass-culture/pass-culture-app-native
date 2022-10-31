@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -16,8 +16,8 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
-  const { dispatch } = useIdentityCheckContext()
+  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { dispatch } = useSubscriptionContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
   const { error, openEduConnectTab } = useEduConnectLogin()
