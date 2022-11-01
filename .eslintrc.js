@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules'],
+  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules', 'testing-library'],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
@@ -21,6 +21,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    'testing-library/await-async-utils': ['error'],
     'local-rules/no-allow-console': ['error'],
     'local-rules/independent-mocks': ['error'],
     'local-rules/no-raw-text': ['error'],
