@@ -42,6 +42,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   padding: getSpacing(4),
   border: `1px solid ${theme.colors.greySemiDark}`,
   borderRadius: theme.borderRadius.radius,
+  backgroundColor: theme.colors.white,
 }))
 
 const SubContainer = styled.View({
