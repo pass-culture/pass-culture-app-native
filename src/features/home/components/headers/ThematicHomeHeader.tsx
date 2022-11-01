@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import styled from 'styled-components/native'
 
 import { BackButton } from 'ui/components/headers/BackButton'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface ThematicHomeHeaderProps {
   headerTitle: string
@@ -13,7 +13,7 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
   headerSubtitle,
 }) => {
   return (
-    <View>
+    <Container>
       <Spacer.TopScreen />
       <BackButton />
       <Spacer.Column numberOfSpaces={6} />
@@ -24,6 +24,12 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
           <Typo.Body numberOfLines={1}>{headerSubtitle}</Typo.Body>
         </React.Fragment>
       ) : null}
-    </View>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  paddingHorizontal: getSpacing(6),
+  paddingTop: getSpacing(6),
+  paddingBottom: getSpacing(2),
+})
