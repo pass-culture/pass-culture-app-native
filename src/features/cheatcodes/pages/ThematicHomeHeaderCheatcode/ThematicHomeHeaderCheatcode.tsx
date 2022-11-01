@@ -7,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 export const ThematicHomeHeaderCheatcode: FunctionComponent = () => {
   return (
     <Container>
-      <ThematicHomeHeader headerTitle="Le plein de cinéma" />
+      <ThematicHomeHeader headerTitle="Le plein de cinéma" headerSubtitle="La playlist cinéma" />
     </Container>
   )
 }
