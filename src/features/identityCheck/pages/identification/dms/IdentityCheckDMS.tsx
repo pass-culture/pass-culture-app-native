@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -39,7 +39,7 @@ export const IdentityCheckDMS = () => {
           </StyledBody>
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
           <ButtonContainer>
-            <TouchableLink
+            <ExternalTouchableLink
               as={ButtonTertiaryBlack}
               wording="Je suis de nationalité française"
               externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
@@ -48,7 +48,7 @@ export const IdentityCheckDMS = () => {
             />
             <StyledCaption>Carte d’identité ou passeport.</StyledCaption>
             <OrSeparator />
-            <TouchableLink
+            <ExternalTouchableLink
               as={ButtonTertiaryBlack}
               wording="Je suis de nationalité étrangère"
               externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}

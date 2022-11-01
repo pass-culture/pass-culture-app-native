@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -45,10 +45,10 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       ) : null}
       <Container>
         <Spacer.Flex flex={0.85}>
-          <TouchableLink
+          <ExternalTouchableLink
             externalNav={{ url: deeplink.universalLink, params: { shouldLogEvent: false } }}>
             <Typo.Caption>{deeplink.universalLink}</Typo.Caption>
-          </TouchableLink>
+          </ExternalTouchableLink>
         </Spacer.Flex>
 
         <Spacer.Flex flex={0.15}>
@@ -65,10 +65,10 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
       <Container>
         <Spacer.Flex flex={0.85}>
-          <TouchableLink
+          <ExternalTouchableLink
             externalNav={{ url: deeplink.firebaseLink, params: { shouldLogEvent: false } }}>
             <Typo.Caption>{deeplink.firebaseLink}</Typo.Caption>
-          </TouchableLink>
+          </ExternalTouchableLink>
         </Spacer.Flex>
 
         <Spacer.Flex flex={0.15}>

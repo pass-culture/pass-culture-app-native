@@ -9,7 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
@@ -79,7 +79,7 @@ export const DMSIntroduction = (): JSX.Element => {
       <StyledCaption>Le traitement de ton dossier peut prendre jusqu’à 5 jours.</StyledCaption>
       <Spacer.Flex flex={1} />
       <LinkContainer>
-        <TouchableLink
+        <ExternalTouchableLink
           wording="Aller sur demarches-simplifiees.fr"
           icon={ExternalSite}
           as={ButtonPrimary}

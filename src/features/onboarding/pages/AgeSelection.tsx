@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
@@ -51,7 +51,7 @@ export const AgeSelection: FunctionComponent = () => {
     )
   })
   AgeSelectionButtons.push(
-    <TouchableLink
+    <ExternalTouchableLink
       key={AgeSelectionButtons.length}
       as={ButtonTertiaryBlack}
       wording="Je suis un parent"

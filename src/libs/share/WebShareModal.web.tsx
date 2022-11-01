@@ -16,7 +16,7 @@ import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Ul } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
@@ -107,7 +107,7 @@ export const WebShareModal = ({
             />
           </NonSocialButtonsItem>
           <NonSocialButtonsItem>
-            <TouchableLink
+            <ExternalTouchableLink
               as={ButtonTertiaryBlack}
               externalNav={{ url: 'mailto:' + '' + '?subject=' + message + '&body=' + url }}
               wording="E-mail"
@@ -119,7 +119,7 @@ export const WebShareModal = ({
             // A message app is only available on mobile or on MacOS device
             isMobileDeviceDetectOnWeb || isMacOsDeviceDetectOnWeb ? (
               <NonSocialButtonsItem>
-                <TouchableLink
+                <ExternalTouchableLink
                   as={ButtonTertiaryBlack}
                   externalNav={{ url: `sms:${chooseContact}?&body=${message}: ${url}` }}
                   wording="SMS"

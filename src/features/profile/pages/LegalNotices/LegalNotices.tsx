@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -25,7 +25,7 @@ export function LegalNotices() {
         {LINE_BREAK}
         éditeur du site&nbsp;:
         {LINE_BREAK}
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonInsideText}
           wording="https://passculture.app/accueil"
           externalNav={{ url: 'https://passculture.app/accueil' }}
@@ -44,7 +44,7 @@ export function LegalNotices() {
         {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
         {LINE_BREAK}
         Nous contacter&nbsp;:&nbsp;
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonInsideTextBlack}
           wording="support@passculture.fr"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"

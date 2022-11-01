@@ -6,7 +6,7 @@ import { ExclusivityBannerProps } from 'features/home/components/modules/exclusi
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface ExclusivityExternalLinkProps extends ExclusivityBannerProps {
@@ -44,8 +44,10 @@ const UnmemoizedExclusivityExternalLink = ({
 
 export const ExclusivityExternalLink = memo(UnmemoizedExclusivityExternalLink)
 
-const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
-  flex: 1,
-  borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
-}))
+const StyledTouchableLink = styled(ExternalTouchableLink)<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => ({
+    flex: 1,
+    borderRadius: theme.borderRadius.radius,
+    ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  })
+)

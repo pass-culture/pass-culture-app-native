@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/utils'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 interface ProfileBadgeProps {
@@ -41,7 +41,7 @@ const renderCallToAction = (
           {...sharedButtonProps}
         />
       ) : (
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           externalNav={{ url: callToActionLink }}
           {...sharedButtonProps}

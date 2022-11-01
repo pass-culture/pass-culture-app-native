@@ -3,7 +3,7 @@ import React from 'react'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
@@ -25,7 +25,7 @@ export function RecommendedPaths() {
         <BulletListItem text="en indiquant ses identifiants EduConnect" />
         <BulletListItem text="en présentant sa carte d’identité" />
         <BulletListItem text="en remplissant un formulaire sur ">
-          <TouchableLink
+          <ExternalTouchableLink
             as={ButtonInsideText}
             typography="Caption"
             wording="Démarches simplifiées"

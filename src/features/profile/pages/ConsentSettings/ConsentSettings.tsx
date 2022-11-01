@@ -16,7 +16,7 @@ import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingCons
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -78,7 +78,7 @@ export const ConsentSettings = () => {
       <Typo.CaptionNeutralInfo>
         Pour plus d’informations, nous t’invitons à consulter notre
         <Spacer.Row numberOfSpaces={1} />
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonInsideText}
           wording="Politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
@@ -20,7 +20,7 @@ export const SocialButton = ({ label, icon: Icon, externalNav }: Props) => (
   </Container>
 )
 
-const Container = styled(TouchableLink)({
+const Container = styled(ExternalTouchableLink)({
   flexGrow: 1,
   alignItems: 'center',
   minWidth: 100,

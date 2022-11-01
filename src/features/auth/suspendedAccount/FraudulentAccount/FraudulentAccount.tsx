@@ -6,6 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
@@ -21,7 +22,7 @@ export const FraudulentAccount = () => {
       title="Ton compte a été suspendu"
       icon={UserBlocked}
       buttons={[
-        <TouchableLink
+        <ExternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording="Contacter le service"

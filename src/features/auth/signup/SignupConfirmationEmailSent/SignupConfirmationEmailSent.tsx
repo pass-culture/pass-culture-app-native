@@ -16,7 +16,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -74,7 +74,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
               Si tu rencontres des difficultés, tu peux consulter notre centre d’aide.
             </Typo.Body>
           </CenteredText>
-          <TouchableLink
+          <ExternalTouchableLink
             as={ButtonTertiaryPrimary}
             wording="Consulter notre centre d’aide"
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}

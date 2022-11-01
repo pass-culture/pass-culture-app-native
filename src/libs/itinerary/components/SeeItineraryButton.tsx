@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 
@@ -14,7 +14,7 @@ interface Props {
 export function SeeItineraryButton(props: Props) {
   return (
     <Container>
-      <TouchableLink
+      <ExternalTouchableLink
         as={ButtonTertiaryBlack}
         inline
         externalNav={props.externalNav}

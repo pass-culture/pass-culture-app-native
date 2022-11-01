@@ -6,6 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
@@ -45,7 +46,7 @@ export const ExpiredOrLostID = (): JSX.Element => {
           wording="M’identifier plus tard"
         />
         <Spacer.Column numberOfSpaces={5} />
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonTertiaryBlack}
           wording="Demander un renouvellement"
           externalNav={{ url: ANTS_URL }}
