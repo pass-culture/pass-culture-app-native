@@ -30,7 +30,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
-const ListHeaderComponent = ({
+const Header = ({
   isThematicHome,
   thematicHeader,
 }: {
@@ -131,7 +131,7 @@ export const OnlineHome: FunctionComponent = () => {
           scrollEventThrottle={400}
           bounces={false}
           scrollEnabled={false}>
-          <ListHeaderComponent isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
+          <Header isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
         </ScrollView>
@@ -148,7 +148,7 @@ export const OnlineHome: FunctionComponent = () => {
           keyExtractor={keyExtractor}
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
           ListHeaderComponent={
-            <ListHeaderComponent isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
+            <Header isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
           }
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
