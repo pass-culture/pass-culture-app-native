@@ -178,7 +178,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0 c1 sc-dJjYzT c1"
+                  class="c0 c1 sc-hGPBjI c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -616,7 +616,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="c0 c1 sc-dJjYzT c1"
+                class="c0 c1 sc-hGPBjI c1"
                 data-testid="backButton"
                 tabindex="0"
                 title="Revenir en arrière"
