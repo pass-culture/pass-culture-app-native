@@ -4,6 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
 import { flushAllPromises, render } from 'tests/utils'
@@ -34,6 +35,9 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
+
+jest.mock('libs/geolocation')
+const mockUseGeolocation = useGeolocation as jest.Mock
 
 describe('Home component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -118,6 +122,28 @@ describe('Home component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = render(<Home />)
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+  })
+
+  it('should not display geolocation banner when geolocation is granted', () => {
+    const { queryByText } = render(<Home />)
+
+    expect(queryByText('Géolocalise toi')).toBeFalsy()
+  })
+
+  it('should display geolocation banner when geolocation is denied', () => {
+    mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+    const { queryByText } = render(<Home />)
+
+    expect(queryByText('Géolocalise toi')).toBeTruthy()
+  })
+
+  it('should display geolocation banner when geolocation is never ask again', () => {
+    mockUseGeolocation.mockReturnValueOnce({
+      permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+    })
+    const { queryByText } = render(<Home />)
+
+    expect(queryByText('Géolocalise toi')).toBeTruthy()
   })
 })
 
