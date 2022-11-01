@@ -6,10 +6,10 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { contactSupport } from 'features/auth/support.services'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ExternalNavigationProps, TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { UserError } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
-import { UserError } from 'ui/svg/icons/UserError'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export enum EduConnectErrorMessageEnum {

@@ -8,6 +8,7 @@ import { Row } from 'features/cheatcodes/components/Row'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ApplicationProcessingModal } from 'features/offer/components/redirectionModals/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
+import { ErrorApplicationModal } from 'features/offer/components/redirectionModals/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'features/offer/components/redirectionModals/FinishSubscriptionModal/FinishSubscriptionModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -30,6 +31,11 @@ export function NavigationSignUp(): JSX.Element {
     visible: applicationProcessingModalVisible,
     showModal: showApplicationProcessingModal,
     hideModal: hideApplicationProcessingModal,
+  } = useModal(false)
+  const {
+    visible: errorApplicationModalVisible,
+    showModal: showErrorApplicationModal,
+    hideModal: hideErrorApplicationModal,
   } = useModal(false)
 
   return (
@@ -111,6 +117,13 @@ export function NavigationSignUp(): JSX.Element {
           <ApplicationProcessingModal
             visible={applicationProcessingModalVisible}
             hideModal={hideApplicationProcessingModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary wording="Error Application Modal" onPress={showErrorApplicationModal} />
+          <ErrorApplicationModal
+            visible={errorApplicationModalVisible}
+            hideModal={hideErrorApplicationModal}
           />
         </Row>
       </StyledContainer>

@@ -4,8 +4,8 @@ import {
   useNotEligibleEduConnectErrorData,
 } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { renderHook } from 'tests/utils'
+import { UserError } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
-import { UserError } from 'ui/svg/icons/UserError'
 
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
