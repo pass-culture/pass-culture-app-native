@@ -13,6 +13,7 @@ import styled from 'styled-components/native'
 import { useHomepageData } from 'features/home/api'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { ProcessedModule } from 'features/home/contentful/moduleTypes'
@@ -29,13 +30,24 @@ import { getSpacing, Spacer } from 'ui/theme'
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
-const ListHeaderComponent = () => {
-  return (
-    <ListHeaderContainer>
+const ListHeaderComponent = ({
+  isThematicHome,
+  thematicHeader,
+}: {
+  isThematicHome: boolean
+  thematicHeader: { title: string | undefined; subtitle: string | undefined } | undefined
+}) => (
+  <ListHeaderContainer>
+    {isThematicHome ? (
+      <ThematicHomeHeader
+        headerTitle={thematicHeader?.title || ''}
+        headerSubtitle={thematicHeader?.subtitle}
+      />
+    ) : (
       <HomeHeader />
-    </ListHeaderContainer>
-  )
-}
+    )}
+  </ListHeaderContainer>
+)
 
 const renderModule = (
   { item, index }: { item: ProcessedModule; index: number },
@@ -57,7 +69,7 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, homeEntryId } = useHomepageData(params?.entryId) || {}
+  const { modules, homeEntryId, thematicHeader } = useHomepageData(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
@@ -67,6 +79,9 @@ export const OnlineHome: FunctionComponent = () => {
   const maxToRenderPerBatch = 5
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
+
+  const isThematicHome = !!params?.entryId
+
   const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
 
   const onScroll = useCallback(
@@ -116,7 +131,7 @@ export const OnlineHome: FunctionComponent = () => {
           scrollEventThrottle={400}
           bounces={false}
           scrollEnabled={false}>
-          <HomeHeader />
+          <ListHeaderComponent isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
         </ScrollView>
@@ -132,7 +147,9 @@ export const OnlineHome: FunctionComponent = () => {
           renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
           keyExtractor={keyExtractor}
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
-          ListHeaderComponent={ListHeaderComponent}
+          ListHeaderComponent={
+            <ListHeaderComponent isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
+          }
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
           onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
