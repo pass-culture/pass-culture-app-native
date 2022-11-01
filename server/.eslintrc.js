@@ -8,6 +8,7 @@ delete rules['react/jsx-fragments']
 delete rules['react/jsx-boolean-value']
 delete rules['react/jsx-no-constructed-context-values']
 delete rules['import/no-extraneous-dependencies']
+delete rules['testing-library/await-async-utils']
 
 module.exports = {
   ...config,
