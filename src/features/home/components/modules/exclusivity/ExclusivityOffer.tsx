@@ -7,7 +7,7 @@ import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exc
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface ExclusivityOfferProps extends ExclusivityBannerProps {
@@ -72,8 +72,10 @@ const UnmemoizedExclusivityOffer = ({
 
 export const ExclusivityOffer = memo(UnmemoizedExclusivityOffer)
 
-const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
-  flex: 1,
-  borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
-}))
+const StyledTouchableLink = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => ({
+    flex: 1,
+    borderRadius: theme.borderRadius.radius,
+    ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  })
+)

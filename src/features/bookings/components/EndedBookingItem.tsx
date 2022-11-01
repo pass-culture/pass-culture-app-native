@@ -14,7 +14,7 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -63,7 +63,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   }
 
   return (
-    <TouchableLink
+    <InternalTouchableLink
       enableNavigate={!!netInfo.isConnected}
       navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
       onBeforeNavigate={handlePressOffer}
@@ -81,7 +81,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           </EndedReasonAndDate>
         </AttributesView>
       </ItemContainer>
-    </TouchableLink>
+    </InternalTouchableLink>
   )
 }
 

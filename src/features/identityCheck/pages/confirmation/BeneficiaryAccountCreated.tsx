@@ -23,7 +23,7 @@ import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
@@ -68,7 +68,7 @@ export function BeneficiaryAccountCreated() {
       <StyledBody>{text}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
-        <TouchableLink
+        <InternalTouchableLink
           as={ButtonPrimary}
           wording="C’est parti&nbsp;!"
           navigateTo={

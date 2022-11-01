@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
@@ -30,7 +30,7 @@ export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
         testID="external-link-booking-limit-exceeded"
       />
       <Spacer.Column numberOfSpaces={getSpacing(3)} />
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonPrimary}
         wording="Mes réservations terminées"
         navigateTo={{ screen: 'EndedBookings' }}

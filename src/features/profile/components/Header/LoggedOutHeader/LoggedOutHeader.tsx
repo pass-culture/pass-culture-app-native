@@ -5,7 +5,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function LoggedOutHeader() {
@@ -16,7 +16,7 @@ export function LoggedOutHeader() {
       <Typo.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</Typo.Body>
       <Spacer.Column numberOfSpaces={5} />
       <Container>
-        <TouchableLink
+        <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}

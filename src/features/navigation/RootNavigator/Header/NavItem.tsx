@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -39,7 +39,7 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
   thin: !selected,
 }))<{ selected?: boolean }>``
 
-const StyledTouchableLink = styled(TouchableLink).attrs<{ isSelected?: boolean }>(
+const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
     hoverUnderlineColor: isSelected ? theme.uniqueColors.brand : theme.colors.black,
   })

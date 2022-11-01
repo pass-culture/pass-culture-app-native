@@ -6,7 +6,7 @@ import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesBu
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorBookingHold } from 'ui/svg/BicolorBookingHold'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
@@ -49,7 +49,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
         Pour en savoir plus, va sur ton profil.
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonPrimary}
         testID="Aller sur mon profil"
         wording="Aller sur mon profil"

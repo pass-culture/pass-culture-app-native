@@ -7,7 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { AUTHENTICATION_BACKGROUND_SOURCE } from 'features/onboarding/components/authenticationBackground'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -25,13 +25,13 @@ export const OnboardingAuthentication: FunctionComponent = () => (
         Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonWithLinearGradient}
         wording="Créer un compte"
         navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonTertiaryBlack}
         wording="Plus tard"
         icon={ClockFilled}

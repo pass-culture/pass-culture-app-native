@@ -9,7 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
@@ -38,7 +38,7 @@ export function IdentityCheckUnavailable() {
             icon={ExternalSite}
           />
         ),
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           wording="Retourner à l’accueil"

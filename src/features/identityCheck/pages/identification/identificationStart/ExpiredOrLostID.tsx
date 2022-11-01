@@ -6,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -39,7 +39,7 @@ export const ExpiredOrLostID = (): JSX.Element => {
       <StyledBody>Tu peux faire une demande de renouvellement sur le site ants.gouv.fr.</StyledBody>
       <Spacer.Flex flex={1} />
       <View>
-        <TouchableLink
+        <InternalTouchableLink
           as={ButtonPrimary}
           navigateTo={navigateToHomeConfig}
           wording="M’identifier plus tard"

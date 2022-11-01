@@ -7,7 +7,7 @@ import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -28,13 +28,13 @@ export function PhoneValidationTooManySMSSent() {
       title="Réessaie plus tard"
       icon={UserBlocked}
       buttons={[
-        <TouchableLink
+        <InternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
         />,
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           icon={PlainArrowPrevious}

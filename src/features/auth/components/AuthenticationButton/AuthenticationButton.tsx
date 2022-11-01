@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Spacer, Typo } from 'ui/theme'
@@ -40,7 +40,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
       <StyledBody>
         {text}
         <Spacer.Row numberOfSpaces={1} />
-        <TouchableLink
+        <InternalTouchableLink
           as={ButtonInsideText}
           navigateTo={nextNavigation}
           wording={buttonWording}

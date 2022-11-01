@@ -16,7 +16,7 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -173,7 +173,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
 const imageWidth = getSpacing(16)
 
-const Container = styled(TouchableLink)({
+const Container = styled(InternalTouchableLink)({
   marginHorizontal: getSpacing(6),
 })
 

@@ -7,6 +7,7 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -28,7 +29,7 @@ export function AccessibilityDeclaration() {
       <VerticalUl>
         <BulletListItem>
           <Typo.Caption>
-            <TouchableLink
+            <InternalTouchableLink
               as={ButtonInsideText}
               typography="Caption"
               wording="Schéma pluriannuel"

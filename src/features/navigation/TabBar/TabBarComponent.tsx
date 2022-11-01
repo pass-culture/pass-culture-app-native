@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
@@ -62,7 +62,7 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
 
 const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
-const TabComponentContainer = styled(TouchableLink).attrs(
+const TabComponentContainer = styled(InternalTouchableLink).attrs(
   ({ theme, accessibilityLabel, selected }) => ({
     accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
     hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,

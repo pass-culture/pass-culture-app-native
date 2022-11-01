@@ -6,7 +6,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { theme } from 'theme'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -36,7 +36,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
-        <TouchableLink
+        <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}

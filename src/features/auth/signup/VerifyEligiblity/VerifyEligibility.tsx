@@ -6,7 +6,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericOfficialPage } from 'ui/pages/GenericOfficialPage'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo } from 'ui/theme'
@@ -24,14 +24,14 @@ export const VerifyEligibility: FunctionComponent = () => {
       title="Vérifie ton identité pour débloquer ton crédit"
       buttons={[
         !!nextBeneficiaryValidationStepNavConfig && (
-          <TouchableLink
+          <InternalTouchableLink
             key={1}
             as={ButtonPrimary}
             wording="Commencer la vérification"
             navigateTo={nextBeneficiaryValidationStepNavConfig}
           />
         ),
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryBlack}
           icon={PlainArrowNext}

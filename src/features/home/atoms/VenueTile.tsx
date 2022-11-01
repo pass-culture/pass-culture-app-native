@@ -15,7 +15,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -101,7 +101,7 @@ const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
 
 const Container = styled.View({ flexDirection: 'column-reverse' })
 
-const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
 }))<{
   height: number

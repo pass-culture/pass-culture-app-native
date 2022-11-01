@@ -7,7 +7,7 @@ import { BookingItemProps } from 'features/bookings/types'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -62,7 +62,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   )
 }
 
-const Container = styled(TouchableLink)({
+const Container = styled(InternalTouchableLink)({
   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -26,7 +26,7 @@ const SortIcon = styled(SortIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styled(TouchableLink).attrs(({ theme }) => ({
+const Container = styled(InternalTouchableLink).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))({
   overflow: 'hidden',

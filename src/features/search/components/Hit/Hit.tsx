@@ -13,7 +13,7 @@ import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
   hit: SearchHit
@@ -99,7 +99,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   )
 }
 
-const Container = styled(TouchableLink)({
+const Container = styled(InternalTouchableLink)({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',

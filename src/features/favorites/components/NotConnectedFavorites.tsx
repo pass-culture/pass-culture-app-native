@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -31,7 +31,7 @@ export const NotConnectedFavorites = () => {
 
       <Row>
         <ButtonContainer>
-          <TouchableLink
+          <InternalTouchableLink
             as={ButtonPrimaryWhite}
             wording="S’inscrire"
             navigateTo={{ screen: 'SignupForm' }}
@@ -39,7 +39,7 @@ export const NotConnectedFavorites = () => {
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
-          <TouchableLink
+          <InternalTouchableLink
             as={ButtonTertiaryWhite}
             wording="Se connecter"
             navigateTo={{ screen: 'Login' }}

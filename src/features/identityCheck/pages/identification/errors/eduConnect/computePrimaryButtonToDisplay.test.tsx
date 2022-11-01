@@ -4,12 +4,12 @@ import { contactSupport } from 'features/auth/__mocks__/support.services'
 import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/computePrimaryButtonToDisplay'
 import { navigateToHomeConfig } from 'features/navigation/helpers/__mocks__'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Email } from 'ui/svg/icons/Email'
 
 describe('computePrimaryButtonToDisplay', () => {
   const defaultPrimaryButton = (
-    <TouchableLink
+    <InternalTouchableLink
       key={1}
       as={ButtonPrimaryWhite}
       wording="Retourner à l'accueil"
@@ -23,7 +23,7 @@ describe('computePrimaryButtonToDisplay', () => {
   }
 
   const navigateToPrimaryButton = (
-    <TouchableLink
+    <InternalTouchableLink
       key={1}
       as={ButtonPrimaryWhite}
       wording="Réessayer de m’identifier"

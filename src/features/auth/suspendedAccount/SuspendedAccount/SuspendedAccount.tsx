@@ -13,7 +13,7 @@ import { formatToCompleteFrenchDateTime } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
@@ -72,7 +72,7 @@ export const SuspendedAccount = () => {
           isLoading={unsuspendIsLoading}
           onPress={onReactivationPress}
         />,
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           wording="Retourner à l’accueil"

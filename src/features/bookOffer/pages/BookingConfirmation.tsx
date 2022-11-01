@@ -11,7 +11,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { Spacer, Typo } from 'ui/theme'
@@ -63,7 +63,7 @@ export function BookingConfirmation() {
           wording="Voir ma réservation"
           onPress={displayBookingDetails}
         />,
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           wording="Retourner à l'accueil"

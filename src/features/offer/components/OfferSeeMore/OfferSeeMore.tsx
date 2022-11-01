@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Spacer } from 'ui/theme'
 
@@ -18,7 +18,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
 
   return (
     <Container>
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonTertiaryBlack}
         inline
         onBeforeNavigate={onPressSeeMore}

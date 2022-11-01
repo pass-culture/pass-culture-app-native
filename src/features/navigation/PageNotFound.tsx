@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
 import { Typo } from 'ui/theme'
@@ -20,7 +20,7 @@ export const PageNotFound: React.FC = () => {
         title="Page introuvable&nbsp;!"
         icon={PageNotFoundIcon}
         buttons={[
-          <TouchableLink
+          <InternalTouchableLink
             key={1}
             as={ButtonPrimaryWhite}
             wording="Retourner à l’accueil"

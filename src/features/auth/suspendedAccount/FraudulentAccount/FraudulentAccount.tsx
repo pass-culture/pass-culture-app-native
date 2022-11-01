@@ -6,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -29,7 +29,7 @@ export const FraudulentAccount = () => {
           externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
           icon={Email}
         />,
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           wording="Retourner à l’accueil"
