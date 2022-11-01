@@ -43,3 +43,30 @@ export type TouchableLinkProps = (InternalNavigationProps | ExternalNavigationPr
   isOnPressDebounced?: boolean
 } & Omit<TouchableOpacityProps, 'onPress'> &
   AsProps
+
+type TouchableLinkGenericProps = {
+  onBeforeNavigate?: (event: GestureResponderEvent) => void
+  onAfterNavigate?: (event: GestureResponderEvent) => void
+  highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
+  hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
+  isOnPressDebounced?: boolean
+} & Omit<TouchableOpacityProps, 'onPress'> &
+  AsProps
+
+export type ExternalTouchableLinkProps = TouchableLinkGenericProps & ExternalNavigationProps
+
+export type InternalTouchableLinkProps = TouchableLinkGenericProps & InternalNavigationProps
+
+export type TouchableLink2Props = TouchableLinkGenericProps & {
+  handleNavigation: () => void
+  linkProps?:
+    | {
+        href: string
+        accessibilityRole: 'link'
+        onPress: () => void
+      }
+    | {
+        href: string
+        target: string
+      }
+}
