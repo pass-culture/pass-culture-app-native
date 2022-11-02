@@ -1,0 +1,639 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfferDescription /> should render 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<body>
+    <div>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="background-color: rgb(242, 242, 242); flex: 1;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="flex: 1;"
+            >
+              <div
+                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="opacity: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                  style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                    style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                    style="flex: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex: 1;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                        style="background-color: rgb(242, 242, 242); min-height: 100%;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex: 1; flex-direction: column-reverse;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex: 1;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <header
+                                class="css-view-1dbjc4n"
+                                role="banner"
+                                style="width: 100%;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="height: 64px;"
+                                />
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="height: 16px;"
+                                  />
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; height: 48px; justify-content: center;"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+                                    >
+                                      <div
+                                        class="css-view-1dbjc4n"
+                                        data-testid="Revenir en arrière"
+                                        style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                                      >
+                                        <button
+                                          aria-label="Revenir en arrière"
+                                          class="c0 c1 sc-kDTinF c1"
+                                          data-testid="backButton"
+                                          tabindex="0"
+                                          title="Revenir en arrière"
+                                          type="button"
+                                        >
+                                          <div
+                                            class="css-view-1dbjc4n"
+                                            data-testid="icon-back"
+                                          >
+                                            <div
+                                              class="css-text-901oao"
+                                              dir="ltr"
+                                            >
+                                              icon-back-SVG-Mock
+                                            </div>
+                                          </div>
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                            style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
+                                          >
+                                            Retour
+                                          </div>
+                                        </button>
+                                      </div>
+                                      <h1
+                                        aria-level="1"
+                                        class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                                        dir="ltr"
+                                        role="heading"
+                                        style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                                      >
+                                        Description
+                                      </h1>
+                                      <div
+                                        class="css-view-1dbjc4n"
+                                        style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </header>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 8px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                                data-testid="offer-description-list"
+                                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      style="height: 24px;"
+                                    />
+                                  </div>
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      style="height: 128px;"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                          >
+                            <div
+                              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                            >
+                              <div
+                                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 0;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="background-color: rgb(255, 255, 255); border-bottom-color: rgba(216,216,216,1.00); border-bottom-width: 1px; box-shadow: 0px 0px 0px rgba(216,216,216,1.00); flex: 1;"
+                                />
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                style="height: 80px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n r-pointerEvents-633pao"
+                                  style="height: 16px;"
+                                />
+                                <div
+                                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                  style="align-items: stretch; flex: 1; flex-direction: row;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                    style="align-items: flex-start; justify-content: center; margin-left: 16px;"
+                                  />
+                                  <div
+                                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                    style="justify-content: center; margin-right: 16px; margin-left: 16px; max-width: -32px;"
+                                  >
+                                    <h1
+                                      aria-level="1"
+                                      class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                                      dir="ltr"
+                                      role="heading"
+                                      style="color: rgb(28, 28, 30); font-size: 18px; font-weight: 500;"
+                                    >
+                                      OfferDescription
+                                    </h1>
+                                  </div>
+                                  <div
+                                    class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                    style="align-items: flex-end; flex-basis: 0px; flex-grow: 1; justify-content: center; margin-right: 16px;"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+              style="height: 64px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 1;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="position: fixed; left: 0px; top: 0px; width: 0px; height: 0px; z-index: -1; overflow: hidden; visibility: hidden; transition-duration: 0.05s; transition-property: padding; transition-delay: 0s;"
+    />
+  </body>,
+  "container": .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+    <div
+      class="css-view-1dbjc4n"
+      style="flex: 1;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="flex: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(242, 242, 242); flex: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex: 1;"
+          >
+            <div
+              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+              style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="opacity: 1;"
+              />
+              <div
+                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                style="bottom: 0px; display: flex; left: 0px; position: absolute; right: 0px; top: 0px;"
+              >
+                <div
+                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                  style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px;"
+                />
+                <div
+                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                  style="flex: 1;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex: 1;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                      style="background-color: rgb(242, 242, 242); min-height: 100%;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex: 1; flex-direction: column-reverse;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex: 1;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <header
+                              class="css-view-1dbjc4n"
+                              role="banner"
+                              style="width: 100%;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 64px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="height: 16px;"
+                                />
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; height: 48px; justify-content: center;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      data-testid="Revenir en arrière"
+                                      style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                                    >
+                                      <button
+                                        aria-label="Revenir en arrière"
+                                        class="c0 c1 sc-kDTinF c1"
+                                        data-testid="backButton"
+                                        tabindex="0"
+                                        title="Revenir en arrière"
+                                        type="button"
+                                      >
+                                        <div
+                                          class="css-view-1dbjc4n"
+                                          data-testid="icon-back"
+                                        >
+                                          <div
+                                            class="css-text-901oao"
+                                            dir="ltr"
+                                          >
+                                            icon-back-SVG-Mock
+                                          </div>
+                                        </div>
+                                        <div
+                                          class="css-text-901oao"
+                                          dir="ltr"
+                                          style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
+                                        >
+                                          Retour
+                                        </div>
+                                      </button>
+                                    </div>
+                                    <h1
+                                      aria-level="1"
+                                      class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                                      dir="ltr"
+                                      role="heading"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+                                    >
+                                      Description
+                                    </h1>
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </header>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 8px;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                              data-testid="offer-description-list"
+                              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="height: 24px;"
+                                  />
+                                </div>
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="height: 128px;"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                        >
+                          <div
+                            class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                          >
+                            <div
+                              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                              style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 0;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="background-color: rgb(255, 255, 255); border-bottom-color: rgba(216,216,216,1.00); border-bottom-width: 1px; box-shadow: 0px 0px 0px rgba(216,216,216,1.00); flex: 1;"
+                              />
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                              style="height: 80px;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n r-pointerEvents-633pao"
+                                style="height: 16px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                style="align-items: stretch; flex: 1; flex-direction: row;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                  style="align-items: flex-start; justify-content: center; margin-left: 16px;"
+                                />
+                                <div
+                                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                  style="justify-content: center; margin-right: 16px; margin-left: 16px; max-width: -32px;"
+                                >
+                                  <h1
+                                    aria-level="1"
+                                    class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                                    dir="ltr"
+                                    role="heading"
+                                    style="color: rgb(28, 28, 30); font-size: 18px; font-weight: 500;"
+                                  >
+                                    OfferDescription
+                                  </h1>
+                                </div>
+                                <div
+                                  class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                                  style="align-items: flex-end; flex-basis: 0px; flex-grow: 1; justify-content: center; margin-right: 16px;"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+            style="height: 64px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 1;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

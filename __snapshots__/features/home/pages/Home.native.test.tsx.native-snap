@@ -30,13 +30,15 @@ exports[`Home N-1 should render correctly 1`] = `
         />
       }
       ListHeaderComponent={
-        <Styled(View)>
-          <TopScreenSpacer />
-          <ThematicHomeHeader
-            headerSubtitle="HeaderSubtitle"
-            headerTitle="HeaderTitle"
-          />
-        </Styled(View)>
+        <Header
+          isThematicHome={true}
+          thematicHeader={
+            Object {
+              "subtitle": "HeaderSubtitle",
+              "title": "HeaderTitle",
+            }
+          }
+        />
       }
       bounces={true}
       data={Array []}
@@ -266,10 +268,9 @@ exports[`Home component should render correctly without login modal 1`] = `
         />
       }
       ListHeaderComponent={
-        <Styled(View)>
-          <TopScreenSpacer />
-          <HomeHeader />
-        </Styled(View)>
+        <Header
+          isThematicHome={false}
+        />
       }
       bounces={true}
       data={Array []}
@@ -306,63 +307,23 @@ exports[`Home component should render correctly without login modal 1`] = `
             }
           >
             <View
-              customHeight={16}
-              enable={true}
               style={
                 Array [
                   Object {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              height={894}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "#eb0055",
-                    "height": 894,
-                    "left": 0,
-                    "overflow": "hidden",
-                    "position": "absolute",
-                    "right": 0,
-                    "top": -600,
-                    "transform": Array [
-                      Object {
-                        "scaleY": -1,
-                      },
-                    ],
-                    "zIndex": -1,
+                    "marginBottom": 8,
+                    "marginHorizontal": 24,
+                    "marginTop": 24,
                   },
                 ]
               }
             >
               <View
-                height={894}
-                width={964}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                numberOfSpaces={8}
+                customHeight={16}
+                enable={true}
                 style={
                   Array [
                     Object {
-                      "height": 32,
+                      "height": 16,
                     },
                   ]
                 }
@@ -372,33 +333,31 @@ exports[`Home component should render correctly without login modal 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Black",
                       "fontSize": 26,
                       "lineHeight": 34,
-                      "marginHorizontal": 32,
-                      "textAlign": "center",
                     },
                   ]
                 }
               >
                 Bienvenue !
               </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            >
               <Text
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -408,17 +367,17 @@ exports[`Home component should render correctly without login modal 1`] = `
               >
                 Toute la culture à portée de main
               </Text>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
         <View
