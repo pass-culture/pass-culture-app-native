@@ -1,6 +1,4 @@
-import { Platform } from 'react-native'
-
-import { push as mockPush, navigate as mockNavigate } from '__mocks__/@react-navigation/native'
+import { navigate as mockNavigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -9,7 +7,6 @@ import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
 
-const navigate = Platform.OS === 'web' ? mockPush : mockNavigate
 let mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
@@ -30,23 +27,12 @@ describe('useShowResultsForCategory', () => {
     }
   })
 
-  it('should set category in staged search', () => {
-    const { result: resultCallback } = renderHook(useShowResultsForCategory)
-
-    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
-
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_CATEGORY',
-      payload: [SearchGroupNameEnumv2.SPECTACLES],
-    })
-  })
-
   it('should set search state with staged search state and categories', () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(navigate).toBeCalledWith('TabNavigator', {
+    expect(mockNavigate).toBeCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,

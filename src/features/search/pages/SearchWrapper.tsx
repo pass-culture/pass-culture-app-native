@@ -51,10 +51,6 @@ export const useSearch = (): Pick<ISearchContext, 'searchState' | 'dispatch'> =>
   return { searchState, dispatch }
 }
 
-export const useStagedSearch = () => {
-  return null
-}
-
 export const useCommit = (): { commit: () => void } => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()

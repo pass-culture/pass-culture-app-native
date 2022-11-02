@@ -28,10 +28,8 @@ const mockUseVenueOffers = mocked(useVenueOffers)
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
-const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
-  useStagedSearch: () => ({ searchState: mockSearchState, dispatch: mockStagedDispatch }),
 }))
 
 const defaultParams = {

@@ -9,15 +9,11 @@ import { fireEvent, render } from 'tests/utils'
 import { NoSearchResult } from '../NoSearchResult'
 
 const mockSearchState = initialSearchState
-const mockDispatchStagedSearch = jest.fn()
+const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
-  }),
-  useStagedSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatchStagedSearch,
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -47,18 +43,6 @@ describe('NoSearchResult component', () => {
     expect(text).toBeTruthy()
     expect(complement).toBeTruthy()
     expect(textContinuation).toBeTruthy()
-  })
-
-  it('should update the staged search state with the actual search state when pressing "Modifier mes filtres" button', async () => {
-    const { getByText } = render(<NoSearchResult />)
-    const button = getByText('Modifier mes filtres')
-
-    await fireEvent.press(button)
-
-    expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-      type: 'SET_STATE_FROM_DEFAULT',
-      payload: mockSearchState,
-    })
   })
 
   it('should redirect to the general filters page when pressing "Modifier mes filtres" button', async () => {

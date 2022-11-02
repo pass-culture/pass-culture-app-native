@@ -16,7 +16,6 @@ import { act, renderHook, superFlushWithAct } from 'tests/utils'
 jest.mock('features/profile/api')
 
 const mockSearchDispatch = jest.fn()
-const mockStagedSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('api/api')
@@ -30,7 +29,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
-  useStagedSearch: jest.fn(() => ({ dispatch: mockStagedSearchDispatch })),
 }))
 
 const accessToken = 'access_token'
@@ -137,12 +135,6 @@ describe('AuthContext', () => {
         await renderUseLoginRoutine()
 
         expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-      })
-
-      it('should reset search context', async () => {
-        await renderUseLoginRoutine()
-
-        expect(mockStagedSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
       })
 
       it('should reset identity check context', async () => {

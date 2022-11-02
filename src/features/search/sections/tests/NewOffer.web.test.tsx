@@ -6,12 +6,12 @@ import { fireEvent, render } from 'tests/utils/web'
 import { NewOffer } from '../NewOffer'
 
 const mockSearchState = initialSearchState
-const mockStagedDispatch = jest.fn()
+const mockDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useStagedSearch: () => ({
+  useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockStagedDispatch,
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -21,6 +21,6 @@ describe('NewOffer component', () => {
   it('should dispatch TOGGLE_OFFER_NEW onPress', () => {
     const { getByTestId } = render(<NewOffer />)
     fireEvent.click(getByTestId(testID))
-    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
   })
 })

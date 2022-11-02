@@ -12,15 +12,11 @@ import { SectionTitle } from '../titles'
 
 const Today = new Date(2020, 10, 1)
 const mockSearchState = initialSearchState
-const mockStagedDispatch = jest.fn()
+const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useStagedSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockStagedDispatch,
-  }),
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockStagedDispatch,
+    dispatch: mockDispatch,
   }),
 }))
 

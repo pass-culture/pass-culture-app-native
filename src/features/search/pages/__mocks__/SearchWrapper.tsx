@@ -14,11 +14,6 @@ export const useSearch = () => ({
   dispatch: jest.fn(),
 })
 
-export const useStagedSearch = () => ({
-  searchState: initialSearchState,
-  dispatch: jest.fn(),
-})
-
 export const useCommit = () => ({
   commit: jest.fn(),
 })

@@ -78,7 +78,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         ...getTabNavConfig('Search', {
           ...searchState,
           ...(options.reset ? initialSearchState : {}),
-          ...(partialSearchState || {}),
+          ...partialSearchState,
         })
       )
     },

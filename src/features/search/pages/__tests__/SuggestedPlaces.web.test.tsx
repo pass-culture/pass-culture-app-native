@@ -9,12 +9,12 @@ import { SuggestedVenue } from 'libs/venue'
 import { fireEvent, render } from 'tests/utils/web'
 
 const mockSearchState = initialSearchState
-const mockStagedDispatch = jest.fn()
+const mockDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useStagedSearch: () => ({
+  useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockStagedDispatch,
+    dispatch: mockDispatch,
   }),
 }))
 

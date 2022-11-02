@@ -20,13 +20,8 @@ let mockLocationFilter: LocationFilter = {
   venue: mockedSuggestedVenues[0],
 }
 
-const mockStagedSearchDispatch = jest.fn()
-
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { locationFilter: mockLocationFilter } }),
-  useStagedSearch: () => ({
-    dispatch: mockStagedSearchDispatch,
-  }),
 }))
 
 describe('NumberOfResults component', () => {

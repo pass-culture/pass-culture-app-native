@@ -10,13 +10,11 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 const mockSearchState = jest.fn().mockReturnValue({
   searchState: initialSearchState,
+  dispatch: jest.fn(),
 })
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
-  useStagedSearch: () => ({
-    dispatch: jest.fn(),
-  }),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }

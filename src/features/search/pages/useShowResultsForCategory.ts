@@ -9,13 +9,11 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SearchView } from '../types'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
-  const { dispatch, searchState } = useSearch()
+  const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
 
   return useCallback(
     (pressedCategory) => {
-      dispatch({ type: 'SET_CATEGORY', payload: [pressedCategory] })
-
       navigate(
         ...getTabNavConfig('Search', {
           ...searchState,
@@ -24,6 +22,6 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         })
       )
     },
-    [dispatch, navigate, searchState]
+    [navigate, searchState]
   )
 }
