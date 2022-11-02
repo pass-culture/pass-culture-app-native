@@ -43,7 +43,7 @@ export const HomeHeader: FunctionComponent = function () {
   }
 
   return (
-    <React.Fragment>
+    <Container>
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
@@ -52,28 +52,22 @@ export const HomeHeader: FunctionComponent = function () {
         </CheatCodeButtonContainer>
       )}
 
-      <CenterContainer>
-        <Spacer.Column numberOfSpaces={8} />
-        <StyledTitle1>{welcomeTitle}</StyledTitle1>
-        <Spacer.Column numberOfSpaces={2} />
-        <Typo.Body>{getSubtitle()}</Typo.Body>
-      </CenterContainer>
+      <Spacer.Column numberOfSpaces={8} />
+      <StyledTitle1>{welcomeTitle}</StyledTitle1>
+      <Spacer.Column numberOfSpaces={2} />
+      <Typo.Body>{getSubtitle()}</Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
-    </React.Fragment>
+    </Container>
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1).attrs({
-  numberOfLines: 2,
-})({
-  textAlign: 'center',
-  marginHorizontal: getSpacing(8),
+const Container = styled.View({
+  marginHorizontal: getSpacing(6),
 })
 
-const CenterContainer = styled.View({
-  flexGrow: 1,
-  alignItems: 'center',
-})
+const StyledTitle1 = styled(Typo.Title1).attrs({
+  numberOfLines: 2,
+})({})
 
 const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',
