@@ -10,24 +10,18 @@ import { renderHook } from 'tests/utils'
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
 
 const navigate = Platform.OS === 'web' ? mockPush : mockNavigate
-const mockSearchState = initialSearchState
+let mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
-let mockStagedSearchState = initialSearchState
-const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
   }),
-  useStagedSearch: () => ({
-    searchState: mockStagedSearchState,
-    dispatch: mockStagedDispatch,
-  }),
 }))
 
 describe('useShowResultsForCategory', () => {
   beforeEach(() => {
-    mockStagedSearchState = {
+    mockSearchState = {
       ...initialSearchState,
       locationFilter: { locationType: LocationType.EVERYWHERE },
       priceRange: [0, 300],
@@ -41,7 +35,7 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(mockStagedDispatch).toHaveBeenCalledWith({
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_CATEGORY',
       payload: [SearchGroupNameEnumv2.SPECTACLES],
     })
