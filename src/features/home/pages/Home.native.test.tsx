@@ -2,11 +2,12 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
+import { useHomepageData } from 'features/home/api'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromises, render, waitFor } from 'tests/utils'
 
 import { Home } from './Home'
 
@@ -132,6 +133,20 @@ describe('Home component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = render(<Home />)
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+  })
+})
+
+describe('Home N-1', () => {
+  it('should render correctly', () => {
+    useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
+    mockUseHomepageData.mockReturnValueOnce({
+      modules: [],
+      homeEntryId: 'fake-entry-id',
+      thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
+    })
+
+    const home = render(<Home />)
+    expect(home).toMatchSnapshot()
   })
 })
 

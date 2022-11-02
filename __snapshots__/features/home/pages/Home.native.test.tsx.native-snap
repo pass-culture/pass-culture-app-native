@@ -1,0 +1,453 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home N-1 should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
+  <View
+    hide={false}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
+      ListHeaderComponent={
+        <Styled(View)>
+          <TopScreenSpacer />
+          <ThematicHomeHeader
+            headerSubtitle="HeaderSubtitle"
+            headerTitle="HeaderTitle"
+          />
+        </Styled(View)>
+      }
+      bounces={true}
+      data={Array []}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={1000}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              customHeight={16}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "paddingBottom": 8,
+                    "paddingHorizontal": 24,
+                    "paddingTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                customHeight={16}
+                enable={true}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Revenir en arrière"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="backButton"
+              >
+                <View
+                  height={24}
+                  testID="icon-back"
+                  width={24}
+                >
+                  <Text>
+                    icon-back-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "display": "none",
+                      },
+                    ]
+                  }
+                >
+                  Retour
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 26,
+                      "lineHeight": 34,
+                    },
+                  ]
+                }
+              >
+                HeaderTitle
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                HeaderSubtitle
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`Home component should render correctly without login modal 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
+  <View
+    hide={false}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
+      ListHeaderComponent={
+        <Styled(View)>
+          <TopScreenSpacer />
+          <HomeHeader />
+        </Styled(View)>
+      }
+      bounces={true}
+      data={Array []}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={1000}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              customHeight={16}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              height={894}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#eb0055",
+                    "height": 894,
+                    "left": 0,
+                    "overflow": "hidden",
+                    "position": "absolute",
+                    "right": 0,
+                    "top": -600,
+                    "transform": Array [
+                      Object {
+                        "scaleY": -1,
+                      },
+                    ],
+                    "zIndex": -1,
+                  },
+                ]
+              }
+            >
+              <View
+                height={894}
+                width={964}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={8}
+                style={
+                  Array [
+                    Object {
+                      "height": 32,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 26,
+                      "lineHeight": 34,
+                      "marginHorizontal": 32,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Bienvenue !
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Toute la culture à portée de main
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
