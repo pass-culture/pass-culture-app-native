@@ -1,12 +1,15 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { ShareAppModalNew } from 'features/shareApp/components/ShareAppModalNew'
+import * as Share from 'features/shareApp/helpers/shareApp'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 const visible = true
 const hideModal = jest.fn()
+const shareApp = jest.spyOn(Share, 'shareApp').mockResolvedValue()
 
 describe('ShareAppModalNew', () => {
   it('should match underage modal snapshot when underage', () => {
@@ -40,6 +43,23 @@ describe('ShareAppModalNew', () => {
       />
     )
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should open native share modal when clicking on "Partager" button', async () => {
+    const { getByTestId } = render(
+      <ShareAppModalNew
+        visible={visible}
+        hideModal={hideModal}
+        modalType={ShareAppModalType.NOT_ELIGIBLE}
+      />
+    )
+
+    const shareButton = getByTestId('Partager')
+    fireEvent.press(shareButton)
+
+    await waitForExpect(() => {
+      expect(shareApp).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should close modal when clicking on "Partager" button', () => {

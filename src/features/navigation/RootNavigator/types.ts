@@ -139,7 +139,6 @@ export type RootStackParamList = {
   LocationPicker: undefined
   PersonalData: undefined
   SearchFilter: undefined
-  ShareAppModal: undefined
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SuspendedAccount: undefined

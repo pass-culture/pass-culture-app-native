@@ -84,12 +84,6 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="Errors 👾" onPress={() => navigate('NavigationErrors')} />
           </Row>
           <Row half>
-            <ButtonPrimary
-              wording="Partage de l'app 📱"
-              onPress={() => navigate('ShareAppModal')}
-            />
-          </Row>
-          <Row half>
             <ButtonPrimary wording="Cookies consent 🍪" onPress={() => showCookiesConsentModal()} />
             <CookiesConsent
               visible={cookiesConsentModalVisible}

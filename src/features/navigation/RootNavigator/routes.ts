@@ -56,7 +56,6 @@ import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotificat
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
-import { ShareAppModal } from 'libs/share/shareApp/ShareAppModal'
 
 import { Route } from './types'
 
@@ -107,12 +106,6 @@ export const routes: Route[] = [
     path: 'anniversaire-18-ans',
     deeplinkPaths: ['eighteen'],
     options: { title: 'Anniversaire 18 ans' },
-  },
-  {
-    name: 'ShareAppModal',
-    component: ShareAppModal,
-    path: 'partage-app',
-    options: { title: 'Partage l’app' },
   },
   {
     name: 'RecreditBirthdayNotification',
