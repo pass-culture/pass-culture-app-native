@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { OfferTile, OfferTileProps } from 'features/offer/atoms/OfferTile'
+import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { OfferTileProps } from 'features/offer/types'
 
 type Props = Omit<OfferTileProps, 'analyticsFrom'>
 

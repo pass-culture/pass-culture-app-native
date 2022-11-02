@@ -34,7 +34,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 }))
 
 let mockCreditOffer = 50000
-jest.mock('features/offer/services/useHasEnoughCredit', () => ({
+jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => ({
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 

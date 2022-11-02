@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { Step } from 'features/bookOffer/pages/reducer'
-import { notExpiredStock as baseStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { renderHook } from 'tests/utils'
 
 import { useModalContent } from '../useModalContent'
@@ -41,7 +41,7 @@ describe('useModalContent', () => {
     mockOffer.isDigital = true
     mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_CINE_ILLIMITE
     Platform.OS = 'ios'
-    mockOffer.stocks = [baseStock]
+    mockOffer.stocks = [offerStockResponseSnap]
 
     const { result } = renderHook(useModalContent)
 
@@ -73,7 +73,7 @@ describe('useModalContent', () => {
     mockOffer.isDigital = true
     mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
     Platform.OS = 'ios'
-    mockOffer.stocks = [baseStock]
+    mockOffer.stocks = [offerStockResponseSnap]
 
     const { result } = renderHook(useModalContent)
 
@@ -88,7 +88,7 @@ describe('useModalContent', () => {
     mockOffer.isDigital = true
     mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
     Platform.OS = 'ios'
-    mockOffer.stocks = [{ ...baseStock, price: 0 }]
+    mockOffer.stocks = [{ ...offerStockResponseSnap, price: 0 }]
 
     const { result } = renderHook(useModalContent)
 

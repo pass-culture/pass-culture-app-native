@@ -7,7 +7,7 @@ import {
   getStatusFromStocks,
   OfferStatus,
 } from 'features/bookOffer/services/utils'
-import { getOfferPrice } from 'features/offer/services/getOfferPrice'
+import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 
 export interface Marking {
   selected: boolean

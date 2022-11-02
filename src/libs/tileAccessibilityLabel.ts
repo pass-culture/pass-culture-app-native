@@ -1,5 +1,5 @@
 import { BookingProperties } from 'features/bookings/types'
-import { OfferTileProps } from 'features/offer/atoms/OfferTile'
+import { OfferTileProps } from 'features/offer/types'
 import { parseTypeHomeLabel } from 'libs/parsers/venueType'
 import { VenueHit } from 'libs/search'
 

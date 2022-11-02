@@ -3,7 +3,7 @@ import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { OfferResponse, OfferStockResponse, SettingsResponse } from 'api/gen'
-import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
+import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, RenderAPI } from 'tests/utils'
 
@@ -49,7 +49,7 @@ jest.mock('features/auth/settings', () => ({
 
 describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () => {
   it('should be cancellable if no limitDate specified', () => {
-    mockStock = { ...notExpiredStock, cancellationLimitDatetime: null }
+    mockStock = { ...offerStockResponseSnap, cancellationLimitDatetime: null }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
@@ -57,14 +57,14 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () 
   })
 
   it('should not be cancellable if limitDate in the past', () => {
-    mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate }
+    mockStock = { ...offerStockResponseSnap, cancellationLimitDatetime: pastDate }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
     expectNotCancellable(page)
   })
 
   it('should be cancellable if limitDate in the future', () => {
-    mockStock = { ...notExpiredStock, cancellationLimitDatetime: futureDate }
+    mockStock = { ...offerStockResponseSnap, cancellationLimitDatetime: futureDate }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
     expect(
@@ -81,7 +81,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
       'should not be cancellable when cancellation limit date=%s',
       (cancellationLimitDatetime) => {
         mockStock = {
-          ...notExpiredStock,
+          ...offerStockResponseSnap,
           cancellationLimitDatetime,
           activationCode: { expirationDate: '2030-02-05T00:00:00Z' },
         }
@@ -100,7 +100,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
       'should not be cancellable when cancellation limit date=%s',
       (cancellationLimitDatetime) => {
         mockStock = {
-          ...notExpiredStock,
+          ...offerStockResponseSnap,
           cancellationLimitDatetime,
           activationCode: { expirationDate: null },
         }
@@ -116,7 +116,11 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
 
   describe('no activationCode', () => {
     it('should be cancellable if no cancellation limit date', () => {
-      mockStock = { ...notExpiredStock, cancellationLimitDatetime: null, activationCode: null }
+      mockStock = {
+        ...offerStockResponseSnap,
+        cancellationLimitDatetime: null,
+        activationCode: null,
+      }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -126,7 +130,11 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
     })
 
     it('should not be cancellable if limitDate is past', () => {
-      mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate, activationCode: null }
+      mockStock = {
+        ...offerStockResponseSnap,
+        cancellationLimitDatetime: pastDate,
+        activationCode: null,
+      }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -137,7 +145,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
 
     it('should be cancellable before limitDate if future', () => {
       mockStock = {
-        ...notExpiredStock,
+        ...offerStockResponseSnap,
         cancellationLimitDatetime: futureDate,
         activationCode: null,
       }

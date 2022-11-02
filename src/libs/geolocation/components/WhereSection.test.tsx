@@ -1,7 +1,7 @@
 import React from 'react'
 import { act } from 'react-test-renderer'
 
-import { offerVenueResponseSnap } from 'features/offer/api/snaps/offerVenueReponseSnap'
+import { offerVenueResponseSnap } from 'features/offer/fixtures/offerVenueReponse'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { fireEvent, render } from 'tests/utils'

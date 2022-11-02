@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
-
-import { IconWithCaption } from './IconWithCaption'
+import { IconWithCaption } from 'ui/components/IconWithCaption'
 
 interface Props {
   type: VenueTypeCode | null

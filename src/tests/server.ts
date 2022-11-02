@@ -19,7 +19,7 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'

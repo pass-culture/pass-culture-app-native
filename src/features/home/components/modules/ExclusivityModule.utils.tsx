@@ -1,6 +1,6 @@
 import { OfferResponse } from 'api/gen'
 import { ExclusivityPane } from 'features/home/contentful'
-import { getOfferPrice } from 'features/offer/services/getOfferPrice'
+import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { GeoCoordinates } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'

@@ -1,6 +1,6 @@
 import { shouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
 import { ExclusivityPane } from 'features/home/contentful'
-import { offerResponseSnap as offer } from 'features/offer/api/snaps/offerResponseSnap'
+import { offerResponseSnap as offer } from 'features/offer/fixtures/offerResponse'
 import { GeoCoordinates } from 'libs/geolocation'
 
 let userLocation: GeoCoordinates | null = null
