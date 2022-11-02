@@ -443,15 +443,23 @@ exports[`SearchPrice component should render modal correctly after animation and
                 }
               />
             </View>
-            <View>
+            <View
+              inverseLayout={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
               <View
-                inverseLayout={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexShrink": 1,
                     },
                   ]
                 }
@@ -486,6 +494,26 @@ exports[`SearchPrice component should render modal correctly after animation and
                     </Text>
                   </Text>
                 </View>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
                 <View
                   style={
                     Array [
@@ -607,15 +635,23 @@ exports[`SearchPrice component should render modal correctly after animation and
                 ]
               }
             />
-            <View>
+            <View
+              inverseLayout={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
               <View
-                inverseLayout={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexShrink": 1,
                     },
                   ]
                 }
@@ -650,6 +686,26 @@ exports[`SearchPrice component should render modal correctly after animation and
                     </Text>
                   </Text>
                 </View>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
                 <View
                   style={
                     Array [

@@ -48,9 +48,16 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   )
 
   return (
-    <View>
-      <Container inverseLayout={!!isDesktopViewport}>
-        {!isDesktopViewport && <TitleWithSubtitle />}
+    <Container inverseLayout={!!isDesktopViewport}>
+      {!isDesktopViewport && (
+        <React.Fragment>
+          <TitleWrapper>
+            <TitleWithSubtitle />
+          </TitleWrapper>
+          <Spacer.Row numberOfSpaces={2} />
+        </React.Fragment>
+      )}
+      <SwitchWrapper>
         <FilterSwitch
           checkboxID={checkboxID}
           active={isActive}
@@ -59,14 +66,16 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           accessibilityDescribedBy={describedByID}
           testID={testID}
         />
-        {!!isDesktopViewport && (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={2} />
+      </SwitchWrapper>
+      {!!isDesktopViewport && (
+        <React.Fragment>
+          <Spacer.Row numberOfSpaces={2} />
+          <TitleWrapper>
             <TitleWithSubtitle />
-          </React.Fragment>
-        )}
-      </Container>
-    </View>
+          </TitleWrapper>
+        </React.Fragment>
+      )}
+    </Container>
   )
 }
 
@@ -75,3 +84,11 @@ const Container = styled.View<{ inverseLayout?: boolean }>(({ inverseLayout }) =
   alignItems: 'center',
   ...(!inverseLayout && { justifyContent: 'space-between' }),
 }))
+
+const TitleWrapper = styled.View({
+  flexShrink: 1,
+})
+
+const SwitchWrapper = styled.View({
+  flexShrink: 0,
+})
