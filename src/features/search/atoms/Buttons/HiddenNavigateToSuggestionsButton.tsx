@@ -1,9 +1,10 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Platform } from 'react-native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
-import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SearchView } from 'features/search/types'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -12,14 +13,19 @@ import { displayOnFocus } from 'ui/web/displayOnFocus/displayOnFocus'
 
 export const HiddenNavigateToSuggestionsButton = () => {
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const pushWithStagedSearch = usePushWithStagedSearch()
+  const { searchState } = useSearch()
+
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToSuggestions = useCallback(() => {
-    pushWithStagedSearch({
-      ...params,
-      view: SearchView.Suggestions,
-    })
-  }, [params, pushWithStagedSearch])
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        ...params,
+        view: SearchView.Suggestions,
+      })
+    )
+  }, [navigate, params, searchState])
 
   return (
     <HiddenAccessibleButton onPress={navigateToSuggestions} wording="Recherche par mots-clés" />

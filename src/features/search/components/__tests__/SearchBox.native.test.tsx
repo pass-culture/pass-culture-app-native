@@ -19,18 +19,15 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from '../SearchBox'
 
-let mockSearchState = initialSearchState
-const mockStagedSearchState: SearchState = {
+let mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   priceRange: [0, 20],
 }
 
 const mockDispatch = jest.fn()
-const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
-  useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 
 jest.mock('libs/firebase/analytics')
@@ -108,9 +105,9 @@ describe('SearchBox component', () => {
         ...initialSearchState,
         query: 'jazzaza',
         view: SearchView.Results,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
+        offerCategories: mockSearchState.offerCategories,
+        locationFilter: mockSearchState.locationFilter,
+        priceRange: mockSearchState.priceRange,
       })
     )
   })
@@ -184,9 +181,9 @@ describe('SearchBox component', () => {
           ...initialSearchState,
           view: SearchView.Results,
           previousView: SearchView.Results,
-          offerCategories: mockStagedSearchState.offerCategories,
-          locationFilter: mockStagedSearchState.locationFilter,
-          priceRange: mockStagedSearchState.priceRange,
+          offerCategories: mockSearchState.offerCategories,
+          locationFilter: mockSearchState.locationFilter,
+          priceRange: mockSearchState.priceRange,
         })
       )
     })
@@ -202,10 +199,10 @@ describe('SearchBox component', () => {
           fireEvent.press(previousButton)
         })
 
-        expect(mockStagedDispatch).toBeCalledWith({
+        expect(mockDispatch).toBeCalledWith({
           type: 'SET_STATE_FROM_DEFAULT',
           payload: {
-            locationFilter: mockStagedSearchState.locationFilter,
+            locationFilter: mockSearchState.locationFilter,
           },
         })
         expect(navigate).toBeCalledWith(
@@ -213,7 +210,7 @@ describe('SearchBox component', () => {
             ...initialSearchState,
             query: '',
             view: SearchView.Landing,
-            locationFilter: mockStagedSearchState.locationFilter,
+            locationFilter: mockSearchState.locationFilter,
           })
         )
       }
@@ -244,7 +241,7 @@ describe('SearchBox component', () => {
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
-            ...mockStagedSearchState,
+            ...mockSearchState,
             query: '',
             view: SearchView.Suggestions,
           })
@@ -287,7 +284,7 @@ describe('SearchBox component', () => {
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
-            ...mockStagedSearchState,
+            ...mockSearchState,
             query: '',
             view: SearchView.Results,
           })
@@ -310,9 +307,9 @@ describe('SearchBox component', () => {
         ...initialSearchState,
         query: 'jazzaza',
         view: SearchView.Results,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
+        offerCategories: mockSearchState.offerCategories,
+        locationFilter: mockSearchState.locationFilter,
+        priceRange: mockSearchState.priceRange,
       })
     )
   })
@@ -348,9 +345,9 @@ describe('SearchBox component', () => {
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         view: SearchView.Suggestions,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
+        offerCategories: mockSearchState.offerCategories,
+        locationFilter: mockSearchState.locationFilter,
+        priceRange: mockSearchState.priceRange,
       })
     )
   })
