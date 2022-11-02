@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { ErrorApplicationModal } from 'features/offer/components/redirectionModals/ErrorApplicationModal/ErrorApplicationModal'
+import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { render, fireEvent } from 'tests/utils'
 
 const hideModal = jest.fn()
