@@ -13,7 +13,7 @@ export const DateHour = () => {
   const { visible, showModal, hideModal } = useModal(false)
 
   const dateHourString = useMemo(() => {
-    const dateStr = date && `le ${formatToCompleteFrenchDate(date.selectedDate)}`
+    const dateStr = date && `le ${formatToCompleteFrenchDate(new Date(date.selectedDate))}`
     const hoursStr = timeRange && `entre ${timeRange[0]}h et ${timeRange[1]}h`
     return [dateStr, hoursStr].filter(Boolean).join(' ')
   }, [date, timeRange])

@@ -39,7 +39,7 @@ describe('DatesHoursModal component', () => {
     it("the calendar when picking 'Date précise'", async () => {
       mockSearchState = {
         ...initialSearchState,
-        date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY },
+        date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
       }
       const { getByText, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -62,7 +62,7 @@ describe('DatesHoursModal component', () => {
     it("the correct date when picking 'Date précise'", async () => {
       mockSearchState = {
         ...initialSearchState,
-        date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TOMORROW },
+        date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TOMORROW.toISOString() },
       }
       const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
       await act(async () => {
@@ -86,7 +86,7 @@ describe('DatesHoursModal component', () => {
   it('should hide and show the CalendarPicker', async () => {
     mockSearchState = {
       ...initialSearchState,
-      date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TODAY },
+      date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TODAY.toISOString() },
     }
     const { getByTestId, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -165,7 +165,7 @@ describe('DatesHoursModal component', () => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: {
             ...mockSearchState,
-            date: { selectedDate: TODAY, option },
+            date: { selectedDate: TODAY.toISOString(), option },
             view: SearchView.Results,
           },
           screen: 'Search',
@@ -438,7 +438,7 @@ describe('DatesHoursModal component', () => {
     it('date toggle when date defined in search state', async () => {
       mockSearchState = {
         ...initialSearchState,
-        date: { selectedDate: TODAY, option: DATE_FILTER_OPTIONS.TODAY },
+        date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -452,7 +452,7 @@ describe('DatesHoursModal component', () => {
     it('hour toggle when time range defined in search state', async () => {
       mockSearchState = {
         ...initialSearchState,
-        date: { selectedDate: TODAY, option: DATE_FILTER_OPTIONS.TODAY },
+        date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -473,7 +473,7 @@ describe('DatesHoursModal component', () => {
     ])('%s radio button when date defined in search state', async (option: DATE_FILTER_OPTIONS) => {
       mockSearchState = {
         ...initialSearchState,
-        date: { selectedDate: TODAY, option },
+        date: { selectedDate: TODAY.toISOString(), option },
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 

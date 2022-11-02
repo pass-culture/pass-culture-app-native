@@ -8,7 +8,7 @@ import { LocationType } from './enums'
 
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
-  selectedDate: Date
+  selectedDate: string
 }
 
 export type LocationFilter =
@@ -24,9 +24,9 @@ export enum SearchView {
 }
 
 export interface SearchState {
-  beginningDatetime: Date | null
+  beginningDatetime: string | null
   date: SelectedDate | null
-  endingDatetime: Date | null
+  endingDatetime: string | null
   hitsPerPage: number | null
   locationFilter: LocationFilter
   offerCategories: SearchGroupNameEnumv2[]

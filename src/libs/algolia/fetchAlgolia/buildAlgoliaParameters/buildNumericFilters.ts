@@ -87,20 +87,22 @@ const buildHomepageDatePredicate = ({
   | undefined
   | FiltersArray[0] => {
   if (!(beginningDatetime || endingDatetime)) return undefined
+  const formattedBeginningDatetime = beginningDatetime ? new Date(beginningDatetime) : undefined
+  const formattedEndingDatetime = endingDatetime ? new Date(endingDatetime) : undefined
 
-  if (beginningDatetime && !endingDatetime) {
-    const beginningTimestamp = TIMESTAMP.getFromDate(beginningDatetime)
+  if (formattedBeginningDatetime && !formattedEndingDatetime) {
+    const beginningTimestamp = TIMESTAMP.getFromDate(formattedBeginningDatetime)
     return [`${FACETS_ENUM.OFFER_DATES} >= ${beginningTimestamp}`]
   }
 
-  if (!beginningDatetime && endingDatetime) {
-    const endingTimestamp = TIMESTAMP.getFromDate(endingDatetime)
+  if (!formattedBeginningDatetime && formattedEndingDatetime) {
+    const endingTimestamp = TIMESTAMP.getFromDate(formattedEndingDatetime)
     return [`${FACETS_ENUM.OFFER_DATES} <= ${endingTimestamp}`]
   }
 
-  if (beginningDatetime && endingDatetime) {
-    const beginningTimestamp = TIMESTAMP.getFromDate(beginningDatetime)
-    const endingTimestamp = TIMESTAMP.getFromDate(endingDatetime)
+  if (formattedBeginningDatetime && formattedEndingDatetime) {
+    const beginningTimestamp = TIMESTAMP.getFromDate(formattedBeginningDatetime)
+    const endingTimestamp = TIMESTAMP.getFromDate(formattedEndingDatetime)
     return [getDatePredicate(beginningTimestamp, endingTimestamp)]
   }
 
@@ -118,16 +120,18 @@ const buildDateAndTimePredicate = ({
 }: NoNullProperties<
   Required<Pick<SearchParametersQuery, 'date' | 'timeRange'>>
 >): FiltersArray[0] => {
-  let dateFilter
+  let dateFilter: Range<number>[]
+  // To be sure to have a value in Date format
+  const selectedDate = new Date(date.selectedDate)
   switch (date.option) {
     case DATE_FILTER_OPTIONS.CURRENT_WEEK:
-      dateFilter = TIMESTAMP.WEEK.getAllFromTimeRangeAndDate(date.selectedDate, timeRange)
+      dateFilter = TIMESTAMP.WEEK.getAllFromTimeRangeAndDate(selectedDate, timeRange)
       break
     case DATE_FILTER_OPTIONS.CURRENT_WEEK_END:
-      dateFilter = TIMESTAMP.WEEK_END.getAllFromTimeRangeAndDate(date.selectedDate, timeRange)
+      dateFilter = TIMESTAMP.WEEK_END.getAllFromTimeRangeAndDate(selectedDate, timeRange)
       break
     default:
-      dateFilter = [TIMESTAMP.getAllFromTimeRangeAndDate(date.selectedDate, timeRange)]
+      dateFilter = [TIMESTAMP.getAllFromTimeRangeAndDate(selectedDate, timeRange)]
   }
 
   return dateFilter.map((timestampsRangeForADay) => getDatePredicate(...timestampsRangeForADay))
@@ -136,23 +140,25 @@ const buildDateAndTimePredicate = ({
 const buildDateOnlyPredicate = (
   date: Exclude<SearchParametersQuery['date'], null | undefined>
 ): FiltersArray[0] => {
-  let beginningDate, endingDate
+  let beginningDate, endingDate: number
+  // To be sure to have a value in Date format
+  const selectedDate = new Date(date.selectedDate)
   switch (date.option) {
     case DATE_FILTER_OPTIONS.TODAY:
-      beginningDate = TIMESTAMP.getFromDate(date.selectedDate)
-      endingDate = TIMESTAMP.getLastOfDate(date.selectedDate)
+      beginningDate = TIMESTAMP.getFromDate(selectedDate)
+      endingDate = TIMESTAMP.getLastOfDate(selectedDate)
       break
     case DATE_FILTER_OPTIONS.CURRENT_WEEK:
-      beginningDate = TIMESTAMP.getFromDate(date.selectedDate)
-      endingDate = TIMESTAMP.WEEK.getLastFromDate(date.selectedDate)
+      beginningDate = TIMESTAMP.getFromDate(selectedDate)
+      endingDate = TIMESTAMP.WEEK.getLastFromDate(selectedDate)
       break
     case DATE_FILTER_OPTIONS.CURRENT_WEEK_END:
-      beginningDate = TIMESTAMP.WEEK_END.getFirstFromDate(date.selectedDate)
-      endingDate = TIMESTAMP.WEEK.getLastFromDate(date.selectedDate)
+      beginningDate = TIMESTAMP.WEEK_END.getFirstFromDate(selectedDate)
+      endingDate = TIMESTAMP.WEEK.getLastFromDate(selectedDate)
       break
     case DATE_FILTER_OPTIONS.USER_PICK:
-      beginningDate = TIMESTAMP.getFirstOfDate(date.selectedDate)
-      endingDate = TIMESTAMP.getLastOfDate(date.selectedDate)
+      beginningDate = TIMESTAMP.getFirstOfDate(selectedDate)
+      endingDate = TIMESTAMP.getLastOfDate(selectedDate)
       break
   }
   return [getDatePredicate(beginningDate, endingDate)]

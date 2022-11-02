@@ -206,7 +206,7 @@ describe('parseSearchParameters', () => {
 
   describe('beginningDatetime & endingDatetime', () => {
     it('should return algolia parameters with a beginning date when provided', () => {
-      const beginningDatetime = new Date(2020, 9, 1, 22, 0, 0)
+      const beginningDatetime = new Date(2020, 9, 1, 22, 0, 0).toISOString()
       const beginningDatetimeAsString = '2020-10-01T22:00:00'
       const parameters = { beginningDatetime: beginningDatetimeAsString } as SearchParametersFields
       const geolocation = null
@@ -216,7 +216,7 @@ describe('parseSearchParameters', () => {
     })
 
     it('should return algolia parameters with an ending date when provided', () => {
-      const endingDatetime = new Date(2020, 9, 1, 22, 0, 0)
+      const endingDatetime = new Date(2020, 9, 1, 22, 0, 0).toISOString()
       const endingDatetimeAsString = '2020-10-01T22:00:00'
       const parameters = { endingDatetime: endingDatetimeAsString } as SearchParametersFields
       const geolocation = null
@@ -226,8 +226,8 @@ describe('parseSearchParameters', () => {
     })
 
     it('should return algolia parameters with a beginning date and an ending date when provided', () => {
-      const beginningDatetime = new Date(2020, 9, 1, 0, 0, 0)
-      const endingDatetime = new Date(2020, 9, 2, 0, 0, 0)
+      const beginningDatetime = new Date(2020, 9, 1, 0, 0, 0).toISOString()
+      const endingDatetime = new Date(2020, 9, 2, 0, 0, 0).toISOString()
       const beginningDatetimeAsString = '2020-10-01T00:00:00'
       const endingDatetimeAsString = '2020-10-02T00:00:00'
       const parameters = {
