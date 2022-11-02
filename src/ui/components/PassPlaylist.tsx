@@ -9,8 +9,6 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = Pick<
@@ -22,7 +20,6 @@ type Props = Pick<
   TitleComponent?: ComponentType<ComponentProps<typeof DefaultTitle>>
   onPressSeeMore?: () => void
   coverUrl?: string | null
-  onDarkBackground?: boolean
   renderFooter?: RenderFooterItem
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
 }
@@ -30,20 +27,15 @@ type Props = Pick<
 export const PassPlaylist = (props: Props) => {
   const TitleComponent = props.TitleComponent || DefaultTitle
 
-  const { isTouch, colors } = useTheme()
+  const { isTouch } = useTheme()
 
   const showHeader = !!props.coverUrl
   const showTitleSeeMore = !!props.onPressSeeMore && !isTouch
   const showFooterSeeMore = !!props.onPressSeeMore && isTouch
 
-  const titleSeparatorColor = props.onDarkBackground ? colors.white : colors.greyMedium
-  const seeMoreColor = props.onDarkBackground ? colors.white : colors.primary
-
   const StyledTitleComponent = styled(TitleComponent).attrs({
     numberOfLines: 2,
-  })<{ onDarkBackground?: boolean }>(({ onDarkBackground, theme }) => ({
-    color: onDarkBackground ? theme.colors.white : theme.colors.black,
-  }))
+  })({})
 
   const renderHeader: RenderHeaderItem = useCallback(
     ({ width, height }) => <Cover width={width} height={height} uri={props.coverUrl as string} />,
@@ -60,18 +52,15 @@ export const PassPlaylist = (props: Props) => {
     return showTitleSeeMore ? (
       <React.Fragment>
         <Spacer.Row numberOfSpaces={4} />
-        <TitleSeparator color={titleSeparatorColor} />
+        <TitleSeparator />
         <Spacer.Row numberOfSpaces={3} />
         <StyledTouchableLink
-          onDarkBackground={props.onDarkBackground}
           navigateTo={props.titleSeeMoreLink}
           onBeforeNavigate={props.onPressSeeMore}
           {...accessibilityAndTestId(`Voir plus d’offres de la sélection ${props.title}`)}>
-          <EyeSophisticated color={seeMoreColor} />
+          <EyeSophisticated />
           <Spacer.Row numberOfSpaces={2} />
-          <StyledButtonText onDarkBackground={props.onDarkBackground}>
-            En voir plus
-          </StyledButtonText>
+          <StyledButtonText>En voir plus</StyledButtonText>
         </StyledTouchableLink>
       </React.Fragment>
     ) : null
@@ -80,9 +69,7 @@ export const PassPlaylist = (props: Props) => {
     <Container>
       <TitleContainer>
         <Row>
-          <StyledTitleComponent testID="playlistTitle" onDarkBackground={props.onDarkBackground}>
-            {props.title}
-          </StyledTitleComponent>
+          <StyledTitleComponent testID="playlistTitle">{props.title}</StyledTitleComponent>
           {renderTitleSeeMore()}
         </Row>
         {props.subtitle ? (
@@ -119,30 +106,27 @@ const Row = styled.View({
   marginHorizontal: getSpacing(6),
 })
 
-const TitleSeparator = styled.View<{ color?: ColorsEnum }>((props) => ({
+const TitleSeparator = styled.View(({ theme }) => ({
   width: 1,
   height: getSpacing(5),
-  backgroundColor: props.color,
+  backgroundColor: theme.colors.greyMedium,
 }))
 
-const StyledTouchableLink = styled(TouchableLink).attrs<{ onDarkBackground?: boolean }>(
-  ({ theme, onDarkBackground }) => ({
-    hoverUnderlineColor: onDarkBackground ? theme.colors.white : theme.colors.primary,
-  })
-)({
+const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.primary,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacing(1),
 })
 
-const StyledButtonText = styled(Typo.ButtonText)<{ onDarkBackground?: boolean }>(
-  ({ onDarkBackground, theme }) => ({
-    color: onDarkBackground ? theme.colors.white : theme.colors.primary,
-  })
-)
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.primary,
+}))
 
 const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  color: theme.colors.primary,
 }))``
 
 const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
