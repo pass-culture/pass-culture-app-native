@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import {
   shareAppModalInformations,
-  ShareAppModal,
+  ShareAppModalType,
 } from 'features/shareApp/helpers/shareAppModalInformations'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -14,7 +14,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   visible: boolean
   hideModal: () => void
-  modalType: ShareAppModal
+  modalType: ShareAppModalType
 }
 
 export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {

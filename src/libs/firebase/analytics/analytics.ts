@@ -6,7 +6,7 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
-import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { analyticsProvider } from 'libs/firebase/analytics/provider'
 import { LoginRoutineMethod, OfferAnalyticsData } from 'libs/firebase/analytics/types'
@@ -125,7 +125,7 @@ const logEventAnalytics = {
   logDiscoverOffers: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from }),
   logDismissNotifications: () => analyticsProvider.logEvent(AnalyticsEvent.DISMISS_NOTIFICATIONS),
-  logDismissShareApp: (type: ShareAppModal) =>
+  logDismissShareApp: (type: ShareAppModalType) =>
     analyticsProvider.logEvent(AnalyticsEvent.DISMISS_SHARE_APP, { type }),
   logErrorSavingNewEmail: (errorCode: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.ERROR_SAVING_NEW_EMAIL, { code: errorCode }),
@@ -246,7 +246,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
-  logShareApp: (type: ShareAppModal) =>
+  logShareApp: (type: ShareAppModalType) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { type }),
   logShareOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),

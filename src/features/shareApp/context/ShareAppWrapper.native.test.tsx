@@ -1,5 +1,5 @@
 import { ShareAppWrapper, useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
-import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -15,7 +15,7 @@ jest.mock('ui/components/modals/useModal', () => ({
 }))
 
 jest.mock('features/shareApp/components/ShareAppModalNew', () => ({
-  ShareAppModalNew: ({ modalType }: { modalType: ShareAppModal }) => {
+  ShareAppModalNew: ({ modalType }: { modalType: ShareAppModalType }) => {
     mockShareAppModal(modalType)
     return null
   },
@@ -23,9 +23,9 @@ jest.mock('features/shareApp/components/ShareAppModalNew', () => ({
 
 describe('useShareAppContext()', () => {
   it.each([
-    ShareAppModal.BENEFICIARY,
-    ShareAppModal.NOT_ELIGIBLE,
-    ShareAppModal.ON_BOOKING_SUCCESS,
+    ShareAppModalType.BENEFICIARY,
+    ShareAppModalType.NOT_ELIGIBLE,
+    ShareAppModalType.ON_BOOKING_SUCCESS,
   ])('should show modal with correct modal type', async (modalType) => {
     const { result } = renderShareAppHook()
 

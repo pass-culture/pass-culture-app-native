@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
-import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render } from 'tests/utils'
 
@@ -41,7 +41,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
   it('should show beneficiary share app modal when button is clicked', async () => {
     const { getByText } = renderBeneficiaryAccountCreated()
     fireEvent.press(getByText('Je découvre les offres'))
-    expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModal.BENEFICIARY)
+    expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 })
 

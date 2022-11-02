@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Row } from 'features/cheatcodes/components/Row'
 import { ShareAppModalNew } from 'features/shareApp/components/ShareAppModalNew'
-import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -35,7 +35,7 @@ export function NavigationShareApp(): JSX.Element {
           <ShareAppModalNew
             visible={shareAppUnderageModalVisible}
             hideModal={hideShareAppUnderageModal}
-            modalType={ShareAppModal.NOT_ELIGIBLE}
+            modalType={ShareAppModalType.NOT_ELIGIBLE}
           />
         </Row>
         <Row half>
@@ -43,7 +43,7 @@ export function NavigationShareApp(): JSX.Element {
           <ShareAppModalNew
             visible={shareAppBeneficiaryModalVisible}
             hideModal={hideShareAppBeneficiaryModal}
-            modalType={ShareAppModal.BENEFICIARY}
+            modalType={ShareAppModalType.BENEFICIARY}
           />
         </Row>
         <Row half>
@@ -51,7 +51,7 @@ export function NavigationShareApp(): JSX.Element {
           <ShareAppModalNew
             visible={shareAppBookingModalVisible}
             hideModal={hideShareAppBookingModal}
-            modalType={ShareAppModal.ON_BOOKING_SUCCESS}
+            modalType={ShareAppModalType.ON_BOOKING_SUCCESS}
           />
         </Row>
       </StyledContainer>
