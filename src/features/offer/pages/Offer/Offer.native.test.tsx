@@ -1,5 +1,5 @@
 import { useAuthContext } from 'features/auth/AuthContext'
-import { renderOfferPage } from 'features/offer/pages/__tests__/renderOfferPageTestUtil'
+import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { act, fireEvent } from 'tests/utils'
 
 jest.mock('features/auth/AuthContext')

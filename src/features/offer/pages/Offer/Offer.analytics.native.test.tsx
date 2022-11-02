@@ -4,7 +4,11 @@ import waitForExpect from 'wait-for-expect'
 import { analytics } from 'libs/firebase/analytics'
 import { superFlushWithAct, act, fireEvent, cleanup } from 'tests/utils'
 
-import { offerId, renderOfferPage, renderOfferBodyPage } from '../__tests__/renderOfferPageTestUtil'
+import {
+  offerId,
+  renderOfferPage,
+  renderOfferBodyPage,
+} from '../../helpers/renderOfferPageTestUtil'
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {

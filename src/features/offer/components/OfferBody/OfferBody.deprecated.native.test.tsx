@@ -1,10 +1,7 @@
 import mockdate from 'mockdate'
 
 import { api } from 'api/api'
-import {
-  offerId,
-  renderOfferBodyPage,
-} from 'features/offer/pages/__tests__/renderOfferPageTestUtil'
+import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { act, cleanup, fireEvent } from 'tests/utils'
