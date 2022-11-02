@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OffersModule component should render correctly - with black title 1`] = `
+exports[`OffersModule component should render correctly 1`] = `
 <View
   style={
     Array [
@@ -33,7 +33,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
     >
       <Text
         numberOfLines={2}
-        onDarkBackground={false}
         style={
           Array [
             Object {
