@@ -1,11 +1,13 @@
+import { useNavigation } from '@react-navigation/native'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
@@ -19,9 +21,8 @@ type Props = {
 
 export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
   const { query } = hit
-  const { searchState: stagedSearchState } = useStagedSearch()
-  const { locationFilter } = stagedSearchState
-  const pushWithStagedSearch = usePushWithStagedSearch()
+  const { searchState } = useSearch()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const onPress = () => {
     sendEvent('click', hit, 'Suggestion clicked')
@@ -30,13 +31,13 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
-    const { priceRange } = stagedSearchState
-    pushWithStagedSearch({
-      query,
-      locationFilter,
-      priceRange,
-      view: SearchView.Results,
-    })
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...searchState,
+        query,
+        view: SearchView.Results,
+      })
+    )
 
     analytics.logSearchQuery(query || '')
   }

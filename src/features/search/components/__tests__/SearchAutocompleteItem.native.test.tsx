@@ -14,8 +14,7 @@ import { render, fireEvent } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
-const mockSearchState = initialSearchState
-const mockStagedSearchState: SearchState = {
+const mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
@@ -23,10 +22,8 @@ const mockStagedSearchState: SearchState = {
 }
 
 const mockDispatch = jest.fn()
-const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
-  useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
 }))
 
 const mockSendEvent = jest.fn()
@@ -58,9 +55,9 @@ describe('SearchAutocompleteItem component', () => {
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: hit.query,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
+        offerCategories: mockSearchState.offerCategories,
+        locationFilter: mockSearchState.locationFilter,
+        priceRange: mockSearchState.priceRange,
         view: SearchView.Results,
       })
     )
