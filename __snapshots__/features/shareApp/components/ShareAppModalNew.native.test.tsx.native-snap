@@ -4,7 +4,7 @@ exports[`ShareAppModalNew should match beneficiary modal snapshot when beneficia
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
-  onRequestClose={[MockFunction]}
+  onRequestClose={[Function]}
   statusBarTranslucent={true}
   testID="modal-undefined"
   transparent={true}
@@ -314,7 +314,7 @@ exports[`ShareAppModalNew should match booking modal snapshot when booking 1`] =
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
-  onRequestClose={[MockFunction]}
+  onRequestClose={[Function]}
   statusBarTranslucent={true}
   testID="modal-undefined"
   transparent={true}
@@ -624,7 +624,7 @@ exports[`ShareAppModalNew should match underage modal snapshot when underage 1`]
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
-  onRequestClose={[MockFunction]}
+  onRequestClose={[Function]}
   statusBarTranslucent={true}
   testID="modal-undefined"
   transparent={true}

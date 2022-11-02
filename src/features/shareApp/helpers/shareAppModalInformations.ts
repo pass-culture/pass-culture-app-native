@@ -1,9 +1,9 @@
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export enum ShareAppModal {
-  NOT_ELIGIBLE,
-  BENEFICIARY,
-  ON_BOOKING_SUCCESS,
+  NOT_ELIGIBLE = 'NOT_ELIGIBLE',
+  BENEFICIARY = 'BENEFICIARY',
+  ON_BOOKING_SUCCESS = 'ON_BOOKING_SUCCESS',
 }
 
 export const shareAppModalInformations = (modalType: ShareAppModal) => {
