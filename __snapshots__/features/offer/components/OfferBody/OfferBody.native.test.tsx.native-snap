@@ -336,11 +336,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           </View>
         </View>
         <View
-          numberOfSpaces={1}
+          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "height": 4,
+                "height": 8,
               },
             ]
           }
@@ -412,11 +412,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           </View>
         </View>
         <View
-          numberOfSpaces={1}
+          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "height": 4,
+                "height": 8,
               },
             ]
           }
@@ -489,11 +489,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           </View>
         </View>
         <View
-          numberOfSpaces={1}
+          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "height": 4,
+                "height": 8,
               },
             ]
           }

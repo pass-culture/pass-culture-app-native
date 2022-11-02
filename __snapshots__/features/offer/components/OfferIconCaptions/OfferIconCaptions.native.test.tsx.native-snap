@@ -56,11 +56,11 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       </View>
     </View>
     <View
-      numberOfSpaces={1}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 4,
+            "height": 8,
           },
         ]
       }
@@ -133,11 +133,11 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       </View>
     </View>
     <View
-      numberOfSpaces={1}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 4,
+            "height": 8,
           },
         ]
       }

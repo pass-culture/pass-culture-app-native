@@ -29,7 +29,7 @@ export const IconWithCaption = ({
       <IconContainer>
         <StyledIcon accessibilityLabel={accessibilityLabel} testID={testID} />
       </IconContainer>
-      <Spacer.Column numberOfSpaces={1} />
+      <Spacer.Column numberOfSpaces={2} />
       <Caption testID={`caption-${testID}`} disabled={isDisabled}>
         {caption}
       </Caption>
