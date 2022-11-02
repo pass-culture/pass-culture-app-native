@@ -4,7 +4,11 @@ import styled from 'styled-components/native'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 
-export const AddToFavoritesButton: FunctionComponent = () => {
+interface Props {
+  offerId: number
+}
+
+export const AddToFavoritesButton: FunctionComponent<Props> = ({ offerId }) => {
   return <ButtonTertiaryPrimary wording="Mettre en favori" icon={StyledIcon} />
 }
 

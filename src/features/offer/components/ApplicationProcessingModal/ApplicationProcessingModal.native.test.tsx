@@ -7,15 +7,20 @@ import { fireEvent, render } from 'tests/utils'
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
 const hideModal = jest.fn()
+const offerId = 1
 
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
-    const modal = render(<ApplicationProcessingModal visible hideModal={hideModal} />)
+    const modal = render(
+      <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
+    )
     expect(modal).toMatchSnapshot()
   })
 
   it('should navigate to profile on click on Aller sur mon profil', async () => {
-    const { getByLabelText } = render(<ApplicationProcessingModal visible hideModal={hideModal} />)
+    const { getByLabelText } = render(
+      <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
+    )
     const button = getByLabelText('Aller sur mon profil')
 
     fireEvent.press(button)

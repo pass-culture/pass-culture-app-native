@@ -14,10 +14,15 @@ import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 type Props = {
   visible: boolean
   hideModal: () => void
+  offerId: number
   children?: never
 }
 
-export const ErrorApplicationModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
+export const ErrorApplicationModal: FunctionComponent<Props> = ({
+  visible,
+  hideModal,
+  offerId,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => {
     hideModal()
@@ -42,7 +47,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({ visible, hideM
         onPress={navigateToProfile}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <AddToFavoritesButton />
+      <AddToFavoritesButton offerId={offerId} />
     </AppModalWithIllustration>
   )
 }

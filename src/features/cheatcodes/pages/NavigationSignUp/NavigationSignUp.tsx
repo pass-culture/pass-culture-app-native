@@ -17,6 +17,8 @@ import { Spacer } from 'ui/theme'
 
 export function NavigationSignUp(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
+  const venueId = 5133
+
   const {
     visible: finishSubscriptionModalVisible,
     showModal: showFinishSubscriptionModal,
@@ -117,6 +119,7 @@ export function NavigationSignUp(): JSX.Element {
           <ApplicationProcessingModal
             visible={applicationProcessingModalVisible}
             hideModal={hideApplicationProcessingModal}
+            offerId={venueId}
           />
         </Row>
         <Row half>
@@ -124,6 +127,7 @@ export function NavigationSignUp(): JSX.Element {
           <ErrorApplicationModal
             visible={errorApplicationModalVisible}
             hideModal={hideErrorApplicationModal}
+            offerId={venueId}
           />
         </Row>
       </StyledContainer>
