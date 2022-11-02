@@ -52,7 +52,8 @@ export const HomeHeader: FunctionComponent = function () {
         </CheatCodeButtonContainer>
       )}
 
-      <Spacer.Column numberOfSpaces={8} />
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={6} />
       <StyledTitle1>{welcomeTitle}</StyledTitle1>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>{getSubtitle()}</Typo.Body>
