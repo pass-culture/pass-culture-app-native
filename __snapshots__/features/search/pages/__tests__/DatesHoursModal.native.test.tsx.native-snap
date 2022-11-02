@@ -369,15 +369,23 @@ exports[`DatesHoursModal component should render modal correctly after animation
                   ]
                 }
               />
-              <View>
+              <View
+                inverseLayout={false}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
                 <View
-                  inverseLayout={false}
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
+                        "flexShrink": 1,
                       },
                     ]
                   }
@@ -436,6 +444,26 @@ exports[`DatesHoursModal component should render modal correctly after animation
                       Seules les sorties seront affichées
                     </Text>
                   </View>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
                   <View
                     style={
                       Array [
@@ -557,15 +585,23 @@ exports[`DatesHoursModal component should render modal correctly after animation
                   ]
                 }
               />
-              <View>
+              <View
+                inverseLayout={false}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
                 <View
-                  inverseLayout={false}
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
+                        "flexShrink": 1,
                       },
                     ]
                   }
@@ -624,6 +660,26 @@ exports[`DatesHoursModal component should render modal correctly after animation
                       Seules les sorties seront affichées
                     </Text>
                   </View>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
                   <View
                     style={
                       Array [

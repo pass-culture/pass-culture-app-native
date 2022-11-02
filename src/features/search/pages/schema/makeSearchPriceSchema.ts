@@ -11,7 +11,10 @@ export const makeSearchPriceSchema = (initialCredit: string) =>
       then: (schema) =>
         schema.test('validMinPrice', minPriceError, (value, schema) => {
           if (!value) return true
-          return Number(value) <= Number(schema.parent.maxPrice)
+          return (
+            Number(value.trim().replaceAll(',', '.')) <=
+            Number(schema.parent.maxPrice.trim().replaceAll(',', '.'))
+          )
         }),
     }),
     maxPrice: makePriceSchema(String(initialCredit)),
