@@ -46,7 +46,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
       />
-      <AddToFavoritesButton offerId={offerId} />
+      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={hideModal} />
     </AppModalWithIllustration>
   )
 }
