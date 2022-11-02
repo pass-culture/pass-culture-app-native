@@ -17,7 +17,7 @@ import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
-import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
@@ -45,7 +45,7 @@ export function BeneficiaryAccountCreated() {
 
   const onBeforeNavigate = useCallback(() => {
     BatchUser.trackEvent(BatchEvent.hasValidatedSubscription)
-    showShareAppModal(ShareAppModal.BENEFICIARY)
+    showShareAppModal(ShareAppModalType.BENEFICIARY)
   }, [showShareAppModal])
 
   useEnterKeyAction(navigateToHome)

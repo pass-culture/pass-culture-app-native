@@ -1,10 +1,11 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import {
   shareAppModalInformations,
-  ShareAppModal,
+  ShareAppModalType,
 } from 'features/shareApp/helpers/shareAppModalInformations'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorShout } from 'ui/svg/icons/BicolorShout'
@@ -13,17 +14,24 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   visible: boolean
   hideModal: () => void
-  modalType: ShareAppModal
+  modalType: ShareAppModalType
 }
 
 export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {
-  const openShareAppModal = async () => {
+  const openShareAppModal = useCallback(() => {
+    analytics.logShareApp(modalType)
     hideModal()
-  }
+  }, [modalType, hideModal])
+
+  const onCloseIconPress = useCallback(() => {
+    analytics.logDismissShareApp(modalType)
+    hideModal()
+  }, [modalType, hideModal])
+
   const { title, explanation } = shareAppModalInformations(modalType)
 
   return (
-    <AppInformationModal visible={visible} title={title} onCloseIconPress={hideModal}>
+    <AppInformationModal visible={visible} title={title} onCloseIconPress={onCloseIconPress}>
       <ShoutIcon />
       <Spacer.Column numberOfSpaces={6} />
       <StyledBody>{explanation}</StyledBody>

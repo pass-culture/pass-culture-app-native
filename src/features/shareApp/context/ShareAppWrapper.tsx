@@ -1,11 +1,11 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
 
 import { ShareAppModalNew } from 'features/shareApp/components/ShareAppModalNew'
-import { ShareAppModal } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface ShareAppContextValue {
-  showShareAppModal: (modalType: ShareAppModal) => void
+  showShareAppModal: (modalType: ShareAppModalType) => void
 }
 
 const ShareAppContext = React.createContext<ShareAppContextValue>({
@@ -18,10 +18,10 @@ export const ShareAppWrapper = memo(function ShareAppWrapper({
   children: JSX.Element
 }) {
   const { showModal, ...shareAppModalProps } = useModal(false)
-  const [modalType, setModalType] = useState(ShareAppModal.NOT_ELIGIBLE)
+  const [modalType, setModalType] = useState(ShareAppModalType.NOT_ELIGIBLE)
 
   const showShareAppModal = useCallback(
-    (modalType: ShareAppModal) => {
+    (modalType: ShareAppModalType) => {
       setModalType(modalType)
       showModal()
     },
