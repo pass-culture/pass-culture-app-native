@@ -19,15 +19,10 @@ import { SearchResults } from '../SearchResults'
 jest.mock('react-query')
 
 let mockSearchState = initialSearchState
-const mockDispatchStagedSearch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
-  }),
-  useStagedSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatchStagedSearch,
   }),
 }))
 
