@@ -152,6 +152,8 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
       navigate(
         ...getTabNavConfig('Search', {
           ...additionalSearchState,
+          beginningDatetime: null,
+          endingDatetime: null,
           view: SearchView.Results,
         })
       )
