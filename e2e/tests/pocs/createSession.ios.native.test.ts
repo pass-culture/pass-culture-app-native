@@ -15,6 +15,10 @@ const wdOpts: RemoteOptions = {
   port: 4723,
   logLevel: 'info',
   capabilities,
+  coloredLogs: true,
+  waitforTimeout: 10000,
+  connectionRetryTimeout: 90000,
+  connectionRetryCount: 3,
 }
 
 describe('ios', () => {

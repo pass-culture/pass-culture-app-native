@@ -3,14 +3,108 @@ name: Tests e2e iOS Native
 on:
   workflow_dispatch:
     inputs:
-      tbd:
-        description: "tbd"
-        required: false
-        type: string
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
 
 jobs:
-  tbd:
-    runs-on: ubuntu-latest
+  e2e-ios-native:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        os-version: ['>=15']
+        model: ['iPhone 12']
+    environment: ${{ inputs.environment }}
     steps:
-      - name: Hello World
-        run: echo "Hello World"
+      - uses: actions/checkout@v3
+
+      - name: Install Haxm on MacOS
+        run: brew install --cask intel-haxm
+
+      - name: Install ffmpeg session on MacOS
+        run: brew install ffmpeg
+
+      - uses: futureware-tech/simulator-action@v2
+        with:
+          os_version: ${{ matrix.os_version }}
+          model: ${{ matrix.model }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: ruby/setup-ruby@v1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Setup sentry credentials
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat <<EOT >> ~/.sentryclirc
+          [defaults]
+          url=https://sentry.passculture.team/
+          org=sentry
+          project=application-native
+
+          [auth]
+          token=$SENTRY_AUTH_TOKEN
+          EOT
+
+      - name: Install iOS bundle and dependencies
+        run: |
+          bundle install
+          cd ios
+          bundle exec pod install
+          cd ..
+
+
+      - name: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+        run: |
+          export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+
+      - name: Setup secrets env variables
+        run: |
+          echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.${{ inputs.environment }}
+
+      - name: Setup iOS Google services config
+        run: |
+          echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+
+      - name: Build iOS app for ${{ inputs.environment }} environment
+        run: |
+          scheme=$(echo 'console.log("PassCulture-" + "${{ inputs.environment }}"[0].toUpperCase() + "${{ inputs.environment }}".slice(1))' | node -)
+          xcodebuild -workspace ios/PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release -quiet | xcpretty
+          last_build_dir=$(ls -tr  ~/Library/Developer/Xcode/DerivedData/ | grep PassCulture | tail -n1)
+          ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ./PassCulture.zip
+
+      - name: Install and run Appium 2 in the background
+        run: |
+          if [[ ${{ inputs.environment }} = "testing" ]]; then
+            IOS_APP_ID=app.passculture.test
+          else
+            IOS_APP_ID=app.passculture.staging
+          fi
+          npm config set legacy-peer-deps true
+          npm install --no-save mjpeg-consumer
+          brew install bundletool
+          npm install -g appium@next
+          npm install -g appium-doctor
+          appium driver install xcuitest
+          appium driver install safari
+          xcrun xctrace list devices
+          appium-doctor
+          IOS_PLATFORM_VERSION=15.2 IOS_APP_ID=${IOS_APP_ID} IOS_ZIP_PATH=./PassCulture.zip yarn test:e2e:ios:native &>/dev/null &
+          appium
+#
+#      - name: Run e2e iOS tests
+#        run: |
+#          if [[ ${{ inputs.environment }} = "testing" ]]; then
+#            IOS_APP_ID=app.passculture.test
+#          else
+#            IOS_APP_ID=app.passculture.staging
+#          fi
+#          xcrun xctrace list devices
+#          IOS_PLATFORM_VERSION=15.2 IOS_APP_ID=${IOS_APP_ID} IOS_ZIP_PATH=./PassCulture.zip yarn test:e2e:ios:native
