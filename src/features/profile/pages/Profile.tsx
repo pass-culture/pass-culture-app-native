@@ -126,14 +126,7 @@ const OnlineProfile: React.FC = () => {
                 />
               </Li>
             )}
-            <Li>
-              <Row
-                type="navigable"
-                title="Notifications"
-                icon={Bell}
-                navigateTo={{ screen: 'NotificationSettings' }}
-              />
-            </Li>
+            <Li></Li>
             <Li>
               <SectionWithSwitch
                 icon={LocationPointerNotFilled}
