@@ -11,7 +11,6 @@ import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BouncyHeaderBackground } from 'ui/svg/BouncyHeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -45,7 +44,6 @@ export const HomeHeader: FunctionComponent = function () {
 
   return (
     <React.Fragment>
-      <BouncyHeaderBackground />
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
