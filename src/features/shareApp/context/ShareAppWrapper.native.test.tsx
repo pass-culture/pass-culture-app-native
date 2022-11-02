@@ -14,8 +14,8 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('features/shareApp/components/ShareAppModalNew', () => ({
-  ShareAppModalNew: ({ modalType }: { modalType: ShareAppModalType }) => {
+jest.mock('features/shareApp/components/ShareAppModal', () => ({
+  ShareAppModal: ({ modalType }: { modalType: ShareAppModalType }) => {
     mockShareAppModal(modalType)
     return null
   },

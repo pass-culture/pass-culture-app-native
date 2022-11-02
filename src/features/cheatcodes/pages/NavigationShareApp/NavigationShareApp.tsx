@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Row } from 'features/cheatcodes/components/Row'
-import { ShareAppModalNew } from 'features/shareApp/components/ShareAppModalNew'
+import { ShareAppModal } from 'features/shareApp/components/ShareAppModal'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -32,7 +32,7 @@ export function NavigationShareApp(): JSX.Element {
       <StyledContainer>
         <Row half>
           <ButtonPrimary wording="Underage modal" onPress={showShareAppUnderageModal} />
-          <ShareAppModalNew
+          <ShareAppModal
             visible={shareAppUnderageModalVisible}
             hideModal={hideShareAppUnderageModal}
             modalType={ShareAppModalType.NOT_ELIGIBLE}
@@ -40,7 +40,7 @@ export function NavigationShareApp(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary wording="Beneficiary modal" onPress={showShareAppBeneficiaryModal} />
-          <ShareAppModalNew
+          <ShareAppModal
             visible={shareAppBeneficiaryModalVisible}
             hideModal={hideShareAppBeneficiaryModal}
             modalType={ShareAppModalType.BENEFICIARY}
@@ -48,7 +48,7 @@ export function NavigationShareApp(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary wording="Booking modal" onPress={showShareAppBookingModal} />
-          <ShareAppModalNew
+          <ShareAppModal
             visible={shareAppBookingModalVisible}
             hideModal={hideShareAppBookingModal}
             modalType={ShareAppModalType.ON_BOOKING_SUCCESS}

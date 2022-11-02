@@ -18,7 +18,7 @@ type Props = {
   modalType: ShareAppModalType
 }
 
-export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {
+export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {
   const openShareAppModal = useCallback(() => {
     analytics.logShareApp(modalType)
     hideModal()
