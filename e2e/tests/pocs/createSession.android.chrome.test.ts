@@ -4,9 +4,9 @@ const { CHROME_DRIVER_PATH } = process.env
 
 const capabilities = {
   platformName: 'Android',
+  browserName: 'chrome',
   'appium:automationName': 'UiAutomator2',
   'appium:deviceName': 'Android',
-  browserName: 'chrome',
   'appium:chromedriverExecutable': CHROME_DRIVER_PATH,
 }
 
@@ -24,7 +24,7 @@ describe('android chrome', () => {
     expect(driver).toBeDefined()
   })
 
-  afterEach(async () => {
+  afterAll(async () => {
     await driver.deleteSession()
   })
 

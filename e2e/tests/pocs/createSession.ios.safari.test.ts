@@ -1,13 +1,13 @@
 import { remote, RemoteOptions } from 'webdriverio'
 
-const { CHROME_DRIVER_PATH } = process.env
+const { IOS_DEVICE_NAME, IOS_PLATFORM_VERSION } = process.env
 
 const capabilities = {
-  platformName: 'Android',
-  'appium:automationName': 'UiAutomator2',
-  'appium:deviceName': 'Android',
-  browserName: 'chrome',
-  'appium:chromedriverExecutable': CHROME_DRIVER_PATH,
+  platformName: 'iOS',
+  browserName: 'safari',
+  'appium:automationName': 'XCUITest',
+  'appium:deviceName': IOS_DEVICE_NAME || 'iPhone 12',
+  'appium:platformVersion': IOS_PLATFORM_VERSION || '15.5',
 }
 
 const wdOpts: RemoteOptions = {
@@ -16,7 +16,7 @@ const wdOpts: RemoteOptions = {
   capabilities,
 }
 
-describe('android chrome', () => {
+describe('iOS Safari', () => {
   let driver: WebdriverIO.Browser | undefined
 
   beforeAll(async () => {
@@ -24,12 +24,12 @@ describe('android chrome', () => {
     expect(driver).toBeDefined()
   })
 
-  afterEach(async () => {
+  afterAll(async () => {
     await driver.deleteSession()
   })
 
   it('should create session', async () => {
-    await driver.url('https://www.google.com')
+    await driver.url('https://www.google.fr')
 
     const title = await driver.getTitle()
     expect(title).toEqual('Google')

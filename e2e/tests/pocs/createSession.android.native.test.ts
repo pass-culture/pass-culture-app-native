@@ -4,9 +4,7 @@ const { ANDROID_APK_PATH, ANDROID_APP_ID } = process.env
 
 const capabilities = {
   platformName: 'Android',
-  'appium:app':
-    ANDROID_APK_PATH ||
-    'https://github.com/appium/appium/raw/1.x/sample-code/apps/ApiDemos-debug.apk',
+  'appium:app': ANDROID_APK_PATH,
   'appium:automationName': 'UiAutomator2',
   'appium:deviceName': 'Android',
 }
@@ -19,14 +17,13 @@ const wdOpts: RemoteOptions = {
 
 describe('android', () => {
   let driver: WebdriverIO.Browser | undefined
-  const androidAppId = ANDROID_APP_ID || 'io.appium.android.apis'
 
   beforeAll(async () => {
     driver = await remote(wdOpts)
     expect(driver).toBeDefined()
   })
 
-  afterEach(async () => {
+  afterAll(async () => {
     await driver.deleteSession()
   })
 
@@ -36,6 +33,6 @@ describe('android', () => {
     expect(res.build).toBeInstanceOf(Object)
 
     const currentPackage = await driver.getCurrentPackage()
-    expect(currentPackage).toEqual(androidAppId)
+    expect(currentPackage).toEqual(ANDROID_APP_ID)
   })
 })
