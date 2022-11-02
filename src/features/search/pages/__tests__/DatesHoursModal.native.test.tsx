@@ -203,6 +203,32 @@ describe('DatesHoursModal component', () => {
         screen: 'Search',
       })
     })
+
+    it('without beginning & ending date when pressing search button', async () => {
+      mockSearchState = {
+        ...initialSearchState,
+        beginningDatetime: TODAY.toISOString(),
+        endingDatetime: TOMORROW.toISOString(),
+      }
+      const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+
+      await superFlushWithAct()
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          beginningDatetime: null,
+          endingDatetime: null,
+          view: SearchView.Results,
+        },
+        screen: 'Search',
+      })
+    })
   })
 
   describe('should log', () => {
