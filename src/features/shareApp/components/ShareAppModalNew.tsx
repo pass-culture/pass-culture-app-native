@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import {
   shareAppModalInformations,
   ShareAppModal,
-} from 'libs/share/shareApp/shareAppModalInformations'
+} from 'features/shareApp/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorShout } from 'ui/svg/icons/BicolorShout'
