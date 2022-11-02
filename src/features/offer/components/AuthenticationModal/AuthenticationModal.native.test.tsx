@@ -2,8 +2,9 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { AuthenticationModal } from 'features/offer/components/redirectionModals/AuthenticationModal/AuthenticationModal'
 import { fireEvent, render } from 'tests/utils'
+
+import { AuthenticationModal } from './AuthenticationModal'
 
 const hideModal = jest.fn()
 

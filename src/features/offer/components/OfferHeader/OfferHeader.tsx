@@ -10,7 +10,7 @@ import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorit
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { SignUpSignInChoiceOfferModal } from 'features/offer/components/redirectionModals/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
+import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { WebShareModal } from 'libs/share/WebShareModal'

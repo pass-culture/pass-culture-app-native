@@ -2,8 +2,9 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { ApplicationProcessingModal } from 'features/offer/components/redirectionModals/ApplicationProcessingModal/ApplicationProcessingModal'
 import { fireEvent, render } from 'tests/utils'
+
+import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
 const hideModal = jest.fn()
 

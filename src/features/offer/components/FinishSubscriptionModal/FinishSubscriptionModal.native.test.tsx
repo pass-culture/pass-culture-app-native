@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { FinishSubscriptionModal } from 'features/offer/components/redirectionModals/FinishSubscriptionModal/FinishSubscriptionModal'
 import { fireEvent, render } from 'tests/utils'
+
+import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
 jest.mock('react-query')
 jest.mock('features/navigation/navigationRef')
