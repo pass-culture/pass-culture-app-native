@@ -14,7 +14,7 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { locationSchema } from 'features/search/pages/schema/locationSchema'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { useGetFullscreenModalSliderLength } from 'features/search/pages/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/pages/useSetFocusWithCondition'
@@ -154,7 +154,6 @@ export const LocationModal: FunctionComponent<Props> = ({
     resolver: yupResolver(locationSchema),
     defaultValues,
   })
-  const { dispatch: dispatchStagedSearch } = useStagedSearch()
 
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
@@ -178,7 +177,6 @@ export const LocationModal: FunctionComponent<Props> = ({
           ...additionalSearchState,
           locationFilter: { locationType: LocationType.EVERYWHERE },
         }
-        dispatchStagedSearch({ type: 'SET_LOCATION_EVERYWHERE' })
         analytics.logChangeSearchLocation({ type: 'everywhere' })
       } else if (locationChoice === RadioButtonLocation.AROUND_ME) {
         additionalSearchState = {
@@ -188,7 +186,6 @@ export const LocationModal: FunctionComponent<Props> = ({
             aroundRadius: getValues('aroundRadius'),
           },
         }
-        dispatchStagedSearch({ type: 'SET_LOCATION_AROUND_ME' })
         analytics.logChangeSearchLocation({ type: 'aroundMe' })
       } else if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
         const locationType = Object.prototype.hasOwnProperty.call(
@@ -207,10 +204,6 @@ export const LocationModal: FunctionComponent<Props> = ({
               aroundRadius,
             },
           }
-          dispatchStagedSearch({
-            type: 'SET_LOCATION_PLACE',
-            payload: { aroundRadius, place: selectedPlaceOrVenue as SuggestedPlace },
-          })
           analytics.logChangeSearchLocation({ type: 'place' })
         } else {
           additionalSearchState = {
@@ -220,10 +213,6 @@ export const LocationModal: FunctionComponent<Props> = ({
               venue: selectedPlaceOrVenue as SuggestedVenue,
             },
           }
-          dispatchStagedSearch({
-            type: 'SET_LOCATION_VENUE',
-            payload: { ...(selectedPlaceOrVenue as SuggestedVenue) },
-          })
           analytics.logChangeSearchLocation({
             type: 'venue',
             venueId: (selectedPlaceOrVenue as SuggestedVenue).venueId,
@@ -238,7 +227,7 @@ export const LocationModal: FunctionComponent<Props> = ({
       )
       hideModal()
     },
-    [searchState, dispatchStagedSearch, navigate, hideModal, getValues]
+    [searchState, navigate, hideModal, getValues]
   )
 
   const close = useCallback(() => {

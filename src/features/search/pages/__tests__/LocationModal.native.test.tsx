@@ -24,13 +24,9 @@ import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 let mockSearchState = initialSearchState
-const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-  }),
-  useStagedSearch: () => ({
-    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -273,40 +269,6 @@ describe('LocationModal component', () => {
   )
 
   it.each`
-    locationFilter                                                        | label                             | locationType               | dispatch
-    ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE} | ${{ type: 'SET_LOCATION_EVERYWHERE' }}
-    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}  | ${{ type: 'SET_LOCATION_AROUND_ME' }}
-  `(
-    'should dispatch staged search with $locationType location type when selecting $label radio button and pressing search button',
-    async ({
-      locationFilter,
-      label,
-      dispatch,
-    }: {
-      locationFilter: LocationFilter
-      label: RadioButtonLocation
-      dispatch: Action
-    }) => {
-      mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText } = renderLocationModal({
-        hideLocationModal,
-      })
-
-      const radioButton = getByTestId(label)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(mockStagedDispatch).toHaveBeenCalledWith(dispatch)
-    }
-  )
-
-  it.each`
     locationFilter                                                                          | label                                        | locationType          | eventType
     ${{ locationType: LocationType.VENUE, venue: mockVenues[0] }}                           | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.VENUE} | ${{ type: 'venue', venueId: mockVenues[0].venueId }}
     ${{ locationType: LocationType.PLACE, place: mockPlaces[0], aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE} | ${{ type: 'place' }}
@@ -358,53 +320,6 @@ describe('LocationModal component', () => {
         },
         screen: 'Search',
       })
-    }
-  )
-
-  it.each`
-    locationFilter                                                                          | label                                        | locationType          | dispatch
-    ${{ locationType: LocationType.VENUE, venue: mockVenues[0] }}                           | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.VENUE} | ${{ type: 'SET_LOCATION_VENUE', payload: { ...mockVenues[0] } }}
-    ${{ locationType: LocationType.PLACE, place: mockPlaces[0], aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE} | ${{ type: 'SET_LOCATION_PLACE', payload: { aroundRadius: MAX_RADIUS, place: mockPlaces[0] } }}
-  `(
-    'should dispatch staged search with $locationType location type when selecting $label radio button, location/venue and pressing search button',
-    async ({
-      locationFilter,
-      label,
-      dispatch,
-    }: {
-      locationFilter: LocationFilter
-      label: RadioButtonLocation
-      dispatch: Action
-    }) => {
-      mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText, getByPlaceholderText } = renderLocationModal({
-        hideLocationModal,
-      })
-
-      const radioButton = getByTestId(label)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-
-      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
-      await act(async () => {
-        fireEvent(searchInput, 'onFocus')
-        fireEvent.changeText(searchInput, 'Paris')
-      })
-
-      const venueOrPlace =
-        locationFilter.locationType === LocationType.VENUE ? mockVenues[0] : mockPlaces[0]
-
-      await act(async () => {
-        fireEvent.press(getByTestId(keyExtractor(venueOrPlace)))
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(mockStagedDispatch).toHaveBeenCalledWith(dispatch)
     }
   )
 
