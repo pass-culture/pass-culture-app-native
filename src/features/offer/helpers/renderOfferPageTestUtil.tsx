@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
