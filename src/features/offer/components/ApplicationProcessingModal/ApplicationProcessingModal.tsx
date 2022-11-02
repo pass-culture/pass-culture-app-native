@@ -40,7 +40,6 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Profile' } }}
         onBeforeNavigate={hideModal}
       />
-      <Spacer.Column numberOfSpaces={4} />
       <AddToFavoritesButton offerId={offerId} />
     </AppModalWithIllustration>
   )

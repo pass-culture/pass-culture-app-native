@@ -46,7 +46,6 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
       />
-      <Spacer.Column numberOfSpaces={4} />
       <AddToFavoritesButton offerId={offerId} />
     </AppModalWithIllustration>
   )

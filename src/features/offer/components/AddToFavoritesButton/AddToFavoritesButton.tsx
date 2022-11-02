@@ -9,7 +9,16 @@ interface Props {
 }
 
 export const AddToFavoritesButton: FunctionComponent<Props> = ({ offerId }) => {
-  return <ButtonTertiaryPrimary wording="Mettre en favori" icon={StyledIcon} />
+  const isFavorite = useFavorite({ offerId })
+
+  if (isFavorite) return null
+
+  return (
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={4} />
+      <ButtonTertiaryPrimary wording="Mettre en favori" icon={StyledIcon} />
+    </React.Fragment>
+  )
 }
 
 const StyledIcon = styled(FavoriteFilled).attrs(({ theme }) => ({
