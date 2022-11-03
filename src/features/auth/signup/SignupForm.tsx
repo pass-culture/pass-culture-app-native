@@ -176,7 +176,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
           onLeftIconPress={isFirstStep ? goBackAndLeaveSignup : goToPreviousStep}
           {...rightIconProps}
         />
-        <Spacer.Column numberOfSpaces={5} />
+        <Spacer.Column numberOfSpaces={6} />
         <BottomCardContentContainer>
           <stepConfig.Component
             goToNextStep={goToNextStep}

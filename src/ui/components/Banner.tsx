@@ -3,14 +3,18 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Error } from 'ui/svg/icons/Error'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, getSpacing, Typo } from 'ui/theme'
 
-export const Banner: React.FC<{ title: string }> = ({ title }) => (
+export const Banner: React.FC<{ title: string; icon?: React.FC<AccessibleIcon> }> = ({
+  title,
+  icon: Icon,
+}) => (
   <Background>
     <IconWrapper>
-      <StyledError />
+      <StyledIcon as={Icon} />
     </IconWrapper>
-    <Spacer.Row numberOfSpaces={3} />
+    <Spacer.Row numberOfSpaces={4} />
     <TextContainer>
       <Typo.Caption>{title}</Typo.Caption>
     </TextContainer>
@@ -20,20 +24,20 @@ export const Banner: React.FC<{ title: string }> = ({ title }) => (
 const Background = styled(View)(({ theme }) => ({
   display: 'flex',
   backgroundColor: theme.colors.greyLight,
-  paddingVertical: getSpacing(4),
-  paddingLeft: getSpacing(3),
-  paddingRight: getSpacing(5),
+  padding: getSpacing(4),
   alignItems: 'center',
   flexDirection: 'row',
-  borderRadius: getSpacing(1),
+  borderRadius: getSpacing(2),
 }))
 
 const IconWrapper = styled.View({
   flexShrink: 0,
 })
 
-const StyledError = styled(Error).attrs(({ theme }) => ({
+const StyledIcon = styled(Error).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
+  color: theme.colors.greyDark,
+  color2: theme.colors.greyDark,
 }))``
 
 const TextContainer = styled(View)({

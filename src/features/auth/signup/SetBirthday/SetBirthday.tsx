@@ -7,11 +7,13 @@ import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/util
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/firebase/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
+import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { Form } from 'ui/components/Form'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { useModal } from 'ui/components/modals/useModal'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
 
@@ -47,7 +49,12 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance&nbsp;?"
           onPress={onPressWhy}
         />
-        <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={4} />
+        <Banner
+          title="Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations."
+          icon={BicolorIdCard}
+        />
+        <Spacer.Column numberOfSpaces={6} />
         <DateInput
           onChange={setDate}
           errorMessage={errorMessage}
