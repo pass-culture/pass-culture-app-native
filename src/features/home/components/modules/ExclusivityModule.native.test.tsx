@@ -1,18 +1,23 @@
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
-import { ContentTypes } from 'features/home/contentful'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
-import { analytics } from 'libs/firebase/analytics'
-import { render, fireEvent } from 'tests/utils'
+import { render } from 'tests/utils'
 
 import { ExclusivityModule, ExclusivityModuleProps } from './ExclusivityModule'
 
 jest.mock('features/auth/settings')
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
+
+const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
+excluOfferAPISpy.mockImplementation(() => {
+  return {
+    isLoading: false,
+    data: mockOffer,
+  } as UseQueryResult<OfferResponse>
+})
 
 const props: ExclusivityModuleProps = {
   title: "Image d'Adèle",
@@ -32,73 +37,13 @@ const mockPosition = {
 jest.mock('libs/geolocation', () => ({ useGeolocation: () => ({ position: mockPosition }) }))
 
 describe('ExclusivityModule component', () => {
-  const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
-  beforeEach(() => {
-    excluOfferAPISpy.mockImplementation(() => {
-      return {
-        isLoading: false,
-        data: mockOffer,
-      } as UseQueryResult<OfferResponse>
-    })
-  })
-  afterAll(() => jest.resetAllMocks())
-
-  it('should render correctly', () => {
-    const { toJSON } = renderExclusivityModule(props)
-    expect(toJSON()).toMatchSnapshot()
+  it('should render ExclusivityOffer component when an offer id is provided', () => {
+    const { getByTestId } = render(<ExclusivityModule {...props} />)
+    expect(getByTestId('link-exclusivity-offer')).toBeTruthy()
   })
 
-  it('should navigate to the offer when clicking on the image', () => {
-    const { getByTestId } = renderExclusivityModule(props)
-    fireEvent.press(getByTestId('imageExclu'))
-    expect(navigate).toHaveBeenCalledWith('Offer', {
-      id: mockOffer.id,
-      from: 'home',
-    })
-  })
-
-  it('should log a click event when clicking on the image', () => {
-    const { getByTestId } = renderExclusivityModule(props)
-    fireEvent.press(getByTestId('imageExclu'))
-    expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
-      moduleName: props.title,
-      moduleId: props.moduleId,
-      homeEntryId: props.homeEntryId,
-    })
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId: mockOffer.id,
-      moduleName: props.title,
-      moduleId: props.moduleId,
-      homeEntryId: props.homeEntryId,
-      from: 'exclusivity',
-    })
-  })
-
-  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
-    renderExclusivityModule(props)
-
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      props.moduleId,
-      ContentTypes.EXCLUSIVITY,
-      props.index,
-      props.homeEntryId
-    )
-  })
-
-  it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    excluOfferAPISpy.mockImplementationOnce(() => {
-      return {
-        isLoading: false,
-        data: undefined,
-      } as UseQueryResult<OfferResponse>
-    })
-    renderExclusivityModule(props)
-
-    expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+  it('should render ExclusivityBanner component when no offer id is provided', () => {
+    const { getByTestId } = render(<ExclusivityModule {...props} offerId={undefined} />)
+    expect(getByTestId('exclusivity-banner')).toBeTruthy()
   })
 })
-
-const renderExclusivityModule = (props: ExclusivityModuleProps) => {
-  return render(<ExclusivityModule {...props} />)
-}
