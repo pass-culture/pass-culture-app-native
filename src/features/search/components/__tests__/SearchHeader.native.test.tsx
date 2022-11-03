@@ -20,9 +20,8 @@ const mockSearchState: SearchState = {
   priceRange: [0, 20],
 }
 
-const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 jest.mock('libs/firebase/analytics')
 

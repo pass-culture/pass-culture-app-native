@@ -3,7 +3,7 @@ import React from 'react'
 
 import { OfferType } from 'features/search/enums'
 import { RadioButtonLocation } from 'features/search/pages/LocationModal'
-import { initialSearchState } from 'features/search/pages/reducer'
+import { initialSearchState as mockInitialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
@@ -11,12 +11,10 @@ import { fireEvent, render, act } from 'tests/utils'
 import { SectionTitle } from '../titles'
 
 const Today = new Date(2020, 10, 1)
-const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
+    searchState: mockInitialSearchState,
+    dispatch: jest.fn(),
   }),
 }))
 

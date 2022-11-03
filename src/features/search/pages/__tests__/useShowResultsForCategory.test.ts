@@ -8,11 +8,10 @@ import { renderHook } from 'tests/utils'
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: jest.fn(),
   }),
 }))
 
