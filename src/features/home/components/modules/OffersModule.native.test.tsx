@@ -11,7 +11,6 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
-import { theme } from 'theme'
 
 import { OffersModule } from './OffersModule'
 
@@ -46,15 +45,9 @@ jest.mock('react-query')
 jest.mock('features/profile/api')
 
 describe('OffersModule component', () => {
-  it('should render correctly - with black title', () => {
+  it('should render correctly', () => {
     const component = render(<OffersModule {...props} index={1} />)
     expect(component).toMatchSnapshot()
-    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(theme.colors.black)
-  })
-
-  it('should render with white title if first module displayed', async () => {
-    const component = render(<OffersModule {...props} index={0} />)
-    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(theme.colors.white)
   })
 })
 

@@ -130,7 +130,6 @@ export const OffersModule = (props: OffersModuleProps) => {
       testID="offersModuleList"
       title={display.title}
       subtitle={index === 0 ? undefined : display.subtitle}
-      onDarkBackground={index === 0}
       data={hits}
       itemHeight={itemHeight}
       itemWidth={itemWidth}

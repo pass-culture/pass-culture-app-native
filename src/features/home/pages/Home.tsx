@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
 import {
   FlatList,
@@ -6,6 +6,7 @@ import {
   NativeSyntheticEvent,
   Platform,
   ScrollView,
+  StatusBar,
 } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -169,6 +170,15 @@ export const OnlineHome: FunctionComponent = () => {
 
     return () => clearInterval(loadMore)
   }, [modules.length, isLoading, maxIndex])
+
+  useFocusEffect(
+    useCallback(() => {
+      StatusBar.setBarStyle('dark-content', true)
+      return () => {
+        StatusBar.setBarStyle('light-content', true)
+      }
+    }, [])
+  )
 
   return (
     <Container>

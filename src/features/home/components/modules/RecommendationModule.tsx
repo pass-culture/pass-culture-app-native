@@ -91,7 +91,6 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       testID="recommendationModuleList"
       title={displayParameters.title}
       subtitle={displayParameters.subtitle}
-      onDarkBackground={index === 0}
       data={hits || []}
       itemHeight={itemHeight}
       itemWidth={itemWidth}

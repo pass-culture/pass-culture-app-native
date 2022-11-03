@@ -11,7 +11,6 @@ import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BouncyHeaderBackground } from 'ui/svg/BouncyHeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -44,43 +43,32 @@ export const HomeHeader: FunctionComponent = function () {
   }
 
   return (
-    <React.Fragment>
-      <BouncyHeaderBackground />
+    <Container>
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
           style={{ top: getSpacing(3) + top }}>
-          <StyledBody>CheatMenu</StyledBody>
+          <Typo.Body>CheatMenu</Typo.Body>
         </CheatCodeButtonContainer>
       )}
 
-      <CenterContainer>
-        <Spacer.Column numberOfSpaces={8} />
-        <StyledTitle1>{welcomeTitle}</StyledTitle1>
-        <Spacer.Column numberOfSpaces={2} />
-        <StyledBody>{getSubtitle()}</StyledBody>
-      </CenterContainer>
+      <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={6} />
-    </React.Fragment>
+      <StyledTitle1>{welcomeTitle}</StyledTitle1>
+      <Spacer.Column numberOfSpaces={2} />
+      <Typo.Body>{getSubtitle()}</Typo.Body>
+      <Spacer.Column numberOfSpaces={6} />
+    </Container>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-}))
+const Container = styled.View({
+  marginHorizontal: getSpacing(6),
+})
 
 const StyledTitle1 = styled(Typo.Title1).attrs({
   numberOfLines: 2,
-})(({ theme }) => ({
-  textAlign: 'center',
-  marginHorizontal: getSpacing(8),
-  color: theme.colors.white,
-}))
-
-const CenterContainer = styled.View({
-  flexGrow: 1,
-  alignItems: 'center',
-})
+})({})
 
 const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',
@@ -88,5 +76,4 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   zIndex: theme.zIndex.cheatCodeButton,
   border: 1,
   padding: getSpacing(1),
-  borderColor: theme.colors.white,
 }))
