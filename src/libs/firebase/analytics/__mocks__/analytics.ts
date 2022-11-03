@@ -6,6 +6,7 @@ export const analytics: typeof actualAnalytics = {
   logAcceptNotifications: jest.fn(),
   logAccountDeletion: jest.fn(),
   logAccountReactivation: jest.fn(),
+  logActivateGeolocfromSearchResults: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
   logBackToHomeFromEduconnectError: jest.fn(),

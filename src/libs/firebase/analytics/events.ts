@@ -4,6 +4,7 @@ export enum AnalyticsEvent {
   ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
   ACCOUNT_DELETION = 'AccountDeletion',
   ACCOUNT_REACTIVATION = 'AccountReactivation',
+  ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS = 'ActivateGeolocfromSearchResults',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   BACK_TO_HOME_FROM_EDUCONNECT_ERROR = 'BackToHomeFromEduconnectError',
