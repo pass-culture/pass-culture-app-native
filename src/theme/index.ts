@@ -411,7 +411,7 @@ export interface AppThemeType {
 
 export const theme: AppThemeType = {
   appContentWidth: getSpacing(100),
-  minScreenHeight: getSpacing(133),
+  minScreenHeight: getSpacing(142),
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   inputs: {

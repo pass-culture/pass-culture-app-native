@@ -13,7 +13,7 @@ import { pad } from 'libs/parsers'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export function DatePickerSpinner(props: DatePickerProps) {
   const DEFAULT_DATE = {
@@ -59,7 +59,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       />
       <Spacer.Column numberOfSpaces={2} />
       <SpinnerPickerWrapper testID="date-picker-spinner-touch">
-        <Picker
+        <StyledPicker
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}
@@ -69,6 +69,12 @@ export function DatePickerSpinner(props: DatePickerProps) {
     </React.Fragment>
   )
 }
+
+// This height will only show 3 rows of the spinner instead of 7
+const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
+const StyledPicker = styled(Picker).attrs(({ theme }) => ({
+  height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
+}))``
 
 const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   alignSelf: 'stretch',

@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export function DatePickerSpinner(props: DatePickerProps) {
   const [date, setDate] = useState<Date>(props.defaultSelectedDate)
@@ -43,6 +43,11 @@ export function DatePickerSpinner(props: DatePickerProps) {
   )
 }
 
+// This height will only show 3 rows of the spinner instead of 7
+const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
 const SpinnerDatePicker = styled(DatePicker).attrs(({ theme }) => ({
   textColor: theme.colors.black,
-}))({ width: '100%' })
+}))(({ theme }) => ({
+  height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
+  width: '100%',
+}))
