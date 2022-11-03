@@ -18,7 +18,7 @@ describe('shareAppModalInformations', () => {
     expect(modalInformations).toEqual({
       title: 'La culture, ça se partage\u00a0!',
       explanation:
-        'Recommande l’appli à tes potes pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.',
+        'Recommande l’appli à tes amis pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.',
     })
   })
 
