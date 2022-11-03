@@ -3,7 +3,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
-import { useShouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
+import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/ExclusivityModule.utils'
 import { ExclusivityPane } from 'features/home/contentful'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'

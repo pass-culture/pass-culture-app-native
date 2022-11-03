@@ -1,9 +1,9 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { ExclusivityImage } from 'features/home/components/modules/ExclusivityImage'
-import { ExclusivityModuleProps } from 'features/home/components/modules/ExclusivityModule'
-import { useShouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
+import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
+import { ExclusivityModuleProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
+import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/ExclusivityModule.utils'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'

@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
-import { ExclusivityBanner } from 'features/home/components/modules/ExclusivityBanner'
-import { ExclusivityOffer } from 'features/home/components/modules/ExclusivityOffer'
+import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
+import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { ExclusivityPane } from 'features/home/contentful'
 import { getSpacing, Spacer } from 'ui/theme'
 

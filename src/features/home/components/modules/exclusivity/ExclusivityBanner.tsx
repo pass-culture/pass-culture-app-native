@@ -1,8 +1,8 @@
 import React, { memo, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { ExclusivityImage } from 'features/home/components/modules/ExclusivityImage'
-import { ExclusivityModuleProps } from 'features/home/components/modules/ExclusivityModule'
+import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
+import { ExclusivityModuleProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 
