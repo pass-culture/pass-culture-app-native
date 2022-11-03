@@ -1,70 +1,93 @@
-import { shouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
-import { ExclusivityPane } from 'features/home/contentful'
-import { offerResponseSnap as offer } from 'features/offer/fixtures/offerResponse'
-import { GeoCoordinates } from 'libs/geolocation'
+import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
-let userLocation: GeoCoordinates | null = null
+import { OfferResponse } from 'api/gen'
+import * as excluOfferAPI from 'features/home/api/useExcluOffer'
+import { useShouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
+import { ExclusivityPane } from 'features/home/contentful'
+import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { GeoCoordinates } from 'libs/geolocation'
+import { renderHook } from 'tests/utils'
+
 let display: ExclusivityPane['display'] = {
   aroundRadius: 20,
   isGeolocated: true,
   title: 'Rayon de 20 km',
 }
 
-const maxCredit = 300
+let mockPosition: GeoCoordinates | null = null
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    position: mockPosition,
+  }),
+}))
 
-describe('shouldDisplayExcluOffer', () => {
+jest.mock('features/search/utils/useMaxPrice')
+const mockedUseMaxPrice = mocked(useMaxPrice)
+mockedUseMaxPrice.mockReturnValue(300)
+
+const offerId = 116656
+const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
+excluOfferAPISpy.mockReturnValue({
+  isLoading: false,
+  data: mockOffer,
+} as UseQueryResult<OfferResponse>)
+
+describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
-    const result = shouldDisplayExcluOffer(undefined, offer, userLocation, maxCredit)
-    expect(result).toBe(true)
+    const { result } = renderHook(() => useShouldDisplayExcluOffer(undefined, offerId))
+    expect(result.current).toBe(true)
   })
 
   it('should not display offer if price is above user max credit', () => {
-    const result = shouldDisplayExcluOffer(undefined, offer, userLocation, 3)
-    expect(result).toBe(false)
+    mockedUseMaxPrice.mockReturnValueOnce(3)
+    const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+    expect(result.current).toBe(false)
   })
 
   describe('user with geolocation activated', () => {
     it('should display offer if user is within radius', () => {
-      userLocation = { latitude: 20, longitude: 2 }
-      const result = shouldDisplayExcluOffer(display, offer, userLocation, maxCredit)
-      expect(result).toBe(true)
+      mockPosition = { latitude: 20, longitude: 2 }
+      const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+      expect(result.current).toBe(true)
     })
 
     it('should not display offer if user is too far from offer', () => {
-      userLocation = { latitude: 52.5, longitude: 13.4 }
-      const result = shouldDisplayExcluOffer(display, offer, userLocation, maxCredit)
-      expect(result).toBe(false)
+      mockPosition = { latitude: 52.5, longitude: 13.4 }
+      const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+      expect(result.current).toBe(false)
     })
 
     it('should not display offer if offer coodinates are not available', () => {
-      userLocation = { latitude: 20, longitude: 2 }
+      mockPosition = { latitude: 20, longitude: 2 }
       const coordinates = { latitude: undefined, longitude: undefined }
-      const offerWithoutCoordinates = { ...offer, venue: { ...offer.venue, coordinates } }
-      const result = shouldDisplayExcluOffer(
-        display,
-        offerWithoutCoordinates,
-        userLocation,
-        maxCredit
-      )
-      expect(result).toBe(false)
+      const offerWithoutCoordinates = { ...mockOffer, venue: { ...mockOffer.venue, coordinates } }
+      excluOfferAPISpy.mockReturnValueOnce({
+        isLoading: false,
+        data: offerWithoutCoordinates,
+      } as UseQueryResult<OfferResponse>)
+
+      const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+      expect(result.current).toBe(false)
     })
   })
 
   describe('user with geolocation deactivated', () => {
-    beforeEach(() => {
-      userLocation = null
+    beforeAll(() => {
+      mockPosition = null
     })
 
     it('should display offer if module is not geolocated', () => {
       display = { aroundRadius: 20, isGeolocated: false, title: 'Rayon de 20 km' }
-      const result = shouldDisplayExcluOffer(display, offer, userLocation, maxCredit)
-      expect(result).toBe(true)
+      const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+      expect(result.current).toBe(true)
     })
 
     it('should not display offer if module is geolocated', () => {
       display = { aroundRadius: 20, isGeolocated: true, title: 'Rayon de 20 km' }
-      const result = shouldDisplayExcluOffer(display, offer, userLocation, maxCredit)
-      expect(result).toBe(false)
+      const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+      expect(result.current).toBe(false)
     })
   })
 })

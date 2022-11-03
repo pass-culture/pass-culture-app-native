@@ -1,14 +1,11 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useExcluOffer } from 'features/home/api/useExcluOffer'
 import { ExclusivityImage } from 'features/home/components/modules/ExclusivityImage'
 import { ExclusivityModuleProps } from 'features/home/components/modules/ExclusivityModule'
-import { shouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
+import { useShouldDisplayExcluOffer } from 'features/home/components/modules/ExclusivityModule.utils'
 import { ContentTypes } from 'features/home/contentful'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/firebase/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -27,9 +24,7 @@ const UnmemoizedExclusivityOffer = ({
   index,
 }: ExclusivityOfferProps) => {
   const [isFocus, setIsFocus] = useState(false)
-  const { data: offer } = useExcluOffer(offerId)
-  const { position } = useGeolocation()
-  const maxPrice = useMaxPrice()
+  const shouldDisplayExcluOffer = useShouldDisplayExcluOffer(display, offerId)
 
   const handlePressExclu = useCallback(() => {
     if (typeof offerId !== 'number') return
@@ -44,16 +39,14 @@ const UnmemoizedExclusivityOffer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offerId])
 
-  const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position, maxPrice)
-
   useEffect(() => {
-    if (shouldModuleBeDisplayed) {
+    if (shouldDisplayExcluOffer) {
       analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
+  }, [shouldDisplayExcluOffer])
 
-  if (!shouldModuleBeDisplayed) return <React.Fragment />
+  if (!shouldDisplayExcluOffer) return <React.Fragment />
 
   return (
     <StyledTouchableLink

@@ -1,16 +1,16 @@
-import { OfferResponse } from 'api/gen'
+import { useExcluOffer } from 'features/home/api/useExcluOffer'
 import { ExclusivityPane } from 'features/home/contentful'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { GeoCoordinates } from 'libs/geolocation'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { useGeolocation } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
-export const shouldDisplayExcluOffer = (
-  display: ExclusivityPane['display'],
-  offer: OfferResponse | undefined,
-  userLocation: GeoCoordinates | null,
-  maxPrice: number
-): boolean => {
+export function useShouldDisplayExcluOffer(display: ExclusivityPane['display'], offerId: number) {
+  const { position } = useGeolocation()
+  const maxPrice = useMaxPrice()
+  const { data: offer } = useExcluOffer(offerId)
+
   if (!offer) return false
 
   const price = convertCentsToEuros(getOfferPrice(offer.stocks))
@@ -20,7 +20,7 @@ export const shouldDisplayExcluOffer = (
   if (!display || !display.isGeolocated || !display.aroundRadius) return true
 
   // Exclu module is geolocated but we don't know the user's location
-  if (!userLocation) return false
+  if (!position) return false
 
   // Exclu module is geolocated and we know the user's location: compute distance to offer
   const { latitude, longitude } = offer.venue.coordinates
@@ -28,8 +28,8 @@ export const shouldDisplayExcluOffer = (
   const distance = computeDistanceInMeters(
     latitude,
     longitude,
-    userLocation.latitude,
-    userLocation.longitude
+    position.latitude,
+    position.longitude
   )
 
   return distance <= 1000 * display.aroundRadius
