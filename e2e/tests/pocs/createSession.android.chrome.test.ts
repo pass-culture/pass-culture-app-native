@@ -1,12 +1,12 @@
 import { remote, RemoteOptions } from 'webdriverio'
 
-const { CHROME_DRIVER_PATH } = process.env
+const { CHROME_DRIVER_PATH, ANDROID_AVD } = process.env
 
 const capabilities = {
   platformName: 'Android',
   browserName: 'chrome',
   'appium:automationName': 'UiAutomator2',
-  'appium:deviceName': 'Android',
+  'appium:deviceName': ANDROID_AVD || 'Android',
   'appium:chromedriverExecutable': CHROME_DRIVER_PATH,
 }
 
@@ -14,6 +14,10 @@ const wdOpts: RemoteOptions = {
   port: 4723,
   logLevel: 'info',
   capabilities,
+  coloredLogs: true,
+  waitforTimeout: 10000,
+  connectionRetryTimeout: 90000,
+  connectionRetryCount: 3,
 }
 
 describe('android chrome', () => {

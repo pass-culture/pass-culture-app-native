@@ -3,14 +3,191 @@ name: Tests e2e Android Chrome
 on:
   workflow_dispatch:
     inputs:
-      tbd:
-        description: "tbd"
-        required: false
-        type: string
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
 
 jobs:
-  tbd:
-    runs-on: ubuntu-latest
+  e2e-android-chrome:
+    strategy:
+      matrix:
+        include:
+          - chromedriverVersion: "74.0.3729.6"
+            apiLevel: 30
+            emuTag: google_apis
+#          - chromedriverVersion: "2.44"
+#            apiLevel: 28
+#            emuTag: default
+#          - chromedriverVersion: "2.28"
+#            apiLevel: 25
+#            emuTag: default
+#          - chromedriverVersion: "2.20"
+#            apiLevel: 23
+#            emuTag: default
+
+    env:
+      CI: true
+      ANDROID_AVD: emulator
+      APPIUM_TEST_SERVER_PORT: 4723
+      APPIUM_TEST_SERVER_HOST: 0.0.0.0
+      _FORCE_LOGS: 1
+    # No hardware acceleration is available for emulators on Ubuntu:
+    # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
+    runs-on: macos-latest
     steps:
-      - name: Hello World
-        run: echo "Hello World"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - run: yarn
+
+      - run: |
+          npm config set legacy-peer-deps true
+          npm install -g appium@next
+          npm install --chromedriver_version="${{ matrix.chromedriverVersion }}"
+          npm install --no-save mjpeg-consumer
+
+        name: Install dev dependencies
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - run: |
+          cwd=$(pwd)
+          pushd "$cwd"
+          cd ~
+          appium driver install uiautomator2
+          nohup appium server \
+            --port=$APPIUM_TEST_SERVER_PORT \
+            --address=$APPIUM_TEST_SERVER_HOST \
+            --relaxed-security \
+            2>&1 > "$cwd/appium.log" &
+          popd
+        name: Start Appium server
+      - run: nohup adb logcat > logcat.log &
+        name: Capture logcat
+      - uses: reactivecircus/android-emulator-runner@v2
+        name: e2e_api${{ matrix.apiLevel }}
+        with:
+          script: yarn test:e2e:android:chrome
+          avd-name: ${{ env.ANDROID_AVD }}
+          sdcard-path-or-size: 1500M
+          api-level: ${{ matrix.apiLevel }}
+          disable-spellchecker: true
+          target: ${{ matrix.emuTag }}
+      - name: Save logcat output
+        if: ${{ always() }}
+        uses: actions/upload-artifact@master
+        with:
+          name: logcat-api${{ matrix.apiLevel }}
+          path: logcat.log
+      - name: Save server output
+        if: ${{ always() }}
+        uses: actions/upload-artifact@master
+        with:
+          name: appium-api${{ matrix.apiLevel }}
+          path: appium.log
+
+#jobs:
+#  e2e-android-chrome:
+#    runs-on: macos-12
+#    strategy:
+#      matrix:
+##        api-level: [24, 25, 26]
+#        api-level: [28, 29, 30, 31, 32, 33]
+##        api-level: [24, 25, 26, 28, 29, 30, 31, 32, 33]
+#        target: [google_apis]
+#        arch: [x86_64]
+#    environment: ${{ inputs.environment }}
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version-file: '.nvmrc'
+#
+#      # avd needs Java 1.8
+#      - name: Create Android emulator
+#        run: |
+#          brew install intel-haxm
+#          EMULATOR_IMAGE='system-images;android-${{ matrix.api-level }};${{ matrix.target }};${{ matrix.arch }}'
+#          # Install AVD files
+#          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "${EMULATOR_IMAGE}"
+#          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+#
+#          # Create emulator
+#          $ANDROID_HOME/tools/bin/avdmanager create avd -n Pixel_API_29_AOSP -d pixel --package "${EMULATOR_IMAGE}"
+#          $ANDROID_HOME/emulator/emulator -list-avds
+#          if false; then
+#          emulator_config=~/.android/avd/Pixel_API_29_AOSP.avd/config.ini
+#          # The following madness is to support empty OR populated config.ini files,
+#          # the state of which is dependant on the version of the emulator used (which we don't control),
+#          # so let's be defensive to be safe.
+#          # Replace existing config (NOTE we're on MacOS so sed works differently!)
+#          sed -i .bak 's/hw.lcd.density=.*/hw.lcd.density=420/' "$emulator_config"
+#          sed -i .bak 's/hw.lcd.height=.*/hw.lcd.height=1920/' "$emulator_config"
+#          sed -i .bak 's/hw.lcd.width=.*/hw.lcd.width=1080/' "$emulator_config"
+#          # Or, add new config
+#          if ! grep -q "hw.lcd.density" "$emulator_config"; then
+#            echo "hw.lcd.density=420" >> "$emulator_config"
+#          fi
+#          if ! grep -q "hw.lcd.height" "$emulator_config"; then
+#            echo "hw.lcd.height=1920" >> "$emulator_config"
+#          fi
+#          if ! grep -q "hw.lcd.width" "$emulator_config"; then
+#            echo "hw.lcd.width=1080" >> "$emulator_config"
+#          fi
+#          echo "Emulator settings ($emulator_config)"
+#          cat "$emulator_config"
+#          fi
+#
+#      - name: Start Android emulator
+#        run: |
+#          echo "Starting emulator and waiting for boot to complete...."
+#          ls -la $ANDROID_HOME/emulator
+#          # 2>&1 &
+#          nohup $ANDROID_HOME/tools/emulator -avd Pixel_API_29_AOSP -gpu host -no-audio -no-boot-anim -camera-back none -camera-front none -qemu -m 2048
+#          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do echo "wait..."; sleep 5; done; input keyevent 82'
+#          echo "Emulator has finished booting"
+#          $ANDROID_HOME/platform-tools/adb devices
+#          sleep 30
+#
+#      - name: Install dependencies
+#        run: yarn
+#
+#      - name: Setup sentry credentials
+#        env:
+#          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+#        run: |
+#          cat <<EOT >> ~/.sentryclirc
+#          [defaults]
+#          url=https://sentry.passculture.team/
+#          org=sentry
+#          project=application-native
+#
+#          [auth]
+#          token=$SENTRY_AUTH_TOKEN
+#          EOT
+#
+#      - name: Run Web on Android Chrome for ${{ inputs.environment }} environment
+#        run: |
+#          NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn start:web:${{ inputs.environment }} &>/dev/null &
+#
+#      - name: Waiting for server
+#        run: |
+#          until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+#            printf '.'
+#            sleep 5
+#          done
+#
+#      - name: Install and run Appium 2 in the background
+#        run: |
+#          npm install -g appium@next
+#          appium driver install uiautomator2
+#          appium --allow-insecure chromedriver_autodownload &>/dev/null &
+#
+#      - name: Run e2e Android tests
+#        run: |
+#          CHROME_DRIVER_PATH=./chromedriver yarn test:e2e:android:chrome
