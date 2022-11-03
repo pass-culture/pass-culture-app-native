@@ -50,6 +50,7 @@
     "test:e2e:ios:native": "yarn test:e2e --testRegex ./e2e/tests/.*.ios.native.test.*",
     "test:e2e:ios:safari": "yarn test:e2e --testRegex ./e2e/tests/.*.ios.safari.test.*",
     "test:e2e:desktop:chrome": "yarn test:e2e --testRegex ./e2e/tests/.*.desktop.chrome.test.*",
+    "test:e2e:desktop:firefox": "yarn test:e2e --testRegex ./e2e/tests/.*.desktop.firefox.test.*",
     "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.30 ./scripts/generate_api_client.sh",
     "ios:prod": "react-native run-ios --scheme PassCulture-Production",

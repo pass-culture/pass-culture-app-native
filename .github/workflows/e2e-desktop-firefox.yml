@@ -1,0 +1,54 @@
+name: Tests e2e Desktop Safari
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
+
+jobs:
+  e2e-desktop-firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Setup sentry credentials
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat <<EOT >> ~/.sentryclirc
+          [defaults]
+          url=https://sentry.passculture.team/
+          org=sentry
+          project=application-native
+
+          [auth]
+          token=$SENTRY_AUTH_TOKEN
+          EOT
+
+
+      - name: Run Web on Desktop Chrome for ${{ inputs.environment }} environment
+        run: |
+          NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn start:web:${{ inputs.environment }} &>/dev/null &
+
+      - name: Waiting for server
+        run: |
+          until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+            printf '.'
+            sleep 5
+          done
+
+      - uses: browser-actions/setup-geckodriver@latest
+      - run: geckodriver --version
+
+      - name: Run e2e Desktop Firefox tests
+        run: yarn test:e2e:desktop:firefox
