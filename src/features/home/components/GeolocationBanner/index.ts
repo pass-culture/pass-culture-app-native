@@ -1,1 +1,0 @@
-export { GeolocationBanner } from './GeolocationBanner'
