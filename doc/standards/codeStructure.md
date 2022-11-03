@@ -28,18 +28,14 @@ features
             |- index.ts => optional, exports methods explicitly
         |- components ==> feature-specific UI components
           \
-            |- Component1
-              \
-                |- Component1.tsx
-                |- Component1.test.tsx
-                |- Component1.stories.tsx
+            |- Component1.tsx
+            |- Component1.test.tsx
+            |- Component1.stories.tsx
             |- ...
         |- pages ==> feature-specific pages
           \
-            |- Page1
-              \
-                |- Page1.tsx
-                |- Page1.test.tsx
+            |- Page1.tsx
+            |- Page1.test.tsx
             |- ...
         |- helpers ==> utils or data transform functions
           \
@@ -74,11 +70,10 @@ ui
     |- animations ==> lottie animations
     |- components ===> independent and stateless components (reusables)
       \
-        |- Component1
-          \
-            |- Component1.tsx
-            |- Component1.test.tsx
-            |- Component1.stories.tsx
+        |- Component1.tsx
+        |- Component1.test.tsx
+        |- Component1.stories.tsx
+        |- ...
     |- hooks
     |- svg ==> logos and icons
     |- styleGuide ==> theme constants and typography components
