@@ -18,7 +18,6 @@ import {
   OffersModule,
   VenuesModule,
 } from 'features/home/components'
-import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
@@ -27,7 +26,6 @@ import { ProcessedModule, RecommendationPane } from 'features/home/contentful/mo
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
-import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -40,19 +38,10 @@ const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
 const ListHeaderComponent = () => {
-  const { permissionState } = useGeolocation()
-  const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
-
   return (
     <ListHeaderContainer>
       <Spacer.TopScreen />
       <HomeHeader />
-      {shouldDisplayGeolocationBloc ? (
-        <React.Fragment>
-          <GeolocationBanner />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
-      ) : null}
     </ListHeaderContainer>
   )
 }

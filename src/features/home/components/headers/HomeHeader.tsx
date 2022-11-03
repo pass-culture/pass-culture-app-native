@@ -4,11 +4,13 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
+import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -20,6 +22,8 @@ export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { top } = useCustomSafeInsets()
   const { isLoggedIn } = useAuthContext()
+  const { permissionState } = useGeolocation()
+  const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -58,6 +62,12 @@ export const HomeHeader: FunctionComponent = function () {
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>{getSubtitle()}</Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
+      {shouldDisplayGeolocationBloc ? (
+        <React.Fragment>
+          <GeolocationBanner />
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
+      ) : null}
     </Container>
   )
 }

@@ -3,6 +3,7 @@ import React from 'react'
 import { UserProfileResponse } from 'api/gen'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { render } from 'tests/utils'
 
@@ -13,6 +14,9 @@ const mockUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<typeof 
 
 jest.mock('features/home/services/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
+
+jest.mock('libs/geolocation')
+const mockUseGeolocation = useGeolocation as jest.Mock
 
 describe('HomeHeader', () => {
   it.each`
@@ -42,4 +46,26 @@ describe('HomeHeader', () => {
       expect(getByText(subtitle)).toBeTruthy()
     }
   )
+
+  it('should not display geolocation banner when geolocation is granted', () => {
+    const { queryByText } = render(<HomeHeader />)
+
+    expect(queryByText('Géolocalise toi')).toBeFalsy()
+  })
+
+  it('should display geolocation banner when geolocation is denied', () => {
+    mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+    const { queryByText } = render(<HomeHeader />)
+
+    expect(queryByText('Géolocalise toi')).toBeTruthy()
+  })
+
+  it('should display geolocation banner when geolocation is never ask again', () => {
+    mockUseGeolocation.mockReturnValueOnce({
+      permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+    })
+    const { queryByText } = render(<HomeHeader />)
+
+    expect(queryByText('Géolocalise toi')).toBeTruthy()
+  })
 })
