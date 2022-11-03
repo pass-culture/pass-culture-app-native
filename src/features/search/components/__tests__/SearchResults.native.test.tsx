@@ -295,6 +295,18 @@ describe('SearchResults component', () => {
     expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
   })
 
+  it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
+    mockPosition = null
+
+    const { getByText } = render(<SearchResults />)
+
+    await act(async () => {
+      fireEvent.press(getByText('Géolocalise toi'))
+    })
+
+    expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)
+  })
+
   it.each`
     locationType               | locationFilter                                                                   | position            | locationButtonLabel
     ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}

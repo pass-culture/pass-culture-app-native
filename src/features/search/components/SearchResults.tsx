@@ -137,6 +137,10 @@ export const SearchResults: React.FC = () => {
     [searchState.query]
   )
 
+  const logActivateGeolocfromSearchResults = useCallback(() => {
+    analytics.logActivateGeolocfromSearchResults()
+  }, [])
+
   const ListHeaderComponent = useMemo(() => {
     const shouldDisplayGeolocationButton =
       position === null &&
@@ -144,12 +148,17 @@ export const SearchResults: React.FC = () => {
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE
 
+    const onPress = () => {
+      logActivateGeolocfromSearchResults()
+      showGeolocPermissionModal()
+    }
+
     return (
       <React.Fragment>
         <NumberOfResults nbHits={nbHits} />
         {!!shouldDisplayGeolocationButton && (
           <GeolocationButtonContainer>
-            <GeolocationButton onPress={showGeolocPermissionModal} />
+            <GeolocationButton onPress={onPress} />
           </GeolocationButtonContainer>
         )}
       </React.Fragment>
