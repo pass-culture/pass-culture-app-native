@@ -183,48 +183,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 },
               ]
             }
-          >
-            <View
-              onLayout={[Function]}
-            >
-              <View
-                accessibilityLabel="Réinitialiser les filtres"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Réinitialiser les filtres"
-              >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Réinitialiser
-                </Text>
-              </View>
-            </View>
-          </View>
+          />
         </View>
       </View>
     </View>
@@ -1058,28 +1017,24 @@ exports[`SearchFilter component should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <View
+    isModal={false}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "bottom": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 24,
           "paddingHorizontal": 24,
-          "position": "absolute",
-          "width": "100%",
+          "paddingTop": 8,
         },
       ]
     }
   >
     <View
-      accessibilityLabel="Aucun résultat"
-      accessibilityState={
-        Object {
-          "disabled": true,
-        }
-      }
+      accessibilityLabel="Réinitialiser"
       accessible={true}
       collapsable={false}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -1090,9 +1045,81 @@ exports[`SearchFilter component should render correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#F1F1F4",
+          "backgroundColor": "transparent",
           "borderRadius": 24,
           "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 16,
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "auto",
+        }
+      }
+      testID="Réinitialiser"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          height={16}
+          testID="button-icon"
+          width={16}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "marginLeft": 4,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Réinitialiser
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Rechercher"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "flexGrow": 1,
           "justifyContent": "center",
           "maxWidth": 500,
           "minHeight": 40,
@@ -1102,18 +1129,18 @@ exports[`SearchFilter component should render correctly 1`] = `
           "paddingRight": 20,
           "paddingTop": 2,
           "userSelect": "auto",
-          "width": "100%",
+          "width": "auto",
         }
       }
-      testID="Aucun résultat"
+      testID="Rechercher"
     >
       <Text
-        adjustsFontSizeToFit={true}
+        adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
           Array [
             Object {
-              "color": "#696A6F",
+              "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -1123,20 +1150,20 @@ exports[`SearchFilter component should render correctly 1`] = `
           ]
         }
       >
-        Aucun résultat
+        Rechercher
       </Text>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
 </View>
 `;
