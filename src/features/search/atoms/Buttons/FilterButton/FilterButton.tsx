@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -18,8 +18,7 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
     one: `Voir tous les filtres\u00a0: # filtre actif`,
     other: `Voir tous les filtres\u00a0: # filtres actifs`,
   })
-  const { searchState } = useSearch()
-  const { dispatch } = useStagedSearch()
+  const { searchState, dispatch } = useSearch()
 
   const reinitFilters = useCallback(() => {
     dispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })

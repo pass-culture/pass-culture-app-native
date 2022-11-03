@@ -10,9 +10,7 @@ import { useGeolocation } from 'libs/geolocation'
 
 interface ISearchContext {
   searchState: SearchState
-  stagedSearchState: SearchState
   dispatch: React.Dispatch<Action>
-  stagedDispatch: React.Dispatch<Action>
 }
 
 const SearchContext = React.createContext<ISearchContext | null>(null)
@@ -29,28 +27,19 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
   }
 
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
-  const [stagedSearchState, stagedDispatch] = useReducer(
-    searchReducer,
-    initialSearchStateWithPriceRange
-  )
 
   useEffect(() => {
     const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
     dispatch({ type: actionType })
-    stagedDispatch({ type: actionType })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!position])
 
   useEffect(() => {
     dispatch({ type: 'PRICE_RANGE', payload: priceRange })
-    stagedDispatch({ type: 'PRICE_RANGE', payload: priceRange })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxPrice])
 
-  const contextValue = useMemo(
-    () => ({ searchState, stagedSearchState, dispatch, stagedDispatch }),
-    [searchState, stagedSearchState, dispatch, stagedDispatch]
-  )
+  const contextValue = useMemo(() => ({ searchState, dispatch }), [searchState, dispatch])
 
   return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>
 })
@@ -62,19 +51,13 @@ export const useSearch = (): Pick<ISearchContext, 'searchState' | 'dispatch'> =>
   return { searchState, dispatch }
 }
 
-export const useStagedSearch = (): Pick<ISearchContext, 'searchState' | 'dispatch'> => {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { stagedSearchState: searchState, stagedDispatch: dispatch } = useContext(SearchContext)!
-  return { searchState, dispatch }
-}
-
 export const useCommit = (): { commit: () => void } => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState: stagedSearchState } = useStagedSearch()
+  const { searchState } = useSearch()
 
   return {
     commit() {
-      navigate(...getTabNavConfig('Search', stagedSearchState))
+      navigate(...getTabNavConfig('Search', searchState))
     },
   }
 }

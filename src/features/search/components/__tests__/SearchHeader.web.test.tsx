@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { push, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchHeader } from 'features/search/components/SearchHeader'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
@@ -47,7 +47,7 @@ describe('SearchHeader component', () => {
       ...initialSearchState,
       view: SearchView.Suggestions,
     }
-    expect(push).toHaveBeenCalledWith('TabNavigator', {
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'Search',
       params,
     })

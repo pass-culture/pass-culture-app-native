@@ -11,7 +11,7 @@ import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 
-import { useSearch, useStagedSearch } from './SearchWrapper'
+import { useSearch } from './SearchWrapper'
 
 export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
 
@@ -51,11 +51,6 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { nbHits } = data?.pages[0] || { nbHits: 0 }
 
   return { data, hits, nbHits, ...infiniteQuery }
-}
-
-export const useStagedSearchResults = () => {
-  const { searchState } = useStagedSearch()
-  return useSearchInfiniteQuery(searchState)
 }
 
 export const useSearchResults = () => {

@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import omit from 'lodash/omit'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -14,15 +14,16 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterButton } from 'features/search/atoms/Buttons/FilterButton/FilterButton'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/atoms/Buttons/HiddenNavigateToSuggestionsButton'
 import { useHasPosition } from 'features/search/components/useHasPosition'
 import { LocationModal } from 'features/search/pages/LocationModal'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { initialSearchState } from 'features/search/pages/reducer'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
-import { usePushWithStagedSearch } from 'features/search/pages/usePushWithStagedSearch'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { analytics } from 'libs/firebase/analytics'
 import { BackButton } from 'ui/components/headers/BackButton'
@@ -49,8 +50,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
+  const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(params?.query || '')
   const { locationFilter, section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
@@ -71,7 +72,19 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const isLandingOrResults =
     params === undefined || params.view === SearchView.Landing || params.view === SearchView.Results
 
-  const pushWithStagedSearch = usePushWithStagedSearch()
+  const pushWithSearch = useCallback(
+    (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
+      navigate(
+        ...getTabNavConfig('Search', {
+          ...searchState,
+          ...(options.reset ? initialSearchState : {}),
+          ...partialSearchState,
+        })
+      )
+    },
+    [navigate, searchState]
+  )
+
   const hasEditableSearchInput =
     params?.view === SearchView.Suggestions || params?.view === SearchView.Results
   const activeFilters = useFilterCount(searchState)
@@ -116,8 +129,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     clear()
     setQuery('')
     const view = appEnableAutocomplete ? SearchView.Suggestions : SearchView.Results
-    pushWithStagedSearch({ query: '', view })
-  }, [clear, appEnableAutocomplete, pushWithStagedSearch])
+    pushWithSearch({ query: '', view })
+  }, [clear, appEnableAutocomplete, pushWithSearch])
 
   const onPressArrowBack = useCallback(() => {
     // To force remove focus on search input
@@ -129,7 +142,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       previousView !== SearchView.Landing &&
       appEnableAutocomplete
     ) {
-      pushWithStagedSearch({
+      pushWithSearch({
         ...params,
         view: SearchView.Results,
       })
@@ -137,11 +150,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       return
     }
 
-    stagedDispatch({
+    dispatch({
       type: 'SET_STATE_FROM_DEFAULT',
       payload: { locationFilter },
     })
-    pushWithStagedSearch(
+    pushWithSearch(
       {
         query: '',
         view: SearchView.Landing,
@@ -152,7 +165,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
     )
     setQuery('')
-  }, [appEnableAutocomplete, locationFilter, params, pushWithStagedSearch, stagedDispatch])
+  }, [appEnableAutocomplete, dispatch, locationFilter, params, pushWithSearch])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -162,8 +175,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // these are the two potentially 'staged' filters that we want to commit to the global search state.
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
-      const { offerCategories, priceRange } = stagedSearchState
-      pushWithStagedSearch({
+      const { offerCategories, priceRange } = searchState
+      pushWithSearch({
         query: queryText,
         locationFilter,
         offerCategories,
@@ -172,7 +185,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       })
       analytics.logSearchQuery(queryText)
     },
-    [locationFilter, pushWithStagedSearch, stagedSearchState]
+    [locationFilter, pushWithSearch, searchState]
   )
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
@@ -184,7 +197,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // or suggestions view if it's the current view when feature flag desactivated
     if (hasEditableSearchInput && !appEnableAutocomplete) return
 
-    pushWithStagedSearch({
+    pushWithSearch({
       ...paramsWithoutView,
       view: SearchView.Suggestions,
       previousView: params?.view,
@@ -194,7 +207,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     hasEditableSearchInput,
     params?.view,
     paramsWithoutView,
-    pushWithStagedSearch,
+    pushWithSearch,
   ])
 
   return (

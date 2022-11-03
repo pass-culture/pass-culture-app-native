@@ -1,23 +1,17 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { initialSearchState } from 'features/search/pages/reducer'
+import { initialSearchState as mockInitialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoSearchResult } from '../NoSearchResult'
 
-const mockSearchState = initialSearchState
-const mockDispatchStagedSearch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
-    searchState: mockSearchState,
+    searchState: mockInitialSearchState,
     dispatch: jest.fn(),
-  }),
-  useStagedSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatchStagedSearch,
   }),
 }))
 
@@ -47,18 +41,6 @@ describe('NoSearchResult component', () => {
     expect(text).toBeTruthy()
     expect(complement).toBeTruthy()
     expect(textContinuation).toBeTruthy()
-  })
-
-  it('should update the staged search state with the actual search state when pressing "Modifier mes filtres" button', async () => {
-    const { getByText } = render(<NoSearchResult />)
-    const button = getByText('Modifier mes filtres')
-
-    await fireEvent.press(button)
-
-    expect(mockDispatchStagedSearch).toHaveBeenCalledWith({
-      type: 'SET_STATE_FROM_DEFAULT',
-      payload: mockSearchState,
-    })
   })
 
   it('should redirect to the general filters page when pressing "Modifier mes filtres" button', async () => {

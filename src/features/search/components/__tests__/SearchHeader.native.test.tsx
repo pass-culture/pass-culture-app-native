@@ -13,19 +13,15 @@ import { render } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
-const mockSearchState = initialSearchState
-const mockStagedSearchState: SearchState = {
+const mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
 }
 
-const mockDispatch = jest.fn()
-const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
-  useStagedSearch: () => ({ searchState: mockStagedSearchState, dispatch: mockStagedDispatch }),
+  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 jest.mock('libs/firebase/analytics')
 

@@ -4,7 +4,6 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -14,8 +13,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const NoSearchResult: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { searchState } = useSearch()
-  const { dispatch: stagedDispatch } = useStagedSearch()
   const query = params?.query
 
   useEffect(() => {
@@ -25,9 +22,8 @@ export const NoSearchResult: React.FC = () => {
   }, [query])
 
   const onPressUpdateFilters = useCallback(() => {
-    stagedDispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })
     navigate('SearchFilter')
-  }, [navigate, searchState, stagedDispatch])
+  }, [navigate])
 
   const mainTitle = 'Pas de résultat'
   const mainTitleComplement = `pour "${query}"`

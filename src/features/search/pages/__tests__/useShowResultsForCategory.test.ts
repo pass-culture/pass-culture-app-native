@@ -1,6 +1,4 @@
-import { Platform } from 'react-native'
-
-import { push as mockPush, navigate as mockNavigate } from '__mocks__/@react-navigation/native'
+import { navigate as mockNavigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -9,25 +7,17 @@ import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
 
-const navigate = Platform.OS === 'web' ? mockPush : mockNavigate
-const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
-let mockStagedSearchState = initialSearchState
-const mockStagedDispatch = jest.fn()
+let mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
-  }),
-  useStagedSearch: () => ({
-    searchState: mockStagedSearchState,
-    dispatch: mockStagedDispatch,
+    dispatch: jest.fn(),
   }),
 }))
 
 describe('useShowResultsForCategory', () => {
   beforeEach(() => {
-    mockStagedSearchState = {
+    mockSearchState = {
       ...initialSearchState,
       locationFilter: { locationType: LocationType.EVERYWHERE },
       priceRange: [0, 300],
@@ -36,23 +26,12 @@ describe('useShowResultsForCategory', () => {
     }
   })
 
-  it('should set category in staged search', () => {
-    const { result: resultCallback } = renderHook(useShowResultsForCategory)
-
-    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
-
-    expect(mockStagedDispatch).toHaveBeenCalledWith({
-      type: 'SET_CATEGORY',
-      payload: [SearchGroupNameEnumv2.SPECTACLES],
-    })
-  })
-
   it('should set search state with staged search state and categories', () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(navigate).toBeCalledWith('TabNavigator', {
+    expect(mockNavigate).toBeCalledWith('TabNavigator', {
       params: {
         beginningDatetime: null,
         date: null,

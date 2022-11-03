@@ -1,24 +1,27 @@
+import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnPressCategory } from 'features/search/components/CategoriesButtons'
-import { useStagedSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 
 import { SearchView } from '../types'
 
-import { usePushWithStagedSearch } from './usePushWithStagedSearch'
-
 export const useShowResultsForCategory = (): OnPressCategory => {
-  const { dispatch: stagedDispatch } = useStagedSearch()
-  const pushWithStagedSearch = usePushWithStagedSearch()
+  const { searchState } = useSearch()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   return useCallback(
     (pressedCategory) => {
-      stagedDispatch({ type: 'SET_CATEGORY', payload: [pressedCategory] })
-      pushWithStagedSearch({
-        offerCategories: [pressedCategory],
-        view: SearchView.Results,
-      })
+      navigate(
+        ...getTabNavConfig('Search', {
+          ...searchState,
+          offerCategories: [pressedCategory],
+          view: SearchView.Results,
+        })
+      )
     },
-    [stagedDispatch, pushWithStagedSearch]
+    [navigate, searchState]
   )
 }

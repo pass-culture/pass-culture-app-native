@@ -20,11 +20,9 @@ import { Login } from './Login'
 jest.mock('react-query')
 jest.mock('features/navigation/helpers')
 const mockSearchDispatch = jest.fn()
-const mockStagedSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
-  useStagedSearch: jest.fn(() => ({ dispatch: mockStagedSearchDispatch })),
 }))
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
@@ -71,7 +69,6 @@ describe('<Login/>', () => {
       expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
       expect(navigateToHome).toBeCalledTimes(1)
       expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-      expect(mockStagedSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
       expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
     })
   })
