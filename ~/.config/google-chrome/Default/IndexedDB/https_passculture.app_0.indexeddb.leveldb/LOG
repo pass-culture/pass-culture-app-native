@@ -1,0 +1,7 @@
+2022/11/03-17:48:48.555 3172 Reusing MANIFEST /home/dka/workspace/github.com/pass-culture/pass-culture-app-native/~/.config/google-chrome/Default/IndexedDB/https_passculture.app_0.indexeddb.leveldb/MANIFEST-000001
+2022/11/03-17:48:48.555 3172 Recovering log #4
+2022/11/03-17:48:48.555 3172 Reusing old log /home/dka/workspace/github.com/pass-culture/pass-culture-app-native/~/.config/google-chrome/Default/IndexedDB/https_passculture.app_0.indexeddb.leveldb/000004.log 
+2022/11/03-17:48:50.078 3170 Level-0 table #8: started
+2022/11/03-17:48:50.079 3170 Level-0 table #8: 700 bytes OK
+2022/11/03-17:48:50.080 3170 Delete type=0 #4
+2022/11/03-17:48:50.080 3169 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)

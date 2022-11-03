@@ -3,14 +3,49 @@ name: Tests e2e Desktop Chrome
 on:
   workflow_dispatch:
     inputs:
-      tbd:
-        description: "tbd"
-        required: false
-        type: string
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
 
 jobs:
-  tbd:
+  e2e-desktop-chrome:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello World
-        run: echo "Hello World"
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Setup sentry credentials
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat <<EOT >> ~/.sentryclirc
+          [defaults]
+          url=https://sentry.passculture.team/
+          org=sentry
+          project=application-native
+
+          [auth]
+          token=$SENTRY_AUTH_TOKEN
+          EOT
+
+
+      - name: Run Web on Desktop Chrome for ${{ inputs.environment }} environment
+        run: |
+          NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn start:web:${{ inputs.environment }} &>/dev/null &
+
+      - name: Waiting for server
+        run: |
+          until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+            printf '.'
+            sleep 5
+          done
+
+      - name: Run e2e Desktop Chrome tests
+        run: yarn test:e2e:desktop:chrome

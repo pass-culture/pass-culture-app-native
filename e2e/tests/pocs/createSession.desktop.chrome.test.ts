@@ -12,13 +12,15 @@ describe('desktop chrome', () => {
       .setChromeService(service)
       .setChromeOptions(
         new Options()
-          .addArguments([
+          .addArguments(
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-using',
+            '--disable-dev-shm-usage',
             '--disable-extensions',
             '--disable-gpu',
-          ].join(' '))
+            '--user-data-dir=~/.config/google-chrome',
+            '-remote-debugging-port=9222',
+          )
           .headless()
       )
       .build()
@@ -30,9 +32,8 @@ describe('desktop chrome', () => {
   })
 
   it('should create session', async () => {
-    await driver.get('https://passculture.app/accueil')
+    await driver.get('https://google.com')
     const title = await driver.getTitle()
-    await driver.manage().setTimeouts({ implicit: 30000 })
-    expect(title).toEqual('Page d’accueil | pass Culture')
+    expect(title).toEqual('Google')
   })
 })

@@ -1,0 +1,4 @@
+[12178:12178:1103/174746.547544:ERROR:gpu_init.cc(426)] Passthrough is not supported, GL is disabled
+[12182:12207:1103/174750.032191:WARNING:sqlite_persistent_store_backend_base.cc(171)] Failed to post task from pc:0x5624f5f4a535 to client_task_runner_.
+[12182:12207:1103/174750.032262:WARNING:sqlite_persistent_store_backend_base.cc(171)] Failed to post task from pc:0x5624f5f4a535 to client_task_runner_.
+[12135:12135:1103/174750.055736:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

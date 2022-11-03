@@ -1,0 +1,6 @@
+2022/11/03-17:47:49.255 2fbf Creating DB /home/dka/workspace/github.com/pass-culture/pass-culture-app-native/~/.config/google-chrome/Default/IndexedDB/https_passculture.app_0.indexeddb.leveldb since it was missing.
+2022/11/03-17:47:49.257 2fbf Reusing MANIFEST /home/dka/workspace/github.com/pass-culture/pass-culture-app-native/~/.config/google-chrome/Default/IndexedDB/https_passculture.app_0.indexeddb.leveldb/MANIFEST-000001
+2022/11/03-17:47:50.008 2fc7 Level-0 table #5: started
+2022/11/03-17:47:50.010 2fc7 Level-0 table #5: 1259 bytes OK
+2022/11/03-17:47:50.011 2fc7 Delete type=0 #3
+2022/11/03-17:47:50.011 2fc7 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
