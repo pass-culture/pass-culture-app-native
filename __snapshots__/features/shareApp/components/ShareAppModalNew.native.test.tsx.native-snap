@@ -230,7 +230,7 @@ exports[`ShareAppModalNew should match beneficiary modal snapshot when beneficia
           ]
         }
       >
-        Recommande l’appli à tes potes pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
+        Recommande l’appli à tes amis pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
       </Text>
       <View
         numberOfSpaces={6}
