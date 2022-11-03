@@ -23,6 +23,8 @@ const logEventAnalytics = {
   logAccountDeletion: () => analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_DELETION),
   logAccountReactivation: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_REACTIVATION, { from }),
+  logActivateGeolocfromSearchResults: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS),
   logAllModulesSeen: (numberOfModules: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules }),
   logAllTilesSeen: (moduleName: string, numberOfTiles: number) =>
