@@ -26,6 +26,7 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
+import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
@@ -95,7 +96,6 @@ import { Trash } from 'ui/svg/icons/Trash'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { Warning } from 'ui/svg/icons/Warning'
 import { Wrong } from 'ui/svg/icons/Wrong'
 
 export const SocialNetworkIcons = {
@@ -134,6 +134,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorSignal,
   BicolorSmartphone,
   BicolorTabBarProfile,
+  BicolorWarning,
   Booking,
   Calendar,
   Check,
@@ -172,7 +173,6 @@ export const SecondaryAndBiggerIcons = {
   Sun,
   Trash,
   Valid,
-  Warning,
   Wrong,
 }
 

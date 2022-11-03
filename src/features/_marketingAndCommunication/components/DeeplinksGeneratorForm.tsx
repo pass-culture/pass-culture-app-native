@@ -32,7 +32,7 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
+import { Warning as WarningDefault } from 'ui/svg/icons/BicolorWarning'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface GeneratedDeeplink {
