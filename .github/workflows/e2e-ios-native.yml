@@ -96,15 +96,14 @@ jobs:
           appium driver install safari
           xcrun xctrace list devices
           appium-doctor
-          IOS_PLATFORM_VERSION=15.2 IOS_APP_ID=${IOS_APP_ID} IOS_ZIP_PATH=./PassCulture.zip yarn test:e2e:ios:native &>/dev/null &
-          appium
-#
-#      - name: Run e2e iOS tests
-#        run: |
-#          if [[ ${{ inputs.environment }} = "testing" ]]; then
-#            IOS_APP_ID=app.passculture.test
-#          else
-#            IOS_APP_ID=app.passculture.staging
-#          fi
-#          xcrun xctrace list devices
-#          IOS_PLATFORM_VERSION=15.2 IOS_APP_ID=${IOS_APP_ID} IOS_ZIP_PATH=./PassCulture.zip yarn test:e2e:ios:native
+          appium &>/dev/null &
+
+      - name: Run e2e iOS tests
+        run: |
+          if [[ ${{ inputs.environment }} = "testing" ]]; then
+            IOS_APP_ID=app.passculture.test
+          else
+            IOS_APP_ID=app.passculture.staging
+          fi
+          xcrun xctrace list devices
+          IOS_PLATFORM_VERSION=15.2 IOS_APP_ID=${IOS_APP_ID} IOS_ZIP_PATH=./PassCulture.zip yarn test:e2e:ios:native

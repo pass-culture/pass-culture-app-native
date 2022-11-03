@@ -3,14 +3,151 @@ name: Tests e2e iOS Safari
 on:
   workflow_dispatch:
     inputs:
-      tbd:
-        description: "tbd"
-        required: false
-        type: string
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
 
 jobs:
-  tbd:
-    runs-on: ubuntu-latest
+  test:
+    env:
+      CI: true
+      APPIUM_TEST_SERVER_PORT: 4723
+      APPIUM_TEST_SERVER_HOST: 0.0.0.0
+      APPIUM_STARTUP_TIMEOUT_SEC: 30
+      _FORCE_LOGS: 1
+    runs-on: macos-latest
     steps:
-      - name: Hello World
-        run: echo "Hello World"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - run: |
+          npm install -g appium@next
+          npm install -g appium-doctor
+          yarn
+        name: Install dev dependencies
+      - run: |
+          cwd=$(pwd)
+          pushd "$cwd"
+          cd ~
+          appium driver install xcuitest
+          appium driver install safari
+          nohup appium server \
+            --port=$APPIUM_TEST_SERVER_PORT \
+            --address=$APPIUM_TEST_SERVER_HOST \
+            --relaxed-security \
+            2>&1 > "$cwd/appium.log" &
+          popd
+        name: Start Appium server
+      - run: |
+          seconds_started=$(date +%s)
+          while ! nc -z $APPIUM_TEST_SERVER_HOST $APPIUM_TEST_SERVER_PORT; do
+            sleep 0.1
+            seconds_elapsed=$(( $(date +%s) - seconds_started ))
+            if [[ $seconds_elapsed -gt $APPIUM_STARTUP_TIMEOUT_SEC ]]; then
+              echo "Appium server was unable to start within $APPIUM_STARTUP_TIMEOUT_SEC seconds timeout"
+              exit 1
+            fi
+          done
+        name: Wait for Appium server startup
+      - run: IOS_PLATFORM_VERSION=15.2 yarn test:e2e:ios:safari
+        name: Run functional tests
+      - name: Save server output
+        if: ${{ always() }}
+        uses: actions/upload-artifact@master
+        with:
+          name: appium.log
+          path: appium.log
+
+
+#name: Tests e2e iOS Safari
+#
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      environment:
+#        type: environment
+#        description: Select the environment
+#        required: true
+#
+#jobs:
+#  e2e-ios-safari:
+#    runs-on: macos-latest
+#    strategy:
+#      matrix:
+#        os-version: ['>=15']
+#        model: ['iPhone 12']
+#    environment: ${{ inputs.environment }}
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - name: Install Haxm on MacOS
+#        run: brew install --cask intel-haxm
+#
+#      - name: Install ffmpeg session on MacOS
+#        run: brew install ffmpeg
+#
+#      - uses: futureware-tech/simulator-action@v2
+#        with:
+#          os_version: ${{ matrix.os_version }}
+#          model: ${{ matrix.model }}
+#
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version-file: '.nvmrc'
+#
+#      - name: Install dependencies
+#        run: yarn
+#
+#      - name: Setup sentry credentials
+#        env:
+#          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+#        run: |
+#          cat <<EOT >> ~/.sentryclirc
+#          [defaults]
+#          url=https://sentry.passculture.team/
+#          org=sentry
+#          project=application-native
+#
+#          [auth]
+#          token=$SENTRY_AUTH_TOKEN
+#          EOT
+#
+#
+#      - name: Run Web on iOS Safari for ${{ inputs.environment }} environment
+#        run: |
+#          NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' yarn start:web:${{ inputs.environment }} &>/dev/null &
+#
+#      - name: Waiting for server
+#        run: |
+#          until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+#            printf '.'
+#            sleep 5
+#          done
+#
+#      - name: Install and run Appium 2 in the background
+#        run: |
+#          npm config set legacy-peer-deps true
+#          npm cache clean --force
+#          brew install lyft/formulae/set-simulator-location
+#          npm install -g opencv-build
+#          npm install -g opencv4nodejs
+#          npm install -g mjpeg-consumer
+#          brew tap facebook/fb
+#          brew install idb-companion
+#          pip3.6 install fb-idb
+#          brew install bundletool
+#          npm install -g appium@next
+#          npm install -g appium-doctor
+#          appium driver install xcuitest
+#          appium driver install safari
+#          appium-doctor
+#          xcrun xctrace list devices
+#          IOS_PLATFORM_VERSION=15.2 yarn test:e2e:ios:safari &>/dev/null &
+#          appium
+##
+##      - name: Run e2e iOS tests
+##        run: |
+##          xcrun xctrace list devices
+##          IOS_PLATFORM_VERSION=15.2 yarn test:e2e:ios:safari
