@@ -3,55 +3,34 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Row } from 'features/cheatcodes/components/Row'
-import { ShareAppModal } from 'features/shareApp/components/ShareAppModal'
+import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { useModal } from 'ui/components/modals/useModal'
 
 export function NavigationShareApp(): JSX.Element {
-  const {
-    visible: shareAppUnderageModalVisible,
-    showModal: showShareAppUnderageModal,
-    hideModal: hideShareAppUnderageModal,
-  } = useModal(false)
-  const {
-    visible: shareAppBeneficiaryModalVisible,
-    showModal: showShareAppBeneficiaryModal,
-    hideModal: hideShareAppBeneficiaryModal,
-  } = useModal(false)
-  const {
-    visible: shareAppBookingModalVisible,
-    showModal: showShareAppBookingModal,
-    hideModal: hideShareAppBookingModal,
-  } = useModal(false)
+  const { showShareAppModal } = useShareAppContext()
 
   return (
     <ScrollView>
       <PageHeader title="Share app 🔗" position="absolute" withGoBackButton />
       <StyledContainer>
         <Row half>
-          <ButtonPrimary wording="Underage modal" onPress={showShareAppUnderageModal} />
-          <ShareAppModal
-            visible={shareAppUnderageModalVisible}
-            hideModal={hideShareAppUnderageModal}
-            modalType={ShareAppModalType.NOT_ELIGIBLE}
+          <ButtonPrimary
+            wording="Not Eligible modal"
+            onPress={() => showShareAppModal(ShareAppModalType.NOT_ELIGIBLE)}
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording="Beneficiary modal" onPress={showShareAppBeneficiaryModal} />
-          <ShareAppModal
-            visible={shareAppBeneficiaryModalVisible}
-            hideModal={hideShareAppBeneficiaryModal}
-            modalType={ShareAppModalType.BENEFICIARY}
+          <ButtonPrimary
+            wording="Beneficiary modal"
+            onPress={() => showShareAppModal(ShareAppModalType.BENEFICIARY)}
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording="Booking modal" onPress={showShareAppBookingModal} />
-          <ShareAppModal
-            visible={shareAppBookingModalVisible}
-            hideModal={hideShareAppBookingModal}
-            modalType={ShareAppModalType.ON_BOOKING_SUCCESS}
+          <ButtonPrimary
+            wording="Booking modal"
+            onPress={() => showShareAppModal(ShareAppModalType.ON_BOOKING_SUCCESS)}
           />
         </Row>
       </StyledContainer>
