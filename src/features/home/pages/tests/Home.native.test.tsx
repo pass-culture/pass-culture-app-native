@@ -35,6 +35,8 @@ jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+jest.mock('libs/geolocation')
+
 describe('Home component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

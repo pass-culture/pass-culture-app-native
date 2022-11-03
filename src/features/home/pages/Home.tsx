@@ -37,12 +37,14 @@ import { getSpacing, Spacer } from 'ui/theme'
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
-const ListHeaderComponent = () => (
-  <ListHeaderContainer>
-    <Spacer.TopScreen />
-    <HomeHeader />
-  </ListHeaderContainer>
-)
+const ListHeaderComponent = () => {
+  return (
+    <ListHeaderContainer>
+      <Spacer.TopScreen />
+      <HomeHeader />
+    </ListHeaderContainer>
+  )
+}
 
 const UnmemoizedModule = ({
   item,
