@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
 import { ExclusivityModuleProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
-import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/ExclusivityModule.utils'
+import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
