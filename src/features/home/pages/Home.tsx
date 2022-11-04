@@ -35,7 +35,7 @@ const Header = ({
   thematicHeader,
 }: {
   isThematicHome: boolean
-  thematicHeader: { title: string | undefined; subtitle: string | undefined } | undefined
+  thematicHeader?: { title?: string; subtitle?: string }
 }) => (
   <ListHeaderContainer>
     {isThematicHome ? (
