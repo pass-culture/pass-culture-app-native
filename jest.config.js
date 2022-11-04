@@ -1,3 +1,5 @@
+const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFrom.config')
+
 module.exports = {
   preset: 'react-native',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
@@ -42,7 +44,11 @@ module.exports = {
   ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!**/node_modules/**', '!**/coverage/**'],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx,ts,tsx}',
+    '!src/**/*.web.{js,jsx,ts,tsx}',
+    ...excludeCollectCoverageFrom,
+  ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
 }
