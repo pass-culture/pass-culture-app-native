@@ -335,10 +335,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         </AccordionItem>
       </Container>
       <BottomContainer>
-        <ErrorBanner>
+        <ErrorContainer>
           <Warning />
-          {errorText}
-        </ErrorBanner>
+          <Spacer.Row numberOfSpaces={2} />
+          <ErrorText>{errorText}</ErrorText>
+        </ErrorContainer>
         <ButtonPrimary wording="Générer le lien" disabled={disabled} onPress={onPress} />
       </BottomContainer>
     </React.Fragment>
@@ -367,7 +368,12 @@ const Container = styled.ScrollView(({ theme }) => ({
   flexDirection: 'column',
 }))
 
-const ErrorBanner = styled(Typo.Caption)(({ theme }) => ({
+const ErrorContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const ErrorText = styled(Typo.Caption)(({ theme }) => ({
   paddingVertical: getSpacing(1.5),
   color: theme.colors.error,
 }))
