@@ -149,15 +149,15 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -167,11 +167,10 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -198,15 +197,15 @@ pour réserver l’offre
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }

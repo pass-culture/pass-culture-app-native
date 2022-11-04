@@ -1285,15 +1285,15 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             testID="modalHeader"
           >
             <View
+              justifyContent="left"
               style={
                 Array [
                   Object {
                     "alignItems": "flex-start",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 0.1,
-                    "flexShrink": 1,
+                    "height": 28,
                     "justifyContent": "flex-start",
+                    "width": 28,
                   },
                 ]
               }
@@ -1303,11 +1303,10 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 Array [
                   Object {
                     "flexBasis": 0,
-                    "flexGrow": 0.8,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                     "justifyContent": "center",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
+                    "paddingHorizontal": 12,
                     "zIndex": 1,
                   },
                 ]
@@ -1333,15 +1332,15 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               </Text>
             </View>
             <View
+              justifyContent="right"
               style={
                 Array [
                   Object {
                     "alignItems": "flex-start",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 0.1,
-                    "flexShrink": 1,
+                    "height": 28,
                     "justifyContent": "flex-end",
+                    "width": 28,
                   },
                 ]
               }

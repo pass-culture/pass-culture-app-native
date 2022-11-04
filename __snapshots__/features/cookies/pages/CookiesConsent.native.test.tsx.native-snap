@@ -170,15 +170,15 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             testID="modalHeader"
           >
             <View
+              justifyContent="left"
               style={
                 Array [
                   Object {
                     "alignItems": "flex-start",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 0.1,
-                    "flexShrink": 1,
+                    "height": 28,
                     "justifyContent": "flex-start",
+                    "width": 28,
                   },
                 ]
               }
@@ -188,11 +188,10 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 Array [
                   Object {
                     "flexBasis": 0,
-                    "flexGrow": 0.8,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                     "justifyContent": "center",
-                    "paddingLeft": 12,
-                    "paddingRight": 12,
+                    "paddingHorizontal": 12,
                     "zIndex": 1,
                   },
                 ]
@@ -217,15 +216,15 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               </Text>
             </View>
             <View
+              justifyContent="right"
               style={
                 Array [
                   Object {
                     "alignItems": "flex-start",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 0.1,
-                    "flexShrink": 1,
+                    "height": 28,
                     "justifyContent": "flex-end",
+                    "width": 28,
                   },
                 ]
               }
