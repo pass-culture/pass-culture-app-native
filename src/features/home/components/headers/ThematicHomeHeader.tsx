@@ -14,7 +14,6 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
 }) => {
   return (
     <Container>
-      <Spacer.TopScreen />
       <BackButton />
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>

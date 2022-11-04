@@ -75,17 +75,6 @@ exports[`Home N-1 should render correctly 1`] = `
             }
           >
             <View
-              customHeight={16}
-              enable={true}
-              style={
-                Array [
-                  Object {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
-            <View
               style={
                 Array [
                   Object {
@@ -96,17 +85,6 @@ exports[`Home N-1 should render correctly 1`] = `
                 ]
               }
             >
-              <View
-                customHeight={16}
-                enable={true}
-                style={
-                  Array [
-                    Object {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
               <View
                 accessibilityLabel="Revenir en arrière"
                 accessibilityRole="button"
