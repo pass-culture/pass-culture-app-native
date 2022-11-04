@@ -119,6 +119,12 @@ module.exports = {
             message: 'use modal.spacing from theme/index.ts',
           },
         ],
+        patterns: [
+          {
+            group: ['*.stories*'],
+            message: 'you should never import something from a story.',
+          },
+        ],
       },
     ],
     'no-restricted-properties': [
