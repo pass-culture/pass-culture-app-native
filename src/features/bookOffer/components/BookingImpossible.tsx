@@ -9,7 +9,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -18,7 +17,6 @@ export const BookingImpossible: React.FC = () => {
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showErrorSnackBar } = useSnackBarContext()
   const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSent()
 
   useEffect(() => {
@@ -31,12 +29,6 @@ export const BookingImpossible: React.FC = () => {
       if (typeof offerId == 'undefined') return
       analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })
       notifyWebappLinkSent(offerId)
-    },
-    onError: () => {
-      showErrorSnackBar({
-        message: 'L’offre n’a pas été ajoutée à tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
     },
   })
 

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError, isApiError } from 'api/apiHelpers'
 import {
   FavoriteRequest,
   FavoriteResponse,
@@ -10,18 +10,11 @@ import {
 } from 'api/gen'
 import { FavoriteMutationContext } from 'features/favorites/api/types'
 import { QueryKeys } from 'libs/queryKeys'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-interface AddFavorite {
-  onSuccess?: (data?: FavoriteResponse) => void
-  onError?: (
-    error: Error | ApiError | undefined,
-    { offerId }: { offerId?: number },
-    context?: FavoriteMutationContext
-  ) => void
-}
-
-export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
+export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResponse) => void }) {
   const queryClient = useQueryClient()
+  const { showErrorSnackBar } = useSnackBarContext()
 
   return useMutation((body: FavoriteRequest) => api.postnativev1mefavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
@@ -70,17 +63,21 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
     },
     onError: (
       error: Error | ApiError,
-      { offerId },
+      variables: FavoriteRequest,
       context: FavoriteMutationContext | undefined
     ) => {
+      showErrorSnackBar({
+        message:
+          isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
+            ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
+            : 'L’offre n’a pas été ajoutée à tes favoris',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
       if (context?.previousFavorites) {
         queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
         queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, {
           count: context.previousFavorites.length,
         })
-      }
-      if (onError) {
-        onError(error, { offerId }, context)
       }
     },
   })

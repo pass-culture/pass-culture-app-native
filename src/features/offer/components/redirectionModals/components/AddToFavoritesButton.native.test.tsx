@@ -13,13 +13,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, waitFor, render } from 'tests/utils'
-import {
-  showSuccessSnackBar,
-  showErrorSnackBar,
-  hideSnackBar,
-  showInfoSnackBar,
-} from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -28,22 +21,7 @@ mockUseAuthContext.mockReturnValue({
   setIsLoggedIn: jest.fn(),
 })
 
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: jest.fn(() => ({})),
-}))
-
 const mockPostFavorite = jest.fn()
-
-const mockedUseSnackBarContext = useSnackBarContext as jest.MockedFunction<
-  typeof useSnackBarContext
->
-
-mockedUseSnackBarContext.mockReturnValue({
-  hideSnackBar,
-  showInfoSnackBar,
-  showSuccessSnackBar,
-  showErrorSnackBar,
-})
 
 describe('<AddToFavoriteButton />', () => {
   it('should render nothing when offer already in favorite', async () => {
@@ -63,23 +41,7 @@ describe('<AddToFavoriteButton />', () => {
     fireEvent.press(getByText('Mettre en favori'))
 
     await waitFor(() => {
-      expect(mockPostFavorite).toHaveBeenCalled()
-    })
-  })
-
-  it('should show error snackbar when add favorite fails', async () => {
-    const { getByText } = renderButton({
-      offerId: addFavoriteJsonResponseSnap.offer.id,
-      hasAddFavoriteError: true,
-    })
-
-    fireEvent.press(getByText('Mettre en favori'))
-
-    await waitFor(() => {
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: 'L’offre n’a pas été ajoutée à tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      expect(mockPostFavorite).toHaveBeenCalledTimes(1)
     })
   })
 })
