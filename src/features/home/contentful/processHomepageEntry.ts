@@ -23,8 +23,8 @@ import {
   VenuesModule,
 } from './moduleTypes'
 
-export const parseOfferId = (offerId: string): number | null => {
-  return Number.isNaN(Number(offerId)) ? null : Number(offerId)
+export const parseOfferId = (offerId: string): number | undefined => {
+  return Number.isNaN(Number(offerId)) ? undefined : Number(offerId)
 }
 
 const buildAlgoliaModule = (
@@ -63,11 +63,16 @@ const buildExclusivity = (
 ): ExclusivityPane | undefined => {
   const { title, alt, offerId, image, displayParameters } = fields
   const { fields: display = undefined } = displayParameters || {}
-  const id = parseOfferId(offerId)
-  if (typeof id !== 'number') return
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return new ExclusivityPane({ title, alt, image: buildImageUrl(image)!, id, moduleId, display })
+  return new ExclusivityPane({
+    title,
+    alt,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    image: buildImageUrl(image)!,
+    offerId: parseOfferId(offerId),
+    moduleId,
+    display,
+  })
 }
 
 const buildVenuesPlaylist = (fields: VenuesFields, moduleId: string): VenuesModule | undefined => {

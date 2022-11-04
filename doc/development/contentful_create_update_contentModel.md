@@ -15,7 +15,7 @@
 💡 Un content model est une **structure de donnée** qui sera ensuite utilisée pour créer du contenu (différence entre ‘content model’ et ‘content’ sur l’interface contentful)
 
 <br/>
-  Dans l’onglet ‘Content Model’, cliquer sur ‘Add Content Type’ et créer votre nouveel structure de donnée.
+  Dans l’onglet ‘Content Model’, cliquer sur ‘Add Content Type’ et créer votre nouvelle structure de donnée.
 
 <br/>
 
