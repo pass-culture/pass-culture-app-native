@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
 
-import { ShareAppModalNew } from 'features/shareApp/components/ShareAppModalNew'
+import { ShareAppModal } from 'features/shareApp/components/ShareAppModal'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -38,7 +38,7 @@ export const ShareAppWrapper = memo(function ShareAppWrapper({
   return (
     <ShareAppContext.Provider value={value}>
       {children}
-      <ShareAppModalNew modalType={modalType} {...shareAppModalProps} />
+      <ShareAppModal modalType={modalType} {...shareAppModalProps} />
     </ShareAppContext.Provider>
   )
 })

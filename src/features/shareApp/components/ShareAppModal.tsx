@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { shareApp } from 'features/shareApp/helpers/shareApp'
 import {
   shareAppModalInformations,
   ShareAppModalType,
@@ -17,10 +18,11 @@ type Props = {
   modalType: ShareAppModalType
 }
 
-export const ShareAppModalNew: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {
+export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {
   const openShareAppModal = useCallback(() => {
     analytics.logShareApp(modalType)
     hideModal()
+    setTimeout(shareApp, 0)
   }, [modalType, hideModal])
 
   const onCloseIconPress = useCallback(() => {
