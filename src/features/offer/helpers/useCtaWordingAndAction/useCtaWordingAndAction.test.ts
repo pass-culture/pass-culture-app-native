@@ -46,7 +46,7 @@ describe('getCtaWordingAndAction', () => {
   })
 
   describe('Non eligible', () => {
-    it('should display "Réserver l’offre" disabled wording with bottom banner', () => {
+    it('should display "Réserver l’offre" disabled wording with bottom banner when no external url', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: true,
         isEligible: false,
@@ -63,6 +63,25 @@ describe('getCtaWordingAndAction', () => {
         bottomBannerText:
           'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
         wording: 'Réserver l’offre',
+      })
+    })
+
+    it('should display "Accéder au site partenaire" wording when external url', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        isEligible: false,
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+        wording: 'Accéder au site partenaire',
       })
     })
   })

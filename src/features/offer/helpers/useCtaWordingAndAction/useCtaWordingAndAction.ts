@@ -54,6 +54,7 @@ export const getCtaWordingAndAction = ({
   isEndedUsedBooking,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl } = offer
+
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
 
   if (!isLoggedIn) {
@@ -64,7 +65,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (!isEligible) {
+  if (!isEligible && !externalTicketOfficeUrl) {
     return {
       wording: 'Réserver l’offre',
       bottomBannerText:
