@@ -40,7 +40,7 @@ const Header = ({
   <ListHeaderContainer>
     {isThematicHome ? (
       <ThematicHomeHeader
-        headerTitle={thematicHeader?.title || ''}
+        headerTitle={thematicHeader?.title}
         headerSubtitle={thematicHeader?.subtitle}
       />
     ) : (

@@ -1,22 +1,33 @@
-import React, { FunctionComponent } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface ThematicHomeHeaderProps {
-  headerTitle: string
+  headerTitle?: string
   headerSubtitle?: string
 }
 export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
   headerTitle,
   headerSubtitle,
 }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])
+
   return (
     <Container>
-      <BackButton />
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
+      <Spacer.TopScreen />
+      <BackButton onGoBack={onGoBack} />
+      {headerTitle ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
+        </React.Fragment>
+      ) : null}
       {headerSubtitle ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
@@ -27,8 +38,8 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
   )
 }
 
-const Container = styled.View({
-  paddingHorizontal: getSpacing(6),
-  paddingTop: getSpacing(6),
-  paddingBottom: getSpacing(2),
-})
+const Container = styled.View(({ theme }) => ({
+  marginTop: getSpacing(6),
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  marginBottom: getSpacing(2),
+}))

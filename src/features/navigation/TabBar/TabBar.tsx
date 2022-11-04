@@ -15,14 +15,15 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
     <TabBarContainer>
       {tabRoutes.map((route) => {
         const onPress = () => {
-          if (route.isSelected) return
+          if (route.isSelected && route.name !== 'Home') return
           const event = navigation.emit({
             type: 'tabPress',
             target: route.key,
             canPreventDefault: true,
           })
           if (!event.defaultPrevented) {
-            navigation.navigate('TabNavigator', { screen: route.name, params: route.params })
+            const params = route.name === 'Home' ? undefined : route.params
+            navigation.navigate('TabNavigator', { screen: route.name, params })
           }
         }
         return (

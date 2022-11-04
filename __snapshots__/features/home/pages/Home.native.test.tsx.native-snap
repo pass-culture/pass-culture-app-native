@@ -78,13 +78,24 @@ exports[`Home N-1 should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "paddingBottom": 8,
-                    "paddingHorizontal": 24,
-                    "paddingTop": 24,
+                    "marginBottom": 8,
+                    "marginHorizontal": 24,
+                    "marginTop": 24,
                   },
                 ]
               }
             >
+              <View
+                customHeight={16}
+                enable={true}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityLabel="Revenir en arrière"
                 accessibilityRole="button"
