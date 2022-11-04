@@ -108,13 +108,6 @@ Object {
   background-color: #F1F1F4;
 }
 
-.c2 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-}
-
 .c1 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -130,6 +123,13 @@ Object {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c2 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
 }
 
 .c3 {
@@ -178,7 +178,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0 c1 sc-hGPBjI c1"
+                  class="c0 c1 sc-iqseJM c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -547,13 +547,6 @@ Object {
   background-color: #F1F1F4;
 }
 
-.c2 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-}
-
 .c1 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -569,6 +562,13 @@ Object {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c2 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
 }
 
 .c3 {
@@ -616,7 +616,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="c0 c1 sc-hGPBjI c1"
+                class="c0 c1 sc-iqseJM c1"
                 data-testid="backButton"
                 tabindex="0"
                 title="Revenir en arrière"

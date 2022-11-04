@@ -2,31 +2,26 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
+import { useHomepageData } from 'features/home/api'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
-import { flushAllPromises, render } from 'tests/utils'
+import { flushAllPromises, render, waitFor } from 'tests/utils'
 
-import { Home } from '../Home'
+import { Home } from './Home'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
-
-useRoute.mockImplementation(() => ({ params: { entryId: 'specific_entry_id' } }))
 
 let mockUserProfileInfo: Partial<UserProfileResponse> | undefined = undefined
 jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: mockUserProfileInfo })),
 }))
 
-jest.mock('features/home/api', () => ({
-  useHomepageData: () => ({
-    modules: [],
-    homeEntryId: 'fakeEntryId',
-  }),
-}))
+jest.mock('features/home/api')
+const mockUseHomepageData = useHomepageData as jest.Mock
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
@@ -38,6 +33,12 @@ jest.mock('features/auth/AuthContext', () => ({
 jest.mock('libs/geolocation')
 
 describe('Home component', () => {
+  useRoute.mockReturnValue({ params: {} })
+
+  mockUseHomepageData.mockReturnValue({
+    modules: [],
+    homeEntryId: 'fakeEntryId',
+  })
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(jest.clearAllMocks)
@@ -62,52 +63,64 @@ describe('Home component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should have a welcome message', () => {
+  it('should have a welcome message', async () => {
     mockUserProfileInfo = undefined
     const { getByText } = render(<Home />)
-    getByText('Bienvenue\u00a0!')
+    await waitFor(() => getByText('Bienvenue\u00a0!'))
   })
 
-  it('should have a personalized welcome message when user is logged in', () => {
+  it('should have a personalized welcome message when user is logged in', async () => {
     const { getByText } = render(<Home />)
-    getByText('Bonjour Jean')
+
+    await waitFor(() => getByText('Bonjour Jean'))
   })
 
-  it('should show the available credit to the user - remaining', () => {
+  it('should show the available credit to the user - remaining', async () => {
     const { getByText } = render(<Home />)
-    getByText('Tu as 496\u00a0€ sur ton pass')
+
+    await waitFor(() => getByText('Tu as 496\u00a0€ sur ton pass'))
   })
 
-  it('should show the available credit to the user - expired', () => {
+  it('should show the available credit to the user - expired', async () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     mockUserProfileInfo!.depositExpirationDate = '2020-02-16T17:16:04.735235'
     const { queryByText, getByText } = render(<Home />)
-    expect(getByText('Ton crédit est expiré')).toBeTruthy()
-    expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeNull()
+    await waitFor(() => {
+      expect(getByText('Ton crédit est expiré')).toBeTruthy()
+      expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeNull()
+    })
   })
 
-  it('should show the available credit to the user - not logged in', () => {
+  it('should show the available credit to the user - not logged in', async () => {
     mockUserProfileInfo = undefined
     const { queryByText } = render(<Home />)
-    expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
+    await waitFor(() => {
+      expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
+    })
   })
 
-  it('should show the available credit to the user - not beneficiary', () => {
+  it('should show the available credit to the user - not beneficiary', async () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     mockUserProfileInfo!.isBeneficiary = false
     const { queryByText } = render(<Home />)
-    expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
+    await waitFor(() => {
+      expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
+    })
   })
 
   it('should not have code push button', async () => {
     const { queryByText } = render(<Home />)
-    expect(queryByText('Check update')).toBeNull()
+    await waitFor(() => {
+      expect(queryByText('Check update')).toBeNull()
+    })
   })
 
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const { queryByText } = render(<Home />)
-    expect(queryByText('CheatMenu')).toBeTruthy()
+    await waitFor(() => {
+      expect(queryByText('CheatMenu')).toBeTruthy()
+    })
   })
 
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
@@ -120,6 +133,20 @@ describe('Home component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = render(<Home />)
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+  })
+})
+
+describe('Home N-1', () => {
+  it('should render correctly', () => {
+    useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
+    mockUseHomepageData.mockReturnValueOnce({
+      modules: [],
+      homeEntryId: 'fake-entry-id',
+      thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
+    })
+
+    const home = render(<Home />)
+    expect(home).toMatchSnapshot()
   })
 })
 

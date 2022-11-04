@@ -1,5 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import {
   FlatList,
   NativeScrollEvent,
@@ -12,18 +12,11 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
-import {
-  BusinessModule,
-  ExclusivityModule,
-  OffersModule,
-  VenuesModule,
-} from 'features/home/components'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
-import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
-import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
-import { ProcessedModule, RecommendationPane } from 'features/home/contentful/moduleTypes'
-import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
+import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -37,83 +30,29 @@ import { getSpacing, Spacer } from 'ui/theme'
 const keyExtractor = (item: ProcessedModule, index: number) =>
   'moduleId' in item ? item.moduleId : `recommendation${index}`
 
-const ListHeaderComponent = () => {
-  return (
-    <ListHeaderContainer>
-      <HomeHeader />
-    </ListHeaderContainer>
-  )
-}
-
-const UnmemoizedModule = ({
-  item,
-  index,
-  homeEntryId,
+const Header = ({
+  isThematicHome,
+  thematicHeader,
 }: {
-  item: ProcessedModule
-  index: number
-  homeEntryId: string | undefined
-}) => {
-  if (isOfferModuleTypeguard(item))
-    return (
-      <OffersModule
-        moduleId={item.moduleId}
-        search={item.search}
-        display={item.display}
-        cover={item instanceof OffersWithCover ? item.cover : null}
-        index={index}
-        homeEntryId={homeEntryId}
+  isThematicHome: boolean
+  thematicHeader?: { title?: string; subtitle?: string }
+}) => (
+  <ListHeaderContainer>
+    {isThematicHome ? (
+      <ThematicHomeHeader
+        headerTitle={thematicHeader?.title || ''}
+        headerSubtitle={thematicHeader?.subtitle}
       />
-    )
-
-  if (isVenuesModuleTypeguard(item))
-    return (
-      <VenuesModule
-        moduleId={item.moduleId}
-        display={item.display}
-        search={item.search}
-        homeEntryId={homeEntryId}
-        index={index}
-      />
-    )
-
-  if (item instanceof RecommendationPane)
-    return (
-      <RecommendationModule
-        moduleId={item.moduleId}
-        index={index}
-        displayParameters={item.displayParameters}
-        recommendationParameters={item.recommendationParameters}
-        homeEntryId={homeEntryId}
-      />
-    )
-
-  if (item instanceof ExclusivityPane)
-    return (
-      <ExclusivityModule
-        moduleId={item.moduleId}
-        title={item.title}
-        alt={item.alt}
-        image={item.image}
-        offerId={item.offerId}
-        display={item.display}
-        homeEntryId={homeEntryId}
-        index={index}
-      />
-    )
-
-  if (item instanceof BusinessPane)
-    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} />
-
-  return <React.Fragment></React.Fragment>
-}
-
-const Module = memo(UnmemoizedModule)
+    ) : (
+      <HomeHeader />
+    )}
+  </ListHeaderContainer>
+)
 
 const renderModule = (
   { item, index }: { item: ProcessedModule; index: number },
   homeEntryId: string | undefined
-) => <Module item={item} index={index} homeEntryId={homeEntryId} />
+) => <HomeModule item={item} index={index} homeEntryId={homeEntryId} />
 
 const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   return (
@@ -130,7 +69,7 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, homeEntryId } = useHomepageData(params?.entryId) || {}
+  const { modules, homeEntryId, thematicHeader } = useHomepageData(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
@@ -140,6 +79,9 @@ export const OnlineHome: FunctionComponent = () => {
   const maxToRenderPerBatch = 5
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
+
+  const isThematicHome = !!params?.entryId
+
   const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
 
   const onScroll = useCallback(
@@ -189,7 +131,7 @@ export const OnlineHome: FunctionComponent = () => {
           scrollEventThrottle={400}
           bounces={false}
           scrollEnabled={false}>
-          <HomeHeader />
+          <Header isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
         </ScrollView>
@@ -205,7 +147,9 @@ export const OnlineHome: FunctionComponent = () => {
           renderItem={({ item, index }) => renderModule({ item, index }, homeEntryId)}
           keyExtractor={keyExtractor}
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
-          ListHeaderComponent={ListHeaderComponent}
+          ListHeaderComponent={
+            <Header isThematicHome={isThematicHome} thematicHeader={thematicHeader} />
+          }
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
           onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
