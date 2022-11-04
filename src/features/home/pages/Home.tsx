@@ -40,7 +40,6 @@ const keyExtractor = (item: ProcessedModule, index: number) =>
 const ListHeaderComponent = () => {
   return (
     <ListHeaderContainer>
-      <Spacer.TopScreen />
       <HomeHeader />
     </ListHeaderContainer>
   )
@@ -190,7 +189,6 @@ export const OnlineHome: FunctionComponent = () => {
           scrollEventThrottle={400}
           bounces={false}
           scrollEnabled={false}>
-          <Spacer.TopScreen />
           <HomeHeader />
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
