@@ -66,8 +66,10 @@ export const HeaderIcon = (props: HeaderIconProps) => {
   )
 }
 
+const CONTAINER_SIZE = getSpacing(10)
 const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
-  width: getSpacing(10),
+  width: CONTAINER_SIZE,
+  height: CONTAINER_SIZE,
   aspectRatio: '1',
   borderRadius: getSpacing(10),
   backgroundColor: theme.colors.white,

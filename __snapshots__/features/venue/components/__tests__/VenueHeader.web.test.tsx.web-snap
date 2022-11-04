@@ -75,7 +75,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; height: 40px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -151,7 +151,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; height: 40px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -277,7 +277,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="headerIconRoundContainer"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; height: 40px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -353,7 +353,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="headerIconRoundContainer"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; height: 40px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
           >
             <div
               class="css-view-1dbjc4n"

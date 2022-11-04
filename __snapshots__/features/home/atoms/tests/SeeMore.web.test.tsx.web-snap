@@ -28,7 +28,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(22,22,23,0.15); justify-content: center; width: 64px;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(22,22,23,0.15); height: 64px; justify-content: center; width: 64px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -91,7 +91,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(22,22,23,0.15); justify-content: center; width: 64px;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; box-shadow: 0px 8px 12px rgba(22,22,23,0.15); height: 64px; justify-content: center; width: 64px;"
           >
             <div
               class="css-view-1dbjc4n"
