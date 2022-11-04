@@ -12,6 +12,7 @@ import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { PageTitle } from 'ui/components/PageTitle'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -47,7 +48,7 @@ export const HomeHeader: FunctionComponent = function () {
   }
 
   return (
-    <Container>
+    <React.Fragment>
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer
           onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
@@ -55,30 +56,24 @@ export const HomeHeader: FunctionComponent = function () {
           <Typo.Body>CheatMenu</Typo.Body>
         </CheatCodeButtonContainer>
       )}
-
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={6} />
-      <StyledTitle1>{welcomeTitle}</StyledTitle1>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Body>{getSubtitle()}</Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
-      {shouldDisplayGeolocationBloc ? (
-        <React.Fragment>
-          <GeolocationBanner />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
-      ) : null}
-    </Container>
+      <PageTitle title={welcomeTitle} numberOfLines={2} />
+      <PageContent>
+        <Typo.Body>{getSubtitle()}</Typo.Body>
+        <Spacer.Column numberOfSpaces={6} />
+        {shouldDisplayGeolocationBloc ? (
+          <React.Fragment>
+            <GeolocationBanner />
+            <Spacer.Column numberOfSpaces={8} />
+          </React.Fragment>
+        ) : null}
+      </PageContent>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View({
+const PageContent = styled.View({
   marginHorizontal: getSpacing(6),
 })
-
-const StyledTitle1 = styled(Typo.Title1).attrs({
-  numberOfLines: 2,
-})({})
 
 const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',
