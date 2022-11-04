@@ -13,7 +13,6 @@ export function NewIdentificationFlow(): JSX.Element {
 
   return (
     <ScrollView>
-      <Spacer.TopScreen />
       <PageHeader title="NewIdentificationFlow 🎨" position="absolute" withGoBackButton />
       <StyledContainer>
         <LinkToComponent
