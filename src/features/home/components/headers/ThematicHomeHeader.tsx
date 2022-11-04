@@ -8,7 +8,7 @@ import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface ThematicHomeHeaderProps {
-  headerTitle: string
+  headerTitle?: string
   headerSubtitle?: string
 }
 export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
@@ -22,8 +22,12 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
     <Container>
       <Spacer.TopScreen />
       <BackButton onGoBack={onGoBack} />
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
+      {headerTitle ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
+        </React.Fragment>
+      ) : null}
       {headerSubtitle ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
