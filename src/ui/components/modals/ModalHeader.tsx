@@ -50,14 +50,14 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
 
   return (
     <Container onLayout={onLayout} testID="modalHeader" modalSpacing={modalSpacing}>
-      <LeftHeaderActionContainer>
+      <HeaderActionContainer justifyContent="left">
         {!!LeftIcon && (
           <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
             <LeftIcon {...accessibilityAndTestId(leftIconAccessibilityLabel, 'leftIcon')} />
             <HiddenAccessibleText>Retour</HiddenAccessibleText>
           </HeaderAction>
         )}
-      </LeftHeaderActionContainer>
+      </HeaderActionContainer>
       <TitleContainer>
         <TitleComponent
           numberOfLines={numberOfLines}
@@ -66,7 +66,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
           {title}
         </TitleComponent>
       </TitleContainer>
-      <RightHeaderActionContainer>
+      <HeaderActionContainer justifyContent="right">
         {!!RightIcon && (
           <HeaderAction
             onPress={onRightIconPress}
@@ -75,7 +75,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
             <RightIcon testID="rightIcon" />
           </HeaderAction>
         )}
-      </RightHeaderActionContainer>
+      </HeaderActionContainer>
     </Container>
   )
 }
@@ -90,25 +90,23 @@ const Container = styled.View<{ modalSpacing?: ModalSpacing }>(({ modalSpacing }
 
 const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
-  paddingRight: getSpacing(3),
-  paddingLeft: getSpacing(3),
-  flex: 0.8,
+  paddingHorizontal: getSpacing(3),
+  flex: 1,
   zIndex: theme.zIndex.modalHeader,
 }))
 
-const LeftHeaderActionContainer = styled.View({
-  flexDirection: 'row',
-  flex: 0.1,
-  alignItems: 'flex-start',
-  justifyContent: 'flex-start',
-})
-
-const RightHeaderActionContainer = styled.View({
-  flexDirection: 'row',
-  flex: 0.1,
-  alignItems: 'flex-start',
-  justifyContent: 'flex-end',
-})
+const HeaderActionContainer = styled.View<{ justifyContent: 'left' | 'right' }>(
+  ({ theme, justifyContent }) => {
+    const headerActionSize = theme.icons.sizes.smaller + getSpacing(2)
+    return {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      justifyContent: justifyContent === 'left' ? 'flex-start' : 'flex-end',
+      width: headerActionSize,
+      height: headerActionSize,
+    }
+  }
+)
 
 const HeaderAction = styledButton(Touchable)({
   padding: getSpacing(1),

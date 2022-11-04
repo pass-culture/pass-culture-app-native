@@ -148,15 +148,15 @@ exports[`<AppModal /> on big screen 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -166,11 +166,10 @@ exports[`<AppModal /> on big screen 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -196,15 +195,15 @@ exports[`<AppModal /> on big screen 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -400,15 +399,15 @@ exports[`<AppModal /> on small screen 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -418,11 +417,10 @@ exports[`<AppModal /> on small screen 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -448,15 +446,15 @@ exports[`<AppModal /> on small screen 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -626,15 +624,15 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -644,11 +642,10 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -674,15 +671,15 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -878,15 +875,15 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -896,11 +893,10 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -926,15 +922,15 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -1130,15 +1126,15 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -1148,11 +1144,10 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -1178,15 +1173,15 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -1382,15 +1377,15 @@ exports[`<AppModal /> with left icon render 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -1447,11 +1442,10 @@ exports[`<AppModal /> with left icon render 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -1477,15 +1471,15 @@ exports[`<AppModal /> with left icon render 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -1681,15 +1675,15 @@ exports[`<AppModal /> with minimal props 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -1699,11 +1693,10 @@ exports[`<AppModal /> with minimal props 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -1729,15 +1722,15 @@ exports[`<AppModal /> with minimal props 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -1933,15 +1926,15 @@ exports[`<AppModal /> with right icon render 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -1951,11 +1944,10 @@ exports[`<AppModal /> with right icon render 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -1981,15 +1973,15 @@ exports[`<AppModal /> with right icon render 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
@@ -2221,15 +2213,15 @@ exports[`<AppModal /> without children 1`] = `
         testID="modalHeader"
       >
         <View
+          justifyContent="left"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-start",
+                "width": 28,
               },
             ]
           }
@@ -2239,11 +2231,10 @@ exports[`<AppModal /> without children 1`] = `
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 0.8,
+                "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
+                "paddingHorizontal": 12,
                 "zIndex": 1,
               },
             ]
@@ -2269,15 +2260,15 @@ exports[`<AppModal /> without children 1`] = `
           </Text>
         </View>
         <View
+          justifyContent="right"
           style={
             Array [
               Object {
                 "alignItems": "flex-start",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
+                "height": 28,
                 "justifyContent": "flex-end",
+                "width": 28,
               },
             ]
           }
