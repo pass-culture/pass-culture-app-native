@@ -3,8 +3,8 @@ import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Error } from 'ui/svg/icons/Error'
-import { Warning } from 'ui/svg/icons/Warning'
 
 import { Banner } from './Banner'
 
