@@ -28,6 +28,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" wording and modal "authentication"', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: false,
+        isEligible: false,
         isBeneficiary: false,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
@@ -39,6 +40,28 @@ describe('getCtaWordingAndAction', () => {
       expect(result).toEqual({
         isDisabled: false,
         modalToDisplay: OfferModal.AUTHENTICATION,
+        wording: 'Réserver l’offre',
+      })
+    })
+  })
+
+  describe('Non eligible', () => {
+    it('should display "Réserver l’offre" disabled wording with bottom banner', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        isEligible: false,
+        isBeneficiary: false,
+        offer: buildOffer({}),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: true,
+        bottomBannerText:
+          'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
         wording: 'Réserver l’offre',
       })
     })
@@ -60,6 +83,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
+          isEligible: true,
           isBeneficiary: false,
           offer,
           subcategory,
@@ -95,6 +119,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
+          isEligible: true,
           isBeneficiary: true,
           offer,
           subcategory,
@@ -121,6 +146,7 @@ describe('getCtaWordingAndAction', () => {
     ) =>
       getCtaWordingAndAction({
         isLoggedIn: true,
+        isEligible: true,
         isBeneficiary: true,
         offer: buildOffer(partialOffer),
         subcategory: buildSubcategory(partialSubcategory || {}),
@@ -330,6 +356,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
+          isEligible: true,
           isBeneficiary: true,
           offer,
           subcategory,
@@ -353,6 +380,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
+          isEligible: true,
           isBeneficiary: true,
           offer,
           subcategory,

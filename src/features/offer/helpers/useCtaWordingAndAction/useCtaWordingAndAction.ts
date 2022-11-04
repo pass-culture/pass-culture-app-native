@@ -19,6 +19,7 @@ const getIsBookedOffer = (
 
 interface Props {
   isLoggedIn: boolean
+  isEligible: boolean
   isBeneficiary: boolean
   offer: OfferResponse
   subcategory: Subcategory
@@ -26,6 +27,7 @@ interface Props {
   bookedOffers: UserProfileResponse['bookedOffers']
   isUnderageBeneficiary: boolean
   isEndedUsedBooking?: boolean
+  bottomBannerText?: string
   isDisabled?: boolean
 }
 interface ICTAWordingAndAction {
@@ -35,12 +37,14 @@ interface ICTAWordingAndAction {
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
   isEndedUsedBooking?: boolean
+  bottomBannerText?: string
   isDisabled?: boolean
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
 export const getCtaWordingAndAction = ({
   isLoggedIn,
+  isEligible,
   isBeneficiary,
   offer,
   subcategory,
@@ -57,6 +61,15 @@ export const getCtaWordingAndAction = ({
       modalToDisplay: OfferModal.AUTHENTICATION,
       wording: 'Réserver l’offre',
       isDisabled: false,
+    }
+  }
+
+  if (!isEligible) {
+    return {
+      wording: 'Réserver l’offre',
+      bottomBannerText:
+        'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+      isDisabled: true,
     }
   }
 
@@ -155,6 +168,7 @@ export const useCtaWordingAndAction = (props: {
   const { isBeneficiary = false, bookedOffers = {} } = user || {}
   return getCtaWordingAndAction({
     isLoggedIn,
+    isEligible: !!user?.eligibility,
     isBeneficiary,
     offer,
     subcategory: mapping[offer.subcategoryId],

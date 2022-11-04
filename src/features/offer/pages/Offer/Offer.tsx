@@ -6,6 +6,7 @@ import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useOffer } from 'features/offer/api/useOffer'
 import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
+import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
@@ -19,8 +20,7 @@ import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { getSpacing } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -29,7 +29,6 @@ export const Offer: FunctionComponent = () => {
   )
   const offerId = route.params && route.params.id
 
-  const { bottom } = useCustomSafeInsets()
   const { data: offerResponse } = useOffer({ offerId })
   const {
     visible: bookingOfferModalIsVisible,
@@ -61,6 +60,7 @@ export const Offer: FunctionComponent = () => {
     externalNav,
     modalToDisplay,
     isEndedUsedBooking,
+    bottomBannerText,
     isDisabled,
   } = useCtaWordingAndAction({ offerId }) || {}
 
@@ -99,19 +99,27 @@ export const Offer: FunctionComponent = () => {
       />
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
-        <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          {navigationProps ? (
-            <TouchableLink
-              as={ButtonWithLinearGradient}
-              wording={wording}
-              onBeforeNavigate={onPress}
-              isDisabled={isDisabled}
-              {...navigationProps}
-            />
-          ) : (
-            <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
-          )}
-        </CallToActionContainer>
+        <React.Fragment>
+          <CallToActionContainer testID="CTA-button">
+            {navigationProps ? (
+              <TouchableLink
+                as={ButtonWithLinearGradient}
+                wording={wording}
+                onBeforeNavigate={onPress}
+                isDisabled={isDisabled}
+                {...navigationProps}
+              />
+            ) : (
+              <ButtonWithLinearGradient
+                wording={wording}
+                onPress={onPress}
+                isDisabled={isDisabled}
+              />
+            )}
+            <Spacer.Column numberOfSpaces={bottomBannerText ? 4.5 : 6} />
+          </CallToActionContainer>
+          {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}
+        </React.Fragment>
       )}
 
       <BookingOfferModal
@@ -135,5 +143,4 @@ const Container = styled.View(({ theme }) => ({
 
 const CallToActionContainer = styled.View({
   marginHorizontal: getSpacing(6),
-  marginBottom: getSpacing(8),
 })

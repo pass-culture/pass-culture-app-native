@@ -2254,7 +2254,6 @@ Array [
           }
         >
           <View
-            fill="#b60025"
             height={16}
             width={16}
           >
