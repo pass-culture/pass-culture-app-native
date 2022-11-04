@@ -62,8 +62,7 @@ describe('TabBar', () => {
   })
 
   it('should display the 5 following tabs with Bookings selected', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseTabNavigationContext.mockReturnValue({
+    mockedUseTabNavigationContext.mockReturnValueOnce({
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
         ...route,
@@ -90,14 +89,32 @@ describe('TabBar', () => {
   })
 
   it('does not reset navigation when clicked on selected tab', async () => {
+    mockedUseTabNavigationContext.mockReturnValueOnce({
+      setTabNavigationState: jest.fn(),
+      tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
+        ...route,
+        isSelected: route.name === 'Profile',
+      })),
+    })
+    const renderAPI = await renderTabBar()
+    expect(renderAPI.queryByTestId('Profile tab selected')).toBeTruthy()
+
+    const profileTab = renderAPI.getByTestId('Profile tab')
+    fireEvent.press(profileTab)
+
+    expect(navigation.emit).not.toHaveBeenCalled()
+    expect(navigation.navigate).not.toHaveBeenCalled()
+  })
+
+  it('should reset navigation when clicked on selected home tab', async () => {
     const renderAPI = await renderTabBar()
     expect(renderAPI.queryByTestId('Home tab selected')).toBeTruthy()
 
     const homeTab = renderAPI.getByTestId('Home tab')
     fireEvent.press(homeTab)
 
-    expect(navigation.emit).not.toBeCalled()
-    expect(navigation.navigate).not.toBeCalled()
+    expect(navigation.emit).toHaveBeenCalled()
+    expect(navigation.navigate).toHaveBeenCalled()
   })
 
   it('navigates to Profile on Profile tab click', async () => {

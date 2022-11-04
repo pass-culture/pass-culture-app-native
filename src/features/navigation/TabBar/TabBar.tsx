@@ -15,7 +15,7 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
     <TabBarContainer>
       {tabRoutes.map((route) => {
         const onPress = () => {
-          if (route.isSelected) return
+          if (route.isSelected && route.name !== 'Home') return
           const event = navigation.emit({
             type: 'tabPress',
             target: route.key,
