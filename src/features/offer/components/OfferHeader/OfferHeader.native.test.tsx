@@ -24,6 +24,7 @@ import {
   showInfoSnackBar,
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -89,9 +90,7 @@ describe('<OfferHeader />', () => {
     })
     const { getByTestId, getByText } = renderOfferHeader()
     fireEvent.press(getByTestId('icon-favorite'))
-    expect(
-      getByText('Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !')
-    ).toBeTruthy()
+    expect(getByText('Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris')).toBeTruthy()
   })
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
