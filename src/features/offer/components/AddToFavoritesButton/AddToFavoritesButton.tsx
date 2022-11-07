@@ -29,11 +29,7 @@ export const AddToFavoritesButton: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryPrimary
-        wording="Mettre en favori"
-        icon={StyledIcon}
-        onPress={() => addToFavorite()}
-      />
+      <ButtonTertiaryPrimary wording="Mettre en favori" icon={StyledIcon} onPress={addToFavorite} />
     </React.Fragment>
   )
 }
