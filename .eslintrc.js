@@ -52,60 +52,79 @@ module.exports = {
     'react/jsx-no-constructed-context-values': 'error',
     'no-restricted-imports': [
       'error',
-      { name: 'lottie-react-native', message: 'use libs/lottie instead' },
-      { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
-      { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
       {
-        name: 'react-native',
-        importNames: ['TouchableOpacity'],
-        message: 'use ui/components/TouchableOpacity instead',
-      },
-      {
-        name: 'react-native-svg',
-        importNames: ['default'],
-        message: 'use ui/svg/AccessibleSvg instead',
-      },
-      { name: '@bam.tech/react-native-batch', message: 'use libs/react-native-batch instead' },
-      { name: '@react-native-community/netinfo', message: 'use libs/network/netinfo instead' },
-      {
-        name: 'libs/react-device-detect',
-        message:
-          'Use theme variables instead, unless you are in a .web module or the theme module, AND the use case applies',
-      },
-      { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
-      { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },
-      {
-        name: 'ui/theme/colors',
-        message:
-          'use theme/index.ts instead, useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({})',
-      },
-      {
-        name: 'ui/theme/layers',
-        message:
-          'use theme/index.ts instead, useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({})',
-      },
-      { name: 'msw/lib/types', message: 'use msw instead' },
-      { name: '@testing-library/react-native', message: 'Use test/utils instead' },
-      { name: 'firebase/compat/app', message: 'use libs/firebase/shims/app instead' },
-      { name: 'firebase/compat/firestore', message: 'use libs/firebase/shims/firestore instead' },
-      { name: 'firebase/compat/analytics', message: 'use libs/firebase/shims/analytics instead' },
-      {
-        name: '@react-native-firebase/analytics',
-        message: 'use libs/firebase/shims/analytics instead',
-      },
-      { name: '@react-native-firebase/app', message: 'use libs/firebase/shims/app instead' },
-      { name: '@react-native-firebase/dynamic-links', message: 'use libs/firebase-links instead' },
-      {
-        name: '@react-native-firebase/firestore',
-        message: 'use libs/firebase/shims/firestore instead',
-      },
-      {
-        name: '@react-native-firebase/remote-config',
-        message: 'use libs/firebase/shims/remote-config instead',
-      },
-      {
-        name: 'ui/components/modals/enum',
-        message: 'use modal.spacing from theme/index.ts',
+        paths: [
+          { name: 'lottie-react-native', message: 'use libs/lottie instead' },
+          { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
+          { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
+          {
+            name: 'react-native',
+            importNames: ['TouchableOpacity'],
+            message: 'use ui/components/TouchableOpacity instead',
+          },
+          {
+            name: 'react-native-svg',
+            importNames: ['default'],
+            message: 'use ui/svg/AccessibleSvg instead',
+          },
+          { name: '@bam.tech/react-native-batch', message: 'use libs/react-native-batch instead' },
+          { name: '@react-native-community/netinfo', message: 'use libs/network/netinfo instead' },
+          {
+            name: 'libs/react-device-detect',
+            message:
+              'Use theme variables instead, unless you are in a .web module or the theme module, AND the use case applies',
+          },
+          { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
+          { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },
+          {
+            name: 'ui/theme/colors',
+            message:
+              'use theme/index.ts instead, useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({})',
+          },
+          {
+            name: 'ui/theme/layers',
+            message:
+              'use theme/index.ts instead, useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({})',
+          },
+          { name: 'msw/lib/types', message: 'use msw instead' },
+          { name: '@testing-library/react-native', message: 'Use test/utils instead' },
+          { name: 'firebase/compat/app', message: 'use libs/firebase/shims/app instead' },
+          {
+            name: 'firebase/compat/firestore',
+            message: 'use libs/firebase/shims/firestore instead',
+          },
+          {
+            name: 'firebase/compat/analytics',
+            message: 'use libs/firebase/shims/analytics instead',
+          },
+          {
+            name: '@react-native-firebase/analytics',
+            message: 'use libs/firebase/shims/analytics instead',
+          },
+          { name: '@react-native-firebase/app', message: 'use libs/firebase/shims/app instead' },
+          {
+            name: '@react-native-firebase/dynamic-links',
+            message: 'use libs/firebase-links instead',
+          },
+          {
+            name: '@react-native-firebase/firestore',
+            message: 'use libs/firebase/shims/firestore instead',
+          },
+          {
+            name: '@react-native-firebase/remote-config',
+            message: 'use libs/firebase/shims/remote-config instead',
+          },
+          {
+            name: 'ui/components/modals/enum',
+            message: 'use modal.spacing from theme/index.ts',
+          },
+        ],
+        patterns: [
+          {
+            group: ['*.stories*'],
+            message: 'you should never import something from a story.',
+          },
+        ],
       },
     ],
     'no-restricted-properties': [
