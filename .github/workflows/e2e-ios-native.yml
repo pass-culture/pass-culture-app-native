@@ -10,6 +10,12 @@ on:
 
 jobs:
   e2e-ios-native:
+    strategy:
+      matrix:
+        include:
+          - osVersion: '15.2'
+            os: 'iOS'
+            model: 'iPhone 8'
     env:
       CI: true
       APPIUM_TEST_SERVER_PORT: 4723
@@ -19,6 +25,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: futureware-tech/simulator-action@v2
+        with:
+          model: ${{ matrix.model }}
+          os: ${{ matrix.os }}
+          os_version: ${{ matrix.os_version }}
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
