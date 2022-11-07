@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/SingleFilterButton'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'

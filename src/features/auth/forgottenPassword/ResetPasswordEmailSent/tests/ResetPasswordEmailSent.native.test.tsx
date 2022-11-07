@@ -6,7 +6,7 @@ import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { flushAllPromisesWithAct, act, fireEvent, render, cleanup } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'

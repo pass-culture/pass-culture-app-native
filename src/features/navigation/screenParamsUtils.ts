@@ -1,4 +1,4 @@
-import { AllNavParamList, RouteParams, ScreenNames } from 'features/navigation/RootNavigator'
+import { AllNavParamList, RouteParams, ScreenNames } from 'features/navigation/RootNavigator/types'
 
 type ScreensRequiringParsing = Extract<
   ScreenNames,

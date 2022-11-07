@@ -1,17 +1,15 @@
-import * as Keychain from 'react-native-keychain'
+import { Result, UserCredentials } from 'react-native-keychain'
 
 export const setGenericPassword = jest.fn(async function () {
-  const result: Keychain.Result = {
+  const result: Result = {
     service: 'service',
     storage: 'storage',
   }
   return result
 })
 
-export const getGenericPassword = jest.fn(async function (): Promise<
-  Keychain.UserCredentials | false
-> {
-  const credentials: Keychain.UserCredentials = {
+export const getGenericPassword = jest.fn(async function (): Promise<UserCredentials | false> {
+  const credentials: UserCredentials = {
     username: 'username',
     password: 'password',
     service: 'service',

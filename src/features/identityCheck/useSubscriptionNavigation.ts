@@ -6,11 +6,11 @@ import { usePatchProfile } from 'features/identityCheck/api/api'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SubscriptionScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
+import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import {
   SubscriptionRootStackParamList,
   UseNavigationType,
-} from 'features/navigation/RootNavigator'
-import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
+} from 'features/navigation/RootNavigator/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 

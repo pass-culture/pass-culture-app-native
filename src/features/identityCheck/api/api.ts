@@ -8,7 +8,7 @@ import { MaintenancePageType, ProfileUpdateRequest, ProfileOptionsResponse } fro
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SubscriptionState } from 'features/identityCheck/context/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { env, WEBAPP_V2_URL } from 'libs/environment'
 import { MutationKeys, QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

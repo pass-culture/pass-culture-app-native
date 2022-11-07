@@ -19,7 +19,7 @@ import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneV
 import {
   SubscriptionRootStackParamList,
   UseNavigationType,
-} from 'features/navigation/RootNavigator'
+} from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

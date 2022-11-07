@@ -1,6 +1,6 @@
 import { TabNavigationState } from '@react-navigation/native'
 
-import { GenericRoute } from 'features/navigation/RootNavigator'
+import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import { SearchState } from 'features/search/types'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 

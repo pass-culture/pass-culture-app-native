@@ -4,7 +4,7 @@ import { Platform, View } from 'react-native'
 import Swiper, { SwiperControlsProps } from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
-import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
+import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'

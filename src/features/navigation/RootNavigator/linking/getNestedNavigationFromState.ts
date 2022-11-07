@@ -1,6 +1,6 @@
 import { NavigationState } from '@react-navigation/native'
 
-import { NavigationResultState, RootNavigateParams } from 'features/navigation/RootNavigator'
+import { NavigationResultState, RootNavigateParams } from 'features/navigation/RootNavigator/types'
 
 export function getNestedNavigationFromState(
   state: NavigationResultState | NavigationState

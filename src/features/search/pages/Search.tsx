@@ -7,7 +7,7 @@ import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchResults } from 'features/search/components'
 import { CategoriesButtons } from 'features/search/components/CategoriesButtons'
 import { SearchAutocomplete } from 'features/search/components/SearchAutocomplete'

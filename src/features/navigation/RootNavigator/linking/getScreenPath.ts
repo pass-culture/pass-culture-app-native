@@ -1,4 +1,4 @@
-import { AllNavParamList, isScreen } from 'features/navigation/RootNavigator'
+import { AllNavParamList, isScreen } from 'features/navigation/RootNavigator/types'
 
 import { linking } from './index'
 

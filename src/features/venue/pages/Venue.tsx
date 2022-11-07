@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 

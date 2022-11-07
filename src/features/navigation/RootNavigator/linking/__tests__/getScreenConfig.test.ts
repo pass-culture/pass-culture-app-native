@@ -1,4 +1,5 @@
-import { RootStack, Route } from 'features/navigation/RootNavigator'
+import { RootStack } from 'features/navigation/RootNavigator/Stack'
+import { Route } from 'features/navigation/RootNavigator/types'
 
 import { getScreensAndConfig } from '../getScreensConfig'
 

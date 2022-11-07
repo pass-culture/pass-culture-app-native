@@ -2,7 +2,7 @@ import React from 'react'
 import CodePush, { LocalPackage, RemotePackage } from 'react-native-code-push' // @codepush
 import TestRenderer from 'react-test-renderer'
 
-import { tick } from 'libs/utils.test'
+import { tick } from 'libs/tick'
 import { fireEvent, render } from 'tests/utils'
 
 import { CodePushButton } from './CodePushButton'

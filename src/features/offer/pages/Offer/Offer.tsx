@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'

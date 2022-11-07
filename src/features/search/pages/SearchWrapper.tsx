@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'

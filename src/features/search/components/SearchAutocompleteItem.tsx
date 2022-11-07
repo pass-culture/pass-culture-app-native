@@ -4,7 +4,7 @@ import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight'
 import { useSearch } from 'features/search/pages/SearchWrapper'

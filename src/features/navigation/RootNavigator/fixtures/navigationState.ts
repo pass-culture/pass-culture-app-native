@@ -2,7 +2,7 @@ import {
   AllNavParamList,
   NavigationResultState,
   RootScreenNames,
-} from 'features/navigation/RootNavigator'
+} from 'features/navigation/RootNavigator/types'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 
 type TestRoute = {

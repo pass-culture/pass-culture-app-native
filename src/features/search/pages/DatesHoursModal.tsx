@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CalendarPicker } from 'features/search/components'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel'

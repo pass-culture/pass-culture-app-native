@@ -1,5 +1,5 @@
 import { api } from 'api/api'
-import { AllNavParamList, ScreenNames } from 'features/navigation/RootNavigator'
+import { AllNavParamList, ScreenNames } from 'features/navigation/RootNavigator/types'
 
 import { build } from '../../../../package.json'
 

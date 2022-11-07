@@ -1,7 +1,7 @@
 import { PathConfigMap } from '@react-navigation/native'
 import { ComponentType } from 'react'
 
-import { AllNavParamList } from 'features/navigation/RootNavigator'
+import { AllNavParamList } from 'features/navigation/RootNavigator/types'
 import { TabRoute } from 'features/navigation/TabBar/types'
 
 import { Route } from '../types'

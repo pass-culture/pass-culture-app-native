@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnPressCategory } from 'features/search/components/CategoriesButtons'
 import { useSearch } from 'features/search/pages/SearchWrapper'

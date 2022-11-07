@@ -1,6 +1,6 @@
 import { getStateFromPath } from '@react-navigation/native'
 
-import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator'
+import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { storeUtmParams } from 'libs/utm'
 

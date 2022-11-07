@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 
