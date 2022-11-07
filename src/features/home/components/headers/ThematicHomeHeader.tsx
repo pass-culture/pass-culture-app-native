@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -39,7 +40,7 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
 }
 
 const Container = styled.View(({ theme }) => ({
-  marginTop: getSpacing(6),
+  marginTop: Platform.OS == 'web' ? getSpacing(6) : undefined,
   marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(2),
 }))
