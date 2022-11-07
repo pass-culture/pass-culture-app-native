@@ -1,5 +1,7 @@
 import config from './wdio.shared.local.appium.conf';
 
+const { ANDROID_DEVICE_NAME, ANDROID_AVD, ANDROID_PLATFORM_VERSION } = process.env;
+
 // ============
 // Specs
 // ============
@@ -22,8 +24,8 @@ config.capabilities = [
         // http://appium.io/docs/en/writing-running-appium/caps/
         // This is `appium:` for all Appium Capabilities which can be found here
         'appium:automationName': 'UiAutomator2',
-        'appium:deviceName': 'Pixel_3_10.0',
-        'appium:platformVersion': '10.0',
+        'appium:deviceName': ANDROID_AVD || ANDROID_DEVICE_NAME || 'Pixel_3_10.0',
+        'appium:platformVersion': ANDROID_PLATFORM_VERSION || '10.0',
         'appium:orientation': 'PORTRAIT',
         'appium:newCommandTimeout': 240,
     },
