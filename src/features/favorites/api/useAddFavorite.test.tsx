@@ -14,8 +14,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { waitFor } from 'tests/utils'
-import { renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,
