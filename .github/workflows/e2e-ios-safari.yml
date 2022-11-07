@@ -73,3 +73,6 @@ jobs:
         with:
           name: appium.log
           path: appium.log
+      - name: Show appium server output
+        if: ${{ always() }}
+        run: cat appium.log
