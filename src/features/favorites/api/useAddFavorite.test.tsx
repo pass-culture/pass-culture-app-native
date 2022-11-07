@@ -1,7 +1,6 @@
 import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -15,7 +14,8 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { waitFor } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,
@@ -113,9 +113,8 @@ describe('useAddFavorite hook', () => {
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate({ offerId })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(onSuccess).toBeCalledWith({
         ...addFavoriteJsonResponseSnap,
         offer: {
@@ -140,9 +139,8 @@ describe('useAddFavorite hook', () => {
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate({ offerId })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(showErrorSnackBar).toHaveBeenCalledWith({
         message: 'L’offre n’a pas été ajoutée à tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
@@ -165,9 +163,8 @@ it('should show snack bar when too many favorites when trying to add favorite', 
 
   expect(result.current.isLoading).toBeFalsy()
   result.current.mutate({ offerId })
-  await superFlushWithAct()
 
-  await waitForExpect(() => {
+  await waitFor(() => {
     expect(showErrorSnackBar).toHaveBeenCalledWith({
       message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
       timeout: SNACK_BAR_TIME_OUT,
