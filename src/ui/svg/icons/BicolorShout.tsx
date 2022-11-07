@@ -34,13 +34,13 @@ const BicolorShoutSvg: React.FC<AccessibleBicolorIconInterface> = ({
       <Defs>
         <LinearGradient
           id={gradientId}
-          x1="48.841%"
-          x2="51.159%"
+          x1="50%"
+          x2="50%"
           y1="0%"
           y2="100%"
           gradientUnits="userSpaceOnUse">
-          <Stop offset="0%" stopColor={color2} />
-          <Stop offset="100%" stopColor={color} />
+          <Stop offset="0%" stopColor={color} />
+          <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
       </Defs>
     </AccessibleSvg>
