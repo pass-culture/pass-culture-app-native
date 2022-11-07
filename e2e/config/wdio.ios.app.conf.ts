@@ -1,6 +1,8 @@
 import { join } from 'path';
 import config from './wdio.shared.local.appium.conf';
 
+const { IOS_PLATFORM_VERSION, IOS_DEVICE_NAME } = process.env;
+
 // ============
 // Specs
 // ============
@@ -19,8 +21,8 @@ config.capabilities = [
         // For W3C the appium capabilities need to have an extension prefix
         // This is `appium:` for all Appium Capabilities which can be found here
         // http://appium.io/docs/en/writing-running-appium/caps/
-        'appium:deviceName': 'iPhone 12',
-        'appium:platformVersion': '15.5',
+        'appium:deviceName': IOS_DEVICE_NAME || 'iPhone 12',
+        'appium:platformVersion': IOS_PLATFORM_VERSION || '15.5',
         'appium:orientation': 'PORTRAIT',
         'appium:automationName': 'XCUITest',
         // The path to the app
