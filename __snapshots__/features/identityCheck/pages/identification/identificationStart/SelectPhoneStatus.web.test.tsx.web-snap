@@ -261,11 +261,11 @@ Object {
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 24px;"
+                        />
                       </li>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 24px;"
-                      />
                       <li
                         class="css-reset-4rbku5 css-view-1dbjc4n"
                         role="listitem"
@@ -587,11 +587,11 @@ Object {
                           </div>
                         </div>
                       </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 24px;"
+                      />
                     </li>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 24px;"
-                    />
                     <li
                       class="css-reset-4rbku5 css-view-1dbjc4n"
                       role="listitem"

@@ -19,8 +19,10 @@ export const AccessibilityList: FunctionComponent<AccessibilityListProps> = ({
       {items.map((item, index) => {
         return (
           <React.Fragment key={index}>
-            <Li>{item}</Li>
-            {index < itemListLength - 1 && Separator}
+            <Li>
+              {item}
+              {index < itemListLength - 1 && Separator}
+            </Li>
           </React.Fragment>
         )
       })}
