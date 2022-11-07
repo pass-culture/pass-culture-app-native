@@ -4,13 +4,13 @@ import { isAppUrl } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { Again } from 'ui/svg/icons/Again'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
+import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Info } from 'ui/svg/icons/Info'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { Warning } from 'ui/svg/icons/Warning'
 
 export function isUserBeneficiary(user: UserProfileResponse): boolean {
   return user.isBeneficiary

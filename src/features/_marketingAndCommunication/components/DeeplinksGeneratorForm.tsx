@@ -32,7 +32,7 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
+import { Warning as WarningDefault } from 'ui/svg/icons/BicolorWarning'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface GeneratedDeeplink {
@@ -335,10 +335,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         </AccordionItem>
       </Container>
       <BottomContainer>
-        <ErrorBanner>
+        <ErrorContainer>
           <Warning />
-          {errorText}
-        </ErrorBanner>
+          <Spacer.Row numberOfSpaces={2} />
+          <ErrorText>{errorText}</ErrorText>
+        </ErrorContainer>
         <ButtonPrimary wording="Générer le lien" disabled={disabled} onPress={onPress} />
       </BottomContainer>
     </React.Fragment>
@@ -367,7 +368,12 @@ const Container = styled.ScrollView(({ theme }) => ({
   flexDirection: 'column',
 }))
 
-const ErrorBanner = styled(Typo.Caption)(({ theme }) => ({
+const ErrorContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const ErrorText = styled(Typo.Caption)(({ theme }) => ({
   paddingVertical: getSpacing(1.5),
   color: theme.colors.error,
 }))

@@ -13,6 +13,7 @@ import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/Cu
 import { VenueTile } from 'features/home/atoms/VenueTile'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
@@ -655,6 +656,10 @@ export const AppComponents: FunctionComponent = () => {
             <Button title="No key" onPress={() => setCallToActionIconString(undefined)} />
             <Button title="Unknown key" onPress={() => setCallToActionIconString('Blablou')} />
           </AlignedText>
+          <Spacer.Column numberOfSpaces={2} />
+          <Text>BottomBanner</Text>
+          <Spacer.Column numberOfSpaces={1} />
+          <BottomBanner text="Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture." />
         </AccordionItem>
         <Divider />
         {/* Your components */}

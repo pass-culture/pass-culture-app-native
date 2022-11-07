@@ -2240,21 +2240,17 @@ Array [
           ]
         }
       >
-        <Text
+        <View
           style={
             Array [
               Object {
-                "color": "#b60025",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "paddingVertical": 6,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            fill="#b60025"
             height={16}
             width={16}
           >
@@ -2262,8 +2258,32 @@ Array [
               undefined-SVG-Mock
             </Text>
           </View>
-          Seulement les "ids" disposent de validation !
-        </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#b60025",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "paddingVertical": 6,
+                },
+              ]
+            }
+          >
+            Seulement les "ids" disposent de validation !
+          </Text>
+        </View>
         <View
           accessibilityLabel="Générer le lien"
           accessibilityState={

@@ -2947,34 +2947,55 @@ Array [
         }
       >
         <div
-          className="css-text-901oao"
-          dir="ltr"
+          className="css-view-1dbjc4n"
           style={
             Object {
-              "color": "rgba(182,0,37,1.00)",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": "12px",
-              "lineHeight": "16px",
-              "paddingBottom": "6px",
-              "paddingTop": "6px",
+              "WebkitAlignItems": "center",
+              "WebkitBoxAlign": "center",
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxOrient": "horizontal",
+              "WebkitFlexDirection": "row",
+              "alignItems": "center",
+              "flexDirection": "row",
+              "msFlexAlign": "center",
+              "msFlexDirection": "row",
             }
           }
         >
           <div
             className="css-view-1dbjc4n"
+          >
+            <div
+              className="css-text-901oao"
+              dir="ltr"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+          <div
+            className="css-view-1dbjc4n"
             style={
               Object {
-                "display": "inline-flex",
+                "width": "8px",
+              }
+            }
+          />
+          <div
+            className="css-text-901oao"
+            dir="ltr"
+            style={
+              Object {
+                "color": "rgba(182,0,37,1.00)",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": "12px",
+                "lineHeight": "16px",
+                "paddingBottom": "6px",
+                "paddingTop": "6px",
               }
             }
           >
-            <span
-              className="css-text-901oao css-textHasAncestor-16my406"
-            >
-              undefined-SVG-Mock
-            </span>
+            Seulement les "ids" disposent de validation !
           </div>
-          Seulement les "ids" disposent de validation !
         </div>
         <button
           className="c0 c1"
