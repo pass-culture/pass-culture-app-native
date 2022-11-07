@@ -26,7 +26,7 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
       <TextContainer>
         {headerTitle ? (
           <React.Fragment>
-            <Spacer.Column numberOfSpaces={6} />
+            <Spacer.Column numberOfSpaces={4} />
             <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
           </React.Fragment>
         ) : null}
@@ -42,7 +42,7 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
 }
 
 const Container = styled.View({
-  marginTop: Platform.OS == 'web' ? getSpacing(6) : undefined,
+  marginTop: Platform.OS == 'web' ? getSpacing(4) : undefined,
   marginHorizontal: getSpacing(4),
   marginBottom: getSpacing(2),
 })

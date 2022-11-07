@@ -152,11 +152,11 @@ exports[`Home N-1 should render correctly 1`] = `
                 }
               >
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={4}
                   style={
                     Array [
                       Object {
-                        "height": 24,
+                        "height": 16,
                       },
                     ]
                   }
