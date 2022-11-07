@@ -53,7 +53,7 @@ jobs:
             fi
           done
         name: Wait for Appium server startup
-      - run: yarn ios.browser
+      - run: IOS_PLATFORM_VERSION=15.2 yarn ios.browser
         name: Run functional tests
       - name: Save server output
         if: ${{ always() }}
