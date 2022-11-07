@@ -73,7 +73,12 @@
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
-    "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch"
+    "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
+    "android.app": "wdio e2e/config/wdio.android.app.conf.ts",
+    "android.browser": "wdio e2e/config/wdio.android.browser.conf.ts",
+    "ios.app": "wdio e2e/config/wdio.ios.app.conf.ts",
+    "ios.browser": "wdio e2e/config/wdio.ios.browser.conf.ts",
+    "lint": "eslint e2e/config e2e/tests"
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
@@ -167,6 +172,15 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@wdio/appium-service": "^7.19.5",
+    "@wdio/browserstack-service": "^7.19.7",
+    "@wdio/cli": "^7.19.7",
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/mocha-framework": "^7.19.7",
+    "@wdio/sauce-service": "^7.19.7",
+    "@wdio/spec-reporter": "^7.19.7",
+    "eslint-plugin-wdio": "^7.19.4",
+    "ts-node": "^10.8.0",
     "@babel/core": "^7.18.10",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
