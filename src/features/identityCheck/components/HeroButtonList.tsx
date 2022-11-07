@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
@@ -11,7 +11,7 @@ type HeroButtonListProps = {
   Title: ReactElement
   Subtitle?: ReactElement
   icon: FunctionComponent<IconInterface>
-  navigateTo: TouchableLinkProps['navigateTo']
+  navigateTo: InternalNavigationProps['navigateTo']
 }
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
