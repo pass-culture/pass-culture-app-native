@@ -6,7 +6,7 @@ import { render, fireEvent } from 'tests/utils'
 
 const hideModal = jest.fn()
 const offerId = 1
-jest.mock('features/offer/components/redirectionModals/components/AddToFavoritesButton')
+jest.mock('features/offer/components/AddToFavoritesButton/AddToFavoritesButton')
 
 describe('<AuthenticationModal />', () => {
   it('should match previous snapshot', () => {

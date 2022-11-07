@@ -7,7 +7,7 @@ import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
 } from 'features/favorites/fixtures/favoritesResponse'
-import { AddToFavoritesButton } from 'features/offer/components/redirectionModals/components/AddToFavoritesButton'
+import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

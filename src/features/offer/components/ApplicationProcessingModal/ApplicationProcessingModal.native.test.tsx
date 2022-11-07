@@ -8,7 +8,7 @@ import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
 const hideModal = jest.fn()
 const offerId = 1
-jest.mock('features/offer/components/redirectionModals/components/AddToFavoritesButton')
+jest.mock('features/offer/components/AddToFavoritesButton/AddToFavoritesButton')
 
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
