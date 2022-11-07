@@ -48,6 +48,7 @@ jobs:
           cd ~
           appium driver install xcuitest
           appium driver install safari
+          appium-doctor
           nohup appium server \
             --port=$APPIUM_TEST_SERVER_PORT \
             --address=$APPIUM_TEST_SERVER_HOST \
