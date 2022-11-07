@@ -19,6 +19,7 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
+*.apk
 *.xcuserstate
 project.xcworkspace
 
@@ -115,4 +116,10 @@ firebase-debug.log
 /.firebase
 
 # artifacts
-*.apk
+/apps/*
+/logs/*
+appium.log
+.tsbuild
+
+# e2e demo
+./e2e/tests/wdio-demo
