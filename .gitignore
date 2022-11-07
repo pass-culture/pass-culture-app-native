@@ -115,4 +115,5 @@ firebase-debug.log
 /.firebase
 
 # artifacts
-*.apk
+/apps/*
+appium.log
