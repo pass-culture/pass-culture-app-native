@@ -12,11 +12,11 @@ describe('SignUpSignInChoiceOfferModal', () => {
 
   afterEach(cleanup)
 
-  it('renders the modal', () => {
-    const { getByText } = render(
+  it('should match previous snapshot', () => {
+    const modal = render(
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
-    expect(getByText('Connecte-toi pour profiter de cette fonctionnalité')).toBeTruthy()
+    expect(modal).toMatchSnapshot()
   })
 
   it('go to login on click button and log analytics', async () => {
@@ -27,7 +27,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = getByText('Se connecter')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('Login', undefined)
+    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
     expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
@@ -36,10 +36,10 @@ describe('SignUpSignInChoiceOfferModal', () => {
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
 
-    const button = getByText(`S’inscrire`)
+    const button = getByText('Créer un compte')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('SignupForm', undefined)
+    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
     expect(analytics.logSignUpFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
