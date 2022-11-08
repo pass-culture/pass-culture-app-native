@@ -65,6 +65,7 @@ const UnmemoizedModule = ({
         display={item.display}
         homeEntryId={homeEntryId}
         index={index}
+        url={item.url}
       />
     )
 

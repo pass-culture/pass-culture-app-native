@@ -6,7 +6,7 @@ import { ExclusivityModuleProps } from 'features/home/components/modules/exclusi
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 
-type ExclusivityBannerProps = Omit<ExclusivityModuleProps, 'offerId'>
+type ExclusivityBannerProps = Omit<ExclusivityModuleProps, 'offerId' | 'url'>
 
 const UnmemoizedExclusivityBanner = ({
   alt,

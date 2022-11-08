@@ -61,7 +61,7 @@ const buildExclusivity = (
   fields: ExclusivityFields,
   moduleId: string
 ): ExclusivityPane | undefined => {
-  const { title, alt, offerId, image, displayParameters } = fields
+  const { title, alt, offerId, image, displayParameters, url } = fields
   const { fields: display = undefined } = displayParameters || {}
 
   return new ExclusivityPane({
@@ -72,6 +72,7 @@ const buildExclusivity = (
     offerId: parseOfferId(offerId),
     moduleId,
     display,
+    url,
   })
 }
 
