@@ -12,10 +12,15 @@ import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 interface Props {
   visible: boolean
   hideModal: () => void
+  offerId: number
   children?: never
 }
 
-export const ApplicationProcessingModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
+export const ApplicationProcessingModal: FunctionComponent<Props> = ({
+  visible,
+  hideModal,
+  offerId,
+}) => {
   return (
     <AppModalWithIllustration
       hideModal={hideModal}
@@ -35,8 +40,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({ visible, 
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Profile' } }}
         onBeforeNavigate={hideModal}
       />
-      <Spacer.Column numberOfSpaces={4} />
-      <AddToFavoritesButton />
+      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={hideModal} />
     </AppModalWithIllustration>
   )
 }

@@ -133,30 +133,6 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should show error when adding an offer in favorite fails - logged in users', async () => {
-    const { getByTestId } = renderOfferHeader({
-      hasAddFavoriteError: true,
-      id: addFavoriteJsonResponseSnap.offer.id,
-    })
-
-    fireEvent.press(getByTestId('icon-favorite'))
-
-    await waitFor(() => {
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: 'L’offre n’a pas été ajoutée à tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-
-      const mutateDataAfter = queryCache.find('favorites')?.state
-        ?.data as PaginatedFavoritesResponse
-      expect(
-        mutateDataAfter.favorites?.find(
-          (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
-        )?.offer.id
-      ).toBe(undefined)
-    })
-  })
-
   it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
     const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })

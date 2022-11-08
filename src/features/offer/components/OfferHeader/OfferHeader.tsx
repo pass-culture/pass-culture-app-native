@@ -4,7 +4,6 @@ import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { isApiError } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -62,15 +61,6 @@ export const OfferHeader: React.FC<Props> = (props) => {
         const { from, moduleName, moduleId } = params
         analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId })
       }
-    },
-    onError: (error) => {
-      showErrorSnackBar({
-        message:
-          isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
-            ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
-            : 'L’offre n’a pas été ajoutée à tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
     },
   })
 

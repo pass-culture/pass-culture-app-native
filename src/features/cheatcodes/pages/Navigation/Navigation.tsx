@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { Row } from 'features/cheatcodes/components/Row'
-import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
+import { useSomeVenueId } from 'features/cheatcodes/hooks/useSomeVenueId'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
