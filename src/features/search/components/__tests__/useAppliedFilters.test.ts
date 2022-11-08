@@ -14,7 +14,7 @@ const TODAY = new Date().toISOString()
 
 describe('useAppliedFilters', () => {
   it('should return an array with Localisation by default', () => {
-    const filterTypes = useAppliedFilters()
+    const filterTypes = useAppliedFilters(mockSearchState)
 
     expect(filterTypes).toEqual([FILTER_TYPES.LOCATION])
   })
@@ -25,7 +25,7 @@ describe('useAppliedFilters', () => {
         ...initialSearchState,
         offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
       }
-      const filterTypes = useAppliedFilters()
+      const filterTypes = useAppliedFilters(mockSearchState)
 
       expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.CATEGORIES])
     })
@@ -36,12 +36,31 @@ describe('useAppliedFilters', () => {
       ${'max price'}         | ${{ maxPrice: '10' }}
       ${'min and max price'} | ${{ minPrice: '10', maxPrice: '10' }}
     `(
-      'with Localisation et Prix when search state has $description',
+      'with Localisation and Prix when search state has $description',
       ({ searchState }: { searchState: Partial<SearchState> }) => {
         mockSearchState = { ...initialSearchState, ...searchState }
-        const filterTypes = useAppliedFilters()
+        const filterTypes = useAppliedFilters(mockSearchState)
 
         expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.PRICES])
+      }
+    )
+
+    it.each`
+      description                      | searchState
+      ${'category and min price'}      | ${{ offerCategories: [SearchGroupNameEnumv2.SPECTACLES], minPrice: '10' }}
+      ${'category and max price'}      | ${{ offerCategories: [SearchGroupNameEnumv2.SPECTACLES], maxPrice: '10' }}
+      ${'category, min and max price'} | ${{ offerCategories: [SearchGroupNameEnumv2.SPECTACLES], minPrice: '10', maxPrice: '10' }}
+    `(
+      'with Localisation, Catégories and Prix when search state has $description',
+      ({ searchState }: { searchState: Partial<SearchState> }) => {
+        mockSearchState = { ...initialSearchState, ...searchState }
+        const filterTypes = useAppliedFilters(mockSearchState)
+
+        expect(filterTypes).toEqual([
+          FILTER_TYPES.LOCATION,
+          FILTER_TYPES.CATEGORIES,
+          FILTER_TYPES.PRICES,
+        ])
       }
     )
 
@@ -52,10 +71,10 @@ describe('useAppliedFilters', () => {
       ${'event offer'}    | ${{ offerTypes: { isDigital: false, isEvent: true, isThing: false } }}
       ${'thing offer'}    | ${{ offerTypes: { isDigital: false, isEvent: false, isThing: true } }}
     `(
-      'with Localisation et Type when search state has $description',
+      'with Localisation and Type when search state has $description',
       ({ searchState }: { searchState: Partial<SearchState> }) => {
         mockSearchState = { ...initialSearchState, ...searchState }
-        const filterTypes = useAppliedFilters()
+        const filterTypes = useAppliedFilters(mockSearchState)
 
         expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.OFFER_TYPE])
       }
@@ -69,10 +88,30 @@ describe('useAppliedFilters', () => {
       'with Localisation and Dates & heures when search state has $description',
       ({ searchState }: { searchState: Partial<SearchState> }) => {
         mockSearchState = { ...initialSearchState, ...searchState }
-        const filterTypes = useAppliedFilters()
+        const filterTypes = useAppliedFilters(mockSearchState)
 
         expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.DATES_HOURS])
       }
     )
+
+    it('with Localisation, Catégories, Prix, Type and Dates & heures when search state has location, category, price, offer type and date', () => {
+      mockSearchState = {
+        ...initialSearchState,
+        offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+        minPrice: '10',
+        maxPrice: '10',
+        offerTypes: { isDigital: true, isEvent: false, isThing: false },
+        date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY },
+      }
+      const filterTypes = useAppliedFilters(mockSearchState)
+
+      expect(filterTypes).toEqual([
+        FILTER_TYPES.LOCATION,
+        FILTER_TYPES.CATEGORIES,
+        FILTER_TYPES.PRICES,
+        FILTER_TYPES.OFFER_TYPE,
+        FILTER_TYPES.DATES_HOURS,
+      ])
+    })
   })
 })

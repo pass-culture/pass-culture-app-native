@@ -24,7 +24,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
   const { query } = hit
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
-  const appliedFilters = useAppliedFilters()
+  const appliedFilters = useAppliedFilters(searchState)
 
   const onPress = () => {
     sendEvent('click', hit, 'Suggestion clicked')

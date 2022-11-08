@@ -1,4 +1,4 @@
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SearchState } from 'features/search/types'
 import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 
 export enum FILTER_TYPES {
@@ -9,13 +9,12 @@ export enum FILTER_TYPES {
   DATES_HOURS = 'Dates & heures',
 }
 
-export const useAppliedFilters = () => {
-  const { searchState } = useSearch()
+export const useAppliedFilters = (searchState: Partial<SearchState>) => {
   const { offerCategories, minPrice, maxPrice, offerIsDuo, offerTypes, date, timeRange } =
     searchState
   let filterTypes: FILTER_TYPES[] = [FILTER_TYPES.LOCATION]
 
-  const hasCategory = offerCategories.length > 0
+  const hasCategory = offerCategories ? offerCategories.length > 0 : false
   const minPriceAsNumber: number | undefined = getPriceAsNumber(minPrice)
   const maxPriceAsNumber: number | undefined = getPriceAsNumber(maxPrice)
   const hasPrice =
@@ -25,11 +24,14 @@ export const useAppliedFilters = () => {
 
   if (hasCategory) {
     filterTypes = [...filterTypes, FILTER_TYPES.CATEGORIES]
-  } else if (hasPrice) {
+  }
+  if (hasPrice) {
     filterTypes = [...filterTypes, FILTER_TYPES.PRICES]
-  } else if (hasType) {
+  }
+  if (hasType) {
     filterTypes = [...filterTypes, FILTER_TYPES.OFFER_TYPE]
-  } else if (hasDatesHours) {
+  }
+  if (hasDatesHours) {
     filterTypes = [...filterTypes, FILTER_TYPES.DATES_HOURS]
   }
 
