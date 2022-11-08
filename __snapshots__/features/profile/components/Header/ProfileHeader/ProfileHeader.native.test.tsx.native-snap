@@ -206,6 +206,7 @@ Array [
             Object {
               "alignItems": "center",
               "flexDirection": "row",
+              "justifyContent": "center",
             },
           ]
         }
