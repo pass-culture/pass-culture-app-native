@@ -6,6 +6,7 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { ContentTypes } from 'features/home/contentful'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { FILTER_TYPES } from 'features/search/components/useAppliedFilters'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { analyticsProvider } from 'libs/firebase/analytics/provider'
@@ -240,8 +241,11 @@ const logEventAnalytics = {
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
-  logSearchQuery: (query: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, { query }),
+  logSearchQuery: (query: string, filterTypes: FILTER_TYPES[]) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, {
+      query,
+      filterTypes: JSON.stringify(filterTypes),
+    }),
   logSearchScrollToPage: (page: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),
   logSeeMyBooking: (offerId: number) =>

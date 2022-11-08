@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight'
+import { useAppliedFilters } from 'features/search/components/useAppliedFilters'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
@@ -23,6 +24,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
   const { query } = hit
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
+  const appliedFilters = useAppliedFilters()
 
   const onPress = () => {
     sendEvent('click', hit, 'Suggestion clicked')
@@ -39,7 +41,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
       })
     )
 
-    analytics.logSearchQuery(query || '')
+    analytics.logSearchQuery(query || '', appliedFilters)
   }
 
   return (

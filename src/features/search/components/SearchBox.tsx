@@ -18,6 +18,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterButton } from 'features/search/atoms/Buttons/FilterButton/FilterButton'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/atoms/Buttons/HiddenNavigateToSuggestionsButton'
+import { useAppliedFilters } from 'features/search/components/useAppliedFilters'
 import { useHasPosition } from 'features/search/components/useHasPosition'
 import { LocationModal } from 'features/search/pages/LocationModal'
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -90,6 +91,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const activeFilters = useFilterCount(searchState)
 
   const hasPosition = useHasPosition()
+  const appliedFilters = useAppliedFilters()
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
@@ -183,9 +185,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         priceRange,
         view: SearchView.Results,
       })
-      analytics.logSearchQuery(queryText)
+      analytics.logSearchQuery(queryText, appliedFilters)
     },
-    [locationFilter, pushWithSearch, searchState]
+    [appliedFilters, locationFilter, pushWithSearch, searchState]
   )
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
