@@ -19,19 +19,12 @@ jobs:
     env:
       CI: true
       APPIUM_TEST_SERVER_PORT: 4723
-      APPIUM_TEST_SERVER_HOST: 0.0.0.0
+      APPIUM_TEST_SERVER_HOST: 127.0.0.1
       APPIUM_STARTUP_TIMEOUT_SEC: 30
       _FORCE_LOGS: 1
-    runs-on: dka-mac
+    runs-on: macOS-11
     steps:
       - uses: actions/checkout@v3
-
-      - name: Install Haxm on MacOS
-        run: brew install --cask intel-haxm || echo "already installed"
-
-      - name: Install ffmpeg session on MacOS
-        run: brew install ffmpeg || echo "already installed"
-
       - uses: futureware-tech/simulator-action@v2
         with:
           model: ${{ matrix.model }}
