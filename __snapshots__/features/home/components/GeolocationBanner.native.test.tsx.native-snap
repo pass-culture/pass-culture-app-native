@@ -2,6 +2,7 @@
 
 exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
 <View
+  accessibilityLabel="Active ta géolocalisation"
   accessibilityRole="button"
   accessible={true}
   collapsable={false}
@@ -15,19 +16,7 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#ffffff",
-      "borderColor": "#90949D",
-      "borderRadius": 8,
-      "borderStyle": "solid",
-      "borderWidth": 1,
-      "flexDirection": "row",
-      "justifyContent": "space-between",
       "opacity": 1,
-      "paddingBottom": 16,
-      "paddingLeft": 16,
-      "paddingRight": 16,
-      "paddingTop": 16,
       "userSelect": "auto",
     }
   }
@@ -37,10 +26,17 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "flexBasis": 0,
+          "borderColor": "#90949D",
+          "borderRadius": 7,
+          "borderStyle": "solid",
+          "borderWidth": 1,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "paddingBottom": 16,
+          "paddingHorizontal": 16,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 16,
+          "width": "100%",
         },
       ]
     }
@@ -49,7 +45,7 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
       style={
         Array [
           Object {
-            "flexShrink": 0,
+            "alignContent": "center",
           },
         ]
       }
@@ -64,20 +60,12 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
       </View>
     </View>
     <View
-      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
+            "flexGrow": 1,
             "flexShrink": 1,
+            "marginHorizontal": 16,
           },
         ]
       }
@@ -124,33 +112,15 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
         Pour trouver des offres autour de toi.
       </Text>
     </View>
-  </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      Array [
-        Object {
-          "width": 8,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "flexShrink": 0,
-        },
-      ]
-    }
-  >
-    <View
-      height={24}
-      width={24}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+    <View>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
   </View>
 </View>
