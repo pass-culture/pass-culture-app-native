@@ -28,10 +28,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install Haxm on MacOS
-        run: brew install --cask intel-haxm
+        run: brew install --cask intel-haxm || echo "already installed"
 
       - name: Install ffmpeg session on MacOS
-        run: brew install ffmpeg
+        run: brew install ffmpeg || echo "already installed"
 
       - uses: actions/setup-node@v3
         with:
@@ -51,8 +51,8 @@ jobs:
           cwd=$(pwd)
           pushd "$cwd"
           cd ~
-          appium driver install xcuitest
-          appium driver install safari
+          appium driver install xcuitest || echo "already installed"
+          appium driver install safari || echo "already installed"
           appium-doctor
           nohup appium server \
             --port=$APPIUM_TEST_SERVER_PORT \
