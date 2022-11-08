@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/cheatcodes/components/Row'
+import { useSomeOfferId } from 'features/cheatcodes/hooks/useSomeOfferId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'features/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
@@ -17,7 +18,7 @@ import { Spacer } from 'ui/theme'
 
 export function NavigationSignUp(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
-  const venueId = 5133
+  const offerId = useSomeOfferId()
 
   const {
     visible: finishSubscriptionModalVisible,
@@ -119,7 +120,7 @@ export function NavigationSignUp(): JSX.Element {
           <ApplicationProcessingModal
             visible={applicationProcessingModalVisible}
             hideModal={hideApplicationProcessingModal}
-            offerId={venueId}
+            offerId={offerId}
           />
         </Row>
         <Row half>
@@ -127,7 +128,7 @@ export function NavigationSignUp(): JSX.Element {
           <ErrorApplicationModal
             visible={errorApplicationModalVisible}
             hideModal={hideErrorApplicationModal}
-            offerId={venueId}
+            offerId={offerId}
           />
         </Row>
       </StyledContainer>
