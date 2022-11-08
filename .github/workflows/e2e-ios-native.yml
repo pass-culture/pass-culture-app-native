@@ -25,6 +25,13 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install Haxm on MacOS
+        run: brew install --cask intel-haxm
+
+      - name: Install ffmpeg session on MacOS
+        run: brew install ffmpeg
+
       - uses: futureware-tech/simulator-action@v2
         with:
           model: ${{ matrix.model }}
