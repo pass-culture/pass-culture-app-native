@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
 
+const fakeVenueId = 283
+
 export const useSomeVenueId = () => {
   // We don't use react-query as this is a query only used on the cheatcodes to debug
-  const [venueId, setVenueId] = useState<number>(283)
+  const [venueId, setVenueId] = useState<number>(fakeVenueId)
 
   useEffect(() => {
     fetchVenues('')
