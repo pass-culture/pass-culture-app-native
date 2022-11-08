@@ -15,7 +15,7 @@ jobs:
         include:
           - osVersion: '15.2'
             os: 'iOS'
-            model: 'iPhone 12'
+            model: 'iPhone 13'
     env:
       CI: true
       APPIUM_TEST_SERVER_PORT: 4723
@@ -69,7 +69,7 @@ jobs:
         name: Wait for Appium server startup
       - run: |
           xcrun xctrace list devices
-      - run:  IOS_DEVICE_NAME="iPhone 12" IOS_PLATFORM_VERSION=15.2 yarn ios.app
+      - run:  IOS_DEVICE_NAME="iPhone 13" IOS_PLATFORM_VERSION=15.2 yarn ios.app
         name: Run functional tests
       - name: Save server output
         if: ${{ always() }}
