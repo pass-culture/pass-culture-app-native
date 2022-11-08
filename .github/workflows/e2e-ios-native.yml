@@ -15,7 +15,7 @@ jobs:
         include:
           - osVersion: '15.2'
             os: 'iOS'
-            model: 'iPhone 8'
+            model: 'iPhone 12'
     env:
       CI: true
       APPIUM_TEST_SERVER_PORT: 4723
