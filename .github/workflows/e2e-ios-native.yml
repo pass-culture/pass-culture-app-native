@@ -67,6 +67,8 @@ jobs:
             fi
           done
         name: Wait for Appium server startup
+      - run: |
+          xcrun xctrace list devices
       - run:  IOS_DEVICE_NAME="iPhone 12" IOS_PLATFORM_VERSION=15.2 yarn ios.app
         name: Run functional tests
       - name: Save server output
