@@ -2,13 +2,13 @@ import React, { memo, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
-import { ExclusivityModuleProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
+import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-interface ExclusivityExternalLinkProps extends ExclusivityModuleProps {
+interface ExclusivityExternalLinkProps extends ExclusivityBannerProps {
   url: string
 }
 

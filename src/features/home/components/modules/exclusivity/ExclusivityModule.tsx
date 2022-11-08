@@ -12,6 +12,8 @@ export interface ExclusivityModuleProps extends ExclusivityPane {
   index: number
 }
 
+export type ExclusivityBannerProps = Omit<ExclusivityModuleProps, 'offerId' | 'url'>
+
 const UnmemoizedExclusivityModule = ({
   title,
   alt,
