@@ -456,6 +456,7 @@ pour réserver l’offre
                     Object {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "justifyContent": "center",
                     },
                   ]
                 }

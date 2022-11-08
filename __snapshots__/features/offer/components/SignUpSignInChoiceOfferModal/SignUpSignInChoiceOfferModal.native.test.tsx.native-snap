@@ -432,6 +432,7 @@ retrouver tes favoris
                     Object {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "justifyContent": "center",
                     },
                   ]
                 }
