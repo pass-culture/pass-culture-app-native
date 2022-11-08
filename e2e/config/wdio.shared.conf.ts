@@ -88,10 +88,10 @@ export const config: WebdriverIO.Config = {
      * NOTE: This has been increased for more stable Appium Native app
      * tests because they can take a bit longer.
      */
-    waitforTimeout: 90000,
+    waitforTimeout: 45000,
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 240000,
+    connectionRetryTimeout: 120000,
     // Default request retries count
     connectionRetryCount: 3,
     // Test runner services

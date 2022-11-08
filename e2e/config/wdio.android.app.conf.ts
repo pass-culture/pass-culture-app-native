@@ -20,6 +20,7 @@ config.capabilities = [
         // The defaults you need to have in your config
         platformName: 'Android',
         maxInstances: 1,
+        autoLaunch: true,
         // For W3C the appium capabilities need to have an extension prefix
         // http://appium.io/docs/en/writing-running-appium/caps/
         // This is `appium:` for all Appium Capabilities which can be found here
