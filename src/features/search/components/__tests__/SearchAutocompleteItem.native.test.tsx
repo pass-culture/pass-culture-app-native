@@ -8,6 +8,7 @@ import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { analytics } from 'libs/firebase/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent } from 'tests/utils'
@@ -61,6 +62,13 @@ describe('SearchAutocompleteItem component', () => {
         view: SearchView.Results,
       })
     )
+  })
+
+  it('should log a search with the query and selected filters', async () => {
+    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+    await fireEvent.press(getByTestId('autocompleteItem'))
+
+    expect(analytics.logSearchQuery).toHaveBeenCalledWith(hit.query, ['Localisation', 'Catégories'])
   })
 
   it('should create a suggestion clicked event when pressing a hit', async () => {

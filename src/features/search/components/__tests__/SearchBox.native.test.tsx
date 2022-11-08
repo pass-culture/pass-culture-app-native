@@ -87,8 +87,11 @@ const venue: SuggestedVenue = mockedSuggestedVenues[0]
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
 
-  it('should render SearchBox', () => {
-    expect(render(<SearchBox searchInputID={searchInputID} />)).toMatchSnapshot()
+  it('should render SearchBox', async () => {
+    jest.useFakeTimers()
+    const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
+    await superFlushWithAct()
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should call logSearchQuery on submit', async () => {
@@ -99,7 +102,7 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     })
 
-    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
+    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza', ['Localisation', 'Catégories'])
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
@@ -112,28 +115,34 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should not show back button when being on the search landing view', () => {
+  it('should not show back button when being on the search landing view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = queryByTestId('backButton')
 
-    expect(previousButton).toBeFalsy()
+    await act(async () => {
+      expect(previousButton).toBeFalsy()
+    })
   })
 
-  it('should show back button when being on the search results view', () => {
+  it('should show back button when being on the search results view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = getByTestId('backButton')
 
-    expect(previousButton).toBeTruthy()
+    await act(async () => {
+      expect(previousButton).toBeTruthy()
+    })
   })
 
-  it('should show back button when being on the suggestions view', () => {
+  it('should show back button when being on the suggestions view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
     const previousButton = getByTestId('backButton')
 
-    expect(previousButton).toBeTruthy()
+    await act(async () => {
+      expect(previousButton).toBeTruthy()
+    })
   })
 
   it('should show the text typed by the user', async () => {
@@ -352,20 +361,24 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should display the search filter button when showing results', () => {
+  it('should display the search filter button when showing results', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-    expect(queryByTestId('searchFilterButton')).toBeTruthy()
+    await act(async () => {
+      expect(queryByTestId('searchFilterButton')).toBeTruthy()
+    })
   })
 
   it.each([[SearchView.Landing], [SearchView.Suggestions]])(
     'should hide the search filter button when being on the %s view',
-    (view) => {
+    async (view) => {
       useRoute.mockReturnValueOnce({ params: { view, query: 'la fnac' } })
       const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-      expect(queryByTestId('searchFilterButton')).toBeNull()
+      await act(async () => {
+        expect(queryByTestId('searchFilterButton')).toBeNull()
+      })
     }
   )
 
