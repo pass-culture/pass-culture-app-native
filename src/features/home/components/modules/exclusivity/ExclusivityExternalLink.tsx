@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
@@ -26,11 +26,14 @@ const UnmemoizedExclusivityExternalLink = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moduleId, homeEntryId])
 
+  const onFocus = useCallback(() => setIsFocus(true), [])
+  const onBlur = useCallback(() => setIsFocus(false), [])
+
   return (
     <StyledTouchableLink
       highlight
-      onFocus={() => setIsFocus(true)}
-      onBlur={() => setIsFocus(false)}
+      onFocus={onFocus}
+      onBlur={onBlur}
       isFocus={isFocus}
       externalNav={{ url }}
       testID="exclusivity-external-link">

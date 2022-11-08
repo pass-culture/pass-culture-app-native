@@ -25,6 +25,8 @@ const UnmemoizedExclusivityOffer = ({
 }: ExclusivityOfferProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const shouldDisplayExcluOffer = useShouldDisplayExcluOffer(display, offerId)
+  const onFocus = useCallback(() => setIsFocus(true), [])
+  const onBlur = useCallback(() => setIsFocus(false), [])
 
   const handlePressExclu = useCallback(() => {
     if (typeof offerId !== 'number') return
@@ -57,8 +59,8 @@ const UnmemoizedExclusivityOffer = ({
           : undefined
       }
       onAfterNavigate={handlePressExclu}
-      onFocus={() => setIsFocus(true)}
-      onBlur={() => setIsFocus(false)}
+      onFocus={onFocus}
+      onBlur={onBlur}
       isFocus={isFocus}
       testID="link-exclusivity-offer"
       disabled={offerId === undefined}>
