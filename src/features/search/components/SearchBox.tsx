@@ -91,7 +91,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const activeFilters = useFilterCount(searchState)
 
   const hasPosition = useHasPosition()
-  const appliedFilters = useAppliedFilters()
+  const appliedFilters = useAppliedFilters(searchState)
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.

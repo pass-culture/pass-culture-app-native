@@ -11,6 +11,7 @@ import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/SingleFilterButton'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
+import { FILTER_TYPES, useAppliedFilters } from 'features/search/components/useAppliedFilters'
 import { useHasPosition } from 'features/search/components/useHasPosition'
 import { useLocationChoice } from 'features/search/components/useLocationChoice'
 import { Categories } from 'features/search/pages/Categories'
@@ -21,7 +22,6 @@ import { SearchPrice } from 'features/search/pages/SearchPrice'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useLocationType } from 'features/search/pages/useLocationType'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
-import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -64,8 +64,7 @@ export const SearchResults: React.FC = () => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { section } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
-  const offerCategories = params?.offerCategories ?? []
-  const hasCategory = offerCategories.length > 0
+  const appliedFilters = useAppliedFilters(params ?? searchState)
   const {
     visible: categoriesModalVisible,
     showModal: showCategoriesModal,
@@ -93,18 +92,6 @@ export const SearchResults: React.FC = () => {
   } = useModal(false)
   const { position, showGeolocPermissionModal } = useGeolocation()
   const hasPosition = useHasPosition()
-
-  const minPrice: number | undefined = getPriceAsNumber(params?.minPrice)
-  const maxPrice: number | undefined = getPriceAsNumber(params?.maxPrice)
-  const hasPrice = (minPrice !== undefined && minPrice > 0) || maxPrice !== undefined
-
-  const hasType =
-    params?.offerIsDuo ||
-    params?.offerTypes?.isDigital ||
-    params?.offerTypes?.isEvent ||
-    params?.offerTypes?.isThing
-
-  const hasDatesHours = Boolean(params?.date || params?.timeRange)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -246,7 +233,7 @@ export const SearchResults: React.FC = () => {
               label="Catégories"
               testID="categoryButton"
               onPress={showCategoriesModal}
-              isSelected={hasCategory}
+              isSelected={appliedFilters.includes(FILTER_TYPES.CATEGORIES)}
             />
           </ButtonContainer>
           <React.Fragment>
@@ -256,7 +243,7 @@ export const SearchResults: React.FC = () => {
                 label="Prix"
                 testID="priceButton"
                 onPress={showSearchPriceModal}
-                isSelected={hasPrice}
+                isSelected={appliedFilters.includes(FILTER_TYPES.PRICES)}
               />
             </ButtonContainer>
           </React.Fragment>
@@ -267,7 +254,7 @@ export const SearchResults: React.FC = () => {
                 label="Type"
                 testID="typeButton"
                 onPress={showOfferTypeModal}
-                isSelected={!!hasType}
+                isSelected={appliedFilters.includes(FILTER_TYPES.OFFER_TYPE)}
               />
             </ButtonContainer>
           </React.Fragment>
@@ -278,7 +265,7 @@ export const SearchResults: React.FC = () => {
                 label="Dates & heures"
                 testID="datesHoursButton"
                 onPress={showDatesHoursModal}
-                isSelected={!!hasDatesHours}
+                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
               />
             </ButtonContainer>
           </React.Fragment>

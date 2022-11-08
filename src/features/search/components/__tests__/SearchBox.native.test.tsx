@@ -102,7 +102,6 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     })
 
-    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza', ['Localisation', 'Catégories'])
     expect(navigate).toBeCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
@@ -113,6 +112,7 @@ describe('SearchBox component', () => {
         priceRange: mockSearchState.priceRange,
       })
     )
+    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza', ['Localisation', 'Catégories'])
   })
 
   it('should not show back button when being on the search landing view', async () => {
