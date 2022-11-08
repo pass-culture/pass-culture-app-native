@@ -14,59 +14,17 @@ export interface ExclusivityModuleProps extends ExclusivityPane {
 
 export type ExclusivityBannerProps = Omit<ExclusivityModuleProps, 'offerId' | 'url'>
 
-const UnmemoizedExclusivityModule = ({
-  title,
-  alt,
-  image: imageURL,
-  offerId,
-  moduleId,
-  display,
-  homeEntryId,
-  index,
-  url,
-}: ExclusivityModuleProps) => {
+const UnmemoizedExclusivityModule = ({ offerId, url, ...props }: ExclusivityModuleProps) => {
   const ExclusivityComponent = () => {
     if (offerId !== undefined) {
-      return (
-        <ExclusivityOffer
-          moduleId={moduleId}
-          title={title}
-          alt={alt}
-          image={imageURL}
-          display={display}
-          homeEntryId={homeEntryId}
-          index={index}
-          offerId={offerId}
-        />
-      )
+      return <ExclusivityOffer offerId={offerId} {...props} />
     }
 
     if (url !== undefined) {
-      return (
-        <ExclusivityExternalLink
-          moduleId={moduleId}
-          title={title}
-          alt={alt}
-          image={imageURL}
-          display={display}
-          homeEntryId={homeEntryId}
-          index={index}
-          url={url}
-        />
-      )
+      return <ExclusivityExternalLink url={url} {...props} />
     }
 
-    return (
-      <ExclusivityBanner
-        moduleId={moduleId}
-        title={title}
-        alt={alt}
-        image={imageURL}
-        display={display}
-        homeEntryId={homeEntryId}
-        index={index}
-      />
-    )
+    return <ExclusivityBanner {...props} />
   }
 
   return (
