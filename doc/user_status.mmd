@@ -1,0 +1,51 @@
+stateDiagram-v2
+    [*] --> logged_out
+    logged_out --> logged_in : log in
+    logged_in --> logged_out : log out
+
+    state logged_in {
+        [*] --> suspended : from anywhere\nto anywhere
+
+        [*] --> eligible
+        state eligible {
+            [*] --> has_to_complete_subscription
+            has_subscription_pending --> has_subscription_issues
+            has_subscription_issues --> has_to_complete_subscription
+
+            has_subscription_pending --> has_to_complete_subscription
+
+            has_subscription_issues --> non_eligible : 😭
+
+            has_to_complete_subscription --> has_subscription_pending
+
+            has_subscription_pending --> beneficiary : 🤑
+        }
+
+        state beneficiary {
+            state beneficiary_15_17 {
+                without_booking_15_17 : without_booking
+                with_some_bookings_15_17 : with_some_bookings
+                [*] --> without_booking_15_17
+                without_booking_15_17 --> with_some_bookings_15_17
+            }
+
+            state beneficiary_18 {
+                without_booking_18 : without_booking
+                with_some_bookings_18 : with_some_bookings
+                [*] --> without_booking_18
+                without_booking_18 --> with_some_bookings_18
+            }
+        }
+
+        beneficiary --> eligible : birthday 18 🎂
+        beneficiary --> ex_beneficiary : 24 month later ⌛
+
+        [*] --> non_eligible
+        state non_eligible {
+            too_young
+            too_old
+            duplicate_user
+        }
+
+        non_eligible --> eligible
+    }
