@@ -46,7 +46,7 @@ Array [
                 "borderRadius": 24,
                 "borderWidth": 1,
                 "boxSizing": "border-box",
-                "flexDirection": "row",
+                "flexDirection": "row-reverse",
                 "height": 32,
                 "justifyContent": "center",
                 "opacity": 1,
@@ -59,15 +59,6 @@ Array [
             }
             testID="locationButton"
           >
-            <View
-              height={16}
-              testID="locationButtonIcon"
-              width={16}
-            >
-              <Text>
-                locationButtonIcon-SVG-Mock
-              </Text>
-            </View>
             <Text
               isSelected={true}
               style={
@@ -89,6 +80,16 @@ Array [
             >
               Partout
             </Text>
+            <View
+              accessibilityLabel="Filtre sélectionné"
+              height={16}
+              testID="locationButtonIcon"
+              width={16}
+            >
+              <Text>
+                locationButtonIcon-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
         <View
@@ -129,7 +130,7 @@ Array [
                 "borderRadius": 24,
                 "borderWidth": 1,
                 "boxSizing": "border-box",
-                "flexDirection": "row",
+                "flexDirection": "row-reverse",
                 "height": 32,
                 "justifyContent": "center",
                 "opacity": 1,
@@ -203,7 +204,7 @@ Array [
                 "borderRadius": 24,
                 "borderWidth": 1,
                 "boxSizing": "border-box",
-                "flexDirection": "row",
+                "flexDirection": "row-reverse",
                 "height": 32,
                 "justifyContent": "center",
                 "opacity": 1,
@@ -277,7 +278,7 @@ Array [
                 "borderRadius": 24,
                 "borderWidth": 1,
                 "boxSizing": "border-box",
-                "flexDirection": "row",
+                "flexDirection": "row-reverse",
                 "height": 32,
                 "justifyContent": "center",
                 "opacity": 1,
@@ -351,7 +352,7 @@ Array [
                 "borderRadius": 24,
                 "borderWidth": 1,
                 "boxSizing": "border-box",
-                "flexDirection": "row",
+                "flexDirection": "row-reverse",
                 "height": 32,
                 "justifyContent": "center",
                 "opacity": 1,

@@ -30,17 +30,19 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
 
   return (
     <TouchableContainer isSelected={isSelected} onPress={onPress} testID={testID}>
-      {!!isSelected && <StyledIcon testID={filterButtonIcon} />}
       <Label isSelected={isSelected} testID={filterButtonLabel}>
         {label}
       </Label>
+      {!!isSelected && (
+        <StyledIcon testID={filterButtonIcon} accessibilityLabel="Filtre sélectionné" />
+      )}
     </TouchableContainer>
   )
 }
 
 const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, isSelected }) => ({
+  flexDirection: 'row-reverse', // For accessibility purposes, we switch the title and the icon in the DOM so the VoiceOver restitution makes sense.
   boxSizing: 'border-box',
-  flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
   paddingLeft: getSpacing(4),
