@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -22,24 +23,30 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
     <Container>
       <Spacer.TopScreen />
       <BackButton onGoBack={onGoBack} />
-      {headerTitle ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={6} />
-          <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
-        </React.Fragment>
-      ) : null}
-      {headerSubtitle ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body numberOfLines={1}>{headerSubtitle}</Typo.Body>
-        </React.Fragment>
-      ) : null}
+      <TextContainer>
+        {headerTitle ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
+          </React.Fragment>
+        ) : null}
+        {headerSubtitle ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={2} />
+            <Typo.Body numberOfLines={1}>{headerSubtitle}</Typo.Body>
+          </React.Fragment>
+        ) : null}
+      </TextContainer>
     </Container>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
-  marginTop: getSpacing(6),
-  marginHorizontal: theme.contentPage.marginHorizontal,
+const Container = styled.View({
+  marginTop: Platform.OS == 'web' ? getSpacing(4) : undefined,
+  marginHorizontal: getSpacing(4),
   marginBottom: getSpacing(2),
-}))
+})
+
+const TextContainer = styled.View({
+  marginHorizontal: getSpacing(2),
+})
