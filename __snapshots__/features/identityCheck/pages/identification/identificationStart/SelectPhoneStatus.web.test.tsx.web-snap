@@ -97,7 +97,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c0 c1 sc-iqseJM c1"
+                    class="c0 c1 sc-kDTinF c1"
                     data-testid="backButton"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -215,48 +215,58 @@ Object {
                         <div
                           class="css-view-1dbjc4n"
                           data-testid="HeroButtonList"
-                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                           tabindex="0"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-content: center;"
+                            style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              data-testid="BicolorSmartphone"
+                              style="align-content: center;"
                             >
                               <div
-                                class="css-text-901oao"
-                                dir="ltr"
+                                class="css-view-1dbjc4n"
+                                data-testid="BicolorSmartphone"
                               >
-                                BicolorSmartphone-SVG-Mock
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  BicolorSmartphone-SVG-Mock
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
-                          >
                             <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                              class="css-view-1dbjc4n"
+                              style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
                             >
-                              J’ai un smartphone à proximité
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="justify-content: center; min-height: 58px;"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                                >
+                                  J’ai un smartphone à proximité
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
                             <div
                               class="css-view-1dbjc4n"
                             >
                               <div
-                                class="css-text-901oao"
-                                dir="ltr"
+                                class="css-view-1dbjc4n"
                               >
-                                undefined-SVG-Mock
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -274,47 +284,57 @@ Object {
                         <div
                           class="css-view-1dbjc4n"
                           data-testid="HeroButtonList"
-                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                           tabindex="0"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-content: center;"
+                            style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
                           >
                             <div
                               class="css-view-1dbjc4n"
+                              style="align-content: center;"
                             >
                               <div
-                                class="css-text-901oao"
-                                dir="ltr"
+                                class="css-view-1dbjc4n"
                               >
-                                undefined-SVG-Mock
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
-                          >
                             <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                              class="css-view-1dbjc4n"
+                              style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
                             >
-                              Je n’ai pas de smartphone à proximité
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="justify-content: center; min-height: 58px;"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                                >
+                                  Je n’ai pas de smartphone à proximité
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
                             <div
                               class="css-view-1dbjc4n"
                             >
                               <div
-                                class="css-text-901oao"
-                                dir="ltr"
+                                class="css-view-1dbjc4n"
                               >
-                                undefined-SVG-Mock
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  undefined-SVG-Mock
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -423,7 +443,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0 c1 sc-iqseJM c1"
+                  class="c0 c1 sc-kDTinF c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -541,48 +561,58 @@ Object {
                       <div
                         class="css-view-1dbjc4n"
                         data-testid="HeroButtonList"
-                        style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-content: center;"
+                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            data-testid="BicolorSmartphone"
+                            style="align-content: center;"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="ltr"
+                              class="css-view-1dbjc4n"
+                              data-testid="BicolorSmartphone"
                             >
-                              BicolorSmartphone-SVG-Mock
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                BicolorSmartphone-SVG-Mock
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
-                        >
                           <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
                           >
-                            J’ai un smartphone à proximité
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="justify-content: center; min-height: 58px;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                              >
+                                J’ai un smartphone à proximité
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                        >
                           <div
                             class="css-view-1dbjc4n"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="ltr"
+                              class="css-view-1dbjc4n"
                             >
-                              undefined-SVG-Mock
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -600,47 +630,57 @@ Object {
                       <div
                         class="css-view-1dbjc4n"
                         data-testid="HeroButtonList"
-                        style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; justify-content: flex-start; min-height: 92px; padding: 16px 16px 16px 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-content: center;"
+                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
                         >
                           <div
                             class="css-view-1dbjc4n"
+                            style="align-content: center;"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="ltr"
+                              class="css-view-1dbjc4n"
                             >
-                              undefined-SVG-Mock
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
-                        >
                           <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; margin-left: 16px;"
                           >
-                            Je n’ai pas de smartphone à proximité
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="justify-content: center; min-height: 58px;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                              >
+                                Je n’ai pas de smartphone à proximité
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                        >
                           <div
                             class="css-view-1dbjc4n"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="ltr"
+                              class="css-view-1dbjc4n"
                             >
-                              undefined-SVG-Mock
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
                             </div>
                           </div>
                         </div>
