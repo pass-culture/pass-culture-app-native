@@ -219,6 +219,7 @@ export interface ExclusivityFields {
   image: Image
   offerId: string
   displayParameters?: ExcluDisplayParameters
+  url?: string
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendationSearchParameters/fields

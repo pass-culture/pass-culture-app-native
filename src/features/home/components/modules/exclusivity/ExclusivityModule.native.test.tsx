@@ -28,6 +28,7 @@ const props: ExclusivityModuleProps = {
   display: { isGeolocated: false, aroundRadius: undefined, title: '' },
   homeEntryId: 'abcd',
   index: 1,
+  url: undefined,
 }
 
 const mockPosition = {
@@ -42,7 +43,14 @@ describe('ExclusivityModule component', () => {
     expect(getByTestId('link-exclusivity-offer')).toBeTruthy()
   })
 
-  it('should render ExclusivityBanner component when no offer id is provided', () => {
+  it('should render ExclusivityExternalLink component when url is provided', () => {
+    const { getByTestId } = render(
+      <ExclusivityModule {...props} offerId={undefined} url={'http://toto.com'} />
+    )
+    expect(getByTestId('exclusivity-external-link')).toBeTruthy()
+  })
+
+  it('should render ExclusivityBanner component when no offer id nor url is provided', () => {
     const { getByTestId } = render(<ExclusivityModule {...props} offerId={undefined} />)
     expect(getByTestId('exclusivity-banner')).toBeTruthy()
   })
