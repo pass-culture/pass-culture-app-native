@@ -26,6 +26,13 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install Haxm on MacOS
+        run: brew install --cask intel-haxm
+
+      - name: Install ffmpeg session on MacOS
+        run: brew install ffmpeg
+
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
