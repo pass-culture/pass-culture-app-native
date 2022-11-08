@@ -50,3 +50,4 @@ export const useRoute = jest.fn().mockReturnValue({ params: {} })
 export const useFocusEffect = useEffect
 export const NavigationContainer = jest.fn()
 export const useNavigationState = jest.fn()
+export const useScrollToTop = jest.fn()

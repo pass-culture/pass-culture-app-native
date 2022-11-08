@@ -1,5 +1,5 @@
-import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import { useFocusEffect, useRoute, useScrollToTop } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import {
   FlatList,
   NativeScrollEvent,
@@ -84,6 +84,9 @@ export const OnlineHome: FunctionComponent = () => {
 
   const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
 
+  const scrollRef = useRef<FlatList>(null)
+  useScrollToTop(scrollRef)
+
   const onScroll = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (isCloseToBottom({ ...nativeEvent, padding: theme.minScreenHeight * 2 })) {
@@ -140,6 +143,7 @@ export const OnlineHome: FunctionComponent = () => {
       )}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatList
+          ref={scrollRef}
           testID="homeBodyScrollView"
           scrollEventThrottle={1000}
           onScroll={onScroll}
