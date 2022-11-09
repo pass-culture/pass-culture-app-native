@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-import { UserProfileResponse } from 'api/gen'
+import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/profile/api'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
@@ -27,6 +27,7 @@ const userProfileAPIResponse: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
+  youngStatus: { statusType: YoungStatusType.beneficiary },
 }
 
 server.use(

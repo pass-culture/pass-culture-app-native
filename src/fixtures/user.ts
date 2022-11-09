@@ -1,4 +1,4 @@
-import { UserProfileResponse, UserRole } from 'api/gen'
+import { UserProfileResponse, UserRole, YoungStatusType } from 'api/gen'
 
 export const nonBeneficiaryUser: UserProfileResponse = {
   bookedOffers: {},
@@ -19,6 +19,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
+  youngStatus: { statusType: YoungStatusType.non_eligible },
 }
 
 export const beneficiaryUser: UserProfileResponse = {

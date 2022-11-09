@@ -28,7 +28,6 @@ describe('SubscriptionMessageBadge', () => {
   it('should not display last update sentence if updatedAt props is null', () => {
     const component = render(
       <SubscriptionMessageBadge
-        // @ts-expect-error updatedAt should not be null, testing the case where it is
         subscriptionMessage={{ ...mockedSubscriptionMessage, updatedAt: undefined }}
       />
     )
