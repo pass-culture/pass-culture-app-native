@@ -43,6 +43,7 @@ const DescriptionContainer = styled.View({
   flexShrink: 1,
   flexGrow: 1,
   marginHorizontal: getSpacing(4),
+  textAlign: 'start',
 })
 
 const IconContainer = styled.View({

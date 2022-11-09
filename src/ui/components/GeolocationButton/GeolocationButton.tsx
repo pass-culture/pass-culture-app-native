@@ -14,21 +14,13 @@ export const GeolocationButton = ({ onPress }: Props) => {
   return (
     <Touchable onPress={onPress} accessibilityLabel="Active ta géolocalisation">
       <GenericBanner LeftIcon={LocationIcon}>
-        <TitleText>Géolocalise-toi</TitleText>
+        <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
         <Spacer.Column numberOfSpaces={1} />
-        <DescriptionText numberOfLines={2}>Pour trouver des offres autour de toi.</DescriptionText>
+        <Typo.Caption numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Caption>
       </GenericBanner>
     </Touchable>
   )
 }
-
-const TitleText = styled(Typo.ButtonText)({
-  textAlign: 'left',
-})
-
-const DescriptionText = styled(Typo.Caption)({
-  textAlign: 'left',
-})
 
 const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
