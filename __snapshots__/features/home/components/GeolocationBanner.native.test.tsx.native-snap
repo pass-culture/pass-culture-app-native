@@ -83,7 +83,7 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
           ]
         }
       >
-        Géolocalise toi
+        Géolocalise-toi
       </Text>
       <View
         numberOfSpaces={1}

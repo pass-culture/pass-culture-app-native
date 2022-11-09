@@ -14,7 +14,7 @@ export const GeolocationButton = ({ onPress }: Props) => {
   return (
     <Touchable onPress={onPress} accessibilityLabel="Active ta géolocalisation">
       <GenericBanner LeftIcon={LocationIcon}>
-        <TitleText>Géolocalise toi</TitleText>
+        <TitleText>Géolocalise-toi</TitleText>
         <Spacer.Column numberOfSpaces={1} />
         <DescriptionText numberOfLines={2}>Pour trouver des offres autour de toi.</DescriptionText>
       </GenericBanner>

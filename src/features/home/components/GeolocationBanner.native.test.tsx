@@ -20,7 +20,7 @@ describe('<GeolocationBanner />', () => {
       showGeolocPermissionModal,
     })
     const { getByText } = render(<GeolocationBanner />)
-    const button = getByText('Géolocalise toi')
+    const button = getByText('Géolocalise-toi')
 
     fireEvent.press(button)
 
@@ -33,7 +33,7 @@ describe('<GeolocationBanner />', () => {
       requestGeolocPermission,
     })
     const { getByText } = render(<GeolocationBanner />)
-    const button = getByText('Géolocalise toi')
+    const button = getByText('Géolocalise-toi')
 
     fireEvent.press(button)
 

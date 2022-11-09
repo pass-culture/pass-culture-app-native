@@ -50,14 +50,14 @@ describe('HomeHeader', () => {
   it('should not display geolocation banner when geolocation is granted', () => {
     const { queryByText } = render(<HomeHeader />)
 
-    expect(queryByText('Géolocalise toi')).toBeFalsy()
+    expect(queryByText('Géolocalise-toi')).toBeFalsy()
   })
 
   it('should display geolocation banner when geolocation is denied', () => {
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
     const { queryByText } = render(<HomeHeader />)
 
-    expect(queryByText('Géolocalise toi')).toBeTruthy()
+    expect(queryByText('Géolocalise-toi')).toBeTruthy()
   })
 
   it('should display geolocation banner when geolocation is never ask again', () => {
@@ -66,6 +66,6 @@ describe('HomeHeader', () => {
     })
     const { queryByText } = render(<HomeHeader />)
 
-    expect(queryByText('Géolocalise toi')).toBeTruthy()
+    expect(queryByText('Géolocalise-toi')).toBeTruthy()
   })
 })
