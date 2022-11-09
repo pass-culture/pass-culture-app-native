@@ -5,5 +5,8 @@
   ],
   "dependencyDashboardApproval": true,
   "enabledManagers": ["npm"],
-  "ignorePaths": ["__mocks__/"]
+  "ignorePaths": ["__mocks__/"],
+  "major": {
+    "enabled": false
+  }
 }
