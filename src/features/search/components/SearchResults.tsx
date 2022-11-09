@@ -34,7 +34,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { Ul } from 'ui/components/Ul'
 import { More } from 'ui/svg/icons/More'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -147,7 +147,11 @@ export const SearchResults: React.FC = () => {
         <NumberOfResults nbHits={nbHits} />
         {!!shouldDisplayGeolocationButton && (
           <GeolocationButtonContainer>
-            <GeolocationButton onPress={onPress} />
+            <GeolocationButton onPress={onPress}>
+              <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
+              <Spacer.Column numberOfSpaces={1} />
+              <Typo.Caption numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Caption>
+            </GeolocationButton>
           </GeolocationButtonContainer>
         )}
       </React.Fragment>
