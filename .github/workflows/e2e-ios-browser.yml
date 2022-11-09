@@ -1,4 +1,4 @@
-name: Tests e2e iOS Native
+name: Tests e2e iOS Browser
 
 on:
   workflow_dispatch:
