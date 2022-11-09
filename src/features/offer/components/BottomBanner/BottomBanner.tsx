@@ -22,7 +22,7 @@ export const BottomBanner = ({ text }: Props) => {
       </IconContainer>
       <Spacer.Row numberOfSpaces={4} />
       <TextContainer>
-        <Typo.Body>{text}</Typo.Body>
+        <Typo.Caption>{text}</Typo.Caption>
       </TextContainer>
     </Container>
   )
