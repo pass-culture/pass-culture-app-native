@@ -8,5 +8,6 @@
   "ignorePaths": ["__mocks__/"],
   "major": {
     "enabled": false
-  }
+  },
+  "ignoreDeps": ["react-native", "react", "react-native-web"]
 }
