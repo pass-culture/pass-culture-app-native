@@ -39,6 +39,7 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.EVENEMENT_JEU}                  | ${true}  | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
     ${SubcategoryIdEnum.EVENEMENT_MUSIQUE}              | ${true}  | ${CategoryIdEnum.MUSIQUE_LIVE}        | ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}
     ${SubcategoryIdEnum.EVENEMENT_PATRIMOINE}           | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
+    ${SubcategoryIdEnum.FESTIVAL_ART_VISUEL}            | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.FESTIVAL_CINE}                  | ${true}  | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
     ${SubcategoryIdEnum.FESTIVAL_LIVRE}                 | ${true}  | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.FESTIVAL_MUSIQUE}               | ${true}  | ${CategoryIdEnum.MUSIQUE_LIVE}        | ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}

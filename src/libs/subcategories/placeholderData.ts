@@ -325,6 +325,15 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
     },
     {
+      id: SubcategoryIdEnumv2.FESTIVAL_ART_VISUEL,
+      categoryId: CategoryIdEnum.MUSEE,
+      appLabel: "Festival d'arts visuels / arts numériques",
+      searchGroupName: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+      homepageLabelName: HomepageLabelNameEnumv2.FESTIVAL,
+      isEvent: true,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+    },
+    {
       id: SubcategoryIdEnumv2.FESTIVAL_CINE,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Festival de cinéma',
