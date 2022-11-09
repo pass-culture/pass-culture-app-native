@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules', 'testing-library'],
+  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules', 'testing-library', 'jest'],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
@@ -315,6 +315,7 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
         'react/jsx-no-constructed-context-values': 'off',
+        'jest/prefer-called-with': 'warn',
       },
     },
   ],
