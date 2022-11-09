@@ -648,12 +648,12 @@ export interface CulturalSurveyAnswer {
    * @type {CulturalSurveyQuestionEnum}
    * @memberof CulturalSurveyAnswer
    */
-  sub_question?: CulturalSurveyQuestionEnum
+  sub_question?: CulturalSurveyQuestionEnum | null
   /**
    * @type {string}
    * @memberof CulturalSurveyAnswer
    */
-  subtitle?: string
+  subtitle?: string | null
   /**
    * @type {string}
    * @memberof CulturalSurveyAnswer
@@ -1662,7 +1662,7 @@ export interface ProfileUpdateRequest {
   schoolTypeId?: SchoolTypesIdEnum | null
 }
 /**
- * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
+ *      Describe possible reason codes to used when reporting an offer.      The whole meta part is only consumed by the api client, it has no meaning     inside the whole API code.      Note: when adding a new enum symbol, do not forget to update the meta     method.     
  * @export
  * @enum {string}
  */
@@ -2118,6 +2118,7 @@ export enum SubcategoryIdEnum {
   'EVENEMENT_JEU' = 'EVENEMENT_JEU',
   'EVENEMENT_MUSIQUE' = 'EVENEMENT_MUSIQUE',
   'EVENEMENT_PATRIMOINE' = 'EVENEMENT_PATRIMOINE',
+  'FESTIVAL_ART_VISUEL' = 'FESTIVAL_ART_VISUEL',
   'FESTIVAL_CINE' = 'FESTIVAL_CINE',
   'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
   'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
@@ -2197,6 +2198,7 @@ export enum SubcategoryIdEnumv2 {
   'EVENEMENT_JEU' = 'EVENEMENT_JEU',
   'EVENEMENT_MUSIQUE' = 'EVENEMENT_MUSIQUE',
   'EVENEMENT_PATRIMOINE' = 'EVENEMENT_PATRIMOINE',
+  'FESTIVAL_ART_VISUEL' = 'FESTIVAL_ART_VISUEL',
   'FESTIVAL_CINE' = 'FESTIVAL_CINE',
   'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
   'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
@@ -2336,7 +2338,7 @@ export interface SubscriptionMessage {
    * @type {string}
    * @memberof SubscriptionMessage
    */
-  updatedAt: string
+  updatedAt?: string | null
   /**
    * @type {string}
    * @memberof SubscriptionMessage
@@ -2509,6 +2511,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   subscriptions: NotificationSubscriptions
+  /**
+   * @type {YoungStatusResponse}
+   * @memberof UserProfileResponse
+   */
+  youngStatus: YoungStatusResponse
 }
 /**
  * @export
@@ -2847,6 +2854,29 @@ export enum WithdrawalTypeEnum {
   'no_ticket' = 'no_ticket',
   'by_email' = 'by_email',
   'on_site' = 'on_site',
+}
+/**
+ * @export
+ * @interface YoungStatusResponse
+ */
+export interface YoungStatusResponse {
+  /**
+   * @type {YoungStatusType}
+   * @memberof YoungStatusResponse
+   */
+  statusType: YoungStatusType
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum YoungStatusType {
+  'eligible' = 'eligible',
+  'non_eligible' = 'non_eligible',
+  'beneficiary' = 'beneficiary',
+  'ex_beneficiary' = 'ex_beneficiary',
+  'suspended' = 'suspended',
 }
 
 /**
