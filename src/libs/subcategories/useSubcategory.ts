@@ -4,5 +4,5 @@ import { Subcategory } from 'libs/subcategories/types'
 
 export const useSubcategory = (subcategoryId: SubcategoryIdEnum): Subcategory => {
   const subcategoriesMapping = useSubcategoriesMapping()
-  return subcategoriesMapping[subcategoryId]
+  return subcategoriesMapping[subcategoryId] || {}
 }

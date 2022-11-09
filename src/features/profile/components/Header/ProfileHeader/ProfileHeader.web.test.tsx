@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { UserProfileResponse } from 'api/gen'
+import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { render } from 'tests/utils/web'
@@ -24,6 +24,7 @@ const user: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
+  youngStatus: { statusType: YoungStatusType.beneficiary },
 }
 
 jest.mock('features/profile/api')

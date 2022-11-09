@@ -3,7 +3,7 @@ import React from 'react'
 import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { CategoryIdEnum, OfferResponse, UserProfileResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -109,6 +109,7 @@ const userProfileAPIResponse: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
+  youngStatus: { statusType: YoungStatusType.beneficiary },
 }
 
 describe('<OfferIconCaptions />', () => {
