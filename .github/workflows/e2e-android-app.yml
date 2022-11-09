@@ -1,0 +1,16 @@
+name: Tests e2e Android App
+
+on:
+  workflow_dispatch:
+    inputs:
+      tbd:
+        description: "tbd"
+        required: false
+        type: string
+
+jobs:
+  tbd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello World"
