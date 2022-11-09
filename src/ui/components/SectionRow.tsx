@@ -3,7 +3,8 @@ import { useTheme } from 'styled-components/native'
 
 import { SectionRowContent, SectionRowContentProps } from 'ui/components/SectionRowContent'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalOrExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 type SectionRowProps = SectionRowContentProps & Partial<InternalOrExternalNavigationProps>
@@ -24,20 +25,30 @@ export function SectionRow({
     accessibilityLabel,
   }
 
-  const externalNavProps = externalNav ? { externalNav } : undefined
-  const navigationProps = navigateTo ? { navigateTo } : externalNavProps
-
-  if (navigationProps) {
+  if (externalNav) {
     return (
-      <TouchableLink
+      <ExternalTouchableLink
         testID="touchable-link-section-row"
         onBeforeNavigate={touchableProps.onPress}
-        {...navigationProps}
+        externalNav={externalNav}
         {...touchableProps}>
         <SectionRowContent {...props} />
-      </TouchableLink>
+      </ExternalTouchableLink>
     )
   }
+
+  if (navigateTo) {
+    return (
+      <InternalTouchableLink
+        testID="touchable-link-section-row"
+        onBeforeNavigate={touchableProps.onPress}
+        navigateTo={navigateTo}
+        {...touchableProps}>
+        <SectionRowContent {...props} />
+      </InternalTouchableLink>
+    )
+  }
+
   return (
     <Touchable testID="touchable-section-row" {...touchableProps}>
       <SectionRowContent {...props} />
