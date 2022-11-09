@@ -535,7 +535,8 @@ exports[`SearchPrice component should render modal correctly after animation and
                       ]
                     }
                   >
-                    Non
+                    Case à cocher - 
+                    non cochée
                   </Text>
                   <View
                     accessibilityRole="checkbox"
@@ -727,7 +728,8 @@ exports[`SearchPrice component should render modal correctly after animation and
                       ]
                     }
                   >
-                    Non
+                    Case à cocher - 
+                    non cochée
                   </Text>
                   <View
                     accessibilityRole="checkbox"
