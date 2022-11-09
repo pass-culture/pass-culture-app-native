@@ -81,7 +81,7 @@ const ContainerText = styled.View(({ theme }) => ({
 }))
 
 const MainTitle = styled(Typo.Title4).attrs({
-  ...getHeadingAttrs(1),
+  ...getHeadingAttrs(2),
 })(({ theme }) => ({
   color: theme.colors.black,
   marginTop: getSpacing(4),

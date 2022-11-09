@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   isActive: boolean
@@ -13,6 +14,7 @@ type Props = {
   label: string
   testID?: string
   subtitle?: string
+  accessibilityLevel?: HeadingLevel
 }
 
 export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
@@ -21,6 +23,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   label,
   testID,
   subtitle,
+  accessibilityLevel,
 }) => {
   const checkboxID = useMemo(uuidv4, [])
   const labelID = useMemo(uuidv4, [])
@@ -33,7 +36,9 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
         return (
           <View>
             <InputLabel htmlFor={checkboxID}>
-              <Typo.ButtonText>{label}</Typo.ButtonText>
+              <Typo.ButtonText {...getHeadingAttrs(accessibilityLevel ?? 2)}>
+                {label}
+              </Typo.ButtonText>
             </InputLabel>
             {!!subtitle && (
               <React.Fragment>
@@ -44,7 +49,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           </View>
         )
       },
-    [checkboxID, label, subtitle]
+    [checkboxID, label, subtitle, accessibilityLevel]
   )
 
   return (
