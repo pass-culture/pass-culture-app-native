@@ -6,7 +6,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { contactSupport } from 'features/auth/support.services'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ExternalNavigationProps, TouchableLinkProps } from 'ui/components/touchableLink/types'
-import { UserError } from 'ui/svg/BicolorUserError'
+import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -40,7 +40,7 @@ export type NotEligibleEduConnectErrorData = {
 }
 
 const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
-  Illustration: UserError,
+  Illustration: UserErrorWhite,
   title: 'Oh non\u00a0!',
   description:
     'La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n’as pas l’âge requis pour obtenir l’aide de l’État.' +
@@ -53,7 +53,7 @@ const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
 const getInvalidInformationErrorData = (
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
-  Illustration: UserError,
+  Illustration: UserErrorWhite,
   title: 'Oh non\u00a0!',
   description:
     'Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.' +
@@ -71,7 +71,7 @@ const getUserTypeNotStudentErrorData = (
   onPrimaryButtonPress: () => void,
   navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
-  Illustration: UserError,
+  Illustration: UserErrorWhite,
   title: 'Qui est-ce\u00a0?',
   description:
     'Les informations provenant d’ÉduConnect indiquent que vous êtes le représentant légal d’un jeune scolarisé.' +
@@ -95,7 +95,7 @@ const GenericErrorData: NotEligibleEduConnectErrorData = {
 }
 
 const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
-  Illustration: UserError,
+  Illustration: UserErrorWhite,
   title: 'As-tu déja un compte\u00a0?',
   description:
     "Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n'as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d'informations.",
