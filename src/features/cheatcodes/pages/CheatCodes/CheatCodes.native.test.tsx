@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, render } from 'tests/utils'
 
-import { CheatCodes } from '../CheatCodes'
+import { CheatCodes } from './CheatCodes'
 
 const installationID = 'installationID'
 
@@ -25,15 +25,6 @@ const navigation = {
 } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
 describe('CheatCodes component', () => {
-  it('should render correctly', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const instance = renderCheatCodes()
-
-    await flushAllPromisesWithAct()
-
-    expect(instance.toJSON()).toMatchSnapshot()
-  })
-
   it.each`
     environment     | buttonIsdisplayed
     ${'testing'}    | ${true}

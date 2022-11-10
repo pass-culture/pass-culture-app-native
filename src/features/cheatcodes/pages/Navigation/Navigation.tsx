@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
+import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton/CheatCodesButton'
 import { Row } from 'features/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/cheatcodes/hooks/useSomeVenueId'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
