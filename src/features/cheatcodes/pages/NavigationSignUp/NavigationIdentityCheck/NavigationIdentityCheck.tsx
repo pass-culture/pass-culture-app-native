@@ -34,7 +34,6 @@ export function NavigationIdentityCheck(): JSX.Element {
 
   return (
     <ScrollView>
-      <Spacer.TopScreen />
       <PageHeader title="IdentityCheck 🎨" withGoBackButton position="absolute" />
       <StyledContainer>
         <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
