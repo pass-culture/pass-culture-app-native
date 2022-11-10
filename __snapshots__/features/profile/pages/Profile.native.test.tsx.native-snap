@@ -544,7 +544,8 @@ exports[`Profile component should render correctly 1`] = `
                                 ]
                               }
                             >
-                              Oui
+                              Case à cocher - 
+                              cochée
                             </Text>
                             <View
                               accessibilityRole="checkbox"

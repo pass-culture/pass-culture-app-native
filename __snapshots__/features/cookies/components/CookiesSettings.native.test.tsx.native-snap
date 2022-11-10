@@ -107,7 +107,8 @@ Array [
             ]
           }
         >
-          Non
+          Case à cocher - 
+          non cochée
         </Text>
         <View
           accessibilityRole="checkbox"
@@ -234,7 +235,8 @@ Array [
             ]
           }
         >
-          Non
+          Case à cocher - 
+          non cochée
         </Text>
         <View
           accessibilityRole="checkbox"
@@ -576,7 +578,8 @@ Array [
             ]
           }
         >
-          Non
+          Case à cocher - 
+          non cochée
         </Text>
         <View
           accessibilityRole="checkbox"
@@ -918,7 +921,8 @@ Array [
             ]
           }
         >
-          Non
+          Case à cocher - 
+          non cochée
         </Text>
         <View
           accessibilityRole="checkbox"
@@ -1260,7 +1264,8 @@ Array [
             ]
           }
         >
-          Oui
+          Case à cocher - 
+          cochée
         </Text>
         <View
           accessibilityRole="checkbox"

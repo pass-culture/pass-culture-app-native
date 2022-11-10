@@ -484,7 +484,8 @@ exports[`DatesHoursModal component should render modal correctly after animation
                         ]
                       }
                     >
-                      Non
+                      Case à cocher - 
+                      non cochée
                     </Text>
                     <View
                       accessibilityRole="checkbox"
@@ -700,7 +701,8 @@ exports[`DatesHoursModal component should render modal correctly after animation
                         ]
                       }
                     >
-                      Non
+                      Case à cocher - 
+                      non cochée
                     </Text>
                     <View
                       accessibilityRole="checkbox"
