@@ -5,7 +5,6 @@ import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { ButtonContainer } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { SingleFilterButton } from 'features/search/atoms/Buttons/FilterButton/SingleFilterButton'
@@ -30,8 +29,10 @@ import { SearchHit } from 'libs/search'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { GeolocationButton } from 'ui/components/GeolocationButton'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
+import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import { Ul } from 'ui/components/Ul'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -218,58 +219,54 @@ export const SearchResults: React.FC = () => {
       />
       <View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Spacer.Row numberOfSpaces={6} />
-          <ButtonContainer>
-            <SingleFilterButton
-              label={hasPosition ? locationLabel : 'Localisation'}
-              testID="locationButton"
-              onPress={showLocationModal}
-              isSelected={hasPosition}
-            />
-          </ButtonContainer>
-          <Spacer.Row numberOfSpaces={2} />
-          <ButtonContainer>
-            <SingleFilterButton
-              label="Catégories"
-              testID="categoryButton"
-              onPress={showCategoriesModal}
-              isSelected={appliedFilters.includes(FILTER_TYPES.CATEGORIES)}
-            />
-          </ButtonContainer>
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={2} />
-            <ButtonContainer>
+          <Spacer.Row numberOfSpaces={5} />
+          <Ul>
+            <StyledLi>
+              <SingleFilterButton
+                label={hasPosition ? locationLabel : 'Localisation'}
+                testID="locationButton"
+                onPress={showLocationModal}
+                isSelected={hasPosition}
+              />
+            </StyledLi>
+
+            <StyledLi>
+              <SingleFilterButton
+                label="Catégories"
+                testID="categoryButton"
+                onPress={showCategoriesModal}
+                isSelected={appliedFilters.includes(FILTER_TYPES.CATEGORIES)}
+              />
+            </StyledLi>
+
+            <StyledLi>
               <SingleFilterButton
                 label="Prix"
                 testID="priceButton"
                 onPress={showSearchPriceModal}
                 isSelected={appliedFilters.includes(FILTER_TYPES.PRICES)}
               />
-            </ButtonContainer>
-          </React.Fragment>
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={2} />
-            <ButtonContainer>
+            </StyledLi>
+
+            <StyledLi>
               <SingleFilterButton
                 label="Type"
                 testID="typeButton"
                 onPress={showOfferTypeModal}
                 isSelected={appliedFilters.includes(FILTER_TYPES.OFFER_TYPE)}
               />
-            </ButtonContainer>
-          </React.Fragment>
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={2} />
-            <ButtonContainer>
+            </StyledLi>
+
+            <StyledLi>
               <SingleFilterButton
                 label="Dates & heures"
                 testID="datesHoursButton"
                 onPress={showDatesHoursModal}
                 isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
               />
-            </ButtonContainer>
-          </React.Fragment>
-          <Spacer.Row numberOfSpaces={6} />
+            </StyledLi>
+          </Ul>
+          <Spacer.Row numberOfSpaces={5} />
         </ScrollView>
         <Spacer.Column numberOfSpaces={4} />
       </View>
@@ -341,18 +338,29 @@ export const SearchResults: React.FC = () => {
   )
 }
 
-const contentContainerStyle = { flexGrow: 1 }
-const Container = styled.View({ flex: 1 })
+const contentContainerStyle = {
+  flexGrow: 1,
+}
+
+const Container = styled.View({
+  flex: 1,
+})
+
 const Footer = styled.View(({ theme }) => ({
   height: theme.tabBar.height + getSpacing(17),
   alignItems: 'center',
 }))
+
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
 }))
+
+const StyledLi = styled(Li)({
+  marginHorizontal: getSpacing(1),
+})
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
