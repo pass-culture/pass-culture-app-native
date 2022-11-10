@@ -8,10 +8,6 @@ import { fireEvent, render } from 'tests/utils'
 import { CodePushButton } from './CodePushButton'
 
 describe('CodePushButton', () => {
-  it('renders correctly', () => {
-    const button = render(<CodePushButton />)
-    expect(button).toMatchSnapshot()
-  })
   it('gets the metadata on mount', async () => {
     // We fake CodePush update metdata
     CodePush.getUpdateMetadata = jest.fn(() =>
@@ -63,28 +59,38 @@ describe('CodePushButton', () => {
     expect(getByText(text).props.children).toBe(text)
   })
 
-  test.each`
-    status
-    ${CodePush.SyncStatus.CHECKING_FOR_UPDATE}
-    ${CodePush.SyncStatus.AWAITING_USER_ACTION}
-    ${CodePush.SyncStatus.DOWNLOADING_PACKAGE}
-    ${CodePush.SyncStatus.INSTALLING_UPDATE}
-    ${undefined}
-  `('prints $status', ({ status }) => {
-    // We fake that a new version is available
-    CodePush.sync = jest.fn((_options, syncCb) => {
-      if (syncCb) {
-        syncCb(status)
-      }
-      return Promise.resolve(status)
-    })
+  it.each`
+    status                                      | displayStatusMessage
+    ${CodePush.SyncStatus.CHECKING_FOR_UPDATE}  | ${'Checking for update'}
+    ${CodePush.SyncStatus.AWAITING_USER_ACTION} | ${'Awaiting action'}
+    ${CodePush.SyncStatus.DOWNLOADING_PACKAGE}  | ${'Downloading'}
+    ${CodePush.SyncStatus.INSTALLING_UPDATE}    | ${'Installing'}
+    ${undefined}                                | ${'No update found'}
+  `(
+    'prints $status with message status : $displayStatusMessage',
+    ({
+      status,
+      displayStatusMessage,
+    }: {
+      status: CodePush.SyncStatus
+      displayStatusMessage: string
+    }) => {
+      // We fake that a new version is available
+      CodePush.sync = jest.fn((_options, syncCb) => {
+        if (syncCb) {
+          syncCb(status)
+        }
+        return Promise.resolve(status)
+      })
 
-    // We press the sync button
-    const button = render(<CodePushButton />)
-    fireEvent.press(button.getByTestId('container'))
-    expect(CodePush.sync).toHaveBeenCalled()
+      // We press the sync button
+      const button = render(<CodePushButton />)
+      fireEvent.press(button.getByTestId('container'))
+      expect(CodePush.sync).toHaveBeenCalled()
 
-    // We expect our component to render that the corresponding message status
-    expect(button).toMatchSnapshot()
-  })
+      // We expect our component to render that the corresponding message status
+      const messageStatus = button.getByTestId('status')
+      expect(messageStatus.props.children).toEqual(displayStatusMessage)
+    }
+  )
 })

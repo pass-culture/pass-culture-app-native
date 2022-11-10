@@ -95,7 +95,9 @@ export class CodePushButton extends Component<unknown, State> {
 
     return (
       <TouchableOpacity testID="container" style={styles.button} onPress={this.lookForUpdate}>
-        <Text style={styles.status}>{this.state.status || 'Check update'}</Text>
+        <Text style={styles.status} testID="status">
+          {this.state.status || 'Check update'}
+        </Text>
         {!!this.state.info && (
           <Text style={styles.info} numberOfLines={3}>
             {this.state.info}
