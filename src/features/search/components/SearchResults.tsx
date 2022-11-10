@@ -269,7 +269,7 @@ export const SearchResults: React.FC = () => {
           </Ul>
           <Spacer.Row numberOfSpaces={5} />
         </ScrollView>
-        <Spacer.Column numberOfSpaces={4} />
+        <Spacer.Column numberOfSpaces={3} />
       </View>
       <Container testID="searchResults">
         <FlatList
@@ -360,7 +360,7 @@ const Separator = styled.View(({ theme }) => ({
 }))
 
 const StyledLi = styled(Li)({
-  marginHorizontal: getSpacing(1),
+  margin: getSpacing(1),
 })
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({

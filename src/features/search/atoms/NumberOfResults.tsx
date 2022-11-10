@@ -26,8 +26,8 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
 }
 
 const Container = styled.View({
+  marginTop: getSpacing(1),
   marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(2),
   marginBottom: getSpacing(4),
 })
 
