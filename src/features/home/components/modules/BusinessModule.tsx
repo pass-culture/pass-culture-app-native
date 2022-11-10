@@ -17,7 +17,7 @@ import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
+import { getBusinessUrl, showBusinessModule } from './BusinessModule.utils'
 
 export interface BusinessModuleProps extends BusinessPane {
   homeEntryId: string | undefined
@@ -59,15 +59,9 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   useEffect(() => {
     if (!url || !shouldRedirect) return
-    if (!shouldUrlBeFilled(url)) {
-      logAndOpenUrl(url)
-      return
-    }
-    if (user) {
-      logAndOpenUrl(fillUrlEmail(url, user.email))
-      return
-    }
-    if (isUserLoading) {
+    const businessUrl = getBusinessUrl(url, user?.email)
+    if (businessUrl) logAndOpenUrl(businessUrl)
+    else if (isUserLoading) {
       showInfoSnackBar({ message: 'Redirection en cours' })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
