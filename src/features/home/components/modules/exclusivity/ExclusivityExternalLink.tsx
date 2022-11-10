@@ -44,10 +44,10 @@ const UnmemoizedExclusivityExternalLink = ({
 
 export const ExclusivityExternalLink = memo(UnmemoizedExclusivityExternalLink)
 
-const StyledTouchableLink = styled(ExternalTouchableLink)<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => ({
-    flex: 1,
-    borderRadius: theme.borderRadius.radius,
-    ...customFocusOutline({ isFocus, color: theme.colors.black }),
-  })
-)
+const StyledTouchableLink = styled((props) => <ExternalTouchableLink {...props} />)<{
+  isFocus?: boolean
+}>(({ theme, isFocus }) => ({
+  flex: 1,
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
