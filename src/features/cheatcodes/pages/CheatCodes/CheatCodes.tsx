@@ -1,11 +1,11 @@
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Text, Alert, Button } from 'react-native'
+import { Text, Alert, Button, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
-import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
+import { CodePushButton } from 'features/cheatcodes/components/CodePushButton/CodePushButton'
+import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton/CrashTestButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
@@ -14,6 +14,7 @@ import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -73,28 +74,31 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   }
 
   return (
-    <Container>
-      <Spacer.TopScreen />
-      <Spacer.Flex />
-      <CrashTestButton />
-      <NavigateHomeButton />
-      <Spacer.Flex />
-      <Button title="Utiliser un ancien token" onPress={setOldToken} />
-      <Button title="Invalider l'access token" onPress={setOldToken} />
-      <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
-      <Button title="/ME" onPress={fetchMe} />
-      <Text>{userEmail}</Text>
-      <Spacer.Flex />
-      <Text>Batch installation ID: {batchInstallationId}</Text>
-      <Text>User ID: {userId}</Text>
-      <Spacer.Flex />
-      <Typo.Body>{someOfferDescription}</Typo.Body>
-      <Spacer.Flex />
-      <Typo.Body>{ParsedDescription}</Typo.Body>
-      <Spacer.Flex />
-      {env.ENV === 'testing' && <CodePushButton />}
-      <Spacer.BottomScreen />
-    </Container>
+    <React.Fragment>
+      <PageHeader title="CheatCodes" withGoBackButton position="absolute" />
+      <ScrollView>
+        <Container>
+          <CrashTestButton />
+          <NavigateHomeButton />
+          <Spacer.Flex />
+          <Button title="Utiliser un ancien token" onPress={setOldToken} />
+          <Button title="Invalider l'access token" onPress={setOldToken} />
+          <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
+          <Button title="/ME" onPress={fetchMe} />
+          <Text>{userEmail}</Text>
+          <Spacer.Flex />
+          <Text>Batch installation ID: {batchInstallationId}</Text>
+          <Text>User ID: {userId}</Text>
+          <Spacer.Flex />
+          <Typo.Body>{someOfferDescription}</Typo.Body>
+          <Spacer.Flex />
+          <Typo.Body>{ParsedDescription}</Typo.Body>
+          <Spacer.Flex />
+          {env.ENV === 'testing' && <CodePushButton />}
+        </Container>
+        <Spacer.BottomScreen />
+      </ScrollView>
+    </React.Fragment>
   )
 }
 
