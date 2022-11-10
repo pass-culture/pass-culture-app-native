@@ -53,8 +53,8 @@ export const BicolorUserError = styled(BicolorUserErrorSvg).attrs(({ size, theme
   size: size ?? theme.illustrations.sizes.medium,
 }))``
 
-export const UserError = styled(BicolorUserErrorSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  color2: color ?? theme.colors.black,
+export const UserErrorWhite = styled(BicolorUserErrorSvg).attrs(({ size, theme }) => ({
+  color: theme.colors.white,
+  color2: theme.colors.white,
   size: size ?? theme.illustrations.sizes.medium,
 }))``
