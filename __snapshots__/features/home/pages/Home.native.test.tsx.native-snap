@@ -80,6 +80,7 @@ exports[`Home N-1 should render correctly 1`] = `
                   Object {
                     "marginBottom": 8,
                     "marginHorizontal": 24,
+                    "marginTop": 8,
                   },
                 ]
               }
