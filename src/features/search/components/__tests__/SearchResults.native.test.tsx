@@ -6,9 +6,11 @@ import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { LocationFilter, SearchState } from 'features/search/types'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
+import { SearchHit } from 'libs/search'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
@@ -27,13 +29,15 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
+let mockHits: SearchHit[] = []
+let mockNbHits = 0
 let mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
 jest.mock('features/search/pages/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
-    hits: [],
-    nbHits: 0,
+    hits: mockHits,
+    nbHits: mockNbHits,
     isFetching: false,
     isLoading: false,
     hasNextPage: mockHasNextPage,
@@ -66,6 +70,11 @@ const Kourou: SuggestedPlace = {
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 describe('SearchResults component', () => {
+  beforeAll(() => {
+    mockHits = []
+    mockNbHits = 0
+  })
+
   it('should render correctly', async () => {
     jest.useFakeTimers()
     await superFlushWithAct()
@@ -269,37 +278,13 @@ describe('SearchResults component', () => {
     }
   )
 
-  it('should display geolocation incitation button when position is null', async () => {
+  it('should not display geolocation incitation button when position is null and no results search', async () => {
     mockPosition = null
     const { queryByText } = render(<SearchResults />)
 
     await act(async () => {
-      expect(queryByText('Géolocalise toi')).toBeTruthy()
+      expect(queryByText('Géolocalise toi')).toBeFalsy()
     })
-  })
-
-  it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
-    mockPosition = null
-
-    const { getByText } = render(<SearchResults />)
-
-    await act(async () => {
-      fireEvent.press(getByText('Géolocalise toi'))
-    })
-
-    expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
-  })
-
-  it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
-    mockPosition = null
-
-    const { getByText } = render(<SearchResults />)
-
-    await act(async () => {
-      fireEvent.press(getByText('Géolocalise toi'))
-    })
-
-    expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)
   })
 
   it.each`
@@ -377,4 +362,41 @@ describe('SearchResults component', () => {
       expect(datesHoursButtonLabel).toHaveStyle({ color: theme.colors.primary })
     }
   )
+
+  it('should display geolocation incitation button when position is null', async () => {
+    mockPosition = null
+    mockHits = mockedAlgoliaResponse.hits
+    mockNbHits = mockedAlgoliaResponse.nbHits
+    const { queryByText } = render(<SearchResults />)
+
+    await act(async () => {
+      expect(queryByText('Géolocalise toi')).toBeTruthy()
+    })
+  })
+
+  it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
+    mockPosition = null
+    mockHits = mockedAlgoliaResponse.hits
+    mockNbHits = mockedAlgoliaResponse.nbHits
+    const { getByText } = render(<SearchResults />)
+
+    await act(async () => {
+      fireEvent.press(getByText('Géolocalise toi'))
+    })
+
+    expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
+  })
+
+  it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
+    mockPosition = null
+    mockHits = mockedAlgoliaResponse.hits
+    mockNbHits = mockedAlgoliaResponse.nbHits
+    const { getByText } = render(<SearchResults />)
+
+    await act(async () => {
+      fireEvent.press(getByText('Géolocalise toi'))
+    })
+
+    expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)
+  })
 })
