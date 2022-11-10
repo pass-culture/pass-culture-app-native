@@ -74,7 +74,8 @@ Array [
             }
           }
         >
-          Oui
+          Case à cocher - 
+          cochée
         </div>
         <div
           aria-checked={true}
@@ -269,8 +270,16 @@ Array [
   border-radius: 24px;
 }
 
-.c1:focus {
+.c1:focus-visible {
   outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c1:active {
+  outline: none;
+  opacity: 0.7;
 }
 
 .c1:hover {
@@ -308,8 +317,16 @@ Array [
   border-radius: 24px;
 }
 
-.c2:focus {
+.c2:focus-visible {
   outline-color: #0066ff;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.c2:active {
+  outline: none;
+  opacity: 0.7;
 }
 
 .c2:hover {
@@ -398,8 +415,10 @@ Array [
             style={
               Object {
                 "display": "list-item",
+                "marginBottom": "4px",
                 "marginLeft": "4px",
                 "marginRight": "4px",
+                "marginTop": "4px",
               }
             }
           >
@@ -457,8 +476,10 @@ Array [
             style={
               Object {
                 "display": "list-item",
+                "marginBottom": "4px",
                 "marginLeft": "4px",
                 "marginRight": "4px",
+                "marginTop": "4px",
               }
             }
           >
@@ -504,8 +525,10 @@ Array [
             style={
               Object {
                 "display": "list-item",
+                "marginBottom": "4px",
                 "marginLeft": "4px",
                 "marginRight": "4px",
+                "marginTop": "4px",
               }
             }
           >
@@ -551,8 +574,10 @@ Array [
             style={
               Object {
                 "display": "list-item",
+                "marginBottom": "4px",
                 "marginLeft": "4px",
                 "marginRight": "4px",
+                "marginTop": "4px",
               }
             }
           >
@@ -598,8 +623,10 @@ Array [
             style={
               Object {
                 "display": "list-item",
+                "marginBottom": "4px",
                 "marginLeft": "4px",
                 "marginRight": "4px",
+                "marginTop": "4px",
               }
             }
           >
@@ -654,7 +681,7 @@ Array [
       className="css-view-1dbjc4n"
       style={
         Object {
-          "height": "16px",
+          "height": "12px",
         }
       }
     />

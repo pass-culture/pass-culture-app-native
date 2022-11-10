@@ -35,7 +35,10 @@ Array [
               Array [
                 Object {
                   "display": "flex",
-                  "marginHorizontal": 4,
+                  "marginBottom": 4,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -111,7 +114,10 @@ Array [
               Array [
                 Object {
                   "display": "flex",
-                  "marginHorizontal": 4,
+                  "marginBottom": 4,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -177,7 +183,10 @@ Array [
               Array [
                 Object {
                   "display": "flex",
-                  "marginHorizontal": 4,
+                  "marginBottom": 4,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -243,7 +252,10 @@ Array [
               Array [
                 Object {
                   "display": "flex",
-                  "marginHorizontal": 4,
+                  "marginBottom": 4,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -309,7 +321,10 @@ Array [
               Array [
                 Object {
                   "display": "flex",
-                  "marginHorizontal": 4,
+                  "marginBottom": 4,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -383,11 +398,11 @@ Array [
       </View>
     </RCTScrollView>
     <View
-      numberOfSpaces={4}
+      numberOfSpaces={3}
       style={
         Array [
           Object {
-            "height": 16,
+            "height": 12,
           },
         ]
       }

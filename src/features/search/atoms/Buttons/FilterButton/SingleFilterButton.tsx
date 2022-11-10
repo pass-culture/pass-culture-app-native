@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type IsSelectedProps = {
@@ -53,13 +53,7 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   borderColor: isSelected ? theme.colors.primary : theme.colors.black,
   borderWidth: getSpacing(0.25),
   borderRadius: theme.borderRadius.button,
-  ...(Platform.OS === 'web'
-    ? {
-        ['&:focus']: {
-          outlineColor: theme.colors.accent,
-        },
-      }
-    : {}),
+  ...customFocusOutline({ color: theme.colors.accent }),
   ...getHoverStyle(isSelected ? theme.colors.primary : theme.colors.black),
 }))
 
