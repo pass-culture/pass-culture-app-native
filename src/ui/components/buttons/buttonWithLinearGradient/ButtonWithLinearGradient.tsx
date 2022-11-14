@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -25,9 +25,10 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
 
   return (
     <Container
-      onBeforeNavigate={onPress}
+      onPress={isDisabled ? undefined : onPress}
       disabled={isDisabled}
       fitContentWidth={fitContentWidth}
+      accessibilityRole="link"
       {...accessibilityAndTestId(wording, testID)}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer>
@@ -45,7 +46,7 @@ const Rectangle = styled(InitialRectangle).attrs({
   size: '100%',
 })``
 
-const Container = styled(TouchableLink)<{ fitContentWidth: boolean }>(
+const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(
   ({ theme, fitContentWidth }) => {
     return {
       justifyContent: 'center',
