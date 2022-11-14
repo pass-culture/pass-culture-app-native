@@ -11,8 +11,8 @@ import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryN
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'
 
-import { ControlComponent, ControlComponentProps } from './ControlComponent'
-import { AchievementCardKeyProps } from './GenericAchievementCard'
+import { ControlComponent, ControlComponentProps } from '../ControlComponent/ControlComponent'
+import { AchievementCardKeyProps } from '../GenericAchievementCard/GenericAchievementCard'
 
 // While it may look like a duplication of the type in DotComponent.tsx,
 // we need to enforce this type here to ensure that it receive the right props

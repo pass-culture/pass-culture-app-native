@@ -8,8 +8,12 @@ import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
+import {
+  GenericAchievementCard,
+  AchievementCardKeyProps,
+} from '../GenericAchievementCard/GenericAchievementCard'
+
 import { GenericAchievement, Props, onRemoveScreenAction } from './GenericAchievement'
-import { GenericAchievementCard, AchievementCardKeyProps } from './GenericAchievementCard'
 
 describe('<GenericAchievement />', () => {
   const TestCard = (props: AchievementCardKeyProps) => (

@@ -6,7 +6,7 @@ import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import {
   AchievementCardKeyProps,
   GenericAchievementCard,
-} from 'ui/components/achievements/components/GenericAchievementCard'
+} from 'ui/components/achievements/components/GenericAchievementCard/GenericAchievementCard'
 
 export function ThirdCard(props: AchievementCardKeyProps) {
   const { requestGeolocPermission } = useGeolocation()

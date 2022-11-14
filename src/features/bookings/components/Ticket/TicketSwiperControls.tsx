@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ControlComponent } from 'ui/components/achievements/components/ControlComponent'
+import { ControlComponent } from 'ui/components/achievements/components/ControlComponent/ControlComponent'
 import { StepDots } from 'ui/components/StepDots'
 import { getSpacing, Spacer } from 'ui/theme'
 
