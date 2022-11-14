@@ -1,1 +1,0 @@
-export { GeolocationButton } from './GeolocationButton'
