@@ -2502,6 +2502,11 @@ export interface UserProfileResponse {
    */
   showEligibleCard: boolean
   /**
+   * @type {YoungStatusResponse}
+   * @memberof UserProfileResponse
+   */
+  status: YoungStatusResponse
+  /**
    * @type {SubscriptionMessage}
    * @memberof UserProfileResponse
    */
@@ -2511,11 +2516,6 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   subscriptions: NotificationSubscriptions
-  /**
-   * @type {YoungStatusResponse}
-   * @memberof UserProfileResponse
-   */
-  youngStatus: YoungStatusResponse
 }
 /**
  * @export
