@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { SearchGroupNameEnum, OfferResponse, UserRole } from 'api/gen'
+import { SearchGroupNameEnum, OfferResponse, UserRole, YoungStatusType } from 'api/gen'
 import { OfferModal } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/firebase/analytics'
@@ -28,7 +28,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" wording and modal "authentication"', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: false,
-        isEligible: false,
+        userStatus: YoungStatusType.non_eligible,
         isBeneficiary: false,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
@@ -49,7 +49,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" disabled wording with bottom banner when no external url', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: true,
-        isEligible: false,
+        userStatus: YoungStatusType.non_eligible,
         isBeneficiary: false,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
@@ -69,7 +69,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Accéder au site partenaire" wording when external url', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: true,
-        isEligible: false,
+        userStatus: YoungStatusType.non_eligible,
         isBeneficiary: false,
         offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         subcategory: buildSubcategory({}),
@@ -102,7 +102,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
-          isEligible: true,
+          userStatus: YoungStatusType.beneficiary,
           isBeneficiary: false,
           offer,
           subcategory,
@@ -138,7 +138,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
-          isEligible: true,
+          userStatus: YoungStatusType.beneficiary,
           isBeneficiary: true,
           offer,
           subcategory,
@@ -165,7 +165,7 @@ describe('getCtaWordingAndAction', () => {
     ) =>
       getCtaWordingAndAction({
         isLoggedIn: true,
-        isEligible: true,
+        userStatus: YoungStatusType.beneficiary,
         isBeneficiary: true,
         offer: buildOffer(partialOffer),
         subcategory: buildSubcategory(partialSubcategory || {}),
@@ -375,7 +375,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
-          isEligible: true,
+          userStatus: YoungStatusType.beneficiary,
           isBeneficiary: true,
           offer,
           subcategory,
@@ -399,7 +399,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
-          isEligible: true,
+          userStatus: YoungStatusType.beneficiary,
           isBeneficiary: true,
           offer,
           subcategory,

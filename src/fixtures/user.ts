@@ -19,7 +19,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
-  youngStatus: { statusType: YoungStatusType.non_eligible },
+  status: { statusType: YoungStatusType.non_eligible },
 }
 
 export const beneficiaryUser: UserProfileResponse = {
