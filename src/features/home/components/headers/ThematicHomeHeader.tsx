@@ -23,30 +23,24 @@ export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
     <Container>
       <Spacer.TopScreen />
       <BackButton onGoBack={onGoBack} />
-      <TextContainer>
-        {headerTitle ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
-          </React.Fragment>
-        ) : null}
-        {headerSubtitle ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <Typo.Body numberOfLines={1}>{headerSubtitle}</Typo.Body>
-          </React.Fragment>
-        ) : null}
-      </TextContainer>
+      {headerTitle ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Title1 numberOfLines={1}>{headerTitle}</Typo.Title1>
+        </React.Fragment>
+      ) : null}
+      {headerSubtitle ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={2} />
+          <Typo.Body numberOfLines={1}>{headerSubtitle}</Typo.Body>
+        </React.Fragment>
+      ) : null}
     </Container>
   )
 }
 
-const Container = styled.View({
-  marginTop: Platform.OS == 'web' ? getSpacing(4) : undefined,
-  marginHorizontal: getSpacing(4),
+const Container = styled.View(({ theme }) => ({
+  marginTop: Platform.OS == 'web' ? getSpacing(6) : getSpacing(2),
+  marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(2),
-})
-
-const TextContainer = styled.View({
-  marginHorizontal: getSpacing(2),
-})
+}))
