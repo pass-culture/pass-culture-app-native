@@ -28,7 +28,7 @@ const user: UserProfileResponse = {
     marketingEmail: true,
     marketingPush: true,
   },
-  youngStatus: { statusType: YoungStatusType.beneficiary },
+  status: { statusType: YoungStatusType.beneficiary },
 }
 
 const exBeneficiaryUser: UserProfileResponse = {
