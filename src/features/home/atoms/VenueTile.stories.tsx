@@ -36,10 +36,12 @@ const props = {
   width: LENGTH_S * (3 / 2),
 }
 
-export const WithoutImage = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const WithoutImage = Template.bind({})
 WithoutImage.args = props
 
-export const WithImage = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const WithImage = Template.bind({})
 WithImage.args = {
   ...props,
   venue: {
@@ -49,7 +51,8 @@ WithImage.args = {
   },
 }
 
-export const WithPosition = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const WithPosition = Template.bind({})
 WithPosition.args = {
   ...props,
   userPosition: {
