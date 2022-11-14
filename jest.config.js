@@ -51,4 +51,5 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
+  timers: 'legacy',
 }
