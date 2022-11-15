@@ -253,8 +253,8 @@ const logEventAnalytics = {
       filterTypes: JSON.stringify(filterTypes),
       searchId,
     }),
-  logSearchScrollToPage: (page: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),
+  logSearchScrollToPage: (page: number, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId }),
   logSendActivationMailAgain: (numberOfTimes: number) =>

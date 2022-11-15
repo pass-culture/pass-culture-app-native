@@ -112,7 +112,9 @@ export const SearchResults: React.FC = () => {
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
-      if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
+      if (lastPage.page > 0) {
+        analytics.logSearchScrollToPage(lastPage.page, params?.searchId)
+      }
       fetchNextPage()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
