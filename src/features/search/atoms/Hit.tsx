@@ -19,9 +19,10 @@ interface Props {
   hit: SearchHit
   query: string
   index: number
+  searchId?: string
 }
 
-export const Hit: React.FC<Props> = ({ hit, query, index }) => {
+export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
   const queryClient = useQueryClient()
@@ -57,7 +58,8 @@ export const Hit: React.FC<Props> = ({ hit, query, index }) => {
         offerId,
       })
     )
-    analytics.logConsultOffer({ offerId, from: 'search', query: query })
+
+    analytics.logConsultOffer({ offerId, from: 'search', query, searchId })
     logClickOnOffer({ objectID, position: index })
   }
 

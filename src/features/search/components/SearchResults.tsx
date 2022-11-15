@@ -120,9 +120,9 @@ export const SearchResults: React.FC = () => {
 
   const renderItem = useCallback(
     ({ item: hit, index }: { item: SearchHit; index: number }) => (
-      <Hit hit={hit} query={searchState.query} index={index} />
+      <Hit hit={hit} query={searchState.query} index={index} searchId={searchState.searchId} />
     ),
-    [searchState.query]
+    [searchState.query, searchState.searchId]
   )
 
   const logActivateGeolocfromSearchResults = useCallback(() => {
