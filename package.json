@@ -82,6 +82,7 @@
     "e2e:ios.browser": "wdio e2e/config/wdio.ios.browser.conf.ts",
     "e2e:browser.chrome": "wdio e2e/config/wdio.browser.chrome.conf.ts",
     "e2e:browser.safari": "wdio e2e/config/wdio.browser.safari.conf.ts",
+    "e2e:browser.firefox": "wdio e2e/config/wdio.browser.firefox.conf.ts",
     "e2e:lint": "eslint e2e --ext .js,.ts,.tsx,.mjs --cache",
     "e2e:types": "tsc -p e2e/tsconfig.json"
   },
@@ -269,6 +270,7 @@
     "flush-promises": "^1.0.2",
     "fork-ts-checker-webpack-plugin": "^6.2.1",
     "fs-extra": "^9.1.0",
+    "geckodriver": "^3.2.0",
     "git-revision-webpack-plugin": "^5.0.0",
     "html-webpack-plugin": "^4.5.2",
     "inspectpack": "^4.7.1",
@@ -311,6 +313,7 @@
     "url-loader": "^4.1.1",
     "wait-for-expect": "^3.0.2",
     "wdio-chromedriver-service": "^8.0.0",
+    "wdio-geckodriver-service": "^4.0.0",
     "wdio-safaridriver-service": "^2.0.0",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.5.0",
