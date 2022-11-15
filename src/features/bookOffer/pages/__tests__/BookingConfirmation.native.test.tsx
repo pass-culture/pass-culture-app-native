@@ -80,7 +80,7 @@ describe('<BookingConfirmation />', () => {
 
     render(<BookingConfirmation />)
     jest.advanceTimersByTime(3000)
-    expect(requestInAppReview).toHaveBeenCalled()
+    expect(requestInAppReview).toHaveBeenCalledTimes(3)
   })
 
   it('should not call InAppReview Modal if isAvailable is false', async () => {

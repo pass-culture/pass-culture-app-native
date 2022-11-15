@@ -48,7 +48,7 @@ describe('useHomeRecommendedHits', () => {
     renderHook(() => useHomeRecommendedHits(undefined, position, mockModuleId))
     expect(algoliaSpy).toHaveBeenCalledTimes(1)
     renderHook(() => useHomeRecommendedHits(mockUserId, position, mockModuleId))
-    expect(algoliaSpy).toHaveBeenCalled()
+    expect(algoliaSpy).toHaveBeenCalledTimes(2)
   })
 })
 
