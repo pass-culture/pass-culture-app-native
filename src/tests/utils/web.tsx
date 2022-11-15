@@ -102,4 +102,6 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
 // eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react'
 
+export { axe as checkAccessibilityFor } from 'jest-axe'
+
 export { customRender as render }
