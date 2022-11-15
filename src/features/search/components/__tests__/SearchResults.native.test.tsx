@@ -254,7 +254,7 @@ describe('SearchResults component', () => {
     const { queryByText } = render(<SearchResults />)
 
     await act(async () => {
-      expect(queryByText('Géolocalise toi')).toBeFalsy()
+      expect(queryByText('Géolocalise-toi')).toBeFalsy()
     })
   })
 
@@ -273,7 +273,7 @@ describe('SearchResults component', () => {
       const { queryByText } = render(<SearchResults />)
 
       await act(async () => {
-        expect(queryByText('Géolocalise toi')).toBeFalsy()
+        expect(queryByText('Géolocalise-toi')).toBeFalsy()
       })
     }
   )
@@ -283,7 +283,7 @@ describe('SearchResults component', () => {
     const { queryByText } = render(<SearchResults />)
 
     await act(async () => {
-      expect(queryByText('Géolocalise toi')).toBeFalsy()
+      expect(queryByText('Géolocalise-toi')).toBeFalsy()
     })
   })
 
@@ -370,7 +370,7 @@ describe('SearchResults component', () => {
     const { queryByText } = render(<SearchResults />)
 
     await act(async () => {
-      expect(queryByText('Géolocalise toi')).toBeTruthy()
+      expect(queryByText('Géolocalise-toi')).toBeTruthy()
     })
   })
 
@@ -381,7 +381,7 @@ describe('SearchResults component', () => {
     const { getByText } = render(<SearchResults />)
 
     await act(async () => {
-      fireEvent.press(getByText('Géolocalise toi'))
+      fireEvent.press(getByText('Géolocalise-toi'))
     })
 
     expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
@@ -394,7 +394,7 @@ describe('SearchResults component', () => {
     const { getByText } = render(<SearchResults />)
 
     await act(async () => {
-      fireEvent.press(getByText('Géolocalise toi'))
+      fireEvent.press(getByText('Géolocalise-toi'))
     })
 
     expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)

@@ -66,6 +66,7 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "marginHorizontal": 16,
+            "textAlign": "start",
           },
         ]
       }
@@ -78,12 +79,11 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "textAlign": "left",
             },
           ]
         }
       >
-        Géolocalise toi
+        Géolocalise-toi
       </Text>
       <View
         numberOfSpaces={1}
@@ -101,10 +101,9 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
           Array [
             Object {
               "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "textAlign": "left",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }

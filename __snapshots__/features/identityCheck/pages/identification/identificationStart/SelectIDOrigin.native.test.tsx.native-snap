@@ -427,6 +427,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                               "flexGrow": 1,
                               "flexShrink": 1,
                               "marginHorizontal": 16,
+                              "textAlign": "start",
                             },
                           ]
                         }
@@ -571,6 +572,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                               "flexGrow": 1,
                               "flexShrink": 1,
                               "marginHorizontal": 16,
+                              "textAlign": "start",
                             },
                           ]
                         }

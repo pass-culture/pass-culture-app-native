@@ -27,14 +27,16 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { SearchHit } from 'libs/search'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { GeolocationButton } from 'ui/components/GeolocationButton'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
+import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Ul } from 'ui/components/Ul'
+import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { More } from 'ui/svg/icons/More'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -146,8 +148,14 @@ export const SearchResults: React.FC = () => {
       <React.Fragment>
         <NumberOfResults nbHits={nbHits} />
         {!!shouldDisplayGeolocationButton && (
-          <GeolocationButtonContainer>
-            <GeolocationButton onPress={onPress} />
+          <GeolocationButtonContainer
+            onPress={onPress}
+            accessibilityLabel="Active ta géolocalisation">
+            <GenericBanner LeftIcon={LocationIcon}>
+              <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
+              <Spacer.Column numberOfSpaces={1} />
+              <Typo.Caption numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Caption>
+            </GenericBanner>
           </GeolocationButtonContainer>
         )}
       </React.Fragment>
@@ -371,10 +379,14 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const GeolocationButtonContainer = styled.View({
+const GeolocationButtonContainer = styled(Touchable)({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
 })
+
+const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
+  size: theme.icons.sizes.standard,
+}))``
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),

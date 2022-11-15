@@ -484,6 +484,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                               "flexGrow": 1,
                               "flexShrink": 1,
                               "marginHorizontal": 16,
+                              "textAlign": "start",
                             },
                           ]
                         }
@@ -667,6 +668,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                               "flexGrow": 1,
                               "flexShrink": 1,
                               "marginHorizontal": 16,
+                              "textAlign": "start",
                             },
                           ]
                         }
@@ -825,6 +827,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                               "flexGrow": 1,
                               "flexShrink": 1,
                               "marginHorizontal": 16,
+                              "textAlign": "start",
                             },
                           ]
                         }
