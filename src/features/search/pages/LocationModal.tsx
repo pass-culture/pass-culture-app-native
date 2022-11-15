@@ -90,10 +90,10 @@ export const LocationModal: FunctionComponent<Props> = ({
   isVisible,
   hideModal,
 }) => {
-  const logUseFilter = useLogFilterOnce(SectionTitle.Location)
+  const { searchState } = useSearch()
+  const logUseFilter = useLogFilterOnce(SectionTitle.Location, searchState.searchId)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
-  const { searchState } = useSearch()
   const {
     position,
     positionError,
@@ -117,7 +117,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
 
-  const logChangeRadius = useLogFilterOnce(SectionTitle.Radius)
+  const logChangeRadius = useLogFilterOnce(SectionTitle.Radius, searchState.searchId)
 
   const defaultValues = useMemo(() => {
     return {
@@ -177,7 +177,7 @@ export const LocationModal: FunctionComponent<Props> = ({
           ...additionalSearchState,
           locationFilter: { locationType: LocationType.EVERYWHERE },
         }
-        analytics.logChangeSearchLocation({ type: 'everywhere' })
+        analytics.logChangeSearchLocation({ type: 'everywhere' }, searchState.searchId)
       } else if (locationChoice === RadioButtonLocation.AROUND_ME) {
         additionalSearchState = {
           ...additionalSearchState,
@@ -186,7 +186,7 @@ export const LocationModal: FunctionComponent<Props> = ({
             aroundRadius: getValues('aroundRadius'),
           },
         }
-        analytics.logChangeSearchLocation({ type: 'aroundMe' })
+        analytics.logChangeSearchLocation({ type: 'aroundMe' }, searchState.searchId)
       } else if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
         const locationType = Object.prototype.hasOwnProperty.call(
           selectedPlaceOrVenue,
@@ -204,7 +204,7 @@ export const LocationModal: FunctionComponent<Props> = ({
               aroundRadius,
             },
           }
-          analytics.logChangeSearchLocation({ type: 'place' })
+          analytics.logChangeSearchLocation({ type: 'place' }, searchState.searchId)
         } else {
           additionalSearchState = {
             ...additionalSearchState,
@@ -213,10 +213,13 @@ export const LocationModal: FunctionComponent<Props> = ({
               venue: selectedPlaceOrVenue as SuggestedVenue,
             },
           }
-          analytics.logChangeSearchLocation({
-            type: 'venue',
-            venueId: (selectedPlaceOrVenue as SuggestedVenue).venueId,
-          })
+          analytics.logChangeSearchLocation(
+            {
+              type: 'venue',
+              venueId: (selectedPlaceOrVenue as SuggestedVenue).venueId,
+            },
+            searchState.searchId
+          )
         }
       }
 

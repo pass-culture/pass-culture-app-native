@@ -1,5 +1,6 @@
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
@@ -23,7 +24,9 @@ import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
-let mockSearchState = initialSearchState
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+let mockSearchState = searchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -100,7 +103,7 @@ describe('LocationModal component', () => {
   describe('should navigate on search results', () => {
     it('with actual state with no change when pressing search button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         view: SearchView.Results,
       }
       const { getByText } = renderLocationModal({ hideLocationModal })
@@ -123,7 +126,7 @@ describe('LocationModal component', () => {
 
     it('with a new radius when changing it with the slider and pressing search button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
         view: SearchView.Results,
       }
@@ -152,7 +155,7 @@ describe('LocationModal component', () => {
 
   describe('should navigate on landing page when location filter modal opened from search box', () => {
     it('with the initial state', async () => {
-      mockSearchState = initialSearchState
+      mockSearchState = searchState
       const { getByText } = renderLocationModal({ hideLocationModal })
 
       await superFlushWithAct()
@@ -172,7 +175,7 @@ describe('LocationModal component', () => {
     })
 
     it('with a new location', async () => {
-      mockSearchState = initialSearchState
+      mockSearchState = searchState
       const { getByText, getByTestId } = renderLocationModal({
         hideLocationModal,
       })
@@ -256,7 +259,7 @@ describe('LocationModal component', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType)
+      expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
@@ -311,7 +314,7 @@ describe('LocationModal component', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType)
+      expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
@@ -340,7 +343,7 @@ describe('LocationModal component', () => {
   })
 
   it('should display the selected radius when select Autour de moi radio button', async () => {
-    mockSearchState = initialSearchState
+    mockSearchState = searchState
     const { getByTestId, queryByText } = renderLocationModal({ hideLocationModal })
 
     await act(async () => {
@@ -440,7 +443,7 @@ describe('LocationModal component', () => {
 
   it('should log change radius when changing radius with the slider', async () => {
     mockSearchState = {
-      ...initialSearchState,
+      ...searchState,
       locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
     }
     const { getByTestId } = renderLocationModal({ hideLocationModal })
@@ -450,13 +453,13 @@ describe('LocationModal component', () => {
       slider.props.onValuesChange([50])
     })
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius, searchId)
   })
 
   describe('should reset', () => {
     it('the location radio group at "Partout" when pressing reset button and position is null', async () => {
       mockPosition = null
-      mockSearchState = initialSearchState
+      mockSearchState = searchState
       const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
 
       const defaultRadioButton = getByTestId(RadioButtonLocation.EVERYWHERE)
@@ -480,7 +483,7 @@ describe('LocationModal component', () => {
 
     it('the location radio group at "Autour de moi" when pressing reset button and position is not null', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
       }
       const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
@@ -508,7 +511,7 @@ describe('LocationModal component', () => {
     //  I assume there's a problem with the mock of mockSearchState.
     it.skip('the around me radius value when pressing reset button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
       }
       const { getByText, getByTestId, getAllByText } = renderLocationModal({ hideLocationModal })
@@ -530,7 +533,7 @@ describe('LocationModal component', () => {
 
     it('should reset search input place or venue when pressing reset button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: 10 },
       }
       const { getByPlaceholderText, getByText, getByTestId } = renderLocationModal({
@@ -603,7 +606,7 @@ describe('LocationModal component', () => {
         aroundRadius: 10,
       }
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         locationFilter,
       }
       const { getByPlaceholderText, getByTestId } = renderLocationModal({

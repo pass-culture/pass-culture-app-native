@@ -17,9 +17,9 @@ export const NoSearchResult: React.FC = () => {
 
   useEffect(() => {
     if (query) {
-      analytics.logNoSearchResult(query)
+      analytics.logNoSearchResult(query, params?.searchId)
     }
-  }, [query])
+  }, [params?.searchId, query])
 
   const onPressUpdateFilters = useCallback(() => {
     navigate('SearchFilter')

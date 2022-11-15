@@ -1,9 +1,10 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { OfferType } from 'features/search/enums'
 import { RadioButtonLocation } from 'features/search/pages/LocationModal'
-import { initialSearchState as mockInitialSearchState } from 'features/search/pages/reducer'
+import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
@@ -11,9 +12,12 @@ import { fireEvent, render, act } from 'tests/utils'
 import { SectionTitle } from '../titles'
 
 const Today = new Date(2020, 10, 1)
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+const mockSearchState = searchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
-    searchState: mockInitialSearchState,
+    searchState: mockSearchState,
     dispatch: jest.fn(),
   }),
 }))
@@ -42,20 +46,20 @@ describe('Analytics - logUseFilter', () => {
     await act(async () => {
       fireEvent.press(getByText(RadioButtonLocation.AROUND_ME))
     })
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Location)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Location, searchId)
   })
 
   it('should log UseFilter once when selecting multiple offer types', () => {
     const { getByText } = render(<Section.OfferType />)
     fireEvent.press(getByText(OfferType.DIGITAL))
     fireEvent.press(getByText(OfferType.THING))
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.OfferType)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.OfferType, searchId)
   })
 
   it('should log UseFilter once when changing new offer', () => {
     const { getByTestId } = render(<Section.NewOffer />)
     fireEvent.press(getByTestId('Interrupteur'))
     fireEvent.press(getByTestId('Interrupteur'))
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.New)
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.New, searchId)
   })
 })

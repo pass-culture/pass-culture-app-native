@@ -114,7 +114,9 @@ export const SearchResults: React.FC = () => {
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
-      if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
+      if (lastPage.page > 0) {
+        analytics.logSearchScrollToPage(lastPage.page, params?.searchId)
+      }
       fetchNextPage()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -122,9 +124,9 @@ export const SearchResults: React.FC = () => {
 
   const renderItem = useCallback(
     ({ item: hit, index }: { item: SearchHit; index: number }) => (
-      <Hit hit={hit} query={searchState.query} index={index} />
+      <Hit hit={hit} query={searchState.query} index={index} searchId={searchState.searchId} />
     ),
-    [searchState.query]
+    [searchState.query, searchState.searchId]
   )
 
   const logActivateGeolocfromSearchResults = useCallback(() => {

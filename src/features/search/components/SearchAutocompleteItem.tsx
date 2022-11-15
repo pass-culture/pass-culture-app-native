@@ -3,6 +3,7 @@ import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -33,15 +34,17 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
     // these are the two potentially 'staged' filters that we want to commit to the global search state.
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
+    const searchId = uuidv4()
     navigate(
       ...getTabNavConfig('Search', {
         ...searchState,
         query,
         view: SearchView.Results,
+        searchId,
       })
     )
 
-    analytics.logSearchQuery(query || '', appliedFilters)
+    analytics.logSearchQuery(query || '', appliedFilters, searchId)
   }
 
   return (

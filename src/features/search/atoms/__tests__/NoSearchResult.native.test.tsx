@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState as mockInitialSearchState } from 'features/search/pages/reducer'
@@ -14,6 +15,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
+const searchId = uuidv4()
 
 describe('NoSearchResult component', () => {
   it('should show the message without query entered', () => {
@@ -53,16 +56,16 @@ describe('NoSearchResult component', () => {
   })
 
   it('should log NoSearchResult with the query', () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: '' } })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: '', searchId } })
 
     render(<NoSearchResult />)
     expect(analytics.logNoSearchResult).not.toHaveBeenLastCalledWith('')
 
     useRoute.mockReturnValueOnce({
-      params: { view: SearchView.Landing, query: 'no result query' },
+      params: { view: SearchView.Landing, query: 'no result query', searchId },
     })
     render(<NoSearchResult />)
-    expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('no result query')
+    expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('no result query', searchId)
     expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
   })
 })

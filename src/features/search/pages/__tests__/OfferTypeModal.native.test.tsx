@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -12,7 +13,9 @@ import { OfferTypes, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
 
-const mockSearchState = initialSearchState
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+const mockSearchState = searchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
@@ -116,7 +119,7 @@ describe('OfferTypeModal component', () => {
       const radioButton = renderAPI.getByTestId(label)
       fireEvent.press(radioButton)
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType)
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType, searchId)
     })
   })
 
@@ -275,7 +278,7 @@ describe('OfferTypeModal component', () => {
 
       fireEvent.press(toggle)
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo)
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo, searchId)
     })
   })
 

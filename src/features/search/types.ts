@@ -48,6 +48,7 @@ export interface SearchState {
   previousView?: SearchView
   minPrice?: string
   maxPrice?: string
+  searchId?: string
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']

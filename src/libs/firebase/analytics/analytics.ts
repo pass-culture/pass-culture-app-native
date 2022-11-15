@@ -57,8 +57,12 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId }),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
-  logChangeSearchLocation: (params: ChangeSearchLocationParam) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, params),
+  logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, {
+      type: params.type,
+      searchId,
+      ...(params.type === 'venue' && { venueId: params.venueId }),
+    }),
   logChooseEduConnectMethod: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD),
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
@@ -100,6 +104,7 @@ const logEventAnalytics = {
     query?: string
     venueId?: number
     homeEntryId?: string
+    searchId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
   logConsultTutorial: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_TUTORIAL, { from }),
@@ -205,8 +210,8 @@ const logEventAnalytics = {
       index,
       homeEntryId,
     }),
-  logNoSearchResult: (query: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query }),
+  logNoSearchResult: (query: string, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query, searchId }),
   logNotificationToggle: (enableEmail: boolean, enablePush?: boolean) =>
     analyticsProvider.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
       enableEmail,
@@ -235,19 +240,21 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
   logQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
-  logReinitializeFilters: () => analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS),
+  logReinitializeFilters: (searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS, { searchId }),
   logResendEmailResetPasswordExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK),
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
-  logSearchQuery: (query: string, filterTypes: FILTER_TYPES[]) =>
+  logSearchQuery: (query: string, filterTypes: FILTER_TYPES[], searchId: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, {
       query,
       filterTypes: JSON.stringify(filterTypes),
+      searchId,
     }),
-  logSearchScrollToPage: (page: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),
+  logSearchScrollToPage: (page: number, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
@@ -267,10 +274,10 @@ const logEventAnalytics = {
   logSignUpTooYoung: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_TOO_YOUNG, { age }),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
-  logUseFilter: (filter: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),
-  logUseLandingCategory: (categoryName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName }),
+  logUseFilter: (filter: string, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter, searchId }),
+  logUseLandingCategory: (categoryName: string, searchId: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName, searchId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_CONTACT, params),
   logVenueSeeAllOffersClicked: (venueId: number) =>

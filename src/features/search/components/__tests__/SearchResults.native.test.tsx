@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -20,7 +21,9 @@ import { SearchResults } from '../SearchResults'
 
 jest.mock('react-query')
 
-let mockSearchState = initialSearchState
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+let mockSearchState = searchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -85,6 +88,9 @@ describe('SearchResults component', () => {
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { searchId },
+    })
     const { getByTestId } = render(<SearchResults />)
     const flatlist = getByTestId('searchResultsFlatlist')
 
@@ -93,14 +99,14 @@ describe('SearchResults component', () => {
       flatlist.props.onEndReached()
     })
     expect(mockFetchNextPage).toHaveBeenCalledTimes(1)
-    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1)
+    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1, searchId)
 
     mockData.pages.push({ hits: [], page: 2, nbHits: 0 })
     await act(async () => {
       flatlist.props.onEndReached()
     })
     expect(mockFetchNextPage).toHaveBeenCalledTimes(2)
-    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(2)
+    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(2, searchId)
   })
 
   it('should not log SearchScrollToPage when hitting the bottom of the page if no more results', async () => {
@@ -308,7 +314,7 @@ describe('SearchResults component', () => {
       locationButtonLabel: string
     }) => {
       mockPosition = position
-      mockSearchState = { ...initialSearchState, locationFilter }
+      mockSearchState = { ...searchState, locationFilter }
 
       const { queryByText } = render(<SearchResults />)
 

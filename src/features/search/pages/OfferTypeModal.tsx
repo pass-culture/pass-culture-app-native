@@ -53,10 +53,10 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   isVisible,
   hideModal,
 }) => {
-  const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
-  const logDuoOfferFilter = useLogFilterOnce(SectionTitle.Duo)
-  const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { searchState } = useSearch()
+  const logUseFilter = useLogFilterOnce(SectionTitle.OfferType, searchState.searchId)
+  const logDuoOfferFilter = useLogFilterOnce(SectionTitle.Duo, searchState.searchId)
+  const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { data: user } = useUserProfileInfo()
   const { isDesktopViewport, modal } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -126,7 +126,6 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
 
   const search = useCallback(
     (values: SearchTypeFormData) => {
-      hideModal()
       const additionalSearchState: SearchState = {
         ...searchState,
         offerIsDuo: hasDuoOfferToggle && values.offerIsDuo,
@@ -138,6 +137,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
           view: SearchView.Results,
         })
       )
+      hideModal()
     },
     [hideModal, navigate, searchState, hasDuoOfferToggle]
   )
