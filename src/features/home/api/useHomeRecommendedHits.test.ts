@@ -41,12 +41,12 @@ describe('useHomeRecommendedHits', () => {
 
   it('should call recommendation mutation when user is connected', () => {
     renderHook(() => useHomeRecommendedHits(mockUserId, position, mockModuleId))
-    expect(mutate).toHaveBeenCalled()
+    expect(mutate).toHaveBeenCalledTimes(1)
   })
 
   it('should call algolia hook', () => {
     renderHook(() => useHomeRecommendedHits(undefined, position, mockModuleId))
-    expect(algoliaSpy).toHaveBeenCalled()
+    expect(algoliaSpy).toHaveBeenCalledTimes(1)
     renderHook(() => useHomeRecommendedHits(mockUserId, position, mockModuleId))
     expect(algoliaSpy).toHaveBeenCalled()
   })

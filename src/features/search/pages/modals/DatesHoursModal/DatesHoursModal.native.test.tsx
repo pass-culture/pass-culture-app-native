@@ -460,7 +460,7 @@ describe('DatesHoursModal component', () => {
     const previousButton = getByTestId('backButton')
     fireEvent.press(previousButton)
 
-    expect(hideDatesHoursModal).toHaveBeenCalled()
+    expect(hideDatesHoursModal).toHaveBeenCalledTimes(1)
   })
 
   describe('should activate by default', () => {

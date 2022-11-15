@@ -50,7 +50,7 @@ describe('<EighteenBirthdayCard />', () => {
     fireEvent.press(getByText('Vérifier mon identité'))
 
     await waitForExpect(() => {
-      expect(mockedNavigateToNextBeneficiaryValidationStep).toBeCalled()
+      expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
     })
   })
 })

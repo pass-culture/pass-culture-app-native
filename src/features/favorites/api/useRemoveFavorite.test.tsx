@@ -127,7 +127,7 @@ describe('useRemoveFavorite hook', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(onError).toBeCalled()
+      expect(onError).toHaveBeenCalledTimes(1)
     })
   })
 })

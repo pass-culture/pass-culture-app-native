@@ -34,7 +34,7 @@ describe('<WebShareModal/>', () => {
   it('should dismiss the modal on cancel button click', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)
     fireEvent.click(getByText('Annuler'))
-    expect(mockDismissModal).toHaveBeenCalled()
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
   it('should copy the link on the copy button click', () => {
     const { getByText } = render(<WebShareModal {...defaultProps} />)

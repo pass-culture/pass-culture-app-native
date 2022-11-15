@@ -685,7 +685,7 @@ describe('LocationModal component', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(hideLocationModal).toHaveBeenCalled()
+      expect(hideLocationModal).toHaveBeenCalledTimes(1)
     })
 
     it('when pressing previous button', async () => {
@@ -696,7 +696,7 @@ describe('LocationModal component', () => {
       const previousButton = getByTestId('backButton')
       fireEvent.press(previousButton)
 
-      expect(hideLocationModal).toHaveBeenCalled()
+      expect(hideLocationModal).toHaveBeenCalledTimes(1)
     })
   })
 })

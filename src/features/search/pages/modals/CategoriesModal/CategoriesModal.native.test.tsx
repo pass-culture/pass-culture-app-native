@@ -115,7 +115,7 @@ describe('Categories component', () => {
         fireEvent.press(button)
       })
 
-      expect(mockHideModal).toHaveBeenCalled()
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
     it('when pressing previous button', async () => {
@@ -127,7 +127,7 @@ describe('Categories component', () => {
         fireEvent.press(previousButton)
       })
 
-      expect(mockHideModal).toHaveBeenCalled()
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
   })
 

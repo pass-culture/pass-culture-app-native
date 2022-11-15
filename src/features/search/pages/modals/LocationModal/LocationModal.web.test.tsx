@@ -49,7 +49,7 @@ describe('LocationModal component', () => {
     const closeButton = getByTestId('Ne pas filtrer sur la localisation et retourner aux résultats')
     fireEvent.click(closeButton)
 
-    expect(hideLocationModal).toHaveBeenCalled()
+    expect(hideLocationModal).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -72,7 +72,7 @@ describe('<CodeNotReceivedModal />', () => {
     const closeButton = getByTestId('Fermer la modale')
     fireEvent.press(closeButton)
 
-    expect(dismissModalMock).toBeCalled()
+    expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should dismiss modal on /send_phone_validation_code request success', async () => {
@@ -90,7 +90,7 @@ describe('<CodeNotReceivedModal />', () => {
     const requestNewCodeButton = getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
-    await waitFor(() => expect(dismissModalMock).toHaveBeenCalled())
+    await waitFor(() => expect(dismissModalMock).toHaveBeenCalledTimes(1))
   })
 
   it('should dismiss modal if request fails', async () => {
@@ -106,7 +106,7 @@ describe('<CodeNotReceivedModal />', () => {
     const requestNewCodeButton = getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
-    await waitFor(() => expect(dismissModalMock).toHaveBeenCalled())
+    await waitFor(() => expect(dismissModalMock).toHaveBeenCalledTimes(1))
   })
 
   it('should show toaster with error message if request fails', async () => {
@@ -150,7 +150,7 @@ describe('<CodeNotReceivedModal />', () => {
     const requestNewCodeButton = getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
-    await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalled())
+    await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1))
   })
 })
 

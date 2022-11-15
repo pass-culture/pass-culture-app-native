@@ -13,12 +13,12 @@ jest.unmock('libs/network/NetInfoWrapper')
 describe('<App /> with mocked RootNavigator', () => {
   it("should override font for Batch's in-app messages", async () => {
     await renderApp()
-    expect(BatchMessaging.setFontOverride).toHaveBeenCalled()
+    expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
   })
 
   it('should request push notifications permission', async () => {
     await renderApp()
-    expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalled()
+    expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
   })
 })
 

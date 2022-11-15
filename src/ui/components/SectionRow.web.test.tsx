@@ -15,7 +15,7 @@ describe('SectionRow', () => {
       const touchable = getByText('just clickable')
 
       fireEvent.click(touchable)
-      expect(method).toBeCalled()
+      expect(method).toHaveBeenCalledTimes(1)
     })
   })
 

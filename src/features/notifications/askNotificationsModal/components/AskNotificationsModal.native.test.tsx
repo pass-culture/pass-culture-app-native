@@ -36,7 +36,7 @@ describe('AskNotificationsModal', () => {
     const button = getByText('Activer les notifications')
     fireEvent.press(button)
 
-    expect(analytics.logAcceptNotifications).toHaveBeenCalled()
+    expect(analytics.logAcceptNotifications).toHaveBeenCalledTimes(1)
   })
 
   it('should request notification autorization accepted notifications when press accept button', () => {
@@ -45,7 +45,7 @@ describe('AskNotificationsModal', () => {
     const button = getByText('Activer les notifications')
     fireEvent.press(button)
 
-    expect(analytics.logAcceptNotifications).toHaveBeenCalled()
+    expect(analytics.logAcceptNotifications).toHaveBeenCalledTimes(1)
   })
 
   it('should hide modal when accept button is pressed and permissions are already granted', async () => {
@@ -56,7 +56,7 @@ describe('AskNotificationsModal', () => {
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(hideModal).toHaveBeenCalled()
+      expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -68,8 +68,8 @@ describe('AskNotificationsModal', () => {
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalled()
-      expect(hideModal).toHaveBeenCalled()
+      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
+      expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -83,8 +83,8 @@ describe('AskNotificationsModal', () => {
       fireEvent.press(button)
 
       await waitForExpect(() => {
-        expect(mockOpenSettings).toHaveBeenCalled()
-        expect(hideModal).toHaveBeenCalled()
+        expect(mockOpenSettings).toHaveBeenCalledTimes(1)
+        expect(hideModal).toHaveBeenCalledTimes(1)
       })
     }
   )
@@ -96,8 +96,8 @@ describe('AskNotificationsModal', () => {
     fireEvent.press(crossButton)
 
     await waitForExpect(() => {
-      expect(analytics.logDismissNotifications).toHaveBeenCalled()
-      expect(hideModal).toHaveBeenCalled()
+      expect(analytics.logDismissNotifications).toHaveBeenCalledTimes(1)
+      expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 })

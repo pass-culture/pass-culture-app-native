@@ -43,7 +43,7 @@ describe('useShowReview', () => {
 
     jest.advanceTimersByTime(3000)
 
-    expect(mockRequestInAppReview).toHaveBeenCalled()
+    expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
   })
 
   it('should not show the review when it is not available ', () => {
@@ -81,7 +81,7 @@ describe('useShowReview', () => {
     jest.advanceTimersByTime(3000)
 
     await waitForExpect(() => {
-      expect(mockUpdateInformationWhenReviewHasBeenRequested).toHaveBeenCalled()
+      expect(mockUpdateInformationWhenReviewHasBeenRequested).toHaveBeenCalledTimes(1)
     })
   })
 

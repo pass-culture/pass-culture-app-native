@@ -265,7 +265,7 @@ describe('Profile component', () => {
       const row = getByText('Déconnexion')
       fireEvent.press(row)
 
-      expect(mockSignOut).toBeCalled()
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 

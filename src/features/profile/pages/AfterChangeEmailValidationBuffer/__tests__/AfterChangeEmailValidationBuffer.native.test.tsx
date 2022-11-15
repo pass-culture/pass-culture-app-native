@@ -69,7 +69,7 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
     renderPage()
 
     await waitForExpect(() => {
-      expect(mockSignOut).toBeCalled()
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
       expect(mockShowSuccessSnackBar).toBeCalledWith({
         message:
           'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',

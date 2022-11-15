@@ -60,7 +60,7 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = getByText('Pourquoi cette limite ?')
       fireEvent.press(explanationButton)
 
-      expect(analytics.logConsultModalBeneficiaryCeilings).toBeCalled()
+      expect(analytics.logConsultModalBeneficiaryCeilings).toHaveBeenCalledTimes(1)
     })
 
     it('should log logConsultModalExpiredGrant analytics when expired deposit and press the button "Mon crédit est expiré, que faire ?"', () => {
@@ -71,7 +71,7 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = getByText('Mon crédit est expiré, que faire ?')
       fireEvent.press(explanationButton)
 
-      expect(analytics.logConsultModalExpiredGrant).toBeCalled()
+      expect(analytics.logConsultModalExpiredGrant).toHaveBeenCalledTimes(1)
     })
 
     it('should log logConsultModalNoMoreCredit analytics when exhausted credit and press the button "J’ai dépensé tout mon crédit, que faire ?"', () => {
@@ -82,7 +82,7 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = getByText('J’ai dépensé tout mon crédit, que faire ?')
       fireEvent.press(explanationButton)
 
-      expect(analytics.logConsultModalNoMoreCredit).toBeCalled()
+      expect(analytics.logConsultModalNoMoreCredit).toHaveBeenCalledTimes(1)
     })
 
     it('should render nothing for valid credit and underage beneficiary', () => {

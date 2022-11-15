@@ -85,7 +85,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalled()
+      expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalledTimes(1)
     })
 
     it('should request tracking transparency', async () => {
@@ -97,7 +97,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
     })
 
     it('should hide modal', async () => {
@@ -109,7 +109,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(hideModal).toBeCalled()
+      expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -157,7 +157,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
     })
 
     it('should hide modal', async () => {
@@ -169,7 +169,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(hideModal).toBeCalled()
+      expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -258,7 +258,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(saveChoice)
       await superFlushWithAct()
 
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
     })
 
     it('should hide modale when user saves cookies choice', async () => {
@@ -271,7 +271,7 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(saveChoice)
       await superFlushWithAct()
 
-      expect(hideModal).toBeCalled()
+      expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 })

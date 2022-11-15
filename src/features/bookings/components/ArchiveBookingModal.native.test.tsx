@@ -38,7 +38,7 @@ describe('<ArchiveBookingModal />', () => {
     })
     const button = getByTestId('Retourner à ma réservation')
     fireEvent.press(button)
-    expect(onDismiss).toBeCalled()
+    expect(onDismiss).toHaveBeenCalledTimes(1)
   })
   it('should call the mutation to toggle booking display', async () => {
     server.use(
@@ -66,7 +66,7 @@ describe('<ArchiveBookingModal />', () => {
           'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
         timeout: 5000,
       })
-      expect(onDismiss).toBeCalled()
+      expect(onDismiss).toHaveBeenCalledTimes(1)
       expect(mockGoBack).toBeCalledTimes(1)
     })
     await superFlushWithAct()

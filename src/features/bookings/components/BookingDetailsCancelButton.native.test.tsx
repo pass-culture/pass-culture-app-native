@@ -64,7 +64,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const button = getByTestId('Annuler ma réservation')
     fireEvent.press(button)
 
-    expect(onCancel).toBeCalled()
+    expect(onCancel).toHaveBeenCalledTimes(1)
   })
   it('should call onTerminate', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0], activationCode: { code: 'someCode' } }
@@ -75,7 +75,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const button = getByTestId('Terminer')
     fireEvent.press(button)
 
-    expect(onTerminate).toBeCalled()
+    expect(onTerminate).toHaveBeenCalledTimes(1)
   })
   it('should block user if cancellation date is over', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }

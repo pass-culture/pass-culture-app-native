@@ -56,7 +56,7 @@ describe('useGoBack()', () => {
       mockPreviousRoute.name = 'Login'
       const { result } = renderUseGoBack()
       result.current.goBack()
-      expect(mockGoBack).toBeCalled()
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })
 })

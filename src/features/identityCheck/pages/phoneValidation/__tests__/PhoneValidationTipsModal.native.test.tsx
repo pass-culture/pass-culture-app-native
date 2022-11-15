@@ -19,6 +19,6 @@ describe('<PhoneValidationTipsModal />', () => {
     const gotItButton = getByText("J'ai compris")
 
     fireEvent.press(gotItButton)
-    expect(dismissModalMock).toBeCalled()
+    expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 })

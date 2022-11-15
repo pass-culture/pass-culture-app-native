@@ -8,18 +8,18 @@ describe('startTracking', () => {
   it('should disable tracking if enabled = false', () => {
     startTracking(false)
 
-    expect(amplitude.disableCollection).toHaveBeenCalled()
-    expect(analytics.disableCollection).toHaveBeenCalled()
+    expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
+    expect(analytics.disableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
-    expect(Batch.optOut).toHaveBeenCalled()
+    expect(Batch.optOut).toHaveBeenCalledTimes(1)
   })
 
   it('should enable tracking if enabled = true', () => {
     startTracking(true)
 
-    expect(amplitude.enableCollection).toHaveBeenCalled()
-    expect(analytics.enableCollection).toHaveBeenCalled()
+    expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
+    expect(analytics.enableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
-    expect(Batch.optIn).toHaveBeenCalled()
+    expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })
 })

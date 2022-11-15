@@ -250,7 +250,7 @@ describe('SearchBox component', () => {
             view: SearchView.Suggestions,
           })
         )
-        expect(mockClear).toHaveBeenCalled()
+        expect(mockClear).toHaveBeenCalledTimes(1)
       }
     )
   })
@@ -293,7 +293,7 @@ describe('SearchBox component', () => {
             view: SearchView.Results,
           })
         )
-        expect(mockClear).toHaveBeenCalled()
+        expect(mockClear).toHaveBeenCalledTimes(1)
       }
     )
   })
@@ -335,7 +335,7 @@ describe('SearchBox component', () => {
       fireEvent.press(locationButton)
     })
 
-    expect(mockShowModal).toBeCalled()
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
   it('should display suggestions view when focusing search input and no search executed', async () => {

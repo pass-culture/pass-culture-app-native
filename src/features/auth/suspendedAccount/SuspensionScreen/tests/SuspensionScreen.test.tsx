@@ -48,7 +48,7 @@ describe('<SuspensionsScreen />', () => {
     render(<SuspensionScreen />)
 
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalled()
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -58,7 +58,7 @@ describe('<SuspensionsScreen />', () => {
 
     unmount()
     await waitForExpect(() => {
-      expect(mockSignOut).toBeCalled()
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 

@@ -51,7 +51,7 @@ describe('<CancelBookingModal />', () => {
     const dismissModalButton = page.getByTestId('Ne pas annuler')
 
     fireEvent.press(dismissModalButton)
-    expect(mockDismissModal).toHaveBeenCalled()
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should dismiss modal on press "retourner à ma réservation', () => {
@@ -63,7 +63,7 @@ describe('<CancelBookingModal />', () => {
     const goBackButton = getByText('Retourner à ma réservation')
 
     fireEvent.press(goBackButton)
-    expect(mockDismissModal).toHaveBeenCalled()
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should log "ConfirmBookingCancellation" on press "Annuler ma réservation"', () => {
@@ -84,7 +84,7 @@ describe('<CancelBookingModal />', () => {
     )
 
     fireEvent.press(getByText('Annuler ma réservation'))
-    expect(mockDismissModal).toBeCalled()
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: `Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.`,
       timeout: SNACK_BAR_TIME_OUT,

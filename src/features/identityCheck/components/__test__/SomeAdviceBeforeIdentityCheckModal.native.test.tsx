@@ -28,7 +28,7 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
     )
     const rightIcon = getByTestId('Fermer la modale de conseils pour avoir un document lisible')
     fireEvent.press(rightIcon)
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
   it(`should call onPressContinue when cliking on "J'ai compris" button`, () => {
@@ -40,6 +40,6 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
       />
     )
     fireEvent.press(getByText('J’ai compris'))
-    expect(onPressContinueMock).toHaveBeenCalled()
+    expect(onPressContinueMock).toHaveBeenCalledTimes(1)
   })
 })

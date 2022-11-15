@@ -28,7 +28,7 @@ describe('Timer', () => {
 
       jest.runOnlyPendingTimers()
 
-      expect(clearLocalIntervalMock).toBeCalled()
+      expect(clearLocalIntervalMock).toHaveBeenCalledTimes(1)
     })
     it('should not stop if shouldStop return false', () => {
       jest.useFakeTimers()

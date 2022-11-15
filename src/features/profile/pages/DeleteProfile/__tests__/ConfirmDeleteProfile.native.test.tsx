@@ -55,7 +55,7 @@ describe('ConfirmDeleteProfile component', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
-      expect(mockSignOut).toBeCalled()
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -83,7 +83,7 @@ describe('ConfirmDeleteProfile component', () => {
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Consulter l’article d’aide'))
     await waitForExpect(() => {
-      expect(analytics.logConsultArticleAccountDeletion).toBeCalled()
+      expect(analytics.logConsultArticleAccountDeletion).toHaveBeenCalledTimes(1)
       expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined)
     })
   })

@@ -227,7 +227,7 @@ describe('[api] helpers', () => {
       await refreshAccessToken(api, 0)
 
       expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
-      expect(mockClearRefreshToken).toHaveBeenCalled()
+      expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
     })
 
     it('should return UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN when there is an unexpected behavior', async () => {
@@ -262,7 +262,7 @@ describe('[api] helpers', () => {
       await refreshAccessToken(api, 0)
 
       expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
-      expect(mockClearRefreshToken).toHaveBeenCalled()
+      expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
     })
 
     it('should return REFRESH_TOKEN_IS_EXPIRED_ERROR when refresh token is expired', async () => {

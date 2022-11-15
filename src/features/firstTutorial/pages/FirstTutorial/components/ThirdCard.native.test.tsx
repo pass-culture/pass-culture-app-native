@@ -75,7 +75,7 @@ describe('ThirdCard', () => {
     )
     fireEvent.press(getByText('Utiliser ma position'))
     await waitFor(() => {
-      expect(ref.current?.goToNext).toBeCalled()
+      expect(ref.current?.goToNext).toHaveBeenCalledTimes(1)
     })
   })
 })

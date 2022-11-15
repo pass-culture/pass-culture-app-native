@@ -37,7 +37,7 @@ describe('CalendarPicker web component', () => {
     const button = getByText('Valider la date')
     fireEvent.click(button)
     expect(button).not.toBeNull()
-    expect(mockHideCalendar).toHaveBeenCalled()
+    expect(mockHideCalendar).toHaveBeenCalledTimes(1)
   })
 
   it('should validation button change the date', () => {
@@ -52,7 +52,7 @@ describe('CalendarPicker web component', () => {
     const button = getByText('Valider la date')
     fireEvent.click(button)
     expect(button).not.toBeNull()
-    expect(mockHideCalendar).toHaveBeenCalled()
-    expect(mockSetSelectedDate).toHaveBeenCalled()
+    expect(mockHideCalendar).toHaveBeenCalledTimes(1)
+    expect(mockSetSelectedDate).toHaveBeenCalledTimes(1)
   })
 })

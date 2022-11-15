@@ -50,7 +50,7 @@ describe('<IdentityCheckEnd/>', () => {
       "Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
     )
     fireEvent.press(rightIcon)
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to EduConnect when cliking on "Identification avec ÉduConnect" button', async () => {
@@ -58,7 +58,7 @@ describe('<IdentityCheckEnd/>', () => {
       <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification avec ÉduConnect'))
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: IdentityCheckMethod.educonnect,
       type: 'SET_METHOD',
@@ -71,7 +71,7 @@ describe('<IdentityCheckEnd/>', () => {
       <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     await fireEvent.press(getByText('Identification manuelle'))
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: IdentityCheckMethod.ubble,
       type: 'SET_METHOD',

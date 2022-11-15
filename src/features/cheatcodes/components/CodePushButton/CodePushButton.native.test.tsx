@@ -14,7 +14,7 @@ describe('CodePushButton', () => {
       Promise.resolve({ label: 'V4', description: 'New Release !' } as LocalPackage)
     )
     const testRenderer = TestRenderer.create(<CodePushButton />)
-    expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
+    expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
     await tick()
     // We expect that our state has those metadata
     expect(testRenderer.root.instance.state.info).toEqual('V4 (New Release !)')
@@ -24,7 +24,7 @@ describe('CodePushButton', () => {
     // We fake CodePush update metdata with partial information
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve({ label: 'V5' } as LocalPackage))
     const testRenderer = TestRenderer.create(<CodePushButton />)
-    expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
+    expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
     await tick()
     // We expect that our state has those metadata
     expect(testRenderer.root.instance.state.info).toEqual('V5')
@@ -34,7 +34,7 @@ describe('CodePushButton', () => {
     // We fake CodePush update metdata with null information
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve(null))
     const testRenderer = TestRenderer.create(<CodePushButton />)
-    expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
+    expect(CodePush.getUpdateMetadata).toHaveBeenCalledTimes(1)
     await tick()
     // We expect that our state has not changed
     expect(testRenderer.root.instance.state.info).toBeUndefined()
@@ -52,7 +52,7 @@ describe('CodePushButton', () => {
     // We press the sync button
     const { getByTestId, getByText } = render(<CodePushButton />)
     fireEvent.press(getByTestId('container'))
-    expect(CodePush.sync).toHaveBeenCalled()
+    expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
     // We expect our component to render that a new version is available
     const text = 'Nouvelle version sur AppCenter'
@@ -86,7 +86,7 @@ describe('CodePushButton', () => {
       // We press the sync button
       const button = render(<CodePushButton />)
       fireEvent.press(button.getByTestId('container'))
-      expect(CodePush.sync).toHaveBeenCalled()
+      expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
       // We expect our component to render that the corresponding message status
       const messageStatus = button.getByTestId('status')

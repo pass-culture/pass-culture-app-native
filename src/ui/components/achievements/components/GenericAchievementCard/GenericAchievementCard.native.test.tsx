@@ -40,7 +40,7 @@ describe('<GenericAchievementCard />', () => {
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
     fireEvent.press(button)
-    expect(buttonCallback).toHaveBeenCalled()
+    expect(buttonCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should fail to render if not children of GenericAchievement', () => {
@@ -62,7 +62,7 @@ describe('<GenericAchievementCard />', () => {
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
     fireEvent.press(button)
-    expect(buttonCallback).toHaveBeenCalled()
+    expect(buttonCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should call card analytics on active index', () => {
@@ -294,7 +294,7 @@ describe('<GenericAchievementCard />', () => {
     )
     const button = getByText('Passer')
     fireEvent.press(button)
-    expect(skip).toHaveBeenCalled()
+    expect(skip).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -33,7 +33,7 @@ describe('<DotComponent />', () => {
       numberOfSteps: 1,
     })
     fireEvent.press(getByTestId('button'))
-    expect(onPress).toHaveBeenCalled()
+    expect(onPress).toHaveBeenCalledTimes(1)
   })
 
   it('should get grey medium color when after active index', () => {

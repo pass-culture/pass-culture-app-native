@@ -37,7 +37,7 @@ describe('<BookingOfferModalComponent />', () => {
 
     fireEvent.press(dismissModalButton)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
-    expect(mockDismissModal).toHaveBeenCalled()
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should not log event BookingProcessStart when modal is not visible', () => {

@@ -70,7 +70,7 @@ describe('DatesHoursModal component', () => {
     )
     fireEvent.click(closeButton)
 
-    expect(hideDatesHoursModal).toHaveBeenCalled()
+    expect(hideDatesHoursModal).toHaveBeenCalledTimes(1)
   })
 
   it('should navigate on search results with a picked date filter when toggle date activated and pressing search button', async () => {

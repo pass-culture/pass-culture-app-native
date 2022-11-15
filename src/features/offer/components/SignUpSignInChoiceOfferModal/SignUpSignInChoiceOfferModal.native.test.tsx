@@ -51,7 +51,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const closeButton = getByTestId('rightIcon')
     await fireEvent.press(closeButton)
 
-    expect(dismissModal).toBeCalled()
+    expect(dismissModal).toHaveBeenCalledTimes(1)
     expect(analytics.logQuitFavoriteModalForSignIn).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 })

@@ -79,7 +79,7 @@ describe('<SetStatus/>', () => {
     const { getByText } = render(<SetStatus />)
 
     fireEvent.press(getByText(SchoolTypesSnap.activities[0].label))
-    expect(activityHasSchoolTypes).toHaveBeenCalled()
+    expect(activityHasSchoolTypes).toHaveBeenCalledTimes(1)
   })
   it('should not display "Continuer" if isSavingCheckpoint is true', async () => {
     mockIsSavingCheckpoint = true

@@ -16,7 +16,7 @@ describe('useHomeRecommendedIdsMutation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    expect(mockUseMutation).toHaveBeenCalled()
+    expect(mockUseMutation).toHaveBeenCalledTimes(1)
   })
 
   it('should call fetch when mutate', async () => {
@@ -45,7 +45,7 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({})
 
     await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalled()
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
     })
   })
 

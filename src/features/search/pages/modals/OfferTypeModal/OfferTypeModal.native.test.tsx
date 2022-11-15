@@ -340,7 +340,7 @@ describe('OfferTypeModal component', () => {
         fireEvent.press(button)
       })
 
-      expect(hideOfferTypeModal).toHaveBeenCalled()
+      expect(hideOfferTypeModal).toHaveBeenCalledTimes(1)
     })
 
     it('should navigate to Search results when selecting DUO offer and submit form', async () => {
@@ -439,7 +439,7 @@ describe('OfferTypeModal component', () => {
       const previousButton = getByTestId('backButton')
       fireEvent.press(previousButton)
 
-      expect(hideOfferTypeModal).toHaveBeenCalled()
+      expect(hideOfferTypeModal).toHaveBeenCalledTimes(1)
     })
   })
 })

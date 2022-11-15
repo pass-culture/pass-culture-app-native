@@ -32,7 +32,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalled()
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 

@@ -36,6 +36,6 @@ describe('SecondCard', () => {
       />
     )
     fireEvent.press(getByText('Continuer'))
-    expect(ref.current.goToNext).toHaveBeenCalled()
+    expect(ref.current.goToNext).toHaveBeenCalledTimes(1)
   })
 })
