@@ -210,8 +210,8 @@ const logEventAnalytics = {
       index,
       homeEntryId,
     }),
-  logNoSearchResult: (query: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query }),
+  logNoSearchResult: (query: string, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query, searchId }),
   logNotificationToggle: (enableEmail: boolean, enablePush?: boolean) =>
     analyticsProvider.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
       enableEmail,
