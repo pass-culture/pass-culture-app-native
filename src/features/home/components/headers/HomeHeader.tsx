@@ -35,7 +35,7 @@ export const HomeHeader: FunctionComponent = function () {
   // - ex-beneficiary users
   const getSubtitle = () => {
     const shouldSeeDefaultSubtitle =
-      !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
+      !isLoggedIn || !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
     if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
     const shouldSeeBeneficiarySubtitle =
