@@ -55,12 +55,12 @@ export const SearchPrice: FunctionComponent<Props> = ({
   isVisible,
   hideModal,
 }) => {
-  const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price)
-  const logUseFreeOffersFilter = useLogFilterOnce(SectionTitle.Free)
+  const { searchState } = useSearch()
+  const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price, searchState.searchId)
+  const logUseFreeOffersFilter = useLogFilterOnce(SectionTitle.Free, searchState.searchId)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn } = useAuthContext()
   const { data: user } = useUserProfileInfo()
-  const { searchState } = useSearch()
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)
@@ -85,7 +85,6 @@ export const SearchPrice: FunctionComponent<Props> = ({
   useForHeightKeyboardEvents(setKeyboardHeight)
 
   function search(values: SearchPriceFormData) {
-    hideModal()
     const offerIsFree =
       values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
     let additionalSearchState: SearchState = {
@@ -115,6 +114,7 @@ export const SearchPrice: FunctionComponent<Props> = ({
         view: SearchView.Results,
       })
     )
+    hideModal()
   }
 
   const {

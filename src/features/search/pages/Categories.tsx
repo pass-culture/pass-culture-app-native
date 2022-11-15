@@ -11,6 +11,8 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SectionTitle } from 'features/search/sections/titles'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -42,6 +44,7 @@ export const Categories: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
+  const logUseCategoryFilter = useLogFilterOnce(SectionTitle.Category, searchState.searchId)
 
   const {
     handleSubmit,
@@ -71,7 +74,6 @@ export const Categories: FunctionComponent<Props> = ({
   }, [reset])
 
   const onSearchPress = useCallback(() => {
-    hideModal()
     const offerCategories = getValues('offerCategories')
     const payload = offerCategories === SearchGroupNameEnumv2.NONE ? [] : [offerCategories]
     navigate(
@@ -80,7 +82,9 @@ export const Categories: FunctionComponent<Props> = ({
         offerCategories: payload,
       })
     )
-  }, [hideModal, navigate, searchState, getValues])
+    logUseCategoryFilter()
+    hideModal()
+  }, [hideModal, getValues, navigate, searchState, logUseCategoryFilter])
 
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const onSubmit = handleSubmit(onSearchPress)

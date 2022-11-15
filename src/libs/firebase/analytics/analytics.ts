@@ -274,8 +274,8 @@ const logEventAnalytics = {
   logSignUpTooYoung: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_TOO_YOUNG, { age }),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
-  logUseFilter: (filter: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),
+  logUseFilter: (filter: string, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter, searchId }),
   logUseLandingCategory: (categoryName: string, searchId: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName, searchId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>

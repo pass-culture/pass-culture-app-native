@@ -90,10 +90,10 @@ export const LocationModal: FunctionComponent<Props> = ({
   isVisible,
   hideModal,
 }) => {
-  const logUseFilter = useLogFilterOnce(SectionTitle.Location)
+  const { searchState } = useSearch()
+  const logUseFilter = useLogFilterOnce(SectionTitle.Location, searchState.searchId)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
-  const { searchState } = useSearch()
   const {
     position,
     positionError,
@@ -117,7 +117,7 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
 
-  const logChangeRadius = useLogFilterOnce(SectionTitle.Radius)
+  const logChangeRadius = useLogFilterOnce(SectionTitle.Radius, searchState.searchId)
 
   const defaultValues = useMemo(() => {
     return {
@@ -215,8 +215,8 @@ export const LocationModal: FunctionComponent<Props> = ({
           }
           analytics.logChangeSearchLocation(
             {
-            type: 'venue',
-            venueId: (selectedPlaceOrVenue as SuggestedVenue).venueId,
+              type: 'venue',
+              venueId: (selectedPlaceOrVenue as SuggestedVenue).venueId,
             },
             searchState.searchId
           )

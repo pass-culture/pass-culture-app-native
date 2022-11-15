@@ -1,12 +1,17 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
+import { SectionTitle } from 'features/search/sections/titles'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
 
 import { Categories } from '../Categories'
 
-const mockSearchState = initialSearchState
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+const mockSearchState = searchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
@@ -57,7 +62,7 @@ describe('Categories component', () => {
     })
 
     const expectedSearchParams = {
-      ...initialSearchState,
+      ...searchState,
       offerCategories: ['ARTS_LOISIRS_CREATIFS'],
     }
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -79,7 +84,7 @@ describe('Categories component', () => {
       fireEvent.press(button)
     })
 
-    const expectedSearchParams = { ...initialSearchState, offerCategories: [] }
+    const expectedSearchParams = { ...searchState, offerCategories: [] }
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       params: expectedSearchParams,
       screen: 'Search',
@@ -124,6 +129,21 @@ describe('Categories component', () => {
 
       expect(mockHideModal).toHaveBeenCalled()
     })
+  })
+
+  it('should log event when pressing search button', async () => {
+    const { getByText } = renderCategories()
+
+    const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
+    await act(async () => {
+      fireEvent.press(someCategoryFilterCheckbox)
+    })
+    const button = getByText('Rechercher')
+    await act(async () => {
+      fireEvent.press(button)
+    })
+
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category, searchId)
   })
 })
 

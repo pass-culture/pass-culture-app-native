@@ -7,7 +7,7 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 
 export const NewOffer: React.FC = () => {
   const { searchState, dispatch } = useSearch()
-  const logUseFilter = useLogFilterOnce(SectionTitle.New)
+  const logUseFilter = useLogFilterOnce(SectionTitle.New, searchState.searchId)
 
   const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_OFFER_NEW' })

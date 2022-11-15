@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -11,7 +12,9 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 
-let mockSearchState = initialSearchState
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+let mockSearchState = searchState
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
@@ -40,6 +43,10 @@ jest.mock('react-query')
 const mockHideModal = jest.fn()
 
 describe('SearchPrice component', () => {
+  beforeAll(() => {
+    mockSearchState = { ...searchState, searchId }
+  })
+
   it('should render modal correctly after animation and with enabled submit', async () => {
     jest.useFakeTimers()
     const renderAPI = render(
@@ -56,33 +63,86 @@ describe('SearchPrice component', () => {
     jest.useRealTimers()
   })
 
-  it('should navigate on search results when pressing on search button with minimum and maximum prices entered', async () => {
-    const { getByPlaceholderText, getByText } = renderSearchPrice()
+  describe('should navigate on search results ', () => {
+    it('when pressing on search button with minimum and maximum prices entered', async () => {
+      const { getByPlaceholderText, getByText } = renderSearchPrice()
 
-    const minPriceInput = getByPlaceholderText('0')
-    await act(async () => {
-      fireEvent(minPriceInput, 'onChangeText', '5')
+      const minPriceInput = getByPlaceholderText('0')
+      await act(async () => {
+        fireEvent(minPriceInput, 'onChangeText', '5')
+      })
+
+      const maxPriceInput = getByPlaceholderText('80')
+      await act(async () => {
+        fireEvent(maxPriceInput, 'onChangeText', '20')
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      const expectedSearchParams = {
+        ...mockSearchState,
+        minPrice: '5',
+        maxPrice: '20',
+        view: SearchView.Results,
+      }
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: expectedSearchParams,
+        screen: 'Search',
+      })
     })
 
-    const maxPriceInput = getByPlaceholderText('80')
-    await act(async () => {
-      fireEvent(maxPriceInput, 'onChangeText', '20')
+    it('when pressing search button with only free offers search toggle activated', async () => {
+      const { getByTestId, getByText } = renderSearchPrice()
+
+      const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
+      await act(async () => {
+        fireEvent.press(toggleOnlyFreeOffersSearch)
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      const expectedSearchParams = {
+        ...mockSearchState,
+        view: SearchView.Results,
+        offerIsFree: true,
+        minPrice: '0',
+        maxPrice: '0',
+      }
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: expectedSearchParams,
+        screen: 'Search',
+      })
     })
 
-    const searchButton = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(searchButton)
-    })
+    it('with only free offers when pressing search button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
+      const { getByPlaceholderText, getByText } = renderSearchPrice()
 
-    const expectedSearchParams = {
-      ...mockSearchState,
-      minPrice: '5',
-      maxPrice: '20',
-      view: SearchView.Results,
-    }
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: expectedSearchParams,
-      screen: 'Search',
+      const maxPriceInput = getByPlaceholderText('80')
+      await act(async () => {
+        fireEvent(maxPriceInput, 'onChangeText', '0')
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      const expectedSearchParams = {
+        ...mockSearchState,
+        view: SearchView.Results,
+        offerIsFree: true,
+        maxPrice: '0',
+      }
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: expectedSearchParams,
+        screen: 'Search',
+      })
     })
   })
 
@@ -104,7 +164,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(searchButton)
     })
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Price)
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Price, searchId)
   })
 
   describe('without previous value in the search state', () => {
@@ -140,21 +200,25 @@ describe('SearchPrice component', () => {
       expect(maxPriceInput.props.value).toStrictEqual('')
     })
 
-    it('should reset limit credit search toggle when pressing reset button', () => {
+    it('should reset limit credit search toggle when pressing reset button', async () => {
       const { getByTestId, getByText } = renderSearchPrice()
 
       const resetButton = getByText('Réinitialiser')
-      fireEvent.press(resetButton)
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
 
       const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
 
-    it('should reset only free offers search toggle when pressing reset button', () => {
+    it('should reset only free offers search toggle when pressing reset button', async () => {
       const { getByTestId, getByText } = renderSearchPrice()
 
       const resetButton = getByText('Réinitialiser')
-      fireEvent.press(resetButton)
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
 
       const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
       expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(false)
@@ -163,7 +227,7 @@ describe('SearchPrice component', () => {
 
   describe('with previous value in the search state', () => {
     it('should reset minimum price when pressing reset button', async () => {
-      mockSearchState = { ...initialSearchState, minPrice: '5' }
+      mockSearchState = { ...searchState, minPrice: '5' }
       const { getByPlaceholderText, getByText } = renderSearchPrice()
 
       const minPriceInput = getByPlaceholderText('0')
@@ -176,20 +240,22 @@ describe('SearchPrice component', () => {
       expect(minPriceInput.props.value).toStrictEqual('')
     })
 
-    it('should preserve minimum price when closing the modal', () => {
-      mockSearchState = { ...initialSearchState, minPrice: '5' }
+    it('should preserve minimum price when closing the modal', async () => {
+      mockSearchState = { ...searchState, minPrice: '5' }
       const { getByPlaceholderText, getByTestId } = renderSearchPrice()
 
       const minPriceInput = getByPlaceholderText('0')
 
       const previousButton = getByTestId('backButton')
-      fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       expect(minPriceInput.props.value).toStrictEqual('5')
     })
 
     it('should reset maximum price when pressing reset button', async () => {
-      mockSearchState = { ...initialSearchState, maxPrice: '15' }
+      mockSearchState = { ...searchState, maxPrice: '15' }
       const { getByPlaceholderText, getByText } = renderSearchPrice()
 
       const maxPriceInput = getByPlaceholderText('80')
@@ -202,57 +268,67 @@ describe('SearchPrice component', () => {
       expect(maxPriceInput.props.value).toStrictEqual('')
     })
 
-    it('should preserve maximum price when closing the modal', () => {
-      mockSearchState = { ...initialSearchState, maxPrice: '15' }
+    it('should preserve maximum price when closing the modal', async () => {
+      mockSearchState = { ...searchState, maxPrice: '15' }
       const { getByPlaceholderText, getByTestId } = renderSearchPrice()
 
       const maxPriceInput = getByPlaceholderText('80')
 
       const previousButton = getByTestId('backButton')
-      fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       expect(maxPriceInput.props.value).toStrictEqual('15')
     })
 
-    it('should reset limit credit search toggle when pressing reset button', () => {
-      mockSearchState = { ...initialSearchState, maxPrice: '70' }
+    it('should reset limit credit search toggle when pressing reset button', async () => {
+      mockSearchState = { ...searchState, maxPrice: '70' }
       const { getByTestId, getByText } = renderSearchPrice()
 
       const resetButton = getByText('Réinitialiser')
-      fireEvent.press(resetButton)
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
 
       const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
 
-    it('should preserve limit credit search toggle when closing the modal', () => {
-      mockSearchState = { ...initialSearchState, maxPrice: '70' }
+    it('should preserve limit credit search toggle when closing the modal', async () => {
+      mockSearchState = { ...searchState, maxPrice: '70' }
       const { getByTestId } = renderSearchPrice()
 
       const previousButton = getByTestId('backButton')
-      fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(true)
     })
 
-    it('should reset only free offers search toggle when pressing reset button', () => {
-      mockSearchState = { ...initialSearchState, offerIsFree: true }
+    it('should reset only free offers search toggle when pressing reset button', async () => {
+      mockSearchState = { ...searchState, offerIsFree: true }
       const { getByTestId, getByText } = renderSearchPrice()
 
       const resetButton = getByText('Réinitialiser')
-      fireEvent.press(resetButton)
+      await act(async () => {
+        fireEvent.press(resetButton)
+      })
 
       const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
       expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
 
-    it('should preserve limit credit search toggle when closing the modal', () => {
-      mockSearchState = { ...initialSearchState, offerIsFree: true }
+    it('should preserve limit credit search toggle when closing the modal', async () => {
+      mockSearchState = { ...searchState, offerIsFree: true }
       const { getByTestId } = renderSearchPrice()
 
       const previousButton = getByTestId('backButton')
-      fireEvent.press(previousButton)
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
 
       const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
       expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(true)
@@ -299,7 +375,7 @@ describe('SearchPrice component', () => {
   })
 
   it('should reset the maximum price when desactivate limit credit search toggle if max price entered in the current search is the available credit', async () => {
-    mockSearchState = { ...initialSearchState, maxPrice: '70' }
+    mockSearchState = { ...searchState, maxPrice: '70' }
     const { getByTestId, getByPlaceholderText } = renderSearchPrice()
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
@@ -312,7 +388,7 @@ describe('SearchPrice component', () => {
   })
 
   it('should update the maximum price by the max price entered in the current search if different from avaiable credit when desactivate limit credit search toggle', async () => {
-    mockSearchState = { ...initialSearchState, maxPrice: '15' }
+    mockSearchState = { ...searchState, maxPrice: '15' }
     const { getByTestId, getByPlaceholderText } = renderSearchPrice()
 
     const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
@@ -325,32 +401,6 @@ describe('SearchPrice component', () => {
 
     const maxPriceInput = getByPlaceholderText('80')
     expect(maxPriceInput.props.value).toStrictEqual('15')
-  })
-
-  it('should navigate on search results when pressing search button with only free offers search toggle activated', async () => {
-    const { getByTestId, getByText } = renderSearchPrice()
-
-    const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
-    await act(async () => {
-      fireEvent.press(toggleOnlyFreeOffersSearch)
-    })
-
-    const searchButton = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(searchButton)
-    })
-
-    const expectedSearchParams = {
-      ...mockSearchState,
-      view: SearchView.Results,
-      offerIsFree: true,
-      minPrice: '0',
-      maxPrice: '0',
-    }
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: expectedSearchParams,
-      screen: 'Search',
-    })
   })
 
   it('should log a search by only free offers when pressing search button with only free offers search toggle activated', async () => {
@@ -366,32 +416,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(searchButton)
     })
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
-  })
-
-  it('should navigate on search results with only free offers when pressing search button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
-    const { getByPlaceholderText, getByText } = renderSearchPrice()
-
-    const maxPriceInput = getByPlaceholderText('80')
-    await act(async () => {
-      fireEvent(maxPriceInput, 'onChangeText', '0')
-    })
-
-    const searchButton = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(searchButton)
-    })
-
-    const expectedSearchParams = {
-      ...mockSearchState,
-      view: SearchView.Results,
-      offerIsFree: true,
-      maxPrice: '0',
-    }
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: expectedSearchParams,
-      screen: 'Search',
-    })
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free, searchId)
   })
 
   it('should log a search by only free offers when pressing search button with only free offers search toggle desactivated and only maximum price entered at 0', async () => {
@@ -407,7 +432,7 @@ describe('SearchPrice component', () => {
       fireEvent.press(searchButton)
     })
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free, searchId)
   })
 
   it('should desactivate limit credit search toggle when only free offers search toggle activated', async () => {
@@ -461,7 +486,7 @@ describe('SearchPrice component', () => {
   })
 
   it('should update the minimum price by empty value when desactivate only free offers search toggle if minimum price in the current search is 0', async () => {
-    mockSearchState = { ...initialSearchState, minPrice: '0' }
+    mockSearchState = { ...searchState, minPrice: '0' }
     const { getByTestId, getByPlaceholderText } = renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
@@ -478,7 +503,7 @@ describe('SearchPrice component', () => {
   })
 
   it('should update the minimum price by minimum price in the current search when desactivate only free offers search toggle if minimum price in the current search is not 0', async () => {
-    mockSearchState = { ...initialSearchState, minPrice: '5' }
+    mockSearchState = { ...searchState, minPrice: '5' }
     const { getByTestId, getByPlaceholderText } = renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
@@ -495,7 +520,7 @@ describe('SearchPrice component', () => {
   })
 
   it('should update the maximum price by empty value when desactivate only free offers search toggle if maximum price in the current search is 0', async () => {
-    mockSearchState = { ...initialSearchState, maxPrice: '0' }
+    mockSearchState = { ...searchState, maxPrice: '0' }
     const { getByTestId, getByPlaceholderText } = renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
@@ -512,7 +537,7 @@ describe('SearchPrice component', () => {
   })
 
   it('should update the maximum price by maximum price in the current search when desactivate only free offers search toggle if maximum price in the current search is not 0', async () => {
-    mockSearchState = { ...initialSearchState, maxPrice: '20' }
+    mockSearchState = { ...searchState, maxPrice: '20' }
     const { getByTestId, getByPlaceholderText } = renderSearchPrice()
 
     const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
@@ -570,12 +595,14 @@ describe('SearchPrice component', () => {
     expect(maxPriceInput.props.disabled).toStrictEqual(true)
   })
 
-  it('should display credit banner with remaining credit of the user', () => {
+  it('should display credit banner with remaining credit of the user', async () => {
     const { queryByText } = renderSearchPrice()
 
     const creditBanner = queryByText('Il te reste 70 € sur ton pass Culture.')
 
-    expect(creditBanner).toBeTruthy()
+    await act(async () => {
+      expect(creditBanner).toBeTruthy()
+    })
   })
 
   it('should display an error when the expected format of minimum price is incorrect', async () => {
@@ -602,20 +629,23 @@ describe('SearchPrice component', () => {
     expect(inputError).toBeTruthy()
   })
 
-  it('should display the initial credit in maximum price input placeholder', () => {
+  it('should display the initial credit in maximum price input placeholder', async () => {
     const { getByPlaceholderText } = renderSearchPrice()
 
     const maxPriceInput = getByPlaceholderText('80')
-
-    expect(maxPriceInput).toBeTruthy()
+    await act(async () => {
+      expect(maxPriceInput).toBeTruthy()
+    })
   })
 
-  it('should display the initial credit in right label maximum price input', () => {
+  it('should display the initial credit in right label maximum price input', async () => {
     const { getByText } = renderSearchPrice()
 
     const rightLabelMaxInput = getByText(`max : 80 €`)
 
-    expect(rightLabelMaxInput).toBeTruthy()
+    await act(async () => {
+      expect(rightLabelMaxInput).toBeTruthy()
+    })
   })
 
   describe('should close the modal ', () => {
@@ -724,36 +754,42 @@ describe('SearchPrice component', () => {
       mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
     })
 
-    it('should not display limit credit search toggle', () => {
+    it('should not display limit credit search toggle', async () => {
       const { queryByTestId } = renderSearchPrice()
 
       const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
-
-      expect(toggleLimitCreditSearch).toBeFalsy()
+      await act(async () => {
+        expect(toggleLimitCreditSearch).toBeFalsy()
+      })
     })
 
-    it('should not display credit banner', () => {
+    it('should not display credit banner', async () => {
       const { queryByTestId } = renderSearchPrice()
 
       const creditBanner = queryByTestId('creditBanner')
-
-      expect(creditBanner).toBeFalsy()
+      await act(async () => {
+        expect(creditBanner).toBeFalsy()
+      })
     })
 
-    it('should display the credit given to 18 year olds in maximum price input placeholder', () => {
+    it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
       const { getByPlaceholderText } = renderSearchPrice()
 
       const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
 
-      expect(maxPriceInput).toBeTruthy()
+      await act(async () => {
+        expect(maxPriceInput).toBeTruthy()
+      })
     })
 
-    it('should display the credit given to 18 year olds in right label maximum price input', () => {
+    it('should display the credit given to 18 year olds in right label maximum price input', async () => {
       const { getByText } = renderSearchPrice()
 
       const rightLabelMaxInput = getByText(`max : ${MAX_PRICE} €`)
 
-      expect(rightLabelMaxInput).toBeTruthy()
+      await act(async () => {
+        expect(rightLabelMaxInput).toBeTruthy()
+      })
     })
   })
 
@@ -764,36 +800,44 @@ describe('SearchPrice component', () => {
       }))
     })
 
-    it('should not display limit credit search toggle', () => {
+    it('should not display limit credit search toggle', async () => {
       const { queryByTestId } = renderSearchPrice()
 
       const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
 
-      expect(toggleLimitCreditSearch).toBeFalsy()
+      await act(async () => {
+        expect(toggleLimitCreditSearch).toBeFalsy()
+      })
     })
 
-    it('should not display credit banner', () => {
+    it('should not display credit banner', async () => {
       const { queryByTestId } = renderSearchPrice()
 
       const creditBanner = queryByTestId('creditBanner')
 
-      expect(creditBanner).toBeFalsy()
+      await act(async () => {
+        expect(creditBanner).toBeFalsy()
+      })
     })
 
-    it('should display the credit given to 18 year olds in maximum price input placeholder', () => {
+    it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
       const { getByPlaceholderText } = renderSearchPrice()
 
       const maxPriceInput = getByPlaceholderText(`${MAX_PRICE}`)
 
-      expect(maxPriceInput).toBeTruthy()
+      await act(async () => {
+        expect(maxPriceInput).toBeTruthy()
+      })
     })
 
-    it('should display the credit given to 18 year olds in right label maximum price input', () => {
+    it('should display the credit given to 18 year olds in right label maximum price input', async () => {
       const { getByText } = renderSearchPrice()
 
       const rightLabelMaxInput = getByText(`max : ${MAX_PRICE} €`)
 
-      expect(rightLabelMaxInput).toBeTruthy()
+      await act(async () => {
+        expect(rightLabelMaxInput).toBeTruthy()
+      })
     })
   })
 })

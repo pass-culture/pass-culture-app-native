@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
@@ -11,7 +12,9 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
-let mockSearchState = initialSearchState
+const searchId = uuidv4()
+const searchState = { ...initialSearchState, searchId }
+let mockSearchState = searchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -38,7 +41,7 @@ describe('DatesHoursModal component', () => {
   describe('should show', () => {
     it("the calendar when picking 'Date précise'", async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
       }
       const { getByText, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -61,7 +64,7 @@ describe('DatesHoursModal component', () => {
 
     it("the correct date when picking 'Date précise'", async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TOMORROW.toISOString() },
       }
       const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -72,7 +75,7 @@ describe('DatesHoursModal component', () => {
 
     it('by default time range defined in search state', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         timeRange: [18, 22],
       }
       const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -85,7 +88,7 @@ describe('DatesHoursModal component', () => {
 
   it('should hide and show the CalendarPicker', async () => {
     mockSearchState = {
-      ...initialSearchState,
+      ...searchState,
       date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TODAY.toISOString() },
     }
     const { getByTestId, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -114,7 +117,7 @@ describe('DatesHoursModal component', () => {
   describe('should navigate on search results', () => {
     it('with actual state without change when pressing search button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         view: SearchView.Results,
       }
       const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -143,7 +146,7 @@ describe('DatesHoursModal component', () => {
       'with %s date filter when toggle date activated and pressing search button',
       async (option: DATE_FILTER_OPTIONS) => {
         mockSearchState = {
-          ...initialSearchState,
+          ...searchState,
         }
         const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -175,7 +178,7 @@ describe('DatesHoursModal component', () => {
 
     it('with a time range filter when toggle hour activated and pressing search button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -206,7 +209,7 @@ describe('DatesHoursModal component', () => {
 
     it('without beginning & ending date when pressing search button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         beginningDatetime: TODAY.toISOString(),
         endingDatetime: TOMORROW.toISOString(),
       }
@@ -234,7 +237,7 @@ describe('DatesHoursModal component', () => {
   describe('should log', () => {
     it('when pressing date toggle', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -243,12 +246,12 @@ describe('DatesHoursModal component', () => {
         fireEvent.press(toggleDate)
       })
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Date)
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Date, searchId)
     })
 
     it('when pressing hour toggle', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -257,7 +260,7 @@ describe('DatesHoursModal component', () => {
         fireEvent.press(toggleHour)
       })
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour, searchId)
     })
 
     it.each([
@@ -278,7 +281,7 @@ describe('DatesHoursModal component', () => {
         fireEvent.press(radioButton)
       })
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferDate)
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferDate, searchId)
     })
 
     it('when pressing slider time range button', async () => {
@@ -294,14 +297,14 @@ describe('DatesHoursModal component', () => {
         slider.props.onValuesChangeFinish([18, 23])
       })
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
+      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot, searchId)
     })
   })
 
   describe('should desactivate', () => {
     it('toggle date when pressing reset button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -320,7 +323,7 @@ describe('DatesHoursModal component', () => {
 
     it('toggle hour when pressing reset button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -345,7 +348,7 @@ describe('DatesHoursModal component', () => {
       [DATE_FILTER_OPTIONS.USER_PICK],
     ])('%s radio button when pressing reset button', async (option: DATE_FILTER_OPTIONS) => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -375,7 +378,7 @@ describe('DatesHoursModal component', () => {
       [DATE_FILTER_OPTIONS.USER_PICK],
     ])('%s radio button when desactivating date toggle', async (option: DATE_FILTER_OPTIONS) => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -400,7 +403,7 @@ describe('DatesHoursModal component', () => {
 
     it('time range selected when pressing reset button', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -426,7 +429,7 @@ describe('DatesHoursModal component', () => {
 
     it('time range selected when desactivating hour toggle', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
       }
       const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
@@ -463,7 +466,7 @@ describe('DatesHoursModal component', () => {
   describe('should activate by default', () => {
     it('date toggle when date defined in search state', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -477,7 +480,7 @@ describe('DatesHoursModal component', () => {
 
     it('hour toggle when time range defined in search state', async () => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
@@ -498,7 +501,7 @@ describe('DatesHoursModal component', () => {
       [DATE_FILTER_OPTIONS.USER_PICK],
     ])('%s radio button when date defined in search state', async (option: DATE_FILTER_OPTIONS) => {
       mockSearchState = {
-        ...initialSearchState,
+        ...searchState,
         date: { selectedDate: TODAY.toISOString(), option },
       }
       const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })

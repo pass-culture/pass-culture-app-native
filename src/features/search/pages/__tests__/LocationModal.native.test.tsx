@@ -453,7 +453,7 @@ describe('LocationModal component', () => {
       slider.props.onValuesChange([50])
     })
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
+    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius, searchId)
   })
 
   describe('should reset', () => {
