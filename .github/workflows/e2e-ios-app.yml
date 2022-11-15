@@ -53,7 +53,7 @@ jobs:
 
       - name: Download WebdriverIO demo
         if: ${{ env.WDIO_DEMO == 'true' }}
-        run: yarn e2e:install.demo
+        run: ./scripts/install-e2e-wdio-demo.sh
 
       - name: Setup sentry credentials
         if: ${{ env.WDIO_DEMO == 'false' }}

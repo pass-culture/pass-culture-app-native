@@ -124,7 +124,7 @@ As of now, we do not have written any tests for ou app, this is why we have a de
 To install the demo, run: 
 
 ```bash
-yarn e2e:install.demo
+./scripts/install-e2e-wdio-demo.sh
 ```
 
 To run the demo, just prefix an e2e test command (visible in `package.json`), ex:

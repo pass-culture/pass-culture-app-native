@@ -75,7 +75,6 @@
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
-    "e2e:install.demo": "./scripts/install-e2e-wdio-demo.sh",
     "e2e:android.app": "wdio e2e/config/wdio.android.app.conf.ts",
     "e2e:android.browser": "wdio e2e/config/wdio.android.browser.conf.ts",
     "e2e:ios.app": "wdio e2e/config/wdio.ios.app.conf.ts",
