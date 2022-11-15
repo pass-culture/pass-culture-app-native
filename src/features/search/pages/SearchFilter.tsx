@@ -24,7 +24,7 @@ export const SearchFilter: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const logReinitializeFilters = useFunctionOnce(() => {
-    analytics.logReinitializeFilters()
+    analytics.logReinitializeFilters(searchState.searchId)
   })
   const { position } = useGeolocation()
 

@@ -240,7 +240,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
   logQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
-  logReinitializeFilters: () => analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS),
+  logReinitializeFilters: (searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS, { searchId }),
   logResendEmailResetPasswordExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK),
   logResendEmailSignupConfirmationExpiredLink: () =>
