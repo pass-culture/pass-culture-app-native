@@ -276,8 +276,8 @@ const logEventAnalytics = {
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logUseFilter: (filter: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter }),
-  logUseLandingCategory: (categoryName: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName }),
+  logUseLandingCategory: (categoryName: string, searchId: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName, searchId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_CONTACT, params),
   logVenueSeeAllOffersClicked: (venueId: number) =>

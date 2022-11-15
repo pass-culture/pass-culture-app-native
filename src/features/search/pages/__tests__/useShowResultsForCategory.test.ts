@@ -1,8 +1,11 @@
+import { v4 as uuidv4 } from 'uuid'
+
 import { navigate as mockNavigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
+import { analytics } from 'libs/firebase/analytics'
 import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from '../useShowResultsForCategory'
@@ -14,6 +17,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
+const searchId = uuidv4()
 
 describe('useShowResultsForCategory', () => {
   beforeEach(() => {
@@ -49,8 +54,20 @@ describe('useShowResultsForCategory', () => {
         view: SearchView.Results,
         tags: [],
         timeRange: null,
+        searchId,
       },
       screen: 'Search',
     })
+  })
+
+  it('should log event', () => {
+    const { result: resultCallback } = renderHook(useShowResultsForCategory)
+
+    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
+
+    expect(analytics.logUseLandingCategory).toHaveBeenCalledWith(
+      SearchGroupNameEnumv2.SPECTACLES,
+      searchId
+    )
   })
 })
