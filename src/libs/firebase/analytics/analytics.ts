@@ -57,8 +57,12 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId }),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
-  logChangeSearchLocation: (params: ChangeSearchLocationParam) =>
-    analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, params),
+  logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, {
+      type: params.type,
+      searchId,
+      ...(params.type === 'venue' && { venueId: params.venueId }),
+    }),
   logChooseEduConnectMethod: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD),
   logChooseUbbleMethod: () => analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_UBBLE_METHOD),
