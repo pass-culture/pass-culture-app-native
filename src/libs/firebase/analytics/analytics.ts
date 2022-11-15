@@ -247,10 +247,11 @@ const logEventAnalytics = {
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
-  logSearchQuery: (query: string, filterTypes: FILTER_TYPES[]) =>
+  logSearchQuery: (query: string, filterTypes: FILTER_TYPES[], searchId: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, {
       query,
       filterTypes: JSON.stringify(filterTypes),
+      searchId,
     }),
   logSearchScrollToPage: (page: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page }),

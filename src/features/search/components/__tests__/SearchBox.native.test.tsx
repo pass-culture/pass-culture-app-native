@@ -84,6 +84,8 @@ const Kourou: SuggestedPlace = {
 }
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
+const searchId = uuidv4()
+
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
 
@@ -110,9 +112,14 @@ describe('SearchBox component', () => {
         offerCategories: mockSearchState.offerCategories,
         locationFilter: mockSearchState.locationFilter,
         priceRange: mockSearchState.priceRange,
+        searchId,
       })
     )
-    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza', ['Localisation', 'Catégories'])
+    expect(analytics.logSearchQuery).toBeCalledWith(
+      'jazzaza',
+      ['Localisation', 'Catégories'],
+      searchId
+    )
   })
 
   it('should not show back button when being on the search landing view', async () => {
@@ -319,6 +326,7 @@ describe('SearchBox component', () => {
         offerCategories: mockSearchState.offerCategories,
         locationFilter: mockSearchState.locationFilter,
         priceRange: mockSearchState.priceRange,
+        searchId,
       })
     )
   })

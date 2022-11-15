@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -28,6 +29,8 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 const mockSendEvent = jest.fn()
+
+const searchId = uuidv4()
 
 describe('SearchAutocompleteItem component', () => {
   const hit = {
@@ -60,6 +63,7 @@ describe('SearchAutocompleteItem component', () => {
         locationFilter: mockSearchState.locationFilter,
         priceRange: mockSearchState.priceRange,
         view: SearchView.Results,
+        searchId,
       })
     )
   })
@@ -68,7 +72,11 @@ describe('SearchAutocompleteItem component', () => {
     const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
     await fireEvent.press(getByTestId('autocompleteItem'))
 
-    expect(analytics.logSearchQuery).toHaveBeenCalledWith(hit.query, ['Localisation', 'Catégories'])
+    expect(analytics.logSearchQuery).toHaveBeenCalledWith(
+      hit.query,
+      ['Localisation', 'Catégories'],
+      searchId
+    )
   })
 
   it('should create a suggestion clicked event when pressing a hit', async () => {

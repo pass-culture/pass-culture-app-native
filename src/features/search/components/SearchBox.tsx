@@ -178,14 +178,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
       const { offerCategories, priceRange } = searchState
+      const searchId = uuidv4()
       pushWithSearch({
         query: queryText,
         locationFilter,
         offerCategories,
         priceRange,
         view: SearchView.Results,
+        searchId,
       })
-      analytics.logSearchQuery(queryText, appliedFilters)
+      analytics.logSearchQuery(queryText, appliedFilters, searchId)
     },
     [appliedFilters, locationFilter, pushWithSearch, searchState]
   )
