@@ -1,17 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQueryClient } from 'react-query'
 
-import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { AccountState } from 'api/gen'
-import { LoggedInQueryKeys, useLoginRoutine, useLogoutRoutine } from 'features/auth/AuthContext'
+import { LoggedInQueryKeys, useLogoutRoutine } from 'features/auth/AuthContext'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
 import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api')
 
@@ -30,9 +27,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
 }))
-
-const accessToken = 'access_token'
-const method = 'fromLogin'
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const cookiesChoice: CookiesConsent = {
@@ -84,89 +78,10 @@ describe('AuthContext', () => {
       expect(queryClient.removeQueries).toHaveBeenCalledWith(query)
     })
   })
-
-  describe('useLoginRoutine', () => {
-    it('should saveRefreshToken', async () => {
-      const mockSaveRefreshToken = jest.spyOn(Keychain, 'saveRefreshToken')
-      await renderUseLoginRoutine()
-
-      expect(mockSaveRefreshToken).toBeCalledTimes(1)
-    })
-
-    it('should log login analytics', async () => {
-      await renderUseLoginRoutine()
-
-      expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
-    })
-
-    it('should save access token to storage', async () => {
-      await renderUseLoginRoutine()
-
-      const accessTokenStorage = await storage.readString('access_token')
-      expect(accessTokenStorage).toEqual(accessToken)
-    })
-
-    describe('connectServicesRequiringUserId', () => {
-      it('should set batch identifier', async () => {
-        await renderUseLoginRoutine()
-
-        expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
-      })
-
-      it('should log set user id analytics', async () => {
-        await renderUseLoginRoutine()
-
-        expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
-      })
-
-      it('should set user id in cookies consent storage', async () => {
-        await renderUseLoginRoutine()
-
-        const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
-        expect(cookiesConsentStorage).toEqual({
-          ...cookiesChoice,
-          userId: FAKE_USER_ID,
-        })
-      })
-    })
-
-    describe('resetContexts', () => {
-      it('should reset search context', async () => {
-        await renderUseLoginRoutine()
-
-        expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-      })
-
-      it('should reset identity check context', async () => {
-        await renderUseLoginRoutine()
-
-        expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-      })
-    })
-  })
 })
 
 const renderUseLogoutRoutine = async () => {
   const { result } = renderHook(useLogoutRoutine)
   const logout = result.current
   await logout()
-}
-
-const renderUseLoginRoutine = async () => {
-  const { result } = renderHook(useLoginRoutine, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
-  const login = result.current
-  await act(async () => {
-    await login(
-      {
-        accessToken,
-        accountState: AccountState.ACTIVE,
-        refreshToken: 'refresh_token',
-      },
-      method
-    )
-  })
-  await superFlushWithAct()
 }

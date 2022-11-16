@@ -4,6 +4,7 @@ import React from 'react'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
+import * as Login from 'features/auth/login/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -12,15 +13,14 @@ import { server } from 'tests/server'
 import { render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { loginRoutine } from '../../../__mocks__/AuthContext'
-import * as Auth from '../../../AuthContext'
 import { AfterSignupEmailValidationBuffer } from '../AfterSignupEmailValidationBuffer'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
 jest.mock('features/auth/settings')
-jest.mock('features/auth/AuthContext')
-const mockLoginRoutine = Auth.useLoginRoutine as jest.Mock
+jest.mock('features/auth/login/useLoginRoutine')
+const loginRoutine = jest.fn()
+const mockLoginRoutine = Login.useLoginRoutine as jest.Mock
 
 const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

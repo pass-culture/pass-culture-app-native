@@ -4,13 +4,11 @@ import { useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
-import { SigninResponse } from 'api/gen'
-import { useResetContexts } from 'features/auth/useResetContexts'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useAppStateChange } from 'libs/appState'
-import { analytics, LoginRoutineMethod } from 'libs/firebase/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
-import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
+import { clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'
@@ -21,7 +19,7 @@ export interface IAuthContext {
   setIsLoggedIn: (isLoggedIn: boolean) => void
 }
 
-const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
+export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
   const { setUserId: setUserIdToCookiesChoice } = useCookies()
   return useCallback(
     (accessToken) => {
@@ -102,27 +100,6 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
    */
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
-
-export function useLoginRoutine() {
-  const { setIsLoggedIn } = useAuthContext()
-  const resetContexts = useResetContexts()
-  const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
-
-  /**
-   * Executes the minimal set of instructions required to proceed to the login
-   * @param {SigninResponse} response
-   * @param {LoginRoutineMethod} method The process that triggered the login routine
-   */
-
-  return async (response: SigninResponse, method: LoginRoutineMethod) => {
-    connectServicesRequiringUserId(response.accessToken)
-    await saveRefreshToken(response.refreshToken)
-    await storage.saveString('access_token', response.accessToken)
-    analytics.logLogin({ method })
-    setIsLoggedIn(true)
-    resetContexts()
-  }
-}
 
 export function useLogoutRoutine(): () => Promise<void> {
   const queryClient = useQueryClient()

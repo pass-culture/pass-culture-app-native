@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { AccountState, ValidateEmailResponse } from 'api/gen'
-import { useLoginRoutine } from 'features/auth/AuthContext'
+import { useLoginRoutine } from 'features/auth/login/useLoginRoutine'
 import { useValidateEmailMutation } from 'features/auth/mutations'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
