@@ -20,9 +20,12 @@ const mockedUseMutation = mocked(useMutation)
 jest.mock('react-query')
 
 const mockSignOut = jest.fn()
+jest.mock('features/auth/logout/useLogoutRoutine', () => ({
+  useLogoutRoutine: () => mockSignOut,
+}))
+
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-  useLogoutRoutine: () => mockSignOut,
 }))
 
 const mockShowErrorSnackBar = jest.fn()

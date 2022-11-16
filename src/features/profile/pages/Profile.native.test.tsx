@@ -53,9 +53,12 @@ jest.mock('features/profile/api', () => ({
 }))
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
-const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
+const mockSignOut = jest.fn()
+jest.mock('features/auth/logout/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 

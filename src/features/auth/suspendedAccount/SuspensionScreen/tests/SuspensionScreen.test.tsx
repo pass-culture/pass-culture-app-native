@@ -21,7 +21,7 @@ jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings')
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/logout/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
