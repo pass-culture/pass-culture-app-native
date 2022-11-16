@@ -118,6 +118,21 @@ module.exports = {
             name: 'ui/components/modals/enum',
             message: 'use modal.spacing from theme/index.ts',
           },
+          {
+            name: 'react-native',
+            importNames: ['Image'],
+            message: 'use libs/resizing-image-on-demand/Image',
+          },
+          {
+            name: 'react-native',
+            importNames: ['ImageBackground'],
+            message: 'use libs/resizing-image-on-demand/ImageBackground',
+          },
+          {
+            name: 'react-native-fast-image',
+            importNames: ['default'],
+            message: 'use libs/resizing-image-on-demand/FastImage',
+          },
         ],
         patterns: [
           {
