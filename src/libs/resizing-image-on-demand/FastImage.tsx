@@ -10,8 +10,8 @@ type Props = Omit<FastImageProps, 'source'> & {
   children?: never
 }
 
-export const FastImage: FunctionComponent<Props> = ({ url, ...imageProps }) => {
-  const resizingImageURL = useResizeImageURL({ imageURL: url })
+export const FastImage: FunctionComponent<Props> = ({ url, height, width, ...imageProps }) => {
+  const resizingImageURL = useResizeImageURL({ imageURL: url, height, width })
 
   const source = useMemo(() => ({ uri: resizingImageURL }), [resizingImageURL])
 

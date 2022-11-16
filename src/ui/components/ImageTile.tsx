@@ -30,8 +30,8 @@ export const ImageTile: React.FC<Props> = (props) => {
     <StyledFastImage
       style={style}
       url={props.uri}
-      height={height}
-      width={width}
+      height={props.height}
+      width={props.width}
       testID="tileImage"
     />
   ) : null
