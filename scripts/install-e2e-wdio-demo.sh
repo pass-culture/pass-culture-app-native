@@ -7,8 +7,6 @@ NC="\033[0m"
 INSTALL_DIRECTORY="e2e/tests/wdio-demo"
 
 GITHUB_REPOSITORY="https://github.com/webdriverio/appium-boilerplate"
-# You can use main branch if you want latest demo: GITHUB_BRANCH=main yarn e2e:demo.install
-GITHUB_BRANCH=${GITHUB_BRANCH:-"6b9e336"}
 
 function fix() {
   echo "Fixing lint"
@@ -19,10 +17,6 @@ function fix() {
   rm "${INSTALL_DIRECTORY}/tests/helpers/Gestures.ts.original"
   # and fix lint again
   yarn e2e:lint --fix
-
-  echo "Applying fix for https://github.com/webdriverio/appium-boilerplate/pull/142"
-  sed -i'.original' -e "s/^    await browser.hideKeyboard()/    if (browser.hideKeyboard) {\n      await browser.hideKeyboard()\n    }/g" "${INSTALL_DIRECTORY}/tests/pageobjects/form.page.ts"
-  rm "${INSTALL_DIRECTORY}/tests/pageobjects/form.page.ts.original"
 
   echo "Applying fix for https://github.com/webdriverio/appium-boilerplate/pull/143"
   sed -i'.original' -e "s/return driver.getContexts()/return driver.getContexts() as Promise<string[]>/g" "${INSTALL_DIRECTORY}/tests/helpers/WebView.ts"
@@ -37,7 +31,7 @@ function run() {
     --no-checkout \
     "${GITHUB_REPOSITORY}" \
     "${INSTALL_DIRECTORY}"
-  git -C "${INSTALL_DIRECTORY}" checkout "${GITHUB_BRANCH}" -- tests
+  git -C "${INSTALL_DIRECTORY}" checkout main -- tests
 }
 
 run
