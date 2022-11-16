@@ -26,7 +26,15 @@ export const ImageTile: React.FC<Props> = (props) => {
     [props.height, props.width, props.onlyTopBorderRadius]
   )
 
-  return props.uri ? <StyledFastImage style={style} url={props.uri} testID="tileImage" /> : null
+  return props.uri ? (
+    <StyledFastImage
+      style={style}
+      url={props.uri}
+      height={height}
+      width={width}
+      testID="tileImage"
+    />
+  ) : null
 }
 
 const StyledFastImage = styled(FastImage)(({ theme }) => ({

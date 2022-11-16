@@ -9,7 +9,7 @@ type Props = Omit<ImageProps, 'source'> & {
 }
 
 export const Image: FunctionComponent<Props> = ({ url, ...imageProps }) => {
-  const resizingImageURL = useResizeImageURL(url)
+  const resizingImageURL = useResizeImageURL({ imageURL: url })
 
   const source = useMemo(() => ({ uri: resizingImageURL }), [resizingImageURL])
 

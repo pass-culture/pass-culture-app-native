@@ -8,7 +8,7 @@ type Props = Omit<ImageBackgroundProps, 'source'> & {
 }
 
 export const ImageBackground: FunctionComponent<Props> = ({ url, children, ...imageProps }) => {
-  const resizingImageURL = useResizeImageURL(url)
+  const resizingImageURL = useResizeImageURL({ imageURL: url })
 
   const source = useMemo(() => ({ uri: resizingImageURL }), [resizingImageURL])
 
