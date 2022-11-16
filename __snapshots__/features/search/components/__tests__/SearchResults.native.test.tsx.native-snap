@@ -81,14 +81,9 @@ Array [
                   Array [
                     Object {
                       "color": "#eb0055",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
-                      "textAlign": "left",
                     },
                   ]
                 }
@@ -96,6 +91,16 @@ Array [
               >
                 Partout
               </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityLabel="Filtre sélectionné"
                 height={16}
@@ -160,14 +165,9 @@ Array [
                   Array [
                     Object {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
-                      "textAlign": "left",
                     },
                   ]
                 }
@@ -229,14 +229,9 @@ Array [
                   Array [
                     Object {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
-                      "textAlign": "left",
                     },
                   ]
                 }
@@ -298,14 +293,9 @@ Array [
                   Array [
                     Object {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
-                      "textAlign": "left",
                     },
                   ]
                 }
@@ -367,14 +357,9 @@ Array [
                   Array [
                     Object {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
-                      "textAlign": "left",
                     },
                   ]
                 }
