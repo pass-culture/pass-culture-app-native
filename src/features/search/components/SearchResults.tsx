@@ -27,6 +27,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { SearchHit } from 'libs/search'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
@@ -381,8 +382,9 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const GeolocationButtonContainer = styled(Touchable)({
-  paddingHorizontal: getSpacing(6),
+const GeolocationButtonContainer = styledButton(Touchable)({
+  paddingLeft: getSpacing(6),
+  paddingRight: getSpacing(6),
   paddingBottom: getSpacing(4),
 })
 
