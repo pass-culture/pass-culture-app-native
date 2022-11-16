@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Check } from 'ui/svg/icons/Check'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -34,7 +34,10 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
         {label}
       </Label>
       {!!isSelected && (
-        <StyledIcon testID={filterButtonIcon} accessibilityLabel="Filtre sélectionné" />
+        <React.Fragment>
+          <Spacer.Row numberOfSpaces={1} />
+          <StyledIcon testID={filterButtonIcon} accessibilityLabel="Filtre sélectionné" />
+        </React.Fragment>
       )}
     </TouchableContainer>
   )
@@ -63,8 +66,5 @@ const StyledIcon = styled(Check).attrs(({ theme }) => ({
 }))``
 
 const Label = styled(Typo.Caption)<IsSelectedProps>(({ theme, isSelected }) => ({
-  flex: 1,
-  marginLeft: getSpacing(1),
-  textAlign: 'left',
   color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
