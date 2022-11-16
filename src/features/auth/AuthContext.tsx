@@ -2,17 +2,22 @@ import React, { memo, useCallback, useContext, useEffect, useMemo, useState } fr
 
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
+import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'
+import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
+  user?: UserProfileResponse
 }
 
 export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
@@ -36,6 +41,7 @@ export const useConnectServicesRequiringUserId = (): ((accessToken: string | nul
 export const AuthContext = React.createContext<IAuthContext>({
   isLoggedIn: false,
   setIsLoggedIn: () => undefined,
+  user: undefined,
 })
 
 export function useAuthContext(): IAuthContext {
@@ -46,12 +52,14 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
+  const { data: user } = useUserProfileInfo(isLoggedIn)
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
       let accessToken = await storage.readString('access_token')
+      const accessTokenStatus = getAccessTokenStatus(accessToken)
 
-      if (getAccessTokenStatus(accessToken) === 'expired') {
+      if (accessTokenStatus === 'expired') {
         // refreshAccessToken calls the backend to get a new access token
         // and also saves it to the storage
         const { result, error } = await refreshAccessToken(api)
@@ -66,8 +74,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
           accessToken = result
         }
       }
-
-      if (getAccessTokenStatus(accessToken) === 'valid') {
+      if (accessTokenStatus === 'valid') {
         setIsLoggedIn(true)
         connectServicesRequiringUserId(accessToken)
       }
@@ -85,7 +92,10 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
-  const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn])
+  const value = useMemo(
+    () => ({ isLoggedIn, setIsLoggedIn, user }),
+    [isLoggedIn, setIsLoggedIn, user]
+  )
 
   if (loading) return null
   /**
@@ -96,3 +106,14 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
    */
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
+
+const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
+function useUserProfileInfo(isLoggedIn: boolean, options = {}) {
+  const netInfo = useNetInfoContext()
+
+  return usePersistQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
+    enabled: !!netInfo.isConnected && isLoggedIn,
+    staleTime: STALE_TIME_USER_PROFILE,
+    ...options,
+  })
+}

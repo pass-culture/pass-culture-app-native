@@ -1,39 +1,51 @@
-import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
-import { CookiesConsent } from 'features/cookies/types'
+import React from 'react'
+
+import { AuthWrapper, useAuthContext } from 'features/auth/AuthContext'
+import * as jwt from 'libs/jwt'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('features/profile/api')
-
-const mockSearchDispatch = jest.fn()
-const mockIdentityCheckDispatch = jest.fn()
-
-jest.mock('api/api')
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
-  useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
-  useQuery: jest.fn(),
-}))
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
-}))
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
-}))
-
-const COOKIES_CONSENT_KEY = 'cookies'
-const cookiesChoice: CookiesConsent = {
-  buildVersion: 1001005,
-  deviceId: 'uuid',
-  choiceDatetime: new Date(2022, 9, 29).toISOString(),
-  consent: {
-    mandatory: COOKIES_BY_CATEGORY.essential,
-    accepted: ALL_OPTIONAL_COOKIES,
-    refused: [],
-  },
-}
+const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
 
 describe('AuthContext', () => {
-  beforeEach(async () => {
-    await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+  beforeEach(() => {
+    jest.restoreAllMocks()
+    storage.clear('access_token')
+  })
+  describe('useAuthContext', () => {
+    it('should return the user when logged in', async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('valid')
+      const result = renderUseAuthContext()
+
+      await waitFor(() => {
+        expect(result.current.user).toEqual({
+          email: 'email@domain.ext',
+          firstName: 'Jean',
+          isBeneficiary: true,
+        })
+      })
+    })
+
+    // FIXME(aliraiki)
+    // to many rerenders, probably linked to this hook => useConnectServicesRequiringUserId
+    it.skip('should return undefined user when logged out', async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
+
+      const result = renderUseAuthContext()
+
+      await waitFor(() => {
+        expect(result.current.user).toEqual(undefined)
+      })
+    })
   })
 })
+
+const renderUseAuthContext = () => {
+  const { result } = renderHook(useAuthContext, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(<AuthWrapper>{children}</AuthWrapper>),
+  })
+
+  return result
+}
