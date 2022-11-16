@@ -10,4 +10,5 @@ export interface Environment {
   APPIUM_TEST_SERVER_HOST: string
   APPIUM_APP: string
   APPIUM_APP_WAIT_ACTIVITY: string
+  SPECS: string
 }

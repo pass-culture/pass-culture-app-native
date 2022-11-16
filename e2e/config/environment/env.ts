@@ -1,6 +1,7 @@
 import { parseBooleanVariables } from './parseBooleanVariables'
 import { parseNumberVariables } from './parseNumberVariables'
 import { demo } from '../wdio-demo.conf'
+import { Environment } from './types'
 
 const systemEnv = parseBooleanVariables(
   parseNumberVariables(
@@ -8,7 +9,7 @@ const systemEnv = parseBooleanVariables(
   ) as unknown as Record<string, string | boolean | number>
 )
 
-export const env = {
+export const env: Environment = {
   CI: systemEnv.CI || false,
   WDIO_DEMO: systemEnv.WDIO_DEMO || false,
   WDIO_BASE_URL: systemEnv.WDIO_DEMO ? demo.wdio.baseUrl : systemEnv.WDIO_BASE_URL,
@@ -20,4 +21,5 @@ export const env = {
   APPIUM_TEST_SERVER_HOST: systemEnv.APPIUM_TEST_SERVER_HOST || '127.0.0.1',
   APPIUM_APP: systemEnv.APPIUM_APP || '',
   APPIUM_APP_WAIT_ACTIVITY: systemEnv.APPIUM_APP_WAIT_ACTIVITY || '',
+  SPECS: systemEnv.SPECS || '',
 }

@@ -28,6 +28,14 @@ on:
         description: |
           Appcenter version - native distribution build optional [default: latest]
         required: false
+      specs:
+        type: string
+        description: |
+          Define specs for test execution. You can either specify a glob
+          pattern to match multiple files at once or wrap a glob or set of
+          paths into an array using "," delimiter to run them within a single worker process.
+          [Default: run all tests]
+        required: false
 
 jobs:
   e2e-android-app:
@@ -51,6 +59,7 @@ jobs:
       ENVIRONMENT: ${{ inputs.environment }}
       DIST_VERSION: ${{ inputs.dist-version }}
       APPCENTER_RO_API_TOKEN: ${{ secrets.APPCENTER_RO_API_TOKEN }}
+      SPECS: ${{ inputs.specs }}
     # No hardware acceleration is available for emulators on Ubuntu:
     # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
     runs-on: macos-latest

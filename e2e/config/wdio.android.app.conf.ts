@@ -2,10 +2,12 @@ import config from './wdio.shared.local.appium.conf'
 import { env } from './environment/env'
 import { demo } from './wdio-demo.conf'
 
+const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/app*.spec.ts']
+
 // ============
 // Specs
 // ============
-config.specs = env.WDIO_DEMO ? [demo.app.specs] : ['./e2e/tests/**/specs/**/app*.spec.ts']
+config.specs = env.WDIO_DEMO ? [demo.app.specs] : specs
 config.exclude = env.WDIO_DEMO ? [] : [demo.app.specs]
 
 // ============

@@ -17,6 +17,14 @@ on:
         type: boolean
         description: if true it will run the webapp locally
         default: false
+      specs:
+        type: string
+        description: |
+          Define specs for test execution. You can either specify a glob
+          pattern to match multiple files at once or wrap a glob or set of
+          paths into an array using "," delimiter to run them within a single worker process.
+          [Default: run all tests]
+        required: false
 
 jobs:
   e2e-browser-safari:
@@ -29,15 +37,10 @@ jobs:
       WDIO_DEMO: ${{ inputs.wdio-demo }}
       BUILD_LOCAL: ${{ inputs.build-local }}
       ENVIRONMENT: ${{ inputs.environment }}
+      SPECS: ${{ inputs.specs }}
     runs-on: macos-latest
     environment: ${{ inputs.environment }}
     steps:
-
-      - run: |
-          echo "WDIO_DEMO: $WDIO_DEMO"
-          echo "BUILD_LOCAL: $BUILD_LOCAL"
-          echo "ENVIRONMENT: $ENVIRONMENT"
-
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3

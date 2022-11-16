@@ -13,6 +13,14 @@ on:
         description: Select the environment
         required: true
         default: staging
+      specs:
+        type: string
+        description: |
+          Define specs for test execution. You can either specify a glob
+          pattern to match multiple files at once or wrap a glob or set of
+          paths into an array using "," delimiter to run them within a single worker process.
+          [Default: run all tests]
+        required: false
 
 jobs:
   e2e-ios-app:
@@ -30,6 +38,7 @@ jobs:
       _FORCE_LOGS: 1
       WDIO_DEMO: ${{ inputs.wdio-demo }}
       ENVIRONMENT: ${{ inputs.environment }}
+      SPECS: ${{ inputs.specs }}
     runs-on: macos-11
     environment: ${{ inputs.environment }}
     steps:
