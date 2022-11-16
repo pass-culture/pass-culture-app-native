@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/atoms'
 import {
@@ -8,7 +9,6 @@ import {
   RecommendationParametersFields,
 } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
-import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -31,7 +31,7 @@ const keyExtractor = (item: SearchHit) => item.objectID
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { position } = useGeolocation()
-  const { data: profile } = useUserProfileInfo()
+  const { user: profile } = useAuthContext()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 

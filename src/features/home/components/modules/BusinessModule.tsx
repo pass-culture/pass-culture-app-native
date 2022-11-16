@@ -49,7 +49,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  const { data: user, isLoading: isUserLoading } = useUserProfileInfo()
+  const { isLoading: isUserLoading, data: user } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const logAndOpenUrl = (finalUrl: string) => {

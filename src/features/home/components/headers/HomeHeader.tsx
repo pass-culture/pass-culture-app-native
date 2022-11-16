@@ -7,7 +7,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
@@ -19,10 +18,9 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
-  const { data: user } = useUserProfileInfo()
   const availableCredit = useAvailableCredit()
   const { top } = useCustomSafeInsets()
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
 
