@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import {
   Amount,
   ProgressBarContainer,
@@ -10,7 +11,7 @@ import {
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
-import { useUserProfileInfo, useResetRecreditAmountToShow } from 'features/profile/api'
+import { useResetRecreditAmountToShow } from 'features/profile/api'
 import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
@@ -25,7 +26,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 export const RecreditBirthdayNotification = () => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
   const age = user?.dateOfBirth
     ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
