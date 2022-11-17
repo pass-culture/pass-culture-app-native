@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/profile/api'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SectionTitle } from 'features/search/helpers/titles'
@@ -24,20 +23,15 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: {
-      isBeneficiary: true,
-      domainsCredit: { all: { initial: 8000, remaining: 7000 } },
-    },
-  })),
-}))
-
+jest.mock('features/auth/AuthContext')
 const mockedUseAuthContext = useAuthContext as jest.Mock
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+mockedUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  user: {
+    isBeneficiary: true,
+    domainsCredit: { all: { initial: 8000, remaining: 7000 } },
+  },
+})
 
 jest.mock('react-query')
 
@@ -805,10 +799,7 @@ describe('<PriceModal/>', () => {
 
   describe('when user is not logged in', () => {
     beforeEach(() => {
-      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
-        data: {},
-      }))
-      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+      mockedUseAuthContext.mockReturnValueOnce(() => ({ user: undefined, isLoggedIn: false }))
     })
 
     it('should not display limit credit search toggle', async () => {
@@ -852,9 +843,10 @@ describe('<PriceModal/>', () => {
 
   describe('when user is not a beneficiary', () => {
     beforeEach(() => {
-      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
-        data: { isBeneficiary: false, domainsCredit: undefined },
-      }))
+      mockedUseAuthContext.mockReturnValueOnce({
+        user: { isBeneficiary: false, domainsCredit: undefined },
+        isLoggedIn: true,
+      })
     })
 
     it('should not display limit credit search toggle', async () => {

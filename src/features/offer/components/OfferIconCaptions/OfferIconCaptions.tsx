@@ -5,7 +5,6 @@ import { CategoryIdEnum, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { OfferCategory } from 'features/offer/components/OfferCategory/OfferCategory'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { useUserProfileInfo } from 'features/profile/api'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { IconWithCaption } from 'ui/components/IconWithCaption'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -18,8 +17,7 @@ type Props = { categoryId: CategoryIdEnum | null; label: string } & Pick<
 >
 
 export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, label }) => {
-  const { isLoggedIn } = useAuthContext()
-  const { data: profileInfo } = useUserProfileInfo()
+  const { isLoggedIn, user: profileInfo } = useAuthContext()
   if (isLoggedIn && !profileInfo) return <React.Fragment></React.Fragment>
 
   const { isBeneficiary = false } = profileInfo || {}

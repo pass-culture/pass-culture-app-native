@@ -10,7 +10,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -59,8 +58,7 @@ export const PriceModal: FunctionComponent<Props> = ({
   const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price, searchState.searchId)
   const logUseFreeOffersFilter = useLogFilterOnce(SectionTitle.Free, searchState.searchId)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isLoggedIn } = useAuthContext()
-  const { data: user } = useUserProfileInfo()
+  const { isLoggedIn, user } = useAuthContext()
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
     ? formatToFrenchDecimal(availableCredit.amount).slice(0, -2)

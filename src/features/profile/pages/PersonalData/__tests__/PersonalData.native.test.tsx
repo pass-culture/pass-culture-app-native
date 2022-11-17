@@ -1,23 +1,16 @@
-import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
-import { env } from 'libs/environment'
+import * as Auth from 'features/auth/AuthContext'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 
 import { PersonalData } from '../PersonalData'
 
-const mockedUseAuthContext = useAuthContext as jest.Mock
-
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
 const mockedIdentity: Partial<UserProfileResponse> = {
   firstName: 'Rosa',
@@ -115,21 +108,14 @@ describe('PersonalData', () => {
 })
 
 async function renderPersonalData(response: UserProfileResponse) {
-  // mock connection state
-  mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+  mockedUseAuthContext.mockReturnValueOnce({
+    setIsLoggedIn: jest.fn(),
+    isLoggedIn: true,
+    user: response,
+  })
 
-  // mock api response based on the given parameters
-  mockMeApiCall(response)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const wrapper = render(reactQueryProviderHOC(<PersonalData />))
   await superFlushWithAct()
   return wrapper
-}
-
-function mockMeApiCall(response: UserProfileResponse) {
-  server.use(
-    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(response))
-    })
-  )
 }

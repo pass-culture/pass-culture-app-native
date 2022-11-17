@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useUserProfileInfo } from 'features/profile/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/firebase/analytics'
@@ -12,7 +12,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function PersonalData() {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 

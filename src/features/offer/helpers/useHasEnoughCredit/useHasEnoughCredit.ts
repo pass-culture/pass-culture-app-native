@@ -1,4 +1,5 @@
 import { FavoriteOfferResponse, OfferResponse, UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useUserProfileInfo } from 'features/profile/api'
 
@@ -26,7 +27,7 @@ export const hasEnoughCredit = (
 
 export const useHasEnoughCredit = (offerId: number): boolean => {
   const { data: offer } = useOffer({ offerId })
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   if (!offer || !user) return false
 
   const price = getOfferPrice(offer.stocks)

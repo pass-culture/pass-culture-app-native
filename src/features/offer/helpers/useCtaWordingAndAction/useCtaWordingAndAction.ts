@@ -9,7 +9,6 @@ import {
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
 import { OfferModal } from 'features/offer/enums'
-import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -192,8 +191,7 @@ export const useCtaWordingAndAction = (props: {
   offerId: number
 }): ICTAWordingAndAction | undefined => {
   const { offerId } = props
-  const { isLoggedIn } = useAuthContext()
-  const { data: user } = useUserProfileInfo()
+  const { isLoggedIn, user } = useAuthContext()
   const { data: offer } = useOffer({ offerId })
   const hasEnoughCredit = useHasEnoughCredit(offerId)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
