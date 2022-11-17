@@ -11,7 +11,7 @@ import {
 import { initialBookingState } from 'features/bookOffer/pages/reducer'
 import { render } from 'tests/utils'
 
-import { BookingInformations } from '../BookingInformations'
+import { BookingInformations } from './BookingInformations'
 
 jest.mock('react-query')
 jest.mock('features/auth/settings')

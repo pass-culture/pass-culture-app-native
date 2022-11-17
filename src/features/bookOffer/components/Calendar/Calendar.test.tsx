@@ -1,7 +1,7 @@
 import { OfferStatus } from 'features/bookOffer/services/utils'
 
-import { getMinAvailableDate } from '../Calendar/Calendar'
-import { Marking } from '../Calendar/useMarkedDates'
+import { getMinAvailableDate } from './Calendar'
+import { Marking } from './useMarkedDates'
 
 const marking = { price: 2700, selected: false, status: OfferStatus.BOOKABLE }
 

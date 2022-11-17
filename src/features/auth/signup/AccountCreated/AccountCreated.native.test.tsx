@@ -10,7 +10,7 @@ import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInform
 import { BatchUser } from 'libs/react-native-batch'
 import { render, fireEvent } from 'tests/utils'
 
-import { AccountCreated } from '../AccountCreated'
+import { AccountCreated } from './AccountCreated'
 
 jest.mock('features/profile/api')
 jest.mock('features/navigation/helpers')

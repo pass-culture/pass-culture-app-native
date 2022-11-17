@@ -3,7 +3,7 @@ import React from 'react'
 import { OfferResponse } from 'api/gen'
 import { fireEvent, render } from 'tests/utils'
 
-import { AlreadyBooked } from '../AlreadyBooked'
+import { AlreadyBooked } from './AlreadyBooked'
 
 const mockDismissModal = jest.fn()
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({

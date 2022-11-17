@@ -5,7 +5,7 @@ import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 
-import { BookDuoChoice } from '../BookDuoChoice'
+import { BookDuoChoice } from './BookDuoChoice'
 
 const mockStep = Step.DUO
 

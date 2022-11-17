@@ -5,7 +5,7 @@ import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOff
 import { Step } from 'features/bookOffer/pages/reducer'
 import { render, fireEvent } from 'tests/utils'
 
-import { BookingEventChoices } from '../BookingEventChoices'
+import { BookingEventChoices } from './BookingEventChoices'
 
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')

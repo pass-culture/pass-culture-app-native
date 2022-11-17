@@ -4,9 +4,9 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils/web'
 
-import { BookHourChoice } from '../BookHourChoice'
+import { BookHourChoice } from './BookHourChoice'
 
 const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
@@ -56,7 +56,7 @@ describe('BookHourChoice when hour is already selected', () => {
 
     const selectedHour = page.getByText('20:00')
 
-    act(() => fireEvent.press(selectedHour))
+    fireEvent.click(selectedHour)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
   })
@@ -89,7 +89,7 @@ describe('BookHourChoice', () => {
     const firstStock = page.queryByTestId('HourChoice148409')
 
     if (firstStock) {
-      act(() => fireEvent.press(firstStock))
+      fireEvent.click(firstStock)
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148409 })
     } else {
@@ -104,20 +104,20 @@ describe('BookHourChoice', () => {
     const firstHour = page.getByTestId('HourChoice148409-hour')
     const firstPrice = page.getByTestId('HourChoice148409-price')
 
-    expect(firstHour.props.children).toBe('20h00')
-    expect(firstPrice.props.children).toBe('24\u00a0€')
+    expect(firstHour.textContent).toBe('20h00')
+    expect(firstPrice.textContent).toBe('24\u00a0€')
 
     const secondHour = page.getByTestId('HourChoice148411-hour')
     const secondPrice = page.getByTestId('HourChoice148411-price')
 
-    expect(secondHour.props.children).toBe('10h00')
-    expect(secondPrice.props.children).toBe('épuisé')
+    expect(secondHour.textContent).toBe('10h00')
+    expect(secondPrice.textContent).toBe('épuisé')
   })
 
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
-    expect(page.getByTestId('HourChoice148409-price').props.children).toBe('crédit insuffisant')
+    expect(page.getByTestId('HourChoice148409-price').textContent).toBe('crédit insuffisant')
   })
 })

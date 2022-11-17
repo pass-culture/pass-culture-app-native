@@ -11,7 +11,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
-import { BookingImpossible } from '../BookingImpossible'
+import { BookingImpossible } from './BookingImpossible'
 
 // This file is deprecated because of our new strategy of tests
 // if you need to add new tests for the BookingImpossible component, add them to the new test file

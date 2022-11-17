@@ -6,7 +6,7 @@ import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockRespon
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, RenderAPI } from 'tests/utils'
 
-import { CancellationDetails, formatDate } from '../CancellationDetails'
+import { CancellationDetails, formatDate } from './CancellationDetails'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 const pastDate = '2021-01-02T00:00:00'

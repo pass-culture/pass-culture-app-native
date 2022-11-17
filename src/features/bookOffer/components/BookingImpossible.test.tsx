@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 
-import { BookingImpossible } from '../BookingImpossible'
+import { BookingImpossible } from './BookingImpossible'
 
 jest.mock('react-query')
 const mockedUseMutation = mocked(useMutation)
