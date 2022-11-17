@@ -38,6 +38,7 @@ export function withCulturalSurveyProvider(
       CulturalSurveyConfig | undefined
     >()
     const onCulturalSurveyExit = useOnCulturalSurveyExit()
+    //TODO(PC-17103): isLoading
     const { data: user, isLoading: isLoadingUser } = useUserProfileInfo()
 
     const currentRoute = useCurrentRoute()

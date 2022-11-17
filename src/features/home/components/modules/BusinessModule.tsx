@@ -49,6 +49,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
+  //TODO(PC-17103): remove isUserLoading and use isLoggedIn and user from context
   const { isLoading: isUserLoading, data: user } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
 

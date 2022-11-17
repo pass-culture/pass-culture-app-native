@@ -36,6 +36,7 @@ export const IdentityCheckStepper = () => {
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
+  //TODO(PC-17103): refetch
   const { refetch } = useUserProfileInfo()
 
   const { visible, showModal, hideModal } = useModal(false)

@@ -35,6 +35,14 @@ describe('AuthContext', () => {
         expect(result.current.user).toEqual(undefined)
       })
     })
+
+    it('should return refetchUser', async () => {
+      const result = renderUseAuthContext()
+
+      await waitFor(() => {
+        expect(result.current.refetchUser).toBeDefined()
+      })
+    })
   })
 })
 
