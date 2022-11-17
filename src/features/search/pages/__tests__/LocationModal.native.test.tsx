@@ -441,6 +441,21 @@ describe('LocationModal component', () => {
     }
   )
 
+  it.each([
+    [RadioButtonLocation.EVERYWHERE],
+    [RadioButtonLocation.AROUND_ME],
+    [RadioButtonLocation.CHOOSE_PLACE_OR_VENUE],
+  ])('should log an event when pressing %s radio button', async (locationRadioButton) => {
+    const { getByTestId } = renderLocationModal({ hideLocationModal })
+
+    const radioButton = getByTestId(locationRadioButton)
+    await act(async () => {
+      fireEvent.press(radioButton)
+    })
+
+    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Location, searchId)
+  })
+
   it('should log change radius when changing radius with the slider', async () => {
     mockSearchState = {
       ...searchState,
