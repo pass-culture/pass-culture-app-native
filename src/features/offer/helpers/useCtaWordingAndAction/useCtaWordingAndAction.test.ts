@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { SearchGroupNameEnum, OfferResponse, UserRole, YoungStatusType } from 'api/gen'
+import { OfferResponse, UserRole, YoungStatusType, SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferModal } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/firebase/analytics'
@@ -318,13 +318,13 @@ describe('getCtaWordingAndAction', () => {
     // same as beneficiaries except for video games and non free digital offers except press category
     describe('underage beneficiary', () => {
       it.each`
-        isEvent  | expected                     | disabled | isDigital | category                          | price | isForbiddenToUnderage | modalToDisplay
-        ${false} | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnum.PRESSE}     | ${20} | ${false}              | ${OfferModal.BOOKING}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${20} | ${false}              | ${OfferModal.BOOKING}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnum.FILM}       | ${0}  | ${false}              | ${OfferModal.BOOKING}
-        ${false} | ${'Réserver l’offre'}        | ${false} | ${false}  | ${SearchGroupNameEnum.JEU}        | ${0}  | ${false}              | ${OfferModal.BOOKING}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${false}              | ${OfferModal.BOOKING}
-        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnum.INSTRUMENT} | ${20} | ${true}               | ${undefined}
+        isEvent  | expected                     | disabled | isDigital | category                                     | price | isForbiddenToUnderage | modalToDisplay
+        ${false} | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnumv2.MEDIA_PRESSE}        | ${20} | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA} | ${20} | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA} | ${0}  | ${false}              | ${OfferModal.BOOKING}
+        ${false} | ${'Réserver l’offre'}        | ${false} | ${false}  | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}    | ${0}  | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnumv2.INSTRUMENTS}         | ${20} | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnumv2.INSTRUMENTS}         | ${20} | ${true}               | ${undefined}
       `(
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, isForbiddenToUnderage=$isForbiddenToUnderage, category=$category and price=$price',
         ({

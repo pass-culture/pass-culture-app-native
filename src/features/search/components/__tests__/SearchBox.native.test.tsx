@@ -110,7 +110,6 @@ describe('SearchBox component', () => {
         query: 'jazzaza',
         view: SearchView.Results,
         offerCategories: mockSearchState.offerCategories,
-        locationFilter: mockSearchState.locationFilter,
         priceRange: mockSearchState.priceRange,
         searchId,
       })
@@ -198,7 +197,6 @@ describe('SearchBox component', () => {
           view: SearchView.Results,
           previousView: SearchView.Results,
           offerCategories: mockSearchState.offerCategories,
-          locationFilter: mockSearchState.locationFilter,
           priceRange: mockSearchState.priceRange,
         })
       )
@@ -226,7 +224,6 @@ describe('SearchBox component', () => {
             ...initialSearchState,
             query: '',
             view: SearchView.Landing,
-            locationFilter: mockSearchState.locationFilter,
           })
         )
       }
@@ -324,7 +321,6 @@ describe('SearchBox component', () => {
         query: 'jazzaza',
         view: SearchView.Results,
         offerCategories: mockSearchState.offerCategories,
-        locationFilter: mockSearchState.locationFilter,
         priceRange: mockSearchState.priceRange,
         searchId,
       })
@@ -363,7 +359,6 @@ describe('SearchBox component', () => {
         ...initialSearchState,
         view: SearchView.Suggestions,
         offerCategories: mockSearchState.offerCategories,
-        locationFilter: mockSearchState.locationFilter,
         priceRange: mockSearchState.priceRange,
       })
     )
