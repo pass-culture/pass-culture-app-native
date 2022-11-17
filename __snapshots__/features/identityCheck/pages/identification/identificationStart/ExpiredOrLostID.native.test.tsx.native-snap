@@ -152,7 +152,7 @@ Array [
         ]
       }
     >
-      Une pièce d’identité expirée ne prouve plus ta nationalité française.
+      Si ta pièce d’identité est expirée, elle sera refusée pour débloquer ton crédit.
     </Text>
     <View
       numberOfSpaces={1}
