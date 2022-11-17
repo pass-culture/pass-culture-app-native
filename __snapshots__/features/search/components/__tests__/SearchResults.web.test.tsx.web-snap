@@ -766,6 +766,7 @@ Array [
         />
         <div
           className="css-view-1dbjc4n"
+          role="status"
           style={
             Object {
               "WebkitAlignItems": "center",

@@ -214,10 +214,13 @@ export const SearchResults: React.FC = () => {
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
-  const numberOfResults = plural(nbHits, {
-    one: '# résultat',
-    other: '# résultats',
-  })
+  const numberOfResults =
+    nbHits > 0
+      ? plural(nbHits, {
+          one: '# résultat',
+          other: '# résultats',
+        })
+      : 'Pas de résultat'
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
