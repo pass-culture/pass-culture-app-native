@@ -3,9 +3,11 @@
 set -e
 
 GREEN="\033[0;32m"
+RED="\033[0;31m"
 NC="\033[0m"
-INSTALL_DIRECTORY="e2e/tests/wdio-demo"
 
+# This path should match the configuration in e2e/config/wdio-demo.conf.ts
+INSTALL_DIRECTORY="$1"
 GITHUB_REPOSITORY="https://github.com/webdriverio/appium-boilerplate"
 
 function fix() {
@@ -33,6 +35,8 @@ function run() {
     "${INSTALL_DIRECTORY}"
   git -C "${INSTALL_DIRECTORY}" checkout main -- tests
 }
+
+[[ -z "${INSTALL_DIRECTORY}" ]] && echo -e "${RED}[ERROR]You must pass the installation path!\n${NC}example:\n${NC} ./$(basename "$0") e2e/tests/wdio-demo" && exit 1
 
 run
 fix

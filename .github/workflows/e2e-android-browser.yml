@@ -71,7 +71,7 @@ jobs:
 
       - name: Download WebdriverIO demo
         if: ${{ env.WDIO_DEMO == 'true' }}
-        run: ./scripts/install-e2e-wdio-demo.sh
+        run: ./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
 
       - name: Install extraneous dev dependencies
         run: |
