@@ -25,9 +25,8 @@ let mockSearchState: SearchState = {
   priceRange: [0, 20],
 }
 
-const mockDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({ searchState: mockSearchState }),
 }))
 
 jest.mock('libs/firebase/analytics')
@@ -213,17 +212,9 @@ describe('SearchBox component', () => {
           fireEvent.press(previousButton)
         })
 
-        expect(mockDispatch).toBeCalledWith({
-          type: 'SET_STATE_FROM_DEFAULT',
-          payload: {
-            locationFilter: mockSearchState.locationFilter,
-          },
-        })
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
-            query: '',
-            view: SearchView.Landing,
           })
         )
       }

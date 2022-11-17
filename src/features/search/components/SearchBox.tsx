@@ -51,7 +51,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(params?.query || '')
   const { locationFilter, section } = useLocationType(searchState)
@@ -152,14 +152,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       return
     }
 
-    dispatch({
-      type: 'SET_STATE_FROM_DEFAULT',
-      payload: { locationFilter },
-    })
     pushWithSearch(
       {
-        query: '',
-        view: SearchView.Landing,
         locationFilter,
       },
       {
@@ -167,7 +161,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
     )
     setQuery('')
-  }, [appEnableAutocomplete, dispatch, locationFilter, params, pushWithSearch])
+  }, [appEnableAutocomplete, locationFilter, params, pushWithSearch])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
