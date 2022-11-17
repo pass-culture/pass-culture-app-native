@@ -1,4 +1,6 @@
 import React from 'react'
+// we import FastImage to get the resizeMode, not to use it as a component
+// eslint-disable-next-line no-restricted-imports
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
