@@ -27,7 +27,9 @@ export const ExpiredOrLostID = (): JSX.Element => {
         cours de validité.
       </StyledBody>
       <Spacer.Column numberOfSpaces={1} />
-      <StyledBody>Une pièce d’identité expirée ne prouve plus ta nationalité française.</StyledBody>
+      <StyledBody>
+        Si ta pièce d’identité est expirée, elle sera refusée pour débloquer ton crédit.
+      </StyledBody>
       <Spacer.Column numberOfSpaces={1} />
       <StyledBody>Tu peux faire une demande de renouvellement sur le site ants.gouv.fr.</StyledBody>
       <Spacer.Flex flex={1} />
