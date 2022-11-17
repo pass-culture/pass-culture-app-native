@@ -3,14 +3,154 @@ name: Tests e2e iOS App
 on:
   workflow_dispatch:
     inputs:
-      tbd:
-        description: "tbd"
-        required: false
+      wdio-demo:
+        type: boolean
+        description: WebdriverIO demo - All other params will be ignored
+        required: true
+        default: false
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
+        default: staging
+      specs:
         type: string
+        description: |
+          Define specs for test execution. You can either specify a glob
+          pattern to match multiple files at once or wrap a glob or set of
+          paths into an array using "," delimiter to run them within a single worker process.
+          [Default: run all tests]
+        required: false
 
 jobs:
-  tbd:
-    runs-on: ubuntu-latest
+  e2e-ios-app:
+    strategy:
+      matrix:
+        include:
+          - osVersion: '15.2'
+            os: 'iOS'
+            model: 'iPhone 13'
+    env:
+      CI: true
+      APPIUM_TEST_SERVER_PORT: 4723
+      APPIUM_TEST_SERVER_HOST: 127.0.0.1
+      APPIUM_STARTUP_TIMEOUT_SEC: 30
+      _FORCE_LOGS: 1
+      WDIO_DEMO: ${{ inputs.wdio-demo }}
+      ENVIRONMENT: ${{ inputs.environment }}
+      SPECS: ${{ inputs.specs }}
+    runs-on: macos-11
+    environment: ${{ inputs.environment }}
     steps:
-      - name: Hello World
-        run: echo "Hello World"
+      - uses: actions/checkout@v3
+
+      - uses: futureware-tech/simulator-action@v2
+        with:
+          model: ${{ matrix.model }}
+          os: ${{ matrix.os }}
+          os_version: ${{ matrix.osVersion }}
+
+      - run: xcrun simctl list 'devices' 'booted'
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: ruby/setup-ruby@v1
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Download WebdriverIO demo
+        if: ${{ env.WDIO_DEMO == 'true' }}
+        run: ./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
+
+      - name: Setup sentry credentials
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat <<EOT >> ~/.sentryclirc
+          [defaults]
+          url=https://sentry.passculture.team/
+          org=sentry
+          project=application-native
+          [auth]
+          token=$SENTRY_AUTH_TOKEN
+          EOT
+
+      - name: Install iOS bundle and dependencies
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        run: |
+          bundle install
+          cd ios
+          bundle exec pod install
+          cd ..
+
+      - name: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        run: |
+          export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+
+      - name: Setup secrets env variables
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        run: |
+          echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.${{ inputs.environment }}
+
+      - name: Setup iOS Google services config
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        run: |
+          echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+
+      - name: Build iOS app for ${{ inputs.environment }} environment
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        run: |
+          scheme=$(echo 'console.log("PassCulture-" + "${{ inputs.environment }}"[0].toUpperCase() + "${{ inputs.environment }}".slice(1))' | node -)
+          xcodebuild -workspace ios/PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release -quiet | xcpretty
+          last_build_dir=$(ls -tr  ~/Library/Developer/Xcode/DerivedData/ | grep PassCulture | tail -n1)
+          ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ./PassCulture.zip
+          echo "IOS_IPA_PATH=PassCulture.zip" >> $GITHUB_ENV
+
+      - name: Install extraneous dev dependencies
+        run: |
+          npm config set legacy-peer-deps true
+          npm install -g appium@next
+          appium driver install xcuitest
+          appium driver install safari
+
+      - name: Start Appium server
+        run: |
+          cwd=$(pwd)
+          pushd "$cwd"
+          cd ~
+          nohup appium server \
+            --port=$APPIUM_TEST_SERVER_PORT \
+            --address=$APPIUM_TEST_SERVER_HOST \
+            --relaxed-security \
+            2>&1 > "$cwd/appium.log" &
+          popd
+
+      - name: Wait for Appium server startup
+        run: |
+          seconds_started=$(date +%s)
+          while ! nc -z $APPIUM_TEST_SERVER_HOST $APPIUM_TEST_SERVER_PORT; do
+            sleep 0.1
+            seconds_elapsed=$(( $(date +%s) - seconds_started ))
+            if [[ $seconds_elapsed -gt $APPIUM_STARTUP_TIMEOUT_SEC ]]; then
+              echo "Appium server was unable to start within $APPIUM_STARTUP_TIMEOUT_SEC seconds timeout"
+              exit 1
+            fi
+          done
+
+      - name: Run functional tests
+        run: APPIUM_APP=${{ env.IOS_IPA_PATH }} yarn e2e:ios.app
+
+      - name: Save server output
+        if: ${{ always() }}
+        uses: actions/upload-artifact@master
+        with:
+          name: appium.log
+          path: appium.log
+
+      - name: Show appium server output
+        if: ${{ always() }}
+        run: cat appium.log
