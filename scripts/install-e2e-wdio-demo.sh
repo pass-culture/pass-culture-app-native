@@ -36,7 +36,7 @@ function run() {
   git -C "${INSTALL_DIRECTORY}" checkout main -- tests
 }
 
-[[ -z "${INSTALL_DIRECTORY}" ]] && echo -e "${RED}[ERROR]You must pass the installation path!\n${NC}example:\n${NC} ./$(basename "$0") e2e/tests/wdio-demo" && exit 1
+[[ -z "${INSTALL_DIRECTORY}" ]] && echo -e "${RED}[ERROR]You must pass the installation path!\n${NC}example:\n${NC} ./scripts/$(basename "$0") e2e/tests/wdio-demo" && exit 1
 
 run
 fix
