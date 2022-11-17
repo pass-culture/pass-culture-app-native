@@ -1,13 +1,10 @@
 import React from 'react'
-import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { useUserProfileInfo } from 'features/profile/api'
 import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { BatchUser } from 'libs/react-native-batch'
@@ -15,10 +12,11 @@ import { render, fireEvent } from 'tests/utils'
 
 import { AccountCreated } from '../AccountCreated'
 
-const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 jest.mock('features/profile/api')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockSettings = {
   enableNativeCulturalSurvey: false,
@@ -35,12 +33,6 @@ jest.mock('features/shareApp/context/ShareAppWrapper', () => ({
   ...jest.requireActual('features/shareApp/context/ShareAppWrapper'),
   useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
 }))
-
-beforeEach(() => {
-  mockedUseUserProfileInfo.mockReturnValue({
-    data: { needsToFillCulturalSurvey: true },
-  } as UseQueryResult<UserProfileResponse>)
-})
 
 describe('<AccountCreated />', () => {
   it('should render correctly', () => {
@@ -74,10 +66,10 @@ describe('<AccountCreated />', () => {
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseUserProfileInfo.mockReturnValue({
-      data: { needsToFillCulturalSurvey: false },
-    } as UseQueryResult<UserProfileResponse>)
+    const { user: globalMockUser } = mockUseAuthContext()
+    mockUseAuthContext.mockReturnValueOnce({
+      user: { ...globalMockUser, needsToFillCulturalSurvey: false },
+    })
     const renderAPI = renderAccountCreated()
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))

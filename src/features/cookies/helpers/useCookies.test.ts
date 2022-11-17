@@ -1,27 +1,23 @@
 import mockdate from 'mockdate'
-import { QueryObserverSuccessResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import Package from '__mocks__/package.json'
 import { v4 } from '__mocks__/uuid'
 import { api } from 'api/api'
-import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
-import * as useUserProfileInfoAPI from 'features/profile/api'
 import { eventMonitoring } from 'libs/monitoring'
-import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
 
-const mockUseUserProfileInfo = jest.spyOn(useUserProfileInfoAPI, 'useUserProfileInfo')
-mockUseUserProfileInfo.mockReturnValue({
-  data: undefined,
-} as UsePersistQueryResult<UserProfileResponse, unknown>)
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
+
 const mockStartTrackingAcceptedCookies = jest.spyOn(
   TrackingAcceptedCookies,
   'startTrackingAcceptedCookies'
@@ -37,6 +33,11 @@ mockdate.set(TODAY)
 jest.mock('api/api')
 
 describe('useCookies', () => {
+  beforeAll(() => {
+    mockUseAuthContext.mockReturnValue({
+      user: undefined,
+    })
+  })
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)
   })
@@ -236,9 +237,9 @@ describe('useCookies', () => {
       })
 
       it('can set user ID before giving cookies consent', async () => {
-        mockUseUserProfileInfo.mockReturnValueOnce({
-          data: { id: FAKE_USER_ID } as UserProfileResponse,
-        } as QueryObserverSuccessResult<UserProfileResponse, unknown>)
+        mockUseAuthContext.mockReturnValueOnce({
+          user: { id: FAKE_USER_ID },
+        })
         const { result } = renderHook(useCookies)
         const { setCookiesConsent, setUserId } = result.current
         await act(async () => {

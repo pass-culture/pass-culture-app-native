@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { render, fireEvent } from 'tests/utils'
@@ -7,6 +8,7 @@ import { render, fireEvent } from 'tests/utils'
 import { BookingEventChoices } from '../BookingEventChoices'
 
 jest.mock('react-query')
+jest.mock('features/auth/AuthContext')
 
 const mockUseBooking = useBooking as jest.Mock
 const mockUseBookingOffer = useBookingOffer as jest.Mock
@@ -33,20 +35,23 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   })),
 }))
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: {
-      id: 1,
-      domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
-    },
-  })),
-}))
-
 jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => ({
   useCreditForOffer: jest.fn(() => 50000),
 }))
 
 describe('<BookingEventChoices />', () => {
+  beforeAll(() => {
+    const mockUseAuthContext = useAuthContext as jest.Mock
+    const { user: globalUserMock } = mockUseAuthContext()
+
+    mockUseAuthContext.mockReturnValue({
+      user: {
+        ...globalUserMock,
+        id: 1,
+        domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
+      },
+    })
+  })
   it('should display only date step at beginning', () => {
     const page = render(<BookingEventChoices stocks={[]} />)
     expect(page.queryByTestId('DateStep')).toBeTruthy()

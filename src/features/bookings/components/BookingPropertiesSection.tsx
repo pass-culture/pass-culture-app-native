@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
-import { useUserProfileInfo } from 'features/profile/api'
 import { useSubcategory } from 'libs/subcategories'
 import { theme } from 'theme'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -24,7 +24,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
   booking,
   style,
 }) => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
   const propertiesLabels = getBookingLabels(booking, properties)

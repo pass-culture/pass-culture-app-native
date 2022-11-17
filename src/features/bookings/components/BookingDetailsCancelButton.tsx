@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
-import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
@@ -22,7 +22,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { booking } = props
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const isExBeneficiary = user && isUserExBeneficiary(user)
 
   if (properties.hasActivationCode) {

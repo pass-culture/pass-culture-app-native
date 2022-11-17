@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
@@ -18,7 +18,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
 export function AccountCreated() {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const culturalSurveyRoute = useCulturalSurveyRoute()
   const { showShareAppModal } = useShareAppContext()
 
