@@ -1,21 +1,22 @@
 import React from 'react'
 
 import { AuthWrapper, useAuthContext } from 'features/auth/AuthContext'
-import * as jwt from 'libs/jwt'
-import { storage } from 'libs/storage'
+import { QueryKeys } from 'libs/queryKeys'
+import { storage, StorageKey } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
+jest.unmock('libs/jwt')
 
 describe('AuthContext', () => {
-  beforeEach(() => {
-    jest.restoreAllMocks()
-    storage.clear('access_token')
+  beforeEach(async () => {
+    await storage.clear('access_token')
+    await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
   })
+
   describe('useAuthContext', () => {
     it('should return the user when logged in', async () => {
-      mockGetAccessTokenStatus.mockReturnValueOnce('valid')
+      storage.saveString('access_token', 'token')
       const result = renderUseAuthContext()
 
       await waitFor(() => {
@@ -27,11 +28,7 @@ describe('AuthContext', () => {
       })
     })
 
-    // FIXME(aliraiki)
-    // to many rerenders, probably linked to this hook => useConnectServicesRequiringUserId
-    it.skip('should return undefined user when logged out', async () => {
-      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
-
+    it('should return undefined user when logged out', async () => {
       const result = renderUseAuthContext()
 
       await waitFor(() => {
