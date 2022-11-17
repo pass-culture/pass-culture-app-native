@@ -1,6 +1,6 @@
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useEndedBookingFromOfferId } from 'features/bookings/api'
+import { useIsBookableOffer } from 'features/bookings/api/useIsBookableOffer'
 import { OfferModal } from 'features/offer/enums'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
@@ -26,7 +26,7 @@ interface Props {
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
   isUnderageBeneficiary: boolean
-  isEndedUsedBooking?: boolean
+  isBookableOffer?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
 }
@@ -36,7 +36,7 @@ interface ICTAWordingAndAction {
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
-  isEndedUsedBooking?: boolean
+  isBookableOffer?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
 }
@@ -51,7 +51,7 @@ export const getCtaWordingAndAction = ({
   hasEnoughCredit,
   bookedOffers,
   isUnderageBeneficiary,
-  isEndedUsedBooking,
+  isBookableOffer,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl } = offer
 
@@ -74,11 +74,11 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isEndedUsedBooking) {
+  if (isBookableOffer) {
     return {
       modalToDisplay: OfferModal.BOOKING,
       wording: 'Réserver l’offre',
-      isEndedUsedBooking,
+      isBookableOffer,
       isDisabled: false,
     }
   }
@@ -154,7 +154,7 @@ export const useCtaWordingAndAction = (props: {
   const hasEnoughCredit = useHasEnoughCredit(offerId)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const mapping = useSubcategoriesMapping()
-  const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
+  const isBookableOffer = useIsBookableOffer(offerId)
 
   if (!offer) return
 
@@ -176,7 +176,7 @@ export const useCtaWordingAndAction = (props: {
     subcategory: mapping[offer.subcategoryId],
     hasEnoughCredit,
     bookedOffers,
-    isEndedUsedBooking: !!endedBooking?.dateUsed,
+    isBookableOffer,
     isUnderageBeneficiary,
   })
 }

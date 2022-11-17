@@ -19,7 +19,7 @@ type ModalContent = {
   title: string
 } & ModalLeftIconProps
 
-export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
+export const useModalContent = (isBookableOffer?: boolean): ModalContent => {
   const { bookingState, dispatch } = useBooking()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
@@ -34,7 +34,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
     }
   }
 
-  if (isEndedUsedBooking) {
+  if (!isBookableOffer) {
     return {
       children: <AlreadyBooked offer={offer} />,
       title: 'Réservation impossible',

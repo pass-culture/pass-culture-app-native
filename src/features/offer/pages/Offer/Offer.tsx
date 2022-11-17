@@ -59,7 +59,7 @@ export const Offer: FunctionComponent = () => {
     navigateTo,
     externalNav,
     modalToDisplay,
-    isEndedUsedBooking,
+    isBookableOffer,
     bottomBannerText,
     isDisabled,
   } = useCtaWordingAndAction({ offerId }) || {}
@@ -126,7 +126,7 @@ export const Offer: FunctionComponent = () => {
         visible={bookingOfferModalIsVisible}
         dismissModal={dismissBookingOfferModal}
         offerId={offerResponse.id}
-        isEndedUsedBooking={isEndedUsedBooking}
+        isBookableOffer={isBookableOffer}
       />
       <AuthenticationModal
         visible={authenticationModalVisible}
