@@ -470,6 +470,7 @@ Array [
           onLayout={[Function]}
         />
         <View
+          accessibilityRole="none"
           style={
             Array [
               Object {

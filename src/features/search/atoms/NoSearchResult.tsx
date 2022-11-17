@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -32,7 +33,7 @@ export const NoSearchResult: React.FC = () => {
     : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
 
   return (
-    <Container>
+    <Container accessibilityRole={AccessibilityRole.STATUS}>
       <Spacer.Flex />
       <ContainerNoOffer>
         <StyledNoOffer />
