@@ -11,7 +11,7 @@ import { SearchHit } from 'libs/search'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
-jest.mock('features/profile/api')
+jest.mock('features/auth/AuthContext')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useTrackOfferSeenDuration')

@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTheme } from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import {
   Amount,
   ProgressBarContainer,
@@ -13,7 +14,6 @@ import {
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
@@ -32,7 +32,7 @@ import { Spacer } from 'ui/theme'
 export function BeneficiaryAccountCreated() {
   const maxPrice = useMaxPrice()
   const { uniqueColors } = useTheme()
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const culturalSurveyRoute = useCulturalSurveyRoute()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)

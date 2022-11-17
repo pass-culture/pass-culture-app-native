@@ -2,10 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGetDepositAmountsByAge } from 'features/offer/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
-import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -25,7 +25,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   hideModal,
   offerId,
 }) => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = useCallback(() => {

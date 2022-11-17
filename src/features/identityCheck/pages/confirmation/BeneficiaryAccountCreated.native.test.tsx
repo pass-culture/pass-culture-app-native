@@ -16,7 +16,6 @@ jest.mock('features/profile/utils', () => {
     }),
   }
 })
-
 const mockShowAppModal = jest.fn()
 jest.mock('features/shareApp/context/ShareAppWrapper', () => ({
   ...jest.requireActual('features/shareApp/context/ShareAppWrapper'),

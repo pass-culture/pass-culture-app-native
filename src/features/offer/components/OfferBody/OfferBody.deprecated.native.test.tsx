@@ -7,6 +7,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { act, cleanup, fireEvent } from 'tests/utils'
 
 jest.mock('api/api')
+jest.mock('features/auth/AuthContext')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting', () => ({
   useReasonsForReporting: jest.fn(() => ({

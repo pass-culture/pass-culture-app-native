@@ -69,7 +69,7 @@ export async function renderOfferBodyPage(
   mockedUser = { ...baseUser, ...user }
 
   const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
+  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn, user: mockedUser }))
 
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
