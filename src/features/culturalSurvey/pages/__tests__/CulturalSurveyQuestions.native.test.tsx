@@ -4,14 +4,14 @@ import { mocked } from 'ts-jest/utils'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
-import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/useCulturalSurvey'
+import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/api/__mocks__/useCulturalSurveyQuestions'
+import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
 import {
   useCulturalSurveyContext,
   dispatch,
 } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
-import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers/__mocks__'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -40,7 +40,8 @@ jest.mock('features/culturalSurvey/useGetNextQuestion', () => ({
   useGetNextQuestion: jest.fn(() => mockUseGetNextQuestionReturnValue),
 }))
 
-jest.mock('features/culturalSurvey/useCulturalSurvey')
+jest.mock('features/culturalSurvey/api/useCulturalSurveyQuestions')
+jest.mock('features/culturalSurvey/api/useCulturalSurveyAnswers')
 
 jest
   .spyOn(CulturalSurveyContextProviderModule, 'useCulturalSurveyContext')

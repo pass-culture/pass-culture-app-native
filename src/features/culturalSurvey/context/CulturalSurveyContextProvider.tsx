@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { CulturalSurveyAnswerEnum } from 'api/gen'
+import { useCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestions'
 import {
   culturalSurveyReducer,
   initialCulturalSurveyState,
 } from 'features/culturalSurvey/context/reducer'
 import { Action, CulturalSurveyState } from 'features/culturalSurvey/context/types'
 import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/utils'
-import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurvey'
 
 export interface ICulturalSurveyContext extends CulturalSurveyState {
   dispatch: React.Dispatch<Action>

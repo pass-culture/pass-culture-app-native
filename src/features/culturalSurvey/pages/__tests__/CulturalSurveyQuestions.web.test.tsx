@@ -5,21 +5,22 @@ import waitForExpect from 'wait-for-expect'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
-import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/useCulturalSurvey'
+import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/api/__mocks__/useCulturalSurveyQuestions'
+import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
 import {
   useCulturalSurveyContext,
   dispatch,
 } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
-import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { render, fireEvent } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
-jest.mock('features/culturalSurvey/useCulturalSurvey')
+jest.mock('features/culturalSurvey/api/useCulturalSurveyQuestions')
+jest.mock('features/culturalSurvey/api/useCulturalSurveyAnswers')
 const mockedUseCulturalSurveyAnswersMutation = mocked(useCulturalSurveyAnswersMutation)
 
 const navigationProps = {
