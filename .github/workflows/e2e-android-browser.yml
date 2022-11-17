@@ -103,21 +103,6 @@ jobs:
             2>&1 > "$cwd/webpack-dev-server.log" &
           popd
 
-#      - name: Wait for Local dev server ${{ inputs.environment }} to startup
-#        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
-#        run: |
-#          seconds_started=$(date +%s)
-#          until curl -s -f -o /dev/null "${{ env.WDIO_BASE_URL }}"
-#          do
-#            sleep 0.1
-#            seconds_elapsed=$(( $(date +%s) - seconds_started ))
-#            if [[ $seconds_elapsed -gt ${{ env.DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC }} ]]; then
-#              echo "Local dev server was unable to start within ${{ env.DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC }} seconds timeout"
-#              exit 1
-#            fi
-#          done
-
-
       ## Common
       - name: Start Appium server
         run: |
@@ -130,18 +115,6 @@ jobs:
             --relaxed-security \
             2>&1 > "$cwd/appium.log" &
           popd
-
-#      - name: Wait for Appium server startup
-#        run: |
-#          seconds_started=$(date +%s)
-#          while ! nc -z $APPIUM_TEST_SERVER_HOST $APPIUM_TEST_SERVER_PORT; do
-#            sleep 0.1
-#            seconds_elapsed=$(( $(date +%s) - seconds_started ))
-#            if [[ $seconds_elapsed -gt $APPIUM_STARTUP_TIMEOUT_SEC ]]; then
-#              echo "Appium server was unable to start within $APPIUM_STARTUP_TIMEOUT_SEC seconds timeout"
-#              exit 1
-#            fi
-#          done
 
       - run: nohup adb logcat > logcat.log &
         name: Capture logcat
