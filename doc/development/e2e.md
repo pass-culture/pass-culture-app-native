@@ -4,7 +4,7 @@ We use webdriver.io as automation framework to test our Web and mobile applicati
 
 ### Appium
 
-To run app and browser tests on Mobile, you will need to run an appium server.
+To run app and browser tests on Mobile, you need to run an appium server.
 
 To install appium:
 
@@ -78,10 +78,14 @@ On your desktop, you must install browser's driver that match your version in or
 
 Refer to google to get installation instruction for your system.
 
-**Testing on Android**
+### Testing on Android
 
-- You will need to download an `apk` from appcenter, you can do so using `yarn appcenter:install`
-- Real device or the emulator that match defined `ANDROID_PLATFORM_VERSION` must be started and available when running `adb devices`
+You can use an apk, either from appcenter, either one created by building locally.
+
+
+- To download an `apk` from appcenter, you can do use `yarn appcenter:install`
+- Set environment variable `ANDROID_PLATFORM_VERSION` to match your Android platform version of your device.
+- You must have a running emulator or physical device available when running `adb devices` 
 
 To build application:
 
@@ -96,12 +100,13 @@ APPIUM_APP=./android/app/build/outputs/apk/staging/release/app-staging-release.a
 
 > It is not possible to test the Android application using the development environment 
 
-**Testing on iOS**
+### Testing on iOS
 
-- Set `IOS_PLATFORM_VERSION` and  `IOS_DEVICE_NAME` according to your test needs
-- Emulator device: You will have to build a test application (see below)
-- Physical known device: You will need to download an `ipa` from appcenter, you can do so using `yarn appcenter:install`
-- Test device must be connected or simulator must be started, to check: `xcrun simctl list devices`
+- It is not possible to use the `ipa` from appcenter.
+- You must use a iOS simulator.
+- You must have environment variables `IOS_PLATFORM_VERSION` and `IOS_DEVICE_NAME` that match your device and platform version.
+- You must create a test build.
+- Simulator must be started and available, see `xcrun simctl list devices`.
 
 To build application:
 
