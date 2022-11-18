@@ -7280,7 +7280,7 @@
   resolved "https://registry.yarnpkg.com/@vue/preload-webpack-plugin/-/preload-webpack-plugin-2.0.0.tgz#a43bfc087e91f7d0efb0086100148f4b16437b68"
   integrity sha512-RoorRB50WehYbsiWu497q8egZBYlrvOo9KBUG41uth4O023Cbs+7POLm9uw2CAiViBAIhvpw1Y4w4i+MZxOfXw==
 
-"@wdio/appium-service@^7.19.5":
+"@wdio/appium-service@^7.26.0":
   version "7.26.0"
   resolved "https://registry.yarnpkg.com/@wdio/appium-service/-/appium-service-7.26.0.tgz#56da5e22ab4b45b28529a175db27d3e210384185"
   integrity sha512-0YDoMEKs5OyepoUJ8NRUvCVP0dQuXbd51Mgqk5b9uO7g1k2IU+VprORAE1JNv/ZBRaU01DHf6W/tdNuJ+ztkng==
@@ -7292,7 +7292,7 @@
     fs-extra "^10.0.0"
     param-case "^3.0.0"
 
-"@wdio/cli@^7.19.7":
+"@wdio/cli@^7.26.0":
   version "7.26.0"
   resolved "https://registry.yarnpkg.com/@wdio/cli/-/cli-7.26.0.tgz#20c690a5ede4a35cb2f84da9041c250a6013bc54"
   integrity sha512-xG+ZIzPqzz/Tvhfrogd8oNvTXzzdE+cbkmTHjMGo1hnmnoAQPeAEcV/QqaX5CHFE9DjaguEeadqjcZikB5U2GQ==
@@ -7337,7 +7337,7 @@
     deepmerge "^4.0.0"
     glob "^8.0.3"
 
-"@wdio/local-runner@^7.19.7":
+"@wdio/local-runner@^7.26.0":
   version "7.26.0"
   resolved "https://registry.yarnpkg.com/@wdio/local-runner/-/local-runner-7.26.0.tgz#a056c6e9d73c7f48e54fe3f07ce573a90dae26ab"
   integrity sha512-GdCP7Y8s8qvoctC0WaSGBSmTSbVw74WEJm6Y3n3DpoCI8ABFNkQlhFlqJH+taQDs3sRVEM65bHGcU4C4FOVWXQ==
@@ -7371,7 +7371,7 @@
     loglevel-plugin-prefix "^0.8.4"
     strip-ansi "^6.0.0"
 
-"@wdio/mocha-framework@^7.19.7":
+"@wdio/mocha-framework@^7.26.0":
   version "7.26.0"
   resolved "https://registry.yarnpkg.com/@wdio/mocha-framework/-/mocha-framework-7.26.0.tgz#757be1648c662d5637b1d4522f826613c5647e95"
   integrity sha512-iqAVRDc5ECeRUV2sk6AfCH0eryR3GtdDbDHUr4IxPjb9avtuYhHBR20hCV5c6PAyX33h7ZnHCIIej4bUZcCI6g==
@@ -7425,7 +7425,7 @@
     webdriver "7.26.0"
     webdriverio "7.26.0"
 
-"@wdio/spec-reporter@^7.19.7":
+"@wdio/spec-reporter@^7.26.0":
   version "7.26.0"
   resolved "https://registry.yarnpkg.com/@wdio/spec-reporter/-/spec-reporter-7.26.0.tgz#13eaa5a0fd089684d4c1bcd8ac11dc8646afb5b7"
   integrity sha512-oisyVWn+MRoq0We0qORoDHNk+iKr7CFG4+IE5GCRecR8cgP7dUjVXZcEbn6blgRpry4jOxsAl24frfaPDOsZVA==

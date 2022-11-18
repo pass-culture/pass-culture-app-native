@@ -56,10 +56,6 @@ jobs:
 
       - uses: browser-actions/setup-chrome@latest
 
-      - run: chromium --version
-
-      - run: which chromedriver
-
       - name: Sets WDIO_BASE_URL for local or distributed Web app
         if: ${{ env.WDIO_DEMO == 'false' }}
         run: |

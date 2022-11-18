@@ -21,5 +21,7 @@ export const env: Environment = {
   APPIUM_TEST_SERVER_HOST: systemEnv.APPIUM_TEST_SERVER_HOST || '127.0.0.1',
   APPIUM_APP: systemEnv.APPIUM_APP || '',
   APPIUM_APP_WAIT_ACTIVITY: systemEnv.APPIUM_APP_WAIT_ACTIVITY || '',
+  APPIUM_APP_PACKAGE: systemEnv.APPIUM_APP_PACKAGE || '',
+  APPIUM_APP_ACTIVITY: systemEnv.APPIUM_APP_ACTIVITY || '',
   SPECS: systemEnv.SPECS || '',
 }
