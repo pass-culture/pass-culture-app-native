@@ -8,7 +8,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
-import { Hit } from '../Hit'
+import { Hit } from './Hit'
 
 const mockSearchState = initialSearchState
 

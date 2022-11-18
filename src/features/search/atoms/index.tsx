@@ -1,6 +1,0 @@
-export * from './Hit'
-export * from './NumberOfResults'
-export * from './NoSearchResult'
-export * from './CenteredSection'
-export * from './SelectionLabel'
-export * from './TitleWithCount'
