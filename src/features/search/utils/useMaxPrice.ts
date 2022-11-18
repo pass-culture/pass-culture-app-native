@@ -1,6 +1,6 @@
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
-import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { MAX_PRICE } from 'features/search/utils/reducer.helpers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 export const useMaxPrice = (): number => {

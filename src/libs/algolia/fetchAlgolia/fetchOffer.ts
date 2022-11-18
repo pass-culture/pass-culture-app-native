@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
 
-import { Response } from 'features/search/pages/useSearchResults'
+import { Response } from 'features/search/utils/useSearchResults'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'

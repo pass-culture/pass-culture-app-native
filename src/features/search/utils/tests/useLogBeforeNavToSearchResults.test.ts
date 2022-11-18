@@ -1,4 +1,4 @@
-import { initialSearchState } from 'features/search/pages/reducer'
+import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { analytics } from 'libs/firebase/analytics'
 import { renderHook } from 'tests/utils'

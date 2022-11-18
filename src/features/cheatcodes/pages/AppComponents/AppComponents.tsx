@@ -18,7 +18,7 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Badges/Sub
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
-import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
+import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'

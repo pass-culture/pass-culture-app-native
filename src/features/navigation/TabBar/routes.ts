@@ -8,7 +8,7 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { Profile } from 'features/profile/pages/Profile'
-import { Search } from 'features/search/pages/Search'
+import { Search } from 'features/search/pages/Search/Search'
 
 import { TabStack } from './Stack'
 import { TabParamList, TabRoute, TabRouteName } from './types'

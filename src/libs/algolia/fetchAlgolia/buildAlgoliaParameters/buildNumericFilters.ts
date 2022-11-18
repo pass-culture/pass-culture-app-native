@@ -1,5 +1,5 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { clampPrice, MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { clampPrice, MAX_PRICE } from 'features/search/utils/reducer.helpers'
 import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'

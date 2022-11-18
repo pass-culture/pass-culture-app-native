@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'

@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { initialSearchState as mockInitialSearchState } from 'features/search/pages/reducer'
+import { initialSearchState as mockInitialSearchState } from 'features/search/context/reducer/reducer'
 import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'

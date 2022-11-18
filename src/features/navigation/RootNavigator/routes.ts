@@ -54,7 +54,7 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
-import { SearchFilter } from 'features/search/pages/SearchFilter'
+import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
