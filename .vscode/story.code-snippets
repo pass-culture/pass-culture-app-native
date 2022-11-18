@@ -1,27 +1,27 @@
 {
-	"React-Native Component": {
-	"prefix": "story",
-	"scope": "javascriptreact, typescriptreact",
-	"body": [
-		"import { ComponentStory, ComponentMeta } from '@storybook/react'",
-		"import React from 'react'",
-		"",
-		"import { ${1:ComponentName} } from './${1:ComponentName}'",
-		"",
-		"export default {",
-		"  title: '${2:Path}',",
-		"  component: ${1:ComponentName},",
-		"} as ComponentMeta<typeof ${1:ComponentName}>",
-		"",
-		"const Template: ComponentStory<typeof ${1:ComponentName}> = (props) => (",
-		"  <${1:ComponentName} {...props} />",
-		")",
-		"export const ${3:StoryName1} = Template.bind({})",
-		"${3:StoryName1}.args = {",
-		"  ${0:args},",
-		"}",
-		"",
-	],
-	"description": "Create a component story for Storybook"
-	 }
+  "React-Native Component": {
+    "prefix": "story",
+    "scope": "javascriptreact, typescriptreact",
+    "body": [
+      "import { ComponentStory, ComponentMeta } from '@storybook/react'",
+      "import React from 'react'",
+      "",
+      "import { ${1:ComponentName} } from './${1:ComponentName}'",
+      "",
+      "export default {",
+      "  title: '${2:Path}',",
+      "  component: ${1:ComponentName},",
+      "} as ComponentMeta<typeof ${1:ComponentName}>",
+      "",
+      "const Template: ComponentStory<typeof ${1:ComponentName}> = (props) => (",
+      "  <${1:ComponentName} {...props} />",
+      ")",
+      "export const ${3:StoryName1} = Template.bind({})",
+      "${3:StoryName1}.args = {",
+      "  ${0:args},",
+      "}",
+      ""
+    ],
+    "description": "Create a component story for Storybook"
+  }
 }

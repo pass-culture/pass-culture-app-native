@@ -7,6 +7,44 @@ Why ?
 
 ### Key points
 
+- **Accessibility**
+
+Accessibility test should be only on **web** and on **pages** or **modals**
+
+```jsx
+describe('<YourComponent/>', () => {
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<YourComponent />)
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+  })
+})
+```
+
+If you want to disable accessibility rules use the `enabled` from `rules` property
+
+> ⚠️ For demonstration only, don't disable rules that need fixing.
+
+```jsx
+describe('<YourComponent/>', () => {
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<YourComponent />)
+      const results = await checkAccessibilityFor(container, {
+        rules: {
+          'duplicate-id-aria': { enabled: false },
+        },
+      })
+
+      expect(results).toHaveNoViolations()
+    })
+  })
+})
+```
+
 - **Full page test**
 
 ```jsx
