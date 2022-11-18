@@ -17,7 +17,7 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/pages/schema/makeSearchPriceSchema'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { SectionTitle } from 'features/search/sections/titles'
+import { SectionTitle } from 'features/search/components/sections/titles'
 import { SearchState, SearchView } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToFrenchDecimal } from 'libs/parsers'

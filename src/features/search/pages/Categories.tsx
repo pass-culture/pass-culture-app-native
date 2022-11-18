@@ -11,7 +11,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { SectionTitle } from 'features/search/sections/titles'
+import { SectionTitle } from 'features/search/components/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Form } from 'ui/components/Form'

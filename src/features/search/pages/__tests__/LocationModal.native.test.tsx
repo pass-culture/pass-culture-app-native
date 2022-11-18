@@ -8,7 +8,7 @@ import { LocationModal, RadioButtonLocation } from 'features/search/pages/Locati
 import { initialSearchState } from 'features/search/pages/reducer'
 import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
 import { keyExtractor } from 'features/search/pages/SuggestedPlaces'
-import { SectionTitle } from 'features/search/sections/titles'
+import { SectionTitle } from 'features/search/components/sections/titles'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'

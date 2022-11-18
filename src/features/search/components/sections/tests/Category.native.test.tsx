@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { Category } from 'features/search/sections/Category'
+import { Category } from 'features/search/components/sections/Category'
 import { fireEvent, render } from 'tests/utils'
 
 let mockSearchState = initialSearchState

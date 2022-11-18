@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { SelectionLabel } from 'features/search/atoms'
-import { OFFER_TYPES } from 'features/search/sections/OfferType'
+import { OFFER_TYPES } from 'features/search/components/sections/OfferType'
 import { OfferTypes } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'

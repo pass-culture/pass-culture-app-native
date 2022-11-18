@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { Price } from 'features/search/sections/Price'
+import { Price } from 'features/search/components/sections/Price'
 import { fireEvent, render } from 'tests/utils'
 
 let mockSearchState = initialSearchState

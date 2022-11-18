@@ -5,7 +5,7 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { render } from 'tests/utils'
 
-import { DateHour } from '..//DateHour'
+import { DateHour } from '../DateHour'
 
 const mockSearchState: jest.Mock<{ searchState: Partial<SearchState> }> = jest
   .fn()
