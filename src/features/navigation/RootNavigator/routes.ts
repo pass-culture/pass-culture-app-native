@@ -42,6 +42,7 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
+import { OnboardingAuthentication } from 'features/onboarding/pages/OnboardingAuthentication'
 import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -355,7 +356,12 @@ export const routes: Route[] = [
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
   },
-
+  {
+    name: 'OnboardingAuthentication',
+    component: OnboardingAuthentication,
+    path: 'authentification',
+    options: { title: 'Authentification' },
+  },
   {
     name: 'FirstTutorial',
     component: FirstTutorial,
