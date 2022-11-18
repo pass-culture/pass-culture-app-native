@@ -7,12 +7,21 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
 
 describe('Bookings', () => {
   afterEach(jest.restoreAllMocks)
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = await renderBookings(bookingsSnap)
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+  })
 
   it('should always execute the query (in cache or in network)', () => {
     const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
