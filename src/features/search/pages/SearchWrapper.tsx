@@ -6,7 +6,6 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
-import { useGeolocation } from 'libs/geolocation'
 
 interface ISearchContext {
   searchState: SearchState
@@ -16,8 +15,6 @@ interface ISearchContext {
 const SearchContext = React.createContext<ISearchContext | null>(null)
 
 export const SearchWrapper = memo(function SearchWrapper({ children }: { children: JSX.Element }) {
-  const { position } = useGeolocation()
-
   const maxPrice = useMaxPrice()
   const priceRange: [number, number] = [0, maxPrice]
 
@@ -27,12 +24,6 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
   }
 
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
-
-  useEffect(() => {
-    const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
-    dispatch({ type: actionType })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!position])
 
   useEffect(() => {
     dispatch({ type: 'PRICE_RANGE', payload: priceRange })

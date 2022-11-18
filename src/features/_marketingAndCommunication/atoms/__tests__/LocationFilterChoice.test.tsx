@@ -9,14 +9,8 @@ describe('<LocationFilterChoice />', () => {
     const onChange = jest.fn()
     const renderAPI = render(<LocationFilterChoice onChange={onChange} />)
 
-    fireEvent.press(renderAPI.getByText('Autour de moi'))
-    expect(onChange).toHaveBeenNthCalledWith(1, {
-      aroundRadius: 100,
-      locationType: LocationType.AROUND_ME,
-    })
-
     fireEvent.press(renderAPI.getByText('Partout'))
-    expect(onChange).toHaveBeenNthCalledWith(2, {
+    expect(onChange).toHaveBeenNthCalledWith(1, {
       locationType: LocationType.EVERYWHERE,
     })
   })
