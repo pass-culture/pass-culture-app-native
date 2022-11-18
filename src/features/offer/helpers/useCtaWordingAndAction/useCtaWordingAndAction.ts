@@ -1,4 +1,10 @@
-import { OfferResponse, FavoriteOfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
+import {
+  OfferResponse,
+  FavoriteOfferResponse,
+  UserProfileResponse,
+  YoungStatusType,
+  YoungStatusResponse,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
 import { OfferModal } from 'features/offer/enums'
@@ -19,7 +25,7 @@ const getIsBookedOffer = (
 
 interface Props {
   isLoggedIn: boolean
-  userStatus: YoungStatusType
+  userStatus: YoungStatusResponse
   isBeneficiary: boolean
   offer: OfferResponse
   subcategory: Subcategory
@@ -68,7 +74,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
+  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: 'Réserver l’offre',
       bottomBannerText:
@@ -170,7 +176,7 @@ export const useCtaWordingAndAction = (props: {
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
   const { isBeneficiary = false, bookedOffers = {}, status } = user || {}
-  const userStatus = status?.statusType ?? YoungStatusType.non_eligible
+  const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({
     isLoggedIn,
     userStatus,
