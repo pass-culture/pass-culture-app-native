@@ -3,13 +3,11 @@ import InAppReview from 'react-native-in-app-review'
 import waitForExpect from 'wait-for-expect'
 
 import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
+import * as disableStoreReview from 'libs/firebase/firestore/featureFlags/disableStoreReview'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render } from 'tests/utils'
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => mockSettings()),
-}))
+const disableStoreReviewSpy = jest.spyOn(disableStoreReview, 'useDisableStoreReview')
 
 jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
@@ -112,7 +110,7 @@ describe('useShowReview', () => {
     })
 
     it('should not show the review when we disabled store review', () => {
-      mockSettings.mockReturnValueOnce({ data: { disableStoreReview: false } })
+      disableStoreReviewSpy.mockReturnValueOnce(false)
 
       render(<TestReviewComponent />)
 
@@ -122,23 +120,13 @@ describe('useShowReview', () => {
     })
 
     it('should not show review when we enabled store review', () => {
-      mockSettings.mockReturnValueOnce({ data: { disableStoreReview: true } })
+      disableStoreReviewSpy.mockReturnValueOnce(true)
 
       render(<TestReviewComponent />)
 
       jest.advanceTimersByTime(3000)
 
       expect(mockRequestInAppReview).not.toHaveBeenCalled()
-    })
-
-    it('should show review when the FF is undefined', () => {
-      mockSettings.mockReturnValueOnce({ data: {} })
-
-      render(<TestReviewComponent />)
-
-      jest.advanceTimersByTime(3000)
-
-      expect(mockRequestInAppReview).toHaveBeenCalled()
     })
   })
 })
