@@ -13,7 +13,7 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
-import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
+import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
