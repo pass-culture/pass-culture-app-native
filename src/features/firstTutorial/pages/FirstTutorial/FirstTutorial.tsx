@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
-import { BackHandler } from 'react-native'
+import React, { useCallback } from 'react'
+import { BackHandler, Platform } from 'react-native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { storage } from 'libs/storage'
 import { GenericAchievement } from 'ui/components/achievements'
 
@@ -14,9 +16,20 @@ import { ThirdCard } from './components/ThirdCard'
 type Props = StackScreenProps<RootStackParamList, 'FirstTutorial'>
 
 export function FirstTutorial({ route }: Props) {
+  const { reset, navigate } = useNavigation<UseNavigationType>()
   const onFirstCardBackAction = route.params?.shouldCloseAppOnBackAction
     ? BackHandler.exitApp
     : undefined
+
+  const onSkip = useCallback(() => {
+    storage.saveObject('has_seen_tutorials', true)
+    if (Platform.OS === 'web') {
+      reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    } else {
+      navigate('OnboardingAuthentication')
+    }
+  }, [navigate, reset])
+
   return (
     <GenericAchievement
       screenName="FirstTutorial"
@@ -28,8 +41,4 @@ export function FirstTutorial({ route }: Props) {
       <FourthCard />
     </GenericAchievement>
   )
-}
-
-function onSkip() {
-  storage.saveObject('has_seen_tutorials', true)
 }
