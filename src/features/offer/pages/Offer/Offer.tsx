@@ -69,8 +69,6 @@ export const Offer: FunctionComponent = () => {
     }, [dismissBookingOfferModal])
   )
 
-  if (!offerResponse) return <React.Fragment></React.Fragment>
-
   const externalNavProps = externalNav
     ? { externalNav, isOnPressDebounced: true, icon: ExternalSite }
     : undefined
@@ -81,6 +79,8 @@ export const Offer: FunctionComponent = () => {
     showOfferModal && showOfferModal()
   }
 
+  if (!offerResponse) return <React.Fragment></React.Fragment>
+
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
@@ -90,6 +90,7 @@ export const Offer: FunctionComponent = () => {
         offerId={offerResponse.id}
       />
       <OfferBody offerId={offerId} onScroll={onScroll} />
+
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">

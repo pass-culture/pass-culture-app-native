@@ -28,6 +28,7 @@ export enum QueryKeys {
   SEARCH_RESULTS = 'searchResults',
   SETTINGS = 'settings',
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',
+  SIMILAR_OFFERS = 'similarOffers',
   SUBCATEGORIES = 'subcategories',
   USER_PROFILE = 'userProfile',
   VENUE = 'venue',

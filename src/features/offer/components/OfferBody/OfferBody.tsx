@@ -1,13 +1,16 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
+import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
+import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
+import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -17,14 +20,22 @@ import {
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/firebase/analytics'
+import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
-import { formatDatePeriod } from 'libs/parsers'
+import { formatDatePeriod, formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { useSubcategoriesMapping } from 'libs/subcategories'
+import { SearchHit } from 'libs/search'
+import {
+  useCategoryHomeLabelMapping,
+  useCategoryIdMapping,
+  useSubcategoriesMapping,
+} from 'libs/subcategories'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Flag as DefaultFlag } from 'ui/svg/icons/Flag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -46,6 +57,38 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const hideReportOfferDescription = () => setIsReportOfferModalVisible(false)
 
   useTrackOfferSeenDuration(offerId)
+
+  const categoryMapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
+  const { position } = useGeolocation()
+  const similarOffers = useSimilarOffers(offerId)
+
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
+
+  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+    ({ item, width, height }) => {
+      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+      return (
+        <OfferTile
+          categoryLabel={labelMapping[item.offer.subcategoryId]}
+          categoryId={categoryMapping[item.offer.subcategoryId]}
+          subcategoryId={item.offer.subcategoryId}
+          offerId={+item.objectID}
+          distance={formatDistance(item._geoloc, position)}
+          name={item.offer.name}
+          date={formatDates(timestampsInMillis)}
+          isDuo={item.offer.isDuo}
+          thumbUrl={item.offer.thumbUrl}
+          price={getDisplayPrice(item.offer.prices)}
+          width={width}
+          height={height}
+          analyticsFrom="offer"
+        />
+      )
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [position, labelMapping, categoryMapping]
+  )
 
   const { data: reportedOffersResponse } = useReportedOffers()
   const isOfferAlreadyReported = reportedOffersResponse?.reportedOffers?.find(
@@ -169,6 +212,20 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         dismissModal={hideReportOfferDescription}
         offerId={offerId}
       />
+
+      {similarOffers ? (
+        <SectionWithDivider visible>
+          <Spacer.Column numberOfSpaces={6} />
+          <PassPlaylist
+            data={similarOffers}
+            itemWidth={itemWidth}
+            itemHeight={itemHeight}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.objectID}
+            title="Ça peut aussi te plaire "
+          />
+        </SectionWithDivider>
+      ) : null}
 
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />
