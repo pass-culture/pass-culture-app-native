@@ -2350,6 +2350,16 @@ export interface SubscriptionMessage {
  * @export
  * @enum {string}
  */
+export enum SubscriptionStatus {
+  'has_to_complete_subscription' = 'has_to_complete_subscription',
+  'has_subscription_pending' = 'has_subscription_pending',
+  'has_subscription_issues' = 'has_subscription_issues',
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
 export enum SubscriptionStep {
   'email-validation' = 'email-validation',
   'maintenance' = 'maintenance',
@@ -2865,6 +2875,11 @@ export interface YoungStatusResponse {
    * @memberof YoungStatusResponse
    */
   statusType: YoungStatusType
+  /**
+   * @type {SubscriptionStatus}
+   * @memberof YoungStatusResponse
+   */
+  subscriptionStatus?: SubscriptionStatus | null
 }
 /**
  * An enumeration.
