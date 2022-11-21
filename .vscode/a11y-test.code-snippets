@@ -12,7 +12,7 @@
       "describe('<${1:ComponentName}/>', () => {",
       "  describe('Accessibility', () => {",
       "    it('should not have basic accessibility issues', async () => {",
-      "      const { container } = await renderCookiesConsent()",
+      "      const { container } = await render(<${1:ComponentName} />)",
       "      const results = await checkAccessibilityFor(container)",
       "      expect(results).toHaveNoViolations()",
       "    })",
