@@ -2,9 +2,9 @@ import React from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
+import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
-import { useLocationChoice } from 'features/search/utils/useLocationChoice'
-import { useLocationType } from 'features/search/utils/useLocationType'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 

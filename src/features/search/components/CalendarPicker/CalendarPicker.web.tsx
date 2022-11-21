@@ -15,7 +15,7 @@ import {
   dayNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
-import { isBeforeToday } from 'features/search/utils/isBeforeToday'
+import { isBeforeToday } from 'features/search/helpers/isBeforeToday/isBeforeToday'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'

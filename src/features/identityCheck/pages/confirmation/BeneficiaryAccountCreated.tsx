@@ -15,7 +15,7 @@ import {
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'

@@ -1,6 +1,6 @@
 import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
-import { sortCategories } from 'features/search/utils/reducer.helpers'
+import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'

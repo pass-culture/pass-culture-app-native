@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
-import { availableCategories } from 'features/search/utils/availableCategories'
+import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'

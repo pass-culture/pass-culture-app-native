@@ -1,11 +1,11 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { MAX_RADIUS, sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
-import { MAX_RADIUS, sortCategories } from 'features/search/utils/reducer.helpers'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 
-import { addOrRemove } from '../../utils/reducer.helpers'
+import { addOrRemove } from '../../helpers/reducer.helpers'
 
 export const initialSearchState: SearchState = {
   beginningDatetime: null,

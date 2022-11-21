@@ -2,9 +2,9 @@ import React, { useCallback } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
+import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
-import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
-import { getPriceDescription } from 'features/search/utils/getPriceDescription'
 import { useModal } from 'ui/components/modals/useModal'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 

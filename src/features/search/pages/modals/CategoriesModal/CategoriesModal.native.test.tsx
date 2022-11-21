@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer/reducer'
-import { SectionTitle } from 'features/search/utils/titles'
+import { SectionTitle } from 'features/search/helpers/titles'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
 

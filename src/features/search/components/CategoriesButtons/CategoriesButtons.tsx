@@ -1,6 +1,10 @@
 import React, { FunctionComponent, useCallback } from 'react'
 
-import { OnPressCategory, useSortedSearchCategories } from '../../utils/useSortedSearchCategories'
+import {
+  OnPressCategory,
+  useSortedSearchCategories,
+} from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
+
 import { CategoriesButtonsDisplay } from '../CategoriesButtonsDisplay/CategoriesButtonsDisplay'
 
 type Props = {

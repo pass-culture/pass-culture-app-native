@@ -4,8 +4,8 @@ import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer/reducer'
+import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 
 interface ISearchContext {
   searchState: SearchState

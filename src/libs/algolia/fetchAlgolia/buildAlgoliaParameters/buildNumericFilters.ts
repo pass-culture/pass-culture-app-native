@@ -1,6 +1,6 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { clampPrice, MAX_PRICE } from 'features/search/utils/reducer.helpers'
-import { getPriceAsNumber } from 'features/search/utils/getPriceAsNumber'
+import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
+import { clampPrice, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'

@@ -20,7 +20,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { LocationType } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/utils/reducer.helpers'
+import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
