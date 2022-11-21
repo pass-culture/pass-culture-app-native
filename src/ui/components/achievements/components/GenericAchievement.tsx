@@ -65,12 +65,13 @@ export const GenericAchievement: FunctionComponent<Props> = ({
   })
 
   async function skipGenericAchievement() {
-    if (skip) {
-      skip()
-    }
     if (swiperRef?.current) {
       const index = swiperRef.current.getActiveIndex()
       analytics.logHasSkippedTutorial(`${screenName}${index + 1}`)
+    }
+    if (skip) {
+      skip()
+      return
     }
     navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }

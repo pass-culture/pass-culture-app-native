@@ -2,8 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
 
-import { reset } from '__mocks__/@react-navigation/native'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { fireEvent, render } from 'tests/utils'
 
 import { FourthCard } from './FourthCard'
@@ -36,7 +35,7 @@ describe('FourthCard', () => {
     expect(AsyncStorage.setItem).not.toBeCalled()
   })
 
-  it('should swipe to next card on button press', () => {
+  it('should navigate to OnboardingAuthentication to next card on button press', () => {
     const ref = createRef<Swiper>()
     const { getByText } = render(
       <FourthCard lastIndex={0} activeIndex={0} index={0} swiperRef={ref} />
@@ -44,7 +43,6 @@ describe('FourthCard', () => {
 
     fireEvent.press(getByText('Découvrir'))
 
-    expect(reset).toBeCalledTimes(1)
-    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'OnboardingAuthentication')
   })
 })

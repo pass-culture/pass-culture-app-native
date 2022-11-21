@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
+import { Platform } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -11,7 +12,7 @@ import {
 } from 'ui/components/achievements/components/GenericAchievementCard'
 
 export function FourthCard(props: AchievementCardKeyProps) {
-  const { reset } = useNavigation<UseNavigationType>()
+  const { navigate, reset } = useNavigation<UseNavigationType>()
 
   const { activeIndex, index } = props
   const isActiveCard = index !== undefined && activeIndex === index
@@ -21,9 +22,13 @@ export function FourthCard(props: AchievementCardKeyProps) {
     }
   }, [isActiveCard])
 
-  function onButtonPress() {
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-  }
+  const onButtonPress = useCallback(() => {
+    if (Platform.OS === 'web') {
+      reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    } else {
+      navigate('OnboardingAuthentication')
+    }
+  }, [navigate, reset])
 
   return (
     <GenericAchievementCard
