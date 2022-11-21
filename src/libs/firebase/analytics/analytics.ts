@@ -236,6 +236,8 @@ const logEventAnalytics = {
   logProfilSignUp: () => analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SIGN_UP),
   logQuitAuthenticationMethodSelection: () =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION),
+  logQuitAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_MODAL, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
   logQuitIdentityCheck: (nextStep: IdentityCheckStep) =>

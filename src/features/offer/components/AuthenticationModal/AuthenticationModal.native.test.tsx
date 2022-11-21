@@ -53,4 +53,17 @@ describe('<AuthenticationModal />', () => {
       expect(analytics.logSignInFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
     })
   })
+
+  it('should log analytics when clicking on close button with label "Fermer la modale', async () => {
+    const { getByLabelText } = render(
+      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} />
+    )
+    const closeButton = getByLabelText('Fermer la modale')
+
+    fireEvent.press(closeButton)
+
+    await waitFor(() => {
+      expect(analytics.logQuitAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
+    })
+  })
 })

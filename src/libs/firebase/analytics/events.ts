@@ -87,6 +87,7 @@ export enum AnalyticsEvent {
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
   PROFIL_SCROLLED_TO_BOTTOM = 'ProfilScrolledToBottom',
   PROFIL_SIGN_UP = 'ProfilSignUp',
+  QUIT_AUTHENTICATION_MODAL = 'QuitAuthenticationModal',
   QUIT_AUTHENTICATION_METHOD_SELECTION = 'QuitAuthenticationMethodSelection',
   QUIT_FAVORITE_MODAL_FOR_SIGN_IN = 'QuitFavoriteModalForSignIn',
   QUIT_IDENTITY_CHECK = 'QuitIdentityCheck',

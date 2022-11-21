@@ -93,6 +93,7 @@ export const analytics: typeof actualAnalytics = {
   logProfilScrolledToBottom: jest.fn(),
   logProfilSignUp: jest.fn(),
   logQuitAuthenticationMethodSelection: jest.fn(),
+  logQuitAuthenticationModal: jest.fn(),
   logQuitFavoriteModalForSignIn: jest.fn(),
   logQuitIdentityCheck: jest.fn(),
   logReinitializeFilters: jest.fn(),

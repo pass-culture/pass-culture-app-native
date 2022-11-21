@@ -24,7 +24,10 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
       visible={visible}
       title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
-      hideModal={hideModal}>
+      hideModal={() => {
+        analytics.logQuitAuthenticationModal(offerId)
+        hideModal()
+      }}>
       <Typo.ButtonText>Tu as entre 15 et 18 ans&nbsp;?</Typo.ButtonText>
       <Spacer.Column numberOfSpaces={2} />
       <StyledBody>
