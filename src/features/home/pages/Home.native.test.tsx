@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomepageData } from 'features/home/api'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -15,20 +17,17 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
-let mockUserProfileInfo: Partial<UserProfileResponse> | undefined = undefined
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: mockUserProfileInfo })),
-}))
-
 jest.mock('features/home/api')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
+
+jest.mock('features/home/services/useAvailableCredit')
+const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
 jest.mock('libs/geolocation')
 
@@ -63,19 +62,6 @@ describe('Home component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(jest.clearAllMocks)
-  beforeEach(() => {
-    mockUserProfileInfo = {
-      email: 'email@domain.ext',
-      firstName: 'Jean',
-      isBeneficiary: true,
-      depositExpirationDate: '2023-02-16T17:16:04.735235',
-      domainsCredit: {
-        all: { initial: 50000, remaining: 49600 },
-        physical: { initial: 20000, remaining: 0 },
-        digital: { initial: 20000, remaining: 19600 },
-      },
-    }
-  })
 
   it('should render skeleton when there are no modules to display', () => {
     mockUseHomepageData.mockReturnValueOnce({
@@ -83,39 +69,69 @@ describe('Home component', () => {
       homeEntryId: 'fake-entry-id',
       thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
     })
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
+    mockUseAvailableCredit.mockReturnValueOnce({ amount: 49600, isExpired: false })
 
     const home = render(<Home />)
     expect(home).toMatchSnapshot()
   })
 
   it('should render correctly without login modal', async () => {
-    mockUserProfileInfo = undefined
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+    })
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { toJSON } = render(<Home />)
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should have a welcome message', async () => {
-    mockUserProfileInfo = undefined
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+    })
     const { getByText } = render(<Home />)
     await waitFor(() => getByText('Bienvenue\u00a0!'))
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      user: beneficiaryUser,
+      isUserLoading: false,
+    })
     const { getByText } = render(<Home />)
 
     await waitFor(() => getByText('Bonjour Jean'))
   })
 
   it('should show the available credit to the user - remaining', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      user: {
+        ...beneficiaryUser,
+        domainsCredit: {
+          all: { initial: 49600, remaining: 49600 },
+        },
+      },
+      isUserLoading: false,
+    })
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAvailableCredit.mockReturnValue({ amount: 49600, isExpired: false })
     const { getByText } = render(<Home />)
 
     await waitFor(() => getByText('Tu as 496\u00a0€ sur ton pass'))
+    mockUseAvailableCredit.mockReset()
   })
 
   it('should show the available credit to the user - expired', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    mockUserProfileInfo!.depositExpirationDate = '2020-02-16T17:16:04.735235'
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      user: { ...beneficiaryUser, depositExpirationDate: '2020-02-16T17:16:04.735235' },
+      isUserLoading: false,
+    })
     const { queryByText, getByText } = render(<Home />)
     await waitFor(() => {
       expect(getByText('Ton crédit est expiré')).toBeTruthy()
@@ -124,7 +140,10 @@ describe('Home component', () => {
   })
 
   it('should show the available credit to the user - not logged in', async () => {
-    mockUserProfileInfo = undefined
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: false,
+    })
     const { queryByText } = render(<Home />)
     await waitFor(() => {
       expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
@@ -132,8 +151,12 @@ describe('Home component', () => {
   })
 
   it('should show the available credit to the user - not beneficiary', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    mockUserProfileInfo!.isBeneficiary = false
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      user: nonBeneficiaryUser,
+      isUserLoading: false,
+    })
     const { queryByText } = render(<Home />)
     await waitFor(() => {
       expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
