@@ -4,32 +4,15 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { superFlushWithAct, act, render } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
 
 jest.mock('react-query')
-
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<
-  typeof useUserProfileInfo
->
-jest.mock('features/profile/api')
-function mockUserProfileInfo({
-  user,
-  isLoading,
-}: {
-  user: UserProfileResponse | undefined
-  isLoading: boolean
-}) {
-  mockedUseUserProfileInfo.mockReturnValue({ data: user, isLoading } as UseQueryResult<
-    UserProfileResponse,
-    unknown
-  >)
-}
 
 const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
 jest.mock('features/navigation/helpers')
@@ -40,12 +23,14 @@ function mockUseCurrentRoute(name: string) {
 jest.mock('features/auth/settings')
 const mockedUseAppSettings = useAppSettings as jest.MockedFunction<typeof useAppSettings>
 
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
+
 const DEFAULT_USER = {
   id: 1234,
   needsToFillCulturalSurvey: true,
 } as UserProfileResponse
 beforeEach(() => {
-  mockUserProfileInfo({ user: DEFAULT_USER, isLoading: false })
   mockUseCurrentRoute('CulturalSurvey')
 })
 
@@ -70,22 +55,28 @@ describe('<CulturalSurvey />', () => {
   })
 
   it('should display loading screen while user info is undefined and isLoading is true', async () => {
-    mockUserProfileInfo({ user: undefined, isLoading: true })
+    mockUseAuthContext.mockReturnValueOnce({
+      user: undefined,
+      isUserLoading: true,
+    })
     const renderAPI = await renderCulturalSurveyWithNavigation()
     expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeNull()
     expect(renderAPI.queryByTestId('Loading-Animation')).toBeTruthy()
   })
 
   it('should navigate to Home when user is undefined and isLoading is false', async () => {
-    mockUserProfileInfo({ user: undefined, isLoading: false })
+    mockUseAuthContext.mockReturnValueOnce({
+      user: undefined,
+      isUserLoading: false,
+    })
     await renderCulturalSurveyWithNavigation()
     expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
 
   it('should navigate to Home if user has already completed survey', async () => {
-    mockUserProfileInfo({
+    mockUseAuthContext.mockReturnValueOnce({
       user: { ...DEFAULT_USER, needsToFillCulturalSurvey: false },
-      isLoading: false,
+      isUserLoading: false,
     })
     await renderCulturalSurveyWithNavigation()
     expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)

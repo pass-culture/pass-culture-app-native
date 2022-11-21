@@ -5,11 +5,11 @@ import { useQueryClient } from 'react-query'
 import { v1 as uuidv1 } from 'uuid'
 
 import { api } from 'api/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { shouldShowCulturalSurvey } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -38,14 +38,13 @@ export function withCulturalSurveyProvider(
       CulturalSurveyConfig | undefined
     >()
     const onCulturalSurveyExit = useOnCulturalSurveyExit()
-    //TODO(PC-17103): isLoading
-    const { data: user, isLoading: isLoadingUser } = useUserProfileInfo()
+    const { user, isUserLoading } = useAuthContext()
 
     const currentRoute = useCurrentRoute()
     const { navigate } = useNavigation<UseNavigationType>()
 
     useEffect(() => {
-      if (isLoadingUser) return
+      if (isUserLoading) return
       if (user && shouldShowCulturalSurvey(user)) {
         const userId = encodeURIComponent(uuidv1()) // legacy issue : the query param userId is not the actual `user.id`
         const userPk = user.id.toString()
@@ -55,7 +54,7 @@ export function withCulturalSurveyProvider(
       }
       navigate(...homeNavConfig)
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user, isLoadingUser])
+    }, [user, isUserLoading])
 
     if (currentRoute?.name !== 'CulturalSurvey') return null
     if (!culturalSurveyConfig) return <LoadingPage />
