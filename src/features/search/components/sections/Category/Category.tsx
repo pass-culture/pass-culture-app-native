@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useModal } from 'ui/components/modals/useModal'

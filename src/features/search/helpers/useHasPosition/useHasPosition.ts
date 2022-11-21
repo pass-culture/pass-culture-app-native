@@ -1,4 +1,4 @@
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { useGeolocation } from 'libs/geolocation'
 

@@ -12,7 +12,7 @@ const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
 const mockDispatchSearch = jest.fn()
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     dispatch: mockDispatchSearch,
   }),

@@ -13,7 +13,7 @@ import { Hit } from 'features/search/components/Hit/Hit'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import {
   FILTER_TYPES,
   useAppliedFilters,

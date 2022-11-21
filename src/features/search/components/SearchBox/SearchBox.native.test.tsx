@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -25,7 +25,7 @@ let mockSearchState: SearchState = {
   priceRange: [0, 20],
 }
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState }),
 }))
 

@@ -2,8 +2,8 @@ import React from 'react'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
-import { SearchWrapper } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { initialSearchState } from 'features/search/context/reducer'
+import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import * as useShowResultsForCategory from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
@@ -25,7 +25,7 @@ const mockSearchState: SearchState = {
 
 const mockDispatch = jest.fn()
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
   useCommit: () => ({
     commit: jest.fn(),

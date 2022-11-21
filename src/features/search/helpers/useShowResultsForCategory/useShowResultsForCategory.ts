@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { OnPressCategory } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { analytics } from 'libs/firebase/analytics'
 

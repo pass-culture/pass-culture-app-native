@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Location } from 'features/search/components/sections/Location/Location'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { RadioButtonLocation } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -13,7 +13,7 @@ const mockSearchState = jest.fn().mockReturnValue({
   dispatch: jest.fn(),
 })
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
 }))
 

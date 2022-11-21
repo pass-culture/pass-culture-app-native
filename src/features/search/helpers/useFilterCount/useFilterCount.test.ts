@@ -1,6 +1,6 @@
 import { mocked } from 'ts-jest/utils'
 
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/helpers/reducer.helpers'

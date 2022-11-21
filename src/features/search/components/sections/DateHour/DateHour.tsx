@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState } from 'features/search/types'

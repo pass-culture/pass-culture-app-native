@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
@@ -10,7 +10,7 @@ import { act, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 import { DatesHoursModal } from './DatesHoursModal'
 
 const mockSearchState = initialSearchState
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

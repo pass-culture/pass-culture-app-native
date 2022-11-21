@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Price } from 'features/search/components/sections/Price/Price'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { fireEvent, render } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),

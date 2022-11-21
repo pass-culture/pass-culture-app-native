@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { OfferType as OfferTypeEnum } from 'features/search/enums'
 import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
 import { OfferTypes } from 'features/search/types'

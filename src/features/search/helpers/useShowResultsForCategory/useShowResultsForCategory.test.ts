@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate as mockNavigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -11,7 +11,7 @@ import { renderHook } from 'tests/utils'
 import { useShowResultsForCategory } from './useShowResultsForCategory'
 
 let mockSearchState = initialSearchState
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),

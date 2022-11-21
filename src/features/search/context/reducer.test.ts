@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { initialSearchState, Action, searchReducer } from 'features/search/context/reducer/reducer'
+import { initialSearchState, Action, searchReducer } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'

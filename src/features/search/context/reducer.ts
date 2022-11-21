@@ -5,7 +5,7 @@ import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 
-import { addOrRemove } from '../../helpers/reducer.helpers'
+import { addOrRemove } from '../helpers/reducer.helpers'
 
 export const initialSearchState: SearchState = {
   beginningDatetime: null,

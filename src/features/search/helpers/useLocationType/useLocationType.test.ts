@@ -1,4 +1,4 @@
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { SearchState } from 'features/search/types'

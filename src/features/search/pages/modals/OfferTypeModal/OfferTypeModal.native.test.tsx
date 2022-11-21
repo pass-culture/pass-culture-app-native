@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/profile/api'
 import { OFFER_TYPES } from 'features/search/components/sections/OfferType/OfferType'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { OfferType } from 'features/search/enums'
 import { SectionTitle } from 'features/search/helpers/titles'
 import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
@@ -17,7 +17,7 @@ const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 const mockSearchState = searchState
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

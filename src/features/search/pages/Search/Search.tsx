@@ -13,7 +13,7 @@ import { SearchAutocomplete } from 'features/search/components/SearchAutocomplet
 import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem/SearchAutocompleteItem'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
-import { useSearch } from 'features/search/context/SearchWrapper/SearchWrapper'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { useShowResultsForCategory } from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'

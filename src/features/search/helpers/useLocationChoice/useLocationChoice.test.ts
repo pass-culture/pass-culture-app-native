@@ -1,4 +1,4 @@
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
@@ -12,7 +12,7 @@ import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/Bicolo
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 
 let mockSearchState = initialSearchState
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

@@ -3,7 +3,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import { act, render } from 'tests/utils/web'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { OfferType as OfferTypeEnum } from 'features/search/enums'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
@@ -11,7 +11,7 @@ const mockSearchState = jest.fn().mockReturnValue({
   searchState: initialSearchState,
 })
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
 }))
 

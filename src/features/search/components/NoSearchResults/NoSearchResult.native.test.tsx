@@ -2,14 +2,14 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { initialSearchState as mockInitialSearchState } from 'features/search/context/reducer/reducer'
+import { initialSearchState as mockInitialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoSearchResult } from './NoSearchResult'
 
-jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockInitialSearchState,
     dispatch: jest.fn(),
