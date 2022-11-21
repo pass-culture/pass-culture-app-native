@@ -144,6 +144,11 @@ const logEventAnalytics = {
     moduleId: string
     homeEntryId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
+  logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.GO_TO_PROFIL, {
+      from,
+      offerId,
+    }),
   logHasActivateGeolocFromTutorial: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL),
   logHasAcceptedAllCookies: () =>

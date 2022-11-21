@@ -100,6 +100,7 @@ export function NavigationSignUp(): JSX.Element {
           <FinishSubscriptionModal
             visible={finishSubscriptionModalVisible}
             hideModal={hideFinishSubscriptionModal}
+            offerId={offerId}
           />
         </Row>
         <Row half>

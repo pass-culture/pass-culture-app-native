@@ -2,6 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
@@ -18,7 +19,7 @@ describe('<ApplicationProcessingModal />', () => {
     expect(modal).toMatchSnapshot()
   })
 
-  it('should navigate to profile on click on Aller sur mon profil', async () => {
+  it('should navigate to profile when clicking on button "Aller sur mon profil"', async () => {
     const { getByTestId } = render(
       <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
     )
@@ -28,6 +29,19 @@ describe('<ApplicationProcessingModal />', () => {
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+    })
+  })
+
+  it('should log analytics when clicking on button "Aller sur mon profil', async () => {
+    const { getByLabelText } = render(
+      <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
+    )
+
+    fireEvent.press(getByLabelText('Aller sur mon profil'))
+
+    expect(analytics.logGoToProfil).toHaveBeenCalledWith({
+      from: 'ApplicationProccessingModal',
+      offerId,
     })
   })
 })

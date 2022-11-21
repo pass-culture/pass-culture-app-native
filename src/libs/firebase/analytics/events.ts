@@ -54,6 +54,7 @@ export enum AnalyticsEvent {
   DISMISS_SHARE_APP = 'DismissShareApp',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  GO_TO_PROFIL = 'GoToProfil',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
   HAS_ACCEPTED_ALL_COOKIES = 'HasAcceptedAllCookies',
   HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
