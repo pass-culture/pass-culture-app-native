@@ -265,6 +265,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
   logShareVenue: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_VENUE, { venueId }),
+  logSignInFromAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),
   logSignInFromOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_OFFER, { offerId }),

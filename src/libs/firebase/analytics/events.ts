@@ -104,6 +104,7 @@ export enum AnalyticsEvent {
   SHARE_APP = 'ShareApp',
   SHARE_OFFER = 'Share',
   SHARE_VENUE = 'ShareVenue',
+  SIGN_IN_FROM_AUTHENTICATION_MODAL = 'SignInFromAuthenticationModal',
   SIGN_IN_FROM_FAVORITE = 'SignInFromFavorite',
   SIGN_IN_FROM_OFFER = 'SignInFromOffer',
   SIGN_UP_FROM_AUTHENTICATION_MODAL = 'SignUpFromAuthenticationModal',

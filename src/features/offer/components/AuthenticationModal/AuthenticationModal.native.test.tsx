@@ -40,4 +40,17 @@ describe('<AuthenticationModal />', () => {
       expect(analytics.logSignUpFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
     })
   })
+
+  it('should log analytics when clicking on "Se connecter" button', async () => {
+    const { getByText } = render(
+      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} />
+    )
+    const signinButton = getByText('Se connecter')
+
+    fireEvent.press(signinButton)
+
+    await waitFor(() => {
+      expect(analytics.logSignInFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
+    })
+  })
 })

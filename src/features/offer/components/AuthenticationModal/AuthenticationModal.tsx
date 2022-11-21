@@ -44,7 +44,13 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" onAdditionalPress={hideModal} />
+      <StyledAuthenticationButton
+        type="login"
+        onAdditionalPress={() => {
+          analytics.logSignInFromAuthenticationModal(offerId)
+          hideModal()
+        }}
+      />
     </AppModalWithIllustration>
   )
 }
