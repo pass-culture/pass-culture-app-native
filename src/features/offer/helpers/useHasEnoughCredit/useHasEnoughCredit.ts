@@ -1,7 +1,6 @@
 import { FavoriteOfferResponse, OfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useOffer } from 'features/offer/api/useOffer'
-import { useUserProfileInfo } from 'features/profile/api'
 
 import { getOfferPrice } from '../getOfferPrice/getOfferPrice'
 
@@ -37,7 +36,7 @@ export const useHasEnoughCredit = (offerId: number): boolean => {
 
 export const useCreditForOffer = (offerId: number | undefined): number => {
   const { data: offer } = useOffer({ offerId: offerId as number })
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   if (!offer || !user) return 0
 
   const { domainsCredit } = user

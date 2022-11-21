@@ -21,6 +21,8 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   user: undefined,
   isLoggedIn: false,
   setIsLoggedIn: jest.fn(),
+  isUserLoading: false,
+  refetchUser: jest.fn(),
 })
 
 describe('hasEnoughCredit', () => {
@@ -100,6 +102,8 @@ describe('useHasEnoughCredit', () => {
       user: undefined,
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
     })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
@@ -118,6 +122,8 @@ describe('useHasEnoughCredit', () => {
       user: { ...beneficiaryUser, domainsCredit: { all: { initial: 30000, remaining: 2300 } } },
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
     })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
@@ -130,6 +136,8 @@ describe('useHasEnoughCredit', () => {
       user: { ...beneficiaryUser, domainsCredit: { all: { initial: 30000, remaining: 2500 } } },
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
     })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
