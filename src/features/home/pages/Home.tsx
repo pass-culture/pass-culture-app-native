@@ -126,6 +126,13 @@ export const OnlineHome: FunctionComponent = () => {
     }, [])
   )
 
+  useEffect(() => {
+    if (isThematicHome && modulesToDisplay.length !== 0) {
+      scrollRef.current?.scrollToIndex({ index: 0, animated: false })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isThematicHome])
+
   return (
     <Container>
       {showSkeleton ? (
