@@ -5,21 +5,21 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { useUserProfileInfo } from 'features/profile/api'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { theme } from 'theme'
 
 import { Header } from '../Header'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
-jest.mock('features/auth/AuthContext', () => ({ useAuthContext: jest.fn() }))
-
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-jest.mock('features/profile/api', () => ({ useUserProfileInfo: jest.fn() }))
+jest.mock('features/auth/AuthContext')
 
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
-    const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
+    mockedUseAuthContext.mockReturnValueOnce({
+      user: { isBeneficiary: false },
+      isLoggedIn: false,
+    })
+    const { queryByText } = renderHeader({ isLoggedIn: false })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeFalsy()
@@ -28,7 +28,11 @@ describe('Header', () => {
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
-    const { queryByText } = renderHeader({ isLoggedIn: true, isBeneficiary: false })
+    mockedUseAuthContext.mockReturnValueOnce({
+      user: { isBeneficiary: false },
+      isLoggedIn: false,
+    })
+    const { queryByText } = renderHeader({ isLoggedIn: true })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeFalsy()
@@ -37,7 +41,11 @@ describe('Header', () => {
   })
 
   it('should render Header for beneficiary and logged in users', () => {
-    const { queryByText } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    mockedUseAuthContext.mockReturnValueOnce({
+      user: { isBeneficiary: true },
+      isLoggedIn: true,
+    })
+    const { queryByText } = renderHeader({ isLoggedIn: true })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeTruthy()
@@ -46,7 +54,11 @@ describe('Header', () => {
   })
 
   it('should identify one tab as current page', () => {
-    const { getByTestId } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    mockedUseAuthContext.mockReturnValueOnce({
+      user: { isBeneficiary: true },
+      isLoggedIn: true,
+    })
+    const { getByTestId } = renderHeader({ isLoggedIn: true })
     expect(getByTestId('Home tab')?.getAttribute('aria-current')).toEqual('page')
     expect(getByTestId('Search tab')?.getAttribute('aria-current')).toBeNull()
     expect(getByTestId('Bookings tab')?.getAttribute('aria-current')).toBeNull()
@@ -55,15 +67,8 @@ describe('Header', () => {
   })
 })
 
-function renderHeader({
-  isLoggedIn,
-  isBeneficiary,
-}: {
-  isLoggedIn: boolean
-  isBeneficiary: boolean
-}) {
-  mockedUseAuthContext.mockReturnValue({ isLoggedIn })
-  mockedUseUserProfileInfo.mockReturnValue({ data: { isBeneficiary } })
+function renderHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
+  mockedUseAuthContext.mockReturnValue({ isLoggedIn, user: { isBeneficiary: true } })
 
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
