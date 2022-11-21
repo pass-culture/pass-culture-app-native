@@ -5,8 +5,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem/SearchAutocompleteItem'
-import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
@@ -24,7 +24,7 @@ const mockSearchState: SearchState = {
 }
 
 const mockDispatch = jest.fn()
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
 }))
 

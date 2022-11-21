@@ -1,0 +1,1929 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should render Search 1`] = `
+<View
+  accessibilityRole="none"
+  style={
+    Array [
+      Object {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "marginTop": 24,
+          "paddingHorizontal": 24,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View>
+      <Text
+        htmlFor="testUuidV4"
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Recherche une offre
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row-reverse",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                height="regular"
+                isDisabled={false}
+                isError={false}
+                isFocus={false}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 22,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "paddingBottom": 0,
+                      "paddingLeft": 17,
+                      "paddingRight": 17,
+                      "paddingTop": 0,
+                      "width": "100%",
+                    },
+                    Object {
+                      "borderRadius": 24,
+                      "outlineOffset": 0,
+                    },
+                    Object {
+                      "flex": 1,
+                    },
+                  ]
+                }
+                testID="styled-input-container"
+              >
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={20}
+                    width={20}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <TextInput
+                  accessible={true}
+                  aria-hidden={false}
+                  autoCorrect={false}
+                  autoFocus={false}
+                  editable={true}
+                  enablesReturnKeyAutomatically={true}
+                  isEmpty={true}
+                  nativeID="testUuidV4"
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  onSubmitEditing={[Function]}
+                  placeholder="Offre, artiste..."
+                  placeholderTextColor="#696A6F"
+                  returnKeyType="search"
+                  selectionColor="#696A6F"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Italic",
+                        "fontSize": 15,
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Object {},
+                    ]
+                  }
+                  testID="searchInput"
+                  value=""
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <Text
+          nativeID="testUuidV4"
+          style={
+            Array [
+              Object {
+                "display": "none",
+              },
+            ]
+          }
+        >
+          Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+        </Text>
+        <Modal
+          accessibilityRole="none"
+          animationType="none"
+          aria-labelledby="testUuidV4"
+          aria-modal={true}
+          deviceHeight={1334}
+          deviceWidth={750}
+          hardwareAccelerated={false}
+          hideModalContentWhileAnimating={false}
+          onBackdropPress={[Function]}
+          onModalHide={[Function]}
+          onModalWillHide={[Function]}
+          onModalWillShow={[Function]}
+          onRequestClose={[Function]}
+          panResponderThreshold={4}
+          scrollHorizontal={false}
+          scrollOffset={0}
+          scrollOffsetMax={0}
+          scrollTo={null}
+          statusBarTranslucent={true}
+          supportedOrientations={
+            Array [
+              "portrait",
+              "landscape",
+            ]
+          }
+          swipeThreshold={100}
+          testID="modal"
+          transparent={true}
+          visible={false}
+        />
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "overflowY": "auto",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListHeaderComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [
+            [Function],
+            Object {
+              "children": "Explore les catégories",
+            },
+          ],
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              [Function],
+              "margin-top: 20px;",
+              "padding-horizontal: 4px;",
+              "padding-bottom: 16px;",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      contentContainerStyle={
+        Object {
+          "paddingBottom": 88,
+          "paddingHorizontal": 20,
+        }
+      }
+      data={
+        Array [
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Arts & loisirs créatifs",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Bibliothèques, Médiathèques",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Cartes jeunes",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "CD, vinyles, musique en ligne",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Concerts & festivals",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Conférences & rencontres",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Évènements en ligne",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Films, séries, cinéma",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Instruments de musique",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Jeux & jeux vidéos",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Livres",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Médias & presse",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Musées & visites culturelles",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Plateformes en ligne",
+            "onPress": [Function],
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "label": "Spectacles",
+            "onPress": [Function],
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      testID="categoriesButtons"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "marginTop": 20,
+                  "paddingBottom": 16,
+                  "paddingHorizontal": 4,
+                },
+              ]
+            }
+          >
+            Explore les catégories
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Arts & loisirs créatifs"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Arts & loisirs créatifs
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Bibliothèques, Médiathèques"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  fill="#eb0055"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Bibliothèques, Médiathèques
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Cartes jeunes"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Cartes jeunes
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie CD, vinyles, musique en ligne"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  CD, vinyles, musique en ligne
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Concerts & festivals"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Concerts & festivals
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Conférences & rencontres"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Conférences & rencontres
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Évènements en ligne"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Évènements en ligne
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Films, séries, cinéma"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Films, séries, cinéma
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Instruments de musique"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Instruments de musique
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Jeux & jeux vidéos"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Jeux & jeux vidéos
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Livres"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Livres
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Médias & presse"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Médias & presse
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Musées & visites culturelles"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Musées & visites culturelles
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Plateformes en ligne"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Plateformes en ligne
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Retrouver les offres dans la catégorie Spectacles"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "borderBottomColor": "#90949D",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#90949D",
+                    "borderLeftWidth": 1,
+                    "borderRadius": 4,
+                    "borderRightColor": "#90949D",
+                    "borderRightWidth": 1,
+                    "borderTopColor": "#90949D",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "height": 72,
+                    "opacity": 1,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 8,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  Spectacles
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+    <View
+      customHeight={72}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 72,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;

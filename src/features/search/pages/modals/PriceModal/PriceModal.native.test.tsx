@@ -5,9 +5,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/profile/api'
 import { initialSearchState } from 'features/search/context/reducer/reducer'
-import { SearchView } from 'features/search/types'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SectionTitle } from 'features/search/helpers/titles'
+import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
 
@@ -17,7 +17,7 @@ const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),

@@ -20,7 +20,7 @@ const mockSearchState: SearchState = {
   priceRange: [0, 20],
 }
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 jest.mock('libs/firebase/analytics')
@@ -28,7 +28,7 @@ jest.mock('libs/firebase/analytics')
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
-jest.mock('features/search/pages/useSearchResults', () => ({
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
     hits: [],

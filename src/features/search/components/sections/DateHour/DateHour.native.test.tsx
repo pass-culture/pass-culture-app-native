@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { render } from 'tests/utils'
 
@@ -13,7 +13,7 @@ const mockSearchState: jest.Mock<{ searchState: Partial<SearchState> }> = jest
     searchState: initialSearchState,
   })
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
 }))
 

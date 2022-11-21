@@ -13,7 +13,7 @@ const mockSearchState = jest.fn().mockReturnValue({
   dispatch: jest.fn(),
 })
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => mockSearchState(),
 }))
 

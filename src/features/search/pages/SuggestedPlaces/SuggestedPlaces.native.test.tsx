@@ -11,7 +11,7 @@ import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces
 import { SuggestedVenue } from 'libs/venue'
 import { fireEvent, render } from 'tests/utils'
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockInitialSearchState,
     dispatch: jest.fn(),

@@ -1,9 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 
+import { SearchWrapper } from 'features/search/context/__mocks__/SearchWrapper'
 import { render } from 'tests/utils'
-
-import { SearchWrapper } from '../__mocks__/SearchWrapper'
 
 jest.mock('libs/geolocation', () => ({
   useGeolocation: jest.fn(() => ({ latitude: 2, longitude: 40 })),

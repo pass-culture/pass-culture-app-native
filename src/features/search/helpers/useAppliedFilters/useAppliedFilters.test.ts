@@ -1,11 +1,14 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import {
+  FILTER_TYPES,
+  useAppliedFilters,
+} from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { SearchState } from 'features/search/types'
-import { FILTER_TYPES, useAppliedFilters } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 
 let mockSearchState = initialSearchState
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

@@ -26,7 +26,7 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 const mockUseVenueOffers = mocked(useVenueOffers)
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockInitialSearchState, dispatch: jest.fn() }),
 }))
 

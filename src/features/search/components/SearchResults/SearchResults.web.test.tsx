@@ -9,7 +9,7 @@ import { SearchResults } from './SearchResults'
 jest.mock('react-query')
 
 const mockSearchState = initialSearchState
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
@@ -19,7 +19,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
-jest.mock('features/search/pages/useSearchResults', () => ({
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
     hits: [],

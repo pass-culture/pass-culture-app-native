@@ -12,7 +12,7 @@ import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/Bicolo
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 
 let mockSearchState = initialSearchState
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

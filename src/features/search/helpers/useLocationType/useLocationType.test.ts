@@ -1,7 +1,7 @@
 import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { LocationType } from 'features/search/enums'
-import { SearchState } from 'features/search/types'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
+import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 

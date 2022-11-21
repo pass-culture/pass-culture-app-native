@@ -7,7 +7,7 @@ import { PriceModal } from './PriceModal'
 
 const mockSearchState = initialSearchState
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),

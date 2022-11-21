@@ -5,7 +5,7 @@ import { renderHook } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
 }))
 

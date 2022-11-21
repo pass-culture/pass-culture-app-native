@@ -9,7 +9,9 @@ import { render } from 'tests/utils'
 import { ExclusivityModule, ExclusivityModuleProps } from './ExclusivityModule'
 
 jest.mock('features/auth/settings')
-jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
+  useMaxPrice: jest.fn(() => 300),
+}))
 
 const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
 excluOfferAPISpy.mockImplementation(() => {

@@ -23,7 +23,7 @@ jest.mock('react-query')
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
@@ -35,7 +35,7 @@ let mockHits: SearchHit[] = []
 let mockNbHits = 0
 let mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
-jest.mock('features/search/pages/useSearchResults', () => ({
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
     hits: mockHits,

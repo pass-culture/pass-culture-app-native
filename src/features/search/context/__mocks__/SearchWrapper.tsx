@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { initialSearchState } from 'features/search/context/reducer/reducer'
 
-const { SearchWrapper: ActualSearchWrapper } = jest.requireActual('../SearchWrapper')
+const { SearchWrapper: ActualSearchWrapper } = jest.requireActual('../SearchWrapper/SearchWrapper')
 
 export const SearchWrapper: typeof ActualSearchWrapper = memo(function SearchWrapper({ children }) {
   return <View>{children}</View>

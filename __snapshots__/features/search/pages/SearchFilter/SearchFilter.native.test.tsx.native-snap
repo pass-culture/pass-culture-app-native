@@ -1,0 +1,1169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchFilter component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    accessibilityRole="header"
+    style={
+      Array [
+        Object {
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      height={64}
+      style={
+        Array [
+          Object {
+            "height": 64,
+          },
+        ]
+      }
+    />
+    <View
+      backgroundColor="#eb0055"
+      isAbsolutePosition={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#eb0055",
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="small"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": 48,
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            positionInHeader="left"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="backButton"
+            >
+              <View
+                height={24}
+                testID="icon-back"
+                width={24}
+              >
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Retour
+              </Text>
+            </View>
+          </View>
+          <Text
+            color="#ffffff"
+            numberOfLines={1}
+            size="small"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Filtrer
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    scrollEnabled={true}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        accessibilityRole="list"
+        style={
+          Array [
+            Object {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginLeft": 24,
+                "marginRight": 24,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="FilterRow"
+          >
+            <View
+              height={24}
+              testID="BicolorLocationPointer"
+              width={24}
+            >
+              <Text>
+                BicolorLocationPointer-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexDirection": "column",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Localisation
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Autour de moi
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Modal
+            accessibilityRole="none"
+            animationType="none"
+            aria-labelledby="testUuidV4"
+            aria-modal={true}
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              Array [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "marginVertical": 0,
+                  "width": 912,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginLeft": 24,
+                "marginRight": 24,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="FilterRow"
+          >
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexDirection": "column",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Catégorie
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Modal
+            accessibilityRole="none"
+            animationType="none"
+            aria-labelledby="testUuidV4"
+            aria-modal={true}
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              Array [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "marginVertical": 0,
+                  "width": 912,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginLeft": 24,
+                "marginRight": 24,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="FilterRow"
+          >
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexDirection": "column",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Type d'offre
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Modal
+            accessibilityRole="none"
+            animationType="none"
+            aria-labelledby="testUuidV4"
+            aria-modal={true}
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              Array [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "marginVertical": 0,
+                  "width": 912,
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginLeft": 24,
+                "marginRight": 24,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="FilterRow"
+          >
+            <View
+              fill="#161617"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexDirection": "column",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Prix
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Modal
+            accessibilityRole="none"
+            animationType="none"
+            aria-labelledby="testUuidV4"
+            aria-modal={true}
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              Array [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <View
+            marginVertical={16}
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "marginVertical": 16,
+                  "width": 912,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginLeft": 24,
+                "marginRight": 24,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="FilterRow"
+          >
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-start",
+                    "flexDirection": "column",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Dates & heures
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            />
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Modal
+            accessibilityRole="none"
+            animationType="none"
+            aria-labelledby="testUuidV4"
+            aria-modal={true}
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              Array [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    isModal={false}
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 24,
+          "paddingHorizontal": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Réinitialiser"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 16,
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "auto",
+        }
+      }
+      testID="Réinitialiser"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          height={16}
+          testID="button-icon"
+          width={16}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "marginLeft": 4,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Réinitialiser
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Rechercher"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "auto",
+        }
+      }
+      testID="Rechercher"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Rechercher
+      </Text>
+    </View>
+  </View>
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+</View>
+`;

@@ -20,7 +20,7 @@ let mockLocationFilter: LocationFilter = {
   venue: mockedSuggestedVenues[0],
 }
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { locationFilter: mockLocationFilter } }),
 }))
 

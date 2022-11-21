@@ -1,19 +1,18 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
-import { NoFavoritesResult } from './NoFavoritesResult'
-
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
 const mockDispatchSearch = jest.fn()
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     dispatch: mockDispatchSearch,
   }),

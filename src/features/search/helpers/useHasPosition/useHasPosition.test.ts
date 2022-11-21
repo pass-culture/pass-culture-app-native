@@ -1,8 +1,8 @@
 import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { LocationType } from 'features/search/enums'
-import { LocationFilter } from 'features/search/types'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
+import { LocationFilter } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -25,7 +25,7 @@ const Kourou: SuggestedPlace = {
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 let mockSearchState = initialSearchState
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

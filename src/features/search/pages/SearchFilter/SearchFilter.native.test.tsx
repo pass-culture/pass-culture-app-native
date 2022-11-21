@@ -14,7 +14,7 @@ import { SearchFilter } from './SearchFilter'
 
 const mockSearchState = initialSearchState
 const mockStateDispatch = jest.fn()
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockStateDispatch,

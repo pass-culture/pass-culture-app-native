@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/profile/api'
-import { OfferType } from 'features/search/enums'
-import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { OFFER_TYPES } from 'features/search/components/sections/OfferType/OfferType'
+import { initialSearchState } from 'features/search/context/reducer/reducer'
+import { OfferType } from 'features/search/enums'
 import { SectionTitle } from 'features/search/helpers/titles'
+import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
 import { OfferTypes, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
@@ -17,7 +17,7 @@ const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 const mockSearchState = searchState
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

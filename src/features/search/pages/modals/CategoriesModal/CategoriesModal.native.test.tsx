@@ -13,7 +13,7 @@ const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 const mockSearchState = searchState
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),

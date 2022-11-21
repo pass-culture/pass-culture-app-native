@@ -1,11 +1,11 @@
 import { mocked } from 'ts-jest/utils'
 
+import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { initialSearchState } from 'features/search/context/reducer/reducer'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { SearchState } from 'features/search/types'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
+import { SearchState } from 'features/search/types'
 import { renderHook } from 'tests/utils'
 
 import { useFilterCount } from './useFilterCount'
@@ -27,7 +27,7 @@ const sevenFilters = {
   priceRange: [1, MAX_PRICE], // 1
 } as SearchState
 
-jest.mock('features/search/utils/useMaxPrice')
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
 const mockedUseMaxPrice = mocked(useMaxPrice)
 
 describe('useFilterCount', () => {

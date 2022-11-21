@@ -21,7 +21,7 @@ jest.mock('react-query')
 jest.mock('features/navigation/helpers')
 const mockSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
 }))
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

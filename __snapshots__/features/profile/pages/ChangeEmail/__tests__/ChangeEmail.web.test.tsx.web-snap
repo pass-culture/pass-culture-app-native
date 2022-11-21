@@ -65,6 +65,10 @@ Object {
   text-decoration: none;
 }
 
+.c6:disabled {
+  background-color: #F1F1F4;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -102,10 +106,6 @@ Object {
 .c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #F1F1F4;
 }
 
 .c1 {
@@ -178,7 +178,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0 c1 sc-kDTinF c1"
+                  class="c0 c1 sc-eCImPb c1"
                   data-testid="backButton"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -385,7 +385,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="c0 c4 sc-kLwhqv c4"
+                    class="c0 c4 sc-iCfMLu c4"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     title="Afficher le mot de passe"
@@ -504,6 +504,10 @@ Object {
   text-decoration: none;
 }
 
+.c6:disabled {
+  background-color: #F1F1F4;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -541,10 +545,6 @@ Object {
 .c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #F1F1F4;
 }
 
 .c1 {
@@ -616,7 +616,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="c0 c1 sc-kDTinF c1"
+                class="c0 c1 sc-eCImPb c1"
                 data-testid="backButton"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -823,7 +823,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="c0 c4 sc-kLwhqv c4"
+                  class="c0 c4 sc-iCfMLu c4"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   title="Afficher le mot de passe"

@@ -25,7 +25,7 @@ jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = mocked(useVenueOffers)
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockInitialSearchState, dispatch: jest.fn() }),
 }))
 

@@ -10,7 +10,7 @@ import { act, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 import { DatesHoursModal } from './DatesHoursModal'
 
 const mockSearchState = initialSearchState
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
   }),

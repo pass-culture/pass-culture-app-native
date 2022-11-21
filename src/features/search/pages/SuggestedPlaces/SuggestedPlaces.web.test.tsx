@@ -9,7 +9,7 @@ import { fireEvent, render } from 'tests/utils/web'
 
 import { keyExtractor, SuggestedPlaces } from './SuggestedPlaces'
 
-jest.mock('features/search/pages/SearchWrapper', () => ({
+jest.mock('features/search/context/SearchWrapper/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockInitialSearchState,
     dispatch: jest.fn(),

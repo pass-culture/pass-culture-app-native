@@ -23,7 +23,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-jest.mock('features/search/utils/useMaxPrice')
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
 const mockedUseMaxPrice = mocked(useMaxPrice)
 mockedUseMaxPrice.mockReturnValue(300)
 
