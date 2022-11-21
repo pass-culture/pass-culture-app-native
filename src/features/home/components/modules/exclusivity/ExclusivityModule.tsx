@@ -26,11 +26,12 @@ const UnmemoizedExclusivityModule = ({ offerId, url, ...props }: ExclusivityModu
 
     return <ExclusivityBanner {...props} />
   }
+  const StyledExclusivityComponent = styled(ExclusivityComponent)({ paddingBottom: getSpacing(6) })
 
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <ExclusivityComponent />
+      <StyledExclusivityComponent />
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
@@ -40,5 +41,4 @@ export const ExclusivityModule = memo(UnmemoizedExclusivityModule)
 
 const Row = styled.View({
   flexDirection: 'row',
-  paddingBottom: getSpacing(6),
 })
