@@ -32,6 +32,7 @@ export const OnboardingAuthentication: FunctionComponent = () => (
       />
       <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton type="login" />
+      <Spacer.BottomScreen />
     </Content>
   </Container>
 )
