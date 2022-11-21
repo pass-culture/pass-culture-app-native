@@ -3,6 +3,20 @@ import { env } from './environment/env'
 import { demo } from './wdio-demo.conf'
 
 const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/app*.spec.ts']
+const appiumApp = env.WDIO_DEMO ? demo.android.capabilities['appium:app'] : env.APPIUM_APP
+
+const capabilityPackage = {
+  'appium:app': env.WDIO_DEMO ? demo.android.capabilities['appium:app'] : env.APPIUM_APP,
+  'appium:appWaitActivity': env.WDIO_DEMO
+    ? demo.android.capabilities['appium:appWaitActivity']
+    : env.APPIUM_APP_WAIT_ACTIVITY,
+}
+
+const capabilityAlreadyInstalled = {
+  'appium:appPackage': env.APPIUM_APP_PACKAGE,
+  'appium:appActivity': env.APPIUM_APP_ACTIVITY,
+  'appium:noReset': true,
+}
 
 // ============
 // Specs
@@ -25,11 +39,8 @@ config.capabilities = [
     'appium:platformVersion': env.ANDROID_PLATFORM_VERSION,
     'appium:orientation': 'PORTRAIT',
     'appium:automationName': 'UiAutomator2',
-    'appium:app': env.WDIO_DEMO ? demo.android.capabilities['appium:app'] : env.APPIUM_APP,
-    'appium:appWaitActivity': env.WDIO_DEMO
-      ? demo.android.capabilities['appium:appWaitActivity']
-      : env.APPIUM_APP_WAIT_ACTIVITY,
     'appium:newCommandTimeout': 240,
+    ...(appiumApp ? capabilityPackage : capabilityAlreadyInstalled),
   },
 ]
 
