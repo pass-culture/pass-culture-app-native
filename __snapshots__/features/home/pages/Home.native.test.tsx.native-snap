@@ -41,7 +41,30 @@ exports[`Home N-1 should render correctly 1`] = `
         />
       }
       bounces={true}
-      data={Array []}
+      data={
+        Array [
+          Object {
+            "display": Object {
+              "layout": "two-items",
+              "minOffers": 1,
+              "subtitle": "Un sous-titre",
+              "title": "Playlist de livres",
+            },
+            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
+            "search": Array [
+              Object {
+                "categories": Array [
+                  "Livres",
+                ],
+                "hitsPerPage": 10,
+                "isDigital": false,
+                "isGeolocated": false,
+                "title": "Playlist de livres",
+              },
+            ],
+          },
+        ]
+      }
       getItem={[Function]}
       getItemCount={[Function]}
       initialNumToRender={10}
@@ -198,6 +221,10 @@ exports[`Home N-1 should render correctly 1`] = `
         </View>
         <View
           onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
         >
           <View
             customHeight={72}
@@ -262,7 +289,30 @@ exports[`Home component should render correctly without login modal 1`] = `
         />
       }
       bounces={true}
-      data={Array []}
+      data={
+        Array [
+          Object {
+            "display": Object {
+              "layout": "two-items",
+              "minOffers": 1,
+              "subtitle": "Un sous-titre",
+              "title": "Playlist de livres",
+            },
+            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
+            "search": Array [
+              Object {
+                "categories": Array [
+                  "Livres",
+                ],
+                "hitsPerPage": 10,
+                "isDigital": false,
+                "isGeolocated": false,
+                "title": "Playlist de livres",
+              },
+            ],
+          },
+        ]
+      }
       getItem={[Function]}
       getItemCount={[Function]}
       initialNumToRender={10}
@@ -369,6 +419,10 @@ exports[`Home component should render correctly without login modal 1`] = `
             </View>
           </View>
         </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        />
         <View
           onLayout={[Function]}
         >
