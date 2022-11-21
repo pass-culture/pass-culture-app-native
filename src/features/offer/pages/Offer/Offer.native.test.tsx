@@ -1,5 +1,6 @@
 import { useAuthContext } from 'features/auth/AuthContext'
-import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { analytics } from 'libs/firebase/analytics'
 import { act, fireEvent } from 'tests/utils'
 
 jest.mock('features/auth/AuthContext')
@@ -31,6 +32,20 @@ describe('<Offer />', () => {
     fireEvent.press(bookingOfferButton)
 
     expect(getByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
+  })
+
+  it('should log analaytics when display authentication modal', async () => {
+    mockUseAuthContext.mockImplementationOnce(() => ({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+    }))
+
+    const { getByText } = await renderOfferPage()
+
+    const bookingOfferButton = getByText('Réserver l’offre')
+    fireEvent.press(bookingOfferButton)
+
+    expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
 })
 

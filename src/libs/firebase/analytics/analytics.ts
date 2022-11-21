@@ -80,6 +80,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultArticleAccountDeletion: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION),
+  logConsultAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL, { offerId }),
   logConsultAvailableDates: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logConsultDescriptionDetails: (offerId: number) =>
@@ -236,6 +238,8 @@ const logEventAnalytics = {
   logProfilSignUp: () => analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SIGN_UP),
   logQuitAuthenticationMethodSelection: () =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION),
+  logQuitAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_MODAL, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
   logQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
@@ -265,9 +269,13 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
   logShareVenue: (venueId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_VENUE, { venueId }),
+  logSignInFromAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),
   logSignInFromOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_OFFER, { offerId }),
+  logSignUpFromAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignUpFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_FAVORITE),
   logSignUpFromOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_OFFER, { offerId }),

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -14,16 +14,32 @@ import { LINE_BREAK } from 'ui/theme/constants'
 type Props = {
   visible: boolean
   hideModal: () => void
+  offerId: number
   children?: never
 }
 
-export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
+export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideModal, offerId }) => {
+  const closeModal = useCallback(() => {
+    analytics.logQuitAuthenticationModal(offerId)
+    hideModal()
+  }, [hideModal, offerId])
+
+  const signUp = useCallback(() => {
+    analytics.logSignUpFromAuthenticationModal(offerId)
+    hideModal()
+  }, [hideModal, offerId])
+
+  const signIn = useCallback(() => {
+    analytics.logSignInFromAuthenticationModal(offerId)
+    hideModal()
+  }, [hideModal, offerId])
+
   return (
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
-      hideModal={hideModal}>
+      hideModal={closeModal}>
       <Typo.ButtonText>Tu as entre 15 et 18 ans&nbsp;?</Typo.ButtonText>
       <Spacer.Column numberOfSpaces={2} />
       <StyledBody>
@@ -35,15 +51,12 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
-          onBeforeNavigate={() => {
-            analytics.logProfilSignUp()
-            hideModal()
-          }}
+          onBeforeNavigate={signUp}
           fitContentWidth={theme.isDesktopViewport}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" onAdditionalPress={hideModal} />
+      <StyledAuthenticationButton type="login" onAdditionalPress={signIn} />
     </AppModalWithIllustration>
   )
 }

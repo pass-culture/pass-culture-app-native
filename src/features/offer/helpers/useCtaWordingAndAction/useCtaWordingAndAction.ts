@@ -62,6 +62,9 @@ export const getCtaWordingAndAction = ({
       modalToDisplay: OfferModal.AUTHENTICATION,
       wording: 'Réserver l’offre',
       isDisabled: false,
+      onPress: () => {
+        analytics.logConsultAuthenticationModal(offer.id)
+      },
     }
   }
 
