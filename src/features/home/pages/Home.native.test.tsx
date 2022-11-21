@@ -77,6 +77,17 @@ describe('Home component', () => {
     }
   })
 
+  it('should render skeleton when there are no modules to display', () => {
+    mockUseHomepageData.mockReturnValueOnce({
+      modules: [],
+      homeEntryId: 'fake-entry-id',
+      thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
+    })
+
+    const home = render(<Home />)
+    expect(home).toMatchSnapshot()
+  })
+
   it('should render correctly without login modal', async () => {
     mockUserProfileInfo = undefined
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
