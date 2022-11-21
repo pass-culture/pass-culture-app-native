@@ -1,13 +1,10 @@
 import React from 'react'
 import { Linking } from 'react-native'
-import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule } from 'features/home/components'
 import { ContentTypes } from 'features/home/contentful'
-import * as profileAPI from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
@@ -40,7 +37,6 @@ const props: BusinessModuleProps = {
 
 describe('BusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
-  const homeAPISpy = jest.spyOn(profileAPI, 'useUserProfileInfo')
 
   it('should render correctly - with leftIcon = Idea by default', () => {
     const { toJSON } = renderModule(props)
@@ -104,7 +100,10 @@ describe('BusinessModule component', () => {
 
   it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
+    mockUseAuthContext.mockImplementation(() => ({
+      isLoggedIn: true,
+      isUserLoading: true,
+    }))
     const { getByTestId } = renderModule({
       ...props,
       url: 'some_url_with_email={email}',
@@ -117,17 +116,16 @@ describe('BusinessModule component', () => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
         message: 'Redirection en cours',
       })
-      expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
     })
   })
 
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
+    // We don't use mockReturnValueOnce because useAuthContext is called twice : for the first BusinnessModule render and when the link is pressed (shouldRedirect goes from false to true)
     // eslint-disable-next-line local-rules/independent-mocks
-    homeAPISpy.mockImplementation(() => {
-      return {
-        isLoading: false,
-        data: { email: 'email2@domain.ext', firstName: 'Jean' },
-      } as UseQueryResult<UserProfileResponse>
+    mockUseAuthContext.mockReturnValue({
+      user: { email: 'email2@domain.ext', firstName: 'Jean' },
+      isUserLoading: false,
+      isLoggedIn: true,
     })
 
     const { getByTestId } = renderModule({
@@ -140,16 +138,12 @@ describe('BusinessModule component', () => {
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
-    homeAPISpy.mockReset()
   })
 
   it('should not display a snackbar when user profile data is yet to be received but the email is not needed', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    homeAPISpy.mockImplementation(() => {
-      return {
-        isLoading: true,
-        data: undefined,
-      } as UseQueryResult<UserProfileResponse>
+    mockUseAuthContext.mockReturnValueOnce({
+      user: undefined,
+      isUserLoading: true,
     })
 
     const { getByTestId } = renderModule({
@@ -160,7 +154,6 @@ describe('BusinessModule component', () => {
     fireEvent.press(getByTestId('imageBusiness'))
     await waitForExpect(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
-    homeAPISpy.mockReset()
   })
 })
 
