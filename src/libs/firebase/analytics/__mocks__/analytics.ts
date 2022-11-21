@@ -31,6 +31,7 @@ export const analytics: typeof actualAnalytics = {
   logConfirmQuitIdentityCheck: jest.fn(),
   logConsultAccessibility: jest.fn(),
   logConsultArticleAccountDeletion: jest.fn(),
+  logConsultAuthenticationModal: jest.fn(),
   logConsultAvailableDates: jest.fn(),
   logConsultDescriptionDetails: jest.fn(),
   logConsultDisclaimerValidationMail: jest.fn(),

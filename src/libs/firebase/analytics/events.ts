@@ -26,6 +26,7 @@ export enum AnalyticsEvent {
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
   CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
+  CONSULT_AUTHENTICATION_MODAL = 'ConsultAuthenticationModal',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
   CONSULT_ARTICLE_ACCOUNT_DELETION = 'ConsultArticleAccountDeletion',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',

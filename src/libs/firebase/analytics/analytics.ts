@@ -80,6 +80,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultArticleAccountDeletion: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION),
+  logConsultAuthenticationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL, { offerId }),
   logConsultAvailableDates: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId }),
   logConsultDescriptionDetails: (offerId: number) =>

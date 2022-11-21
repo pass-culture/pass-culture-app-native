@@ -41,6 +41,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.AUTHENTICATION,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
   })
