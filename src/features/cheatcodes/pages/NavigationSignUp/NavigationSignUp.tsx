@@ -110,6 +110,7 @@ export function NavigationSignUp(): JSX.Element {
           <AuthenticationModal
             visible={authenticationModalVisible}
             hideModal={hideAuthenticationModal}
+            offerId={offerId}
           />
         </Row>
         <Row half>

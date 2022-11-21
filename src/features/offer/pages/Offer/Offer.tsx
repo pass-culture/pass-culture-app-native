@@ -131,6 +131,7 @@ export const Offer: FunctionComponent = () => {
       <AuthenticationModal
         visible={authenticationModalVisible}
         hideModal={hideAuthenticationModal}
+        offerId={offerResponse.id}
       />
     </Container>
   )

@@ -14,10 +14,11 @@ import { LINE_BREAK } from 'ui/theme/constants'
 type Props = {
   visible: boolean
   hideModal: () => void
+  offerId: number
   children?: never
 }
 
-export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
+export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideModal, offerId }) => {
   return (
     <AppModalWithIllustration
       visible={visible}
@@ -36,7 +37,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
           onBeforeNavigate={() => {
-            analytics.logProfilSignUp()
+            analytics.logSignUpFromAuthenticationModal(offerId)
             hideModal()
           }}
           fitContentWidth={theme.isDesktopViewport}

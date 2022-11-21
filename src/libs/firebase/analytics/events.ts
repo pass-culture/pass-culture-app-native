@@ -106,6 +106,7 @@ export enum AnalyticsEvent {
   SHARE_VENUE = 'ShareVenue',
   SIGN_IN_FROM_FAVORITE = 'SignInFromFavorite',
   SIGN_IN_FROM_OFFER = 'SignInFromOffer',
+  SIGN_UP_FROM_AUTHENTICATION_MODAL = 'SignUpFromAuthenticationModal',
   SIGN_UP_FROM_FAVORITE = 'SignUpFromFavorite',
   SIGN_UP_FROM_OFFER = 'SignUpFromOffer',
   SIGN_UP_TOO_YOUNG = 'SignUpTooYoung',
