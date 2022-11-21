@@ -1,6 +1,6 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { Bookings } from 'features/bookings/pages/Bookings'
+import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
