@@ -153,6 +153,7 @@ describe('useSelectHomepageEntry', () => {
           user,
           setIsLoggedIn: jest.fn(),
           refetchUser: jest.fn(),
+          isUserLoading: false,
         })
         mockUseUserHasBookings.mockReturnValueOnce(hasBookings)
         mockGetAvailableCredit.mockReturnValueOnce(credit)
@@ -191,6 +192,7 @@ describe('useSelectHomepageEntry', () => {
           user: underageBeneficiaryUser,
           setIsLoggedIn: jest.fn(),
           refetchUser: jest.fn(),
+          isUserLoading: false,
         })
       })
 
@@ -245,6 +247,7 @@ describe('useSelectHomepageEntry', () => {
           user,
           setIsLoggedIn: jest.fn(),
           refetchUser: jest.fn(),
+          isUserLoading: false,
         })
         mockGetAvailableCredit.mockReturnValueOnce(credit)
       })

@@ -20,6 +20,7 @@ export interface IAuthContext {
   setIsLoggedIn: (isLoggedIn: boolean) => void
   user?: UserProfileResponse
   refetchUser: () => Promise<QueryObserverResult<UserProfileResponse, unknown>>
+  isUserLoading: boolean
 }
 
 export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
@@ -45,6 +46,7 @@ export const AuthContext = React.createContext<IAuthContext>({
   setIsLoggedIn: () => undefined,
   user: undefined,
   refetchUser: async () => ({} as QueryObserverResult<UserProfileResponse>),
+  isUserLoading: false,
 })
 
 export function useAuthContext(): IAuthContext {
@@ -55,7 +57,11 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
-  const { data: user, refetch: refetchUser } = useUserProfileInfo(isLoggedIn)
+  const {
+    data: user,
+    refetch: refetchUser,
+    isLoading: isUserLoading,
+  } = useUserProfileInfo(isLoggedIn)
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
@@ -96,8 +102,8 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
   const value = useMemo(
-    () => ({ isLoggedIn, setIsLoggedIn, user, refetchUser }),
-    [isLoggedIn, setIsLoggedIn, user, refetchUser]
+    () => ({ isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading }),
+    [isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading]
   )
 
   if (loading) return null
