@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 import { useUserProfileInfo } from 'features/profile/api'
@@ -26,10 +25,9 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
   style,
 }) => {
   const { data: user } = useUserProfileInfo()
-  const { data: settings } = useAppSettings()
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
-  const propertiesLabels = getBookingLabels(booking, properties, settings ?? null)
+  const propertiesLabels = getBookingLabels(booking, properties)
 
   const renderRowTitle = (title: string) => <Title>{title}</Title>
 

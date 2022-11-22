@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 
-import { SettingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
@@ -11,7 +10,7 @@ describe('getBookingLabels', () => {
   it('should return the correct dateLabel for permanent bookings', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isPermanent: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({ dateLabel: 'Permanent', locationLabel: '', withdrawLabel: '' })
   })
@@ -19,7 +18,7 @@ describe('getBookingLabels', () => {
   it('should not return the location for digital bookings', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isDigital: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels.locationLabel).toEqual('')
   })
@@ -27,7 +26,7 @@ describe('getBookingLabels', () => {
   it('should return the correct date and location for events', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isEvent: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
@@ -40,7 +39,7 @@ describe('getBookingLabels', () => {
     mockdate.set(new Date('2021-03-15T18:00:00')) // 2 hours before
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isEvent: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
@@ -53,7 +52,7 @@ describe('getBookingLabels', () => {
     mockdate.set(new Date('2021-03-14T19:00:00')) // 25 hours before
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isEvent: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
@@ -69,7 +68,7 @@ describe('getBookingLabels', () => {
       expirationDate: '2021-03-15T23:00:00', // expires in 2 hours
     } as unknown as Booking
     const properties = { isPhysical: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'À retirer avant le 15 mars 2021',
@@ -85,7 +84,7 @@ describe('getBookingLabels', () => {
       expirationDate: '2021-03-16T22:00:00', // expires in 25 hours
     } as unknown as Booking
     const properties = { isPhysical: true }
-    const labels = getBookingLabels(booking, properties, null)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'À retirer avant le 16 mars 2021',
@@ -97,8 +96,7 @@ describe('getBookingLabels', () => {
   it('should return the correct dateLabel for digital bookings with activation codes but no expiration date', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isDigital: true, hasActivationCode: true }
-    const settings = { autoActivateDigitalBookings: true } as SettingsResponse
-    const labels = getBookingLabels(booking, properties, settings)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({ dateLabel: 'À activer', locationLabel: '', withdrawLabel: '' })
   })
@@ -109,8 +107,7 @@ describe('getBookingLabels', () => {
       activationCode: { expirationDate: '2021-03-15T23:01:37.925926' },
     } as unknown as Booking
     const properties = { isDigital: true, hasActivationCode: true }
-    const settings = { autoActivateDigitalBookings: true } as SettingsResponse
-    const labels = getBookingLabels(booking, properties, settings)
+    const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
       dateLabel: 'À activer avant le 15 mars 2021',
