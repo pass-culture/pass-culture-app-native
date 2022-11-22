@@ -4,6 +4,7 @@ import {
   UserProfileResponse,
   YoungStatusType,
   YoungStatusResponse,
+  SubscriptionStatus,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
@@ -104,9 +105,34 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
+  if (userStatus.statusType === YoungStatusType.eligible) {
+    const common = {
+      wording: 'Réserver l’offre',
+      isDisabled: false,
+    }
+    switch (userStatus.subscriptionStatus) {
+      case SubscriptionStatus.has_to_complete_subscription:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+        }
+
+      case SubscriptionStatus.has_subscription_pending:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+        }
+
+      case SubscriptionStatus.has_subscription_issues:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.ERROR_APPLICATION,
+        }
+    }
+  }
 
   // Non beneficiary or educational offer or unavailable offer for user
+  const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
   if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
     if (!externalTicketOfficeUrl) return { wording: undefined }
 

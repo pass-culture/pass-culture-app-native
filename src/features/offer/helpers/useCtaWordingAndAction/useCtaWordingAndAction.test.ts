@@ -93,6 +93,74 @@ describe('getCtaWordingAndAction', () => {
     })
   })
 
+  describe('Eligible but non Beneficiary yet', () => {
+    it('should return finish subscription modal when user has not finished subscription', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+        },
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+        wording: 'Réserver l’offre',
+      })
+    })
+
+    it('should return application pending modal when user is waiting for his application to complete', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_subscription_pending,
+        },
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+        wording: 'Réserver l’offre',
+      })
+    })
+
+    it('should return application error modal when user has an issue with his application', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_subscription_issues,
+        },
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.ERROR_APPLICATION,
+        wording: 'Réserver l’offre',
+      })
+    })
+  })
+
   describe('Non Beneficiary', () => {
     it.each`
       isEvent  | url                      | bookedOffers                 | expected                        | disabled | modalToDisplay

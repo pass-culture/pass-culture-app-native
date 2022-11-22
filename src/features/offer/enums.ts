@@ -1,6 +1,9 @@
 export enum OfferModal {
-  BOOKING,
+  APPLICATION_PROCESSING,
   AUTHENTICATION,
+  BOOKING,
+  ERROR_APPLICATION,
+  FINISH_SUBSCRIPTION,
 }
 
 export enum ReportSteps {
