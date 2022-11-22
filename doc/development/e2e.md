@@ -144,13 +144,15 @@ It will use capability `appium:noReset` to `true`, read more here: https://githu
 To build application:
 
 ```bash
+cd ios
 scheme=PassCulture-Staging
 xcodebuild -workspace ios/PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release
 last_build_dir=$(ls -tr  ~/Library/Developer/Xcode/DerivedData/ | grep PassCulture | tail -n1)
 ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ./PassCulture.zip
+cd ..
 
 # you can now run tests
-APPIUM_APP=./PassCulture.zip yarn e2e:ios.app
+APPIUM_APP=./ios/PassCulture.zip yarn e2e:ios.app
 ```
 
 > It is not possible to test the iOS application using the development environment
