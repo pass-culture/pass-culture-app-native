@@ -32,11 +32,32 @@ jest.mock('features/auth/AuthContext', () => ({
 
 jest.mock('libs/geolocation')
 
+const modules = [
+  {
+    search: [
+      {
+        categories: ['Livres'],
+        hitsPerPage: 10,
+        isDigital: false,
+        isGeolocated: false,
+        title: 'Playlist de livres',
+      },
+    ],
+    display: {
+      layout: 'two-items',
+      minOffers: 1,
+      subtitle: 'Un sous-titre',
+      title: 'Playlist de livres',
+    },
+    moduleId: '1M8CiTNyeTxKsY3Gk9wePI',
+  },
+]
+
 describe('Home component', () => {
   useRoute.mockReturnValue({ params: {} })
 
   mockUseHomepageData.mockReturnValue({
-    modules: [],
+    modules,
     homeEntryId: 'fakeEntryId',
   })
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -54,6 +75,17 @@ describe('Home component', () => {
         digital: { initial: 20000, remaining: 19600 },
       },
     }
+  })
+
+  it('should render skeleton when there are no modules to display', () => {
+    mockUseHomepageData.mockReturnValueOnce({
+      modules: [],
+      homeEntryId: 'fake-entry-id',
+      thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
+    })
+
+    const home = render(<Home />)
+    expect(home).toMatchSnapshot()
   })
 
   it('should render correctly without login modal', async () => {
@@ -140,8 +172,8 @@ describe('Home N-1', () => {
   it('should render correctly', () => {
     useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
     mockUseHomepageData.mockReturnValueOnce({
-      modules: [],
-      homeEntryId: 'fake-entry-id',
+      modules,
+      homeEntryId: 'fakeEntryId',
       thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
     })
 
@@ -171,7 +203,7 @@ describe('Home component - Analytics', () => {
     expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
-    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
     expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage')
   })
 
@@ -181,7 +213,7 @@ describe('Home component - Analytics', () => {
 
     // 1st scroll to bottom => trigger
     scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
-    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
 
     jest.clearAllMocks()
 

@@ -41,7 +41,30 @@ exports[`Home N-1 should render correctly 1`] = `
         />
       }
       bounces={true}
-      data={Array []}
+      data={
+        Array [
+          Object {
+            "display": Object {
+              "layout": "two-items",
+              "minOffers": 1,
+              "subtitle": "Un sous-titre",
+              "title": "Playlist de livres",
+            },
+            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
+            "search": Array [
+              Object {
+                "categories": Array [
+                  "Livres",
+                ],
+                "hitsPerPage": 10,
+                "isDigital": false,
+                "isGeolocated": false,
+                "title": "Playlist de livres",
+              },
+            ],
+          },
+        ]
+      }
       getItem={[Function]}
       getItemCount={[Function]}
       initialNumToRender={10}
@@ -198,6 +221,10 @@ exports[`Home N-1 should render correctly 1`] = `
         </View>
         <View
           onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
         >
           <View
             customHeight={72}
@@ -262,7 +289,30 @@ exports[`Home component should render correctly without login modal 1`] = `
         />
       }
       bounces={true}
-      data={Array []}
+      data={
+        Array [
+          Object {
+            "display": Object {
+              "layout": "two-items",
+              "minOffers": 1,
+              "subtitle": "Un sous-titre",
+              "title": "Playlist de livres",
+            },
+            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
+            "search": Array [
+              Object {
+                "categories": Array [
+                  "Livres",
+                ],
+                "hitsPerPage": 10,
+                "isDigital": false,
+                "isGeolocated": false,
+                "title": "Playlist de livres",
+              },
+            ],
+          },
+        ]
+      }
       getItem={[Function]}
       getItemCount={[Function]}
       initialNumToRender={10}
@@ -355,6 +405,233 @@ exports[`Home component should render correctly without login modal 1`] = `
                 }
               >
                 Toute la culture à portée de main
+              </Text>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`Home component should render skeleton when there are no modules to display 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
+  <View
+    hide={false}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
+      ListHeaderComponent={
+        <Header
+          isThematicHome={false}
+          thematicHeader={
+            Object {
+              "subtitle": "HeaderSubtitle",
+              "title": "HeaderTitle",
+            }
+          }
+        />
+      }
+      bounces={true}
+      data={Array []}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={1000}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "opacity": 1,
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                  "position": "absolute",
+                  "right": 8,
+                  "top": 28,
+                  "userSelect": "auto",
+                  "zIndex": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                CheatMenu
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginBottom": 8,
+                    "marginHorizontal": 24,
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                customHeight={16}
+                enable={true}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 26,
+                      "lineHeight": 34,
+                    },
+                  ]
+                }
+              >
+                Bonjour Jean
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Tu as 496 € sur ton pass
               </Text>
               <View
                 numberOfSpaces={6}
