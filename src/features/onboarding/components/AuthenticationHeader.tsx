@@ -1,10 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { navigateToHome } from 'features/navigation/helpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -12,20 +10,15 @@ import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
 
 export const AuthenticationHeader: React.FC = () => {
-  const { reset } = useNavigation<UseNavigationType>()
   const { top } = useSafeAreaInsets()
-
-  const goToHome = useCallback(() => {
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-  }, [reset])
 
   return (
     <Container top={top}>
       <ButtonContainer>
-        <BackButton onGoBack={goToHome} />
+        <BackButton onGoBack={navigateToHome} />
       </ButtonContainer>
       <ButtonContainer>
-        <StyledTouchable accessibilityLabel="Fermer la page" onPress={goToHome}>
+        <StyledTouchable accessibilityLabel="Fermer la page" onPress={navigateToHome}>
           <CloseIcon />
         </StyledTouchable>
       </ButtonContainer>
