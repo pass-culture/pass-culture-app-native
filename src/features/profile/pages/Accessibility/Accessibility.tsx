@@ -37,5 +37,5 @@ export function Accessibility() {
 }
 
 const StyledSeparator = styled(Separator)({
-  marginVertical: getSpacing(4),
+  marginVertical: getSpacing(6),
 })

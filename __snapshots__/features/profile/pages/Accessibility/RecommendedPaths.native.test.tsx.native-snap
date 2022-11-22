@@ -483,7 +483,10 @@ Array [
       
 
 
-      Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses identifiants EduConnect ou de passer par la plateforme Démarches simplifiées. Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
+      Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses identifiants EduConnect ou de passer par la plateforme Démarches simplifiées.
+      
+
+      Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
     </Text>
     <View
       numberOfSpaces={6}

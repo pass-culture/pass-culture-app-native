@@ -7,7 +7,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
+import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
   return (
@@ -35,10 +35,11 @@ export function RecommendedPaths() {
         </VerticalUl>
         {DOUBLE_LINE_BREAK}
         Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses
-        identifiants EduConnect ou de passer par la plateforme Démarches simplifiées. Ces sites
-        étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de
-        l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu
-        dans le temps.
+        identifiants EduConnect ou de passer par la plateforme Démarches simplifiées.
+        {LINE_BREAK}
+        Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère
+        de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est
+        maintenu dans le temps.
       </Typo.Body>
     </PageProfileSection>
   )

@@ -292,7 +292,7 @@ Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
-            "marginVertical": 16,
+            "marginVertical": 24,
             "width": "100%",
           },
         ]
@@ -389,7 +389,7 @@ Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
-            "marginVertical": 16,
+            "marginVertical": 24,
             "width": "100%",
           },
         ]
@@ -486,7 +486,7 @@ Array [
           Object {
             "backgroundColor": "#F1F1F4",
             "height": 1,
-            "marginVertical": 16,
+            "marginVertical": 24,
             "width": "100%",
           },
         ]
