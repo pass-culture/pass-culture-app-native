@@ -3,13 +3,15 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import "RNSplashScreen.h" // react-native-splash-screen
+#import "RNSplashScreen.h" // react-native-lottie-splash-screen
 #import <CodePush/CodePush.h> // @codepush
 #import "RNBatch.h"
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
 #import "ReactNativeConfig.h"
+
+#import <PassCulture-Swift.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -75,7 +77,18 @@ static void InitializeFlipper(UIApplication *application) {
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
 
-  [RNSplashScreen show]; // react-native-splash-screen
+// react-native-lottie-splash-screen
+  Dynamic *t = [Dynamic new];
+  UIView *animationUIView = (UIView *)[t createAnimationViewWithRootView:rootView lottieName:@"splashscreen"];
+
+  // register LottieSplashScreen to RNSplashScreen
+  [RNSplashScreen showLottieSplash:animationUIView inRootView:rootView];
+  // casting UIView type to AnimationView type
+  AnimationView *animationView = (AnimationView *) animationUIView;
+  // play lottie animation
+  [t playWithAnimationView:animationView];
+  // We want the animation layout to be forced to remove when hide is called, so we use this
+  [RNSplashScreen setAnimationFinished:true];
   return YES;
 }
 
