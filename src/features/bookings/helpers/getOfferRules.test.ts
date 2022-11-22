@@ -5,15 +5,14 @@ import { getOfferRules } from 'features/bookings/helpers'
 describe('getOfferRules', () => {
   const booking = bookingsSnap.ongoing_bookings[1]
 
-  it('should return the correct message if hasActivationCode && activationCodeFeatureEnabled', () => {
+  it('should return the correct message when hasActivationCode is true', () => {
     const properties = {
       hasActivationCode: true,
       isDigital: false,
       isPhysical: false,
       isEvent: false,
     }
-    const activationCodeFeatureEnabled = true
-    const offerRules = getOfferRules(properties, undefined, activationCodeFeatureEnabled)
+    const offerRules = getOfferRules(properties, undefined)
     expect(offerRules).toEqual(
       'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
     )

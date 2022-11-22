@@ -20,9 +20,6 @@ jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({ data: { autoActivateDigitalBookings: false } })),
-}))
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 

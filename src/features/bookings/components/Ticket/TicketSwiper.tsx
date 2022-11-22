@@ -20,10 +20,10 @@ const INTERVAL = getSpacing(SEPARATOR_VALUE)
 const keyExtractor = (item: ReactElement<TicketsProps>, index: number) =>
   `${item.props.booking.stock.offer.name}-${index}`
 
-export function TicketSwiper({ booking, activationCodeFeatureEnabled }: TicketsProps) {
+export function TicketSwiper({ booking }: TicketsProps) {
   const { isTouch, appContentWidth, ticket } = useTheme()
   const flatListRef = useRef<FlatList>(null)
-  const { tickets } = getTickets({ booking, activationCodeFeatureEnabled })
+  const { tickets } = getTickets({ booking })
   const [currentIndex, setCurrentIndex] = useState(1)
 
   const NUMBER_OF_TICKETS = tickets.length ?? 0

@@ -2,13 +2,12 @@ import { getTickets } from 'features/bookings/components/Ticket/getTickets'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 
 const booking = bookingsSnap.ongoing_bookings[1]
-const activationCodeFeatureEnabled = true
 
 describe('getTickets', () => {
   it('should not display any ticket when external bookings is null', () => {
     booking.externalBookings = null
 
-    const { tickets } = getTickets({ booking, activationCodeFeatureEnabled })
+    const { tickets } = getTickets({ booking })
 
     expect(tickets).toEqual([])
   })
@@ -16,7 +15,7 @@ describe('getTickets', () => {
   it('should display ticket without external booking when there is no external bookings', () => {
     booking.externalBookings = []
 
-    const { tickets } = getTickets({ booking, activationCodeFeatureEnabled })
+    const { tickets } = getTickets({ booking })
 
     expect(tickets.length).toEqual(1)
   })
@@ -27,7 +26,7 @@ describe('getTickets', () => {
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
     ]
 
-    const { tickets } = getTickets({ booking, activationCodeFeatureEnabled })
+    const { tickets } = getTickets({ booking })
 
     expect(tickets.length).toEqual(2)
   })
@@ -35,7 +34,7 @@ describe('getTickets', () => {
   it('should not display the seat number if there are one external bookings', () => {
     booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
 
-    const { tickets } = getTickets({ booking, activationCodeFeatureEnabled })
+    const { tickets } = getTickets({ booking })
     const ticket = tickets[0]
 
     expect(ticket.props.externalBookings.seatIndex).toEqual(undefined)
@@ -47,7 +46,7 @@ describe('getTickets', () => {
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: null },
     ]
 
-    const { tickets } = getTickets({ booking, activationCodeFeatureEnabled })
+    const { tickets } = getTickets({ booking })
 
     const firstTicket = tickets[0]
     const secondTicket = tickets[1]
@@ -64,7 +63,6 @@ describe('getTickets', () => {
 
     const { tickets } = getTickets({
       booking,
-      activationCodeFeatureEnabled,
     })
 
     expect(tickets.length).toEqual(2)
@@ -81,7 +79,6 @@ describe('getTickets', () => {
 
     const { tickets } = getTickets({
       booking,
-      activationCodeFeatureEnabled,
       maxNumberOfTicketsToDisplay,
     })
 
