@@ -17,7 +17,7 @@ export const OnboardingAuthentication: FunctionComponent = () => (
     <Spacer.Flex />
     <Gradient />
     <Content>
-      <StyledTitle1>Bienvenue sur le&nbsp;pass&nbsp;Culture</StyledTitle1>
+      <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
       <Spacer.Column numberOfSpaces={4} />
       <StyledButtonText>Tu as entre 15 et 18 ans&nbsp;?</StyledButtonText>
       <Spacer.Column numberOfSpaces={2} />
