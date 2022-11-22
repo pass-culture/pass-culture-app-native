@@ -1,20 +1,11 @@
 import React from 'react'
 
-import { initialSearchState } from 'features/search/context/reducer'
 import { GeoCoordinates } from 'libs/geolocation'
 import { render, superFlushWithAct } from 'tests/utils'
 
 import { SearchResults } from './SearchResults'
 
 jest.mock('react-query')
-
-const mockSearchState = initialSearchState
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: jest.fn(),
-  }),
-}))
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true

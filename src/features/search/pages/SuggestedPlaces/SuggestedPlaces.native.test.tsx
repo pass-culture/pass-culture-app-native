@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { initialSearchState as mockInitialSearchState } from 'features/search/context/reducer'
 import {
   keyExtractor,
   SuggestedPlaces,
@@ -10,13 +9,6 @@ import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
 import { fireEvent, render } from 'tests/utils'
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockInitialSearchState,
-    dispatch: jest.fn(),
-  }),
-}))
 
 let mockPlaces: SuggestedPlace[] = []
 const mockVenues: SuggestedVenue[] = []

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { initialSearchState } from 'features/search/context/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
@@ -10,20 +9,12 @@ import { fireEvent, render } from 'tests/utils'
 
 import { Hit } from './Hit'
 
-const mockSearchState = initialSearchState
-
 const hit = mockedAlgoliaResponse.hits[0]
 const offerId = +hit.objectID
 
 let mockDistance: string | null = null
 jest.mock('libs/geolocation/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
-}))
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-  }),
 }))
 
 const spyLogClickOnOffer = jest.fn()

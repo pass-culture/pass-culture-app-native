@@ -1,18 +1,8 @@
 import React from 'react'
 
-import { initialSearchState } from 'features/search/context/reducer'
 import { render } from 'tests/utils/web'
 
 import { CategoriesModal } from './CategoriesModal'
-
-const mockSearchState = initialSearchState
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: jest.fn(),
-  }),
-}))
 
 describe('Categories component', () => {
   it('should display mobile header modal if mobile viewport', () => {

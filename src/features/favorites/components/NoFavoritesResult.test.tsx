@@ -10,13 +10,6 @@ import { fireEvent, render } from 'tests/utils'
 
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
-const mockDispatchSearch = jest.fn()
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    dispatch: mockDispatchSearch,
-  }),
-}))
 
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({

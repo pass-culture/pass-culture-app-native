@@ -10,14 +10,6 @@ import { fireEvent, render } from 'tests/utils'
 
 import { NoBookingsView } from './NoBookingsView'
 
-const mockDispatchSearch = jest.fn()
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    dispatch: mockDispatchSearch,
-  }),
-}))
-
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
