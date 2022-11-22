@@ -1,0 +1,3431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccessibilityActionPlan should render correctly 1`] = `
+Array [
+  <View
+    accessibilityRole="header"
+    style={
+      Array [
+        Object {
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      height={64}
+      style={
+        Array [
+          Object {
+            "height": 64,
+          },
+        ]
+      }
+    />
+    <View
+      backgroundColor="#eb0055"
+      isAbsolutePosition={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#eb0055",
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        size="small"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": 48,
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            positionInHeader="left"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-start",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              accessibilityLabel="Revenir en arrière"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="backButton"
+            >
+              <View
+                height={24}
+                testID="icon-back"
+                width={24}
+              >
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "display": "none",
+                    },
+                  ]
+                }
+              >
+                Retour
+              </Text>
+            </View>
+          </View>
+          <Text
+            color="#ffffff"
+            numberOfLines={1}
+            size="small"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Schéma pluriannuel
+          </Text>
+          <View
+            positionInHeader="right"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "flex-end",
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "paddingHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Italic",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Schéma pluriannuel d’accessibilité 2022 - 2024
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        L’article 47 de la loi n° 2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes rend obligatoire à tout service de communication publique en ligne d’être accessible à tous.
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Définition de l’accessibilité numérique
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques, supports multimédias, intranets d’entreprise, applications mobiles…), quelle que soit sa façon de naviguer.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        L’accessibilité numérique est indispensable aux personnes en situation de handicap pour :
+        
+
+
+        <View
+          accessibilityRole="list"
+          style={
+            Array [
+              Object {
+                "flexDirection": "column",
+                "paddingLeft": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                s'informer ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                communiquer ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                accomplir des démarches administratives ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                mener une activité professionnelle…
+              </Text>
+            </View>
+          </View>
+        </View>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        L’accessibilité numérique profite à tous : aux personnes âgées, aux personnes en situation de handicap temporaire ou permanent, aux personnes peu à l’aise avec Internet…
+        
+
+        L’accessibilité numérique s’inscrit dans une démarche d’égalité et constitue un enjeu politique et social fondamental afin de garantir à tous, sans discrimination, le même accès à l’information et aux services en ligne.
+        
+
+        L’accessibilité numérique est un domaine transverse qui concerne toutes les personnes impliquées dans la création, la maintenance et l’utilisation des dispositifs numériques : décideurs, chefs de projet, graphistes, développeurs, producteurs de contenus.
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Politique d’accessibilité
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        L’accessibilité numérique est au cœur des préoccupations liées au développement ou à la mise à disposition de sites web ou d’applications tant auprès du public que des personnels internes de la SAS pass Culture.
+        
+
+        Cette volonté s’illustre par l’élaboration de ce schéma pluriannuel d’accessibilité numérique associé à des plans annuels d’action, dans l’objectif d’accompagner la mise en conformité RGAA (Référentiel Général d’Amélioration de l’Accessibilité) et l’amélioration progressive des sites web et applications concernés.
+        
+
+
+        L’élaboration, le suivi et la mise à jour de ce schéma pluriannuel sont placés sous la responsabilité du pôle Accessibilité.
+        
+
+
+        Ses missions sont :
+        
+
+
+        <View
+          accessibilityRole="list"
+          style={
+            Array [
+              Object {
+                "flexDirection": "column",
+                "paddingLeft": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                accompagner les équipes internes par des actions notamment de formation ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                faire une veille sur les évolutions réglementaires.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Ressources humaines et financières affectées à l’accessibilité numérique
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Le pilotage et le suivi de la conformité au RGAA reviennent au pôle Accessibilité. Cette équipe transverse est notamment composée d’une personne en lien avec les publics, d’ingénieurs en informatique, d’une designeuse, et d’une personne dédiée à la conception du produit.
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Organisation de la prise en compte de l’accessibilité numérique
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        La prise en compte de l’accessibilité numérique nécessite :
+        
+
+
+        <View
+          accessibilityRole="list"
+          style={
+            Array [
+              Object {
+                "flexDirection": "column",
+                "paddingLeft": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                de poursuivre l’accompagnement des équipes ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés.
+              </Text>
+            </View>
+          </View>
+        </View>
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Les éléments ci-dessous décrivent les points importants sur lesquels la SAS pass Culture s’appuiera pour améliorer l’accessibilité numérique de l’ensemble de ses sites web et applications.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Action de formation et de sensibilisation
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Tout au long de la période d’application de ce schéma, des actions de formation et de sensibilisation vont être organisées.
+          
+
+          Elles permettront aux personnels intervenant sur les sites, les applications mais aussi sur les supports de communication de développer, éditer et mettre en ligne des contenus accessibles.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Plus précisément, notre action consiste à :
+        
+
+
+        <View
+          accessibilityRole="list"
+          style={
+            Array [
+              Object {
+                "flexDirection": "column",
+                "paddingLeft": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "marginLeft": 12,
+                    "marginTop": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "height": 20,
+                      "justifyContent": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  borderColor="#161617"
+                  fillColor="#161617"
+                  height={3}
+                  width={3}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 12,
+                    },
+                  ]
+                }
+              >
+                former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles.
+              </Text>
+            </View>
+          </View>
+        </View>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Recours à des compétences externes
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Chaque fois que nécessaire, la SAS pass Culture fait appel à des intervenants externes afin de l’accompagner dans la prise en compte de l’accessibilité. Cela recouvre par exemple les actions de sensibilisation et de formation, les actions d’accompagnements et plus particulièrement les actions d’audits et de certification des sites web et applications concernés.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Prise en compte de l’accessibilité numérique dans les projets
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Les objectifs d’accessibilité et de conformité au RGAA sont inscrits et rappelés dès le début des projets dont ils constitueront un axe majeur et une exigence de base.
+          
+
+          De la même manière, ces objectifs et ces exigences sont rappelés dans les éventuelles conventions établies avec nos partenaires.
+          
+
+          Comme pour le RGPD, l’accessibilité est citée dans la réflexion préalable et nécessaire à l’engagement des projets.
+          
+
+          Pour favoriser la prise en compte de l’accessibilité numérique dans les projets, des composants normés, des modèles accessibles et une documentation dédiée et évolutive sont mis à la disposition des équipes projets.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Tests utilisateurs
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Si des tests utilisateurs sont organisés, en phase de conception, de validation ou d’évolution d’un site web ou d’une application, le panel d’utilisateurs constitué comprendra dans toute la mesure du possible des personnes en situation de handicap.
+          
+
+          Le Conseil national consultatif des personnes handicapées accompagne en particulier le pass Culture sur cette dimension.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Prise en compte de l’accessibilité dans les procédures de marchés
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          L’accessibilité numérique et la conformité au RGAA doivent être prise en compte et participer à l’évaluation de la qualité de l’offre d’un prestataire lors de la commande de travaux au travers des appels d’offres notamment.
+          
+
+          Les procédures d’élaboration des marchés ainsi que les règles d’évaluation des candidatures seront adaptées pour davantage prendre en compte les exigences de conformité au RGAA.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Recrutement
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Une attention particulière devra être portée sur les compétences en matière d’accessibilité numérique des personnels intervenant sur les services numériques, lors de la création des fiches de postes et les procédures de recrutement.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Traitement des retours utilisateurs
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Conformément aux dispositions prévues par le RGAA et aux attentes légitimes des utilisateurs, un moyen de contact va être mis en place, au fur et à mesure des travaux de mise en conformité, sur chaque site ou application permettant aux utilisateurs en situation de handicap de signaler ses difficultés.
+          
+
+          Afin de répondre à ses demandes, la mise en place d’une procédure spécifique d’assistance va être étudiée avec l’ensemble des services et des personnels impliqués.
+          
+
+
+          Dans l’attente les demandes seront traitées par le pôle Support, en étroite collaboration avec le pôle Accessibilité, responsable de l’élaboration, la mise en place et le suivi de ce schéma pluriannuel.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="support@passculture.app"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
+        >
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          support@passculture.app
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Processus de contrôle et de validation
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Chaque site ou application fera l’objet lors de la mise en ligne initiale, lors d’une mise à jour substantielle, d’une refonte ou à la fin des opérations de mises aux normes, d’un contrôle permettant d’établir une déclaration de conformité conformément aux termes de la loi.
+          
+
+          Ces opérations de contrôles, réalisées en interne ou par l’intermédiaire de prestataires spécialisés, destinés à l’établissement ou la mise à jour des déclarations de conformité interviennent en complément des opérations habituelles de recette et contrôles intermédiaires qui sont organisées tout au long de la vie des projets.
+        </Text>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Périmètre technique et fonctionnel
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Recensement
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          La SAS pass Culture gère 4 sites Internet et deux applications (IOS et Android) à destination de ses utilisateurs.
+          
+
+          Elle gère également de nombreux outils et applications à destination de ses collaborateurs.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Évaluation et qualification
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Chaque site ou application a été qualifié selon des critères tels que :
+          
+
+          <View
+            accessibilityRole="list"
+            style={
+              Array [
+                Object {
+                  "flexDirection": "column",
+                  "paddingLeft": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "height": 20,
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    borderColor="#161617"
+                    fillColor="#161617"
+                    height={3}
+                    width={3}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 12,
+                      },
+                    ]
+                  }
+                >
+                  la fréquentation ;
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "height": 20,
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    borderColor="#161617"
+                    fillColor="#161617"
+                    height={3}
+                    width={3}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 12,
+                      },
+                    ]
+                  }
+                >
+                  le service rendu ;
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "height": 20,
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    borderColor="#161617"
+                    fillColor="#161617"
+                    height={3}
+                    width={3}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 12,
+                      },
+                    ]
+                  }
+                >
+                  la criticité ;
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "height": 20,
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    borderColor="#161617"
+                    fillColor="#161617"
+                    height={3}
+                    width={3}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 12,
+                      },
+                    ]
+                  }
+                >
+                  le cycle de vie (date de la prochaine refonte) ;
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "marginLeft": 12,
+                      "marginTop": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "height": 20,
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    borderColor="#161617"
+                    fillColor="#161617"
+                    height={3}
+                    width={3}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 12,
+                      },
+                    ]
+                  }
+                >
+                  les technologies employées.
+                </Text>
+              </View>
+            </View>
+          </View>
+          
+
+          Des évaluations rapides de l’accessibilité, permettant de servir de socle à l’élaboration des interventions d’audits ont été ou vont être réalisées sur l’ensemble des sites et applications concernées.
+          
+
+          Ces évaluations portent sur un petit nombre de critères choisis pour leur pertinence en termes d’évaluation de la complexité et la faisabilité de la mise aux normes RGAA. L’annexe 1 (infra : « Annexe 1 : périmètre technique et fonctionnel public ») décrit les éléments pouvant être rendus publics du périmètre technique et fonctionnel. En effet, certaines applications peuvent ne pas être rendues publiques pour des raisons de sécurité ou de confidentialité par exemple.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Agenda planifié des interventions
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Compte tenu des informations recueillies lors de l’élaboration de ce schéma, la complexité des sites et applications, leur classement par ordre de priorité et leur évaluation en termes de faisabilité, les opérations de mise en conformité vont s’étaler sur les années 2021 à 2022 et au-delà.
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Plans annuels
+        
+
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Ce schéma pluriannuel sera accompagné de plans annuels d’actions qui décriront en détail les opérations mises en œuvre pour prendre en charge l’ensemble des besoins en termes d’accessibilité numérique de la SAS pass Culture.
+        </Text>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Annexe 1 : Périmètre technique et fonctionnel
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        La liste ci-dessous présente les sites et applications de la SAS pass Culture ouverts au public :
+        
+
+
+        Site institutionnel :
+        
+
+        <View
+          accessibilityLabel="https://pass.culture.fr/"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="https://pass.culture.fr/"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            https://pass.culture.fr/
+          </Text>
+        </View>
+        
+
+        Application Utilisateurs :
+        
+
+        <View
+          accessibilityLabel="https://passculture.app/accueil"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="https://passculture.app/accueil"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            https://passculture.app/accueil
+          </Text>
+        </View>
+        
+
+        Site acteurs culturels :
+        
+
+        <View
+          accessibilityLabel="https://passculture.pro/"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="https://passculture.pro/"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            https://passculture.pro/
+          </Text>
+        </View>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Plan annuel 2022
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityRole="list"
+        style={
+          Array [
+            Object {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Constitution du pôle Accessibilité
+              <Text
+                done={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Nomination de 2 personnes référentes sur l’accessibilité numérique
+              <Text
+                done={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Formation de l’ensemble des développeurs travaillant sur le présent site
+              <Text
+                done={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site
+              <Text
+                done={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Audit d’accessibilité pour le présent site
+              <Text
+                done={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Publication de la déclaration de mise en conformité pour le présent site
+              <Text
+                done={true}
+                style={
+                  Array [
+                    Object {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Rencontre avec des utilisateurs en situation de handicap
+              <Text
+                done={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Prochainement
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Formation du pôle Communication, Marketing, Recherche
+              <Text
+                done={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - Prochainement
+              </Text>
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Plan annuel 2023
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Italic",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        En cours de constitution
+      </Text>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
+]
+`;
