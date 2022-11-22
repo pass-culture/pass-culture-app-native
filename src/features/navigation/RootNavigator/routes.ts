@@ -35,6 +35,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { PageNotFound } from 'features/navigation/PageNotFound'
+import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -61,8 +62,9 @@ import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 import { Route } from './types'
 
 export const routes: Route[] = [
-  ...subscriptionRoutes,
+  ...accessibilityRoutes,
   ...culturalSurveyRoutes,
+  ...subscriptionRoutes,
   {
     name: 'Offer',
     component: Offer,

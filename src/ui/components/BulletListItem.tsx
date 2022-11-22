@@ -6,14 +6,20 @@ import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing, Typo } from 'ui/theme'
 
 // Use with Ul or VerticalUl to be accessible in web
-export const BulletListItem = ({ text, spacing }: { text: string; spacing?: number }) => {
+export const BulletListItem: React.FC<{
+  text?: string
+  spacing?: number
+}> = ({ text, spacing, children }) => {
   return (
     <Li>
       <ItemContainer spacing={spacing}>
         <BulletContainer>
           <Bullet />
         </BulletContainer>
-        <ListText>{text}</ListText>
+        <ListText>
+          {text}
+          {children}
+        </ListText>
       </ItemContainer>
     </Li>
   )

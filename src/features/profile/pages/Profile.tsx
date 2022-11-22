@@ -27,6 +27,7 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
@@ -185,9 +186,11 @@ const OnlineProfile: React.FC = () => {
             <Li>
               <Row
                 title="Accessibilité"
-                type="clickable"
-                externalNav={{ url: env.ACCESSIBILITY_LINK }}
-                icon={ExternalSite}
+                type="navigable"
+                navigateTo={{
+                  screen: 'Accessibility',
+                }}
+                icon={HandicapMental}
               />
             </Li>
             <Li>

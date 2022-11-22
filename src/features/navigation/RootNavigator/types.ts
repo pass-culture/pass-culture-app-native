@@ -14,6 +14,14 @@ export type Referrals =
   | 'exclusivity'
   | 'bookingimpossible'
 
+export type AccessibilityRootStackParamList = {
+  Accessibility: undefined
+  AccessibilityActionPlan: undefined
+  AccessibilityDeclaration: undefined
+  AccessibilityEngagement: undefined
+  RecommendedPaths: undefined
+}
+
 export type CulturalSurveyRootStackParamList = {
   NavigationCulturalSurvey: undefined
   CulturalSurveyIntro: undefined
@@ -156,8 +164,9 @@ export type RootStackParamList = {
   Venue: { id: number }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
-} & SubscriptionRootStackParamList &
-  CulturalSurveyRootStackParamList
+} & AccessibilityRootStackParamList &
+  CulturalSurveyRootStackParamList &
+  SubscriptionRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList
 
