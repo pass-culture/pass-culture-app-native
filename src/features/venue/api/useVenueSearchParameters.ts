@@ -1,7 +1,7 @@
 import { LocationType } from 'features/search/enums'
-import { MAX_RADIUS } from 'features/search/pages/reducer.helpers'
+import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState, SearchView } from 'features/search/types'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useGeolocation } from 'libs/geolocation'
 

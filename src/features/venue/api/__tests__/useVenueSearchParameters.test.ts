@@ -15,7 +15,9 @@ const invalidId = venue.id + 2
 jest.mock('features/venue/api/useVenue', () => ({
   useVenue: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
 }))
-jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
+  useMaxPrice: jest.fn(() => 300),
+}))
 
 describe('useVenueSearchParameters', () => {
   it('should retrieve the default search parameters', () => {

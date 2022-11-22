@@ -11,7 +11,9 @@ import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 jest.mock('features/auth/settings')
-jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
+  useMaxPrice: jest.fn(() => 300),
+}))
 
 const props = {
   title: "Image d'Adèle",

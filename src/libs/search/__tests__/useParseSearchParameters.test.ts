@@ -5,7 +5,9 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
 const mockMaxPrice = 172
-jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => mockMaxPrice) }))
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
+  useMaxPrice: jest.fn(() => mockMaxPrice),
+}))
 
 const mockPosition = { latitude: 2, longitude: 40 }
 jest.mock('libs/geolocation', () => ({

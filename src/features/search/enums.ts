@@ -184,3 +184,10 @@ export enum OfferType {
   EVENT = 'Sorties',
   THING = 'Bien physique',
 }
+
+export enum RadioButtonLocation {
+  EVERYWHERE = 'Partout',
+  AROUND_ME = 'Autour de moi',
+  CHOOSE_PLACE_OR_VENUE = 'Choisir un lieu',
+  NO_LOCATION = 'Aucune localisation',
+}

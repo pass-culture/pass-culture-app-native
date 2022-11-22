@@ -2,7 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchParametersQuery } from 'libs/algolia/types'
 
 import { Range } from '../../typesUtils/typeHelpers'

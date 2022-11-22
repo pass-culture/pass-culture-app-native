@@ -4,7 +4,6 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { initialSearchState as mockInitialSearchState } from 'features/search/pages/reducer'
 import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -24,10 +23,6 @@ jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = mocked(useVenueOffers)
-
-jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockInitialSearchState, dispatch: jest.fn() }),
-}))
 
 const defaultParams = {
   beginningDatetime: null,

@@ -83,7 +83,7 @@ jest.mock('libs/keychain')
 /* See the corresponding mock in libs/network/__mocks__ */
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('features/search/pages/SearchWrapper')
+jest.mock('features/search/context/SearchWrapper')
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 jest.mock('features/navigation/useGoBack', () =>

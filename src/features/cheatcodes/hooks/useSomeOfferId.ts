@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { initialSearchState } from 'features/search/pages/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { fetchOffer } from 'libs/algolia/fetchAlgolia/fetchOffer'
 
 const fakeOfferId = 283

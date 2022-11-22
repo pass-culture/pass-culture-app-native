@@ -6,7 +6,7 @@ import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
 import { ExclusivityPane } from 'features/home/contentful'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
-import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { GeoCoordinates } from 'libs/geolocation'
 import { renderHook } from 'tests/utils'
 
@@ -23,7 +23,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-jest.mock('features/search/utils/useMaxPrice')
+jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
 const mockedUseMaxPrice = mocked(useMaxPrice)
 mockedUseMaxPrice.mockReturnValue(300)
 
