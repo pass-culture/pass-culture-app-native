@@ -12,6 +12,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityActionPlan() {
   return (
@@ -24,7 +25,7 @@ export function AccessibilityActionPlan() {
         communication publique en ligne d’être accessible à tous.
       </Typo.Body>
       <StyledSeparator />
-      <Typo.Title4>Définition de l’accessibilité numérique</Typo.Title4>
+      <TitleText>Définition de l’accessibilité numérique</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         L’accessibilité numérique permet d’accéder aux contenus (sites web, documents bureautiques,
@@ -58,7 +59,7 @@ export function AccessibilityActionPlan() {
         contenus.
       </Typo.Body>
       <StyledSeparator />
-      <Typo.Title4>Politique d’accessibilité</Typo.Title4>
+      <TitleText>Politique d’accessibilité</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         L’accessibilité numérique est au cœur des préoccupations liées au développement ou à la mise
@@ -84,9 +85,9 @@ export function AccessibilityActionPlan() {
         </VerticalUl>
       </Typo.Body>
       <StyledSeparator />
-      <Typo.Title4>
+      <TitleText>
         Ressources humaines et financières affectées à l’accessibilité numérique
-      </Typo.Title4>
+      </TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         Le pilotage et le suivi de la conformité au RGAA reviennent au pôle Accessibilité. Cette
@@ -95,7 +96,7 @@ export function AccessibilityActionPlan() {
         produit.
       </Typo.Body>
       <StyledSeparator />
-      <Typo.Title4>Organisation de la prise en compte de l’accessibilité numérique</Typo.Title4>
+      <TitleText>Organisation de la prise en compte de l’accessibilité numérique</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>
         La prise en compte de l’accessibilité numérique nécessite&nbsp;:
@@ -240,7 +241,7 @@ export function AccessibilityActionPlan() {
         </Typo.Body>
       </Typo.ButtonText>
       <StyledSeparator />
-      <Typo.Title4>Périmètre technique et fonctionnel</Typo.Title4>
+      <TitleText>Périmètre technique et fonctionnel</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>
         Recensement
@@ -302,7 +303,7 @@ export function AccessibilityActionPlan() {
         </Typo.Body>
       </Typo.ButtonText>
       <StyledSeparator />
-      <Typo.Title4>Annexe 1&nbsp;: Périmètre technique et fonctionnel</Typo.Title4>
+      <TitleText>Annexe 1&nbsp;: Périmètre technique et fonctionnel</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         La liste ci-dessous présente les sites et applications de la SAS pass Culture ouverts au
@@ -339,7 +340,7 @@ export function AccessibilityActionPlan() {
         />
       </Typo.Body>
       <StyledSeparator />
-      <Typo.Title4>Plan annuel 2022</Typo.Title4>
+      <TitleText>Plan annuel 2022</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <VerticalUl>
         <BulletListItem text="Constitution du pôle Accessibilité">
@@ -368,13 +369,15 @@ export function AccessibilityActionPlan() {
         </BulletListItem>
       </VerticalUl>
       <StyledSeparator />
-      <Typo.Title4>Plan annuel 2023</Typo.Title4>
+      <TitleText>Plan annuel 2023</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <StyledBody>En cours de constitution</StyledBody>
       <Spacer.BottomScreen />
     </PageProfileSection>
   )
 }
+
+const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,

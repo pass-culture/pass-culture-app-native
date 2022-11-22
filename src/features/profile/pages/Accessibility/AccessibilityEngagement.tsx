@@ -9,6 +9,7 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityEngagement() {
   return (
@@ -36,7 +37,7 @@ export function AccessibilityEngagement() {
         en informatique, d’une designeuse, et d’une personne dédiée à la conception du produit.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4>L’inclusion au coeur de la stratégie technique</Typo.Title4>
+      <TitleText>L’inclusion au coeur de la stratégie technique</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         Deux audits évaluant l’accessibilité de la version web du pass Culture ont déjà été conduits
@@ -55,7 +56,7 @@ export function AccessibilityEngagement() {
         handicap.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4>Collaboration et sensibilisation</Typo.Title4>
+      <TitleText>Collaboration et sensibilisation</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         Au-delà de la technologie utilisée, les acteurs culturels avec lesquels nous travaillons
@@ -98,6 +99,8 @@ export function AccessibilityEngagement() {
     </PageProfileSection>
   )
 }
+
+const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,
