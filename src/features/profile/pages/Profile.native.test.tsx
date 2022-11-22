@@ -215,13 +215,12 @@ describe('Profile component', () => {
 
   describe('other section', () => {
     it('should navigate when the accessibility row is clicked', async () => {
-      const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       const { getByText } = await renderProfile()
 
       const row = getByText('Accessibilité')
       fireEvent.press(row)
 
-      expect(openUrl).toBeCalledWith(env.ACCESSIBILITY_LINK, undefined)
+      expect(mockNavigate).toBeCalledWith('Accessibility', undefined)
     })
 
     it('should navigate when the legal notices row is clicked', async () => {

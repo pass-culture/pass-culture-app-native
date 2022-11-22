@@ -1018,7 +1018,7 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         >
                           <View
-                            accessibilityLabel="Nouvelle fenêtre"
+                            fill="#161617"
                             height={24}
                             width={24}
                           >
@@ -1072,7 +1072,17 @@ exports[`Profile component should render correctly 1`] = `
                                 },
                               ]
                             }
-                          />
+                          >
+                            <View
+                              height={20}
+                              testID="section-row-navigable-icon"
+                              width={20}
+                            >
+                              <Text>
+                                section-row-navigable-icon-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
                         </View>
                       </View>
                     </View>
