@@ -1,23 +1,13 @@
 import React from 'react'
 
-import { initialSearchState } from 'features/search/context/reducer'
-import { render } from 'tests/utils/web'
+import { render, act } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
-
-const mockSearchState = initialSearchState
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: jest.fn(),
-  }),
-}))
 
 jest.mock('react-query')
 
 describe('PriceModal component', () => {
-  it('should display mobile header modal if mobile viewport', () => {
+  it('should display mobile header modal if mobile viewport', async () => {
     const { getByTestId } = render(
       <PriceModal
         title="Prix"
@@ -32,6 +22,8 @@ describe('PriceModal component', () => {
 
     const pageHeader = getByTestId('pageHeader')
 
-    expect(pageHeader).toBeTruthy()
+    await act(async () => {
+      expect(pageHeader).toBeTruthy()
+    })
   })
 })

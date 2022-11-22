@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
+import { LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SectionTitle } from 'features/search/helpers/titles'
 import { keyExtractor } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
@@ -23,7 +23,7 @@ import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
-import { LocationModal, RadioButtonLocation } from './LocationModal'
+import { LocationModal } from './LocationModal'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }

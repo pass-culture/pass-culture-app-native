@@ -12,7 +12,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
+import { LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { SectionTitle } from 'features/search/helpers/titles'
@@ -43,13 +43,6 @@ import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
-
-export enum RadioButtonLocation {
-  EVERYWHERE = 'Partout',
-  AROUND_ME = 'Autour de moi',
-  CHOOSE_PLACE_OR_VENUE = 'Choisir un lieu',
-  NO_LOCATION = 'Aucune localisation',
-}
 
 type LocationModalFormData = {
   locationChoice: RadioButtonLocation

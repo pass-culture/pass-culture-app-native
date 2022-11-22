@@ -1,8 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { ListCategoryButtonProps } from 'features/search/components/CategoriesButtonsDisplay/CategoriesButtonsDisplay'
 import { availableCategories } from 'features/search/helpers/availableCategories/availableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-
-import { ListCategoryButtonProps } from '../../components/CategoriesButtonsDisplay/CategoriesButtonsDisplay'
 
 export type OnPressCategory = (pressedCategory: SearchGroupNameEnumv2) => void
 

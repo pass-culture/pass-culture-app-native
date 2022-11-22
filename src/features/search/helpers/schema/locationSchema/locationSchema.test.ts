@@ -1,6 +1,6 @@
 import { ValidationError } from 'yup'
 
-import { RadioButtonLocation } from 'features/search/pages/modals/LocationModal/LocationModal'
+import { RadioButtonLocation } from 'features/search/enums'
 
 import { locationSchema } from './locationSchema'
 
