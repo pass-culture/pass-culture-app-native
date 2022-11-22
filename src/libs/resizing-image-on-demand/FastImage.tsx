@@ -6,11 +6,13 @@ import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageU
 
 type Props = Omit<FastImageProps, 'source'> & {
   url: string
+  height?: number
+  width?: number
   children?: never
 }
 
-export const FastImage: FunctionComponent<Props> = ({ url, ...imageProps }) => {
-  const resizingImageURL = useResizeImageURL(url)
+export const FastImage: FunctionComponent<Props> = ({ url, height, width, ...imageProps }) => {
+  const resizingImageURL = useResizeImageURL({ imageURL: url, height, width })
 
   const source = useMemo(() => ({ uri: resizingImageURL }), [resizingImageURL])
 

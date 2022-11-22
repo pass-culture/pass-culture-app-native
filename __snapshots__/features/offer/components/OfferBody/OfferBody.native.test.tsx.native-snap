@@ -42,7 +42,6 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       >
         <Image
           blurRadius={20}
-          height={312}
           resizeMode="cover"
           source={
             Object {
@@ -50,14 +49,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           }
           style={
-            Array [
-              Object {
-                "height": 312,
-                "width": 960,
-              },
-            ]
+            Object {
+              "height": 312,
+              "width": 960,
+            }
           }
-          width={960}
         />
         <View
           height={8}

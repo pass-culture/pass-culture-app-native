@@ -357,7 +357,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             >
                               <Image
                                 blurRadius={20}
-                                height={312}
                                 resizeMode="cover"
                                 source={
                                   Object {
@@ -365,14 +364,11 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   }
                                 }
                                 style={
-                                  Array [
-                                    Object {
-                                      "height": 312,
-                                      "width": 960,
-                                    },
-                                  ]
+                                  Object {
+                                    "height": 312,
+                                    "width": 960,
+                                  }
                                 }
-                                width={960}
                               />
                               <View
                                 height={8}
@@ -2445,7 +2441,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             >
                               <Image
                                 blurRadius={20}
-                                height={312}
                                 resizeMode="cover"
                                 source={
                                   Object {
@@ -2453,14 +2448,11 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 }
                                 style={
-                                  Array [
-                                    Object {
-                                      "height": 312,
-                                      "width": 960,
-                                    },
-                                  ]
+                                  Object {
+                                    "height": 312,
+                                    "width": 960,
+                                  }
                                 }
-                                width={960}
                               />
                               <View
                                 height={8}

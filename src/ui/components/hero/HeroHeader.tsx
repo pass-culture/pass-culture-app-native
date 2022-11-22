@@ -34,13 +34,13 @@ export const HeroHeader: React.FC<Props> = (props) => {
 
   const blurImageRadius = Platform.OS === 'android' ? 5 : 20
   const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
+  const blurImageStyle = { height: props.imageHeight, width: appContentWidth }
   return (
     <Container minHeight={props.minHeight}>
       <HeroContainer>
         {props.imageUrl ? (
-          <BlurImage
-            height={props.imageHeight}
-            width={appContentWidth}
+          <Image
+            style={blurImageStyle}
             blurRadius={blurImageRadius}
             resizeMode="cover"
             url={props.imageUrl}
@@ -67,8 +67,3 @@ const BackgroundContainer = styled.View({
 })
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
-
-const BlurImage = styled(Image)<{ height: number; width: number }>((props) => ({
-  height: props.height,
-  width: props.width,
-}))

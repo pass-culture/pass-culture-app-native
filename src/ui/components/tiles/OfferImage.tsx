@@ -34,7 +34,9 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'smal
   )
 }
 
-const StyledFastImage = styled(ResizedFastImage)<SizeProps>(({ theme, size }) => ({
+const StyledFastImage = styled(ResizedFastImage).attrs<SizeProps>(({ theme, size }) => ({
+  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
+}))<SizeProps>(({ theme, size }) => ({
   backgroundColor: theme.colors.greyLight,
   ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
   borderRadius: theme.tiles.borderRadius,

@@ -26,7 +26,7 @@ mockUseAppSettings.mockReturnValue({ data: mockDefaultSettings })
 describe('useResizeImageURL hook', () => {
   it('should return a smaller resized image URL on a small screen', () => {
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
-    const { result } = renderHook(() => useResizeImageURL(imageURL))
+    const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=327&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
@@ -38,7 +38,7 @@ describe('useResizeImageURL hook', () => {
       isDesktopViewport: true,
     })
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
-    const { result } = renderHook(() => useResizeImageURL(imageURL))
+    const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=432&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
@@ -48,7 +48,7 @@ describe('useResizeImageURL hook', () => {
   it('should return a bigger resized image URL when the pixel density is 2', () => {
     mockUseWindowDimensions.mockReturnValueOnce({ scale: 2 })
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
-    const { result } = renderHook(() => useResizeImageURL(imageURL))
+    const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=654&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
@@ -60,8 +60,36 @@ describe('useResizeImageURL hook', () => {
       data: { ...mockDefaultSettings, enableFrontImageResizing: false },
     })
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
-    const { result } = renderHook(() => useResizeImageURL(imageURL))
+    const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
     expect(result.current).toEqual(imageURL)
+  })
+
+  it('should return the resized image URL with custom dimensions when provided and height > width', () => {
+    const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
+    const { result } = renderHook(() => useResizeImageURL({ imageURL, height: 200, width: 100 }))
+
+    const expectedImageURL =
+      'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=200&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+    expect(result.current).toEqual(expectedImageURL)
+  })
+
+  it('should return the resized image URL with custom dimensions when provided and width > height', () => {
+    const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
+    const { result } = renderHook(() => useResizeImageURL({ imageURL, height: 100, width: 200 }))
+
+    const expectedImageURL =
+      'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=200&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+    expect(result.current).toEqual(expectedImageURL)
+  })
+
+  it('should return a bigger resized image URL with custom dimensions when provided and the pixel density is 2', () => {
+    mockUseWindowDimensions.mockReturnValueOnce({ scale: 2 })
+    const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
+    const { result } = renderHook(() => useResizeImageURL({ imageURL, height: 200, width: 100 }))
+
+    const expectedImageURL =
+      'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=400&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+    expect(result.current).toEqual(expectedImageURL)
   })
 })
