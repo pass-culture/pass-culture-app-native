@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
@@ -23,6 +24,14 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   hideModal,
   offerId,
 }) => {
+  const addToFavorites = useCallback(() => {
+    analytics.logHasAddedOfferToFavorites({
+      from: 'ErrorApplicationModal' as Referrals,
+      offerId,
+    })
+    hideModal()
+  }, [hideModal, offerId])
+
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => {
     hideModal()
@@ -46,7 +55,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
       />
-      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={hideModal} />
+      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={addToFavorites} />
     </AppModalWithIllustration>
   )
 }
