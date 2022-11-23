@@ -24,6 +24,25 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
 
+jest.mock('features/navigation/RootNavigator/routes', () => ({
+  routes: [
+    {
+      name: 'TabNavigator',
+      component: () => null,
+      pathConfig: {
+        initialRouteName: 'Home',
+        screens: {
+          Home: undefined,
+          Search: undefined,
+          Bookings: undefined,
+          Favorites: undefined,
+          Profile: undefined,
+        },
+      },
+    },
+  ],
+}))
+
 const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> = {
   // @ts-expect-error : ignore type of emit to facilitate testing
   emit: jest.fn(() => ({ defaultPrevented: false })),

@@ -11,8 +11,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from '../ChangeEmail'
 
-jest.mock('features/profile/api')
 jest.mock('react-query')
+jest.mock('features/auth/AuthContext')
 const mockedUseMutation = mocked(useMutation)
 const mockUseMutationSuccess = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
