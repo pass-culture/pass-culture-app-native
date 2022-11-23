@@ -903,6 +903,7 @@ Array [
           >
             <button
               className="c0 c1"
+              data-testid="Modifier mes filtres"
               onClick={[Function]}
               onDoubleClick={[Function]}
               tabIndex={0}

@@ -239,6 +239,7 @@ exports[`<VenueNotFound /> should render correctly 1`] = `
     >
       <button
         className="c0 c1"
+        data-testid="Retourner à l’accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

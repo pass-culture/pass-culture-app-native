@@ -831,8 +831,7 @@ exports[`BookingDetails should render correctly 1`] = `
           }
         />
         <View
-          accessibilityLabel="Voir le détail de l’offre"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}

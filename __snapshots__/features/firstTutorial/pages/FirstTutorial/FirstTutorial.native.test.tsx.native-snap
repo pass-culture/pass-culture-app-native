@@ -50,8 +50,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
       }
     >
       <View
-        accessibilityLabel="Tout passer"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

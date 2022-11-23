@@ -84,8 +84,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     }
   />
   <View
-    accessibilityLabel="Mettre en favoris"
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -145,8 +144,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     }
   />
   <View
-    accessibilityLabel="Retourner à l'offre"
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -292,8 +290,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
     }
   />
   <View
-    accessibilityLabel="Voir le détail de l’offre"
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}

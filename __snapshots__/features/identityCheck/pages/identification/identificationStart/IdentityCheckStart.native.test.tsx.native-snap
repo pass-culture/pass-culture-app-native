@@ -419,8 +419,7 @@ Array [
                     Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées
                   </Text>
                   <View
-                    accessibilityLabel="Transmettre un document"
-                    accessible={true}
+                    accessible={false}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -551,8 +550,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Commencer la vérification"
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

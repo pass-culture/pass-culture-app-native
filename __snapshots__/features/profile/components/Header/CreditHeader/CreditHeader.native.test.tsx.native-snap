@@ -563,8 +563,7 @@ Array [
       }
     />
     <View
-      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -757,8 +756,7 @@ Array [
       }
     />
     <View
-      accessibilityLabel="Mon crédit est expiré, que faire ?"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -1187,8 +1185,7 @@ Array [
       }
     />
     <View
-      accessibilityLabel="Pourquoi cette limite ?"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

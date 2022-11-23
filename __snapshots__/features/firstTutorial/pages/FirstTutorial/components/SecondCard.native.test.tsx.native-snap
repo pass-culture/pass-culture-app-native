@@ -603,8 +603,7 @@ et si tu as...
       }
     >
       <View
-        accessibilityLabel="Passer"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={false}
         onClick={[Function]}

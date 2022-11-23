@@ -419,7 +419,7 @@ Object {
                 <button
                   aria-label="Enregistrer les modifications"
                   class="c5 c6"
-                  data-testid="Enregistrer les modifications"
+                  data-testid="Enregistrer"
                   disabled=""
                   type="button"
                 >
@@ -857,7 +857,7 @@ Object {
               <button
                 aria-label="Enregistrer les modifications"
                 class="c5 c6"
-                data-testid="Enregistrer les modifications"
+                data-testid="Enregistrer"
                 disabled=""
                 type="button"
               >

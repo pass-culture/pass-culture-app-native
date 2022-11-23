@@ -77,7 +77,7 @@ const _AppButton = <T extends AppButtonProps>({
 
   return (
     <ButtonComponent
-      {...accessibilityAndTestId(accessibilityLabel, testID)}
+      {...accessibilityAndTestId(accessibilityLabel, testID || wording)}
       name={name}
       onClick={onClick}
       onDoubleClick={onDoubleClick}

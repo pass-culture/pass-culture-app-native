@@ -216,6 +216,7 @@ Object {
           >
             <button
               class="c0 c1"
+              data-testid="Réactiver mon compte"
               tabindex="0"
               type="button"
             >
@@ -233,6 +234,7 @@ Object {
             />
             <button
               class="c2 c3"
+              data-testid="Retourner à l’accueil"
               tabindex="0"
               type="button"
             >
@@ -481,6 +483,7 @@ Object {
         >
           <button
             class="c0 c1"
+            data-testid="Réactiver mon compte"
             tabindex="0"
             type="button"
           >
@@ -498,6 +501,7 @@ Object {
           />
           <button
             class="c2 c3"
+            data-testid="Retourner à l’accueil"
             tabindex="0"
             type="button"
           >

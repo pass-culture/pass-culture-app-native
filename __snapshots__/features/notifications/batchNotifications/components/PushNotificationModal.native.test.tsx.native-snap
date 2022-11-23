@@ -267,8 +267,7 @@ exports[`PushNotificationsModal should render properly 1`] = `
         }
       />
       <View
-        accessibilityLabel="Autoriser les notifications"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

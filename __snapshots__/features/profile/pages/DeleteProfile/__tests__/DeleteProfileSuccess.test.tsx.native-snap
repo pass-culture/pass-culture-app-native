@@ -243,8 +243,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <View
-        accessibilityLabel="Retourner à l’accueil"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -304,8 +303,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         }
       />
       <View
-        accessibilityLabel="Réactiver mon compte"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

@@ -199,8 +199,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="On y va !"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

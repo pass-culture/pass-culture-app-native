@@ -184,8 +184,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Télécharger la dernière version"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

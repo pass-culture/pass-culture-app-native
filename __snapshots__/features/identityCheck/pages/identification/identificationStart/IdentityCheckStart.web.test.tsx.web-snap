@@ -5,7 +5,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-@@ -578,11 +578,11 @@
+@@ -582,11 +582,11 @@
             class=\\"css-view-1dbjc4n\\"
             style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
           >
@@ -18,7 +18,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                 class=\\"css-view-1dbjc4n\\"
                 style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
               >
-@@ -594,105 +594,93 @@
+@@ -598,107 +598,94 @@
                     class=\\"css-view-1dbjc4n\\"
                     style=\\"align-items: center; height: 100%;\\"
                   >
@@ -84,7 +84,6 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
                         >
 -                       Prends une photo de ta carte d’identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
--                     </div>
 +                          carte d’identité 
 +                       </span>
 +                       ou de ton
@@ -96,12 +95,14 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                       </span>
 +                       en cours de validité pour accéder à ton pass Culture.
                       </div>
+-                   </div>
                       <div
                         class=\\"css-view-1dbjc4n\\"
                         style=\\"height: 24px;\\"
                       />
 -                   <button
 -                     class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
+-                     data-testid=\\"Vérification par smartphone\\"
 -                     tabindex=\\"0\\"
 -                     type=\\"button\\"
 -                   >
@@ -138,7 +139,9 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                     />
                         <button
 -                       class=\\"sc-dkPtRN dMotSY sc-kLwhqv gyEfHx\\"
+-                       data-testid=\\"Identification par le site Démarches-Simplifiées\\"
 +                         class=\\"sc-dkPtRN fSwvKJ sc-crHmcD dlEnXt\\"
++                         data-testid=\\"Transmettre un document\\"
                           tabindex=\\"0\\"
                           type=\\"button\\"
                         >
@@ -153,7 +156,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                             >
                               <div
                                 class=\\"css-text-901oao\\"
-@@ -703,29 +691,45 @@
+@@ -709,29 +696,46 @@
                             </div>
                           </div>
                           <div
@@ -182,6 +185,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +             >
 +               <button
 +                 class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
++                 data-testid=\\"Commencer la vérification\\"
 +                 tabindex=\\"0\\"
 +                 type=\\"button\\"
 +               >

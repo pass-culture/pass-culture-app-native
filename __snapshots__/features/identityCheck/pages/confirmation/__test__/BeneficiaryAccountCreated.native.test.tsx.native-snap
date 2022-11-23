@@ -261,8 +261,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
     }
   >
     <View
-      accessibilityLabel="Je découvre les offres"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -588,8 +587,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
     }
   >
     <View
-      accessibilityLabel="Je découvre les offres"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

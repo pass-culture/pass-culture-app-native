@@ -71,6 +71,7 @@ Object {
     <div>
       <button
         class="c0"
+        data-testid="Testing inline"
         tabindex="0"
         type="button"
       >
@@ -167,6 +168,7 @@ Object {
 <div>
     <button
       class="c0"
+      data-testid="Testing inline"
       tabindex="0"
       type="button"
     >

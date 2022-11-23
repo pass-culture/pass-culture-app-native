@@ -1154,6 +1154,7 @@ Object {
               >
                 <a
                   class="c4 c5"
+                  data-testid="Voir l’itinéraire"
                   href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                   tabindex="0"
                   target="_blank"
@@ -2903,6 +2904,7 @@ Object {
             >
               <a
                 class="c4 c5"
+                data-testid="Voir l’itinéraire"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"

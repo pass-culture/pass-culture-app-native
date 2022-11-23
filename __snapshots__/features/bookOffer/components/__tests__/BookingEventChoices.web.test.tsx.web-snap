@@ -314,6 +314,7 @@ Object {
         />
         <button
           class="c0 c1"
+          data-testid="Valider ces options"
           tabindex="0"
           type="button"
         >
@@ -638,6 +639,7 @@ Object {
       />
       <button
         class="c0 c1"
+        data-testid="Valider ces options"
         tabindex="0"
         type="button"
       >

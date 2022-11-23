@@ -169,8 +169,7 @@ exports[`NoContentError should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Rechercher une offre"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

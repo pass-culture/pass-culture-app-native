@@ -219,8 +219,7 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
       }
     >
       <View
-        accessibilityLabel="Découvrir le catalogue"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

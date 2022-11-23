@@ -327,6 +327,7 @@ Object {
               >
                 <button
                   class="c2 c3"
+                  data-testid="Valider mes informations"
                   tabindex="0"
                   type="submit"
                 >
@@ -672,6 +673,7 @@ Object {
             >
               <button
                 class="c2 c3"
+                data-testid="Valider mes informations"
                 tabindex="0"
                 type="submit"
               >

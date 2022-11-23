@@ -543,6 +543,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             >
               <a
                 className="c2 c3"
+                data-testid="Je suis de nationalité française"
                 href="https://dmsfrenchcitizen"
                 onClick={[Function]}
                 onDoubleClick={[Function]}
@@ -668,6 +669,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               </div>
               <a
                 className="c2 c3"
+                data-testid="Je suis de nationalité étrangère"
                 href="https://dmsforeigncitizen"
                 onClick={[Function]}
                 onDoubleClick={[Function]}

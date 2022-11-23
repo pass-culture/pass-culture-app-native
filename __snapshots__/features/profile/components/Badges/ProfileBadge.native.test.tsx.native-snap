@@ -222,8 +222,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       }
     />
     <View
-      accessibilityLabel="Tu peux cliquer ici"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

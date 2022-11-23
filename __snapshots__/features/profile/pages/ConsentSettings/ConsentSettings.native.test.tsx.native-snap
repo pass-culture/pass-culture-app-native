@@ -1998,8 +1998,7 @@ Array [
         }
       />
       <View
-        accessibilityLabel="Enregistrer mes choix"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

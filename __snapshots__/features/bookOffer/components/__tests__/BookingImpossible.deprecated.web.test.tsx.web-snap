@@ -178,6 +178,7 @@ Object {
         />
         <button
           class="c0 c1"
+          data-testid="Mettre en favoris"
           tabindex="0"
           type="button"
         >
@@ -195,6 +196,7 @@ Object {
         />
         <button
           class="c2 c3"
+          data-testid="Retourner à l'offre"
           tabindex="0"
           type="button"
         >
@@ -387,6 +389,7 @@ Object {
       />
       <button
         class="c0 c1"
+        data-testid="Mettre en favoris"
         tabindex="0"
         type="button"
       >
@@ -404,6 +407,7 @@ Object {
       />
       <button
         class="c2 c3"
+        data-testid="Retourner à l'offre"
         tabindex="0"
         type="button"
       >

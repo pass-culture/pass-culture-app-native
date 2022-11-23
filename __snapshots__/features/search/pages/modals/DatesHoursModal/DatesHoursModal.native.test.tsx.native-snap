@@ -839,8 +839,7 @@ exports[`DatesHoursModal component should render modal correctly after animation
             }
           >
             <View
-              accessibilityLabel="Réinitialiser"
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -910,13 +909,12 @@ exports[`DatesHoursModal component should render modal correctly after animation
               </Text>
             </View>
             <View
-              accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {
                   "disabled": false,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

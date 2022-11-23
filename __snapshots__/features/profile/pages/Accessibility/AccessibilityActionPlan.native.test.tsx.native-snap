@@ -2491,8 +2491,7 @@ Array [
         
 
         <View
-          accessibilityLabel="https://pass.culture.fr/"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -2567,8 +2566,7 @@ Array [
         
 
         <View
-          accessibilityLabel="https://passculture.app/accueil"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -2643,8 +2641,7 @@ Array [
         
 
         <View
-          accessibilityLabel="https://passculture.pro/"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}

@@ -254,6 +254,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
     >
       <button
         className="c0 c1"
+        data-testid="On y va !"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

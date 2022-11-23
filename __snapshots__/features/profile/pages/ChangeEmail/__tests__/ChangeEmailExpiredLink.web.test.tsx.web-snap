@@ -216,6 +216,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           >
             <button
               class="c0 c1"
+              data-testid="Faire une nouvelle demande"
               tabindex="0"
               type="button"
             >
@@ -233,6 +234,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             />
             <button
               class="c2 c3"
+              data-testid="Retourner à l’accueil"
               tabindex="0"
               type="button"
             >
@@ -481,6 +483,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         >
           <button
             class="c0 c1"
+            data-testid="Faire une nouvelle demande"
             tabindex="0"
             type="button"
           >
@@ -498,6 +501,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           />
           <button
             class="c2 c3"
+            data-testid="Retourner à l’accueil"
             tabindex="0"
             type="button"
           >
@@ -803,6 +807,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           >
             <button
               class="c0 c1"
+              data-testid="Se connecter"
               tabindex="0"
               type="button"
             >
@@ -820,6 +825,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             />
             <button
               class="c2 c3"
+              data-testid="Retourner à l’accueil"
               tabindex="0"
               type="button"
             >
@@ -1068,6 +1074,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         >
           <button
             class="c0 c1"
+            data-testid="Se connecter"
             tabindex="0"
             type="button"
           >
@@ -1085,6 +1092,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           />
           <button
             class="c2 c3"
+            data-testid="Retourner à l’accueil"
             tabindex="0"
             type="button"
           >

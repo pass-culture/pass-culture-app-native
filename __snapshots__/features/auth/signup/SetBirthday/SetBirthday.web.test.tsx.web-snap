@@ -260,7 +260,7 @@ Object {
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
             class="c0 c1"
-            data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
+            data-testid="Pour quelle raison ?"
             tabindex="0"
             type="button"
           >
@@ -1995,7 +1995,7 @@ Object {
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
           class="c0 c1"
-          data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
+          data-testid="Pour quelle raison ?"
           tabindex="0"
           type="button"
         >
@@ -3682,7 +3682,7 @@ Object {
           <button
             aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
             class="c0 c1"
-            data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
+            data-testid="Pour quelle raison ?"
             tabindex="0"
             type="button"
           >
@@ -4919,7 +4919,7 @@ Object {
         <button
           aria-label="Pour quelle raison me demande-t-on ma date de naissance ?"
           class="c0 c1"
-          data-testid="Pour quelle raison me demande-t-on ma date de naissance ?"
+          data-testid="Pour quelle raison ?"
           tabindex="0"
           type="button"
         >

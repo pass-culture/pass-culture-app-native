@@ -334,8 +334,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                 }
               />
               <View
-                accessibilityLabel="Aller sur mon profil"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}

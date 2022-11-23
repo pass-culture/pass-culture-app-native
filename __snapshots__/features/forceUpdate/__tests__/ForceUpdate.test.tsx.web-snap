@@ -239,6 +239,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
     >
       <button
         className="c0 c1"
+        data-testid="Actualiser la page"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

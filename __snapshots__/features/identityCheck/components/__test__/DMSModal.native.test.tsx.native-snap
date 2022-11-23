@@ -301,8 +301,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Je suis de nationalité française"
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -396,8 +395,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Je suis de nationalité étrangère"
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

@@ -582,8 +582,7 @@ Array [
           />
           <View>
             <View
-              accessibilityLabel="Modifier mes filtres"
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

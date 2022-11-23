@@ -301,6 +301,7 @@ Object {
               >
                 <button
                   class="c2 c3"
+                  data-testid="Ouvrir un onglet ÉduConnect"
                   tabindex="0"
                   type="button"
                 >
@@ -637,6 +638,7 @@ Object {
             >
               <button
                 class="c2 c3"
+                data-testid="Ouvrir un onglet ÉduConnect"
                 tabindex="0"
                 type="button"
               >

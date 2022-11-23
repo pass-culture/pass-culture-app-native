@@ -365,8 +365,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Tout refuser"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
@@ -438,8 +437,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Tout accepter"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
@@ -501,8 +499,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             }
           />
           <View
-            accessibilityLabel="Choisir les cookies"
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}

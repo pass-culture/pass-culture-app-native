@@ -169,8 +169,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       <View
-        accessibilityLabel="S’inscrire"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -230,8 +229,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       />
       <View
-        accessibilityLabel="Se connecter"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

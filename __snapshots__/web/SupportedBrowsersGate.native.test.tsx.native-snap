@@ -427,8 +427,7 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="J'accède au pass Culture sans mettre à jour mon navigateur"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

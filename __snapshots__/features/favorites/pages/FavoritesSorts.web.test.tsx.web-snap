@@ -415,6 +415,7 @@ Object {
         >
           <button
             class="c2 c3"
+            data-testid="Valider"
             tabindex="0"
             type="button"
           >
@@ -841,6 +842,7 @@ Object {
       >
         <button
           class="c2 c3"
+          data-testid="Valider"
           tabindex="0"
           type="button"
         >

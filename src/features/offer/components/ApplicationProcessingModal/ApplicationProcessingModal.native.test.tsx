@@ -19,10 +19,10 @@ describe('<ApplicationProcessingModal />', () => {
   })
 
   it('should navigate to profile on click on Aller sur mon profil', async () => {
-    const { getByLabelText } = render(
+    const { getByTestId } = render(
       <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
     )
-    const button = getByLabelText('Aller sur mon profil')
+    const button = getByTestId('Aller sur mon profil')
 
     fireEvent.press(button)
 

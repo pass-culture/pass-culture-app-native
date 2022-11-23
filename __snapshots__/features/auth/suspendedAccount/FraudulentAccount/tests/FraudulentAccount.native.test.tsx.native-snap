@@ -289,8 +289,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Retourner à l’accueil"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

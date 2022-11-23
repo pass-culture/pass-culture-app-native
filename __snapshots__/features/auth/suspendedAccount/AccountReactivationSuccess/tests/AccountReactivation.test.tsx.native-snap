@@ -138,8 +138,7 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
     }
   >
     <View
-      accessibilityLabel="Découvrir le catalogue"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

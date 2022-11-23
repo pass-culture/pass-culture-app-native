@@ -2999,6 +2999,7 @@ Array [
         </div>
         <button
           className="c0 c1"
+          data-testid="Générer le lien"
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}

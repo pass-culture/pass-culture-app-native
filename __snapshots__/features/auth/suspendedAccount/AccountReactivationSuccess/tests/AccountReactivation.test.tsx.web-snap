@@ -249,6 +249,7 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
   >
     <button
       className="c0 c1"
+      data-testid="Découvrir le catalogue"
       onClick={[Function]}
       onDoubleClick={[Function]}
       tabIndex={0}

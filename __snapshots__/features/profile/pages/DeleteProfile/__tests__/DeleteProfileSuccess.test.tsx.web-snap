@@ -360,6 +360,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
     >
       <button
         className="c0 c1"
+        data-testid="Retourner à l’accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -393,6 +394,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       />
       <button
         className="c2 c3"
+        data-testid="Réactiver mon compte"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

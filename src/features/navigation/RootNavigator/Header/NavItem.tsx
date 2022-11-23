@@ -26,7 +26,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
     isSelected={isSelected}
     navigateTo={navigateTo}
     activeOpacity={1}
-    testID={`${tabName} nav`}
+    testID={`${tabName} tab`}
     aria-current={isSelected ? 'page' : undefined}>
     <StyledIcon as={BicolorIcon} selected={isSelected} />
     <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
