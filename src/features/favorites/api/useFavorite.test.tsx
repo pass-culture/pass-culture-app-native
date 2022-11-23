@@ -77,6 +77,8 @@ describe('useFavorite hook', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
       wrapper: (props) =>
@@ -110,6 +112,8 @@ describe('useFavorite hook', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {
       wrapper: (props) =>

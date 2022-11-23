@@ -18,6 +18,8 @@ describe('useMaxPrice when no user', () => {
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
       user: undefined,
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
   })
 
@@ -32,6 +34,8 @@ describe('useMaxPrice when user is not beneficiary', () => {
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
       user: nonBeneficiaryUser,
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
   })
 
@@ -46,6 +50,8 @@ describe('useMaxPrice when user under 18', () => {
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
       user: { ...beneficiaryUser, domainsCredit: { all: { remaining: 10_00, initial: 30_00 } } },
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
   })
 

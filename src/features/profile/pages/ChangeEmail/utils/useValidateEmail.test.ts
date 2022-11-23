@@ -31,6 +31,8 @@ describe('useValidateEmail function', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
       user: { ...nonBeneficiaryUser, email: currentUserEmail },
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
     expect(result.current.emailErrorMessage).toEqual(
@@ -52,6 +54,8 @@ describe('useIsCurrentUserEmail function', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
       user: { ...nonBeneficiaryUser, email: currentUserEmail },
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const { result: isCurrentUserEmail } = renderHook(() => useIsCurrentUserEmail(currentUserEmail))
     expect(isCurrentUserEmail.current).toEqual(true)
@@ -62,6 +66,8 @@ describe('useIsCurrentUserEmail function', () => {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
       user: { ...nonBeneficiaryUser, email: currentUserEmail },
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const { result: isCurrentUserEmail } = renderHook(() => useIsCurrentUserEmail(newUserEmail))
     expect(isCurrentUserEmail.current).toEqual(false)

@@ -171,6 +171,8 @@ async function renderOfferIconCaptions({
   mockUseAuthContext.mockReturnValue({
     isLoggedIn: true,
     user: { ...userProfileAPIResponse, isBeneficiary },
+    isUserLoading: false,
+    refetchUser: jest.fn(),
     setIsLoggedIn: () => null,
   })
 

@@ -40,6 +40,7 @@ describe('HomeHeader', () => {
       mockUseAuthContext.mockReturnValue({
         isLoggedIn: isLoggedIn,
         user,
+        isUserLoading: false,
         setIsLoggedIn: jest.fn(),
         refetchUser: jest.fn(),
       })

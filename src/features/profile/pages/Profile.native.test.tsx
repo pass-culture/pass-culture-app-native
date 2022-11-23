@@ -44,6 +44,8 @@ jest.mock('@react-navigation/bottom-tabs', () =>
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
   user: nonBeneficiaryUser,
+  isUserLoading: false,
+  refetchUser: jest.fn(),
   setIsLoggedIn: jest.fn(),
 }) as jest.Mock
 

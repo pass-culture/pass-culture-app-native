@@ -178,7 +178,13 @@ function renderAcceptCGU() {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+        }}>
         <AcceptCgu {...props} />
       </AuthContext.Provider>
     )

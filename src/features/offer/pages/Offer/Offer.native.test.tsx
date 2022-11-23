@@ -41,6 +41,8 @@ describe('<Offer />', () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     }))
 
     const { getByText } = await renderOfferPage()

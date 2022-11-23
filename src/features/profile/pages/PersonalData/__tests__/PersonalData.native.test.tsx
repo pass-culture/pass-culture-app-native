@@ -112,6 +112,8 @@ async function renderPersonalData(response: UserProfileResponse) {
     setIsLoggedIn: jest.fn(),
     isLoggedIn: true,
     user: response,
+    isUserLoading: false,
+    refetchUser: jest.fn(),
   })
 
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc

@@ -28,6 +28,8 @@ describe('useNextSubscriptionStep', () => {
       mockUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+        isUserLoading: false,
       })
       mockNextStepRequest({
         allowedIdentityCheckMethods,
@@ -79,6 +81,8 @@ describe('useNextSubscriptionStep', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     mockNextStepRequestError()
     const { result } = renderNextSubscriptionStepHook()

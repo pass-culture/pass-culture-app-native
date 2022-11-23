@@ -31,6 +31,8 @@ mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
   setIsLoggedIn: jest.fn(),
   user: mockUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
 })
 
 const hideOfferTypeModal = jest.fn()
@@ -124,6 +126,8 @@ describe('<OfferTypeModal/>', () => {
         isLoggedIn: false,
         setIsLoggedIn: jest.fn(),
         user: undefined,
+        refetchUser: jest.fn(),
+        isUserLoading: false,
       })
     })
 
@@ -145,6 +149,8 @@ describe('<OfferTypeModal/>', () => {
         isLoggedIn: false,
         setIsLoggedIn: jest.fn(),
         user: nonBeneficiaryUser,
+        refetchUser: jest.fn(),
+        isUserLoading: false,
       })
     })
 
@@ -166,6 +172,8 @@ describe('<OfferTypeModal/>', () => {
         isLoggedIn: false,
         setIsLoggedIn: jest.fn(),
         user: { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 0 } } },
+        refetchUser: jest.fn(),
+        isUserLoading: false,
       })
     })
 
@@ -187,6 +195,8 @@ describe('<OfferTypeModal/>', () => {
         isLoggedIn: false,
         setIsLoggedIn: jest.fn(),
         user: beneficiaryUser,
+        refetchUser: jest.fn(),
+        isUserLoading: false,
       })
     })
 

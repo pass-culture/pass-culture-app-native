@@ -31,6 +31,8 @@ describe('useReasonsForReporting hook', () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     }))
     const { result } = renderHook(useReasonsForReporting, {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -51,6 +53,8 @@ describe('useReasonsForReporting hook', () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     }))
 
     const { result } = renderHook(useReasonsForReporting, {

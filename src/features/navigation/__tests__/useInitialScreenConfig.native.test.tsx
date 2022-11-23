@@ -66,6 +66,8 @@ describe('useInitialScreen()', () => {
       mockedUseAuthContext.mockReturnValue({
         isLoggedIn: isLogged,
         setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+        isUserLoading: false,
       })
       mockMeApiCall(userProfile as UserProfileResponse)
       mockSettings.enableNativeCulturalSurvey = isNativeCulturalSurveyActive
