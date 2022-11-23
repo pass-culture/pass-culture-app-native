@@ -34,6 +34,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
 
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => {
+    analytics.logGoToProfil({ from: 'ErrorApplicationModal', offerId })
     hideModal()
     navigate(...getTabNavConfig('Profile'))
   }

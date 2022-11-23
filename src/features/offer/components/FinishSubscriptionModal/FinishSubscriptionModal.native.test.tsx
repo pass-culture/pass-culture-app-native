@@ -62,7 +62,7 @@ describe('<FinishSubscriptionModal />', () => {
 
     fireEvent.press(getByLabelText('Aller vers la section profil'))
 
-    expect(analytics.logGoToProfil).toHaveBeenCalledWith({
+    expect(analytics.logGoToProfil).toHaveBeenNthCalledWith(1, {
       from: 'FinishSubscriptionModal',
       offerId,
     })

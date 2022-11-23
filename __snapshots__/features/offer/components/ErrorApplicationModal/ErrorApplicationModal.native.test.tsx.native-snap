@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
+exports[`<ErrorApplicationModal /> should match previous snapshot 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"

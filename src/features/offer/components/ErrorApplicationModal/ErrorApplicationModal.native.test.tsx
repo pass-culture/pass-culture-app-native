@@ -2,13 +2,14 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicationModal/ErrorApplicationModal'
+import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 const hideModal = jest.fn()
 const offerId = 1
 jest.mock('features/offer/components/AddToFavoritesButton/AddToFavoritesButton')
 
-describe('<AuthenticationModal />', () => {
+describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
     const modal = render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
     expect(modal).toMatchSnapshot()
@@ -22,5 +23,18 @@ describe('<AuthenticationModal />', () => {
     fireEvent.press(getByLabelText('Aller vers la section profil'))
     expect(hideModal).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+  })
+
+  it('should log analytics when clicking on close button with label "Aller vers la section profil', async () => {
+    const { getByLabelText } = render(
+      <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
+    )
+
+    fireEvent.press(getByLabelText('Aller vers la section profil'))
+
+    expect(analytics.logGoToProfil).toHaveBeenNthCalledWith(1, {
+      from: 'ErrorApplicationModal',
+      offerId,
+    })
   })
 })
