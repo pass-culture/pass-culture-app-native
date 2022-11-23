@@ -88,7 +88,7 @@ describe('SearchHeader component', () => {
       await userEvent.tab()
     })
 
-    const locationFilterButton = getByTestId('locationButton')
+    const locationFilterButton = getByTestId('Me localiser')
     expect(locationFilterButton).toHaveFocus()
   })
 })

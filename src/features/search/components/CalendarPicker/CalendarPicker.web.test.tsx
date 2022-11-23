@@ -13,7 +13,7 @@ describe('CalendarPicker web component', () => {
   })
 
   it('should have validation button', () => {
-    const { getByTestId } = render(
+    const { getByText } = render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -21,12 +21,12 @@ describe('CalendarPicker web component', () => {
         visible
       />
     )
-    const button = getByTestId('validationButton')
+    const button = getByText('Valider la date')
     expect(button).not.toBeNull()
   })
 
   it('should validation button close the calendar', () => {
-    const { getByTestId } = render(
+    const { getByText } = render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -34,14 +34,14 @@ describe('CalendarPicker web component', () => {
         visible
       />
     )
-    const button = getByTestId('validationButton')
+    const button = getByText('Valider la date')
     fireEvent.click(button)
     expect(button).not.toBeNull()
     expect(mockHideCalendar).toHaveBeenCalled()
   })
 
   it('should validation button change the date', () => {
-    const { getByTestId } = render(
+    const { getByText } = render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -49,7 +49,7 @@ describe('CalendarPicker web component', () => {
         visible
       />
     )
-    const button = getByTestId('validationButton')
+    const button = getByText('Valider la date')
     fireEvent.click(button)
     expect(button).not.toBeNull()
     expect(mockHideCalendar).toHaveBeenCalled()

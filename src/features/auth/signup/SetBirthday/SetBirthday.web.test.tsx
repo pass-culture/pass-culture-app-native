@@ -22,18 +22,17 @@ describe('<SetBirthday />', () => {
     it('should be disabled the button by default', () => {
       const { getByTestId } = render(<SetBirthday {...props} />)
 
-      const continueButton = getByTestId('date-picker-submit-button')
+      const continueButton = getByTestId('Continuer')
       expect(continueButton).toBeDisabled()
     })
 
     it('should be enabled the button when the date is valid', () => {
-      const { getByTestId } = render(<SetBirthday {...props} />)
-
+      const { getByText, getByTestId } = render(<SetBirthday {...props} />)
       fireEvent.change(getByTestId('select-Jour'), { target: { value: '1' } })
       fireEvent.change(getByTestId('select-Mois'), { target: { value: 'Janvier' } })
       fireEvent.change(getByTestId('select-Année'), { target: { value: '2004' } })
 
-      const continueButton = getByTestId('date-picker-submit-button')
+      const continueButton = getByText('Continuer')
       expect(continueButton).toBeEnabled()
     })
   })

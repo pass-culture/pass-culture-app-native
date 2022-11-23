@@ -53,7 +53,7 @@ describe('CulturalSurveysQuestions page', () => {
 
   it('should navigate to next page when pressing Continuer', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
-    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
     fireEvent.click(Answers[0])
     fireEvent.click(NextQuestionButton)
@@ -71,7 +71,7 @@ describe('CulturalSurveysQuestions page', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
     fireEvent.click(Answers[0])
-    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.click(NextQuestionButton)
     waitForExpect(() => {
       expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
@@ -95,7 +95,7 @@ describe('CulturalSurveysQuestions page', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const Answers = QuestionsPage.getAllByTestId('CulturalSurveyAnswer', { exact: false })
     fireEvent.click(Answers[0])
-    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.click(NextQuestionButton)
     waitForExpect(() => {
       expect(navigateToHome).toHaveBeenCalled()

@@ -26,8 +26,8 @@ describe('<ResetPasswordEmailSent />', () => {
     await act(async () => {
       navigationRef.navigate('ResetPasswordEmailSent', { email: '' })
     })
-    const leftIcon = renderAPI.getByTestId('leftIcon')
-    fireEvent.click(leftIcon)
+    const leftIcon = renderAPI.getAllByTestId('Revenir en arrière')
+    fireEvent.click(leftIcon[0])
 
     await waitForExpect(() => {
       expect(renderAPI.queryByText('PreviousScreenText')).toBeTruthy()
