@@ -2,9 +2,9 @@ export function accessibilityAndTestId(accessibilityLabel?: string, testID?: str
   return {
     accessible: true,
     accessibilityLabel,
-    testID: testID || accessibilityLabel,
+    testID: accessibilityLabel || testID,
     // necessary if components are not React Native Web such as <button>
-    ['data-testid']: testID || accessibilityLabel,
+    ['data-testid']: accessibilityLabel || testID,
     ['aria-label']: accessibilityLabel,
   }
 }
