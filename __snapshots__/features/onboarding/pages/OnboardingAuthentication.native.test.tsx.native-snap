@@ -55,7 +55,7 @@ exports[`OnboardingAuthentication should render correctly 1`] = `
       Array [
         Object {
           "flexDirection": "row",
-          "justifyContent": "space-between",
+          "justifyContent": "flex-end",
           "paddingHorizontal": 16,
           "top": 16,
           "zIndex": 1,
@@ -64,66 +64,6 @@ exports[`OnboardingAuthentication should render correctly 1`] = `
     }
     top={16}
   >
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#ffffff",
-            "borderRadius": 32,
-            "height": 40,
-            "width": 40,
-          },
-        ]
-      }
-    >
-      <View
-        accessibilityLabel="Revenir en arrière"
-        accessibilityRole="button"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="backButton"
-      >
-        <View
-          height={24}
-          testID="icon-back"
-          width={24}
-        >
-          <Text>
-            icon-back-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          style={
-            Array [
-              Object {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Retour
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -242,7 +182,7 @@ exports[`OnboardingAuthentication should render correctly 1`] = `
         ]
       }
     >
-      Bienvenue sur le pass Culture
+      Bienvenue sur le pass Culture
     </Text>
     <View
       numberOfSpaces={4}

@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { BackButton } from 'ui/components/headers/BackButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
@@ -14,9 +13,6 @@ export const AuthenticationHeader: React.FC = () => {
 
   return (
     <Container top={top}>
-      <ButtonContainer>
-        <BackButton onGoBack={navigateToHome} />
-      </ButtonContainer>
       <ButtonContainer>
         <StyledTouchable accessibilityLabel="Fermer la page" onPress={navigateToHome}>
           <CloseIcon />
@@ -30,7 +26,7 @@ const CONTAINER_SIZE = getSpacing(10)
 
 const Container = styled.View<{ top: number }>(({ theme, top }) => ({
   top,
-  justifyContent: 'space-between',
+  justifyContent: 'flex-end',
   flexDirection: 'row',
   paddingHorizontal: getSpacing(4),
   zIndex: theme.zIndex.header,
