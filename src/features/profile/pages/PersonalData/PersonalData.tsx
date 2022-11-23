@@ -39,7 +39,7 @@ export function PersonalData() {
           navigateTo={{ screen: 'ChangeEmail' }}
           onPress={onEmailChange}
           wording="Modifier"
-          testID="Modifier e-mail"
+          accessibilityLabel="Modifier e-mail"
         />
       </EditContainer>
 
@@ -61,7 +61,7 @@ export function PersonalData() {
         <EditButton
           navigateTo={{ screen: 'ChangePassword' }}
           wording="Modifier"
-          testID="Modifier mot de passe"
+          accessibilityLabel="Modifier mot de passe"
         />
       </EditContainer>
 

@@ -47,7 +47,7 @@ describe('ChangePassword', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
 
-    const continueButton = getByTestId('Enregistrer')
+    const continueButton = getByTestId('Enregistrer les modifications')
     expect(continueButton).toBeEnabled()
   })
 
@@ -117,7 +117,7 @@ describe('ChangePassword', () => {
     })
     await superFlushWithAct()
 
-    fireEvent.press(getByTestId('Enregistrer'))
+    fireEvent.press(getByTestId('Enregistrer les modifications'))
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -153,7 +153,7 @@ describe('ChangePassword', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
 
-    const continueButton = getByTestId('Enregistrer')
+    const continueButton = getByTestId('Enregistrer les modifications')
 
     await act(async () => {
       fireEvent.press(continueButton)

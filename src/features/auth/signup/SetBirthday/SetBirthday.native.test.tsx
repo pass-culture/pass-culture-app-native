@@ -25,7 +25,9 @@ describe('<SetBirthday />', () => {
   it('should display a information modal when clicking "Pour quelle raison ?" button', () => {
     const { getByTestId } = render(<SetBirthday {...props} />)
 
-    const whyBirthdayButton = getByTestId('Pour quelle raison\u00a0?')
+    const whyBirthdayButton = getByTestId(
+      'Pour quelle raison me demande-t-on ma date de naissance ?'
+    )
     fireEvent.press(whyBirthdayButton)
 
     const birthdayModal = getByTestId('modal-birthday-information')
@@ -35,7 +37,7 @@ describe('<SetBirthday />', () => {
   it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison ?" button', () => {
     const { getByTestId } = render(<SetBirthday {...props} />)
 
-    const whyBirthdayLink = getByTestId('Pour quelle raison\u00a0?')
+    const whyBirthdayLink = getByTestId('Pour quelle raison me demande-t-on ma date de naissance ?')
     fireEvent.press(whyBirthdayLink)
 
     expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
@@ -47,7 +49,7 @@ describe('<SetBirthday />', () => {
     const datePicker = getByTestId('date-picker-spinner-native')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
-    const continueButton = getByTestId('date-picker-submit-button')
+    const continueButton = getByTestId('Continuer')
     fireEvent.press(continueButton)
 
     expect(props.goToNextStep).toBeCalledWith({

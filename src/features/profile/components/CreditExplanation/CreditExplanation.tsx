@@ -31,7 +31,6 @@ export const CreditExplanation: FunctionComponent<Props> = (props) => {
         icon={Question}
         wording={buttonTitle}
         onPress={onPressExplanationButton}
-        testID="explanationButton"
       />
       <CreditModal visible={visible} hideModal={hideModal} domainsCredit={props.domainsCredit} />
     </React.Fragment>

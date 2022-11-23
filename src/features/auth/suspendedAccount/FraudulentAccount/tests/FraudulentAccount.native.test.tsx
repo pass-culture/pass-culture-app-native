@@ -25,7 +25,7 @@ describe('<FraudulentAccount />', () => {
   it('should open mail app when clicking on contact service button', async () => {
     const { getByTestId } = render(<FraudulentAccount />)
 
-    const contactFraudButton = getByTestId('Contacter le service')
+    const contactFraudButton = getByTestId('Ouvrir le gestionnaire mail pour contacter le support')
     fireEvent.press(contactFraudButton)
 
     await waitForExpect(() => {

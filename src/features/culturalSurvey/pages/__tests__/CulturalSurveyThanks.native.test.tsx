@@ -14,7 +14,7 @@ describe('CulturalSurveyThanksPage page', () => {
 
   it('should navigate to home when pressing Découvrir le catalogue', () => {
     const CulturalSurveyThanksPage = render(<CulturalSurveyThanks />)
-    const DiscoverButton = CulturalSurveyThanksPage.getByTestId('discover-button')
+    const DiscoverButton = CulturalSurveyThanksPage.getByTestId('Découvrir le catalogue')
     fireEvent.press(DiscoverButton)
     expect(navigateToHome).toHaveBeenCalled()
   })

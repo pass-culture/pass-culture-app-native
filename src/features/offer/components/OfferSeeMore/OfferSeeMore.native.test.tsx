@@ -22,11 +22,11 @@ describe('OfferSeeMore', () => {
     it('should log ConsultDescriptionDetails each time we open the details', async () => {
       const { getByTestId } = render(<OfferSeeMore id={offerId} longWording />)
 
-      fireEvent.press(getByTestId('description-details-button'))
+      fireEvent.press(getByTestId('Voir plus d’informations'))
       expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledTimes(1)
       expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledWith(offerId)
 
-      fireEvent.press(getByTestId('description-details-button'))
+      fireEvent.press(getByTestId('Voir plus d’informations'))
       expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledTimes(2)
     })
   })

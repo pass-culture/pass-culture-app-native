@@ -46,7 +46,7 @@ describe('<CreditExplanation/>', () => {
     const { getByTestId, queryByTestId } = render(
       <CreditExplanation isDepositExpired={false} domainsCredit={domains_credit_v1} />
     )
-    const explanationButton = getByTestId('explanationButton')
+    const explanationButton = getByTestId(' Pourquoi cette limite ?')
     fireEvent.press(explanationButton)
     expect(queryByTestId('modalHeader')).toBeTruthy()
   })

@@ -21,7 +21,6 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
       <TouchableLink
         as={ButtonTertiaryBlack}
         inline
-        testID="description-details-button"
         onBeforeNavigate={onPressSeeMore}
         navigateTo={{ screen: 'OfferDescription', params: { id } }}
         wording={longWording ? 'Voir plus d’informations' : 'voir plus'}

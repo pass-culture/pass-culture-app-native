@@ -328,7 +328,8 @@ describe('SearchBox component', () => {
     })
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const locationButton = getByTestId('locationButton')
+
+    const locationButton = getByTestId('Partout')
 
     await act(async () => {
       fireEvent.press(locationButton)

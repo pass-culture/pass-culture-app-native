@@ -83,10 +83,10 @@ describe('<ChangeEmail/>', () => {
     ${'password<12'}  | ${'valid@email.com'} | ${true}
     ${'password>=12'} | ${''}                | ${true}
   `(
-    'CTA "Enregistrer" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
+    'CTA "Enregistrer les modifications" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
     async ({ password, email, isDisabled }) => {
       const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
-      const submitButton = getByTestId('Enregistrer')
+      const submitButton = getByTestId('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()
 
       const passwordInput = getByPlaceholderText('Ton mot de passe')
@@ -102,7 +102,7 @@ describe('<ChangeEmail/>', () => {
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer')
+    const submitButton = getByTestId('Enregistrer les modifications')
     expect(submitButton).toBeDisabled()
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
@@ -120,7 +120,7 @@ describe('<ChangeEmail/>', () => {
 
   it('should navigate to Profile and log event if the API call is ok', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer')
+    const submitButton = getByTestId('Enregistrer les modifications')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'tonadresse@email.com')
@@ -143,7 +143,7 @@ describe('<ChangeEmail/>', () => {
     mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
 
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer')
+    const submitButton = getByTestId('Enregistrer les modifications')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'tonadresse@email.com')
@@ -167,7 +167,7 @@ describe('<ChangeEmail/>', () => {
     mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
 
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer')
+    const submitButton = getByTestId('Enregistrer les modifications')
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'tonadresse@email.com')

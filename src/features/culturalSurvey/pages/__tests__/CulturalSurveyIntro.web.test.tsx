@@ -18,7 +18,7 @@ describe('CulturalSurveyIntro page', () => {
 
   it('should navigate to first page when pressing Débuter le questionnaire', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
-    const StartButton = CulturalSurveyIntroPage.getByTestId('start-cultural-survey')
+    const StartButton = CulturalSurveyIntroPage.getByTestId('Débuter le questionnaire')
     fireEvent.click(StartButton)
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.SORTIES,
@@ -27,7 +27,7 @@ describe('CulturalSurveyIntro page', () => {
 
   it('should navigate to home when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
-    const LaterButton = CulturalSurveyIntroPage.getByTestId('answer-survey-later')
+    const LaterButton = CulturalSurveyIntroPage.getByTestId('Plus tard')
     fireEvent.click(LaterButton)
     expect(navigateToHome).toHaveBeenCalled()
   })

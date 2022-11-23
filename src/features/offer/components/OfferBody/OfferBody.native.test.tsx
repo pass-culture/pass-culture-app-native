@@ -25,7 +25,7 @@ describe('<OfferBody />', () => {
   it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
     const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    const reportOfferButton = await OfferBodyComponent.findByTestId('report-offer-body')
+    const reportOfferButton = await OfferBodyComponent.findByTestId('Signaler l’offre')
 
     fireEvent.press(reportOfferButton)
     expect(OfferBodyComponent).toMatchSnapshot()

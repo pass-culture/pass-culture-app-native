@@ -19,11 +19,7 @@ export const CulturalSurveyThanks: React.FC = () => {
       <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
-        <ButtonPrimary
-          testID="discover-button"
-          wording="Découvrir le catalogue"
-          onPress={navigateToHome}
-        />
+        <ButtonPrimary wording="Découvrir le catalogue" onPress={navigateToHome} />
       </ButtonContainer>
     </GenericInfoPageWhite>
   )
