@@ -14,6 +14,7 @@ type ScreensRequiringParsing = Extract<
   | 'Venue'
   | 'Search'
   | 'LocationFilter'
+  | 'ThematicHome'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -44,7 +45,6 @@ export const screenParamsParser: ParamsParsers = {
     offerId: Number,
     bookingId: Number,
   },
-
   Login: {
     preventCancellation: parseObject,
     displayForcedLoginHelpMessage: parseObject,
@@ -95,6 +95,9 @@ export const screenParamsParser: ParamsParsers = {
   LocationFilter: {
     selectedVenue: JSON.parse,
     selectedPlace: JSON.parse,
+  },
+  ThematicHome: {
+    entryId: identityFn,
   },
 }
 
