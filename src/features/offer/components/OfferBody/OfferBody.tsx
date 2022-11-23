@@ -62,6 +62,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const labelMapping = useCategoryHomeLabelMapping()
   const { position } = useGeolocation()
   const similarOffers = useSimilarOffers(offerId)
+  const hasSimilarOffers = similarOffers && similarOffers.length > 0
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
@@ -213,7 +214,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         offerId={offerId}
       />
 
-      {similarOffers ? (
+      {!!hasSimilarOffers && (
         <SectionWithDivider visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist
@@ -222,10 +223,10 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             itemHeight={itemHeight}
             renderItem={renderItem}
             keyExtractor={(item) => item.objectID}
-            title="Ça peut aussi te plaire "
+            title="Ça peut aussi te plaire"
           />
         </SectionWithDivider>
-      ) : null}
+      )}
 
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />

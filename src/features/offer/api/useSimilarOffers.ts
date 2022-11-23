@@ -10,7 +10,7 @@ export const getSimilarOffersEndpoint = (
   userId?: number,
   position?: GeoCoordinates
 ): string | undefined => {
-  let endpoint = `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerId}?&token=${env.RECOMMENDATION_TOKEN}`
+  let endpoint = `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerId}?token=${env.RECOMMENDATION_TOKEN}`
   if (userId) endpoint += `&userId=${userId}`
   if (position) endpoint += `&longitude=${position.longitude}&latitude=${position.latitude}`
   return endpoint
