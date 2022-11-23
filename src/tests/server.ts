@@ -132,7 +132,6 @@ function requestSettingsSuccess(
     accountUnsuspensionLimit: 60,
     appEnableAutocomplete: true,
     appEnableCookiesV2: true,
-    autoActivateDigitalBookings: false,
     disableStoreReview: false,
     displayDmsRedirection: true,
     enableFrontImageResizing: false,

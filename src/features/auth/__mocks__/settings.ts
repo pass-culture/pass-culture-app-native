@@ -8,7 +8,6 @@ export const mockDefaultSettings: SettingsResponse = {
   accountUnsuspensionLimit: 60,
   appEnableAutocomplete: true,
   appEnableCookiesV2: true,
-  autoActivateDigitalBookings: true,
   disableStoreReview: false,
   displayDmsRedirection: true,
   enableFrontImageResizing: true,

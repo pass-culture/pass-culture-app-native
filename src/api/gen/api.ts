@@ -1913,11 +1913,6 @@ export interface SettingsResponse {
    */
   appEnableCookiesV2: boolean
   /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  autoActivateDigitalBookings: boolean
-  /**
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
    */
