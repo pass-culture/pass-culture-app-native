@@ -36,6 +36,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <TouchableLink
         as={ButtonPrimary}
+        testID="Aller sur mon profil"
         wording="Aller sur mon profil"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Profile' } }}
         onBeforeNavigate={hideModal}
