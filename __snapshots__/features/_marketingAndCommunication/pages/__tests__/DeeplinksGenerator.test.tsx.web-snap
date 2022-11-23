@@ -2998,7 +2998,9 @@ Array [
           </div>
         </div>
         <button
+          aria-label="Générer le lien"
           className="c0 c1"
+          data-testid="Générer le lien"
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}

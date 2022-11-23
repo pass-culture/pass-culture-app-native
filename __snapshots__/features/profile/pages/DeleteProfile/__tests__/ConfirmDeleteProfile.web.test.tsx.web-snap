@@ -379,7 +379,9 @@ Object {
             style="margin-top: 12px;"
           >
             <button
+              aria-label="Supprimer mon compte"
               class="c2 c3"
+              data-testid="Supprimer mon compte"
               tabindex="0"
               type="button"
             >
@@ -396,7 +398,9 @@ Object {
               style="height: 16px;"
             />
             <a
+              aria-label="Consulter l’article d’aide"
               class="c4 c5"
+              data-testid="Consulter l’article d’aide"
               href="https://passculture-delete-account.faq"
               tabindex="0"
               target="_blank"
@@ -810,7 +814,9 @@ Object {
           style="margin-top: 12px;"
         >
           <button
+            aria-label="Supprimer mon compte"
             class="c2 c3"
+            data-testid="Supprimer mon compte"
             tabindex="0"
             type="button"
           >
@@ -827,7 +833,9 @@ Object {
             style="height: 16px;"
           />
           <a
+            aria-label="Consulter l’article d’aide"
             class="c4 c5"
+            data-testid="Consulter l’article d’aide"
             href="https://passculture-delete-account.faq"
             tabindex="0"
             target="_blank"

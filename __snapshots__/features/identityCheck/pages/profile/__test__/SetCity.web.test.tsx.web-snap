@@ -332,7 +332,7 @@ Object {
                 <button
                   aria-label="Continuer vers l'étape suivante"
                   class="c3 c4"
-                  data-testid="Continuer vers l'étape suivante"
+                  data-testid="Continuer"
                   disabled=""
                   type="submit"
                 >
@@ -683,7 +683,7 @@ Object {
               <button
                 aria-label="Continuer vers l'étape suivante"
                 class="c3 c4"
-                data-testid="Continuer vers l'étape suivante"
+                data-testid="Continuer"
                 disabled=""
                 type="submit"
               >

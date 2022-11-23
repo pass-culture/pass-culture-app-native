@@ -215,7 +215,9 @@ Object {
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
+              aria-label="Réactiver mon compte"
               class="c0 c1"
+              data-testid="Réactiver mon compte"
               tabindex="0"
               type="button"
             >
@@ -232,7 +234,9 @@ Object {
               style="height: 16px;"
             />
             <button
+              aria-label="Retourner à l’accueil"
               class="c2 c3"
+              data-testid="Retourner à l’accueil"
               tabindex="0"
               type="button"
             >
@@ -480,7 +484,9 @@ Object {
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
+            aria-label="Réactiver mon compte"
             class="c0 c1"
+            data-testid="Réactiver mon compte"
             tabindex="0"
             type="button"
           >
@@ -497,7 +503,9 @@ Object {
             style="height: 16px;"
           />
           <button
+            aria-label="Retourner à l’accueil"
             class="c2 c3"
+            data-testid="Retourner à l’accueil"
             tabindex="0"
             type="button"
           >

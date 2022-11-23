@@ -177,7 +177,9 @@ Object {
           style="height: 24px;"
         />
         <button
+          aria-label="Mettre en favoris"
           class="c0 c1"
+          data-testid="Mettre en favoris"
           tabindex="0"
           type="button"
         >
@@ -194,7 +196,9 @@ Object {
           style="height: 16px;"
         />
         <button
+          aria-label="Retourner à l'offre"
           class="c2 c3"
+          data-testid="Retourner à l'offre"
           tabindex="0"
           type="button"
         >
@@ -386,7 +390,9 @@ Object {
         style="height: 24px;"
       />
       <button
+        aria-label="Mettre en favoris"
         class="c0 c1"
+        data-testid="Mettre en favoris"
         tabindex="0"
         type="button"
       >
@@ -403,7 +409,9 @@ Object {
         style="height: 16px;"
       />
       <button
+        aria-label="Retourner à l'offre"
         class="c2 c3"
+        data-testid="Retourner à l'offre"
         tabindex="0"
         type="button"
       >

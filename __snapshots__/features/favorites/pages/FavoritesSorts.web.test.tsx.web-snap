@@ -414,7 +414,9 @@ Object {
           style="padding: 20px 20px 20px 20px;"
         >
           <button
+            aria-label="Valider"
             class="c2 c3"
+            data-testid="Valider"
             tabindex="0"
             type="button"
           >
@@ -840,7 +842,9 @@ Object {
         style="padding: 20px 20px 20px 20px;"
       >
         <button
+          aria-label="Valider"
           class="c2 c3"
+          data-testid="Valider"
           tabindex="0"
           type="button"
         >

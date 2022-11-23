@@ -200,6 +200,7 @@ Object {
           class="css-view-1dbjc4n"
         >
           <button
+            aria-label="Débuter le questionnaire"
             class="c0 c1"
             data-testid="start-cultural-survey"
             tabindex="0"
@@ -219,6 +220,7 @@ Object {
           style="margin-top: 12px;"
         >
           <button
+            aria-label="Plus tard"
             class="c2 c3"
             data-testid="answer-survey-later"
             tabindex="0"
@@ -452,6 +454,7 @@ Object {
         class="css-view-1dbjc4n"
       >
         <button
+          aria-label="Débuter le questionnaire"
           class="c0 c1"
           data-testid="start-cultural-survey"
           tabindex="0"
@@ -471,6 +474,7 @@ Object {
         style="margin-top: 12px;"
       >
         <button
+          aria-label="Plus tard"
           class="c2 c3"
           data-testid="answer-survey-later"
           tabindex="0"

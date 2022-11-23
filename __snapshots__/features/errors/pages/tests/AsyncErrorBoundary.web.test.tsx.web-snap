@@ -209,7 +209,9 @@ Object {
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <button
+              aria-label="Réessayer"
               class="c2 c3"
+              data-testid="Réessayer"
               tabindex="0"
               type="button"
             >
@@ -439,7 +441,9 @@ Object {
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <button
+            aria-label="Réessayer"
             class="c2 c3"
+            data-testid="Réessayer"
             tabindex="0"
             type="button"
           >

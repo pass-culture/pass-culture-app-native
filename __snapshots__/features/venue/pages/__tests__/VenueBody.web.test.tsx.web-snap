@@ -950,7 +950,9 @@ Object {
               style="align-items: flex-start;"
             >
               <a
+                aria-label="Voir l’itinéraire"
                 class="c3 c4"
+                data-testid="Voir l’itinéraire"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -2494,7 +2496,9 @@ Object {
             style="align-items: flex-start;"
           >
             <a
+              aria-label="Voir l’itinéraire"
               class="c3 c4"
+              data-testid="Voir l’itinéraire"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
