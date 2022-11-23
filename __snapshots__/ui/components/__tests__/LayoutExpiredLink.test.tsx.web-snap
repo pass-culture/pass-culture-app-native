@@ -387,7 +387,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <a
-      aria-label="Consulter l’article d'aide"
       className="c0 c1"
       data-testid="Consulter l’article d'aide"
       href="https://passculture.zendesk.com/hc/fr/"
@@ -510,7 +509,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     >
       <button
-        aria-label="Renvoyer l'email"
         className="c3 c4"
         data-testid="Renvoyer l'email"
         disabled={false}
@@ -546,7 +544,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
-        aria-label="Retourner à l’accueil"
         className="c2 c1"
         data-testid="Retourner à l’accueil"
         onClick={[Function]}

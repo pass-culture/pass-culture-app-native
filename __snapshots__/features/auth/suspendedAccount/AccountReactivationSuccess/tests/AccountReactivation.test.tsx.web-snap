@@ -248,7 +248,6 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
     }
   >
     <button
-      aria-label="Découvrir le catalogue"
       className="c0 c1"
       data-testid="Découvrir le catalogue"
       onClick={[Function]}

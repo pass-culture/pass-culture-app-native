@@ -138,8 +138,7 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
     }
   >
     <View
-      accessibilityLabel="Découvrir le catalogue"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

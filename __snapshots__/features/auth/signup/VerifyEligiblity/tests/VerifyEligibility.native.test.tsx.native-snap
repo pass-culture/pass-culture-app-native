@@ -255,8 +255,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     >
       <View
-        accessibilityLabel="Commencer la vérification"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -316,8 +315,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <View
-        accessibilityLabel="Vérifier mon identité plus tard"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

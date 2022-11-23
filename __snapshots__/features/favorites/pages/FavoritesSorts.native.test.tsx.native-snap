@@ -605,8 +605,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
     }
   >
     <View
-      accessibilityLabel="Valider"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

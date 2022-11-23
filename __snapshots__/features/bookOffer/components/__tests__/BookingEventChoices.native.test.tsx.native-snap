@@ -554,13 +554,12 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
   />
   <View
-    accessibilityLabel="Valider ces options"
     accessibilityState={
       Object {
         "disabled": false,
       }
     }
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}

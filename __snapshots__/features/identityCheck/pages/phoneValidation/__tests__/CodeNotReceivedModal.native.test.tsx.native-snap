@@ -360,8 +360,7 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                 }
               />
               <View
-                accessibilityLabel="Demander un autre code"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
@@ -779,8 +778,7 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
                 }
               />
               <View
-                accessibilityLabel="Demander un autre code"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}

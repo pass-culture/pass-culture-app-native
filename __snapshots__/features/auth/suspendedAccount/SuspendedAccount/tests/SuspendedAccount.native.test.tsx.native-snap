@@ -211,8 +211,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Réactiver mon compte"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -272,8 +271,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Retourner à l’accueil"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

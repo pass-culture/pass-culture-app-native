@@ -449,8 +449,7 @@ Array [
       }
     >
       <View
-        accessibilityLabel="Aller sur demarches-simplifiees.fr"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -918,8 +917,7 @@ Array [
       }
     >
       <View
-        accessibilityLabel="Aller sur demarches-simplifiees.fr"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

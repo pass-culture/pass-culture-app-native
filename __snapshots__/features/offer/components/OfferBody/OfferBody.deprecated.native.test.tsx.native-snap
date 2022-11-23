@@ -1941,13 +1941,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessibilityLabel="Signaler l’offre"
                                 accessibilityState={
                                   Object {
                                     "disabled": false,
                                   }
                                 }
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -3458,8 +3457,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessibilityLabel="Voir l’itinéraire"
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -4475,13 +4473,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessibilityLabel="Signaler l’offre"
                                 accessibilityState={
                                   Object {
                                     "disabled": false,
                                   }
                                 }
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}

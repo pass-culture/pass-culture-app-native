@@ -590,7 +590,6 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               }
             >
               <button
-                aria-label="Valider et continuer"
                 className="c2 c3"
                 data-testid="Valider et continuer"
                 onClick={[Function]}

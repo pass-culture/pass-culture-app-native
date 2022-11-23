@@ -661,7 +661,6 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            aria-label="Annuler"
                             class="c5 c6"
                             data-testid="Annuler"
                             tabindex="0"

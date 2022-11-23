@@ -295,7 +295,6 @@ Object {
           style="padding-bottom: 40px;"
         >
           <button
-            aria-label="Découvrir le catalogue"
             class="c0 c1"
             data-testid="discover-button"
             tabindex="0"
@@ -608,7 +607,6 @@ Object {
         style="padding-bottom: 40px;"
       >
         <button
-          aria-label="Découvrir le catalogue"
           class="c0 c1"
           data-testid="discover-button"
           tabindex="0"

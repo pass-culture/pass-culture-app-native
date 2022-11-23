@@ -206,8 +206,7 @@ quotidiennes
       }
     >
       <View
-        accessibilityLabel="Passer"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={false}
         onClick={[Function]}

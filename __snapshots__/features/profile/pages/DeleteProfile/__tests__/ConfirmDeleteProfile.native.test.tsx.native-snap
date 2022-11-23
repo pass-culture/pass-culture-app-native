@@ -381,8 +381,7 @@ Array [
         }
       >
         <View
-          accessibilityLabel="Supprimer mon compte"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -442,8 +441,7 @@ Array [
           }
         />
         <View
-          accessibilityLabel="Consulter l’article d’aide"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}

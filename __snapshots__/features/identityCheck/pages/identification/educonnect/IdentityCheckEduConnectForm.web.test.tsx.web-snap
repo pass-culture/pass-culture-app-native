@@ -300,7 +300,6 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  aria-label="Ouvrir un onglet ÉduConnect"
                   class="c2 c3"
                   data-testid="Ouvrir un onglet ÉduConnect"
                   tabindex="0"
@@ -638,7 +637,6 @@ Object {
               style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
             >
               <button
-                aria-label="Ouvrir un onglet ÉduConnect"
                 class="c2 c3"
                 data-testid="Ouvrir un onglet ÉduConnect"
                 tabindex="0"

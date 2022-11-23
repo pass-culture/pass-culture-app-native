@@ -1718,7 +1718,6 @@ Object {
             style="height: 8px;"
           />
           <button
-            aria-label="Continuer"
             class="c9 c10"
             data-testid="date-picker-submit-button"
             disabled=""
@@ -3454,7 +3453,6 @@ Object {
           style="height: 8px;"
         />
         <button
-          aria-label="Continuer"
           class="c9 c10"
           data-testid="date-picker-submit-button"
           disabled=""
@@ -4749,7 +4747,6 @@ Object {
             style="height: 8px;"
           />
           <button
-            aria-label="Continuer"
             class="c3 c4"
             data-testid="date-picker-submit-button"
             disabled=""
@@ -5987,7 +5984,6 @@ Object {
           style="height: 8px;"
         />
         <button
-          aria-label="Continuer"
           class="c3 c4"
           data-testid="date-picker-submit-button"
           disabled=""

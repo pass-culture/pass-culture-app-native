@@ -184,8 +184,7 @@ exports[`<VenueNotFound /> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Retourner à l’accueil"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

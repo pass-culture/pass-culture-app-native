@@ -135,8 +135,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   />
   <View>
     <View
-      accessibilityLabel="Débuter le questionnaire"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -196,8 +195,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     }
   >
     <View
-      accessibilityLabel="Plus tard"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

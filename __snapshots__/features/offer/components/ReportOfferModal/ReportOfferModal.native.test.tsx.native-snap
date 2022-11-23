@@ -423,8 +423,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 }
               />
               <View
-                accessibilityLabel="Signaler l'offre"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}

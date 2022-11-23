@@ -2701,8 +2701,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Voir l’itinéraire"
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}

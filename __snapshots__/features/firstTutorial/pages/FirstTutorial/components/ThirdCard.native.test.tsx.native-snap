@@ -143,8 +143,7 @@ près de chez toi
       }
     >
       <View
-        accessibilityLabel="Utiliser ma position"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -206,8 +205,7 @@ près de chez toi
       }
     >
       <View
-        accessibilityLabel="Passer"
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={false}
         onClick={[Function]}

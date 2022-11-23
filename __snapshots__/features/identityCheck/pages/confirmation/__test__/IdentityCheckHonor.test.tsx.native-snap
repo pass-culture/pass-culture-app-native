@@ -400,8 +400,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Valider et continuer"
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}

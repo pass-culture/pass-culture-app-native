@@ -249,7 +249,6 @@ Object {
               style="height: 16px;"
             />
             <button
-              aria-label="Retourner à l’accueil"
               class="c2 c3"
               data-testid="Retourner à l’accueil"
               tabindex="0"
@@ -533,7 +532,6 @@ Object {
             style="height: 16px;"
           />
           <button
-            aria-label="Retourner à l’accueil"
             class="c2 c3"
             data-testid="Retourner à l’accueil"
             tabindex="0"
