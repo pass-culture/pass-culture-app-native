@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingAuthentication } from 'features/onboarding/pages/OnboardingAuthentication'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
@@ -21,14 +22,14 @@ describe('OnboardingAuthentication', () => {
     })
   })
 
-  it('should redirect to signup when signin button is clicked', async () => {
+  it('should redirect to home when skip button is clicked', async () => {
     const { getByText } = render(<OnboardingAuthentication />)
 
-    const signinButton = getByText('Se connecter')
-    fireEvent.press(signinButton)
+    const skipButton = getByText('Plus tard')
+    fireEvent.press(skipButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', { preventCancellation: true })
+      expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
     })
   })
 })

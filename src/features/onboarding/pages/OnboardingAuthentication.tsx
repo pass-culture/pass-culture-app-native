@@ -3,17 +3,17 @@ import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { AUTHENTICATION_BACKGROUND_SOURCE } from 'features/onboarding/components/authenticationBackground'
-import { AuthenticationHeader } from 'features/onboarding/components/AuthenticationHeader'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const OnboardingAuthentication: FunctionComponent = () => (
   <Container>
     <ImageBackground source={AUTHENTICATION_BACKGROUND_SOURCE} />
-    <AuthenticationHeader />
     <Spacer.Flex />
     <Gradient />
     <Content>
@@ -31,7 +31,12 @@ export const OnboardingAuthentication: FunctionComponent = () => (
         navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" />
+      <TouchableLink
+        as={ButtonTertiaryBlack}
+        wording="Plus tard"
+        icon={ClockFilled}
+        navigateTo={{ ...navigateToHomeConfig, fromRef: false }}
+      />
       <Spacer.BottomScreen />
     </Content>
   </Container>
@@ -40,10 +45,6 @@ export const OnboardingAuthentication: FunctionComponent = () => (
 const Container = styled.View({
   flex: 1,
 })
-
-const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
-}))``
 
 const Content = styled.View(({ theme }) => ({
   width: '100%',
