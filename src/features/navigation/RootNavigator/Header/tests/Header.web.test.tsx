@@ -47,11 +47,11 @@ describe('Header', () => {
 
   it('should identify one tab as current page', () => {
     const { getByTestId } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
-    expect(getByTestId('Home nav')?.getAttribute('aria-current')).toEqual('page')
-    expect(getByTestId('Search nav')?.getAttribute('aria-current')).toBeNull()
-    expect(getByTestId('Bookings nav')?.getAttribute('aria-current')).toBeNull()
-    expect(getByTestId('Favorites nav')?.getAttribute('aria-current')).toBeNull()
-    expect(getByTestId('Profile nav')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Home tab')?.getAttribute('aria-current')).toEqual('page')
+    expect(getByTestId('Search tab')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Bookings tab')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Favorites tab')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Profile tab')?.getAttribute('aria-current')).toBeNull()
   })
 })
 
