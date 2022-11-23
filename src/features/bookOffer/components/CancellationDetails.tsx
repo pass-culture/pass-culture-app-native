@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { useAppSettings } from 'features/auth/settings'
 import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToFrenchDate, formatToHour } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
@@ -16,7 +15,6 @@ const notCancellableMessage = 'Cette réservation n’est pas annulable'
 export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
   const offer = useBookingOffer()
-  const { data: settings } = useAppSettings()
 
   if (!stock || !offer) return <React.Fragment />
 
@@ -29,9 +27,8 @@ export const CancellationDetails: React.FC = () => {
         ? notCancellableMessage
         : `Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`
   }
-  // if "autoActivateDigitalBookings" is set, any digital booking with activationCode will be
-  // automatically activated. As a result, they are not cancellable.
-  if (settings?.autoActivateDigitalBookings && offer.isDigital && !!activationCode) {
+
+  if (offer.isDigital && !!activationCode) {
     message = notCancellableMessage
   }
 
