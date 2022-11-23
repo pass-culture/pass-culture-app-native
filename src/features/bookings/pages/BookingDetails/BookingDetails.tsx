@@ -4,7 +4,6 @@ import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
@@ -63,7 +62,6 @@ export function BookingDetails() {
     hideModal: hideArchiveModal,
   } = useModal(false)
 
-  const { data: appSettings } = useAppSettings()
   const mapping = useSubcategoriesMapping()
 
   const { venue, id: offerId } = booking?.stock.offer || {}
@@ -125,9 +123,8 @@ export function BookingDetails() {
   const properties = getBookingProperties(booking, mapping[offer.subcategoryId].isEvent)
   const shouldDisplayItineraryButton =
     !!venueFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
-  const activationCodeFeatureEnabled = appSettings?.autoActivateDigitalBookings
 
-  const offerRules = getOfferRules(properties, booking, activationCodeFeatureEnabled)
+  const offerRules = getOfferRules(properties, booking)
 
   const cancelBooking = () => {
     showCancelModal()
@@ -174,10 +171,7 @@ export function BookingDetails() {
         bounces={false}>
         <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
         <Spacer.Column numberOfSpaces={heroMarginTop} />
-        <TicketSwiper
-          booking={booking}
-          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-        />
+        <TicketSwiper booking={booking} />
         <ViewWithPadding>
           <Spacer.Column numberOfSpaces={4} />
           <OfferRules>{offerRules}</OfferRules>
@@ -219,7 +213,6 @@ export function BookingDetails() {
           <Spacer.Column numberOfSpaces={4} />
           <BookingDetailsCancelButton
             booking={booking}
-            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
             onCancel={cancelBooking}
             onTerminate={showArchiveModal}
             fullWidth

@@ -1,8 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
 
-import { OfferResponse, OfferStockResponse, SettingsResponse } from 'api/gen'
+import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, RenderAPI } from 'tests/utils'
@@ -35,47 +34,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
-let mockSettings = {
-  autoActivateDigitalBookings: false,
-}
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(
-    () =>
-      ({
-        data: mockSettings,
-      } as unknown as QueryObserverResult<SettingsResponse, unknown>)
-  ),
-}))
-
-describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () => {
-  it('should be cancellable if no limitDate specified', () => {
-    mockStock = { ...offerStockResponseSnap, cancellationLimitDatetime: null }
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
-
-    expectCancellable(page)
-  })
-
-  it('should not be cancellable if limitDate in the past', () => {
-    mockStock = { ...offerStockResponseSnap, cancellationLimitDatetime: pastDate }
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
-    expectNotCancellable(page)
-  })
-
-  it('should be cancellable if limitDate in the future', () => {
-    mockStock = { ...offerStockResponseSnap, cancellationLimitDatetime: futureDate }
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<CancellationDetails />))
-    expect(
-      page.queryByText('Cette réservation peut être annulée jusqu’au 6 janvier 2021, 00h00')
-    ).toBeTruthy()
-    expect(page.queryByText(/Cette réservation est annulable/)).toBeNull()
-    expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeNull()
-  })
-})
-
-describe('<CancellationDetails /> when autoActivateDigitalBookings = true and isDigital = true', () => {
+describe('<CancellationDetails /> when isDigital = true', () => {
   describe('activationCode with expiration date', () => {
     it.each([null, pastDate, futureDate])(
       'should not be cancellable when cancellation limit date=%s',
@@ -86,7 +45,6 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
           activationCode: { expirationDate: '2030-02-05T00:00:00Z' },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-        mockSettings = { autoActivateDigitalBookings: true }
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
@@ -105,7 +63,6 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
           activationCode: { expirationDate: null },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-        mockSettings = { autoActivateDigitalBookings: true }
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
@@ -122,7 +79,6 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-      mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
@@ -136,7 +92,6 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-      mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 
@@ -150,7 +105,6 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-      mockSettings = { autoActivateDigitalBookings: true }
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const page = render(reactQueryProviderHOC(<CancellationDetails />))
 

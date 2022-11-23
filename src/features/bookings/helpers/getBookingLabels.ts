@@ -1,4 +1,4 @@
-import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
+import { BookingStockResponse, WithdrawalTypeEnum } from 'api/gen'
 import {
   getEventOnSiteWithdrawLabel,
   getLocationLabel,
@@ -12,14 +12,10 @@ import {
   isTomorrow,
 } from 'libs/parsers'
 
-function getDateLabel(
-  booking: Booking,
-  properties: BookingProperties,
-  appSettings: SettingsResponse | null
-): string {
+function getDateLabel(booking: Booking, properties: BookingProperties): string {
   if (properties.isPermanent) return 'Permanent'
 
-  if (appSettings && appSettings.autoActivateDigitalBookings && properties.hasActivationCode) {
+  if (properties.hasActivationCode) {
     return getBookingLabelForActivationCode(booking)
   }
 
@@ -63,13 +59,9 @@ function getEventWithdrawLabel(stock: BookingStockResponse): string {
   return ''
 }
 
-export function getBookingLabels(
-  booking: Booking,
-  properties: BookingProperties,
-  appSettings: SettingsResponse | null
-) {
+export function getBookingLabels(booking: Booking, properties: BookingProperties) {
   return {
-    dateLabel: getDateLabel(booking, properties, appSettings),
+    dateLabel: getDateLabel(booking, properties),
     withdrawLabel: getWithdrawLabel(booking, properties),
     locationLabel: getLocationLabel(booking.stock, properties),
   }

@@ -310,7 +310,6 @@ exports[`BookingDetails should render correctly 1`] = `
         data={
           Array [
             <TicketWithContent
-              activationCodeFeatureEnabled={false}
               booking={
                 Object {
                   "cancellationDate": null,

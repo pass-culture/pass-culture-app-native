@@ -1913,11 +1913,6 @@ export interface SettingsResponse {
    */
   appEnableCookiesV2: boolean
   /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  autoActivateDigitalBookings: boolean
-  /**
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
    */
@@ -1946,11 +1941,6 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  enableNativeEacIndividual: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   enableNativeIdCheckVerboseDebugging: boolean
   /**
    * @type {boolean}
@@ -1966,27 +1956,12 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  enableUnderageGeneralisation: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  enableUserProfiling: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   idCheckAddressAutocompletion: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse
    */
   isRecaptchaEnabled: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  isWebappV2Enabled: boolean
   /**
    * @type {string}
    * @memberof SettingsResponse

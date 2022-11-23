@@ -31,17 +31,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-const mockSettings = {
-  autoActivateDigitalBookings: false,
-}
-
 const mockSnackBarTimeout = SNACK_BAR_TIME_OUT
-
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
 
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
@@ -148,7 +138,6 @@ describe('BookingDetails', () => {
       )
     })
     it('should display rules for a digital offer with activation code', () => {
-      mockSettings.autoActivateDigitalBookings = true
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
       booking.activationCode = {

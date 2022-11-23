@@ -13,7 +13,6 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 export interface BookingDetailsCancelButtonProps {
   booking: Booking
-  activationCodeFeatureEnabled?: boolean
   onCancel?: () => void
   onTerminate?: () => void
   fullWidth?: boolean
@@ -26,7 +25,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { data: user } = useUserProfileInfo()
   const isExBeneficiary = user && isUserExBeneficiary(user)
 
-  if (properties.hasActivationCode && props.activationCodeFeatureEnabled) {
+  if (properties.hasActivationCode) {
     return (
       <ButtonSecondary
         testID="Terminer"

@@ -16,14 +16,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type BookingDetailsTicketContentProps = {
   booking: BookingReponse
-  activationCodeFeatureEnabled?: boolean
   externalBookings?: SeatWithQrCodeProps
   testID?: string
 }
 
 export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicketContentProps> = ({
   booking,
-  activationCodeFeatureEnabled,
   externalBookings,
 }) => {
   const { completedUrl } = booking
@@ -44,13 +42,9 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   const isbn =
     extraData?.isbn && categoryId === CategoryIdEnum.LIVRE ? <Ean isbn={extraData.isbn} /> : null
 
-  const isDigitalAndActivationCodeEnabled =
-    activationCodeFeatureEnabled && properties.hasActivationCode
-
   const activationCode = !!booking.activationCode && (
     <TicketCode withdrawalType={withdrawalType || undefined} code={booking.activationCode.code} />
   )
-
   const accessExternalOfferButton = completedUrl ? (
     <TouchableLink
       as={ButtonWithLinearGradient}
@@ -82,7 +76,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
       <Title>{offerName}</Title>
       <Spacer.Column numberOfSpaces={3} />
       <TicketContent>
-        {isDigitalAndActivationCodeEnabled ? (
+        {properties.hasActivationCode ? (
           <React.Fragment>
             {activationCode}
             {accessExternalOfferButton}

@@ -19,15 +19,13 @@ jest.mock('features/profile/utils')
 const mockedisUserExBeneficiary = mocked(isUserExBeneficiary, true)
 
 describe('<BookingDetailsCancelButton />', () => {
-  it('should display the "Terminer" button for digital offers when autoActivateDigitalBookings is true', () => {
+  it('should display the "Terminer" button for digital offers when booking has activation code', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.stock.offer.isDigital = true
     booking.activationCode = {
       code: 'someCode',
     }
-    const { getByTestId } = renderBookingDetailsCancelButton(booking, {
-      activationCodeFeatureEnabled: true,
-    })
+    const { getByTestId } = renderBookingDetailsCancelButton(booking)
     getByTestId('Terminer')
   })
   it('should display button if confirmationDate is null', () => {
@@ -72,7 +70,6 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0], activationCode: { code: 'someCode' } }
     const onTerminate = jest.fn()
     const { getByTestId } = renderBookingDetailsCancelButton(booking, {
-      activationCodeFeatureEnabled: true,
       onTerminate,
     })
     const button = getByTestId('Terminer')

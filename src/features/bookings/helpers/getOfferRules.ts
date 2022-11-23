@@ -2,11 +2,7 @@ import { WithdrawalTypeEnum } from 'api/gen'
 import { Booking, BookingProperties } from 'features/bookings/types'
 import { plural } from 'libs/plural'
 
-export function getOfferRules(
-  properties: BookingProperties,
-  booking?: Booking,
-  activationCodeFeatureEnabled?: boolean
-): string {
+export function getOfferRules(properties: BookingProperties, booking?: Booking): string {
   const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
   const numberOfExternalBookings = booking?.externalBookings
     ? booking.externalBookings.length
@@ -15,7 +11,7 @@ export function getOfferRules(
     booking?.stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ||
     !booking?.stock.offer.withdrawalType
 
-  if (hasActivationCode && activationCodeFeatureEnabled)
+  if (hasActivationCode)
     return 'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
 
   if (isDigital)

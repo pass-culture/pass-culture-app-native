@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { WithdrawalTypeEnum } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { BookingItemProps } from 'features/bookings/types'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -17,13 +16,12 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { BookingItemTitle } from './BookingItemTitle'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
-  const { data: settings = null } = useAppSettings()
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking, isEvent)
-  const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)
+  const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
     name: stock.offer.name,

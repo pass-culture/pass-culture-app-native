@@ -5,15 +5,10 @@ import { TicketWithContent } from 'features/bookings/components/Ticket/TicketWit
 
 export type TicketsProps = {
   booking: BookingReponse
-  activationCodeFeatureEnabled?: boolean
   maxNumberOfTicketsToDisplay?: number
 }
 
-export function getTickets({
-  booking,
-  activationCodeFeatureEnabled,
-  maxNumberOfTicketsToDisplay = 2,
-}: TicketsProps) {
+export function getTickets({ booking, maxNumberOfTicketsToDisplay = 2 }: TicketsProps) {
   if (!booking.externalBookings) return { tickets: [] }
 
   const externalBookings = booking.externalBookings.slice(0, maxNumberOfTicketsToDisplay)
@@ -24,7 +19,6 @@ export function getTickets({
         <TicketWithContent
           key={booking.id}
           booking={booking}
-          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
           testID="ticket-without-external-bookings-information"
         />,
       ],
@@ -39,7 +33,6 @@ export function getTickets({
         <TicketWithContent
           key={index}
           booking={booking}
-          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
           externalBookings={{ seat: seatNumber, seatIndex: seatWithNumberOfSeats, barcode }}
           testID="ticket-with-external-bookings-information"
         />

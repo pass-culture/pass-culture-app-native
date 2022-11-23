@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
 import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
@@ -18,10 +17,9 @@ import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOf
 import { formatDate } from './CancellationDetails'
 
 const ExpirationDate: React.FC<{
-  autoActivateDigitalBookings: boolean | undefined
   expirationDate: string | undefined | null
-}> = ({ autoActivateDigitalBookings, expirationDate }) => {
-  if (!autoActivateDigitalBookings || !expirationDate) return <React.Fragment></React.Fragment>
+}> = ({ expirationDate }) => {
+  if (!expirationDate) return <React.Fragment></React.Fragment>
 
   const activationText = `À activer avant le ${formatToFrenchDate(expirationDate)}`
 
@@ -32,7 +30,6 @@ export const BookingInformations: React.FC = () => {
   const { bookingState } = useBooking()
   const offer = useBookingOffer()
   const stock = useBookingStock()
-  const { data: settings } = useAppSettings()
   const mapping = useSubcategoriesMapping()
 
   const { quantity } = bookingState
@@ -89,10 +86,7 @@ export const BookingInformations: React.FC = () => {
     <React.Fragment>
       <Item Icon={Booking} message={name} />
       <Item Icon={OrderPrice} message={price} />
-      <ExpirationDate
-        autoActivateDigitalBookings={settings?.autoActivateDigitalBookings}
-        expirationDate={expirationDate}
-      />
+      <ExpirationDate expirationDate={expirationDate} />
     </React.Fragment>
   )
 }
