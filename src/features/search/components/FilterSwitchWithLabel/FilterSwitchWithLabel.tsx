@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,22 +35,21 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
     () =>
       function TitleWithSubtitle() {
         return (
-          <View>
-            <InputLabel htmlFor={checkboxID}>
-              <Typo.ButtonText {...getHeadingAttrs(accessibilityLevel ?? 2)}>
-                {label}
-              </Typo.ButtonText>
-            </InputLabel>
+          <StyledInputLabel
+            {...getHeadingAttrs(accessibilityLevel ?? 2)}
+            id={labelID}
+            htmlFor={checkboxID}>
+            {subtitle ? `${label}\n` : label}
             {!!subtitle && (
-              <React.Fragment>
+              <View>
                 <Spacer.Column numberOfSpaces={1} />
                 <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
-              </React.Fragment>
+              </View>
             )}
-          </View>
+          </StyledInputLabel>
         )
       },
-    [checkboxID, label, subtitle, accessibilityLevel]
+    [labelID, checkboxID, accessibilityLevel, label, subtitle]
   )
 
   return (
@@ -97,3 +97,7 @@ const TitleWrapper = styled.View({
 const SwitchWrapper = styled.View({
   flexShrink: 0,
 })
+
+const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
+  ...theme.typography.buttonText,
+}))

@@ -79,6 +79,7 @@ Array [
         </div>
         <div
           aria-checked={true}
+          aria-labelledby="testUuidV4"
           className="css-view-1dbjc4n"
           data-testid="Interrupteur"
           onBlur={[Function]}
@@ -182,6 +183,7 @@ Array [
       <label
         className="c2"
         htmlFor="testUuidV4"
+        id="testUuidV4"
       >
         <div
           className="css-text-901oao"

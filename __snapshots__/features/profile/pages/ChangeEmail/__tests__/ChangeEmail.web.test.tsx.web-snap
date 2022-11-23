@@ -385,7 +385,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="c0 c4 sc-kLwhqv c4"
+                    class="c0 c4 sc-ikJyIC c4"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     title="Afficher le mot de passe"
@@ -823,7 +823,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="c0 c4 sc-kLwhqv c4"
+                  class="c0 c4 sc-ikJyIC c4"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   title="Afficher le mot de passe"

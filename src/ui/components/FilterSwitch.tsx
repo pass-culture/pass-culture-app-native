@@ -16,6 +16,7 @@ export interface FilterSwitchProps {
   checkboxID?: string
   accessibilityDescribedBy?: string
   accessibilityLabelledBy?: string
+  accessibilityLabel?: string
   disabled?: boolean
   toggle: () => void
   testID?: string
@@ -61,6 +62,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         accessibilityState={{ checked: active }}
         aria-describedby={props.accessibilityDescribedBy}
         aria-labelledby={props.accessibilityLabelledBy}
+        accessibilityLabel={props.accessibilityLabel}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         testID={testId}>

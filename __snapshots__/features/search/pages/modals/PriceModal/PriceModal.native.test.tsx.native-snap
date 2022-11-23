@@ -465,36 +465,22 @@ exports[`PriceModal component should render modal correctly after animation and 
                   ]
                 }
               >
-                <View>
-                  <Text
-                    htmlFor="testUuidV4"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Uniquement les offres gratuites
-                    </Text>
-                  </Text>
-                </View>
+                <Text
+                  htmlFor="testUuidV4"
+                  id="testUuidV4"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Uniquement les offres gratuites
+                </Text>
               </View>
               <View
                 numberOfSpaces={2}
@@ -658,36 +644,22 @@ exports[`PriceModal component should render modal correctly after animation and 
                   ]
                 }
               >
-                <View>
-                  <Text
-                    htmlFor="testUuidV4"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Limiter la recherche à mon crédit
-                    </Text>
-                  </Text>
-                </View>
+                <Text
+                  htmlFor="testUuidV4"
+                  id="testUuidV4"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Limiter la recherche à mon crédit
+                </Text>
               </View>
               <View
                 numberOfSpaces={2}

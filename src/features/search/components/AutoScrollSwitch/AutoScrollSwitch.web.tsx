@@ -16,13 +16,19 @@ export const AutoScrollSwitch = ({
   toggle: () => void
 }) => {
   const checkboxID = uuidv4()
+  const labelID = uuidv4()
 
   return (
     <Container>
       <FlexContainer>
-        <FilterSwitch active={active} toggle={toggle} checkboxID={checkboxID} />
+        <FilterSwitch
+          active={active}
+          toggle={toggle}
+          checkboxID={checkboxID}
+          accessibilityLabelledBy={labelID}
+        />
         <Spacer.Row numberOfSpaces={5} />
-        <InputLabel htmlFor={checkboxID}>
+        <InputLabel id={labelID} htmlFor={checkboxID}>
           <Typo.ButtonText>{title}</Typo.ButtonText>
         </InputLabel>
         <Spacer.Column numberOfSpaces={2} />
