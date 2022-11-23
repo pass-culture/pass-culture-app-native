@@ -25,14 +25,14 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
 }) => {
   const addToFavorites = useCallback(() => {
     analytics.logHasAddedOfferToFavorites({
-      from: 'applicationProcessingModal' as Referrals,
+      from: 'ApplicationProcessingModal' as Referrals,
       offerId,
     })
     hideModal()
   }, [hideModal, offerId])
 
   const goToProfil = useCallback(() => {
-    analytics.logGoToProfil({ from: 'ApplicationProccessingModal', offerId })
+    analytics.logGoToProfil({ from: 'ApplicationProcessingModal', offerId })
     hideModal()
   }, [hideModal, offerId])
 

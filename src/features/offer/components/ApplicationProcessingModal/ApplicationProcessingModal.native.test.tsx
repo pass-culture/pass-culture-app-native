@@ -7,15 +7,17 @@ import { fireEvent, render } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
+jest.mock('react-query')
+
 const hideModal = jest.fn()
 const offerId = 1
-jest.mock('features/offer/components/AddToFavoritesButton/AddToFavoritesButton')
 
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
     const modal = render(
       <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
     )
+
     expect(modal).toMatchSnapshot()
   })
 
@@ -33,14 +35,37 @@ describe('<ApplicationProcessingModal />', () => {
   })
 
   it('should log analytics when clicking on button "Aller sur mon profil', async () => {
-    const { getByLabelText } = render(
+    const { getByTestId } = render(
       <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
     )
 
-    fireEvent.press(getByLabelText('Aller sur mon profil'))
+    fireEvent.press(getByTestId('Aller sur mon profil'))
 
     expect(analytics.logGoToProfil).toHaveBeenCalledWith({
-      from: 'ApplicationProccessingModal',
+      from: 'ApplicationProcessingModal',
+      offerId,
+    })
+  })
+
+  it('should close modal when clicking on button "Mettre en favori', async () => {
+    const { getByText } = render(
+      <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
+    )
+
+    fireEvent.press(getByText('Mettre en favori'))
+
+    expect(hideModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when clicking on button "Mettre en favori', async () => {
+    const { getByText } = render(
+      <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
+    )
+
+    fireEvent.press(getByText('Mettre en favori'))
+
+    expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+      from: 'ApplicationProcessingModal',
       offerId,
     })
   })

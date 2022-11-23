@@ -5,22 +5,25 @@ import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicatio
 import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
+jest.mock('react-query')
+
 const hideModal = jest.fn()
 const offerId = 1
-jest.mock('features/offer/components/AddToFavoritesButton/AddToFavoritesButton')
 
 describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
     const modal = render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
+
     expect(modal).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to profile when pressing "Aller sur mon profil" button', () => {
+  it('should close modal and navigate to profile when pressing "Aller vers la section profil" button', () => {
     const { getByLabelText } = render(
       <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
     )
 
     fireEvent.press(getByLabelText('Aller vers la section profil'))
+
     expect(hideModal).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
   })
@@ -33,6 +36,29 @@ describe('<ErrorApplicationModal />', () => {
     fireEvent.press(getByLabelText('Aller vers la section profil'))
 
     expect(analytics.logGoToProfil).toHaveBeenNthCalledWith(1, {
+      from: 'ErrorApplicationModal',
+      offerId,
+    })
+  })
+
+  it('should close modal when clicking on button "Mettre en favori', async () => {
+    const { getByText } = render(
+      <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
+    )
+
+    fireEvent.press(getByText('Mettre en favori'))
+
+    expect(hideModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when clicking on button "Mettre en favori', async () => {
+    const { getByText } = render(
+      <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
+    )
+
+    fireEvent.press(getByText('Mettre en favori'))
+
+    expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
       from: 'ErrorApplicationModal',
       offerId,
     })
