@@ -367,11 +367,6 @@ export const LocationModal: FunctionComponent<Props> = ({
                       value === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE ? (
                         <React.Fragment>
                           <Spacer.Column numberOfSpaces={4} />
-                          <SpaceBetween>
-                            <Typo.Body>Rechercher un lieu</Typo.Body>
-                            <Typo.Caption>Obligatoire</Typo.Caption>
-                          </SpaceBetween>
-                          <Spacer.Column numberOfSpaces={2} />
                           <Controller
                             control={control}
                             name="searchPlaceOrVenue"
@@ -380,6 +375,8 @@ export const LocationModal: FunctionComponent<Props> = ({
                             }) => (
                               <SearchInput
                                 ref={searchPlaceOrVenueInputRef}
+                                label="Rechercher un lieu"
+                                isRequiredField
                                 value={searchPlaceOrVenue}
                                 onChangeText={(text) => {
                                   onPlaceSearchChange(text)
@@ -472,11 +469,4 @@ const LabelRadiusContainer = styled.View({
 
 const StyledVerticalUl = styled(VerticalUl)({
   overflow: 'hidden',
-})
-
-const SpaceBetween = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
 })
