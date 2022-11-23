@@ -387,7 +387,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                                 }}
                                 placeholder="Adresse, cinéma, musée..."
                                 inputHeight="regular"
-                                accessibilityLabel="Recherche un lieu, une adresse"
+                                accessibilityLabel="Recherche un lieu, une adresse, obligatoire"
                                 onPressRightIcon={handleSearchReset}
                                 accessibilityDescribedBy={accessibilityDescribedBy}
                               />
