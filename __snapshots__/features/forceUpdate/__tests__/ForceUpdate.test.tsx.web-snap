@@ -238,6 +238,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     >
       <button
+        aria-label="Actualiser la page"
         className="c0 c1"
         data-testid="Actualiser la page"
         onClick={[Function]}

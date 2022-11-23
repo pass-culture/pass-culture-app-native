@@ -483,7 +483,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               }
             />
             <View
-              accessible={false}
+              accessibilityLabel="J'ai compris"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -511,7 +512,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   "width": "100%",
                 }
               }
-              testID="dismiss-phone-validation-tips-modal"
+              testID="J'ai compris"
             >
               <Text
                 adjustsFontSizeToFit={false}

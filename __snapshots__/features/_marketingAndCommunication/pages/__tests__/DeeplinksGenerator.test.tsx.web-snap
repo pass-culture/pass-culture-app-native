@@ -168,7 +168,7 @@ Array [
             <button
               aria-label="Revenir en arrière"
               className="c0 c1 sc-hBUSln c1"
-              data-testid="backButton"
+              data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
               title="Revenir en arrière"
@@ -2998,6 +2998,7 @@ Array [
           </div>
         </div>
         <button
+          aria-label="Générer le lien"
           className="c0 c1"
           data-testid="Générer le lien"
           disabled={false}

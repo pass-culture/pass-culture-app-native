@@ -3033,7 +3033,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <View
-            accessible={false}
+            accessibilityLabel="Voir l’itinéraire"
+            accessible={true}
             collapsable={false}
             focusable={true}
             onClick={[Function]}

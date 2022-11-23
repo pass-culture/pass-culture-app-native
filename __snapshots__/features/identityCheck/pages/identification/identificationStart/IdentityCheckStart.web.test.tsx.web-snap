@@ -5,7 +5,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-@@ -582,11 +582,11 @@
+@@ -586,11 +586,11 @@
             class=\\"css-view-1dbjc4n\\"
             style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;\\"
           >
@@ -18,27 +18,26 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                 class=\\"css-view-1dbjc4n\\"
                 style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
               >
-@@ -598,107 +598,94 @@
+@@ -600,10 +600,18 @@
+                >
+                  <div
                     class=\\"css-view-1dbjc4n\\"
                     style=\\"align-items: center; height: 100%;\\"
                   >
-                    <div
-                      class=\\"css-view-1dbjc4n\\"
++                   <div
++                     class=\\"css-view-1dbjc4n\\"
 +                     style=\\"align-items: center; height: 100%;\\"
-                    >
-                      <div
++                   >
++                     <div
 +                       class=\\"css-view-1dbjc4n\\"
 +                       style=\\"height: 40px;\\"
 +                     />
-+                     <div
-+                       class=\\"css-view-1dbjc4n\\"
-+                     >
-+                       <div
+                      <div
+                        class=\\"css-view-1dbjc4n\\"
+                      >
+                        <div
                           class=\\"css-text-901oao\\"
-                          dir=\\"ltr\\"
-                        >
-                          undefined-SVG-Mock
-                        </div>
+@@ -614,97 +622,75 @@
                       </div>
                       <div
                         class=\\"css-view-1dbjc4n\\"
@@ -84,6 +83,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;\\"
                         >
 -                       Prends une photo de ta carte d’identité ou de ton passeport en cours de validité pour accéder à ton pass Culture.
+-                     </div>
 +                          carte d’identité 
 +                       </span>
 +                       ou de ton
@@ -95,12 +95,12 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                       </span>
 +                       en cours de validité pour accéder à ton pass Culture.
                       </div>
--                   </div>
                       <div
                         class=\\"css-view-1dbjc4n\\"
                         style=\\"height: 24px;\\"
                       />
 -                   <button
+-                     aria-label=\\"Vérification par smartphone\\"
 -                     class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
 -                     data-testid=\\"Vérification par smartphone\\"
 -                     tabindex=\\"0\\"
@@ -138,8 +138,10 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                       style=\\"height: 16px;\\"
 -                     />
                         <button
+-                       aria-label=\\"Identification par le site Démarches-Simplifiées\\"
 -                       class=\\"sc-dkPtRN dMotSY sc-kLwhqv gyEfHx\\"
 -                       data-testid=\\"Identification par le site Démarches-Simplifiées\\"
++                         aria-label=\\"Transmettre un document\\"
 +                         class=\\"sc-dkPtRN fSwvKJ sc-crHmcD dlEnXt\\"
 +                         data-testid=\\"Transmettre un document\\"
                           tabindex=\\"0\\"
@@ -156,7 +158,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                             >
                               <div
                                 class=\\"css-text-901oao\\"
-@@ -709,29 +696,46 @@
+@@ -715,29 +701,47 @@
                             </div>
                           </div>
                           <div
@@ -184,6 +186,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +               style=\\"background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;\\"
 +             >
 +               <button
++                 aria-label=\\"Commencer la vérification\\"
 +                 class=\\"sc-dkPtRN ffceOV sc-eCImPb idTzrf\\"
 +                 data-testid=\\"Commencer la vérification\\"
 +                 tabindex=\\"0\\"
@@ -196,9 +199,9 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                   style=\\"color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;\\"
                   >
 -                       Environ 10 jours
--                     </div>
 +                   Commencer la vérification
                   </div>
+-                   </div>
 +               </button>
                 <div
                   class=\\"css-view-1dbjc4n\\"

@@ -185,7 +185,8 @@ Array [
     />
     <View>
       <View
-        accessible={false}
+        accessibilityLabel="M’identifier plus tard"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

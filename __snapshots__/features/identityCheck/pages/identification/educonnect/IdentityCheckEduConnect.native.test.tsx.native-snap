@@ -380,7 +380,8 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
           }
         >
           <View
-            accessible={false}
+            accessibilityLabel="Connexion avec ÉduConnect"
+            accessible={true}
             collapsable={false}
             focusable={true}
             onClick={[Function]}

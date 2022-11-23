@@ -215,6 +215,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
+              aria-label="Faire une nouvelle demande"
               class="c0 c1"
               data-testid="Faire une nouvelle demande"
               tabindex="0"
@@ -233,6 +234,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               style="height: 16px;"
             />
             <button
+              aria-label="Retourner à l’accueil"
               class="c2 c3"
               data-testid="Retourner à l’accueil"
               tabindex="0"
@@ -482,6 +484,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
+            aria-label="Faire une nouvelle demande"
             class="c0 c1"
             data-testid="Faire une nouvelle demande"
             tabindex="0"
@@ -500,6 +503,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style="height: 16px;"
           />
           <button
+            aria-label="Retourner à l’accueil"
             class="c2 c3"
             data-testid="Retourner à l’accueil"
             tabindex="0"
@@ -806,6 +810,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
+              aria-label="Se connecter"
               class="c0 c1"
               data-testid="Se connecter"
               tabindex="0"
@@ -824,6 +829,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               style="height: 16px;"
             />
             <button
+              aria-label="Retourner à l’accueil"
               class="c2 c3"
               data-testid="Retourner à l’accueil"
               tabindex="0"
@@ -1073,6 +1079,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
+            aria-label="Se connecter"
             class="c0 c1"
             data-testid="Se connecter"
             tabindex="0"
@@ -1091,6 +1098,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style="height: 16px;"
           />
           <button
+            aria-label="Retourner à l’accueil"
             class="c2 c3"
             data-testid="Retourner à l’accueil"
             tabindex="0"

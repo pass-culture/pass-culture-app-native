@@ -135,7 +135,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   />
   <View>
     <View
-      accessible={false}
+      accessibilityLabel="Débuter le questionnaire"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -163,7 +164,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
           "width": "100%",
         }
       }
-      testID="start-cultural-survey"
+      testID="Débuter le questionnaire"
     >
       <Text
         adjustsFontSizeToFit={false}
@@ -195,7 +196,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     }
   >
     <View
-      accessible={false}
+      accessibilityLabel="Plus tard"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -223,7 +225,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
           "width": "100%",
         }
       }
-      testID="answer-survey-later"
+      testID="Plus tard"
     >
       <View
         style={

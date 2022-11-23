@@ -510,7 +510,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 "width": "100%",
               }
             }
-            testID="Continuer"
+            testID="Continuer vers l’étape suivante"
           >
             <Text
               adjustsFontSizeToFit={false}

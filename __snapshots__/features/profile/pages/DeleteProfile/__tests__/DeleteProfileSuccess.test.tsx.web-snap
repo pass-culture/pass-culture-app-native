@@ -359,6 +359,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <button
+        aria-label="Retourner à l’accueil"
         className="c0 c1"
         data-testid="Retourner à l’accueil"
         onClick={[Function]}
@@ -393,6 +394,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         }
       />
       <button
+        aria-label="Réactiver mon compte"
         className="c2 c3"
         data-testid="Réactiver mon compte"
         onClick={[Function]}

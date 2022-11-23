@@ -94,7 +94,7 @@ Object {
                 <button
                   aria-label="Revenir en arrière"
                   class="c0 c1 sc-kDTinF c1"
-                  data-testid="backButton"
+                  data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
                   type="button"
@@ -329,7 +329,7 @@ Object {
               <button
                 aria-label="Revenir en arrière"
                 class="c0 c1 sc-kDTinF c1"
-                data-testid="backButton"
+                data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
                 type="button"

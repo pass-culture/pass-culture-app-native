@@ -329,6 +329,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       <button
+        aria-label="S’inscrire"
         className="c0 c1"
         data-testid="S’inscrire"
         onClick={[Function]}
@@ -363,6 +364,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       />
       <button
+        aria-label="Se connecter"
         className="c2 c3"
         data-testid="Se connecter"
         onClick={[Function]}

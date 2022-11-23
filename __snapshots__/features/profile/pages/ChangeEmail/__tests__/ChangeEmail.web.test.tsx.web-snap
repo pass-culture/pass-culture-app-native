@@ -179,7 +179,7 @@ Object {
                 <button
                   aria-label="Revenir en arrière"
                   class="c0 c1 sc-kDTinF c1"
-                  data-testid="backButton"
+                  data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
                   type="button"
@@ -419,7 +419,7 @@ Object {
                 <button
                   aria-label="Enregistrer les modifications"
                   class="c5 c6"
-                  data-testid="Enregistrer"
+                  data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
                 >
@@ -617,7 +617,7 @@ Object {
               <button
                 aria-label="Revenir en arrière"
                 class="c0 c1 sc-kDTinF c1"
-                data-testid="backButton"
+                data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
                 type="button"
@@ -857,7 +857,7 @@ Object {
               <button
                 aria-label="Enregistrer les modifications"
                 class="c5 c6"
-                data-testid="Enregistrer"
+                data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"
               >

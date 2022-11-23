@@ -93,17 +93,17 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +690,27 @@
-                }
+@@ -692,27 +692,27 @@
               />
               <View
+                accessibilityLabel=\\"Se connecter\\"
                 accessibilityState={
                   Object {
 -                   \\"disabled\\": true,
 +                   \\"disabled\\": false,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 collapsable={false}
 -               focusable={false}
 +               focusable={true}
@@ -124,7 +124,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +729,11 @@
+@@ -731,11 +731,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -546,17 +546,17 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +763,27 @@
-                }
+@@ -692,27 +765,27 @@
               />
               <View
+                accessibilityLabel=\\"Se connecter\\"
                 accessibilityState={
                   Object {
 -                   \\"disabled\\": true,
 +                   \\"disabled\\": false,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 collapsable={false}
 -               focusable={false}
 +               focusable={true}
@@ -577,7 +577,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +802,11 @@
+@@ -731,11 +804,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -811,17 +811,17 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +763,27 @@
-                }
+@@ -692,27 +765,27 @@
               />
               <View
+                accessibilityLabel=\\"Se connecter\\"
                 accessibilityState={
                   Object {
 -                   \\"disabled\\": true,
 +                   \\"disabled\\": false,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 collapsable={false}
 -               focusable={false}
 +               focusable={true}
@@ -842,7 +842,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +802,11 @@
+@@ -731,11 +804,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -1076,17 +1076,17 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -690,27 +763,27 @@
-                }
+@@ -692,27 +765,27 @@
               />
               <View
+                accessibilityLabel=\\"Se connecter\\"
                 accessibilityState={
                   Object {
 -                   \\"disabled\\": true,
 +                   \\"disabled\\": false,
                   }
                 }
-                accessible={false}
+                accessible={true}
                 collapsable={false}
 -               focusable={false}
 +               focusable={true}
@@ -1107,7 +1107,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -729,11 +802,11 @@
+@@ -731,11 +804,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={

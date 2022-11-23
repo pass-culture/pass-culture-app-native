@@ -2,7 +2,8 @@
 
 exports[`AppButton Component * inline property should use inline css style when true 1`] = `
 <View
-  accessible={false}
+  accessibilityLabel="Testing inline"
+  accessible={true}
   collapsable={false}
   focusable={false}
   onClick={[Function]}

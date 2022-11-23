@@ -2584,7 +2584,8 @@ exports[`Categories component should render correctly 1`] = `
             }
           >
             <View
-              accessible={false}
+              accessibilityLabel="Réinitialiser"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -2654,12 +2655,13 @@ exports[`Categories component should render correctly 1`] = `
               </Text>
             </View>
             <View
+              accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {
                   "disabled": false,
                 }
               }
-              accessible={false}
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

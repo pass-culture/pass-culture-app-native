@@ -900,7 +900,8 @@ exports[`LocationModal component should render modal correctly after animation a
             }
           >
             <View
-              accessible={false}
+              accessibilityLabel="Réinitialiser"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -970,12 +971,13 @@ exports[`LocationModal component should render modal correctly after animation a
               </Text>
             </View>
             <View
+              accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {
                   "disabled": false,
                 }
               }
-              accessible={false}
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

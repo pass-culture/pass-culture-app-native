@@ -211,7 +211,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Faire une nouvelle demande"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -271,7 +272,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         }
       />
       <View
-        accessible={false}
+        accessibilityLabel="Retourner à l’accueil"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -566,7 +568,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Se connecter"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -626,7 +629,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         }
       />
       <View
-        accessible={false}
+        accessibilityLabel="Retourner à l’accueil"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

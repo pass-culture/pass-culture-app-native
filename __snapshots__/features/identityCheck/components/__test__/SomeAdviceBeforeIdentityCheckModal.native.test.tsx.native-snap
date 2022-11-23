@@ -437,7 +437,8 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
               </View>
             </View>
             <View
-              accessible={false}
+              accessibilityLabel="J’ai compris"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

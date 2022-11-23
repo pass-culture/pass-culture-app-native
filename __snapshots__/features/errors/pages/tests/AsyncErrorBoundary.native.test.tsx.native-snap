@@ -203,7 +203,8 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Réessayer"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

@@ -256,7 +256,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
             <button
               aria-label="Revenir en arrière"
               className="c0 c1 sc-gsDKAQ c1"
-              data-testid="backButton"
+              data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
               title="Revenir en arrière"
@@ -542,6 +542,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               }
             >
               <a
+                aria-label="Je suis de nationalité française"
                 className="c2 c3"
                 data-testid="Je suis de nationalité française"
                 href="https://dmsfrenchcitizen"
@@ -668,6 +669,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 </div>
               </div>
               <a
+                aria-label="Je suis de nationalité étrangère"
                 className="c2 c3"
                 data-testid="Je suis de nationalité étrangère"
                 href="https://dmsforeigncitizen"

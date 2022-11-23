@@ -401,7 +401,7 @@ Array [
             "width": "100%",
           }
         }
-        testID="support@passculture.app"
+        testID="Ouvrir le gestionnaire mail pour contacter le support"
       >
         <View
           style={

@@ -902,6 +902,7 @@ Array [
             className="css-view-1dbjc4n"
           >
             <button
+              aria-label="Modifier mes filtres"
               className="c0 c1"
               data-testid="Modifier mes filtres"
               onClick={[Function]}

@@ -1031,7 +1031,8 @@ exports[`SearchFilter component should render correctly 1`] = `
     }
   >
     <View
-      accessible={false}
+      accessibilityLabel="Réinitialiser"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -1101,7 +1102,8 @@ exports[`SearchFilter component should render correctly 1`] = `
       </Text>
     </View>
     <View
-      accessible={false}
+      accessibilityLabel="Rechercher"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

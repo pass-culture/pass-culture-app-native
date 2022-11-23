@@ -201,7 +201,8 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         }
       >
         <View
-          accessible={false}
+          accessibilityLabel="Continuer la vérification"
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -261,7 +262,8 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           }
         />
         <View
-          accessible={false}
+          accessibilityLabel="Abandonner la vérification"
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}

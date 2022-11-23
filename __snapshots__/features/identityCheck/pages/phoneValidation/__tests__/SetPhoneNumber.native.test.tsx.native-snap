@@ -756,12 +756,13 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
               }
             />
             <View
+              accessibilityLabel="Continuer"
               accessibilityState={
                 Object {
                   "disabled": true,
                 }
               }
-              accessible={false}
+              accessible={true}
               collapsable={false}
               focusable={false}
               onClick={[Function]}
@@ -1585,12 +1586,13 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               }
             />
             <View
+              accessibilityLabel="Continuer"
               accessibilityState={
                 Object {
                   "disabled": true,
                 }
               }
-              accessible={false}
+              accessible={true}
               collapsable={false}
               focusable={false}
               onClick={[Function]}

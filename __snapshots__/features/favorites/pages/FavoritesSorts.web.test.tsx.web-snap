@@ -167,7 +167,7 @@ Object {
                   <button
                     aria-label="Revenir en arrière"
                     class="c0 c1 sc-eCImPb c1"
-                    data-testid="backButton"
+                    data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
                     type="button"
@@ -414,6 +414,7 @@ Object {
           style="padding: 20px 20px 20px 20px;"
         >
           <button
+            aria-label="Valider"
             class="c2 c3"
             data-testid="Valider"
             tabindex="0"
@@ -594,7 +595,7 @@ Object {
                 <button
                   aria-label="Revenir en arrière"
                   class="c0 c1 sc-eCImPb c1"
-                  data-testid="backButton"
+                  data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
                   type="button"
@@ -841,6 +842,7 @@ Object {
         style="padding: 20px 20px 20px 20px;"
       >
         <button
+          aria-label="Valider"
           class="c2 c3"
           data-testid="Valider"
           tabindex="0"

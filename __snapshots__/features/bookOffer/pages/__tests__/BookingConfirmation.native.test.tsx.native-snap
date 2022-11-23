@@ -209,7 +209,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Voir ma réservation"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -269,7 +270,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         }
       />
       <View
-        accessible={false}
+        accessibilityLabel="Retourner à l'accueil"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

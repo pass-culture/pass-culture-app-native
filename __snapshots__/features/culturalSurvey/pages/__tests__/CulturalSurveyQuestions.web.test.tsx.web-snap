@@ -743,7 +743,7 @@ Object {
           <button
             aria-label="Continuer vers l’étape suivante"
             class="c0 c1"
-            data-testid="next-cultural-survey-question"
+            data-testid="Continuer vers l’étape suivante"
             tabindex="0"
             type="button"
           >
@@ -1502,7 +1502,7 @@ Object {
         <button
           aria-label="Continuer vers l’étape suivante"
           class="c0 c1"
-          data-testid="next-cultural-survey-question"
+          data-testid="Continuer vers l’étape suivante"
           tabindex="0"
           type="button"
         >

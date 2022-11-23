@@ -904,7 +904,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       "width": "auto",
                                     }
                                   }
-                                  testID="description-details-button"
+                                  testID="Voir la suite de la description"
                                 >
                                   <Text
                                     adjustsFontSizeToFit={false}
@@ -1941,12 +1941,13 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
+                                accessibilityLabel="Signaler l’offre"
                                 accessibilityState={
                                   Object {
                                     "disabled": false,
                                   }
                                 }
-                                accessible={false}
+                                accessible={true}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -1976,7 +1977,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "width": "auto",
                                   }
                                 }
-                                testID="report-offer-body"
+                                testID="Signaler l’offre"
                               >
                                 <View
                                   style={
@@ -3063,7 +3064,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       "width": "auto",
                                     }
                                   }
-                                  testID="description-details-button"
+                                  testID="Voir la suite de la description"
                                 >
                                   <Text
                                     adjustsFontSizeToFit={false}
@@ -3457,7 +3458,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
-                                accessible={false}
+                                accessibilityLabel="Voir l’itinéraire"
+                                accessible={true}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -4473,12 +4475,13 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <View
+                                accessibilityLabel="Signaler l’offre"
                                 accessibilityState={
                                   Object {
                                     "disabled": false,
                                   }
                                 }
-                                accessible={false}
+                                accessible={true}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -4508,7 +4511,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "width": "auto",
                                   }
                                 }
-                                testID="report-offer-body"
+                                testID="Signaler l’offre"
                               >
                                 <View
                                   style={

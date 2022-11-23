@@ -439,7 +439,7 @@ Object {
                               <button
                                 aria-label="Copier le lien"
                                 class="c2 c3"
-                                data-testid="Copier"
+                                data-testid="Copier le lien"
                                 tabindex="0"
                                 type="button"
                               >
@@ -475,7 +475,7 @@ Object {
                               <a
                                 aria-label="Ouvrir le gestionnaire mail"
                                 class="c4 c3"
-                                data-testid="E-mail"
+                                data-testid="Ouvrir le gestionnaire mail"
                                 href="mailto:?subject=Voici une super offre !&body=https://url.com/offer"
                                 tabindex="0"
                                 target="_blank"
@@ -661,6 +661,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
+                            aria-label="Annuler"
                             class="c5 c6"
                             data-testid="Annuler"
                             tabindex="0"

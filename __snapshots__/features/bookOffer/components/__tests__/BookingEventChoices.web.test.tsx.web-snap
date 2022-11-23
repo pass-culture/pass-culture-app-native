@@ -313,6 +313,7 @@ Object {
           style="height: 24px;"
         />
         <button
+          aria-label="Valider ces options"
           class="c0 c1"
           data-testid="Valider ces options"
           tabindex="0"
@@ -638,6 +639,7 @@ Object {
         style="height: 24px;"
       />
       <button
+        aria-label="Valider ces options"
         class="c0 c1"
         data-testid="Valider ces options"
         tabindex="0"

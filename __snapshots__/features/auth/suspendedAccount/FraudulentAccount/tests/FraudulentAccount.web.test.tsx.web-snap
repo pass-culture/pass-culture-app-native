@@ -215,7 +215,7 @@ Object {
             <a
               aria-label="Ouvrir le gestionnaire mail pour contacter le support"
               class="c0 c1"
-              data-testid="Contacter le service"
+              data-testid="Ouvrir le gestionnaire mail pour contacter le support"
               href="mailto:service.fraude@test.passculture.app"
               tabindex="0"
               target="_blank"
@@ -249,6 +249,7 @@ Object {
               style="height: 16px;"
             />
             <button
+              aria-label="Retourner à l’accueil"
               class="c2 c3"
               data-testid="Retourner à l’accueil"
               tabindex="0"
@@ -498,7 +499,7 @@ Object {
           <a
             aria-label="Ouvrir le gestionnaire mail pour contacter le support"
             class="c0 c1"
-            data-testid="Contacter le service"
+            data-testid="Ouvrir le gestionnaire mail pour contacter le support"
             href="mailto:service.fraude@test.passculture.app"
             tabindex="0"
             target="_blank"
@@ -532,6 +533,7 @@ Object {
             style="height: 16px;"
           />
           <button
+            aria-label="Retourner à l’accueil"
             class="c2 c3"
             data-testid="Retourner à l’accueil"
             tabindex="0"

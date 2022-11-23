@@ -184,7 +184,8 @@ exports[`<BookingNotFound/> should render correctly 1`] = `
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Mes réservations terminées"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -244,7 +245,8 @@ exports[`<BookingNotFound/> should render correctly 1`] = `
         }
       />
       <View
-        accessible={false}
+        accessibilityLabel="Retourner à l’accueil"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

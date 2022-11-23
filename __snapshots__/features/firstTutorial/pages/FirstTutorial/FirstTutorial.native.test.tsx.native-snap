@@ -50,7 +50,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Tout passer"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -348,7 +349,7 @@ c'est...
                           "width": "100%",
                         }
                       }
-                      testID="Continuer"
+                      testID="Continuer vers l'étape 2 sur 4"
                     >
                       <Text
                         adjustsFontSizeToFit={false}

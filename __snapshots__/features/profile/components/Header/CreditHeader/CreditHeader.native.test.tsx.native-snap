@@ -563,7 +563,8 @@ Array [
       }
     />
     <View
-      accessible={false}
+      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -593,7 +594,7 @@ Array [
           "width": "100%",
         }
       }
-      testID="explanationButton"
+      testID="J’ai dépensé tout mon crédit, que faire ?"
     >
       <View
         style={
@@ -756,7 +757,8 @@ Array [
       }
     />
     <View
-      accessible={false}
+      accessibilityLabel="Mon crédit est expiré, que faire ?"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -786,7 +788,7 @@ Array [
           "width": "100%",
         }
       }
-      testID="explanationButton"
+      testID="Mon crédit est expiré, que faire ?"
     >
       <View
         style={
@@ -1185,7 +1187,8 @@ Array [
       }
     />
     <View
-      accessible={false}
+      accessibilityLabel="Pourquoi cette limite ?"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -1215,7 +1218,7 @@ Array [
           "width": "100%",
         }
       }
-      testID="explanationButton"
+      testID="Pourquoi cette limite ?"
     >
       <View
         style={

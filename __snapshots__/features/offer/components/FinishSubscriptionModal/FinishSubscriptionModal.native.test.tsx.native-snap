@@ -363,7 +363,7 @@ pour réserver cette offre
                     "width": "100%",
                   }
                 }
-                testID="Terminer mon inscription"
+                testID="Aller vers la section profil"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -756,7 +756,7 @@ pour réserver cette offre
                     "width": "100%",
                   }
                 }
-                testID="Terminer mon inscription"
+                testID="Aller vers la section profil"
               >
                 <Text
                   adjustsFontSizeToFit={false}

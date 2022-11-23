@@ -258,7 +258,8 @@ Tu as 18 ans...
                     }
                   >
                     <View
-                      accessible={false}
+                      accessibilityLabel="Vérifier mon identité"
+                      accessible={true}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -320,7 +321,8 @@ Tu as 18 ans...
                     }
                   >
                     <View
-                      accessible={false}
+                      accessibilityLabel="Passer"
+                      accessible={true}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
