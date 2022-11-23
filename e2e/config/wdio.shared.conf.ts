@@ -1,5 +1,13 @@
-import { resolve } from 'path'
+import { mkdirSync } from 'fs'
+import { resolve, join } from 'path'
+// @ts-ignore no typing for this package so we ignore it for now
+import slack from 'wdio-slack-service'
+// @ts-ignore no typing for this package so we ignore it for now
+import video from 'wdio-video-reporter'
 import { env } from './environment/env'
+
+const screenshotsPath = join(process.cwd(), 'e2e/output/screenshots')
+const videosPath = join(process.cwd(), 'e2e/output/videos')
 
 /**
  * All not needed configurations, for this boilerplate, are removed.
@@ -101,7 +109,18 @@ export const config: WebdriverIO.Config = {
   // - wdio.shared.local.appium.conf.ts
   // - wdio.shared.sauce.conf.ts
   // configuration files
-  services: [],
+  services: [
+    process.env.SLACK_WEB_HOOK_URL && [
+      slack,
+      {
+        webHookUrl: process.env.SLACK_WEB_HOOK_URL,
+        notifyOnlyOnFailure: true,
+        messageTitle: `[${process.env.ENVIRONMENT}] Webdriverio Slack Reporter ${
+          process.env.GITHUB_SHA_SHORT ? `(${process.env.GITHUB_SHA_SHORT})` : ''
+        }${process.env.GITHUB_REF_SLUG ? ` (${process.env.GITHUB_REF_SLUG})` : ''}`,
+      },
+    ],
+  ].filter(Boolean) as any,
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
@@ -121,7 +140,17 @@ export const config: WebdriverIO.Config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec'],
+  reporters: [
+    'spec',
+    [
+      video,
+      {
+        saveAllVideos: false, // If true, also saves videos for successful test cases
+        videoSlowdownMultiplier: 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
+        outputDir: videosPath,
+      },
+    ],
+  ],
   // Options to be passed to Mocha.
   mochaOpts: {
     ui: 'bdd',
@@ -129,7 +158,7 @@ export const config: WebdriverIO.Config = {
      * NOTE: This has been increased for more stable Appium Native app
      * tests because they can take a bit longer.
      */
-    timeout: 3 * 60 * 1000, // 3min
+    timeout: 5 * 60 * 1000, // 5min
   },
   //
   // =====
@@ -143,4 +172,24 @@ export const config: WebdriverIO.Config = {
   /**
    * NOTE: No Hooks are used in this project, but feel free to add them if you need them.
    */
+  onPrepare: async function () {
+    mkdirSync(screenshotsPath, { recursive: true })
+    mkdirSync(videosPath, { recursive: true })
+  },
+  afterTest: async function (test, context, { passed }) {
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~ [passed=${passed}] ~~~~~~~~~~~~~~~`)
+    if (!passed) {
+      await browser.takeScreenshot()
+      const timestamp = new Date()
+        .toISOString()
+        .replace(/[^0-9]/g, '')
+        .slice(0, -5)
+      const filePath = `${screenshotsPath}/${timestamp}_${test.parent}_${test.title.replace(
+        / /g,
+        '-'
+      )}.png`
+      await browser.saveScreenshot(filePath)
+      console.log(`~~~~~~~~~~~~~~~~~~~~~~ [screenshot location=${filePath}] ~~~~~~~~~~~~~~~`)
+    }
+  },
 }

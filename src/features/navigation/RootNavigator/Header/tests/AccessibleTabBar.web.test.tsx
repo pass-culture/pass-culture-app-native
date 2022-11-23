@@ -16,28 +16,36 @@ describe('AccessibleTabBar', () => {
   })
 
   it('should display the 5 following tabs', () => {
-    const renderAPI = renderTabBar()
-    const tabs = renderAPI.getAllByTestId(/tab/)
-    const tabsTestIds = tabs.map((tab) => tab.getAttribute('data-testid')).sort()
+    const { queryByTestId } = renderTabBar()
     const expectedTabsTestIds = [
-      'Home tab selected',
-      'Home tab',
-      'Search tab',
-      'Bookings tab',
-      'Favorites tab',
-      'Profile tab',
-    ].sort()
-    expect(tabsTestIds).toEqual(expectedTabsTestIds)
+      'Accueil sélectionné',
+      'Rechercher des offres',
+      'Mes réservations',
+      'Favoris',
+      'Mon profil',
+    ]
+
+    expectedTabsTestIds.map((tab) => {
+      expect(queryByTestId(tab)).toBeTruthy()
+    })
   })
 
   it('displays only one selected at a time', () => {
     const renderAPI = renderTabBar()
-    expect(renderAPI.queryAllByTestId(/selected/)).toHaveLength(1)
+    expect(renderAPI.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
   it('should identify only one tab as current page', () => {
     const renderAPI = renderTabBar()
-    const tabs = renderAPI.getAllByTestId(/tab/)
+    const tabsTestIds = [
+      'Accueil',
+      'Rechercher des offres',
+      'Mes réservations',
+      'Favoris',
+      'Mon profil',
+    ]
+    const tabs = tabsTestIds.map((testID) => renderAPI.getByTestId(testID))
+
     const currentPageList = tabs
       .map((tab) => tab.getAttribute('aria-current'))
       .filter((attr) => !!attr)
