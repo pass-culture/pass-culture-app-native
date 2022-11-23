@@ -1,0 +1,4947 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenericHome should render modules when useShowSkeleton is false 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
+  <View
+    hide={false}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
+      ListHeaderComponent={
+        <Styled(Text)>
+          Header
+        </Styled(Text)>
+      }
+      bounces={true}
+      data={
+        Array [
+          Object {
+            "display": Object {
+              "layout": "two-items",
+              "minOffers": 1,
+              "subtitle": "Un sous-titre",
+              "title": "Playlist de livres",
+            },
+            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
+            "search": Array [
+              Object {
+                "categories": Array [
+                  "Livres",
+                ],
+                "hitsPerPage": 10,
+                "isDigital": false,
+                "isGeolocated": false,
+                "title": "Playlist de livres",
+              },
+            ],
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={1000}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 26,
+                  "lineHeight": 34,
+                },
+              ]
+            }
+          >
+            Header
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`GenericHome should render skeleton when useShowSkeleton is true 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    bounces={false}
+    scrollEnabled={false}
+    scrollEventThrottle={400}
+    testID="homeScrollView"
+  >
+    <View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Header
+      </Text>
+      <View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "paddingBottom": 24,
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "height": 4,
+                  },
+                ]
+              }
+            />
+            <View
+              borderRadius={2}
+              height={16}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 2,
+                    "height": 16,
+                    "overflow": "hidden",
+                    "width": 200,
+                  },
+                ]
+              }
+              width={200}
+            >
+              <BVLinearGradient
+                collapsable={false}
+                colors={
+                  Array [
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 2,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": Array [
+                      Object {
+                        "translateX": -250,
+                      },
+                    ],
+                  }
+                }
+              />
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              collapsable={false}
+              data={
+                Array [
+                  Object {
+                    "key": "0",
+                  },
+                  Object {
+                    "key": "1",
+                  },
+                  Object {
+                    "key": "2",
+                  },
+                  Object {
+                    "key": "3",
+                  },
+                ]
+              }
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={true}
+              keyExtractor={[Function]}
+              onContentSizeChange={[Function]}
+              onGestureHandlerEvent={[Function]}
+              onGestureHandlerStateChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              renderScrollComponent={[Function]}
+              scrollEventThrottle={50}
+              showsHorizontalScrollIndicator={false}
+              stickyHeaderIndices={Array []}
+              viewabilityConfigCallbackPairs={Array []}
+            >
+              <View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "paddingBottom": 24,
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "height": 4,
+                  },
+                ]
+              }
+            />
+            <View
+              borderRadius={2}
+              height={16}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 2,
+                    "height": 16,
+                    "overflow": "hidden",
+                    "width": 200,
+                  },
+                ]
+              }
+              width={200}
+            >
+              <BVLinearGradient
+                collapsable={false}
+                colors={
+                  Array [
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 2,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": Array [
+                      Object {
+                        "translateX": -250,
+                      },
+                    ],
+                  }
+                }
+              />
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              collapsable={false}
+              data={
+                Array [
+                  Object {
+                    "key": "0",
+                  },
+                  Object {
+                    "key": "1",
+                  },
+                  Object {
+                    "key": "2",
+                  },
+                  Object {
+                    "key": "3",
+                  },
+                  Object {
+                    "key": "4",
+                  },
+                ]
+              }
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={true}
+              keyExtractor={[Function]}
+              onContentSizeChange={[Function]}
+              onGestureHandlerEvent={[Function]}
+              onGestureHandlerStateChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              renderScrollComponent={[Function]}
+              scrollEventThrottle={50}
+              showsHorizontalScrollIndicator={false}
+              stickyHeaderIndices={Array []}
+              viewabilityConfigCallbackPairs={Array []}
+            >
+              <View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "paddingBottom": 24,
+              },
+            ]
+          }
+          testID="HomeBodyPlaceholder-testID"
+        >
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <View
+            borderRadius={8}
+            height={304}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#DDDDDD",
+                  "borderRadius": 8,
+                  "height": 304,
+                  "overflow": "hidden",
+                  "width": 912,
+                },
+              ]
+            }
+            width={912}
+          >
+            <BVLinearGradient
+              collapsable={false}
+              colors={
+                Array [
+                  4292730333,
+                  4293848814,
+                  4293848814,
+                  4292730333,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 1,
+                  "y": 0,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0,
+                  "y": 0,
+                }
+              }
+              style={
+                Object {
+                  "borderRadius": 8,
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "transform": Array [
+                    Object {
+                      "translateX": -1140,
+                    },
+                  ],
+                }
+              }
+            />
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "paddingBottom": 24,
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "height": 4,
+                  },
+                ]
+              }
+            />
+            <View
+              borderRadius={2}
+              height={16}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 2,
+                    "height": 16,
+                    "overflow": "hidden",
+                    "width": 200,
+                  },
+                ]
+              }
+              width={200}
+            >
+              <BVLinearGradient
+                collapsable={false}
+                colors={
+                  Array [
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 2,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": Array [
+                      Object {
+                        "translateX": -250,
+                      },
+                    ],
+                  }
+                }
+              />
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              collapsable={false}
+              data={
+                Array [
+                  Object {
+                    "key": "0",
+                  },
+                  Object {
+                    "key": "1",
+                  },
+                  Object {
+                    "key": "2",
+                  },
+                  Object {
+                    "key": "3",
+                  },
+                  Object {
+                    "key": "4",
+                  },
+                ]
+              }
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={true}
+              keyExtractor={[Function]}
+              onContentSizeChange={[Function]}
+              onGestureHandlerEvent={[Function]}
+              onGestureHandlerStateChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              renderScrollComponent={[Function]}
+              scrollEventThrottle={50}
+              showsHorizontalScrollIndicator={false}
+              stickyHeaderIndices={Array []}
+              viewabilityConfigCallbackPairs={Array []}
+            >
+              <View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={216}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 216,
+                            "overflow": "hidden",
+                            "width": 144,
+                          },
+                        ]
+                      }
+                      width={144}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -180,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 115.2,
+                          },
+                        ]
+                      }
+                      width={115.2}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -144,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 43.199999999999996,
+                          },
+                        ]
+                      }
+                      width={43.199999999999996}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -53.99999999999999,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "paddingBottom": 24,
+              },
+            ]
+          }
+        >
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "height": 4,
+                  },
+                ]
+              }
+            />
+            <View
+              borderRadius={2}
+              height={16}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 2,
+                    "height": 16,
+                    "overflow": "hidden",
+                    "width": 200,
+                  },
+                ]
+              }
+              width={200}
+            >
+              <BVLinearGradient
+                collapsable={false}
+                colors={
+                  Array [
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
+                  ]
+                }
+                endPoint={
+                  Object {
+                    "x": 1,
+                    "y": 0,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  Object {
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                style={
+                  Object {
+                    "borderRadius": 2,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": Array [
+                      Object {
+                        "translateX": -250,
+                      },
+                    ],
+                  }
+                }
+              />
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              collapsable={false}
+              data={
+                Array [
+                  Object {
+                    "key": "0",
+                  },
+                  Object {
+                    "key": "1",
+                  },
+                  Object {
+                    "key": "2",
+                  },
+                  Object {
+                    "key": "3",
+                  },
+                ]
+              }
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={true}
+              keyExtractor={[Function]}
+              onContentSizeChange={[Function]}
+              onGestureHandlerEvent={[Function]}
+              onGestureHandlerStateChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              renderScrollComponent={[Function]}
+              scrollEventThrottle={50}
+              showsHorizontalScrollIndicator={false}
+              stickyHeaderIndices={Array []}
+              viewabilityConfigCallbackPairs={Array []}
+            >
+              <View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                      null,
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      borderRadius={8}
+                      height={288}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 8,
+                            "height": 288,
+                            "overflow": "hidden",
+                            "width": 192,
+                          },
+                        ]
+                      }
+                      width={192}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 8,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -240,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 153.60000000000002,
+                          },
+                        ]
+                      }
+                      width={153.60000000000002}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -192.00000000000003,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      borderRadius={2}
+                      height={12}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#DDDDDD",
+                            "borderRadius": 2,
+                            "height": 12,
+                            "overflow": "hidden",
+                            "width": 57.599999999999994,
+                          },
+                        ]
+                      }
+                      width={57.599999999999994}
+                    >
+                      <BVLinearGradient
+                        collapsable={false}
+                        colors={
+                          Array [
+                            4292730333,
+                            4293848814,
+                            4293848814,
+                            4292730333,
+                          ]
+                        }
+                        endPoint={
+                          Object {
+                            "x": 1,
+                            "y": 0,
+                          }
+                        }
+                        locations={null}
+                        startPoint={
+                          Object {
+                            "x": 0,
+                            "y": 0,
+                          }
+                        }
+                        style={
+                          Object {
+                            "borderRadius": 2,
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                            "transform": Array [
+                              Object {
+                                "translateX": -72,
+                              },
+                            ],
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+        </View>
+      </View>
+      <View
+        customHeight={72}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 72,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>
+  <View
+    hide={true}
+    style={
+      Array [
+        Object {
+          "height": 0,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
+      ListHeaderComponent={
+        <Styled(Text)>
+          Header
+        </Styled(Text)>
+      }
+      bounces={true}
+      data={
+        Array [
+          Object {
+            "display": Object {
+              "layout": "two-items",
+              "minOffers": 1,
+              "subtitle": "Un sous-titre",
+              "title": "Playlist de livres",
+            },
+            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
+            "search": Array [
+              Object {
+                "categories": Array [
+                  "Livres",
+                ],
+                "hitsPerPage": 10,
+                "isDigital": false,
+                "isGeolocated": false,
+                "title": "Playlist de livres",
+              },
+            ],
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={1000}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 26,
+                  "lineHeight": 34,
+                },
+              ]
+            }
+          >
+            Header
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
