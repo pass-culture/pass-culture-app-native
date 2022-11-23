@@ -52,7 +52,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           "width": "100%",
         }
       }
-      testID="Pour quelle raison ?"
+      testID="Pour quelle raison me demande-t-on ma date de naissance ?"
     >
       <View
         style={
@@ -331,12 +331,13 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <View
+      accessibilityLabel="Continuer"
       accessibilityState={
         Object {
           "disabled": true,
         }
       }
-      accessible={false}
+      accessible={true}
       collapsable={false}
       focusable={false}
       onClick={[Function]}
@@ -364,7 +365,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           "width": "100%",
         }
       }
-      testID="date-picker-submit-button"
+      testID="Continuer"
     >
       <Text
         adjustsFontSizeToFit={false}

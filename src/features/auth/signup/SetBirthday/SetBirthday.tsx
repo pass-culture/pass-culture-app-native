@@ -64,7 +64,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
-          testID="date-picker-submit-button"
           wording="Continuer"
           accessibilityLabel={props.accessibilityLabelForNextStep}
           disabled={isDisabled}

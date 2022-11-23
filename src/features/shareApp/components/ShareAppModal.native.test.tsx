@@ -45,7 +45,7 @@ describe('ShareAppModal', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should open native share modal when clicking on "Partager" button', async () => {
+  it('should open native share modal when clicking on "Partager l\'application" button', async () => {
     const { getByTestId } = render(
       <ShareAppModal
         visible={visible}
@@ -54,7 +54,7 @@ describe('ShareAppModal', () => {
       />
     )
 
-    const shareButton = getByTestId('Partager')
+    const shareButton = getByTestId("Partager l'application")
     fireEvent.press(shareButton)
 
     await waitForExpect(() => {
@@ -62,7 +62,7 @@ describe('ShareAppModal', () => {
     })
   })
 
-  it('should close modal when clicking on "Partager" button', () => {
+  it('should close modal when clicking on "Partager l\'application" button', () => {
     const { getByText } = render(
       <ShareAppModal
         visible={visible}
@@ -81,12 +81,12 @@ describe('ShareAppModal', () => {
     ShareAppModalType.NOT_ELIGIBLE,
     ShareAppModalType.BENEFICIARY,
     ShareAppModalType.ON_BOOKING_SUCCESS,
-  ])('should log analytics when clicking on "Partager" button', (modalType) => {
+  ])('should log analytics when clicking on "Partager l\'application" button', (modalType) => {
     const { getByTestId } = render(
       <ShareAppModal visible={visible} hideModal={hideModal} modalType={modalType} />
     )
 
-    const shareButton = getByTestId('Partager')
+    const shareButton = getByTestId("Partager l'application")
     fireEvent.press(shareButton)
 
     expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, modalType)

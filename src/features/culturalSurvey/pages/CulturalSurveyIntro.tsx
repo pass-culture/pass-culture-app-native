@@ -35,7 +35,6 @@ export const CulturalSurveyIntro = (): JSX.Element => {
             })
           }}
           wording="Débuter le questionnaire"
-          testID="start-cultural-survey"
         />
       </View>
       <ButtonTertiaryBlackContainer>
@@ -46,7 +45,6 @@ export const CulturalSurveyIntro = (): JSX.Element => {
             navigateToHome()
           }}
           icon={ClockFilled}
-          testID="answer-survey-later"
         />
       </ButtonTertiaryBlackContainer>
     </GenericInfoPageWhite>

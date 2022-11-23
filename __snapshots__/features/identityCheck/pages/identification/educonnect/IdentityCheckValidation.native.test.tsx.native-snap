@@ -467,7 +467,8 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
           }
         >
           <View
-            accessible={false}
+            accessibilityLabel="Valider mes informations"
+            accessible={true}
             collapsable={false}
             focusable={true}
             onClick={[Function]}

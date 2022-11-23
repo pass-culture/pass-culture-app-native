@@ -70,6 +70,7 @@ Object {
 <body>
     <div>
       <button
+        aria-label="Testing inline"
         class="c0"
         data-testid="Testing inline"
         tabindex="0"
@@ -167,6 +168,7 @@ Object {
 
 <div>
     <button
+      aria-label="Testing inline"
       class="c0"
       data-testid="Testing inline"
       tabindex="0"

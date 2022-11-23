@@ -22,9 +22,9 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should go back when clicking on left icon of modal header', async () => {
-    const { findByTestId } = renderPage()
+    const { findByText } = renderPage()
 
-    const leftIconButton = await findByTestId('Revenir en arrière')
+    const leftIconButton = await findByText('Retour')
     fireEvent.click(leftIconButton)
 
     await waitForExpect(() => {

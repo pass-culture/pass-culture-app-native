@@ -138,7 +138,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
     }
   >
     <View
-      accessible={false}
+      accessibilityLabel="Découvrir le catalogue"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -166,7 +167,7 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
           "width": "100%",
         }
       }
-      testID="discover-button"
+      testID="Découvrir le catalogue"
     >
       <Text
         adjustsFontSizeToFit={false}

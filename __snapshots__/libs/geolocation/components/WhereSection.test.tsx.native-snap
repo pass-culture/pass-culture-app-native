@@ -225,7 +225,8 @@ Array [
     }
   >
     <View
-      accessible={false}
+      accessibilityLabel="Voir l’itinéraire"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}

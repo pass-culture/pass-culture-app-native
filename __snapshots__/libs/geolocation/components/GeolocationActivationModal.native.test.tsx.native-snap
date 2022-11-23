@@ -267,7 +267,8 @@ exports[`GeolocationActivationModal should render properly 1`] = `
         }
       />
       <View
-        accessible={false}
+        accessibilityLabel="Activer la géolocalisation"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

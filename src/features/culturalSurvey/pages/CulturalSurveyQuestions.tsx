@@ -212,7 +212,6 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
           }}
           disabled={!currentAnswers.length}
           wording="Continuer"
-          testID="next-cultural-survey-question"
           accessibilityLabel="Continuer vers l’étape suivante"
         />
         <Spacer.BottomScreen />

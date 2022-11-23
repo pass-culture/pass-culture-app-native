@@ -194,7 +194,8 @@ Array [
     />
     <View>
       <View
-        accessible={false}
+        accessibilityLabel="M’identifier plus tard"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -254,7 +255,8 @@ Array [
         }
       />
       <View
-        accessible={false}
+        accessibilityLabel="Demander un renouvellement"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

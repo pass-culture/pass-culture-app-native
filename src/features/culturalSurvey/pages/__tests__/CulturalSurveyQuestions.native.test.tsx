@@ -55,7 +55,7 @@ describe('CulturalSurveysQuestions page', () => {
 
   it('should navigate to next page when pressing Continuer', async () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
-    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.press(NextQuestionButton)
     expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.ACTIVITES,
@@ -68,7 +68,7 @@ describe('CulturalSurveysQuestions page', () => {
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
-    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.press(NextQuestionButton)
     expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
@@ -89,7 +89,7 @@ describe('CulturalSurveysQuestions page', () => {
       return { mutate: onError }
     })
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
-    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.press(NextQuestionButton)
     expect(navigateToHome).toHaveBeenCalled()
   })

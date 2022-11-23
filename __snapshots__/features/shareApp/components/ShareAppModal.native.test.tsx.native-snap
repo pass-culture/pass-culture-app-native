@@ -271,7 +271,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
             "width": "100%",
           }
         }
-        testID="Partager"
+        testID="Partager l'application"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -580,7 +580,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
             "width": "100%",
           }
         }
-        testID="Partager"
+        testID="Partager l'application"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -891,7 +891,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
             "width": "100%",
           }
         }
-        testID="Partager"
+        testID="Partager l'application"
       >
         <Text
           adjustsFontSizeToFit={false}

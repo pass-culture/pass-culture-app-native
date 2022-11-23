@@ -238,6 +238,7 @@ exports[`<VenueNotFound /> should render correctly 1`] = `
       }
     >
       <button
+        aria-label="Retourner à l’accueil"
         className="c0 c1"
         data-testid="Retourner à l’accueil"
         onClick={[Function]}

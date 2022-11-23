@@ -501,12 +501,13 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   />
   <View
+    accessibilityLabel="Confirmer la réservation"
     accessibilityState={
       Object {
         "disabled": false,
       }
     }
-    accessible={false}
+    accessible={true}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -1076,12 +1077,13 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   />
   <View
+    accessibilityLabel="Confirmer la réservation"
     accessibilityState={
       Object {
         "disabled": true,
       }
     }
-    accessible={false}
+    accessible={true}
     collapsable={false}
     focusable={false}
     onClick={[Function]}

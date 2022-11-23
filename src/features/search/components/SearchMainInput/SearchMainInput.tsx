@@ -72,7 +72,6 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       {...props}>
       {!!showLocationButton && (
         <LocationButton
-          testID="locationButton"
           wording={locationLabel || ''}
           onPress={onPressLocationButton}
           icon={LocationPointer}

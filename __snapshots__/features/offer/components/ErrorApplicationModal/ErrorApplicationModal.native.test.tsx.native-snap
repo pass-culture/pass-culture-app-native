@@ -364,7 +364,7 @@ ton crédit
                     "width": "100%",
                   }
                 }
-                testID="Aller sur mon profil"
+                testID="Aller vers la section profil"
               >
                 <Text
                   adjustsFontSizeToFit={false}

@@ -326,7 +326,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n’as pas d’identifiants ÉduConnect rapproche toi de ton établissement.
             </Text>
             <View
-              accessible={false}
+              accessibilityLabel="C’est quoi ÉduConnect ?"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -406,7 +407,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               }
             />
             <View
-              accessible={false}
+              accessibilityLabel="Identification avec ÉduConnect"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -509,7 +511,8 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               </View>
             </View>
             <View
-              accessible={false}
+              accessibilityLabel="Identification manuelle"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

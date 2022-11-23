@@ -62,7 +62,7 @@ describe('CreditHeader', () => {
 
     it('should display explanation button', () => {
       const { queryByTestId } = renderCreditHeader()
-      const explanationButton = queryByTestId('explanationButton')
+      const explanationButton = queryByTestId('Pourquoi cette limite ?')
       expect(explanationButton).toBeTruthy()
     })
 

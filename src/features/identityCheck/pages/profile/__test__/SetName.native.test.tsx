@@ -30,7 +30,7 @@ describe('<SetName/>', () => {
   it('should enable the submit button when first name and last name is not empty', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SetName />)
 
-    const continueButton = getByTestId('Continuer')
+    const continueButton = getByTestId('Continuer vers l’étape suivante')
     expect(continueButton).toBeDisabled()
 
     const firstNameInput = getByPlaceholderText('Ton prénom')

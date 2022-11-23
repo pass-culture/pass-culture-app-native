@@ -302,7 +302,8 @@ Array [
         rosa.bonheur@gmail.com
       </Text>
       <View
-        accessible={false}
+        accessibilityLabel="Modifier e-mail"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -487,7 +488,8 @@ Array [
         ************
       </Text>
       <View
-        accessible={false}
+        accessibilityLabel="Modifier mot de passe"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

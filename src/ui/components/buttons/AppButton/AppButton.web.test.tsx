@@ -28,13 +28,13 @@ describe('AppButton Component', () => {
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
       const { queryByTestId } = render(<AppButton {...baseProps} isLoading />)
-      expect(queryByTestId('button-isloading-icon')).toBeTruthy()
+      expect(queryByTestId('Chargement en cours')).toBeTruthy()
       expect(queryByTestId('button-icon')).toBeFalsy()
     })
     it('should display right elements when isLoading equals false', () => {
       const { queryByTestId } = render(<AppButton {...baseProps} isLoading={false} />)
       expect(queryByTestId('button-icon')).toBeTruthy()
-      expect(queryByTestId('button-isloading-icon')).toBeFalsy()
+      expect(queryByTestId('Chargement en cours')).toBeFalsy()
     })
   })
   describe('* Disabled property', () => {
@@ -70,14 +70,14 @@ describe('AppButton Component', () => {
   describe('* html tag and type attribute', () => {
     it('should render button tag of type button by default', () => {
       const { getByTestId } = render(<AppButton {...baseProps} testID="button" />)
-      const button = getByTestId('button')
+      const button = getByTestId('Testing Disabled')
       expect(button.tagName.toLowerCase()).toBe('button')
       expect(button.getAttribute('type')).toBe('button')
     })
     it('should render anchor tag without type if component is an anchor', () => {
       const href = 'https://example.link/'
       const { getByTestId } = render(<AppButton {...baseProps} testID="link" href={href} />)
-      const link = getByTestId('link')
+      const link = getByTestId('Testing Disabled')
       expect(link.tagName.toLowerCase()).toBe('a')
       expect(link.getAttribute('href')).toBe(href)
       expect(link.getAttribute('type')).toBeNull()

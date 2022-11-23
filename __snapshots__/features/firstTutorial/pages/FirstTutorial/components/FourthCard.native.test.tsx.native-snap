@@ -172,7 +172,7 @@ quotidiennes
             "width": "100%",
           }
         }
-        testID="Découvrir"
+        testID="Découvrir ton pass Culture"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -206,7 +206,8 @@ quotidiennes
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Passer"
+        accessible={true}
         collapsable={false}
         focusable={false}
         onClick={[Function]}

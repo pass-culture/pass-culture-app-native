@@ -30,7 +30,7 @@ describe('<ReportOfferOtherReason />', () => {
     it('should enable the button when large input is filled', async () => {
       const { getByTestId } = renderReportOfferOtherReason()
 
-      const reportButton = getByTestId('report-other-button')
+      const reportButton = getByTestId('Signaler l’offre')
       expect(reportButton).toBeDisabled()
 
       const largeTextInput = getByTestId('large-text-input')
@@ -51,7 +51,7 @@ describe('<ReportOfferOtherReason />', () => {
 
       const { getByTestId } = renderReportOfferOtherReason()
 
-      const reportButton = getByTestId('report-other-button')
+      const reportButton = getByTestId('Signaler l’offre')
 
       fireEvent.press(reportButton)
 
@@ -77,7 +77,7 @@ describe('<ReportOfferOtherReason />', () => {
 
       const { getByTestId } = renderReportOfferOtherReason()
 
-      const reportButton = getByTestId('report-other-button')
+      const reportButton = getByTestId('Signaler l’offre')
 
       fireEvent.press(reportButton)
 

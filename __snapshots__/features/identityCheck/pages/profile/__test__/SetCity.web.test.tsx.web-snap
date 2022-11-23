@@ -171,7 +171,7 @@ Object {
                   <button
                     aria-label="Revenir en arrière"
                     class="c0 c1 sc-gsDKAQ c1"
-                    data-testid="backButton"
+                    data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
                     type="button"
@@ -332,7 +332,7 @@ Object {
                 <button
                   aria-label="Continuer vers l'étape suivante"
                   class="c3 c4"
-                  data-testid="Continuer"
+                  data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
                 >
@@ -522,7 +522,7 @@ Object {
                 <button
                   aria-label="Revenir en arrière"
                   class="c0 c1 sc-gsDKAQ c1"
-                  data-testid="backButton"
+                  data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
                   type="button"
@@ -683,7 +683,7 @@ Object {
               <button
                 aria-label="Continuer vers l'étape suivante"
                 class="c3 c4"
-                data-testid="Continuer"
+                data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"
               >

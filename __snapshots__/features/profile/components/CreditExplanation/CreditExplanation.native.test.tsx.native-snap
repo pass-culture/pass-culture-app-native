@@ -2,7 +2,8 @@
 
 exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] = `
 <View
-  accessible={false}
+  accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+  accessible={true}
   collapsable={false}
   focusable={true}
   onClick={[Function]}
@@ -32,7 +33,7 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
       "width": "100%",
     }
   }
-  testID="explanationButton"
+  testID="J’ai dépensé tout mon crédit, que faire ?"
 >
   <View
     style={
@@ -77,7 +78,8 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
 
 exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = `
 <View
-  accessible={false}
+  accessibilityLabel="Mon crédit est expiré, que faire ?"
+  accessible={true}
   collapsable={false}
   focusable={true}
   onClick={[Function]}
@@ -107,7 +109,7 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
       "width": "100%",
     }
   }
-  testID="explanationButton"
+  testID="Mon crédit est expiré, que faire ?"
 >
   <View
     style={
@@ -152,7 +154,8 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
 
 exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
 <View
-  accessible={false}
+  accessibilityLabel="Pourquoi cette limite ?"
+  accessible={true}
   collapsable={false}
   focusable={true}
   onClick={[Function]}
@@ -182,7 +185,7 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
       "width": "100%",
     }
   }
-  testID="explanationButton"
+  testID="Pourquoi cette limite ?"
 >
   <View
     style={

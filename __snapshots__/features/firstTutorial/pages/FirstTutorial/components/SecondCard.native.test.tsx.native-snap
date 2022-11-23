@@ -569,7 +569,7 @@ et si tu as...
             "width": "100%",
           }
         }
-        testID="Continuer"
+        testID="Continuer vers l'étape 2 sur 4"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -603,7 +603,8 @@ et si tu as...
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Passer"
+        accessible={true}
         collapsable={false}
         focusable={false}
         onClick={[Function]}

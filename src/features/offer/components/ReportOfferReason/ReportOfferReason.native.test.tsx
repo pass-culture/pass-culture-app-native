@@ -53,7 +53,7 @@ describe('<ReportOfferReason />', () => {
 
     it('should be disabled if no reason is selected', () => {
       const { getByTestId } = renderReportReason()
-      const reportButton = getByTestId('report-button')
+      const reportButton = getByTestId('Signaler l’offre')
       expect(reportButton).toBeDisabled()
     })
 
@@ -61,7 +61,7 @@ describe('<ReportOfferReason />', () => {
       const renderAPI = renderReportReason()
 
       const radioButton = renderAPI.getByTestId('radio-button-INAPPROPRIATE')
-      const reportButton = renderAPI.getByTestId('report-button')
+      const reportButton = renderAPI.getByTestId('Signaler l’offre')
 
       fireEvent.press(radioButton)
 
@@ -78,7 +78,7 @@ describe('<ReportOfferReason />', () => {
 
       const { getByTestId } = renderReportReason()
 
-      const reportButton = getByTestId('report-button')
+      const reportButton = getByTestId('Signaler l’offre')
 
       fireEvent.press(reportButton)
 
@@ -104,7 +104,7 @@ describe('<ReportOfferReason />', () => {
 
       const { getByTestId } = renderReportReason()
 
-      const reportButton = getByTestId('report-button')
+      const reportButton = getByTestId('Signaler l’offre')
 
       fireEvent.press(reportButton)
 

@@ -30,7 +30,6 @@ const renderCallToAction = (
     icon: callToActionIcon || undefined,
     numberOfLines: 2,
     justifyContent: 'flex-start' as BaseButtonProps['justifyContent'],
-    testID: 'call-to-action-button',
   }
   return (
     <React.Fragment>

@@ -19,7 +19,7 @@ describe('CulturalSurveyIntro page', () => {
 
   it('should navigate to first page when pressing Débuter le questionnaire', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
-    const StartButton = CulturalSurveyIntroPage.getByTestId('start-cultural-survey')
+    const StartButton = CulturalSurveyIntroPage.getByTestId('Débuter le questionnaire')
     fireEvent.press(StartButton)
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.SORTIES,
@@ -28,21 +28,21 @@ describe('CulturalSurveyIntro page', () => {
 
   it('should log hasStartedCulturalSurvey event when pressing Débuter le questionnaire', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
-    const StartButton = CulturalSurveyIntroPage.getByTestId('start-cultural-survey')
+    const StartButton = CulturalSurveyIntroPage.getByTestId('Débuter le questionnaire')
     fireEvent.press(StartButton)
     expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalled()
   })
 
   it('should navigate to home when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
-    const LaterButton = CulturalSurveyIntroPage.getByTestId('answer-survey-later')
+    const LaterButton = CulturalSurveyIntroPage.getByTestId('Plus tard')
     fireEvent.press(LaterButton)
     expect(navigateToHome).toHaveBeenCalled()
   })
 
   it('should log hasSkippedCulturalSurvey event when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
-    const LaterButton = CulturalSurveyIntroPage.getByTestId('answer-survey-later')
+    const LaterButton = CulturalSurveyIntroPage.getByTestId('Plus tard')
     fireEvent.press(LaterButton)
     expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalled()
   })

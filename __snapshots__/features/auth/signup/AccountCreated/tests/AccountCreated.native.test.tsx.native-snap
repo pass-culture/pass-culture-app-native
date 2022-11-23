@@ -179,7 +179,8 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="On y va !"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

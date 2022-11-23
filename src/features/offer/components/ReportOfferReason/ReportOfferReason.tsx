@@ -76,12 +76,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
         )
       })}
       <Spacer.Column numberOfSpaces={10.5} />
-      <ButtonPrimary
-        wording="Signaler l’offre"
-        disabled={!selectedReason}
-        onPress={reportOffer}
-        testID="report-button"
-      />
+      <ButtonPrimary wording="Signaler l’offre" disabled={!selectedReason} onPress={reportOffer} />
     </Form.MaxWidth>
   )
 }

@@ -222,7 +222,8 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       }
     />
     <View
-      accessible={false}
+      accessibilityLabel="Tu peux cliquer ici"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -251,7 +252,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
           "width": "100%",
         }
       }
-      testID="call-to-action-button"
+      testID="Tu peux cliquer ici"
     >
       <View
         style={

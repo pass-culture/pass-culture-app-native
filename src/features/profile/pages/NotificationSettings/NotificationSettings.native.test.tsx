@@ -178,7 +178,7 @@ describe('NotificationSettings', () => {
         false
       )
       let saveButton: ReactTestInstance | null = null
-      saveButton = queryByTestId('Enregistrer')
+      saveButton = queryByTestId('Enregistrer les modifications')
 
       await waitForExpect(() => {
         expect(saveButton).toBeFalsy()
@@ -213,7 +213,7 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        saveButton = getByTestId('Enregistrer')
+        saveButton = getByTestId('Enregistrer les modifications')
         expect(saveButton).toBeEnabled()
       })
 
@@ -223,7 +223,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct()
       await waitForExpect(() => {
-        saveButton = getByTestId('Enregistrer')
+        saveButton = getByTestId('Enregistrer les modifications')
         expect(saveButton).toBeDisabled()
       })
     })
@@ -257,7 +257,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(20)
       let saveButton: ReactTestInstance | null = null
       await waitForExpect(() => {
-        saveButton = getByTestId('Enregistrer')
+        saveButton = getByTestId('Enregistrer les modifications')
         expect(saveButton).toBeEnabled()
       })
 
@@ -267,7 +267,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct()
       await waitForExpect(() => {
-        expect(getByTestId('Enregistrer')).toBeDisabled()
+        expect(getByTestId('Enregistrer les modifications')).toBeDisabled()
         expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
       })
     })

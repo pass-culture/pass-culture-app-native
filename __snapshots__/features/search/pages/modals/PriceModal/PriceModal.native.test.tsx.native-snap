@@ -1123,7 +1123,8 @@ exports[`PriceModal component should render modal correctly after animation and 
             }
           >
             <View
-              accessible={false}
+              accessibilityLabel="Réinitialiser"
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -1193,12 +1194,13 @@ exports[`PriceModal component should render modal correctly after animation and 
               </Text>
             </View>
             <View
+              accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {
                   "disabled": false,
                 }
               }
-              accessible={false}
+              accessible={true}
               collapsable={false}
               focusable={true}
               onClick={[Function]}

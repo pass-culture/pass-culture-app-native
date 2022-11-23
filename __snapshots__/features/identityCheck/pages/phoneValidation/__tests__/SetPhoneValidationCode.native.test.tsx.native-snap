@@ -509,7 +509,8 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   }
                 >
                   <View
-                    accessible={false}
+                    accessibilityLabel="Code non reçu ?"
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -633,12 +634,13 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
           }
         >
           <View
+            accessibilityLabel="Continuer"
             accessibilityState={
               Object {
                 "disabled": true,
               }
             }
-            accessible={false}
+            accessible={true}
             collapsable={false}
             focusable={false}
             onClick={[Function]}

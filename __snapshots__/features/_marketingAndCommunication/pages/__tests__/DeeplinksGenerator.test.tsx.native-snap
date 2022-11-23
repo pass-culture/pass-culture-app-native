@@ -2285,12 +2285,13 @@ Array [
           </Text>
         </View>
         <View
+          accessibilityLabel="Générer le lien"
           accessibilityState={
             Object {
               "disabled": false,
             }
           }
-          accessible={false}
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}

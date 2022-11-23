@@ -45,7 +45,10 @@ const _AppButton = <T extends AppButtonProps>({
     disabled || isLoading ? undefined : (onLongPress as AppButtonEventNative)
   return (
     <TouchableOpacityButton
-      {...accessibilityAndTestId(accessibilityLabel, testID || wording)}
+      {...accessibilityAndTestId(
+        accessibilityLabel || wording,
+        accessibilityLabel || wording || testID
+      )}
       aria-describedby={accessibilityDescribedBy}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}

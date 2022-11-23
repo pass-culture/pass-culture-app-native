@@ -58,7 +58,7 @@ describe('ProfileBadge', () => {
   })
 
   it('should call shouldOpenInbox with url onPress', () => {
-    const { getByTestId } = render(
+    const { getByText } = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
         popOverIcon={BicolorClock}
@@ -67,7 +67,7 @@ describe('ProfileBadge', () => {
         callToActionMessage={'Tu peux cliquer ici'}
       />
     )
-    const CTAButton = getByTestId('call-to-action-button')
+    const CTAButton = getByText('Tu peux cliquer ici')
     fireEvent.press(CTAButton)
     expect(shouldOpenInbox).toHaveBeenCalledWith('https://google.com')
   })

@@ -1729,7 +1729,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
           "width": "100%",
         }
       }
-      testID="next-cultural-survey-question"
+      testID="Continuer vers l’étape suivante"
     >
       <Text
         adjustsFontSizeToFit={false}

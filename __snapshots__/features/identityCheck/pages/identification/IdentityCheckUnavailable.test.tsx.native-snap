@@ -250,7 +250,8 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     >
       <View
-        accessible={false}
+        accessibilityLabel="Retourner à l’accueil"
+        accessible={true}
         collapsable={false}
         focusable={true}
         onClick={[Function]}

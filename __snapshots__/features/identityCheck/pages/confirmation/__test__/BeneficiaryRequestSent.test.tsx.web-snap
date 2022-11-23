@@ -253,6 +253,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     >
       <button
+        aria-label="On y va !"
         className="c0 c1"
         data-testid="On y va !"
         onClick={[Function]}

@@ -423,7 +423,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 }
               />
               <View
-                accessible={false}
+                accessibilityLabel="Signaler l'offre"
+                accessible={true}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
@@ -451,7 +452,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                     "width": "100%",
                   }
                 }
-                testID="go-to-reason-report-button"
+                testID="Signaler l'offre"
               >
                 <Text
                   adjustsFontSizeToFit={false}

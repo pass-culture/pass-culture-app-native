@@ -191,7 +191,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             <button
               aria-label="Revenir en arrière"
               className="c0 c1 sc-gsDKAQ c1"
-              data-testid="backButton"
+              data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
               title="Revenir en arrière"

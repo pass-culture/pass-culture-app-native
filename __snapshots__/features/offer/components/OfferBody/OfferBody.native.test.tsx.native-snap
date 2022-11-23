@@ -565,7 +565,8 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
-            accessible={false}
+            accessibilityLabel="Voir plus d’informations"
+            accessible={true}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -595,7 +596,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "width": "auto",
               }
             }
-            testID="description-details-button"
+            testID="Voir plus d’informations"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -941,7 +942,8 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <View
-          accessible={false}
+          accessibilityLabel="Voir l’itinéraire"
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -1054,12 +1056,13 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <View
+          accessibilityLabel="Signaler l’offre"
           accessibilityState={
             Object {
               "disabled": false,
             }
           }
-          accessible={false}
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -1089,7 +1092,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "width": "auto",
             }
           }
-          testID="report-offer-body"
+          testID="Signaler l’offre"
         >
           <View
             style={
@@ -1552,7 +1555,8 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     }
                   />
                   <View
-                    accessible={false}
+                    accessibilityLabel="Signaler l'offre"
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -1580,7 +1584,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                         "width": "100%",
                       }
                     }
-                    testID="go-to-reason-report-button"
+                    testID="Signaler l'offre"
                   >
                     <Text
                       adjustsFontSizeToFit={false}
