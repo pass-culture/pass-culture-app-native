@@ -271,7 +271,8 @@ exports[`OnboardingAuthentication should render correctly 1`] = `
       }
     />
     <View
-      accessible={false}
+      accessibilityLabel="Plus tard"
+      accessible={true}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
