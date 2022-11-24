@@ -202,377 +202,434 @@ Array [
       }
     />
     <View
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-            undefined,
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Les engagements du pass Culture
-          </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-end",
-              },
-            ]
-          }
-        >
-          <View
-            height={20}
-            testID="section-row-navigable-icon"
-            width={20}
-          >
-            <Text>
-              section-row-navigable-icon-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
+      accessibilityRole="list"
       style={
         Array [
           Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 24,
+            "flexDirection": "column",
+            "paddingLeft": 0,
             "width": "100%",
           },
         ]
       }
-    />
-    <View
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
     >
       <View
+        accessibilityRole="none"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
+              "display": "flex",
             },
-            undefined,
           ]
         }
       >
         <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
+          accessibilityRole="link"
+          accessibilityState={
+            Object {
+              "disabled": false,
             }
-          >
-            Parcours recommandés
-          </Text>
-        </View>
-        <View
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "alignItems": "flex-end",
-              },
-            ]
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
           }
         >
           <View
-            height={20}
-            testID="section-row-navigable-icon"
-            width={20}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+                undefined,
+              ]
+            }
           >
-            <Text>
-              section-row-navigable-icon-SVG-Mock
-            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Les engagements du pass Culture
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-end",
+                  },
+                ]
+              }
+            >
+              <View
+                height={20}
+                testID="section-row-navigable-icon"
+                width={20}
+              >
+                <Text>
+                  section-row-navigable-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "marginVertical": 24,
+                "width": "100%",
+              },
+            ]
+          }
+        />
       </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
-    >
       <View
+        accessibilityRole="none"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
+              "display": "flex",
             },
-            undefined,
           ]
         }
       >
         <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
+          accessibilityRole="link"
+          accessibilityState={
+            Object {
+              "disabled": false,
             }
-          >
-            Déclaration d’accessibilité
-          </Text>
-        </View>
-        <View
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "alignItems": "flex-end",
-              },
-            ]
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
           }
         >
           <View
-            height={20}
-            testID="section-row-navigable-icon"
-            width={20}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+                undefined,
+              ]
+            }
           >
-            <Text>
-              section-row-navigable-icon-SVG-Mock
-            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Parcours recommandés
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-end",
+                  },
+                ]
+              }
+            >
+              <View
+                height={20}
+                testID="section-row-navigable-icon"
+                width={20}
+              >
+                <Text>
+                  section-row-navigable-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 24,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-            undefined,
-          ]
-        }
-      >
         <View
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "textAlign": "left",
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "marginVertical": 24,
+                "width": "100%",
               },
             ]
           }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
         >
-          <Text
-            numberOfLines={2}
+          <View
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                 },
+                undefined,
               ]
             }
           >
-            Schéma pluriannuel
-          </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Déclaration d’accessibilité
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-end",
+                  },
+                ]
+              }
+            >
+              <View
+                height={20}
+                testID="section-row-navigable-icon"
+                width={20}
+              >
+                <Text>
+                  section-row-navigable-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
         <View
           style={
             Array [
               Object {
-                "alignItems": "flex-end",
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "marginVertical": 24,
+                "width": "100%",
               },
             ]
           }
+        />
+      </View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="link"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
         >
           <View
-            height={20}
-            testID="section-row-navigable-icon"
-            width={20}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+                undefined,
+              ]
+            }
           >
-            <Text>
-              section-row-navigable-icon-SVG-Mock
-            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Schéma pluriannuel
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-end",
+                  },
+                ]
+              }
+            >
+              <View
+                height={20}
+                testID="section-row-navigable-icon"
+                width={20}
+              >
+                <Text>
+                  section-row-navigable-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
