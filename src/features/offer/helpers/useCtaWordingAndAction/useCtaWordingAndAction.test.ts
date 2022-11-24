@@ -1,6 +1,12 @@
 import mockdate from 'mockdate'
 
-import { OfferResponse, UserRole, YoungStatusType, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  OfferResponse,
+  UserRole,
+  YoungStatusType,
+  SubscriptionStatus,
+  SearchGroupNameEnumv2,
+} from 'api/gen'
 import { OfferModal } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/firebase/analytics'
@@ -28,7 +34,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" wording and modal "authentication"', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: false,
-        userStatus: YoungStatusType.non_eligible,
+        userStatus: { statusType: YoungStatusType.non_eligible },
         isBeneficiary: false,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
@@ -50,7 +56,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" disabled wording with bottom banner when no external url', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: true,
-        userStatus: YoungStatusType.non_eligible,
+        userStatus: { statusType: YoungStatusType.non_eligible },
         isBeneficiary: false,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
@@ -70,7 +76,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Accéder au site partenaire" wording when external url', () => {
       const result = getCtaWordingAndAction({
         isLoggedIn: true,
-        userStatus: YoungStatusType.non_eligible,
+        userStatus: { statusType: YoungStatusType.non_eligible },
         isBeneficiary: false,
         offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         subcategory: buildSubcategory({}),
@@ -83,6 +89,74 @@ describe('getCtaWordingAndAction', () => {
         externalNav: { url: 'https://url-externe' },
         isDisabled: false,
         wording: 'Accéder au site partenaire',
+      })
+    })
+  })
+
+  describe('Eligible but non Beneficiary yet', () => {
+    it('should return finish subscription modal when user has not finished subscription', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+        },
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+        wording: 'Réserver l’offre',
+      })
+    })
+
+    it('should return application pending modal when user is waiting for his application to complete', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_subscription_pending,
+        },
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+        wording: 'Réserver l’offre',
+      })
+    })
+
+    it('should return application error modal when user has an issue with his application', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_subscription_issues,
+        },
+        isBeneficiary: false,
+        offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        modalToDisplay: OfferModal.ERROR_APPLICATION,
+        wording: 'Réserver l’offre',
       })
     })
   })
@@ -103,7 +177,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
-          userStatus: YoungStatusType.beneficiary,
+          userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: false,
           offer,
           subcategory,
@@ -139,7 +213,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
-          userStatus: YoungStatusType.beneficiary,
+          userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
@@ -166,7 +240,7 @@ describe('getCtaWordingAndAction', () => {
     ) =>
       getCtaWordingAndAction({
         isLoggedIn: true,
-        userStatus: YoungStatusType.beneficiary,
+        userStatus: { statusType: YoungStatusType.beneficiary },
         isBeneficiary: true,
         offer: buildOffer(partialOffer),
         subcategory: buildSubcategory(partialSubcategory || {}),
@@ -376,7 +450,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
-          userStatus: YoungStatusType.beneficiary,
+          userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
@@ -400,7 +474,7 @@ describe('getCtaWordingAndAction', () => {
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
-          userStatus: YoungStatusType.beneficiary,
+          userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,

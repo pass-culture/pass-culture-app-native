@@ -1,4 +1,11 @@
-import { OfferResponse, FavoriteOfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
+import {
+  OfferResponse,
+  FavoriteOfferResponse,
+  UserProfileResponse,
+  YoungStatusType,
+  YoungStatusResponse,
+  SubscriptionStatus,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
 import { OfferModal } from 'features/offer/enums'
@@ -19,7 +26,7 @@ const getIsBookedOffer = (
 
 interface Props {
   isLoggedIn: boolean
-  userStatus: YoungStatusType
+  userStatus: YoungStatusResponse
   isBeneficiary: boolean
   offer: OfferResponse
   subcategory: Subcategory
@@ -68,7 +75,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
+  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: 'Réserver l’offre',
       bottomBannerText:
@@ -98,9 +105,34 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
+  if (userStatus.statusType === YoungStatusType.eligible) {
+    const common = {
+      wording: 'Réserver l’offre',
+      isDisabled: false,
+    }
+    switch (userStatus.subscriptionStatus) {
+      case SubscriptionStatus.has_to_complete_subscription:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+        }
+
+      case SubscriptionStatus.has_subscription_pending:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+        }
+
+      case SubscriptionStatus.has_subscription_issues:
+        return {
+          ...common,
+          modalToDisplay: OfferModal.ERROR_APPLICATION,
+        }
+    }
+  }
 
   // Non beneficiary or educational offer or unavailable offer for user
+  const isOfferCategoryNotBookableByUser = isUnderageBeneficiary && offer.isForbiddenToUnderage
   if (!isLoggedIn || !isBeneficiary || offer.isEducational || isOfferCategoryNotBookableByUser) {
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
@@ -170,7 +202,7 @@ export const useCtaWordingAndAction = (props: {
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
   const { isBeneficiary = false, bookedOffers = {}, status } = user || {}
-  const userStatus = status?.statusType ?? YoungStatusType.non_eligible
+  const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({
     isLoggedIn,
     userStatus,

@@ -2,22 +2,19 @@ import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
-import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
-import { OfferModal } from 'features/offer/enums'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-import { useModal } from 'ui/components/modals/useModal'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -30,16 +27,6 @@ export const Offer: FunctionComponent = () => {
   const offerId = route.params && route.params.id
 
   const { data: offerResponse } = useOffer({ offerId })
-  const {
-    visible: bookingOfferModalIsVisible,
-    showModal: showBookingOfferModal,
-    hideModal: dismissBookingOfferModal,
-  } = useModal(false)
-  const {
-    visible: authenticationModalVisible,
-    showModal: showAuthenticationModal,
-    hideModal: hideAuthenticationModal,
-  } = useModal(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     if (offerResponse) {
@@ -64,10 +51,20 @@ export const Offer: FunctionComponent = () => {
     isDisabled,
   } = useCtaWordingAndAction({ offerId }) || {}
 
+  const {
+    OfferModal: CTAOfferModal,
+    showModal: showOfferModal,
+    dismissBookingOfferModal,
+  } = useOfferModal({
+    modalToDisplay,
+    offerId,
+    isEndedUsedBooking,
+  })
+
   useFocusEffect(
     useCallback(() => {
       trackEventHasSeenOffer()
-      dismissBookingOfferModal()
+      dismissBookingOfferModal && dismissBookingOfferModal()
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dismissBookingOfferModal])
   )
@@ -81,12 +78,7 @@ export const Offer: FunctionComponent = () => {
 
   const onPress = () => {
     onPressCTA && onPressCTA()
-    if (modalToDisplay === OfferModal.BOOKING) {
-      showBookingOfferModal()
-    }
-    if (modalToDisplay === OfferModal.AUTHENTICATION) {
-      showAuthenticationModal()
-    }
+    showOfferModal && showOfferModal()
   }
 
   return (
@@ -122,17 +114,7 @@ export const Offer: FunctionComponent = () => {
         </React.Fragment>
       )}
 
-      <BookingOfferModal
-        visible={bookingOfferModalIsVisible}
-        dismissModal={dismissBookingOfferModal}
-        offerId={offerResponse.id}
-        isEndedUsedBooking={isEndedUsedBooking}
-      />
-      <AuthenticationModal
-        visible={authenticationModalVisible}
-        hideModal={hideAuthenticationModal}
-        offerId={offerResponse.id}
-      />
+      {CTAOfferModal}
     </Container>
   )
 }
