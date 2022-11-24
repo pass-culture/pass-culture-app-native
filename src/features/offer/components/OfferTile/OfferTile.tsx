@@ -60,6 +60,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     categoryLabel,
     venueId,
     homeEntryId,
+    fromOfferId,
     ...offer
   } = props
 
@@ -91,7 +92,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         height={height + MAX_OFFER_CAPTION_HEIGHT}
         navigateTo={{
           screen: 'Offer',
-          params: { id: offerId, from: analyticsFrom, moduleName, moduleId },
+          params: { id: offerId, from: analyticsFrom, moduleName, moduleId, fromOfferId },
         }}
         onBeforeNavigate={handlePressOffer}
         onFocus={() => setIsFocus(true)}

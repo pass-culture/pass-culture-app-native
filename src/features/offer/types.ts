@@ -20,4 +20,5 @@ export interface OfferTileProps {
   homeEntryId?: string
   width: number
   height: number
+  fromOfferId?: number
 }
