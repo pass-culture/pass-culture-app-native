@@ -330,8 +330,8 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
                           max={MAX_HOUR}
                           formatValues={formatHour}
                           onValuesChangeFinish={onSelectedHoursValuesChange}
-                          minLabel="Horaire minimum&nbsp;:"
-                          maxLabel="Horaire maximum&nbsp;:"
+                          minLabel="Horaire minimum de sortie&nbsp;:"
+                          maxLabel="Horaire maximum de sortie&nbsp;:"
                           shouldShowMinMaxValues
                           minMaxValuesComplement="h"
                           sliderLength={sliderLength}
