@@ -256,7 +256,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0 c1 sc-kDTinF c1"
+              className="c0 c1 sc-dlVxhl c1"
               data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
