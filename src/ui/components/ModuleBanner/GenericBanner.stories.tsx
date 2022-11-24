@@ -15,6 +15,7 @@ export default {
     LeftIcon: selectArgTypeFromObject({
       Everywhere,
       Bell,
+      NoIcon: undefined,
     }),
     children: { control: false },
   },
@@ -22,16 +23,30 @@ export default {
 
 const Template: ComponentStory<typeof GenericBanner> = (props) => <GenericBanner {...props} />
 
-const textExample = () => (
+const textExample = ({ withSubtitle = true }) => (
   <React.Fragment>
     <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
     <Spacer.Column numberOfSpaces={1} />
-    <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
+    {!!withSubtitle && (
+      <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
+    )}
   </React.Fragment>
 )
 
 export const Default = Template.bind({})
 Default.args = {
-  children: textExample(),
+  children: textExample({}),
   LeftIcon: Everywhere,
+}
+
+export const WithoutIcon = Template.bind({})
+WithoutIcon.args = {
+  children: textExample({}),
+  LeftIcon: Everywhere,
+}
+
+export const WithoutSubtitle = Template.bind({})
+WithoutSubtitle.args = {
+  children: textExample({ withSubtitle: false }),
+  LeftIcon: undefined,
 }
