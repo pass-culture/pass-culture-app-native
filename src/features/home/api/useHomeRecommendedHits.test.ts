@@ -1,17 +1,16 @@
 import { UseMutationResult } from 'react-query'
 
+import * as algoliaRecommendedHitsAPI from 'features/home/api/useAlgoliaRecommendedHits'
 import {
   getRecommendationEndpoint,
   getRecommendationParameters,
   useHomeRecommendedHits,
 } from 'features/home/api/useHomeRecommendedHits'
+import * as recommendedIdsAPI from 'features/home/api/useHomeRecommendedIdsMutation'
 import { RecommendationParametersFields } from 'features/home/contentful'
 import { env } from 'libs/environment'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
-
-import * as algoliaRecommendedHitsAPI from '../useAlgoliaRecommendedHits'
-import * as recommendedIdsAPI from '../useHomeRecommendedIdsMutation'
 
 const mockUserId = 1234
 const position = {
