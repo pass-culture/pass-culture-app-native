@@ -26,6 +26,7 @@ import { CancellationDetails } from './CancellationDetails'
 
 interface Props {
   stocks: OfferStockResponse[]
+  fromOfferId?: number
 }
 
 const errorCodeToMessage: Record<string, string> = {
@@ -35,7 +36,7 @@ const errorCodeToMessage: Record<string, string> = {
   STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
 }
 
-export const BookingDetails: React.FC<Props> = ({ stocks }) => {
+export const BookingDetails: React.FC<Props> = ({ stocks, fromOfferId }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { bookingState, dismissModal, dispatch } = useBooking()
   const selectedStock = useBookingStock()
@@ -55,7 +56,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
     onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
-        analytics.logBookingConfirmation(offerId, bookingId)
+        analytics.logBookingConfirmation(offerId, bookingId, fromOfferId)
         isFromSearch && algoliaOfferId && logOfferConversion(algoliaOfferId)
 
         if (!!selectedStock && !!offer)

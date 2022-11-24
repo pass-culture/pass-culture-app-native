@@ -12,6 +12,7 @@ export type OfferModalProps = {
   modalToDisplay?: OfferModal
   offerId: number
   isEndedUsedBooking?: boolean
+  fromOfferId?: number
 }
 
 type Output = {
@@ -24,6 +25,7 @@ export const useOfferModal = ({
   modalToDisplay,
   offerId,
   isEndedUsedBooking,
+  fromOfferId,
 }: OfferModalProps): Output => {
   const { visible, showModal, hideModal } = useModal(false)
 
@@ -52,6 +54,7 @@ export const useOfferModal = ({
             dismissModal={hideModal}
             offerId={offerId}
             isEndedUsedBooking={isEndedUsedBooking}
+            fromOfferId={fromOfferId}
           />
         ),
         showModal,

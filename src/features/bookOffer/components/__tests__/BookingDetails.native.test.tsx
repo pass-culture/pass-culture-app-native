@@ -155,7 +155,11 @@ describe('<BookingDetails />', () => {
 
     await waitForExpect(() => {
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
-      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined)
+      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
+        mockOfferId,
+        undefined,
+        undefined
+      )
       expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
         af_offer_id: mockOffer.id,
         af_booking_id: mockBookingStock?.id,
@@ -163,6 +167,26 @@ describe('<BookingDetails />', () => {
         af_category: mockOffer.subcategoryId,
       })
       expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
+    })
+  })
+
+  it('should log the origin offer when booked an offer from similar offers', async () => {
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+    )
+
+    const page = await renderBookingDetails(mockStocks, 1)
+
+    await act(async () => {
+      await fireEvent.press(page.getByText('Confirmer la réservation'))
+    })
+
+    await act(async () => {
+      await flushAllPromisesTimes(10)
+    })
+
+    await waitForExpect(() => {
+      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined, 1)
     })
   })
 
@@ -316,9 +340,11 @@ describe('<BookingDetails />', () => {
   })
 })
 
-const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={stocks} />))
+const renderBookingDetails = async (stocks: OfferStockResponse[], fromOfferId?: number) => {
+  const renderAPI = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(<BookingDetails stocks={stocks} fromOfferId={fromOfferId} />)
+  )
 
   await flushAllPromisesWithAct()
 
