@@ -80,6 +80,7 @@ describe('<BookingConfirmation />', () => {
 
     render(<BookingConfirmation />)
     jest.advanceTimersByTime(3000)
+    // FIXME(Lucasbeneston): Investigate on whether its normal or not to have 3 calls here
     expect(requestInAppReview).toHaveBeenCalledTimes(3)
   })
 
