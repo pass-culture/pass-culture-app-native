@@ -1,24 +1,23 @@
-src/features/_marketingAndCommunication/     @pass-culture/jeunes-retention      # Pourquoi il y a un _ ?
+src/features/_marketingAndCommunication/     @pass-culture/jeunes-retention
 src/features/auth/                           @pass-culture/jeunes-acquisition
 src/features/bookOffer/                      @pass-culture/jeunes-retention
 src/features/bookings/                       @pass-culture/jeunes-retention
 src/features/cookies/                        @pass-culture/jeunes-acquisition
 src/features/culturalSurvey/                 @pass-culture/jeunes-activation
-src/features/deeplinks/                      @pass-culture/jeunes-retention      # À déplacer dans libs ?
-src/features/eighteenBirthday/               @pass-culture/jeunes-activation     # À déplacer dans achievement ?
-src/features/errors/                         @pass-culture/jeunes                # À déplacer hors de features ?
+src/features/deeplinks/                      @pass-culture/jeunes-retention
+src/features/eighteenBirthday/               @pass-culture/jeunes-activation
 src/features/favorites/                      @pass-culture/jeunes-retention
 src/features/firstLogin/                     @pass-culture/jeunes-acquisition
 src/features/firstTutorial/                  @pass-culture/jeunes-acquisition
 src/features/home/                           @pass-culture/jeunes-activation
 src/features/identityCheck/                  @pass-culture/jeunes-activation
-src/features/navigation/                     @pass-culture/jeunes                # À déplacer hors de features ?
 src/features/notifications/                  @pass-culture/jeunes-acquisition
 src/features/offer/                          @pass-culture/jeunes-retention
 src/features/onboarding/                     @pass-culture/jeunes-acquisition
 src/features/profile/                        @pass-culture/jeunes-acquisition
-src/features/recreditBirthdayNotification/   @pass-culture/jeunes-activation     # À déplacer dans achievement ?
+src/features/recreditBirthdayNotification/   @pass-culture/jeunes-activation
 src/features/search/                         @pass-culture/jeunes-retention
+src/features/shareApp/                       @pass-culture/jeunes-acquisition
 src/features/venue/                          @pass-culture/jeunes-retention
 
-src/features/firstLogin/CulturalSurvey.*     @pass-culture/jeunes-activation     # À déplacer dans features/culturalSurvey ?
+src/features/firstLogin/CulturalSurvey.*     @pass-culture/jeunes-activation
