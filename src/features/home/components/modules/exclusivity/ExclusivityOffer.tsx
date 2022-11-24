@@ -22,6 +22,7 @@ const UnmemoizedExclusivityOffer = ({
   display,
   homeEntryId,
   index,
+  style,
 }: ExclusivityOfferProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const shouldDisplayExcluOffer = useShouldDisplayExcluOffer(display, offerId)
@@ -63,7 +64,8 @@ const UnmemoizedExclusivityOffer = ({
       onBlur={onBlur}
       isFocus={isFocus}
       testID="link-exclusivity-offer"
-      disabled={offerId === undefined}>
+      disabled={offerId === undefined}
+      style={style}>
       <ExclusivityImage imageURL={imageURL} alt={alt} />
     </StyledTouchableLink>
   )

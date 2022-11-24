@@ -19,6 +19,7 @@ const UnmemoizedExclusivityExternalLink = ({
   homeEntryId,
   index,
   url,
+  style,
 }: ExclusivityExternalLinkProps) => {
   const [isFocus, setIsFocus] = useState(false)
   useEffect(() => {
@@ -36,6 +37,7 @@ const UnmemoizedExclusivityExternalLink = ({
       onBlur={onBlur}
       isFocus={isFocus}
       externalNav={{ url }}
+      style={style}
       testID="exclusivity-external-link">
       <ExclusivityImage imageURL={imageURL} alt={alt} />
     </StyledTouchableLink>
