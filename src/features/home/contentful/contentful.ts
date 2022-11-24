@@ -229,6 +229,7 @@ export interface RecommendationParametersFields {
   beginningDatetime?: string
   endingDatetime?: string
   eventDuringNextXDays?: string
+  currentWeekEvent?: boolean
   newestOnly?: boolean
   isFree?: boolean
   isEvent?: boolean
