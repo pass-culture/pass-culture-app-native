@@ -12,10 +12,10 @@ Why ?
 Accessibility test should be only on **web** and on **pages** or **modals**
 
 ```jsx
-describe('<YourComponent/>', () => {
+describe('<YourPage/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<YourComponent />)
+      const { container } = render(<YourPage />)
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
@@ -24,15 +24,17 @@ describe('<YourComponent/>', () => {
 })
 ```
 
+> 💡 It is possible to generate an accessible test model with the snippet (vscode) `a11y-test`
+
 If you want to disable accessibility rules use the `enabled` from `rules` property
 
 > ⚠️ For demonstration only, don't disable rules that need fixing.
 
 ```jsx
-describe('<YourComponent/>', () => {
+describe('<YourPage/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<YourComponent />)
+      const { container } = render(<YourPage />)
       const results = await checkAccessibilityFor(container, {
         rules: {
           'duplicate-id-aria': { enabled: false },
