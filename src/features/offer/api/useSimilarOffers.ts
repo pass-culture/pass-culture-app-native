@@ -4,6 +4,7 @@ import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOff
 import { useUserProfileInfo } from 'features/profile/api'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
+import { eventMonitoring } from 'libs/monitoring'
 
 export const getSimilarOffersEndpoint = (
   offerId: number,
@@ -23,10 +24,16 @@ export const useSimilarOffers = (offerId: number, position?: GeoCoordinates) => 
 
   useEffect(() => {
     if (!similarOffersEndpoint) return
-    fetch(similarOffersEndpoint)
-      .then((response) => response.json())
-      .then((data) => setSimilarOffersIds(data.results))
-  }, [similarOffersEndpoint])
+    ;(async () => {
+      try {
+        const response = await fetch(similarOffersEndpoint)
+        const data = await response.json()
+        setSimilarOffersIds(data.results)
+      } catch (e) {
+        eventMonitoring.captureException(e)
+      }
+    })()
+  })
 
   return useAlgoliaSimilarOffers(similarOffersIds || [])
 }

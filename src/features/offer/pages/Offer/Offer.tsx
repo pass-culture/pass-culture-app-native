@@ -79,7 +79,7 @@ export const Offer: FunctionComponent = () => {
     showOfferModal && showOfferModal()
   }
 
-  if (!offerResponse) return <React.Fragment></React.Fragment>
+  if (!offerResponse) return null
 
   return (
     <Container>
