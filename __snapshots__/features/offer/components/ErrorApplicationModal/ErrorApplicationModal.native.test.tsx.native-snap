@@ -396,7 +396,8 @@ ton crédit
                 }
               />
               <View
-                accessible={false}
+                accessibilityLabel="Mettre en favori"
+                accessible={true}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
