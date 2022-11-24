@@ -7,15 +7,22 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type GenericBannerProps = {
-  LeftIcon: FunctionComponent<IconInterface>
+  LeftIcon?: FunctionComponent<IconInterface>
+  tall?: boolean
 }
 
-export const GenericBanner: FunctionComponent<GenericBannerProps> = ({ LeftIcon, children }) => {
+export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
+  LeftIcon,
+  tall,
+  children,
+}) => {
   return (
-    <Container>
-      <IconContainer>
-        <LeftIcon />
-      </IconContainer>
+    <Container tall={tall}>
+      {!!LeftIcon && (
+        <IconContainer>
+          <LeftIcon />
+        </IconContainer>
+      )}
       <DescriptionContainer>{children}</DescriptionContainer>
       <View>
         <StyledArrowNextIcon />
@@ -28,24 +35,25 @@ const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const Container = styled(View)(({ theme }) => ({
+const Container = styled(View)<{ tall?: boolean }>(({ theme, tall }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   border: getSpacing(0.25),
   borderRadius: getSpacing(1.8),
   borderColor: theme.colors.greySemiDark,
   paddingHorizontal: getSpacing(4),
-  padding: getSpacing(4),
+  paddingVertical: getSpacing(tall ? 6 : 4),
   width: '100%',
 }))
 
 const DescriptionContainer = styled.View({
   flexShrink: 1,
   flexGrow: 1,
-  marginHorizontal: getSpacing(4),
+  marginRight: getSpacing(4),
   textAlign: 'start',
 })
 
 const IconContainer = styled.View({
   alignContent: 'center',
+  marginRight: getSpacing(4),
 })

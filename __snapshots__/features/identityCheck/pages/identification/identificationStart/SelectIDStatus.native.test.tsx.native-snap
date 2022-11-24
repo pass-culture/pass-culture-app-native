@@ -449,11 +449,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             "borderStyle": "solid",
                             "borderWidth": 1,
                             "flexDirection": "row",
-                            "paddingBottom": 16,
                             "paddingHorizontal": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
+                            "paddingVertical": 16,
                             "width": "100%",
                           },
                         ]
@@ -464,6 +461,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                           Array [
                             Object {
                               "alignContent": "center",
+                              "marginRight": 16,
                             },
                           ]
                         }
@@ -483,7 +481,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             Object {
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginHorizontal": 16,
+                              "marginRight": 16,
                               "textAlign": "start",
                             },
                           ]
@@ -632,11 +630,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             "borderStyle": "solid",
                             "borderWidth": 1,
                             "flexDirection": "row",
-                            "paddingBottom": 16,
                             "paddingHorizontal": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
+                            "paddingVertical": 16,
                             "width": "100%",
                           },
                         ]
@@ -647,6 +642,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                           Array [
                             Object {
                               "alignContent": "center",
+                              "marginRight": 16,
                             },
                           ]
                         }
@@ -667,7 +663,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             Object {
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginHorizontal": 16,
+                              "marginRight": 16,
                               "textAlign": "start",
                             },
                           ]
@@ -792,11 +788,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             "borderStyle": "solid",
                             "borderWidth": 1,
                             "flexDirection": "row",
-                            "paddingBottom": 16,
                             "paddingHorizontal": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
+                            "paddingVertical": 16,
                             "width": "100%",
                           },
                         ]
@@ -807,6 +800,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                           Array [
                             Object {
                               "alignContent": "center",
+                              "marginRight": 16,
                             },
                           ]
                         }
@@ -826,7 +820,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             Object {
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginHorizontal": 16,
+                              "marginRight": 16,
                               "textAlign": "start",
                             },
                           ]
