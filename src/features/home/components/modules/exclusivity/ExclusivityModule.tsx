@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
@@ -10,23 +11,26 @@ import { getSpacing, Spacer } from 'ui/theme'
 export interface ExclusivityModuleProps extends ExclusivityPane {
   homeEntryId: string | undefined
   index: number
+  style?: ViewStyle
 }
 
 export type ExclusivityBannerProps = Omit<ExclusivityModuleProps, 'offerId' | 'url'>
 
 const UnmemoizedExclusivityModule = ({ offerId, url, ...props }: ExclusivityModuleProps) => {
-  const ExclusivityComponent = () => {
+  const ExclusivityComponent = ({ style }: { style?: ViewStyle }) => {
     if (offerId !== undefined) {
-      return <ExclusivityOffer offerId={offerId} {...props} />
+      return <ExclusivityOffer offerId={offerId} {...props} style={style} />
     }
 
     if (url !== undefined) {
-      return <ExclusivityExternalLink url={url} {...props} />
+      return <ExclusivityExternalLink url={url} {...props} style={style} />
     }
 
-    return <ExclusivityBanner {...props} />
+    return <ExclusivityBanner {...props} style={style} />
   }
-  const StyledExclusivityComponent = styled(ExclusivityComponent)({ paddingBottom: getSpacing(6) })
+  const StyledExclusivityComponent = styled(ExclusivityComponent)({
+    marginBottom: getSpacing(6),
+  })
 
   return (
     <Row>

@@ -12,6 +12,7 @@ const UnmemoizedExclusivityBanner = ({
   moduleId,
   homeEntryId,
   index,
+  style,
 }: ExclusivityBannerProps) => {
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
@@ -19,7 +20,7 @@ const UnmemoizedExclusivityBanner = ({
   }, [moduleId, homeEntryId])
 
   return (
-    <ImageContainer testID="exclusivity-banner">
+    <ImageContainer style={style} testID="exclusivity-banner">
       <ExclusivityImage imageURL={imageURL} alt={alt} />
     </ImageContainer>
   )
