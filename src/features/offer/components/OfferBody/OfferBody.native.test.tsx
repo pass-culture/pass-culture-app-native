@@ -1,8 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
+import { SearchHit } from 'libs/search'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
@@ -11,6 +14,11 @@ jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
+
+let mockUseSimilarOffers: SearchHit[] = []
+jest.mock('features/offer/api/useSimilarOffers', () => ({
+  useSimilarOffers: jest.fn(() => mockUseSimilarOffers),
+}))
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -38,5 +46,33 @@ describe('<OfferBody />', () => {
 
     fireEvent.press(venueBannerComponent)
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
+  })
+
+  it('should not display similar offers list when offer has not it', async () => {
+    const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+    expect(queryByTestId('offersModuleList')).toBeFalsy()
+  })
+
+  describe('with similar offers', () => {
+    beforeAll(() => {
+      mockUseSimilarOffers = mockedAlgoliaResponse.hits
+    })
+
+    it('should display similar offers list when offer has some', async () => {
+      const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      expect(queryByTestId('offersModuleList')).toBeTruthy()
+    })
+
+    it('should navigate to a similar offer when pressing on it', async () => {
+      const { getByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await fireEvent.press(getByTestId('offre La nuit des temps'))
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        from: 'offer',
+        id: 102280,
+      })
+    })
   })
 })
