@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGetDepositAmountsByAge } from 'features/offer/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
 import { useUserProfileInfo } from 'features/profile/api'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
@@ -15,15 +16,24 @@ import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 type Props = {
   visible: boolean
   hideModal: () => void
+  offerId: number
+  children?: never
 }
 
-export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
+export const FinishSubscriptionModal: FunctionComponent<Props> = ({
+  visible,
+  hideModal,
+  offerId,
+}) => {
   const { data: user } = useUserProfileInfo()
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToProfile = () => {
+
+  const navigateToProfile = useCallback(() => {
+    analytics.logGoToProfil({ from: 'FinishSubscriptionModal', offerId })
     hideModal()
     navigate(...getTabNavConfig('Profile'))
-  }
+  }, [offerId, hideModal, navigate])
+
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
   const depositAmoutByAge = useGetDepositAmountsByAge(user?.birthDate)

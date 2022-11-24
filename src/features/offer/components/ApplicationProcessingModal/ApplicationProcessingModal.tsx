@@ -1,7 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -21,6 +23,19 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
   hideModal,
   offerId,
 }) => {
+  const addToFavorites = useCallback(() => {
+    analytics.logHasAddedOfferToFavorites({
+      from: 'ApplicationProcessingModal' as Referrals,
+      offerId,
+    })
+    hideModal()
+  }, [hideModal, offerId])
+
+  const goToProfil = useCallback(() => {
+    analytics.logGoToProfil({ from: 'ApplicationProcessingModal', offerId })
+    hideModal()
+  }, [hideModal, offerId])
+
   return (
     <AppModalWithIllustration
       hideModal={hideModal}
@@ -39,9 +54,9 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
         testID="Aller sur mon profil"
         wording="Aller sur mon profil"
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Profile' } }}
-        onBeforeNavigate={hideModal}
+        onBeforeNavigate={goToProfil}
       />
-      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={hideModal} />
+      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={addToFavorites} />
     </AppModalWithIllustration>
   )
 }
