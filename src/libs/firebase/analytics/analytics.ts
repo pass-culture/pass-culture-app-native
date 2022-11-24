@@ -78,6 +78,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
+  logConsultApplicationProcessingModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_APPLICATION_PROCESSING_MODAL, { offerId }),
   logConsultArticleAccountDeletion: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION),
   logConsultAuthenticationModal: (offerId: number) =>
@@ -88,6 +90,10 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId }),
   logConsultDisclaimerValidationMail: () =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_DISCLAIMER_VALIDATION_MAIL),
+  logConsultErrorApplicationModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL, { offerId }),
+  logConsultFinishSubscriptionModal: (offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL, { offerId }),
   logConsultHome: (params: { homeEntryId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultItinerary: (params: OfferIdOrVenueId & { from: Referrals }) =>

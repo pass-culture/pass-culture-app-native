@@ -113,6 +113,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
 
@@ -135,6 +136,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.APPLICATION_PROCESSING,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
 
@@ -157,6 +159,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.ERROR_APPLICATION,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
   })
