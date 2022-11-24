@@ -78,6 +78,7 @@ export enum AnalyticsEvent {
   IDENTITY_CHECK_STEP = 'IdentityCheckStep',
   IDENTITY_CHECK_SUCCESS = 'IdentityCheckSuccess',
   LOCATION_TOGGLE = 'LocationToggle',
+  LOGIN = 'Login',
   LOGOUT = 'Logout',
   MAIL_TO = 'MailTo',
   MODIFY_MAIL = 'ModifyMail',

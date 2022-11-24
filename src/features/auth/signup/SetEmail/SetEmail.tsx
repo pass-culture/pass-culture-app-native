@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -56,6 +57,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
 
   const onCheckboxBlur = useCallback(() => {
     setIsFocus(false)
+  }, [])
+
+  const onLogAnalytics = useCallback(() => {
+    analytics.logLogin({ method: 'fromSetEmail' })
   }, [])
 
   const accessibilityState = useMemo(
@@ -113,7 +118,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={shouldDisableValidateButton}
       />
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton type="login" />
+      <AuthenticationButton type="login" onAdditionalPress={onLogAnalytics} />
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )
