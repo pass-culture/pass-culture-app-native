@@ -4,6 +4,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
+import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { render } from 'tests/utils'
@@ -77,5 +78,17 @@ describe('HomeHeader', () => {
     const { queryByText } = render(<HomeHeader />)
 
     expect(queryByText('Géolocalise-toi')).toBeTruthy()
+  })
+
+  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
+    const { getByText } = render(<HomeHeader />)
+    expect(getByText('CheatMenu')).toBeTruthy()
+  })
+
+  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
+    const { queryByText } = render(<HomeHeader />)
+    expect(queryByText('CheatMenu')).toBeNull()
   })
 })
