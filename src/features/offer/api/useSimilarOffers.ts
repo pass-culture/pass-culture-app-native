@@ -24,15 +24,11 @@ export const useSimilarOffers = (offerId: number, position?: GeoCoordinates) => 
 
   useEffect(() => {
     if (!similarOffersEndpoint) return
-    ;(async () => {
-      try {
-        const response = await fetch(similarOffersEndpoint)
-        const data = await response.json()
-        setSimilarOffersIds(data.results)
-      } catch (e) {
-        eventMonitoring.captureException(e)
-      }
-    })()
+
+    fetch(similarOffersEndpoint)
+      .then((response) => response.json())
+      .then((data) => setSimilarOffersIds(data.results))
+      .catch((error) => eventMonitoring.captureException(error))
   }, [similarOffersEndpoint])
 
   return useAlgoliaSimilarOffers(similarOffersIds || [])
