@@ -5,7 +5,7 @@ import { build } from '../../../../package.json'
 
 export type ScreensUsedByMarketing = Extract<
   ScreenNames,
-  'Offer' | 'Venue' | 'Home' | 'Search' | 'Profile' | 'SignupForm'
+  'Offer' | 'Venue' | 'Home' | 'Search' | 'Profile' | 'SignupForm' | 'ThematicHome'
 >
 
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
@@ -49,6 +49,13 @@ export const SCREENS_CONFIG: {
     },
   },
   Home: {
+    entryId: {
+      type: 'string',
+      required: false,
+      description: 'Le module d’accueil à afficher',
+    },
+  },
+  ThematicHome: {
     entryId: {
       type: 'string',
       required: false,

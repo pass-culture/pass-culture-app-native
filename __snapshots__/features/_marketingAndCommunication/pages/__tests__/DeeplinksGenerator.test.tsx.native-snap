@@ -831,6 +831,133 @@ Array [
                         ]
                       }
                     >
+                      ThematicHome
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "flex-end",
+                        "flexBasis": 0,
+                        "flexGrow": 0.1,
+                        "flexShrink": 1,
+                        "height": 20,
+                        "justifyContent": "center",
+                        "width": 20,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Non sélectionné"
+                    height={20}
+                    width={20}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+              >
+                <View
+                  flex={0.9}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 0.9,
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      isSelected={false}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
                       Search
                     </Text>
                   </View>

@@ -167,7 +167,7 @@ Array [
           >
             <button
               aria-label="Revenir en arrière"
-              className="c0 c1 sc-hBUSln c1"
+              className="c0 c1 sc-cxpSdN c1"
               data-testid="Revenir en arrière"
               onClick={[MockFunction]}
               tabIndex="0"
@@ -1047,6 +1047,168 @@ Array [
                 >
                   <div
                     aria-label="Sélectionné"
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "height": "8px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "backgroundColor": "rgba(241,241,244,1.00)",
+                    "height": "1px",
+                    "width": "100%",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "height": "8px",
+                  }
+                }
+              />
+              <div
+                aria-checked={false}
+                className="css-view-1dbjc4n"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="radio"
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "justify",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "space-between",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginBottom": "0px",
+                    "marginTop": "0px",
+                    "minHeight": "24px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "justify",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxFlex": 0.9,
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexDirection": "row",
+                      "WebkitFlexGrow": 0.9,
+                      "WebkitFlexShrink": 0,
+                      "alignItems": "center",
+                      "flexBasis": "0px",
+                      "flexDirection": "row",
+                      "flexGrow": 0.9,
+                      "flexShrink": 0,
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "msFlexNegative": 0,
+                      "msFlexPositive": 0.9,
+                      "msFlexPreferredSize": "0px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitFlexShrink": 1,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                      }
+                    }
+                  >
+                    <div
+                      className="css-text-901oao css-textMultiLine-cens5h"
+                      dir="ltr"
+                      style={
+                        Object {
+                          "WebkitLineClamp": 2,
+                          "color": "rgba(22,22,23,1.00)",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": "15px",
+                          "lineHeight": "20px",
+                        }
+                      }
+                    >
+                      ThematicHome
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignItems": "flex-end",
+                      "WebkitBoxAlign": "end",
+                      "WebkitBoxFlex": 0.1,
+                      "WebkitBoxPack": "center",
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 0.1,
+                      "WebkitFlexShrink": 1,
+                      "WebkitJustifyContent": "center",
+                      "alignItems": "flex-end",
+                      "flexBasis": "0px",
+                      "flexGrow": 0.1,
+                      "flexShrink": 1,
+                      "height": "20px",
+                      "justifyContent": "center",
+                      "msFlexAlign": "end",
+                      "msFlexNegative": 1,
+                      "msFlexPack": "center",
+                      "msFlexPositive": 0.1,
+                      "msFlexPreferredSize": "0px",
+                      "width": "20px",
+                    }
+                  }
+                >
+                  <div
+                    aria-label="Non sélectionné"
                     className="css-view-1dbjc4n"
                   >
                     <div
