@@ -68,7 +68,9 @@ export const useOfferModal = ({
 
     case OfferModal.FINISH_SUBSCRIPTION:
       return {
-        OfferModal: <FinishSubscriptionModal visible={visible} hideModal={hideModal} />,
+        OfferModal: (
+          <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
+        ),
         showModal,
       }
 

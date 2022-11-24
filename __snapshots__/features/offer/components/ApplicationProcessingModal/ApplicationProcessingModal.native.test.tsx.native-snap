@@ -395,7 +395,8 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                 }
               />
               <View
-                accessible={false}
+                accessibilityLabel="Mettre en favori"
+                accessible={true}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
