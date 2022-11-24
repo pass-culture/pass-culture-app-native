@@ -33,7 +33,7 @@ export const useSimilarOffers = (offerId: number, position?: GeoCoordinates) => 
         eventMonitoring.captureException(e)
       }
     })()
-  })
+  }, [similarOffersEndpoint])
 
   return useAlgoliaSimilarOffers(similarOffersIds || [])
 }
