@@ -1098,7 +1098,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="support-pro@passculture.app"
+              testID="Ouvrir le gestionnaire mail pour contacter le support Pro"
             >
               <View
                 style={
@@ -1239,7 +1239,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="support@passculture.app"
+              testID="Ouvrir le gestionnaire mail pour contacter le support"
             >
               <View
                 style={
