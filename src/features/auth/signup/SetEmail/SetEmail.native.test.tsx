@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SetEmail } from 'features/auth/signup/SetEmail'
+import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
@@ -61,5 +62,14 @@ describe('<SetEmail />', () => {
         'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
       )
     ).toBeTruthy()
+  })
+
+  it('should log analytics when clicking on "Se connecter" button', () => {
+    const { getByText } = render(<SetEmail {...props} />)
+
+    const loginButton = getByText('Se connecter')
+    fireEvent.press(loginButton)
+
+    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
   })
 })

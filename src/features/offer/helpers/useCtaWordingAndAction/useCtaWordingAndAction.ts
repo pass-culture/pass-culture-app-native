@@ -115,18 +115,27 @@ export const getCtaWordingAndAction = ({
         return {
           ...common,
           modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
+          onPress: () => {
+            analytics.logConsultFinishSubscriptionModal(offer.id)
+          },
         }
 
       case SubscriptionStatus.has_subscription_pending:
         return {
           ...common,
           modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+          onPress: () => {
+            analytics.logConsultApplicationProcessingModal(offer.id)
+          },
         }
 
       case SubscriptionStatus.has_subscription_issues:
         return {
           ...common,
           modalToDisplay: OfferModal.ERROR_APPLICATION,
+          onPress: () => {
+            analytics.logConsultErrorApplicationModal(offer.id)
+          },
         }
     }
   }

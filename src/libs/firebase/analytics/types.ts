@@ -2,7 +2,7 @@ import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 type AnalyticsParam = Record<string, unknown>
 
-export type LoginRoutineMethod = 'fromLogin' | 'fromSignup'
+export type LoginRoutineMethod = 'fromLogin' | 'fromSignup' | 'fromSetEmail'
 
 export interface AnalyticsProvider {
   disableCollection: () => Promise<void> | void

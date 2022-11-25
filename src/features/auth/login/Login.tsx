@@ -17,6 +17,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -179,6 +180,10 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     navigate('ForgottenPassword')
   }, [navigate])
 
+  const onLogSignUpAnalytics = useCallback(() => {
+    analytics.logSignUp({ from: 'Login' })
+  }, [])
+
   const rightIconProps = params?.preventCancellation
     ? {
         rightIconAccessibilityLabel: undefined,
@@ -251,7 +256,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       </Form.MaxWidth>
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton type="signup" />
+      <AuthenticationButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
     </BottomContentPage>
   )
 })

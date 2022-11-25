@@ -113,6 +113,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.FINISH_SUBSCRIPTION,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
 
@@ -135,6 +136,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.APPLICATION_PROCESSING,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
 
@@ -157,6 +159,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         modalToDisplay: OfferModal.ERROR_APPLICATION,
         wording: 'Réserver l’offre',
+        ...result,
       })
     })
   })
@@ -459,12 +462,8 @@ describe('getCtaWordingAndAction', () => {
           isUnderageBeneficiary: false,
         }) || {}
 
-      expect(analytics.logClickBookOffer).toBeCalledTimes(0)
-      expect(onPress).not.toBeUndefined()
-
       if (onPress) onPress()
-      expect(analytics.logClickBookOffer).toBeCalledTimes(1)
-      expect(analytics.logClickBookOffer).toBeCalledWith(baseOffer.id)
+      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
 
     it('logs event ConsultAvailableDates when we click CTA "Voir les disponibilités" (beneficiary user)', () => {
@@ -483,12 +482,71 @@ describe('getCtaWordingAndAction', () => {
           isUnderageBeneficiary: false,
         }) || {}
 
-      expect(analytics.logConsultAvailableDates).toBeCalledTimes(0)
-      expect(onPress).not.toBeUndefined()
+      if (onPress) onPress()
+      expect(analytics.logConsultAvailableDates).toHaveBeenNthCalledWith(1, baseOffer.id)
+    })
+
+    it('logs event ConsultFinishSubscriptionModal when we click CTA "Réserver l’offre" with has_to_complete_subscription status', () => {
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+          },
+          isBeneficiary: false,
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+          hasEnoughCredit: false,
+          bookedOffers: {},
+          isUnderageBeneficiary: false,
+        }) || {}
 
       if (onPress) onPress()
-      expect(analytics.logConsultAvailableDates).toBeCalledTimes(1)
-      expect(analytics.logConsultAvailableDates).toBeCalledWith(baseOffer.id)
+      expect(analytics.logConsultFinishSubscriptionModal).toHaveBeenNthCalledWith(1, baseOffer.id)
+    })
+
+    it('logs event ConsultApplicationProcessingModal when we click CTA "Réserver l’offre" with has_subscription_pending status', () => {
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_pending,
+          },
+          isBeneficiary: false,
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+          hasEnoughCredit: false,
+          bookedOffers: {},
+          isUnderageBeneficiary: false,
+        }) || {}
+
+      if (onPress) onPress()
+      expect(analytics.logConsultApplicationProcessingModal).toHaveBeenNthCalledWith(
+        1,
+        baseOffer.id
+      )
+    })
+
+    it('logs event ConsultErrorApplicationModal when we click CTA "Réserver l’offre" with has_subscription_issues status', () => {
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_issues,
+          },
+          isBeneficiary: false,
+          offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
+          subcategory: buildSubcategory({}),
+          hasEnoughCredit: false,
+          bookedOffers: {},
+          isUnderageBeneficiary: false,
+        }) || {}
+
+      if (onPress) onPress()
+      expect(analytics.logConsultErrorApplicationModal).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
   })
 })

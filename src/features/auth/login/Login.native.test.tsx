@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { flushAllPromisesWithAct, superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { flushAllPromisesWithAct, superFlushWithAct, fireEvent, render, act } from 'tests/utils'
 
 import { AuthContext } from '../AuthContext'
 
@@ -329,6 +329,17 @@ describe('<Login/>', () => {
 
     const enabledButtonSnapshot = renderAPI.toJSON()
     expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
+  })
+
+  it('should log analytics when clicking on "Créer un compte" button', async () => {
+    const { getByText } = renderLogin()
+
+    const signupButton = getByText('Créer un compte')
+    await act(async () => {
+      fireEvent.press(signupButton)
+    })
+
+    expect(analytics.logSignUp).toHaveBeenNthCalledWith(1, { from: 'Login' })
   })
 })
 
