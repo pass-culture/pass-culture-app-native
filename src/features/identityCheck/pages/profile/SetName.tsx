@@ -12,6 +12,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer } from 'ui/theme'
 
 export const SetName = () => {
@@ -48,7 +49,11 @@ export const SetName = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <Banner title="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta carte d’identité." />
+          <Banner
+            icon={BicolorIdCard}
+            title="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
+Nous les vérifions et ils ne pourront plus être modifiés par la suite."
+          />
           <Spacer.Column numberOfSpaces={4} />
           <TextInput
             label="Prénom"
