@@ -7,6 +7,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -30,6 +31,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const labelID = useMemo(uuidv4, [])
   const describedByID = useMemo(uuidv4, [])
   const { isDesktopViewport } = useTheme()
+  const labelFormatted = subtitle ? label + LINE_BREAK : label
 
   const TitleWithSubtitle = useMemo(
     () =>
@@ -39,7 +41,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
             {...getHeadingAttrs(accessibilityLevel ?? 2)}
             id={labelID}
             htmlFor={checkboxID}>
-            {subtitle ? `${label}\n` : label}
+            {labelFormatted}
             {!!subtitle && (
               <View>
                 <Spacer.Column numberOfSpaces={1} />
@@ -49,7 +51,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           </StyledInputLabel>
         )
       },
-    [labelID, checkboxID, accessibilityLevel, label, subtitle]
+    [accessibilityLevel, labelID, checkboxID, labelFormatted, subtitle]
   )
 
   return (

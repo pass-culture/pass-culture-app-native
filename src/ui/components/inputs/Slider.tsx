@@ -108,6 +108,7 @@ export function Slider(props: Props) {
         const leftCursorValue = `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
         leftCursor?.setAttribute('aria-label', leftCursorValue)
         leftCursor?.setAttribute('aria-valuetext', leftCursorValue)
+        leftCursor?.setAttribute('title', leftCursorValue)
 
         rightCursor?.setAttribute('role', 'slider')
         rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
@@ -116,6 +117,7 @@ export function Slider(props: Props) {
         const rightCursorValue = `${maxLabel} ${formatValues(values[1])}`
         rightCursor?.setAttribute('aria-label', rightCursorValue)
         rightCursor?.setAttribute('aria-valuetext', rightCursorValue)
+        rightCursor?.setAttribute('title', rightCursorValue)
       }
     }
 
