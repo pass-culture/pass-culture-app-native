@@ -26,6 +26,7 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
+import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
@@ -134,6 +135,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorSignal,
   BicolorSmartphone,
   BicolorTabBarProfile,
+  BicolorUnlock,
   BicolorWarning,
   Booking,
   Calendar,
