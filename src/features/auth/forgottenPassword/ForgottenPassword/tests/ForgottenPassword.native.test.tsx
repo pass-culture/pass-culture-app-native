@@ -1,5 +1,4 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
@@ -7,7 +6,7 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
-import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 jest.mock('features/navigation/helpers')
@@ -31,7 +30,7 @@ describe('<ForgottenPassword />', () => {
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       const enabledButtonSnapshot = toJSON()
       expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
     })
@@ -43,7 +42,7 @@ describe('<ForgottenPassword />', () => {
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toBeCalledWith('Login')
     })
   })
@@ -85,9 +84,8 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(replace).toBeCalledTimes(1)
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
@@ -104,9 +102,8 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(
         renderAPI.queryByText(
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
@@ -131,9 +128,8 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(
         renderAPI.queryByText(
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
