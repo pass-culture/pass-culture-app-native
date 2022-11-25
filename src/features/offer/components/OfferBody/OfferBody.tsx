@@ -84,11 +84,12 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           width={width}
           height={height}
           analyticsFrom="offer"
+          fromOfferId={offerId}
         />
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, labelMapping, categoryMapping]
+    [position, labelMapping, categoryMapping, offerId]
   )
 
   const { data: reportedOffersResponse } = useReportedOffers()

@@ -136,6 +136,7 @@ export type RootStackParamList = {
     from?: Referrals
     moduleName?: string
     moduleId?: string
+    fromOfferId?: number
   }
   OfferDescription: { id: number }
   OnboardingAuthentication: undefined

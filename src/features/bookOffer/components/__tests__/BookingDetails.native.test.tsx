@@ -16,7 +16,14 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromisesWithAct, flushAllPromisesTimes, act, fireEvent, render } from 'tests/utils'
+import {
+  flushAllPromisesWithAct,
+  flushAllPromisesTimes,
+  act,
+  fireEvent,
+  render,
+  waitFor,
+} from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
@@ -155,7 +162,11 @@ describe('<BookingDetails />', () => {
 
     await waitForExpect(() => {
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
-      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined)
+      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
+        mockOfferId,
+        undefined,
+        undefined
+      )
       expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
         af_offer_id: mockOffer.id,
         af_booking_id: mockBookingStock?.id,
@@ -163,6 +174,26 @@ describe('<BookingDetails />', () => {
         af_category: mockOffer.subcategoryId,
       })
       expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
+    })
+  })
+
+  it('should log the origin offer when booked an offer from similar offers', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { fromOfferId: 1 },
+    })
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+    )
+
+    const page = render(
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      reactQueryProviderHOC(<BookingDetails stocks={mockStocks} />)
+    )
+
+    fireEvent.press(page.getByText('Confirmer la réservation'))
+
+    await waitFor(() => {
+      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined, 1)
     })
   })
 
@@ -317,8 +348,10 @@ describe('<BookingDetails />', () => {
 })
 
 const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={stocks} />))
+  const renderAPI = render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(<BookingDetails stocks={stocks} />)
+  )
 
   await flushAllPromisesWithAct()
 

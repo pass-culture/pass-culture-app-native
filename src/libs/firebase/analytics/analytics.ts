@@ -32,8 +32,12 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles }),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR, params),
-  logBookingConfirmation: (offerId: number, bookingId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_CONFIRMATION, { offerId, bookingId }),
+  logBookingConfirmation: (offerId: number, bookingId: number, fromOfferId?: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BOOKING_CONFIRMATION, {
+      offerId,
+      bookingId,
+      fromOfferId,
+    }),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM, { offerId }),
   logBookingError: (offerId: number, code: string) =>

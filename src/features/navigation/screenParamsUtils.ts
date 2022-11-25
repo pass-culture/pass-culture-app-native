@@ -54,6 +54,7 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
     moduleName: identityFn,
     moduleId: identityFn,
+    fromOfferId: identityFn,
   },
   Home: {
     entryId: identityFn,

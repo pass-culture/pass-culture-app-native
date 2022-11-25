@@ -71,6 +71,7 @@ describe('<OfferBody />', () => {
       await fireEvent.press(getByTestId('offre La nuit des temps'))
       expect(navigate).toHaveBeenCalledWith('Offer', {
         from: 'offer',
+        fromOfferId: 1,
         id: 102280,
       })
     })

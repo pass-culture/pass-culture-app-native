@@ -49,13 +49,14 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { logOfferConversion } = useLogOfferConversion()
 
   const isFromSearch = route.params?.from === 'search'
+  const fromOfferId = route.params?.fromOfferId
   const algoliaOfferId = offerId?.toString()
 
   const { mutate } = useBookOfferMutation({
     onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
-        analytics.logBookingConfirmation(offerId, bookingId)
+        analytics.logBookingConfirmation(offerId, bookingId, fromOfferId)
         isFromSearch && algoliaOfferId && logOfferConversion(algoliaOfferId)
 
         if (!!selectedStock && !!offer)
