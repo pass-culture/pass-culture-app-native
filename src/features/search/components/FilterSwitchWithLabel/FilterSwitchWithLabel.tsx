@@ -5,7 +5,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -29,27 +31,27 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const labelID = useMemo(uuidv4, [])
   const describedByID = useMemo(uuidv4, [])
   const { isDesktopViewport } = useTheme()
+  const labelFormatted = subtitle ? label + LINE_BREAK : label
 
   const TitleWithSubtitle = useMemo(
     () =>
       function TitleWithSubtitle() {
         return (
-          <View>
-            <InputLabel htmlFor={checkboxID}>
-              <Typo.ButtonText {...getHeadingAttrs(accessibilityLevel ?? 2)}>
-                {label}
-              </Typo.ButtonText>
-            </InputLabel>
+          <StyledInputLabel
+            {...getHeadingAttrs(accessibilityLevel ?? 2)}
+            id={labelID}
+            htmlFor={checkboxID}>
+            {labelFormatted}
             {!!subtitle && (
-              <React.Fragment>
+              <View>
                 <Spacer.Column numberOfSpaces={1} />
                 <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
-              </React.Fragment>
+              </View>
             )}
-          </View>
+          </StyledInputLabel>
         )
       },
-    [checkboxID, label, subtitle, accessibilityLevel]
+    [accessibilityLevel, labelID, checkboxID, labelFormatted, subtitle]
   )
 
   return (
@@ -97,3 +99,7 @@ const TitleWrapper = styled.View({
 const SwitchWrapper = styled.View({
   flexShrink: 0,
 })
+
+const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
+  ...theme.typography.buttonText,
+}))

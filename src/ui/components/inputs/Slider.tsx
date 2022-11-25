@@ -105,16 +105,19 @@ export function Slider(props: Props) {
         leftCursor?.setAttribute('aria-valuemin', `${min}`)
         leftCursor?.setAttribute('aria-valuemax', `${values.length === 1 ? max : values[1]}`)
         leftCursor?.setAttribute('aria-valuenow', `${values[0]}`)
-        leftCursor?.setAttribute(
-          'aria-label',
-          `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
-        )
+        const leftCursorValue = `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
+        leftCursor?.setAttribute('aria-label', leftCursorValue)
+        leftCursor?.setAttribute('aria-valuetext', leftCursorValue)
+        leftCursor?.setAttribute('title', leftCursorValue)
 
         rightCursor?.setAttribute('role', 'slider')
         rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
         rightCursor?.setAttribute('aria-valuemax', `${max}`)
         rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
-        rightCursor?.setAttribute('aria-label', `${maxLabel} ${formatValues(values[1])}`)
+        const rightCursorValue = `${maxLabel} ${formatValues(values[1])}`
+        rightCursor?.setAttribute('aria-label', rightCursorValue)
+        rightCursor?.setAttribute('aria-valuetext', rightCursorValue)
+        rightCursor?.setAttribute('title', rightCursorValue)
       }
     }
 

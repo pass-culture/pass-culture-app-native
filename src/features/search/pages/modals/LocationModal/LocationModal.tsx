@@ -64,6 +64,8 @@ const LOCATION_TYPES = [
   { label: RadioButtonLocation.EVERYWHERE, icon: Everywhere },
 ]
 
+const formatKm = (km: number) => `${km}\u00a0km`
+
 const titleId = uuidv4()
 const accessibilityDescribedBy = uuidv4()
 
@@ -429,7 +431,9 @@ export const LocationModal: FunctionComponent<Props> = ({
                                     onValuesChange={onValuesChange}
                                     shouldShowMinMaxValues
                                     minMaxValuesComplement={`\u00a0km`}
+                                    maxLabel="Dans un rayon de&nbsp;:"
                                     sliderLength={sliderLength}
+                                    formatValues={formatKm}
                                   />
                                 </View>
                               )}

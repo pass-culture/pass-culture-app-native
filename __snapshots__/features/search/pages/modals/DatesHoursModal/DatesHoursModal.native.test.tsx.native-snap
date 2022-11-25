@@ -390,60 +390,49 @@ exports[`DatesHoursModal component should render modal correctly after animation
                     ]
                   }
                 >
-                  <View>
-                    <Text
-                      htmlFor="testUuidV4"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
+                  <Text
+                    htmlFor="testUuidV4"
+                    id="testUuidV4"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Date
+
+                    <View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
                       <Text
                         style={
                           Array [
                             Object {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "color": "#696A6F",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
                             },
                           ]
                         }
                       >
-                        Date
+                        Seules les sorties seront affichées
                       </Text>
-                    </Text>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Seules les sorties seront affichées
-                    </Text>
-                  </View>
+                    </View>
+                  </Text>
                 </View>
                 <View
                   numberOfSpaces={2}
@@ -607,60 +596,49 @@ exports[`DatesHoursModal component should render modal correctly after animation
                     ]
                   }
                 >
-                  <View>
-                    <Text
-                      htmlFor="testUuidV4"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
+                  <Text
+                    htmlFor="testUuidV4"
+                    id="testUuidV4"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Heure
+
+                    <View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
                       <Text
                         style={
                           Array [
                             Object {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
+                              "color": "#696A6F",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
                             },
                           ]
                         }
                       >
-                        Heure
+                        Seules les sorties seront affichées
                       </Text>
-                    </Text>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        Array [
-                          Object {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Seules les sorties seront affichées
-                    </Text>
-                  </View>
+                    </View>
+                  </Text>
                 </View>
                 <View
                   numberOfSpaces={2}
