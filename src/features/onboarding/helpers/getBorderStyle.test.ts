@@ -1,5 +1,5 @@
-import { CreditStatus } from 'features/onboarding/components/CreditBlock'
 import { getBorderStyle } from 'features/onboarding/helpers/getBorderStyle'
+import { CreditStatus } from 'features/onboarding/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 

@@ -1,5 +1,5 @@
-import { CreditStatus } from 'features/onboarding/components/CreditStatusTag'
 import { getTagColor } from 'features/onboarding/helpers/getTagColor'
+import { CreditStatus } from 'features/onboarding/types'
 import { theme } from 'theme'
 
 describe('getTagColor', () => {

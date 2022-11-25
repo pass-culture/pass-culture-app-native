@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components/native'
 
-import { CreditStatus } from 'features/onboarding/components/CreditStatusTag'
+import { CreditStatus } from 'features/onboarding/types'
 
 export const getTagColor = (theme: DefaultTheme, status: CreditStatus) => {
   switch (status) {

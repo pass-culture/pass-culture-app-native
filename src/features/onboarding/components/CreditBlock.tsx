@@ -6,15 +6,10 @@ import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
 import { getBorderStyle } from 'features/onboarding/helpers/getBorderStyle'
 import { getTitleComponent, getAgeComponent } from 'features/onboarding/helpers/getTextComponent'
+import { CreditStatus } from 'features/onboarding/types'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { Lock } from 'ui/svg/icons/Lock'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-export enum CreditStatus {
-  GONE = 'passé',
-  ONGOING = 'cette année',
-  COMING = 'à venir',
-}
 
 type Props = {
   title: string

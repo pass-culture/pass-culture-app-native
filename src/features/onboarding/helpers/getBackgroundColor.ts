@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import { DefaultTheme } from 'styled-components/native'
 
-import { CreditStatus } from 'features/onboarding/components/CreditBlock'
+import { CreditStatus } from 'features/onboarding/types'
 
 export const getBackgroundColor = (theme: DefaultTheme, status: CreditStatus) => {
   switch (status) {

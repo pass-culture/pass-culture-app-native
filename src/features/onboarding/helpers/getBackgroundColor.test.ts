@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 
-import { CreditStatus } from 'features/onboarding/components/CreditBlock'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
+import { CreditStatus } from 'features/onboarding/types'
 import { theme } from 'theme'
 
 describe('getBackgroundColor', () => {

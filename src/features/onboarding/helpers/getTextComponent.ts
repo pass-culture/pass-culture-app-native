@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 import styled from 'styled-components/native'
 
-import { CreditStatus } from 'features/onboarding/components/CreditBlock'
+import { CreditStatus } from 'features/onboarding/types'
 import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 

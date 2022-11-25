@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components/native'
 
-import { CreditStatus } from 'features/onboarding/components/CreditBlock'
+import { CreditStatus } from 'features/onboarding/types'
 import { getSpacing } from 'ui/theme'
 
 const EDGE_BLOCK_BORDER_RADIUS = getSpacing(2)

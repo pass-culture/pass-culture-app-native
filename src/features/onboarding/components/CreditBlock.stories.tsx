@@ -2,9 +2,10 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { CreditStatus } from 'features/onboarding/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
-import { CreditBlock, CreditStatus } from './CreditBlock'
+import { CreditBlock } from './CreditBlock'
 
 export default {
   title: 'features/onboarding/CreditBlock',
