@@ -1,9 +1,10 @@
-import { addDays, format } from 'date-fns'
+import { addDays, endOfDay, format, nextSunday } from 'date-fns'
 
 export const computeBeginningAndEndingDateTime = (
   beginningDateTime?: string,
   endingDateTime?: string,
-  eventInNextXDays?: number
+  eventInNextXDays?: number,
+  currentWeekEvent?: boolean
 ): {
   beginningDateTime: string | undefined
   endingDateTime: string | undefined
@@ -22,6 +23,17 @@ export const computeBeginningAndEndingDateTime = (
     const today = new Date()
     const computedBeginingDateTime = today
     const computedEndingDateTime = addDays(today, eventInNextXDays)
+
+    return {
+      beginningDateTime: formatDateToContentfulAndAlgoliaFormat(computedBeginingDateTime),
+      endingDateTime: formatDateToContentfulAndAlgoliaFormat(computedEndingDateTime),
+    }
+  }
+  if (currentWeekEvent){
+    const today = new Date()
+    const computedBeginingDateTime = today
+    const computedEndingDateTime = endOfDay(nextSunday(today))
+
 
     return {
       beginningDateTime: formatDateToContentfulAndAlgoliaFormat(computedBeginingDateTime),
