@@ -23,9 +23,9 @@ describe('useSimilarOffers', () => {
 
   it('should call algolia hook', () => {
     renderHook(() => useSimilarOffers(mockOfferId))
-    expect(algoliaSpy).toHaveBeenCalled()
+    expect(algoliaSpy).toHaveBeenCalledTimes(1)
     renderHook(() => useSimilarOffers(mockOfferId, position))
-    expect(algoliaSpy).toHaveBeenCalled()
+    expect(algoliaSpy).toHaveBeenCalledTimes(2)
   })
 })
 
