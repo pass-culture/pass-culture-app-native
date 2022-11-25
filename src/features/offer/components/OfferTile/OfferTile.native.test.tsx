@@ -61,6 +61,20 @@ describe('OfferTile component', () => {
       moduleName: props.moduleName,
     })
   })
+
+  it('Analytics - should log ConsultOffer that user opened the offer from the list of similar offers', async () => {
+    const propsFromSimilarOffers = { ...props, fromOfferId: 1 }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
+    await fireEvent.press(getByTestId('tileImage'))
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId,
+      from: 'home',
+      moduleName: props.moduleName,
+      fromOfferId: 1,
+    })
+  })
+
   it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
     const { getByTestId } = render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
