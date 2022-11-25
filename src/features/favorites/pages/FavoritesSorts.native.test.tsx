@@ -25,6 +25,7 @@ let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
+const mockRequestGeolocPermission = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -33,10 +34,11 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
     positionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    requestGeolocPermission: mockRequestGeolocPermission,
   }),
 }))
 
-describe('FavoritesSorts component', () => {
+describe('<FavoritesSorts/>', () => {
   beforeEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION

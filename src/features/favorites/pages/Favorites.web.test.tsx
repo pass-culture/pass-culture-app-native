@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, render } from 'tests/utils'
+import { checkAccessibilityFor, cleanup, render } from 'tests/utils/web'
 
 import { Favorites } from './Favorites'
 
@@ -22,26 +22,37 @@ jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('<Favorites/>', () => {
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+  describe('Accessibility', () => {
+    mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-  afterEach(async () => {
-    await cleanup()
-  })
+    afterEach(async () => {
+      await cleanup()
+    })
 
-  it('should render correctly', () => {
-    const { toJSON } = renderFavorites({ isLoggedIn: true })
-    expect(toJSON()).toMatchSnapshot()
-  })
+    it('should not have basic accessibility issues when user is logged in', async () => {
+      const { container } = await renderFavorites({ isLoggedIn: true })
 
-  it('should show non connected page when not logged in', () => {
-    const { getByText } = renderFavorites({ isLoggedIn: false })
-    expect(getByText('Connecte-toi pour profiter de cette fonctionnalité\u00a0!')).toBeTruthy()
-  })
+      const results = await checkAccessibilityFor(container)
 
-  it('should render offline page when not connected', () => {
-    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    const renderAPI = renderFavorites({ isLoggedIn: true })
-    expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have basic accessibility issues when user is not logged in', async () => {
+      const { container } = await renderFavorites({ isLoggedIn: false })
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have basic accessibility issues when user is logged in but offline', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+      const { container } = await renderFavorites({ isLoggedIn: true })
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
   })
 })
 

@@ -14,7 +14,7 @@ import {
   sortByAscendingPrice,
   sortByDistanceAroundMe,
   sortByIdDesc,
-} from 'features/favorites/pages/helpers/sorts'
+} from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useUserProfileInfo } from 'features/profile/api'
