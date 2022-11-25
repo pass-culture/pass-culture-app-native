@@ -40,8 +40,8 @@ describe('GeolocationActivationModal', () => {
 
     fireEvent.press(renderAPI.getByText('Activer la géolocalisation'))
 
-    expect(analytics.logOpenLocationSettings).toBeCalled()
-    expect(onPressGeolocPermissionModalButton).toBeCalled()
+    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
+    expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
     expect(hideGeolocPermissionModal).not.toBeCalled()
   })
 
@@ -57,8 +57,8 @@ describe('GeolocationActivationModal', () => {
 
     fireEvent.press(renderAPI.getByText('Désactiver la géolocalisation'))
 
-    expect(analytics.logOpenLocationSettings).toBeCalled()
-    expect(onPressGeolocPermissionModalButton).toBeCalled()
+    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
+    expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
     expect(hideGeolocPermissionModal).not.toBeCalled()
   })
 })

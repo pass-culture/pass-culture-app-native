@@ -80,7 +80,7 @@ describe('PersonalData', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('ChangeEmail', undefined)
-      expect(analytics.logModifyMail).toBeCalled()
+      expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -108,7 +108,7 @@ describe('PersonalData', () => {
     fireEvent.press(row)
 
     await waitForExpect(() => {
-      expect(analytics.logAccountDeletion).toBeCalled()
+      expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
       expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
     })
   })

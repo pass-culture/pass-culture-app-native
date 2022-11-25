@@ -668,7 +668,7 @@ describe('PriceModal component', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(mockHideModal).toHaveBeenCalled()
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
     it('when pressing previous button', async () => {
@@ -686,7 +686,7 @@ describe('PriceModal component', () => {
       const previousButton = getByTestId('backButton')
       fireEvent.press(previousButton)
 
-      expect(mockHideModal).toHaveBeenCalled()
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
   })
 

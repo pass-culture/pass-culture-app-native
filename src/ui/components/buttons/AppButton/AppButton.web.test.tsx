@@ -57,8 +57,8 @@ describe('AppButton Component', () => {
       fireEvent.click(button)
       fireEvent.doubleClick(button)
 
-      expect(onPress).toHaveBeenCalled()
-      expect(onLongPress).toHaveBeenCalled()
+      expect(onPress).toHaveBeenCalledTimes(1)
+      expect(onLongPress).toHaveBeenCalledTimes(1)
     })
   })
   describe('* inline property', () => {

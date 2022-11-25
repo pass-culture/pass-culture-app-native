@@ -70,7 +70,7 @@ describe('<ChangeEmail/>', () => {
     expect(renderAPI.toJSON()).toMatchSnapshot()
 
     await waitForExpect(() => {
-      expect(analytics.logConsultDisclaimerValidationMail).toBeCalled()
+      expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
     })
 
     mockUseQueryWithoutExpirationTimestamp()
@@ -135,7 +135,7 @@ describe('<ChangeEmail/>', () => {
           'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
         timeout: 5000,
       })
-      expect(analytics.logSaveNewMail).toBeCalled()
+      expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
     })
   })
 

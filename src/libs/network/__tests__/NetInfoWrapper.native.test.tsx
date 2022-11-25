@@ -25,7 +25,7 @@ describe('NetInfoWrapper', () => {
         onConnectionLost,
       })
 
-      expect(onConnection).toHaveBeenCalled()
+      expect(onConnection).toHaveBeenCalledTimes(1)
       expect(onConnectionLost).not.toHaveBeenCalled()
     })
 
@@ -39,7 +39,7 @@ describe('NetInfoWrapper', () => {
       })
 
       expect(onConnection).not.toHaveBeenCalled()
-      expect(onConnectionLost).toHaveBeenCalled()
+      expect(onConnectionLost).toHaveBeenCalledTimes(1)
     })
 
     it('should call onInternetConnection', () => {
@@ -51,7 +51,7 @@ describe('NetInfoWrapper', () => {
         onConnectionLost,
       })
 
-      expect(onInternetConnection).toHaveBeenCalled()
+      expect(onInternetConnection).toHaveBeenCalledTimes(1)
       expect(onInternetConnectionLost).not.toHaveBeenCalled()
     })
 
@@ -65,7 +65,7 @@ describe('NetInfoWrapper', () => {
       })
 
       expect(onInternetConnection).not.toHaveBeenCalled()
-      expect(onInternetConnectionLost).toHaveBeenCalled()
+      expect(onInternetConnectionLost).toHaveBeenCalledTimes(1)
     })
   })
 })

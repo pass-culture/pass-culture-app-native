@@ -8,8 +8,12 @@ import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
+import {
+  GenericAchievementCard,
+  AchievementCardKeyProps,
+} from '../GenericAchievementCard/GenericAchievementCard'
+
 import { GenericAchievement, Props, onRemoveScreenAction } from './GenericAchievement'
-import { GenericAchievementCard, AchievementCardKeyProps } from './GenericAchievementCard'
 
 describe('<GenericAchievement />', () => {
   const TestCard = (props: AchievementCardKeyProps) => (
@@ -74,7 +78,7 @@ describe('<GenericAchievement />', () => {
     const button = await getByText('Tout passer')
     fireEvent.press(button)
     await waitForExpect(() => {
-      expect(skip).toHaveBeenCalled()
+      expect(skip).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -184,9 +188,9 @@ describe('onRemoveScreenAction()', () => {
   it('should call onFirstCardBackAction() and preventDefault() when onFirstCardBackAction is defined and activeIndex is 0', () => {
     onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: goBackEvent })
 
-    expect(onFirstCardBackAction).toBeCalled()
+    expect(onFirstCardBackAction).toHaveBeenCalledTimes(1)
     expect(swiperRefValue.goToPrev).not.toBeCalled()
-    expect(goBackEvent.preventDefault).toBeCalled()
+    expect(goBackEvent.preventDefault).toHaveBeenCalledTimes(1)
   })
 
   it('should call goToPrev() and preventDefault() when activeIndex is not 0', () => {
@@ -194,8 +198,8 @@ describe('onRemoveScreenAction()', () => {
     onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: goBackEvent })
 
     expect(onFirstCardBackAction).not.toBeCalled()
-    expect(swiperRefValue.goToPrev).toBeCalled()
-    expect(goBackEvent.preventDefault).toBeCalled()
+    expect(swiperRefValue.goToPrev).toHaveBeenCalledTimes(1)
+    expect(goBackEvent.preventDefault).toHaveBeenCalledTimes(1)
   })
 
   it('should call goToPrev() and preventDefault() when activeIndex is not 0 and action type is POP', () => {
@@ -203,7 +207,7 @@ describe('onRemoveScreenAction()', () => {
     onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: popEvent })
 
     expect(onFirstCardBackAction).not.toBeCalled()
-    expect(swiperRefValue.goToPrev).toBeCalled()
-    expect(popEvent.preventDefault).toBeCalled()
+    expect(swiperRefValue.goToPrev).toHaveBeenCalledTimes(1)
+    expect(popEvent.preventDefault).toHaveBeenCalledTimes(1)
   })
 })

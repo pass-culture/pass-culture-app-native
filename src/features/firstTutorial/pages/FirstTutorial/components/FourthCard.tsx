@@ -9,7 +9,7 @@ import StarAnimation from 'ui/animations/tutorial_star.json'
 import {
   AchievementCardKeyProps,
   GenericAchievementCard,
-} from 'ui/components/achievements/components/GenericAchievementCard'
+} from 'ui/components/achievements/components/GenericAchievementCard/GenericAchievementCard'
 
 export function FourthCard(props: AchievementCardKeyProps) {
   const { navigate, reset } = useNavigation<UseNavigationType>()

@@ -75,7 +75,7 @@ describe('PersonalData', () => {
     fireEvent.click(row)
 
     await waitForExpect(() => {
-      expect(analytics.logAccountDeletion).toBeCalled()
+      expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
       expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
     })
   })

@@ -23,7 +23,7 @@ describe('AsyncErrorBoundary component', () => {
     )
     expect(queryByTestId('Revenir en arrière')).toBeTruthy()
     fireEvent.click(getByTestId('Revenir en arrière'))
-    expect(mockGoBack).toHaveBeenCalled()
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should call retry with AsyncError', async () => {
@@ -38,6 +38,6 @@ describe('AsyncErrorBoundary component', () => {
     const button = await findByText('Réessayer')
     expect(retry).not.toHaveBeenCalled()
     fireEvent.click(button)
-    expect(retry).toHaveBeenCalled()
+    expect(retry).toHaveBeenCalledTimes(1)
   })
 })

@@ -147,7 +147,7 @@ describe('<TouchableLink />', () => {
 
       expect(navigate).toHaveBeenCalledWith('FirstTutorial', undefined)
       await waitForExpect(() => {
-        expect(mockedOnAfterNavigate).toHaveBeenCalled()
+        expect(mockedOnAfterNavigate).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -199,7 +199,7 @@ describe('<TouchableLink />', () => {
 
       fireEvent.press(getByText(linkText))
 
-      expect(mockedOnBeforeNavigate).toHaveBeenCalled()
+      expect(mockedOnBeforeNavigate).toHaveBeenCalledTimes(1)
       expect(openUrl).not.toHaveBeenCalled()
       await waitForExpect(() => {
         expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params)

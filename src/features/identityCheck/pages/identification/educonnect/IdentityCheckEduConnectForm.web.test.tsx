@@ -24,6 +24,6 @@ describe('<IdentityCheckEduConnectForm />', () => {
 
     fireEvent.click(button)
 
-    expect(mockOpenEduConnectTab).toHaveBeenCalled()
+    expect(mockOpenEduConnectTab).toHaveBeenCalledTimes(1)
   })
 })

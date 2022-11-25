@@ -6,7 +6,7 @@ import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import {
   AchievementCardKeyProps,
   GenericAchievementCard,
-} from 'ui/components/achievements/components/GenericAchievementCard'
+} from 'ui/components/achievements/components/GenericAchievementCard/GenericAchievementCard'
 import { SlantTag } from 'ui/components/SlantTag'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'

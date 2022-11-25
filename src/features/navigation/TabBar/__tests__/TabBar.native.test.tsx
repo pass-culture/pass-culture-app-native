@@ -113,8 +113,8 @@ describe('TabBar', () => {
     const homeTab = renderAPI.getByTestId('Home tab')
     fireEvent.press(homeTab)
 
-    expect(navigation.emit).toHaveBeenCalled()
-    expect(navigation.navigate).toHaveBeenCalled()
+    expect(navigation.emit).toHaveBeenCalledTimes(1)
+    expect(navigation.navigate).toHaveBeenCalledTimes(1)
   })
 
   it('navigates to Profile on Profile tab click', async () => {

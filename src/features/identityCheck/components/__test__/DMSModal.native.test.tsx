@@ -23,7 +23,7 @@ describe('<DMSModal/>', () => {
       'Fermer la modale pour transmettre un document sur le site Démarches Simplifiée'
     )
     fireEvent.press(rightIcon)
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should open DSM french citizen when clicking on "Je suis de nationalité française" button', async () => {

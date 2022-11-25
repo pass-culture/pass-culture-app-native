@@ -42,9 +42,9 @@ describe('useGeolocation()', () => {
     await waitForExpect(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
       expect(result.current.position).toBe(MOCK_POSITION)
-      expect(onSubmit).toBeCalled()
-      expect(onRefusal).not.toBeCalled()
-      expect(onAcceptance).toBeCalled()
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+      expect(onRefusal).not.toHaveBeenCalled()
+      expect(onAcceptance).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -56,9 +56,9 @@ describe('useGeolocation()', () => {
     await waitForExpect(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
       expect(result.current.position).toBe(null)
-      expect(onSubmit).toBeCalled()
-      expect(onRefusal).toBeCalled()
-      expect(onAcceptance).not.toBeCalled()
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+      expect(onRefusal).toHaveBeenCalledTimes(1)
+      expect(onAcceptance).not.toHaveBeenCalled()
     })
   })
 
@@ -70,9 +70,9 @@ describe('useGeolocation()', () => {
     await waitForExpect(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
       expect(result.current.position).toBe(null)
-      expect(onSubmit).toBeCalled()
-      expect(onRefusal).toBeCalled()
-      expect(onAcceptance).not.toBeCalled()
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+      expect(onRefusal).toHaveBeenCalledTimes(1)
+      expect(onAcceptance).not.toHaveBeenCalled()
     })
   })
 
@@ -84,9 +84,9 @@ describe('useGeolocation()', () => {
     await waitForExpect(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
       expect(result.current.position).toBe(MOCK_POSITION)
-      expect(onSubmit).toBeCalled()
-      expect(onRefusal).not.toBeCalled()
-      expect(onAcceptance).toBeCalled()
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+      expect(onRefusal).not.toHaveBeenCalled()
+      expect(onAcceptance).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -99,9 +99,9 @@ describe('useGeolocation()', () => {
     await waitForExpect(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
       expect(result.current.position).toBe(null)
-      expect(onSubmit).toBeCalled()
-      expect(onRefusal).toBeCalled()
-      expect(onAcceptance).not.toBeCalled()
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+      expect(onRefusal).toHaveBeenCalledTimes(1)
+      expect(onAcceptance).not.toHaveBeenCalled()
     })
   })
 
@@ -118,8 +118,8 @@ describe('useGeolocation()', () => {
       mockPermissionResult(permission)
       renderGeolocationHook()
       await waitForExpect(() => {
-        if (statement === 'call') expect(mockGetPosition).toBeCalled()
-        else expect(mockGetPosition).not.toBeCalled()
+        if (statement === 'call') expect(mockGetPosition).toHaveBeenCalledTimes(1)
+        else expect(mockGetPosition).not.toHaveBeenCalled()
       })
     }
   )

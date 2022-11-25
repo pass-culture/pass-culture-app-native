@@ -41,7 +41,7 @@ describe('DMSIntroduction', () => {
       const button = getByText('Aller sur demarches-simplifiees.fr')
       fireEvent.press(button)
 
-      expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalled()
+      expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -76,7 +76,7 @@ describe('DMSIntroduction', () => {
       const button = getByText('Aller sur demarches-simplifiees.fr')
       fireEvent.press(button)
 
-      expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalled()
+      expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
     })
   })
 })

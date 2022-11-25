@@ -116,7 +116,7 @@ describe('<CulturalSurvey />', () => {
     })
     await superFlushWithAct()
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalled()
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 })

@@ -36,7 +36,7 @@ describe('QuitSignupModal', () => {
     const resumeButton = getByText('Continuer l’inscription')
     fireEvent.press(resumeButton)
 
-    expect(resumeMock).toHaveBeenCalled()
+    expect(resumeMock).toHaveBeenCalledTimes(1)
   })
 
   it('should go back to homepage when clicking on "Abandonner l’inscription"', () => {
@@ -45,7 +45,7 @@ describe('QuitSignupModal', () => {
     const abandonButton = getByText('Abandonner l’inscription')
     fireEvent.press(abandonButton)
 
-    expect(navigateToHome).toBeCalled()
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   describe('QuitSignupModal - Analytics', () => {

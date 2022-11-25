@@ -98,7 +98,7 @@ describe('CulturalSurveysQuestions page', () => {
     const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.click(NextQuestionButton)
     waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalled()
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 

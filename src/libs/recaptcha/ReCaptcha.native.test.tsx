@@ -50,7 +50,7 @@ describe('<ReCaptcha />', () => {
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "close" }')
 
-    expect(reCaptchaProps.onClose).toBeCalled()
+    expect(reCaptchaProps.onClose).toHaveBeenCalledTimes(1)
   })
 
   it("should call onExpire() callback when webview's message is expire", () => {
@@ -59,7 +59,7 @@ describe('<ReCaptcha />', () => {
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
-    expect(reCaptchaProps.onExpire).toBeCalled()
+    expect(reCaptchaProps.onExpire).toHaveBeenCalledTimes(1)
   })
 
   it("should call onLoad() callback when webview's message is load", () => {
@@ -68,7 +68,7 @@ describe('<ReCaptcha />', () => {
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "load" }')
 
-    expect(reCaptchaProps.onLoad).toBeCalled()
+    expect(reCaptchaProps.onLoad).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -19,7 +19,7 @@ describe('useOpenItinerary', () => {
       const { result } = renderHook(() => useOpenItinerary('0.45, 1.45', beforeNavigate))
       result.current.openItinerary()
 
-      expect(beforeNavigate).toBeCalled()
+      expect(beforeNavigate).toHaveBeenCalledTimes(1)
     })
     it('should not call beforeNavigate', () => {
       useItinerary?.mockReturnValue({ navigateTo: jest.fn() })

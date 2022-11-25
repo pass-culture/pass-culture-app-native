@@ -56,7 +56,7 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(renderAPI.getByTestId('rightIcon'))
 
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalled()
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -67,7 +67,7 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(checkEmailsButton)
 
     await waitForExpect(() => {
-      expect(openInbox).toHaveBeenCalled()
+      expect(openInbox).toHaveBeenCalledTimes(1)
     })
   })
 })

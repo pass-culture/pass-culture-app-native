@@ -33,7 +33,7 @@ describe('useShareAppContext()', () => {
       result.current.showShareAppModal(modalType)
     })
 
-    expect(mockShowModal).toHaveBeenCalled()
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
     expect(mockShareAppModal).toHaveBeenCalledWith(modalType)
   })
 })

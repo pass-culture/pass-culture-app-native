@@ -43,7 +43,7 @@ describe('<CreditCeilingsModal/>', () => {
     )
     const rightIcon = getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should display text without physical ceiling if no physical ceiling', () => {

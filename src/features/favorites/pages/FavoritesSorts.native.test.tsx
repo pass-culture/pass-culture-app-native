@@ -55,7 +55,7 @@ describe('FavoritesSorts component', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
 
     await waitForExpect(() => {
-      expect(mockGoBack).toBeCalled()
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })
 

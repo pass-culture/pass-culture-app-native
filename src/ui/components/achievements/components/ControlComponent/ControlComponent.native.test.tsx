@@ -45,7 +45,7 @@ describe('<ControlComponent />', () => {
       type: 'prev',
     })
     fireEvent.press(getByTestId('control-button-prev'))
-    expect(onPress).toHaveBeenCalled()
+    expect(onPress).toHaveBeenCalledTimes(1)
   })
 
   it('should render prev button with margin left if withMargin is equal to true', () => {

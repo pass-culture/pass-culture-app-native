@@ -20,6 +20,6 @@ describe('<ExhaustedCreditModal/>', () => {
     const { getByTestId } = render(<ExhaustedCreditModal visible hideModal={hideModalMock} />)
     const rightIcon = getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
-    expect(hideModalMock).toHaveBeenCalled()
+    expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 })

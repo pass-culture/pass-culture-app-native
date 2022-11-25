@@ -60,6 +60,6 @@ describe('<BookingImpossible />', () => {
         onSuccess: () => {},
         onError: () => {},
       }).mutate
-    ).toHaveBeenCalled()
+    ).toHaveBeenCalledTimes(1)
   })
 })

@@ -83,6 +83,6 @@ describe('SearchAutocompleteItem component', () => {
     const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
     await fireEvent.press(getByTestId('autocompleteItem'))
 
-    expect(mockSendEvent).toHaveBeenCalled()
+    expect(mockSendEvent).toHaveBeenCalledTimes(1)
   })
 })

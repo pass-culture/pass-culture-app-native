@@ -25,7 +25,7 @@ describe('FirstCard', () => {
     fireEvent.press(getByText('Continuer'))
 
     await act(async () => {
-      expect(ref.current.goToNext).toHaveBeenCalled()
+      expect(ref.current.goToNext).toHaveBeenCalledTimes(1)
     })
   })
 })

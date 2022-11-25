@@ -130,7 +130,7 @@ describe('SetPhoneNumber', () => {
       fireEvent.press(continueButton)
 
       await waitFor(() => {
-        expect(mockNavigateToNextScreen).toHaveBeenCalled()
+        expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -180,7 +180,7 @@ describe('SetPhoneNumber', () => {
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
-      await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalled())
+      await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1))
     })
   })
 })

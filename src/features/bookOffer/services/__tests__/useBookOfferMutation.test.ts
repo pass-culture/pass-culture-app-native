@@ -40,7 +40,7 @@ describe('useBookOfferMutation', () => {
     })
 
     await waitFor(() => {
-      expect(props.onSuccess).toHaveBeenCalled()
+      expect(props.onSuccess).toHaveBeenCalledTimes(1)
       expect(props.onError).not.toHaveBeenCalled()
       expect(queryCache.find('userProfile')?.state.isInvalidated).toBeTruthy()
     })
@@ -69,7 +69,7 @@ describe('useBookOfferMutation', () => {
 
     await waitFor(() => {
       expect(props.onSuccess).not.toHaveBeenCalled()
-      expect(props.onError).toHaveBeenCalled()
+      expect(props.onError).toHaveBeenCalledTimes(1)
       expect(queryCache.find('userProfile')?.state.isInvalidated).toBeFalsy()
     })
   })

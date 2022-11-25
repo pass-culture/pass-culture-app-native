@@ -41,7 +41,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     fireEvent.press(resumeButton)
 
     expect(analytics.logContinueIdentityCheck).toHaveBeenCalledTimes(1)
-    expect(mockHideModal).toHaveBeenCalled()
+    expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
   it('should go back to homepage when clicking on "Abandonner la vérification"', async () => {
@@ -52,7 +52,7 @@ describe('<QuitIdentityCheckModal/>', () => {
 
     await waitForExpect(() => {
       expect(analytics.logConfirmQuitIdentityCheck).toHaveBeenNthCalledWith(1, mockStep)
-      expect(navigateToHome).toBeCalled()
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 })

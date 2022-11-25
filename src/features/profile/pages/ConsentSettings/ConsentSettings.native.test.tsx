@@ -74,7 +74,7 @@ describe('<ConsentSettings/>', () => {
     fireEvent.press(saveChoice)
 
     await waitFor(() => {
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalled()
+      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
     })
   })
 

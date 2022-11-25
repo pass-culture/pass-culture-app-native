@@ -77,7 +77,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     fireEvent.press(checkEmailsButton)
 
     await waitForExpect(() => {
-      expect(openInbox).toHaveBeenCalled()
+      expect(openInbox).toHaveBeenCalledTimes(1)
     })
   })
 })

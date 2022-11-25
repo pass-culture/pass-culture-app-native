@@ -89,7 +89,7 @@ describe('useItinerary', () => {
     const { result } = renderHook(useItinerary)
     await superFlushWithAct()
     result.current.navigateTo(address)
-    await waitForExpect(() => expect(openGoogleMapsItinerary).toBeCalled())
+    await waitForExpect(() => expect(openGoogleMapsItinerary).toHaveBeenCalledTimes(1))
   })
 
   it('should navigate with google maps web if the lib failed and only one application was available', async () => {
@@ -105,7 +105,7 @@ describe('useItinerary', () => {
     const { result } = renderHook(useItinerary)
     await superFlushWithAct()
     result.current.navigateTo(address)
-    await waitForExpect(() => expect(openGoogleMapsItinerary).toBeCalled())
+    await waitForExpect(() => expect(openGoogleMapsItinerary).toHaveBeenCalledTimes(1))
   })
 
   it('should display an information snackbar if the lib failed and to open the chosen navigation app', async () => {

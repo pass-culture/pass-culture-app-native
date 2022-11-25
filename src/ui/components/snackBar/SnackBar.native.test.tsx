@@ -106,7 +106,7 @@ describe('SnackBar Component', () => {
 
       fireEvent.press(touchable)
 
-      await waitFor(async () => expect(onClose).toBeCalled())
+      await waitFor(async () => expect(onClose).toHaveBeenCalledTimes(1))
     })
   })
   describe('Visibility lifecycle', () => {

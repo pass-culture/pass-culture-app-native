@@ -153,7 +153,7 @@ describe('SetPhoneValidationCode', () => {
 
     fireEvent.press(button)
 
-    expect(analytics.logHasClickedMissingCode).toHaveBeenCalled()
+    expect(analytics.logHasClickedMissingCode).toHaveBeenCalledTimes(1)
   })
 })
 

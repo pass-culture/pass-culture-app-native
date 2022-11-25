@@ -16,9 +16,9 @@ describe('<RemoteConfigProvider />', () => {
     renderRemoteConfigProvider()
 
     await waitForExpect(() => {
-      expect(remoteConfig.refresh).toBeCalled()
+      expect(remoteConfig.refresh).toHaveBeenCalledTimes(1)
     })
-    expect(remoteConfig.getValues).toBeCalled()
+    expect(remoteConfig.getValues).toHaveBeenCalledTimes(1)
   })
 })
 

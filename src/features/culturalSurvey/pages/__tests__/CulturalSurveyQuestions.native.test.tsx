@@ -91,7 +91,7 @@ describe('CulturalSurveysQuestions page', () => {
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('Continuer vers l’étape suivante')
     fireEvent.press(NextQuestionButton)
-    expect(navigateToHome).toHaveBeenCalled()
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should dispatch empty answers on go back', () => {

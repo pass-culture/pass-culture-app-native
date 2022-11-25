@@ -80,7 +80,7 @@ describe('openUrl', () => {
     const link = 'https://www.google.com'
 
     await openUrl(link)
-    expect(alertMock).toHaveBeenCalled()
+    expect(alertMock).toHaveBeenCalledTimes(1)
   })
 
   it('should not display alert when Linking.openURL throws but fallbackUrl is valid', async () => {

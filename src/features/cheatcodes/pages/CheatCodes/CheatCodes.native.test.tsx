@@ -48,7 +48,7 @@ describe('CheatCodes component', () => {
 
     await flushAllPromisesWithAct()
 
-    expect(BatchUser.getInstallationID).toHaveBeenCalled()
+    expect(BatchUser.getInstallationID).toHaveBeenCalledTimes(1)
     expect(queryByText(`Batch installation ID: ${installationID}`)).toBeTruthy()
   })
 })

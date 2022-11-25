@@ -389,7 +389,7 @@ describe('SearchResults component', () => {
       fireEvent.press(getByText('Géolocalise-toi'))
     })
 
-    expect(mockShowGeolocPermissionModal).toHaveBeenCalled()
+    expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {

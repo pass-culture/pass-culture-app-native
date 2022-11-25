@@ -29,6 +29,6 @@ describe('CulturalSurveyIntro page', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const LaterButton = CulturalSurveyIntroPage.getByTestId('Plus tard')
     fireEvent.click(LaterButton)
-    expect(navigateToHome).toHaveBeenCalled()
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })

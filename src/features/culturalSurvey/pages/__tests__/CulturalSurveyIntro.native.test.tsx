@@ -30,20 +30,20 @@ describe('CulturalSurveyIntro page', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const StartButton = CulturalSurveyIntroPage.getByTestId('Débuter le questionnaire')
     fireEvent.press(StartButton)
-    expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalled()
+    expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalledTimes(1)
   })
 
   it('should navigate to home when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const LaterButton = CulturalSurveyIntroPage.getByTestId('Plus tard')
     fireEvent.press(LaterButton)
-    expect(navigateToHome).toHaveBeenCalled()
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should log hasSkippedCulturalSurvey event when pressing Plus tard', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const LaterButton = CulturalSurveyIntroPage.getByTestId('Plus tard')
     fireEvent.press(LaterButton)
-    expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalled()
+    expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalledTimes(1)
   })
 })

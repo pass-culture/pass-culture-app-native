@@ -2,10 +2,11 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, act } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
-import { GenericAchievement } from './GenericAchievement'
+import { GenericAchievement } from '../GenericAchievement/GenericAchievement'
+
 import { AchievementCardProps, didFadeIn, GenericAchievementCard } from './GenericAchievementCard'
 
 describe('<GenericAchievementCard />', () => {
@@ -18,6 +19,7 @@ describe('<GenericAchievementCard />', () => {
   const title = 'Title'
   const play = jest.fn()
   const pause = jest.fn()
+  beforeEach(jest.resetAllMocks)
 
   it('should render correctly', () => {
     const { getByText } = renderGenericAchievementCardComponent({
@@ -37,8 +39,8 @@ describe('<GenericAchievementCard />', () => {
     expect(getByText(text)).toBeTruthy()
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
-    fireEvent.click(button)
-    expect(buttonCallback).toHaveBeenCalled()
+    fireEvent.press(button)
+    expect(buttonCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should fail to render if not children of GenericAchievement', () => {
@@ -59,8 +61,8 @@ describe('<GenericAchievementCard />', () => {
     expect(getByText(text)).toBeTruthy()
     const button = getByText(buttonText)
     expect(button).toBeTruthy()
-    fireEvent.click(button)
-    expect(buttonCallback).toHaveBeenCalled()
+    fireEvent.press(button)
+    expect(buttonCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should call card analytics on active index', () => {
@@ -94,13 +96,12 @@ describe('<GenericAchievementCard />', () => {
     )
     expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial1')
     expect(analytics.logScreenView).toBeCalledTimes(1)
-    fireEvent.click(getByTestId('control-button-next'))
+    fireEvent.press(getByTestId('control-button-next'))
     expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
     expect(analytics.logScreenView).toBeCalledTimes(2)
   })
 
   it('should have a button available on active index', () => {
-    jest.resetAllMocks()
     jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
     expect(() =>
       render(
@@ -132,7 +133,7 @@ describe('<GenericAchievementCard />', () => {
         activeIndex={1}
       />
     )
-    expect(queryByText(buttonText)).toBeFalsy()
+    expect(queryByText(buttonText)).toBeNull()
     expect(getByTestId('invisible-button-height')).toBeTruthy()
   })
 
@@ -152,62 +153,58 @@ describe('<GenericAchievementCard />', () => {
       />
     )
     expect(getByText(buttonText)).toBeTruthy()
-    expect(queryByTestId('invisible-button-height')).toBeFalsy()
+    expect(queryByTestId('invisible-button-height')).toBeNull()
   })
 
-  it('should pause animation when not on active index', () => {
+  it('should pause animation when not on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
         play,
         pause,
       },
     })
-    act(() => {
-      render(
-        <GenericAchievementCard
-          buttonText={buttonText}
-          animation={animation}
-          buttonCallback={buttonCallback}
-          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
-          subTitle={subTitle}
-          text={text}
-          title={title}
-          index={0}
-          activeIndex={1}
-          lastIndex={1}
-        />
-      )
-    })
-    waitForExpect(() => {
+    render(
+      <GenericAchievementCard
+        buttonText={buttonText}
+        animation={animation}
+        buttonCallback={buttonCallback}
+        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+        subTitle={subTitle}
+        text={text}
+        title={title}
+        index={0}
+        activeIndex={1}
+        lastIndex={1}
+      />
+    )
+    await waitForExpect(() => {
       expect(play).not.toBeCalled()
       expect(pause).toBeCalledTimes(1)
     })
   })
 
-  it('should play animation when on active index', () => {
+  it('should play animation when on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
         play,
         pause,
       },
     })
-    act(() => {
-      render(
-        <GenericAchievementCard
-          buttonText={buttonText}
-          animation={animation}
-          buttonCallback={buttonCallback}
-          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
-          subTitle={subTitle}
-          text={text}
-          title={title}
-          index={0}
-          activeIndex={0}
-          lastIndex={1}
-        />
-      )
-    })
-    waitForExpect(() => {
+    render(
+      <GenericAchievementCard
+        buttonText={buttonText}
+        animation={animation}
+        buttonCallback={buttonCallback}
+        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+        subTitle={subTitle}
+        text={text}
+        title={title}
+        index={0}
+        activeIndex={0}
+        lastIndex={1}
+      />
+    )
+    await waitForExpect(() => {
       expect(play).toBeCalledTimes(1)
       expect(play).toBeCalledWith(0, pauseAnimationOnRenderAtFrame)
       expect(pause).not.toBeCalled()
@@ -221,22 +218,20 @@ describe('<GenericAchievementCard />', () => {
         pause,
       },
     })
-    act(() => {
-      render(
-        <GenericAchievementCard
-          buttonText={buttonText}
-          animation={animation}
-          buttonCallback={buttonCallback}
-          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
-          subTitle={subTitle}
-          text={text}
-          title={title}
-          activeIndex={0}
-          index={1}
-          lastIndex={1}
-        />
-      )
-    })
+    render(
+      <GenericAchievementCard
+        buttonText={buttonText}
+        animation={animation}
+        buttonCallback={buttonCallback}
+        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+        subTitle={subTitle}
+        text={text}
+        title={title}
+        activeIndex={0}
+        index={1}
+        lastIndex={1}
+      />
+    )
     await waitForExpect(() => {
       expect(didFadeIn).not.toBe(true)
     })
@@ -298,8 +293,8 @@ describe('<GenericAchievementCard />', () => {
       />
     )
     const button = getByText('Passer')
-    fireEvent.click(button)
-    expect(skip).toHaveBeenCalled()
+    fireEvent.press(button)
+    expect(skip).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -17,6 +17,6 @@ describe('<Touchable />', () => {
     const button = getByRole('button')
     fireEvent.press(button)
 
-    expect(handleClick).toHaveBeenCalled()
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })

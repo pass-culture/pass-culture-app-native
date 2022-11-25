@@ -29,8 +29,8 @@ describe('PushNotificationsModal', () => {
       />
     )
     fireEvent.press(renderAPI.getByText('Autoriser les notifications'))
-    expect(analytics.logOpenNotificationSettings).toBeCalled()
-    expect(onRequestPermission).toBeCalled()
+    expect(analytics.logOpenNotificationSettings).toHaveBeenCalledTimes(1)
+    expect(onRequestPermission).toHaveBeenCalledTimes(1)
     expect(onDismiss).not.toBeCalled()
   })
 })

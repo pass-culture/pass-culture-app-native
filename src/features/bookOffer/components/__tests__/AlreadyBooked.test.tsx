@@ -16,6 +16,6 @@ describe('<AlreadyBooked />', () => {
   it('should dismiss modal when clicking on cta', () => {
     const renderAPI = render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponse} />)
     fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
-    expect(mockDismissModal).toBeCalled()
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 })

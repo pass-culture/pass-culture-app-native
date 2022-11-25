@@ -26,7 +26,7 @@ describe('AsyncErrorBoundary component', () => {
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />
     )
     fireEvent.press(getByTestId('Revenir en arrière'))
-    expect(mockGoBack).toHaveBeenCalled()
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should call retry with AsyncError', async () => {
@@ -41,7 +41,7 @@ describe('AsyncErrorBoundary component', () => {
     const button = await findByText('Réessayer')
     expect(retry).not.toHaveBeenCalled()
     fireEvent.press(button)
-    expect(retry).toHaveBeenCalled()
+    expect(retry).toHaveBeenCalledTimes(1)
   })
 })
 

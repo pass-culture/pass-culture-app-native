@@ -22,7 +22,7 @@ describe('useEduconnectLogin', () => {
     result.current.openEduConnectTab()
 
     await waitFor(() => {
-      expect(globalThis.window.open).toHaveBeenCalled()
+      expect(globalThis.window.open).toHaveBeenCalledTimes(1)
     })
   })
 

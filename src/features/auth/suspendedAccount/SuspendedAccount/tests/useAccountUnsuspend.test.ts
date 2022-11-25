@@ -40,7 +40,7 @@ describe('useAccountUnsuspend', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(onSuccess).toHaveBeenCalled()
+      expect(onSuccess).toHaveBeenCalledTimes(1)
       expect(onError).not.toHaveBeenCalled()
     })
   })
@@ -54,7 +54,7 @@ describe('useAccountUnsuspend', () => {
 
     await waitForExpect(() => {
       expect(onSuccess).not.toHaveBeenCalled()
-      expect(onError).toHaveBeenCalled()
+      expect(onError).toHaveBeenCalledTimes(1)
     })
   })
 })

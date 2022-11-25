@@ -154,7 +154,7 @@ describe('<BookingDetails />', () => {
     })
 
     await waitForExpect(() => {
-      expect(mockDismissModal).toHaveBeenCalled()
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
       expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined)
       expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
         af_offer_id: mockOffer.id,

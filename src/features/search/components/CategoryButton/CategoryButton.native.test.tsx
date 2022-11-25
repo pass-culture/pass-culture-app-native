@@ -32,7 +32,7 @@ describe('CategoryButton', () => {
     const button = getByRole('button')
     fireEvent.press(button)
 
-    expect(handleClick).toHaveBeenCalled()
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 
   it('should be self-explanatory to be accessible', () => {
@@ -46,6 +46,6 @@ describe('CategoryButton', () => {
     )
     fireEvent.press(button)
 
-    expect(handleClick).toHaveBeenCalled()
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })

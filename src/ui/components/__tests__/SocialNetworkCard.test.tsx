@@ -17,7 +17,7 @@ describe('SocialNetworkCard', () => {
     fireEvent.press(button)
     await waitForExpect(() => {
       expect(analytics.logClickSocialNetwork).toBeCalledWith('Twitter'),
-        expect(openUrl).toBeCalled()
+        expect(openUrl).toHaveBeenCalledTimes(1)
     })
   })
 })

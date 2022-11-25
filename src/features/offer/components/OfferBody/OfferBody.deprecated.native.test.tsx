@@ -112,13 +112,13 @@ describe('<OfferBody />', () => {
 
   it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
     await renderOfferBodyPage()
-    expect(api.getnativev1offersreports).toBeCalled()
+    expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
   })
 
   xit('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
     await renderOfferBodyPage()
-    expect(api.getnativev1offersreports).not.toBeCalled()
+    expect(api.getnativev1offersreports).not.toHaveBeenCalled()
   })
 
   it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {

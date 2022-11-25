@@ -4,7 +4,7 @@ import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import {
   AchievementCardKeyProps,
   GenericAchievementCard,
-} from 'ui/components/achievements/components/GenericAchievementCard'
+} from 'ui/components/achievements/components/GenericAchievementCard/GenericAchievementCard'
 import { Helmet } from 'ui/web/global/Helmet'
 
 export function FirstCard(props: AchievementCardKeyProps) {

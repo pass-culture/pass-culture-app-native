@@ -37,6 +37,6 @@ describe('<IdentityCheckEduConnect />', () => {
 
     fireEvent.press(button)
 
-    expect(mockNavigateToNextScreen).toHaveBeenCalled()
+    expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
   })
 })

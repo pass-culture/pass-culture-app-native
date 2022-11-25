@@ -124,7 +124,7 @@ describe('<AppModal />', () => {
 
       fireEvent.press(leftIcon)
 
-      expect(leftIconCallbackMock).toHaveBeenCalled()
+      expect(leftIconCallbackMock).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -145,7 +145,7 @@ describe('<AppModal />', () => {
 
       fireEvent.press(rightIcon)
 
-      expect(rightIconCallbackMock).toHaveBeenCalled()
+      expect(rightIconCallbackMock).toHaveBeenCalledTimes(1)
     })
   })
 
