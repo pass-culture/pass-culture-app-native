@@ -1,17 +1,16 @@
 import { UseMutationResult } from 'react-query'
 
+import * as algoliaRecommendedHitsAPI from 'features/home/api/useAlgoliaRecommendedHits'
 import {
   getRecommendationEndpoint,
   getRecommendationParameters,
   useHomeRecommendedHits,
 } from 'features/home/api/useHomeRecommendedHits'
+import * as recommendedIdsAPI from 'features/home/api/useHomeRecommendedIdsMutation'
 import { RecommendationParametersFields } from 'features/home/contentful'
 import { env } from 'libs/environment'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
-
-import * as algoliaRecommendedHitsAPI from '../useAlgoliaRecommendedHits'
-import * as recommendedIdsAPI from '../useHomeRecommendedIdsMutation'
 
 const mockUserId = 1234
 const position = {
@@ -80,8 +79,8 @@ describe('getRecommendationParameters', () => {
       isFree: false,
       isEvent: true,
       priceMax: 10,
-      endingDatetime: '2022-05-08T00:00+02:00',
-      beginningDatetime: '2022-09-08T00:00+02:00',
+      endingDatetime: '2022-05-08T00:00+00:00',
+      beginningDatetime: '2022-09-08T00:00+00:00',
       subcategories: ['Achat instrument'],
     }
     const recommendationParameters = getRecommendationParameters(
@@ -90,8 +89,8 @@ describe('getRecommendationParameters', () => {
     )
     expect(recommendationParameters).toEqual({
       categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
-      end_date: '2022-05-08T00:00+02:00',
-      start_date: '2022-09-08T00:00+02:00',
+      end_date: '2022-05-08T00:00+00:00',
+      start_date: '2022-09-08T00:00+00:00',
       price_max: 10,
       isEvent: true,
       subcategories: ['ACHAT_INSTRUMENT'],

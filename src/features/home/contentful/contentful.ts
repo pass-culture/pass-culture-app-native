@@ -228,6 +228,7 @@ export interface RecommendationParametersFields {
   categories?: string[]
   beginningDatetime?: string
   endingDatetime?: string
+  eventDuringNextXDays?: string
   newestOnly?: boolean
   isFree?: boolean
   isEvent?: boolean
