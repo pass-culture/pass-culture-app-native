@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FavoritesSorts component should render correctly 1`] = `
+exports[`<FavoritesSorts/> should render correctly 1`] = `
 <View
   style={
     Array [
