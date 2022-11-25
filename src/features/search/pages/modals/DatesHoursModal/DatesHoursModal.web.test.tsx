@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
-import { act, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
+import { act, checkAccessibilityFor, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 
 import { DatesHoursModal } from './DatesHoursModal'
 
@@ -21,7 +21,7 @@ const hideDatesHoursModal = jest.fn()
 const TODAY = new Date(2022, 9, 28)
 const TOMORROW = new Date(2022, 9, 29)
 
-describe('DatesHoursModal component', () => {
+describe('<DatesHoursModal/>', () => {
   beforeAll(() => {
     mockdate.set(TODAY)
   })
@@ -110,6 +110,18 @@ describe('DatesHoursModal component', () => {
         view: SearchView.Results,
       },
       screen: 'Search',
+    })
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = renderDatesHoursModal({
+        hideDatesHoursModal,
+      })
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

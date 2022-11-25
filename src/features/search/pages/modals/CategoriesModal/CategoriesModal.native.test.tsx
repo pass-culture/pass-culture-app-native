@@ -22,7 +22,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 const mockHideModal = jest.fn()
 
-describe('Categories component', () => {
+describe('<CategoriesModal/>', () => {
   it('should render correctly', () => {
     const { toJSON } = renderCategories()
     expect(toJSON()).toMatchSnapshot()

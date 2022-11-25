@@ -1,12 +1,19 @@
 import React from 'react'
 
-import { act, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
+import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
+import { GeoCoordinates } from 'libs/geolocation'
+import { act, checkAccessibilityFor, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 
-import { LocationModal } from './LocationModal'
+const mockPosition: GeoCoordinates | null = { latitude: 2, longitude: 40 }
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    position: mockPosition,
+  }),
+}))
 
 const hideLocationModal = jest.fn()
 
-describe('LocationModal component', () => {
+describe('<LocationModal/>', () => {
   describe('modal header', () => {
     it('should have header when viewport width is mobile', async () => {
       const isDesktopViewport = false
@@ -50,6 +57,18 @@ describe('LocationModal component', () => {
     fireEvent.click(closeButton)
 
     expect(hideLocationModal).toHaveBeenCalledTimes(1)
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = renderLocationModal({
+        hideLocationModal,
+      })
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
+    })
   })
 })
 

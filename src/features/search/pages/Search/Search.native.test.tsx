@@ -91,7 +91,7 @@ jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
   InsightsMiddleware: () => null,
 }))
 
-describe('Search component', () => {
+describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render Search', () => {

@@ -21,7 +21,7 @@ jest.mock('libs/place', () => ({
 
 const mockSetSelectedPlaceOrVenue = jest.fn()
 
-describe('SuggestedPlaces component', () => {
+describe('<SuggestedPlaces/>', () => {
   it('should call setSelectedPlaceOrVenue when selecting a place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
     const { getByTestId } = render(

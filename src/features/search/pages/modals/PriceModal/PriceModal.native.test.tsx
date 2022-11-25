@@ -43,7 +43,7 @@ jest.mock('react-query')
 
 const mockHideModal = jest.fn()
 
-describe('PriceModal component', () => {
+describe('<PriceModal/>', () => {
   beforeAll(() => {
     mockSearchState = { ...searchState, searchId }
   })
