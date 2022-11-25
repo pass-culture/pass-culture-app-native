@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OnboardingPage should render correctly 1`] = `
+Array [
+  <View
+    height={64}
+    style={
+      Array [
+        Object {
+          "height": 64,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "height": 48,
+            "justifyContent": "center",
+            "paddingHorizontal": 12,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="backButton"
+      >
+        <View
+          height={24}
+          testID="icon-back"
+          width={24}
+        >
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "display": "none",
+              },
+            ]
+          }
+        >
+          Retour
+        </Text>
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={3}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+              },
+            ]
+          }
+        >
+          Titre
+        </Text>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={3}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Sous-titre
+        </Text>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Continuer"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Continuer"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Continuer
+      </Text>
+    </View>
+  </View>,
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+]
+`;
