@@ -10,36 +10,15 @@ export const computeBeginningAndEndingDateTime = (
   endingDateTime: string | undefined
 } => {
   if (beginningDateTime || endingDateTime) {
-    return {
-      beginningDateTime: beginningDateTime
-        ? formatDateToContentfulAndAlgoliaFormat(new Date(beginningDateTime))
-        : undefined,
-      endingDateTime: endingDateTime
-        ? formatDateToContentfulAndAlgoliaFormat(new Date(endingDateTime))
-        : undefined,
-    }
+    return computeDateTimes(beginningDateTime, endingDateTime)
   }
   if (eventInNextXDays) {
-    const today = new Date()
-    const computedBeginingDateTime = today
-    const computedEndingDateTime = addDays(today, eventInNextXDays)
-
-    return {
-      beginningDateTime: formatDateToContentfulAndAlgoliaFormat(computedBeginingDateTime),
-      endingDateTime: formatDateToContentfulAndAlgoliaFormat(computedEndingDateTime),
-    }
+    return computeEventInNextDaysDateTimes(eventInNextXDays)
   }
-  if (currentWeekEvent){
-    const today = new Date()
-    const computedBeginingDateTime = today
-    const computedEndingDateTime = endOfDay(nextSunday(today))
-
-
-    return {
-      beginningDateTime: formatDateToContentfulAndAlgoliaFormat(computedBeginingDateTime),
-      endingDateTime: formatDateToContentfulAndAlgoliaFormat(computedEndingDateTime),
-    }
+  if (currentWeekEvent) {
+    return computeCurrentWeekEventDateTimes()
   }
+
   return {
     beginningDateTime: undefined,
     endingDateTime: undefined,
@@ -49,3 +28,34 @@ export const computeBeginningAndEndingDateTime = (
 const formatDateToContentfulAndAlgoliaFormat = (date: Date): string => {
   return format(date, "yyyy-MM-dd'T'HH:mmxxx")
 }
+
+const computeEventInNextDaysDateTimes = (eventInNextXDays: number) => {
+  const computedBeginningDateTime = new Date()
+  const computedEndingDateTime = addDays(computedBeginningDateTime, eventInNextXDays)
+
+  return {
+    beginningDateTime: formatDateToContentfulAndAlgoliaFormat(computedBeginningDateTime),
+    endingDateTime: formatDateToContentfulAndAlgoliaFormat(computedEndingDateTime),
+  }
+}
+const computeCurrentWeekEventDateTimes = () => {
+  const computedBeginningDateTime = new Date()
+  const computedEndingDateTime = endOfDay(nextSunday(computedBeginningDateTime))
+
+  return {
+    beginningDateTime: formatDateToContentfulAndAlgoliaFormat(computedBeginningDateTime),
+    endingDateTime: formatDateToContentfulAndAlgoliaFormat(computedEndingDateTime),
+  }
+}
+
+const computeDateTimes = (
+  beginningDateTime: string | undefined,
+  endingDateTime: string | undefined
+) => ({
+  beginningDateTime: beginningDateTime
+    ? formatDateToContentfulAndAlgoliaFormat(new Date(beginningDateTime))
+    : undefined,
+  endingDateTime: endingDateTime
+    ? formatDateToContentfulAndAlgoliaFormat(new Date(endingDateTime))
+    : undefined,
+})
