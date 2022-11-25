@@ -18,7 +18,6 @@ import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityDeclaration() {
-  // TODO(PC-18787): complete this page
   return (
     <PageProfileSection title="Déclaration d'accessibilité" scrollable>
       <Typo.Body>
