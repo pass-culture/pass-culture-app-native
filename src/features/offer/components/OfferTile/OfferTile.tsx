@@ -82,6 +82,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       moduleId,
       venueId,
       homeEntryId,
+      fromOfferId,
     })
   }
 

@@ -117,6 +117,7 @@ const logEventAnalytics = {
     venueId?: number
     homeEntryId?: string
     searchId?: string
+    fromOfferId?: number
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
   logConsultTutorial: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_TUTORIAL, { from }),
