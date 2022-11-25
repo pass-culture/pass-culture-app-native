@@ -61,7 +61,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { position } = useGeolocation()
-  const similarOffers = useSimilarOffers(offerId)
+  const similarOffers = useSimilarOffers(offerId, offer?.venue.coordinates)
   const hasSimilarOffers = similarOffers && similarOffers.length > 0
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')

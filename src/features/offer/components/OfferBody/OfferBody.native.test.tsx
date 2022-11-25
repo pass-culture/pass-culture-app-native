@@ -2,6 +2,8 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
@@ -15,9 +17,9 @@ jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
 
-let mockUseSimilarOffers: SearchHit[] = []
+let mockSearchHits: SearchHit[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
-  useSimilarOffers: jest.fn(() => mockUseSimilarOffers),
+  useSimilarOffers: jest.fn(() => mockSearchHits),
 }))
 
 describe('<OfferBody />', () => {
@@ -56,13 +58,20 @@ describe('<OfferBody />', () => {
 
   describe('with similar offers', () => {
     beforeAll(() => {
-      mockUseSimilarOffers = mockedAlgoliaResponse.hits
+      mockSearchHits = mockedAlgoliaResponse.hits
     })
 
     it('should display similar offers list when offer has some', async () => {
       const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
       expect(queryByTestId('offersModuleList')).toBeTruthy()
+    })
+
+    it('should pass offer venue position to `useSimilarOffers`', () => {
+      const spy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementationOnce(jest.fn())
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates)
     })
 
     it('should navigate to a similar offer when pressing on it', async () => {
