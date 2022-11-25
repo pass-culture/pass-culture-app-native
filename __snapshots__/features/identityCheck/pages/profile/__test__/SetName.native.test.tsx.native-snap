@@ -383,7 +383,8 @@ exports[`<SetName/> should render correctly 1`] = `
                       ]
                     }
                   >
-                    Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta carte d’identité.
+                    Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
+Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   </Text>
                 </View>
               </View>
