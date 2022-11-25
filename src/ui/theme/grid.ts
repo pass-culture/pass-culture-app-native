@@ -29,7 +29,7 @@ export const RATIO_EXCLU = 5 / 6
 /**
  * Breakpoint	Class infix	Dimensions
  XX-Small	xxs	≥320px
- X-Small xs  ≥350px
+ X-Small xs  ≥358px
  Small	sm	≥576px
  Medium	md	≥960px
  Large	lg	≥1024px
@@ -38,7 +38,7 @@ export const RATIO_EXCLU = 5 / 6
  */
 export enum Breakpoints {
   XXS = 320,
-  XS = 350,
+  XS = 358,
   SM = 576,
   MD = 960,
   LG = 1024,
