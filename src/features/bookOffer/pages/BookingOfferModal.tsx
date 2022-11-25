@@ -13,18 +13,16 @@ interface Props {
   visible: boolean
   offerId: number
   isEndedUsedBooking?: boolean
-  fromOfferId?: number
 }
 
 export const BookingOfferModalComponent: React.FC<Props> = ({
   visible,
   offerId,
   isEndedUsedBooking,
-  fromOfferId,
 }) => {
   const { dismissModal, dispatch } = useBooking()
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
-    useModalContent(isEndedUsedBooking, fromOfferId)
+    useModalContent(isEndedUsedBooking)
 
   const modalLeftIconProps = {
     leftIcon,

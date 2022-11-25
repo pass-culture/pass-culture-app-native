@@ -25,7 +25,6 @@ export const Offer: FunctionComponent = () => {
     BatchUser.trackEvent(BatchEvent.hasSeenOffer)
   )
   const offerId = route.params && route.params.id
-  const fromOfferId = route.params && route.params.fromOfferId
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -60,7 +59,6 @@ export const Offer: FunctionComponent = () => {
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
-    fromOfferId,
   })
 
   useFocusEffect(

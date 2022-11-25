@@ -19,10 +19,7 @@ type ModalContent = {
   title: string
 } & ModalLeftIconProps
 
-export const useModalContent = (
-  isEndedUsedBooking?: boolean,
-  fromOfferId?: number
-): ModalContent => {
+export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   const { bookingState, dispatch } = useBooking()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
@@ -74,7 +71,7 @@ export const useModalContent = (
       leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,
-      children: <BookingDetails stocks={stocks} fromOfferId={fromOfferId} />,
+      children: <BookingDetails stocks={stocks} />,
     }
   }
 
@@ -93,6 +90,6 @@ export const useModalContent = (
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,
     onLeftIconPress: goToPreviousStep,
-    children: <BookingDetails stocks={stocks} fromOfferId={fromOfferId} />,
+    children: <BookingDetails stocks={stocks} />,
   }
 }
