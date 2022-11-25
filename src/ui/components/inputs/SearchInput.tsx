@@ -89,6 +89,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           accessible={isFocusable}
           aria-hidden={!isFocusable}
           aria-describedby={accessibilityDescribedBy}
+          aria-required={isRequiredField}
           enablesReturnKeyAutomatically
           testID={'searchInput'}
         />
