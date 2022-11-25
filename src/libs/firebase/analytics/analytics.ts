@@ -285,6 +285,8 @@ const logEventAnalytics = {
   logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),
   logSignInFromOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_OFFER, { offerId }),
+  logSignUp: ({ from }: { from: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP, { from }),
   logSignUpFromAuthenticationModal: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignUpFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_FAVORITE),

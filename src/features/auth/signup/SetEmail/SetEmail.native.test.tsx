@@ -67,8 +67,8 @@ describe('<SetEmail />', () => {
   it('should log analytics when clicking on "Se connecter" button', () => {
     const { getByText } = render(<SetEmail {...props} />)
 
-    const continueButton = getByText('Se connecter')
-    fireEvent.press(continueButton)
+    const loginButton = getByText('Se connecter')
+    fireEvent.press(loginButton)
 
     expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
   })

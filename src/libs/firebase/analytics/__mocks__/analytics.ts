@@ -116,6 +116,7 @@ export const analytics: typeof actualAnalytics = {
   logSignInFromAuthenticationModal: jest.fn(),
   logSignInFromFavorite: jest.fn(),
   logSignInFromOffer: jest.fn(),
+  logSignUp: jest.fn(),
   logSignUpFromAuthenticationModal: jest.fn(),
   logSignUpFromFavorite: jest.fn(),
   logSignUpFromOffer: jest.fn(),

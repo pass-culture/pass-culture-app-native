@@ -114,6 +114,7 @@ export enum AnalyticsEvent {
   SIGN_IN_FROM_AUTHENTICATION_MODAL = 'SignInFromAuthenticationModal',
   SIGN_IN_FROM_FAVORITE = 'SignInFromFavorite',
   SIGN_IN_FROM_OFFER = 'SignInFromOffer',
+  SIGN_UP = 'SignUp',
   SIGN_UP_FROM_AUTHENTICATION_MODAL = 'SignUpFromAuthenticationModal',
   SIGN_UP_FROM_FAVORITE = 'SignUpFromFavorite',
   SIGN_UP_FROM_OFFER = 'SignUpFromOffer',
