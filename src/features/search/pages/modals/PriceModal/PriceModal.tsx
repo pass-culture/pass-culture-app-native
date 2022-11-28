@@ -86,7 +86,8 @@ export const PriceModal: FunctionComponent<Props> = ({
 
   function search(values: PriceModalFormData) {
     const offerIsFree =
-      values.isOnlyFreeOffersSearch || (values.maxPrice === '0' && values.minPrice === '')
+      values.isOnlyFreeOffersSearch ||
+      (values.maxPrice === '0' && (values.minPrice === '' || values.minPrice === '0'))
     let additionalSearchState: SearchState = {
       ...searchState,
       priceRange: null,
