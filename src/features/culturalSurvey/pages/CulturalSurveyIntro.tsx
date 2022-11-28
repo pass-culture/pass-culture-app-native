@@ -24,7 +24,9 @@ export const CulturalSurveyIntro = (): JSX.Element => {
       titleComponent={Typo.Title3}
       title="Prends 1 minute"
       subtitle="pour nous parler de tes activités culturelles préférées">
-      <StyledBody>Tes réponses vont nous aider à mieux te connaître.</StyledBody>
+      <StyledBody>
+        Tes réponses nous aideront à te proposer des offres qui pourraient te plaire&nbsp;!
+      </StyledBody>
       <Spacer.Flex flex={1} />
       <View>
         <ButtonPrimary
