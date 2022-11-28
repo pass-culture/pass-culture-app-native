@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -78,7 +78,7 @@ describe('<OfferBody />', () => {
       const { getByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
       await fireEvent.press(getByTestId('offre La nuit des temps'))
-      expect(navigate).toHaveBeenCalledWith('Offer', {
+      expect(push).toHaveBeenCalledWith('Offer', {
         from: 'offer',
         fromOfferId: 1,
         id: 102280,
