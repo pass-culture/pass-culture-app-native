@@ -177,7 +177,7 @@ Array [
       </View>
     </View>
   </View>,
-  <View
+  <RCTScrollView
     style={
       Array [
         Object {
@@ -191,36 +191,45 @@ Array [
       ]
     }
   >
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours critiques pour l’utilisation de son dispositif.
-      
+    <View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours critiques pour l’utilisation de son dispositif.
+        
 
 
-      En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en fonction de sa situation :
-      
-
-
+        En particulier, l’obtention du crédit pass Culture peut se faire selon trois méthodes en fonction de sa situation :
+      </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
       <View
         accessibilityRole="list"
         style={
@@ -480,24 +489,44 @@ Array [
           </View>
         </View>
       </View>
-      
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses identifiants EduConnect ou de passer par la plateforme Démarches simplifiées.
+        
 
-
-      Pour les utilisateurs en situation de handicap, il est recommandé d’utiliser ses identifiants EduConnect ou de passer par la plateforme Démarches simplifiées.
-      
-
-      Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-  </View>,
+        Ces sites étant gérés par la Direction Interministérielle du Numérique ou par le Ministère de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est maintenu dans le temps.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
 ]
 `;
