@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
+import { useStatusBarWhite } from 'libs/hooks/useStatusBarWhite'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -10,6 +11,8 @@ import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {
+  useStatusBarWhite()
+
   return (
     <Container>
       <Background />

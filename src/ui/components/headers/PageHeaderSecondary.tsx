@@ -1,9 +1,9 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback } from 'react'
-import { StatusBar, View } from 'react-native'
+import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useStatusBarWhite } from 'libs/hooks/useStatusBarWhite'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -31,11 +31,9 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   RightComponent,
   testID,
 }) => {
-  useFocusEffect(
-    useCallback(() => {
-      StatusBar.setBarStyle('light-content', true)
-    }, [])
-  )
+  // TODO(PC-18907): fix status bar color when navigate from secondary page to another secondary page
+  // Problem: The status bar switch to black instead stay white
+  useStatusBarWhite()
 
   const { onLayout } = useElementWidth()
   const { top } = useCustomSafeInsets()

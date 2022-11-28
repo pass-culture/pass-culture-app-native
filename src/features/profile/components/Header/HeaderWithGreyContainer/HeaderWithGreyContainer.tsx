@@ -1,6 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { FunctionComponent, ReactNode, useCallback } from 'react'
-import { StatusBar } from 'react-native'
+import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -16,13 +14,6 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   subtitle,
   children,
 }) => {
-  useFocusEffect(
-    useCallback(() => {
-      StatusBar.setBarStyle('dark-content', true)
-      return () => StatusBar.setBarStyle('light-content', true)
-    }, [])
-  )
-
   return (
     <React.Fragment>
       <PageHeader title={title} numberOfLines={2} />

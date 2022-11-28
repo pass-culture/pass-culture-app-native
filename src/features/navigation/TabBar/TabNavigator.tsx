@@ -14,7 +14,7 @@ const TAB_NAVIGATOR_SCREEN_OPTIONS: BottomTabNavigationOptions = {
   headerShown: false,
 }
 
-StatusBar.setBarStyle('light-content')
+StatusBar.setBarStyle('dark-content')
 if (Platform.OS === 'android') {
   StatusBar.setTranslucent(true)
   StatusBar.setBackgroundColor('transparent', false)
