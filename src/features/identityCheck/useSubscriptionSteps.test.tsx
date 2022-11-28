@@ -2,7 +2,7 @@ import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
-import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 
 let mockNextSubscriptionStep = mockStep
 let mockIdentityCheckState = mockState
@@ -33,11 +33,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('features/auth/settings')
 
-const enableNewIdentificationFlowSpy = jest.spyOn(
-  newIdentificationFlowAPI,
-  'useEnableNewIdentificationFlow'
-)
-enableNewIdentificationFlowSpy.mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+useFeatureFlagSpy.mockReturnValue(false)
 
 describe('useSubscriptionSteps', () => {
   beforeEach(jest.clearAllMocks)
@@ -116,7 +113,7 @@ describe('useSubscriptionSteps', () => {
   `(
     'should return $expectedUbbleFlow identity screen list when enableNewIdentificationFlow is $enableNewIdentificationFlow',
     ({ enableNewIdentificationFlow: enableNewIdentificationFlowValue, expectedUbbleFlow }) => {
-      enableNewIdentificationFlowSpy.mockReturnValueOnce(enableNewIdentificationFlowValue)
+      useFeatureFlagSpy.mockReturnValueOnce(enableNewIdentificationFlowValue)
 
       const steps = useSubscriptionSteps()
       const identificationScreensFlow = steps[2].screens

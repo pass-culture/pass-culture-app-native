@@ -12,7 +12,10 @@ export enum RemoteStoreDocuments {
   MAINTENANCE_IS_ON = 'maintenanceIsOn',
   MAINTENANCE_MESSAGE = 'message',
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
-  NEW_IDENTIFICATION_FLOW = 'newIdentificationFlow',
   UBBLE_ETA_MESSAGE = 'etaMessage',
+}
+
+export enum RemoteStoreFeatureFlags {
+  NEW_IDENTIFICATION_FLOW = 'newIdentificationFlow',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
 }

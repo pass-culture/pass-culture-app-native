@@ -5,7 +5,8 @@ import { IdentityCheckMethod } from 'api/gen'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { useEnableNewIdentificationFlow } from 'libs/firebase/firestore/featureFlags'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useUbbleETAMessage } from 'libs/firebase/firestore/ubbleETAMessage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -28,7 +29,9 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 > = ({ visible, hideModal }) => {
   const { dispatch } = useSubscriptionContext()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
-  const enableNewIdentificationFlow = useEnableNewIdentificationFlow()
+  const enableNewIdentificationFlow = useFeatureFlag(
+    RemoteStoreFeatureFlags.NEW_IDENTIFICATION_FLOW
+  )
 
   const onModalRightIconPress = () => {
     analytics.logQuitAuthenticationMethodSelection()
