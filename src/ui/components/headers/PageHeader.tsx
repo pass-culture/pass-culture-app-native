@@ -8,7 +8,7 @@ type Props = {
   numberOfLines?: 1 | 2
 }
 
-export const PageTitle = ({ title, numberOfLines = 1 }: Props) => {
+export const PageHeader = ({ title, numberOfLines = 1 }: Props) => {
   return (
     <TitleContainer>
       <Spacer.TopScreen />

@@ -3,7 +3,7 @@ import React, { FunctionComponent, ReactNode, useCallback } from 'react'
 import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
-import { PageTitle } from 'ui/components/PageTitle'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Typo } from 'ui/theme'
 
 type PropsWithChildren = {
@@ -25,7 +25,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
 
   return (
     <React.Fragment>
-      <PageTitle title={title} numberOfLines={2} />
+      <PageHeader title={title} numberOfLines={2} />
       {!!subtitle && (
         <SubtitleContainer>
           {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
