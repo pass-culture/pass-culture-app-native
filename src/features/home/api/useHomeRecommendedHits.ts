@@ -49,6 +49,7 @@ export function getRecommendationParameters(
       (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
     ),
     isDuo: parameters.isDuo,
+    isRecoShuffled: parameters.isRecoShuffled,
   }
 }
 

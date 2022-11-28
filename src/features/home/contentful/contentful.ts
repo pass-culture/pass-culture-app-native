@@ -236,6 +236,7 @@ export interface RecommendationParametersFields {
   priceMax?: number
   subcategories?: string[]
   isDuo?: boolean
+  isRecoShuffled?: boolean
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
