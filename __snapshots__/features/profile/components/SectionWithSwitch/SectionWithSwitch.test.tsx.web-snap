@@ -31,7 +31,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
       }
     >
       <label
-        className=\\"sc-bdvvtL gQnzaU\\""
+        className=\\"sc-bdvvtL kVMjoM\\""
 `;
 
 exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 2`] = `
@@ -65,7 +65,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
       }
     >
       <label
-        className=\\"sc-bdvvtL gQnzaU\\"
+        className=\\"sc-bdvvtL kVMjoM\\"
 @@ -65,11 +75,18 @@
           \\"flexDirection\\": \\"row\\",
           \\"msFlexAlign\\": \\"center\\",
@@ -74,7 +74,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
       }
 +   >
 +     <label
-+       className=\\"sc-bdvvtL sc-gsDKAQ gQnzaU kBdLMI\\"
++       className=\\"sc-bdvvtL sc-gsDKAQ kVMjoM kBdLMI\\"
 +       htmlFor=\\"testUuidV4\\"
 +       id=\\"testUuidV4\\"
       >

@@ -130,6 +130,7 @@ Object {
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+  cursor: pointer;
 }
 
 .c2 {
@@ -485,6 +486,7 @@ Object {
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+  cursor: pointer;
 }
 
 .c2 {
