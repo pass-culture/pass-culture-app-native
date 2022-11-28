@@ -74,12 +74,13 @@ describe('getRecommendationParameters', () => {
     expect(result).toEqual({})
   })
 
-  it('should return parameters with mapped categories when parameters are provided (with beginning and end date)', () => {
+  it('should return parameters with mapped categories when parameters are provided', () => {
     const parameters: RecommendationParametersFields = {
       title: 'some parameters',
       categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-      isFree: false,
+      isFree: true,
       isEvent: true,
+      isDuo: true,
       priceMax: 10,
       endingDatetime: '2022-05-08T00:00+00:00',
       beginningDatetime: '2022-09-08T00:00+00:00',
@@ -93,105 +94,9 @@ describe('getRecommendationParameters', () => {
       categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
       end_date: '2022-05-08T00:00+00:00',
       start_date: '2022-09-08T00:00+00:00',
-      price_max: 10,
-      isEvent: true,
-      subcategories: ['ACHAT_INSTRUMENT'],
-    })
-  })
-
-  it('should return parameters with mapped categories when parameters are provided (with currentWeekEvent true)', () => {
-    const parameters: RecommendationParametersFields = {
-      title: 'some parameters',
-      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-      isFree: false,
-      isEvent: true,
-      priceMax: 10,
-      currentWeekEvent: true,
-      subcategories: ['Achat instrument'],
-    }
-    const recommendationParameters = getRecommendationParameters(
-      parameters,
-      subcategoryLabelMapping
-    )
-    expect(recommendationParameters).toEqual({
-      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
-      end_date: '2022-11-27T23:59+00:00',
-      start_date: '2022-11-25T00:00+00:00',
-      price_max: 10,
-      isEvent: true,
-      subcategories: ['ACHAT_INSTRUMENT'],
-    })
-  })
-  it('should return parameters with mapped categories when parameters are provided (with eventDuringNextXDays)', () => {
-    const parameters: RecommendationParametersFields = {
-      title: 'some parameters',
-      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-      isFree: false,
-      isEvent: true,
-      priceMax: 10,
-      eventDuringNextXDays: '2',
-      subcategories: ['Achat instrument'],
-    }
-    const recommendationParameters = getRecommendationParameters(
-      parameters,
-      subcategoryLabelMapping
-    )
-    expect(recommendationParameters).toEqual({
-      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
-      end_date: '2022-11-27T00:00+00:00',
-      start_date: '2022-11-25T00:00+00:00',
-      price_max: 10,
-      isEvent: true,
-      subcategories: ['ACHAT_INSTRUMENT'],
-    })
-  })
-  it('should return parameters with mapped categories when parameters are provided (with isDuo)', () => {
-    const parameters: RecommendationParametersFields = {
-      title: 'some parameters',
-      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-      isFree: false,
+      price_max: 0,
       isEvent: true,
       isDuo: true,
-      priceMax: 10,
-      eventDuringNextXDays: '2',
-      subcategories: ['Achat instrument'],
-    }
-    const recommendationParameters = getRecommendationParameters(
-      parameters,
-      subcategoryLabelMapping
-    )
-    expect(recommendationParameters).toEqual({
-      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
-      end_date: '2022-11-27T00:00+00:00',
-      start_date: '2022-11-25T00:00+00:00',
-      price_max: 10,
-      isEvent: true,
-      isDuo: true,
-      subcategories: ['ACHAT_INSTRUMENT'],
-    })
-  })
-  it('should return parameters with mapped categories when parameters are provided (with isDuo)', () => {
-    const parameters: RecommendationParametersFields = {
-      title: 'some parameters',
-      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-      isFree: false,
-      isEvent: true,
-      isDuo: false,
-      priceMax: 10,
-      eventDuringNextXDays: '2',
-      subcategories: ['Achat instrument'],
-    }
-    const recommendationParameters = getRecommendationParameters(
-      parameters,
-      subcategoryLabelMapping
-    )
-    expect(recommendationParameters).toEqual({
-      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
-      end_date: '2022-11-27T00:00+00:00',
-      start_date: '2022-11-25T00:00+00:00',
-      price_max: 10,
-      isEvent: true,
-      is_offer_duo: false,
       subcategories: ['ACHAT_INSTRUMENT'],
     })
   })
