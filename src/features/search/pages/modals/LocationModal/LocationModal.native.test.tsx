@@ -85,7 +85,7 @@ jest.mock('libs/place', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: mockIsLoading }),
 }))
 
-describe('LocationModal component', () => {
+describe('<LocationModal/>', () => {
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION

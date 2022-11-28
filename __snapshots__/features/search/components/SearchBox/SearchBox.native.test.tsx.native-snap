@@ -122,6 +122,7 @@ exports[`SearchBox component should render SearchBox 1`] = `
           />
           <TextInput
             accessible={true}
+            aria-describedby="testUuidV4"
             aria-hidden={false}
             autoCorrect={false}
             autoFocus={false}

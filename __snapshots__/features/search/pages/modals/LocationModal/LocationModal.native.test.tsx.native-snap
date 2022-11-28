@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LocationModal component should render modal correctly after animation and with enabled submit 1`] = `
+exports[`<LocationModal/> should render modal correctly after animation and with enabled submit 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"

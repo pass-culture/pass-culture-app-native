@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search component should render Search 1`] = `
+exports[`<Search/> should render Search 1`] = `
 <View
   accessibilityRole="none"
   style={
@@ -184,6 +184,7 @@ exports[`Search component should render Search 1`] = `
                 />
                 <TextInput
                   accessible={true}
+                  aria-describedby="testUuidV4"
                   aria-hidden={false}
                   autoCorrect={false}
                   autoFocus={false}

@@ -37,6 +37,7 @@ type Props = QueryProps &
   FocusProps &
   LocationProps & {
     searchInputID?: string
+    accessibilityDescribedBy?: string
     children?: never
   }
 

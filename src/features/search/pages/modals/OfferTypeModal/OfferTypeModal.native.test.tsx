@@ -40,7 +40,7 @@ jest.mock('features/auth/AuthContext', () => ({
 
 const hideOfferTypeModal = jest.fn()
 
-describe('OfferTypeModal component', () => {
+describe('<OfferTypeModal/>', () => {
   afterEach(jest.clearAllMocks)
 
   describe('modal header', () => {

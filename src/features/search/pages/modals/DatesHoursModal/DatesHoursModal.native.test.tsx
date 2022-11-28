@@ -26,7 +26,7 @@ const hideDatesHoursModal = jest.fn()
 const TODAY = new Date(2022, 9, 28)
 const TOMORROW = new Date(2022, 9, 29)
 
-describe('DatesHoursModal component', () => {
+describe('<DatesHoursModal/>', () => {
   beforeAll(() => {
     mockdate.set(TODAY)
   })

@@ -4,7 +4,7 @@ import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
-import { fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 import { keyExtractor, SuggestedPlaces } from './SuggestedPlaces'
 
@@ -18,7 +18,7 @@ jest.mock('libs/place', () => ({
 
 const mockSetSelectedPlaceOrVenue = jest.fn()
 
-describe('SuggestedPlaces component', () => {
+describe('<SuggestedPlaces/>', () => {
   it('should trigger onPress when pressing the Space bar on focused place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
     const { getByTestId } = render(
@@ -29,5 +29,16 @@ describe('SuggestedPlaces component', () => {
     fireEvent.keyDown(getByTestId(keyExtractor(mockPlaces[1])), { key: 'Spacebar' })
 
     expect(mockSetSelectedPlaceOrVenue).toHaveBeenCalledWith(mockPlaces[1])
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(
+        <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
+      )
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
   })
 })

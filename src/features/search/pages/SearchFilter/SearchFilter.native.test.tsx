@@ -32,9 +32,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
-const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
-describe('SearchFilter component', () => {
+describe('<SearchFilter/>', () => {
   afterEach(() => {
     mockPosition = DEFAULT_POSITION
   })
@@ -124,3 +122,6 @@ describe('SearchFilter component', () => {
     expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
   })
 })
+
+// eslint-disable-next-line local-rules/no-react-query-provider-hoc
+const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
