@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { computeBeginningAndEndingDateTime } from 'features/home/api/helpers/computeBeginningAndEndingDateTime'
+import { computeBeginningAndEndingDatetime } from 'features/home/api/helpers/computeBeginningAndEndingDateTime'
 import {
   RecommendedIdsRequest,
   useHomeRecommendedIdsMutation,
@@ -33,7 +33,7 @@ export function getRecommendationParameters(
   const eventDuringNextXDays = parameters.eventDuringNextXDays
     ? parseInt(parameters.eventDuringNextXDays)
     : undefined
-  const { beginningDateTime, endingDateTime } = computeBeginningAndEndingDateTime(
+  const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetime(
     parameters.beginningDatetime,
     parameters.endingDatetime,
     eventDuringNextXDays,
@@ -41,10 +41,10 @@ export function getRecommendationParameters(
   )
   return {
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
-    end_date: endingDateTime,
+    end_date: endingDatetime,
     isEvent: parameters?.isEvent,
     price_max: parameters?.isFree ? 0 : parameters?.priceMax,
-    start_date: beginningDateTime,
+    start_date: beginningDatetime,
     subcategories: (parameters?.subcategories || []).map(
       (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
     ),
