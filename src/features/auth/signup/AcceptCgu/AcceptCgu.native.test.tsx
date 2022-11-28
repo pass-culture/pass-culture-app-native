@@ -1,6 +1,5 @@
 import React from 'react'
 import { Linking } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
@@ -10,7 +9,7 @@ import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { simulateWebviewMessage, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
+import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
 
@@ -36,14 +35,13 @@ const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 describe('<AcceptCgu/>', () => {
   it('should open mail app when clicking on contact support button', async () => {
     simulateConnectedNetwork()
-    const { findByText } = renderAcceptCGU()
+    const { getByText } = renderAcceptCGU()
 
-    const contactSupportButton = await findByText('Contacter le support')
+    const contactSupportButton = getByText('Contacter le support')
     fireEvent.press(contactSupportButton)
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(openUrl).toBeCalledWith(
+    await waitFor(() => {
+      expect(openUrl).toHaveBeenCalledWith(
         contactSupport.forGenericQuestion.url,
         contactSupport.forGenericQuestion.params
       )
@@ -58,7 +56,7 @@ describe('<AcceptCgu/>', () => {
     const link = getByTestId('external-link-cgu')
     fireEvent.press(link)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(Linking.openURL).toHaveBeenCalledWith(env.CGU_LINK)
     })
   })
@@ -71,7 +69,7 @@ describe('<AcceptCgu/>', () => {
     const link = getByTestId('external-link-privacy-policy')
     fireEvent.press(link)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(Linking.openURL).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK)
     })
   })
@@ -110,7 +108,7 @@ describe('<AcceptCgu/>', () => {
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
-      expect(props.signUp).toBeCalledWith('fakeToken')
+      expect(props.signUp).toHaveBeenCalledWith('fakeToken')
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
     })
   })
@@ -127,7 +125,7 @@ describe('<AcceptCgu/>', () => {
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
-      expect(props.signUp).toBeCalledWith('fakeToken')
+      expect(props.signUp).toHaveBeenCalledWith('fakeToken')
       expect(
         renderAPI.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeTruthy()
