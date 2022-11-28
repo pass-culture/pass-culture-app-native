@@ -15,7 +15,7 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -55,7 +55,7 @@ export const SearchFilter: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title="Filtrer" background="primary" withGoBackButton onGoBack={onGoBack} />
+      <PageHeaderSecondary title="Filtrer" onGoBack={onGoBack} />
       <React.Fragment>
         <StyledScrollView scrollEnabled>
           {/* Localisation */}

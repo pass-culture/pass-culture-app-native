@@ -7,7 +7,7 @@ import { OfferExtraData, OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
@@ -112,7 +112,7 @@ export const OfferDescription = () => {
   return (
     <Container>
       <Helmet title={helmetTitle} />
-      <PageHeader title="Description" background="primary" withGoBackButton />
+      <PageHeaderSecondary title="Description" />
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
         <FlatList

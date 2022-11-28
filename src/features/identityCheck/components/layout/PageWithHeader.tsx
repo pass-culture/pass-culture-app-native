@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/atoms/layout/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
@@ -27,12 +27,7 @@ export const PageWithHeader = (props: Props) => {
 
   return (
     <Container>
-      <PageHeader
-        title={props.title}
-        background="primary"
-        onGoBack={props.onGoBack}
-        withGoBackButton
-      />
+      <PageHeaderSecondary title={props.title} onGoBack={props.onGoBack} />
       <CustomKeyboardAvoidingView>
         {props.fixedTopChildren ? (
           <FixedTopChildrenView>{props.fixedTopChildren}</FixedTopChildrenView>

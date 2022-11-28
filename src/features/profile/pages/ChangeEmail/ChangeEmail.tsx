@@ -21,7 +21,7 @@ import { useSafeState } from 'libs/hooks'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
@@ -101,7 +101,7 @@ export function ChangeEmail() {
 
   return (
     <React.Fragment>
-      <PageHeader title="Modifier mon e-mail" background="primary" withGoBackButton />
+      <PageHeaderSecondary title="Modifier mon e-mail" />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}

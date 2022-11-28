@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 
 import { ProfileContainer, ScrollableProfileContainer } from 'features/profile/components/reusables'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 type Props = PropsWithChildren<{
@@ -13,7 +13,7 @@ export function PageProfileSection({ title, scrollable = false, children }: Prop
   const Container: React.FC = scrollable ? ScrollableProfileContainer : ProfileContainer
   return (
     <React.Fragment>
-      <PageHeader title={title} background="primary" withGoBackButton />
+      <PageHeaderSecondary title={title} />
       <Container>
         <Spacer.Column numberOfSpaces={6} />
         {children}

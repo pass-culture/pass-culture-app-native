@@ -157,18 +157,13 @@ exports[`<LocationModal/> should render modal correctly after animation and with
           }
         >
           <View
-            height={64}
             style={
-              Array [
-                Object {
-                  "height": 64,
-                },
-              ]
+              Object {
+                "height": 64,
+              }
             }
           />
           <View
-            backgroundColor="#eb0055"
-            isAbsolutePosition={true}
             style={
               Array [
                 Object {
@@ -194,7 +189,6 @@ exports[`<LocationModal/> should render modal correctly after animation and with
               }
             />
             <View
-              size="small"
               style={
                 Array [
                   Object {
@@ -284,10 +278,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                   </View>
                 </View>
                 <Text
-                  color="#ffffff"
                   nativeID="testUuidV4"
                   numberOfLines={1}
-                  size="small"
                   style={
                     Array [
                       Object {

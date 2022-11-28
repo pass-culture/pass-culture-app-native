@@ -12,7 +12,7 @@ import { AuthenticationModal } from 'features/offer/components/AuthenticationMod
 import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'features/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
@@ -43,7 +43,7 @@ export function NavigationSignUp(): JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeader title="SignUp 🎨" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="SignUp 🎨" />
       <StyledContainer>
         <LinkToComponent
           title={'IdentityCheck 🎨'}

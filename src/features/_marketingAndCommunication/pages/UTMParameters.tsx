@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUtmParams } from 'libs/utm'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const UTMParameters = () => {
@@ -11,7 +11,7 @@ export const UTMParameters = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title="UTM parameters" background="primary" withGoBackButton />
+      <PageHeaderSecondary title="UTM parameters" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
         <AlignedText>

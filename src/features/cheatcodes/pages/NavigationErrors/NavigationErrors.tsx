@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AsyncError, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Typo } from 'ui/theme'
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
@@ -44,7 +44,7 @@ export const NavigationErrors: FunctionComponent = () => {
 
   return (
     <ScrollView>
-      <PageHeader title="Errors 👾" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="Errors 👾" />
       <StyledContainer>
         <Row half>
           <ButtonPrimary

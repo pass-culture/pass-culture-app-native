@@ -11,7 +11,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
@@ -66,7 +66,7 @@ export const FavoritesSorts: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title="Trier" background="primary" withGoBackButton />
+      <PageHeaderSecondary title="Trier" />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
 

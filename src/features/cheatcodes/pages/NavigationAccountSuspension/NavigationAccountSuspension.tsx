@@ -3,13 +3,13 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationAccountSuspension(): JSX.Element {
   return (
     <ScrollView>
-      <PageHeader title="Account Management 🎨" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="Account Management 🎨" />
       <StyledContainer>
         <LinkToComponent name="FraudulentAccount" />
         <LinkToComponent name="SuspendedAccount" />

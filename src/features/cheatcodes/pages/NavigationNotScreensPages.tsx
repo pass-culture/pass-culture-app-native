@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Row } from 'features/cheatcodes/components/Row'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 import { BrowserNotSupportedPage } from 'web/SupportedBrowsersGate'
 
@@ -28,11 +28,7 @@ export function NavigationNotScreensPages(): JSX.Element {
   }
   return (
     <ScrollView>
-      <PageHeader
-        title="Pages qui ne sont pas des écrans (tech)"
-        position="absolute"
-        withGoBackButton
-      />
+      <PageHeaderSecondary title="Pages qui ne sont pas des écrans (tech)" />
       <StyledContainer>
         <Row half>
           <ButtonPrimary

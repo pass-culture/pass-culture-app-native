@@ -16,7 +16,7 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/theme'
@@ -47,7 +47,7 @@ export function Navigation(): JSX.Element {
 
   return (
     <React.Fragment>
-      <PageHeader title="Navigation" withGoBackButton />
+      <PageHeaderSecondary title="Navigation" />
       <ScrollView>
         <StyledContainer>
           <Row half>

@@ -14,7 +14,7 @@ import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -75,7 +75,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
 
   return (
     <React.Fragment>
-      <PageHeader title="CheatCodes" withGoBackButton position="absolute" />
+      <PageHeaderSecondary title="CheatCodes" />
       <ScrollView>
         <Container>
           <CrashTestButton />

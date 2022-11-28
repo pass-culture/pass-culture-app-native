@@ -26,18 +26,13 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
     }
   >
     <View
-      height={64}
       style={
-        Array [
-          Object {
-            "height": 64,
-          },
-        ]
+        Object {
+          "height": 64,
+        }
       }
     />
     <View
-      backgroundColor="#eb0055"
-      isAbsolutePosition={true}
       style={
         Array [
           Object {
@@ -62,7 +57,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
         }
       />
       <View
-        size="small"
         style={
           Array [
             Object {
@@ -152,9 +146,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
             </View>
           </View>
           <Text
-            color="#ffffff"
             numberOfLines={1}
-            size="small"
             style={
               Array [
                 Object {
@@ -964,18 +956,13 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
     }
   >
     <View
-      height={64}
       style={
-        Array [
-          Object {
-            "height": 64,
-          },
-        ]
+        Object {
+          "height": 64,
+        }
       }
     />
     <View
-      backgroundColor="#eb0055"
-      isAbsolutePosition={true}
       style={
         Array [
           Object {
@@ -1000,7 +987,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
         }
       />
       <View
-        size="small"
         style={
           Array [
             Object {
@@ -1090,9 +1076,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
             </View>
           </View>
           <Text
-            color="#ffffff"
             numberOfLines={1}
-            size="small"
             style={
               Array [
                 Object {
