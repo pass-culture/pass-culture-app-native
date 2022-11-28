@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { getAnimationState } from 'ui/components/headers/animationHelpers'
+import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
