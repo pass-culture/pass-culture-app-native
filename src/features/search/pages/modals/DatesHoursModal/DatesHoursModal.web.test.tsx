@@ -28,8 +28,7 @@ describe('<DatesHoursModal/>', () => {
 
   describe('modal header', () => {
     it('should have header when viewport width is mobile', async () => {
-      const isDesktopViewport = false
-      const renderAPI = renderDatesHoursModal({ hideDatesHoursModal }, isDesktopViewport)
+      const renderAPI = renderDatesHoursModal({ hideDatesHoursModal })
 
       const header = renderAPI.queryByTestId('pageHeader')
 

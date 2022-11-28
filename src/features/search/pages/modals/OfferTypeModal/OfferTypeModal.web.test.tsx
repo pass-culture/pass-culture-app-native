@@ -18,8 +18,6 @@ jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
 }))
 
-const hideOfferTypeModal = jest.fn()
-
 describe('<OfferTypeModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
@@ -28,7 +26,7 @@ describe('<OfferTypeModal/>', () => {
           title="Type d'offre"
           accessibilityLabel="Ne pas filtrer sur les type d'offre et retourner aux résultats"
           isVisible
-          hideModal={hideOfferTypeModal}
+          hideModal={jest.fn()}
         />
       )
       const results = await checkAccessibilityFor(container)

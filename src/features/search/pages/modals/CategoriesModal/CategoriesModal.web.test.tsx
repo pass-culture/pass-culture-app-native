@@ -12,10 +12,7 @@ describe('<CategoriesModal/>', () => {
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible
         hideModal={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: false, isMobileViewport: true },
-      }
+      />
     )
 
     const pageHeader = getByTestId('pageHeader')
@@ -31,10 +28,7 @@ describe('<CategoriesModal/>', () => {
           accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
           isVisible
           hideModal={jest.fn()}
-        />,
-        {
-          theme: { isDesktopViewport: false, isMobileViewport: true },
-        }
+        />
       )
       const results = await checkAccessibilityFor(container)
 

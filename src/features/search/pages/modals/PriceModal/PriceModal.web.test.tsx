@@ -27,10 +27,7 @@ describe('<PriceModal/>', () => {
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
         isVisible
         hideModal={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: false, isMobileViewport: true },
-      }
+      />
     )
 
     const pageHeader = getByTestId('pageHeader')
@@ -48,10 +45,7 @@ describe('<PriceModal/>', () => {
           accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
           isVisible
           hideModal={jest.fn()}
-        />,
-        {
-          theme: { isDesktopViewport: false, isMobileViewport: true },
-        }
+        />
       )
       await act(async () => {
         const results = await checkAccessibilityFor(container)

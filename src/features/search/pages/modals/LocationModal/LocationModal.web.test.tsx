@@ -16,8 +16,7 @@ const hideLocationModal = jest.fn()
 describe('<LocationModal/>', () => {
   describe('modal header', () => {
     it('should have header when viewport width is mobile', async () => {
-      const isDesktopViewport = false
-      const renderAPI = renderLocationModal({ hideLocationModal }, isDesktopViewport)
+      const renderAPI = renderLocationModal({ hideLocationModal })
 
       const header = renderAPI.queryByTestId('pageHeader')
 
