@@ -10,6 +10,13 @@ const invalidNewUserEmail = 'new@invaild'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: { ...nonBeneficiaryUser, email: currentUserEmail },
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+})
 
 describe('useValidateEmail function', () => {
   it('should not return an error message if the new email is valid', () => {
@@ -27,13 +34,6 @@ describe('useValidateEmail function', () => {
   })
 
   it('should return an error message if the new email is the same than the new one ', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      user: { ...nonBeneficiaryUser, email: currentUserEmail },
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
     const { result } = renderHook(() => useValidateEmail(currentUserEmail))
     expect(result.current.emailErrorMessage).toEqual(
       'L’e-mail saisi est identique à ton e-mail actuel'
@@ -50,25 +50,11 @@ describe('useValidateEmail function', () => {
 
 describe('useIsCurrentUserEmail function', () => {
   it('should return true if the current user email is the same than the new one', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      user: { ...nonBeneficiaryUser, email: currentUserEmail },
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
     const { result: isCurrentUserEmail } = renderHook(() => useIsCurrentUserEmail(currentUserEmail))
     expect(isCurrentUserEmail.current).toEqual(true)
   })
 
   it('should return false if the current user email is different than the new one', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      user: { ...nonBeneficiaryUser, email: currentUserEmail },
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
     const { result: isCurrentUserEmail } = renderHook(() => useIsCurrentUserEmail(newUserEmail))
     expect(isCurrentUserEmail.current).toEqual(false)
   })
