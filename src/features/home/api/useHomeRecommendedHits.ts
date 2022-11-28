@@ -48,6 +48,7 @@ export function getRecommendationParameters(
     subcategories: (parameters?.subcategories || []).map(
       (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
     ),
+    isDuo: parameters.isDuo,
   }
 }
 
