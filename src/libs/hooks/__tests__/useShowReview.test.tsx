@@ -3,11 +3,11 @@ import InAppReview from 'react-native-in-app-review'
 import waitForExpect from 'wait-for-expect'
 
 import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
-import * as disableStoreReview from 'libs/firebase/firestore/featureFlags/disableStoreReview'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render } from 'tests/utils'
 
-const disableStoreReviewSpy = jest.spyOn(disableStoreReview, 'useDisableStoreReview')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
@@ -110,7 +110,7 @@ describe('useShowReview', () => {
     })
 
     it('should not show the review when we disabled store review', () => {
-      disableStoreReviewSpy.mockReturnValueOnce(false)
+      useFeatureFlagSpy.mockReturnValueOnce(false)
 
       render(<TestReviewComponent />)
 
@@ -120,7 +120,7 @@ describe('useShowReview', () => {
     })
 
     it('should not show review when we enabled store review', () => {
-      disableStoreReviewSpy.mockReturnValueOnce(true)
+      useFeatureFlagSpy.mockReturnValueOnce(true)
 
       render(<TestReviewComponent />)
 
