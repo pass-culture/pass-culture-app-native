@@ -18,4 +18,5 @@ export enum RemoteStoreDocuments {
 export enum RemoteStoreFeatureFlags {
   NEW_IDENTIFICATION_FLOW = 'newIdentificationFlow',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
+  WIP_ENABLE_SUBCATEGORY_FILTER_PAGE = 'wipEnableSubcategoryFilterPage',
 }

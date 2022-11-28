@@ -14,6 +14,7 @@ const mockGet = jest.fn()
 describe.each([
   RemoteStoreFeatureFlags.NEW_IDENTIFICATION_FLOW,
   RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
+  RemoteStoreFeatureFlags.WIP_ENABLE_SUBCATEGORY_FILTER_PAGE,
 ])('useFeatureFlag %s', (featureFlag: RemoteStoreFeatureFlags) => {
   beforeAll(() =>
     collection(featureFlag)
