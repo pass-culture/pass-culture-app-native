@@ -3,7 +3,7 @@ import React from 'react'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { GeolocPermissionState, GeolocationError, GeoCoordinates } from 'libs/geolocation'
-import { superFlushWithAct, render, checkAccessibilityFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>
   jest.requireActual('features/favorites/context/FavoritesWrapper')
@@ -28,7 +28,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 describe('<FavoritesSorts/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await renderFavoritesSort()
+      const { container } = renderFavoritesSort()
 
       const results = await checkAccessibilityFor(container)
 
@@ -37,12 +37,11 @@ describe('<FavoritesSorts/>', () => {
   })
 })
 
-async function renderFavoritesSort() {
+function renderFavoritesSort() {
   const renderAPI = render(
     <FavoritesWrapper>
       <FavoritesSorts />
     </FavoritesWrapper>
   )
-  await superFlushWithAct()
   return renderAPI
 }

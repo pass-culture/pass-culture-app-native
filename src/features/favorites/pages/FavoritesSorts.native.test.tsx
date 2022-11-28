@@ -1,5 +1,4 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -13,7 +12,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/geolocation'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>
   jest.requireActual('features/favorites/context/FavoritesWrapper')
@@ -46,17 +45,17 @@ describe('<FavoritesSorts/>', () => {
   })
   afterEach(jest.resetAllMocks)
 
-  it('should render correctly', async () => {
-    const renderAPI = await renderFavoritesSort()
+  it('should render correctly', () => {
+    const renderAPI = renderFavoritesSort()
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should go back on validate', async () => {
-    const renderAPI = await renderFavoritesSort()
+    const renderAPI = renderFavoritesSort()
 
     fireEvent.press(renderAPI.getByText('Valider'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })
@@ -74,12 +73,12 @@ describe('<FavoritesSorts/>', () => {
       sortByWording: string
       expectedAnalytics: FavoriteSortBy
     }) => {
-      const renderAPI = await renderFavoritesSort()
+      const renderAPI = renderFavoritesSort()
 
       fireEvent.press(renderAPI.getByText(sortByWording))
       fireEvent.press(renderAPI.getByText('Valider'))
 
-      await waitForExpect(() => {
+      await waitFor(() => {
         expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
           sortBy: expectedAnalytics,
         })
@@ -93,7 +92,7 @@ describe('<FavoritesSorts/>', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const renderAPI = await renderFavoritesSort()
+    const renderAPI = renderFavoritesSort()
 
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
 
@@ -101,13 +100,12 @@ describe('<FavoritesSorts/>', () => {
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
-    const renderAPI = await renderFavoritesSort()
+    const renderAPI = renderFavoritesSort()
 
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
-    await superFlushWithAct()
     fireEvent.press(renderAPI.getByText('Valider'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(
         renderAPI.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
@@ -122,13 +120,12 @@ describe('<FavoritesSorts/>', () => {
   it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED
-    const renderAPI = await renderFavoritesSort()
+    const renderAPI = renderFavoritesSort()
 
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
-    await superFlushWithAct()
     fireEvent.press(renderAPI.getByText('Valider'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
         sortBy: 'RECENTLY_ADDED',
       })
@@ -139,12 +136,11 @@ describe('<FavoritesSorts/>', () => {
   })
 })
 
-async function renderFavoritesSort() {
+function renderFavoritesSort() {
   const renderAPI = render(
     <FavoritesWrapper>
       <FavoritesSorts />
     </FavoritesWrapper>
   )
-  await superFlushWithAct()
   return renderAPI
 }
