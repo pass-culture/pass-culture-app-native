@@ -30,7 +30,7 @@ const UserMock = {
 
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true, user: UserMock } as IAuthContext))
+mockUseAuthContext.mockReturnValue({ isLoggedIn: true, user: UserMock } as IAuthContext)
 
 describe('<RecreditBirthdayNotification />', () => {
   it('should have correct text', async () => {
