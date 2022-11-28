@@ -16,3 +16,8 @@ export enum RemoteStoreDocuments {
   UBBLE_ETA_MESSAGE = 'etaMessage',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
 }
+
+export enum RemoteStoreFeatureFlags {
+  NEW_IDENTIFICATION_FLOW = 'newIdentificationFlow',
+  WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
+}
