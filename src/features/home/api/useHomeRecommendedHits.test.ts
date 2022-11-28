@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import { UseMutationResult } from 'react-query'
 
 import * as algoliaRecommendedHitsAPI from 'features/home/api/useAlgoliaRecommendedHits'
@@ -18,6 +19,7 @@ const position = {
   longitude: 22,
 }
 const mockModuleId = 'abcd'
+mockdate.set(new Date('2022-11-25T00:00+00:00'))
 
 describe('useHomeRecommendedHits', () => {
   const mutate = jest.fn()
@@ -72,7 +74,7 @@ describe('getRecommendationParameters', () => {
     expect(result).toEqual({})
   })
 
-  it('should return parameters with mapped categories when parameters are provided', () => {
+  it('should return parameters with mapped categories when parameters are provided (with beginning and end date)', () => {
     const parameters: RecommendationParametersFields = {
       title: 'some parameters',
       categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
@@ -91,6 +93,53 @@ describe('getRecommendationParameters', () => {
       categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
       end_date: '2022-05-08T00:00+00:00',
       start_date: '2022-09-08T00:00+00:00',
+      price_max: 10,
+      isEvent: true,
+      subcategories: ['ACHAT_INSTRUMENT'],
+    })
+  })
+
+  it('should return parameters with mapped categories when parameters are provided (with currentWeekEvent true)', () => {
+    const parameters: RecommendationParametersFields = {
+      title: 'some parameters',
+      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
+      isFree: false,
+      isEvent: true,
+      priceMax: 10,
+      currentWeekEvent: true,
+      subcategories: ['Achat instrument'],
+    }
+    const recommendationParameters = getRecommendationParameters(
+      parameters,
+      subcategoryLabelMapping
+    )
+    expect(recommendationParameters).toEqual({
+      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
+      end_date: '2022-11-27T23:59+00:00',
+      start_date: '2022-11-25T00:00+00:00',
+      price_max: 10,
+      isEvent: true,
+      subcategories: ['ACHAT_INSTRUMENT'],
+    })
+  })
+  it('should return parameters with mapped categories when parameters are provided (with eventDuringNextXDays)', () => {
+    const parameters: RecommendationParametersFields = {
+      title: 'some parameters',
+      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
+      isFree: false,
+      isEvent: true,
+      priceMax: 10,
+      eventDuringNextXDays: '2',
+      subcategories: ['Achat instrument'],
+    }
+    const recommendationParameters = getRecommendationParameters(
+      parameters,
+      subcategoryLabelMapping
+    )
+    expect(recommendationParameters).toEqual({
+      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
+      end_date: '2022-11-27T00:00+00:00',
+      start_date: '2022-11-25T00:00+00:00',
       price_max: 10,
       isEvent: true,
       subcategories: ['ACHAT_INSTRUMENT'],

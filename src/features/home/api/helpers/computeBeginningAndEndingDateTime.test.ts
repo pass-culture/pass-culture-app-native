@@ -1,24 +1,39 @@
 import mockdate from 'mockdate'
 
-import { computeBeginningAndEndingDateTime } from 'features/home/api/helpers/computeBeginningAndEndingDateTime'
+import { computeBeginningAndEndingDatetime } from 'features/home/api/helpers/computeBeginningAndEndingDateTime'
 
-mockdate.set(new Date('2022-11-30T00:00+00:00'))
-describe('computeBeginningAndEndingDateTime', () => {
-  const mockedTodayDate = new Date()
+const mockedToday = '2022-11-30T00:00+00:00'
+mockdate.set(new Date(mockedToday))
 
+const mockedTodayDate = new Date()
+const mockedInTwoDays = '2022-12-02T00:00+00:00'
+const mockedNextSunday = '2022-12-04T23:59+00:00'
+const mockedNextMonth = '2022-12-30T00:00+00:00'
+describe('computeBeginningAndEndingDatetime', () => {
   it.each`
-    beginningDateTime  | endingDateTime                        | eventDuringNextXDays | expectedResult
-    ${mockedTodayDate} | ${undefined}                          | ${2}                 | ${{ beginningDateTime: '2022-11-30T00:00+00:00', endingDateTime: undefined }}
-    ${mockedTodayDate} | ${new Date('2022-12-30T00:00+00:00')} | ${2}                 | ${{ beginningDateTime: '2022-11-30T00:00+00:00', endingDateTime: '2022-12-30T00:00+00:00' }}
-    ${undefined}       | ${new Date('2022-12-30T00:00+00:00')} | ${2}                 | ${{ beginningDateTime: undefined, endingDateTime: '2022-12-30T00:00+00:00' }}
-    ${undefined}       | ${undefined}                          | ${2}                 | ${{ beginningDateTime: '2022-11-30T00:00+00:00', endingDateTime: '2022-12-02T00:00+00:00' }}
+    beginningDatetime  | endingDatetime               | eventDuringNextXDays | currentNextWeek | expectedResult
+    ${mockedTodayDate} | ${undefined}                 | ${2}                 | ${false}        | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
+    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${2}                 | ${false}        | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${new Date(mockedNextMonth)} | ${2}                 | ${false}        | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${undefined}                 | ${2}                 | ${false}        | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
+    ${undefined}       | ${undefined}                 | ${undefined}         | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextSunday }}
+    ${undefined}       | ${undefined}                 | ${2}                 | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
+    ${mockedTodayDate} | ${undefined}                 | ${2}                 | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
+    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${2}                 | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
   `(
-    'should return the correct beginningDateTime: $beginningDateTime and endingDateTime: $endingDateTime depending on the contentful data provided',
-    ({ beginningDateTime, endingDateTime, eventDuringNextXDays, expectedResult }) => {
-      const result = computeBeginningAndEndingDateTime(
-        beginningDateTime,
-        endingDateTime,
-        eventDuringNextXDays
+    'should return $expectedResult when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, eventDuringNextXDays: $eventDuringNextXDays, currentNextWeek: $currentNextWeek',
+    ({
+      beginningDatetime,
+      endingDatetime,
+      eventDuringNextXDays,
+      currentNextWeek,
+      expectedResult,
+    }) => {
+      const result = computeBeginningAndEndingDatetime(
+        beginningDatetime,
+        endingDatetime,
+        eventDuringNextXDays,
+        currentNextWeek
       )
       expect(result).toMatchObject(expectedResult)
     }
