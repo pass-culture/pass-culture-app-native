@@ -6,7 +6,6 @@ import { PageProfileSection } from 'features/profile/pages/PageProfileSection/Pa
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Li } from 'ui/components/Li'
 import { Separator } from 'ui/components/Separator'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -14,7 +13,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
+import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityDeclaration() {
@@ -25,9 +24,11 @@ export function AccessibilityDeclaration() {
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
         actions suivantes&nbsp;:
-        {DOUBLE_LINE_BREAK}
-        <VerticalUl>
-          <BulletListItem>
+      </Typo.Body>
+      <Spacer.Column numberOfSpaces={5} />
+      <VerticalUl>
+        <BulletListItem>
+          <Typo.Caption>
             <TouchableLink
               as={ButtonInsideText}
               typography="Caption"
@@ -35,12 +36,12 @@ export function AccessibilityDeclaration() {
               icon={PlainArrowNext}
               navigateTo={{ screen: 'AccessibilityActionPlan' }}
             />
-          </BulletListItem>
-          <BulletListItem>
-            <Typo.Caption>Plan d’actions&nbsp;: en cours</Typo.Caption>{' '}
-          </BulletListItem>
-        </VerticalUl>
-      </Typo.Body>
+          </Typo.Caption>
+        </BulletListItem>
+        <BulletListItem>
+          <Typo.Caption>Plan d’actions&nbsp;: en cours</Typo.Caption>
+        </BulletListItem>
+      </VerticalUl>
       <StyledSeparator />
       <TitleText>État de conformité</TitleText>
       <Spacer.Column numberOfSpaces={6} />
@@ -133,25 +134,27 @@ export function AccessibilityDeclaration() {
         Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le
         responsable du site web pour être orienté vers une alternative accessible ou obtenir le
         contenu sous une autre forme.
-        {DOUBLE_LINE_BREAK}
-        <VerticalUl>
-          <BulletListItem text="Si vous êtes un professionnel, contacter l’équipe support Pro du pass Culture à l’adresse mail suivante&nbsp;:" />
-          <StyledLi>
-            <TouchableLink
-              as={ButtonTertiaryBlack}
-              wording="support-pro@passculture.app"
-              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support Pro"
-              justifyContent="flex-start"
-              externalNav={{ url: 'mailto:support-pro@passculture.app' }}
-              icon={EmailFilled}
-            />
-          </StyledLi>
-          <BulletListItem text="Si vous êtes un jeune, contacter l’équipe support du pass Culture à l’adresse mail suivante&nbsp;:" />
-          <StyledLi>
-            <ContactSupportButton />
-          </StyledLi>
-        </VerticalUl>
       </Typo.Body>
+      <Spacer.Column numberOfSpaces={5} />
+      <VerticalUl>
+        <BulletListItem text="Si vous êtes un professionnel, contacter l’équipe support Pro du pass Culture à l’adresse mail suivante&nbsp;:">
+          {DOUBLE_LINE_BREAK}
+          <TouchableLink
+            as={ButtonTertiaryBlack}
+            wording="support-pro@passculture.app"
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support Pro"
+            justifyContent="flex-start"
+            externalNav={{ url: 'mailto:support-pro@passculture.app' }}
+            icon={EmailFilled}
+          />
+          {LINE_BREAK}
+        </BulletListItem>
+        <BulletListItem text="Si vous êtes un jeune, contacter l’équipe support du pass Culture à l’adresse mail suivante&nbsp;:">
+          {DOUBLE_LINE_BREAK}
+          <ContactSupportButton />
+          {LINE_BREAK}
+        </BulletListItem>
+      </VerticalUl>
       <Spacer.Column numberOfSpaces={2} />
       <TitleText>Voie de recours</TitleText>
       <Spacer.Column numberOfSpaces={6} />
@@ -208,8 +211,4 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 
 const StyledSeparator = styled(Separator)({
   marginVertical: getSpacing(6),
-})
-
-const StyledLi = styled(Li)({
-  marginVertical: getSpacing(4),
 })

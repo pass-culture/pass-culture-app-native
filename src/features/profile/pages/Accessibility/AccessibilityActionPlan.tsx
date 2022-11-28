@@ -36,14 +36,14 @@ export function AccessibilityActionPlan() {
       <Typo.ButtonText>
         L’accessibilité numérique est indispensable aux personnes en situation de handicap
         pour&nbsp;:
-        {DOUBLE_LINE_BREAK}
-        <VerticalUl>
-          <BulletListItem text="s'informer ;" />
-          <BulletListItem text="communiquer ;" />
-          <BulletListItem text="accomplir des démarches administratives ;" />
-          <BulletListItem text="mener une activité professionnelle…" />
-        </VerticalUl>
       </Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={5} />
+      <VerticalUl>
+        <BulletListItem text="s'informer ;" />
+        <BulletListItem text="communiquer ;" />
+        <BulletListItem text="accomplir des démarches administratives ;" />
+        <BulletListItem text="mener une activité professionnelle…" />
+      </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
         L’accessibilité numérique profite à tous&nbsp;: aux personnes âgées, aux personnes en
@@ -75,15 +75,15 @@ export function AccessibilityActionPlan() {
         responsabilité du pôle Accessibilité.
         {DOUBLE_LINE_BREAK}
         Ses missions sont&nbsp;:
-        {DOUBLE_LINE_BREAK}
-        <VerticalUl>
-          <BulletListItem text="promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;" />
-          <BulletListItem text="accompagner les équipes internes par des actions notamment de formation ;" />
-          <BulletListItem text="contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;" />
-          <BulletListItem text="assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;" />
-          <BulletListItem text="faire une veille sur les évolutions réglementaires." />
-        </VerticalUl>
       </Typo.Body>
+      <Spacer.Column numberOfSpaces={5} />
+      <VerticalUl>
+        <BulletListItem text="promouvoir l’accessibilité par la diffusion des normes et des bonnes pratiques ;" />
+        <BulletListItem text="accompagner les équipes internes par des actions notamment de formation ;" />
+        <BulletListItem text="contrôler et veiller à l’application de la loi n° 2005-102 du 11 février 2005 en procédant à des audits réguliers ;" />
+        <BulletListItem text="assurer la prise en charge des demandes des utilisateurs et de manière générale la qualité du service rendu aux utilisateurs en situation de handicap ;" />
+        <BulletListItem text="faire une veille sur les évolutions réglementaires." />
+      </VerticalUl>
       <StyledSeparator />
       <TitleText>
         Ressources humaines et financières affectées à l’accessibilité numérique
@@ -100,20 +100,20 @@ export function AccessibilityActionPlan() {
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>
         La prise en compte de l’accessibilité numérique nécessite&nbsp;:
-        {DOUBLE_LINE_BREAK}
-        <VerticalUl>
-          <BulletListItem text="de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;" />
-          <BulletListItem text="de poursuivre l’accompagnement des équipes ;" />
-          <BulletListItem text="de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;" />
-          <BulletListItem text="de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés." />
-        </VerticalUl>
-        {DOUBLE_LINE_BREAK}
-        <Typo.Body>
-          Les éléments ci-dessous décrivent les points importants sur lesquels la SAS pass Culture
-          s’appuiera pour améliorer l’accessibilité numérique de l’ensemble de ses sites web et
-          applications.
-        </Typo.Body>
       </Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={5} />
+      <VerticalUl>
+        <BulletListItem text="de poursuivre l’adaptation de l’organisation interne de production et de gestion des sites web et application concernés ;" />
+        <BulletListItem text="de poursuivre l’accompagnement des équipes ;" />
+        <BulletListItem text="de veiller à la prise en compte de l’accessibilité dans les procédures de marché ;" />
+        <BulletListItem text="de prendre en charge des personnes en situation de handicap lorsqu’elles signalent des difficultés." />
+      </VerticalUl>
+      <Spacer.Column numberOfSpaces={5} />
+      <Typo.Body>
+        Les éléments ci-dessous décrivent les points importants sur lesquels la SAS pass Culture
+        s’appuiera pour améliorer l’accessibilité numérique de l’ensemble de ses sites web et
+        applications.
+      </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>
         Action de formation et de sensibilisation
@@ -128,14 +128,12 @@ export function AccessibilityActionPlan() {
         </Typo.Body>
       </Typo.ButtonText>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.ButtonText>
-        Plus précisément, notre action consiste à&nbsp;:
-        {DOUBLE_LINE_BREAK}
-        <VerticalUl>
-          <BulletListItem text="sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;" />
-          <BulletListItem text="former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles." />
-        </VerticalUl>
-      </Typo.ButtonText>
+      <Typo.ButtonText>Plus précisément, notre action consiste à&nbsp;:</Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={5} />
+      <VerticalUl>
+        <BulletListItem text="sensibiliser pour bien faire comprendre l’importance du respect des règles de bonnes pratiques d’accessibilité numérique ;" />
+        <BulletListItem text="former pour acquérir les bonnes pratiques indispensables pour produire des sites et applications accessibles (graphisme, ergonomie, développement) et publier des contenus accessibles." />
+      </VerticalUl>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>
         Recours à des compétences externes
@@ -260,27 +258,28 @@ export function AccessibilityActionPlan() {
         {DOUBLE_LINE_BREAK}
         <Typo.Body>
           Chaque site ou application a été qualifié selon des critères tels que&nbsp;:
-          {LINE_BREAK}
-          <VerticalUl>
-            <BulletListItem text="la fréquentation ;" />
-            <BulletListItem text="le service rendu ;" />
-            <BulletListItem text="la criticité ;" />
-            <BulletListItem text="le cycle de vie (date de la prochaine refonte) ;" />
-            <BulletListItem text="les technologies employées." />
-          </VerticalUl>
-          {LINE_BREAK}
-          Des évaluations rapides de l’accessibilité, permettant de servir de socle à l’élaboration
-          des interventions d’audits ont été ou vont être réalisées sur l’ensemble des sites et
-          applications concernées.
-          {LINE_BREAK}
-          Ces évaluations portent sur un petit nombre de critères choisis pour leur pertinence en
-          termes d’évaluation de la complexité et la faisabilité de la mise aux normes RGAA.
-          L’annexe 1 (infra&nbsp;: «&nbsp;Annexe 1&nbsp;: périmètre technique et fonctionnel
-          public&nbsp;») décrit les éléments pouvant être rendus publics du périmètre technique et
-          fonctionnel. En effet, certaines applications peuvent ne pas être rendues publiques pour
-          des raisons de sécurité ou de confidentialité par exemple.
         </Typo.Body>
       </Typo.ButtonText>
+      <VerticalUl>
+        <BulletListItem text="la fréquentation ;" />
+        <BulletListItem text="le service rendu ;" />
+        <BulletListItem text="la criticité ;" />
+        <BulletListItem text="le cycle de vie (date de la prochaine refonte) ;" />
+        <BulletListItem text="les technologies employées." />
+      </VerticalUl>
+      <Spacer.Column numberOfSpaces={5} />
+      <Typo.Body>
+        Des évaluations rapides de l’accessibilité, permettant de servir de socle à l’élaboration
+        des interventions d’audits ont été ou vont être réalisées sur l’ensemble des sites et
+        applications concernées.
+        {LINE_BREAK}
+        Ces évaluations portent sur un petit nombre de critères choisis pour leur pertinence en
+        termes d’évaluation de la complexité et la faisabilité de la mise aux normes RGAA. L’annexe
+        1 (infra&nbsp;: «&nbsp;Annexe 1&nbsp;: périmètre technique et fonctionnel public&nbsp;»)
+        décrit les éléments pouvant être rendus publics du périmètre technique et fonctionnel. En
+        effet, certaines applications peuvent ne pas être rendues publiques pour des raisons de
+        sécurité ou de confidentialité par exemple.
+      </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.ButtonText>
         Agenda planifié des interventions
@@ -310,35 +309,30 @@ export function AccessibilityActionPlan() {
         public&nbsp;:
         {DOUBLE_LINE_BREAK}
         Site institutionnel&nbsp;:
-        {LINE_BREAK}
-        <TouchableLink
-          as={ButtonQuaternaryPrimary}
-          wording="https://pass.culture.fr/"
-          justifyContent="flex-start"
-          icon={ExternalSiteFilled}
-          externalNav={{ url: 'https://pass.culture.fr/' }}
-        />
-        {LINE_BREAK}
-        Application Utilisateurs&nbsp;:
-        {LINE_BREAK}
-        <TouchableLink
-          as={ButtonQuaternaryPrimary}
-          wording="https://passculture.app/accueil"
-          justifyContent="flex-start"
-          icon={ExternalSiteFilled}
-          externalNav={{ url: 'https://passculture.app/accueil' }}
-        />
-        {LINE_BREAK}
-        Site acteurs culturels&nbsp;:
-        {LINE_BREAK}
-        <TouchableLink
-          as={ButtonQuaternaryPrimary}
-          wording="https://passculture.pro/"
-          justifyContent="flex-start"
-          icon={ExternalSiteFilled}
-          externalNav={{ url: 'https://passculture.pro/' }}
-        />
       </Typo.Body>
+      <TouchableLink
+        as={ButtonQuaternaryPrimary}
+        wording="https://pass.culture.fr/"
+        justifyContent="flex-start"
+        icon={ExternalSiteFilled}
+        externalNav={{ url: 'https://pass.culture.fr/' }}
+      />
+      <Typo.Body>Application Utilisateurs&nbsp;:</Typo.Body>
+      <TouchableLink
+        as={ButtonQuaternaryPrimary}
+        wording="https://passculture.app/accueil"
+        justifyContent="flex-start"
+        icon={ExternalSiteFilled}
+        externalNav={{ url: 'https://passculture.app/accueil' }}
+      />
+      <Typo.Body>Site acteurs culturels&nbsp;:</Typo.Body>
+      <TouchableLink
+        as={ButtonQuaternaryPrimary}
+        wording="https://passculture.pro/"
+        justifyContent="flex-start"
+        icon={ExternalSiteFilled}
+        externalNav={{ url: 'https://passculture.pro/' }}
+      />
       <StyledSeparator />
       <TitleText>Plan annuel 2022</TitleText>
       <Spacer.Column numberOfSpaces={6} />
