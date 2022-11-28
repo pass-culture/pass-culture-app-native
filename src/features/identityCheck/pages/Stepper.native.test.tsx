@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
-import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, waitFor } from 'tests/utils'
 
 let mockNextSubscriptionStep = mockStep
@@ -55,7 +55,7 @@ jest.mock('features/identityCheck/useSubscriptionSteps', () => ({
 }))
 jest.mock('react-query')
 
-jest.spyOn(newIdentificationFlowAPI, 'useEnableNewIdentificationFlow').mockReturnValue(true)
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('Stepper navigation', () => {
   beforeEach(jest.clearAllMocks)

@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckMethod } from 'api/gen'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import * as newIdentificationFlowAPI from 'libs/firebase/firestore/featureFlags/newIdentificationFlow'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render } from 'tests/utils'
 
 const hideModalMock = jest.fn()
@@ -21,11 +21,8 @@ jest.mock('libs/firebase/firestore/ubbleETAMessage', () => ({
   useUbbleETAMessage: jest.fn(() => ({ data: 'Environ 3 heures' })),
 }))
 
-const enableNewIdentificationFlowSpy = jest.spyOn(
-  newIdentificationFlowAPI,
-  'useEnableNewIdentificationFlow'
-)
-enableNewIdentificationFlowSpy.mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+useFeatureFlagSpy.mockReturnValue(false)
 
 describe('<IdentityCheckEnd/>', () => {
   it('should render correctly if modal visible', () => {
@@ -88,7 +85,7 @@ describe('<IdentityCheckEnd/>', () => {
   })
 
   it('should redirect to select ID Origin screen on "Identification manuelle" button press when enableNewIdentificationFlow is true', async () => {
-    enableNewIdentificationFlowSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true)
 
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
