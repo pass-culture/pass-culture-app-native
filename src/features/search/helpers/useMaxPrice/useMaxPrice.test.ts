@@ -29,7 +29,7 @@ describe('useMaxPrice when no user', () => {
 })
 
 describe('useMaxPrice when user is not beneficiary', () => {
-  beforeAll(() => {
+  it('returns 300 when the user is not a beneficiary', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
@@ -37,15 +37,12 @@ describe('useMaxPrice when user is not beneficiary', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-  })
-
-  it('returns 300 when the user is not a beneficiary', () => {
     expect(renderHook(useMaxPrice).result.current).toEqual(300)
   })
 })
 
 describe('useMaxPrice when user under 18', () => {
-  beforeAll(() => {
+  it('returns 30 when the user initial credit is 30', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
@@ -53,9 +50,6 @@ describe('useMaxPrice when user under 18', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-  })
-
-  it('returns 30 when the user initial credit is 30', () => {
     expect(renderHook(useMaxPrice).result.current).toEqual(30)
   })
 
