@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import {
   ArchiveBookingModal,
@@ -10,7 +9,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockShowErrorSnackBar = jest.fn()
@@ -58,9 +57,7 @@ describe('<ArchiveBookingModal />', () => {
 
     fireEvent.press(cancelButton)
 
-    await superFlushWithAct()
-
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
         message:
           'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
@@ -69,7 +66,6 @@ describe('<ArchiveBookingModal />', () => {
       expect(onDismiss).toHaveBeenCalledTimes(1)
       expect(mockGoBack).toBeCalledTimes(1)
     })
-    await superFlushWithAct()
   })
   it('should show error snackbar if terminate booking request fails', async () => {
     const response = { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' }
@@ -90,9 +86,7 @@ describe('<ArchiveBookingModal />', () => {
     const cancelButton = getByText('Terminer ma réservation')
     fireEvent.press(cancelButton)
 
-    await superFlushWithAct()
-
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
         message: response.message,
         timeout: 5000,
