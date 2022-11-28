@@ -2789,7 +2789,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
         />
       </View>
     </View>
-    <View>
+    <View
+      onLayout={[Function]}
+    >
       <View
         style={
           Array [
@@ -2821,7 +2823,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
           collapsable={false}
           focusable={true}
           onClick={[Function]}
-          onLayout={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -2980,7 +2981,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View>
+    <View
+      onLayout={[Function]}
+    >
       <View
         style={
           Array [
@@ -3012,7 +3015,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
           collapsable={false}
           focusable={true}
           onClick={[Function]}
-          onLayout={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -3697,7 +3699,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View>
+    <View
+      onLayout={[Function]}
+    >
       <View
         style={
           Array [
@@ -3729,7 +3733,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
           collapsable={false}
           focusable={true}
           onClick={[Function]}
-          onLayout={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}

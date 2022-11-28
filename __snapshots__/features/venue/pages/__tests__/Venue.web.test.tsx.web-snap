@@ -732,1023 +732,1047 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(241, 241, 244); height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="padding-bottom: 24px;"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="max-height: 68px; overflow-x: hidden; overflow-y: hidden;"
+                style="background-color: rgb(241, 241, 244); height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="padding-bottom: 24px;"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
+                  style="max-height: 68px; overflow-x: hidden; overflow-y: hidden;"
                 >
-                  <h2
-                    aria-level="2"
-                    class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                    data-testid="playlistTitle"
-                    dir="ltr"
-                    role="heading"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
                   >
-                    Offres
-                  </h2>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 16px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 12px;"
-                  />
-                  <div
-                    aria-label="Voir plus d’offres de la sélection Offres"
-                    class="css-view-1dbjc4n"
-                    data-testid="Voir plus d’offres de la sélection Offres"
-                    style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                    tabindex="0"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
+                    <h2
+                      aria-level="2"
+                      class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                      data-testid="playlistTitle"
+                      dir="ltr"
+                      role="heading"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                     >
-                      <div
-                        class="css-text-901oao"
-                        dir="ltr"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
+                      Offres
+                    </h2>
                     <div
                       class="css-view-1dbjc4n"
-                      style="width: 8px;"
+                      style="width: 16px;"
                     />
                     <div
-                      class="css-text-901oao"
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 12px;"
+                    />
+                    <div
+                      aria-label="Voir plus d’offres de la sélection Offres"
+                      class="css-view-1dbjc4n"
+                      data-testid="Voir plus d’offres de la sélection Offres"
+                      style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 8px;"
+                      />
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                        style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      >
+                        En voir plus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="position: relative; width: 100%;"
+                >
+                  <div
+                    class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                    data-testid="offersModuleList"
+                    style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-direction: row;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 24px;"
+                        />
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex-direction: row;"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-reset-4rbku5 css-view-1dbjc4n"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-1dbjc4n"
+                            data-testid="offre Titane - VF"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-direction: column-reverse;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="margin-top: 8px; max-width: 192px;"
+                              >
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="ltr"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Titane - VF
+                                </div>
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="ltr"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-901oao"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  >
+                                    <div
+                                      class="css-text-901oao css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 16px;"
+                        />
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex-direction: row;"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-reset-4rbku5 css-view-1dbjc4n"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-1dbjc4n"
+                            data-testid="offre Bac Nord - VF"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-direction: column-reverse;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="margin-top: 8px; max-width: 192px;"
+                              >
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="ltr"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Bac Nord - VF
+                                </div>
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="ltr"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-901oao"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  >
+                                    <div
+                                      class="css-text-901oao css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 16px;"
+                        />
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex-direction: row;"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-reset-4rbku5 css-view-1dbjc4n"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-1dbjc4n"
+                            data-testid="offre Black Widow - VF"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-direction: column-reverse;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="margin-top: 8px; max-width: 192px;"
+                              >
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="ltr"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Black Widow - VF
+                                </div>
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="ltr"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-901oao"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  >
+                                    <div
+                                      class="css-text-901oao css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 24px;"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="margin-right: 24px; margin-left: 24px;"
+              >
+                <button
+                  class="c3"
+                  type="button"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; flex-direction: row;"
+                  >
+                    <div
+                      class="css-text-901oao css-textMultiLine-cens5h"
                       dir="ltr"
-                      style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
                     >
-                      En voir plus
+                      Voir toutes les offres
                     </div>
                   </div>
-                </div>
+                </button>
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="height: 16px;"
+                style="height: 24px;"
               />
-              <div
-                class="css-view-1dbjc4n"
-                style="position: relative; width: 100%;"
-              >
-                <div
-                  class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                  data-testid="offersModuleList"
-                  style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 24px;"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
-                    >
-                      <h3
-                        aria-level="3"
-                        class="css-reset-4rbku5 css-view-1dbjc4n"
-                        role="heading"
-                      >
-                        <div
-                          aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                          class="css-view-1dbjc4n"
-                          data-testid="offre Titane - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-direction: column-reverse;"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="margin-top: 8px; max-width: 192px;"
-                            >
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="ltr"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Titane - VF
-                              </div>
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="ltr"
-                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Dès le 18 août 2021
-                              </div>
-                              <div
-                                class="css-text-901oao"
-                                data-testid="priceIsDuo"
-                                dir="ltr"
-                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Gratuit
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-1dbjc4n"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-                                >
-                                  <div
-                                    class="css-text-901oao css-textMultiLine-cens5h"
-                                    data-testid="categoryImageCaption"
-                                    dir="ltr"
-                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                                  >
-                                    Cinéma
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </h3>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 16px;"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
-                    >
-                      <h3
-                        aria-level="3"
-                        class="css-reset-4rbku5 css-view-1dbjc4n"
-                        role="heading"
-                      >
-                        <div
-                          aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                          class="css-view-1dbjc4n"
-                          data-testid="offre Bac Nord - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-direction: column-reverse;"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="margin-top: 8px; max-width: 192px;"
-                            >
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="ltr"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Bac Nord - VF
-                              </div>
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="ltr"
-                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Dès le 18 août 2021
-                              </div>
-                              <div
-                                class="css-text-901oao"
-                                data-testid="priceIsDuo"
-                                dir="ltr"
-                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Gratuit
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-1dbjc4n"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-                                >
-                                  <div
-                                    class="css-text-901oao css-textMultiLine-cens5h"
-                                    data-testid="categoryImageCaption"
-                                    dir="ltr"
-                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                                  >
-                                    Cinéma
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </h3>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 16px;"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
-                    >
-                      <h3
-                        aria-level="3"
-                        class="css-reset-4rbku5 css-view-1dbjc4n"
-                        role="heading"
-                      >
-                        <div
-                          aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                          class="css-view-1dbjc4n"
-                          data-testid="offre Black Widow - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-direction: column-reverse;"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="margin-top: 8px; max-width: 192px;"
-                            >
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="ltr"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Black Widow - VF
-                              </div>
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="ltr"
-                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Dès le 18 août 2021
-                              </div>
-                              <div
-                                class="css-text-901oao"
-                                data-testid="priceIsDuo"
-                                dir="ltr"
-                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                              >
-                                Gratuit
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-1dbjc4n"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-                                >
-                                  <div
-                                    class="css-text-901oao css-textMultiLine-cens5h"
-                                    data-testid="categoryImageCaption"
-                                    dir="ltr"
-                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                                  >
-                                    Cinéma
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </h3>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 24px;"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="margin-right: 24px; margin-left: 24px;"
             >
-              <button
-                class="c3"
-                type="button"
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(241, 241, 244); height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="margin-right: 24px; margin-left: 24px;"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="align-items: center; flex-direction: row;"
+                  style="height: 24px;"
+                />
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="ltr"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
-                  <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="ltr"
-                    style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
-                  >
-                    Voir toutes les offres
-                  </div>
-                </div>
-              </button>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(241, 241, 244); height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="margin-right: 24px; margin-left: 24px;"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 24px;"
-              />
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="ltr"
-                role="heading"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-              >
-                Où ?
-              </h2>
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 16px;"
-              />
-              <div
-                class="css-text-901oao"
-                dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-              >
-                Adresse
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 4px;"
-              />
-              <div
-                class="css-text-901oao"
-                dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
-              >
-                1 boulevard Poissonnière, 75000 Paris
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 16px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="background-color: rgb(203, 205, 210); height: 1px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 24px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-start;"
-              >
-                <a
-                  aria-label="Voir l’itinéraire"
-                  class="c4 c5"
-                  data-testid="Voir l’itinéraire"
-                  href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
-                  tabindex="0"
-                  target="_blank"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-shrink: 0;"
-                  >
-                    <div
-                      aria-label="Nouvelle fenêtre"
-                      class="css-view-1dbjc4n"
-                      data-testid="button-icon"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="ltr"
-                      >
-                        button-icon-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="ltr"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
-                  >
-                    Voir l’itinéraire
-                  </div>
-                </a>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="height: 24px;"
-              />
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(241, 241, 244); height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row;"
-            >
-              <div
-                aria-controls="testUuidV4"
-                aria-expanded="false"
-                class="css-cursor-18t94o4 css-view-1dbjc4n"
-                role="button"
-                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                tabindex="0"
-              >
+                  Où ?
+                </h2>
                 <div
                   class="css-view-1dbjc4n"
-                  id="testUuidV4"
-                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
-                >
-                  <h2
-                    aria-level="2"
-                    class="css-reset-4rbku5 css-text-901oao"
-                    dir="ltr"
-                    role="heading"
-                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-                  >
-                    Modalités de retrait
-                  </h2>
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accordionArrow"
-                    style="transform: rotateZ(1.5707963267948966rad);"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="ltr"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              data-testid="accordionBody"
-              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
-            >
-              <div
-                aria-labelledby="testUuidV4"
-                class="css-view-1dbjc4n"
-                data-testid="accordionBodyContainer"
-                id="testUuidV4"
-                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
-              >
+                  style="height: 16px;"
+                />
                 <div
                   class="css-text-901oao"
                   dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                 >
-                  How to withdraw, 
+                  Adresse
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 4px;"
+                />
+                <div
+                  class="css-text-901oao"
+                  dir="ltr"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
+                >
+                  1 boulevard Poissonnière, 75000 Paris
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 16px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="background-color: rgb(203, 205, 210); height: 1px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 24px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: flex-start;"
+                >
                   <a
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    href="https://test.com"
-                    style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                    aria-label="Voir l’itinéraire"
+                    class="c4 c5"
+                    data-testid="Voir l’itinéraire"
+                    href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
+                    tabindex="0"
+                    target="_blank"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-shrink: 0;"
                     >
                       <div
+                        aria-label="Nouvelle fenêtre"
                         class="css-view-1dbjc4n"
-                        style="display: inline-flex; width: 4px;"
-                      />
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                        style="white-space: nowrap;"
+                        data-testid="button-icon"
                       >
                         <div
-                          aria-label="Nouvelle fenêtre"
-                          class="css-view-1dbjc4n"
-                          data-testid="externalSiteIcon"
-                          style="display: inline-flex;"
+                          class="css-text-901oao"
+                          dir="ltr"
                         >
-                          <span
-                            class="css-text-901oao css-textHasAncestor-16my406"
-                          >
-                            externalSiteIcon-SVG-Mock
-                          </span>
+                          button-icon-SVG-Mock
                         </div>
-                        
-                      </span>
-                       https://test.com
-                    </span>
+                      </div>
+                    </div>
+                    <div
+                      class="css-text-901oao css-textMultiLine-cens5h"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                    >
+                      Voir l’itinéraire
+                    </div>
                   </a>
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 24px;"
+                />
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(241, 241, 244); height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row;"
             >
               <div
-                aria-controls="testUuidV4"
-                aria-expanded="false"
-                class="css-cursor-18t94o4 css-view-1dbjc4n"
-                role="button"
-                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                tabindex="0"
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(241, 241, 244); height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  id="testUuidV4"
-                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+                  aria-controls="testUuidV4"
+                  aria-expanded="false"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
+                  role="button"
+                  style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  tabindex="0"
                 >
-                  <h2
-                    aria-level="2"
-                    class="css-reset-4rbku5 css-text-901oao"
-                    dir="ltr"
-                    role="heading"
-                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-                  >
-                    Accessibilité
-                  </h2>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="accordionArrow"
-                    style="transform: rotateZ(1.5707963267948966rad);"
+                    id="testUuidV4"
+                    style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
                   >
+                    <h2
+                      aria-level="2"
+                      class="css-reset-4rbku5 css-text-901oao"
+                      dir="ltr"
+                      role="heading"
+                      style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                    >
+                      Modalités de retrait
+                    </h2>
                     <div
                       class="css-view-1dbjc4n"
+                      data-testid="accordionArrow"
+                      style="transform: rotateZ(1.5707963267948966rad);"
                     >
                       <div
-                        class="css-text-901oao"
-                        dir="ltr"
+                        class="css-view-1dbjc4n"
                       >
-                        undefined-SVG-Mock
+                        <div
+                          class="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionBody"
+                style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+              >
+                <div
+                  aria-labelledby="testUuidV4"
+                  class="css-view-1dbjc4n"
+                  data-testid="accordionBodyContainer"
+                  id="testUuidV4"
+                  style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    How to withdraw, 
+                    <a
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      href="https://test.com"
+                      style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                    >
+                      <span
+                        class="css-text-901oao css-textHasAncestor-16my406"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="display: inline-flex; width: 4px;"
+                        />
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406"
+                          style="white-space: nowrap;"
+                        >
+                          <div
+                            aria-label="Nouvelle fenêtre"
+                            class="css-view-1dbjc4n"
+                            data-testid="externalSiteIcon"
+                            style="display: inline-flex;"
+                          >
+                            <span
+                              class="css-text-901oao css-textHasAncestor-16my406"
+                            >
+                              externalSiteIcon-SVG-Mock
+                            </span>
+                          </div>
+                          
+                        </span>
+                         https://test.com
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              data-testid="accordionBody"
-              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
-                aria-labelledby="testUuidV4"
                 class="css-view-1dbjc4n"
-                data-testid="accordionBodyContainer"
-                id="testUuidV4"
-                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: row; justify-content: space-between;"
-                >
-                  <ul
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    role="list"
-                    style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
-                  >
-                    <li
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="listitem"
-                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    >
-                      <div
-                        aria-label="Handicap visuel : Accessible"
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityAtomContainer"
-                        role="img"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="accessibilityFrame"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="bottom: -12px; position: absolute;"
-                          >
-                            <div
-                              aria-label="Accessible"
-                              class="css-view-1dbjc4n"
-                              data-testid="validTestId"
-                            >
-                              <div
-                                class="css-text-901oao"
-                                dir="ltr"
-                              >
-                                validTestId-SVG-Mock
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="height: 16px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="Handicap visuel"
-                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                          >
-                            Handicap visuel
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="listitem"
-                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    >
-                      <div
-                        aria-label="Handicap psychique ou cognitif : Non accessible"
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityAtomContainer"
-                        role="img"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="accessibilityFrame"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="bottom: -12px; position: absolute;"
-                          >
-                            <div
-                              aria-label="Non accessible"
-                              class="css-view-1dbjc4n"
-                              data-testid="invalidTestId"
-                            >
-                              <div
-                                class="css-text-901oao"
-                                dir="ltr"
-                              >
-                                invalidTestId-SVG-Mock
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="height: 16px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="Handicap psychique ou cognitif"
-                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                          >
-                            Handicap psychique ou cognitif
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="listitem"
-                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    >
-                      <div
-                        aria-label="Handicap moteur : Non accessible"
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityAtomContainer"
-                        role="img"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="accessibilityFrame"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="bottom: -12px; position: absolute;"
-                          >
-                            <div
-                              aria-label="Non accessible"
-                              class="css-view-1dbjc4n"
-                              data-testid="invalidTestId"
-                            >
-                              <div
-                                class="css-text-901oao"
-                                dir="ltr"
-                              >
-                                invalidTestId-SVG-Mock
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="height: 16px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="Handicap moteur"
-                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                          >
-                            Handicap moteur
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="listitem"
-                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    >
-                      <div
-                        aria-label="Handicap auditif : Non accessible"
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityAtomContainer"
-                        role="img"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="accessibilityFrame"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                          />
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="bottom: -12px; position: absolute;"
-                          >
-                            <div
-                              aria-label="Non accessible"
-                              class="css-view-1dbjc4n"
-                              data-testid="invalidTestId"
-                            >
-                              <div
-                                class="css-text-901oao"
-                                dir="ltr"
-                              >
-                                invalidTestId-SVG-Mock
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="height: 16px;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          data-testid="Handicap auditif"
-                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                          >
-                            Handicap auditif
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(241, 241, 244); height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row;"
-            >
+                style="background-color: rgb(241, 241, 244); height: 8px;"
+              />
               <div
-                aria-controls="testUuidV4"
-                aria-expanded="false"
-                class="css-cursor-18t94o4 css-view-1dbjc4n"
-                role="button"
-                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                tabindex="0"
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  id="testUuidV4"
-                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+                  aria-controls="testUuidV4"
+                  aria-expanded="false"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
+                  role="button"
+                  style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  tabindex="0"
                 >
-                  <h2
-                    aria-level="2"
-                    class="css-reset-4rbku5 css-text-901oao"
-                    dir="ltr"
-                    role="heading"
-                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-                  >
-                    Contact
-                  </h2>
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="accordionArrow"
-                    style="transform: rotateZ(1.5707963267948966rad);"
+                    id="testUuidV4"
+                    style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
                   >
+                    <h2
+                      aria-level="2"
+                      class="css-reset-4rbku5 css-text-901oao"
+                      dir="ltr"
+                      role="heading"
+                      style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                    >
+                      Accessibilité
+                    </h2>
                     <div
                       class="css-view-1dbjc4n"
+                      data-testid="accordionArrow"
+                      style="transform: rotateZ(1.5707963267948966rad);"
                     >
                       <div
-                        class="css-text-901oao"
-                        dir="ltr"
+                        class="css-view-1dbjc4n"
                       >
-                        undefined-SVG-Mock
+                        <div
+                          class="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionBody"
+                style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+              >
+                <div
+                  aria-labelledby="testUuidV4"
+                  class="css-view-1dbjc4n"
+                  data-testid="accordionBodyContainer"
+                  id="testUuidV4"
+                  style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-direction: row; justify-content: space-between;"
+                  >
+                    <ul
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="list"
+                      style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
+                    >
+                      <li
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="listitem"
+                        style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      >
+                        <div
+                          aria-label="Handicap visuel : Accessible"
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityAtomContainer"
+                          role="img"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="accessibilityFrame"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="bottom: -12px; position: absolute;"
+                            >
+                              <div
+                                aria-label="Accessible"
+                                class="css-view-1dbjc4n"
+                                data-testid="validTestId"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  validTestId-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="height: 16px;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="Handicap visuel"
+                            style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                            >
+                              Handicap visuel
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="listitem"
+                        style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      >
+                        <div
+                          aria-label="Handicap psychique ou cognitif : Non accessible"
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityAtomContainer"
+                          role="img"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="accessibilityFrame"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="bottom: -12px; position: absolute;"
+                            >
+                              <div
+                                aria-label="Non accessible"
+                                class="css-view-1dbjc4n"
+                                data-testid="invalidTestId"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  invalidTestId-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="height: 16px;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="Handicap psychique ou cognitif"
+                            style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                            >
+                              Handicap psychique ou cognitif
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="listitem"
+                        style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      >
+                        <div
+                          aria-label="Handicap moteur : Non accessible"
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityAtomContainer"
+                          role="img"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="accessibilityFrame"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="bottom: -12px; position: absolute;"
+                            >
+                              <div
+                                aria-label="Non accessible"
+                                class="css-view-1dbjc4n"
+                                data-testid="invalidTestId"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  invalidTestId-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="height: 16px;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="Handicap moteur"
+                            style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                            >
+                              Handicap moteur
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="listitem"
+                        style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      >
+                        <div
+                          aria-label="Handicap auditif : Non accessible"
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityAtomContainer"
+                          role="img"
+                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="accessibilityFrame"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="bottom: -12px; position: absolute;"
+                            >
+                              <div
+                                aria-label="Non accessible"
+                                class="css-view-1dbjc4n"
+                                data-testid="invalidTestId"
+                              >
+                                <div
+                                  class="css-text-901oao"
+                                  dir="ltr"
+                                >
+                                  invalidTestId-SVG-Mock
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="height: 16px;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="Handicap auditif"
+                            style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                            >
+                              Handicap auditif
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              data-testid="accordionBody"
-              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
-                aria-labelledby="testUuidV4"
                 class="css-view-1dbjc4n"
-                data-testid="accordionBodyContainer"
-                id="testUuidV4"
-                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+                style="background-color: rgb(241, 241, 244); height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; flex-direction: row;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  aria-controls="testUuidV4"
+                  aria-expanded="false"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
+                  role="button"
+                  style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  tabindex="0"
                 >
-                  contact@venue.com
+                  <div
+                    class="css-view-1dbjc4n"
+                    id="testUuidV4"
+                    style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+                  >
+                    <h2
+                      aria-level="2"
+                      class="css-reset-4rbku5 css-text-901oao"
+                      dir="ltr"
+                      role="heading"
+                      style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                    >
+                      Contact
+                    </h2>
+                    <div
+                      class="css-view-1dbjc4n"
+                      data-testid="accordionArrow"
+                      style="transform: rotateZ(1.5707963267948966rad);"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="accordionBody"
+                style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+              >
                 <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  aria-labelledby="testUuidV4"
+                  class="css-view-1dbjc4n"
+                  data-testid="accordionBodyContainer"
+                  id="testUuidV4"
+                  style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
                 >
-                  +33102030405
-                </div>
-                <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-                >
-                  https://my@website.com
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    contact@venue.com
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    +33102030405
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    https://my@website.com
+                  </div>
                 </div>
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(241, 241, 244); height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(241, 241, 244); height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -2483,1023 +2507,1047 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(241, 241, 244); height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 24px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="padding-bottom: 24px;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="max-height: 68px; overflow-x: hidden; overflow-y: hidden;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="padding-bottom: 24px;"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
+                style="max-height: 68px; overflow-x: hidden; overflow-y: hidden;"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                  data-testid="playlistTitle"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
                 >
-                  Offres
-                </h2>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 16px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 12px;"
-                />
-                <div
-                  aria-label="Voir plus d’offres de la sélection Offres"
-                  class="css-view-1dbjc4n"
-                  data-testid="Voir plus d’offres de la sélection Offres"
-                  style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                    data-testid="playlistTitle"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                   >
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
+                    Offres
+                  </h2>
                   <div
                     class="css-view-1dbjc4n"
-                    style="width: 8px;"
+                    style="width: 16px;"
                   />
                   <div
-                    class="css-text-901oao"
+                    class="css-view-1dbjc4n"
+                    style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="width: 12px;"
+                  />
+                  <div
+                    aria-label="Voir plus d’offres de la sélection Offres"
+                    class="css-view-1dbjc4n"
+                    data-testid="Voir plus d’offres de la sélection Offres"
+                    style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 8px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      En voir plus
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 16px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="position: relative; width: 100%;"
+              >
+                <div
+                  class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                  data-testid="offersModuleList"
+                  style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-direction: row;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 24px;"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-direction: row;"
+                    >
+                      <h3
+                        aria-level="3"
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="heading"
+                      >
+                        <div
+                          aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                          class="css-view-1dbjc4n"
+                          data-testid="offre Titane - VF"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-direction: column-reverse;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="margin-top: 8px; max-width: 192px;"
+                            >
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="ltr"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Titane - VF
+                              </div>
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="ltr"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                data-testid="priceIsDuo"
+                                dir="ltr"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                >
+                                  <div
+                                    class="css-text-901oao css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    dir="ltr"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </h3>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 16px;"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-direction: row;"
+                    >
+                      <h3
+                        aria-level="3"
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="heading"
+                      >
+                        <div
+                          aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                          class="css-view-1dbjc4n"
+                          data-testid="offre Bac Nord - VF"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-direction: column-reverse;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="margin-top: 8px; max-width: 192px;"
+                            >
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="ltr"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Bac Nord - VF
+                              </div>
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="ltr"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                data-testid="priceIsDuo"
+                                dir="ltr"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                >
+                                  <div
+                                    class="css-text-901oao css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    dir="ltr"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </h3>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 16px;"
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="flex-direction: row;"
+                    >
+                      <h3
+                        aria-level="3"
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="heading"
+                      >
+                        <div
+                          aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                          class="css-view-1dbjc4n"
+                          data-testid="offre Black Widow - VF"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-direction: column-reverse;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="margin-top: 8px; max-width: 192px;"
+                            >
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="ltr"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Black Widow - VF
+                              </div>
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="ltr"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                data-testid="priceIsDuo"
+                                dir="ltr"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                >
+                                  <div
+                                    class="css-text-901oao css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    dir="ltr"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </h3>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 24px;"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-right: 24px; margin-left: 24px;"
+            >
+              <button
+                class="c3"
+                type="button"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-direction: row;"
+                >
+                  <div
+                    class="css-text-901oao css-textMultiLine-cens5h"
                     dir="ltr"
-                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
                   >
-                    En voir plus
+                    Voir toutes les offres
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="height: 16px;"
+              style="height: 24px;"
             />
-            <div
-              class="css-view-1dbjc4n"
-              style="position: relative; width: 100%;"
-            >
-              <div
-                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                data-testid="offersModuleList"
-                style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: row;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="width: 24px;"
-                    />
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="heading"
-                    >
-                      <div
-                        aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        class="css-view-1dbjc4n"
-                        data-testid="offre Titane - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-direction: column-reverse;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="margin-top: 8px; max-width: 192px;"
-                          >
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="ltr"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Titane - VF
-                            </div>
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="ltr"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-901oao"
-                              data-testid="priceIsDuo"
-                              dir="ltr"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-                              >
-                                <div
-                                  class="css-text-901oao css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  dir="ltr"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                                >
-                                  Cinéma
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </h3>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="width: 16px;"
-                    />
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="heading"
-                    >
-                      <div
-                        aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        class="css-view-1dbjc4n"
-                        data-testid="offre Bac Nord - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-direction: column-reverse;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="margin-top: 8px; max-width: 192px;"
-                          >
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="ltr"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Bac Nord - VF
-                            </div>
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="ltr"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-901oao"
-                              data-testid="priceIsDuo"
-                              dir="ltr"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-                              >
-                                <div
-                                  class="css-text-901oao css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  dir="ltr"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                                >
-                                  Cinéma
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </h3>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="width: 16px;"
-                    />
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
-                      role="heading"
-                    >
-                      <div
-                        aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        class="css-view-1dbjc4n"
-                        data-testid="offre Black Widow - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 360px; margin-top: 4px; margin-bottom: 4px; text-decoration-color: rgba(0,0,0,1.00); text-decoration: none; text-decoration-style: solid; user-select: none;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-direction: column-reverse;"
-                        >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="margin-top: 8px; max-width: 192px;"
-                          >
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="ltr"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Black Widow - VF
-                            </div>
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="ltr"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-901oao"
-                              data-testid="priceIsDuo"
-                              dir="ltr"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                          >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-                              >
-                                <div
-                                  class="css-text-901oao css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  dir="ltr"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                                >
-                                  Cinéma
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </h3>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="width: 24px;"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="margin-right: 24px; margin-left: 24px;"
           >
-            <button
-              class="c3"
-              type="button"
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="margin-right: 24px; margin-left: 24px;"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row;"
+                style="height: 24px;"
+              />
+              <h2
+                aria-level="2"
+                class="css-reset-4rbku5 css-text-901oao"
+                dir="ltr"
+                role="heading"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="ltr"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
-                >
-                  Voir toutes les offres
-                </div>
-              </div>
-            </button>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 24px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(241, 241, 244); height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="margin-right: 24px; margin-left: 24px;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
-            <h2
-              aria-level="2"
-              class="css-reset-4rbku5 css-text-901oao"
-              dir="ltr"
-              role="heading"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-            >
-              Où ?
-            </h2>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
-            />
-            <div
-              class="css-text-901oao"
-              dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-            >
-              Adresse
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 4px;"
-            />
-            <div
-              class="css-text-901oao"
-              dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
-            >
-              1 boulevard Poissonnière, 75000 Paris
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(203, 205, 210); height: 1px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-start;"
-            >
-              <a
-                aria-label="Voir l’itinéraire"
-                class="c4 c5"
-                data-testid="Voir l’itinéraire"
-                href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
-                tabindex="0"
-                target="_blank"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="flex-shrink: 0;"
-                >
-                  <div
-                    aria-label="Nouvelle fenêtre"
-                    class="css-view-1dbjc4n"
-                    data-testid="button-icon"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                    >
-                      button-icon-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
-                >
-                  Voir l’itinéraire
-                </div>
-              </a>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="height: 24px;"
-            />
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(241, 241, 244); height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row;"
-          >
-            <div
-              aria-controls="testUuidV4"
-              aria-expanded="false"
-              class="css-cursor-18t94o4 css-view-1dbjc4n"
-              role="button"
-              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-              tabindex="0"
-            >
+                Où ?
+              </h2>
               <div
                 class="css-view-1dbjc4n"
-                id="testUuidV4"
-                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-                >
-                  Modalités de retrait
-                </h2>
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="accordionArrow"
-                  style="transform: rotateZ(1.5707963267948966rad);"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            data-testid="accordionBody"
-            style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
-          >
-            <div
-              aria-labelledby="testUuidV4"
-              class="css-view-1dbjc4n"
-              data-testid="accordionBodyContainer"
-              id="testUuidV4"
-              style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
-            >
+                style="height: 16px;"
+              />
               <div
                 class="css-text-901oao"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
-                How to withdraw, 
+                Adresse
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 4px;"
+              />
+              <div
+                class="css-text-901oao"
+                dir="ltr"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
+              >
+                1 boulevard Poissonnière, 75000 Paris
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 16px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(203, 205, 210); height: 1px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: flex-start;"
+              >
                 <a
-                  class="css-reset-4rbku5 css-view-1dbjc4n"
-                  href="https://test.com"
-                  style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  aria-label="Voir l’itinéraire"
+                  class="c4 c5"
+                  data-testid="Voir l’itinéraire"
+                  href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
+                  tabindex="0"
+                  target="_blank"
                 >
-                  <span
-                    class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-shrink: 0;"
                   >
                     <div
+                      aria-label="Nouvelle fenêtre"
                       class="css-view-1dbjc4n"
-                      style="display: inline-flex; width: 4px;"
-                    />
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                      style="white-space: nowrap;"
+                      data-testid="button-icon"
                     >
                       <div
-                        aria-label="Nouvelle fenêtre"
-                        class="css-view-1dbjc4n"
-                        data-testid="externalSiteIcon"
-                        style="display: inline-flex;"
+                        class="css-text-901oao"
+                        dir="ltr"
                       >
-                        <span
-                          class="css-text-901oao css-textHasAncestor-16my406"
-                        >
-                          externalSiteIcon-SVG-Mock
-                        </span>
+                        button-icon-SVG-Mock
                       </div>
-                      
-                    </span>
-                     https://test.com
-                  </span>
+                    </div>
+                  </div>
+                  <div
+                    class="css-text-901oao css-textMultiLine-cens5h"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                  >
+                    Voir l’itinéraire
+                  </div>
                 </a>
               </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 24px;"
+              />
             </div>
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(241, 241, 244); height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row;"
           >
             <div
-              aria-controls="testUuidV4"
-              aria-expanded="false"
-              class="css-cursor-18t94o4 css-view-1dbjc4n"
-              role="button"
-              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-              tabindex="0"
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row;"
             >
               <div
-                class="css-view-1dbjc4n"
-                id="testUuidV4"
-                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+                aria-controls="testUuidV4"
+                aria-expanded="false"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
+                role="button"
+                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                tabindex="0"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-                >
-                  Accessibilité
-                </h2>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="accordionArrow"
-                  style="transform: rotateZ(1.5707963267948966rad);"
+                  id="testUuidV4"
+                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
                 >
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  >
+                    Modalités de retrait
+                  </h2>
                   <div
                     class="css-view-1dbjc4n"
+                    data-testid="accordionArrow"
+                    style="transform: rotateZ(1.5707963267948966rad);"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="ltr"
+                      class="css-view-1dbjc4n"
                     >
-                      undefined-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBody"
+              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+            >
+              <div
+                aria-labelledby="testUuidV4"
+                class="css-view-1dbjc4n"
+                data-testid="accordionBodyContainer"
+                id="testUuidV4"
+                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="ltr"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  How to withdraw, 
+                  <a
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    href="https://test.com"
+                    style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  >
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="display: inline-flex; width: 4px;"
+                      />
+                      <span
+                        class="css-text-901oao css-textHasAncestor-16my406"
+                        style="white-space: nowrap;"
+                      >
+                        <div
+                          aria-label="Nouvelle fenêtre"
+                          class="css-view-1dbjc4n"
+                          data-testid="externalSiteIcon"
+                          style="display: inline-flex;"
+                        >
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406"
+                          >
+                            externalSiteIcon-SVG-Mock
+                          </span>
+                        </div>
+                        
+                      </span>
+                       https://test.com
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
           <div
             class="css-view-1dbjc4n"
-            data-testid="accordionBody"
-            style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
-              aria-labelledby="testUuidV4"
               class="css-view-1dbjc4n"
-              data-testid="accordionBodyContainer"
-              id="testUuidV4"
-              style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: row; justify-content: space-between;"
-              >
-                <ul
-                  class="css-reset-4rbku5 css-view-1dbjc4n"
-                  role="list"
-                  style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
-                >
-                  <li
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    role="listitem"
-                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  >
-                    <div
-                      aria-label="Handicap visuel : Accessible"
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityFrame"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="bottom: -12px; position: absolute;"
-                        >
-                          <div
-                            aria-label="Accessible"
-                            class="css-view-1dbjc4n"
-                            data-testid="validTestId"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              validTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 16px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="Handicap visuel"
-                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="ltr"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                        >
-                          Handicap visuel
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    role="listitem"
-                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  >
-                    <div
-                      aria-label="Handicap psychique ou cognitif : Non accessible"
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityFrame"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="bottom: -12px; position: absolute;"
-                        >
-                          <div
-                            aria-label="Non accessible"
-                            class="css-view-1dbjc4n"
-                            data-testid="invalidTestId"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              invalidTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 16px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="Handicap psychique ou cognitif"
-                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="ltr"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                        >
-                          Handicap psychique ou cognitif
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    role="listitem"
-                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  >
-                    <div
-                      aria-label="Handicap moteur : Non accessible"
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityFrame"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="bottom: -12px; position: absolute;"
-                        >
-                          <div
-                            aria-label="Non accessible"
-                            class="css-view-1dbjc4n"
-                            data-testid="invalidTestId"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              invalidTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 16px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="Handicap moteur"
-                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="ltr"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                        >
-                          Handicap moteur
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
-                    role="listitem"
-                    style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  >
-                    <div
-                      aria-label="Handicap auditif : Non accessible"
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="accessibilityFrame"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        />
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="bottom: -12px; position: absolute;"
-                        >
-                          <div
-                            aria-label="Non accessible"
-                            class="css-view-1dbjc4n"
-                            data-testid="invalidTestId"
-                          >
-                            <div
-                              class="css-text-901oao"
-                              dir="ltr"
-                            >
-                              invalidTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 16px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="Handicap auditif"
-                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="ltr"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                        >
-                          Handicap auditif
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(241, 241, 244); height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row;"
-          >
+              style="background-color: rgb(241, 241, 244); height: 8px;"
+            />
             <div
-              aria-controls="testUuidV4"
-              aria-expanded="false"
-              class="css-cursor-18t94o4 css-view-1dbjc4n"
-              role="button"
-              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-              tabindex="0"
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row;"
             >
               <div
-                class="css-view-1dbjc4n"
-                id="testUuidV4"
-                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+                aria-controls="testUuidV4"
+                aria-expanded="false"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
+                role="button"
+                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                tabindex="0"
               >
-                <h2
-                  aria-level="2"
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="ltr"
-                  role="heading"
-                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-                >
-                  Contact
-                </h2>
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="accordionArrow"
-                  style="transform: rotateZ(1.5707963267948966rad);"
+                  id="testUuidV4"
+                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
                 >
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  >
+                    Accessibilité
+                  </h2>
                   <div
                     class="css-view-1dbjc4n"
+                    data-testid="accordionArrow"
+                    style="transform: rotateZ(1.5707963267948966rad);"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="ltr"
+                      class="css-view-1dbjc4n"
                     >
-                      undefined-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBody"
+              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+            >
+              <div
+                aria-labelledby="testUuidV4"
+                class="css-view-1dbjc4n"
+                data-testid="accordionBodyContainer"
+                id="testUuidV4"
+                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: row; justify-content: space-between;"
+                >
+                  <ul
+                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    role="list"
+                    style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
+                  >
+                    <li
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    >
+                      <div
+                        aria-label="Handicap visuel : Accessible"
+                        class="css-view-1dbjc4n"
+                        data-testid="accessibilityAtomContainer"
+                        role="img"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              aria-label="Accessible"
+                              class="css-view-1dbjc4n"
+                              data-testid="validTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                validTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap visuel"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="ltr"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                          >
+                            Handicap visuel
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    >
+                      <div
+                        aria-label="Handicap psychique ou cognitif : Non accessible"
+                        class="css-view-1dbjc4n"
+                        data-testid="accessibilityAtomContainer"
+                        role="img"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              aria-label="Non accessible"
+                              class="css-view-1dbjc4n"
+                              data-testid="invalidTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                invalidTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap psychique ou cognitif"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="ltr"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                          >
+                            Handicap psychique ou cognitif
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    >
+                      <div
+                        aria-label="Handicap moteur : Non accessible"
+                        class="css-view-1dbjc4n"
+                        data-testid="accessibilityAtomContainer"
+                        role="img"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              aria-label="Non accessible"
+                              class="css-view-1dbjc4n"
+                              data-testid="invalidTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                invalidTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap moteur"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="ltr"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                          >
+                            Handicap moteur
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="listitem"
+                      style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    >
+                      <div
+                        aria-label="Handicap auditif : Non accessible"
+                        class="css-view-1dbjc4n"
+                        data-testid="accessibilityAtomContainer"
+                        role="img"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              aria-label="Non accessible"
+                              class="css-view-1dbjc4n"
+                              data-testid="invalidTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="ltr"
+                              >
+                                invalidTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap auditif"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="ltr"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                          >
+                            Handicap auditif
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
           <div
             class="css-view-1dbjc4n"
-            data-testid="accordionBody"
-            style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
-              aria-labelledby="testUuidV4"
               class="css-view-1dbjc4n"
-              data-testid="accordionBodyContainer"
-              id="testUuidV4"
-              style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row;"
             >
               <div
-                class="css-text-901oao"
-                dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                aria-controls="testUuidV4"
+                aria-expanded="false"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
+                role="button"
+                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                tabindex="0"
               >
-                contact@venue.com
+                <div
+                  class="css-view-1dbjc4n"
+                  id="testUuidV4"
+                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+                >
+                  <h2
+                    aria-level="2"
+                    class="css-reset-4rbku5 css-text-901oao"
+                    dir="ltr"
+                    role="heading"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  >
+                    Contact
+                  </h2>
+                  <div
+                    class="css-view-1dbjc4n"
+                    data-testid="accordionArrow"
+                    style="transform: rotateZ(1.5707963267948966rad);"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="accordionBody"
+              style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
+            >
               <div
-                class="css-text-901oao"
-                dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                aria-labelledby="testUuidV4"
+                class="css-view-1dbjc4n"
+                data-testid="accordionBodyContainer"
+                id="testUuidV4"
+                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
               >
-                +33102030405
-              </div>
-              <div
-                class="css-text-901oao"
-                dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-              >
-                https://my@website.com
+                <div
+                  class="css-text-901oao"
+                  dir="ltr"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  contact@venue.com
+                </div>
+                <div
+                  class="css-text-901oao"
+                  dir="ltr"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  +33102030405
+                </div>
+                <div
+                  class="css-text-901oao"
+                  dir="ltr"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  https://my@website.com
+                </div>
               </div>
             </div>
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(241, 241, 244); height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 24px;"
-          />
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 24px;"
+            />
+          </div>
         </div>
       </div>
     </div>

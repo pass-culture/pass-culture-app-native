@@ -1,15 +1,5 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
-import {
-  Platform,
-  Animated,
-  Easing,
-  StyleProp,
-  ViewStyle,
-  View,
-  StyleSheet,
-  ScrollView,
-  LayoutChangeEvent,
-} from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { Platform, Animated, Easing, StyleProp, ViewStyle, View, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -19,49 +9,37 @@ import FilterSwitch, { FilterSwitchProps } from 'ui/components/FilterSwitch'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from '../theme'
 
 interface AccordionItemProps {
-  scrollViewRef?: MutableRefObject<ScrollView | null>
   title: JSX.Element | string
   accessibilityTitle?: string
   children: JSX.Element | JSX.Element[]
   defaultOpen?: boolean
   onOpenOnce?: () => void
+  onOpen?: () => void
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
   switchProps?: FilterSwitchProps
 }
 
 export const AccordionItem = ({
-  scrollViewRef,
   title,
   children,
   defaultOpen = false,
   onOpenOnce,
+  onOpen,
   titleStyle,
   bodyStyle,
   switchProps,
 }: AccordionItemProps) => {
-  const { tabBarHeight, top } = useCustomSafeInsets()
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
-  const [bodyPositionY, setBodyPositionY] = useState<number>(0)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
   const openOnce = useFunctionOnce(onOpenOnce)
-  const onOpen = () => {
-    if (!!scrollViewRef && scrollViewRef !== null && scrollViewRef.current !== null) {
-      scrollViewRef.current.scrollTo({
-        x: 0,
-        y: bodyPositionY - (tabBarHeight + top),
-        animated: true,
-      })
-    }
-  }
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -90,15 +68,11 @@ export const AccordionItem = ({
 
   useEffect(() => {
     if (open) {
-      onOpen()
+      onOpen?.()
       onOpenOnce && openOnce()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
-
-  const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
-    setBodyPositionY(event.nativeEvent.layout.y)
-  }
 
   const accordionLabelId = uuidv4()
   const accordionBodyId = uuidv4()
@@ -115,7 +89,6 @@ export const AccordionItem = ({
         <StyledTouchableOpacity
           accessibilityRole={AccessibilityRole.BUTTON}
           onPress={toggleListItem}
-          onLayout={getPositionOfAccordionItem}
           accessibilityState={{ expanded: open }}
           aria-controls={accordionBodyId}>
           <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>

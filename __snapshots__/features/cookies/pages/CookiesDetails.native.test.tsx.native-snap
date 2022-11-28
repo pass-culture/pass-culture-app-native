@@ -33,7 +33,6 @@ Array [
         collapsable={false}
         focusable={true}
         onClick={[Function]}
-        onLayout={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -508,7 +507,6 @@ Array [
       collapsable={false}
       focusable={true}
       onClick={[Function]}
-      onLayout={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -851,7 +849,6 @@ Array [
       collapsable={false}
       focusable={true}
       onClick={[Function]}
-      onLayout={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1194,7 +1191,6 @@ Array [
       collapsable={false}
       focusable={true}
       onClick={[Function]}
-      onLayout={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1540,7 +1536,6 @@ Array [
       collapsable={false}
       focusable={true}
       onClick={[Function]}
-      onLayout={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}

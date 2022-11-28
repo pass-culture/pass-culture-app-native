@@ -1010,7 +1010,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               </Text>
                             </View>
                           </View>
-                          <View>
+                          <View
+                            onLayout={[Function]}
+                          >
                             <View
                               style={
                                 Array [
@@ -1042,7 +1044,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
-                                onLayout={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
                                 onResponderRelease={[Function]}
@@ -1201,7 +1202,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               </View>
                             </View>
                           </View>
-                          <View>
+                          <View
+                            onLayout={[Function]}
+                          >
                             <View
                               style={
                                 Array [
@@ -1233,7 +1236,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
-                                onLayout={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
                                 onResponderRelease={[Function]}
@@ -3556,7 +3558,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               />
                             </View>
                           </View>
-                          <View>
+                          <View
+                            onLayout={[Function]}
+                          >
                             <View
                               style={
                                 Array [
@@ -3588,7 +3592,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
-                                onLayout={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
                                 onResponderRelease={[Function]}
@@ -3747,7 +3750,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               </View>
                             </View>
                           </View>
-                          <View>
+                          <View
+                            onLayout={[Function]}
+                          >
                             <View
                               style={
                                 Array [
@@ -3779,7 +3784,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
-                                onLayout={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
                                 onResponderRelease={[Function]}

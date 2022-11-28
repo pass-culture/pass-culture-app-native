@@ -37,6 +37,7 @@ import { Hero } from 'ui/components/hero/Hero'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordionOpens'
 import { Flag as DefaultFlag } from 'ui/svg/icons/Flag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -51,6 +52,16 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
+
+  const {
+    getPositionOnLayout: setAccessibilityAccordionPosition,
+    ScrollTo: accessibilityScrollsTo,
+  } = useScrollWhenAccordionItemOpens(scrollViewRef)
+
+  const {
+    getPositionOnLayout: setWithdrawalDetailsAccordionPosition,
+    ScrollTo: withdrawalDetailsScrollsTo,
+  } = useScrollWhenAccordionItemOpens(scrollViewRef)
 
   const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
   const showReportOfferDescription = () => setIsReportOfferModalVisible(true)
@@ -173,10 +184,12 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         />
       </SectionWithDivider>
 
-      <SectionWithDivider visible={!!offer.withdrawalDetails && !!user?.isBeneficiary}>
+      <SectionWithDivider
+        visible={!!offer.withdrawalDetails && !!user?.isBeneficiary}
+        onLayout={setWithdrawalDetailsAccordionPosition}>
         <AccordionItem
           title="Modalités de retrait"
-          scrollViewRef={scrollViewRef}
+          onOpen={withdrawalDetailsScrollsTo}
           onOpenOnce={() => analytics.logConsultWithdrawal({ offerId: offer.id })}>
           <Typo.Body>
             {offer.withdrawalDetails && highlightLinks(offer.withdrawalDetails)}
@@ -184,10 +197,12 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         </AccordionItem>
       </SectionWithDivider>
 
-      <SectionWithDivider visible={shouldShowAccessibility}>
+      <SectionWithDivider
+        visible={shouldShowAccessibility}
+        onLayout={setAccessibilityAccordionPosition}>
         <AccordionItem
           title="Accessibilité"
-          scrollViewRef={scrollViewRef}
+          onOpen={accessibilityScrollsTo}
           onOpenOnce={() => analytics.logConsultAccessibility({ offerId: offer.id })}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>

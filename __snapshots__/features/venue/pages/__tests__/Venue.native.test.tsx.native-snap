@@ -3121,7 +3121,9 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
         </View>
       </View>
-      <View>
+      <View
+        onLayout={[Function]}
+      >
         <View
           style={
             Array [
@@ -3153,7 +3155,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             collapsable={false}
             focusable={true}
             onClick={[Function]}
-            onLayout={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -3312,7 +3313,9 @@ exports[`<Venue /> should match snapshot 1`] = `
           </View>
         </View>
       </View>
-      <View>
+      <View
+        onLayout={[Function]}
+      >
         <View
           style={
             Array [
@@ -3344,7 +3347,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             collapsable={false}
             focusable={true}
             onClick={[Function]}
-            onLayout={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -4029,7 +4031,9 @@ exports[`<Venue /> should match snapshot 1`] = `
           </View>
         </View>
       </View>
-      <View>
+      <View
+        onLayout={[Function]}
+      >
         <View
           style={
             Array [
@@ -4061,7 +4065,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             collapsable={false}
             focusable={true}
             onClick={[Function]}
-            onLayout={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
