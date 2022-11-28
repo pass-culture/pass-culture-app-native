@@ -2561,7 +2561,7 @@ Array [
           <View
             accessible={true}
             collapsable={false}
-            focusable={true}
+            focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -2581,43 +2581,84 @@ Array [
             }
           >
             <View
-              checked={false}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#696A6F",
-                    "borderRadius": 4,
-                    "borderStyle": "solid",
-                    "borderWidth": 2,
-                    "height": 24,
-                    "paddingLeft": 0,
-                    "paddingTop": 0,
-                    "width": 24,
-                  },
-                ]
+              accessibilityLabel="Conserver l’historique"
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
               }
-              testID="checkbox"
-            />
-            <Text
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "paddingBottom": 0,
-                    "paddingLeft": 16,
-                    "paddingRight": 32,
-                    "paddingTop": 0,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
               }
             >
-              Conserver l’historique
-            </Text>
+              <View
+                isChecked={false}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#696A6F",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 24,
+                      "justifyContent": "center",
+                      "width": 24,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "center",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "paddingLeft": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  htmlFor="testUuidV4"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Conserver l’historique
+                </Text>
+              </Text>
+            </View>
           </View>
         </View>
       </View>

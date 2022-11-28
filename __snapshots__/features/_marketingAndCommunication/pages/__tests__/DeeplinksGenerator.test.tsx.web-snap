@@ -265,7 +265,14 @@ Array [
       }
     }
   />,
-  .c0 {
+  .c2 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+}
+
+.c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3376,55 +3383,102 @@ Array [
             tabIndex="0"
           >
             <div
+              aria-checked={false}
+              aria-label="Conserver l’historique"
               className="css-view-1dbjc4n"
-              data-testid="checkbox"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="checkbox"
               style={
                 Object {
-                  "backgroundColor": "rgba(255,255,255,1.00)",
-                  "borderBottomColor": "rgba(105,106,111,1.00)",
-                  "borderBottomLeftRadius": "4px",
-                  "borderBottomRightRadius": "4px",
-                  "borderBottomStyle": "solid",
-                  "borderBottomWidth": "2px",
-                  "borderLeftColor": "rgba(105,106,111,1.00)",
-                  "borderLeftStyle": "solid",
-                  "borderLeftWidth": "2px",
-                  "borderRightColor": "rgba(105,106,111,1.00)",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "2px",
-                  "borderTopColor": "rgba(105,106,111,1.00)",
-                  "borderTopLeftRadius": "4px",
-                  "borderTopRightRadius": "4px",
-                  "borderTopStyle": "solid",
-                  "borderTopWidth": "2px",
-                  "height": "24px",
-                  "paddingLeft": "0px",
-                  "paddingTop": "0px",
-                  "width": "24px",
+                  "MozTransitionProperty": "opacity",
+                  "MozUserSelect": "auto",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexDirection": "row",
+                  "WebkitTransitionDuration": "0s",
+                  "WebkitTransitionProperty": "opacity",
+                  "WebkitUserSelect": "auto",
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msTouchAction": "manipulation",
+                  "msUserSelect": "auto",
+                  "touchAction": "manipulation",
+                  "transitionDuration": "0s",
+                  "transitionProperty": "opacity",
+                  "userSelect": "auto",
+                  "width": "100%",
                 }
               }
-            />
-            <div
-              className="css-text-901oao"
-              dir="ltr"
-              style={
-                Object {
-                  "WebkitAlignSelf": "center",
-                  "alignSelf": "center",
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                  "msFlexItemAlign": "center",
-                  "msGridRowAlign": "center",
-                  "paddingBottom": "0px",
-                  "paddingLeft": "16px",
-                  "paddingRight": "32px",
-                  "paddingTop": "0px",
-                }
-              }
+              tabIndex="0"
             >
-              Conserver l’historique
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxPack": "center",
+                    "WebkitJustifyContent": "center",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomColor": "rgba(105,106,111,1.00)",
+                    "borderBottomLeftRadius": "4px",
+                    "borderBottomRightRadius": "4px",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "2px",
+                    "borderLeftColor": "rgba(105,106,111,1.00)",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "2px",
+                    "borderRightColor": "rgba(105,106,111,1.00)",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "2px",
+                    "borderTopColor": "rgba(105,106,111,1.00)",
+                    "borderTopLeftRadius": "4px",
+                    "borderTopRightRadius": "4px",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "2px",
+                    "height": "24px",
+                    "justifyContent": "center",
+                    "msFlexAlign": "center",
+                    "msFlexPack": "center",
+                    "width": "24px",
+                  }
+                }
+              />
+              <div
+                className="css-text-901oao"
+                dir="ltr"
+                style={
+                  Object {
+                    "WebkitAlignSelf": "center",
+                    "alignSelf": "center",
+                    "color": "rgba(22,22,23,1.00)",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": "15px",
+                    "lineHeight": "20px",
+                    "msFlexItemAlign": "center",
+                    "msGridRowAlign": "center",
+                    "paddingLeft": "16px",
+                  }
+                }
+              >
+                <label
+                  className="c2"
+                  htmlFor="testUuidV4"
+                >
+                  Conserver l’historique
+                </label>
+              </div>
             </div>
           </div>
         </div>
