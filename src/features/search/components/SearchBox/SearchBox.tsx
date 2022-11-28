@@ -229,6 +229,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               showLocationButton={params === undefined || params.view === SearchView.Landing}
               locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
+              accessibilityDescribedBy={accessibilityDescribedBy}
             />
           </FlexView>
           {!!hasEditableSearchInput && (

@@ -173,6 +173,7 @@ Array [
                 />
                 <TextInput
                   accessible={true}
+                  aria-describedby="testUuidV4"
                   aria-hidden={false}
                   autoCorrect={false}
                   autoFocus={false}
