@@ -1,7 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { View } from 'react-native'
-import { StatusBar } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
