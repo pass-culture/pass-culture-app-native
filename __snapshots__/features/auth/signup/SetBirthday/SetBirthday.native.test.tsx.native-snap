@@ -2,7 +2,6 @@
 
 exports[`<SetBirthday /> should render correctly 1`] = `
 <View
-  accessibilityRole="none"
   style={
     Array [
       Object {

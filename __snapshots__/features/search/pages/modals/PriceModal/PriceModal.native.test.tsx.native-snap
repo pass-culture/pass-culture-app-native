@@ -350,7 +350,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             }
           />
           <View
-            accessibilityRole="none"
             style={
               Array [
                 Object {

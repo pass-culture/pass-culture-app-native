@@ -308,7 +308,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
         >
           <View>
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
@@ -1247,7 +1246,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
         >
           <View>
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {

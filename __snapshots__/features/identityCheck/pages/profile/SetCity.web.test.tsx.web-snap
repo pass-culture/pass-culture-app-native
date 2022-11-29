@@ -59,7 +59,7 @@ Object {
   align-items: center;
 }
 
-.c3 {
+.c4 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -92,44 +92,49 @@ Object {
   box-sizing: border-box;
 }
 
-.c3:disabled {
+.c4:disabled {
   cursor: initial;
   background: none;
 }
 
-.c3:focus-visible {
+.c4:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c3:active {
+.c4:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c3:hover {
+.c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c3:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4:disabled {
+.c5:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
+.c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+}
+
+.c2 {
+  width: 100%;
+  max-width: 500px;
 }
 
 <body>
@@ -230,9 +235,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="css-view-1dbjc4n"
-                  role="form"
-                  style="max-width: 500px; width: 100%;"
+                  class="c2"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -257,7 +260,7 @@ Object {
                     style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                   >
                     <label
-                      class="c2"
+                      class="c3"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -331,7 +334,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="c3 c4"
+                  class="c4 c5"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"
@@ -411,7 +414,7 @@ Object {
   align-items: center;
 }
 
-.c3 {
+.c4 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -444,44 +447,49 @@ Object {
   box-sizing: border-box;
 }
 
-.c3:disabled {
+.c4:disabled {
   cursor: initial;
   background: none;
 }
 
-.c3:focus-visible {
+.c4:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c3:active {
+.c4:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c3:hover {
+.c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c3:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4:disabled {
+.c5:disabled {
   background-color: #F1F1F4;
 }
 
-.c2 {
+.c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+}
+
+.c2 {
+  width: 100%;
+  max-width: 500px;
 }
 
 <div>
@@ -581,9 +589,7 @@ Object {
               style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
             >
               <form
-                class="css-view-1dbjc4n"
-                role="form"
-                style="max-width: 500px; width: 100%;"
+                class="c2"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -608,7 +614,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="c2"
+                    class="c3"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -682,7 +688,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l'étape suivante"
-                class="c3 c4"
+                class="c4 c5"
                 data-testid="Continuer vers l'étape suivante"
                 disabled=""
                 type="submit"

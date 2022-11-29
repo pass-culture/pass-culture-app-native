@@ -3,7 +3,7 @@
 exports[`<ChangeEmail/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": .c5 {
+  "baseElement": .c6 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -36,31 +36,31 @@ Object {
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:focus-visible {
+.c6:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c5:active {
+.c6:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c5:hover {
+.c6:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c5:hover:disabled {
+.c6:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -104,7 +104,7 @@ Object {
   text-decoration: none;
 }
 
-.c6:disabled {
+.c7:disabled {
   background-color: #F1F1F4;
 }
 
@@ -125,18 +125,26 @@ Object {
   align-items: center;
 }
 
-.c2 {
+.c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c3 {
+.c2 {
   width: 100%;
+  max-width: 500px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .c4 {
+  width: 100%;
+}
+
+.c5 {
   max-width: 60px;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
@@ -257,16 +265,14 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="css-view-1dbjc4n"
-              role="form"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+              class="c2"
             >
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c2 c3"
+                  class="c3 c4"
                   for="testUuidV4"
                 >
                   <div
@@ -331,7 +337,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="c2 c3"
+                  class="c3 c4"
                   for="testUuidV4"
                 >
                   <div
@@ -385,7 +391,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="c0 c4 sc-ikJyIC c4"
+                    class="c0 c5 sc-hiCibw c5"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     title="Afficher le mot de passe"
@@ -418,7 +424,7 @@ Object {
               >
                 <button
                   aria-label="Enregistrer les modifications"
-                  class="c5 c6"
+                  class="c6 c7"
                   data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
@@ -442,7 +448,7 @@ Object {
       </div>
     </div>
   </body>,
-  "container": .c5 {
+  "container": .c6 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -475,31 +481,31 @@ Object {
   box-sizing: border-box;
 }
 
-.c5:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c5:focus-visible {
+.c6:focus-visible {
   outline-color: #0066ff;
   outline-width: 2px;
   outline-style: solid;
   outline-offset: 2px;
 }
 
-.c5:active {
+.c6:active {
   outline: none;
   opacity: 0.7;
 }
 
-.c5:hover {
+.c6:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c5:hover:disabled {
+.c6:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -543,7 +549,7 @@ Object {
   text-decoration: none;
 }
 
-.c6:disabled {
+.c7:disabled {
   background-color: #F1F1F4;
 }
 
@@ -564,18 +570,26 @@ Object {
   align-items: center;
 }
 
-.c2 {
+.c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
 }
 
-.c3 {
+.c2 {
   width: 100%;
+  max-width: 500px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .c4 {
+  width: 100%;
+}
+
+.c5 {
   max-width: 60px;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
@@ -695,16 +709,14 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="css-view-1dbjc4n"
-            role="form"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+            class="c2"
           >
             <div
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c2 c3"
+                class="c3 c4"
                 for="testUuidV4"
               >
                 <div
@@ -769,7 +781,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="c2 c3"
+                class="c3 c4"
                 for="testUuidV4"
               >
                 <div
@@ -823,7 +835,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="c0 c4 sc-ikJyIC c4"
+                  class="c0 c5 sc-hiCibw c5"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   title="Afficher le mot de passe"
@@ -856,7 +868,7 @@ Object {
             >
               <button
                 aria-label="Enregistrer les modifications"
-                class="c5 c6"
+                class="c6 c7"
                 data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"

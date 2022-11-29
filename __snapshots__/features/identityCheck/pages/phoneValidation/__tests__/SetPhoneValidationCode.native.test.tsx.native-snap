@@ -308,7 +308,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
         >
           <View>
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
