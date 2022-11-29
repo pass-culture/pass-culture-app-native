@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { VenueResponse } from 'api/gen'
-import { VenueNotFound } from 'features/venue/pages/VenueNotFound'
+import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
 import { VenueNotFoundError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 

@@ -3,9 +3,8 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { Venue } from 'features/venue/pages/Venue/Venue'
 import { render, waitFor } from 'tests/utils'
-
-import { Venue } from '../Venue'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 

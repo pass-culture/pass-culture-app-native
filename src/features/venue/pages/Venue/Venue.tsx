@@ -3,12 +3,11 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
-
-import { useVenue } from '../api/useVenue'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()

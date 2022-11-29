@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueNotFound } from 'features/venue/pages/VenueNotFound'
+import { VenueNotFound } from 'features/venue/pages/VenueNotFound/VenueNotFound'
 import { render } from 'tests/utils'
 
 const resetErrorBoundary = () => null
