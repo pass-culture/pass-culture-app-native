@@ -35,12 +35,12 @@ describe('<BeneficiaryAccountCreated/>', () => {
   })
   it('should track Batch event when button is clicked', async () => {
     const { getByText } = renderBeneficiaryAccountCreated()
-    fireEvent.press(getByText('Je découvre les offres'))
+    fireEvent.press(getByText('C’est parti !'))
     expect(BatchUser.trackEvent).toBeCalledWith('has_validated_subscription')
   })
   it('should show beneficiary share app modal when button is clicked', async () => {
     const { getByText } = renderBeneficiaryAccountCreated()
-    fireEvent.press(getByText('Je découvre les offres'))
+    fireEvent.press(getByText('C’est parti !'))
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 })

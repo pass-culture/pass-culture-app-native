@@ -239,7 +239,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       ]
     }
   >
-    Tu as deux ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !
+    Tu as deux ans pour profiter de ton budget.
   </Text>
   <View
     numberOfSpaces={5}
@@ -261,7 +261,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
     }
   >
     <View
-      accessibilityLabel="Je découvre les offres"
+      accessibilityLabel="C’est parti !"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -290,7 +290,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           "width": "100%",
         }
       }
-      testID="Je découvre les offres"
+      testID="C’est parti !"
     >
       <Text
         adjustsFontSizeToFit={false}
@@ -308,7 +308,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           ]
         }
       >
-        Je découvre les offres
+        C’est parti !
       </Text>
     </View>
   </View>
@@ -566,7 +566,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       ]
     }
   >
-    Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !
+    Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.
   </Text>
   <View
     numberOfSpaces={5}
@@ -588,7 +588,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
     }
   >
     <View
-      accessibilityLabel="Je découvre les offres"
+      accessibilityLabel="C’est parti !"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -617,7 +617,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           "width": "100%",
         }
       }
-      testID="Je découvre les offres"
+      testID="C’est parti !"
     >
       <Text
         adjustsFontSizeToFit={false}
@@ -635,7 +635,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           ]
         }
       >
-        Je découvre les offres
+        C’est parti !
       </Text>
     </View>
   </View>

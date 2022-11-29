@@ -119,7 +119,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       ]
     }
   >
-    Tes réponses vont nous aider à mieux te connaître.
+    Tes réponses nous aideront à te proposer des offres qui pourraient te plaire !
   </Text>
   <View
     flex={1}
