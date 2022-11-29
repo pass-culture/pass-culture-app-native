@@ -15,6 +15,7 @@ import { AccordionItem } from 'ui/components/AccordionItem'
 import { ContactBlock } from 'ui/components/contact/ContactBlock'
 import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordionOpens'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -31,6 +32,17 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)
+
+  const {
+    getPositionOnLayout: setAccessibilityAccordionPosition,
+    ScrollTo: accessibilityScrollsTo,
+  } = useScrollWhenAccordionItemOpens(scrollViewRef)
+  const {
+    getPositionOnLayout: setWithdrawalDetailsAccordionPosition,
+    ScrollTo: withdrawalDetailsScrollsTo,
+  } = useScrollWhenAccordionItemOpens(scrollViewRef)
+  const { getPositionOnLayout: setContactAccordionPosition, ScrollTo: contactScrollsTo } =
+    useScrollWhenAccordionItemOpens(scrollViewRef)
 
   if (!venue) return <React.Fragment></React.Fragment>
 
@@ -121,28 +133,32 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       </SectionWithDivider>
 
       {/* Modalités de retrait */}
-      <SectionWithDivider visible={!!withdrawalDetails}>
+      <SectionWithDivider
+        visible={!!withdrawalDetails}
+        onLayout={setWithdrawalDetailsAccordionPosition}>
         <AccordionItem
           title="Modalités de retrait"
-          scrollViewRef={scrollViewRef}
+          onOpen={withdrawalDetailsScrollsTo}
           onOpenOnce={() => analytics.logConsultWithdrawal({ venueId })}>
           <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
         </AccordionItem>
       </SectionWithDivider>
 
       {/* Accessibilité */}
-      <SectionWithDivider visible={shouldShowAccessibility}>
+      <SectionWithDivider
+        visible={shouldShowAccessibility}
+        onLayout={setAccessibilityAccordionPosition}>
         <AccordionItem
           title="Accessibilité"
-          scrollViewRef={scrollViewRef}
+          onOpen={accessibilityScrollsTo}
           onOpenOnce={() => analytics.logConsultAccessibility({ venueId })}>
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>
 
       {/* Contact */}
-      <SectionWithDivider visible={shouldShowContact}>
-        <AccordionItem title="Contact" scrollViewRef={scrollViewRef}>
+      <SectionWithDivider visible={shouldShowContact} onLayout={setContactAccordionPosition}>
+        <AccordionItem title="Contact" onOpen={contactScrollsTo}>
           <ContactBlock venueId={venueId} />
         </AccordionItem>
       </SectionWithDivider>

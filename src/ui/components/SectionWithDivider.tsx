@@ -1,4 +1,5 @@
 import React from 'react'
+import { LayoutChangeEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
@@ -6,16 +7,22 @@ interface SectionProps {
   visible: boolean
   children: JSX.Element | JSX.Element[]
   margin?: boolean
+  onLayout?: (event: LayoutChangeEvent) => void
 }
 
-export const SectionWithDivider = ({ visible, children, margin = false }: SectionProps) => {
+export const SectionWithDivider = ({
+  visible,
+  children,
+  margin = false,
+  onLayout,
+}: SectionProps) => {
   if (!visible) return <React.Fragment></React.Fragment>
 
   return (
-    <React.Fragment>
+    <View onLayout={onLayout}>
       <Divider />
       {margin ? <MarginContainer>{children}</MarginContainer> : children}
-    </React.Fragment>
+    </View>
   )
 }
 
