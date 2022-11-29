@@ -120,7 +120,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
-    // We don't use mockReturnValueOnce because useAuthContext is called twice : for the first BusinnessModule render and when the link is pressed (shouldRedirect goes from false to true)
+    // We don't use mockReturnValueOnce because useAuthContext is called twice : for the first BusinessModule render and when the link is pressed (shouldRedirect goes from false to true)
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue({
       user: { email: 'email2@domain.ext', firstName: 'Jean' },
@@ -138,12 +138,16 @@ describe('BusinessModule component', () => {
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+    mockUseAuthContext.mockReset()
   })
 
   it('should not display a snackbar when user profile data is yet to be received but the email is not needed', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
+    // We don't use mockReturnValueOnce because useAuthContext is called twice : for the first BusinessModule render and when the link is pressed (shouldRedirect goes from false to true)
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue({
       user: undefined,
       isUserLoading: true,
+      isLoggedIn: false,
     })
 
     const { getByTestId } = renderModule({
@@ -154,6 +158,7 @@ describe('BusinessModule component', () => {
     fireEvent.press(getByTestId('imageBusiness'))
     await waitForExpect(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+    mockUseAuthContext.mockReset()
   })
 })
 
