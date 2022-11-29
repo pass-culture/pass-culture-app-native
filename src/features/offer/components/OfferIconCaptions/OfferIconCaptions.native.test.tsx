@@ -168,7 +168,7 @@ async function renderOfferIconCaptions({
   isDuo?: boolean
   isBeneficiary?: boolean
 }) {
-  mockUseAuthContext.mockReturnValue({
+  mockUseAuthContext.mockReturnValueOnce({
     isLoggedIn: true,
     user: { ...userProfileAPIResponse, isBeneficiary },
     isUserLoading: false,
