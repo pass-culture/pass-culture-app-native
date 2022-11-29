@@ -176,6 +176,31 @@ describe('<PriceModal/>', () => {
         screen: 'Search',
       })
     })
+
+    it('with only a minimum price', async () => {
+      const { getByPlaceholderText, getByText } = renderSearchPrice()
+
+      const minPriceInput = getByPlaceholderText('0')
+      await act(async () => {
+        fireEvent(minPriceInput, 'onChangeText', '1')
+      })
+
+      const searchButton = getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      const expectedSearchParams = {
+        ...mockSearchState,
+        view: SearchView.Results,
+        minPrice: '1',
+        maxPossiblePrice: '80',
+      }
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: expectedSearchParams,
+        screen: 'Search',
+      })
+    })
   })
 
   it('should log a search by price when pressing on search button with minimum and maximum prices entered and only free offers search toggle desactivated', async () => {

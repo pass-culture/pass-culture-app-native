@@ -100,7 +100,17 @@ export const PriceModal: FunctionComponent<Props> = ({
       additionalSearchState = { ...additionalSearchState, minPrice: values.minPrice }
     }
     if (values.maxPrice) {
-      additionalSearchState = { ...additionalSearchState, maxPrice: values.maxPrice }
+      additionalSearchState = {
+        ...additionalSearchState,
+        maxPrice: values.maxPrice,
+        maxPossiblePrice: undefined,
+      }
+    } else {
+      // Only the offers that can be reserved by the beneficiary user
+      additionalSearchState = {
+        ...additionalSearchState,
+        maxPossiblePrice: String(formatInitialCredit),
+      }
     }
 
     if (offerIsFree) {

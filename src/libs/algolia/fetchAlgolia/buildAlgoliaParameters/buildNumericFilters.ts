@@ -18,6 +18,7 @@ export const buildNumericFilters = ({
   timeRange,
   minPrice,
   maxPrice,
+  maxPossiblePrice,
 }: Pick<
   SearchParametersQuery,
   | 'beginningDatetime'
@@ -29,6 +30,7 @@ export const buildNumericFilters = ({
   | 'timeRange'
   | 'minPrice'
   | 'maxPrice'
+  | 'maxPossiblePrice'
 >): null | {
   numericFilters: FiltersArray
 } => {
@@ -37,6 +39,7 @@ export const buildNumericFilters = ({
     priceRange,
     minPrice,
     maxPrice,
+    maxPossiblePrice,
   })
   const datePredicate = buildDatePredicate({ date, timeRange })
   const newestOffersPredicate = buildNewestOffersPredicate(offerIsNew)
@@ -56,13 +59,16 @@ const buildOfferPriceRangePredicate = ({
   priceRange,
   minPrice,
   maxPrice,
-}: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice'>):
-  | FiltersArray[0]
-  | undefined => {
+  maxPossiblePrice,
+}: Pick<
+  SearchParametersQuery,
+  'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice' | 'maxPossiblePrice'
+>): FiltersArray[0] | undefined => {
   if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICES} = 0`]
 
   const formatMinPrice = getPriceAsNumber(minPrice) || 0
-  const formatMaxPrice = getPriceAsNumber(maxPrice) || MAX_PRICE
+  const formatMaxPrice =
+    getPriceAsNumber(maxPrice) || getPriceAsNumber(maxPossiblePrice) || MAX_PRICE
   const formatPriceRange: Range<number> = priceRange || [formatMinPrice, formatMaxPrice]
   if (formatPriceRange)
     return [`${FACETS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]

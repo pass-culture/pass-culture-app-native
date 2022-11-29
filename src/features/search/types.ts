@@ -49,6 +49,7 @@ export interface SearchState {
   minPrice?: string
   maxPrice?: string
   searchId?: string
+  maxPossiblePrice?: string
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']
