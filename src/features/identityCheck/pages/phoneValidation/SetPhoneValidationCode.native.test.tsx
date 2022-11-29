@@ -6,6 +6,7 @@ import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
+import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -154,6 +155,14 @@ describe('SetPhoneValidationCode', () => {
     fireEvent.press(button)
 
     expect(analytics.logHasClickedMissingCode).toHaveBeenCalledTimes(1)
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    renderSetPhoneValidationCode()
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_phone_validation_code')
+    )
   })
 })
 
