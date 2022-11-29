@@ -15,7 +15,7 @@ import { SuggestedPlace } from 'libs/place'
 import { SearchHit } from 'libs/search'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, act, superFlushWithAct } from 'tests/utils'
+import { fireEvent, render, act, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
 jest.mock('react-query')
@@ -79,11 +79,11 @@ describe('SearchResults component', () => {
 
   it('should render correctly', async () => {
     jest.useFakeTimers()
-    await superFlushWithAct()
     jest.advanceTimersByTime(2000)
-    expect(render(<SearchResults />)).toMatchSnapshot()
-    jest.useRealTimers()
-    await superFlushWithAct()
+
+    await waitFor(() => {
+      expect(render(<SearchResults />)).toMatchSnapshot()
+    })
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {
@@ -112,16 +112,16 @@ describe('SearchResults component', () => {
     mockHasNextPage = false
     const { getByTestId } = render(<SearchResults />)
     const flatlist = getByTestId('searchResultsFlatlist')
-    await act(async () => {
+    await waitFor(() => {
       flatlist.props.onEndReached()
     })
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
   })
 
   it('should display location filter button', async () => {
-    const { queryByTestId } = render(<SearchResults />)
-    await act(async () => {
-      expect(queryByTestId('locationButton')).toBeTruthy()
+    const { getByTestId } = render(<SearchResults />)
+    await waitFor(() => {
+      expect(getByTestId('locationButton')).toBeTruthy()
     })
   })
 
@@ -129,7 +129,7 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const categoryButton = getByTestId('categoryButton')
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.press(categoryButton)
     })
 
@@ -139,10 +139,10 @@ describe('SearchResults component', () => {
   })
 
   it('should display category filter button', async () => {
-    const { queryByTestId } = render(<SearchResults />)
+    const { getByTestId } = render(<SearchResults />)
 
-    await act(async () => {
-      expect(queryByTestId('categoryButton')).toBeTruthy()
+    await waitFor(() => {
+      expect(getByTestId('categoryButton')).toBeTruthy()
     })
   })
 
@@ -153,7 +153,7 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
 
     const categoryButtonIcon = getByTestId('categoryButtonIcon')
-    await act(async () => {
+    await waitFor(() => {
       expect(categoryButtonIcon).toBeTruthy()
     })
 
@@ -165,10 +165,10 @@ describe('SearchResults component', () => {
   })
 
   it('should display price filter button', async () => {
-    const { queryByTestId } = render(<SearchResults />)
+    const { getByTestId } = render(<SearchResults />)
 
-    await act(async () => {
-      expect(queryByTestId('priceButton')).toBeTruthy()
+    await waitFor(() => {
+      expect(getByTestId('priceButton')).toBeTruthy()
     })
   })
 
@@ -176,7 +176,7 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const priceButton = getByTestId('priceButton')
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.press(priceButton)
     })
 
@@ -192,7 +192,7 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
 
     const priceButtonIcon = getByTestId('priceButtonIcon')
-    await act(async () => {
+    await waitFor(() => {
       expect(priceButtonIcon).toBeTruthy()
     })
 
@@ -204,10 +204,10 @@ describe('SearchResults component', () => {
   })
 
   it('should display type filter button', async () => {
-    const { queryByTestId } = render(<SearchResults />)
+    const { getByTestId } = render(<SearchResults />)
 
-    await act(async () => {
-      expect(queryByTestId('typeButton')).toBeTruthy()
+    await waitFor(() => {
+      expect(getByTestId('typeButton')).toBeTruthy()
     })
   })
 
@@ -215,7 +215,7 @@ describe('SearchResults component', () => {
     const { getByTestId, queryByTestId } = render(<SearchResults />)
     const typeButton = getByTestId('typeButton')
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.press(typeButton)
     })
 
@@ -242,8 +242,8 @@ describe('SearchResults component', () => {
       })
       const { getByTestId } = render(<SearchResults />)
 
-      const typeButtonIcon = getByTestId('typeButtonIcon')
-      await act(async () => {
+      await waitFor(() => {
+        const typeButtonIcon = getByTestId('typeButtonIcon')
         expect(typeButtonIcon).toBeTruthy()
       })
 
@@ -258,7 +258,7 @@ describe('SearchResults component', () => {
   it('should not display geolocation incitation button when position is not null', async () => {
     const { queryByText } = render(<SearchResults />)
 
-    await act(async () => {
+    await waitFor(() => {
       expect(queryByText('Géolocalise-toi')).toBeFalsy()
     })
   })
@@ -277,7 +277,7 @@ describe('SearchResults component', () => {
       })
       const { queryByText } = render(<SearchResults />)
 
-      await act(async () => {
+      await waitFor(() => {
         expect(queryByText('Géolocalise-toi')).toBeFalsy()
       })
     }
@@ -287,7 +287,7 @@ describe('SearchResults component', () => {
     mockPosition = null
     const { queryByText } = render(<SearchResults />)
 
-    await act(async () => {
+    await waitFor(() => {
       expect(queryByText('Géolocalise-toi')).toBeFalsy()
     })
   })
@@ -317,7 +317,7 @@ describe('SearchResults component', () => {
 
       const { queryByText } = render(<SearchResults />)
 
-      await act(async () => {
+      await waitFor(() => {
         expect(queryByText(locationButtonLabel)).toBeTruthy()
       })
     }
@@ -325,7 +325,7 @@ describe('SearchResults component', () => {
 
   it('should display dates and hours filter button', async () => {
     const { queryByTestId } = render(<SearchResults />)
-    await act(async () => {
+    await waitFor(() => {
       expect(queryByTestId('datesHoursButton')).toBeTruthy()
     })
   })
@@ -334,7 +334,7 @@ describe('SearchResults component', () => {
     const { getByTestId } = render(<SearchResults />)
     const datesHoursButton = getByTestId('datesHoursButton')
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.press(datesHoursButton)
     })
 
@@ -356,7 +356,7 @@ describe('SearchResults component', () => {
       const { getByTestId } = render(<SearchResults />)
 
       const datesHoursButtonIcon = getByTestId('datesHoursButtonIcon')
-      await act(async () => {
+      await waitFor(() => {
         expect(datesHoursButtonIcon).toBeTruthy()
       })
 
@@ -374,7 +374,7 @@ describe('SearchResults component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     const { queryByText } = render(<SearchResults />)
 
-    await act(async () => {
+    await waitFor(() => {
       expect(queryByText('Géolocalise-toi')).toBeTruthy()
     })
   })
@@ -385,7 +385,7 @@ describe('SearchResults component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     const { getByText } = render(<SearchResults />)
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.press(getByText('Géolocalise-toi'))
     })
 
@@ -398,7 +398,7 @@ describe('SearchResults component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     const { getByText } = render(<SearchResults />)
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.press(getByText('Géolocalise-toi'))
     })
 

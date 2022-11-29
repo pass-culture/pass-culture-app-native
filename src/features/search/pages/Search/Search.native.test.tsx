@@ -12,7 +12,7 @@ import { SearchState, SearchView } from 'features/search/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, fireEvent, superFlushWithAct } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -90,15 +90,22 @@ jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-  it('should render Search', () => {
-    expect(render(<Search />)).toMatchSnapshot()
+  it('should render Search', async () => {
+    const search = render(<Search />)
+
+    await waitFor(() => {
+      expect(search).toMatchSnapshot()
+    })
   })
 
-  it('should handle coming from "See More" correctly', () => {
+  it('should handle coming from "See More" correctly', async () => {
     render(<Search />)
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: {},
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {},
+      })
     })
   })
 
@@ -106,7 +113,7 @@ describe('<Search/>', () => {
     it('should display offline page', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       const renderAPI = render(<Search />)
-      expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+      expect(renderAPI.getByText('Pas de réseau internet')).toBeTruthy()
     })
   })
 
@@ -115,12 +122,14 @@ describe('<Search/>', () => {
       useRoute.mockReturnValue({ params: { view: SearchView.Landing } })
     })
 
-    it('should display categories buttons', () => {
+    it('should display categories buttons', async () => {
       const { getByTestId } = render(<Search />, { wrapper: SearchWrapper })
 
       const categoriesButtons = getByTestId('categoriesButtons')
 
-      expect(categoriesButtons).toBeTruthy()
+      await waitFor(() => {
+        expect(categoriesButtons).toBeTruthy()
+      })
     })
 
     it('should show results for a category when pressing a category button', async () => {
@@ -128,12 +137,14 @@ describe('<Search/>', () => {
       jest
         .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
         .mockReturnValueOnce(mockShowResultsForCategory)
-      const { findByText } = render(<Search />)
+      const { getByText } = render(<Search />)
 
-      const categoryButton = await findByText('Spectacles')
-      await fireEvent.press(categoryButton)
+      const categoryButton = getByText('Spectacles')
 
-      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
+      await waitFor(() => {
+        fireEvent.press(categoryButton)
+        expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
+      })
     })
   })
 
@@ -143,31 +154,37 @@ describe('<Search/>', () => {
     })
 
     it('should show search results', async () => {
-      const { queryByTestId } = render(<Search />)
-      await superFlushWithAct()
-      expect(queryByTestId('searchResults')).toBeTruthy()
+      const { getByTestId } = render(<Search />)
+      await waitFor(() => {
+        expect(getByTestId('searchResults')).toBeTruthy()
+      })
     })
 
     it('should navigate to the search filter page when pressing the search filter button', async () => {
-      const { findByTestId } = render(<Search />)
+      const { getByTestId } = render(<Search />)
 
-      const searchFilterButton = await findByTestId('searchFilterButton')
-      await fireEvent.press(searchFilterButton)
+      const searchFilterButton = getByTestId('searchFilterButton')
+      fireEvent.press(searchFilterButton)
 
       const screen = 'SearchFilter'
       const params = undefined
-      expect(navigate).toHaveBeenCalledWith(screen, params)
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith(screen, params)
+      })
     })
 
     it('should reinitialize the filters from the current one', async () => {
-      const { findByTestId } = render(<Search />)
+      const { getByTestId } = render(<Search />)
 
-      const searchFilterButton = await findByTestId('searchFilterButton')
-      await fireEvent.press(searchFilterButton)
+      const searchFilterButton = getByTestId('searchFilterButton')
+      fireEvent.press(searchFilterButton)
 
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE_FROM_DEFAULT',
-        payload: mockSearchState,
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE_FROM_DEFAULT',
+          payload: mockSearchState,
+        })
       })
     })
   })
