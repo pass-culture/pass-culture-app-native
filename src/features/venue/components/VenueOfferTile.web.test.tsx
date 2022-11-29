@@ -2,12 +2,11 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
+import { VenueOfferTile } from 'features/venue/components/VenueOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
-
-import { VenueOfferTile } from '../VenueOfferTile'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
