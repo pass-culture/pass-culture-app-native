@@ -1,7 +1,7 @@
 import { CommonActions, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { CountryCode } from 'libphonenumber-js'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -37,6 +37,10 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 >
 
 export const SetPhoneValidationCode = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_phone_validation_code')
+  }, [])
+
   const { phoneValidation } = useSubscriptionContext()
   const formattedPhoneNumber = phoneValidation?.phoneNumber
     ? formatPhoneNumberForDisplay(

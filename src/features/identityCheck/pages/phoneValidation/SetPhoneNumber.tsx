@@ -36,6 +36,9 @@ import { Spacer, Typo } from 'ui/theme'
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_phone_number')
+  }, [])
   const titleID = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
   const [phoneNumber, setPhoneNumber] = useState(phoneValidation?.phoneNumber ?? '')
