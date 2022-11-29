@@ -2,12 +2,11 @@ import { Platform } from 'react-native'
 
 import { VenueResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { useVenue } from 'features/venue/api/useVenue'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { share, ShareContent } from 'libs/share'
-
-import { useVenue } from '../api/useVenue'
 
 export function getVenueUrl(id: number) {
   const path = getScreenPath('Venue', { id })

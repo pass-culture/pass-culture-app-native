@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useShareVenue } from 'features/venue/services/useShareVenue'
+import { useShareVenue } from 'features/venue/helpers/useShareVenue'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
