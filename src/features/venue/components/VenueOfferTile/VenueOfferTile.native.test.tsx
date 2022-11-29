@@ -2,13 +2,11 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
-import { VenueOfferTile } from 'features/venue/components/VenueOfferTile'
+import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils/web'
-
-jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+import { fireEvent, render } from 'tests/utils'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
@@ -35,14 +33,14 @@ describe('VenueOfferTile component', () => {
 
   it('should render correctly', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const renderAPI = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    expect(renderAPI).toMatchSnapshot()
+    const { toJSON } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
+    expect(toJSON()).toMatchSnapshot()
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    await fireEvent.click(getByTestId('categoryImageCaption'))
+    await fireEvent.press(getByTestId('tileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'venue',
@@ -52,7 +50,7 @@ describe('VenueOfferTile component', () => {
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    fireEvent.click(getByTestId('categoryImageCaption'))
+    fireEvent.press(getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId,
       from: 'venue',
@@ -63,7 +61,7 @@ describe('VenueOfferTile component', () => {
   it('should prepopulate react-query cache when clicking on offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    fireEvent.click(getByTestId('categoryImageCaption'))
+    fireEvent.press(getByTestId('tileImage'))
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)
@@ -78,7 +76,6 @@ describe('VenueOfferTile component', () => {
       isDigital: false,
       isDuo: false,
       isReleased: true,
-      isEducational: false,
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
@@ -86,6 +83,7 @@ describe('VenueOfferTile component', () => {
       stocks: [],
       subcategoryId: offer.subcategoryId,
       venue: { coordinates: {} },
+      isEducational: false,
     })
   })
 })

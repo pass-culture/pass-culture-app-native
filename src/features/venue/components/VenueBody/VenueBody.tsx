@@ -2,9 +2,11 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
-import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions'
-import { VenueOffers } from 'features/venue/components/VenueOffers'
+import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
+import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
+import { VenuePartialAccordionDescription } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/firebase/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
@@ -19,9 +21,6 @@ import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordion
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-import { useVenue } from '../api/useVenue'
-import { VenuePartialAccordionDescription } from '../components/VenuePartialAccordionDescription'
 
 interface Props {
   venueId: number

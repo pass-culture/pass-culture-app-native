@@ -1,13 +1,12 @@
 import React from 'react'
 
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { act, fireEvent, render } from 'tests/utils'
-
 import {
   ANIMATION_DURATION,
-  VenuePartialAccordionDescription,
   PARTIAL_DESCRIPTION_HEIGHT,
-} from '../VenuePartialAccordionDescription'
+  VenuePartialAccordionDescription,
+} from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
+import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { act, fireEvent, render } from 'tests/utils'
 
 const description = venueResponseSnap.description || ''
 let MOCK_TOTAL_DESCRIPTION_HEIGHT = PARTIAL_DESCRIPTION_HEIGHT * 2

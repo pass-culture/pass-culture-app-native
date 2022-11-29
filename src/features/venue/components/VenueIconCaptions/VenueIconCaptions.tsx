@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
-import { VenueType } from 'features/venue/atoms/VenueType'
+import { VenueType } from 'features/venue/components/VenueType/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { VenueTypeCode } from 'libs/parsers'

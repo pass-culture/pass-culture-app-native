@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
+import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { parseType } from 'libs/parsers'
-import { fireEvent, render } from 'tests/utils/web'
-
-import { VenueIconCaptions } from '../VenueIconCaptions'
+import { fireEvent, render } from 'tests/utils'
 
 const typeLabel = parseType(VenueTypeCodeKey.MOVIE)
 const typeLabelNull = parseType(null)
@@ -28,15 +27,10 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
-
 describe('<VenueIconCaptions />', () => {
   it('should change accessibilityLabel when geolocation is active or not', async () => {
     mockDistance = '10 km'
-    const { queryByLabelText, queryByText, rerender } = render(
+    const { queryByLabelText, rerender } = render(
       <VenueIconCaptions
         label={typeLabel}
         type={VenueTypeCodeKey.MOVIE}
@@ -44,7 +38,7 @@ describe('<VenueIconCaptions />', () => {
       />
     )
     expect(queryByLabelText('Distance depuis la localisation')).toBeTruthy()
-    expect(queryByLabelText('Géolocalisation désactivée')).toBeFalsy()
+    expect(queryByLabelText('Activer la localisation')).toBeNull()
 
     mockDistance = null
     rerender(
@@ -54,8 +48,8 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
-    expect(queryByLabelText('Distance depuis la localisation')).toBeFalsy()
+    expect(queryByLabelText('Géolocalisation désactivée')).toBeTruthy()
+    expect(queryByLabelText('Distance depuis la localisation')).toBeNull()
   })
 
   it('should display a default label "Autre type de lieu" for venue type if type is null', async () => {
@@ -101,7 +95,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByText('10 km')).toBeFalsy()
+    expect(queryByText('10 km')).toBeNull()
     expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
   })
 
@@ -115,7 +109,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    fireEvent.click(getByTestId('iconLocation'))
+    fireEvent.press(getByTestId('iconLocation'))
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
 })

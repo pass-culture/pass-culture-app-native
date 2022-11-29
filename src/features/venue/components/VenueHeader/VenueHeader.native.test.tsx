@@ -3,13 +3,12 @@ import { Animated, Share, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { getVenueUrl } from 'features/venue/services/useShareVenue'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
-
-import { VenueHeader } from '../VenueHeader'
 
 jest.mock('features/venue/api/useVenue')
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { VenueBody } from 'features/venue/pages/VenueBody'
 import { analytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render } from 'tests/utils'
 

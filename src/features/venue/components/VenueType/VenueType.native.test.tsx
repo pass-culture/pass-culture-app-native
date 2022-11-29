@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { VenueType } from 'features/venue/components/VenueType'
+import { VenueType } from 'features/venue/components/VenueType/VenueType'
 import { parseType } from 'libs/parsers'
 import { render } from 'tests/utils'
 

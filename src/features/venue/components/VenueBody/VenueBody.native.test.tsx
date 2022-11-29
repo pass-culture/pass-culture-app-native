@@ -6,13 +6,12 @@ import { mocked } from 'ts-jest/utils'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse } from 'api/gen'
 import { useVenue } from 'features/venue/api/useVenue'
+import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import {
   venueWithNoAddressResponseSnap,
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
-import { render, waitFor } from 'tests/utils/web'
-
-import { VenueBody } from '../VenueBody'
+import { render, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -20,15 +19,9 @@ jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')
-jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 const mockedUseVenue = mocked(useVenue)
 
 const venueId = venueResponseSnap.id
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
 
 describe('<VenueBody />', () => {
   it('should render correctly', async () => {
@@ -50,7 +43,7 @@ describe('<VenueBody />', () => {
 
   it('should not show venue banner in where section', async () => {
     const venue = await renderVenueBody(venueId)
-    expect(venue.queryByTestId('VenueBannerComponent')).toBeFalsy()
+    expect(venue.queryByTestId('VenueBannerComponent')).toBeNull()
   })
 
   it('should show withdrawalDetails', async () => {
@@ -63,7 +56,7 @@ describe('<VenueBody />', () => {
       data: { ...venueResponseSnap, withdrawalDetails: null },
     } as UseQueryResult<VenueResponse>)
     const venue = await renderVenueBody(venueId)
-    expect(venue.queryByText('Modalités de retrait')).toBeFalsy()
+    expect(venue.queryByText('Modalités de retrait')).toBeNull()
   })
 })
 
