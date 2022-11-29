@@ -94,8 +94,6 @@ describe('<Search/>', () => {
           rules: {
             // TODO(PC-18902)
             'duplicate-id-aria': { enabled: false },
-            // TODO(PC-18889)
-            'aria-allowed-role': { enabled: false },
           },
         })
         expect(results).toHaveNoViolations()

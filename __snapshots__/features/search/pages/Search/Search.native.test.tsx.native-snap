@@ -2,7 +2,6 @@
 
 exports[`<Search/> should render Search 1`] = `
 <View
-  accessibilityRole="none"
   style={
     Array [
       Object {

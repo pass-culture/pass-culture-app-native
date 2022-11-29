@@ -350,7 +350,6 @@ exports[`<LocationModal/> should render modal correctly after animation and with
             }
           >
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {

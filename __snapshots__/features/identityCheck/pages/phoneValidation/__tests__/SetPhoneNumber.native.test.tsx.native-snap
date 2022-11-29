@@ -308,7 +308,6 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
         >
           <View>
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
@@ -1138,7 +1137,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
         >
           <View>
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {

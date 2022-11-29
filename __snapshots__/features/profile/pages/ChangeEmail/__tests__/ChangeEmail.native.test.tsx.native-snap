@@ -325,7 +325,6 @@ Array [
         }
       >
         <View
-          accessibilityRole="none"
           flex={1}
           style={
             Array [
@@ -1019,7 +1018,6 @@ Array [
         }
       >
         <View
-          accessibilityRole="none"
           flex={1}
           style={
             Array [

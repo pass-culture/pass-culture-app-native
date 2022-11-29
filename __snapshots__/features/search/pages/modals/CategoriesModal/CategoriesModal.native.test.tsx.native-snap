@@ -340,7 +340,6 @@ exports[`<CategoriesModal/> should render correctly 1`] = `
       >
         <View>
           <View
-            accessibilityRole="none"
             style={
               Array [
                 Object {

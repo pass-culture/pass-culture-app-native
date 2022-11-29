@@ -349,7 +349,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
             }
           >
             <View
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
