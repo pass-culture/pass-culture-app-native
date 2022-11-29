@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
+import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
@@ -81,6 +82,13 @@ describe('SetPhoneNumber', () => {
     expect(SetPhoneNumberPage).toMatchSnapshot()
   })
 
+  it('should send a amplitude event when the screen is mounted', async () => {
+    renderSetPhoneNumber()
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_phone_number')
+    )
+  })
   describe('continue button', () => {
     const mockFetch = jest.spyOn(global, 'fetch')
     mockFetch.mockResolvedValue(
