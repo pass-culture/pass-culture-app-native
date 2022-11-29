@@ -98,9 +98,16 @@ describe('hasEnoughCredit', () => {
 describe('useHasEnoughCredit', () => {
   it('should return false if no offer nor user found', () => {
     mockedOffer = undefined
+    const { result } = renderHook(() => useHasEnoughCredit(10))
+
+    expect(result.current).toBeFalsy()
+  })
+
+  it('should return false if the user does not have domainsCredit', () => {
+    mockedOffer = mockOffer
     mockUseAuthContext.mockReturnValueOnce({
-      user: undefined,
-      isLoggedIn: false,
+      user: { ...beneficiaryUser, domainsCredit: { all: { initial: 0, remaining: 2300 } } },
+      isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
       isUserLoading: false,
       refetchUser: jest.fn(),
@@ -110,16 +117,9 @@ describe('useHasEnoughCredit', () => {
     expect(result.current).toBeFalsy()
   })
 
-  it('should return false if the user does not have domainsCredit', () => {
-    mockedOffer = mockOffer
-    const { result } = renderHook(() => useHasEnoughCredit(10))
-
-    expect(result.current).toBeFalsy()
-  })
-
   it('should return false if the user does not have enough credit for the offer', () => {
     mockUseAuthContext.mockReturnValueOnce({
-      user: { ...beneficiaryUser, domainsCredit: { all: { initial: 30000, remaining: 2300 } } },
+      user: { ...beneficiaryUser, domainsCredit: null },
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
       isUserLoading: false,
