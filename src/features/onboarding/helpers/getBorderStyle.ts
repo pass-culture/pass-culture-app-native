@@ -7,10 +7,10 @@ const EDGE_BLOCK_BORDER_RADIUS = getSpacing(2)
 export const getBorderStyle = (
   theme: DefaultTheme,
   status: CreditStatus,
-  position?: 'top' | 'bottom'
+  roundedBorders?: 'top' | 'bottom'
 ) => {
-  const topRadius = position === 'top' ? EDGE_BLOCK_BORDER_RADIUS : undefined
-  const bottomRadius = position === 'bottom' ? EDGE_BLOCK_BORDER_RADIUS : undefined
+  const topRadius = roundedBorders === 'top' ? EDGE_BLOCK_BORDER_RADIUS : undefined
+  const bottomRadius = roundedBorders === 'bottom' ? EDGE_BLOCK_BORDER_RADIUS : undefined
   return {
     borderColor:
       status === CreditStatus.ONGOING ? theme.colors.greySemiDark : theme.colors.transparent,

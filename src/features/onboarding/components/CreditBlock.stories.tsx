@@ -15,11 +15,11 @@ export default {
 const Template: ComponentStory<typeof CreditBlock> = (props) => <CreditBlock {...props} />
 const List: ComponentStory<typeof CreditBlock> = (props) => (
   <ListContainer>
-    <CreditBlock {...props} position="top" creditStatus={CreditStatus.GONE} />
+    <CreditBlock {...props} roundedBorders="top" creditStatus={CreditStatus.GONE} />
     <Spacer.Column numberOfSpaces={0.5} />
     <CreditBlock {...props} />
     <Spacer.Column numberOfSpaces={0.5} />
-    <CreditBlock {...props} position="bottom" creditStatus={CreditStatus.COMING} />
+    <CreditBlock {...props} roundedBorders="bottom" creditStatus={CreditStatus.COMING} />
   </ListContainer>
 )
 
@@ -34,7 +34,7 @@ const eighteenYearOldProps = {
   title: '300\u00a0€',
   subtitle: 'à 18 ans',
   description: 'Tu auras 2 ans pour utiliser tes 300\u00a0€',
-  position: undefined,
+  roundedBorders: undefined,
   creditStatus: CreditStatus.ONGOING,
 }
 
@@ -42,7 +42,7 @@ const underageProps = {
   underage: true,
   title: '20\u00a0€',
   subtitle: 'à 15 ans',
-  position: undefined,
+  roundedBorders: undefined,
   creditStatus: CreditStatus.ONGOING,
 }
 

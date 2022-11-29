@@ -16,7 +16,7 @@ type Props = {
   subtitle: string
   description: string
   underage: boolean
-  position?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
+  roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
   creditStatus: CreditStatus
 }
 
@@ -25,7 +25,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
   subtitle,
   description,
   underage,
-  position,
+  roundedBorders,
   creditStatus,
 }) => {
   const TitleText = getTitleComponent(underage, creditStatus)
@@ -33,7 +33,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
   const Icon = creditStatus === CreditStatus.ONGOING ? BicolorUnlock : StyledLock
 
   return (
-    <Container position={position} status={creditStatus}>
+    <Container roundedBorders={roundedBorders} status={creditStatus}>
       <IconContainer>
         <Icon status={creditStatus} />
       </IconContainer>
@@ -67,9 +67,9 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
 
 const ONGOING_WIDTH = '102.5%'
 const ONGOING_HEIGHT = '102.5%'
-const Container = styled.View<{ status: CreditStatus; position?: Props['position'] }>(
-  ({ theme, status, position }) => ({
-    ...getBorderStyle(theme, status, position),
+const Container = styled.View<{ status: CreditStatus; roundedBorders?: Props['roundedBorders'] }>(
+  ({ theme, status, roundedBorders }) => ({
+    ...getBorderStyle(theme, status, roundedBorders),
     backgroundColor: getBackgroundColor(theme, status),
     padding: getSpacing(4),
     flexDirection: 'row',

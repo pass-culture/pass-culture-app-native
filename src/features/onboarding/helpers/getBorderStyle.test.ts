@@ -25,13 +25,13 @@ describe('getBorderStyle', () => {
   })
 
   it.each<'top' | 'bottom'>(['top', 'bottom'])(
-    'should round %s corners when position is %s',
-    (position) => {
-      const capitalizedPosition = position[0].toUpperCase() + position.slice(1)
+    'should round %s corners when roundedBorders is %s',
+    (roundedBorders) => {
+      const capitalizedroundedBorders = roundedBorders[0].toUpperCase() + roundedBorders.slice(1)
 
-      expect(getBorderStyle(theme, CreditStatus.GONE, position)).toMatchObject({
-        [`border${capitalizedPosition}LeftRadius`]: EDGE_BLOCK_BORDER_RADIUS,
-        [`border${capitalizedPosition}RightRadius`]: EDGE_BLOCK_BORDER_RADIUS,
+      expect(getBorderStyle(theme, CreditStatus.GONE, roundedBorders)).toMatchObject({
+        [`border${capitalizedroundedBorders}LeftRadius`]: EDGE_BLOCK_BORDER_RADIUS,
+        [`border${capitalizedroundedBorders}RightRadius`]: EDGE_BLOCK_BORDER_RADIUS,
       })
     }
   )
