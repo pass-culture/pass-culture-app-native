@@ -1,11 +1,10 @@
 import React, { ReactNode, useMemo, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useStatusBarWhite } from 'libs/hooks/useStatusBarWhite'
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -34,8 +33,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
-  useStatusBarWhite()
-
   const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   const StyledIcon =
@@ -61,7 +58,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
-      <Background />
+      <BackgroundWithDefaultStatusBar />
       <Content>
         <Spacer.TopScreen />
         {!!isTouch && (

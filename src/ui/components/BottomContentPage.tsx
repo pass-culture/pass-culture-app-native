@@ -3,9 +3,8 @@ import { Keyboard, View, KeyboardAvoidingView, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { useStatusBarWhite } from 'libs/hooks/useStatusBarWhite'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
 const getCorrectPadding = (keyboardHeight: number) => {
@@ -26,8 +25,6 @@ interface Props {
 }
 
 export const BottomContentPage: FC<Props> = (props) => {
-  useStatusBarWhite()
-
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useKeyboardEvents({
     onBeforeShow(data) {
@@ -116,7 +113,7 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
 }))
 
 const SCALE_HEIGHT_RATIO = 1.75
-const BottomContentPageBackground = styled(Background).attrs(
+const BottomContentPageBackground = styled(BackgroundWithWhiteStatusBar).attrs(
   ({ theme: { showTabBar, contentPage } }) => ({
     height: showTabBar
       ? undefined

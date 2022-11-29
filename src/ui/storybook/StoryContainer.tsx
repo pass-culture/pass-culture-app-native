@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { getSpacing, Typo } from 'ui/theme'
 
 type WithBackgroundProps = {
@@ -21,7 +21,7 @@ export const StoryContainer: FunctionComponent<Props> = ({
   <Container>
     {!!title && <Typo.Body>{title}</Typo.Body>}
     <ChildrenContainer withBackground={withBackground}>
-      {!!withBackground && <Background />}
+      {!!withBackground && <BackgroundWithDefaultStatusBar />}
       {children}
     </ChildrenContainer>
     {!!withBackground && <StyledCaption>{CaptionInformation}</StyledCaption>}

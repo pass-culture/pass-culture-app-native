@@ -16,20 +16,17 @@ import { getStepState } from 'features/identityCheck/utils/getStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
-import { useStatusBarWhite } from 'libs/hooks/useStatusBarWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const IdentityCheckStepper = () => {
-  useStatusBarWhite()
-
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -99,7 +96,7 @@ export const IdentityCheckStepper = () => {
   return (
     <React.Fragment>
       <CenteredContainer>
-        <Background />
+        <BackgroundWithWhiteStatusBar />
         <Container>
           <Spacer.TopScreen />
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}

@@ -2,7 +2,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import { useCallback } from 'react'
 import { StatusBar } from 'react-native'
 
-export const useStatusBarWhite = () => {
+export const useWhiteStatusBar = () => {
   return useFocusEffect(
     useCallback(() => {
       StatusBar.setBarStyle('light-content', true)
