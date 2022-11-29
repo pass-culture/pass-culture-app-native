@@ -2,13 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/onboarding/helpers/getTagColor'
+import { CreditStatus } from 'features/onboarding/types'
 import { getSpacing, Typo } from 'ui/theme'
-
-export enum CreditStatus {
-  GONE = 'passé',
-  ONGOING = 'cette année',
-  COMING = 'à venir',
-}
 
 interface Props {
   status: CreditStatus

@@ -1,15 +1,15 @@
+import colorAlpha from 'color-alpha'
 import { DefaultTheme } from 'styled-components/native'
 
 import { CreditStatus } from 'features/onboarding/types'
 
-export const getTagColor = (theme: DefaultTheme, status: CreditStatus) => {
+export const getBackgroundColor = (theme: DefaultTheme, status: CreditStatus) => {
   switch (status) {
     case CreditStatus.GONE:
-      return theme.colors.white
-    case CreditStatus.ONGOING:
-      return theme.colors.greenValid
+      return colorAlpha(theme.colors.greyLight, 0.5)
     case CreditStatus.COMING:
-      return theme.colors.secondary
+      return theme.colors.greyLight
+    case CreditStatus.ONGOING:
     default:
       return theme.colors.white
   }

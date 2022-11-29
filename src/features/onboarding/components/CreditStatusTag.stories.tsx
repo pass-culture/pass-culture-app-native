@@ -1,7 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { CreditStatus, CreditStatusTag } from './CreditStatusTag'
+import { CreditStatus } from 'features/onboarding/types'
+
+import { CreditStatusTag } from './CreditStatusTag'
 
 export default {
   title: 'features/onboarding/CreditStatusTag',
