@@ -15,11 +15,7 @@ jest.mock('features/auth/AuthContext')
 
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
-    mockedUseAuthContext.mockReturnValueOnce({
-      user: { isBeneficiary: false },
-      isLoggedIn: false,
-    })
-    const { queryByText } = renderHeader({ isLoggedIn: false })
+    const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeFalsy()
@@ -28,11 +24,7 @@ describe('Header', () => {
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
-    mockedUseAuthContext.mockReturnValueOnce({
-      user: { isBeneficiary: false },
-      isLoggedIn: false,
-    })
-    const { queryByText } = renderHeader({ isLoggedIn: true })
+    const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeFalsy()
@@ -41,11 +33,7 @@ describe('Header', () => {
   })
 
   it('should render Header for beneficiary and logged in users', () => {
-    mockedUseAuthContext.mockReturnValueOnce({
-      user: { isBeneficiary: true },
-      isLoggedIn: true,
-    })
-    const { queryByText } = renderHeader({ isLoggedIn: true })
+    const { queryByText } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
     expect(queryByText('Accueil')).toBeTruthy()
     expect(queryByText('Recherche')).toBeTruthy()
     expect(queryByText('Réservations')).toBeTruthy()
@@ -54,11 +42,7 @@ describe('Header', () => {
   })
 
   it('should identify one tab as current page', () => {
-    mockedUseAuthContext.mockReturnValueOnce({
-      user: { isBeneficiary: true },
-      isLoggedIn: true,
-    })
-    const { getByTestId } = renderHeader({ isLoggedIn: true })
+    const { getByTestId } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
     expect(getByTestId('Home tab')?.getAttribute('aria-current')).toEqual('page')
     expect(getByTestId('Search tab')?.getAttribute('aria-current')).toBeNull()
     expect(getByTestId('Bookings tab')?.getAttribute('aria-current')).toBeNull()
@@ -67,8 +51,17 @@ describe('Header', () => {
   })
 })
 
-function renderHeader({ isLoggedIn }: { isLoggedIn: boolean }) {
-  mockedUseAuthContext.mockReturnValue({ isLoggedIn, user: { isBeneficiary: true } })
+function renderHeader({
+  isLoggedIn,
+  isBeneficiary,
+}: {
+  isLoggedIn: boolean
+  isBeneficiary: boolean
+}) {
+  mockedUseAuthContext.mockReturnValueOnce({
+    isLoggedIn,
+    user: { isBeneficiary },
+  })
 
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
