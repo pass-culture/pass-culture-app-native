@@ -91,6 +91,7 @@ export const screenParamsParser: ParamsParsers = {
     minPrice: JSON.parse,
     maxPrice: JSON.parse,
     searchId: JSON.parse,
+    maxPossiblePrice: JSON.parse,
   },
   LocationFilter: {
     selectedVenue: JSON.parse,
@@ -158,6 +159,7 @@ export const screenParamsStringifier: ParamsStringifiers = {
     minPrice: JSON.stringify,
     maxPrice: JSON.stringify,
     searchId: JSON.stringify,
+    maxPossiblePrice: JSON.stringify,
   },
   LocationFilter: {
     selectedVenue: JSON.stringify,
