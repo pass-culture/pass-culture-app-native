@@ -49,10 +49,10 @@ commands:
         default: GCP_APP_NATIVE_SERVICE_ACCOUNT
       gcp_cred_config_file_path:
         type: string
-        default: /home/circleci/gcp_cred_config.json
+        default: /tmp/gcp_cred_config.json
       oidc_token_file_path:
         type: string
-        default: /home/circleci/oidc_token.json
+        default: /tmp/oidc_token.json
     steps:
       - run:
           name: Login using OpenID Connect
