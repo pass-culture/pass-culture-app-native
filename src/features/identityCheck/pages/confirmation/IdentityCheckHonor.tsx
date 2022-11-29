@@ -62,7 +62,7 @@ export const IdentityCheckHonor = () => {
   })
 
   // If the mutation is loading or is a success, we don't want the user to trigger the button again
-  const isSubmitButtonLoading = isPostingHonorLoading || isPostingHonorSuccess
+  const isSubmitButtonEnabled = isPostingHonorLoading || isPostingHonorSuccess
   useEnterKeyAction(() => postHonorStatement())
 
   return (
@@ -86,7 +86,7 @@ export const IdentityCheckHonor = () => {
               type="submit"
               onPress={postHonorStatement}
               wording="Valider et continuer"
-              isLoading={isSubmitButtonLoading}
+              isLoading={isSubmitButtonEnabled}
             />
           </ButtonContainer>
           <Spacer.BottomScreen />
