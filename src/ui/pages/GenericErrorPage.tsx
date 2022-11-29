@@ -1,6 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { ReactNode, FunctionComponent, useCallback } from 'react'
-import { StatusBar } from 'react-native'
+import React, { ReactNode, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
@@ -27,14 +25,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttons,
   noBackground,
 }) => {
-  // TODO(LucasBeneston): use useStatusBarWhite with props noBackground
-  useFocusEffect(
-    useCallback(() => {
-      StatusBar.setBarStyle(noBackground ? 'dark-content' : 'light-content', true)
-      return () => StatusBar.setBarStyle(noBackground ? 'light-content' : 'dark-content', true)
-    }, [noBackground])
-  )
-
   const { isTouch } = useTheme()
   const Icon =
     !!icon &&
