@@ -10,11 +10,7 @@ const position = {
   longitude: 22,
 }
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: { firstName: 'Christophe', lastName: 'Dupont', id: mockUserId },
-  })),
-}))
+jest.mock('features/auth/AuthContext')
 
 describe('useSimilarOffers', () => {
   const algoliaSpy = jest

@@ -6,18 +6,7 @@ import { PriceModal } from './PriceModal'
 
 jest.mock('react-query')
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: {
-      isBeneficiary: true,
-      domainsCredit: { all: { initial: 8000, remaining: 7000 } },
-    },
-  })),
-}))
-
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/AuthContext')
 
 describe('<PriceModal/>', () => {
   it('should display mobile header modal if mobile viewport', async () => {

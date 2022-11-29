@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
 import { Coordinates } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 
@@ -18,7 +18,7 @@ export const getSimilarOffersEndpoint = (
 }
 
 export const useSimilarOffers = (offerId: number, position?: Coordinates) => {
-  const { data: profile } = useUserProfileInfo()
+  const { user: profile } = useAuthContext()
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position) as string
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
 
