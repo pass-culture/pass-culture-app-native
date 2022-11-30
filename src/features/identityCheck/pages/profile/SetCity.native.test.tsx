@@ -3,6 +3,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
+import { amplitude } from 'libs/amplitude'
 import { CITIES_API_URL } from 'libs/place'
 import * as fetchCities from 'libs/place/fetchCities'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
@@ -94,6 +95,14 @@ describe('<SetCity/>', () => {
         },
       })
     })
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    renderSetCity()
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_city')
+    )
   })
 })
 

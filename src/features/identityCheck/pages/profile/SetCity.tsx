@@ -12,6 +12,7 @@ import { IdentityCheckError } from 'features/identityCheck/errors'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { amplitude } from 'libs/amplitude'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
@@ -42,6 +43,10 @@ export const SetCity = () => {
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
   const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city || null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_city')
+  }, [])
 
   const postalCodeInputErrorId = uuidv4()
 

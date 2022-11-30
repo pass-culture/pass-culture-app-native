@@ -12,6 +12,7 @@ import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/uti
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -35,6 +36,10 @@ export const SetStatus = () => {
       selectedStatus: profile.status || null,
     },
   })
+
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_status')
+  }, [])
 
   const selectedStatus = watch('selectedStatus')
 
