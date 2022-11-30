@@ -2,14 +2,21 @@ import config from './wdio.shared.local.appium.conf'
 import { env } from './environment/env'
 import { demo } from './wdio-demo.conf'
 
-const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/app*.spec.ts']
+const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/*.spec.ts']
 const appiumApp = env.WDIO_DEMO ? demo.android.capabilities['appium:app'] : env.APPIUM_APP
+
+const ciCapability = {
+  'appium:androidInstallTimeout': '90000',
+  'appium:adbExecTimeout': '50000',
+  'appium:androidDeviceReadyTimeout': '30',
+}
 
 const capabilityPackage = {
   'appium:app': env.WDIO_DEMO ? demo.android.capabilities['appium:app'] : env.APPIUM_APP,
   'appium:appWaitActivity': env.WDIO_DEMO
     ? demo.android.capabilities['appium:appWaitActivity']
     : env.APPIUM_APP_WAIT_ACTIVITY,
+  ...(env.CI ? ciCapability : {}),
 }
 
 const capabilityAlreadyInstalled = {
@@ -22,7 +29,9 @@ const capabilityAlreadyInstalled = {
 // Specs
 // ============
 config.specs = env.WDIO_DEMO ? [demo.app.specs] : specs
-config.exclude = env.WDIO_DEMO ? [] : [demo.app.specs]
+config.exclude = env.WDIO_DEMO
+  ? []
+  : [demo.app.specs, demo.browser.specs, './e2e/tests/**/specs/**/*.browser.spec.ts']
 
 // ============
 // Capabilities

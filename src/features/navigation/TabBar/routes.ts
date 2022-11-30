@@ -1,4 +1,5 @@
 import { LinkingOptions } from '@react-navigation/native'
+import { Platform } from 'react-native'
 
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors'
@@ -64,11 +65,12 @@ export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
   return tabRouteNames.includes(screen)
 }
 
+const isWeb = Platform.OS === 'web'
 export const menu: Record<TabRouteName, { displayName: string; accessibilityLabel?: string }> = {
   Home: { displayName: 'Accueil', accessibilityLabel: 'Accueil' },
   Search: { displayName: 'Recherche', accessibilityLabel: 'Rechercher des offres' },
   Bookings: { displayName: 'Réservations', accessibilityLabel: 'Mes réservations' },
-  Favorites: { displayName: 'Favoris', accessibilityLabel: undefined },
+  Favorites: { displayName: 'Favoris', accessibilityLabel: isWeb ? undefined : 'Mes favoris' },
   Profile: { displayName: 'Profil', accessibilityLabel: 'Mon profil' },
 }
 

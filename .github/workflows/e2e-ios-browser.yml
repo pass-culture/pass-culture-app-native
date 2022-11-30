@@ -1,4 +1,4 @@
-name: Tests e2e iOS Safari
+name: Tests e2e iOS Browser
 
 on:
   workflow_dispatch:
@@ -29,6 +29,7 @@ on:
 jobs:
   e2e-ios-browser:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - osVersion: '15.2'
@@ -39,7 +40,6 @@ jobs:
       APPIUM_TEST_SERVER_PORT: 4723
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
       APPIUM_STARTUP_TIMEOUT_SEC: 30
-      DEV_TEST_SERVER_HOST: localhost
       DEV_TEST_SERVER_PORT: 3000
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
@@ -50,6 +50,17 @@ jobs:
     runs-on: macos-11
     environment: ${{ inputs.environment }}
     steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Set LOCAL_IP environment variable
+        run: echo LOCAL_IP=$(ifconfig | grep 'inet' | grep 'broadcast' | awk -F ' ' '{print $2}') >> $GITHUB_ENV
+
+      - name: Show LOCAL_IP
+        run: |
+          ifconfig
+          echo ${{ env.LOCAL_IP }}
+
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
@@ -80,7 +91,7 @@ jobs:
         if: ${{ env.WDIO_DEMO == 'false' }}
         run: |
           if [[ "${{ env.BUILD_LOCAL }}" = "true" ]]; then
-            echo "WDIO_BASE_URL=http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}" >> $GITHUB_ENV
+            echo "WDIO_BASE_URL=http://${{ env.LOCAL_IP }}:${{ env.DEV_TEST_SERVER_PORT }}" >> $GITHUB_ENV
           elif [[ "${{ env.ENVIRONMENT }}" = "testing" ]]; then
             echo "WDIO_BASE_URL=https://app.testing.passculture.team" >> $GITHUB_ENV
           elif [[ "${{ env.ENVIRONMENT }}" = "staging" ]]; then
@@ -91,12 +102,23 @@ jobs:
 
       - name: Start Local dev server ${{ inputs.environment }}
         if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
         run: |
           cwd=$(pwd)
           pushd "$cwd"
           nohup yarn start:web:${{ env.ENVIRONMENT }} \
             2>&1 > "$cwd/webpack-dev-server.log" &
           popd
+
+      - name: Wait for local dev server ${{ inputs.environment }}
+        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
+        timeout-minutes: 15
+        run: |
+          until curl --output /dev/null --silent --head --fail http://${{ env.LOCAL_IP }}:3000; do
+            printf '.'
+            sleep 5
+          done
 
       - run: |
           cwd=$(pwd)
@@ -122,7 +144,7 @@ jobs:
             fi
           done
 
-      - run: yarn e2e:ios.browser
+      - run: IOS_DEVICE_NAME="${{ matrix.model }}" IOS_PLATFORM_VERSION="${{ matrix.osVersion }}" yarn e2e:ios.browser
         name: Run functional tests
 
       - name: Save server output
@@ -146,3 +168,10 @@ jobs:
       - name: Show dev server output
         if: ${{ (always()) && (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'local') }}
         run: cat webpack-dev-server.log
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: fail-screenshots-videos-${{ matrix.apiLevel }}
+          path: e2e/output
+          if-no-files-found: ignore

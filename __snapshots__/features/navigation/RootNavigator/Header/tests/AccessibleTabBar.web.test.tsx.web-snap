@@ -39,19 +39,19 @@ Object {
                 <div
                   aria-current="page"
                   class="css-view-1dbjc4n"
-                  data-testid="Home tab"
+                  data-testid="Accueil"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="Home tab selected"
+                    data-testid="Accueil sélectionné"
                   >
                     <div
                       class="css-text-901oao"
                       dir="ltr"
                     >
-                      Home tab selected-SVG-Mock
+                      Accueil sélectionné-SVG-Mock
                     </div>
                   </div>
                   <div
@@ -92,7 +92,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Search tab"
+                  data-testid="Rechercher des offres"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -130,7 +130,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Bookings tab"
+                  data-testid="Mes réservations"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -168,7 +168,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Favorites tab"
+                  data-testid="Favoris"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -206,7 +206,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Profile tab"
+                  data-testid="Mon profil"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -286,19 +286,19 @@ Object {
               <div
                 aria-current="page"
                 class="css-view-1dbjc4n"
-                data-testid="Home tab"
+                data-testid="Accueil"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Home tab selected"
+                  data-testid="Accueil sélectionné"
                 >
                   <div
                     class="css-text-901oao"
                     dir="ltr"
                   >
-                    Home tab selected-SVG-Mock
+                    Accueil sélectionné-SVG-Mock
                   </div>
                 </div>
                 <div
@@ -339,7 +339,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="Search tab"
+                data-testid="Rechercher des offres"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -377,7 +377,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="Bookings tab"
+                data-testid="Mes réservations"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -415,7 +415,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="Favorites tab"
+                data-testid="Favoris"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -453,7 +453,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="Profile tab"
+                data-testid="Mon profil"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >

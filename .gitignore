@@ -122,5 +122,7 @@ firebase-debug.log
 appium.log
 .tsbuild
 
-# e2e demo
+# e2e
 ./e2e/tests/wdio-demo
+e2e/output
+

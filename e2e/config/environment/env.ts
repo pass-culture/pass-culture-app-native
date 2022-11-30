@@ -13,7 +13,7 @@ export const env: Environment = {
   CI: systemEnv.CI || false,
   WDIO_DEMO: systemEnv.WDIO_DEMO || false,
   WDIO_BASE_URL: systemEnv.WDIO_DEMO ? demo.wdio.baseUrl : systemEnv.WDIO_BASE_URL,
-  ANDROID_DEVICE_NAME: systemEnv.ANDROID_DEVICE_NAME || 'Nexus6P',
+  ANDROID_DEVICE_NAME: systemEnv.ANDROID_DEVICE_NAME || 'pixel_xl',
   ANDROID_PLATFORM_VERSION: systemEnv.ANDROID_PLATFORM_VERSION
     ? String(systemEnv.ANDROID_PLATFORM_VERSION)
     : '10.0',

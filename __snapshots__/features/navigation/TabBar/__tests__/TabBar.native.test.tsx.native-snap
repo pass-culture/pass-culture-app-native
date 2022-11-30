@@ -45,6 +45,7 @@ exports[`TabBar renders correctly 1`] = `
       }
     />
     <View
+      accessibilityLabel="Accueil"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -67,15 +68,15 @@ exports[`TabBar renders correctly 1`] = `
           "userSelect": "auto",
         }
       }
-      testID="Home tab"
+      testID="Accueil"
     >
       <View
         height={4}
-        testID="Home tab selected"
+        testID="Accueil sélectionné"
         width="80%"
       >
         <Text>
-          Home tab selected-SVG-Mock
+          Accueil sélectionné-SVG-Mock
         </Text>
       </View>
       <View
@@ -135,6 +136,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Rechercher des offres"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -157,7 +159,7 @@ exports[`TabBar renders correctly 1`] = `
           "userSelect": "auto",
         }
       }
-      testID="Search tab"
+      testID="Rechercher des offres"
     >
       <View
         style={
@@ -207,6 +209,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Mes réservations"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -229,7 +232,7 @@ exports[`TabBar renders correctly 1`] = `
           "userSelect": "auto",
         }
       }
-      testID="Bookings tab"
+      testID="Mes réservations"
     >
       <View
         style={
@@ -279,6 +282,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Mes favoris"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -301,7 +305,7 @@ exports[`TabBar renders correctly 1`] = `
           "userSelect": "auto",
         }
       }
-      testID="Favorites tab"
+      testID="Mes favoris"
     >
       <View
         style={
@@ -351,6 +355,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Mon profil"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -373,7 +378,7 @@ exports[`TabBar renders correctly 1`] = `
           "userSelect": "auto",
         }
       }
-      testID="Profile tab"
+      testID="Mon profil"
     >
       <View
         style={

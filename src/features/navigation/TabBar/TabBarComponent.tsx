@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
@@ -21,6 +22,8 @@ interface Props {
   tabName: TabRouteName
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const TabBarComponent: React.FC<Props> = ({
   isSelected,
   BicolorIcon,
@@ -34,13 +37,13 @@ export const TabBarComponent: React.FC<Props> = ({
     activeOpacity={1}
     selected={isSelected}
     accessibilityLabel={menu[tabName].accessibilityLabel}
-    testID={`${tabName} tab`}
+    testID={menu[tabName].accessibilityLabel || menu[tabName].displayName}
     aria-current={isSelected ? 'page' : undefined}>
     {!!isSelected && (
       <BicolorSelector
         width={SELECTOR_WIDTH}
         height={SELECTOR_HEIGHT}
-        testID={`${tabName} tab selected`}
+        testID={`${menu[tabName].accessibilityLabel} sélectionné`}
       />
     )}
     <Spacer.Flex />
@@ -61,7 +64,7 @@ const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
 const TabComponentContainer = styled(TouchableLink).attrs(
   ({ theme, accessibilityLabel, selected }) => ({
-    accessibilityLabel: theme.tabBar.showLabels ? undefined : accessibilityLabel,
+    accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
     hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,
   })
 )(({ theme }) => ({

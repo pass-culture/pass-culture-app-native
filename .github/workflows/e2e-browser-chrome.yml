@@ -41,6 +41,17 @@ jobs:
     runs-on: macos-latest
     environment: ${{ inputs.environment }}
     steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Set LOCAL_IP environment variable
+        run: echo LOCAL_IP=$(ifconfig | grep 'inet' | grep 'broadcast' | awk -F ' ' '{print $2}') >> $GITHUB_ENV
+
+      - name: Show LOCAL_IP
+        run: |
+          ifconfig
+          echo ${{ env.LOCAL_IP }}
+
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
@@ -69,12 +80,23 @@ jobs:
 
       - name: Start Local dev server ${{ inputs.environment }}
         if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
         run: |
           cwd=$(pwd)
           pushd "$cwd"
           nohup yarn start:web:${{ env.ENVIRONMENT }} \
             2>&1 > "$cwd/webpack-dev-server.log" &
           popd
+
+      - name: Wait for local dev server ${{ inputs.environment }}
+        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
+        timeout-minutes: 15
+        run: |
+          until curl --output /dev/null --silent --head --fail http://${{ env.LOCAL_IP }}:3000; do
+            printf '.'
+            sleep 5
+          done
 
       - run: yarn e2e:browser.chrome
 
@@ -99,3 +121,10 @@ jobs:
       - name: Show dev server output
         if: ${{ (always()) && (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'local') }}
         run: cat webpack-dev-server.log
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: fail-screenshots-videos
+          path: e2e/output
+          if-no-files-found: ignore

@@ -47,18 +47,20 @@ describe('TabBar', () => {
   })
 
   it('should display the 5 following tabs with Home selected', async () => {
-    const renderAPI = await renderTabBar()
-    const tabs = renderAPI.getAllByTestId(/tab/)
-    const tabsTestIds = tabs.map((tab) => tab.props.testID).sort()
+    const { queryByTestId } = await renderTabBar()
+
     const expectedTabsTestIds = [
-      'Home tab selected',
-      'Home tab',
-      'Search tab',
-      'Bookings tab',
-      'Favorites tab',
-      'Profile tab',
+      'Accueil sélectionné',
+      'Accueil',
+      'Rechercher des offres',
+      'Mes réservations',
+      'Mes favoris',
+      'Mon profil',
     ].sort()
-    expect(tabsTestIds).toEqual(expectedTabsTestIds)
+
+    expectedTabsTestIds.map((tab) => {
+      expect(queryByTestId(tab)).toBeTruthy()
+    })
   })
 
   it('should display the 5 following tabs with Bookings selected', async () => {
@@ -69,23 +71,24 @@ describe('TabBar', () => {
         isSelected: route.name === 'Bookings',
       })),
     })
-    const renderAPI = await renderTabBar()
-    const tabs = renderAPI.getAllByTestId(/tab/)
-    const tabsTestIds = tabs.map((tab) => tab.props.testID).sort()
+    const { queryByTestId } = await renderTabBar()
     const expectedTabsTestIds = [
-      'Home tab',
-      'Search tab',
-      'Bookings tab',
-      'Bookings tab selected',
-      'Favorites tab',
-      'Profile tab',
+      'Accueil',
+      'Rechercher des offres',
+      'Mes réservations',
+      'Mes réservations sélectionné',
+      'Mes favoris',
+      'Mon profil',
     ].sort()
-    expect(tabsTestIds).toEqual(expectedTabsTestIds)
+
+    expectedTabsTestIds.map((tab) => {
+      expect(queryByTestId(tab)).toBeTruthy()
+    })
   })
 
   it('displays only one selected at a time', async () => {
     const renderAPI = await renderTabBar()
-    expect(renderAPI.queryAllByTestId(/selected/)).toHaveLength(1)
+    expect(renderAPI.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
   it('does not reset navigation when clicked on selected tab', async () => {
@@ -97,9 +100,9 @@ describe('TabBar', () => {
       })),
     })
     const renderAPI = await renderTabBar()
-    expect(renderAPI.queryByTestId('Profile tab selected')).toBeTruthy()
+    expect(renderAPI.queryByTestId('Mon profil sélectionné')).toBeTruthy()
 
-    const profileTab = renderAPI.getByTestId('Profile tab')
+    const profileTab = renderAPI.getByTestId('Mon profil')
     fireEvent.press(profileTab)
 
     expect(navigation.emit).not.toHaveBeenCalled()
@@ -108,9 +111,9 @@ describe('TabBar', () => {
 
   it('should reset navigation when clicked on selected home tab', async () => {
     const renderAPI = await renderTabBar()
-    expect(renderAPI.queryByTestId('Home tab selected')).toBeTruthy()
+    expect(renderAPI.queryByTestId('Accueil sélectionné')).toBeTruthy()
 
-    const homeTab = renderAPI.getByTestId('Home tab')
+    const homeTab = renderAPI.getByTestId('Accueil')
     fireEvent.press(homeTab)
 
     expect(navigation.emit).toHaveBeenCalledTimes(1)
@@ -119,7 +122,7 @@ describe('TabBar', () => {
 
   it('navigates to Profile on Profile tab click', async () => {
     const renderAPI = await renderTabBar()
-    const profileTab = renderAPI.getByTestId('Profile tab')
+    const profileTab = renderAPI.getByTestId('Mon profil')
 
     fireEvent.press(profileTab)
 

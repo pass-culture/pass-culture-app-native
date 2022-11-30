@@ -35,10 +35,10 @@ To install the chromedriver of your choice:
 npm install --chromedriver_version="$CHROMEDRIVER_VERSION"
 ```
 
-For running mobile (iOS or Android) tests, you will have to start appium server:
+For running mobile (iOS or Android) tests, you can start appium server manually (otherwise, use a gui tools listed below):
 
 ```bash
-appium 
+appium --relaxed-security
 ```
 
 In case of problem, there is a useful tool called `appium-doctor`, you can install and run it as follow:
@@ -55,9 +55,10 @@ We use environment variable to customize the configuration:
 | Environment variable       | Type      | Required | Default     | Description                                             |
 |----------------------------|-----------|----------|-------------|---------------------------------------------------------|
 | `CI`                       | `boolean` |          | `false`     | Define if in a CI environment                           |
+| `SPECS`                    | `string`  |          |             | Define specs for test execution. You can either specify a glob pattern to match multiple files at once or wrap a glob or set of paths into an array using "," delimiter to run them within a single worker process. [Default: run all tests] |
 | `WDIO_DEMO`                | `boolean` |          | `false`     | Run the demo code (must have wdio-demo installed first) |
 | `WDIO_BASE_URL`            | `string`  | yes      |             | URL of the Website to test                              |
-| `ANDROID_DEVICE_NAME`      | `string`  |          | `Nexus6P`   | Android device name                                     |
+| `ANDROID_DEVICE_NAME`      | `string`  |          | `pixel_xl`  | Android device name                                     |
 | `ANDROID_PLATFORM_VERSION` | `string`  |          | `10.0`      | Android platform version                                |
 | `IOS_DEVICE_NAME`          | `string`  |          | `iPhone 13` | iOS Device Name                                         |
 | `IOS_PLATFORM_VERSION`     | `string`  |          | `15.2`      | iOS platform version                                    |
@@ -146,16 +147,93 @@ To build application:
 ```bash
 cd ios
 scheme=PassCulture-Staging
-xcodebuild -workspace ios/PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release
+xcodebuild -workspace PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release
 last_build_dir=$(ls -tr  ~/Library/Developer/Xcode/DerivedData/ | grep PassCulture | tail -n1)
-ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ./PassCulture.zip
+ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ../PassCulture.zip
 cd ..
 
 # you can now run tests
-APPIUM_APP=./ios/PassCulture.zip yarn e2e:ios.app
+APPIUM_APP=./PassCulture.zip yarn e2e:ios.app
 ```
 
 > It is not possible to test the iOS application using the development environment
+
+### Writing tests
+
+We have two types of tests: `app` and `browser`
+
+- `app` is the native application, it runs on iOS or Android
+- `browser` is the Web application, it runs on Desktop, iOS and Android browsers
+- A test file is called a `suite`, test within a suite are run in their **order of declaration**
+- Do not use mocha `before` hook because failure in it won't be considered as a test failure, thus no tests will be reported as failed, instead use a flip variable as in this example:
+
+```ts
+import FirstLaunch from '../helpers/FirstLaunch'
+import TabBar from '../features/navigation/TabBar'
+import { didFirstLaunch } from '../helpers/utils/error'
+
+describe('TabBar', () => {
+  let ok = false
+
+  it('should do first launch initialisation', async () => {
+    ok = await FirstLaunch.init()
+  })
+
+  it('should click on search', async () => {
+    didFirstLaunch(ok)
+    await TabBar.search.click()
+  })
+
+  it('should click on profile', async () => {
+    didFirstLaunch(ok)
+    await TabBar.profil.click()
+  })
+})
+```
+
+### GUI Tools
+
+You can try those:
+
+- GUI inspector for mobile apps: https://github.com/appium/appium-inspector/releases
+- Server with GUI in replacement: https://github.com/appium/appium-desktop/releases 
+- Alternative GUI inspector for mobile apps: https://digital.ai/products/continuous-testing/appium-studio/
+
+#### Convention
+
+We usually write cross platforms tests (for both `app` and `browser`), 
+but we also support `app` or `browser` specific tests. 
+
+Use the following file name convention:
+
+- `app` and `browser`: `*.spec.ts`
+- `app`: `*.app.spec.ts`
+- `browser`: `*.browser.spec.ts`
+
+#### Utils
+
+This is the documentation of selector: https://webdriver.io/docs/selectors/#accessibility-id
+
+We also have a useful cross platforms selector:
+
+```ts
+$$$('Accueil')
+```
+
+Is equivalent to, on `app` (iOS and Android):
+
+```ts
+$('~Acceuil')
+```
+
+and `browser`:
+
+```ts
+$('[data-testid="Accueil"]')
+```
+
+We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `$$$` 
+and this allow to write less verbose selector for our cross platforms cases.
 
 ### Demo
 
