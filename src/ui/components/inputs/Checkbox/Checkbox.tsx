@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
@@ -20,7 +18,6 @@ type Props = IsCheckedProps & {
 }
 
 export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }) => {
-  const id = uuidv4()
   const [isFocus, setIsFocus] = useState(false)
 
   const onFocus = useCallback(() => {
@@ -44,9 +41,7 @@ export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }
       onFocus={onFocus}
       onBlur={onBlur}>
       <Box isChecked={isChecked}>{!!isChecked && <CheckboxMark />}</Box>
-      <Label>
-        <InputLabel htmlFor={id}>{label}</InputLabel>
-      </Label>
+      <Label>{label}</Label>
     </CheckboxContainer>
   )
 }

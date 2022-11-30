@@ -265,15 +265,7 @@ Array [
       }
     }
   />,
-  .c2 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-  cursor: pointer;
-}
-
-.c0 {
+  .c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3473,12 +3465,7 @@ Array [
                   }
                 }
               >
-                <label
-                  className="c2"
-                  htmlFor="testUuidV4"
-                >
-                  Conserver l’historique
-                </label>
+                Conserver l’historique
               </div>
             </div>
           </div>

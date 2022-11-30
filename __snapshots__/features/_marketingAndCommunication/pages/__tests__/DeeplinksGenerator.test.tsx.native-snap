@@ -2642,21 +2642,7 @@ Array [
                   ]
                 }
               >
-                <Text
-                  htmlFor="testUuidV4"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Conserver l’historique
-                </Text>
+                Conserver l’historique
               </Text>
             </View>
           </View>
