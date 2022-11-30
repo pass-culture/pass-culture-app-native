@@ -395,7 +395,7 @@ commands:
     steps:
       - run: |
           set +eo pipefail
-          gcloud alpha storage rsync -r ./build gs://<< parameters.bucket_name >>
+          gsutil rsync -r ./build gs://<< parameters.bucket_name >>
 
   invalidate-cache:
     description: Invalidate Cache asynchronously
