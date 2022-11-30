@@ -1,8 +1,9 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -21,6 +22,9 @@ import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const DMSIntroduction = (): JSX.Element => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_dms_introduction')
+  }, [])
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
 
   const timeLabel = '10 minutes de ton temps'

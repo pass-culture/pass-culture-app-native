@@ -5,7 +5,8 @@ import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
-import { render } from 'tests/utils'
+import { amplitude } from 'libs/amplitude'
+import { render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 const mockNavigateToNextScreen = jest.fn()
@@ -51,5 +52,13 @@ describe('<IdentityCheckEnd/>', () => {
     expect(navigateToHome).not.toHaveBeenCalled()
     jest.advanceTimersByTime(3000)
     expect(navigateToHome).toHaveBeenCalledTimes(1)
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    render(<IdentityCheckEnd />)
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_identity_check_end')
+    )
   })
 })

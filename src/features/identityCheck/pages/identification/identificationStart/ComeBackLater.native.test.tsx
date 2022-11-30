@@ -3,7 +3,8 @@ import React from 'react'
 import { ComeBackLater } from 'features/identityCheck/pages/identification/identificationStart/ComeBackLater'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { fireEvent, render } from 'tests/utils'
+import { amplitude } from 'libs/amplitude'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
@@ -24,6 +25,13 @@ describe('ComeBackLater', () => {
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
       navigateToHomeConfig.params
+    )
+  })
+  it('should send a amplitude event when the screen is mounted', async () => {
+    render(<ComeBackLater />)
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_come_back_later')
     )
   })
 })

@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -10,6 +11,10 @@ import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_come_back_later')
+  }, [])
+
   return (
     <GenericInfoPageWhite
       icon={BicolorIdCardInvalid}

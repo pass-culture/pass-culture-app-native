@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { amplitude } from 'libs/amplitude'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { Emoji } from 'ui/components/Emoji'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -12,6 +13,9 @@ import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const SelectIDStatus: FunctionComponent = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_select_id_status')
+  }, [])
   return <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
 }
 
