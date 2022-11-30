@@ -100,4 +100,20 @@ describe('getRecommendationParameters', () => {
       subcategories: ['ACHAT_INSTRUMENT'],
     })
   })
+
+  it('should return parameters with isRecoShuffled when provided', () => {
+    const parameters: RecommendationParametersFields = {
+      title: 'some parameters',
+      isRecoShuffled: true,
+    }
+    const recommendationParameters = getRecommendationParameters(
+      parameters,
+      subcategoryLabelMapping
+    )
+    expect(recommendationParameters).toEqual({
+      categories: [],
+      subcategories: [],
+      isRecoShuffled: true,
+    })
+  })
 })
