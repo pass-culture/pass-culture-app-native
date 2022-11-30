@@ -98,7 +98,7 @@ jobs:
             sleep 5
           done
 
-      - run: yarn e2e:browser.chrome
+      - run: ENVIRONMENT="${{ env.ENVIRONMENT }}" yarn e2e:browser.chrome
 
       - name: Save chromedriver output
         if: ${{ always() }}

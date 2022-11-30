@@ -8,6 +8,7 @@ import TabBar from '../features/navigation/TabBar'
 class FirstLaunch {
   retries = 2
   nativeModalPassed = 0
+
   async init() {
     if (flags.isWeb) {
       await browser.url('/')

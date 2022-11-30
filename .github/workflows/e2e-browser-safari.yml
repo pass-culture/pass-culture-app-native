@@ -96,7 +96,7 @@ jobs:
             sleep 5
           done
 
-      - run: yarn e2e:browser.safari
+      - run: ENVIRONMENT="${{ env.ENVIRONMENT }}" yarn e2e:browser.safari
 
       - name: Save safaridriver output
         if: ${{ always() }}

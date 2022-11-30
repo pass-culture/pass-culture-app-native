@@ -1,0 +1,78 @@
+name: "[reusable] e2e build simulator iOS zip"
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+        default: staging
+
+jobs:
+  e2e-build-simu-ios:
+    env:
+      CI: true
+      _FORCE_LOGS: 1
+      ENVIRONMENT: ${{ inputs.environment }}
+    runs-on: macos-12
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: ruby/setup-ruby@v1
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Setup sentry credentials
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat <<EOT >> ~/.sentryclirc
+          [defaults]
+          url=https://sentry.passculture.team/
+          org=sentry
+          project=application-native
+          [auth]
+          token=$SENTRY_AUTH_TOKEN
+          EOT
+
+      - name: Install iOS bundle and dependencies
+        run: |
+          bundle install
+          cd ios
+          bundle exec pod install
+          cd ..
+
+      - name: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+        run: |
+          export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+
+      - name: Setup secrets env variables
+        run: |
+          echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.${{ inputs.environment }}
+
+      - name: Setup iOS Google services config
+        run: |
+          echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+
+      - name: Build iOS app for ${{ inputs.environment }} environment
+        run: |
+          cd ios
+          scheme=$(echo 'console.log("PassCulture-" + "${{ inputs.environment }}"[0].toUpperCase() + "${{ inputs.environment }}".slice(1))' | node -)
+          xcodebuild -workspace PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release -quiet | xcpretty
+          last_build_dir=$(ls -tr  ~/Library/Developer/Xcode/DerivedData/ | grep PassCulture | tail -n1)
+          ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ../PassCulture.zip
+          xcodebuild clean -workspace "PassCulture.xcworkspace" -scheme ${scheme}
+
+      - name: Temporarily save the build simulator iOS zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-simu-ios-zip
+          path: PassCulture.zip
+          retention-days: 1
+          if-no-files-found: error

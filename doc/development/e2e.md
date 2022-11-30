@@ -55,6 +55,7 @@ We use environment variable to customize the configuration:
 | Environment variable       | Type      | Required | Default     | Description                                             |
 |----------------------------|-----------|----------|-------------|---------------------------------------------------------|
 | `CI`                       | `boolean` |          | `false`     | Define if in a CI environment                           |
+| `ENVIRONMENT`              | `string`  | yes      | `staging`   | Define the application environment                      |
 | `SPECS`                    | `string`  |          |             | Define specs for test execution. You can either specify a glob pattern to match multiple files at once or wrap a glob or set of paths into an array using "," delimiter to run them within a single worker process. [Default: run all tests] |
 | `WDIO_DEMO`                | `boolean` |          | `false`     | Run the demo code (must have wdio-demo installed first) |
 | `WDIO_BASE_URL`            | `string`  | yes      |             | URL of the Website to test                              |
