@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -17,7 +16,6 @@ interface Props {
   titleID?: string
   goBackAccessibilityLabel?: string
   onGoBack?: () => void
-  RightComponent?: React.FC
   testID?: string
 }
 
@@ -28,12 +26,10 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   titleID,
   goBackAccessibilityLabel = 'Revenir en arrière',
   onGoBack,
-  RightComponent,
   testID,
 }) => {
   useWhiteStatusBar()
 
-  const { onLayout } = useElementWidth()
   const { top } = useCustomSafeInsets()
 
   return (
@@ -47,13 +43,7 @@ export const PageHeaderSecondary: React.FC<Props> = ({
               <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
             </ButtonContainer>
             <Title nativeID={titleID}>{title}</Title>
-            <ButtonContainer positionInHeader="right">
-              {!!RightComponent && (
-                <View onLayout={onLayout}>
-                  <RightComponent />
-                </View>
-              )}
-            </ButtonContainer>
+            <ButtonContainer positionInHeader="right" />
           </Row>
         </Container>
       </ColorContainer>
