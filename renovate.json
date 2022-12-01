@@ -9,5 +9,6 @@
   "major": {
     "enabled": false
   },
-  "ignoreDeps": ["react-native", "react", "react-native-web"]
+  "ignoreDeps": ["react-native", "react", "react-native-web"],
+  "commitMessagePrefix": "(BSR) chore(deps):"
 }
