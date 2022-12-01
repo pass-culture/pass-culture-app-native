@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
-import { LogBox } from 'react-native'
+import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
 
 // if __DEV__ import if you want to debug
@@ -50,6 +50,14 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  useEffect(() => {
+    StatusBar.setBarStyle('dark-content')
+    if (Platform.OS === 'android') {
+      StatusBar.setTranslucent(true)
+      StatusBar.setBackgroundColor('transparent', false)
+    }
+  }, [])
+
   campaignTracker.useInit()
   analytics.useInit()
 
