@@ -1,8 +1,6 @@
 import React from 'react'
 
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { env } from 'libs/environment'
-import { flushAllPromisesWithAct, render, fireEvent } from 'tests/utils/web'
+import { flushAllPromisesWithAct, render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { LegalNotices } from '../LegalNotices'
 
@@ -13,27 +11,10 @@ async function renderProfile() {
 }
 
 describe('LegalNotices', () => {
-  it('should render correctly', async () => {
-    const renderAPI = await renderProfile()
-    expect(renderAPI).toMatchSnapshot()
-  })
+  it('should not have basic accessibility issues', async () => {
+    const { container } = await renderProfile()
+    const results = await checkAccessibilityFor(container)
 
-  it('should navigate when the cgu row is clicked', async () => {
-    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-    const { getByText } = await renderProfile()
-
-    const row = getByText('Conditions Générales d’Utilisation')
-    fireEvent.click(row)
-
-    expect(openUrl).toBeCalledWith(env.CGU_LINK, undefined)
-  })
-  it('should navigate when the data-privacy-chart row is clicked', async () => {
-    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-    const { getByText } = await renderProfile()
-
-    const row = getByText('Charte de protection des données personnelles')
-    fireEvent.click(row)
-
-    expect(openUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK, undefined)
+    expect(results).toHaveNoViolations()
   })
 })
