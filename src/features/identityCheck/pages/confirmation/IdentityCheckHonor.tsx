@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -12,6 +12,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useUserProfileInfo } from 'features/profile/api'
+import { amplitude } from 'libs/amplitude'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -19,6 +20,9 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const IdentityCheckHonor = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_identity_check_honor')
+  }, [])
   const theme = useTheme()
   const { navigateToNextScreen } = useSubscriptionNavigation()
   const { showErrorSnackBar } = useSnackBarContext()

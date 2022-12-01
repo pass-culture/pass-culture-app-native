@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { amplitude } from 'libs/amplitude'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
@@ -11,6 +12,9 @@ import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWith
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const SelectIDOrigin: FunctionComponent = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_select_id_origin')
+  }, [])
   return <PageWithHeader title={'Identification'} scrollChildren={<SelectIDOriginContent />} />
 }
 

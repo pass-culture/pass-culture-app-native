@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -14,6 +15,10 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 const ANTS_URL = 'https://ants.gouv.fr/'
 
 export const ExpiredOrLostID = (): JSX.Element => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_expired_or_lost_id')
+  }, [])
+
   return (
     <GenericInfoPageWhite
       icon={StyledBicolorIdCardError}

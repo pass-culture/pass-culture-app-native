@@ -2,7 +2,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
-import { fireEvent, render } from 'tests/utils'
+import { amplitude } from 'libs/amplitude'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 describe('SelectIDStatus', () => {
   it('should render SelectIDStatus page correctly', () => {
@@ -35,5 +36,13 @@ describe('SelectIDStatus', () => {
     fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    render(<SelectIDStatus />)
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_select_id_status')
+    )
   })
 })

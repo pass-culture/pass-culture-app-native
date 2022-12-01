@@ -4,7 +4,8 @@ import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ide
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { fireEvent, render } from 'tests/utils'
+import { amplitude } from 'libs/amplitude'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -29,5 +30,13 @@ describe('ExpiredOrLostID', () => {
     fireEvent.press(getByText('Demander un renouvellement'))
 
     expect(openUrl).toHaveBeenCalledWith('https://ants.gouv.fr/', undefined)
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    render(<ExpiredOrLostID />)
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_expired_or_lost_id')
+    )
   })
 })
