@@ -20,11 +20,12 @@ const NotMemoizedBackground: FunctionComponent<Props> = ({ width = '100%', heigh
 
 export const BackgroundWithDefaultStatusBar = memo(NotMemoizedBackground)
 
-export const BackgroundWithWhiteStatusBar: FunctionComponent<Props> = (props) => {
+const NotMemoizedBackgroundWithWhiteStatusBar: FunctionComponent<Props> = (props) => {
   useWhiteStatusBar()
-
   return <BackgroundWithDefaultStatusBar {...props} />
 }
+
+export const BackgroundWithWhiteStatusBar = memo(NotMemoizedBackgroundWithWhiteStatusBar)
 
 const BackgroundContainer = styled.View<Props>(({ width, height, theme }) => ({
   position: 'absolute',
