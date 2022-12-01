@@ -106,6 +106,8 @@ describe('useAddFavorite hook', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const onSuccess = jest.fn()
     const result = renderUseAddFavorite(onSuccess)
@@ -133,6 +135,8 @@ describe('useAddFavorite hook', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const result = renderUseAddFavorite()
 
@@ -157,6 +161,8 @@ it('should show snack bar when too many favorites when trying to add favorite', 
   mockUseAuthContext.mockReturnValueOnce({
     isLoggedIn: true,
     setIsLoggedIn: jest.fn(),
+    refetchUser: jest.fn(),
+    isUserLoading: false,
   })
   const result = renderUseAddFavorite()
 

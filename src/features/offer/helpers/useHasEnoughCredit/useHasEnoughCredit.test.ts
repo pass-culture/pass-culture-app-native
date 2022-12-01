@@ -1,7 +1,9 @@
 import mockdate from 'mockdate'
 
-import { ExpenseDomain, OfferResponse, UserProfileResponse } from 'api/gen'
+import { ExpenseDomain, OfferResponse } from 'api/gen'
+import * as Auth from 'features/auth/AuthContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { beneficiaryUser } from 'fixtures/user'
 import { renderHook } from 'tests/utils'
 
 import { hasEnoughCredit, useHasEnoughCredit } from './useHasEnoughCredit'
@@ -15,12 +17,13 @@ jest.mock('features/offer/api/useOffer', () => ({
   }),
 }))
 
-let mockedUser: Partial<UserProfileResponse> | undefined = undefined
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: () => ({
-    data: mockedUser,
-  }),
-}))
+const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
+  user: undefined,
+  isLoggedIn: false,
+  setIsLoggedIn: jest.fn(),
+  isUserLoading: false,
+  refetchUser: jest.fn(),
+})
 
 describe('hasEnoughCredit', () => {
   it.each`
@@ -95,7 +98,6 @@ describe('hasEnoughCredit', () => {
 describe('useHasEnoughCredit', () => {
   it('should return false if no offer nor user found', () => {
     mockedOffer = undefined
-    mockedUser = undefined
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
     expect(result.current).toBeFalsy()
@@ -103,15 +105,26 @@ describe('useHasEnoughCredit', () => {
 
   it('should return false if the user does not have domainsCredit', () => {
     mockedOffer = mockOffer
-    mockedUser = { domainsCredit: null }
+    mockUseAuthContext.mockReturnValueOnce({
+      user: { ...beneficiaryUser, domainsCredit: { all: { initial: 0, remaining: 2300 } } },
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+    })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
     expect(result.current).toBeFalsy()
   })
 
   it('should return false if the user does not have enough credit for the offer', () => {
-    mockedOffer = mockOffer
-    mockedUser = { domainsCredit: { all: { initial: 30000, remaining: 2300 } } }
+    mockUseAuthContext.mockReturnValueOnce({
+      user: { ...beneficiaryUser, domainsCredit: null },
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+    })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
     expect(result.current).toBeFalsy()
@@ -119,7 +132,13 @@ describe('useHasEnoughCredit', () => {
 
   it('should return true if the user has enough credit for the offer', () => {
     mockedOffer = mockOffer
-    mockedUser = { domainsCredit: { all: { initial: 30000, remaining: 2500 } } }
+    mockUseAuthContext.mockReturnValueOnce({
+      user: { ...beneficiaryUser, domainsCredit: { all: { initial: 30000, remaining: 2500 } } },
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+    })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
     expect(result.current).toBeTruthy()

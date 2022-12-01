@@ -32,10 +32,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
-}))
-
 jest.mock('react-query')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }

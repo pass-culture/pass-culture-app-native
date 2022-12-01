@@ -1,23 +1,26 @@
-import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { UserProfileResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/profile/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { renderHook } from 'tests/utils'
 
-jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
-const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 const mockedIsUserExBeneificiary = mocked(isUserExBeneficiary)
+
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('useMaxPrice when no user', () => {
   beforeAll(() => {
-    mockedUseUserProfileInfo.mockReturnValue({ data: undefined } as UseQueryResult<
-      UserProfileResponse,
-      unknown
-    >)
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      user: undefined,
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
   })
 
   it('returns 300 when no user logged in', () => {
@@ -26,29 +29,27 @@ describe('useMaxPrice when no user', () => {
 })
 
 describe('useMaxPrice when user is not beneficiary', () => {
-  beforeAll(() => {
-    mockedUseUserProfileInfo.mockReturnValue({
-      data: {
-        isBeneficiary: false,
-      },
-    } as UseQueryResult<UserProfileResponse, unknown>)
-  })
-
   it('returns 300 when the user is not a beneficiary', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      user: nonBeneficiaryUser,
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
     expect(renderHook(useMaxPrice).result.current).toEqual(300)
   })
 })
 
 describe('useMaxPrice when user under 18', () => {
-  beforeAll(() => {
-    mockedUseUserProfileInfo.mockReturnValue({
-      data: {
-        domainsCredit: { all: { remaining: 10_00, initial: 30_00 } },
-      },
-    } as UseQueryResult<UserProfileResponse, unknown>)
-  })
-
   it('returns 30 when the user initial credit is 30', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      user: { ...beneficiaryUser, domainsCredit: { all: { remaining: 10_00, initial: 30_00 } } },
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
     expect(renderHook(useMaxPrice).result.current).toEqual(30)
   })
 

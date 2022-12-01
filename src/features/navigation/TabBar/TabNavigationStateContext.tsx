@@ -2,7 +2,6 @@ import React, { createContext, useContext, memo, useState, useMemo } from 'react
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
-import { useUserProfileInfo } from 'features/profile/api'
 
 import { getShouldDisplayTab } from './helpers'
 import { TabNavigationStateType, TabStateRoute } from './types'
@@ -44,8 +43,7 @@ export function useTabNavigationContext() {
 export const TabNavigationStateProvider: React.FC = memo(function _TabNavigationStateProvider(
   props
 ) {
-  const { isLoggedIn } = useAuthContext()
-  const { data: user } = useUserProfileInfo()
+  const { isLoggedIn, user } = useAuthContext()
   const isBeneficiary = user ? user.isBeneficiary : false
   const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn, isBeneficiary })
 

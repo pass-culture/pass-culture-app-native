@@ -21,10 +21,13 @@ describe('<Offer />', () => {
   })
 
   it('should display authentication modal when clicking on "Réserver l’offre"', async () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
-    }))
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+      user: undefined,
+    })
 
     const { getByText } = await renderOfferPage()
 
@@ -38,6 +41,8 @@ describe('<Offer />', () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     }))
 
     const { getByText } = await renderOfferPage()

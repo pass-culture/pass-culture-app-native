@@ -15,12 +15,22 @@ jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 const mockUserLoggedOutOnce = () => {
-  mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, setIsLoggedIn: jest.fn() })
+  mockUseAuthContext.mockReturnValueOnce({
+    isLoggedIn: false,
+    setIsLoggedIn: jest.fn(),
+    refetchUser: jest.fn(),
+    isUserLoading: false,
+  })
 }
 
 describe('<ChangeEmailExpiredLink />', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue({ isLoggedIn: true, setIsLoggedIn: jest.fn() })
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
   })
 
   it('should render correctly', () => {

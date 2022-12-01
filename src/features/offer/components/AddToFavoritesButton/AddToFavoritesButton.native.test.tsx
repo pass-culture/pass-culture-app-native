@@ -19,6 +19,8 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
   setIsLoggedIn: jest.fn(),
+  refetchUser: jest.fn(),
+  isUserLoading: false,
 })
 
 const mockPostFavorite = jest.fn()

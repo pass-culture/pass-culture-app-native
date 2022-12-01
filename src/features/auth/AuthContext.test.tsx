@@ -1,172 +1,56 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useQueryClient } from 'react-query'
+import React from 'react'
 
-import { FAKE_USER_ID } from '__mocks__/jwt-decode'
-import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { AccountState } from 'api/gen'
-import { LoggedInQueryKeys, useLoginRoutine, useLogoutRoutine } from 'features/auth/AuthContext'
-import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
-import { CookiesConsent } from 'features/cookies/types'
-import { analytics } from 'libs/firebase/analytics'
-import * as Keychain from 'libs/keychain'
-import { storage } from 'libs/storage'
+import { AuthWrapper, useAuthContext } from 'features/auth/AuthContext'
+import { QueryKeys } from 'libs/queryKeys'
+import { storage, StorageKey } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('features/profile/api')
-
-const mockSearchDispatch = jest.fn()
-const mockIdentityCheckDispatch = jest.fn()
-
-jest.mock('api/api')
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
-  useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
-  useQuery: jest.fn(),
-}))
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
-}))
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
-}))
-
-const accessToken = 'access_token'
-const method = 'fromLogin'
-
-const COOKIES_CONSENT_KEY = 'cookies'
-const cookiesChoice: CookiesConsent = {
-  buildVersion: 1001005,
-  deviceId: 'uuid',
-  choiceDatetime: new Date(2022, 9, 29).toISOString(),
-  consent: {
-    mandatory: COOKIES_BY_CATEGORY.essential,
-    accepted: ALL_OPTIONAL_COOKIES,
-    refused: [],
-  },
-}
+jest.unmock('libs/jwt')
 
 describe('AuthContext', () => {
   beforeEach(async () => {
-    await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+    await storage.clear('access_token')
+    await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
   })
 
-  describe('useLogoutRoutine', () => {
-    it('should remove batch identifier', async () => {
-      await renderUseLogoutRoutine()
+  describe('useAuthContext', () => {
+    it('should return the user when logged in', async () => {
+      storage.saveString('access_token', 'token')
+      const result = renderUseAuthContext()
 
-      expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, null)
-    })
-
-    it('should log analytics', async () => {
-      await renderUseLogoutRoutine()
-
-      expect(analytics.logLogout).toBeCalledTimes(1)
-    })
-
-    it('should remove access token from async storage', async () => {
-      await renderUseLogoutRoutine()
-
-      expect(AsyncStorage.removeItem).toHaveBeenNthCalledWith(1, 'access_token')
-    })
-
-    it('should clear refresh token', async () => {
-      const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
-      await renderUseLogoutRoutine()
-
-      expect(mockClearRefreshToken).toBeCalledTimes(1)
-    })
-
-    it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
-      const queryClient = useQueryClient()
-      await renderUseLogoutRoutine()
-
-      expect(queryClient.removeQueries).toHaveBeenCalledWith(query)
-    })
-  })
-
-  describe('useLoginRoutine', () => {
-    it('should saveRefreshToken', async () => {
-      const mockSaveRefreshToken = jest.spyOn(Keychain, 'saveRefreshToken')
-      await renderUseLoginRoutine()
-
-      expect(mockSaveRefreshToken).toBeCalledTimes(1)
-    })
-
-    it('should log login analytics', async () => {
-      await renderUseLoginRoutine()
-
-      expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
-    })
-
-    it('should save access token to storage', async () => {
-      await renderUseLoginRoutine()
-
-      const accessTokenStorage = await storage.readString('access_token')
-      expect(accessTokenStorage).toEqual(accessToken)
-    })
-
-    describe('connectServicesRequiringUserId', () => {
-      it('should set batch identifier', async () => {
-        await renderUseLoginRoutine()
-
-        expect(BatchUser.editor().setIdentifier).toHaveBeenNthCalledWith(1, FAKE_USER_ID.toString())
-      })
-
-      it('should log set user id analytics', async () => {
-        await renderUseLoginRoutine()
-
-        expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
-      })
-
-      it('should set user id in cookies consent storage', async () => {
-        await renderUseLoginRoutine()
-
-        const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
-        expect(cookiesConsentStorage).toEqual({
-          ...cookiesChoice,
-          userId: FAKE_USER_ID,
+      await waitFor(() => {
+        expect(result.current.user).toEqual({
+          email: 'email@domain.ext',
+          firstName: 'Jean',
+          isBeneficiary: true,
         })
       })
     })
 
-    describe('resetContexts', () => {
-      it('should reset search context', async () => {
-        await renderUseLoginRoutine()
+    it('should return undefined user when logged out', async () => {
+      const result = renderUseAuthContext()
 
-        expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      await waitFor(() => {
+        expect(result.current.user).toEqual(undefined)
       })
+    })
 
-      it('should reset identity check context', async () => {
-        await renderUseLoginRoutine()
+    it('should return refetchUser', async () => {
+      const result = renderUseAuthContext()
 
-        expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      await waitFor(() => {
+        expect(result.current.refetchUser).toBeDefined()
       })
     })
   })
 })
 
-const renderUseLogoutRoutine = async () => {
-  const { result } = renderHook(useLogoutRoutine)
-  const logout = result.current
-  await logout()
-}
-
-const renderUseLoginRoutine = async () => {
-  const { result } = renderHook(useLoginRoutine, {
+const renderUseAuthContext = () => {
+  const { result } = renderHook(useAuthContext, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+    wrapper: ({ children }) => reactQueryProviderHOC(<AuthWrapper>{children}</AuthWrapper>),
   })
-  const login = result.current
-  await act(async () => {
-    await login(
-      {
-        accessToken,
-        accountState: AccountState.ACTIVE,
-        refreshToken: 'refresh_token',
-      },
-      method
-    )
-  })
-  await superFlushWithAct()
+
+  return result
 }

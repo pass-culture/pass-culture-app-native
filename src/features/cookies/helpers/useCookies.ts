@@ -3,11 +3,11 @@ import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent, ConsentStatus } from 'features/cookies/types'
-import { useUserProfileInfo } from 'features/profile/api'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 
@@ -30,7 +30,7 @@ export const useCookies = () => {
   const [cookiesConsent, setCookiesConsentInternalState] = useState<ConsentStatus>({
     state: ConsentState.LOADING,
   })
-  const { data: userProfileInfo } = useUserProfileInfo()
+  const { user: userProfileInfo } = useAuthContext()
 
   useEffect(() => {
     getCookiesChoice().then((cookies) => {

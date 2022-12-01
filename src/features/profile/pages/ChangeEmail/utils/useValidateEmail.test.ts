@@ -1,3 +1,5 @@
+import { useAuthContext } from 'features/auth/AuthContext'
+import { nonBeneficiaryUser } from 'fixtures/user'
 import { renderHook } from 'tests/utils'
 
 import { useIsCurrentUserEmail, useValidateEmail } from './useValidateEmail'
@@ -6,9 +8,15 @@ const currentUserEmail = 'current@gmail.com'
 const newUserEmail = 'new@gmail.com'
 const invalidNewUserEmail = 'new@invaild'
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: { email: currentUserEmail } })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: { ...nonBeneficiaryUser, email: currentUserEmail },
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+})
 
 describe('useValidateEmail function', () => {
   it('should not return an error message if the new email is valid', () => {

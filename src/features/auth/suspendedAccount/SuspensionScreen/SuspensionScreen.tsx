@@ -2,7 +2,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 
 import { AccountState } from 'api/gen'
-import { useLogoutRoutine } from 'features/auth/AuthContext'
+import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { useAccountSuspensionStatus } from 'features/auth/suspendedAccount/SuspensionScreen/useAccountSuspensionStatus'

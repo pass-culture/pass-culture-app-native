@@ -33,6 +33,8 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
   setIsLoggedIn: jest.fn(),
+  refetchUser: jest.fn(),
+  isUserLoading: false,
 })
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -87,6 +89,8 @@ describe('<OfferHeader />', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const { getByTestId, getByText } = renderOfferHeader()
     fireEvent.press(getByTestId('icon-favorite'))

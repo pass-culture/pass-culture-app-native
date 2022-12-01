@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile, SeeMore } from 'features/home/atoms'
 import {
@@ -9,7 +10,6 @@ import {
 } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -38,7 +38,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const parseSearchParameters = useParseSearchParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const { data: profile } = useUserProfileInfo()
+  const { user } = useAuthContext()
 
   const { hits = [], nbHits = 0 } = data || {}
 
@@ -83,7 +83,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           isDuo={item.offer.isDuo}
           thumbUrl={item.offer.thumbUrl}
           price={getDisplayPrice(item.offer.prices)}
-          isBeneficiary={profile?.isBeneficiary}
+          isBeneficiary={user?.isBeneficiary}
           moduleName={moduleName}
           moduleId={moduleId}
           homeEntryId={homeEntryId}
@@ -93,7 +93,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, profile?.isBeneficiary, labelMapping, mapping]
+    [position, user?.isBeneficiary, labelMapping, mapping]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)

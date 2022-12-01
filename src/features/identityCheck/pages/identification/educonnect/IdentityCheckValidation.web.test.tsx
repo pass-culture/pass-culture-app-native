@@ -6,6 +6,7 @@ import { IdentityCheckValidation } from './IdentityCheckValidation'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 jest.mock('features/identityCheck/useSubscriptionNavigation')
+jest.mock('features/auth/AuthContext')
 
 describe('<IdentityCheckValidation />', () => {
   it('should render IdentityCheckValidation component correctly', () => {

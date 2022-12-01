@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
 import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
@@ -9,7 +10,6 @@ import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
-import { useUserProfileInfo } from 'features/profile/api'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -19,7 +19,7 @@ interface Props {
 
 export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   const { bookingState, dispatch } = useBooking()
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const creditForOffer = useCreditForOffer(bookingState.offerId)
   const { step, quantity, stockId } = bookingState
 

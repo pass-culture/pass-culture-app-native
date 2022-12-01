@@ -4,8 +4,6 @@ import waitForExpect from 'wait-for-expect'
 
 import { AuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { useUserProfileInfo } from 'features/profile/api'
-import { nonBeneficiaryUser } from 'fixtures/user'
 import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -22,8 +20,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 jest.mock('react-query')
-jest.mock('features/profile/api')
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 
 describe('<EighteenBirthdayCard />', () => {
   it('should render eighteen birthday card', async () => {
@@ -40,7 +36,6 @@ describe('<EighteenBirthdayCard />', () => {
 
   it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', async () => {
     const setError = jest.fn()
-    mockedUseUserProfileInfo.mockReturnValueOnce({ data: nonBeneficiaryUser })
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
     } = useBeneficiaryValidationNavigation(setError)
@@ -58,7 +53,13 @@ describe('<EighteenBirthdayCard />', () => {
 async function renderEighteenBirthdayCard({ isLoggedIn } = { isLoggedIn: true }) {
   const ref = { current: { goToNext: jest.fn() } }
   const renderAPI = render(
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn: jest.fn() }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      }}>
       <EighteenBirthdayCard
         activeIndex={0}
         index={0}

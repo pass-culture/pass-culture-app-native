@@ -1,12 +1,10 @@
-import { rest } from 'msw'
 import React from 'react'
 import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { CategoryIdEnum, OfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
-import { env } from 'libs/environment'
+import * as Auth from 'features/auth/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { render, waitFor } from 'tests/utils'
 
 import { OfferIconCaptions } from './OfferIconCaptions'
@@ -90,9 +88,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
 ]
 const noPrice: OfferResponse['stocks'] = []
 
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
 const userProfileAPIResponse: UserProfileResponse = {
   bookedOffers: {},
@@ -172,11 +168,14 @@ async function renderOfferIconCaptions({
   isDuo?: boolean
   isBeneficiary?: boolean
 }) {
-  server.use(
-    rest.get(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-      res.once(ctx.status(200), ctx.json({ ...userProfileAPIResponse, isBeneficiary }))
-    )
-  )
+  mockUseAuthContext.mockReturnValueOnce({
+    isLoggedIn: true,
+    user: { ...userProfileAPIResponse, isBeneficiary },
+    isUserLoading: false,
+    refetchUser: jest.fn(),
+    setIsLoggedIn: () => null,
+  })
+
   const setup = (queryClient: QueryClient) => {
     queryClient.removeQueries()
   }

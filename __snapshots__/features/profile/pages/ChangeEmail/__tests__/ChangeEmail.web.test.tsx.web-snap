@@ -65,6 +65,18 @@ Object {
   text-decoration: none;
 }
 
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+.c2 {
+  width: 100%;
+  max-width: 500px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -104,10 +116,6 @@ Object {
   text-decoration: none;
 }
 
-.c7:disabled {
-  background-color: #F1F1F4;
-}
-
 .c1 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -131,14 +139,6 @@ Object {
   line-height: 20px;
   color: #161617;
   cursor: pointer;
-}
-
-.c2 {
-  width: 100%;
-  max-width: 500px;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 .c4 {
@@ -187,7 +187,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0 c1 sc-kDTinF c1"
+                  class="c0 c1 sc-gKclnd c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
@@ -392,7 +392,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="c0 c5 sc-hiCibw c5"
+                    class="c0 c5 sc-pVTFL c5"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     title="Afficher le mot de passe"
@@ -511,6 +511,18 @@ Object {
   text-decoration: none;
 }
 
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+.c2 {
+  width: 100%;
+  max-width: 500px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -550,10 +562,6 @@ Object {
   text-decoration: none;
 }
 
-.c7:disabled {
-  background-color: #F1F1F4;
-}
-
 .c1 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -577,14 +585,6 @@ Object {
   line-height: 20px;
   color: #161617;
   cursor: pointer;
-}
-
-.c2 {
-  width: 100%;
-  max-width: 500px;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 .c4 {
@@ -632,7 +632,7 @@ Object {
             >
               <button
                 aria-label="Revenir en arrière"
-                class="c0 c1 sc-kDTinF c1"
+                class="c0 c1 sc-gKclnd c1"
                 data-testid="Revenir en arrière"
                 tabindex="0"
                 title="Revenir en arrière"
@@ -837,7 +837,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="c0 c5 sc-hiCibw c5"
+                  class="c0 c5 sc-pVTFL c5"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   title="Afficher le mot de passe"

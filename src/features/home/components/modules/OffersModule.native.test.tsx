@@ -42,7 +42,7 @@ jest.mock('features/home/api/useOfferModule', () => ({
   useOfferModule: jest.fn(() => ({ hits: mockHits, nbHits: mockNbHits })),
 }))
 jest.mock('react-query')
-jest.mock('features/profile/api')
+jest.mock('features/auth/AuthContext')
 
 describe('OffersModule component', () => {
   it('should render correctly', () => {

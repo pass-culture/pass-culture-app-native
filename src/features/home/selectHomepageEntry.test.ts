@@ -6,10 +6,8 @@ import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { HomepageEntry, Tag } from 'features/home/contentful'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { useUserProfileInfo } from 'features/profile/api'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { adaptedHomepageEntry as defaultHomeEntry } from 'tests/fixtures/adaptedHomepageEntry'
 import { renderHook } from 'tests/utils'
 
@@ -84,9 +82,6 @@ const mockUseRemoteConfigContext = useRemoteConfigContext as jest.MockedFunction
   typeof useRemoteConfigContext
 >
 
-jest.mock('features/profile/api')
-const mockUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<typeof useUserProfileInfo>
-
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
@@ -127,18 +122,18 @@ describe('useSelectHomepageEntry', () => {
 
   describe('remote config entry', () => {
     it.each`
-      isLoggedIn | user                                                    | hasBookings | credit                  | expectedHomepageEntry            | expectedHomepageEntryName
-      ${false}   | ${{ data: undefined }}                                  | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
-      ${true}    | ${{ data: undefined }}                                  | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
-      ${true}    | ${{ data: { eligibility: EligibilityType['age-18'] } }} | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
-      ${true}    | ${{ data: { roles: [UserRole.BENEFICIARY] } }}          | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
-      ${true}    | ${{ data: { roles: [UserRole.BENEFICIARY] } }}          | ${true}     | ${{ isExpired: false }} | ${homeEntry_18}                  | ${'homeEntry_18'}
-      ${true}    | ${{ data: { roles: [UserRole.BENEFICIARY] } }}          | ${true}     | ${{ isExpired: true }}  | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
-      ${true}    | ${{ data: { eligibility: EligibilityType.underage } }}  | ${true}     | ${{ isExpired: false }} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
-      ${true}    | ${{ data: { eligibility: EligibilityType.underage } }}  | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
-      ${true}    | ${{ data: { eligibility: undefined } }}                 | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      isLoggedIn | user                                          | hasBookings | credit                  | expectedHomepageEntry            | expectedHomepageEntryName
+      ${false}   | ${undefined}                                  | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
+      ${true}    | ${undefined}                                  | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
+      ${true}    | ${{ eligibility: EligibilityType['age-18'] }} | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${true}     | ${{ isExpired: false }} | ${homeEntry_18}                  | ${'homeEntry_18'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${true}     | ${{ isExpired: true }}  | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      ${true}    | ${{ eligibility: EligibilityType.underage }}  | ${true}     | ${{ isExpired: false }} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
+      ${true}    | ${{ eligibility: EligibilityType.underage }}  | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
+      ${true}    | ${{ eligibility: undefined }}                 | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
     `(
-      `should return remote config $expectedHomepageEntryName when isLoggedIn=$isLoggedIn, user=$user.data, hasBookings=$hasBookings, credit=$credit`,
+      `should return remote config $expectedHomepageEntryName when isLoggedIn=$isLoggedIn, user=$user, hasBookings=$hasBookings, credit=$credit`,
       ({
         isLoggedIn,
         user,
@@ -153,10 +148,13 @@ describe('useSelectHomepageEntry', () => {
         expectedHomepageEntry: HomepageEntry
       }) => {
         mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
-        mockUseAuthContext.mockReturnValueOnce({ isLoggedIn, setIsLoggedIn: jest.fn() })
-        mockUseUserProfileInfo.mockReturnValueOnce(
-          user as unknown as UsePersistQueryResult<UserProfileResponse, unknown>
-        )
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn,
+          user,
+          setIsLoggedIn: jest.fn(),
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
         mockUseUserHasBookings.mockReturnValueOnce(hasBookings)
         mockGetAvailableCredit.mockReturnValueOnce(credit)
 
@@ -182,15 +180,20 @@ describe('useSelectHomepageEntry', () => {
         homeEntryId_18: '',
         homeEntryId_15_17: '',
       })
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, setIsLoggedIn: jest.fn() })
     })
 
     describe('underage beneficiary users', () => {
       beforeEach(() => {
-        const underageBeneficiaryUser = { data: { roles: [UserRole.UNDERAGE_BENEFICIARY] } }
-        mockUseUserProfileInfo.mockReturnValueOnce(
-          underageBeneficiaryUser as unknown as UsePersistQueryResult<UserProfileResponse, unknown>
-        )
+        const underageBeneficiaryUser = {
+          roles: [UserRole.UNDERAGE_BENEFICIARY],
+        } as UserProfileResponse
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: true,
+          user: underageBeneficiaryUser,
+          setIsLoggedIn: jest.fn(),
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
       })
 
       it('should retrieve the home entry tagged master+userunderage if available', () => {
@@ -231,17 +234,21 @@ describe('useSelectHomepageEntry', () => {
     })
 
     describe.each`
-      usertype            | user                                                    | credit
-      ${'exbeneficiary'}  | ${{ data: { roles: [UserRole.BENEFICIARY] } }}          | ${{ isExpired: true }}
-      ${'beneficiary'}    | ${{ data: { roles: [UserRole.BENEFICIARY] } }}          | ${{ isExpired: false }}
-      ${'eligible 18'}    | ${{ data: { eligibility: EligibilityType['age-18'] } }} | ${{ isExpired: false }}
-      ${'eligible 15-17'} | ${{ data: { eligibility: EligibilityType.underage } }}  | ${{ isExpired: false }}
-      ${'general'}        | ${{ data: { eligibility: undefined } }}                 | ${{ isExpired: false }}
+      usertype            | user                                          | credit
+      ${'exbeneficiary'}  | ${{ roles: [UserRole.BENEFICIARY] }}          | ${{ isExpired: true }}
+      ${'beneficiary'}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${{ isExpired: false }}
+      ${'eligible 18'}    | ${{ eligibility: EligibilityType['age-18'] }} | ${{ isExpired: false }}
+      ${'eligible 15-17'} | ${{ eligibility: EligibilityType.underage }}  | ${{ isExpired: false }}
+      ${'general'}        | ${{ eligibility: undefined }}                 | ${{ isExpired: false }}
     `('$usertype users', ({ user, credit }: { user: UserProfileResponse; credit: Credit }) => {
       beforeEach(() => {
-        mockUseUserProfileInfo.mockReturnValueOnce(
-          user as unknown as UsePersistQueryResult<UserProfileResponse, unknown>
-        )
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: true,
+          user,
+          setIsLoggedIn: jest.fn(),
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
         mockGetAvailableCredit.mockReturnValueOnce(credit)
       })
 

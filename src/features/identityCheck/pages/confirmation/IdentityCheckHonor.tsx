@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { hasOngoingCredit } from 'features/home/services/useAvailableCredit'
 import { usePostHonorStatement } from 'features/identityCheck/api/api'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -11,7 +12,6 @@ import { Declaration } from 'features/identityCheck/atoms/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useUserProfileInfo } from 'features/profile/api'
 import { amplitude } from 'libs/amplitude'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -28,15 +28,19 @@ export const IdentityCheckHonor = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { refetch: fetchUser, isLoading: isUserProfileLoading } = useUserProfileInfo()
+  const { refetchUser } = useAuthContext()
 
-  const { mutate: postHonorStatement, isLoading: isPostingHonorStatement } = usePostHonorStatement({
+  const {
+    mutate: postHonorStatement,
+    isLoading: isPostingHonorLoading,
+    isSuccess: isPostingHonorSuccess,
+  } = usePostHonorStatement({
     onSuccess: async () => {
       queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
       let userProfile
       try {
-        const { data } = await fetchUser()
-        userProfile = data
+        const { data: user } = await refetchUser()
+        userProfile = user
       } catch (error) {
         showErrorSnackBar({
           message: extractApiErrorMessage(error),
@@ -57,6 +61,8 @@ export const IdentityCheckHonor = () => {
       }),
   })
 
+  // If the mutation is loading or is a success, we don't want the user to trigger the button again
+  const isSubmitButtonEnabled = isPostingHonorLoading || isPostingHonorSuccess
   useEnterKeyAction(() => postHonorStatement())
 
   return (
@@ -80,7 +86,7 @@ export const IdentityCheckHonor = () => {
               type="submit"
               onPress={postHonorStatement}
               wording="Valider et continuer"
-              isLoading={isPostingHonorStatement || isUserProfileLoading}
+              isLoading={isSubmitButtonEnabled}
             />
           </ButtonContainer>
           <Spacer.BottomScreen />

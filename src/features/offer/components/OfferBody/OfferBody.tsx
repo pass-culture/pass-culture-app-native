@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
@@ -13,7 +14,6 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
-import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import {
   formatFullAddress,
@@ -49,7 +49,7 @@ interface Props {
 
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offer } = useOffer({ offerId })
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
 

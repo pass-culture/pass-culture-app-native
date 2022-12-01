@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAccountSuspend } from 'features/auth/api'
-import { useLogoutRoutine } from 'features/auth/AuthContext'
+import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { env } from 'libs/environment'

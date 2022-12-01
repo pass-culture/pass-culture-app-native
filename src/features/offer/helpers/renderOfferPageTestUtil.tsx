@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import waitForExpect from 'wait-for-expect'
 
@@ -10,6 +9,7 @@ import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import { beneficiaryUser } from 'fixtures/user'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 
@@ -28,29 +28,6 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-const mockDomainsCredit = {
-  all: { initial: 50000, remaining: 400 },
-  digital: { initial: 10000, remaining: 50 },
-  physical: { initial: 20000, remaining: 150 },
-}
-
-const baseUser = {
-  email: 'email2@domain.ext',
-  firstName: 'Jean',
-  isBeneficiary: true,
-  domainsCredit: mockDomainsCredit,
-}
-let mockedUser: Partial<UserProfileResponse> = baseUser
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(
-    () =>
-      ({
-        isLoading: false,
-        data: mockedUser,
-      } as UseQueryResult<UserProfileResponse>)
-  ),
-}))
-
 let mockedOffer: Partial<OfferResponse> | undefined = undefined
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
@@ -66,10 +43,16 @@ export async function renderOfferBodyPage(
   { isLoggedIn } = { isLoggedIn: true }
 ) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
-  mockedUser = { ...baseUser, ...user }
+  const mockedUser = { ...beneficiaryUser, ...user }
 
   const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
+  mockUseAuthContext.mockImplementation(() => ({
+    isLoggedIn,
+    setIsLoggedIn,
+    user: mockedUser,
+    isUserLoading: false,
+    refetchUser: jest.fn(),
+  }))
 
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc

@@ -3,6 +3,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { useFavorites } from 'features/favorites/api'
 import { Sort } from 'features/favorites/components/Buttons/Sort'
@@ -17,7 +18,6 @@ import {
 } from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { useUserProfileInfo } from 'features/profile/api'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import {
@@ -83,7 +83,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       : applySortBy(data.favorites, favoritesState.sortBy, position)
   }, [data, favoritesState, position])
 
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const credit = useAvailableCredit()
 
   useEffect(() => {

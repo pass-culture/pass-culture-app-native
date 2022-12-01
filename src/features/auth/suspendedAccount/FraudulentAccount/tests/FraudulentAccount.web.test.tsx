@@ -11,7 +11,7 @@ import { FraudulentAccount } from '../FraudulentAccount'
 jest.mock('features/navigation/helpers')
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/logout/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 

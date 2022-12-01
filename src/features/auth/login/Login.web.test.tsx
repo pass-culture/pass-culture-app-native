@@ -44,7 +44,13 @@ function renderLogin() {
   return render(
     <SafeAreaProvider>
       <SnackBarProvider>
-        <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
+        <AuthContext.Provider
+          value={{
+            isLoggedIn: true,
+            setIsLoggedIn: jest.fn(),
+            isUserLoading: false,
+            refetchUser: jest.fn(),
+          }}>
           <Login />
         </AuthContext.Provider>
       </SnackBarProvider>

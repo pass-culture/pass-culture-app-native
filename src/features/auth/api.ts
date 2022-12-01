@@ -4,7 +4,7 @@ import { useMutation } from 'react-query'
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import { AccountRequest, AccountState, SigninRequest } from 'api/gen'
-import { useLoginRoutine } from 'features/auth/AuthContext'
+import { useLoginRoutine } from 'features/auth/login/useLoginRoutine'
 import { useAppSettings } from 'features/auth/settings'
 import { campaignTracker } from 'libs/campaign'
 

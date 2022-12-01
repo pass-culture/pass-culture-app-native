@@ -1,14 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
-import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
+import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import {
@@ -42,20 +41,16 @@ jest.mock('@react-navigation/bottom-tabs', () =>
   jest.requireActual('@react-navigation/bottom-tabs')
 )
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(
-    () =>
-      ({
-        isLoading: false,
-        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: false },
-      } as UseQueryResult<UserProfileResponse>)
-  ),
-}))
+const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
+  isLoggedIn: true,
+  user: nonBeneficiaryUser,
+  isUserLoading: false,
+  refetchUser: jest.fn(),
+  setIsLoggedIn: jest.fn(),
+}) as jest.Mock
 
-const mockedUseAuthContext = useAuthContext as jest.Mock
 const mockSignOut = jest.fn()
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+jest.mock('features/auth/logout/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
@@ -259,7 +254,10 @@ describe('Profile component', () => {
 
     it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
-      mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
+      mockedUseAuthContext.mockImplementation(() => ({
+        isLoggedIn: true,
+        user: nonBeneficiaryUser,
+      }))
       const { getByText } = await renderProfile()
 
       const row = getByText('Déconnexion')
@@ -280,7 +278,10 @@ describe('Profile component', () => {
 
     it('should log event ProfilScrolledToBottom when user reach end of screen', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
-      mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
+      mockedUseAuthContext.mockImplementation(() => ({
+        isLoggedIn: true,
+        user: nonBeneficiaryUser,
+      }))
       const { getByTestId } = await renderProfile()
       const scrollContainer = getByTestId('profile-scrollview')
       await act(async () => await fireEvent.scroll(scrollContainer, middleScrollEvent))

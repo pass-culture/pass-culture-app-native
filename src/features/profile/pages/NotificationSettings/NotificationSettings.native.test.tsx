@@ -9,7 +9,7 @@ import { act, ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
-import { IAuthContext, useAuthContext } from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -20,7 +20,7 @@ import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
 import { NotificationSettings } from './NotificationSettings'
 
 jest.mock('features/auth/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+const mockUseAuthContext = Auth.useAuthContext as jest.Mock
 
 jest.mock('@react-navigation/native', () => ({
   ...(jest.requireActual('@react-navigation/native') as Record<string, unknown>),
@@ -283,15 +283,16 @@ async function renderNotificationSettings(
   user?: UserProfileResponse,
   isLoggedIn?: boolean
 ) {
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: isLoggedIn ?? true } as IAuthContext))
+  mockUseAuthContext.mockReturnValue({
+    isLoggedIn: isLoggedIn ?? true,
+    user,
+  } as Auth.IAuthContext)
 
   const checkNotifications = jest.spyOn(RNP, 'checkNotifications')
   checkNotifications.mockResolvedValue({
     status: expectedPermission,
     settings: {},
   })
-
-  mockApiGetMe(user)
 
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -308,17 +309,10 @@ async function renderNotificationSettings(
   return wrapper
 }
 
-const mockApiGetMe = (user?: UserProfileResponse) => {
-  server.use(
-    rest.get(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(user))
-    })
-  )
-}
-
 const mockApiUpdateProfile = (user?: UserProfileResponse) => {
   server.use(
     rest.post(env.API_BASE_URL + '/native/v1/profile', (_req, res, ctx) => {
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user } as Auth.IAuthContext)
       return res.once(ctx.status(200), ctx.json(user))
     })
   )

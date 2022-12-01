@@ -1,12 +1,6 @@
 import mockdate from 'mockdate'
 
-import {
-  OfferResponse,
-  UserRole,
-  YoungStatusType,
-  SubscriptionStatus,
-  SearchGroupNameEnumv2,
-} from 'api/gen'
+import { OfferResponse, YoungStatusType, SubscriptionStatus, SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferModal } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/firebase/analytics'
@@ -16,18 +10,6 @@ import { Subcategory } from 'libs/subcategories/types'
 import { getCtaWordingAndAction } from './useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
-
-const mockedUser = {
-  email: 'jean@example.com',
-  firstName: 'Jean',
-  isBeneficiary: true,
-  roles: [UserRole.BENEFICIARY],
-}
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: mockedUser,
-  })),
-}))
 
 describe('getCtaWordingAndAction', () => {
   describe('logged out user', () => {
@@ -415,7 +397,6 @@ describe('getCtaWordingAndAction', () => {
           isForbiddenToUnderage,
           modalToDisplay: mustShowBookingModal,
         }) => {
-          mockedUser.roles = [UserRole.UNDERAGE_BENEFICIARY]
           const { wording, onPress, navigateTo, externalNav, modalToDisplay } = getCta(
             {
               isDigital,

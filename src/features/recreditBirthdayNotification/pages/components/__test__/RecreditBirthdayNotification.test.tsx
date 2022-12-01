@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { UserProfileResponse } from 'api/gen'
 import { IAuthContext, useAuthContext } from 'features/auth/AuthContext'
+import { underageBeneficiaryUser } from 'fixtures/user'
 import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from '../RecreditBirthdayNotification'
@@ -9,29 +9,28 @@ import { RecreditBirthdayNotification } from '../RecreditBirthdayNotification'
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')
 jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => {
-    const birthdate = new Date()
-    birthdate.setFullYear(birthdate.getFullYear() - 15)
-    return {
-      data: {
-        dateOfBirth: birthdate.toISOString(),
-        recreditAmountToShow: 5000,
-        domainsCredit: {
-          all: {
-            remaining: 5000,
-          },
-        },
-      } as UserProfileResponse,
-    }
-  }),
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({
     mutate: jest.fn(),
   }),
 }))
 
+const birthdate = new Date()
+birthdate.setFullYear(birthdate.getFullYear() - 15)
+
+const UserMock = {
+  ...underageBeneficiaryUser,
+  dateOfBirth: birthdate.toISOString(),
+  recreditAmountToShow: 5000,
+  domainsCredit: {
+    all: {
+      remaining: 5000,
+    },
+  },
+}
+
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true } as IAuthContext))
+mockUseAuthContext.mockReturnValue({ isLoggedIn: true, user: UserMock } as IAuthContext)
 
 describe('<RecreditBirthdayNotification />', () => {
   it('should have correct text', async () => {

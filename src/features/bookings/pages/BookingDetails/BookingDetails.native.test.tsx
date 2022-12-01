@@ -23,9 +23,6 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: undefined })),
-}))
 
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),

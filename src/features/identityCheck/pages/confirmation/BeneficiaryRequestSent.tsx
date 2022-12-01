@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -14,7 +14,7 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)

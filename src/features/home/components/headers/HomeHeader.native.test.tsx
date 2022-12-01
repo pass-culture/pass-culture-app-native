@@ -1,20 +1,14 @@
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/AuthContext'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { useUserProfileInfo } from 'features/profile/api'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { UsePersistQueryResult } from 'libs/react-query/usePersistQuery'
 import { render } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
-jest.mock('features/auth/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-
-jest.mock('features/profile/api')
-const mockUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<typeof useUserProfileInfo>
+const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
 jest.mock('features/home/services/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
@@ -24,12 +18,12 @@ const mockUseGeolocation = useGeolocation as jest.Mock
 
 describe('HomeHeader', () => {
   it.each`
-    usertype                     | user                                                                         | isLoggedIn | credit                                | subtitle
-    ${'ex beneficiary'}          | ${{ data: { isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false } }} | ${true}    | ${{ amount: 0, isExpired: true }}     | ${'Ton crédit est expiré'}
-    ${'beneficiary'}             | ${{ data: { isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false } }} | ${true}    | ${{ amount: 5600, isExpired: false }} | ${'Tu as 56 € sur ton pass'}
-    ${'eligible ex beneficiary'} | ${{ data: { isBeneficiary: true, isEligibleForBeneficiaryUpgrade: true } }}  | ${true}    | ${{ amount: 5, isExpired: true }}     | ${'Toute la culture à portée de main'}
-    ${'general'}                 | ${{ data: { isBeneficiary: false } }}                                        | ${true}    | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
-    ${'not logged in'}           | ${{ data: undefined }}                                                       | ${false}   | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
+    usertype                     | user                                                               | isLoggedIn | credit                                | subtitle
+    ${'ex beneficiary'}          | ${{ isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false }} | ${true}    | ${{ amount: 0, isExpired: true }}     | ${'Ton crédit est expiré'}
+    ${'beneficiary'}             | ${{ isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false }} | ${true}    | ${{ amount: 5600, isExpired: false }} | ${'Tu as 56 € sur ton pass'}
+    ${'eligible ex beneficiary'} | ${{ isBeneficiary: true, isEligibleForBeneficiaryUpgrade: true }}  | ${true}    | ${{ amount: 5, isExpired: true }}     | ${'Toute la culture à portée de main'}
+    ${'general'}                 | ${{ isBeneficiary: false }}                                        | ${true}    | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
+    ${'not logged in'}           | ${undefined}                                                       | ${false}   | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
   `(
     '$usertype users should see subtitle: $subtitle',
     ({
@@ -43,13 +37,13 @@ describe('HomeHeader', () => {
       credit: Credit
       subtitle: string
     }) => {
-      mockUseAuthContext.mockReturnValueOnce({
+      mockUseAuthContext.mockReturnValue({
         isLoggedIn: isLoggedIn,
+        user,
+        isUserLoading: false,
         setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
       })
-      mockUseUserProfileInfo.mockReturnValueOnce(
-        user as unknown as UsePersistQueryResult<UserProfileResponse, unknown>
-      )
       mockUseAvailableCredit.mockReturnValueOnce(credit)
 
       const { getByText } = render(<HomeHeader />)

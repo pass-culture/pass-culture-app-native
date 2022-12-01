@@ -5,7 +5,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { amplitude } from 'libs/amplitude'
@@ -15,16 +15,8 @@ jest.mock('react-query')
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
-let mockUserProfile: UserProfileResponse = nonBeneficiaryUser
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    refetch: jest.fn(() =>
-      Promise.resolve({
-        data: mockUserProfile,
-      })
-    ),
-  })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockNavigateToNextScreen = jest.fn()
 jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
@@ -39,6 +31,9 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 }
 
 describe('<IdentityCheckHonor/>', () => {
+  beforeAll(() => {
+    mockUseAuthContext.mockReturnValue({ user: nonBeneficiaryUser })
+  })
   beforeEach(() => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementation(useMutationFactory(useMutationCallbacks))
@@ -64,7 +59,14 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   it('should navigate to BeneficiaryAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
-    mockUserProfile = { ...beneficiaryUser, depositExpirationDate: '2021-12-01T00:00:00.000Z' }
+    const user = {
+      ...beneficiaryUser,
+      depositExpirationDate: '2021-12-01T00:00:00.000Z',
+    }
+    mockUseAuthContext.mockReturnValueOnce({
+      user,
+      refetchUser: async () => ({ data: user }),
+    })
 
     const { getByText } = render(<IdentityCheckHonor />)
 
@@ -81,7 +83,11 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   it("should navigate to next Screen if user's credit is expired (non beneficiary)", async () => {
-    mockUserProfile = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
+    const user = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
+    mockUseAuthContext.mockReturnValueOnce({
+      user,
+      refetchUser: async () => ({ data: user }),
+    })
 
     const { getByText } = render(<IdentityCheckHonor />)
 

@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useCancelBookingMutation } from 'features/bookings/api'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -33,7 +33,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   booking,
 }) => {
   const netInfo = useNetInfoContext()
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const refundRule = getRefundRule(booking, user)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()

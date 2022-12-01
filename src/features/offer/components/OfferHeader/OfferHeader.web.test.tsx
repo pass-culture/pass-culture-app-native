@@ -12,6 +12,8 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 mockUseAuthContext.mockImplementation(() => ({
   isLoggedIn: true,
   setIsLoggedIn: jest.fn(),
+  refetchUser: jest.fn(),
+  isUserLoading: false,
 }))
 
 describe('<OfferHeader />', () => {

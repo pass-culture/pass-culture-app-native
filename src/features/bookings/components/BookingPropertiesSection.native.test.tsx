@@ -1,19 +1,29 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render } from 'tests/utils'
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/auth/settings')
 
 describe('<BookingPropertiesSection />', () => {
+  beforeAll(() => {
+    const { user: globalMockUser } = mockUseAuthContext()
+    mockUseAuthContext.mockReturnValue({
+      user: {
+        ...globalMockUser,
+        firstName: 'Christophe',
+        lastName: 'Dupont',
+      },
+    })
+  })
   const booking = bookingsSnap.ongoing_bookings[0]
 
   it('should display user firstname and lastname', async () => {

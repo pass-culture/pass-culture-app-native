@@ -10,6 +10,7 @@ import { ChangeEmail } from '../ChangeEmail'
 allowConsole({ error: true })
 
 jest.mock('react-query')
+jest.mock('features/auth/AuthContext')
 
 describe('<ChangeEmail/>', () => {
   it('should render correctly', () => {

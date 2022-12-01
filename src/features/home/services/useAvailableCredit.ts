@@ -1,5 +1,5 @@
 import { UserProfileResponse } from 'api/gen/api'
-import { useUserProfileInfo } from 'features/profile/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { computeCredit } from 'features/profile/utils'
 
 export type Credit = { amount: number; isExpired: boolean }
@@ -16,7 +16,7 @@ export const getAvailableCredit = (user: UserProfileResponse): Credit => {
 }
 
 export const useAvailableCredit = (): Credit | undefined => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
 
   if (!user) return undefined
 

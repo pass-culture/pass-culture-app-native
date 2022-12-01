@@ -2,8 +2,8 @@ import uniqBy from 'lodash/uniqBy'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { SearchParametersFields } from 'features/home/contentful'
-import { useUserProfileInfo } from 'features/profile/api'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {
@@ -32,7 +32,7 @@ export const useOfferModule = ({
   const transformHits = useTransformOfferHits()
   const parseSearchParameters = useParseSearchParameters()
   const isUserUnderage = useIsUserUnderage()
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const netInfo = useNetInfoContext()
   const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 

@@ -5,18 +5,7 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('react-query')
 
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: {
-      isBeneficiary: true,
-      domainsCredit: { all: { initial: 8000, remaining: 7000 } },
-    },
-  })),
-}))
-
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
-}))
+jest.mock('features/auth/AuthContext')
 
 describe('<OfferTypeModal/>', () => {
   describe('Accessibility', () => {

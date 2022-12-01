@@ -1,7 +1,7 @@
 import { UserProfileResponse, DomainsCredit, UserRole, EligibilityType } from 'api/gen/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { Again } from 'ui/svg/icons/Again'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
@@ -42,12 +42,12 @@ export const isUserUnderage = (user?: UserProfileResponse) =>
   user?.eligibility === EligibilityType.underage
 
 export const useIsUserUnderage = () => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   return isUserUnderage(user)
 }
 
 export const useIsUserUnderageBeneficiary = () => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   return isUserUnderageBeneficiary(user)
 }
 

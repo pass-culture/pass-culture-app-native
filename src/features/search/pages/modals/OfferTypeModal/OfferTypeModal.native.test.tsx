@@ -3,13 +3,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/profile/api'
 import { OFFER_TYPES } from 'features/search/components/sections/OfferType/OfferType'
 import { initialSearchState } from 'features/search/context/reducer'
 import { OfferType } from 'features/search/enums'
 import { SectionTitle } from 'features/search/helpers/titles'
 import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
 import { OfferTypes, SearchView } from 'features/search/types'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act } from 'tests/utils'
 
@@ -23,20 +23,17 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-jest.mock('features/profile/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({
-    data: {
-      isBeneficiary: true,
-      domainsCredit: { all: { initial: 8000, remaining: 7000 } },
-    },
-  })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-const mockedUseAuthContext = useAuthContext as jest.Mock
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
-}))
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: mockUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+})
 
 const hideOfferTypeModal = jest.fn()
 
@@ -125,9 +122,13 @@ describe('<OfferTypeModal/>', () => {
 
   describe('when user is not logged in', () => {
     beforeEach(() => {
-      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
-        data: {},
-      }))
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        user: undefined,
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      })
     })
 
     it('should not display duo offer toggle', () => {
@@ -144,9 +145,13 @@ describe('<OfferTypeModal/>', () => {
 
   describe('when user is not a beneficiary', () => {
     beforeEach(() => {
-      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
-        data: { isBeneficiary: false },
-      }))
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        user: nonBeneficiaryUser,
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      })
     })
 
     it('should not display duo offer toggle', () => {
@@ -163,9 +168,13 @@ describe('<OfferTypeModal/>', () => {
 
   describe('when user is logged in and benificiary with no credit', () => {
     beforeEach(() => {
-      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
-        data: { isBeneficiary: true, domainsCredit: { all: { initial: 8000, remaining: 0 } } },
-      }))
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        user: { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 0 } } },
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      })
     })
 
     it('should not display duo offer toggle', () => {
@@ -182,10 +191,13 @@ describe('<OfferTypeModal/>', () => {
 
   describe('when user is logged in and beneficiary with credit', () => {
     beforeEach(() => {
-      mockedUseUserProfileInfo.mockImplementationOnce(() => ({
-        data: { isBeneficiary: true, domainsCredit: { all: { initial: 8000, remaining: 1000 } } },
-      }))
-      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        user: beneficiaryUser,
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      })
     })
 
     it('should display toggle offerIsDuo if all type select', () => {

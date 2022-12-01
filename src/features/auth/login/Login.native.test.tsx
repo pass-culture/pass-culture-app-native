@@ -345,7 +345,13 @@ describe('<Login/>', () => {
 
 function renderLogin() {
   return render(
-    <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+      }}>
       <Login />
     </AuthContext.Provider>
   )

@@ -6,7 +6,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { HomepageEntry, TagId } from 'features/home/contentful'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { useUserProfileInfo } from 'features/profile/api'
 import {
   isUserBeneficiary18,
   isUserUnderage,
@@ -30,8 +29,7 @@ const scoreHomepageByTags = (
 
 // this creates a selector to pick the adequate homepage to show
 export const useSelectHomepageEntry = (homepageEntryId?: string) => {
-  const { isLoggedIn } = useAuthContext()
-  const { data: user } = useUserProfileInfo()
+  const { isLoggedIn, user } = useAuthContext()
   const userHasBookings = useUserHasBookings()
   const {
     homeEntryIdNotConnected,

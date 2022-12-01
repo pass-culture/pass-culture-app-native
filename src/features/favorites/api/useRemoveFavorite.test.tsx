@@ -78,6 +78,8 @@ describe('useRemoveFavorite hook', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
@@ -110,6 +112,8 @@ describe('useRemoveFavorite hook', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
     })
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {

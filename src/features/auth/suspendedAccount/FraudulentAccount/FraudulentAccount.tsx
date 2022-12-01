@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useLogoutRoutine } from 'features/auth/AuthContext'
+import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

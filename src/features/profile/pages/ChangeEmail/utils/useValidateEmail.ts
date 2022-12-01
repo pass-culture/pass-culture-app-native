@@ -1,8 +1,8 @@
-import { useUserProfileInfo } from 'features/profile/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 
 export const useIsCurrentUserEmail = (email: string): boolean => {
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   return email.toLowerCase() === user?.email?.toLowerCase()
 }
 

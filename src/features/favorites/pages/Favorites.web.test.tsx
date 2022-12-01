@@ -58,7 +58,12 @@ describe('<Favorites/>', () => {
 
 function renderFavorites({ isLoggedIn }: { isLoggedIn: boolean }) {
   const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
+  mockUseAuthContext.mockImplementation(() => ({
+    isLoggedIn,
+    setIsLoggedIn,
+    isUserLoading: false,
+    refetchUser: jest.fn(),
+  }))
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Favorites />))
 }

@@ -5,9 +5,9 @@ import { NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
-import { useUserProfileInfo } from 'features/profile/api'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
@@ -42,8 +42,7 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
-  const { data: user } = useUserProfileInfo()
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()

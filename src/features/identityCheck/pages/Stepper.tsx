@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { hasOngoingCredit } from 'features/home/services/useAvailableCredit'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
@@ -14,7 +15,6 @@ import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/useSetCu
 import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
 import { getStepState } from 'features/identityCheck/utils/getStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Li } from 'ui/components/Li'
@@ -36,7 +36,7 @@ export const IdentityCheckStepper = () => {
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { refetch } = useUserProfileInfo()
+  const { refetchUser } = useAuthContext()
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -68,7 +68,7 @@ export const IdentityCheckStepper = () => {
 
   useEffect(() => {
     if (subscription?.nextSubscriptionStep === null) {
-      refetch()
+      refetchUser()
         .then(({ data: userProfile }) => {
           const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
           if (hasUserOngoingCredit) {

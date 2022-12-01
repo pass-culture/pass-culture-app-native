@@ -6,7 +6,7 @@ import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { PushNotificationsModal } from 'features/notifications/batchNotifications/components/PushNotificationsModal'
-import { useUpdateProfileMutation, useUserProfileInfo } from 'features/profile/api'
+import { useUpdateProfileMutation } from 'features/profile/api'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { useAppStateChange } from 'libs/appState'
@@ -28,7 +28,7 @@ type State = {
 
 export function NotificationSettings() {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
 
   const { goBack } = useNavigation()
 
@@ -46,8 +46,6 @@ export function NotificationSettings() {
     showModal: showNotificationsModal,
     hideModal: hideNotificationsModal,
   } = useModal(false)
-
-  const { data: user } = useUserProfileInfo()
 
   // refresh state on page focus
   useEffect(() => {

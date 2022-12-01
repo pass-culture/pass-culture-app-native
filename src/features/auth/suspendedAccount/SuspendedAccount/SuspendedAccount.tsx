@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useLogoutRoutine } from 'features/auth/AuthContext'
+import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { useAppSettings } from 'features/auth/settings'
 import { useAccountSuspensionDate } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate'
 import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'

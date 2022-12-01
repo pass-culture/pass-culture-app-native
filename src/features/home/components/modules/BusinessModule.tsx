@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessPane, ContentTypes } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { Image } from 'libs/resizing-image-on-demand/Image'
@@ -40,7 +39,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   } = props
   const isDisabled = !url
   const { appContentWidth } = useTheme()
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user, isUserLoading } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = Math.min(
     PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS),
@@ -49,7 +48,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  const { data: user, isLoading: isUserLoading } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const logAndOpenUrl = (finalUrl: string) => {

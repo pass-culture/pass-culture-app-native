@@ -6,9 +6,9 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useUserProfileInfo } from 'features/profile/api'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -57,7 +57,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferType, searchState.searchId)
   const logDuoOfferFilter = useLogFilterOnce(SectionTitle.Duo, searchState.searchId)
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
-  const { data: user } = useUserProfileInfo()
+  const { user } = useAuthContext()
   const { isDesktopViewport, modal } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 

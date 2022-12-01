@@ -17,10 +17,7 @@ const mockUseCurrentRoute = mocked(useCurrentRoute)
 jest.mock('features/cookies/helpers/useIsCookiesListUpToDate')
 jest.mock('features/forceUpdate/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('features/profile/api') // for useUserProfileInfo()
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/AuthContext')
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))

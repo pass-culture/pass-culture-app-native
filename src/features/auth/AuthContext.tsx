@@ -1,27 +1,29 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { useQueryClient } from 'react-query'
+import { QueryObserverResult } from 'react-query'
 
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
-import { SigninResponse } from 'api/gen'
-import { useResetContexts } from 'features/auth/useResetContexts'
+import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useAppStateChange } from 'libs/appState'
-import { analytics, LoginRoutineMethod } from 'libs/firebase/analytics'
+import { analytics } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
-import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'
+import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
+  user?: UserProfileResponse
+  refetchUser: () => Promise<QueryObserverResult<UserProfileResponse, unknown>>
+  isUserLoading: boolean
 }
 
-const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
+export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
   const { setUserId: setUserIdToCookiesChoice } = useCookies()
   return useCallback(
     (accessToken) => {
@@ -42,6 +44,9 @@ const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => v
 export const AuthContext = React.createContext<IAuthContext>({
   isLoggedIn: false,
   setIsLoggedIn: () => undefined,
+  user: undefined,
+  refetchUser: async () => ({} as QueryObserverResult<UserProfileResponse>),
+  isUserLoading: false,
 })
 
 export function useAuthContext(): IAuthContext {
@@ -52,12 +57,18 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
+  const {
+    data: user,
+    refetch: refetchUser,
+    isLoading: isUserLoading,
+  } = useUserProfileInfo(isLoggedIn)
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
       let accessToken = await storage.readString('access_token')
+      const accessTokenStatus = getAccessTokenStatus(accessToken)
 
-      if (getAccessTokenStatus(accessToken) === 'expired') {
+      if (accessTokenStatus === 'expired') {
         // refreshAccessToken calls the backend to get a new access token
         // and also saves it to the storage
         const { result, error } = await refreshAccessToken(api)
@@ -72,8 +83,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
           accessToken = result
         }
       }
-
-      if (getAccessTokenStatus(accessToken) === 'valid') {
+      if (accessTokenStatus === 'valid') {
         setIsLoggedIn(true)
         connectServicesRequiringUserId(accessToken)
       }
@@ -91,7 +101,10 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
-  const value = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn])
+  const value = useMemo(
+    () => ({ isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading }),
+    [isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading]
+  )
 
   if (loading) return null
   /**
@@ -103,60 +116,13 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
 
-export function useLoginRoutine() {
-  const { setIsLoggedIn } = useAuthContext()
-  const resetContexts = useResetContexts()
-  const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
+const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
+function useUserProfileInfo(isLoggedIn: boolean, options = {}) {
+  const netInfo = useNetInfoContext()
 
-  /**
-   * Executes the minimal set of instructions required to proceed to the login
-   * @param {SigninResponse} response
-   * @param {LoginRoutineMethod} method The process that triggered the login routine
-   */
-
-  return async (response: SigninResponse, method: LoginRoutineMethod) => {
-    connectServicesRequiringUserId(response.accessToken)
-    await saveRefreshToken(response.refreshToken)
-    await storage.saveString('access_token', response.accessToken)
-    analytics.logLogin({ method })
-    setIsLoggedIn(true)
-    resetContexts()
-  }
+  return usePersistQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
+    enabled: !!netInfo.isConnected && isLoggedIn,
+    staleTime: STALE_TIME_USER_PROFILE,
+    ...options,
+  })
 }
-
-export function useLogoutRoutine(): () => Promise<void> {
-  const queryClient = useQueryClient()
-  const { setIsLoggedIn } = useAuthContext()
-
-  return useCallback(async () => {
-    try {
-      BatchUser.editor().setIdentifier(null).save()
-      analytics.logLogout()
-      await storage.clear('access_token')
-      await clearRefreshToken()
-      LoggedInQueryKeys.forEach((queryKey) => {
-        queryClient.removeQueries(queryKey)
-      })
-      await AsyncStorage.multiRemove(LoggedInQueryKeys)
-    } catch (err) {
-      eventMonitoring.captureException(err)
-    } finally {
-      setIsLoggedIn(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setIsLoggedIn])
-}
-
-// List of keys that are accessible only when logged in to clean when logging out
-export const LoggedInQueryKeys: QueryKeys[] = [
-  QueryKeys.BOOKINGS,
-  QueryKeys.CULTURAL_SURVEY_QUESTIONS,
-  QueryKeys.FAVORITES,
-  QueryKeys.FAVORITES_COUNT,
-  QueryKeys.RECOMMENDATION_HITS,
-  QueryKeys.RECOMMENDATION_OFFER_IDS,
-  QueryKeys.REPORTED_OFFERS,
-  QueryKeys.REPORT_OFFER_REASONS,
-  QueryKeys.NEXT_SUBSCRIPTION_STEP,
-  QueryKeys.USER_PROFILE,
-]
