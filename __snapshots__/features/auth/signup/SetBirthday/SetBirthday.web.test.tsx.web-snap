@@ -139,6 +139,7 @@ Object {
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+  cursor: pointer;
 }
 
 .c0 {
@@ -1879,6 +1880,7 @@ Object {
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+  cursor: pointer;
 }
 
 .c0 {
@@ -3674,6 +3676,7 @@ Object {
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+  cursor: pointer;
 }
 
 .c0 {
@@ -4916,6 +4919,7 @@ Object {
   font-size: 15px;
   line-height: 20px;
   color: #161617;
+  cursor: pointer;
 }
 
 .c0 {

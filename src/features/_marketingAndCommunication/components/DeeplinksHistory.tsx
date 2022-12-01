@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/_marketingAndCommunication/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
+import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
@@ -95,9 +95,12 @@ export const DeeplinksHistory = ({
         ListFooterComponent={HorizontalMargin}
       />
       <BottomContainer>
-        <StyledCheckBox onPress={onToggleKeepHistory}>
-          <CheckboxInput isChecked={!!keepHistory} />
-          <CheckBoxText>Conserver l’historique</CheckBoxText>
+        <StyledCheckBox>
+          <Checkbox
+            isChecked={!!keepHistory}
+            label="Conserver l’historique"
+            onPress={onToggleKeepHistory}
+          />
         </StyledCheckBox>
       </BottomContainer>
     </Container>
@@ -107,11 +110,6 @@ export const DeeplinksHistory = ({
 const flatListStyle = { marginVertical: getSpacing(4) }
 
 const HorizontalMargin = () => <Spacer.Column numberOfSpaces={10} />
-
-const CheckBoxText = styled(Typo.Body)({
-  alignSelf: 'center',
-  ...padding(0, 8, 0, 4),
-})
 
 const StyledCheckBox = styled(TouchableOpacity)({
   display: 'flex',
