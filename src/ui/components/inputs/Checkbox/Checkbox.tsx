@@ -50,7 +50,6 @@ const CheckboxContainer = styled(TouchableOpacity)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  width: '100%',
   cursor: 'pointer',
 })
 
@@ -68,4 +67,5 @@ const Box = styled.View<IsCheckedProps>(({ isChecked, theme }) => ({
 const Label = styled(Typo.Body)({
   alignSelf: 'center',
   paddingLeft: getSpacing(4),
+  flex: 1,
 })

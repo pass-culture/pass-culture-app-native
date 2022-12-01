@@ -3409,7 +3409,6 @@ Array [
                   "transitionDuration": "0s",
                   "transitionProperty": "opacity",
                   "userSelect": "auto",
-                  "width": "100%",
                 }
               }
               tabIndex="0"
@@ -3454,12 +3453,22 @@ Array [
                 style={
                   Object {
                     "WebkitAlignSelf": "center",
+                    "WebkitBoxFlex": 1,
+                    "WebkitFlexBasis": "0px",
+                    "WebkitFlexGrow": 1,
+                    "WebkitFlexShrink": 1,
                     "alignSelf": "center",
                     "color": "rgba(22,22,23,1.00)",
+                    "flexBasis": "0px",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": "15px",
                     "lineHeight": "20px",
                     "msFlexItemAlign": "center",
+                    "msFlexNegative": 1,
+                    "msFlexPositive": 1,
+                    "msFlexPreferredSize": "0px",
                     "msGridRowAlign": "center",
                     "paddingLeft": "16px",
                   }

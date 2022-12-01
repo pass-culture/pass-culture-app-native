@@ -2606,7 +2606,6 @@ Array [
                   "flexDirection": "row",
                   "opacity": 1,
                   "userSelect": "auto",
-                  "width": "100%",
                 }
               }
             >
@@ -2634,6 +2633,9 @@ Array [
                     Object {
                       "alignSelf": "center",
                       "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
                       "lineHeight": 20,
