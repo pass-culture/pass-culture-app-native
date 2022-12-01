@@ -11,7 +11,7 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function LegalNotices() {
   return (
-    <PageProfileSection title="Mentions légales">
+    <PageProfileSection title="Informations légales">
       <SectionRow
         title="Conditions Générales d’Utilisation"
         type="clickable"

@@ -199,7 +199,7 @@ export const routes: Route[] = [
     name: 'LegalNotices',
     component: LegalNotices,
     path: 'notices-legales',
-    options: { title: 'Mentions légales' },
+    options: { title: 'Informations légales' },
   },
   {
     // debug route: in navigation component

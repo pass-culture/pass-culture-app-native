@@ -1179,7 +1179,7 @@ exports[`Profile component should render correctly 1`] = `
                                 ]
                               }
                             >
-                              Mentions légales
+                              Informations légales
                             </Text>
                           </View>
                           <View
