@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "dependencyDashboardApproval": true,
+  "enabledManagers": ["npm"],
+  "ignorePaths": ["__mocks__/"],
+  "major": {
+    "enabled": false
+  },
+  "ignoreDeps": ["react-native", "react", "react-native-web"],
+  "commitMessagePrefix": "(BSR) chore(deps):"
+}
