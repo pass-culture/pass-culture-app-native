@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -13,6 +13,7 @@ import {
 } from 'features/identityCheck/pages/profile/utils'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -28,6 +29,10 @@ export const SetSchoolType = () => {
     profile.schoolType || null
   )
   const { navigateToNextScreen, isSavingCheckpoint } = useSubscriptionNavigation()
+
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_school_type')
+  }, [])
 
   const onPressContinue = async () => {
     if (!selectedSchoolTypeId) return

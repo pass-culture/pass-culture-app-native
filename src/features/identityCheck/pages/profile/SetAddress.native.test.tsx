@@ -5,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
+import { amplitude } from 'libs/amplitude'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { Properties } from 'libs/place'
 import { buildPlaceUrl } from 'libs/place/buildUrl'
@@ -53,7 +54,7 @@ describe('<SetAddress/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   it('should render correctly', () => {
-    const renderAPI = renderSetAddresse()
+    const renderAPI = renderSetAddress()
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -61,7 +62,7 @@ describe('<SetAddress/>', () => {
     mockAddressesApiCall(mockedSuggestedPlaces)
     const mockedGetCitiesSpy = jest.spyOn(fetchAddresses, 'fetchAddresses')
 
-    const { getByText, getByPlaceholderText } = renderSetAddresse()
+    const { getByText, getByPlaceholderText } = renderSetAddress()
 
     const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -82,7 +83,7 @@ describe('<SetAddress/>', () => {
   it('should save address and navigate to next screen when clicking on "Continuer"', async () => {
     mockAddressesApiCall(mockedSuggestedPlaces)
 
-    const { getByText, getByPlaceholderText } = renderSetAddresse()
+    const { getByText, getByPlaceholderText } = renderSetAddress()
 
     const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -99,9 +100,17 @@ describe('<SetAddress/>', () => {
       expect(mockNavigateToNextScreen).toBeCalledTimes(1)
     })
   })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    renderSetAddress()
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_address')
+    )
+  })
 })
 
-function renderSetAddresse() {
+function renderSetAddress() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<SetAddress />))
 }

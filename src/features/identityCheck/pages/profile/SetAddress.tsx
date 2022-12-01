@@ -13,6 +13,7 @@ import { IdentityCheckError } from 'features/identityCheck/errors'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { amplitude } from 'libs/amplitude'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -53,6 +54,10 @@ export const SetAddress = () => {
     enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
+
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_address')
+  }, [])
 
   useEffect(() => {
     if (!isError) return

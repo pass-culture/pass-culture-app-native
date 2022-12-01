@@ -5,7 +5,8 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
-import { fireEvent, render } from 'tests/utils'
+import { amplitude } from 'libs/amplitude'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/api')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -76,5 +77,13 @@ describe('<SetSchoolType />', () => {
 
     fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
     expect(queryByText('Continuer')).toBeFalsy()
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    render(<SetSchoolType />)
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_school_type')
+    )
   })
 })

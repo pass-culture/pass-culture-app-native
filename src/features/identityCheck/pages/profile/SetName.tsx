@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
+import { amplitude } from 'libs/amplitude'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -20,6 +21,10 @@ export const SetName = () => {
   const [firstName, setFirstName] = useState(profile.name?.firstName ?? '')
   const [lastName, setLastName] = useState(profile.name?.lastName ?? '')
   const { navigateToNextScreen } = useSubscriptionNavigation()
+
+  useEffect(() => {
+    amplitude.logEvent('screen_view_set_name')
+  }, [])
 
   const isValidFirstName = isNameValid(firstName)
   const isValidLastName = isNameValid(lastName)

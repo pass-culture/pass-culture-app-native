@@ -3,6 +3,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
+import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/settings')
@@ -61,5 +62,13 @@ describe('<SetName/>', () => {
       })
       expect(mockNavigateToNextScreen).toBeCalledTimes(1)
     })
+  })
+
+  it('should send a amplitude event when the screen is mounted', async () => {
+    render(<SetName />)
+
+    await waitFor(() =>
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_name')
+    )
   })
 })
