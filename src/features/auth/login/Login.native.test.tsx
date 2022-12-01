@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { flushAllPromisesWithAct, superFlushWithAct, fireEvent, render, act } from 'tests/utils'
+import { fireEvent, render, act, waitFor } from 'tests/utils'
 
 import { AuthContext } from '../AuthContext'
 
@@ -62,12 +61,11 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
       expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
-      expect(navigateToHome).toBeCalledTimes(1)
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
       expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
       expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
     })
@@ -85,11 +83,10 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('CulturalSurvey')
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('CulturalSurvey')
     })
   })
 
@@ -106,11 +103,10 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('CulturalSurveyIntro')
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
     })
   })
 
@@ -127,10 +123,9 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
-      expect(navigateToHome).toBeCalledTimes(1)
+    await waitFor(() => {
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -146,9 +141,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
     })
   })
@@ -166,9 +160,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
     })
   })
@@ -186,9 +179,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
     })
   })
@@ -202,9 +194,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
         email: 'email@gmail.com',
       })
@@ -221,9 +212,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
     })
   })
@@ -237,9 +227,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(
         renderAPI.getByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
@@ -261,9 +250,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(renderAPI.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
       const errorSnapshot = renderAPI.toJSON()
       expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
@@ -281,9 +269,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(
         renderAPI.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       ).toBeTruthy()
@@ -303,10 +290,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await flushAllPromisesWithAct()
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(
         renderAPI.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       ).toBeTruthy()
@@ -325,10 +310,10 @@ describe('<Login/>', () => {
     fireEvent.changeText(emailInput, 'email@gmail.com')
     fireEvent.changeText(passwordInput, 'mypassword')
 
-    await flushAllPromisesWithAct()
-
-    const enabledButtonSnapshot = renderAPI.toJSON()
-    expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
+    await waitFor(() => {
+      const enabledButtonSnapshot = renderAPI.toJSON()
+      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
+    })
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {

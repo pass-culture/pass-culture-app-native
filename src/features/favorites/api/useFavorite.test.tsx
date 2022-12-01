@@ -1,7 +1,6 @@
 import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -15,7 +14,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavorite } from './useFavorite'
 
@@ -89,9 +88,8 @@ describe('useFavorite hook', () => {
           </FavoritesWrapper>
         ),
     })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current).toEqual({
         ...favorite,
         offer: {
@@ -124,8 +122,7 @@ describe('useFavorite hook', () => {
           </FavoritesWrapper>
         ),
     })
-    await superFlushWithAct()
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current).toEqual(undefined)
     })
   })

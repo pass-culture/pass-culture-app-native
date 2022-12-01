@@ -1,7 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from '../ResetPasswordExpiredLink'
 
@@ -20,12 +19,12 @@ jest.mock('features/navigation/navigationRef')
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { getByText } = await renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText(`Retourner à l’accueil`))
 
-    await waitForExpect(() => {
-      expect(navigateFromRef).toBeCalledWith(
+    await waitFor(() => {
+      expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
       )
@@ -33,15 +32,14 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
-    const { getByText } = await renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l’email`))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledTimes(1)
     })
-    expect(analytics.logResendEmailResetPasswordExpiredLink).toBeCalledTimes(1)
+    expect(analytics.logResendEmailResetPasswordExpiredLink).toHaveBeenCalledTimes(1)
     expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
       email: 'test@email.com',
     })
@@ -53,20 +51,19 @@ describe('<ResetPasswordExpiredLink/>', () => {
         res.once(ctx.status(401))
       )
     )
-    const { getByText } = await renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l’email`))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).not.toBeCalled()
+    await waitFor(() => {
+      expect(navigate).not.toHaveBeenCalled()
     })
   })
 })
 
 const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
-async function renderResetPasswordExpiredLink() {
+function renderResetPasswordExpiredLink() {
   const renderAPI = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
@@ -75,6 +72,5 @@ async function renderResetPasswordExpiredLink() {
       />
     )
   )
-  await superFlushWithAct()
   return renderAPI
 }

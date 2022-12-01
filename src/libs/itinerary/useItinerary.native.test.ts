@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
 import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useItinerary } from 'libs/itinerary/useItinerary'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const alertMock = jest.spyOn(Alert, 'alert')
@@ -27,27 +27,34 @@ describe('useItinerary', () => {
       Promise.resolve({ sygic: true, google_maps: false, waze: false, citymapper: false })
     )
     const { result } = renderHook(useItinerary)
-    await superFlushWithAct()
-    result.current.navigateTo(address)
-    expect(navigate).toHaveBeenCalledWith(address, { app: 'sygic' })
+
+    await waitFor(() => {
+      result.current.navigateTo(address)
+
+      expect(navigate).toHaveBeenCalledWith(address, { app: 'sygic' })
+    })
   })
+
   it('displays a modal with all the available apps if their count is geater than 1', async () => {
     getAvailableApps.mockImplementationOnce(() =>
       Promise.resolve({ sygic: true, google_maps: false, waze: true, citymapper: false })
     )
     Platform.OS = 'android'
     const { result } = renderHook(useItinerary)
-    await superFlushWithAct()
-    result.current.navigateTo(address)
-    expect(alertMock).toHaveBeenCalledWith(
-      'Voir l’itinéraire',
-      'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
-      [
-        { text: 'Sygic', onPress: expect.any(Function) },
-        { text: 'Waze', onPress: expect.any(Function) },
-      ],
-      { cancelable: true }
-    )
+
+    await waitFor(() => {
+      result.current.navigateTo(address)
+
+      expect(alertMock).toHaveBeenCalledWith(
+        'Voir l’itinéraire',
+        'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
+        [
+          { text: 'Sygic', onPress: expect.any(Function) },
+          { text: 'Waze', onPress: expect.any(Function) },
+        ],
+        { cancelable: true }
+      )
+    })
 
     // @ts-expect-error: precedent expect garanties what follows
     const wazeAlertButton = alertMock.mock.calls[0][2][1]
@@ -57,24 +64,27 @@ describe('useItinerary', () => {
     wazeAlertButton.onPress()
     expect(navigate).toHaveBeenCalledWith('48.85837, 2.294481', { app: 'waze' })
   })
+
   it('should add a cancel button for iOS devices', async () => {
     getAvailableApps.mockImplementationOnce(() =>
       Promise.resolve({ sygic: true, google_maps: false, waze: true, citymapper: false })
     )
     Platform.OS = 'ios'
     const { result } = renderHook(useItinerary)
-    await superFlushWithAct()
-    result.current.navigateTo(address)
-    expect(alertMock).toHaveBeenCalledWith(
-      'Voir l’itinéraire',
-      'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
-      [
-        { text: 'Sygic', onPress: expect.any(Function) },
-        { text: 'Waze', onPress: expect.any(Function) },
-        { text: 'Annuler', style: 'cancel' },
-      ],
-      { cancelable: true }
-    )
+
+    await waitFor(() => {
+      result.current.navigateTo(address)
+      expect(alertMock).toHaveBeenCalledWith(
+        'Voir l’itinéraire',
+        'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
+        [
+          { text: 'Sygic', onPress: expect.any(Function) },
+          { text: 'Waze', onPress: expect.any(Function) },
+          { text: 'Annuler', style: 'cancel' },
+        ],
+        { cancelable: true }
+      )
+    })
   })
 
   it('should open google maps web if no app is available', async () => {
@@ -87,9 +97,12 @@ describe('useItinerary', () => {
       })
     )
     const { result } = renderHook(useItinerary)
-    await superFlushWithAct()
-    result.current.navigateTo(address)
-    await waitForExpect(() => expect(openGoogleMapsItinerary).toHaveBeenCalledTimes(1))
+
+    await waitFor(() => {
+      result.current.navigateTo(address)
+
+      expect(openGoogleMapsItinerary).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should navigate with google maps web if the lib failed and only one application was available', async () => {
@@ -103,9 +116,12 @@ describe('useItinerary', () => {
     )
     navigate.mockImplementationOnce(() => Promise.reject(new Error('dummyError')))
     const { result } = renderHook(useItinerary)
-    await superFlushWithAct()
-    result.current.navigateTo(address)
-    await waitForExpect(() => expect(openGoogleMapsItinerary).toHaveBeenCalledTimes(1))
+
+    await waitFor(() => {
+      result.current.navigateTo(address)
+
+      expect(openGoogleMapsItinerary).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should display an information snackbar if the lib failed and to open the chosen navigation app', async () => {
@@ -120,17 +136,21 @@ describe('useItinerary', () => {
     navigate.mockImplementationOnce(() => Promise.reject(new Error('dummyError')))
     Platform.OS = 'android'
     const { result } = renderHook(useItinerary)
-    await superFlushWithAct()
-    result.current.navigateTo(address)
-    expect(alertMock).toHaveBeenCalledWith(
-      'Voir l’itinéraire',
-      'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
-      [
-        { text: 'Sygic', onPress: expect.any(Function) },
-        { text: 'Waze', onPress: expect.any(Function) },
-      ],
-      { cancelable: true }
-    )
+
+    await waitFor(() => {
+      result.current.navigateTo(address)
+
+      expect(alertMock).toHaveBeenCalledWith(
+        'Voir l’itinéraire',
+        'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
+        [
+          { text: 'Sygic', onPress: expect.any(Function) },
+          { text: 'Waze', onPress: expect.any(Function) },
+        ],
+        { cancelable: true }
+      )
+    })
+
     // @ts-expect-error: precedent assertion garanties next line
     const { onPress: onWazePress } = alertMock.mock.calls[0][2][1]
     // @ts-expect-error: same reason

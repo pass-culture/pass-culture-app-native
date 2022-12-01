@@ -1,7 +1,6 @@
 import { rest } from 'msw'
 import * as React from 'react'
 import { QueryClient } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { addFavoriteJsonResponseSnap } from 'features/favorites/fixtures/favoritesResponse'
 import { env } from 'libs/environment'
@@ -9,7 +8,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
@@ -92,9 +91,8 @@ describe('<BookingImpossible />', () => {
     const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
 
     fireEvent.press(getByText('Mettre en favoris'))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
         from: 'bookingimpossible',

@@ -136,7 +136,8 @@ These are tips to avoid `console` within your tests.
 - Use `queryBy` methods to test the inexistence of an element. Returns `null` if no match.
 - Use `getBy` methods when you know it's truthy
 - To avoid `act` warnings:
-  - try to add `await superFlushWithAct()`, and pass a `number` greater than `10` _(default)_ to flush more promises
+  - put your expectation in `await waitFor()`
+  - if the warning is still here, try to flush promises with `await flushPromises` or try to add `await superFlushWithAct()`, and pass a `number` greater than `50` _(default)_ to flush more promises
   - try to use `waitForExpect` each time you anticipate expectations that should be made after the execution of asynchrone actions.
 - To test an expected error, clean it from your test (we already have the test description):
   - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test

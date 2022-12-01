@@ -2,7 +2,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
-import { fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -13,24 +13,20 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 describe('<IdentityCheckStart/>', () => {
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const renderAPI = render(<IdentityCheckStart />)
-    await superFlushWithAct()
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to Ubble webview when user choose "Commencer la vérification"', async () => {
-    const { getByTestId, queryByText } = render(<IdentityCheckStart />)
-    await superFlushWithAct()
+  it('should navigate to Ubble webview when user choose "Commencer la vérification"', () => {
+    const { getByTestId, getByText } = render(<IdentityCheckStart />)
     fireEvent.press(getByTestId('Commencer la vérification'))
-    expect(queryByText('Quelques conseils')).toBeTruthy()
+    expect(getByText('Quelques conseils')).toBeTruthy()
   })
 
-  it('should navigate to DMS modal when user choose "Transmettre un document"', async () => {
-    const { getByTestId, queryByText } = render(<IdentityCheckStart />)
-    await superFlushWithAct()
+  it('should navigate to DMS modal when user choose "Transmettre un document"', () => {
+    const { getByTestId, getByText } = render(<IdentityCheckStart />)
     fireEvent.press(getByTestId('Transmettre un document'))
-    expect(queryByText('Je suis de nationalité française')).toBeTruthy()
-    expect(queryByText('Je suis de nationalité étrangère')).toBeTruthy()
+    expect(getByText('Je suis de nationalité française')).toBeTruthy()
   })
 })

@@ -1,6 +1,6 @@
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
-import { superFlushWithAct, act, cleanup } from 'tests/utils'
+import { act, cleanup } from 'tests/utils'
 
 describe('<Offer /> - Analytics', () => {
   const nativeEventMiddle = {
@@ -22,7 +22,6 @@ describe('<Offer /> - Analytics', () => {
 
     await act(async () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
-      // await flushAllPromises()
     })
     expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
 
@@ -40,7 +39,6 @@ describe('<Offer /> - Analytics', () => {
       // 1st scroll to bottom => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
-    await superFlushWithAct(25)
     expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerId)
 
     // @ts-expect-error: logConsultWholeOffer is the mock function but is seen as the real function
@@ -51,7 +49,6 @@ describe('<Offer /> - Analytics', () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
-    await superFlushWithAct(25)
 
     expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
   })

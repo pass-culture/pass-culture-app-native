@@ -1,13 +1,12 @@
 import React from 'react'
 import { Linking } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule } from 'features/home/components'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessModuleProps } from './BusinessModule'
@@ -93,7 +92,7 @@ describe('BusinessModule component', () => {
     const { getByTestId } = renderModule(props)
     fireEvent.press(getByTestId('imageBusiness'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(openURLSpy).toHaveBeenCalledWith('url')
     })
   })
@@ -110,9 +109,8 @@ describe('BusinessModule component', () => {
     })
 
     fireEvent.press(getByTestId('imageBusiness'))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
         message: 'Redirection en cours',
       })
@@ -134,7 +132,7 @@ describe('BusinessModule component', () => {
     })
 
     fireEvent.press(getByTestId('imageBusiness'))
-    await waitForExpect(() =>
+    await waitFor(() =>
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
@@ -156,7 +154,7 @@ describe('BusinessModule component', () => {
     })
 
     fireEvent.press(getByTestId('imageBusiness'))
-    await waitForExpect(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
+    await waitFor(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
     mockUseAuthContext.mockReset()
   })

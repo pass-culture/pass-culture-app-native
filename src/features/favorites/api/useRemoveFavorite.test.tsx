@@ -1,7 +1,6 @@
 import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -15,12 +14,9 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useRemoveFavorite } from './useRemoveFavorite'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -67,6 +63,13 @@ function simulateBackend(options: Options = defaultOptions) {
 }
 
 describe('useRemoveFavorite hook', () => {
+  mockUseAuthContext.mockReturnValue({
+    isLoggedIn: true,
+    setIsLoggedIn: jest.fn(),
+    refetchUser: jest.fn(),
+    isUserLoading: false,
+  })
+
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     const favoriteId = favorite.id
@@ -75,12 +78,7 @@ describe('useRemoveFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
       wrapper: (props) =>
@@ -94,10 +92,8 @@ describe('useRemoveFavorite hook', () => {
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate(favoriteId)
-    await superFlushWithAct()
-
-    await waitForExpect(() => {
-      expect(onError).not.toBeCalled()
+    await waitFor(() => {
+      expect(onError).not.toHaveBeenCalled()
     })
   })
 
@@ -109,12 +105,7 @@ describe('useRemoveFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: true,
     })
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
       wrapper: (props) =>
@@ -128,9 +119,8 @@ describe('useRemoveFavorite hook', () => {
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate(favoriteId)
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(onError).toHaveBeenCalledTimes(1)
     })
   })

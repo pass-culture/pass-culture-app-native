@@ -1,11 +1,10 @@
 import { rest } from 'msw'
-import waitForExpect from 'wait-for-expect'
 
 import { useAccountUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const onSuccess = jest.fn()
 const onError = jest.fn()
@@ -37,9 +36,8 @@ describe('useAccountUnsuspend', () => {
     const { result } = renderAccountUnsuspendHook()
 
     result.current.mutate()
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(onSuccess).toHaveBeenCalledTimes(1)
       expect(onError).not.toHaveBeenCalled()
     })
@@ -50,9 +48,8 @@ describe('useAccountUnsuspend', () => {
     const { result } = renderAccountUnsuspendHook()
 
     result.current.mutate()
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(onSuccess).not.toHaveBeenCalled()
       expect(onError).toHaveBeenCalledTimes(1)
     })

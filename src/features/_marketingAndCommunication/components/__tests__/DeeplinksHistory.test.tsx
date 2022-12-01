@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import flushPromises from 'flush-promises'
 import React from 'react'
 
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
@@ -6,7 +7,7 @@ import {
   DeeplinksHistory,
   DeeplinksHistoryProps,
 } from 'features/_marketingAndCommunication/components/DeeplinksHistory'
-import { render, superFlushWithAct } from 'tests/utils'
+import { render, waitFor } from 'tests/utils'
 
 describe('<DeeplinksHistory />', () => {
   const history: Array<GeneratedDeeplink> = [
@@ -46,28 +47,32 @@ describe('<DeeplinksHistory />', () => {
       setKeepHistory,
       rehydrateHistory: (history) => history,
     })
-    await superFlushWithAct()
-    expect(setKeepHistory).toBeCalledWith(false)
-    expect(AsyncStorage.removeItem).toBeCalledWith('mac_persist')
-    expect(AsyncStorage.removeItem).toBeCalledWith('mac_history')
+
+    await waitFor(() => {
+      expect(setKeepHistory).toHaveBeenCalledWith(false)
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('mac_persist')
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('mac_history')
+    })
   })
 
-  it('should purge history when mac_persist is true', async () => {
+  it('should not purge history when mac_persist is true', async () => {
     await AsyncStorage.setItem('mac_persist', 'true')
     await AsyncStorage.setItem('mac_history', JSON.stringify(history))
     const setKeepHistory = jest.fn()
     const rehydrateHistory = jest.fn()
+
     renderDeeplinksHistory({
       history: [],
       keepHistory: false,
       setKeepHistory,
       rehydrateHistory,
     })
-    await superFlushWithAct()
-    expect(setKeepHistory).toBeCalledWith(true)
+
+    await flushPromises()
+    expect(setKeepHistory).toHaveBeenCalledWith(true)
 
     const persistedHistory = await AsyncStorage.getItem('mac_history')
-    expect(rehydrateHistory).toBeCalledWith(JSON.parse(persistedHistory || '[]'))
+    expect(rehydrateHistory).toHaveBeenCalledWith(JSON.parse(persistedHistory || '[]'))
   })
 })
 

@@ -1,7 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from '../../SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 
@@ -36,13 +35,13 @@ function renderSignupConfirmationExpiredLink() {
 
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { findByText } = renderSignupConfirmationExpiredLink()
+    const { getByText } = renderSignupConfirmationExpiredLink()
 
-    const button = await findByText('Retourner à l’accueil')
-    await fireEvent.press(button)
+    const button = getByText('Retourner à l’accueil')
+    fireEvent.press(button)
 
-    await waitForExpect(() => {
-      expect(navigateFromRef).toBeCalledWith(
+    await waitFor(() => {
+      expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
       )
@@ -53,13 +52,12 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const { getByText } = renderSignupConfirmationExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l’email`))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledTimes(1)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledTimes(1)
     })
-    expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
+    expect(analytics.logResendEmailSignupConfirmationExpiredLink).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('SignupConfirmationEmailSent', {
       email: 'test@email.com',
     })
   })
@@ -73,10 +71,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const { getByText } = renderSignupConfirmationExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l’email`))
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(navigate).not.toBeCalled()
+    await waitFor(() => {
+      expect(navigate).not.toHaveBeenCalled()
     })
   })
 })

@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ChangePasswordRequest } from 'api/gen'
@@ -9,7 +8,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromisesWithAct, superFlushWithAct, render, fireEvent, act } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -18,71 +17,64 @@ import { ChangePassword } from '../ChangePassword'
 
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
 
+const mockshowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: jest.fn(() => ({})),
+  useSnackBarContext: jest.fn(() => ({
+    showSuccessSnackBar: mockshowSuccessSnackBar,
+  })),
 }))
 
-async function renderChangePassword() {
+function renderChangePassword() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const wrapper = render(reactQueryProviderHOC(<ChangePassword />))
-  await flushAllPromisesWithAct()
   return wrapper
 }
 
 describe('ChangePassword', () => {
   it('should enable the submit button when passwords are equals and filled and current password is correct', async () => {
-    const { getByPlaceholderText, getByTestId } = await renderChangePassword()
+    const { getByPlaceholderText, getByTestId } = renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    await act(async () => {
-      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    })
-    await act(async () => {
-      fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    })
-    await act(async () => {
-      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-    })
+    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    const continueButton = getByTestId('Enregistrer les modifications')
-    expect(continueButton).toBeEnabled()
+    await waitFor(() => {
+      const continueButton = getByTestId('Enregistrer les modifications')
+      expect(continueButton).toBeEnabled()
+    })
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByText } = await renderChangePassword()
+    const { getByPlaceholderText, getByText } = renderChangePassword()
 
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    await act(async () => {
-      fireEvent.changeText(passwordInput, '123456')
+    fireEvent.changeText(passwordInput, '123456')
+
+    fireEvent.changeText(confirmationInput, '123456--')
+
+    await waitFor(() => {
+      const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
+      const color = notMatchingErrorText.props.style[0].color
+      expect(color).toEqual(theme.colors.error)
     })
-
-    await act(async () => {
-      fireEvent.changeText(confirmationInput, '123456--')
-    })
-
-    const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
-
-    const color = notMatchingErrorText.props.style[0].color
-    expect(color).toEqual(theme.colors.error)
   })
 
   it('should validate PasswordSecurityRules when password is correct', async () => {
-    const renderAPI = await renderChangePassword()
+    const renderAPI = renderChangePassword()
 
     const notValidatedRulesSnapshot = renderAPI.toJSON()
 
     const passwordInput = renderAPI.getByPlaceholderText('Ton nouveau mot de passe')
 
-    await act(async () => {
-      fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
-    })
+    fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       const validatedRulesSnapshot = renderAPI.toJSON()
       expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
@@ -95,38 +87,27 @@ describe('ChangePassword', () => {
         (_req, res, ctx) => res.once(ctx.status(200), ctx.json({}))
       )
     )
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseSnackBarContext.mockImplementation(() => ({
+    mockedUseSnackBarContext.mockImplementationOnce(() => ({
       showSuccessSnackBar,
     }))
-
-    const { getByPlaceholderText, getByTestId } = await renderChangePassword()
+    const { getByPlaceholderText, getByTestId } = renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    await act(async () => {
-      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    })
-    await act(async () => {
-      fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    })
-    await act(async () => {
-      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-    })
-    await superFlushWithAct()
+    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    fireEvent.press(getByTestId('Enregistrer les modifications'))
-    await superFlushWithAct()
-
-    await waitForExpect(() => {
-      expect(showSuccessSnackBar).toBeCalledWith({
+    await waitFor(() => {
+      fireEvent.press(getByTestId('Enregistrer les modifications'))
+      expect(mockshowSuccessSnackBar).toHaveBeenCalledWith({
         message: 'Ton mot de passe est modifié',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
-      expect(analytics.logHasChangedPassword).toBeCalledWith('changePassword')
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+      expect(analytics.logHasChangedPassword).toHaveBeenCalledWith('changePassword')
     })
   })
 
@@ -137,40 +118,20 @@ describe('ChangePassword', () => {
         (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
       )
     )
-    const { getByPlaceholderText, getByTestId, queryByText } = await renderChangePassword()
+    const { getByPlaceholderText, getByTestId, getByText } = renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    await act(async () => {
-      fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    })
-    await act(async () => {
-      fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    })
-    await act(async () => {
-      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-    })
+    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    const continueButton = getByTestId('Enregistrer les modifications')
-
-    await act(async () => {
+    await waitFor(() => {
+      const continueButton = getByTestId('Enregistrer les modifications')
       fireEvent.press(continueButton)
-    })
-
-    await superFlushWithAct()
-
-    await waitForExpect(() => {
-      expect(queryByText('Mot de passe incorrect')).toBeTruthy()
-    })
-
-    await act(async () => {
-      fireEvent.changeText(currentPasswordInput, 'user@QWERTY123')
-    })
-
-    await waitForExpect(() => {
-      expect(queryByText('Mot de passe incorrect')).toBeNull()
+      expect(getByText('Mot de passe incorrect')).toBeTruthy()
     })
   })
 })
