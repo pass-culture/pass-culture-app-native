@@ -4,7 +4,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { flushAllPromisesWithAct, render, fireEvent } from 'tests/utils'
 
-import { LegalNotices } from '../LegalNotices'
+import { LegalNotices } from './LegalNotices'
 
 async function renderProfile() {
   const wrapper = render(<LegalNotices />)

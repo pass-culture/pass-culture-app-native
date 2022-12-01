@@ -2,7 +2,7 @@ import React from 'react'
 
 import { flushAllPromisesWithAct, render, checkAccessibilityFor } from 'tests/utils/web'
 
-import { LegalNotices } from '../LegalNotices'
+import { LegalNotices } from './LegalNotices'
 
 async function renderProfile() {
   const wrapper = render(<LegalNotices />)
