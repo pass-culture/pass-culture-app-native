@@ -193,6 +193,124 @@ Array [
         ]
       }
     />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 22,
+            "lineHeight": 26,
+          },
+        ]
+      }
+    >
+      Éditeur
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      SAS pass Culture éditeur du site pass.culture.fr
+      
+
+      Société par action simplifiée au capital de 1 000 000 €
+      
+
+      Siège social : 12 rue Duhesme 75018 Paris
+      
+
+      Immatriculée au RCS de Paris sous le numéro : 853 318 459
+      
+
+      Directeur de la publication : Sébastien Cavalier
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 22,
+            "lineHeight": 26,
+          },
+        ]
+      }
+    >
+      Hébergeur
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Google Cloud Platform
+      
+
+      8 Rue de Londres - 75009 Paris - France
+      
+
+      Nous contacter : support@passculture.fr
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F1F1F4",
+            "height": 1,
+            "marginVertical": 16,
+            "width": "100%",
+          },
+        ]
+      }
+    />
     <View
       accessibilityRole="link"
       accessibilityState={
