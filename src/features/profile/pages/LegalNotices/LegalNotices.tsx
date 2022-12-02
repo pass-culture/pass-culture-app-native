@@ -3,9 +3,12 @@ import styled from 'styled-components/native'
 
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK, SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,7 +21,14 @@ export function LegalNotices() {
       <Typo.Body>
         ÉDITEUR SAS pass Culture
         {LINE_BREAK}
-        <Typo.ButtonText>éditeur du site&nbsp;:</Typo.ButtonText> pass.culture.fr
+        <Typo.ButtonText>éditeur du site&nbsp;:</Typo.ButtonText>
+        {LINE_BREAK}
+        <TouchableLink
+          as={ButtonInsideText}
+          wording="https://passculture.app/accueil"
+          externalNav={{ url: 'https://passculture.app/accueil' }}
+          icon={ExternalSiteFilled}
+        />
         {LINE_BREAK}
         <Typo.ButtonText>Société par action simplifiée</Typo.ButtonText> au capital de 1 000
         000&nbsp;€

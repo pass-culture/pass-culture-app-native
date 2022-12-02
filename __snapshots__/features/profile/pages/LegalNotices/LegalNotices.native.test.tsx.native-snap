@@ -246,7 +246,78 @@ Array [
       >
         éditeur du site :
       </Text>
-       pass.culture.fr
+      
+
+      <View>
+        <View
+          accessibilityRole="link"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "top": 3,
+              "userSelect": "auto",
+            }
+          }
+        >
+          <View
+            paddingForIcon={0}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={20}
+              testID="button-icon"
+              width={20}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={1}
+              style={
+                Array [
+                  Object {
+                    "width": 4,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              typography="ButtonText"
+            >
+              https://passculture.app/accueil
+            </Text>
+          </View>
+        </View>
+      </View>
       
 
       <Text
