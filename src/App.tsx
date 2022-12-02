@@ -69,13 +69,13 @@ const App: FunctionComponent = function () {
         <SafeAreaProvider>
           <ReactQueryClientProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <AuthWrapper>
-                <GeolocationWrapper>
-                  <FavoritesWrapper>
-                    <SearchAnalyticsWrapper>
-                      <SearchWrapper>
-                        <SnackBarProvider>
-                          <NetInfoWrapper>
+              <NetInfoWrapper>
+                <AuthWrapper>
+                  <GeolocationWrapper>
+                    <FavoritesWrapper>
+                      <SearchAnalyticsWrapper>
+                        <SearchWrapper>
+                          <SnackBarProvider>
                             <CulturalSurveyContextProvider>
                               <SubscriptionContextProvider>
                                 <SplashScreenProvider>
@@ -91,13 +91,13 @@ const App: FunctionComponent = function () {
                                 </SplashScreenProvider>
                               </SubscriptionContextProvider>
                             </CulturalSurveyContextProvider>
-                          </NetInfoWrapper>
-                        </SnackBarProvider>
-                      </SearchWrapper>
-                    </SearchAnalyticsWrapper>
-                  </FavoritesWrapper>
-                </GeolocationWrapper>
-              </AuthWrapper>
+                          </SnackBarProvider>
+                        </SearchWrapper>
+                      </SearchAnalyticsWrapper>
+                    </FavoritesWrapper>
+                  </GeolocationWrapper>
+                </AuthWrapper>
+              </NetInfoWrapper>
             </ErrorBoundary>
           </ReactQueryClientProvider>
         </SafeAreaProvider>
