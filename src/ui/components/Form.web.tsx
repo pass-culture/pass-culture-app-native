@@ -8,6 +8,8 @@ const MaxWidth: React.FC<{ flex?: number }> = styled.form<{ flex?: number }>(({ 
 }))
 
 const Flex: React.FC = styled.form({
+  display: 'flex',
+  flexDirection: 'column',
   flex: 1,
 })
 
