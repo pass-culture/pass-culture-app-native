@@ -30,12 +30,12 @@ export function LegalNotices() {
           icon={ExternalSiteFilled}
         />
         {LINE_BREAK}
-        <Typo.ButtonText>Société par action simplifiée</Typo.ButtonText> au capital de 1 000
-        000&nbsp;€
+        <Typo.ButtonText>Société par action simplifiée</Typo.ButtonText> au capital de
+        1&nbsp;000&nbsp;000&nbsp;€
         {LINE_BREAK}
         <Typo.ButtonText>Siège social&nbsp;:</Typo.ButtonText> 12 rue Duhesme 75018 Paris
         {LINE_BREAK}
-        Immatriculée au RCS de Paris sous le numéro&nbsp;: 853 318 459
+        Immatriculée au RCS de Paris sous le numéro&nbsp;: 853&nbsp;318&nbsp;459
         {LINE_BREAK}
         <Typo.ButtonText>Directeur de la publication&nbsp;:</Typo.ButtonText> Sébastien Cavalier
         {LINE_BREAK}
