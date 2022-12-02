@@ -233,20 +233,7 @@ Array [
         ÉDITEUR SAS pass Culture
         
 
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          éditeur du site :
-        </Text>
+        éditeur du site :
         
 
         <View>
@@ -321,95 +308,95 @@ Array [
         </View>
         
 
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Société par action simplifiée
-        </Text>
-         au capital de 1 000 000 €
+        Société par action simplifiée au capital de 1 000 000 €
         
 
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Siège social :
-        </Text>
-         12 rue Duhesme 75018 Paris
+        Siège social : 12 rue Duhesme 75018 Paris
         
 
         Immatriculée au RCS de Paris sous le numéro : 853 318 459
         
 
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Directeur de la publication :
-        </Text>
-         Sébastien Cavalier
+        Directeur de la publication : Sébastien Cavalier
         
 
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Hébergeur :
-        </Text>
-         Google Cloud Platform
+        Hébergeur : Google Cloud Platform
         
 
         8 Rue de Londres - 75009 Paris - France
         
 
-        <Text
-          style={
-            Array [
+        Nous contacter : 
+        <View>
+          <View
+            accessibilityRole="link"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
               Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Nous contacter :
-        </Text>
-         support@passculture.fr
+                "opacity": 1,
+                "top": 3,
+                "userSelect": "auto",
+              }
+            }
+          >
+            <View
+              paddingForIcon={0}
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "top": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                color="#161617"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                typography="ButtonText"
+              >
+                support@passculture.fr
+              </Text>
+            </View>
+          </View>
+        </View>
       </Text>
       <View
         style={
