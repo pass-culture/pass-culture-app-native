@@ -3,13 +3,13 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationCulturalSurvey(): JSX.Element {
   return (
     <ScrollView>
-      <PageHeader title="CulturalSurvey 🎨" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="CulturalSurvey 🎨" />
       <StyledContainer>
         <LinkToComponent name="CulturalSurveyIntro" />
         <LinkToComponent name="CulturalSurveyQuestions" />

@@ -1,26 +1,33 @@
-import React, { memo } from 'react'
+import React, { FunctionComponent, memo } from 'react'
 import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-export const Background = memo(NotMemoizedBackground)
-
-interface BackgroundProps {
+type Props = {
   width?: string | number
   height?: string | number
+  chidren?: never
 }
 
-function NotMemoizedBackground({ width = '100%', height = '100%' }: BackgroundProps) {
-  return (
-    <BackgroundContainer height={height} width={width}>
-      <BackgroundSvg height={height} width={width} />
-    </BackgroundContainer>
-  )
+const NotMemoizedBackground: FunctionComponent<Props> = ({ width = '100%', height = '100%' }) => (
+  <BackgroundContainer height={height} width={width}>
+    <BackgroundSvg height={height} width={width} />
+  </BackgroundContainer>
+)
+
+export const BackgroundWithDefaultStatusBar = memo(NotMemoizedBackground)
+
+const NotMemoizedBackgroundWithWhiteStatusBar: FunctionComponent<Props> = (props) => {
+  useWhiteStatusBar()
+  return <BackgroundWithDefaultStatusBar {...props} />
 }
 
-const BackgroundContainer = styled.View<BackgroundProps>(({ width, height, theme }) => ({
+export const BackgroundWithWhiteStatusBar = memo(NotMemoizedBackgroundWithWhiteStatusBar)
+
+const BackgroundContainer = styled.View<Props>(({ width, height, theme }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -31,7 +38,7 @@ const BackgroundContainer = styled.View<BackgroundProps>(({ width, height, theme
   zIndex: theme.zIndex.background,
 }))
 
-function BackgroundSvg({ width = '100%', height = '100%' }: BackgroundProps) {
+function BackgroundSvg({ width = '100%', height = '100%' }: Props) {
   const {
     colors: { primary, secondary },
   } = useTheme()

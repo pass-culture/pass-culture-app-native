@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/cheatcodes/components/LinkToComponent'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NewIdentificationFlow(): JSX.Element {
@@ -13,7 +13,7 @@ export function NewIdentificationFlow(): JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeader title="NewIdentificationFlow 🎨" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="NewIdentificationFlow 🎨" />
       <StyledContainer>
         <LinkToComponent
           name="SelectIDOrigin"

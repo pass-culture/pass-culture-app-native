@@ -5,14 +5,14 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {
   return (
     <Container>
-      <Background />
+      <BackgroundWithWhiteStatusBar />
       <Spacer.TopScreen />
       <Spacer.Flex />
       <StyledUserFavorite />

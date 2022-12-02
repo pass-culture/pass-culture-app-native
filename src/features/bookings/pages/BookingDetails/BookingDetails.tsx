@@ -25,8 +25,8 @@ import { eventMonitoring, ScreenError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -90,7 +90,7 @@ export function BookingDetails() {
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
 
-  const { headerTransition, onScroll } = useHeaderTransition({
+  const { headerTransition, onScroll } = useOpacityTransition({
     listener: ({ nativeEvent }) => {
       if (isCloseToBottom(nativeEvent)) logConsultWholeBooking()
     },

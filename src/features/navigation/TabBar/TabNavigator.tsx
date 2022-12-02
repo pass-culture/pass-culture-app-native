@@ -1,6 +1,5 @@
 import { BottomTabBarProps, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
 import React from 'react'
-import { StatusBar, Platform } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { initialRouteName, TabScreens } from 'features/navigation/TabBar/routes'
@@ -12,12 +11,6 @@ import { TabBar } from './TabBar'
 
 const TAB_NAVIGATOR_SCREEN_OPTIONS: BottomTabNavigationOptions = {
   headerShown: false,
-}
-
-StatusBar.setBarStyle('light-content')
-if (Platform.OS === 'android') {
-  StatusBar.setTranslucent(true)
-  StatusBar.setBackgroundColor('transparent', false)
 }
 
 export const TabNavigator: React.FC = () => {

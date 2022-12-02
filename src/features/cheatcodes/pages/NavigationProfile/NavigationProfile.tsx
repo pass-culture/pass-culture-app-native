@@ -9,7 +9,7 @@ import { ExhaustedCreditModal } from 'features/profile/components/Modals/Exhaust
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
@@ -40,7 +40,7 @@ export function NavigationProfile(): JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeader title="Profile 🎨" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="Profile 🎨" />
       <StyledContainer>
         <LinkToComponent name="Login" />
         <LinkToComponent name="ChangeEmail" />

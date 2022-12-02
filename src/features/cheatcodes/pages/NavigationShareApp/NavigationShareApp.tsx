@@ -6,14 +6,14 @@ import { Row } from 'features/cheatcodes/components/Row'
 import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 
 export function NavigationShareApp(): JSX.Element {
   const { showShareAppModal } = useShareAppContext()
 
   return (
     <ScrollView>
-      <PageHeader title="Share app 🔗" position="absolute" withGoBackButton />
+      <PageHeaderSecondary title="Share app 🔗" />
       <StyledContainer>
         <Row half>
           <ButtonPrimary

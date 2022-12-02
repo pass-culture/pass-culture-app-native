@@ -13,8 +13,8 @@ import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModa
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -34,7 +34,7 @@ export const Offer: FunctionComponent = () => {
     }
   })
 
-  const { headerTransition, onScroll } = useHeaderTransition({
+  const { headerTransition, onScroll } = useOpacityTransition({
     listener: ({ nativeEvent }) => {
       if (isCloseToBottom(nativeEvent)) logConsultWholeOffer()
     },

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 
 type Props = {
   titleId: string
@@ -14,13 +14,6 @@ export const SearchCustomModalHeader = memo(function SearchCustomModalHeader({
   onGoBack,
 }: Props) {
   return (
-    <PageHeader
-      titleID={titleId}
-      title={title}
-      background="primary"
-      withGoBackButton
-      onGoBack={onGoBack}
-      testID="pageHeader"
-    />
+    <PageHeaderSecondary titleID={titleId} title={title} onGoBack={onGoBack} testID="pageHeader" />
   )
 })

@@ -3,13 +3,19 @@ import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { Typo } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
     <Container>
-      <Background />
+      {/**
+       * BackgroundWithWhiteStatusBar set the light theme
+       * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is not mounted at this moment
+       *
+       * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
+       */}
+      <BackgroundWithDefaultStatusBar />
       <StyledLottieView testID="Loading-Animation" source={LoadingAnimation} autoPlay loop />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>

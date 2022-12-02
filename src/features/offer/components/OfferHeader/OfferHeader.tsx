@@ -13,7 +13,7 @@ import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSi
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { WebShareModal } from 'libs/share/WebShareModal'
-import { getAnimationState } from 'ui/components/headers/animationHelpers'
+import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

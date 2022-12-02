@@ -18,7 +18,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { AppThemeType } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -129,7 +129,7 @@ export function ChangePassword() {
 
   return (
     <Container>
-      <PageHeader title="Mot de passe" background="primary" withGoBackButton />
+      <PageHeaderSecondary title="Mot de passe" />
       <StyledScrollView
         ref={scrollRef}
         contentContainerStyle={contentContainerStyle}

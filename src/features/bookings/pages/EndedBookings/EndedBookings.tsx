@@ -6,10 +6,11 @@ import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { Booking } from 'features/bookings/types'
 import { plural } from 'libs/plural'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
 const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
@@ -35,7 +36,7 @@ export const EndedBookings: React.FC = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title="Réservations terminées" background="primary" withGoBackButton />
+      <PageHeaderSecondary title="Réservations terminées" />
       <FlatList
         listAs="ul"
         itemAs="li"

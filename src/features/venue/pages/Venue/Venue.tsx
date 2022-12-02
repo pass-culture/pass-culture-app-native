@@ -7,12 +7,12 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
-import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
-  const { headerTransition, onScroll } = useHeaderTransition()
+  const { headerTransition, onScroll } = useOpacityTransition()
 
   if (!venue) return <React.Fragment></React.Fragment>
 

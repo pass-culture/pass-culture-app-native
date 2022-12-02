@@ -38,7 +38,7 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
@@ -121,7 +121,7 @@ export const AppComponents: FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <PageHeader title="App components" withGoBackButton />
+      <PageHeaderSecondary title="App components" />
       <StyledScrollView>
         <Divider />
 

@@ -8,7 +8,7 @@ import {
 } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/_marketingAndCommunication/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/_marketingAndCommunication/components/DeeplinksResult'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -49,11 +49,7 @@ export const DeeplinksGenerator = () => {
 
   return (
     <React.Fragment>
-      <PageHeader
-        title="Envie de tout envie de lien&nbsp;?"
-        background="primary"
-        withGoBackButton
-      />
+      <PageHeaderSecondary title="Envie de tout envie de lien&nbsp;?" />
       <Spacer.Column numberOfSpaces={6} />
       <Row>
         <Left>

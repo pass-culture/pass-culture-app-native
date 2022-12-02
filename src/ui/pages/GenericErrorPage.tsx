@@ -2,7 +2,7 @@ import React, { ReactNode, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { Background } from 'ui/svg/Background'
+import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -40,7 +40,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
-      {!noBackground && <Background />}
+      {!noBackground && <BackgroundWithWhiteStatusBar />}
       {header}
       <Content>
         <Spacer.TopScreen />

@@ -24,18 +24,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     }
   >
     <View
-      height={64}
       style={
-        Array [
-          Object {
-            "height": 64,
-          },
-        ]
+        Object {
+          "height": 64,
+        }
       }
     />
     <View
-      backgroundColor="#eb0055"
-      isAbsolutePosition={true}
       style={
         Array [
           Object {
@@ -60,7 +55,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         }
       />
       <View
-        size="small"
         style={
           Array [
             Object {
@@ -150,9 +144,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
           </View>
           <Text
-            color="#ffffff"
             numberOfLines={1}
-            size="small"
             style={
               Array [
                 Object {

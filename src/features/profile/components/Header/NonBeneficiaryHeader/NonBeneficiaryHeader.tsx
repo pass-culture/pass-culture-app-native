@@ -11,8 +11,8 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Badges/Sub
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
-import { PageTitle } from 'ui/components/PageTitle'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Spacer } from 'ui/theme'
 
@@ -107,7 +107,7 @@ function NonBeneficiaryHeaderComponent({
 
   return (
     <React.Fragment>
-      <PageTitle title="Mon profil" />
+      <PageHeader title="Mon profil" />
       <NonBeneficiaryBanner />
     </React.Fragment>
   )

@@ -11,7 +11,7 @@ import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { PageTitle } from 'ui/components/PageTitle'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -54,7 +54,7 @@ export const HomeHeader: FunctionComponent = function () {
           <Typo.Body>CheatMenu</Typo.Body>
         </CheatCodeButtonContainer>
       )}
-      <PageTitle title={welcomeTitle} numberOfLines={2} />
+      <PageHeader title={welcomeTitle} numberOfLines={2} />
       <PageContent>
         <Typo.Body>{getSubtitle()}</Typo.Body>
         <Spacer.Column numberOfSpaces={6} />

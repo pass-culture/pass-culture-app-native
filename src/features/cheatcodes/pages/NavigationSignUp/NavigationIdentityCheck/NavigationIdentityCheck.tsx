@@ -13,7 +13,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeader } from 'ui/components/headers/PageHeader'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationIdentityCheck(): JSX.Element {
@@ -34,7 +34,7 @@ export function NavigationIdentityCheck(): JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeader title="IdentityCheck 🎨" withGoBackButton position="absolute" />
+      <PageHeaderSecondary title="IdentityCheck 🎨" />
       <StyledContainer>
         <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
         <LinkToComponent
