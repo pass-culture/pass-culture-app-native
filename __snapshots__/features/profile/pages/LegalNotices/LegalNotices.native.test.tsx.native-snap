@@ -169,7 +169,7 @@ Array [
       </View>
     </View>
   </View>,
-  <View
+  <RCTScrollView
     style={
       Array [
         Object {
@@ -183,453 +183,457 @@ Array [
       ]
     }
   >
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 18,
-            "lineHeight": 22,
-          },
-        ]
-      }
-    >
-      Mentions légales
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      ÉDITEUR SAS pass Culture
-      
-
+    <View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
       <Text
         style={
           Array [
             Object {
               "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Mentions légales
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
             },
           ]
         }
       >
-        éditeur du site :
-      </Text>
-      
+        ÉDITEUR SAS pass Culture
+        
 
-      <View>
-        <View
-          accessibilityRole="link"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+        <Text
           style={
-            Object {
-              "opacity": 1,
-              "top": 3,
-              "userSelect": "auto",
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          éditeur du site :
+        </Text>
+        
+
+        <View>
+          <View
+            accessibilityRole="link"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "top": 3,
+                "userSelect": "auto",
+              }
             }
+          >
+            <View
+              paddingForIcon={0}
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                    "top": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                typography="ButtonText"
+              >
+                https://passculture.app/accueil
+              </Text>
+            </View>
+          </View>
+        </View>
+        
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Société par action simplifiée
+        </Text>
+         au capital de 1 000 000 €
+        
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Siège social :
+        </Text>
+         12 rue Duhesme 75018 Paris
+        
+
+        Immatriculée au RCS de Paris sous le numéro : 853 318 459
+        
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Directeur de la publication :
+        </Text>
+         Sébastien Cavalier
+        
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Hébergeur :
+        </Text>
+         Google Cloud Platform
+        
+
+        8 Rue de Londres - 75009 Paris - France
+        
+
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Nous contacter :
+        </Text>
+         support@passculture.fr
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 16,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityRole="link"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              },
+              undefined,
+            ]
           }
         >
           <View
-            paddingForIcon={0}
+            accessibilityLabel="Nouvelle fenêtre"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "flexDirection": "row",
-                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "textAlign": "left",
                 },
               ]
             }
           >
-            <View
-              accessibilityLabel="Nouvelle fenêtre"
-              height={20}
-              testID="button-icon"
-              width={20}
-            >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={1}
-              style={
-                Array [
-                  Object {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
             <Text
+              numberOfLines={2}
               style={
                 Array [
                   Object {
-                    "color": "#eb0055",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
                   },
                 ]
               }
-              typography="ButtonText"
             >
-              https://passculture.app/accueil
+              Conditions Générales d’Utilisation
             </Text>
           </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-end",
+                },
+              ]
+            }
+          />
         </View>
       </View>
-      
-
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Société par action simplifiée
-      </Text>
-       au capital de 1 000 000 €
-      
-
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Siège social :
-      </Text>
-       12 rue Duhesme 75018 Paris
-      
-
-      Immatriculée au RCS de Paris sous le numéro : 853 318 459
-      
-
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Directeur de la publication :
-      </Text>
-       Sébastien Cavalier
-      
-
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Hébergeur :
-      </Text>
-       Google Cloud Platform
-      
-
-      8 Rue de Londres - 75009 Paris - France
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Nous contacter :
-      </Text>
-       support@passculture.fr
-    </Text>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
-    >
       <View
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 16,
+              "width": "100%",
             },
-            undefined,
           ]
+        }
+      />
+      <View
+        accessibilityRole="link"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
       >
         <View
-          accessibilityLabel="Nouvelle fenêtre"
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
           style={
             Array [
               Object {
-                "width": 8,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
               },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "textAlign": "left",
-              },
+              undefined,
             ]
           }
         >
-          <Text
-            numberOfLines={2}
+          <View
+            accessibilityLabel="Nouvelle fenêtre"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={2}
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "textAlign": "left",
                 },
               ]
             }
           >
-            Conditions Générales d’Utilisation
-          </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Charte de protection des données personnelles
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-end",
+                },
+              ]
+            }
+          />
         </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-end",
-              },
-            ]
-          }
-        />
       </View>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityRole="link"
-      accessibilityState={
-        Object {
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
-    >
       <View
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
+              "height": 24,
             },
-            undefined,
           ]
         }
-      >
-        <View
-          accessibilityLabel="Nouvelle fenêtre"
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "width": 8,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "textAlign": "left",
-              },
-            ]
-          }
-        >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Charte de protection des données personnelles
-          </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-end",
-              },
-            ]
-          }
-        />
-      </View>
+      />
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-  </View>,
+  </RCTScrollView>,
 ]
 `;

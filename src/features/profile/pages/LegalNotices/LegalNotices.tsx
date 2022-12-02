@@ -15,7 +15,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
   return (
-    <PageProfileSection title="Informations légales">
+    <PageProfileSection title="Informations légales" scrollable>
       <TitleText>Mentions légales</TitleText>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
@@ -41,6 +41,7 @@ export function LegalNotices() {
         {LINE_BREAK}
         <Typo.ButtonText>Hébergeur&nbsp;:</Typo.ButtonText> Google Cloud Platform
         {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
+        {LINE_BREAK}
         <Typo.ButtonText>Nous contacter&nbsp;:</Typo.ButtonText> support@passculture.fr
       </Typo.Body>
 
