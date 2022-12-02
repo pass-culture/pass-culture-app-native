@@ -12,9 +12,9 @@ import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { ModuleBanner } from 'ui/components/ModuleBanner'
+import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
@@ -82,13 +82,14 @@ function NonBeneficiaryHeaderComponent({
               </React.Fragment>
             )}
             {!!nextBeneficiaryValidationStepNavConfig && (
-              <ModuleBanner
+              <BannerWithBackground
                 navigateTo={nextBeneficiaryValidationStepNavConfig}
-                leftIcon={<ThumbUp />}
-                title={moduleBannerWording}
-                subTitle="à dépenser dans l'application"
-                testID="eligibility-banner"
-              />
+                leftIcon={ThumbUp}
+                testID="eligibility-banner">
+                <ButtonText>{moduleBannerWording}</ButtonText>
+                <Spacer.Column numberOfSpaces={1} />
+                <BodyText>à dépenser dans l’application</BodyText>
+              </BannerWithBackground>
             )}
           </View>
         </BannerContainer>
@@ -118,4 +119,12 @@ export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 const BannerContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
   position: 'relative',
+}))
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const BodyText = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
 }))
