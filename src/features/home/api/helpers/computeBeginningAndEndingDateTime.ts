@@ -9,13 +9,20 @@ import {
   nextSunday,
 } from 'date-fns'
 
-export const computeBeginningAndEndingDatetime = (
-  beginningDatetime?: string,
-  endingDatetime?: string,
-  upcomingWeekendEvent?: boolean,
-  eventDuringNextXDays?: number,
+type Parameters = {
+  beginningDatetime?: string
+  endingDatetime?: string
+  upcomingWeekendEvent?: boolean
+  eventDuringNextXDays?: number
   currentWeekEvent?: boolean
-): {
+}
+export const computeBeginningAndEndingDatetime = ({
+  beginningDatetime,
+  endingDatetime,
+  upcomingWeekendEvent,
+  eventDuringNextXDays,
+  currentWeekEvent,
+}: Parameters): {
   beginningDatetime: string | undefined
   endingDatetime: string | undefined
 } => {

@@ -33,13 +33,10 @@ export function getRecommendationParameters(
   const eventDuringNextXDays = parameters.eventDuringNextXDays
     ? parseInt(parameters.eventDuringNextXDays)
     : undefined
-  const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetime(
-    parameters.beginningDatetime,
-    parameters.endingDatetime,
-    parameters.upcomingWeekendEvent,
+  const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetime({
+    ...parameters,
     eventDuringNextXDays,
-    parameters.currentWeekEvent
-  )
+  })
   return {
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
     end_date: endingDatetime,

@@ -32,26 +32,20 @@ describe('computeBeginningAndEndingDatetime', () => {
       currentWeekEvent,
       expectedResult,
     }) => {
-      const result = computeBeginningAndEndingDatetime(
+      const result = computeBeginningAndEndingDatetime({
         beginningDatetime,
         endingDatetime,
         upcomingWeekendEvent,
         eventDuringNextXDays,
-        currentWeekEvent
-      )
+        currentWeekEvent,
+      })
       expect(result).toMatchObject(expectedResult)
     }
   )
   it('should return now datetime as beginningDatetime when upcomingWeekendEvent is true and we are in weekend', () => {
     mockdate.set(new Date('2022-12-02T15:00+00:00'))
 
-    const result = computeBeginningAndEndingDatetime(
-      undefined,
-      undefined,
-      true,
-      undefined,
-      undefined
-    )
+    const result = computeBeginningAndEndingDatetime({ upcomingWeekendEvent: true })
 
     expect(result).toMatchObject({
       beginningDatetime: '2022-12-02T15:00+00:00',
