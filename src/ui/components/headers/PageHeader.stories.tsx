@@ -4,7 +4,7 @@ import React from 'react'
 import { PageHeader } from './PageHeader'
 
 export default {
-  title: 'ui/PageTitle',
+  title: 'ui/PageHeader',
   component: PageHeader,
 } as ComponentMeta<typeof PageHeader>
 
