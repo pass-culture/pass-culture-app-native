@@ -8,33 +8,30 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK, SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
   return (
     <PageProfileSection title="Informations légales">
-      <Typo.Title2>Éditeur</Typo.Title2>
-      <Spacer.Column numberOfSpaces={2} />
+      <TitleText>Mentions légales</TitleText>
+      <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
-        SAS pass Culture éditeur du site pass.culture.fr
+        ÉDITEUR SAS pass Culture
         {LINE_BREAK}
-        Société par action simplifiée au capital de 1 000 000&nbsp;€
+        <Typo.ButtonText>éditeur du site&nbsp;:</Typo.ButtonText> pass.culture.fr
         {LINE_BREAK}
-        Siège social&nbsp;: 12 rue Duhesme 75018 Paris
+        <Typo.ButtonText>Société par action simplifiée</Typo.ButtonText> au capital de 1 000
+        000&nbsp;€
+        {LINE_BREAK}
+        <Typo.ButtonText>Siège social&nbsp;:</Typo.ButtonText> 12 rue Duhesme 75018 Paris
         {LINE_BREAK}
         Immatriculée au RCS de Paris sous le numéro&nbsp;: 853 318 459
         {LINE_BREAK}
-        Directeur de la publication&nbsp;: Sébastien Cavalier
-      </Typo.Body>
-
-      <StyledSeparator />
-
-      <Typo.Title2>Hébergeur</Typo.Title2>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Body>
-        Google Cloud Platform
-        {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
+        <Typo.ButtonText>Directeur de la publication&nbsp;:</Typo.ButtonText> Sébastien Cavalier
         {LINE_BREAK}
-        Nous contacter&nbsp;: support@passculture.fr
+        <Typo.ButtonText>Hébergeur&nbsp;:</Typo.ButtonText> Google Cloud Platform
+        {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
+        <Typo.ButtonText>Nous contacter&nbsp;:</Typo.ButtonText> support@passculture.fr
       </Typo.Body>
 
       <StyledSeparator />
@@ -59,6 +56,8 @@ export function LegalNotices() {
     </PageProfileSection>
   )
 }
+
+const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledSeparator = styled(Separator)({
   marginVertical: getSpacing(4),

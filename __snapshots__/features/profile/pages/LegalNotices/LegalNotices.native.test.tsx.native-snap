@@ -199,20 +199,20 @@ Array [
           Object {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
-            "fontSize": 22,
-            "lineHeight": 26,
+            "fontSize": 18,
+            "lineHeight": 22,
           },
         ]
       }
     >
-      Éditeur
+      Mentions légales
     </Text>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 16,
           },
         ]
       }
@@ -229,75 +229,113 @@ Array [
         ]
       }
     >
-      SAS pass Culture éditeur du site pass.culture.fr
+      ÉDITEUR SAS pass Culture
       
 
-      Société par action simplifiée au capital de 1 000 000 €
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        éditeur du site :
+      </Text>
+       pass.culture.fr
       
 
-      Siège social : 12 rue Duhesme 75018 Paris
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Société par action simplifiée
+      </Text>
+       au capital de 1 000 000 €
+      
+
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Siège social :
+      </Text>
+       12 rue Duhesme 75018 Paris
       
 
       Immatriculée au RCS de Paris sous le numéro : 853 318 459
       
 
-      Directeur de la publication : Sébastien Cavalier
-    </Text>
-    <View
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 22,
-            "lineHeight": 26,
-          },
-        ]
-      }
-    >
-      Hébergeur
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      Google Cloud Platform
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Directeur de la publication :
+      </Text>
+       Sébastien Cavalier
+      
+
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Hébergeur :
+      </Text>
+       Google Cloud Platform
       
 
       8 Rue de Londres - 75009 Paris - France
-      
-
-      Nous contacter : support@passculture.fr
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Nous contacter :
+      </Text>
+       support@passculture.fr
     </Text>
     <View
       style={
