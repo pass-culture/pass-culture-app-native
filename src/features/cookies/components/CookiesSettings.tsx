@@ -64,6 +64,7 @@ export const CookiesSettings = ({
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
         <Typo.CaptionNeutralInfo>Je choisis mes cookies</Typo.CaptionNeutralInfo>
+        <Spacer.Row numberOfSpaces={2} />
         <AcceptAllContainer>
           <StyledInputLabel id={labelID} htmlFor={checkboxID}>
             {inputLabel}
@@ -139,6 +140,7 @@ const ChoiceContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
+  width: '100%',
 })
 
 const AcceptAllContainer = styled.View({

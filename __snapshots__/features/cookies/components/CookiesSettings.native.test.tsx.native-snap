@@ -33,6 +33,7 @@ Array [
           "alignItems": "center",
           "flexDirection": "row",
           "justifyContent": "space-between",
+          "width": "100%",
         },
       ]
     }
@@ -51,6 +52,16 @@ Array [
     >
       Je choisis mes cookies
     </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
     <View
       style={
         Array [
