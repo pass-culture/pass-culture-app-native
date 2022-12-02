@@ -36,6 +36,7 @@ export function getRecommendationParameters(
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetime(
     parameters.beginningDatetime,
     parameters.endingDatetime,
+    parameters.upcomingWeekendEvent,
     eventDuringNextXDays,
     parameters.currentWeekEvent
   )
