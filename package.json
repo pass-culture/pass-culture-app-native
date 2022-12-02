@@ -346,7 +346,7 @@
     "@sentry/utils": "7.8.*",
     "ansi-regex": "^5.0.1",
     "browserslist": "^4.16.5",
-    "cli-table": "0.3.6",
+    "cli-table": "0.3.11",
     "color-name": "1.1.*",
     "glob-parent": "^5.1.2",
     "immer": "^9.0.6",
