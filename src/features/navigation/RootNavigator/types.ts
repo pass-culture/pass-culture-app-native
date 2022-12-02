@@ -29,6 +29,12 @@ export type CulturalSurveyRootStackParamList = {
   CulturalSurveyThanks: undefined
 }
 
+export type OnboardingRootStackParamList = {
+  AgeSelection: undefined
+  NavigationOnboarding: undefined
+  OnboardingAuthentication: undefined
+}
+
 export type SubscriptionRootStackParamList = {
   // Cheatcodes
   NavigationErrors: undefined
@@ -167,6 +173,7 @@ export type RootStackParamList = {
   UTMParameters: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
+  OnboardingRootStackParamList &
   SubscriptionRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList

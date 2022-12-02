@@ -14,7 +14,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 type Props = {
   title: string
   subtitle: string
-  description: string
+  description?: string
   underage: boolean
   roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
   creditStatus: CreditStatus
@@ -65,8 +65,6 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const ONGOING_WIDTH = '102.5%'
-const ONGOING_HEIGHT = '102.5%'
 const Container = styled.View<{ status: CreditStatus; roundedBorders?: Props['roundedBorders'] }>(
   ({ theme, status, roundedBorders }) => ({
     ...getBorderStyle(theme, status, roundedBorders),
@@ -75,8 +73,7 @@ const Container = styled.View<{ status: CreditStatus; roundedBorders?: Props['ro
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
-    width: status === CreditStatus.ONGOING ? ONGOING_WIDTH : '100%',
-    height: status === CreditStatus.ONGOING ? ONGOING_HEIGHT : '100%',
+    marginHorizontal: status !== CreditStatus.ONGOING ? getSpacing(1) : 0,
   })
 )
 

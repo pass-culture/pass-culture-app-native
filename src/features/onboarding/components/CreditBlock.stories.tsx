@@ -26,7 +26,6 @@ const List: ComponentStory<typeof CreditBlock> = (props) => (
 const ListContainer = styled.View({
   padding: getSpacing(6),
   justifyContent: 'center',
-  alignItems: 'center',
 })
 
 const eighteenYearOldProps = {

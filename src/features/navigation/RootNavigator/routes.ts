@@ -37,13 +37,13 @@ import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstT
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
+import { onboardingRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
-import { OnboardingAuthentication } from 'features/onboarding/pages/OnboardingAuthentication'
 import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
@@ -64,6 +64,7 @@ import { Route } from './types'
 export const routes: Route[] = [
   ...accessibilityRoutes,
   ...culturalSurveyRoutes,
+  ...onboardingRoutes,
   ...subscriptionRoutes,
   {
     name: 'Offer',
@@ -357,12 +358,6 @@ export const routes: Route[] = [
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
-  },
-  {
-    name: 'OnboardingAuthentication',
-    component: OnboardingAuthentication,
-    path: 'authentification',
-    options: { title: 'Authentification' },
   },
   {
     name: 'FirstTutorial',

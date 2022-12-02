@@ -92,8 +92,8 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Onboarding Authentication"
-              onPress={() => navigate('OnboardingAuthentication')}
+              wording="Onboarding 🛶"
+              onPress={() => navigate('NavigationOnboarding')}
             />
           </Row>
           <Row half>
