@@ -45,18 +45,15 @@ export function DropDown({
         <StyledSelect
           aria-label={ariaLabel}
           data-testid={`select-${label}`}
-          role="listbox"
           id={dropDownInputID}
           onChange={onChangeDate}
           isEmpty={isEmpty}
           noBorderRadiusRight={noBorderRadiusRight}
           noBorderRadiusLeft={noBorderRadiusLeft}
           isError={isError}>
-          <StyledOption role="option" value="">
-            {placeholder}
-          </StyledOption>
+          <StyledOption value="">{placeholder}</StyledOption>
           {options.map((option) => (
-            <StyledOption role="option" key={option} value={option} data-testid="select-option">
+            <StyledOption key={option} value={option} data-testid="select-option">
               {option}
             </StyledOption>
           ))}
