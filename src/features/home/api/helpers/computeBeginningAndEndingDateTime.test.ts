@@ -12,24 +12,24 @@ const mockedNextSunday = '2022-12-04T23:59+00:00'
 const mockedNextMonth = '2022-12-30T00:00+00:00'
 describe('computeBeginningAndEndingDatetime', () => {
   it.each`
-    beginningDatetime  | endingDatetime               | upcomingWeekendEvent | eventDuringNextXDays | currentNextWeek | expectedResult
-    ${mockedTodayDate} | ${undefined}                 | ${false}             | ${2}                 | ${false}        | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
-    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}        | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
-    ${undefined}       | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}        | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
-    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${false}        | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
-    ${undefined}       | ${undefined}                 | ${false}             | ${undefined}         | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextSunday }}
-    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
-    ${undefined}       | ${undefined}                 | ${true}              | ${undefined}         | ${false}        | ${{ beginningDatetime: mockedNextFriday3pm, endingDatetime: mockedNextSunday }}
-    ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
-    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+    beginningDatetime  | endingDatetime               | upcomingWeekendEvent | eventDuringNextXDays | currentWeekEvent | expectedResult
+    ${mockedTodayDate} | ${undefined}                 | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
+    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
+    ${undefined}       | ${undefined}                 | ${false}             | ${undefined}         | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextSunday }}
+    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
+    ${undefined}       | ${undefined}                 | ${true}              | ${undefined}         | ${false}         | ${{ beginningDatetime: mockedNextFriday3pm, endingDatetime: mockedNextSunday }}
+    ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
+    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
   `(
-    'should return $expectedResult when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, upcomingWeekendEvent: $upcomingWeekendEvent, eventDuringNextXDays: $eventDuringNextXDays, currentNextWeek: $currentNextWeek',
+    'should return $expectedResult when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, upcomingWeekendEvent: $upcomingWeekendEvent, eventDuringNextXDays: $eventDuringNextXDays, currentWeekEvent: $currentWeekEvent',
     ({
       beginningDatetime,
       endingDatetime,
       upcomingWeekendEvent,
       eventDuringNextXDays,
-      currentNextWeek,
+      currentWeekEvent,
       expectedResult,
     }) => {
       const result = computeBeginningAndEndingDatetime(
@@ -37,7 +37,7 @@ describe('computeBeginningAndEndingDatetime', () => {
         endingDatetime,
         upcomingWeekendEvent,
         eventDuringNextXDays,
-        currentNextWeek
+        currentWeekEvent
       )
       expect(result).toMatchObject(expectedResult)
     }
