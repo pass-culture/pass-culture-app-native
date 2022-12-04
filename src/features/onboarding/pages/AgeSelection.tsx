@@ -4,9 +4,12 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
+import { env } from 'libs/environment'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
@@ -34,6 +37,15 @@ export const AgeSelection: FunctionComponent = () => {
       </TouchableLink>
     </AgeButton>
   ))
+  AgeSelectionButtons.push(
+    <TouchableLink
+      key={AgeSelectionButtons.length}
+      as={ButtonTertiaryBlack}
+      wording="Je suis un parent"
+      icon={InfoPlain}
+      externalNav={{ url: env.FAQ_LINK_LEGAL_GUARDIAN }}
+    />
+  )
 
   return (
     <OnboardingPage

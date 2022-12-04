@@ -21,6 +21,7 @@ export function NavigationOnboarding(): JSX.Element {
       <StyledContainer>
         <LinkToComponent name="OnboardingAuthentication" />
         <LinkToComponent name="AgeSelection" />
+        <LinkToComponent name="AgeSelectionOther" />
         <LinkToComponent
           name="AgeInformation"
           title="AgeInfo - 15 ans"

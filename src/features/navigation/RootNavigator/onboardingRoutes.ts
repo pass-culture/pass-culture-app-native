@@ -2,6 +2,7 @@ import { NavigationOnboarding } from 'features/cheatcodes/pages/NavigationOnboar
 import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
+import { AgeSelectionOther } from 'features/onboarding/pages/AgeSelectionOther'
 import { OnboardingAuthentication } from 'features/onboarding/pages/OnboardingAuthentication'
 
 export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
@@ -15,6 +16,12 @@ export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
     name: 'AgeSelection',
     component: AgeSelection,
     path: 'selection-age',
+    options: { title: 'Sélection d’âge' },
+  },
+  {
+    name: 'AgeSelectionOther',
+    component: AgeSelectionOther,
+    path: 'selection-age/autre',
     options: { title: 'Sélection d’âge' },
   },
   {

@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AgeSelectionOther should render correctly 1`] = `
+Array [
+  <View
+    height={64}
+    style={
+      Array [
+        Object {
+          "height": 64,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "height": 48,
+            "justifyContent": "center",
+            "paddingHorizontal": 12,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="backButton"
+      >
+        <View
+          height={24}
+          testID="icon-back"
+          width={24}
+        >
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "display": "none",
+              },
+            ]
+          }
+        >
+          Retour
+        </Text>
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderColor": "#90949D",
+                "borderRadius": 7,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "padding": 16,
+                "width": "100%",
+              },
+              Array [
+                Object {
+                  "paddingVertical": 24,
+                },
+              ],
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginRight": 16,
+                  "textAlign": "start",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                j’ai 
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                      },
+                    ]
+                  }
+                >
+                  moins de 15 ans
+                </Text>
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderColor": "#90949D",
+                "borderRadius": 7,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "padding": 16,
+                "width": "100%",
+              },
+              Array [
+                Object {
+                  "paddingVertical": 24,
+                },
+              ],
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginRight": 16,
+                  "textAlign": "start",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                j’ai 
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                      },
+                    ]
+                  }
+                >
+                  plus de 18 ans
+                </Text>
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Je suis un parent"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Je suis un parent"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Je suis un parent
+      </Text>
+    </View>
+  </View>,
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+]
+`;

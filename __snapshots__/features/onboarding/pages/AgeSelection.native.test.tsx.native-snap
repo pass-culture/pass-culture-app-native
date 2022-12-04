@@ -828,6 +828,98 @@ Array [
                 </View>
               </View>
             </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Je suis un parent"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Je suis un parent"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Je suis un parent
+              </Text>
+            </View>
           </View>
         </View>
       </View>
