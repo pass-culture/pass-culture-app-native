@@ -88,5 +88,4 @@ const ButtonsContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: getSpacing(6),
   backgroundColor: theme.colors.white,
-  alignItems: 'center',
 }))

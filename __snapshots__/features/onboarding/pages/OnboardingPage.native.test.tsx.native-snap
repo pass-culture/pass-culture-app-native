@@ -173,7 +173,6 @@ Array [
     style={
       Array [
         Object {
-          "alignItems": "center",
           "backgroundColor": "#ffffff",
           "marginHorizontal": 24,
           "paddingVertical": 24,
