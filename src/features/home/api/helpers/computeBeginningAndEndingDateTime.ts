@@ -16,7 +16,7 @@ type Parameters = {
   eventDuringNextXDays?: number
   currentWeekEvent?: boolean
 }
-export const computeBeginningAndEndingDatetime = ({
+export const computeBeginningAndEndingDatetimes = ({
   beginningDatetime,
   endingDatetime,
   upcomingWeekendEvent,
