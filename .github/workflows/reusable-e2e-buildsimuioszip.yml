@@ -60,6 +60,7 @@ jobs:
         run: |
           echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
 
+      # This steps produce a broken build, only in GitHub action, try to fix after performing react-native upgrade
       - name: Build iOS app for ${{ inputs.environment }} environment
         run: |
           cd ios

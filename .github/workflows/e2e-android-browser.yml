@@ -1,6 +1,9 @@
 name: Tests e2e Android Browser
 
 on:
+  schedule:
+    - cron: '5 4 * * *'
+
   workflow_dispatch:
     inputs:
       wdio-demo:
@@ -45,14 +48,14 @@ jobs:
       DEV_TEST_SERVER_PORT: 3000
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
-      WDIO_DEMO: ${{ inputs.wdio-demo }}
-      BUILD_LOCAL: ${{ inputs.build-local }}
-      ENVIRONMENT: ${{ inputs.environment }}
+      # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
+      WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
+      BUILD_LOCAL: ${{ inputs.build-local || 'true' }}
+      ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
     # No hardware acceleration is available for emulators on Ubuntu:
     # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
     runs-on: macos-latest
-    environment: ${{ inputs.environment }}
     steps:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
@@ -104,7 +107,7 @@ jobs:
 
       ## Local
 
-      - name: Start Local dev server ${{ inputs.environment }}
+      - name: Start Local dev server
         if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
         env:
           NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
@@ -115,7 +118,7 @@ jobs:
             2>&1 > "$cwd/webpack-dev-server.log" &
           popd
 
-      - name: Wait for local dev server ${{ inputs.environment }}
+      - name: Wait for local dev server
         if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
         timeout-minutes: 15
         run: |
