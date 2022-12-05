@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -22,11 +23,18 @@ export default {
   title: 'features/onboarding/AgeButton',
   component: AgeButton,
   argTypes: {
-    LeftIcon: selectArgTypeFromObject({
+    icon: selectArgTypeFromObject({
       BicolorAll,
       NoIcon: undefined,
     }),
   },
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 } as ComponentMeta<typeof AgeButton>
 
 const Template: ComponentStory<typeof AgeButton> = (props) => <AgeButton {...props} />
@@ -47,41 +55,53 @@ const TextExample = ({ withSubtitle = false }) => (
   </React.Fragment>
 )
 
-export const WithIcon = Template.bind({})
+// TODO(PC-17931): Fix this story
+const WithIcon = Template.bind({})
 WithIcon.args = {
   children: TextExample({}),
-  LeftIcon: BicolorAll,
+  icon: BicolorAll,
+  navigateTo: { screen: 'AgeSelection' },
 }
 
-export const WithoutIcon = Template.bind({})
+// TODO(PC-17931): Fix this story
+const WithoutIcon = Template.bind({})
 WithoutIcon.args = {
   children: TextExample({}),
-  LeftIcon: undefined,
+  icon: undefined,
+  navigateTo: { screen: 'AgeSelection' },
 }
 
-export const WithSubtitle = Template.bind({})
+// TODO(PC-17931): Fix this story
+const WithSubtitle = Template.bind({})
 WithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
-  LeftIcon: BicolorAll,
+  icon: BicolorAll,
+  navigateTo: { screen: 'AgeSelection' },
 }
 
-export const Dense = Template.bind({})
+// TODO(PC-17931): Fix this story
+const Dense = Template.bind({})
 Dense.args = {
   children: TextExample({}),
-  LeftIcon: BicolorAll,
+  icon: BicolorAll,
   dense: true,
+  navigateTo: { screen: 'AgeSelection' },
 }
 
-export const DenseWithSubtitle = Template.bind({})
+// TODO(PC-17931): Fix this story
+const DenseWithSubtitle = Template.bind({})
 DenseWithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
-  LeftIcon: BicolorAll,
+  icon: BicolorAll,
   dense: true,
+  navigateTo: { screen: 'AgeSelection' },
 }
 
-export const DenseWithoutIcon = Template.bind({})
+// TODO(PC-17931): Fix this story
+const DenseWithoutIcon = Template.bind({})
 DenseWithoutIcon.args = {
   children: TextExample({}),
   dense: true,
-  LeftIcon: undefined,
+  icon: undefined,
+  navigateTo: { screen: 'AgeSelection' },
 }
