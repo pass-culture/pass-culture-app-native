@@ -19,7 +19,7 @@ on:
       build-local:
         type: boolean
         description: if true it will run the webapp locally
-        default: false
+        default: true
       specs:
         type: string
         description: |
