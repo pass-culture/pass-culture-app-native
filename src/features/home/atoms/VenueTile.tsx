@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import { useTheme } from 'styled-components'
@@ -9,6 +9,7 @@ import { VenueDetails } from 'features/home/atoms/VenueDetails'
 import { VenueTypeLocationIcon } from 'features/home/components/VenueTypeLocationIcon'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { formatDistance, mapVenueTypeToIcon } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
@@ -38,7 +39,7 @@ const mergeVenueData =
   })
 
 const UnmemoizedVenueTile = (props: VenueTileProps) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { venue, width, height, userPosition } = props
   const queryClient = useQueryClient()
   const { colors } = useTheme()
@@ -65,8 +66,8 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         width={width}
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onBeforeNavigate={handlePressVenue}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={onFocus}
+        onBlur={onBlur}
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}
         testID="venueTile">

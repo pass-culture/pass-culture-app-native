@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
@@ -6,6 +6,7 @@ import { ExclusivityBannerProps } from 'features/home/components/modules/exclusi
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -24,10 +25,8 @@ const UnmemoizedExclusivityOffer = ({
   index,
   style,
 }: ExclusivityOfferProps) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   const shouldDisplayExcluOffer = useShouldDisplayExcluOffer(display, offerId)
-  const onFocus = useCallback(() => setIsFocus(true), [])
-  const onBlur = useCallback(() => setIsFocus(false), [])
 
   const handlePressExclu = useCallback(() => {
     if (typeof offerId !== 'number') return

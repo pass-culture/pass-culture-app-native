@@ -7,6 +7,7 @@ import { BusinessPane, ContentTypes } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -24,7 +25,7 @@ export interface BusinessModuleProps extends BusinessPane {
 }
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   const {
     title,
     firstLine,
@@ -90,8 +91,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
         highlight
         accessibilityRole={url ? AccessibilityRole.LINK : undefined}
         onBeforeNavigate={() => setShouldRedirect(true)}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={onFocus}
+        onBlur={onBlur}
         isFocus={isFocus}
         disabled={isDisabled}>
         <ImageContainer>

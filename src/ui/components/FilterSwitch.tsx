@@ -1,8 +1,9 @@
-import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -26,7 +27,7 @@ const TOGGLE_PATH_START = 2
 const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
 const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { toggle, active = false, disabled = false, checkboxID, testID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
@@ -61,8 +62,8 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         accessibilityState={{ checked: active }}
         aria-describedby={props.accessibilityDescribedBy}
         aria-labelledby={props.accessibilityLabelledBy}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={onFocus}
+        onBlur={onBlur}
         testID={testId}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>

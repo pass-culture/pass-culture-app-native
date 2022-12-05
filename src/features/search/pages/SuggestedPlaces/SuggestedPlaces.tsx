@@ -1,10 +1,11 @@
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { plural } from 'libs/plural'
 import { SuggestedVenue } from 'libs/venue'
@@ -39,15 +40,15 @@ const MAXIMUM_RESULTS = 5
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
   const containerRef = useRef(null)
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   useArrowNavigationForRadioButton(containerRef)
   useSpaceBarAction(isFocus ? onPress : undefined)
 
   return (
     <TouchableOpacity
       accessibilityRole={AccessibilityRole.RADIO}
-      onFocus={() => setIsFocus(true)}
-      onBlur={() => setIsFocus(false)}
+      onFocus={onFocus}
+      onBlur={onBlur}
       onPress={onPress}
       testID={keyExtractor(hit)}>
       <RefContainer ref={containerRef}>

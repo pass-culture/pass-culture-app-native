@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -40,14 +41,14 @@ export const LocationChoice: React.FC<Props> = ({
   const containerRef = useRef(null)
   useArrowNavigationForRadioButton(containerRef)
 
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   useSpaceBarAction(isFocus ? onPress : undefined)
 
   return (
     <Container
       onPress={onPress}
-      onFocus={() => setIsFocus(true)}
-      onBlur={() => setIsFocus(false)}
+      onFocus={onFocus}
+      onBlur={onBlur}
       disabled={disabled}
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: isSelected }}

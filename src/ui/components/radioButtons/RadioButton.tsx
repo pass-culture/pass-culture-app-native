@@ -1,7 +1,8 @@
-import React, { Fragment, FunctionComponent, useRef, useState } from 'react'
+import React, { Fragment, FunctionComponent, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -24,7 +25,7 @@ interface RadioButtonProps {
 export function RadioButton(props: RadioButtonProps) {
   const containerRef = useRef(null)
   const { isMobileViewport } = useTheme()
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
   const ValidateOff = isMobileViewport ? ValidateOffIcon : Fragment
   const StyledIcon =
@@ -45,8 +46,8 @@ export function RadioButton(props: RadioButtonProps) {
       accessibilityState={{ checked: props.isSelected }}
       accessibilityLabel={props.accessibilityLabel}
       onPress={onPress}
-      onFocus={() => setIsFocus(true)}
-      onBlur={() => setIsFocus(false)}
+      onFocus={onFocus}
+      onBlur={onBlur}
       marginVertical={props.marginVertical ?? 0}
       testID={props.testID}>
       <LabelContainer ref={containerRef}>
