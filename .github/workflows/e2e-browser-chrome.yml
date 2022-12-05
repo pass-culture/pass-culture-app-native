@@ -2,7 +2,7 @@ name: Tests e2e Browser Chrome
 
 on:
   schedule:
-    - cron: '15 * * * *'
+    - cron: '5 4 * * *'
 
   workflow_dispatch:
     inputs:

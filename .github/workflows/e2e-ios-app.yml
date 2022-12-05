@@ -1,6 +1,9 @@
 name: Tests e2e iOS App
 
 on:
+  schedule:
+    - cron: '5 4 * * *'
+
   workflow_dispatch:
     inputs:
       wdio-demo:
@@ -25,11 +28,11 @@ on:
 jobs:
   build-simu-ios-zip:
     name: Build iOS simulator zip
-    if: ${{ inputs.wdio-demo == false }}
+    if: ${{ ! inputs.wdio-demo }}
     uses: ./.github/workflows/reusable-e2e-buildsimuioszip.yml
     secrets: inherit
     with:
-      environment: ${{ inputs.environment }}
+      environment: ${{ inputs.environment || 'staging' }}
 
   e2e-ios-app:
     needs: build-simu-ios-zip
@@ -47,11 +50,11 @@ jobs:
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
       APPIUM_STARTUP_TIMEOUT_SEC: 30
       _FORCE_LOGS: 1
-      WDIO_DEMO: ${{ inputs.wdio-demo }}
-      ENVIRONMENT: ${{ inputs.environment }}
+      WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
+      ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
     runs-on: macos-11
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.environment || 'staging' }}
     steps:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
