@@ -50,6 +50,7 @@ jobs:
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
       APPIUM_STARTUP_TIMEOUT_SEC: 30
       _FORCE_LOGS: 1
+      # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
       WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}

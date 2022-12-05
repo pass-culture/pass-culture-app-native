@@ -37,6 +37,7 @@ jobs:
       DEV_TEST_SERVER_PORT: 3000
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
+      # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
       WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
       BUILD_LOCAL: ${{ inputs.build-local || 'true' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
