@@ -30,7 +30,7 @@ export const computeBeginningAndEndingDatetime = ({
     return computeDatetimes(beginningDatetime, endingDatetime)
   }
   if (upcomingWeekendEvent) {
-    return computeUpcomingWeekendEventDatetimes()
+    return computeUpcomingWeekendDatetimes()
   }
   if (eventDuringNextXDays) {
     return computeEventDuringNextXDaysDatetimes(eventDuringNextXDays)
@@ -49,7 +49,7 @@ const formatDateToContentfulAndAlgoliaFormat = (date: Date): string => {
   return format(date, "yyyy-MM-dd'T'HH:mmxxx")
 }
 
-const computeUpcomingWeekendEventDatetimes = () => {
+const computeUpcomingWeekendDatetimes = () => {
   const now = new Date()
   const isInWeekend = (isFriday(now) && now.getHours() > 14) || isSaturday(now) || isSunday(now)
 
