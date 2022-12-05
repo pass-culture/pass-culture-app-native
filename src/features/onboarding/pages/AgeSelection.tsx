@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { env } from 'libs/environment'
@@ -16,27 +15,33 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 const ageButtons = [{ age: 15 }, { age: 16 }, { age: 17 }, { age: 18 }, { age: undefined }]
 
 export const AgeSelection: FunctionComponent = () => {
-  const AgeSelectionButtons = ageButtons.map(({ age }, index) => (
-    <AgeButton key={index} LeftIcon={age ? BicolorAll : undefined} dense={!age}>
-      <TouchableLink navigateTo={{ ...navigateToHomeConfig, fromRef: false }}>
-        {age ? (
-          <Title4Text>
-            j’ai <Title3Text>{age} ans</Title3Text>
-          </Title4Text>
-        ) : (
-          <Title4Text>Autre</Title4Text>
-        )}
-        {!age && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={1} />
-            <Typo.CaptionNeutralInfo numberOfLines={2}>
-              j’ai moins de 15 ans ou plus de 18 ans
-            </Typo.CaptionNeutralInfo>
-          </React.Fragment>
-        )}
+  const AgeSelectionButtons = ageButtons.map(({ age }, index) => {
+    return (
+      <TouchableLink
+        key={index}
+        navigateTo={
+          age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
+        }>
+        <AgeButton LeftIcon={age ? BicolorAll : undefined} dense={!age}>
+          {age ? (
+            <Title4Text>
+              j’ai <Title3Text>{age} ans</Title3Text>
+            </Title4Text>
+          ) : (
+            <Title4Text>Autre</Title4Text>
+          )}
+          {!age && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={1} />
+              <Typo.CaptionNeutralInfo numberOfLines={2}>
+                j’ai moins de 15 ans ou plus de 18 ans
+              </Typo.CaptionNeutralInfo>
+            </React.Fragment>
+          )}
+        </AgeButton>
       </TouchableLink>
-    </AgeButton>
-  ))
+    )
+  })
   AgeSelectionButtons.push(
     <TouchableLink
       key={AgeSelectionButtons.length}
