@@ -13,35 +13,28 @@ const Template: ComponentStory<typeof PasswordInput> = (args) => <PasswordInput 
 export const Default = Template.bind({})
 Default.args = {}
 
-export const WithLabel = Template.bind({})
-WithLabel.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
+export const WithCustomLabelAndPlaceholder = Template.bind({})
+WithCustomLabelAndPlaceholder.args = {
+  label: 'Custom label',
+  placeholder: 'Custom placeholder...',
 }
 
 export const WithValue = Template.bind({})
 WithValue.args = {
-  label: 'Adresse e-mail',
   value: 'password',
 }
 
 export const Required = Template.bind({})
 Required.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
   isRequiredField: true,
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
   disabled: true,
 }
 
 export const Error = Template.bind({})
 Error.args = {
-  label: 'Label',
-  placeholder: 'Placeholder...',
   isError: true,
 }

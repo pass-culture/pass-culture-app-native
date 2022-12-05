@@ -13,12 +13,8 @@ import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
-interface Props extends TextInputProps {
-  isRequiredField?: boolean
-}
-
-const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
-  { isRequiredField = false, ...props },
+const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
+  { ...props },
   forwardedRef
 ) => {
   const { onFocus, onBlur: onBlurDefault, isFocus } = useHandleFocus()
@@ -35,7 +31,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   }
 
   const RightLabel = () => {
-    if (isRequiredField) return <RequiredLabel />
+    if (customProps.isRequiredField) return <RequiredLabel />
     if (customProps.rightLabel)
       return <Typo.CaptionNeutralInfo>{customProps.rightLabel}</Typo.CaptionNeutralInfo>
     return <React.Fragment />
@@ -71,9 +67,15 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
-          aria-required={isRequiredField}
+          aria-required={customProps.isRequiredField}
           aria-describedby={customProps.accessibilityDescribedBy}
         />
+        {!!customProps.insideRightButton && (
+          <React.Fragment>
+            <Spacer.Row numberOfSpaces={2} />
+            {customProps.insideRightButton}
+          </React.Fragment>
+        )}
       </InputContainer>
     </ContainerWithMaxWidth>
   )

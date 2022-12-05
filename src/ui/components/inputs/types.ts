@@ -18,6 +18,7 @@ type CustomTextInputProps = InputProps & {
   leftComponent?: React.ReactElement
   rightLabel?: string
   showSoftInputOnFocus?: boolean
+  insideRightButton?: React.ReactNode
 }
 
 type CustomSearchInputProps = InputProps & {
@@ -90,6 +91,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     isRequiredField: props.isRequiredField,
     leftComponent: props.leftComponent,
     rightLabel: props.rightLabel,
+    insideRightButton: props.insideRightButton,
   }
 }
 
