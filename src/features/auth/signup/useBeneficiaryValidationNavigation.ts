@@ -10,7 +10,7 @@ import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 
 type NextStepNavConfig = TouchableLinkProps['navigateTo']
 
-export const useBeneficiaryValidationNavigation = (setError: (error: Error) => void) => {
+export const useBeneficiaryValidationNavigation = (setError?: (error: Error) => void) => {
   const navigateToNextStep = useNavigateToNextSubscriptionStep()
   const { data: nextSubscriptionStep, refetch } = useNextSubscriptionStep(setError)
   let nextStepNavConfig = nextSubscriptionStep
