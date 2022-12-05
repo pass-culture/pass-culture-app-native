@@ -24,8 +24,12 @@ export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...pro
       keyboardShouldPersistTaps="handled"
       keyboardDismissMode="on-drag"
       testID="autocompleteList"
-      renderItem={({ item }) => (
-        <Item hit={item as unknown as AlgoliaSuggestionHit} sendEvent={sendEvent} />
+      renderItem={({ item, index }) => (
+        <Item
+          hit={item as unknown as AlgoliaSuggestionHit}
+          sendEvent={sendEvent}
+          shouldShowCategory={index < 3}
+        />
       )}
     />
   )

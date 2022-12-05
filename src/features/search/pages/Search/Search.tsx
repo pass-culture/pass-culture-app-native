@@ -109,8 +109,15 @@ const Container = styled.View({
 export type HitProps = {
   hit: AlgoliaSuggestionHit
   sendEvent: SendEventForHits
+  shouldShowCategory?: boolean
 }
 
-export function Hit({ hit, sendEvent }: HitProps) {
-  return <SearchAutocompleteItem hit={hit} sendEvent={sendEvent} />
+export function Hit({ hit, sendEvent, shouldShowCategory }: HitProps) {
+  return (
+    <SearchAutocompleteItem
+      hit={hit}
+      sendEvent={sendEvent}
+      shouldShowCategory={shouldShowCategory}
+    />
+  )
 }
