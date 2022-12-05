@@ -11,6 +11,7 @@ export interface OnboardingPageProps {
   title?: string
   subtitle?: string
   buttons?: Array<ReactNode>
+  onGoBack?: () => void
 }
 
 const HEADER_HEIGHT = getSpacing(12)
@@ -18,6 +19,7 @@ export const OnboardingPage: FunctionComponent<OnboardingPageProps> = ({
   title,
   subtitle,
   buttons,
+  onGoBack,
   children,
 }) => {
   const { top } = useCustomSafeInsets()
@@ -28,7 +30,7 @@ export const OnboardingPage: FunctionComponent<OnboardingPageProps> = ({
       <HeaderContainer>
         <Spacer.TopScreen />
         <GoBackContainer>
-          <BackButton />
+          <BackButton onGoBack={onGoBack} />
         </GoBackContainer>
       </HeaderContainer>
       <ScrollView>

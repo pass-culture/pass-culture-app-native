@@ -2,18 +2,29 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { navigateFromRef } from 'features/navigation/navigationRef'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { fireEvent, render } from 'tests/utils'
 
 const AGES = [15, 16, 17, 18]
 
+jest.mock('features/navigation/navigationRef')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('AgeSelection', () => {
   it('should render correctly', () => {
     const renderAPI = render(<AgeSelection />)
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should navigate to Home on goBack press', () => {
+    const { getByTestId } = render(<AgeSelection />)
+    const backButton = getByTestId('backButton')
+
+    fireEvent.press(backButton)
+    expect(navigateFromRef).toHaveBeenCalledWith(...homeNavConfig)
   })
 
   it.each(AGES)(
