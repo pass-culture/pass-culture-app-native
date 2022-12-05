@@ -19,7 +19,6 @@ describe('computeBeginningAndEndingDatetime', () => {
     ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
     ${undefined}       | ${undefined}                 | ${false}             | ${undefined}         | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextSunday }}
     ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
-    ${undefined}       | ${undefined}                 | ${true}              | ${undefined}         | ${false}         | ${{ beginningDatetime: mockedNextFriday3pm, endingDatetime: mockedNextSunday }}
     ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
     ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
   `(
@@ -42,6 +41,17 @@ describe('computeBeginningAndEndingDatetime', () => {
       expect(result).toMatchObject(expectedResult)
     }
   )
+
+  it('should return weekend datetimes when upcomingWeekendEvent is true and we are on a working day', () => {
+    const result = computeBeginningAndEndingDatetime({
+      upcomingWeekendEvent: true,
+    })
+    expect(result).toMatchObject({
+      beginningDatetime: mockedNextFriday3pm,
+      endingDatetime: mockedNextSunday,
+    })
+  })
+
   it('should return now datetime as beginningDatetime when upcomingWeekendEvent is true and we are in weekend', () => {
     mockdate.set(new Date('2022-12-02T15:00+00:00'))
 
