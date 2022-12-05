@@ -1,12 +1,13 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
-import React, { createRef, ElementType, useEffect, useState } from 'react'
+import React, { createRef, ElementType, useCallback, useEffect } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { pushFromRef, navigateFromRef } from 'features/navigation/navigationRef'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -37,7 +38,7 @@ export function TouchableLink({
   ) as ElementType
   const TouchableLinkComponent = Tag ? Tag : TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const { onMouseEnter, onMouseLeave, isHover } = useHandleHover()
   const { navigate, push } = useNavigation<UseNavigationType>()
   const { navigateTo: navigateToItinerary } = useItinerary()
@@ -77,15 +78,21 @@ export function TouchableLink({
     if (onAfterNavigate) await onAfterNavigate(event)
   }
 
-  function onLinkFocus(e: NativeSyntheticEvent<TargetedEvent>) {
-    setIsFocus(true)
-    onFocus && onFocus(e)
-  }
+  const onLinkFocus = useCallback(
+    (e: NativeSyntheticEvent<TargetedEvent>) => {
+      onFocusDefault()
+      onFocus && onFocus(e)
+    },
+    [onFocus, onFocusDefault]
+  )
 
-  function onLinkBlur(e: NativeSyntheticEvent<TargetedEvent>) {
-    setIsFocus(false)
-    onBlur && onBlur(e)
-  }
+  const onLinkBlur = useCallback(
+    (e: NativeSyntheticEvent<TargetedEvent>) => {
+      onBlurDefault()
+      onBlur && onBlur(e)
+    },
+    [onBlur, onBlurDefault]
+  )
 
   // useEffect ci-dessous pour le hack en VanillaJS
   useEffect(() => {

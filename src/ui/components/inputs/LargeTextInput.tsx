@@ -1,8 +1,9 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
@@ -19,15 +20,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   const customProps = getCustomTextInputProps(props)
   const largeTextInputID = uuidv4()
 
-  const [isFocus, setIsFocus] = useState(false)
-
-  function onFocus() {
-    setIsFocus(true)
-  }
-
-  function onBlur() {
-    setIsFocus(false)
-  }
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
 
   return (
     <ContainerWithMaxWidth>

@@ -1,7 +1,8 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
@@ -20,17 +21,13 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   { isRequiredField = false, ...props },
   forwardedRef
 ) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
   const textInputID = uuidv4()
 
-  function onFocus() {
-    setIsFocus(true)
-  }
-
   function onBlur() {
-    setIsFocus(false)
+    onBlurDefault()
     if (nativeProps.onBlur) {
       // @ts-expect-error pass event later when needed
       nativeProps.onBlur()
