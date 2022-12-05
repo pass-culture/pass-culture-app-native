@@ -16,7 +16,6 @@ describe('computeBeginningAndEndingDatetime', () => {
     ${mockedTodayDate} | ${undefined}                 | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
     ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
     ${undefined}       | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
-    ${undefined}       | ${undefined}                 | ${false}             | ${undefined}         | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextSunday }}
     ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
     ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
     ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
@@ -71,6 +70,16 @@ describe('computeBeginningAndEndingDatetime', () => {
     expect(result).toMatchObject({
       beginningDatetime: mockedToday,
       endingDatetime: mockedInTwoDays,
+    })
+  })
+
+  it('should return now and this Sunday when currentWeekEvent is true', () => {
+    const result = computeBeginningAndEndingDatetime({
+      currentWeekEvent: true,
+    })
+    expect(result).toMatchObject({
+      beginningDatetime: mockedToday,
+      endingDatetime: mockedNextSunday,
     })
   })
 })
