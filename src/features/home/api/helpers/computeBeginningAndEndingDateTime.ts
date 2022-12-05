@@ -33,7 +33,7 @@ export const computeBeginningAndEndingDatetime = ({
     return computeUpcomingWeekendDatetimes()
   }
   if (eventDuringNextXDays) {
-    return computeEventDuringNextXDaysDatetimes(eventDuringNextXDays)
+    return computeDuringNextXDaysDatetimes(eventDuringNextXDays)
   }
   if (currentWeekEvent) {
     return computeCurrentWeekEventDatetimes()
@@ -65,7 +65,7 @@ const computeUpcomingWeekendDatetimes = () => {
   }
 }
 
-const computeEventDuringNextXDaysDatetimes = (eventInNextXDays: number) => {
+const computeDuringNextXDaysDatetimes = (eventInNextXDays: number) => {
   const computedBeginningDatetime = new Date()
   const computedEndingDatetime = addDays(computedBeginningDatetime, eventInNextXDays)
 
