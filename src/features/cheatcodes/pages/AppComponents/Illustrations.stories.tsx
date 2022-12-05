@@ -6,6 +6,12 @@ import {
 
 export default {
   title: 'Fondations/Illustrations',
+  parameters: {
+    axe: {
+      // Disabled this rule because we use SvgIdentifier for all Illustration linearGradient id
+      disabledRules: ['duplicate-id'],
+    },
+  },
 }
 
 export const Bicolors = Illustrations.bind({})
