@@ -8,7 +8,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export interface OnboardingPageProps {
-  title: string
+  title?: string
   subtitle?: string
   buttons?: Array<ReactNode>
 }
@@ -33,10 +33,14 @@ export const OnboardingPage: FunctionComponent<OnboardingPageProps> = ({
       </HeaderContainer>
       <ScrollView>
         <Container>
-          <Spacer.Column numberOfSpaces={6} />
-          <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
-            {title}
-          </Typo.Title3>
+          {!!title && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
+                {title}
+              </Typo.Title3>
+            </React.Fragment>
+          )}
           {subtitle ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={2} />
