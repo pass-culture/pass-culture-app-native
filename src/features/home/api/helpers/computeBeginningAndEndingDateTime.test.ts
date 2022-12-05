@@ -12,29 +12,16 @@ const mockedNextSunday = '2022-12-04T23:59+00:00'
 const mockedNextMonth = '2022-12-30T00:00+00:00'
 describe('computeBeginningAndEndingDatetime', () => {
   it.each`
-    beginningDatetime  | endingDatetime               | upcomingWeekendEvent | eventDuringNextXDays | currentWeekEvent | expectedResult
-    ${mockedTodayDate} | ${undefined}                 | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
-    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
-    ${undefined}       | ${new Date(mockedNextMonth)} | ${false}             | ${2}                 | ${false}         | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
-    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
-    ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
-    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+    beginningDatetime  | endingDatetime               | expectedResult
+    ${mockedTodayDate} | ${undefined}                 | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
+    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${new Date(mockedNextMonth)} | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
   `(
-    'should return $expectedResult when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, upcomingWeekendEvent: $upcomingWeekendEvent, eventDuringNextXDays: $eventDuringNextXDays, currentWeekEvent: $currentWeekEvent',
-    ({
-      beginningDatetime,
-      endingDatetime,
-      upcomingWeekendEvent,
-      eventDuringNextXDays,
-      currentWeekEvent,
-      expectedResult,
-    }) => {
+    'should return $expectedResult when beginningDatetime: $beginningDatetime and endingDatetime: $endingDatetime',
+    ({ beginningDatetime, endingDatetime, expectedResult }) => {
       const result = computeBeginningAndEndingDatetime({
         beginningDatetime,
         endingDatetime,
-        upcomingWeekendEvent,
-        eventDuringNextXDays,
-        currentWeekEvent,
       })
       expect(result).toMatchObject(expectedResult)
     }
@@ -82,4 +69,30 @@ describe('computeBeginningAndEndingDatetime', () => {
       endingDatetime: mockedNextSunday,
     })
   })
+
+  it.each`
+    beginningDatetime  | endingDatetime               | upcomingWeekendEvent | eventDuringNextXDays | currentWeekEvent | expectedResult
+    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
+    ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
+    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+  `(
+    'should return $expectedResult when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, upcomingWeekendEvent: $upcomingWeekendEvent, eventDuringNextXDays: $eventDuringNextXDays, currentWeekEvent: $currentWeekEvent',
+    ({
+      beginningDatetime,
+      endingDatetime,
+      upcomingWeekendEvent,
+      eventDuringNextXDays,
+      currentWeekEvent,
+      expectedResult,
+    }) => {
+      const result = computeBeginningAndEndingDatetime({
+        beginningDatetime,
+        endingDatetime,
+        upcomingWeekendEvent,
+        eventDuringNextXDays,
+        currentWeekEvent,
+      })
+      expect(result).toMatchObject(expectedResult)
+    }
+  )
 })
