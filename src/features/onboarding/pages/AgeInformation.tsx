@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useDepositAmountsByAge } from 'features/auth/api'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeSeparator } from 'features/onboarding/components/AgeSeparator'
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
@@ -11,6 +12,7 @@ import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditSta
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -34,13 +36,27 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   ]
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
+  const buttons = [
+    <TouchableLink
+      key={1}
+      as={ButtonWithLinearGradient}
+      wording="Créer un compte"
+      navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+    />,
+    <TouchableLink
+      key={2}
+      as={ButtonTertiaryBlack}
+      wording="Plus tard"
+      icon={ClockFilled}
+      fullWidth
+      navigateTo={{ ...navigateToHomeConfig, fromRef: false }}
+    />,
+  ]
+
   return (
     <OnboardingPage
       title={`À ${userAge} ans, profite de ton pass Culture\u00a0!`}
-      buttons={[
-        <ButtonWithLinearGradient key={1} wording="Créer un compte" />,
-        <ButtonTertiaryBlack key={2} wording="Plus tard" icon={ClockFilled} fullWidth />,
-      ]}>
+      buttons={buttons}>
       <Typo.Title4 {...getHeadingAttrs(2)}>Comment ça marche&nbsp;?</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Container reverse={isEighteen}>
