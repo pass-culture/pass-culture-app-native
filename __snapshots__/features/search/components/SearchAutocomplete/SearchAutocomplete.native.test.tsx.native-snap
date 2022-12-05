@@ -21,6 +21,21 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
             "value": "<mark>cinéma</mark>",
           },
         },
+        "algoliaOffersIndexName": Object {
+          "exact_nb_hits": 2,
+          "facets": Object {
+            "analytics": Object {
+              "offer.searchGroupNamev2": Array [
+                Object {
+                  "attribute": "",
+                  "count": 10,
+                  "operator": "",
+                  "value": "FILMS_SERIES_CINEMA",
+                },
+              ],
+            },
+          },
+        },
         "objectID": "1",
         "query": "cinéma",
       },
@@ -33,6 +48,21 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
               "cinéma",
             ],
             "value": "<mark>cinéma</mark> itinérant",
+          },
+        },
+        "algoliaOffersIndexName": Object {
+          "exact_nb_hits": 2,
+          "facets": Object {
+            "analytics": Object {
+              "offer.searchGroupNamev2": Array [
+                Object {
+                  "attribute": "",
+                  "count": 10,
+                  "operator": "",
+                  "value": "FILMS_SERIES_CINEMA",
+                },
+              ],
+            },
           },
         },
         "objectID": "2",
@@ -131,6 +161,34 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
           >
             cinéma
           </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             dans 
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Films, séries, cinéma
+          </Text>
         </Text>
       </View>
     </View>
@@ -217,6 +275,34 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
             testID="nonHighlightedText"
           >
              itinérant
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             dans 
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Films, séries, cinéma
           </Text>
         </Text>
       </View>
