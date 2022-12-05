@@ -36,7 +36,7 @@ export const computeBeginningAndEndingDatetime = ({
     return computeDuringNextXDaysDatetimes(eventDuringNextXDays)
   }
   if (currentWeekEvent) {
-    return computeCurrentWeekEventDatetimes()
+    return computeCurrentWeekDatetimes()
   }
 
   return {
@@ -74,7 +74,7 @@ const computeDuringNextXDaysDatetimes = (eventInNextXDays: number) => {
     endingDatetime: formatDateToContentfulAndAlgoliaFormat(computedEndingDatetime),
   }
 }
-const computeCurrentWeekEventDatetimes = () => {
+const computeCurrentWeekDatetimes = () => {
   const computedBeginningDatetime = new Date()
   const computedEndingDatetime = endOfDay(nextSunday(computedBeginningDatetime))
 
