@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { openUrl } from 'features/navigation/helpers'
 import { pushFromRef, navigateFromRef } from 'features/navigation/navigationRef'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -37,7 +38,7 @@ export function TouchableLink({
   const TouchableLinkComponent = Tag ? Tag : TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
   const [isFocus, setIsFocus] = useState(false)
-  const [isHover, setIsHover] = useState(false)
+  const { onMouseEnter, onMouseLeave, isHover } = useHandleHover()
   const { navigate, push } = useNavigation<UseNavigationType>()
   const { navigateTo: navigateToItinerary } = useItinerary()
 
@@ -111,8 +112,8 @@ export function TouchableLink({
       hoverUnderlineColor={hoverUnderlineColor}
       onFocus={onLinkFocus}
       onBlur={onLinkBlur}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       onPress={disabled ? undefined : callOnClick}>
       {children}
     </TouchableLinkComponent>
