@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDateTime'
+import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import {
   RecommendedIdsRequest,
   useHomeRecommendedIdsMutation,

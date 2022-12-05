@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDateTime'
+import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 
 const mockedToday = '2022-11-30T00:00+00:00'
 mockdate.set(new Date(mockedToday))
