@@ -1,13 +1,16 @@
 name: Tests e2e Browser Chrome
 
 on:
+  schedule:
+    - cron: '15 * * * *'
+
   workflow_dispatch:
     inputs:
       wdio-demo:
         type: boolean
         description: WebdriverIO demo - All other params will be ignored
         required: true
-        default: false
+        default: true
       environment:
         type: environment
         description: Select the environment
