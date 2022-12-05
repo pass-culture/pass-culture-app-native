@@ -21,6 +21,26 @@ export function NavigationOnboarding(): JSX.Element {
       <StyledContainer>
         <LinkToComponent name="OnboardingAuthentication" />
         <LinkToComponent name="AgeSelection" />
+        <LinkToComponent
+          name="AgeInformation"
+          title="AgeInfo - 15 ans"
+          navigationParams={{ age: 15 }}
+        />
+        <LinkToComponent
+          name="AgeInformation"
+          title="AgeInfo - 16 ans"
+          navigationParams={{ age: 16 }}
+        />
+        <LinkToComponent
+          name="AgeInformation"
+          title="AgeInfo - 17 ans"
+          navigationParams={{ age: 17 }}
+        />
+        <LinkToComponent
+          name="AgeInformation"
+          title="AgeInfo - 18 ans"
+          navigationParams={{ age: 18 }}
+        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

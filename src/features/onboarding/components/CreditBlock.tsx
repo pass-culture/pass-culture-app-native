@@ -9,7 +9,7 @@ import { getTitleComponent, getAgeComponent } from 'features/onboarding/helpers/
 import { CreditStatus } from 'features/onboarding/types'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { Lock } from 'ui/svg/icons/Lock'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -61,7 +61,7 @@ const StyledLock = styled(Lock).attrs<{ status: CreditStatus }>(({ theme, status
 
 const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
-  lineHeight: getSpacing(3),
+  lineHeight: getSpacingString(3),
   color: theme.colors.greyDark,
 }))
 
