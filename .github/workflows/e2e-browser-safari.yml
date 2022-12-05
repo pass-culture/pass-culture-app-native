@@ -38,6 +38,8 @@ jobs:
       BUILD_LOCAL: ${{ inputs.build-local }}
       ENVIRONMENT: ${{ inputs.environment }}
       SPECS: ${{ inputs.specs }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
     runs-on: macos-latest
     environment: ${{ inputs.environment }}
     steps:

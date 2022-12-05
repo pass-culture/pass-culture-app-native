@@ -22,7 +22,9 @@ config.capabilities = [
   },
 ]
 
-config.services = [
+config.services = (
+  config.services?.filter((service) => service instanceof Array && service[0] !== 'appium') || []
+).concat([
   [
     'geckodriver',
     {
@@ -30,6 +32,6 @@ config.services = [
       outputDir: './logs',
     },
   ],
-]
+])
 
 exports.config = config

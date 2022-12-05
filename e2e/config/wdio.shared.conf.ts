@@ -5,9 +5,13 @@ import slack from 'wdio-slack-service'
 // @ts-ignore no typing for this package so we ignore it for now
 import video from 'wdio-video-reporter'
 import { env } from './environment/env'
+import { ServiceEntry } from '@wdio/types/build/Services'
 
 const screenshotsPath = join(process.cwd(), 'e2e/output/screenshots')
 const videosPath = join(process.cwd(), 'e2e/output/videos')
+const useSlackService = !!(process.env.CI && process.env.SLACK_WEB_HOOK_URL)
+const eventName = process.env.GITHUB_EVENT_NAME === 'schedule' ? 'cron' : 'dispatch'
+const slackMessageTitle = `(${process.env.GITHUB_REF_NAME}/${process.env.GITHUB_SHA_SHORT}) ${process.env.ENVIRONMENT} - webdriver.io ${process.env.GITHUB_REPOSITORY_NAME_PART} e2e tests report (${eventName})`
 
 /**
  * All not needed configurations, for this boilerplate, are removed.
@@ -110,17 +114,15 @@ export const config: WebdriverIO.Config = {
   // - wdio.shared.sauce.conf.ts
   // configuration files
   services: [
-    process.env.SLACK_WEB_HOOK_URL && [
+    useSlackService && [
       slack,
       {
         webHookUrl: process.env.SLACK_WEB_HOOK_URL,
         notifyOnlyOnFailure: true,
-        messageTitle: `[${process.env.ENVIRONMENT}] Webdriverio Slack Reporter ${
-          process.env.GITHUB_SHA_SHORT ? `(${process.env.GITHUB_SHA_SHORT})` : ''
-        }${process.env.GITHUB_REF_SLUG ? ` (${process.env.GITHUB_REF_SLUG})` : ''}`,
+        messageTitle: slackMessageTitle,
       },
     ],
-  ].filter(Boolean) as any,
+  ].filter(Boolean) as ServiceEntry[],
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
@@ -177,9 +179,8 @@ export const config: WebdriverIO.Config = {
     mkdirSync(videosPath, { recursive: true })
   },
   afterTest: async function (test, context, { passed }) {
-    console.log(`~~~~~~~~~~~~~~~~~~~~~~ [passed=${passed}] ~~~~~~~~~~~~~~~`)
     if (!passed) {
-      await browser.takeScreenshot()
+      await browser.takeScreenshot() // await is required
       const timestamp = new Date()
         .toISOString()
         .replace(/[^0-9]/g, '')
@@ -189,7 +190,6 @@ export const config: WebdriverIO.Config = {
         '-'
       )}.png`
       await browser.saveScreenshot(filePath)
-      console.log(`~~~~~~~~~~~~~~~~~~~~~~ [screenshot location=${filePath}] ~~~~~~~~~~~~~~~`)
     }
   },
 }
