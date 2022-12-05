@@ -72,11 +72,12 @@ describe('computeBeginningAndEndingDatetime', () => {
 
   it.each`
     beginningDatetime  | endingDatetime               | upcomingWeekendEvent | eventDuringNextXDays | currentWeekEvent | expectedResult
-    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
     ${mockedTodayDate} | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: undefined }}
-    ${mockedTodayDate} | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${new Date(mockedNextMonth)} | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: undefined, endingDatetime: mockedNextMonth }}
+    ${undefined}       | ${undefined}                 | ${true}              | ${2}                 | ${true}          | ${{ beginningDatetime: mockedNextFriday3pm, endingDatetime: mockedNextSunday }}
+    ${undefined}       | ${undefined}                 | ${false}             | ${2}                 | ${true}          | ${{ beginningDatetime: mockedToday, endingDatetime: mockedInTwoDays }}
   `(
-    'should return $expectedResult when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, upcomingWeekendEvent: $upcomingWeekendEvent, eventDuringNextXDays: $eventDuringNextXDays, currentWeekEvent: $currentWeekEvent',
+    'should handle filters according to their priority when beginningDatetime: $beginningDatetime, endingDatetime: $endingDatetime, upcomingWeekendEvent: $upcomingWeekendEvent, eventDuringNextXDays: $eventDuringNextXDays, currentWeekEvent: $currentWeekEvent',
     ({
       beginningDatetime,
       endingDatetime,
