@@ -9,6 +9,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, render, waitFor } from 'tests/utils'
 
 import { Home } from './Home'
@@ -72,7 +73,7 @@ describe('Home component', () => {
     mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: beneficiaryUser })
     mockUseAvailableCredit.mockReturnValueOnce({ amount: 49600, isExpired: false })
 
-    const home = render(<Home />)
+    const home = renderHome()
     expect(home).toMatchSnapshot()
   })
 
@@ -81,7 +82,7 @@ describe('Home component', () => {
       isLoggedIn: false,
     })
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    const { toJSON } = render(<Home />)
+    const { toJSON } = renderHome()
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -89,7 +90,7 @@ describe('Home component', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
     })
-    const { getByText } = render(<Home />)
+    const { getByText } = renderHome()
     await waitFor(() => getByText('Bienvenue\u00a0!'))
   })
 
@@ -100,7 +101,7 @@ describe('Home component', () => {
       user: beneficiaryUser,
       isUserLoading: false,
     })
-    const { getByText } = render(<Home />)
+    const { getByText } = renderHome()
 
     await waitFor(() => getByText('Bonjour Jean'))
   })
@@ -119,7 +120,7 @@ describe('Home component', () => {
     })
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAvailableCredit.mockReturnValue({ amount: 49600, isExpired: false })
-    const { getByText } = render(<Home />)
+    const { getByText } = renderHome()
 
     await waitFor(() => getByText('Tu as 496\u00a0€ sur ton pass'))
     mockUseAvailableCredit.mockReset()
@@ -132,7 +133,7 @@ describe('Home component', () => {
       user: { ...beneficiaryUser, depositExpirationDate: '2020-02-16T17:16:04.735235' },
       isUserLoading: false,
     })
-    const { queryByText, getByText } = render(<Home />)
+    const { queryByText, getByText } = renderHome()
     await waitFor(() => {
       expect(getByText('Ton crédit est expiré')).toBeTruthy()
       expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeNull()
@@ -144,7 +145,7 @@ describe('Home component', () => {
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
     })
-    const { queryByText } = render(<Home />)
+    const { queryByText } = renderHome()
     await waitFor(() => {
       expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
     })
@@ -157,14 +158,14 @@ describe('Home component', () => {
       user: nonBeneficiaryUser,
       isUserLoading: false,
     })
-    const { queryByText } = render(<Home />)
+    const { queryByText } = renderHome()
     await waitFor(() => {
       expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
     })
   })
 
   it('should not have code push button', async () => {
-    const { queryByText } = render(<Home />)
+    const { queryByText } = renderHome()
     await waitFor(() => {
       expect(queryByText('Check update')).toBeNull()
     })
@@ -172,7 +173,7 @@ describe('Home component', () => {
 
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
-    const { queryByText } = render(<Home />)
+    const { queryByText } = renderHome()
     await waitFor(() => {
       expect(queryByText('CheatMenu')).toBeTruthy()
     })
@@ -180,13 +181,13 @@ describe('Home component', () => {
 
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    const { queryByText } = render(<Home />)
+    const { queryByText } = renderHome()
     expect(queryByText('CheatMenu')).toBeNull()
   })
 
   it('should render offline page when not connected', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    const renderAPI = render(<Home />)
+    const renderAPI = renderHome()
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
   })
 })
@@ -200,7 +201,7 @@ describe('Home N-1', () => {
       thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
     })
 
-    const home = render(<Home />)
+    const home = renderHome()
     expect(home).toMatchSnapshot()
   })
 })
@@ -218,7 +219,7 @@ describe('Home component - Analytics', () => {
   }
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', () => {
-    const { getByTestId } = render(<Home />)
+    const { getByTestId } = renderHome()
     const scrollView = getByTestId('homeBodyScrollView')
 
     scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
@@ -231,7 +232,7 @@ describe('Home component - Analytics', () => {
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', () => {
-    const { getByTestId } = render(<Home />)
+    const { getByTestId } = renderHome()
     const scrollView = getByTestId('homeBodyScrollView')
 
     // 1st scroll to bottom => trigger
@@ -247,3 +248,10 @@ describe('Home component - Analytics', () => {
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
   })
 })
+
+function renderHome() {
+  return render(<Home />, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+}
