@@ -8,6 +8,7 @@ mockdate.set(new Date(mockedToday))
 const mockedTodayDate = new Date()
 const mockedInTwoDays = '2022-12-02T00:00+00:00'
 const mockedNextFriday3pm = '2022-12-02T14:00+00:00'
+const mockedNextFriday4pmCET = '2022-12-02T15:00+00:00'
 const mockedNextSunday = '2022-12-04T23:59+00:00'
 const mockedNextMonth = '2022-12-30T00:00+00:00'
 describe('computeBeginningAndEndingDatetime', () => {
@@ -38,12 +39,13 @@ describe('computeBeginningAndEndingDatetime', () => {
   })
 
   it('should return now datetime as beginningDatetime when upcomingWeekendEvent is true and we are in weekend', () => {
-    mockdate.set(new Date('2022-12-02T15:00+00:00'))
+    const now = mockedNextFriday4pmCET
+    mockdate.set(new Date(mockedNextFriday4pmCET))
 
     const result = computeBeginningAndEndingDatetime({ upcomingWeekendEvent: true })
 
     expect(result).toMatchObject({
-      beginningDatetime: '2022-12-02T15:00+00:00',
+      beginningDatetime: now,
       endingDatetime: mockedNextSunday,
     })
 
