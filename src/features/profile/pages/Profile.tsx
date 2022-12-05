@@ -194,7 +194,7 @@ const OnlineProfile: React.FC = () => {
             </Li>
             <Li>
               <Row
-                title="Mentions légales"
+                title="Informations légales"
                 type="navigable"
                 navigateTo={{ screen: 'LegalNotices' }}
                 icon={LegalNotices}

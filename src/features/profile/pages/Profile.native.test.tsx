@@ -221,7 +221,7 @@ describe('Profile component', () => {
     it('should navigate when the legal notices row is clicked', async () => {
       const { getByText } = await renderProfile()
 
-      const row = getByText('Mentions légales')
+      const row = getByText('Informations légales')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('LegalNotices', undefined)
