@@ -1,22 +1,42 @@
-import { addDays, endOfDay, format, nextSunday } from 'date-fns'
+import {
+  addDays,
+  endOfDay,
+  format,
+  isFriday,
+  isSaturday,
+  isSunday,
+  nextFriday,
+  nextSunday,
+} from 'date-fns'
 
-export const computeBeginningAndEndingDatetime = (
-  beginningDatetime?: string,
-  endingDatetime?: string,
-  eventInNextXDays?: number,
+type Parameters = {
+  beginningDatetime?: string
+  endingDatetime?: string
+  upcomingWeekendEvent?: boolean
+  eventDuringNextXDays?: number
   currentWeekEvent?: boolean
-): {
+}
+export const computeBeginningAndEndingDatetimes = ({
+  beginningDatetime,
+  endingDatetime,
+  upcomingWeekendEvent,
+  eventDuringNextXDays,
+  currentWeekEvent,
+}: Parameters): {
   beginningDatetime: string | undefined
   endingDatetime: string | undefined
 } => {
   if (beginningDatetime || endingDatetime) {
     return computeDatetimes(beginningDatetime, endingDatetime)
   }
-  if (eventInNextXDays) {
-    return computeEventInNextDaysDatetimes(eventInNextXDays)
+  if (upcomingWeekendEvent) {
+    return computeUpcomingWeekendDatetimes()
+  }
+  if (eventDuringNextXDays) {
+    return computeDuringNextXDaysDatetimes(eventDuringNextXDays)
   }
   if (currentWeekEvent) {
-    return computeCurrentWeekEventDatetimes()
+    return computeCurrentWeekDatetimes()
   }
 
   return {
@@ -29,7 +49,23 @@ const formatDateToContentfulAndAlgoliaFormat = (date: Date): string => {
   return format(date, "yyyy-MM-dd'T'HH:mmxxx")
 }
 
-const computeEventInNextDaysDatetimes = (eventInNextXDays: number) => {
+const computeUpcomingWeekendDatetimes = () => {
+  const now = new Date()
+  const isInWeekend = (isFriday(now) && now.getHours() > 14) || isSaturday(now) || isSunday(now)
+
+  const thisFriday = nextFriday(now)
+  thisFriday.setHours(14) // corresponds to 3pm (CET)
+
+  const computedBeginningDatetime = isInWeekend ? now : thisFriday
+  const computedEndingDatetime = endOfDay(nextSunday(now))
+
+  return {
+    beginningDatetime: formatDateToContentfulAndAlgoliaFormat(computedBeginningDatetime),
+    endingDatetime: formatDateToContentfulAndAlgoliaFormat(computedEndingDatetime),
+  }
+}
+
+const computeDuringNextXDaysDatetimes = (eventInNextXDays: number) => {
   const computedBeginningDatetime = new Date()
   const computedEndingDatetime = addDays(computedBeginningDatetime, eventInNextXDays)
 
@@ -38,7 +74,7 @@ const computeEventInNextDaysDatetimes = (eventInNextXDays: number) => {
     endingDatetime: formatDateToContentfulAndAlgoliaFormat(computedEndingDatetime),
   }
 }
-const computeCurrentWeekEventDatetimes = () => {
+const computeCurrentWeekDatetimes = () => {
   const computedBeginningDatetime = new Date()
   const computedEndingDatetime = endOfDay(nextSunday(computedBeginningDatetime))
 
