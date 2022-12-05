@@ -45,7 +45,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
-  const hiddentTextStatus = active ? 'cochée' : 'non cochée'
+  const hiddenTextStatus = active ? 'cochée' : 'non cochée'
 
   useSpaceBarAction(isFocus ? toggle : undefined)
 
@@ -53,7 +53,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   return (
     <FilterSwitchContainer>
-      <HiddenAccessibleText aria-hidden>Case à cocher - {hiddentTextStatus}</HiddenAccessibleText>
+      <HiddenAccessibleText aria-hidden>Case à cocher - {hiddenTextStatus}</HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
