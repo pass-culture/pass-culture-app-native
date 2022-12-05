@@ -30,12 +30,15 @@ export const CreditBlock: FunctionComponent<Props> = ({
 }) => {
   const TitleText = getTitleComponent(underage, creditStatus)
   const AgeText = getAgeComponent(underage, creditStatus)
-  const Icon = creditStatus === CreditStatus.ONGOING ? BicolorUnlock : StyledLock
+  const Icon =
+    creditStatus === CreditStatus.ONGOING
+      ? BicolorUnlock
+      : () => <StyledLock status={creditStatus} />
 
   return (
     <Container roundedBorders={roundedBorders} status={creditStatus}>
       <IconContainer>
-        <Icon status={creditStatus} />
+        <Icon />
       </IconContainer>
       <View>
         <TitleText>{title}</TitleText>

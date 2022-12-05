@@ -7,7 +7,7 @@ import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleBicolorIconInterface } from './types'
 
-const NotMemoizedBicolorUnlock: React.FC<AccessibleBicolorIconInterface> = ({
+const BicolorUnlockSvg: React.FC<AccessibleBicolorIconInterface> = ({
   size,
   color,
   color2,
@@ -39,10 +39,8 @@ const NotMemoizedBicolorUnlock: React.FC<AccessibleBicolorIconInterface> = ({
   )
 }
 
-export const BicolorUnlock = React.memo(
-  styled(NotMemoizedBicolorUnlock).attrs(({ color, color2, size, theme }) => ({
-    color: color ?? theme.colors.primary,
-    color2: color2 ?? theme.colors.secondary,
-    size: size ?? theme.icons.sizes.standard,
-  }))``
-)
+export const BicolorUnlock = styled(BicolorUnlockSvg).attrs(({ color, color2, size, theme }) => ({
+  color: color ?? theme.colors.primary,
+  color2: color2 ?? theme.colors.secondary,
+  size: size ?? theme.icons.sizes.standard,
+}))``
