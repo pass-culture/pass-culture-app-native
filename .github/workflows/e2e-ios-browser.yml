@@ -144,7 +144,7 @@ jobs:
             fi
           done
 
-      - run: IOS_DEVICE_NAME="${{ matrix.model }}" IOS_PLATFORM_VERSION="${{ matrix.osVersion }}" yarn e2e:ios.browser
+      - run: ENVIRONMENT="${{ env.ENVIRONMENT }}" IOS_DEVICE_NAME="${{ matrix.model }}" IOS_PLATFORM_VERSION="${{ matrix.osVersion }}" yarn e2e:ios.browser
         name: Run functional tests
 
       - name: Save server output

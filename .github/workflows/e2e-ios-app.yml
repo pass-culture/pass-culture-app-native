@@ -23,7 +23,17 @@ on:
         required: false
 
 jobs:
+  build-simu-ios-zip:
+    name: Build iOS simulator zip
+    if: ${{ inputs.wdio-demo == false }}
+    uses: ./.github/workflows/reusable-e2e-buildsimuioszip.yml
+    secrets: inherit
+    with:
+      environment: ${{ inputs.environment }}
+
   e2e-ios-app:
+    needs: build-simu-ios-zip
+    if: ${{ always() }}
     strategy:
       fail-fast: false
       matrix:
@@ -31,9 +41,6 @@ jobs:
           - osVersion: '15.2'
             os: 'iOS'
             model: 'iPhone 13'
-          - osVersion: '15.2'
-            os: 'iOS'
-            model: 'iPhone 12'
     env:
       CI: true
       APPIUM_TEST_SERVER_PORT: 4723
@@ -46,23 +53,13 @@ jobs:
     runs-on: macos-11
     environment: ${{ inputs.environment }}
     steps:
-      - name: Download TMP archive
-        run: |
-          wget https://tmpfiles.org/dl/333455/passculture.zip -O PassCulture.zip
-          echo "IOS_IPA_PATH=./PassCulture.zip" >> $GITHUB_ENV
-
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
 
       - uses: actions/checkout@v3
 
       - uses: futureware-tech/simulator-action@v2
-        with:
-          model: ${{ matrix.model }}
-          os: ${{ matrix.os }}
-          os_version: ${{ matrix.osVersion }}
 
-      - run: xcrun simctl list 'devices' 'booted'
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
@@ -76,54 +73,15 @@ jobs:
         if: ${{ env.WDIO_DEMO == 'true' }}
         run: ./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
 
-#      - name: Setup sentry credentials
-#        if: ${{ env.WDIO_DEMO == 'false' }}
-#        env:
-#          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-#        run: |
-#          cat <<EOT >> ~/.sentryclirc
-#          [defaults]
-#          url=https://sentry.passculture.team/
-#          org=sentry
-#          project=application-native
-#          [auth]
-#          token=$SENTRY_AUTH_TOKEN
-#          EOT
-#
-#      - name: Install iOS bundle and dependencies
-#        if: ${{ env.WDIO_DEMO == 'false' }}
-#        run: |
-#          bundle install
-#          cd ios
-#          bundle exec pod install
-#          cd ..
-#
-#      - name: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
-#        if: ${{ env.WDIO_DEMO == 'false' }}
-#        run: |
-#          export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
-#
-#      - name: Setup secrets env variables
-#        if: ${{ env.WDIO_DEMO == 'false' }}
-#        run: |
-#          echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.${{ inputs.environment }}
-#
-#      - name: Setup iOS Google services config
-#        if: ${{ env.WDIO_DEMO == 'false' }}
-#        run: |
-#          echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+      - name: Download artifact build simulator iOS
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        uses: actions/download-artifact@v3
+        with:
+          name: build-simu-ios-zip
 
-#      - name: Build iOS app for ${{ inputs.environment }} environment
-#        if: ${{ env.WDIO_DEMO == 'false' }}
-#        run: |
-#          cd ios
-#          scheme=$(echo 'console.log("PassCulture-" + "${{ inputs.environment }}"[0].toUpperCase() + "${{ inputs.environment }}".slice(1))' | node -)
-#          xcodebuild -workspace PassCulture.xcworkspace -scheme ${scheme} -sdk iphonesimulator -configuration Release -quiet | xcpretty
-#          last_build_dir=$(ls -tr  ~/Library/Developer/Xcode/DerivedData/ | grep PassCulture | tail -n1)
-#          ditto -ck --sequesterRsrc --keepParent ~/Library/Developer/Xcode/DerivedData/${last_build_dir}/Build/Products/Release-iphonesimulator/PassCulture.app ../PassCulture.zip
-#          xcodebuild clean -workspace "PassCulture.xcworkspace" -scheme ${scheme}
-#          cd ..
-#          echo "IOS_IPA_PATH=./PassCulture.zip" >> $GITHUB_ENV
+      - name: Add IOS_IPA_PATH to Environment variable
+        if: ${{ env.WDIO_DEMO == 'false' }}
+        run: echo "IOS_IPA_PATH=./PassCulture.zip" >> $GITHUB_ENV
 
       - name: Install extraneous dev dependencies
         run: |
@@ -157,22 +115,18 @@ jobs:
           done
 
       - name: Run functional tests
-        run: IOS_DEVICE_NAME="${{ matrix.model }}" IOS_PLATFORM_VERSION="${{ matrix.osVersion }}" APPIUM_APP=${{ env.IOS_IPA_PATH }} yarn e2e:ios.app
+        run: ENVIRONMENT="${{ env.ENVIRONMENT }}" IOS_DEVICE_NAME="${{ matrix.model }}" IOS_PLATFORM_VERSION="${{ matrix.osVersion }}" APPIUM_APP=${{ env.IOS_IPA_PATH }} yarn e2e:ios.app
 
       - name: Save server output
         if: ${{ always() }}
         uses: actions/upload-artifact@master
         with:
-          name: appium.log
+          name: appium-log-${{ matrix.model }}-${{ matrix.osVersion }}
           path: appium.log
 
       - name: Show appium server output
         if: ${{ always() }}
         run: cat appium.log
-
-      - name: Show screenshots
-        if: ${{ always() }}
-        run: ls -altr e2e
 
       - uses: actions/upload-artifact@v3
         if: ${{ always() }}

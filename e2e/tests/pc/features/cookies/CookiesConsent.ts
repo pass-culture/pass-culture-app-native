@@ -23,7 +23,8 @@ class CookiesConsent extends AppScreen {
 
   async randomChoice() {
     await this.waitForIsShown(true)
-    await timeout(env.CI ? 12000 : 5000)
+    // For testing env due to codepush, but also in CI we wait a bit more
+    await timeout(env.CI || env.ENVIRONMENT !== 'staging' ? 12000 : 5000)
     const dice = getRandomInt(0, 1)
     if (dice === 0) {
       await this.accept.click()

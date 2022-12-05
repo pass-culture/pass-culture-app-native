@@ -11,6 +11,7 @@ const systemEnv = parseBooleanVariables(
 
 export const env: Environment = {
   CI: systemEnv.CI || false,
+  ENVIRONMENT: systemEnv.ENVIRONMENT || 'staging',
   WDIO_DEMO: systemEnv.WDIO_DEMO || false,
   WDIO_BASE_URL: systemEnv.WDIO_DEMO ? demo.wdio.baseUrl : systemEnv.WDIO_BASE_URL,
   ANDROID_DEVICE_NAME: systemEnv.ANDROID_DEVICE_NAME || 'pixel_xl',
