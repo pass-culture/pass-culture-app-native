@@ -24,22 +24,19 @@ describe('AgeInformation', () => {
     expect(ongoingTags).toHaveLength(1)
   })
 
-  it.each(AGES)('should only display correct amount of inactive blocks for %s-year-old', (age) => {
+  it.each(AGES)('should display correct amount of inactive blocks for %s-year-old', (age) => {
     const { queryAllByText } = renderAgeInformation({ age })
     const goneTags = queryAllByText(CreditStatus.GONE)
 
     expect(goneTags).toHaveLength(age - 15)
   })
 
-  it.each(AGES)(
-    'should only display correct amount of coming credit blocks for %s-year-old',
-    (age) => {
-      const { queryAllByText } = renderAgeInformation({ age })
-      const comingTags = queryAllByText(CreditStatus.COMING)
+  it.each(AGES)('should display correct amount of coming credit blocks for %s-year-old', (age) => {
+    const { queryAllByText } = renderAgeInformation({ age })
+    const comingTags = queryAllByText(CreditStatus.COMING)
 
-      expect(comingTags).toHaveLength(18 - age)
-    }
-  )
+    expect(comingTags).toHaveLength(18 - age)
+  })
 
   it.each(AGES)(
     'should navigate to SignupForm when pressing "Créer un compte" for %s-year-old',
