@@ -10,7 +10,7 @@ on:
         type: boolean
         description: WebdriverIO demo - All other params will be ignored
         required: true
-        default: true
+        default: false
       environment:
         type: environment
         description: Select the environment
@@ -19,7 +19,7 @@ on:
       build-local:
         type: boolean
         description: if true it will run the webapp locally
-        default: true
+        default: false
       specs:
         type: string
         description: |
@@ -42,6 +42,8 @@ jobs:
       BUILD_LOCAL: ${{ inputs.build-local || 'true' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
     runs-on: macos-latest
     environment: ${{ inputs.environment || 'staging' }}
     steps:

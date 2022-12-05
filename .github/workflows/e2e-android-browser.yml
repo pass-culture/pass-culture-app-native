@@ -53,6 +53,8 @@ jobs:
       BUILD_LOCAL: ${{ inputs.build-local || 'true' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
     # No hardware acceleration is available for emulators on Ubuntu:
     # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
     runs-on: macos-latest

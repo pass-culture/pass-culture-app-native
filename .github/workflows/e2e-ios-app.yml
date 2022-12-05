@@ -54,6 +54,8 @@ jobs:
       WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
     runs-on: macos-11
     environment: ${{ inputs.environment || 'staging' }}
     steps:
