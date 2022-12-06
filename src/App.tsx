@@ -77,6 +77,7 @@ const App: FunctionComponent = function () {
         <SafeAreaProvider>
           <ReactQueryClientProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+              {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
               <NetInfoWrapper>
                 <AuthWrapper>
                   <GeolocationWrapper>
