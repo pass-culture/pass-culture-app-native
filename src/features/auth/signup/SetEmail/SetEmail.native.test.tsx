@@ -11,19 +11,19 @@ describe('<SetEmail />', () => {
   afterAll(jest.clearAllMocks)
 
   it('should display disabled validate button when email input is not filled', async () => {
-    const { getByTestId } = render(<SetEmail {...props} />)
+    const { getByText } = render(<SetEmail {...props} />)
 
-    const button = getByTestId('Continuer')
+    const button = getByText('Continuer')
     expect(button).toBeDisabled()
   })
 
   it('should enable validate button when email input is filled', async () => {
-    const { getByTestId, getByPlaceholderText } = render(<SetEmail {...props} />)
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    const button = getByTestId('Continuer')
+    const button = getByText('Continuer')
     expect(button).toBeEnabled()
   })
 
