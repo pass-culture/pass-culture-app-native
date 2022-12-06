@@ -79,6 +79,20 @@ const getLocationChoice = (locationType: LocationType) => {
   }
 }
 
+const getPlaceOrVenue = (searchState: SearchState) => {
+  if (searchState.locationFilter.locationType === LocationType.VENUE) {
+    return searchState.locationFilter.venue
+  } else if (searchState.locationFilter.locationType === LocationType.PLACE) {
+    return searchState.locationFilter.place
+  } else {
+    return undefined
+  }
+}
+const getPlaceOrVenueLabel = (searchState: SearchState) => {
+  const placeOrVenue = getPlaceOrVenue(searchState)
+  return placeOrVenue?.label ?? ''
+}
+
 export const LocationModal: FunctionComponent<Props> = ({
   title,
   accessibilityLabel,
@@ -121,20 +135,10 @@ export const LocationModal: FunctionComponent<Props> = ({
         searchState.locationFilter.locationType === LocationType.AROUND_ME
           ? searchState.locationFilter.aroundRadius || MAX_RADIUS
           : MAX_RADIUS,
-      searchPlaceOrVenue:
-        searchState.locationFilter.locationType === LocationType.VENUE
-          ? searchState.locationFilter.venue.label
-          : searchState.locationFilter.locationType === LocationType.PLACE
-          ? searchState.locationFilter.place.label
-          : '',
-      selectedPlaceOrVenue:
-        searchState.locationFilter.locationType === LocationType.VENUE
-          ? searchState.locationFilter.venue
-          : searchState.locationFilter.locationType === LocationType.PLACE
-          ? searchState.locationFilter.place
-          : undefined,
+      searchPlaceOrVenue: getPlaceOrVenueLabel(searchState),
+      selectedPlaceOrVenue: getPlaceOrVenue(searchState),
     }
-  }, [searchState.locationFilter])
+  }, [searchState])
 
   const {
     handleSubmit,
