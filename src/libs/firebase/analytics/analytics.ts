@@ -155,6 +155,8 @@ const logEventAnalytics = {
     moduleId: string
     homeEntryId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
+  logGoToParentsFAQ: (from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.GO_TO_PARENTS_FAQ, { from }),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.GO_TO_PROFIL, {
       from,
@@ -277,6 +279,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId }),
+  logSelectAge: (age: number | string) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SELECT_AGE, { age }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
   logShareApp: (type: ShareAppModalType) =>

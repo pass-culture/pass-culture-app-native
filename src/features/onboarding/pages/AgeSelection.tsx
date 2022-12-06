@@ -1,10 +1,11 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -16,9 +17,20 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 const ageButtons = [{ age: 15 }, { age: 16 }, { age: 17 }, { age: 18 }, { age: undefined }]
 
 export const AgeSelection: FunctionComponent = () => {
-  const AgeSelectionButtons = ageButtons.map(({ age }, index) => (
-    <AgeButton key={index} LeftIcon={age ? BicolorAll : undefined} dense={!age}>
-      <TouchableLink navigateTo={{ ...navigateToHomeConfig, fromRef: false }}>
+  const onBeforeNavigate = useCallback((age: number | string) => analytics.logSelectAge(age), [])
+
+  const logGoToParentsFAQ = useCallback(() => analytics.logGoToParentsFAQ('ageselection'), [])
+
+  const AgeSelectionButtons = ageButtons.map(({ age }, index) => {
+    return (
+      <AgeButton
+        key={index}
+        icon={age ? BicolorAll : undefined}
+        dense={!age}
+        onBeforeNavigate={() => onBeforeNavigate(age || 'other')}
+        navigateTo={
+          age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
+        }>
         {age ? (
           <Title4Text>
             j’ai <Title3Text>{age} ans</Title3Text>
@@ -34,15 +46,16 @@ export const AgeSelection: FunctionComponent = () => {
             </Typo.CaptionNeutralInfo>
           </React.Fragment>
         )}
-      </TouchableLink>
-    </AgeButton>
-  ))
+      </AgeButton>
+    )
+  })
   AgeSelectionButtons.push(
     <TouchableLink
       key={AgeSelectionButtons.length}
       as={ButtonTertiaryBlack}
       wording="Je suis un parent"
       icon={InfoPlain}
+      onBeforeNavigate={logGoToParentsFAQ}
       externalNav={{ url: env.FAQ_LINK_LEGAL_GUARDIAN }}
     />
   )
@@ -50,7 +63,8 @@ export const AgeSelection: FunctionComponent = () => {
   return (
     <OnboardingPage
       title="Pour commencer, peux-tu nous dire ton âge&nbsp;?"
-      subtitle="Cela permet de savoir si tu peux bénéficier du pass Culture.">
+      subtitle="Cela permet de savoir si tu peux bénéficier du pass Culture."
+      onGoBack={navigateToHome}>
       <AccessibilityList
         items={AgeSelectionButtons}
         Separator={<Spacer.Column numberOfSpaces={4} />}

@@ -189,74 +189,74 @@ Array [
             }
           >
             <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "padding": 16,
-                    "width": "100%",
-                  },
-                  Array [
-                    Object {
-                      "paddingVertical": 24,
-                    },
-                  ],
-                ]
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
                 style={
                   Array [
                     Object {
-                      "alignContent": "center",
-                      "marginRight": 16,
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
                     },
+                    Array [
+                      Object {
+                        "paddingVertical": 24,
+                      },
+                    ],
                   ]
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginRight": 16,
-                      "textAlign": "start",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityRole="link"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginRight": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
                   }
                 >
                   <Text
@@ -289,15 +289,15 @@ Array [
                     </Text>
                   </Text>
                 </View>
-              </View>
-              <View>
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -323,74 +323,74 @@ Array [
             }
           >
             <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "padding": 16,
-                    "width": "100%",
-                  },
-                  Array [
-                    Object {
-                      "paddingVertical": 24,
-                    },
-                  ],
-                ]
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
                 style={
                   Array [
                     Object {
-                      "alignContent": "center",
-                      "marginRight": 16,
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
                     },
+                    Array [
+                      Object {
+                        "paddingVertical": 24,
+                      },
+                    ],
                   ]
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginRight": 16,
-                      "textAlign": "start",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityRole="link"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginRight": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
                   }
                 >
                   <Text
@@ -423,15 +423,15 @@ Array [
                     </Text>
                   </Text>
                 </View>
-              </View>
-              <View>
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -457,74 +457,74 @@ Array [
             }
           >
             <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "padding": 16,
-                    "width": "100%",
-                  },
-                  Array [
-                    Object {
-                      "paddingVertical": 24,
-                    },
-                  ],
-                ]
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
                 style={
                   Array [
                     Object {
-                      "alignContent": "center",
-                      "marginRight": 16,
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
                     },
+                    Array [
+                      Object {
+                        "paddingVertical": 24,
+                      },
+                    ],
                   ]
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginRight": 16,
-                      "textAlign": "start",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityRole="link"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginRight": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
                   }
                 >
                   <Text
@@ -557,15 +557,15 @@ Array [
                     </Text>
                   </Text>
                 </View>
-              </View>
-              <View>
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -591,74 +591,74 @@ Array [
             }
           >
             <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "padding": 16,
-                    "width": "100%",
-                  },
-                  Array [
-                    Object {
-                      "paddingVertical": 24,
-                    },
-                  ],
-                ]
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
                 style={
                   Array [
                     Object {
-                      "alignContent": "center",
-                      "marginRight": 16,
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
                     },
+                    Array [
+                      Object {
+                        "paddingVertical": 24,
+                      },
+                    ],
                   ]
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginRight": 16,
-                      "textAlign": "start",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityRole="link"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    Array [
+                      Object {
+                        "alignContent": "center",
+                        "marginRight": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
                   }
                 >
                   <Text
@@ -691,15 +691,15 @@ Array [
                     </Text>
                   </Text>
                 </View>
-              </View>
-              <View>
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -725,55 +725,55 @@ Array [
             }
           >
             <View
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "padding": 16,
-                    "width": "100%",
-                  },
-                  Array [
-                    Object {
-                      "paddingVertical": 16,
-                    },
-                  ],
-                ]
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
                 style={
                   Array [
                     Object {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginRight": 16,
-                      "textAlign": "start",
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
                     },
+                    Array [
+                      Object {
+                        "paddingVertical": 16,
+                      },
+                    ],
                   ]
                 }
               >
                 <View
-                  accessibilityRole="link"
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    Array [
+                      Object {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
                   }
                 >
                   <Text
@@ -816,15 +816,15 @@ Array [
                     j’ai moins de 15 ans ou plus de 18 ans
                   </Text>
                 </View>
-              </View>
-              <View>
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
