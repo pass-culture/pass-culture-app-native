@@ -49,7 +49,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
         )}
       </View>
       <TagContainer>
-        <CreditStatusTag status={creditStatus} />
+        <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
       </TagContainer>
     </Container>
   )

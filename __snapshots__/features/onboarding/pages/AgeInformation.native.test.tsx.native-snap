@@ -270,6 +270,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="top"
                   status="cette année"
                   style={
                     Array [
@@ -278,6 +279,7 @@ Array [
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 7,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -320,7 +322,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderColor": "transparent",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -457,7 +459,7 @@ Array [
                     "backgroundColor": "#F1F1F4",
                     "borderBottomLeftRadius": 8,
                     "borderBottomRightRadius": 8,
-                    "borderColor": "transparent",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -541,6 +543,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="bottom"
                   status="à venir"
                   style={
                     Array [
@@ -663,7 +666,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderColor": "transparent",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -1174,7 +1177,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderColor": "transparent",
+                    "borderColor": "rgba(241,241,244,0.5)",
                     "borderRadius": 2,
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
@@ -1260,6 +1263,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="top"
                   status="passé"
                   style={
                     Array [
@@ -1268,6 +1272,7 @@ Array [
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 7,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1447,7 +1452,7 @@ Array [
                     "backgroundColor": "#F1F1F4",
                     "borderBottomLeftRadius": 8,
                     "borderBottomRightRadius": 8,
-                    "borderColor": "transparent",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -1531,6 +1536,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="bottom"
                   status="à venir"
                   style={
                     Array [
@@ -1653,7 +1659,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderColor": "transparent",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -2164,7 +2170,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderColor": "transparent",
+                    "borderColor": "rgba(241,241,244,0.5)",
                     "borderRadius": 2,
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
@@ -2250,6 +2256,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="top"
                   status="passé"
                   style={
                     Array [
@@ -2258,6 +2265,7 @@ Array [
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 7,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2300,7 +2308,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderColor": "transparent",
+                    "borderColor": "rgba(241,241,244,0.5)",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -2521,6 +2529,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="bottom"
                   status="cette année"
                   style={
                     Array [
@@ -2643,7 +2652,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderColor": "transparent",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -3154,7 +3163,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderColor": "transparent",
+                    "borderColor": "rgba(241,241,244,0.5)",
                     "borderRadius": 2,
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
@@ -3240,6 +3249,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="top"
                   status="passé"
                   style={
                     Array [
@@ -3248,6 +3258,7 @@ Array [
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 7,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3290,7 +3301,7 @@ Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderColor": "transparent",
+                    "borderColor": "rgba(241,241,244,0.5)",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -3427,7 +3438,7 @@ Array [
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderBottomLeftRadius": 8,
                     "borderBottomRightRadius": 8,
-                    "borderColor": "transparent",
+                    "borderColor": "rgba(241,241,244,0.5)",
                     "borderRadius": 2,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -3511,6 +3522,7 @@ Array [
                 }
               >
                 <View
+                  roundedBorders="bottom"
                   status="passé"
                   style={
                     Array [
