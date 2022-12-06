@@ -50,7 +50,7 @@ WithInsideRightButton.args = {
   label: 'Label',
   placeholder: 'Placeholder...',
   insideRightButton: (
-    <Touchable>
+    <Touchable accessibilityLabel="Eye button">
       <Eye />
     </Touchable>
   ),
