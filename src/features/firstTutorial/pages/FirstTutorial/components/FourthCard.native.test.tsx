@@ -35,7 +35,7 @@ describe('FourthCard', () => {
     expect(AsyncStorage.setItem).not.toBeCalled()
   })
 
-  it('should navigate to OnboardingAuthentication to next card on button press', () => {
+  it('should navigate to AgeSelection to next card on button press', () => {
     const ref = createRef<Swiper>()
     const { getByText } = render(
       <FourthCard lastIndex={0} activeIndex={0} index={0} swiperRef={ref} />
@@ -43,6 +43,6 @@ describe('FourthCard', () => {
 
     fireEvent.press(getByText('Découvrir'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'OnboardingAuthentication')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AgeSelection')
   })
 })

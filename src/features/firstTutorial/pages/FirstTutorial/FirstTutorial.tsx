@@ -26,7 +26,7 @@ export function FirstTutorial({ route }: Props) {
     if (Platform.OS === 'web') {
       reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
     } else {
-      navigate('OnboardingAuthentication')
+      navigate('AgeSelection')
     }
   }, [navigate, reset])
 
