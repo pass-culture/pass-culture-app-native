@@ -49,10 +49,10 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               </View>
               <View
                 numberOfSpaces={6}
-@@ -501,11 +501,11 @@
-                  testID=\\"styled-input-container\\"
+@@ -502,11 +502,11 @@
                 >
                   <TextInput
+                    aria-required={true}
                     autoCapitalize=\\"none\\"
                     editable={true}
 -                   isEmpty={true}
@@ -62,7 +62,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -514,15 +514,15 @@
+@@ -515,15 +515,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -80,7 +80,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -535,11 +535,11 @@
+@@ -531,11 +531,11 @@
                         },
                       ]
                     }
@@ -93,7 +93,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -691,27 +691,27 @@
+@@ -686,27 +686,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -124,7 +124,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -730,11 +730,11 @@
+@@ -725,11 +725,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -281,10 +281,10 @@ exports[`<Login/> should show email error message WHEN signin has failed because
               <View
                 numberOfSpaces={6}
                 style={
-@@ -501,11 +572,11 @@
-                  testID=\\"styled-input-container\\"
+@@ -502,11 +573,11 @@
                 >
                   <TextInput
+                    aria-required={true}
                     autoCapitalize=\\"none\\"
                     editable={true}
 -                   isEmpty={true}
@@ -294,7 +294,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -514,15 +585,15 @@
+@@ -515,15 +586,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -312,7 +312,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -535,11 +606,11 @@
+@@ -531,11 +602,11 @@
                         },
                       ]
                     }
@@ -502,10 +502,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -501,11 +574,11 @@
-                  testID=\\"styled-input-container\\"
+@@ -502,11 +575,11 @@
                 >
                   <TextInput
+                    aria-required={true}
                     autoCapitalize=\\"none\\"
                     editable={true}
 -                   isEmpty={true}
@@ -515,7 +515,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -514,15 +587,15 @@
+@@ -515,15 +588,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -533,7 +533,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -535,11 +608,11 @@
+@@ -531,11 +604,11 @@
                         },
                       ]
                     }
@@ -546,7 +546,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -691,27 +764,27 @@
+@@ -686,27 +759,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -577,7 +577,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -730,11 +803,11 @@
+@@ -725,11 +798,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -767,10 +767,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -501,11 +574,11 @@
-                  testID=\\"styled-input-container\\"
+@@ -502,11 +575,11 @@
                 >
                   <TextInput
+                    aria-required={true}
                     autoCapitalize=\\"none\\"
                     editable={true}
 -                   isEmpty={true}
@@ -780,7 +780,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -514,15 +587,15 @@
+@@ -515,15 +588,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -798,7 +798,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -535,11 +608,11 @@
+@@ -531,11 +604,11 @@
                         },
                       ]
                     }
@@ -811,7 +811,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -691,27 +764,27 @@
+@@ -686,27 +759,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -842,7 +842,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -730,11 +803,11 @@
+@@ -725,11 +798,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
@@ -1032,10 +1032,10 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                         \\"borderWidth\\": 1,
                         \\"flexDirection\\": \\"row\\",
                         \\"height\\": 40,
-@@ -501,11 +574,11 @@
-                  testID=\\"styled-input-container\\"
+@@ -502,11 +575,11 @@
                 >
                   <TextInput
+                    aria-required={true}
                     autoCapitalize=\\"none\\"
                     editable={true}
 -                   isEmpty={true}
@@ -1045,7 +1045,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     onChangeText={[Function bound dispatchAction]}
                     onFocus={[Function onFocus]}
                     onSubmitEditing={[Function _callee3]}
-@@ -514,15 +587,15 @@
+@@ -515,15 +588,15 @@
                     returnKeyType=\\"next\\"
                     secureTextEntry={true}
                     style={
@@ -1063,7 +1063,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                           \\"paddingBottom\\": 0,
                           \\"paddingLeft\\": 0,
                           \\"paddingRight\\": 0,
-@@ -535,11 +608,11 @@
+@@ -531,11 +604,11 @@
                         },
                       ]
                     }
@@ -1076,7 +1076,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     numberOfSpaces={2}
                     style={
                       Array [
-@@ -691,27 +764,27 @@
+@@ -686,27 +759,27 @@
               />
               <View
                 accessibilityLabel=\\"Se connecter\\"
@@ -1107,7 +1107,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     \\"justifyContent\\": \\"center\\",
                     \\"maxWidth\\": 500,
                     \\"minHeight\\": 40,
-@@ -730,11 +803,11 @@
+@@ -725,11 +798,11 @@
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={

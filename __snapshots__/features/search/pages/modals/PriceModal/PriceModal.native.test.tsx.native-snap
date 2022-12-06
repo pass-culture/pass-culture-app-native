@@ -873,7 +873,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               >
                 <TextInput
                   aria-describedby="testUuidV4"
-                  aria-required={false}
                   autoCapitalize="none"
                   autoComplete="off"
                   disabled={false}
@@ -1014,7 +1013,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               >
                 <TextInput
                   aria-describedby="testUuidV4"
-                  aria-required={false}
                   autoCapitalize="none"
                   autoComplete="off"
                   disabled={false}

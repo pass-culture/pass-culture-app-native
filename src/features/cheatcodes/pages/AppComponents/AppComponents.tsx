@@ -288,17 +288,17 @@ export const AppComponents: FunctionComponent = () => {
             The text in SlantTag is always straight. Developers should play on slantAngle to include
             whole text in tag
           </Text>
-          <SlantTag text={'Tag adapts to container size'} slantAngle={-2} />
+          <SlantTag text="Tag adapts to container size" slantAngle={-2} />
           <Spacer.Column numberOfSpaces={getSpacing(2)} />
           <AlignedText>
-            <SlantTag text={'Tag adapts'} />
+            <SlantTag text="Tag adapts" />
             <Spacer.Flex flex={0.3} />
-            <SlantTag text={'Tag adapts'} />
+            <SlantTag text="Tag adapts" />
           </AlignedText>
           <AlignedText>
-            <SlantTag text={'given angle'} slantAngle={-10} />
+            <SlantTag text="given angle" slantAngle={-10} />
             <Spacer.Flex flex={0.3} />
-            <SlantTag text={'Tag with fixed dimensions'} width={getSpacing(10)} />
+            <SlantTag text="Tag with fixed dimensions" width={getSpacing(10)} />
           </AlignedText>
         </AccordionItem>
 
@@ -384,10 +384,10 @@ export const AppComponents: FunctionComponent = () => {
         {/* Inputs */}
         <AccordionItem title="Inputs">
           <StyledTitle4>Text Input</StyledTitle4>
-          <TextInput value={inputText} onChangeText={setInputText} placeholder={'Placeholder'} />
+          <TextInput value={inputText} onChangeText={setInputText} placeholder="Placeholder" />
           <Spacer.Column numberOfSpaces={1} />
           <StyledInputRule
-            title={'12 Caractères'}
+            title="12 Caractères"
             icon={inputText.length >= 12 ? Check : Close}
             isValid={inputText.length >= 12}
           />
@@ -397,15 +397,15 @@ export const AppComponents: FunctionComponent = () => {
             autoCapitalize="none"
             keyboardType="email-address"
             onChangeText={doNothingFn}
-            placeholder={'Placeholder'}
+            placeholder="Placeholder"
             value=""
           />
           <Spacer.Column numberOfSpaces={1} />
           <StyledTitle4>Text Input - Error</StyledTitle4>
-          <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} isError />
+          <TextInput value="" onChangeText={doNothingFn} placeholder="Placeholder" isError />
           <Spacer.Column numberOfSpaces={1} />
           <StyledTitle4>Password Input</StyledTitle4>
-          <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
+          <PasswordInput value="" onChangeText={doNothingFn} />
           <Spacer.Column numberOfSpaces={1} />
           <StyledTitle4>Large input</StyledTitle4>
           <Spacer.Column numberOfSpaces={1} />
@@ -553,13 +553,13 @@ export const AppComponents: FunctionComponent = () => {
             <CulturalSurveyCheckbox
               selected={false}
               onPress={() => null}
-              title={'Aucune de ces activités'}
+              title="Aucune de ces activités"
             />
             <Spacer.Column numberOfSpaces={1} />
             <CulturalSurveyCheckbox
               selected
-              title={'Visité un musée,'}
-              subtitle={'une canne à pêche'}
+              title="Visité un musée,"
+              subtitle="une canne à pêche"
               onPress={() => null}
               icon={culturalSurveyIcons.Museum}
             />
@@ -667,7 +667,7 @@ export const AppComponents: FunctionComponent = () => {
           <CreditHeader
             firstName="Rosa"
             lastName="Bonheur"
-            depositExpirationDate={'2022-02-16T17:16:04.735235'}
+            depositExpirationDate="2022-02-16T17:16:04.735235"
             domainsCredit={domains_credit_v1}
           />
         </AccordionItem>
@@ -727,16 +727,16 @@ export const AppComponents: FunctionComponent = () => {
           </AlignedText>
 
           <VenueTile
-            moduleId={'module-id'}
-            moduleName={'le nom du module'}
+            moduleId="module-id"
+            moduleName="le nom du module"
             height={LENGTH_S}
             width={LENGTH_S * (3 / 2)}
             userPosition={null}
             venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
           />
           <VenueTile
-            moduleId={'module-id'}
-            moduleName={'le nom du module géolocalisé'}
+            moduleId="module-id"
+            moduleName="le nom du module géolocalisé"
             height={LENGTH_S}
             width={LENGTH_S * (3 / 2)}
             userPosition={{

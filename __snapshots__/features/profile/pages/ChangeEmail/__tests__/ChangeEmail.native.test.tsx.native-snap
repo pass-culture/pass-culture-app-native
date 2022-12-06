@@ -564,6 +564,7 @@ Array [
             >
               <TextInput
                 aria-describedby="testUuidV4"
+                aria-required={true}
                 autoCapitalize="none"
                 disabled={true}
                 editable={false}
@@ -590,11 +591,6 @@ Array [
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                    },
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                     },
                   ]
                 }
@@ -627,7 +623,6 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "flex-end",
                     "maxWidth": 60,
                     "opacity": 1,
                     "userSelect": "auto",
@@ -1251,6 +1246,7 @@ Array [
             >
               <TextInput
                 aria-describedby="testUuidV4"
+                aria-required={true}
                 autoCapitalize="none"
                 disabled={false}
                 editable={true}
@@ -1277,11 +1273,6 @@ Array [
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                    },
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
                     },
                   ]
                 }
@@ -1314,7 +1305,6 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "alignItems": "flex-end",
                     "maxWidth": 60,
                     "opacity": 1,
                     "userSelect": "auto",
