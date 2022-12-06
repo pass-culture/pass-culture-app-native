@@ -507,8 +507,8 @@ Array [
             }
           >
             <View
-              height={156}
-              width={200}
+              height={109.2}
+              width={140}
             >
               <Text>
                 undefined-SVG-Mock
@@ -653,7 +653,7 @@ Array [
               Array [
                 Object {
                   "alignItems": "center",
-                  "height": 132,
+                  "height": 104,
                 },
               ]
             }

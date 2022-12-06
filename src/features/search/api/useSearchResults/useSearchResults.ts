@@ -12,7 +12,10 @@ import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 
-export type Response = Pick<SearchResponse<SearchHit>, 'hits' | 'nbHits' | 'page' | 'nbPages'>
+export type Response = Pick<
+  SearchResponse<SearchHit>,
+  'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
+>
 
 const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { position } = useGeolocation()
@@ -47,9 +50,9 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
     [data?.pages]
   )
 
-  const { nbHits } = data?.pages[0] || { nbHits: 0 }
+  const { nbHits, userData } = data?.pages[0] || { nbHits: 0, userData: [] }
 
-  return { data, hits, nbHits, ...infiniteQuery }
+  return { data, hits, nbHits, userData, ...infiniteQuery }
 }
 
 export const useSearchResults = () => {
