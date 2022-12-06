@@ -750,6 +750,7 @@ exports[`BookingDetails should render correctly 1`] = `
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                   },
+                  undefined,
                 ]
               }
             >

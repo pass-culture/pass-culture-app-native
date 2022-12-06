@@ -443,6 +443,7 @@ Array [
                 "flexDirection": "row",
                 "justifyContent": "space-between",
               },
+              undefined,
             ]
           }
         >
@@ -540,6 +541,7 @@ Array [
                 "flexDirection": "row",
                 "justifyContent": "space-between",
               },
+              undefined,
             ]
           }
         >

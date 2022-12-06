@@ -228,6 +228,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -343,6 +348,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -718,6 +728,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -832,6 +847,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -985,6 +1005,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -1100,6 +1125,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -1214,6 +1244,11 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
+                              Array [
+                                Object {
+                                  "paddingVertical": 16,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -1808,6 +1843,7 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
+                          undefined,
                         ]
                       }
                     >

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
@@ -13,6 +14,7 @@ export type SectionRowContentProps = {
   onPress?: () => void
   icon?: FunctionComponent<IconInterface>
   iconSize?: number
+  style?: StyleProp<ViewStyle>
 } & (
   | {
       renderTitle: (title: string) => JSX.Element
@@ -30,6 +32,7 @@ export const SectionRowContent = ({
   icon: Icon,
   iconSize,
   numberOfLines = 2,
+  style,
   ...props
 }: SectionRowContentProps) => {
   const Title = renderTitle ? (
@@ -39,7 +42,7 @@ export const SectionRowContent = ({
   )
 
   return (
-    <Container>
+    <View style={[styles.container, style]}>
       {!!Icon && (
         <React.Fragment>
           <Icon size={iconSize} color={theme.colors.black} />
@@ -52,14 +55,16 @@ export const SectionRowContent = ({
           <ArrowNext testID="section-row-navigable-icon" />
         </CTAContainer>
       )}
-    </Container>
+    </View>
   )
 }
 
-const Container = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 })
 
 const TitleContainer = styled.View({
