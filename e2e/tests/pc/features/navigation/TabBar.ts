@@ -1,25 +1,35 @@
 import AppScreen from '../../screenobjects/AppScreen'
 import { flags } from '../../helpers/utils/platform'
+import { DefaultTheme } from '../../helpers/utils/theme'
 
-class TabBar extends AppScreen {
+export class TabBar extends AppScreen {
   homeTabSelector: string
   searchTabSelector: string
   bookingsTabSelector: string
   favoritesTabSelector: string
   profilTabSelector: string
 
-  constructor() {
+  constructor(theme: DefaultTheme) {
     let homeTabSelector
     let searchTabSelector
     let bookingsTabSelector
     let favoritesTabSelector
     let profilTabSelector
+
     if (flags.isWeb) {
-      homeTabSelector = '[data-testid="Home tab"]'
-      searchTabSelector = '[data-testid="Search tab"]'
-      bookingsTabSelector = '[data-testid="Bookings tab"]'
-      favoritesTabSelector = '[data-testid="Favorites tab"]'
-      profilTabSelector = '[data-testid="Profile tab"]'
+      if (theme.showTabBar) {
+        homeTabSelector = '[data-testid="Accueil"]'
+        searchTabSelector = '[data-testid="Rechercher des offres"]'
+        bookingsTabSelector = '[data-testid="Mes réservations"]'
+        favoritesTabSelector = '[data-testid="Favoris"]'
+        profilTabSelector = '[data-testid="Mon profil"]'
+      } else {
+        homeTabSelector = '[data-testid="Home tab"]'
+        searchTabSelector = '[data-testid="Search tab"]'
+        bookingsTabSelector = '[data-testid="Bookings tab"]'
+        favoritesTabSelector = '[data-testid="Favorites tab"]'
+        profilTabSelector = '[data-testid="Profile tab"]'
+      }
     } else {
       homeTabSelector = '~Accueil'
       searchTabSelector = '~Rechercher des offres'
@@ -27,6 +37,7 @@ class TabBar extends AppScreen {
       favoritesTabSelector = '~Mes favoris'
       profilTabSelector = '~Mon profil'
     }
+
     super(searchTabSelector)
     this.homeTabSelector = homeTabSelector
     this.searchTabSelector = searchTabSelector
@@ -55,5 +66,3 @@ class TabBar extends AppScreen {
     return $(this.profilTabSelector)
   }
 }
-
-export default new TabBar()

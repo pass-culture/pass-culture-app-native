@@ -3,13 +3,13 @@ import CookiesConsent from '../features/cookies/CookiesConsent'
 import FirstTutorial from '../features/firstTutorial/FirstTutorial'
 import OnboardingAuthentication from '../features/onboarding/OnboardingAuthentication'
 import NativeAlert from './NativeAlert'
-import TabBar from '../features/navigation/TabBar'
+import { TabBar } from '../features/navigation/TabBar'
 
 class FirstLaunch {
   retries = 2
   nativeModalPassed = 0
 
-  async init() {
+  async init(tabBar: TabBar) {
     if (flags.isWeb) {
       await browser.url('/')
     }
@@ -33,7 +33,7 @@ class FirstLaunch {
     if (!flags.isWeb) {
       await OnboardingAuthentication.proceed()
     }
-    await TabBar.waitForIsShown(true)
+    await tabBar.waitForIsShown(true)
     return true
   }
 }

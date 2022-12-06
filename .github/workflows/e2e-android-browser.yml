@@ -36,6 +36,7 @@ jobs:
       matrix:
         include:
           - chromedriverVersion: "74.0.3729.6"
+            platformVersion: 10 # must match the apiLevel
             apiLevel: 29
             emuTag: google_apis
             arch: x86
@@ -148,7 +149,7 @@ jobs:
       - uses: reactivecircus/android-emulator-runner@v2
         name: e2e_api${{ matrix.apiLevel }}
         with:
-          script: ENVIRONMENT="${{ env.ENVIRONMENT }}" ANDROID_DEVICE_NAME="${{ env.ANDROID_DEVICE_NAME }}" ANDROID_PLATFORM_VERSION="${{ matrix.apiLevel }}" yarn e2e:android.browser
+          script: ENVIRONMENT="${{ env.ENVIRONMENT }}" ANDROID_DEVICE_NAME="${{ env.ANDROID_DEVICE_NAME }}" ANDROID_PLATFORM_VERSION="${{ matrix.platformVersion }}" yarn e2e:android.browser
           avd-name: ${{ env.ANDROID_DEVICE_NAME }}
           sdcard-path-or-size: 1500M
           api-level: ${{ matrix.apiLevel }}

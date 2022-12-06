@@ -166,28 +166,29 @@ We have two types of tests: `app` and `browser`
 - `app` is the native application, it runs on iOS or Android
 - `browser` is the Web application, it runs on Desktop, iOS and Android browsers
 - A test file is called a `suite`, test within a suite are run in their **order of declaration**
-- Do not use mocha `before` hook because failure in it won't be considered as a test failure, thus no tests will be reported as failed, instead use a flip variable as in this example:
+- Unless it can only succeed, do not use mocha `before` hook because failure in it won't be considered as a test failure, thus no tests will be reported as failed, instead use a flip variable as in this example:
 
 ```ts
 import FirstLaunch from '../helpers/FirstLaunch'
-import TabBar from '../features/navigation/TabBar'
+import { TabBar } from '../features/navigation/TabBar'
 import { didFirstLaunch } from '../helpers/utils/error'
 
 describe('TabBar', () => {
   let ok = false
+  let tabBar: TabBar
 
-  it('should do first launch initialisation', async () => {
-    ok = await FirstLaunch.init()
+  before(async () => {
+    const theme = getTheme(await browser.getWindowSize())
+    tabBar = new TabBar(theme)
+  })
+
+  it('should first launch app', async () => {
+    ok = await FirstLaunch.init(tabBar)
   })
 
   it('should click on search', async () => {
     didFirstLaunch(ok)
-    await TabBar.search.click()
-  })
-
-  it('should click on profile', async () => {
-    didFirstLaunch(ok)
-    await TabBar.profil.click()
+    await tabBar.search.click()
   })
 })
 ```
