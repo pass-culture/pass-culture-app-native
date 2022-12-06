@@ -13,6 +13,12 @@ jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 
+const mockV4 = jest.fn()
+jest.mock('uuid', () => ({
+  v1: jest.fn(),
+  v4: jest.fn(mockV4),
+}))
+
 const venueId = venueResponseSnap.id
 
 // eslint-disable-next-line local-rules/no-allow-console
@@ -25,15 +31,14 @@ describe('<Venue />', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
+      mockV4
+        .mockReturnValueOnce('withdrawalTermsAccordionID')
+        .mockReturnValueOnce('accessibilityAccordionID')
+        .mockReturnValueOnce('contactAccordionID')
       const { container } = render(<Venue />)
       await waitFor(() => container)
 
-      const results = await checkAccessibilityFor(container, {
-        rules: {
-          // TODO(PC-18902): throw an error because the UUIDV4 mock return "testUuidV4"
-          'duplicate-id-aria': { enabled: false }, // error: "IDs used in ARIA and labels must be unique (duplicate-id-aria)"
-        },
-      })
+      const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
     })

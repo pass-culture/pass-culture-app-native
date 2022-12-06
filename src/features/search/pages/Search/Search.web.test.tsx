@@ -9,7 +9,7 @@ import { SearchState } from 'features/search/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
@@ -80,20 +80,24 @@ jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
   InsightsMiddleware: () => null,
 }))
 
+const mockV4 = jest.fn()
+jest.mock('uuid', () => ({
+  v1: jest.fn(),
+  v4: jest.fn(mockV4),
+}))
+
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
+      mockV4
+        .mockReturnValueOnce('searchInputID')
+        .mockReturnValueOnce('searchInputAccessibilityDescribedByID')
       const { container } = render(<Search />)
 
-      await act(async () => {
-        const results = await checkAccessibilityFor(container, {
-          rules: {
-            // TODO(PC-18902)
-            'duplicate-id-aria': { enabled: false },
-          },
-        })
+      await waitFor(async () => {
+        const results = await checkAccessibilityFor(container)
         expect(results).toHaveNoViolations()
       })
     })
