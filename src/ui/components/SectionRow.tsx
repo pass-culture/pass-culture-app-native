@@ -30,6 +30,7 @@ export function SectionRow({
   if (navigationProps) {
     return (
       <TouchableLink
+        testID="touchable-link-navigate-section-row"
         onBeforeNavigate={touchableProps.onPress}
         {...navigationProps}
         {...touchableProps}>
@@ -38,7 +39,7 @@ export function SectionRow({
     )
   }
   return (
-    <Touchable {...touchableProps}>
+    <Touchable testID="touchable-external-section-row" {...touchableProps}>
       <SectionRowContent {...props} />
     </Touchable>
   )

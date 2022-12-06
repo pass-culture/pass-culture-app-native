@@ -433,6 +433,7 @@ Array [
             "userSelect": "auto",
           }
         }
+        testID="touchable-link-navigate-section-row"
       >
         <View
           style={
@@ -442,7 +443,6 @@ Array [
                 "flexDirection": "row",
                 "justifyContent": "space-between",
               },
-              undefined,
             ]
           }
         >
@@ -493,15 +493,6 @@ Array [
               Conditions Générales d’Utilisation
             </Text>
           </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-end",
-                },
-              ]
-            }
-          />
         </View>
       </View>
       <View
@@ -539,6 +530,7 @@ Array [
             "userSelect": "auto",
           }
         }
+        testID="touchable-link-navigate-section-row"
       >
         <View
           style={
@@ -548,7 +540,6 @@ Array [
                 "flexDirection": "row",
                 "justifyContent": "space-between",
               },
-              undefined,
             ]
           }
         >
@@ -599,15 +590,6 @@ Array [
               Charte de protection des données personnelles
             </Text>
           </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-end",
-                },
-              ]
-            }
-          />
         </View>
       </View>
       <View

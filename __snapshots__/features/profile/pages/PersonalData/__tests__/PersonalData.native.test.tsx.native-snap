@@ -598,6 +598,7 @@ Array [
           "userSelect": "auto",
         }
       }
+      testID="touchable-link-navigate-section-row"
     >
       <View
         style={
@@ -607,7 +608,6 @@ Array [
               "flexDirection": "row",
               "justifyContent": "space-between",
             },
-            undefined,
           ]
         }
       >

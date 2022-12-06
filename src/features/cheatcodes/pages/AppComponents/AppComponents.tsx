@@ -360,13 +360,6 @@ export const AppComponents: FunctionComponent = () => {
 
         <Divider />
 
-        {/* Switches */}
-        <AccordionItem title="Switches">
-          <FilterSwitchesSection />
-        </AccordionItem>
-
-        <Divider />
-
         {/* Icons */}
         <AccordionItem title="Icons">
           <Icons />
@@ -573,7 +566,6 @@ export const AppComponents: FunctionComponent = () => {
               icon={Email}
               navigateTo={{ screen: 'CheatCodes' }}
             />
-            <SectionRow type="clickable" title="with CTA" icon={Email} cta={<ExampleSwitch />} />
             <SectionRow
               type="clickable"
               title="just clickable"
@@ -821,43 +813,6 @@ const Divider = styled.View(({ theme }) => ({
   height: getSpacing(2),
   backgroundColor: theme.colors.greyLight,
 }))
-
-const FilterSwitchesSection = () => {
-  const [switch1, setSwitch1] = useState(true)
-  const [switch2, setSwitch2] = useState(false)
-
-  return (
-    <React.Fragment>
-      <SectionRow
-        type="clickable"
-        title="Active and enabled"
-        cta={
-          <FilterSwitch active={switch1} disabled={false} toggle={() => setSwitch1((p) => !p)} />
-        }
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <SectionRow
-        type="clickable"
-        title="Active and disabled"
-        cta={<FilterSwitch active disabled toggle={() => null} />}
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <SectionRow
-        type="clickable"
-        title="Inactive and enabled"
-        cta={
-          <FilterSwitch active={switch2} disabled={false} toggle={() => setSwitch2((p) => !p)} />
-        }
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <SectionRow
-        type="clickable"
-        title="Inactive and disabled"
-        cta={<FilterSwitch active={false} disabled toggle={() => null} />}
-      />
-    </React.Fragment>
-  )
-}
 
 const Label: React.FC<{ label: string }> = ({ label }) => {
   const [selected, setSelected] = useState<boolean>(false)

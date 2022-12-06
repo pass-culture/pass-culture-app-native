@@ -218,6 +218,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -227,11 +228,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -337,6 +333,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -346,11 +343,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -716,6 +708,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -725,11 +718,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -834,6 +822,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -843,11 +832,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -898,15 +882,6 @@ exports[`Profile component should render correctly 1`] = `
                               Centre d'aide
                             </Text>
                           </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          />
                         </View>
                       </View>
                     </View>
@@ -1000,6 +975,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -1009,11 +985,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -1119,6 +1090,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -1128,11 +1100,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -1237,6 +1204,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-navigate-section-row"
                       >
                         <View
                           style={
@@ -1246,11 +1214,6 @@ exports[`Profile component should render correctly 1`] = `
                                 "flexDirection": "row",
                                 "justifyContent": "space-between",
                               },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
                             ]
                           }
                         >
@@ -1835,6 +1798,7 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="touchable-external-section-row"
                   >
                     <View
                       style={
@@ -1844,7 +1808,6 @@ exports[`Profile component should render correctly 1`] = `
                             "flexDirection": "row",
                             "justifyContent": "space-between",
                           },
-                          undefined,
                         ]
                       }
                     >
@@ -1894,15 +1857,6 @@ exports[`Profile component should render correctly 1`] = `
                           Déconnexion
                         </Text>
                       </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "flex-end",
-                            },
-                          ]
-                        }
-                      />
                     </View>
                   </View>
                 </View>
