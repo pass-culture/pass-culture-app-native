@@ -484,7 +484,7 @@ PODS:
     - react-native-flipper-performance-plugin/FBDefines (= 0.3.1)
   - react-native-flipper-performance-plugin/FBDefines (0.3.1):
     - React-Core
-  - react-native-geolocation-service (5.3.0-beta.1):
+  - react-native-geolocation-service (5.3.1):
     - React
   - react-native-get-random-values (1.7.1):
     - React-Core
@@ -1000,7 +1000,7 @@ SPEC CHECKSUMS:
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
   react-native-flipper: 33bba1cad647f4d56403012993f201e10518b78c
   react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
-  react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
+  react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
   react-native-lottie-splash-screen: 068688c15dd478301fda00f8d87d7fb7d5b9a93e
