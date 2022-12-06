@@ -27,6 +27,7 @@ export interface Environment {
   ENABLE_WHY_DID_YOU_RENDER: boolean
   ENV: string
   FAQ_LINK: string
+  FAQ_LINK_CREDIT: string
   FAQ_LINK_DELETE_ACCOUNT: string
   FAQ_LINK_EDUCONNECT_URL: string
   FAQ_LINK_LEGAL_GUARDIAN: string

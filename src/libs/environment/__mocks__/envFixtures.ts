@@ -30,6 +30,7 @@ export const env: Environment = {
   ENABLE_WHY_DID_YOU_RENDER: false,
   ENV: 'testing',
   FAQ_LINK: 'https://passculture.faq',
+  FAQ_LINK_CREDIT: 'https://passculture-credit.faq',
   FAQ_LINK_DELETE_ACCOUNT: 'https://passculture-delete-account.faq',
   FAQ_LINK_EDUCONNECT_URL: 'https://passculture-educonnect.faq',
   FAQ_LINK_LEGAL_GUARDIAN:
