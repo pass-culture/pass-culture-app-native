@@ -28,7 +28,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should call goToNextStep() on valid email with email and newsletter params', () => {
-    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
@@ -40,6 +40,16 @@ describe('<SetEmail />', () => {
       email: 'john.doe@gmail.com',
       marketingEmailSubscription: false,
     })
+  })
+
+  it('should not display email help message by default', () => {
+    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
+
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+
+    const continueButton = getByText('Continuer')
+    fireEvent.press(continueButton)
 
     expect(
       queryByText(
