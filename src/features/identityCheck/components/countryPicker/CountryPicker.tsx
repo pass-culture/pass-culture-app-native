@@ -14,6 +14,7 @@ import {
 } from 'features/identityCheck/components/countryPicker/constants'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -67,7 +68,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
     const itemTitle = `${item.name} (${formatCallingCode(item.callingCode[0])})`
     const selected = item.cca2 === country.cca2
     const onPress = () => onSelect(item)
-    const [isFocus, setIsFocus] = useState(false)
+    const { onFocus, onBlur, isFocus } = useHandleFocus()
     const containerRef = useRef(null)
     useArrowNavigationForRadioButton(containerRef)
     useSpaceBarAction(isFocus ? onPress : undefined)
@@ -77,8 +78,8 @@ export const CountryPicker: React.FC<Props> = (props) => {
         accessibilityState={{ checked: selected }}
         key={item.cca2}
         testID={`country-selector-${item.cca2}`}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={onFocus}
+        onBlur={onBlur}
         onPress={onPress}>
         <CountryContainer ref={containerRef}>
           <Flag countryCode={item.cca2} withEmoji flagSize={25} />

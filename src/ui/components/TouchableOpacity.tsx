@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   NativeSyntheticEvent,
   TargetedEvent,
@@ -8,17 +8,18 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
 export function TouchableOpacity({ onFocus, onBlur, children, ...props }: TouchableOpacityProps) {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
 
   const onStyledFocus = (e: NativeSyntheticEvent<TargetedEvent>) => {
-    setIsFocus(true)
+    onFocusDefault()
     onFocus && onFocus(e)
   }
   const onStyledBlur = (e: NativeSyntheticEvent<TargetedEvent>) => {
-    setIsFocus(false)
+    onBlurDefault()
     onBlur && onBlur(e)
   }
 

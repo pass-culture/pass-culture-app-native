@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
 import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/firebase/analytics'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageCaption } from 'ui/components/ImageCaption'
@@ -64,7 +65,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     ...offer
   } = props
 
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   const queryClient = useQueryClient()
   const { offerId, name, distance, date, price, isDuo } = offer
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
@@ -97,8 +98,8 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           withPush: !!fromOfferId,
         }}
         onBeforeNavigate={handlePressOffer}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={onFocus}
+        onBlur={onBlur}
         isFocus={isFocus}
         testID={`offre ${name}`}
         accessibilityLabel={accessibilityLabel}>

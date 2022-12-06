@@ -1,10 +1,11 @@
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
 import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { ContentTypes } from 'features/home/contentful'
 import { analytics } from 'libs/firebase/analytics'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -21,14 +22,11 @@ const UnmemoizedExclusivityExternalLink = ({
   url,
   style,
 }: ExclusivityExternalLinkProps) => {
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moduleId, homeEntryId])
-
-  const onFocus = useCallback(() => setIsFocus(true), [])
-  const onBlur = useCallback(() => setIsFocus(false), [])
 
   return (
     <StyledTouchableLink

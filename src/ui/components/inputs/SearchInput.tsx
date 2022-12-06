@@ -1,9 +1,10 @@
-import React, { forwardRef, useRef, useState } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import { Insets, Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
@@ -22,7 +23,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   props,
   forwardedRef
 ) => {
-  const [isFocus, setIsFocus] = useState<boolean>(false)
+  const { onFocus: onFocusDefault, onBlur, isFocus } = useHandleFocus()
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomSearchInputProps(props)
   const {
@@ -42,14 +43,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const defaultKeyboardType = Platform.OS === 'web' ? 'web-search' : undefined
 
   function onFocus() {
-    setIsFocus(true)
+    onFocusDefault()
     if (onFocusProp) {
       onFocusProp()
     }
-  }
-
-  function onBlur() {
-    setIsFocus(false)
   }
 
   return (

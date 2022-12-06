@@ -7,6 +7,7 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
@@ -29,7 +30,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
   const customProps = getCustomTextInputProps(props)
 
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
-  const [isFocus, setIsFocus] = useState(false)
+  const { onFocus: onFocusDefault, onBlur, isFocus } = useHandleFocus()
   const passwordInputID = uuidv4()
 
   function togglePasswordDisplay() {
@@ -37,12 +38,8 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
   }
 
   function onFocus(e: NativeSyntheticEvent<TextInputFocusEventData>) {
-    setIsFocus(true)
+    onFocusDefault()
     props?.onFocus?.(e)
-  }
-
-  function onBlur() {
-    setIsFocus(false)
   }
 
   return (
