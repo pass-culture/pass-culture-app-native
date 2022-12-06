@@ -141,9 +141,9 @@ const ChoiceContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const StyledCaptionNeutralInfo = styled(Typo.CaptionNeutralInfo)(() => ({
-  flexShrink: 1,
-}))
+const StyledCaptionNeutralInfo = styled(Typo.CaptionNeutralInfo)`
+  flex-shrink: 1;
+`
 
 const AcceptAllContainer = styled.View({
   flexDirection: 'row',
