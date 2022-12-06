@@ -11,7 +11,6 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
@@ -81,10 +80,9 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <StyledTouchableLink
-        highlight
+      <StyledTouchableHighlight
         accessibilityRole={url ? AccessibilityRole.LINK : undefined}
-        onBeforeNavigate={() => setShouldRedirect(true)}
+        onPress={isDisabled ? undefined : () => setShouldRedirect(true)}
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}
@@ -111,7 +109,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
             </Container>
           </StyledImageBackground>
         </ImageContainer>
-      </StyledTouchableLink>
+      </StyledTouchableHighlight>
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
@@ -124,9 +122,11 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+//TODO(PC-19116): See if we can use touchableLink
+const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  textDecoration: 'none',
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))
