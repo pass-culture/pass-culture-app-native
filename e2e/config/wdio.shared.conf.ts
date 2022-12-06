@@ -119,7 +119,7 @@ export const config: WebdriverIO.Config = {
       slack,
       {
         webHookUrl: process.env.SLACK_WEB_HOOK_URL,
-        notifyOnlyOnFailure: true,
+        notifyOnlyOnFailure: false,
         messageTitle: slackMessageTitle,
       },
     ],
