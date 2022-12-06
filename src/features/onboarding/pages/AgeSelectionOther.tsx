@@ -18,17 +18,7 @@ export const AgeSelectionOther: FunctionComponent = () => {
   const logSelectAgeOver18 = useCallback(() => analytics.logSelectAge('over_18'), [])
 
   return (
-    <OnboardingPage
-      buttons={[
-        <TouchableLink
-          key={1}
-          as={ButtonTertiaryBlack}
-          wording="Je suis un parent"
-          icon={InfoPlain}
-          onBeforeNavigate={logGoToParentsFAQ}
-          externalNav={{ url: env.FAQ_LINK_LEGAL_GUARDIAN }}
-        />,
-      ]}>
+    <OnboardingPage>
       <AgeButton onBeforeNavigate={logSelectAgeUnder15} navigateTo={navigateToHomeConfig}>
         <Title4Text>
           j’ai <Title3Text>moins de 15 ans</Title3Text>
@@ -40,6 +30,15 @@ export const AgeSelectionOther: FunctionComponent = () => {
           j’ai <Title3Text>plus de 18 ans</Title3Text>
         </Title4Text>
       </AgeButton>
+      <Spacer.Column numberOfSpaces={4} />
+      <TouchableLink
+        key={1}
+        as={ButtonTertiaryBlack}
+        wording="Je suis un parent"
+        icon={InfoPlain}
+        onBeforeNavigate={logGoToParentsFAQ}
+        externalNav={{ url: env.FAQ_LINK_LEGAL_GUARDIAN }}
+      />
     </OnboardingPage>
   )
 }

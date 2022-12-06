@@ -1,3 +1,5 @@
+import colorAlpha from 'color-alpha'
+
 import { getBorderStyle } from 'features/onboarding/helpers/getBorderStyle'
 import { CreditStatus } from 'features/onboarding/types'
 import { theme } from 'theme'
@@ -5,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 
 const EDGE_BLOCK_BORDER_RADIUS = getSpacing(2)
 const defaultBorderStyle = {
-  borderColor: theme.colors.transparent,
+  borderColor: theme.colors.greyLight,
   borderWidth: getSpacing(0.25),
   borderRadius: getSpacing(0.5),
   borderTopLeftRadius: undefined,
@@ -17,7 +19,7 @@ const defaultBorderStyle = {
 describe('getBorderStyle', () => {
   it.each`
     status                  | expectedBorderStyle
-    ${CreditStatus.GONE}    | ${defaultBorderStyle}
+    ${CreditStatus.GONE}    | ${{ ...defaultBorderStyle, borderColor: colorAlpha(theme.colors.greyLight, 0.5) }}
     ${CreditStatus.COMING}  | ${defaultBorderStyle}
     ${CreditStatus.ONGOING} | ${{ ...defaultBorderStyle, borderColor: theme.colors.greySemiDark }}
   `('should return expected style for $status status', ({ status, expectedBorderStyle }) => {
