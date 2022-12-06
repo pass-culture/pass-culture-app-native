@@ -288,6 +288,7 @@
     "mockdate": "^3.0.2",
     "msw": "^0.21.3",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "playwright": "^1.28.1",
     "pnp-webpack-plugin": "^1.6.4",
     "postcss": "^8.4.6",
     "postcss-flexbugs-fixes": "^5.0.2",
