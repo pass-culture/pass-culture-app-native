@@ -305,7 +305,7 @@
     "resolve": "^1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^11.0.1",
-    "snapshot-diff": "^0.8.1",
+    "snapshot-diff": "^0.10.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
     "timezone-mock": "^1.2.1",
