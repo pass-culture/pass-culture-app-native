@@ -406,10 +406,9 @@ function simulateSigninWrongCredentials() {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
-      async (req, res, ctx) =>
+      async (_req, res, ctx) =>
         res(
           ctx.status(400),
-          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             general: ['Identifiant ou Mot de passe incorrect'],
           })
@@ -422,10 +421,9 @@ function simulateSigninRateLimitExceeded() {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
-      async (req, res, ctx) =>
+      async (_req, res, ctx) =>
         res(
           ctx.status(429),
-          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             general: [
               'Nombre de tentative de connexion dépassé. Veuillez réessayer dans 1 minute.',
@@ -440,10 +438,9 @@ function simulateSigninEmailNotValidated() {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
-      async (req, res, ctx) =>
+      async (_req, res, ctx) =>
         res(
           ctx.status(400),
-          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             code: 'EMAIL_NOT_VALIDATED',
             general: ['L’email n’a pas été validé.'],
