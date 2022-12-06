@@ -1,8 +1,8 @@
 name: Tests e2e iOS App
 
 on:
-  schedule:
-    - cron: '5 4 * * *'
+#  schedule:
+#    - cron: '5 4 * * *'
 
   workflow_dispatch:
     inputs:

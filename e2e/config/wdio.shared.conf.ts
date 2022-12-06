@@ -11,7 +11,8 @@ const screenshotsPath = join(process.cwd(), 'e2e/output/screenshots')
 const videosPath = join(process.cwd(), 'e2e/output/videos')
 const useSlackService = !!(process.env.CI && process.env.SLACK_WEB_HOOK_URL)
 const eventName = process.env.GITHUB_EVENT_NAME === 'schedule' ? 'cron' : 'dispatch'
-const slackMessageTitle = `(${process.env.GITHUB_REF_NAME}/${process.env.GITHUB_SHA_SHORT}) ${process.env.ENVIRONMENT} - webdriver.io ${process.env.GITHUB_REPOSITORY_NAME_PART} e2e tests report (${eventName})`
+
+const slackMessageTitle = `(${process.env.GITHUB_REF_NAME}/${process.env.GITHUB_SHA_SHORT}) ${process.env.ENVIRONMENT} - webdriver.io ${process.env.GITHUB_REPOSITORY_NAME_PART} ${process.env.npm_lifecycle_event} tests report (${eventName})`
 
 /**
  * All not needed configurations, for this boilerplate, are removed.
