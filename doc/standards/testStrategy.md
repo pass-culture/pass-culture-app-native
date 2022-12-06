@@ -37,12 +37,38 @@ describe('<YourPage/>', () => {
       const { container } = render(<YourPage />)
       const results = await checkAccessibilityFor(container, {
         rules: {
-          'duplicate-id-aria': { enabled: false },
+          'aria-allowed-role': { enabled: false },
         },
       })
 
       expect(results).toHaveNoViolations()
     })
+  })
+})
+```
+
+If you encounter an error with `duplicate-id-aria` this is due to the global uuid mock, we systematically mock `testUuidV4`
+To correct this error it is necessary to mock uuid in your test file like this :
+
+```jsx
+const mockV4 = jest.fn()
+jest.mock('uuid', () => ({
+  v1: jest.fn(),
+  v4: jest.fn(mockV4),
+}))
+```
+
+And use `mockV4.mockReturnValueOnce('yourId')` for each uuid needed. This is an exemple for search page :
+
+```jsx
+it('should not have basic accessibility issues', async () => {
+  mockV4.mockReturnValueOnce('searchInputId')
+  mockV4.mockReturnValueOnce('searchInputAccessibilityDescribedById')
+  const { container } = render(<Search />)
+
+  await act(async () => {
+    const results = await checkAccessibilityFor(container)
+    expect(results).toHaveNoViolations()
   })
 })
 ```
