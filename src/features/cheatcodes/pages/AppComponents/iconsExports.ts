@@ -93,6 +93,7 @@ import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Sun } from 'ui/svg/icons/Sun'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Trash } from 'ui/svg/icons/Trash'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -173,6 +174,7 @@ export const SecondaryAndBiggerIcons = {
   Share,
   SignOut,
   Sun,
+  ThumbUp,
   Trash,
   Valid,
   Wrong,

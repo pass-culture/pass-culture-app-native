@@ -9,11 +9,13 @@ import { getSpacing } from 'ui/theme'
 
 type GenericBannerProps = {
   LeftIcon?: FunctionComponent<IconInterface>
+  RighIcon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
 }
 
 export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
   LeftIcon,
+  RighIcon,
   style,
   children,
 }) => {
@@ -25,9 +27,7 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
         </IconContainer>
       )}
       <DescriptionContainer>{children}</DescriptionContainer>
-      <View>
-        <StyledArrowNextIcon />
-      </View>
+      <View>{RighIcon ? <RighIcon /> : <StyledArrowNextIcon />}</View>
     </View>
   )
 }

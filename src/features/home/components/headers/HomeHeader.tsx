@@ -1,18 +1,24 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SubscriptionStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useGetDepositAmountsByAge } from 'features/offer/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
 import { isUserBeneficiary } from 'features/profile/utils'
 import { env } from 'libs/environment'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { theme } from 'theme'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -22,7 +28,11 @@ export const HomeHeader: FunctionComponent = function () {
   const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
+
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
+  const shouldDisplaySubscritpionBloc =
+    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
+  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation()
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -45,6 +55,39 @@ export const HomeHeader: FunctionComponent = function () {
     return 'Ton crédit est expiré'
   }
 
+  const credit = useGetDepositAmountsByAge(user?.birthDate)
+
+  const SystemBloc = useMemo(() => {
+    if (shouldDisplaySubscritpionBloc && !!nextBeneficiaryValidationStepNavConfig) {
+      return (
+        <React.Fragment>
+          <BannerWithBackground
+            leftIcon={StyledBicolorUnlock}
+            navigateTo={nextBeneficiaryValidationStepNavConfig}>
+            <StyledButtonText>Débloque tes {credit}</StyledButtonText>
+            <StyledBodyText>à dépenser sur l’application</StyledBodyText>
+          </BannerWithBackground>
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
+      )
+    }
+    if (shouldDisplayGeolocationBloc) {
+      return (
+        <React.Fragment>
+          <GeolocationBanner />
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
+      )
+    }
+
+    return null
+  }, [
+    shouldDisplaySubscritpionBloc,
+    nextBeneficiaryValidationStepNavConfig,
+    shouldDisplayGeolocationBloc,
+    credit,
+  ])
+
   return (
     <React.Fragment>
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
@@ -58,12 +101,7 @@ export const HomeHeader: FunctionComponent = function () {
       <PageContent>
         <Typo.Body>{getSubtitle()}</Typo.Body>
         <Spacer.Column numberOfSpaces={6} />
-        {shouldDisplayGeolocationBloc ? (
-          <React.Fragment>
-            <GeolocationBanner />
-            <Spacer.Column numberOfSpaces={8} />
-          </React.Fragment>
-        ) : null}
+        {SystemBloc}
       </PageContent>
     </React.Fragment>
   )
@@ -80,3 +118,16 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   border: 1,
   padding: getSpacing(1),
 }))
+
+const StyledButtonText = styled(Typo.ButtonText)({
+  color: theme.colors.white,
+})
+
+const StyledBodyText = styled(Typo.Body)({
+  color: theme.colors.white,
+})
+
+const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  color2: theme.colors.white,
+}))``
