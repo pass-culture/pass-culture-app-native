@@ -176,46 +176,67 @@ exports[`Home N-1 should render correctly 1`] = `
                   ]
                 }
               />
-              <Text
-                numberOfLines={1}
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Black",
-                      "fontSize": 26,
-                      "lineHeight": 34,
+                      "maxHeight": 96,
+                      "overflow": "hidden",
                     },
                   ]
                 }
               >
-                HeaderTitle
-              </Text>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Black",
+                        "fontSize": 26,
+                        "lineHeight": 34,
+                      },
+                    ]
+                  }
+                >
+                  HeaderTitle
+                </Text>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  numberOfLines={2}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  HeaderSubtitle
+                </Text>
+              </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={6}
                 style={
                   Array [
                     Object {
-                      "height": 8,
+                      "height": 24,
                     },
                   ]
                 }
               />
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                HeaderSubtitle
-              </Text>
             </View>
           </View>
         </View>
