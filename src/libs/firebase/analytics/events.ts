@@ -43,7 +43,6 @@ export enum AnalyticsEvent {
   CONSULT_TUTORIAL = 'ConsultTutorial',
   CONSULT_VENUE = 'ConsultVenue',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
-  CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONTINUE_CGU = 'ContinueCGU',
   CONTINUE_IDENTITY_CHECK = 'ContinueIdentityCheck',

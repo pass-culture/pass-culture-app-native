@@ -22,87 +22,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     }
   >
     <View
-      accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance ?"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
-      }
-      testID="Pour quelle raison me demande-t-on ma date de naissance ?"
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "flexShrink": 0,
-            },
-          ]
-        }
-      >
-        <View
-          fill="#eb0055"
-          height={20}
-          testID="button-icon"
-          width={20}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Pour quelle raison ?
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       style={
         Array [
           Object {
@@ -168,7 +87,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             ]
           }
         >
-          Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+          Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
         </Text>
       </View>
     </View>
