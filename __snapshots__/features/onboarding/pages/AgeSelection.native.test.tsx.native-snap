@@ -189,6 +189,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="j’ai 15 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -206,6 +207,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="j’ai 15 ans"
             >
               <View
                 style={
@@ -323,6 +325,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="j’ai 16 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -340,6 +343,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="j’ai 16 ans"
             >
               <View
                 style={
@@ -457,6 +461,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="j’ai 17 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -474,6 +479,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="j’ai 17 ans"
             >
               <View
                 style={
@@ -591,6 +597,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="j’ai 18 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -608,6 +615,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="j’ai 18 ans"
             >
               <View
                 style={
@@ -725,6 +733,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="j’ai undefined ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -742,6 +751,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="j’ai undefined ans"
             >
               <View
                 style={

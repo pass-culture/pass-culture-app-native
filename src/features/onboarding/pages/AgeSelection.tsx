@@ -30,7 +30,8 @@ export const AgeSelection: FunctionComponent = () => {
         onBeforeNavigate={() => onBeforeNavigate(age || 'other')}
         navigateTo={
           age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
-        }>
+        }
+        accessibilityLabel={`j’ai ${age} ans`}>
         {age ? (
           <Title4Text>
             j’ai <Title3Text>{age} ans</Title3Text>
