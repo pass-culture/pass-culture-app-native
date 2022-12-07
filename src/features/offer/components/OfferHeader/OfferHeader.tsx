@@ -12,6 +12,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
+import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
@@ -31,6 +32,7 @@ interface Props {
  * @param props.headerTransition should be between animated between 0 and 1
  */
 export const OfferHeader: React.FC<Props> = (props) => {
+  useWhiteStatusBar()
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
   const theme = useTheme()
