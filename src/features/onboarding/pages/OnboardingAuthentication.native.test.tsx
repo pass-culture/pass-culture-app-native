@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingAuthentication } from 'features/onboarding/pages/OnboardingAuthentication'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
@@ -11,25 +10,25 @@ describe('OnboardingAuthentication', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should redirect to signup when signup button is clicked', async () => {
+  it('should redirect to AgeSelection when "C’est parti !" is clicked', async () => {
     const { getByText } = render(<OnboardingAuthentication />)
 
-    const signupButton = getByText('Créer un compte')
-    fireEvent.press(signupButton)
+    const button = getByText('C’est parti\u00a0!')
+    fireEvent.press(button)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SignupForm', { preventCancellation: true })
+      expect(navigate).toHaveBeenCalledWith('AgeSelection', undefined)
     })
   })
 
-  it('should redirect to home when skip button is clicked', async () => {
+  it('should redirect to login when "Se connecter" is clicked', async () => {
     const { getByText } = render(<OnboardingAuthentication />)
 
-    const skipButton = getByText('Plus tard')
-    fireEvent.press(skipButton)
+    const loginButton = getByText('Se connecter')
+    fireEvent.press(loginButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
+      expect(navigate).toHaveBeenCalledWith('Login', { preventCancellation: true })
     })
   })
 })
