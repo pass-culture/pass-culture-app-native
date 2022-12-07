@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OnboardingAuthentication should render correctly 1`] = `
+exports[`OnboardingWelcome should render correctly 1`] = `
 <View
   style={
     Array [
@@ -29,7 +29,7 @@ exports[`OnboardingAuthentication should render correctly 1`] = `
     <Image
       source={
         Object {
-          "testUri": "../../../public/images/AuthenticationBackground.jpg",
+          "testUri": "../../../public/images/WelcomeBackground.jpg",
         }
       }
       style={

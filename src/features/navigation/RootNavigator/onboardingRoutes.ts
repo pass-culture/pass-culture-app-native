@@ -3,7 +3,7 @@ import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/onboarding/pages/AgeSelectionOther'
-import { OnboardingAuthentication } from 'features/onboarding/pages/OnboardingAuthentication'
+import { OnboardingWelcome } from 'features/onboarding/pages/OnboardingWelcome'
 
 export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
   {
@@ -30,9 +30,9 @@ export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
     path: 'cheat-navigation-onboarding',
   },
   {
-    name: 'OnboardingAuthentication',
-    component: OnboardingAuthentication,
-    path: 'authentification',
-    options: { title: 'Authentification' },
+    name: 'OnboardingWelcome',
+    component: OnboardingWelcome,
+    path: 'bienvenue',
+    options: { title: 'Bienvenue' },
   },
 ]

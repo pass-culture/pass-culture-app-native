@@ -19,7 +19,7 @@ export function NavigationOnboarding(): JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="Onboarding 🛶" />
       <StyledContainer>
-        <LinkToComponent name="OnboardingAuthentication" />
+        <LinkToComponent name="OnboardingWelcome" />
         <LinkToComponent name="AgeSelection" />
         <LinkToComponent name="AgeSelectionOther" />
         <LinkToComponent
