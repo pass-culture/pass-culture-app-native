@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
+import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK as LINE_BREAK } from 'ui/theme/constants'
 
@@ -38,7 +38,7 @@ export function BirthdayInformationModal({ visible, hideModal }: Props) {
   )
 }
 
-const BirthdayCakeIcon = styled(BirthdayCake).attrs(({ theme }) => ({
+const BirthdayCakeIcon = styled(BicolorBirthdayCake).attrs(({ theme }) => ({
   color: theme.colors.primary,
 }))``
 

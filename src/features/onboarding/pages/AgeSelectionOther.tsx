@@ -3,7 +3,9 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
+import { useOnboardingContext } from 'features/onboarding/context/OnboardingWrapper'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
+import { NonEligible } from 'features/onboarding/types'
 import { env } from 'libs/environment/env'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -13,19 +15,27 @@ import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const AgeSelectionOther: FunctionComponent = () => {
+  const { showNonEligibleModal } = useOnboardingContext()
+
   const logGoToParentsFAQ = useCallback(() => analytics.logGoToParentsFAQ('ageselectionother'), [])
-  const logSelectAgeUnder15 = useCallback(() => analytics.logSelectAge('under_15'), [])
-  const logSelectAgeOver18 = useCallback(() => analytics.logSelectAge('over_18'), [])
+  const onUnder15Press = useCallback(() => {
+    analytics.logSelectAge(NonEligible.UNDER_15)
+    showNonEligibleModal(NonEligible.UNDER_15)
+  }, [showNonEligibleModal])
+  const onOver18Press = useCallback(() => {
+    analytics.logSelectAge(NonEligible.OVER_18)
+    showNonEligibleModal(NonEligible.OVER_18)
+  }, [showNonEligibleModal])
 
   return (
     <OnboardingPage>
-      <AgeButton onBeforeNavigate={logSelectAgeUnder15} navigateTo={navigateToHomeConfig}>
+      <AgeButton onBeforeNavigate={onUnder15Press} navigateTo={navigateToHomeConfig}>
         <Title4Text>
           j’ai <Title3Text>moins de 15 ans</Title3Text>
         </Title4Text>
       </AgeButton>
       <Spacer.Column numberOfSpaces={4} />
-      <AgeButton onBeforeNavigate={logSelectAgeOver18} navigateTo={navigateToHomeConfig}>
+      <AgeButton onBeforeNavigate={onOver18Press} navigateTo={navigateToHomeConfig}>
         <Title4Text>
           j’ai <Title3Text>plus de 18 ans</Title3Text>
         </Title4Text>

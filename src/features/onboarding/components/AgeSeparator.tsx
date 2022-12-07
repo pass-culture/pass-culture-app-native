@@ -8,7 +8,7 @@ export const AgeSeparator = ({ isEighteen }: { isEighteen: boolean }) => {
   return (
     <Container>
       <StyledSeparator />
-      <StyledBody>{isEighteen ? 'pour les jeunes' : 'remise à 0 du crédit'}</StyledBody>
+      <StyledBody>{isEighteen ? 'pour les plus jeunes' : 'remise à 0 du crédit'}</StyledBody>
       <StyledSeparator />
     </Container>
   )

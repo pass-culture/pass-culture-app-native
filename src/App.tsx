@@ -18,6 +18,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
+import { OnboardingWrapper } from 'features/onboarding/context/OnboardingWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
@@ -90,11 +91,13 @@ const App: FunctionComponent = function () {
                                 <SplashScreenProvider>
                                   <PushNotificationsWrapper>
                                     <ShareAppWrapper>
-                                      <OfflineModeContainer>
-                                        <ScreenErrorProvider>
-                                          <AppNavigationContainer />
-                                        </ScreenErrorProvider>
-                                      </OfflineModeContainer>
+                                      <OnboardingWrapper>
+                                        <OfflineModeContainer>
+                                          <ScreenErrorProvider>
+                                            <AppNavigationContainer />
+                                          </ScreenErrorProvider>
+                                        </OfflineModeContainer>
+                                      </OnboardingWrapper>
                                     </ShareAppWrapper>
                                   </PushNotificationsWrapper>
                                 </SplashScreenProvider>
