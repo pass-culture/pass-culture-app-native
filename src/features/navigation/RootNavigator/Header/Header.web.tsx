@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
@@ -194,7 +194,7 @@ const FlexContainer = styled.View<{ alignItems?: string }>(({ alignItems }) => (
   alignItems,
 }))
 
-const LogoContainer = styled(TouchableLink)({
+const LogoContainer = styled(InternalTouchableLink)({
   flex: 1,
 })
 
