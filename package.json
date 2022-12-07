@@ -93,7 +93,7 @@
     "@fingerprintjs/fingerprintjs": "^3.3.0",
     "@hookform/resolvers": "^2.9.8",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
-    "@react-native-async-storage/async-storage": "^1.17.7",
+    "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-community/netinfo": "^9.0.0",
     "@react-native-firebase/analytics": "^14.9.0",
     "@react-native-firebase/app": "^14.9.0",
