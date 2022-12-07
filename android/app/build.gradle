@@ -305,9 +305,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01' // @react-navigation
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02' // @react-navigation
     if (enableHermes) {
-      def hermesPath = "../../node_modules/hermes-engine/android/"
-      debugImplementation files(hermesPath + "hermes-debug.aar")
-      releaseImplementation files(hermesPath + "hermes-release.aar")
+        implementation("com.facebook.react:hermes-engine:+") { // From node_modules
+            exclude group:'com.facebook.fbjni'
+        }
     } else {
       implementation jscFlavor
     }
