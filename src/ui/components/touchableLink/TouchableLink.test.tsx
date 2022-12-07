@@ -6,21 +6,21 @@ import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
-import { TouchableLink2 } from './TouchableLink2'
+import { TouchableLink } from './TouchableLink'
 
 const handleNavigationMock = jest.fn()
 
 const linkText = 'linkText'
-const TouchableLink2Content = () => <Text>{linkText}</Text>
-describe('<TouchableLink2 />', () => {
+const TouchableLinkContent = () => <Text>{linkText}</Text>
+describe('<TouchableLink />', () => {
   describe('Internal Navigation', () => {
     it('should fire onBeforeNavigate if given, before navigation', async () => {
       const { getByText } = render(
-        <TouchableLink2
+        <TouchableLink
           handleNavigation={handleNavigationMock}
           onBeforeNavigate={() => analytics.logConsultTutorial('profile')}>
-          <TouchableLink2Content />
-        </TouchableLink2>
+          <TouchableLinkContent />
+        </TouchableLink>
       )
 
       fireEvent.press(getByText(linkText))
@@ -34,11 +34,11 @@ describe('<TouchableLink2 />', () => {
     it('should fire onAfterNavigate after navigate', async () => {
       const mockedOnAfterNavigate = jest.fn()
       const { getByText } = render(
-        <TouchableLink2
+        <TouchableLink
           handleNavigation={handleNavigationMock}
           onAfterNavigate={mockedOnAfterNavigate}>
-          <TouchableLink2Content />
-        </TouchableLink2>
+          <TouchableLinkContent />
+        </TouchableLink>
       )
 
       fireEvent.press(getByText(linkText))
@@ -53,7 +53,7 @@ describe('<TouchableLink2 />', () => {
       const buttonText = 'button'
       const { getByText: getButtonByText } = render(<ButtonPrimary wording={buttonText} />)
       const { getByText } = render(
-        <TouchableLink2
+        <TouchableLink
           as={ButtonPrimary}
           wording={buttonText}
           handleNavigation={handleNavigationMock}

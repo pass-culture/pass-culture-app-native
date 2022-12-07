@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 
 import { openUrl } from 'features/navigation/helpers'
 import { useItinerary } from 'libs/itinerary/useItinerary'
-import { TouchableLink2 } from 'ui/components/touchableLink/TouchableLink2'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
 export const ExternalTouchableLink: FunctionComponent<ExternalTouchableLinkProps> = ({
@@ -19,7 +19,7 @@ export const ExternalTouchableLink: FunctionComponent<ExternalTouchableLinkProps
     }
   }
   return (
-    <TouchableLink2
+    <TouchableLink
       handleNavigation={handleNavigation}
       linkProps={{ href: externalNav.url, target: '_blank' }}
       {...rest}

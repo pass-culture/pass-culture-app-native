@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 
 import { pushFromRef, navigateFromRef } from 'features/navigation/navigationRef'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { TouchableLink2 } from 'ui/components/touchableLink/TouchableLink2'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
 export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps> = ({
@@ -24,6 +24,6 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
     }
   }
   return (
-    <TouchableLink2 handleNavigation={handleNavigation} linkProps={internalLinkProps} {...rest} />
+    <TouchableLink handleNavigation={handleNavigation} linkProps={internalLinkProps} {...rest} />
   )
 }

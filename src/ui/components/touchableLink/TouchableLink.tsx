@@ -12,7 +12,7 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 const ON_PRESS_DEBOUNCE_DELAY = 300
 
-export function TouchableLink2({
+export function TouchableLink({
   onBeforeNavigate,
   onAfterNavigate,
   handleNavigation,
