@@ -30,11 +30,11 @@ describe('FirstTutorial page', () => {
     expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
   })
 
-  it('should navigate to OnBoardingAuthentication on skip', () => {
+  it('should navigate to AgeSelection on skip', () => {
     const { getByText } = renderFirstTutorial()
 
     fireEvent.press(getByText('Tout passer'))
-    expect(navigate).toHaveBeenNthCalledWith(1, 'OnboardingAuthentication')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'AgeSelection')
   })
 })
 

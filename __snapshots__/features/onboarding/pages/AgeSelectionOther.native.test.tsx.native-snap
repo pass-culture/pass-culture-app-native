@@ -117,6 +117,7 @@ Array [
           }
         />
         <View
+          accessibilityLabel="j’ai moins de 15 ans"
           accessibilityRole="link"
           accessible={true}
           collapsable={false}
@@ -134,6 +135,7 @@ Array [
               "userSelect": "auto",
             }
           }
+          testID="j’ai moins de 15 ans"
         >
           <View
             style={
@@ -220,6 +222,7 @@ Array [
           }
         />
         <View
+          accessibilityLabel="j’ai plus de 18 ans"
           accessibilityRole="link"
           accessible={true}
           collapsable={false}
@@ -237,6 +240,7 @@ Array [
               "userSelect": "auto",
             }
           }
+          testID="j’ai plus de 18 ans"
         >
           <View
             style={

@@ -29,13 +29,19 @@ export const AgeSelectionOther: FunctionComponent = () => {
 
   return (
     <OnboardingPage>
-      <AgeButton onBeforeNavigate={onUnder15Press} navigateTo={navigateToHomeConfig}>
+      <AgeButton
+        onBeforeNavigate={onUnder15Press}
+        navigateTo={navigateToHomeConfig}
+        accessibilityLabel="j’ai moins de 15 ans">
         <Title4Text>
           j’ai <Title3Text>moins de 15 ans</Title3Text>
         </Title4Text>
       </AgeButton>
       <Spacer.Column numberOfSpaces={4} />
-      <AgeButton onBeforeNavigate={onOver18Press} navigateTo={navigateToHomeConfig}>
+      <AgeButton
+        onBeforeNavigate={onOver18Press}
+        navigateTo={navigateToHomeConfig}
+        accessibilityLabel="j’ai plus de 18 ans">
         <Title4Text>
           j’ai <Title3Text>plus de 18 ans</Title3Text>
         </Title4Text>
