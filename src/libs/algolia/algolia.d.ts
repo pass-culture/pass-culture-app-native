@@ -1,6 +1,6 @@
 import { Hit } from 'instantsearch.js'
 
-import { SubcategoryIdEnum } from 'api/gen'
+import { SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
 
 interface Offer {
   dates?: number[]
@@ -25,7 +25,30 @@ export interface AlgoliaHit {
   objectID: string
 }
 
-export type AlgoliaSuggestionHit = Hit<{ query: string }>
+export interface AlgoliaFacetsAnalyticsCategory {
+  attribute: string
+  operator: string
+  value: SearchGroupNameEnumv2
+  count: number
+}
+
+export interface AlgoliaFacetsAnalytics {
+  [key: string]: AlgoliaFacetsAnalyticsCategory[]
+}
+
+export interface AlgoliaFacets {
+  analytics: AlgoliaFacetsAnalytics
+}
+
+export interface AlgoliaIndexInfos {
+  exact_nb_hits: number
+  facets: AlgoliaFacets
+}
+
+export type AlgoliaSuggestionHit = Hit<{
+  query: string
+  [key: string]: AlgoliaIndexInfos
+}>
 
 export interface HighlightResultAttribute {
   query: HighlightResult

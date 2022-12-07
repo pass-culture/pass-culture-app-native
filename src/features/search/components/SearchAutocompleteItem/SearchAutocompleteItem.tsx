@@ -5,27 +5,39 @@ import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useAppliedFilters } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
+import {
+  FILTER_TYPES,
+  useAppliedFilters,
+} from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import { useSearchGroupLabel } from 'libs/subcategories'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   hit: AlgoliaSuggestionHit
   sendEvent: SendEventForHits
+  shouldShowCategory?: boolean
 }
 
-export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
-  const { query } = hit
+export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, shouldShowCategory }) => {
+  const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
+  const { ['offer.searchGroupNamev2']: categories } = indexInfos.facets.analytics
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
-  const appliedFilters = useAppliedFilters(searchState)
+  let appliedFilters = useAppliedFilters(searchState)
+  const searchGroupLabel = useSearchGroupLabel(
+    categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
+  )
+  const hasMostPopularHitCategory = categories.length > 0
 
   const onPress = () => {
     sendEvent('click', hit, 'Suggestion clicked')
@@ -41,8 +53,14 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
         query,
         view: SearchView.Results,
         searchId,
+        ...(shouldShowCategory && hasMostPopularHitCategory
+          ? { offerCategories: [categories[0].value] }
+          : {}),
       })
     )
+    if (shouldShowCategory && hasMostPopularHitCategory) {
+      appliedFilters = [...appliedFilters, FILTER_TYPES.CATEGORIES]
+    }
 
     analytics.logSearchQuery(query || '', appliedFilters, searchId)
   }
@@ -54,6 +72,12 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent }) => {
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Highlight hit={hit} attribute="query" />
+        {!!(shouldShowCategory && hasMostPopularHitCategory) && (
+          <React.Fragment>
+            <Typo.Body> dans </Typo.Body>
+            <Typo.ButtonTextPrimary>{searchGroupLabel}</Typo.ButtonTextPrimary>
+          </React.Fragment>
+        )}
       </StyledText>
     </AutocompleteItemTouchable>
   )

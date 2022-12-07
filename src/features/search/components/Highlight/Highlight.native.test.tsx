@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Highlight, HighlightPart } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { env } from 'libs/environment'
 import { render } from 'tests/utils'
 
 describe('Highlight component', () => {
@@ -17,6 +19,21 @@ describe('Highlight component', () => {
       },
     },
     __position: 123,
+    [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+      exact_nb_hits: 2,
+      facets: {
+        analytics: {
+          ['offer.searchGroupNamev2']: [
+            {
+              attribute: '',
+              operator: '',
+              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              count: 10,
+            },
+          ],
+        },
+      },
+    },
   } as AlgoliaSuggestionHit
 
   it('should render Highlight', () => {

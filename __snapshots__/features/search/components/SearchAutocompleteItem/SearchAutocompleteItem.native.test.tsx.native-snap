@@ -66,6 +66,34 @@ exports[`SearchAutocompleteItem component should render SearchAutocompleteItem 1
     >
       cinéma
     </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+       dans 
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#eb0055",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Films, séries, cinéma
+    </Text>
   </Text>
 </View>
 `;

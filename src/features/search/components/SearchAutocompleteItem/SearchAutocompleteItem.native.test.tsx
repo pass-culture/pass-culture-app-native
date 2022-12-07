@@ -9,6 +9,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -18,7 +19,6 @@ const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
 const mockSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
 }
@@ -45,38 +45,27 @@ describe('SearchAutocompleteItem component', () => {
       },
     },
     __position: 123,
+    [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+      exact_nb_hits: 2,
+      facets: {
+        analytics: {
+          ['offer.searchGroupNamev2']: [
+            {
+              attribute: '',
+              operator: '',
+              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              count: 10,
+            },
+          ],
+        },
+      },
+    },
   } as AlgoliaSuggestionHit
 
   it('should render SearchAutocompleteItem', () => {
-    expect(render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)).toMatchSnapshot()
-  })
-
-  it('should execute a search with the name of the selected offer on hit click', async () => {
-    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
-    await fireEvent.press(getByTestId('autocompleteItem'))
-
-    expect(navigate).toBeCalledWith(
-      ...getTabNavConfig('Search', {
-        ...initialSearchState,
-        query: hit.query,
-        offerCategories: mockSearchState.offerCategories,
-        locationFilter: mockSearchState.locationFilter,
-        priceRange: mockSearchState.priceRange,
-        view: SearchView.Results,
-        searchId,
-      })
-    )
-  })
-
-  it('should log a search with the query and selected filters', async () => {
-    const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
-    await fireEvent.press(getByTestId('autocompleteItem'))
-
-    expect(analytics.logSearchQuery).toHaveBeenCalledWith(
-      hit.query,
-      ['Localisation', 'Catégories'],
-      searchId
-    )
+    expect(
+      render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} shouldShowCategory />)
+    ).toMatchSnapshot()
   })
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
@@ -84,5 +73,78 @@ describe('SearchAutocompleteItem component', () => {
     await fireEvent.press(getByTestId('autocompleteItem'))
 
     expect(mockSendEvent).toHaveBeenCalledTimes(1)
+  })
+
+  describe('when item is not in the first three suggestions', () => {
+    it('should execute a search with the query suggestion on hit click', async () => {
+      const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+      await fireEvent.press(getByTestId('autocompleteItem'))
+
+      expect(navigate).toBeCalledWith(
+        ...getTabNavConfig('Search', {
+          ...initialSearchState,
+          query: hit.query,
+          locationFilter: mockSearchState.locationFilter,
+          priceRange: mockSearchState.priceRange,
+          view: SearchView.Results,
+          searchId,
+        })
+      )
+    })
+
+    it('should log a search with the query and selected filters on hit click', async () => {
+      const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+      await fireEvent.press(getByTestId('autocompleteItem'))
+
+      expect(analytics.logSearchQuery).toHaveBeenCalledWith(hit.query, ['Localisation'], searchId)
+    })
+
+    it('should not display the most popular category of the query suggestion', async () => {
+      const { queryByText } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+
+      expect(queryByText('Films, séries, cinéma')).toBeFalsy()
+    })
+  })
+
+  describe('when item is in the first three suggestions', () => {
+    it('should execute a search with the query suggestion and the most popular category of the query suggestion on hit click', async () => {
+      const { getByTestId } = render(
+        <SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} shouldShowCategory />
+      )
+      await fireEvent.press(getByTestId('autocompleteItem'))
+
+      expect(navigate).toBeCalledWith(
+        ...getTabNavConfig('Search', {
+          ...initialSearchState,
+          query: hit.query,
+          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+          locationFilter: mockSearchState.locationFilter,
+          priceRange: mockSearchState.priceRange,
+          view: SearchView.Results,
+          searchId,
+        })
+      )
+    })
+
+    it('should log a search with the query, the most popular category of the query suggestion and other selected filters on hit click', async () => {
+      const { getByTestId } = render(
+        <SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} shouldShowCategory />
+      )
+      await fireEvent.press(getByTestId('autocompleteItem'))
+
+      expect(analytics.logSearchQuery).toHaveBeenCalledWith(
+        hit.query,
+        ['Localisation', 'Catégories'],
+        searchId
+      )
+    })
+
+    it('should display the most popular category of the query suggestion', async () => {
+      const { queryByText } = render(
+        <SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} shouldShowCategory />
+      )
+
+      expect(queryByText('Films, séries, cinéma')).toBeTruthy()
+    })
   })
 })
