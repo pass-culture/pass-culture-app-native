@@ -60,7 +60,8 @@ public class MainActivity extends ReactActivity {
         protected ReactRootView createRootView() {
             ReactRootView reactRootView = new ReactRootView(getContext());
             // If you opted-in for the New Architecture, we enable the Fabric Renderer.
-            reactRootView.setIsFabric(BuildConfig.IS_NEW_ARCHITECTURE_ENABLED);
+//            reactRootView.setIsFabric(BuildConfig.IS_NEW_ARCHITECTURE_ENABLED); // Disabled since we didn't add class for new architecture, read more https://stackoverflow.com/a/72057089/2127277
+            reactRootView.setIsFabric(false);
             return reactRootView;
         }
 
@@ -68,7 +69,8 @@ public class MainActivity extends ReactActivity {
         protected boolean isConcurrentRootEnabled() {
             // If you opted-in for the New Architecture, we enable Concurrent Root (i.e. React 18).
             // More on this on https://reactjs.org/blog/2022/03/29/react-v18.html
-            return BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
+//            return BuildConfig.IS_NEW_ARCHITECTURE_ENABLED; // Disabled since we didn't add class for new architecture, read more https://stackoverflow.com/a/72057089/2127277
+            return false;
         }
     }
 }
