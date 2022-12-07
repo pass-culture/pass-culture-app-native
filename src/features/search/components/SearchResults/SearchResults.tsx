@@ -26,12 +26,14 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { SearchHit } from 'libs/search'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { Banner } from 'ui/components/Banner'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Li } from 'ui/components/Li'
@@ -62,11 +64,17 @@ export const SearchResults: React.FC = () => {
     isLoading,
     isFetching,
     isFetchingNextPage,
+    userData,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
+
+  const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
+  const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage
+    ? `${searchState.query} ${userData[0]?.message}`
+    : ''
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -145,7 +153,8 @@ export const SearchResults: React.FC = () => {
       !params?.offerTypes?.isDigital &&
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE &&
-      nbHits > 0
+      nbHits > 0 &&
+      !shouldDisplayUnavailableOfferMessage
 
     const onPress = () => {
       logActivateGeolocfromSearchResults()
@@ -166,6 +175,13 @@ export const SearchResults: React.FC = () => {
             </GenericBanner>
           </GeolocationButtonContainer>
         )}
+        {!!shouldDisplayUnavailableOfferMessage && (
+          <BannerOfferNotPresentContainer
+            accessibilityRole={AccessibilityRole.STATUS}
+            nbHits={nbHits}>
+            <Banner title={unavailableOfferMessage} />
+          </BannerOfferNotPresentContainer>
+        )}
       </React.Fragment>
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -176,7 +192,10 @@ export const SearchResults: React.FC = () => {
     params?.offerTypes?.isDigital,
     params?.offerCategories,
     showGeolocPermissionModal,
+    shouldDisplayUnavailableOfferMessage,
+    unavailableOfferMessage,
   ])
+
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
 
   const ListFooterComponent = useMemo(
@@ -367,7 +386,7 @@ const Container = styled.View({
 })
 
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBar.height + getSpacing(17),
+  height: theme.tabBar.height + getSpacing(10),
   alignItems: 'center',
 }))
 
@@ -395,6 +414,11 @@ const GeolocationButtonContainer = styledButton(Touchable)({
   paddingRight: getSpacing(6),
   paddingBottom: getSpacing(4),
 })
+
+const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
+  paddingHorizontal: getSpacing(6),
+  ...(nbHits > 0 ? { paddingBottom: getSpacing(4) } : {}),
+}))
 
 const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,

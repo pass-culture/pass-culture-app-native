@@ -53,3 +53,7 @@ export interface SearchState {
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']
+
+export type UserData = {
+  message: string
+}

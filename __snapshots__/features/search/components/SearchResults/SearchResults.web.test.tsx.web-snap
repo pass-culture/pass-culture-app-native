@@ -960,7 +960,7 @@ Array [
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "alignItems": "center",
-                "height": "132px",
+                "height": "104px",
                 "msFlexAlign": "center",
               }
             }
