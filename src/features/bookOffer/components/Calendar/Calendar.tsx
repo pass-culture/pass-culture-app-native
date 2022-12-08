@@ -33,6 +33,7 @@ const renderArrow = (direction: string) => {
 }
 
 const calendarHeaderStyle = {
+  textSectionTitleColor: '#696A6F',
   'stylesheet.calendar.header': {
     header: {
       flexDirection: 'row',
