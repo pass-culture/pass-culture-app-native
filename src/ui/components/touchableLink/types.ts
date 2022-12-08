@@ -48,7 +48,7 @@ export type ExternalTouchableLinkProps = TouchableLinkGenericProps & ExternalNav
 
 export type InternalTouchableLinkProps = TouchableLinkGenericProps & InternalNavigationProps
 
-export type TouchableLink2Props = TouchableLinkGenericProps & {
+export type TouchableLinkProps = TouchableLinkGenericProps & {
   handleNavigation: () => void
   linkProps?:
     | {

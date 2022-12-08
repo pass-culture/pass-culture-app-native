@@ -3,7 +3,7 @@ import React, { createRef, ElementType, useEffect, useState } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { TouchableLink2Props } from 'ui/components/touchableLink/types'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -26,7 +26,7 @@ export function TouchableLink({
   isOnPressDebounced,
   hoverUnderlineColor,
   ...rest
-}: TouchableLink2Props) {
+}: TouchableLinkProps) {
   const TouchableComponent = (
     highlight ? StyledTouchableHighlight : StyledTouchableOpacity
   ) as ElementType
