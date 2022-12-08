@@ -3,7 +3,7 @@ import { View, PixelRatio } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SkeletonTile } from 'features/home/atoms/SkeletonTile'
+import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import {
   getSpacing,
   LENGTH_L,

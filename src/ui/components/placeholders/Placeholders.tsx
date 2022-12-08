@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SkeletonTile } from 'features/home/atoms/SkeletonTile'
+import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const borderRadius = 4
