@@ -183,7 +183,7 @@ Object {
 <body>
     <div>
       <button
-        class="c0 c1 sc-gWXbKe c1"
+        class="c0 c1 sc-cCcXHH c1"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -618,7 +618,7 @@ Object {
 
 <div>
     <button
-      class="c0 c1 sc-gWXbKe c1"
+      class="c0 c1 sc-cCcXHH c1"
       data-testid="Revenir en arrière"
       tabindex="0"
       type="button"

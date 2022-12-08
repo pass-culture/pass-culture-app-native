@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { Eye } from 'ui/svg/icons/Eye'
 
 import { TextInput } from './TextInput'
@@ -49,9 +48,9 @@ export const WithInsideRightButton = Template.bind({})
 WithInsideRightButton.args = {
   label: 'Label',
   placeholder: 'Placeholder...',
-  insideRightButton: (
-    <Touchable accessibilityLabel="Eye button">
-      <Eye />
-    </Touchable>
-  ),
+  rightButton: {
+    icon: Eye,
+    onPress: () => alert('Do nothing'),
+    accessibilityLabel: 'Afficher le mot de passe',
+  },
 }

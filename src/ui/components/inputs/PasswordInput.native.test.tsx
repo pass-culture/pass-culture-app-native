@@ -7,16 +7,16 @@ import { PasswordInput } from './PasswordInput'
 
 describe('<PasswordInput />', () => {
   it('should change accessibilityLabel when password is hidden or it was displayed', () => {
-    const instance = render(<PasswordInput />)
+    const { queryByLabelText, getByTestId } = render(<PasswordInput />)
 
-    expect(instance.queryByLabelText('Afficher le mot de passe')).toBeTruthy()
-    expect(instance.queryByLabelText('Cacher le mot de passe')).toBeNull()
+    expect(queryByLabelText('Afficher le mot de passe')).toBeTruthy()
+    expect(queryByLabelText('Cacher le mot de passe')).toBeNull()
 
-    const switchPasswordVisibilityButton = instance.getByTestId('toggle-password-visibility')
+    const switchPasswordVisibilityButton = getByTestId('toggle-password-visibility')
 
     fireEvent.press(switchPasswordVisibilityButton)
-    expect(instance.queryByLabelText('Cacher le mot de passe')).toBeTruthy()
-    expect(instance.queryByLabelText('Afficher le mot de passe')).toBeNull()
+    expect(queryByLabelText('Cacher le mot de passe')).toBeTruthy()
+    expect(queryByLabelText('Afficher le mot de passe')).toBeNull()
   })
 
   it('should render ref correctly', () => {

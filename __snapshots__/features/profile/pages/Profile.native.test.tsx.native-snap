@@ -218,7 +218,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -338,7 +338,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -718,7 +718,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -837,7 +837,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -995,7 +995,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -1115,7 +1115,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -1234,7 +1234,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="touchable-link-navigate-section-row"
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -1833,7 +1833,7 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="touchable-external-section-row"
+                    testID="touchable-section-row"
                   >
                     <View
                       style={

@@ -433,7 +433,7 @@ Array [
             "userSelect": "auto",
           }
         }
-        testID="touchable-link-navigate-section-row"
+        testID="touchable-link-section-row"
       >
         <View
           style={
@@ -531,7 +531,7 @@ Array [
             "userSelect": "auto",
           }
         }
-        testID="touchable-link-navigate-section-row"
+        testID="touchable-link-section-row"
       >
         <View
           style={

@@ -740,7 +740,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="touchable-external-section-row"
+            testID="touchable-section-row"
           >
             <View
               style={
