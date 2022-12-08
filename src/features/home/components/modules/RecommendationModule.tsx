@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
-import { HomeOfferTile } from 'features/home/atoms'
 import {
   ContentTypes,
   DisplayParametersFields,
@@ -17,6 +16,7 @@ import { SearchHit } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
+import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 
 type RecommendationModuleProps = {
   moduleId: string
