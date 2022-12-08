@@ -29,8 +29,8 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
   ) as SearchState['locationFilter']
 
   const params: SearchState = {
-    beginningDatetime: null,
-    endingDatetime: null,
+    beginningDatetime: undefined,
+    endingDatetime: undefined,
     hitsPerPage: 10,
     locationFilter,
     offerCategories: [],

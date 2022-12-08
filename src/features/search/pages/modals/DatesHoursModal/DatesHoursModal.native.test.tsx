@@ -25,6 +25,7 @@ const hideDatesHoursModal = jest.fn()
 
 const TODAY = new Date(2022, 9, 28)
 const TOMORROW = new Date(2022, 9, 29)
+const UNDEFINED_DATE = undefined
 
 describe('<DatesHoursModal/>', () => {
   beforeAll(() => {
@@ -225,8 +226,8 @@ describe('<DatesHoursModal/>', () => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
           ...mockSearchState,
-          beginningDatetime: null,
-          endingDatetime: null,
+          beginningDatetime: UNDEFINED_DATE,
+          endingDatetime: UNDEFINED_DATE,
           view: SearchView.Results,
         },
         screen: 'Search',

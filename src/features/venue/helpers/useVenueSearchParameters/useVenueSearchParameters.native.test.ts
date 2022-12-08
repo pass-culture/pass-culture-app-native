@@ -23,8 +23,8 @@ describe('useVenueSearchParameters', () => {
   it('should retrieve the default search parameters', () => {
     const { result } = renderHook(() => useVenueSearchParameters(invalidId))
     expect(result.current).toEqual({
-      beginningDatetime: null,
-      endingDatetime: null,
+      beginningDatetime: undefined,
+      endingDatetime: undefined,
       hitsPerPage: 10,
       locationFilter: { locationType: LocationType.EVERYWHERE },
       offerCategories: [],

@@ -38,9 +38,9 @@ describe('useShowResultsForCategory', () => {
 
     expect(mockNavigate).toBeCalledWith('TabNavigator', {
       params: {
-        beginningDatetime: null,
+        beginningDatetime: undefined,
         date: null,
-        endingDatetime: null,
+        endingDatetime: undefined,
         hitsPerPage: 20,
         locationFilter: { locationType: 'EVERYWHERE' },
         offerCategories: ['SPECTACLES'],

@@ -8,9 +8,9 @@ import { buildNumericFilters } from './buildNumericFilters'
 
 export const buildOfferSearchParameters = (
   {
-    beginningDatetime = null,
+    beginningDatetime = undefined,
     date = null,
-    endingDatetime = null,
+    endingDatetime = undefined,
     locationFilter,
     offerCategories = [],
     offerSubcategories = [],

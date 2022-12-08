@@ -37,7 +37,7 @@ describe('useMarkedDates()', () => {
   })
 
   it('should skip stocks without date', () => {
-    const stock = { ...offerStockResponseSnap, beginningDatetime: null }
+    const stock = { ...offerStockResponseSnap, beginningDatetime: undefined }
     const { result } = renderHook(() => useMarkedDates([stock], credit))
     expect(result.current).toStrictEqual({})
   })
