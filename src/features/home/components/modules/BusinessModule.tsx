@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -48,6 +48,12 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
+  const onPress = useCallback(() => {
+    if (!isDisabled) {
+      setShouldRedirect(true)
+    }
+  }, [isDisabled])
+
   const { showInfoSnackBar } = useSnackBarContext()
 
   const logAndOpenUrl = (finalUrl: string) => {
@@ -82,7 +88,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
       <Spacer.Row numberOfSpaces={6} />
       <StyledTouchableHighlight
         accessibilityRole={url ? AccessibilityRole.LINK : undefined}
-        onPress={isDisabled ? undefined : () => setShouldRedirect(true)}
+        onPress={onPress}
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}
