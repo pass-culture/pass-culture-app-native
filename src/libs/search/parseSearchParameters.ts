@@ -1,3 +1,4 @@
+import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 import { sortCategories } from 'features/search/helpers/reducer.helpers'
@@ -31,13 +32,11 @@ export const parseSearchParameters = (
   const locationFilter = parseGeolocationParameters(geolocation, isGeolocated, aroundRadius)
   if (!locationFilter) return
 
-  const beginningDatetime = parameters.beginningDatetime
-    ? new Date(parameters.beginningDatetime).toISOString()
-    : null
-
-  const endingDatetime = parameters.endingDatetime
-    ? new Date(parameters.endingDatetime).toISOString()
-    : null
+  const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({
+    beginningDatetime: parameters.beginningDatetime,
+    endingDatetime: parameters.endingDatetime,
+    upcomingWeekendEvent: parameters.upcomingWeekendEvent,
+  })
 
   // We receive category labels from contentful. We first have to map to facetFilters used for search
   const offerCategories = (parameters.categories || [])
