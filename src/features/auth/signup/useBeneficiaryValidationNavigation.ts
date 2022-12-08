@@ -6,9 +6,9 @@ import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptio
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
-type NextStepNavConfig = TouchableLinkProps['navigateTo']
+type NextStepNavConfig = InternalNavigationProps['navigateTo'] | undefined
 
 export const useBeneficiaryValidationNavigation = (setError?: (error: Error) => void) => {
   const navigateToNextStep = useNavigateToNextSubscriptionStep()

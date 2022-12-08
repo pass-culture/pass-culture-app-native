@@ -5,7 +5,7 @@ import { TextStyle } from 'react-native'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { ExternalNavigationProps, TouchableLinkProps } from 'ui/components/touchableLink/types'
+import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
@@ -32,7 +32,7 @@ export type NotEligibleEduConnectErrorData = {
     icon?: FunctionComponent<IconInterface>
     onPress?: () => void
   } & (
-    | { navigateTo: TouchableLinkProps['navigateTo'] }
+    | { navigateTo?: InternalNavigationProps['navigateTo'] }
     | { externalNav: ExternalNavigationProps['externalNav'] }
   )
 
@@ -51,7 +51,7 @@ const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
 }
 
 const getInvalidInformationErrorData = (
-  navigateTo: TouchableLinkProps['navigateTo']
+  navigateTo?: InternalNavigationProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
   Illustration: UserErrorWhite,
   title: 'Oh non\u00a0!',
@@ -69,7 +69,7 @@ const getInvalidInformationErrorData = (
 
 const getUserTypeNotStudentErrorData = (
   onPrimaryButtonPress: () => void,
-  navigateTo: TouchableLinkProps['navigateTo']
+  navigateTo: InternalNavigationProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
   Illustration: UserErrorWhite,
   title: 'Qui est-ce\u00a0?',
