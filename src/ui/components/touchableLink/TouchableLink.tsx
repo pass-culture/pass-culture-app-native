@@ -1,8 +1,10 @@
 import debounce from 'lodash/debounce'
-import React, { createRef, ElementType, useEffect, useState } from 'react'
+import React, { createRef, ElementType, useCallback, useEffect } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 // eslint-disable-next-line no-restricted-imports
@@ -32,8 +34,8 @@ export function TouchableLink({
   ) as ElementType
   const TouchableLinkComponent = Tag ? Tag : TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
-  const [isFocus, setIsFocus] = useState(false)
-  const [isHover, setIsHover] = useState(false)
+  const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
+  const { onMouseEnter, onMouseLeave, isHover } = useHandleHover()
 
   const touchableOpacityProps =
     Platform.OS === 'web' && !disabled
@@ -47,15 +49,21 @@ export function TouchableLink({
     if (onAfterNavigate) await onAfterNavigate(event)
   }
 
-  function onLinkFocus(e: NativeSyntheticEvent<TargetedEvent>) {
-    setIsFocus(true)
-    onFocus && onFocus(e)
-  }
+  const onLinkFocus = useCallback(
+    (e: NativeSyntheticEvent<TargetedEvent>) => {
+      onFocusDefault()
+      onFocus && onFocus(e)
+    },
+    [onFocus, onFocusDefault]
+  )
 
-  function onLinkBlur(e: NativeSyntheticEvent<TargetedEvent>) {
-    setIsFocus(false)
-    onBlur && onBlur(e)
-  }
+  const onLinkBlur = useCallback(
+    (e: NativeSyntheticEvent<TargetedEvent>) => {
+      onBlurDefault()
+      onBlur && onBlur(e)
+    },
+    [onBlur, onBlurDefault]
+  )
 
   // useEffect ci-dessous pour le hack en VanillaJS
   useEffect(() => {
@@ -82,8 +90,8 @@ export function TouchableLink({
       hoverUnderlineColor={hoverUnderlineColor}
       onFocus={onLinkFocus}
       onBlur={onLinkBlur}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       onPress={disabled ? undefined : callOnClick}>
       {children}
     </TouchableLinkComponent>
