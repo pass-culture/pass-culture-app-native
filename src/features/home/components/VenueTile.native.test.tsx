@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
 
@@ -28,13 +28,19 @@ describe('VenueTile component', () => {
 
   it('should navigate to the venue when clicking on the venue tile', async () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    await fireEvent.press(getByTestId('venueTile'))
-    expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
+
+    fireEvent.press(getByTestId('venueTile'))
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
+    })
   })
 
-  it('should log analytics event ConsultVenue when pressing on the venue tile', async () => {
+  it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    await fireEvent.press(getByTestId('venueTile'))
+
+    fireEvent.press(getByTestId('venueTile'))
+
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
       from: 'home',
@@ -42,9 +48,12 @@ describe('VenueTile component', () => {
       moduleId: 'module-id',
     })
   })
-  it('should log analytics event ConsultVenue with homeEntryId when provided', async () => {
+
+  it('should log analytics event ConsultVenue with homeEntryId when provided', () => {
     const { getByTestId } = render(<VenueTile {...props} homeEntryId={'abcd'} />)
-    await fireEvent.press(getByTestId('venueTile'))
+
+    fireEvent.press(getByTestId('venueTile'))
+
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
       from: 'home',
