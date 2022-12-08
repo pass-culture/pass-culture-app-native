@@ -1,10 +1,10 @@
 import React, { ComponentProps, ComponentType, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SeeMore } from 'features/home/atoms'
-import { Cover } from 'ui/components/Cover'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { Cover } from 'ui/components/Cover'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
+import { SeeMore } from 'ui/components/SeeMore'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'

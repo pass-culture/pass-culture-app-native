@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useOfferModule } from 'features/home/api/useOfferModule'
-import { SeeMore } from 'features/home/atoms'
 import {
   SearchParametersFields,
   DisplayParametersFields,
@@ -19,6 +18,7 @@ import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
+import { SeeMore } from 'ui/components/SeeMore'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 
 type OffersModuleProps = {
