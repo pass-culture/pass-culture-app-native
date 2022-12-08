@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 
 import { openUrl } from 'features/navigation/helpers'
 import { useItinerary } from 'libs/itinerary/useItinerary'
@@ -10,14 +10,14 @@ export const ExternalTouchableLink: FunctionComponent<ExternalTouchableLinkProps
   ...rest
 }) => {
   const { navigateTo: navigateToItinerary } = useItinerary()
-  const { url, params, address, onSuccess, onError } = externalNav
-  const handleNavigation = () => {
+  const handleNavigation = useCallback(() => {
+    const { url, params, address, onSuccess, onError } = externalNav
     if (address) {
       navigateToItinerary(address)
     } else {
       openUrl(url, params).then(onSuccess).catch(onError)
     }
-  }
+  }, [externalNav, navigateToItinerary])
   return (
     <TouchableLink
       handleNavigation={handleNavigation}

@@ -1,5 +1,5 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 
 import { pushFromRef, navigateFromRef } from 'features/navigation/navigationRef'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -13,7 +13,7 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
 }) => {
   const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
   const { navigate, push } = useNavigation<UseNavigationType>()
-  const handleNavigation = () => {
+  const handleNavigation = useCallback(() => {
     if (enableNavigate) {
       const { screen, params, fromRef, withPush } = navigateTo
       if (withPush) {
@@ -22,7 +22,7 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
         fromRef ? navigateFromRef(screen, params) : navigate(screen, params)
       }
     }
-  }
+  }, [enableNavigate, navigateTo, push, navigate])
   return (
     <TouchableLink handleNavigation={handleNavigation} linkProps={internalLinkProps} {...rest} />
   )
