@@ -4,7 +4,7 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeCode } from 'libs/parsers'
 import { render } from 'tests/utils'
 
-import { VenueDetails } from '../VenueDetails'
+import { VenueDetails } from './VenueDetails'
 
 const props = {
   name: 'Musée du Louvre',

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { fireEvent, render } from 'tests/utils/web'
 
-import { SeeMore } from '../SeeMore'
+import { SeeMore } from './SeeMore'
 
 const props = { height: 100, width: 100, onPress: jest.fn() }
 

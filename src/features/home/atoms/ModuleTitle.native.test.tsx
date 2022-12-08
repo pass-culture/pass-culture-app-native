@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from 'tests/utils'
 
-import { ModuleTitle } from '../ModuleTitle'
+import { ModuleTitle } from './ModuleTitle'
 
 describe('ModuleTitle component', () => {
   afterAll(() => jest.resetAllMocks())

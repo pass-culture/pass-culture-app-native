@@ -3,12 +3,11 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils'
 
-import { VenueTile, VenueTileProps } from '../VenueTile'
+import { VenueTile, VenueTileProps } from './VenueTile'
 
 jest.mock('react-query')
-jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 const venue = mockVenues.hits[0]
 
@@ -27,15 +26,15 @@ describe('VenueTile component', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('should navigate to the venue when clicking on the image', async () => {
+  it('should navigate to the venue when clicking on the venue tile', async () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    await fireEvent.click(getByTestId('venueTile'))
+    await fireEvent.press(getByTestId('venueTile'))
     expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
   })
 
   it('should log analytics event ConsultVenue when pressing on the venue tile', async () => {
     const { getByTestId } = render(<VenueTile {...props} />)
-    await fireEvent.click(getByTestId('venueTile'))
+    await fireEvent.press(getByTestId('venueTile'))
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
       from: 'home',
@@ -45,7 +44,7 @@ describe('VenueTile component', () => {
   })
   it('should log analytics event ConsultVenue with homeEntryId when provided', async () => {
     const { getByTestId } = render(<VenueTile {...props} homeEntryId={'abcd'} />)
-    await fireEvent.click(getByTestId('venueTile'))
+    await fireEvent.press(getByTestId('venueTile'))
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
       from: 'home',
@@ -53,5 +52,11 @@ describe('VenueTile component', () => {
       moduleId: 'module-id',
       homeEntryId: 'abcd',
     })
+  })
+  it('should show venue placeholder when no venue does not have image', () => {
+    const { getByTestId } = render(
+      <VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />
+    )
+    expect(getByTestId('venue-type-tile')).toBeTruthy()
   })
 })
