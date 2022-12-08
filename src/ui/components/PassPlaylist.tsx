@@ -2,7 +2,7 @@ import React, { ComponentProps, ComponentType, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
-import { Cover } from 'features/home/atoms/Cover'
+import { Cover } from 'ui/components/Cover'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
