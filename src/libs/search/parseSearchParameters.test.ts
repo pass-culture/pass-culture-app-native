@@ -7,7 +7,7 @@ import { useParseSearchParameters } from 'libs/search'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
-import { parseSearchParameters } from '../parseSearchParameters'
+import { parseSearchParameters } from './parseSearchParameters'
 
 jest.mock('features/profile/api')
 
