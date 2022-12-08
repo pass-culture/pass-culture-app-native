@@ -218,6 +218,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -337,6 +338,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -716,6 +718,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -834,6 +837,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -898,15 +902,6 @@ exports[`Profile component should render correctly 1`] = `
                               Centre d'aide
                             </Text>
                           </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          />
                         </View>
                       </View>
                     </View>
@@ -1000,6 +995,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -1119,6 +1115,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -1237,6 +1234,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
+                        testID="touchable-link-section-row"
                       >
                         <View
                           style={
@@ -1835,6 +1833,7 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="touchable-section-row"
                   >
                     <View
                       style={
@@ -1894,15 +1893,6 @@ exports[`Profile component should render correctly 1`] = `
                           Déconnexion
                         </Text>
                       </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "flex-end",
-                            },
-                          ]
-                        }
-                      />
                     </View>
                   </View>
                 </View>

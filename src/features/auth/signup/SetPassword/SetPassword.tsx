@@ -28,11 +28,9 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <PasswordInput
-        label="Mot de passe"
         accessibilityDescribedBy={passwordDescribedBy}
         value={password}
         onChangeText={setPassword}
-        placeholder="Ton mot de passe"
         onSubmitEditing={submitPassword}
         ref={passwordInput}
       />

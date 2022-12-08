@@ -50,8 +50,9 @@ const SnackBarButton: FunctionComponent<SnackBarProps> = (props) => {
   const { showSuccessSnackBar, hideSnackBar } = useSnackBarContext()
   return (
     <Button
-      title={'Press here'}
+      title="Press here"
       onPress={() => showSuccessSnackBar({ ...props, onClose: hideSnackBar })}
+      color="green"
     />
   )
 }

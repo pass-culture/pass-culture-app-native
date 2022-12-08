@@ -1,6 +1,7 @@
-import { ComponentProps, RefAttributes } from 'react'
+import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
+import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -18,6 +19,12 @@ type CustomTextInputProps = InputProps & {
   leftComponent?: React.ReactElement
   rightLabel?: string
   showSoftInputOnFocus?: boolean
+  rightButton?: {
+    icon: FunctionComponent<IconInterface>
+    onPress: () => void
+    accessibilityLabel: string
+    testID?: string
+  }
 }
 
 type CustomSearchInputProps = InputProps & {
@@ -90,6 +97,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     isRequiredField: props.isRequiredField,
     leftComponent: props.leftComponent,
     rightLabel: props.rightLabel,
+    rightButton: props.rightButton,
   }
 }
 

@@ -740,6 +740,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="touchable-section-row"
           >
             <View
               style={
@@ -798,15 +799,6 @@ exports[`BookingDetails should render correctly 1`] = `
                   Le 15 mars 2021 à 20h00
                 </Text>
               </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-end",
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View

@@ -229,12 +229,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
         <Spacer.Column numberOfSpaces={6} />
         <PasswordInput
-          label="Mot de passe"
           value={password}
           onChangeText={setPassword}
-          placeholder="Ton mot de passe"
           isError={!!errorMessage}
-          textContentType="password"
           onSubmitEditing={onSubmit}
           isRequiredField
         />

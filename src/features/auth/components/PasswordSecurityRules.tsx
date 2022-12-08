@@ -56,7 +56,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
 }) => {
   return (
     <React.Fragment>
-      <HiddenAccessibleText nativeID={nativeID}>
+      <HiddenAccessibleText nativeID={nativeID} displayBlock>
         Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et
         un caractère spécial
       </HiddenAccessibleText>

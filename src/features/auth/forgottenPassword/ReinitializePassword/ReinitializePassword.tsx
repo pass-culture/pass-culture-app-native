@@ -88,7 +88,6 @@ export const ReinitializePassword = () => {
             value={password}
             autoFocus
             onChangeText={setPassword}
-            placeholder="Ton mot de passe"
             onSubmitEditing={submitPassword}
             isRequiredField
           />

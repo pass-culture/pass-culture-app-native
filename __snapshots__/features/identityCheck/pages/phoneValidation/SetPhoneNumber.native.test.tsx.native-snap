@@ -574,7 +574,6 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                       />
                       <TextInput
                         aria-describedby="testUuidV4"
-                        aria-required={false}
                         autoCapitalize="none"
                         autoComplete="off"
                         editable={true}
@@ -1395,7 +1394,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       />
                       <TextInput
                         aria-describedby="testUuidV4"
-                        aria-required={false}
                         autoCapitalize="none"
                         autoComplete="off"
                         editable={true}

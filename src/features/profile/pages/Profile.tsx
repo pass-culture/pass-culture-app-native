@@ -186,9 +186,7 @@ const OnlineProfile: React.FC = () => {
               <Row
                 title="Accessibilité"
                 type="navigable"
-                navigateTo={{
-                  screen: 'Accessibility',
-                }}
+                navigateTo={{ screen: 'Accessibility' }}
                 icon={HandicapMental}
               />
             </Li>

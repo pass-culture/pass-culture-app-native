@@ -134,14 +134,11 @@ export function ChangeEmail() {
             />
             <Spacer.Column numberOfSpaces={4} />
             <PasswordInput
-              label="Mot de passe"
               value={password}
               onChangeText={setPassword}
-              placeholder="Ton mot de passe"
-              textContentType="password"
               disabled={hasCurrentEmailChange}
-              isRequiredField
               accessibilityDescribedBy={passwordInputErrorId}
+              isRequiredField
             />
             <InputError
               visible={!!passwordErrorMessage}

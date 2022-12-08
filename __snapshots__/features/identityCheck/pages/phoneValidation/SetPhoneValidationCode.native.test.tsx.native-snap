@@ -442,7 +442,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                     >
                       <TextInput
                         aria-describedby="testUuidV4"
-                        aria-required={false}
                         autoCapitalize="none"
                         editable={true}
                         isEmpty={true}

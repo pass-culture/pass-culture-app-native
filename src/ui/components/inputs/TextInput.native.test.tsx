@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { fireEvent, render } from 'tests/utils'
+import { render } from 'tests/utils'
 
 import { TextInput } from './TextInput'
 
@@ -12,16 +12,6 @@ describe('<TextInput />', () => {
     const instance = render(NormalStateTextInput)
 
     expect(instance).toMatchSnapshot()
-  })
-
-  it('should render correctly when focused', () => {
-    const notFocusedInstance = render(NormalStateTextInput)
-    const focusedInstance = render(NormalStateTextInput)
-
-    const input = focusedInstance.getByPlaceholderText('placeholder')
-    fireEvent(input, 'focus')
-
-    expect(notFocusedInstance).toMatchDiffSnapshot(focusedInstance)
   })
 
   it('should render ref correctly', () => {

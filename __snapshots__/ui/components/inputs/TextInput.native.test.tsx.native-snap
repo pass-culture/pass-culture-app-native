@@ -41,7 +41,6 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
     testID="styled-input-container"
   >
     <TextInput
-      aria-required={false}
       editable={true}
       isEmpty={true}
       nativeID="testUuidV4"
@@ -71,44 +70,6 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
     />
   </View>
 </View>
-`;
-
-exports[`<TextInput /> should render correctly when focused 1`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -13,25 +13,25 @@
-  >
-    <View
-      height=\\"small\\"
-      isDisabled={false}
-      isError={false}
--     isFocus={false}
-+     isFocus={true}
-      style={
-        Array [
-          Object {
-            \\"alignItems\\": \\"center\\",
-            \\"backgroundColor\\": \\"#ffffff\\",
--           \\"borderColor\\": \\"#90949D\\",
-+           \\"borderColor\\": \\"#161617\\",
-            \\"borderRadius\\": 22,
-            \\"borderStyle\\": \\"solid\\",
--           \\"borderWidth\\": 1,
-+           \\"borderWidth\\": 2,
-            \\"flexDirection\\": \\"row\\",
-            \\"height\\": 40,
-            \\"paddingBottom\\": 0,
--           \\"paddingLeft\\": 17,
--           \\"paddingRight\\": 17,
-+           \\"paddingLeft\\": 16,
-+           \\"paddingRight\\": 16,
-            \\"paddingTop\\": 0,
-            \\"width\\": \\"100%\\",
-          },
-        ]
-      }"
 `;
 
 exports[`<TextInput /> should render correctly when in error 1`] = `

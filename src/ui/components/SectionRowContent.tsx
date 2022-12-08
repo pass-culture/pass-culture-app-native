@@ -9,10 +9,11 @@ import { Typo, Spacer } from 'ui/theme'
 
 export type SectionRowContentProps = {
   title: string
+  type: 'navigable' | 'clickable'
   accessibilityLabel?: string
-  iconSize?: number
-  ctaIconSize?: number
+  onPress?: () => void
   icon?: FunctionComponent<IconInterface>
+  iconSize?: number
   style?: StyleProp<ViewStyle>
 } & (
   | {
@@ -23,25 +24,13 @@ export type SectionRowContentProps = {
       renderTitle?: never
       numberOfLines?: number
     }
-) &
-  (
-    | {
-        type: 'navigable'
-        onPress?: () => void
-      }
-    | {
-        type: 'clickable'
-        onPress?: () => void
-        cta?: JSX.Element
-      }
-  )
+)
 
 export const SectionRowContent = ({
   title,
   renderTitle,
   icon: Icon,
   iconSize,
-  ctaIconSize,
   numberOfLines = 2,
   style,
   ...props
@@ -61,13 +50,11 @@ export const SectionRowContent = ({
         </React.Fragment>
       )}
       <TitleContainer>{Title}</TitleContainer>
-      <CTAContainer>
-        {props.type == 'navigable' ? (
-          <ArrowNext ctaIconSize={ctaIconSize} testID="section-row-navigable-icon" />
-        ) : (
-          props.cta
-        )}
-      </CTAContainer>
+      {props.type == 'navigable' && (
+        <CTAContainer>
+          <ArrowNext testID="section-row-navigable-icon" />
+        </CTAContainer>
+      )}
     </View>
   )
 }
@@ -89,8 +76,6 @@ const CTAContainer = styled.View({
   alignItems: 'flex-end',
 })
 
-const ArrowNext = styled(DefaultArrowNext).attrs<{ ctaIconSize?: number }>(
-  ({ theme, ctaIconSize }) => ({
-    size: ctaIconSize || theme.icons.sizes.smaller,
-  })
-)<{ ctaIconSize?: number }>``
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

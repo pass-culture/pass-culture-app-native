@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import FilterSwitch from 'ui/components/FilterSwitch'
 import { SectionRow } from 'ui/components/SectionRow'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
@@ -52,16 +51,4 @@ ClickableWithIcon.args = {
   title: 'Section row clickable',
   type: 'clickable',
   icon: Email,
-}
-
-const ExampleSwitch: React.FC = () => {
-  return <FilterSwitch active toggle={() => 'do nothing'} />
-}
-
-export const ClickableWithCTA = Template.bind({})
-ClickableWithCTA.args = {
-  title: 'Section row clickable with CTA',
-  type: 'clickable',
-  icon: Email,
-  cta: <ExampleSwitch />,
 }

@@ -238,6 +238,7 @@ Array [
               "userSelect": "auto",
             }
           }
+          testID="touchable-link-section-row"
         >
           <View
             style={
@@ -346,6 +347,7 @@ Array [
               "userSelect": "auto",
             }
           }
+          testID="touchable-link-section-row"
         >
           <View
             style={
@@ -454,6 +456,7 @@ Array [
               "userSelect": "auto",
             }
           }
+          testID="touchable-link-section-row"
         >
           <View
             style={
@@ -562,6 +565,7 @@ Array [
               "userSelect": "auto",
             }
           }
+          testID="touchable-link-section-row"
         >
           <View
             style={

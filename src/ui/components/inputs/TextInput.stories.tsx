@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { Eye } from 'ui/svg/icons/Eye'
+
 import { TextInput } from './TextInput'
 
 export default {
@@ -40,4 +42,15 @@ Error.args = {
   label: 'Label',
   placeholder: 'Placeholder...',
   isError: true,
+}
+
+export const WithInsideRightButton = Template.bind({})
+WithInsideRightButton.args = {
+  label: 'Label',
+  placeholder: 'Placeholder...',
+  rightButton: {
+    icon: Eye,
+    onPress: () => alert('Do nothing'),
+    accessibilityLabel: 'Afficher le mot de passe',
+  },
 }

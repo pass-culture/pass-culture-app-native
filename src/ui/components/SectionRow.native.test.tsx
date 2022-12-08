@@ -1,45 +1,31 @@
 import React from 'react'
 
-import { render, fireEvent } from 'tests/utils'
-import { Close } from 'ui/svg/icons/Close'
+import { render } from 'tests/utils'
 
 import { SectionRow } from './SectionRow'
 
-describe('SectionRow', () => {
-  describe('onPress', () => {
-    it('should call onPress when "clickable"', () => {
-      const method = jest.fn()
-      const { getByText } = render(
-        <SectionRow type="clickable" title="just clickable" icon={Close} onPress={method} />
-      )
-      const touchable = getByText('just clickable')
+describe('<SectionRow/>', () => {
+  it('should use TouchableLink when is internal navigate', () => {
+    const { queryByTestId } = render(
+      <SectionRow type="navigable" title="navigable" navigateTo={{ screen: 'Accessibility' }} />
+    )
 
-      fireEvent.press(touchable)
-      expect(method).toHaveBeenCalledTimes(1)
-    })
+    expect(queryByTestId('touchable-link-section-row')).toBeTruthy()
   })
 
-  describe('type', () => {
-    it('should render the next arrow icon when type is "navigable"', () => {
-      const method = jest.fn()
-      const { getByTestId } = render(
-        <SectionRow type="navigable" title="navigable" icon={Close} onPress={method} />
-      )
-      getByTestId('section-row-navigable-icon')
-    })
-    it('should render the given cta when type is "clickable"', () => {
-      const { getByTestId, queryByTestId } = render(
-        <SectionRow
-          type="clickable"
-          title="just clickable"
-          icon={Close}
-          cta={<Close testID="cta-close-icon" />}
-        />
-      )
-      getByTestId('cta-close-icon')
+  it('should use TouchableLink when is external navigation', () => {
+    const { queryByTestId } = render(
+      <SectionRow type="clickable" title="clickable" externalNav={{ url: 'https://url-externe' }} />
+    )
 
-      const navigationIcon = queryByTestId('section-row-navigable-icon')
-      expect(navigationIcon).toBeNull()
-    })
+    expect(queryByTestId('touchable-link-section-row')).toBeTruthy()
+  })
+
+  it('should use Touchable when no navigation', () => {
+    const { queryByTestId } = render(
+      <SectionRow type="clickable" title="clickable" onPress={jest.fn()} />
+    )
+
+    expect(queryByTestId('touchable-section-row')).toBeTruthy()
   })
 })

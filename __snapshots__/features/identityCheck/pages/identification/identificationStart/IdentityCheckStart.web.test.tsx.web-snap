@@ -139,7 +139,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                     />
                         <button
 -                       aria-label=\\"Identification par le site Démarches-Simplifiées\\"
--                       class=\\"sc-dkPtRN dMotSY sc-hiCibw bikoQs\\"
+-                       class=\\"sc-dkPtRN dMotSY sc-gWXbKe jAXlhK\\"
 -                       data-testid=\\"Identification par le site Démarches-Simplifiées\\"
 +                         aria-label=\\"Transmettre un document\\"
 +                         class=\\"sc-dkPtRN fSwvKJ sc-crHmcD dlEnXt\\"
