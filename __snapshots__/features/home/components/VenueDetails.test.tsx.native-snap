@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenueDetails component should render correctly 1`] = `
+<View
+  maxWidth={100}
+  style={
+    Array [
+      Object {
+        "marginTop": 8,
+        "maxWidth": 100,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={2}
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    Musée du Louvre
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      Musée
+    </Text>
+  </View>
+</View>
+`;
