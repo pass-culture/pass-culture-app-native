@@ -67,6 +67,7 @@ describe('parseSearchParameters', () => {
       beginningDatetime: '2020-10-01T00:00+00:00',
       endingDatetime: '2020-10-02T00:00+00:00',
       upcomingWeekendEvent: true,
+      currentWeekEvent: true,
     } as SearchParametersFields
     const geolocation = null
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)

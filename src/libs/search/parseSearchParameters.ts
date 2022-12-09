@@ -36,6 +36,7 @@ export const parseSearchParameters = (
     beginningDatetime: parameters.beginningDatetime,
     endingDatetime: parameters.endingDatetime,
     upcomingWeekendEvent: parameters.upcomingWeekendEvent,
+    currentWeekEvent: parameters.currentWeekEvent,
   })
 
   // We receive category labels from contentful. We first have to map to facetFilters used for search
