@@ -56,6 +56,9 @@ jobs:
       SPECS: ${{ inputs.specs }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
       SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
+      # useful for Slack reports
+      GITHUB_SERVER_URL: ${{ github.server_url }}
+      GITHUB_RUN_ID: ${{ github.run_id }}
     runs-on: macos-11
     environment: ${{ inputs.environment || 'staging' }}
     steps:
