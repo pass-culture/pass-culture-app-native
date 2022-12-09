@@ -23,4 +23,9 @@ describe('<SeeMore />', () => {
     fireEvent.press(seeMore.getByText('En voir plus'))
     expect(props.onPress).toHaveBeenCalledTimes(1)
   })
+  it('is a link when navigateTo is given', () => {
+    const { getByRole } = render(<SeeMore {...props} navigateTo={{ screen: 'Accessibility' }} />)
+
+    expect(getByRole('link')).toBeTruthy()
+  })
 })
