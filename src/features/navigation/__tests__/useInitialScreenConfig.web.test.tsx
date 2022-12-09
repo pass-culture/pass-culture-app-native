@@ -32,7 +32,6 @@ describe('useInitialScreen()', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  // prettier-ignore : do not format the following "table" to keep it readable
   it.each`
     hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                                                  | isNativeCulturalSurveyActive | expectedScreen                    | expectedAnalyticsScreen
     ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${true}                      | ${'TabNavigator'}                 | ${'Home'}
@@ -44,7 +43,7 @@ describe('useInitialScreen()', () => {
     ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: 3000 }}   | ${true}                      | ${'RecreditBirthdayNotification'} | ${'RecreditBirthdayNotification'}
     ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, recreditAmountToShow: null }}  | ${true}                      | ${'TabNavigator'}                 | ${'Home'}
     ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, recreditAmountToShow: null }}  | ${true}                      | ${'TabNavigator'}                 | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${true}                      | ${'OnboardingWelcome'}            | ${'OnboardingWelcome'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${true}                      | ${'TabNavigator'}                 | ${'Home'}
   `(
     `should return $expectedScreen when 
       - has_seen_tutorials = $hasSeenTutorials 
