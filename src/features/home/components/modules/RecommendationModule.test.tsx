@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { render } from 'tests/utils'
 

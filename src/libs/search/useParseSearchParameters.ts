@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 
-import { SearchParametersFields } from 'libs/contentful'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
+import { SearchParametersFields } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { parseSearchParameters } from 'libs/search/parseSearchParameters'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'

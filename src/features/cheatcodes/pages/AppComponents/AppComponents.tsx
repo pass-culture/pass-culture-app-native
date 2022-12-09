@@ -10,6 +10,7 @@ import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
+import { VenueTile } from 'features/home/components/VenueTile'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
@@ -71,7 +72,6 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, LENGTH_S, Spacer, Typo } from 'ui/theme'
-import { VenueTile } from 'features/home/components/VenueTile'
 
 function onButtonPress() {
   Alert.alert('you pressed it')

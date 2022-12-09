@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { DisplayParametersFields } from 'libs/contentful'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
+import { DisplayParametersFields } from 'libs/contentful'
 import { render } from 'tests/utils'
 
 import { VenuesModule } from './VenuesModule'

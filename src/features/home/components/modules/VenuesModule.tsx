@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { useVenueModule } from 'features/home/api/useVenueModule'
+import { VenueTile } from 'features/home/components/VenueTile'
 import {
   ContentTypes,
   DisplayParametersFields,
   VenuesSearchParametersFields,
 } from 'libs/contentful'
-import { VenueTile } from 'features/home/components/VenueTile'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'

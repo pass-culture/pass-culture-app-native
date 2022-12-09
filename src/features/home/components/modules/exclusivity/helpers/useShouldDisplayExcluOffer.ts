@@ -1,7 +1,7 @@
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
-import { ExclusivityPane } from 'libs/contentful'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
+import { ExclusivityPane } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'

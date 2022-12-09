@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
-import { ContentTypes } from 'libs/contentful'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
