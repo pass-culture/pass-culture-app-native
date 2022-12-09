@@ -32,7 +32,7 @@ class FirstLaunch {
     await CookiesConsent.randomChoice()
     await FirstTutorial.proceed()
     if (!flags.isWeb) {
-      await AgeSelection.proceed()
+      await AgeSelection.randomChoiceAge()
       await AgeInformation.proceed()
     }
     await tabBar.waitForIsShown(true)
