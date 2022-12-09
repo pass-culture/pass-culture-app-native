@@ -168,6 +168,7 @@ export interface SearchParametersFields {
   isEvent?: boolean
   beginningDatetime?: string
   endingDatetime?: string
+  upcomingWeekendEvent?: boolean
   isFree?: boolean
   priceMin?: number
   priceMax?: number

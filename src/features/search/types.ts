@@ -24,9 +24,9 @@ export enum SearchView {
 }
 
 export interface SearchState {
-  beginningDatetime: string | null
+  beginningDatetime?: string
   date: SelectedDate | null
-  endingDatetime: string | null
+  endingDatetime?: string
   hitsPerPage: number | null
   locationFilter: LocationFilter
   offerCategories: SearchGroupNameEnumv2[]

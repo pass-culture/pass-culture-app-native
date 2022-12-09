@@ -6,9 +6,9 @@ import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 
 export const initialSearchState: SearchState = {
-  beginningDatetime: null,
+  beginningDatetime: undefined,
   date: null,
-  endingDatetime: null,
+  endingDatetime: undefined,
   hitsPerPage: 20,
   locationFilter: { locationType: LocationType.EVERYWHERE },
   offerCategories: [],

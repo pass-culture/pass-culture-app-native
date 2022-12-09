@@ -7,7 +7,7 @@ import { useParseSearchParameters } from 'libs/search'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
-import { parseSearchParameters } from '../parseSearchParameters'
+import { parseSearchParameters } from './parseSearchParameters'
 
 jest.mock('features/profile/api')
 
@@ -57,35 +57,34 @@ describe('parseSearchParameters', () => {
   it('should return parsed algolia parameters with tags when provided', () => {
     const parameters = {
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
+      hitsPerPage: 5,
+      isDuo: true,
+      newestOnly: true,
+      isDigital: true,
+      isEvent: true,
+      isThing: true,
+      isFree: true,
+      beginningDatetime: '2020-10-01T00:00+00:00',
+      endingDatetime: '2020-10-02T00:00+00:00',
+      upcomingWeekendEvent: true,
     } as SearchParametersFields
     const geolocation = null
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
+      hitsPerPage: 5,
+      offerIsDuo: true,
+      offerIsNew: true,
+      offerTypes: {
+        isDigital: true,
+        isEvent: true,
+        isThing: true,
+      },
+      offerIsFree: true,
+      beginningDatetime: '2020-10-01T00:00+00:00',
+      endingDatetime: '2020-10-02T00:00+00:00',
     })
-  })
-
-  it('should return parsed algolia parameters with hitsPerPage when provided', () => {
-    const parameters = { hitsPerPage: 5 } as SearchParametersFields
-    const geolocation = null
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-    expect(result).toStrictEqual({ ...defaultSearchParameters, hitsPerPage: 5 })
-  })
-
-  it('should return parsed algolia parameters with isDuo when provided', () => {
-    const parameters = { isDuo: true } as SearchParametersFields
-    const geolocation = null
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-    expect(result).toStrictEqual({ ...defaultSearchParameters, offerIsDuo: true })
-  })
-
-  it('should return algolia parameters with newestOnly when provided', () => {
-    const parameters = { newestOnly: true } as SearchParametersFields
-    const geolocation = null
-
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-    expect(result).toStrictEqual({ ...defaultSearchParameters, offerIsNew: true })
   })
 
   it('should return algolia parameters with isDigital when provided', () => {
@@ -121,17 +120,6 @@ describe('parseSearchParameters', () => {
     })
   })
 
-  it('should return algolia parameters with all offer types when provided', () => {
-    const parameters = { isDigital: true, isEvent: true, isThing: true } as SearchParametersFields
-    const geolocation = null
-
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-    expect(result).toStrictEqual({
-      ...defaultSearchParameters,
-      offerTypes: { isDigital: true, isEvent: true, isThing: true },
-    })
-  })
-
   it('should return algolia parameters with a price range when minimum price is provided', () => {
     const parameters = { priceMin: 50 } as SearchParametersFields
     const geolocation = null
@@ -154,14 +142,6 @@ describe('parseSearchParameters', () => {
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 200] })
-  })
-
-  it('should return algolia parameters with isFree when provided', () => {
-    const parameters = { isFree: true } as SearchParametersFields
-    const geolocation = null
-
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-    expect(result).toStrictEqual({ ...defaultSearchParameters, offerIsFree: true })
   })
 
   describe('geolocation', () => {
@@ -201,47 +181,6 @@ describe('parseSearchParameters', () => {
 
       const result = parseSearchParameters(parameters, null, subcategoryLabelMapping)
       expect(result).toBeUndefined()
-    })
-  })
-
-  describe('beginningDatetime & endingDatetime', () => {
-    it('should return algolia parameters with a beginning date when provided', () => {
-      const beginningDatetime = new Date(2020, 9, 1, 22, 0, 0).toISOString()
-      const beginningDatetimeAsString = '2020-10-01T22:00:00'
-      const parameters = { beginningDatetime: beginningDatetimeAsString } as SearchParametersFields
-      const geolocation = null
-
-      const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-      expect(result).toStrictEqual({ ...defaultSearchParameters, beginningDatetime })
-    })
-
-    it('should return algolia parameters with an ending date when provided', () => {
-      const endingDatetime = new Date(2020, 9, 1, 22, 0, 0).toISOString()
-      const endingDatetimeAsString = '2020-10-01T22:00:00'
-      const parameters = { endingDatetime: endingDatetimeAsString } as SearchParametersFields
-      const geolocation = null
-
-      const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-      expect(result).toStrictEqual({ ...defaultSearchParameters, endingDatetime })
-    })
-
-    it('should return algolia parameters with a beginning date and an ending date when provided', () => {
-      const beginningDatetime = new Date(2020, 9, 1, 0, 0, 0).toISOString()
-      const endingDatetime = new Date(2020, 9, 2, 0, 0, 0).toISOString()
-      const beginningDatetimeAsString = '2020-10-01T00:00:00'
-      const endingDatetimeAsString = '2020-10-02T00:00:00'
-      const parameters = {
-        beginningDatetime: beginningDatetimeAsString,
-        endingDatetime: endingDatetimeAsString,
-      } as SearchParametersFields
-      const geolocation = null
-
-      const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
-      expect(result).toStrictEqual({
-        ...defaultSearchParameters,
-        beginningDatetime,
-        endingDatetime,
-      })
     })
   })
 })

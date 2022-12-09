@@ -24,9 +24,9 @@ jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = mocked(useVenueOffers)
 
 const defaultParams = {
-  beginningDatetime: null,
+  beginningDatetime: undefined,
   date: null,
-  endingDatetime: null,
+  endingDatetime: undefined,
   hitsPerPage: 10,
   offerCategories: [],
   offerSubcategories: [],
