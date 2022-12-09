@@ -11,7 +11,7 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
   enableNavigate = true,
   ...rest
 }) => {
-  const internalLinkProps = useLinkProps({ to: navigateTo })
+  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
   const { navigate, push } = useNavigation<UseNavigationType>()
   const handleNavigation = useCallback(() => {
     if (enableNavigate) {
