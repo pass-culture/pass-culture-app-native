@@ -4,7 +4,7 @@ import {
   SearchParametersFields,
   VenuesSearchParametersFields,
   RecommendationParametersFields,
-} from './contentful'
+} from './types'
 
 export class Offers {
   search: SearchParametersFields[]

@@ -1,4 +1,13 @@
 import {
+  Offers,
+  OffersWithCover,
+  ExclusivityPane,
+  BusinessPane,
+  ProcessedModule,
+  RecommendationPane,
+  VenuesModule,
+} from './moduleTypes'
+import {
   AlgoliaFields,
   BusinessFields,
   ExclusivityFields,
@@ -12,16 +21,7 @@ import {
   VenuesFields,
   VenuesSearchParameters,
   VenuesSearchParametersFields,
-} from './contentful'
-import {
-  Offers,
-  OffersWithCover,
-  ExclusivityPane,
-  BusinessPane,
-  ProcessedModule,
-  RecommendationPane,
-  VenuesModule,
-} from './moduleTypes'
+} from './types'
 
 export const parseOfferId = (offerId: string): number | undefined => {
   return Number.isNaN(Number(offerId)) ? undefined : Number(offerId)
