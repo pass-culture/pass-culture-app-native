@@ -21,9 +21,13 @@ export const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access
 
 export async function fetchHomepageNatifContent() {
   const url = `${BASE_URL}/entries${PARAMS}`
+  const json = await getExternal<EntryCollection<HomepageEntry, ContentTypes.HOMEPAGE_NATIF>>(url)
+  return resolveResponse(json)
+}
+
+const getHomepageNatifContent = async () => {
   try {
-    const json = await getExternal<EntryCollection<HomepageEntry, ContentTypes.HOMEPAGE_NATIF>>(url)
-    return resolveResponse(json)
+    return await fetchHomepageNatifContent()
   } catch (e) {
     const error = e as Error
     throw new ScreenError(error?.message, NoContentError)
@@ -46,7 +50,7 @@ export const useHomepageData = (paramsHomepageEntryId?: string): HomepageData =>
   // this fetches all homepages available in contentful
   const { data: homepageEntries } = useQuery<HomepageEntry[]>(
     QueryKeys.HOMEPAGE_MODULES,
-    fetchHomepageNatifContent,
+    getHomepageNatifContent,
     {
       staleTime: STALE_TIME_CONTENTFUL,
     }
