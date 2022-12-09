@@ -130,8 +130,6 @@ const logEventAnalytics = {
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_VENUE, params),
   logConsultWholeOffer: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId }),
-  logConsultWhyAnniversary: () =>
-    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, params),
   logContinueCGU: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_CGU),
