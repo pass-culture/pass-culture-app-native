@@ -10,7 +10,7 @@ jest.mock('react-query')
 jest.mock('features/navigation/navigationRef')
 
 let mockDepositAmounts: string | undefined = '300\u00a0€'
-jest.mock('features/offer/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge', () => ({
+jest.mock('features/user/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge', () => ({
   useGetDepositAmountsByAge: jest.fn(() => mockDepositAmounts),
 }))
 

@@ -2,18 +2,18 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { Subtitle } from 'features/profile/atoms/Subtitle'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useGetDepositAmountsByAge } from 'features/user/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
-import { ThumbUp } from 'ui/svg/icons/ThumbUp'
+import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { Spacer, Typo } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
@@ -27,13 +27,10 @@ function NonBeneficiaryHeaderComponent({
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const [error, setError] = useState<Error | undefined>()
   const today = new Date()
-  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
   const { data: subscription } = useNextSubscriptionStep()
+  const { user } = useAuthContext()
 
   const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
-  const isUserUnderage = useIsUserUnderage()
-
-  const deposit = depositAmount.replace(' ', '')
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime
     ? new Date(eligibilityStartDatetime)
@@ -43,8 +40,7 @@ function NonBeneficiaryHeaderComponent({
     ? formatToSlashedFrenchDate(new Date(eligibilityEndDatetime).toISOString())
     : undefined
 
-  const moduleBannerWording = isUserUnderage ? 'Profite de ton crédit' : `Profite de ${deposit}`
-
+  const userDeposit = useGetDepositAmountsByAge(user?.birthDate)
   if (error) {
     throw error
   }
@@ -84,11 +80,10 @@ function NonBeneficiaryHeaderComponent({
             {!!nextBeneficiaryValidationStepNavConfig && (
               <BannerWithBackground
                 navigateTo={nextBeneficiaryValidationStepNavConfig}
-                leftIcon={ThumbUp}
+                leftIcon={StyledBicolorUnlock}
                 testID="eligibility-banner">
-                <ButtonText>{moduleBannerWording}</ButtonText>
-                <Spacer.Column numberOfSpaces={1} />
-                <BodyText>à dépenser dans l’application</BodyText>
+                <StyledButtonText>Débloque tes {userDeposit} </StyledButtonText>
+                <StyledBodyText>à dépenser sur l’application</StyledBodyText>
               </BannerWithBackground>
             )}
           </View>
@@ -121,10 +116,15 @@ const BannerContainer = styled.View(({ theme }) => ({
   position: 'relative',
 }))
 
-const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const BodyText = styled(Typo.Body)(({ theme }) => ({
+const StyledBodyText = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  color2: theme.colors.white,
+}))``
