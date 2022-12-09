@@ -129,16 +129,15 @@ const CTAButton = ({
     isDisabled: isDisabled,
     isOnPressDebounced: true,
   }
+
+  if (navigateTo) {
+    return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
+  }
   if (externalNav) {
     return (
       <ExternalTouchableLink externalNav={externalNav} icon={ExternalSite} {...commonLinkProps} />
     )
   }
-
-  if (navigateTo) {
-    return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
-  }
-
   return <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
 }
 

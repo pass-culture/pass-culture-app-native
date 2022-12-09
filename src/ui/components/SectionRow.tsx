@@ -25,18 +25,6 @@ export function SectionRow({
     accessibilityLabel,
   }
 
-  if (externalNav) {
-    return (
-      <ExternalTouchableLink
-        testID="touchable-link-section-row"
-        onBeforeNavigate={touchableProps.onPress}
-        externalNav={externalNav}
-        {...touchableProps}>
-        <SectionRowContent {...props} />
-      </ExternalTouchableLink>
-    )
-  }
-
   if (navigateTo) {
     return (
       <InternalTouchableLink
@@ -46,6 +34,17 @@ export function SectionRow({
         {...touchableProps}>
         <SectionRowContent {...props} />
       </InternalTouchableLink>
+    )
+  }
+  if (externalNav) {
+    return (
+      <ExternalTouchableLink
+        testID="touchable-link-section-row"
+        onBeforeNavigate={touchableProps.onPress}
+        externalNav={externalNav}
+        {...touchableProps}>
+        <SectionRowContent {...props} />
+      </ExternalTouchableLink>
     )
   }
 
