@@ -1,7 +1,7 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
 import { rest } from 'msw'
 
-import { processHomepageEntry } from 'features/home/contentful'
+import { processHomepageEntry } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
 import { adaptedSecondHomepageEntry } from 'tests/fixtures/adaptedSecondHomepageEntry'

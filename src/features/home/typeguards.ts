@@ -1,6 +1,6 @@
-import { VenuesModule, ProcessedModule } from 'features/home/contentful/moduleTypes'
+import { VenuesModule, ProcessedModule } from 'libs/contentful/moduleTypes'
 
-import { Offers, OffersWithCover } from './contentful'
+import { Offers, OffersWithCover } from '../../libs/contentful'
 
 export const isOfferModuleTypeguard = (
   module: ProcessedModule

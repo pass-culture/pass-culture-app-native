@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import { VenuesModule } from 'features/home/contentful'
+import { VenuesModule } from 'libs/contentful'
 import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'

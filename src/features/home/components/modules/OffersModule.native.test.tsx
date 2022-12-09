@@ -6,7 +6,7 @@ import {
   SearchParametersFields,
   DisplayParametersFields,
   ContentTypes,
-} from 'features/home/contentful/contentful'
+} from 'libs/contentful/contentful'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit, transformHit } from 'libs/search'

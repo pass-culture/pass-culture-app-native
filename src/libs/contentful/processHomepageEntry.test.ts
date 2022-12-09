@@ -1,4 +1,4 @@
-import { AlgoliaParameters, ContentTypes } from 'features/home/contentful/contentful'
+import { AlgoliaParameters, ContentTypes } from 'libs/contentful/contentful'
 
 import { buildSearchParams, parseOfferId, processHomepageEntry } from './processHomepageEntry'
 

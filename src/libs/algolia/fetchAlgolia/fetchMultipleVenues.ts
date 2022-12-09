@@ -1,6 +1,6 @@
 import flatten from 'lodash/flatten'
 
-import { VenuesSearchParametersFields } from 'features/home/contentful'
+import { VenuesSearchParametersFields } from 'libs/contentful'
 import { LocationType } from 'features/search/enums'
 import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'

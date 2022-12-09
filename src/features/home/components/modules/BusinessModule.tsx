@@ -3,7 +3,7 @@ import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { BusinessPane, ContentTypes } from 'features/home/contentful'
+import { BusinessPane, ContentTypes } from 'libs/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'

@@ -1,4 +1,4 @@
-import { ContentTypes, HomepageEntry } from 'features/home/contentful'
+import { ContentTypes, HomepageEntry } from 'libs/contentful'
 
 export const adaptedHomepageEntry: HomepageEntry = {
   metadata: {

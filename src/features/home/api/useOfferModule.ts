@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { SearchParametersFields } from 'features/home/contentful'
+import { SearchParametersFields } from 'libs/contentful'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {

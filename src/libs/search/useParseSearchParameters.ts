@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { SearchParametersFields } from 'features/home/contentful'
+import { SearchParametersFields } from 'libs/contentful'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'

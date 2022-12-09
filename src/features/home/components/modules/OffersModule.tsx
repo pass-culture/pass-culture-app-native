@@ -2,12 +2,8 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useOfferModule } from 'features/home/api/useOfferModule'
-import {
-  SearchParametersFields,
-  DisplayParametersFields,
-  ContentTypes,
-} from 'features/home/contentful'
-import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
+import { SearchParametersFields, DisplayParametersFields, ContentTypes } from 'libs/contentful'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'

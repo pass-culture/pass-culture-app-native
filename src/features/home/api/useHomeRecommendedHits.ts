@@ -5,7 +5,7 @@ import {
   RecommendedIdsRequest,
   useHomeRecommendedIdsMutation,
 } from 'features/home/api/useHomeRecommendedIdsMutation'
-import { RecommendationParametersFields } from 'features/home/contentful'
+import { RecommendationParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SearchHit } from 'libs/search'

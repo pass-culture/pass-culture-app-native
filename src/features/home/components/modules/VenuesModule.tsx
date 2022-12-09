@@ -5,7 +5,7 @@ import {
   ContentTypes,
   DisplayParametersFields,
   VenuesSearchParametersFields,
-} from 'features/home/contentful'
+} from 'libs/contentful'
 import { VenueTile } from 'features/home/components/VenueTile'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'

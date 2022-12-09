@@ -1,4 +1,4 @@
-import { Layout } from 'features/home/contentful'
+import { Layout } from 'libs/contentful'
 import { LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE } from 'ui/theme'
 
 export function getPlaylistItemDimensionsFromLayout(layout: Layout): {

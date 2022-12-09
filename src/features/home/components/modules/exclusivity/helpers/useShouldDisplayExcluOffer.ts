@@ -1,5 +1,5 @@
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
-import { ExclusivityPane } from 'features/home/contentful'
+import { ExclusivityPane } from 'libs/contentful'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useGeolocation } from 'libs/geolocation'

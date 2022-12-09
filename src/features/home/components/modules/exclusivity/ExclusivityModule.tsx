@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
-import { ExclusivityPane } from 'features/home/contentful'
+import { ExclusivityPane } from 'libs/contentful'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export interface ExclusivityModuleProps extends ExclusivityPane {

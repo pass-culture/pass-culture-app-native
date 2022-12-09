@@ -1,4 +1,4 @@
-import { VenuesSearchParametersFields } from 'features/home/contentful'
+import { VenuesSearchParametersFields } from 'libs/contentful'
 import { buildVenuesQueryOptions } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 
 const defaultParams: VenuesSearchParametersFields = {

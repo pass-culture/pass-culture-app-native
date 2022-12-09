@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
-import { HomepageEntry, TagId } from 'features/home/contentful'
+import { HomepageEntry, TagId } from 'libs/contentful'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import {
   isUserBeneficiary18,

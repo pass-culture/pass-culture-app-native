@@ -3,14 +3,9 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
-import {
-  ContentTypes,
-  EntryCollection,
-  HomepageEntry,
-  processHomepageEntry,
-} from 'features/home/contentful'
-import { ProcessedModule } from 'features/home/contentful/moduleTypes'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
+import { ContentTypes, EntryCollection, HomepageEntry, processHomepageEntry } from 'libs/contentful'
+import { ProcessedModule } from 'libs/contentful/moduleTypes'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'

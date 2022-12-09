@@ -8,7 +8,7 @@ import {
   useHomeRecommendedHits,
 } from 'features/home/api/useHomeRecommendedHits'
 import * as recommendedIdsAPI from 'features/home/api/useHomeRecommendedIdsMutation'
-import { RecommendationParametersFields } from 'features/home/contentful'
+import { RecommendationParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'

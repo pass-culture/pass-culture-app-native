@@ -1,4 +1,4 @@
-import { SearchParametersFields } from 'features/home/contentful'
+import { SearchParametersFields } from 'libs/contentful'
 import { useParseSearchParameters } from 'libs/search'
 import * as parseSearchParametersAPI from 'libs/search/parseSearchParameters'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
