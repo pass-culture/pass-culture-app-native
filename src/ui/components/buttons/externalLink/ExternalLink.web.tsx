@@ -34,7 +34,7 @@ const Text = styled.Text({
   whiteSpace: 'nowrap',
 })
 
-const StyledTouchableLink = styled((props) => <ExternalTouchableLink {...props} />).attrs<{
+const StyledTouchableLink = styled(ExternalTouchableLink).attrs<{
   primary?: boolean
 }>(({ theme, primary }) => ({
   hoverUnderlineColor: primary ? theme.colors.primary : undefined,

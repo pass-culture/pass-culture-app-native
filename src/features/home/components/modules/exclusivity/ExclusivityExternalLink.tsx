@@ -44,7 +44,7 @@ const UnmemoizedExclusivityExternalLink = ({
 
 export const ExclusivityExternalLink = memo(UnmemoizedExclusivityExternalLink)
 
-const StyledTouchableLink = styled((props) => <ExternalTouchableLink {...props} />)<{
+const StyledTouchableLink = styled(ExternalTouchableLink)<{
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({
   flex: 1,
