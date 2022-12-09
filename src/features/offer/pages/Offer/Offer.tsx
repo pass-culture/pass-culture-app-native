@@ -78,8 +78,6 @@ export const Offer: FunctionComponent = () => {
 
   if (!offerResponse) return null
 
-  if (!offerResponse) return null
-
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
