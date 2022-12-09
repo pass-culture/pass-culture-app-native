@@ -11,7 +11,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { BASE_URL, getEntries, PARAMS, useHomepageData } from './api'
+import { BASE_URL, fetchHomepageNatifContent, PARAMS, useHomepageData } from './api'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
@@ -25,8 +25,8 @@ jest.mock('features/auth/AuthContext', () => ({
 const entryId = homepageEntriesAPIResponse.items[1].sys.id
 
 describe('Home api calls', () => {
-  it('getEntries', async () => {
-    const result = await getEntries()
+  it('fetchHomepageNatifContent', async () => {
+    const result = await fetchHomepageNatifContent()
     expect(result[0]).toEqual(adaptedHomepageEntry)
     expect(result[1]).toEqual(adaptedSecondHomepageEntry)
   })

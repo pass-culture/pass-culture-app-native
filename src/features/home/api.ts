@@ -19,7 +19,7 @@ export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
 export const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
 
-export async function getEntries() {
+export async function fetchHomepageNatifContent() {
   const url = `${BASE_URL}/entries${PARAMS}`
   try {
     const json = await getExternal<EntryCollection<HomepageEntry, ContentTypes.HOMEPAGE_NATIF>>(url)
@@ -46,7 +46,7 @@ export const useHomepageData = (paramsHomepageEntryId?: string): HomepageData =>
   // this fetches all homepages available in contentful
   const { data: homepageEntries } = useQuery<HomepageEntry[]>(
     QueryKeys.HOMEPAGE_MODULES,
-    getEntries,
+    fetchHomepageNatifContent,
     {
       staleTime: STALE_TIME_CONTENTFUL,
     }
