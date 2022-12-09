@@ -21,6 +21,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 }))
 
 const linkText = 'linkText'
+
 const ExternalTouchableLinkContent = () => <Text>{linkText}</Text>
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {

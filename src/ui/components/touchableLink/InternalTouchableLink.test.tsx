@@ -19,6 +19,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 const linkText = 'linkText'
 const InternalTouchableLinkContent = () => <Text>{linkText}</Text>
+
 describe('<InternalTouchableLink />', () => {
   it('should navigate to right screen with expected params (nominal case)', async () => {
     const { getByText } = render(

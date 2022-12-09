@@ -12,6 +12,7 @@ const handleNavigationMock = jest.fn()
 
 const linkText = 'linkText'
 const TouchableLinkContent = () => <Text>{linkText}</Text>
+
 describe('<TouchableLink />', () => {
   describe('Internal Navigation', () => {
     it('should fire onBeforeNavigate if given, before navigation', async () => {
