@@ -1,29 +1,17 @@
-import resolveResponse from 'contentful-resolve-response'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
-import { ContentTypes, EntryCollection, HomepageEntry, processHomepageEntry } from 'libs/contentful'
+import { HomepageEntry, processHomepageEntry } from 'libs/contentful'
 import { ProcessedModule } from 'libs/contentful/moduleTypes'
-import { env } from 'libs/environment'
-import { getExternal } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
-const DEPTH_LEVEL = 2
+import { fetchHomepageNatifContent } from './fetchHomepageNatifContent'
+
 const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
-
-const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
-export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
-export const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
-
-export async function fetchHomepageNatifContent() {
-  const url = `${BASE_URL}/entries${PARAMS}`
-  const json = await getExternal<EntryCollection<HomepageEntry, ContentTypes.HOMEPAGE_NATIF>>(url)
-  return resolveResponse(json)
-}
 
 const getHomepageNatifContent = async () => {
   try {

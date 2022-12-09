@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { api } from 'api/api'
-import { fetchHomepageNatifContent } from 'features/home/api'
+import { fetchHomepageNatifContent } from 'features/home/fetchHomepageNatifContent'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'

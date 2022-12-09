@@ -11,7 +11,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { BASE_URL, fetchHomepageNatifContent, PARAMS, useHomepageData } from './api'
+import { useHomepageData } from './api'
+import { BASE_URL, fetchHomepageNatifContent, PARAMS } from './fetchHomepageNatifContent'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
