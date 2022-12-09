@@ -7,12 +7,33 @@ import video from 'wdio-video-reporter'
 import { env } from './environment/env'
 import { ServiceEntry } from '@wdio/types/build/Services'
 
+const {
+  /** Required e2e test env */
+  ENVIRONMENT, // if not set, default to staging
+  /** Required CI env only */
+  CI,
+  SLACK_WEB_HOOK_URL,
+  GITHUB_REF_NAME,
+  GITHUB_EVENT_NAME,
+  GITHUB_SERVER_URL,
+  GITHUB_REPOSITORY_OWNER_PART,
+  GITHUB_REPOSITORY_NAME_PART,
+  GITHUB_SHA_SHORT,
+  GITHUB_RUN_ID,
+  npm_lifecycle_event: NPM_LIFECYCLE_EVENT,
+} = process.env
+
+/** Videos and screenshots (currently not working in android emulator within github runner context) */
 const screenshotsPath = join(process.cwd(), 'e2e/output/screenshots')
 const videosPath = join(process.cwd(), 'e2e/output/videos')
-const useSlackService = !!(process.env.CI && process.env.SLACK_WEB_HOOK_URL)
-const eventName = process.env.GITHUB_EVENT_NAME === 'schedule' ? 'cron' : 'dispatch'
 
-const slackMessageTitle = `(${process.env.GITHUB_REF_NAME}/${process.env.GITHUB_SHA_SHORT}) ${process.env.ENVIRONMENT} - webdriver.io ${process.env.GITHUB_REPOSITORY_NAME_PART} ${process.env.npm_lifecycle_event} tests report (${eventName})`
+/** Slack reporting */
+const useSlackService = !!(CI && SLACK_WEB_HOOK_URL)
+const eventName = GITHUB_EVENT_NAME === 'schedule' ? 'Scheduled' : 'Manually'
+const branchUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/tree/${GITHUB_REF_NAME}`
+const commitUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/tree/${GITHUB_SHA_SHORT}`
+const actionUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/actions/runs/${GITHUB_RUN_ID}`
+const slackMessageTitle = `<${branchUrl}|${GITHUB_REF_NAME}>/<${commitUrl}|${GITHUB_SHA_SHORT}> ${ENVIRONMENT} - wdio ${GITHUB_REPOSITORY_NAME_PART} \`${NPM_LIFECYCLE_EVENT}\` <${actionUrl}|tests report> (${eventName})`
 
 /**
  * All not needed configurations, for this boilerplate, are removed.
@@ -118,7 +139,7 @@ export const config: WebdriverIO.Config = {
     useSlackService && [
       slack,
       {
-        webHookUrl: process.env.SLACK_WEB_HOOK_URL,
+        webHookUrl: SLACK_WEB_HOOK_URL,
         notifyOnlyOnFailure: false,
         messageTitle: slackMessageTitle,
       },
