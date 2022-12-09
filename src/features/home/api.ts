@@ -15,7 +15,7 @@ import { QueryKeys } from 'libs/queryKeys'
 const DEPTH_LEVEL = 2
 const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
 
-export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
+const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
 export const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
 
