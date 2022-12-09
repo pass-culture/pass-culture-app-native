@@ -25,14 +25,14 @@ describe('<GenericAchievement />', () => {
 
   it('should render correctly', () => {
     const renderAPI = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [<TestCard key={1} />],
     })
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect on home and run analytics when pressing skip all button', async () => {
-    const name = 'FirstTutorial'
+    const name = 'EighteenBirthday'
     const { getByText } = renderGenericAchievementComponent({
       screenName: name,
       children: [
@@ -49,7 +49,7 @@ describe('<GenericAchievement />', () => {
 
   it('should have a swiperRef passed to each children', () => {
     const { getByText } = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
     expect(getByText('swipeRef exist')).toBeTruthy()
@@ -58,7 +58,7 @@ describe('<GenericAchievement />', () => {
 
   it('should have an automatically set name passed to each children', async () => {
     const { getByText } = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
     expect(await getByText('name exist')).toBeTruthy()
@@ -68,7 +68,7 @@ describe('<GenericAchievement />', () => {
   it('should call skip custom function on skip', async () => {
     const skip = jest.fn()
     const { getByText } = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={0} key={0} />,
@@ -84,7 +84,7 @@ describe('<GenericAchievement />', () => {
 
   it('should have a skip all button when more than one cards', () => {
     const { queryByText } = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={1} key={1} />,
@@ -95,7 +95,7 @@ describe('<GenericAchievement />', () => {
 
   it('should not have a skip all button when just one cards', () => {
     const { queryByText } = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
     expect(queryByText('Tout passer')).toBeNull()
@@ -104,7 +104,7 @@ describe('<GenericAchievement />', () => {
   it('should trigger analytics with a custom name instead of Achievement1', async () => {
     const cardCustomName = 'CustomName'
     const { getByTestId } = renderGenericAchievementComponent({
-      screenName: 'FirstTutorial',
+      screenName: 'EighteenBirthday',
       children: [
         <GenericAchievementCard
           key={0}
@@ -131,7 +131,7 @@ describe('<GenericAchievement />', () => {
     const next = getByTestId('control-button-next')
     fireEvent.press(next)
     await waitForExpect(() => {
-      expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
+      expect(analytics.logScreenView).toHaveBeenCalledWith('EighteenBirthday2')
     })
   })
 })

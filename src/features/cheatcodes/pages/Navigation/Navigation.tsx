@@ -123,12 +123,6 @@ export function Navigation(): JSX.Element {
             <ButtonPrimary wording="POC A/B testing" onPress={() => navigate('ABTestingPOC')} />
           </Row>
           <Row half>
-            <ButtonPrimary
-              wording="First Tutorial"
-              onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-            />
-          </Row>
-          <Row half>
             <ButtonPrimary wording="Venue 🏛️" onPress={() => navigate('Venue', { id: venueId })} />
           </Row>
           <Row half>

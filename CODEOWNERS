@@ -8,7 +8,6 @@ src/features/deeplinks/                      @pass-culture/jeunes-retention
 src/features/eighteenBirthday/               @pass-culture/jeunes-activation
 src/features/favorites/                      @pass-culture/jeunes-retention
 src/features/firstLogin/                     @pass-culture/jeunes-acquisition
-src/features/firstTutorial/                  @pass-culture/jeunes-acquisition
 src/features/home/                           @pass-culture/jeunes-activation
 src/features/identityCheck/                  @pass-culture/jeunes-activation
 src/features/notifications/                  @pass-culture/jeunes-acquisition

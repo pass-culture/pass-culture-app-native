@@ -33,7 +33,6 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
-import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
@@ -358,12 +357,6 @@ export const routes: Route[] = [
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
-  },
-  {
-    name: 'FirstTutorial',
-    component: FirstTutorial,
-    path: 'introduction-tutoriel',
-    options: { title: 'Étape 1 sur 4 | Tutoriel "Comment ça marche"' },
   },
   {
     name: 'Venue',
