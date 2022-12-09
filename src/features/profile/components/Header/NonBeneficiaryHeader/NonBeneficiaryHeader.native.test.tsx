@@ -1,13 +1,12 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { useIsUserUnderage } from 'features/profile/utils'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
@@ -22,16 +21,8 @@ jest.mock('@react-navigation/native', () => {
   }
 })
 
-const mockedUseIsUserUnderage = mocked(useIsUserUnderage, true)
-
-jest.mock('features/auth/api', () => ({
-  useDepositAmountsByAge: jest.fn(() => ({
-    fifteenYearsOldDeposit: '20 €',
-    sixteenYearsOldDeposit: '30 €',
-    seventeenYearsOldDeposit: '30 €',
-    eighteenYearsOldDeposit: '300 €',
-  })),
-}))
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/profile/utils')
 
 jest.mock('features/auth/settings')
@@ -100,30 +91,33 @@ describe('<NonBeneficiaryHeader/>', () => {
       getByTestId('eligibility-banner-container')
     })
 
-    it('should display correct depositAmount', () => {
-      const { queryByText } = render(
-        <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
-          eligibilityEndDatetime="2022-02-30T00:00Z"
-        />
-      )
+    it.each`
+      birthdate       | credit   | age
+      ${'2007-11-06'} | ${'20'}  | ${15}
+      ${'2006-11-06'} | ${'30'}  | ${16}
+      ${'2005-11-06'} | ${'30'}  | ${17}
+      ${'2004-11-06'} | ${'300'} | ${18}
+    `(
+      "should display a banner if the user has not finished the identification flow yet (user's age: $age)",
+      ({ birthdate, credit }: { birthdate: string; credit: string }) => {
+        mockdate.set(new Date('2022-12-01T00:00:00Z'))
+        mockUseAuthContext.mockReturnValueOnce({
+          user: {
+            birthDate: birthdate,
+          },
+        })
 
-      expect(queryByText(/Profite de 300€/)).toBeTruthy()
-    })
+        const { queryByText } = render(
+          <NonBeneficiaryHeader
+            eligibilityStartDatetime="2021-02-30T00:00Z"
+            eligibilityEndDatetime="2022-02-30T00:00Z"
+          />
+        )
 
-    it('should display correct credit message for underage', () => {
-      mockedUseIsUserUnderage.mockReturnValueOnce(true)
-
-      const { queryByText } = render(
-        <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
-          eligibilityEndDatetime="2022-02-30T00:00Z"
-        />
-      )
-
-      expect(queryByText(/Profite de 300€/)).toBeNull()
-      expect(queryByText(/Profite de ton crédit/)).toBeTruthy()
-    })
+        expect(queryByText('Débloque tes ' + credit + ' €')).toBeTruthy()
+        expect(queryByText(' à dépenser sur l’application')).toBeTruthy()
+      }
+    )
 
     it('should not display eligibility banner if nextSubscriptionStep is null', () => {
       mockNextSubscriptionStep = {
