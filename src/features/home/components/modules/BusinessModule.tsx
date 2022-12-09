@@ -128,7 +128,6 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-//TODO(PC-19116): See if we can use touchableLink
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
