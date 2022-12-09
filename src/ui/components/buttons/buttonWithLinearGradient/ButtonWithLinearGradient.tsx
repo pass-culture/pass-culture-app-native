@@ -15,6 +15,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   icon,
   testID,
   fitContentWidth = false,
+  iconAfterWording,
 }) => {
   const Icon = icon
     ? styled(icon).attrs(({ theme }) => ({
@@ -31,7 +32,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       accessibilityRole="link"
       {...accessibilityAndTestId(wording, testID)}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
-      <LegendContainer>
+      <LegendContainer reverse={iconAfterWording}>
         {!!Icon && <Icon />}
         <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
@@ -65,11 +66,11 @@ const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, th
   padding: getSpacing(2),
 }))
 
-const LegendContainer = styled.View({
+const LegendContainer = styled.View<{ reverse?: boolean }>(({ reverse }) => ({
   position: 'absolute',
   alignItems: 'center',
-  flexDirection: 'row',
-})
+  flexDirection: reverse ? 'row-reverse' : 'row',
+}))
 
 const DisabledRectangle = styled.View(({ theme }) => ({
   width: '100%',

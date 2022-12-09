@@ -17,4 +17,5 @@ export interface ButtonWithLinearGradientProps {
   target?: string
   testID?: string
   fitContentWidth?: boolean
+  iconAfterWording?: boolean
 }

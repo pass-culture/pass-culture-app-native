@@ -21,6 +21,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   target,
   testID,
   fitContentWidth = false,
+  iconAfterWording,
 }) => {
   const ButtonComponent = (href ? Link : Button) as React.ElementType
   const buttonLinkProps = { accessibilityRole, href, target }
@@ -53,7 +54,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       testID={testID}
       fitContentWidth={fitContentWidth}
       {...buttonLinkProps}>
-      <LegendContainer>
+      <LegendContainer reverse={iconAfterWording}>
         {!!Icon && <Icon />}
         <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
@@ -110,7 +111,7 @@ const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabl
   padding: getSpacing(2),
 }))
 
-const LegendContainer = styledNative.View({
+const LegendContainer = styledNative.View<{ reverse?: boolean }>(({ reverse }) => ({
   alignItems: 'center',
-  flexDirection: 'row',
-})
+  flexDirection: reverse ? 'row-reverse' : 'row',
+}))

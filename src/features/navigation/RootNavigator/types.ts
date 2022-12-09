@@ -34,7 +34,7 @@ export type OnboardingRootStackParamList = {
   AgeSelection: undefined
   AgeSelectionOther: undefined
   NavigationOnboarding: undefined
-  OnboardingAuthentication: undefined
+  OnboardingWelcome: undefined
 }
 
 export type SubscriptionRootStackParamList = {
@@ -147,7 +147,6 @@ export type RootStackParamList = {
     fromOfferId?: number
   }
   OfferDescription: { id: number }
-  OnboardingAuthentication: undefined
   SuspensionScreen: undefined
   ReinitializePassword: { email: string; token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
