@@ -6,6 +6,7 @@ import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { CreditStatus } from 'features/onboarding/types'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
@@ -55,6 +56,15 @@ describe('AgeInformation', () => {
 
     fireEvent.press(laterButton)
     expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
+  })
+
+  it.each(AGES)('should log analytics when attempting to click on credit block', (age) => {
+    const { getByText } = renderAgeInformation({ age })
+
+    const creditBlock = getByText(`à ${age} ans`)
+
+    fireEvent.press(creditBlock)
+    expect(analytics.logTrySelectDeposit).toHaveBeenCalledWith(age)
   })
 })
 

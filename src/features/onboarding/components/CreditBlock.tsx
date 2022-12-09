@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { TouchableWithoutFeedback, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
@@ -18,6 +18,7 @@ type Props = {
   underage: boolean
   roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
   creditStatus: CreditStatus
+  onPress: () => void
 }
 
 export const CreditBlock: FunctionComponent<Props> = ({
@@ -27,6 +28,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
   underage,
   roundedBorders,
   creditStatus,
+  onPress,
 }) => {
   const TitleText = getTitleComponent(underage, creditStatus)
   const AgeText = getAgeComponent(underage, creditStatus)
@@ -36,25 +38,27 @@ export const CreditBlock: FunctionComponent<Props> = ({
       : () => <StyledLock status={creditStatus} />
 
   return (
-    <Container roundedBorders={roundedBorders} status={creditStatus}>
-      <IconContainer>
-        <Icon />
-      </IconContainer>
-      <View>
-        <TitleText>{title}</TitleText>
-        <Spacer.Column numberOfSpaces={1} />
-        <AgeText>{subtitle}</AgeText>
-        {!!description && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={1} />
-            <DescriptionText>{description}</DescriptionText>
-          </React.Fragment>
-        )}
-      </View>
-      <TagContainer>
-        <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
-      </TagContainer>
-    </Container>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <Container roundedBorders={roundedBorders} status={creditStatus}>
+        <IconContainer>
+          <Icon />
+        </IconContainer>
+        <View>
+          <TitleText>{title}</TitleText>
+          <Spacer.Column numberOfSpaces={1} />
+          <AgeText>{subtitle}</AgeText>
+          {!!description && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={1} />
+              <DescriptionText>{description}</DescriptionText>
+            </React.Fragment>
+          )}
+        </View>
+        <TagContainer>
+          <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
+        </TagContainer>
+      </Container>
+    </TouchableWithoutFeedback>
   )
 }
 
