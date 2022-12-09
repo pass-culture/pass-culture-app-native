@@ -44,6 +44,9 @@ jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
   })),
 }))
 
+const today = '2021-03-30T00:00:00Z'
+mockdate.set(new Date(today))
+
 describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
@@ -56,12 +59,9 @@ describe('<NonBeneficiaryHeader/>', () => {
       const { nextBeneficiaryValidationStepNavConfig } =
         useBeneficiaryValidationNavigation(setError)
 
-      const today = '2021-02-30T00:00:00Z'
-      mockdate.set(new Date(today))
-
       const { getByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
+          eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
@@ -78,12 +78,9 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     it('should render the right banner for 18 years old users if user has not completed identity check', () => {
-      const today = '2021-02-30T00:00:00Z'
-      mockdate.set(new Date(today))
-
       const { getByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
+          eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
@@ -93,14 +90,13 @@ describe('<NonBeneficiaryHeader/>', () => {
 
     it.each`
       birthdate       | credit   | age
-      ${'2007-11-06'} | ${'20'}  | ${15}
-      ${'2006-11-06'} | ${'30'}  | ${16}
-      ${'2005-11-06'} | ${'30'}  | ${17}
-      ${'2004-11-06'} | ${'300'} | ${18}
+      ${'2006-03-29'} | ${'20'}  | ${15}
+      ${'2005-03-29'} | ${'30'}  | ${16}
+      ${'2004-03-29'} | ${'30'}  | ${17}
+      ${'2003-03-29'} | ${'300'} | ${18}
     `(
       "should display a banner if the user has not finished the identification flow yet (user's age: $age)",
       ({ birthdate, credit }: { birthdate: string; credit: string }) => {
-        mockdate.set(new Date('2022-12-01T00:00:00Z'))
         mockUseAuthContext.mockReturnValueOnce({
           user: {
             birthDate: birthdate,
@@ -109,7 +105,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
         const { queryByText } = render(
           <NonBeneficiaryHeader
-            eligibilityStartDatetime="2021-02-30T00:00Z"
+            eligibilityStartDatetime="2021-03-30T00:00Z"
             eligibilityEndDatetime="2022-02-30T00:00Z"
           />
         )
@@ -127,7 +123,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
+          eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
@@ -140,7 +136,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     it('should display identity check pending badge if hasIdentityCheckPending is true', async () => {
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
+          eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
@@ -160,7 +156,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       const { getByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
+          eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
@@ -171,13 +167,10 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<YoungerBadge/>', () => {
     it('should render the younger badge for user under 18 years old', () => {
-      const today = '2021-01-30T00:00:00Z'
-      mockdate.set(new Date(today))
-
       const { getByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-01-31T00:00Z"
-          eligibilityEndDatetime="2022-01-31T00:00Z"
+          eligibilityStartDatetime="2021-03-31T00:00Z"
+          eligibilityEndDatetime="2022-03-31T00:00Z"
         />
       )
 
@@ -187,8 +180,6 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<React.Fragment />', () => {
     it('should not display banner or badge if the user is over 15 years old and not eligible to credit (no nextSubscriptionStep and no identityCheckPending)', () => {
-      const today = '2021-03-30T00:00:00Z'
-      mockdate.set(new Date(today))
       mockNextSubscriptionStep = {
         ...mockStep,
         nextSubscriptionStep: null,
@@ -197,8 +188,8 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       const { queryByTestId } = render(
         <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
-          eligibilityEndDatetime="2022-02-30T00:00Z"
+          eligibilityStartDatetime="2021-01-30T00:00Z"
+          eligibilityEndDatetime="2022-01-30T00:00Z"
         />
       )
 
