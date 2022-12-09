@@ -38,8 +38,9 @@ Object {
               >
                 <div
                   aria-current="page"
-                  class="css-view-1dbjc4n"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
                   data-testid="Accueil"
+                  role="link"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -91,8 +92,9 @@ Object {
                 style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
                   data-testid="Rechercher des offres"
+                  role="link"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -129,8 +131,9 @@ Object {
                 style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
                   data-testid="Mes réservations"
+                  role="link"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -167,8 +170,9 @@ Object {
                 style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
                   data-testid="Favoris"
+                  role="link"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -205,8 +209,9 @@ Object {
                 style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-cursor-18t94o4 css-view-1dbjc4n"
                   data-testid="Mon profil"
+                  role="link"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -285,8 +290,9 @@ Object {
             >
               <div
                 aria-current="page"
-                class="css-view-1dbjc4n"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
                 data-testid="Accueil"
+                role="link"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -338,8 +344,9 @@ Object {
               style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
                 data-testid="Rechercher des offres"
+                role="link"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -376,8 +383,9 @@ Object {
               style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
                 data-testid="Mes réservations"
+                role="link"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -414,8 +422,9 @@ Object {
               style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
                 data-testid="Favoris"
+                role="link"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -452,8 +461,9 @@ Object {
               style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-cursor-18t94o4 css-view-1dbjc4n"
                 data-testid="Mon profil"
+                role="link"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
