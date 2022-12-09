@@ -13,6 +13,21 @@ import { Header } from '../Header'
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/AuthContext')
 
+jest.mock('features/navigation/RootNavigator/routes', () => ({
+  routes: [
+    {
+      name: 'TabNavigator',
+      component: () => null,
+      pathConfig: {
+        initialRouteName: 'Home',
+        screens: {
+          Home: undefined,
+        },
+      },
+    },
+  ],
+}))
+
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
     const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })

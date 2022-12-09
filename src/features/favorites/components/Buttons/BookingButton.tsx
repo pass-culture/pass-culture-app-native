@@ -4,7 +4,7 @@ import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { hasEnoughCredit } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 
 interface Props {
@@ -106,7 +106,7 @@ const BookExternallyButton = ({
   offerName: FavoriteOfferResponse['name']
 }) =>
   url ? (
-    <TouchableLink
+    <ExternalTouchableLink
       as={ButtonPrimary}
       wording="Réserver"
       accessibilityLabel={`Réserver l’offre ${offerName}`}

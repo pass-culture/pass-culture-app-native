@@ -12,7 +12,7 @@ import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditSta
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -37,13 +37,13 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
   const buttons = [
-    <TouchableLink
+    <InternalTouchableLink
       key={1}
       as={ButtonWithLinearGradient}
       wording="Créer un compte"
       navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
     />,
-    <TouchableLink
+    <InternalTouchableLink
       key={2}
       as={ButtonTertiaryBlack}
       wording="Plus tard"

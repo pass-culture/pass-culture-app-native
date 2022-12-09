@@ -12,7 +12,7 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -139,7 +139,7 @@ const MAX_OFFER_CAPTION_HEIGHT = getSpacing(18)
 
 const Container = styled.View({ flexDirection: 'column-reverse' })
 
-const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
 }))<{ height: number; isFocus?: boolean }>(({ height, theme, isFocus }) => ({
   marginVertical: theme.outline.width + theme.outline.offSet,

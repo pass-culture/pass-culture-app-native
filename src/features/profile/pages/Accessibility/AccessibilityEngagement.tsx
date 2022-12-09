@@ -5,7 +5,7 @@ import { ContactSupportButton } from 'features/profile/pages/Accessibility/compo
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
@@ -87,7 +87,7 @@ export function AccessibilityEngagement() {
       <Typo.CaptionNeutralInfo>
         Vous pouvez retrouver également toutes nos fiches d’aide pour vous inscrire sur le pass
         Culture directement dans{' '}
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonInsideText}
           wording="notre centre d’aide"
           typography="Caption"

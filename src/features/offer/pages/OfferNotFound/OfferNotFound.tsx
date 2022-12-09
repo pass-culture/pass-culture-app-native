@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
@@ -37,7 +37,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         title="Offre introuvable&nbsp;!"
         icon={NoOffer}
         buttons={[
-          <TouchableLink
+          <InternalTouchableLink
             key={1}
             as={ButtonPrimaryWhite}
             wording="Retourner à l’accueil"

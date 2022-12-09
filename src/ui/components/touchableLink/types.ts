@@ -35,7 +35,7 @@ type AsProps = {
   as?: ElementType // Component that will be used to render the link
 } & Record<string, unknown>
 
-export type TouchableLinkProps = (InternalNavigationProps | ExternalNavigationProps) & {
+type TouchableLinkGenericProps = {
   onBeforeNavigate?: (event: GestureResponderEvent) => void
   onAfterNavigate?: (event: GestureResponderEvent) => void
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
@@ -43,3 +43,21 @@ export type TouchableLinkProps = (InternalNavigationProps | ExternalNavigationPr
   isOnPressDebounced?: boolean
 } & Omit<TouchableOpacityProps, 'onPress'> &
   AsProps
+
+export type ExternalTouchableLinkProps = TouchableLinkGenericProps & ExternalNavigationProps
+
+export type InternalTouchableLinkProps = TouchableLinkGenericProps & InternalNavigationProps
+
+export type TouchableLinkProps = TouchableLinkGenericProps & {
+  handleNavigation: () => void
+  linkProps?:
+    | {
+        href: string
+        accessibilityRole: 'link'
+        onPress: () => void
+      }
+    | {
+        href: string
+        target: string
+      }
+}

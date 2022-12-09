@@ -20,7 +20,7 @@ import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcateg
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -135,7 +135,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         keyExtractor={keyExtractor}
       />
       <MarginContainer>
-        <TouchableLink
+        <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Voir toutes les offres"
           onBeforeNavigate={seeAllOffers}

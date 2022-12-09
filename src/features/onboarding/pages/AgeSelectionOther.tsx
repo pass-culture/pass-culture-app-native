@@ -9,7 +9,7 @@ import { NonEligible } from 'features/onboarding/types'
 import { env } from 'libs/environment/env'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -47,7 +47,7 @@ export const AgeSelectionOther: FunctionComponent = () => {
         </Title4Text>
       </AgeButton>
       <Spacer.Column numberOfSpaces={4} />
-      <TouchableLink
+      <ExternalTouchableLink
         key={1}
         as={ButtonTertiaryBlack}
         wording="Je suis un parent"

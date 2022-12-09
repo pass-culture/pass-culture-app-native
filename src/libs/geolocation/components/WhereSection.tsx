@@ -10,7 +10,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
@@ -123,7 +123,7 @@ export const WhereSection: React.FC<Props> = ({
   )
 }
 
-const VenueNameContainer = styled(TouchableLink)({
+const VenueNameContainer = styled(InternalTouchableLink)({
   flexDirection: 'row',
   alignItems: 'center',
 })

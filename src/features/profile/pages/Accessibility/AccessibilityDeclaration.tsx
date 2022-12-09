@@ -7,7 +7,8 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -28,7 +29,7 @@ export function AccessibilityDeclaration() {
       <VerticalUl>
         <BulletListItem>
           <Typo.Caption>
-            <TouchableLink
+            <InternalTouchableLink
               as={ButtonInsideText}
               typography="Caption"
               wording="Schéma pluriannuel"
@@ -138,7 +139,7 @@ export function AccessibilityDeclaration() {
       <VerticalUl>
         <BulletListItem text="Si vous êtes un professionnel, contacter l’équipe support Pro du pass Culture à l’adresse mail suivante&nbsp;:">
           {DOUBLE_LINE_BREAK}
-          <TouchableLink
+          <ExternalTouchableLink
             as={ButtonTertiaryBlack}
             wording="support-pro@passculture.app"
             accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support Pro"
@@ -169,7 +170,7 @@ export function AccessibilityDeclaration() {
         <BulletListItem>
           <Typo.Caption>
             Écrire un message au{' '}
-            <TouchableLink
+            <ExternalTouchableLink
               as={ButtonInsideText}
               typography="Caption"
               wording="Défenseur des droits"
@@ -181,7 +182,7 @@ export function AccessibilityDeclaration() {
         <BulletListItem>
           <Typo.Caption>
             Contacter le délégué du{' '}
-            <TouchableLink
+            <ExternalTouchableLink
               as={ButtonInsideText}
               typography="Caption"
               wording="Défenseur des droits dans votre région"

@@ -6,7 +6,7 @@ import { CookiesChoiceSettings } from 'features/cookies/types'
 import { env } from 'libs/environment'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -39,7 +39,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
       <Typo.CaptionNeutralInfo>
         {buttonText}
         <Spacer.Row numberOfSpaces={1} />
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonInsideText}
           wording="Politique de gestion des cookies"
           externalNav={{ url: env.COOKIES_POLICY_LINK }}

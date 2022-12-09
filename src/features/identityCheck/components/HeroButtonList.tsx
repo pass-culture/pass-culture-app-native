@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
@@ -21,14 +21,14 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
   }))``
 
   return (
-    <TouchableLink navigateTo={props.navigateTo} testID={`HeroButtonList`}>
+    <InternalTouchableLink navigateTo={props.navigateTo} testID={`HeroButtonList`}>
       <GenericBanner LeftIcon={Icon}>
         <TextWrapper>
           {props.Title}
           {!!props.Subtitle && <SubtitleContainer>{props.Subtitle}</SubtitleContainer>}
         </TextWrapper>
       </GenericBanner>
-    </TouchableLink>
+    </InternalTouchableLink>
   )
 }
 

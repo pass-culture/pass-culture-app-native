@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -15,7 +15,7 @@ export function IdentityCheckPending() {
       title="Oups&nbsp;!"
       icon={IdCardError}
       buttons={[
-        <TouchableLink
+        <InternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording="Retourner à l’accueil"

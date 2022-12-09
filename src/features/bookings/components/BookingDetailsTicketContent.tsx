@@ -9,7 +9,7 @@ import { TicketCode } from 'features/bookings/components/TicketCode'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -46,7 +46,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     <TicketCode withdrawalType={withdrawalType || undefined} code={booking.activationCode.code} />
   )
   const accessExternalOfferButton = completedUrl ? (
-    <TouchableLink
+    <ExternalTouchableLink
       as={ButtonWithLinearGradient}
       wording="Accéder à l’offre"
       icon={ExternalSite}

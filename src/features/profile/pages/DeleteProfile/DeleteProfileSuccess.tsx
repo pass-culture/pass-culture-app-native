@@ -7,7 +7,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Emoji } from 'ui/components/Emoji'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
@@ -21,13 +21,13 @@ export function DeleteProfileSuccess() {
       title="Ton compte a été désactivé"
       icon={ProfileDeletionIllustration}
       buttons={[
-        <TouchableLink
+        <InternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording="Retourner à l’accueil"
           navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}
         />,
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           wording="Réactiver mon compte"

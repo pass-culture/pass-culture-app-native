@@ -1,17 +1,14 @@
-import { useLinkProps, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { createRef, ElementType, useCallback, useEffect } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
-import { pushFromRef, navigateFromRef } from 'features/navigation/navigationRef'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -20,9 +17,8 @@ const ON_PRESS_DEBOUNCE_DELAY = 300
 export function TouchableLink({
   onBeforeNavigate,
   onAfterNavigate,
-  enableNavigate = true,
-  navigateTo,
-  externalNav,
+  handleNavigation,
+  linkProps,
   children,
   highlight = false,
   disabled,
@@ -40,41 +36,16 @@ export function TouchableLink({
   const linkRef = createRef<HTMLAnchorElement>()
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const { onMouseEnter, onMouseLeave, isHover } = useHandleHover()
-  const { navigate, push } = useNavigation<UseNavigationType>()
-  const { navigateTo: navigateToItinerary } = useItinerary()
 
-  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
-  const externalLinkProps = externalNav ? { href: externalNav.url, target: '_blank' } : {}
-  const linkProps = navigateTo ? internalLinkProps : externalLinkProps
   const touchableOpacityProps =
     Platform.OS === 'web' && !disabled
       ? { ...linkProps, accessibilityRole: undefined }
       : { accessibilityRole: 'link' }
 
-  const handleNavigation = () => {
-    if (navigateTo && enableNavigate) {
-      const { screen, params, fromRef, withPush } = navigateTo
-      if (withPush) {
-        fromRef ? pushFromRef(screen, params) : push(screen, params)
-      } else {
-        fromRef ? navigateFromRef(screen, params) : navigate(screen, params)
-      }
-    } else if (externalNav) {
-      const { url, params, address, onSuccess, onError } = externalNav
-      if (address) {
-        navigateToItinerary(address)
-      } else {
-        openUrl(url, params).then(onSuccess).catch(onError)
-      }
-    }
-  }
-
   async function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
     if (onBeforeNavigate) await onBeforeNavigate(event)
-    if (enableNavigate) {
-      handleNavigation()
-    }
+    handleNavigation()
     if (onAfterNavigate) await onAfterNavigate(event)
   }
 
@@ -130,7 +101,7 @@ export function TouchableLink({
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   isFocus?: boolean
   isHover?: boolean
-  hoverUnderlineColor?: TouchableLinkProps['hoverUnderlineColor']
+  hoverUnderlineColor?: ColorsEnum
 }>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
   ...touchableFocusOutline(theme, isFocus),
   ...getHoverStyle(hoverUnderlineColor ?? theme.colors.black, isHover),
@@ -139,7 +110,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
 const StyledTouchableHighlight = styled.TouchableHighlight<{
   isFocus?: boolean
   isHover?: boolean
-  hoverUnderlineColor?: TouchableLinkProps['hoverUnderlineColor']
+  hoverUnderlineColor?: ColorsEnum
 }>(({ theme, isFocus, isHover, hoverUnderlineColor }) => ({
   textDecoration: 'none',
   ...touchableFocusOutline(theme, isFocus),

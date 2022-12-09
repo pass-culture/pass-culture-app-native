@@ -3,7 +3,8 @@ import React from 'react'
 import { NotEligibleEduConnectErrorData } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 
 export const computePrimaryButtonToDisplay = ({
   button,
@@ -12,7 +13,7 @@ export const computePrimaryButtonToDisplay = ({
 }): React.ReactNode => {
   if (!button) {
     return (
-      <TouchableLink
+      <InternalTouchableLink
         key={1}
         as={ButtonPrimaryWhite}
         wording="Retourner à l'accueil"
@@ -28,7 +29,7 @@ export const computePrimaryButtonToDisplay = ({
   // button.navigateTo => 'navigateTo' value is not null nor undefined
   if ('navigateTo' in button && button.navigateTo) {
     return (
-      <TouchableLink
+      <InternalTouchableLink
         key={1}
         as={ButtonPrimaryWhite}
         wording={primaryButtonText}
@@ -41,7 +42,7 @@ export const computePrimaryButtonToDisplay = ({
 
   if ('externalNav' in button && button.externalNav) {
     return (
-      <TouchableLink
+      <ExternalTouchableLink
         key={1}
         as={ButtonPrimaryWhite}
         wording={primaryButtonText}

@@ -13,7 +13,7 @@ import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
@@ -39,7 +39,7 @@ export function AccountCreated() {
       title="Ton compte a été activé&nbsp;!"
       animation={IlluminatedSmileyAnimation}
       buttons={[
-        <TouchableLink
+        <InternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording="On y va&nbsp;!"

@@ -13,7 +13,8 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { OrSeparator } from 'ui/components/OrSeparator'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -62,7 +63,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         tu n’as pas d’identifiants ÉduConnect rapproche toi de ton établissement.
       </StyledBody>
 
-      <TouchableLink
+      <ExternalTouchableLink
         as={ButtonQuaternaryBlack}
         externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
         icon={InfoPlain}
@@ -71,7 +72,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
       <Spacer.Column numberOfSpaces={4} />
 
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonPrimary}
         wording="Identification avec ÉduConnect"
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
@@ -80,7 +81,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
       <OrSeparator />
 
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonTertiaryBlack}
         icon={EditPen}
         wording="Identification manuelle"

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -11,13 +11,12 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
+import { getBusinessUrl, showBusinessModule } from './BusinessModule.utils'
 
 export interface BusinessModuleProps extends BusinessPane {
   homeEntryId: string | undefined
@@ -49,6 +48,12 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
+  const onPress = useCallback(() => {
+    if (!isDisabled) {
+      setShouldRedirect(true)
+    }
+  }, [isDisabled])
+
   const { showInfoSnackBar } = useSnackBarContext()
 
   const logAndOpenUrl = (finalUrl: string) => {
@@ -59,15 +64,9 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   useEffect(() => {
     if (!url || !shouldRedirect) return
-    if (!shouldUrlBeFilled(url)) {
-      logAndOpenUrl(url)
-      return
-    }
-    if (user) {
-      logAndOpenUrl(fillUrlEmail(url, user.email))
-      return
-    }
-    if (isUserLoading) {
+    const businessUrl = getBusinessUrl(url, user?.email)
+    if (businessUrl) logAndOpenUrl(businessUrl)
+    else if (isUserLoading) {
       showInfoSnackBar({ message: 'Redirection en cours' })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,10 +86,9 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <StyledTouchableLink
-        highlight
+      <StyledTouchableHighlight
         accessibilityRole={url ? AccessibilityRole.LINK : undefined}
-        onBeforeNavigate={() => setShouldRedirect(true)}
+        onPress={onPress}
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}
@@ -117,7 +115,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
             </Container>
           </StyledImageBackground>
         </ImageContainer>
-      </StyledTouchableLink>
+      </StyledTouchableHighlight>
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
@@ -130,9 +128,10 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  textDecoration: 'none',
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))

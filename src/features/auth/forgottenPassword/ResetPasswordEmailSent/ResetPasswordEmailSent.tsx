@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -44,7 +44,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             <Typo.Body>Si l’e-mail n’arrive pas, tu peux&nbsp;:</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
-          <TouchableLink
+          <ExternalTouchableLink
             as={ButtonTertiaryPrimary}
             wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED }}

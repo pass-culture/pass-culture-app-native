@@ -5,7 +5,8 @@ import { contactSupport } from 'features/auth/support.services'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -17,7 +18,7 @@ export function PhoneValidationTooManyAttempts() {
       title="Trop de tentatives&nbsp;!"
       icon={UserBlocked}
       buttons={[
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonTertiaryWhite}
           key={1}
           wording="Contacter le support"
@@ -25,7 +26,7 @@ export function PhoneValidationTooManyAttempts() {
           icon={Email}
           externalNav={contactSupport.forPhoneNumberConfirmation}
         />,
-        <TouchableLink
+        <InternalTouchableLink
           key={2}
           as={ButtonPrimaryWhite}
           wording="Retourner à l’accueil"

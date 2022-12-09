@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
 import { getSpacing } from 'ui/theme'
 
@@ -40,7 +40,7 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
   )
 }
 
-const StyledTouchableLink = styled(TouchableLink)({
+const StyledTouchableLink = styled(InternalTouchableLink)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

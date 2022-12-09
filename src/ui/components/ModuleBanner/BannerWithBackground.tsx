@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -49,7 +49,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   )
 }
 
-const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
+const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))({})
 

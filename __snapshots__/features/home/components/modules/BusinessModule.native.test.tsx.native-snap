@@ -28,7 +28,7 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
       }
     }
     accessible={true}
-    focusable={false}
+    focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -39,12 +39,10 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 8,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
           "textDecorationStyle": "solid",
-        },
-        Object {
-          "borderRadius": 8,
         },
       ]
     }
@@ -232,12 +230,10 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     style={
       Array [
         Object {
+          "borderRadius": 8,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
           "textDecorationStyle": "solid",
-        },
-        Object {
-          "borderRadius": 8,
         },
       ]
     }
@@ -446,12 +442,10 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     style={
       Array [
         Object {
+          "borderRadius": 8,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
           "textDecorationStyle": "solid",
-        },
-        Object {
-          "borderRadius": 8,
         },
       ]
     }

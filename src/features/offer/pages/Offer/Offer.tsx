@@ -15,7 +15,9 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -69,11 +71,6 @@ export const Offer: FunctionComponent = () => {
     }, [dismissBookingOfferModal])
   )
 
-  const externalNavProps = externalNav
-    ? { externalNav, isOnPressDebounced: true, icon: ExternalSite }
-    : undefined
-  const navigationProps = navigateTo ? { navigateTo, isOnPressDebounced: true } : externalNavProps
-
   const onPress = () => {
     onPressCTA && onPressCTA()
     showOfferModal && showOfferModal()
@@ -94,21 +91,13 @@ export const Offer: FunctionComponent = () => {
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">
-            {navigationProps ? (
-              <TouchableLink
-                as={ButtonWithLinearGradient}
-                wording={wording}
-                onBeforeNavigate={onPress}
-                isDisabled={isDisabled}
-                {...navigationProps}
-              />
-            ) : (
-              <ButtonWithLinearGradient
-                wording={wording}
-                onPress={onPress}
-                isDisabled={isDisabled}
-              />
-            )}
+            <CTAButton
+              wording={wording}
+              onPress={onPress}
+              navigateTo={navigateTo}
+              externalNav={externalNav}
+              isDisabled={isDisabled}
+            />
             <Spacer.Column numberOfSpaces={bottomBannerText ? 4.5 : 6} />
           </CallToActionContainer>
           {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}
@@ -118,6 +107,38 @@ export const Offer: FunctionComponent = () => {
       {CTAOfferModal}
     </Container>
   )
+}
+
+const CTAButton = ({
+  wording,
+  onPress,
+  isDisabled,
+  externalNav,
+  navigateTo,
+}: {
+  wording: string
+  onPress?: () => void
+  isDisabled?: boolean
+  externalNav?: ExternalNavigationProps['externalNav']
+  navigateTo?: InternalNavigationProps['navigateTo']
+}) => {
+  const commonLinkProps = {
+    as: ButtonWithLinearGradient,
+    wording: wording,
+    onBeforeNavigate: onPress,
+    isDisabled: isDisabled,
+    isOnPressDebounced: true,
+  }
+
+  if (navigateTo) {
+    return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
+  }
+  if (externalNav) {
+    return (
+      <ExternalTouchableLink externalNav={externalNav} icon={ExternalSite} {...commonLinkProps} />
+    )
+  }
+  return <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
 }
 
 const Container = styled.View(({ theme }) => ({

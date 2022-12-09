@@ -13,7 +13,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { InputError } from 'ui/components/inputs/InputError'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -121,7 +121,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
             peux&nbsp;:
           </Typo.Body>
         </Paragraphe>
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonTertiaryPrimary}
           wording="Contacter le support"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"

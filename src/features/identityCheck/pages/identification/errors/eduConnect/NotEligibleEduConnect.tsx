@@ -8,7 +8,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -53,7 +53,7 @@ export const NotEligibleEduConnect = ({
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
 
   const goBackToHomeTertiaryButton = (
-    <TouchableLink
+    <InternalTouchableLink
       key={2}
       as={ButtonTertiaryWhite}
       icon={PlainArrowPrevious}

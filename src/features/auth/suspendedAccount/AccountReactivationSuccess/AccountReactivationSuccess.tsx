@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -19,7 +19,7 @@ export const AccountReactivationSuccess = () => (
     <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>
     <Spacer.Flex flex={2} />
     <ButtonContainer>
-      <TouchableLink
+      <InternalTouchableLink
         as={ButtonPrimary}
         wording="Découvrir le catalogue"
         navigateTo={{ ...navigateToHomeConfig, params: { ...navigateToHomeConfig.params } }}

@@ -6,7 +6,7 @@ import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { Typo } from 'ui/theme'
@@ -41,14 +41,14 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         title="Réservation introuvable&nbsp;!"
         icon={NoBookings}
         buttons={[
-          <TouchableLink
+          <InternalTouchableLink
             key={1}
             as={ButtonPrimaryWhite}
             wording="Mes réservations terminées"
             navigateTo={{ screen: 'EndedBookings' }}
             onAfterNavigate={onPress}
           />,
-          <TouchableLink
+          <InternalTouchableLink
             key={2}
             as={ButtonTertiaryWhite}
             wording="Retourner à l’accueil"

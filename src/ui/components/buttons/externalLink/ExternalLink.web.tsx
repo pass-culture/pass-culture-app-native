@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -34,11 +34,11 @@ const Text = styled.Text({
   whiteSpace: 'nowrap',
 })
 
-const StyledTouchableLink = styled(TouchableLink).attrs<{ primary?: boolean }>(
-  ({ theme, primary }) => ({
-    hoverUnderlineColor: primary ? theme.colors.primary : undefined,
-  })
-)({
+const StyledTouchableLink = styled(ExternalTouchableLink).attrs<{
+  primary?: boolean
+}>(({ theme, primary }) => ({
+  hoverUnderlineColor: primary ? theme.colors.primary : undefined,
+}))({
   display: 'inline',
 })
 

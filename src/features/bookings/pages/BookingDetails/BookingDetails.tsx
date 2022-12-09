@@ -33,7 +33,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -202,7 +202,7 @@ export function BookingDetails() {
             </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={8} />
-          <TouchableLink
+          <InternalTouchableLink
             enableNavigate={!!netInfo.isConnected}
             as={ButtonPrimary}
             wording="Voir le détail de l’offre"

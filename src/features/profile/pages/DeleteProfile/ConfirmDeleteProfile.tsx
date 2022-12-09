@@ -12,7 +12,7 @@ import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
@@ -75,7 +75,7 @@ export function ConfirmDeleteProfile() {
             onPress={notifyAccountSuspend}
           />
           <Spacer.Column numberOfSpaces={4} />
-          <TouchableLink
+          <ExternalTouchableLink
             as={ButtonTertiaryBlack}
             wording="Consulter l’article d’aide"
             externalNav={{ url: env.FAQ_LINK_DELETE_ACCOUNT }}

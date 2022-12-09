@@ -6,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { formatToReadableFrenchDate } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { Typo } from 'ui/theme'
@@ -21,7 +21,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
       title="C'est pour bientôt&nbsp;!"
       icon={CalendarIllustration}
       buttons={[
-        <TouchableLink
+        <InternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
           wording="Retourner à l'accueil"

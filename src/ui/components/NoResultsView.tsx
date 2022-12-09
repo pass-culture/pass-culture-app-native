@@ -5,7 +5,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
 import { SearchView } from 'features/search/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -46,7 +46,7 @@ export const NoResultsView = ({
         <Spacer.Column numberOfSpaces={4} />
         {!offline && (
           <ButtonContainer>
-            <TouchableLink
+            <InternalTouchableLink
               as={ButtonPrimary}
               navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
               wording="Découvrir le catalogue"

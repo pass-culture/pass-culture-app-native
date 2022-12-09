@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
@@ -48,7 +48,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   )
 }
 
-const BaseTouchableLink = styled(TouchableLink)(({ theme }) => ({
+const BaseTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   height: getSpacing(24),
   marginTop: getSpacing(2),
   width: '100%',

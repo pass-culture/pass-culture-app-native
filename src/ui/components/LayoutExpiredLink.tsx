@@ -3,7 +3,8 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -30,7 +31,7 @@ export function LayoutExpiredLink({
       icon={SadFace}
       buttons={[
         renderResendEmailButton && renderResendEmailButton(),
-        <TouchableLink
+        <InternalTouchableLink
           key={1}
           as={ButtonTertiaryWhite}
           wording="Retourner à l’accueil"
@@ -53,7 +54,7 @@ export function LayoutExpiredLink({
       ) : null}
 
       {!!urlFAQ && (
-        <TouchableLink
+        <ExternalTouchableLink
           as={ButtonTertiaryWhite}
           wording="Consulter l’article d'aide"
           externalNav={{ url: urlFAQ }}

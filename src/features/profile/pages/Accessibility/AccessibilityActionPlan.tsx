@@ -7,7 +7,7 @@ import { PageProfileSection } from 'features/profile/pages/PageProfileSection/Pa
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { Separator } from 'ui/components/Separator'
-import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -310,7 +310,7 @@ export function AccessibilityActionPlan() {
         {DOUBLE_LINE_BREAK}
         Site institutionnel&nbsp;:
       </Typo.Body>
-      <TouchableLink
+      <ExternalTouchableLink
         as={ButtonQuaternaryPrimary}
         wording="https://pass.culture.fr/"
         justifyContent="flex-start"
@@ -318,7 +318,7 @@ export function AccessibilityActionPlan() {
         externalNav={{ url: 'https://pass.culture.fr/' }}
       />
       <Typo.Body>Application Utilisateurs&nbsp;:</Typo.Body>
-      <TouchableLink
+      <ExternalTouchableLink
         as={ButtonQuaternaryPrimary}
         wording="https://passculture.app/accueil"
         justifyContent="flex-start"
@@ -326,7 +326,7 @@ export function AccessibilityActionPlan() {
         externalNav={{ url: 'https://passculture.app/accueil' }}
       />
       <Typo.Body>Site acteurs culturels&nbsp;:</Typo.Body>
-      <TouchableLink
+      <ExternalTouchableLink
         as={ButtonQuaternaryPrimary}
         wording="https://passculture.pro/"
         justifyContent="flex-start"
