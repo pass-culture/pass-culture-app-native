@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
-import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
+import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { HomepageEntry, processHomepageEntry } from 'libs/contentful'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { ProcessedModule } from 'libs/contentful/moduleTypes'
