@@ -3,7 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomepageData } from 'features/home/api'
-import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -27,7 +27,7 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/user/helpers/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
 jest.mock('libs/geolocation')

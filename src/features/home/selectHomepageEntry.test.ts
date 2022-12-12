@@ -4,7 +4,7 @@ import { EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
-import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { HomepageEntry, Tag } from 'libs/contentful'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
@@ -92,7 +92,7 @@ jest.mock('features/bookings/api', () => ({
 jest.mock('features/bookings/api/useUserHasBookings')
 const mockUseUserHasBookings = useUserHasBookings as jest.MockedFunction<typeof useUserHasBookings>
 
-jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/user/helpers/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
 
 const defaultRemoteConfig: CustomRemoteConfig = {

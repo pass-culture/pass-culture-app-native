@@ -9,9 +9,9 @@ import {
   StyledBody,
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
-import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useResetRecreditAmountToShow } from 'features/profile/api'
+import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'

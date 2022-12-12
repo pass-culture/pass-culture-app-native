@@ -6,16 +6,16 @@ import {
   SubcategoryIdEnum,
   UserProfileResponse,
 } from 'api/gen'
-import { Credit, getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { BookingButton } from './BookingButton'
 
 jest.mock('features/navigation/helpers/openUrl')
-jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/user/helpers/useAvailableCredit')
 jest.mock('features/profile/utils')
 
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>

@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { UserProfileResponse } from 'api/gen'
-import { hasOngoingCredit } from 'features/home/services/useAvailableCredit'
+import { hasOngoingCredit } from 'features/user/helpers/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
 
 describe('useAvailableCredit', () => {

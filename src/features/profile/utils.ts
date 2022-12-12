@@ -1,7 +1,7 @@
 import { UserProfileResponse, DomainsCredit, UserRole, EligibilityType } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
+import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { Again } from 'ui/svg/icons/Again'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { Warning } from 'ui/svg/icons/BicolorWarning'

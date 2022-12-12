@@ -4,7 +4,7 @@ import React from 'react'
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
 import * as Auth from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { Credit, useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -19,7 +19,7 @@ const mockedUseBeneficiaryValidationNavigation =
   useBeneficiaryValidationNavigation as jest.MockedFunction<
     typeof useBeneficiaryValidationNavigation
   >
-jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/user/helpers/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
 jest.mock('libs/geolocation')

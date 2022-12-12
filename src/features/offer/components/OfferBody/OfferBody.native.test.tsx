@@ -12,7 +12,7 @@ import { cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')
-jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/user/helpers/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')

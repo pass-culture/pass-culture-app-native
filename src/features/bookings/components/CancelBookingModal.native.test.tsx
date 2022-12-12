@@ -20,7 +20,7 @@ const mockDismissModal = jest.fn()
 jest.mock('features/auth/AuthContext')
 
 let mockIsCreditExpired = false
-jest.mock('features/home/services/useAvailableCredit', () => ({
+jest.mock('features/user/helpers/useAvailableCredit', () => ({
   getAvailableCredit: jest.fn(() => ({ isExpired: mockIsCreditExpired, amount: 2000 })),
 }))
 
