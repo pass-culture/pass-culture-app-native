@@ -80,7 +80,6 @@ it('should render correctly without login modal', async () => {
   const home = await homeRenderer(false)
 
   expect(home).toMatchSnapshot()
-  home.unmount()
 })
 ```
 
@@ -117,8 +116,6 @@ it('should render modal correctly', async () => {
   const homeWithoutLoginModal = await homeRenderer(false)
 
   expect(homeWithoutLoginModal).toMatchDiffSnapshot(homeWithLoginModal)
-  homeWithLoginModal.unmount()
-  homeWithoutLoginModal.unmount()
 })
 ```
 
