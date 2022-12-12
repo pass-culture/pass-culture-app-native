@@ -16,7 +16,7 @@ jest.mock('@react-navigation/bottom-tabs', () =>
 
 describe('onNavigationStateChange()', () => {
   it('should log screen view on navigation change', async () => {
-    const { unmount } = navigationRender()
+    navigationRender()
 
     await simulateNavigate('Screen2')
     expect(analytics.logScreenView).toBeCalledTimes(1)
@@ -25,12 +25,10 @@ describe('onNavigationStateChange()', () => {
     await simulateNavigate('Screen1')
     expect(analytics.logScreenView).toBeCalledTimes(2)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'Screen1')
-
-    unmount()
   })
 
   it('should log screen name when navigating to a nested stack navigator', async () => {
-    const { unmount } = navigationRender()
+    navigationRender()
 
     await simulateNavigate('NestedStackNavigator', { screen: 'Screen3' })
     expect(analytics.logScreenView).toBeCalledTimes(1)
@@ -60,8 +58,6 @@ describe('onNavigationStateChange()', () => {
     expect(analytics.logScreenView).toBeCalledTimes(7)
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(6, 'Screen6')
     expect(analytics.logScreenView).toHaveBeenNthCalledWith(7, 'Screen6')
-
-    unmount()
   })
 })
 
