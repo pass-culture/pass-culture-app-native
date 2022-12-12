@@ -14,7 +14,7 @@ export function ButtonInsideText({
   onPress,
   onLongPress,
   icon: Icon,
-  color,
+  buttonColor,
   testID,
   accessibilityRole,
 }: ButtonInsideTexteProps) {
@@ -28,7 +28,7 @@ export function ButtonInsideText({
         <ButtonInsideTextInner
           wording={wording}
           icon={Icon}
-          color={color}
+          color={buttonColor}
           typography={typography}
         />
       </StyledTouchableOpacity>
