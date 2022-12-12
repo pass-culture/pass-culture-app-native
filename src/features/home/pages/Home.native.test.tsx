@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useHomepageData } from 'features/home/api'
+import { useHomepageData } from 'features/home/api/useHomepageData'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
@@ -18,7 +18,7 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
-jest.mock('features/home/api')
+jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))

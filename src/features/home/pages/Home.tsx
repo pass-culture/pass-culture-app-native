@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useHomepageData } from 'features/home/api'
+import { useHomepageData } from 'features/home/api/useHomepageData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
