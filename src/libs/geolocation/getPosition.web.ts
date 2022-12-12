@@ -4,7 +4,7 @@ import { GeoCoordinates } from './types'
 const GET_POSITION_SETTINGS = {
   enableHighAccuracy: false,
   timeout: 20000,
-  maximumAge: 10000,
+  maximumAge: 60000,
 }
 
 // @ts-expect-error: older versions of Safari and Firefox may use the non-standard name of `PositionError`:
