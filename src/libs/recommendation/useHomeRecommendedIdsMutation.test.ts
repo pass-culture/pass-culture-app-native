@@ -1,11 +1,12 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
 import * as reactQueryAPI from 'react-query'
 
-import { useHomeRecommendedIdsMutation } from 'features/home/api/useHomeRecommendedIdsMutation'
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
+
+import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
 
 describe('useHomeRecommendedIdsMutation', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
