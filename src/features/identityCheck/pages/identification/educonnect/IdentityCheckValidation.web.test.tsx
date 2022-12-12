@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { IdentityCheckValidation } from './IdentityCheckValidation'
 
@@ -19,5 +19,13 @@ describe('<IdentityCheckValidation />', () => {
     expect(getByText('John')).toBeTruthy()
     expect(getByText('Doe')).toBeTruthy()
     expect(getByText('28/01/1993')).toBeTruthy()
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<IdentityCheckValidation />)
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 })

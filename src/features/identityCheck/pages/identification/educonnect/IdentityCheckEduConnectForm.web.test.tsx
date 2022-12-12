@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
-import { fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 import { IdentityCheckEduConnectForm } from './IdentityCheckEduConnectForm'
 
@@ -25,5 +25,13 @@ describe('<IdentityCheckEduConnectForm />', () => {
     fireEvent.click(button)
 
     expect(mockOpenEduConnectTab).toHaveBeenCalledTimes(1)
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<IdentityCheckEduConnectForm />)
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 })
