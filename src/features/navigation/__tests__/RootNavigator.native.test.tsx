@@ -38,7 +38,6 @@ describe('<RootNavigator />', () => {
 
     const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeFalsy()
-    renderAPI.unmount()
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
@@ -49,7 +48,6 @@ describe('<RootNavigator />', () => {
 
     const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeTruthy()
-    renderAPI.unmount()
   })
 
   it('should not display quick access button in native', async () => {
