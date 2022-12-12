@@ -53,6 +53,7 @@ jobs:
       SPECS: ${{ inputs.specs }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
       SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
+      SLACK_WEB_HOOK_URL_MANUAL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL_MANUAL }}
       # useful for Slack reports
       GITHUB_SERVER_URL: ${{ github.server_url }}
       GITHUB_RUN_ID: ${{ github.run_id }}
