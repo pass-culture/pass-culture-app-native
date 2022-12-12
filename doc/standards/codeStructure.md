@@ -79,12 +79,11 @@ ui
     |- styleGuide ==> theme constants and typography components
 ```
 
-
 ### Guidelines
 
 - Do not put component into `ui/components` if it is used only once in the app, put it in the feature that uses it
 - Put stories and tests next to corresponding page or component in dedicated subdirectory
-
+- The /helpers folders should be created at the deepest possible in the code structure: if the helper is only used in `/components/headers`, please save it in `/components/headers/helpers`
 
 ### Resources
 
