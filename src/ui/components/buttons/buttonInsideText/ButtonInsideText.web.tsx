@@ -17,7 +17,7 @@ export function ButtonInsideText({
   onPress,
   onLongPress,
   icon: Icon,
-  color,
+  buttonColor,
   accessibilityRole,
   href,
   target,
@@ -59,20 +59,25 @@ export function ButtonInsideText({
       onClick={onClick}
       onDoubleClick={onDoubleClick}
       type={href ? undefined : type}
-      color={color}
+      buttonColor={buttonColor}
       testID={testID || 'button-inside-text'}
       {...buttonLinkProps}>
-      <ButtonInsideTextInner wording={wording} icon={Icon} color={color} typography={typography} />
+      <ButtonInsideTextInner
+        wording={wording}
+        icon={Icon}
+        color={buttonColor}
+        typography={typography}
+      />
     </ButtonComponent>
   )
 }
 
 const webStyle = ({
   theme,
-  color,
+  buttonColor,
 }: {
   theme: DefaultTheme
-  color?: ButtonInsideTexteProps['color']
+  buttonColor?: ButtonInsideTexteProps['buttonColor']
 }) =>
   ({
     border: 'none',
@@ -84,13 +89,13 @@ const webStyle = ({
     width: 'fit-content',
     margin: 0,
     padding: 0,
-    ...customFocusOutline({ color: color ?? theme.colors.primary, noOffset: true }),
-    ...getHoverStyle(color ?? theme.colors.primary),
+    ...customFocusOutline({ color: buttonColor ?? theme.colors.primary, noOffset: true }),
+    ...getHoverStyle(buttonColor ?? theme.colors.primary),
   } as CSSObject)
 
 const Button = styled.button.attrs<Pick<ButtonInsideTexteProps, 'testID'>>(({ testID }) => ({
   ['data-testid']: testID,
-}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'color'>>(webStyle)
+}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>>(webStyle)
 const Link = styled.a.attrs<Pick<ButtonInsideTexteProps, 'testID'>>(({ testID }) => ({
   ['data-testid']: testID,
-}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'color'>>(webStyle)
+}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>>(webStyle)

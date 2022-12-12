@@ -19,7 +19,7 @@ interface Props {
 
 export const AuthenticationButton: FunctionComponent<Props> = ({
   type,
-  linkColor: color,
+  linkColor,
   onAdditionalPress: onPress,
 }) => {
   const isLogin = type === 'login'
@@ -44,8 +44,8 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
           as={ButtonInsideText}
           navigateTo={nextNavigation}
           wording={buttonWording}
+          buttonColor={linkColor}
           icon={isLogin ? Connect : Profile}
-          color={color}
           onBeforeNavigate={onPress}
         />
       </StyledBody>

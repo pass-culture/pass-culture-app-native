@@ -10,7 +10,7 @@ export type ButtonInsideTexteProps = {
   wording: string
   typography?: 'ButtonText' | 'Caption'
   icon?: FunctionComponent<IconInterface>
-  color?: ColorsEnum
+  buttonColor?: ColorsEnum
   onLongPress?: AppButtonEventWeb | AppButtonEventNative
   onPress?: AppButtonEventWeb | AppButtonEventNative
   accessibilityRole?: AccessibilityRole

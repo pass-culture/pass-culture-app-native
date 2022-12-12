@@ -79,7 +79,7 @@ export function LegalNotices() {
 const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  color: theme.colors.black,
+  buttonColor: theme.colors.black,
 }))``
 
 const StyledSeparator = styled(Separator)({
