@@ -12,7 +12,7 @@
       "describe('<${1:PageName}/>', () => {",
       "  describe('Accessibility', () => {",
       "    it('should not have basic accessibility issues', async () => {",
-      "      const { container } = await render(<${1:PageName} />)",
+      "      const { container } = render(<${1:PageName} />)",
       "      const results = await checkAccessibilityFor(container)",
       "      expect(results).toHaveNoViolations()",
       "    })",
