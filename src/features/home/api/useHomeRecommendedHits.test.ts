@@ -9,6 +9,7 @@ import {
 } from 'features/home/api/useHomeRecommendedHits'
 import { RecommendationParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
+import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
@@ -26,9 +27,9 @@ describe('useHomeRecommendedHits', () => {
   jest
     .spyOn(recommendedIdsAPI, 'useHomeRecommendedIdsMutation')
     .mockReturnValue({ mutate } as unknown as UseMutationResult<
-      recommendedIdsAPI.RecommendedIdsResponse,
+      RecommendedIdsResponse,
       unknown,
-      recommendedIdsAPI.RecommendedIdsRequest,
+      RecommendedIdsRequest,
       unknown
     >)
 

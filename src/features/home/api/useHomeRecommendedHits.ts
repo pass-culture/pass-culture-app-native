@@ -4,10 +4,8 @@ import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/co
 import { RecommendationParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
-import {
-  RecommendedIdsRequest,
-  useHomeRecommendedIdsMutation,
-} from 'libs/recommendation/useHomeRecommendedIdsMutation'
+import { RecommendedIdsRequest } from 'libs/recommendation/types'
+import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { SearchHit } from 'libs/search'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
