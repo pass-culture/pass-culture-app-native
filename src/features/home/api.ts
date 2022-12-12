@@ -4,12 +4,11 @@ import { useQuery } from 'react-query'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { useSelectHomepageEntry } from 'features/home/selectHomepageEntry'
 import { HomepageEntry, processHomepageEntry } from 'libs/contentful'
+import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { ProcessedModule } from 'libs/contentful/moduleTypes'
 import { analytics } from 'libs/firebase/analytics'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
-
-import { fetchHomepageNatifContent } from './fetchHomepageNatifContent'
 
 const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
 

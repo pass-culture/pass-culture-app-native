@@ -2,6 +2,7 @@
 import { rest } from 'msw'
 
 import { processHomepageEntry } from 'libs/contentful'
+import { BASE_URL, PARAMS } from 'libs/contentful/fetchHomepageNatifContent'
 import { analytics } from 'libs/firebase/analytics'
 import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
 import { adaptedSecondHomepageEntry } from 'tests/fixtures/adaptedSecondHomepageEntry'
@@ -12,7 +13,6 @@ import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomepageData } from './api'
-import { BASE_URL, fetchHomepageNatifContent, PARAMS } from './fetchHomepageNatifContent'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
@@ -26,12 +26,6 @@ jest.mock('features/auth/AuthContext', () => ({
 const entryId = homepageEntriesAPIResponse.items[1].sys.id
 
 describe('Home api calls', () => {
-  it('fetchHomepageNatifContent', async () => {
-    const result = await fetchHomepageNatifContent()
-    expect(result[0]).toEqual(adaptedHomepageEntry)
-    expect(result[1]).toEqual(adaptedSecondHomepageEntry)
-  })
-
   describe('useHomepageModules', () => {
     it('calls the API and returns the data', async () => {
       const { result } = renderHook(useHomepageData, {
