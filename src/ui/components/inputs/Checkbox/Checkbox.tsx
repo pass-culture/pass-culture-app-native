@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -14,7 +14,7 @@ type IsCheckedProps = {
 
 type Props = IsCheckedProps & {
   label: string
-  onPress: () => void
+  onPress: (isChecked: boolean) => void
   children?: never
 }
 
@@ -23,14 +23,18 @@ export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }
 
   const accessibilityState = useMemo(() => ({ checked: isChecked }), [isChecked])
 
-  useSpaceBarAction(isFocus ? onPress : undefined)
+  const onToggle = useCallback(() => {
+    onPress(!isChecked)
+  }, [isChecked, onPress])
+
+  useSpaceBarAction(isFocus ? onToggle : undefined)
 
   return (
     <CheckboxContainer
       accessibilityRole={AccessibilityRole.CHECKBOX}
       accessibilityLabel={label}
       accessibilityState={accessibilityState}
-      onPress={onPress}
+      onPress={onToggle}
       onFocus={onFocus}
       onBlur={onBlur}>
       <Box isChecked={isChecked}>{!!isChecked && <CheckboxMark />}</Box>

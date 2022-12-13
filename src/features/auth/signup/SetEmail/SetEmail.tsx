@@ -1,81 +1,93 @@
-import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { FunctionComponent, useCallback, useRef } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { setEmailSchema } from 'features/auth/signup/SetEmail/schema/setEmailSchema'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
-import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
-import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
 import { PreValidationSignupStepProps } from '../types'
 
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const [email, setEmail] = useState('')
-  const [hasError, setHasError] = useState(false)
-  const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    defaultValues: {
+      email: '',
+      marketingEmailSubscription: false,
+    },
+    resolver: yupResolver(setEmailSchema),
+    mode: 'all',
+  })
   const emailInputErrorId = uuidv4()
-  const shouldDisableValidateButton = isValueEmpty(email)
 
   const emailInput = useRef<RNTextInput | null>(null)
-
-  function onEmailChange(newEmailInput: string) {
-    if (hasError) {
-      setHasError(false)
-    }
-    setEmail(newEmailInput)
-  }
-
-  function validateEmail() {
-    if (isEmailValid(email)) {
-      props.goToNextStep({ email, marketingEmailSubscription: isNewsletterChecked })
-    } else {
-      setHasError(true)
-    }
-  }
-
-  function onCheckboxPress() {
-    setIsNewsletterChecked((prevIsNewsletterChecked) => !prevIsNewsletterChecked)
-  }
 
   const onLogAnalytics = useCallback(() => {
     analytics.logLogin({ method: 'fromSetEmail' })
   }, [])
 
-  const checkBoxlabel =
-    'J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture.'
+  const EmailInputControlled = useCallback(
+    ({ field: { onChange, onBlur, value } }) => (
+      <EmailInput
+        label="Adresse e-mail"
+        email={value}
+        onEmailChange={onChange}
+        autoFocus
+        ref={emailInput}
+        accessibilityDescribedBy={emailInputErrorId}
+        onBlur={onBlur}
+      />
+    ),
+    [emailInputErrorId]
+  )
+
+  const NewsletterCheckbox = useCallback(
+    ({ field: { value, onChange } }) => (
+      <Checkbox
+        isChecked={value}
+        label="J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
+        onPress={onChange}
+      />
+    ),
+    []
+  )
+
+  const goToNextStep = useCallback(
+    ({ email, marketingEmailSubscription }) => {
+      props.goToNextStep({ email, marketingEmailSubscription })
+    },
+    [props]
+  )
 
   return (
     <Form.MaxWidth>
-      <EmailInput
-        label="Adresse e-mail"
-        email={email}
-        onEmailChange={onEmailChange}
-        autoFocus
-        onSubmitEditing={validateEmail}
-        ref={emailInput}
-        accessibilityDescribedBy={emailInputErrorId}
-      />
+      <Controller control={control} name="email" render={EmailInputControlled} />
       <InputError
-        visible={hasError}
-        messageId="L’e-mail renseigné est incorrect. Exemple de format attendu&nbsp;: edith.piaf@email.fr"
+        visible={!!errors.email}
+        messageId={errors.email?.message}
         numberOfSpacesTop={2}
         relatedInputId={emailInputErrorId}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <Checkbox isChecked={isNewsletterChecked} label={checkBoxlabel} onPress={onCheckboxPress} />
+      <Controller control={control} name="marketingEmailSubscription" render={NewsletterCheckbox} />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Continuer"
         accessibilityLabel={props.accessibilityLabelForNextStep}
-        onPress={validateEmail}
+        onPress={handleSubmit(goToNextStep)}
         isLoading={false}
-        disabled={shouldDisableValidateButton}
+        disabled={!isValid}
       />
       <Spacer.Column numberOfSpaces={8} />
       <AuthenticationButton type="login" onAdditionalPress={onLogAnalytics} />
