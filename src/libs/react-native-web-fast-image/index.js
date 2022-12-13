@@ -1,39 +1,25 @@
 import PropTypes from 'prop-types'
 import React, { forwardRef, memo } from 'react'
-import { View, Image, NativeModules, ViewPropTypes, StyleSheet } from 'react-native'
+import { View, NativeModules, ViewPropTypes, StyleSheet } from 'react-native'
+import styled from 'styled-components'
 
 const FastImageViewNativeModule = NativeModules.FastImageView
 
-function FastImageBase({
-  source,
-  tintColor,
-  onLoadStart,
-  onProgress,
-  onLoad,
-  onError,
-  onLoadEnd,
-  style,
-  children,
-  forwardedRef,
-  ...props
-}) {
+function FastImageBase({ source, style, children, forwardedRef, ...props }) {
   return (
     <View style={[styles.imageContainer, style]} ref={forwardedRef}>
-      <Image
-        {...props}
-        tintColor={tintColor}
-        style={StyleSheet.absoluteFill}
-        source={source}
-        onLoadStart={onLoadStart}
-        onProgress={onProgress}
-        onLoad={onLoad}
-        onError={onError}
-        onLoadEnd={onLoadEnd}
-      />
+      <StyledImg src={source.uri} loading="lazy" {...props} />
       {children}
     </View>
   )
 }
+
+const StyledImg = styled.img({
+  objectFit: 'cover',
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden',
+})
 
 const FastImageMemo = memo(FastImageBase)
 
