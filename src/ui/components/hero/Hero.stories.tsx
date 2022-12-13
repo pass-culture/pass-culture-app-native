@@ -14,6 +14,10 @@ export default {
   component: Hero,
   decorators: [useQueryDecorator],
   parameters: {
+    axe: {
+      // Our images do not need alt because they are illustrative
+      disabledRules: ['image-alt'],
+    },
     useQuery: {
       settings: { enableFrontImageResizing: false },
     },
