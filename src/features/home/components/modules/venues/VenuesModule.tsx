@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { useVenueModule } from 'features/home/api/useVenueModule'
-import { VenueTile } from 'features/home/components/VenueTile'
+import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import {
   ContentTypes,
   DisplayParametersFields,
