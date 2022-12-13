@@ -121,6 +121,7 @@ export enum AnalyticsEvent {
   SIGN_UP_FROM_OFFER = 'SignUpFromOffer',
   SIGN_UP_TOO_YOUNG = 'SignUpTooYoung',
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
+  TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
   USE_FILTER = 'UseFilter',
   USE_LANDING_CATEGORY = 'UseLandingCategory',
   VENUE_CONTACT = 'VenueContact',

@@ -10,6 +10,7 @@ import { AgeSeparator } from 'features/onboarding/components/AgeSeparator'
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
 import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -18,6 +19,10 @@ import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AgeInformationProps = StackScreenProps<OnboardingRootStackParamList, 'AgeInformation'>
+
+const logTrySelectDeposit = (age: number) => {
+  analytics.logTrySelectDeposit(age)
+}
 
 export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   const userAge = route.params.age
@@ -69,6 +74,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
                 title={(index !== 0 ? '+ ' : '') + deposit}
                 subtitle={`à ${age} ans`}
                 roundedBorders={position}
+                onPress={() => logTrySelectDeposit(age)}
               />
               <Spacer.Column numberOfSpaces={0.5} />
             </React.Fragment>
@@ -82,6 +88,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
             title={eighteenYearOldInfo.deposit}
             subtitle={`à ${eighteenYearOldInfo.age} ans`}
             description={`Tu auras 2 ans pour utiliser tes ${eighteenYearOldInfo.deposit}`}
+            onPress={() => logTrySelectDeposit(eighteenYearOldInfo.age)}
           />
         </Container>
       </Container>
