@@ -2,7 +2,8 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
-import { fireEvent, render } from 'tests/utils/web'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 jest.mock('react-query')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -11,6 +12,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
     ...mockState,
   })),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+useFeatureFlagSpy.mockReturnValue(false)
 
 describe('<IdentityCheckStart/>', () => {
   it('should render correctly', () => {
@@ -52,6 +56,14 @@ describe('<IdentityCheckStart/>', () => {
       fireEvent.click(getByText('Transmettre un document'))
       expect(queryByText('Je suis de nationalité française')).toBeTruthy()
       expect(queryByText('Je suis de nationalité étrangère')).toBeTruthy()
+    })
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<IdentityCheckStart />)
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })

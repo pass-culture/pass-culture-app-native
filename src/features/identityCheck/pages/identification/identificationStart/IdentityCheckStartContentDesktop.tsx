@@ -9,6 +9,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   showSomeAdviceBeforeIdentityCheckModal: () => void
@@ -66,7 +67,7 @@ const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) 
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const StyledTitle4 = styled(Typo.Title4)({ textAlign: 'center' })
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({ textAlign: 'center' })
 
 const CenteredText = styled(Typo.Body)({ textAlign: 'center' })
 

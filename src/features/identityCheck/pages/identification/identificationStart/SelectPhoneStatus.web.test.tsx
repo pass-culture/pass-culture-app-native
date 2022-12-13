@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectPhoneStatus.web'
-import { fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 describe('SelectPhoneStatus', () => {
   it('should render correctly', () => {
@@ -26,5 +26,13 @@ describe('SelectPhoneStatus', () => {
     fireEvent.click(HeroButtonList)
 
     expect(navigate).toHaveBeenCalledWith('DMSIntroduction', { isForeignDMSInformation: false })
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<SelectPhoneStatus />)
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 })
