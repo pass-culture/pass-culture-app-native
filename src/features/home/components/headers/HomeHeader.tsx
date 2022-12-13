@@ -31,7 +31,7 @@ export const HomeHeader: FunctionComponent = function () {
 
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
   const shouldDisplaySubscritpionBloc =
-    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
+    user?.status?.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
   const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation()
 
   const welcomeTitle =
