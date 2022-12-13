@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { render } from 'tests/utils'
 import { theme } from 'theme'
 
 import { DotComponent, getDotColors } from './DotComponent'
@@ -22,18 +22,6 @@ describe('<DotComponent />', () => {
       numberOfSteps: 1,
     })
     expect(renderAPI).toMatchSnapshot()
-  })
-
-  it('renders trigger onPress when pressed', () => {
-    const { getByTestId } = renderDotComponent({
-      activeIndex: 1,
-      index: 1,
-      isActive: true,
-      onPress,
-      numberOfSteps: 1,
-    })
-    fireEvent.press(getByTestId('button'))
-    expect(onPress).toHaveBeenCalledTimes(1)
   })
 
   it('should get grey medium color when after active index', () => {
