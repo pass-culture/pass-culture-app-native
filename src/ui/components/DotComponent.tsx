@@ -56,9 +56,7 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   return (
     <DotContainer>
       <Dot
-        accessibilityLabel={
-          props.isActive ? `Étape ${step} sur ${totalSteps} ${status}` : undefined
-        }
+        accessibilityLabel={`Étape ${step} sur ${totalSteps} ${status}`}
         size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
         testID="dot-icon"
       />
