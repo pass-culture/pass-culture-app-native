@@ -66,7 +66,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
     >
       <label
         className=\\"sc-bdvvtL kVMjoM\\"
-@@ -65,11 +75,18 @@
+@@ -66,11 +76,18 @@
           \\"flexDirection\\": \\"row\\",
           \\"msFlexAlign\\": \\"center\\",
           \\"msFlexDirection\\": \\"row\\",

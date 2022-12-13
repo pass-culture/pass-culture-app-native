@@ -17,7 +17,7 @@ type Props = {
   description?: string
   underage: boolean
   roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
-  creditStatus: CreditStatus
+  creditStatus?: CreditStatus
   onPress: () => void
 }
 
@@ -55,16 +55,18 @@ export const CreditBlock: FunctionComponent<Props> = ({
           )}
         </View>
         <TagContainer>
-          <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
+          {!!creditStatus && (
+            <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
+          )}
         </TagContainer>
       </Container>
     </TouchableWithoutFeedback>
   )
 }
 
-const StyledLock = styled(Lock).attrs<{ status: CreditStatus }>(({ theme, status }) => ({
+const StyledLock = styled(Lock).attrs<{ status?: CreditStatus }>(({ theme, status }) => ({
   color: status === CreditStatus.GONE ? theme.colors.greyMedium : theme.colors.greyDark,
-}))<{ status: CreditStatus }>``
+}))<{ status?: CreditStatus }>``
 
 const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
@@ -72,7 +74,7 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const Container = styled.View<{ status: CreditStatus; roundedBorders?: Props['roundedBorders'] }>(
+const Container = styled.View<{ status?: CreditStatus; roundedBorders?: Props['roundedBorders'] }>(
   ({ theme, status, roundedBorders }) => ({
     ...getBorderStyle(theme, status, roundedBorders),
     backgroundColor: getBackgroundColor(theme, status),

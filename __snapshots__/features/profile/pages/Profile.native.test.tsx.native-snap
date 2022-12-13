@@ -479,6 +479,7 @@ exports[`Profile component should render correctly 1`] = `
                           />
                           <Text
                             htmlFor="testUuidV4"
+                            id="testUuidV4"
                             style={
                               Array [
                                 Object {

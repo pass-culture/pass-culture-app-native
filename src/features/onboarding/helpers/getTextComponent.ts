@@ -5,7 +5,10 @@ import { CreditStatus } from 'features/onboarding/types'
 import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-export const getTitleComponent = (underage: boolean, creditStatus: CreditStatus): ComponentType => {
+export const getTitleComponent = (
+  underage: boolean,
+  creditStatus?: CreditStatus
+): ComponentType => {
   switch (creditStatus) {
     case CreditStatus.ONGOING:
       return TitleSecondary
@@ -17,7 +20,7 @@ export const getTitleComponent = (underage: boolean, creditStatus: CreditStatus)
   }
 }
 
-export const getAgeComponent = (underage: boolean, creditStatus: CreditStatus): ComponentType => {
+export const getAgeComponent = (underage: boolean, creditStatus?: CreditStatus): ComponentType => {
   switch (creditStatus) {
     case CreditStatus.ONGOING:
       return BodySecondary

@@ -1,7 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, ScrollView } from 'react-native'
+import { NativeScrollEvent, Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -158,18 +158,19 @@ const OnlineProfile: React.FC = () => {
         </Section>
         <Section title="Aides">
           <VerticalUl>
-            <Li>
-              <Row
-                title="Comment ça marche&nbsp;?"
-                type="navigable"
-                navigateTo={{
-                  screen: 'FirstTutorial',
-                  params: { shouldCloseAppOnBackAction: false },
-                }}
-                onPress={() => analytics.logConsultTutorial('profile')}
-                icon={LifeBuoy}
-              />
-            </Li>
+            {Platform.OS !== 'web' && (
+              <Li>
+                <Row
+                  title="Comment ça marche&nbsp;?"
+                  type="navigable"
+                  navigateTo={{
+                    screen: 'AgeInformation',
+                  }}
+                  onPress={() => analytics.logConsultTutorial('profile')}
+                  icon={LifeBuoy}
+                />
+              </Li>
+            )}
             <Li>
               <Row
                 title="Centre d'aide"

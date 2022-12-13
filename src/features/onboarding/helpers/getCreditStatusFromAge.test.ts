@@ -5,11 +5,12 @@ const AGES = [15, 16, 17, 18]
 
 describe('getCreditStatusFromAge', () => {
   it.each`
-    userAge | expectedStatus
-    ${15}   | ${[CreditStatus.ONGOING, CreditStatus.COMING, CreditStatus.COMING, CreditStatus.COMING]}
-    ${16}   | ${[CreditStatus.GONE, CreditStatus.ONGOING, CreditStatus.COMING, CreditStatus.COMING]}
-    ${17}   | ${[CreditStatus.GONE, CreditStatus.GONE, CreditStatus.ONGOING, CreditStatus.COMING]}
-    ${18}   | ${[CreditStatus.GONE, CreditStatus.GONE, CreditStatus.GONE, CreditStatus.ONGOING]}
+    userAge      | expectedStatus
+    ${15}        | ${[CreditStatus.ONGOING, CreditStatus.COMING, CreditStatus.COMING, CreditStatus.COMING]}
+    ${16}        | ${[CreditStatus.GONE, CreditStatus.ONGOING, CreditStatus.COMING, CreditStatus.COMING]}
+    ${17}        | ${[CreditStatus.GONE, CreditStatus.GONE, CreditStatus.ONGOING, CreditStatus.COMING]}
+    ${18}        | ${[CreditStatus.GONE, CreditStatus.GONE, CreditStatus.GONE, CreditStatus.ONGOING]}
+    ${undefined} | ${[undefined, undefined, undefined, undefined]}
   `(
     'should return statuses $expectedStatus for $userAge-year-old',
     ({ userAge, expectedStatus }) => {

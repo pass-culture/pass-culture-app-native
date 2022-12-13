@@ -18,6 +18,11 @@ describe('AgeInformation', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
+  it('should render correctly when no age (coming from "Comment ça marche" in profile section)', () => {
+    const renderAPI = renderAgeInformation({ age: undefined })
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it.each(AGES)('should only display one active block for %s-year-old', (age) => {
     const { queryAllByText } = renderAgeInformation({ age })
     const ongoingTags = queryAllByText(CreditStatus.ONGOING)
@@ -37,6 +42,17 @@ describe('AgeInformation', () => {
     const comingTags = queryAllByText(CreditStatus.COMING)
 
     expect(comingTags).toHaveLength(18 - age)
+  })
+
+  it('should not display credit status tag when no user age', () => {
+    const { queryAllByText } = renderAgeInformation({ age: undefined })
+    const goneTags = queryAllByText(CreditStatus.GONE)
+    const ongoingTags = queryAllByText(CreditStatus.ONGOING)
+    const comingTags = queryAllByText(CreditStatus.COMING)
+
+    expect(goneTags).toHaveLength(0)
+    expect(ongoingTags).toHaveLength(0)
+    expect(comingTags).toHaveLength(0)
   })
 
   it.each(AGES)(
@@ -68,7 +84,7 @@ describe('AgeInformation', () => {
   })
 })
 
-const renderAgeInformation = (navigationParams: { age: number }) => {
+const renderAgeInformation = (navigationParams: { age?: number }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
     OnboardingRootStackParamList,
     'AgeInformation'

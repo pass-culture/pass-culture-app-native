@@ -8,7 +8,7 @@ export const EDGE_BLOCK_BORDER_RADIUS = getSpacing(2)
 export const CREDIT_BLOCK_BORDER_WIDTH = getSpacing(0.25)
 export const getBorderStyle = (
   theme: DefaultTheme,
-  status: CreditStatus,
+  status?: CreditStatus,
   roundedBorders?: 'top' | 'bottom'
 ) => {
   const topRadius = roundedBorders === 'top' ? EDGE_BLOCK_BORDER_RADIUS : undefined

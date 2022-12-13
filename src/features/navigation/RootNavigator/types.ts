@@ -30,7 +30,7 @@ export type CulturalSurveyRootStackParamList = {
 }
 
 export type OnboardingRootStackParamList = {
-  AgeInformation: { age: number }
+  AgeInformation: { age?: number }
   AgeSelection: undefined
   AgeSelectionOther: undefined
   NavigationOnboarding: undefined

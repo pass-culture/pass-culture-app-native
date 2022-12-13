@@ -1,9 +1,13 @@
 import { CreditStatus } from 'features/onboarding/types'
 
-export const getCreditStatusFromAge = (userAge: number, age: number) => {
+export const getCreditStatusFromAge = (userAge: number | undefined, age: number) => {
+  if (!userAge) {
+    return undefined
+  }
   if (userAge > age) {
     return CreditStatus.GONE
-  } else if (userAge < age) {
+  }
+  if (userAge < age) {
     return CreditStatus.COMING
   }
   return CreditStatus.ONGOING

@@ -34,6 +34,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
     accessibilityDescribedBy,
   } = props
   const Icon = icon
+
   return (
     <Container>
       <TitleContainer toggleLabel={!!toggleLabel}>
@@ -43,7 +44,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         )}
-        <InputLabel htmlFor={checkboxID}>
+        <InputLabel id={labelID} htmlFor={checkboxID}>
           <Typo.ButtonText>{title}</Typo.ButtonText>
         </InputLabel>
       </TitleContainer>

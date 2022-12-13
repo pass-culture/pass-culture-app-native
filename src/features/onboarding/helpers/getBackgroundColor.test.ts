@@ -7,9 +7,10 @@ import { theme } from 'theme'
 describe('getBackgroundColor', () => {
   it.each`
     status                  | expectedBackgroundColor
-    ${CreditStatus.GONE}    | ${colorAlpha(theme.colors.greyLight, 0.5)}
     ${CreditStatus.COMING}  | ${theme.colors.greyLight}
     ${CreditStatus.ONGOING} | ${theme.colors.white}
+    ${CreditStatus.GONE}    | ${colorAlpha(theme.colors.greyLight, 0.5)}
+    ${undefined}            | ${colorAlpha(theme.colors.greyLight, 0.5)}
   `(
     'should return $expectedBackgroundColor for $status status',
     ({ status, expectedBackgroundColor }) => {

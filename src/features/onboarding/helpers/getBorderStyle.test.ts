@@ -22,6 +22,7 @@ describe('getBorderStyle', () => {
     ${CreditStatus.GONE}    | ${{ ...defaultBorderStyle, borderColor: colorAlpha(theme.colors.greyLight, 0.5) }}
     ${CreditStatus.COMING}  | ${defaultBorderStyle}
     ${CreditStatus.ONGOING} | ${{ ...defaultBorderStyle, borderColor: theme.colors.greySemiDark }}
+    ${undefined}            | ${{ ...defaultBorderStyle, borderColor: colorAlpha(theme.colors.greyLight, 0.5) }}
   `('should return expected style for $status status', ({ status, expectedBorderStyle }) => {
     expect(getBorderStyle(theme, status)).toEqual(expectedBorderStyle)
   })

@@ -25,7 +25,7 @@ const logTrySelectDeposit = (age: number) => {
 }
 
 export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
-  const userAge = route.params.age
+  const userAge = route.params?.age
   const isEighteen = userAge === 18
   const {
     fifteenYearsOldDeposit,
@@ -41,27 +41,35 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   ]
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
-  const buttons = [
-    <InternalTouchableLink
-      key={1}
-      as={ButtonWithLinearGradient}
-      wording="Créer un compte"
-      navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
-    />,
-    <InternalTouchableLink
-      key={2}
-      as={ButtonTertiaryBlack}
-      wording="Plus tard"
-      icon={ClockFilled}
-      fullWidth
-      navigateTo={{ ...navigateToHomeConfig, fromRef: false }}
-    />,
-  ]
+  const buttons = userAge
+    ? [
+        <InternalTouchableLink
+          key={1}
+          as={ButtonWithLinearGradient}
+          wording="Créer un compte"
+          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+        />,
+        <InternalTouchableLink
+          key={2}
+          as={ButtonTertiaryBlack}
+          wording="Plus tard"
+          icon={ClockFilled}
+          fullWidth
+          navigateTo={{ ...navigateToHomeConfig, fromRef: false }}
+        />,
+      ]
+    : [
+        <InternalTouchableLink
+          key={1}
+          as={ButtonWithLinearGradient}
+          wording="Explorer l'application"
+          navigateTo={navigateToHomeConfig}
+        />,
+      ]
 
+  const pageTitle = userAge ? `À ${userAge} ans, profite de ton pass Culture\u00a0!` : undefined
   return (
-    <OnboardingPage
-      title={`À ${userAge} ans, profite de ton pass Culture\u00a0!`}
-      buttons={buttons}>
+    <OnboardingPage title={pageTitle} buttons={buttons}>
       <Typo.Title4 {...getHeadingAttrs(2)}>Comment ça marche&nbsp;?</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Container reverse={isEighteen}>

@@ -45,9 +45,9 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
     >
       <Text
         htmlFor=\\"testUuidV4\\"
+        id=\\"testUuidV4\\"
         style={
-          Array [
-@@ -57,10 +60,26 @@
+@@ -58,10 +61,26 @@
             \\"flexDirection\\": \\"row\\",
           },
         ]

@@ -193,7 +193,7 @@ describe('Profile component', () => {
       fireEvent.press(row)
 
       await waitForExpect(() => {
-        expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
+        expect(mockNavigate).toBeCalledWith('AgeInformation', undefined)
       })
     })
 
