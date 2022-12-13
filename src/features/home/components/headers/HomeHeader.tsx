@@ -3,7 +3,6 @@ import React, { FunctionComponent, useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SubscriptionStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
@@ -28,11 +27,10 @@ export const HomeHeader: FunctionComponent = function () {
   const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
+  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation()
 
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
-  const shouldDisplaySubscritpionBloc =
-    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
-  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation()
+  const shouldDisplaySubscritpionBloc = !!nextBeneficiaryValidationStepNavConfig
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -58,7 +56,7 @@ export const HomeHeader: FunctionComponent = function () {
   const credit = useGetDepositAmountsByAge(user?.birthDate)
 
   const SystemBloc = useMemo(() => {
-    if (shouldDisplaySubscritpionBloc && !!nextBeneficiaryValidationStepNavConfig) {
+    if (shouldDisplaySubscritpionBloc) {
       return (
         <React.Fragment>
           <BannerWithBackground

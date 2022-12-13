@@ -3,6 +3,7 @@ import React from 'react'
 
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
 import * as Auth from 'features/auth/AuthContext'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -14,6 +15,10 @@ import { HomeHeader } from './HomeHeader'
 const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+const mockedUseBeneficiaryValidationNavigation =
+  useBeneficiaryValidationNavigation as jest.MockedFunction<
+    typeof useBeneficiaryValidationNavigation
+  >
 jest.mock('features/home/services/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
@@ -72,6 +77,10 @@ describe('HomeHeader', () => {
 
   it('should display geolocation banner when geolocation is denied', () => {
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+    mockedUseBeneficiaryValidationNavigation.mockReturnValueOnce({
+      nextBeneficiaryValidationStepNavConfig: undefined,
+      navigateToNextBeneficiaryValidationStep: jest.fn(),
+    })
     const { queryByText } = renderHomeHeader()
 
     expect(queryByText('Géolocalise-toi')).toBeTruthy()
@@ -80,6 +89,10 @@ describe('HomeHeader', () => {
   it('should display geolocation banner when geolocation is never ask again', () => {
     mockUseGeolocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+    })
+    mockedUseBeneficiaryValidationNavigation.mockReturnValueOnce({
+      nextBeneficiaryValidationStepNavConfig: undefined,
+      navigateToNextBeneficiaryValidationStep: jest.fn(),
     })
     const { queryByText } = renderHomeHeader()
 
