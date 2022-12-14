@@ -209,7 +209,7 @@ jobs:
           target: ${{ matrix.emuTag }}
           arch: ${{ matrix.arch }}
           profile: ${{ matrix.profile }}
-          emulator-options: '-gpu host -qemu'
+          emulator-options: -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
 
       - name: Save logcat output
         if: ${{ always() }}
