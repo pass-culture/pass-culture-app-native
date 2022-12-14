@@ -2,12 +2,12 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import {
   SearchParametersFields,
   DisplayParametersFields,
   ContentTypes,
-} from 'features/home/contentful/contentful'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+} from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'

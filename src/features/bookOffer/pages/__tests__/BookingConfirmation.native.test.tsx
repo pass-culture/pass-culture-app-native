@@ -10,7 +10,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { BookingConfirmation } from '../BookingConfirmation'
 
-jest.mock('features/home/services/useAvailableCredit', () => ({
+jest.mock('features/user/helpers/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 

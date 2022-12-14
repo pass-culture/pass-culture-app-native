@@ -1,7 +1,7 @@
 import { UserProfileResponse } from 'api/gen'
-import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isAppUrl } from 'features/navigation/helpers'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
+import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { Info } from 'ui/svg/icons/Info'
@@ -15,7 +15,7 @@ import {
 
 jest.mock('react-native-email-link')
 jest.mock('features/navigation/helpers')
-jest.mock('features/home/services/useAvailableCredit')
+jest.mock('features/user/helpers/useAvailableCredit')
 
 describe('profile utils', () => {
   describe('Compute credit', () => {

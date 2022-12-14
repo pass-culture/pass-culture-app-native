@@ -7,9 +7,9 @@ import {
   VenuesModule,
 } from 'features/home/components'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
-import { BusinessPane, ExclusivityPane, OffersWithCover } from 'features/home/contentful'
-import { ProcessedModule, RecommendationPane } from 'features/home/contentful/moduleTypes'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
+import { BusinessPane, ExclusivityPane, OffersWithCover } from 'libs/contentful'
+import { ProcessedModule, RecommendationPane } from 'libs/contentful/moduleTypes'
 
 const UnmemoizedModule = ({
   item,

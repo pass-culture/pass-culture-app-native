@@ -1,4 +1,4 @@
-import { ContentTypes } from 'features/home/contentful'
+import { ContentTypes } from 'libs/contentful'
 
 export const homepageEntriesAPIResponse = {
   sys: { type: 'Array' },

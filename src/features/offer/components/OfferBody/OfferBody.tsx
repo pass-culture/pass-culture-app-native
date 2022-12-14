@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -19,6 +18,7 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
-import { ContentTypes } from 'features/home/contentful'
+import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { render } from 'tests/utils'
 

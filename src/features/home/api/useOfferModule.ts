@@ -3,7 +3,6 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { SearchParametersFields } from 'features/home/contentful'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
 import {
@@ -11,6 +10,7 @@ import {
   filterOfferHit,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia'
+import { SearchParametersFields } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'

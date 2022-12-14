@@ -2,13 +2,13 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
-import { HomeOfferTile } from 'features/home/atoms'
+import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import {
   ContentTypes,
   DisplayParametersFields,
   RecommendationParametersFields,
-} from 'features/home/contentful'
-import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
+} from 'libs/contentful'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'

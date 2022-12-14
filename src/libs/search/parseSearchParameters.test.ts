@@ -1,8 +1,8 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { SearchParametersFields } from 'features/home/contentful'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
+import { SearchParametersFields } from 'libs/contentful'
 import { useParseSearchParameters } from 'libs/search'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'

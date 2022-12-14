@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule } from 'features/home/components'
-import { ContentTypes } from 'features/home/contentful'
+import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, waitFor } from 'tests/utils'
