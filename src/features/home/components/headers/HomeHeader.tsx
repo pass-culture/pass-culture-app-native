@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/utils'
@@ -28,9 +29,11 @@ export const HomeHeader: FunctionComponent = function () {
   const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
   const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation()
+  const { data: subscription } = useNextSubscriptionStep()
 
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
-  const shouldDisplaySubscritpionBloc = !!nextBeneficiaryValidationStepNavConfig
+  const shouldDisplaySubscritpionBloc =
+    subscription?.nextSubscriptionStep && !!nextBeneficiaryValidationStepNavConfig
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
