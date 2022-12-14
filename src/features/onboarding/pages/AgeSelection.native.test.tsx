@@ -7,6 +7,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { analytics } from 'libs/firebase/analytics'
+import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 const AGES = [15, 16, 17, 18]
@@ -15,6 +16,10 @@ jest.mock('features/navigation/navigationRef')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('AgeSelection', () => {
+  beforeEach(async () => {
+    await storage.clear('user_age')
+  })
+
   it('should render correctly', () => {
     const renderAPI = render(<AgeSelection />)
     expect(renderAPI).toMatchSnapshot()
@@ -85,4 +90,16 @@ describe('AgeSelection', () => {
     fireEvent.press(button)
     expect(analytics.logGoToParentsFAQ).toHaveBeenCalledWith('ageselection')
   })
+
+  it.each(AGES)(
+    'should set user age to %s in local storage  when pressing "j’ai %s ans"',
+    async (age) => {
+      const { getByText } = render(<AgeSelection />)
+      const button = getByText(`${age} ans`)
+
+      fireEvent.press(button)
+      const userAge = await storage.readObject('user_age')
+      expect(userAge).toBe(age)
+    }
+  )
 })

@@ -8,23 +8,28 @@ import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { NonEligible } from 'features/onboarding/types'
 import { env } from 'libs/environment/env'
 import { analytics } from 'libs/firebase/analytics'
+import { storage } from 'libs/storage'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
+const logGoToParentsFAQ = () => analytics.logGoToParentsFAQ('ageselectionother')
+
 export const AgeSelectionOther: FunctionComponent = () => {
   const { showNonEligibleModal } = useOnboardingContext()
 
-  const logGoToParentsFAQ = useCallback(() => analytics.logGoToParentsFAQ('ageselectionother'), [])
-  const onUnder15Press = useCallback(() => {
+  const onUnder15Press = useCallback(async () => {
     analytics.logSelectAge(NonEligible.UNDER_15)
     showNonEligibleModal(NonEligible.UNDER_15)
+    await storage.saveObject('user_age', NonEligible.UNDER_15)
   }, [showNonEligibleModal])
-  const onOver18Press = useCallback(() => {
+
+  const onOver18Press = useCallback(async () => {
     analytics.logSelectAge(NonEligible.OVER_18)
     showNonEligibleModal(NonEligible.OVER_18)
+    await storage.saveObject('user_age', NonEligible.OVER_18)
   }, [showNonEligibleModal])
 
   return (
