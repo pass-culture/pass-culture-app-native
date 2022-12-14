@@ -35,7 +35,7 @@ export class TabBar extends AppScreen {
       searchTabSelector = '~Rechercher des offres'
       bookingsTabSelector = '~Mes réservations'
       favoritesTabSelector = '~Mes favoris'
-      profilTabSelector = '~Mon profil'
+      profilTabSelector = '~Mon profi'
     }
 
     super(searchTabSelector)
