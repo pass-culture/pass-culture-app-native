@@ -209,7 +209,7 @@ jobs:
           target: ${{ matrix.emuTag }}
           arch: ${{ matrix.arch }}
           profile: ${{ matrix.profile }}
-          emulator-options: '-no-audio -gpu host -no-boot-anim'
+          emulator-options: '-gpu host'
 
       - name: Save logcat output
         if: ${{ always() }}
