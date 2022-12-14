@@ -82,6 +82,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec une photo.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
