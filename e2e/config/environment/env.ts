@@ -3,9 +3,12 @@ import { parseNumberVariables } from './parseNumberVariables'
 import { demo } from '../wdio-demo.conf'
 import { Environment } from './types'
 
+const ignoredNonNumericEnvs = ['ANDROID_PLATFORM_VERSION', 'IOS_PLATFORM_VERSION']
+
 const systemEnv = parseBooleanVariables(
   parseNumberVariables(
-    process.env as Record<string, string | boolean | number>
+    process.env as Record<string, string | boolean | number>,
+    ignoredNonNumericEnvs,
   ) as unknown as Record<string, string | boolean | number>
 )
 

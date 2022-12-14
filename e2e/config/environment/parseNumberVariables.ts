@@ -8,7 +8,8 @@ function isNumeric(string: unknown) {
 }
 
 export const parseNumberVariables = (
-  config: Record<string, string | boolean | number>
+  config: Record<string, string | boolean | number>,
+  ignores: string[]
 ): Environment => {
   const configWithActualBooleans = { ...config } as Record<
     keyof Environment,
@@ -16,7 +17,7 @@ export const parseNumberVariables = (
   >
 
   Object.keys(config).forEach((key) => {
-    if (isNumeric(configWithActualBooleans[key as keyof Environment])) {
+    if (isNumeric(configWithActualBooleans[key as keyof Environment]) && !ignores.includes(key)) {
       configWithActualBooleans[key as keyof Environment] = Number(
         configWithActualBooleans[key as keyof Environment]
       )
