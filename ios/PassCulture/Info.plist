@@ -80,18 +80,18 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Pour vous offrir les meilleurs offres et une expérience personnalisée</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec une photo.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Cette application peut vérifier ton identité avec une photo de votre galerie.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec de l'audio</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Cette application peut vérifier ton identité avec une photo de votre galerie.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Pour vous offrir les meilleurs offres et une expérience personnalisée</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
