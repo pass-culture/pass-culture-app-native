@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import { SwiperProps } from 'react-native-web-swiper'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { Dot as DotIcon } from 'ui/svg/icons/Dot'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -40,14 +39,12 @@ type DotComponentProps = SwiperProps & {
   numberOfSteps: number
   isActive: boolean
   withNeutralPreviousStepsColor?: boolean
-  onPress?: () => void
 }
 
 export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   const Dot = getStyledDot(props.index, props.activeIndex, props.withNeutralPreviousStepsColor)
   const step = props.index + 1
   const totalSteps = props.numberOfSteps
-  const clickable = !!props.onPress
 
   let status = 'à faire'
   if (props.isActive) {
@@ -57,20 +54,13 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   }
 
   return (
-    <Touchable
-      activeOpacity={1}
-      onPress={props.onPress}
-      testID="button"
-      disabled={!clickable}
-      aria-hidden={!clickable}>
-      <DotContainer>
-        <Dot
-          accessibilityLabel={clickable ? `Étape ${step} sur ${totalSteps} ${status}` : undefined}
-          size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
-          testID="dot-icon"
-        />
-      </DotContainer>
-    </Touchable>
+    <DotContainer>
+      <Dot
+        accessibilityLabel={`Étape ${step} sur ${totalSteps} ${status}`}
+        size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
+        testID="dot-icon"
+      />
+    </DotContainer>
   )
 }
 

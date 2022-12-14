@@ -1455,199 +1455,99 @@ quotidiennes
                   }
                 >
                   <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      Object {
-                        "disabled": true,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      Array [
+                        Object {
+                          "alignSelf": "center",
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                        },
+                      ]
                     }
-                    testID="button"
                   >
                     <View
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                          },
-                        ]
-                      }
+                      accessibilityLabel="Étape 1 sur 4 en cours"
+                      borderColor="#eb0055"
+                      fillColor="#eb0055"
+                      height={12}
+                      testID="dot-icon"
+                      width={12}
                     >
-                      <View
-                        borderColor="#eb0055"
-                        fillColor="#eb0055"
-                        height={12}
-                        testID="dot-icon"
-                        width={12}
-                      >
-                        <Text>
-                          dot-icon-SVG-Mock
-                        </Text>
-                      </View>
+                      <Text>
+                        dot-icon-SVG-Mock
+                      </Text>
                     </View>
                   </View>
                   <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      Object {
-                        "disabled": true,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      Array [
+                        Object {
+                          "alignSelf": "center",
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                        },
+                      ]
                     }
-                    testID="button"
                   >
                     <View
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                          },
-                        ]
-                      }
+                      accessibilityLabel="Étape 2 sur 4 à faire"
+                      borderColor="#696A6F"
+                      fillColor="transparent"
+                      height={8}
+                      testID="dot-icon"
+                      width={8}
                     >
-                      <View
-                        borderColor="#696A6F"
-                        fillColor="transparent"
-                        height={8}
-                        testID="dot-icon"
-                        width={8}
-                      >
-                        <Text>
-                          dot-icon-SVG-Mock
-                        </Text>
-                      </View>
+                      <Text>
+                        dot-icon-SVG-Mock
+                      </Text>
                     </View>
                   </View>
                   <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      Object {
-                        "disabled": true,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      Array [
+                        Object {
+                          "alignSelf": "center",
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                        },
+                      ]
                     }
-                    testID="button"
                   >
                     <View
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                          },
-                        ]
-                      }
+                      accessibilityLabel="Étape 3 sur 4 à faire"
+                      borderColor="#696A6F"
+                      fillColor="transparent"
+                      height={8}
+                      testID="dot-icon"
+                      width={8}
                     >
-                      <View
-                        borderColor="#696A6F"
-                        fillColor="transparent"
-                        height={8}
-                        testID="dot-icon"
-                        width={8}
-                      >
-                        <Text>
-                          dot-icon-SVG-Mock
-                        </Text>
-                      </View>
+                      <Text>
+                        dot-icon-SVG-Mock
+                      </Text>
                     </View>
                   </View>
                   <View
-                    accessibilityRole="button"
-                    accessibilityState={
-                      Object {
-                        "disabled": true,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      Array [
+                        Object {
+                          "alignSelf": "center",
+                          "marginLeft": 4,
+                          "marginRight": 4,
+                        },
+                      ]
                     }
-                    testID="button"
                   >
                     <View
-                      style={
-                        Array [
-                          Object {
-                            "alignSelf": "center",
-                            "marginLeft": 4,
-                            "marginRight": 4,
-                          },
-                        ]
-                      }
+                      accessibilityLabel="Étape 4 sur 4 à faire"
+                      borderColor="#696A6F"
+                      fillColor="transparent"
+                      height={8}
+                      testID="dot-icon"
+                      width={8}
                     >
-                      <View
-                        borderColor="#696A6F"
-                        fillColor="transparent"
-                        height={8}
-                        testID="dot-icon"
-                        width={8}
-                      >
-                        <Text>
-                          dot-icon-SVG-Mock
-                        </Text>
-                      </View>
+                      <Text>
+                        dot-icon-SVG-Mock
+                      </Text>
                     </View>
                   </View>
                 </View>
