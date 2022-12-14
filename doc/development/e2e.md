@@ -28,6 +28,8 @@ You must provide the `chromedriver` specific to your Android device (this can be
 
 You can read more on : https://chromedriver.chromium.org/downloads
 
+For Mac user when you downloaded the version adapted at your Chrome you can extract it and use this command : `mv chromedriver /usr/local/bin`
+
 To install the chromedriver of your choice:
 
 ```bash
@@ -47,6 +49,11 @@ In case of problem, there is a useful tool called `appium-doctor`, you can insta
 npm install @appium/doctor --location=global
 appium-doctor
 ```
+
+### App center
+
+You can create an user API token in Account => Account Settings => User API tokens
+You can name it APPCENTER_USER_API_TOKEN
 
 ### Configuration
 
@@ -89,13 +96,24 @@ yarn e2e:android.browser
 
 You can view all available options in [`e2e/config/environment/env.ts`](../../e2e/config/environment/env.ts).
 
+You can add directly the principal variables in your global environment file :
+
+```bash
+export APPCENTER_USER_API_TOKEN="token generated in app center"
+export WDIO_BASE_URL="Your principal URL (Ex: http://localhost:3000)"
+export ANDROID_PLATFORM_VERSION="Android version in your emulator"
+export ANDROID_DEVICE_NAME="Emulator name with adb devices command"
+export IOS_PLATFORM_VERSION="16.0" (Maybe it will be necessary to update directly conf files because the variable in output is 16)
+export IOS_DEVICE_NAME="iPhone emulator Name"
+```
+
 **Drivers**
 
 On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
 
 - `chromedriver` for Chrome
 - `safaridriver` for Safari
-- `geckodriver` for Firefox
+- `geckodriver` for Firefox (For Mac user you can use `brew install geckodriver`)
 
 Refer to google to get installation instruction for your system.
 
