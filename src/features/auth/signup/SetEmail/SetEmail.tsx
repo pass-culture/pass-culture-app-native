@@ -1,7 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { FunctionComponent, useCallback, useRef } from 'react'
-import { Controller, useForm } from 'react-hook-form'
-import { TextInput as RNTextInput } from 'react-native'
+import React, { FunctionComponent, useCallback } from 'react'
+import {
+  Controller,
+  ControllerFieldState,
+  ControllerRenderProps,
+  useForm,
+  UseFormStateReturn,
+} from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -16,12 +21,46 @@ import { Spacer } from 'ui/theme'
 
 import { PreValidationSignupStepProps } from '../types'
 
+const emailInputErrorId = uuidv4()
+
+type FormValues = {
+  email: string
+  marketingEmailSubscription: boolean
+}
+
+type InputControlled<fieldName extends keyof FormValues> = {
+  field: ControllerRenderProps<FormValues, fieldName>
+  fieldState: ControllerFieldState
+  formState: UseFormStateReturn<FormValues>
+}
+
+const EmailInputControlled = ({ field: { onChange, onBlur, value } }: InputControlled<'email'>) => (
+  <EmailInput
+    label="Adresse e-mail"
+    email={value}
+    onEmailChange={onChange}
+    autoFocus
+    accessibilityDescribedBy={emailInputErrorId}
+    onBlur={onBlur}
+  />
+)
+
+const NewsletterCheckboxControlled = ({
+  field: { value, onChange },
+}: InputControlled<'marketingEmailSubscription'>) => (
+  <Checkbox
+    isChecked={value}
+    label="J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
+    onPress={onChange}
+  />
+)
+
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const {
     control,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<FormValues>({
     defaultValues: {
       email: '',
       marketingEmailSubscription: false,
@@ -29,39 +68,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
     resolver: yupResolver(setEmailSchema),
     mode: 'all',
   })
-  const emailInputErrorId = uuidv4()
-
-  const emailInput = useRef<RNTextInput | null>(null)
 
   const onLogAnalytics = useCallback(() => {
     analytics.logLogin({ method: 'fromSetEmail' })
   }, [])
-
-  const EmailInputControlled = useCallback(
-    ({ field: { onChange, onBlur, value } }) => (
-      <EmailInput
-        label="Adresse e-mail"
-        email={value}
-        onEmailChange={onChange}
-        autoFocus
-        ref={emailInput}
-        accessibilityDescribedBy={emailInputErrorId}
-        onBlur={onBlur}
-      />
-    ),
-    [emailInputErrorId]
-  )
-
-  const NewsletterCheckbox = useCallback(
-    ({ field: { value, onChange } }) => (
-      <Checkbox
-        isChecked={value}
-        label="J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
-        onPress={onChange}
-      />
-    ),
-    []
-  )
 
   const goToNextStep = useCallback(
     ({ email, marketingEmailSubscription }) => {
@@ -80,7 +90,11 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         relatedInputId={emailInputErrorId}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <Controller control={control} name="marketingEmailSubscription" render={NewsletterCheckbox} />
+      <Controller
+        control={control}
+        name="marketingEmailSubscription"
+        render={NewsletterCheckboxControlled}
+      />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Continuer"
