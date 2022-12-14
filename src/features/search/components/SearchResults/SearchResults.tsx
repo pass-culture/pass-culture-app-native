@@ -72,9 +72,7 @@ export const SearchResults: React.FC = () => {
   const isFocused = useIsFocused()
 
   const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
-  const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage
-    ? `${searchState.query} ${userData[0]?.message}`
-    : ''
+  const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 

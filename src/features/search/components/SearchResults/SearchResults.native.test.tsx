@@ -435,12 +435,12 @@ describe('SearchResults component', () => {
     it('should display when query is an unavailable offer', async () => {
       mockHits = mockedAlgoliaResponse.hits
       mockNbHits = mockedAlgoliaResponse.nbHits
-      mockUserData = [{ message: "n'est pas disponible sur le pass Culture." }]
+      mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
       const { queryByText } = render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText("iPhone n'est pas disponible sur le pass Culture.")).toBeTruthy()
+        expect(queryByText('Offre non disponible sur le pass Culture.')).toBeTruthy()
       })
     })
 
@@ -452,7 +452,7 @@ describe('SearchResults component', () => {
       const { queryByText } = render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText("Deezer n'est pas disponible sur le pass Culture.")).toBeFalsy()
+        expect(queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
       })
     })
   })
