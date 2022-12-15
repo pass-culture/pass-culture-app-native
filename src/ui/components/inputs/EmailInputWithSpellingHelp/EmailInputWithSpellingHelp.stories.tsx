@@ -9,17 +9,7 @@ export default {
   component: EmailInputWithSpellingHelp,
 } as ComponentMeta<typeof EmailInputWithSpellingHelp>
 
-const Template: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => (
-  <EmailInputWithSpellingHelp {...props} />
-)
-
-export const Default = Template.bind({})
-Default.args = {
-  label: 'Adresse e-mail',
-  email: 'email@gmail.com',
-}
-
-export const WithSpellingHelp: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => {
+const Template: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => {
   const { control } = useForm<{ email: string }>({
     defaultValues: {
       email: props.email,
@@ -32,7 +22,7 @@ export const WithSpellingHelp: ComponentStory<typeof EmailInputWithSpellingHelp>
       name="email"
       render={({ field: { onChange, onBlur, value } }) => (
         <EmailInputWithSpellingHelp
-          label="Adresse e-mail"
+          {...props}
           email={value}
           onEmailChange={onChange}
           onBlur={onBlur}
@@ -41,7 +31,15 @@ export const WithSpellingHelp: ComponentStory<typeof EmailInputWithSpellingHelp>
     />
   )
 }
+
+export const WithGoodEmail = Template.bind({})
+WithGoodEmail.args = {
+  label: 'Adresse e-mail',
+  email: 'firstname.lastname@gmail.com',
+}
+
+export const WithSpellingHelp = Template.bind({})
 WithSpellingHelp.args = {
   label: 'Adresse e-mail',
-  email: 'email@gmal.com',
+  email: 'firstname.lastname@gmal.com',
 }
