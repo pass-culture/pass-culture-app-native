@@ -1,10 +1,10 @@
 # liste toute douce
 
-- [ ] essayer [la lib pas overkill](https://www.npmjs.com/package/@zootools/email-spell-checker)
+- [x] essayer [la lib pas overkill](https://www.npmjs.com/package/@zootools/email-spell-checker)
   - [x] logguer l'email suggéré
-- [ ] faire un bouton remplacer
-- [ ] debounce sur la validation
-- [ ] faire un composant EmailInputWithSpellingHelp
+- [x] faire un bouton remplacer
+- [x] debounce sur la validation
+- [x] faire un composant EmailInputWithSpellingHelp
 - [ ] Régler l'histoire de value et email dans EmailInput
 - [ ] Régler l'histoire de onChange et onEmailChange dans EmailInput
 
