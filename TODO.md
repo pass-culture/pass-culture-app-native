@@ -1,6 +1,10 @@
 # liste toute douce
 
 - [ ] essayer [la lib pas overkill](https://www.npmjs.com/package/@zootools/email-spell-checker)
+  - [ ] logguer l'email suggggéré
+- [ ] debounce sur la validation
+- [ ] faire un bouton remplacer
+- [ ] faire un composant EmailInputWithSpellingHelp
 
 [MobTime](https://mobtime.hadrienmp.fr/mob/pass-culture)
 
