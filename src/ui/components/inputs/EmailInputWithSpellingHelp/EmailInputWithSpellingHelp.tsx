@@ -1,19 +1,20 @@
 import emailSpellChecker from '@zootools/email-spell-checker'
 import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 import debounce from 'lodash/debounce'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ComponentProps, useEffect, useRef, useState } from 'react'
 
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
-const SpellingHelp = ({
-  suggestedEmail,
-  onEmailChange,
-}: {
+type EmailInputWithSpellingHelpProps = ComponentProps<typeof EmailInput>
+
+type SpellingHelpProps = {
   suggestedEmail: MailSuggestion
   onEmailChange: (email: string) => void
-}) => {
+}
+
+const SpellingHelp = ({ suggestedEmail, onEmailChange }: SpellingHelpProps) => {
   const replaceEmail = () => {
     onEmailChange(suggestedEmail.full)
   }
@@ -27,16 +28,18 @@ const SpellingHelp = ({
   )
 }
 
-export const EmailInputWithSpellingHelp: typeof EmailInput = (props) => {
+export const EmailInputWithSpellingHelp = (props: EmailInputWithSpellingHelpProps) => {
   const [suggestedEmail, setSuggestedEmail] = useState<MailSuggestion | undefined>(
     emailSpellChecker.run({
       email: props.email,
     })
   )
+
   const onEmailChange = (email: string) => {
     props.onEmailChange(email)
     setSuggestedEmail(undefined)
   }
+
   const debouncedSetSuggestedEmail = useRef(
     debounce((email) => {
       setSuggestedEmail(

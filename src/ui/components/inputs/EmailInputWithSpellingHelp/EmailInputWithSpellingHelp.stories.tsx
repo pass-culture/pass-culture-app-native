@@ -5,7 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
 
 export default {
-  title: 'ui/forms/emailInputWithSpellingHelp',
+  title: 'ui/inputs/emailInputWithSpellingHelp',
   component: EmailInputWithSpellingHelp,
 } as ComponentMeta<typeof EmailInputWithSpellingHelp>
 
