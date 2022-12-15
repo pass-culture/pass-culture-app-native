@@ -262,7 +262,6 @@ Object {
                   >
                     <label
                       class="c3"
-                      for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
                     </label>
@@ -281,7 +280,6 @@ Object {
                       style="width: 4px;"
                     />
                     <input
-                      aria-describedby="testUuidV4"
                       aria-hidden="false"
                       autocapitalize="sentences"
                       autocomplete="on"
@@ -290,7 +288,6 @@ Object {
                       data-testid="searchInput"
                       dir="ltr"
                       enterkeyhint="search"
-                      id="testUuidV4"
                       inputmode="numeric"
                       placeholder="Ex : 75017"
                       spellcheck="false"
@@ -299,7 +296,6 @@ Object {
                     />
                   </div>
                   <div
-                    id="testUuidV4"
                     role="alert"
                   />
                   <div
@@ -617,7 +613,6 @@ Object {
                 >
                   <label
                     class="c3"
-                    for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
                   </label>
@@ -636,7 +631,6 @@ Object {
                     style="width: 4px;"
                   />
                   <input
-                    aria-describedby="testUuidV4"
                     aria-hidden="false"
                     autocapitalize="sentences"
                     autocomplete="on"
@@ -645,7 +639,6 @@ Object {
                     data-testid="searchInput"
                     dir="ltr"
                     enterkeyhint="search"
-                    id="testUuidV4"
                     inputmode="numeric"
                     placeholder="Ex : 75017"
                     spellcheck="false"
@@ -654,7 +647,6 @@ Object {
                   />
                 </div>
                 <div
-                  id="testUuidV4"
                   role="alert"
                 />
                 <div
