@@ -55,6 +55,8 @@ const NewsletterCheckboxControlled = ({
   />
 )
 
+const DISPLAY_HELP_MESSAGE_AFTER_MS = 700
+
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const {
     control,
@@ -67,6 +69,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
     },
     resolver: yupResolver(setEmailSchema),
     mode: 'all',
+    delayError: DISPLAY_HELP_MESSAGE_AFTER_MS,
   })
 
   const onLogAnalytics = useCallback(() => {

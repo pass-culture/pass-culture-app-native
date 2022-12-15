@@ -9,6 +9,8 @@ const props = {
   signUp: jest.fn(),
 }
 
+jest.useFakeTimers()
+
 describe('<SetEmail />', () => {
   it('should display disabled validate button when email input is not filled', () => {
     const { getByText } = render(<SetEmail {...props} />)
@@ -75,6 +77,10 @@ describe('<SetEmail />', () => {
 
       const continueButton = getByText('Continuer')
       fireEvent.press(continueButton)
+    })
+
+    await act(async () => {
+      jest.advanceTimersByTime(700)
     })
 
     expect(
