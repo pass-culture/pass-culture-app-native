@@ -17,6 +17,30 @@ describe('<SetEmail />', () => {
     expect(button).toBeDisabled()
   })
 
+  it('should display disabled validate button when email input is filled spaces', async () => {
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, '    ')
+    })
+
+    const button = getByText('Continuer')
+    expect(button).toBeDisabled()
+  })
+
+  it('should display disabled validate button when email input is filled', async () => {
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    })
+
+    const button = getByText('Continuer')
+    expect(button).toBeEnabled()
+  })
+
   it('should enable validate button when email input is filled', async () => {
     const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
@@ -66,7 +90,7 @@ describe('<SetEmail />', () => {
     ).toBeFalsy()
   })
 
-  it('should reject email', async () => {
+  it('should reject email when trying to submit', async () => {
     const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
