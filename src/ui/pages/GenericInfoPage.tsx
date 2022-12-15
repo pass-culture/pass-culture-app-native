@@ -22,9 +22,9 @@ type Props = {
 const ANIMATION_SIZE = getSpacing(45)
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
-// ON THIS PAGE OR IT WILL BREAK !!!
+// ON THIS PAGE OR IT WILL BREAK!!!
 // THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
-// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION!
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
   noIndex = true,
