@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
+import { storage } from 'libs/storage'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -13,10 +14,22 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer } from 'ui/theme'
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
-  )
-  const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
+  const CURRENT_YEAR = new Date().getFullYear()
+  const DEFAULT_SELECTED_DATE = new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
+
+  const [defaultSelectedDate, setDefaultSelectedDate] = useState(DEFAULT_SELECTED_DATE)
+  const MAXIMUM_SPINNER_DATE = new Date(CURRENT_YEAR - UNDER_YOUNGEST_AGE, 11, 31)
+
+  useEffect(() => {
+    const setDate = async () => {
+      const userAge = await storage.readObject<number | string>('user_age')
+      if (typeof userAge === 'number') {
+        setDefaultSelectedDate(new Date(new Date().setFullYear(CURRENT_YEAR - userAge)))
+      }
+    }
+
+    setDate()
+  }, [CURRENT_YEAR])
 
   const [date, setDate] = useState<Date | undefined>()
 
@@ -40,7 +53,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         <DateInput
           onChange={setDate}
           errorMessage={errorMessage}
-          defaultSelectedDate={DEFAULT_SELECTED_DATE}
+          defaultSelectedDate={defaultSelectedDate}
           maximumDate={MAXIMUM_SPINNER_DATE}
           minimumDate={MINIMUM_DATE}
         />
