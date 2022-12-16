@@ -1,5 +1,7 @@
+import mockdate from 'mockdate'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
+import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchParametersFields } from 'libs/contentful'
@@ -10,6 +12,7 @@ import { renderHook } from 'tests/utils'
 import { parseSearchParameters } from './parseSearchParameters'
 
 jest.mock('features/profile/api')
+mockdate.set(new Date('2020-10-01T00:00+00:00'))
 
 const defaultSearchParameters = {
   ...initialSearchState,
@@ -85,6 +88,33 @@ describe('parseSearchParameters', () => {
       offerIsFree: true,
       beginningDatetime: '2020-10-01T00:00+00:00',
       endingDatetime: '2020-10-02T00:00+00:00',
+    })
+  })
+  it('should return parsed algolia parameters with event during 5 days when provided', () => {
+    const days = 5
+    const parameters = {
+      tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
+      hitsPerPage: 5,
+      isDuo: true,
+      newestOnly: true,
+      isDigital: true,
+      isEvent: true,
+      isThing: true,
+      isFree: true,
+      eventDuringNextXDays: days,
+    } as SearchParametersFields
+    const geolocation = null
+    const mockedComputer = jest.spyOn(
+      computeBeginningAndEndingDatetimes,
+      'computeBeginningAndEndingDatetimes'
+    )
+    parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    expect(mockedComputer).toHaveBeenCalledWith({
+      beginningDatetime: undefined,
+      endingDatetime: undefined,
+      eventDuringNextXDays: days,
+      upcomingWeekendEvent: undefined,
+      currentWeekEvent: undefined,
     })
   })
 
