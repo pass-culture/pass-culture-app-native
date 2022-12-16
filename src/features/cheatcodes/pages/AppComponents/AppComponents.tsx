@@ -10,6 +10,7 @@ import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
+import { CategoryBlock } from 'features/home/components/CategoryBlock'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -21,6 +22,7 @@ import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
+import { theme } from 'theme'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner } from 'ui/components/Banner'
@@ -654,7 +656,6 @@ export const AppComponents: FunctionComponent = () => {
           <BottomBanner text="Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture." />
         </AccordionItem>
         <Divider />
-        {/* Your components */}
         <AccordionItem title="New Beneficiary Header">
           <CreditHeader
             firstName="Rosa"
@@ -737,6 +738,39 @@ export const AppComponents: FunctionComponent = () => {
             }}
             venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
           />
+          <StyledRowView>
+            <CategoryBlock
+              title={
+                'Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma'
+              }
+              url="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+              filter={{ color: theme.uniqueColors.brand, opacity: 0.7 }}
+              imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+            />
+            <Spacer.Row numberOfSpaces={1} />
+            <CategoryBlock
+              title={'Le plein'}
+              url="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+              filter={{ color: theme.colors.secondary, opacity: 0.64 }}
+              imageUrl="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
+            />
+          </StyledRowView>
+          <Spacer.Column numberOfSpaces={1} />
+          <StyledRowView>
+            <CategoryBlock
+              title={
+                'Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma'
+              }
+              url="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+              filter={{ color: theme.uniqueColors.brand, opacity: 0.7 }}
+            />
+            <Spacer.Row numberOfSpaces={1} />
+            <CategoryBlock
+              title={'Le plein'}
+              url="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+              filter={{ color: theme.colors.secondary, opacity: 0.64 }}
+            />
+          </StyledRowView>
         </AccordionItem>
         <Spacer.Column numberOfSpaces={5} />
         <Spacer.BottomScreen />
@@ -862,3 +896,7 @@ const SnackBars = () => {
     </React.Fragment>
   )
 }
+
+const StyledRowView = styled.View({
+  flexDirection: 'row',
+})
