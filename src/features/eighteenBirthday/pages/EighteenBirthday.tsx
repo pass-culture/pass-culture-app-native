@@ -1,1 +1,1 @@
-export { EighteenBirthdayAchievement as EighteenBirthday } from './components/EighteenBirthdayAchievement'
+export { EighteenBirthdayAchievement as EighteenBirthday } from 'features/eighteenBirthday/components/EighteenBirthdayAchievement'
