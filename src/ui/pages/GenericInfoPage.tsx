@@ -1,10 +1,11 @@
-import React, { ReactNode, useMemo, FunctionComponent } from 'react'
+import React, { ReactNode, useMemo, FunctionComponent, useEffect } from 'react'
+import { StatusBar } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
-import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
+import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -20,10 +21,10 @@ type Props = {
 
 const ANIMATION_SIZE = getSpacing(45)
 
-// NEVER EVER USE NAVIGATION ON THIS PAGE OR
-// IT WILL BREAK !!!
+// NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
+// ON THIS PAGE OR IT WILL BREAK!!!
 // THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
-// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION!
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
   noIndex = true,
@@ -51,6 +52,13 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
     return spacingMatrix.bottom
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      StatusBar.setBarStyle('light-content', true)
+    })
+    return () => StatusBar.setBarStyle('dark-content', true)
+  }, [])
+
   return (
     <Wrapper>
       {!!noIndex && (
@@ -58,7 +66,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
-      <BackgroundWithWhiteStatusBar />
+      <BackgroundWithDefaultStatusBar />
       <Content>
         <Spacer.TopScreen />
         {!!isTouch && (
