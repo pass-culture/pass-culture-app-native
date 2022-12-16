@@ -88,15 +88,6 @@ describe('<Favorite /> component', () => {
     expect(queryByText('10 km')).toBeTruthy()
   })
 
-  it('offer name should take full space if no geolocation', () => {
-    mockDistance = '10 km'
-    const withDistance = renderFavorite().toJSON()
-
-    mockDistance = null
-    const withoutDistance = renderFavorite().toJSON()
-    expect(withoutDistance).toMatchDiffSnapshot(withDistance)
-  })
-
   it('should delete favorite on button click', async () => {
     const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
     simulateBackend()
