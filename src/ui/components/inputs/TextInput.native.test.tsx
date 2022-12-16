@@ -21,15 +21,6 @@ describe('<TextInput />', () => {
     expect(myRef.current).toBeTruthy()
   })
 
-  it('should render correctly when in error', () => {
-    const notErrorInstance = render(NormalStateTextInput)
-    const errorInstance = render(
-      <TextInput isError placeholder="placeholder" onChangeText={doNothingFn} />
-    )
-
-    expect(notErrorInstance).toMatchDiffSnapshot(errorInstance)
-  })
-
   it('should render with accessibility label and testID if provided', () => {
     const { queryByLabelText, queryByTestId } = render(
       <TextInput accessibilityLabel="input" testID="input" onChangeText={doNothingFn} />

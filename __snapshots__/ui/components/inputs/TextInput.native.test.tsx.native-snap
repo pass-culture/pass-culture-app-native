@@ -71,31 +71,3 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
   </View>
 </View>
 `;
-
-exports[`<TextInput /> should render correctly when in error 1`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -12,18 +12,18 @@
-    }
-  >
-    <View
-      height=\\"small\\"
-      isDisabled={false}
--     isError={false}
-+     isError={true}
-      isFocus={false}
-      style={
-        Array [
-          Object {
-            \\"alignItems\\": \\"center\\",
-            \\"backgroundColor\\": \\"#ffffff\\",
--           \\"borderColor\\": \\"#90949D\\",
-+           \\"borderColor\\": \\"#b60025\\",
-            \\"borderRadius\\": 22,
-            \\"borderStyle\\": \\"solid\\",
-            \\"borderWidth\\": 1,
-            \\"flexDirection\\": \\"row\\",
-            \\"height\\": 40,"
-`;
