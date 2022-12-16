@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, checkAccessibilityFor } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')
 const mockHideModal = jest.fn()
@@ -48,6 +48,14 @@ describe('<QuitIdentityCheckModal/>', () => {
     await waitForExpect(() => {
       expect(analytics.logConfirmQuitIdentityCheck).toHaveBeenNthCalledWith(1, mockStep)
       expect(navigateToHome).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = renderQuitIdentityCheckModal(true)
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })

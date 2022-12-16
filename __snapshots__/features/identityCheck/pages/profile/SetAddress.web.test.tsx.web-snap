@@ -262,7 +262,6 @@ Object {
                   >
                     <label
                       class="c3"
-                      for="testUuidV4"
                     >
                       Entre ton adresse
                     </label>
@@ -281,7 +280,6 @@ Object {
                       style="width: 4px;"
                     />
                     <input
-                      aria-describedby="testUuidV4"
                       aria-hidden="false"
                       autocapitalize="sentences"
                       autocomplete="on"
@@ -290,7 +288,6 @@ Object {
                       data-testid="searchInput"
                       dir="ltr"
                       enterkeyhint="next"
-                      id="testUuidV4"
                       placeholder="Ex : 34 avenue de l'Opéra"
                       spellcheck="false"
                       style="color: rgb(105, 106, 111); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Italic; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
@@ -299,7 +296,6 @@ Object {
                     />
                   </div>
                   <div
-                    id="testUuidV4"
                     role="alert"
                   />
                   <div
@@ -611,7 +607,6 @@ Object {
                 >
                   <label
                     class="c3"
-                    for="testUuidV4"
                   >
                     Entre ton adresse
                   </label>
@@ -630,7 +625,6 @@ Object {
                     style="width: 4px;"
                   />
                   <input
-                    aria-describedby="testUuidV4"
                     aria-hidden="false"
                     autocapitalize="sentences"
                     autocomplete="on"
@@ -639,7 +633,6 @@ Object {
                     data-testid="searchInput"
                     dir="ltr"
                     enterkeyhint="next"
-                    id="testUuidV4"
                     placeholder="Ex : 34 avenue de l'Opéra"
                     spellcheck="false"
                     style="color: rgb(105, 106, 111); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Italic; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
@@ -648,7 +641,6 @@ Object {
                   />
                 </div>
                 <div
-                  id="testUuidV4"
                   role="alert"
                 />
                 <div

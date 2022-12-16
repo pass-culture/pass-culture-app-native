@@ -11,6 +11,7 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDStatus: FunctionComponent = () => {
   useEffect(() => {
@@ -97,7 +98,7 @@ const Container = styled.View({
   marginVertical: getSpacing(8),
 })
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
 const StyledText = styled(Text)({

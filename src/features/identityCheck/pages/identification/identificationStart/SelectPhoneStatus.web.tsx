@@ -8,6 +8,7 @@ import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
   return <PageWithHeader title={'Identification'} scrollChildren={<SelectPhoneStatusContent />} />
@@ -58,7 +59,7 @@ const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) 
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
 const StyledBody = styled(Typo.Body)({

@@ -6,7 +6,7 @@ import { contactSupport } from 'features/auth/support.services'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -33,5 +33,13 @@ describe('Navigate to home button', () => {
     fireEvent.click(getByText('Retourner à l’accueil'))
 
     expect(navigate).toBeCalledWith(...homeNavConfig)
+  })
+})
+
+describe('Accessibility', () => {
+  it('should not have basic accessibility issues', async () => {
+    const { container } = render(<PhoneValidationTooManyAttempts />)
+    const results = await checkAccessibilityFor(container)
+    expect(results).toHaveNoViolations()
   })
 })

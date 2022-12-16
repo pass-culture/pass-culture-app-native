@@ -10,6 +10,7 @@ import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectIDOrigin: FunctionComponent = () => {
   useEffect(() => {
@@ -73,7 +74,7 @@ const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyin
   })
 )``
 
-const StyledTitle4 = styled(Typo.Title4)({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
 const StyledBody = styled(Typo.Body)({
