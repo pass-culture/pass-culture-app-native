@@ -220,10 +220,11 @@ describe('<Login/>', () => {
 
   it('should show email error message WHEN signin has failed because of invalid e-mail format', async () => {
     const renderAPI = renderLogin()
-    const notErrorSnapshot = renderAPI.toJSON()
+
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'not_valid_email@gmail')
+
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
@@ -234,8 +235,6 @@ describe('<Login/>', () => {
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeTruthy()
-      const errorSnapshot = renderAPI.toJSON()
-      expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
     })
     expect(navigate).not.toBeCalled()
   })
@@ -243,18 +242,17 @@ describe('<Login/>', () => {
   it('should show error message and error inputs WHEN signin has failed because of wrong credentials', async () => {
     simulateSigninWrongCredentials()
     const renderAPI = renderLogin()
-    const notErrorSnapshot = renderAPI.toJSON()
+
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'email@gmail.com')
+
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(renderAPI.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
-      const errorSnapshot = renderAPI.toJSON()
-      expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
     })
     expect(navigate).not.toBeCalled()
   })
@@ -262,10 +260,11 @@ describe('<Login/>', () => {
   it('should show error message and error inputs WHEN signin has failed because of network failure', async () => {
     simulateSigninNetworkFailure()
     const renderAPI = renderLogin()
-    const notErrorSnapshot = renderAPI.toJSON()
+
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'email@gmail.com')
+
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
@@ -275,18 +274,17 @@ describe('<Login/>', () => {
         renderAPI.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       ).toBeTruthy()
     })
-    const errorSnapshot = renderAPI.toJSON()
-    expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
     expect(navigate).not.toBeCalled()
   })
 
   it('should show specific error message when signin rate limit is exceeded', async () => {
     simulateSigninRateLimitExceeded()
     const renderAPI = renderLogin()
-    const rateExceededSnapshot = renderAPI.toJSON()
+
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(emailInput, 'email@gmail.com')
+
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'mypassword')
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
@@ -296,14 +294,11 @@ describe('<Login/>', () => {
         renderAPI.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       ).toBeTruthy()
     })
-    const errorSnapshot = renderAPI.toJSON()
-    expect(rateExceededSnapshot).toMatchDiffSnapshot(errorSnapshot)
     expect(navigate).not.toBeCalled()
   })
 
   it('should enable login button when both text inputs are filled', async () => {
     const renderAPI = renderLogin()
-    const disabledButtonSnapshot = renderAPI.toJSON()
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
@@ -311,8 +306,8 @@ describe('<Login/>', () => {
     fireEvent.changeText(passwordInput, 'mypassword')
 
     await waitFor(() => {
-      const enabledButtonSnapshot = renderAPI.toJSON()
-      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
+      const connectedButton = renderAPI.getByText('Se connecter')
+      expect(connectedButton).toBeEnabled()
     })
   })
 
