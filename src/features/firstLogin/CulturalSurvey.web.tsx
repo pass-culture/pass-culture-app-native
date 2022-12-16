@@ -20,6 +20,7 @@ export const CulturalSurvey: React.FC = withCulturalSurveyProvider(function (pro
   return (
     <TypeformWidget
       id={formId}
+      iframeProps={{ title: 'Questionnaire culturel' }}
       hideFooter={false}
       hideHeaders={false}
       hidden={{ userPk, userId, source }}
