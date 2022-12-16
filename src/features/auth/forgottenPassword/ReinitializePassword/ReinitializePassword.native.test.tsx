@@ -49,18 +49,6 @@ describe('ReinitializePassword Page', () => {
     })
   })
 
-  it('should validate PasswordSecurityRules when password is correct', async () => {
-    const { toJSON, getByPlaceholderText } = renderReinitializePassword()
-    const notValidatedRulesSnapshot = toJSON()
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
-
-    await waitFor(() => {
-      const validatedRulesSnapshot = toJSON()
-      expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
-    })
-  })
-
   it('should redirect to login page WHEN password is reset', async () => {
     const { getByText, getByPlaceholderText } = renderReinitializePassword()
     const passwordInput = getByPlaceholderText('Ton mot de passe')
