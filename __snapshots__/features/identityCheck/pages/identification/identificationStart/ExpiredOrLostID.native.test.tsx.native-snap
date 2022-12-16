@@ -178,7 +178,7 @@ Array [
         ]
       }
     >
-      Tu peux faire une demande de renouvellement sur le site ants.gouv.fr.
+      Tu peux tout de même déposer un dossier en passant par demarches-simplifiees.fr
     </Text>
     <View
       flex={1}
@@ -255,7 +255,7 @@ Array [
         }
       />
       <View
-        accessibilityLabel="Demander un renouvellement"
+        accessibilityLabel="Aller sur demarches-simplifiees.fr"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -284,7 +284,7 @@ Array [
             "width": "100%",
           }
         }
-        testID="Demander un renouvellement"
+        testID="Aller sur demarches-simplifiees.fr"
       >
         <View
           style={
@@ -322,7 +322,7 @@ Array [
             ]
           }
         >
-          Demander un renouvellement
+          Aller sur demarches-simplifiees.fr
         </Text>
       </View>
     </View>

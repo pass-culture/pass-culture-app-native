@@ -5,6 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { amplitude } from 'libs/amplitude'
+import { env } from 'libs/environment'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
@@ -24,12 +25,12 @@ describe('ExpiredOrLostID', () => {
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
 
-  it('should open ants url on press "Demander un renouvellement"', async () => {
+  it('should open ants url on press "Aller sur demarches-simplifiees.fr"', async () => {
     const { getByText } = render(<ExpiredOrLostID />)
 
-    fireEvent.press(getByText('Demander un renouvellement'))
+    fireEvent.press(getByText('Aller sur demarches-simplifiees.fr'))
 
-    expect(openUrl).toHaveBeenCalledWith('https://ants.gouv.fr/', undefined)
+    expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined)
   })
 
   it('should send a amplitude event when the screen is mounted', async () => {

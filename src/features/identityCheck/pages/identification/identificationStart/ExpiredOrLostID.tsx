@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { amplitude } from 'libs/amplitude'
+import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -12,8 +13,6 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-const ANTS_URL = 'https://ants.gouv.fr/'
 
 export const ExpiredOrLostID = (): JSX.Element => {
   useEffect(() => {
@@ -37,7 +36,9 @@ export const ExpiredOrLostID = (): JSX.Element => {
         Si ta pièce d’identité est expirée, elle sera refusée pour débloquer ton crédit.
       </StyledBody>
       <Spacer.Column numberOfSpaces={1} />
-      <StyledBody>Tu peux faire une demande de renouvellement sur le site ants.gouv.fr.</StyledBody>
+      <StyledBody>
+        Tu peux tout de même déposer un dossier en passant par demarches-simplifiees.fr
+      </StyledBody>
       <Spacer.Flex flex={1} />
       <View>
         <InternalTouchableLink
@@ -48,8 +49,8 @@ export const ExpiredOrLostID = (): JSX.Element => {
         <Spacer.Column numberOfSpaces={5} />
         <ExternalTouchableLink
           as={ButtonTertiaryBlack}
-          wording="Demander un renouvellement"
-          externalNav={{ url: ANTS_URL }}
+          wording="Aller sur demarches-simplifiees.fr"
+          externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
           icon={ExternalSiteFilled}
         />
       </View>
