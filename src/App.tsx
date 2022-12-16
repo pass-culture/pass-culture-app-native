@@ -25,6 +25,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
+import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
@@ -79,37 +80,39 @@ const App: FunctionComponent = function () {
           <ReactQueryClientProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-              <NetInfoWrapper>
-                <AuthWrapper>
-                  <GeolocationWrapper>
-                    <FavoritesWrapper>
-                      <SearchAnalyticsWrapper>
-                        <SearchWrapper>
-                          <SnackBarProvider>
-                            <CulturalSurveyContextProvider>
-                              <SubscriptionContextProvider>
-                                <SplashScreenProvider>
-                                  <PushNotificationsWrapper>
-                                    <ShareAppWrapper>
-                                      <OnboardingWrapper>
-                                        <OfflineModeContainer>
-                                          <ScreenErrorProvider>
-                                            <AppNavigationContainer />
-                                          </ScreenErrorProvider>
-                                        </OfflineModeContainer>
-                                      </OnboardingWrapper>
-                                    </ShareAppWrapper>
-                                  </PushNotificationsWrapper>
-                                </SplashScreenProvider>
-                              </SubscriptionContextProvider>
-                            </CulturalSurveyContextProvider>
-                          </SnackBarProvider>
-                        </SearchWrapper>
-                      </SearchAnalyticsWrapper>
-                    </FavoritesWrapper>
-                  </GeolocationWrapper>
-                </AuthWrapper>
-              </NetInfoWrapper>
+              <E2eContextProvider>
+                <NetInfoWrapper>
+                  <AuthWrapper>
+                    <GeolocationWrapper>
+                      <FavoritesWrapper>
+                        <SearchAnalyticsWrapper>
+                          <SearchWrapper>
+                            <SnackBarProvider>
+                              <CulturalSurveyContextProvider>
+                                <SubscriptionContextProvider>
+                                  <SplashScreenProvider>
+                                    <PushNotificationsWrapper>
+                                      <ShareAppWrapper>
+                                        <OnboardingWrapper>
+                                          <OfflineModeContainer>
+                                            <ScreenErrorProvider>
+                                              <AppNavigationContainer />
+                                            </ScreenErrorProvider>
+                                          </OfflineModeContainer>
+                                        </OnboardingWrapper>
+                                      </ShareAppWrapper>
+                                    </PushNotificationsWrapper>
+                                  </SplashScreenProvider>
+                                </SubscriptionContextProvider>
+                              </CulturalSurveyContextProvider>
+                            </SnackBarProvider>
+                          </SearchWrapper>
+                        </SearchAnalyticsWrapper>
+                      </FavoritesWrapper>
+                    </GeolocationWrapper>
+                  </AuthWrapper>
+                </NetInfoWrapper>
+              </E2eContextProvider>
             </ErrorBoundary>
           </ReactQueryClientProvider>
         </SafeAreaProvider>

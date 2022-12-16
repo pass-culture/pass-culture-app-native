@@ -22,5 +22,7 @@ declare global {
     }
     onUbbleReady?: () => void
     pcupdate?: boolean
+    // webdriver is injected as a workaround for safari ios, remove if later it exist and set to true while doing automation
+    webdriver?: boolean
   }
 }
