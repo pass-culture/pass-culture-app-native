@@ -214,6 +214,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       )}
       <SearchInputContainer {...props}>
         <SearchInputA11yContainer>
+          {!!hasEditableSearchInput && (
+            <StyledView>
+              <BackButton onGoBack={onPressArrowBack} />
+            </StyledView>
+          )}
           <FlexView>
             {!!isLandingOrResults && <HiddenNavigateToSuggestionsButton />}
             <SearchMainInput
@@ -232,11 +237,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               accessibilityDescribedBy={accessibilityDescribedBy}
             />
           </FlexView>
-          {!!hasEditableSearchInput && (
-            <StyledView>
-              <BackButton onGoBack={onPressArrowBack} />
-            </StyledView>
-          )}
         </SearchInputA11yContainer>
         {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
       </SearchInputContainer>
@@ -267,7 +267,7 @@ const SearchInputContainer = styled.View({
 
 const SearchInputA11yContainer = styled.View({
   flex: 1,
-  flexDirection: 'row-reverse',
+  flexDirection: 'row',
   alignItems: 'center',
 })
 

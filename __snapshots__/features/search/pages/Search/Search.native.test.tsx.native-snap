@@ -91,7 +91,7 @@ exports[`<Search/> should render Search 1`] = `
                 Object {
                   "alignItems": "center",
                   "flexBasis": 0,
-                  "flexDirection": "row-reverse",
+                  "flexDirection": "row",
                   "flexGrow": 1,
                   "flexShrink": 1,
                 },
