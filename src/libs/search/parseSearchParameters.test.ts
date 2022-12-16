@@ -95,12 +95,6 @@ describe('parseSearchParameters', () => {
     const parameters = {
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
       hitsPerPage: 5,
-      isDuo: true,
-      newestOnly: true,
-      isDigital: true,
-      isEvent: true,
-      isThing: true,
-      isFree: true,
       eventDuringNextXDays: days,
     } as SearchParametersFields
     const geolocation = null
