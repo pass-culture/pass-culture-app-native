@@ -103,22 +103,6 @@ it('should render privacy policy', async () => {
 
 - **Graphics Component test**
 
-We do not allow snapshots tests for component, you can still use diff snapshot for complex style checking.
-
-- Why pages' snapshots and not components ones ?
-
-You may not anticipate changes to all screens of the app when you make changes to a component. In such a case, a snapshot failing would be a warning to you : does this screen still displays correctly ?
-Think of it as a poor man's visual testing.
-
-```jsx
-it('should render modal correctly', async () => {
-  const homeWithLoginModal = await homeRenderer(true)
-  const homeWithoutLoginModal = await homeRenderer(false)
-
-  expect(homeWithoutLoginModal).toMatchDiffSnapshot(homeWithLoginModal)
-})
-```
-
 ```jsx
 it('should be hidden when the icon is not provided', () => {
   const { getByTestId } = render(<ModalHeader title="Testing modal header rendering" />)
