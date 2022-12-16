@@ -7,7 +7,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
-import { ReinitializePassword } from '../ReinitializePassword'
+import { ReinitializePassword } from './ReinitializePassword'
 
 const ROUTE_PARAMS = {
   email: 'john@.example.com',
