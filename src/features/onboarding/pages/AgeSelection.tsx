@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
+import { EligibleAges } from 'features/onboarding/types'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
@@ -15,10 +16,18 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-const ageButtons = [{ age: 15 }, { age: 16 }, { age: 17 }, { age: 18 }, { age: undefined }]
+const OTHER = 'other'
 
-const onBeforeNavigate = async (age: number | string) => {
-  analytics.logSelectAge(age)
+const ageButtons: { age?: EligibleAges }[] = [
+  { age: 15 },
+  { age: 16 },
+  { age: 17 },
+  { age: 18 },
+  { age: undefined },
+]
+
+const onBeforeNavigate = async (age?: EligibleAges) => {
+  analytics.logSelectAge(age || OTHER)
   age && (await storage.saveObject('user_age', age))
 }
 
@@ -31,7 +40,7 @@ export const AgeSelection: FunctionComponent = () => {
         key={index}
         icon={age ? BicolorAll : undefined}
         dense={!age}
-        onBeforeNavigate={async () => onBeforeNavigate(age || 'other')}
+        onBeforeNavigate={async () => onBeforeNavigate(age)}
         navigateTo={
           age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
         }
