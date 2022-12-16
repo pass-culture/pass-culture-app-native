@@ -17,12 +17,17 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 useFeatureFlagSpy.mockReturnValue(false)
 
 describe('<IdentityCheckStart/>', () => {
-  it('should render correctly', () => {
+  it('should render correctly when is (default) mobile viewport', () => {
     const renderWithDefaultMobileViewport = render(<IdentityCheckStart />)
+
+    expect(renderWithDefaultMobileViewport).toMatchSnapshot()
+  })
+
+  it('should render correctly when is desktop viewport', () => {
     const renderWithDesktopViewport = render(<IdentityCheckStart />, {
       theme: { isDesktopViewport: true, isMobileViewport: false },
     })
-    expect(renderWithDesktopViewport).toMatchDiffSnapshot(renderWithDefaultMobileViewport)
+    expect(renderWithDesktopViewport).toMatchSnapshot()
   })
 
   describe('is not mobile viewport', () => {
