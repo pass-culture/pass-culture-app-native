@@ -18,6 +18,7 @@ import {
   ValidateEmailResponse,
   VenueResponse,
 } from 'api/gen'
+import { mockDefaultSettings } from 'features/auth/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -126,25 +127,7 @@ export function requestPasswordResetFail() {
   )
 }
 
-function requestSettingsSuccess(
-  settingsResponse: SettingsResponse = {
-    accountCreationMinimumAge: 15,
-    accountUnsuspensionLimit: 60,
-    appEnableAutocomplete: true,
-    appEnableCookiesV2: true,
-    disableStoreReview: false,
-    displayDmsRedirection: true,
-    enableFrontImageResizing: false,
-    enableNativeCulturalSurvey: false,
-    enableNativeIdCheckVerboseDebugging: false,
-    enableNewIdentificationFlow: false,
-    enablePhoneValidation: false,
-    idCheckAddressAutocompletion: true,
-    isRecaptchaEnabled: true,
-    objectStorageUrl: 'https://localhost',
-    proDisableEventsQrcode: false,
-  }
-) {
+function requestSettingsSuccess(settingsResponse: SettingsResponse = mockDefaultSettings) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(settingsResponse))
   })
