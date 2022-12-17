@@ -4,7 +4,7 @@ import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -31,7 +31,7 @@ const snackbarMessage =
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
 export const SetAddress = () => {
-  const { data: settings } = useAppSettings()
+  const { data: settings } = useSettingsContext()
   const { dispatch, profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useSubscriptionNavigation()
