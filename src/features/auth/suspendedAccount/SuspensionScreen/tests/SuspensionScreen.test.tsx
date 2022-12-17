@@ -18,7 +18,7 @@ jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend',
   useAccountUnsuspend: jest.fn(() => ({ mutate: jest.fn() })),
 }))
 jest.mock('features/navigation/helpers')
-jest.mock('features/auth/settings')
+jest.mock('features/auth/SettingsContext')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/logout/useLogoutRoutine', () => ({
