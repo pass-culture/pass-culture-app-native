@@ -6,7 +6,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { CulturalSurvey } from './CulturalSurvey'
 
 jest.mock('react-query')
-jest.mock('features/auth/settings')
+
 jest.mock('features/auth/AuthContext')
 
 jest.mock('features/navigation/helpers')

@@ -25,7 +25,6 @@ jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/profile/utils')
 
-jest.mock('features/auth/settings')
 jest.mock('features/profile/api')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 

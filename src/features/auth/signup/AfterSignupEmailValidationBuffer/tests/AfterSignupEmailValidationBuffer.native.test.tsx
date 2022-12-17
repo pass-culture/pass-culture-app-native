@@ -17,7 +17,6 @@ import { AfterSignupEmailValidationBuffer } from '../AfterSignupEmailValidationB
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('features/auth/settings')
 jest.mock('features/auth/login/useLoginRoutine')
 const loginRoutine = jest.fn()
 const mockLoginRoutine = Login.useLoginRoutine as jest.Mock

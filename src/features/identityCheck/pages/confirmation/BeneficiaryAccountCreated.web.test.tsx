@@ -5,7 +5,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
 
 jest.mock('features/auth/AuthContext')
-jest.mock('features/auth/settings')
 
 describe('<BeneficiaryAccountCreated/>', () => {
   describe('Accessibility', () => {

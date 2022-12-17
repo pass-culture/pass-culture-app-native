@@ -5,8 +5,6 @@ import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { render } from 'tests/utils'
 
-jest.mock('features/auth/settings')
-
 const props = {
   title: "Image d'Adèle",
   alt: "Image d'Adèle",

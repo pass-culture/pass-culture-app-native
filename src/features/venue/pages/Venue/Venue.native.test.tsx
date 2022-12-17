@@ -9,7 +9,7 @@ import { render, waitFor } from 'tests/utils'
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
-jest.mock('features/auth/settings')
+
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 

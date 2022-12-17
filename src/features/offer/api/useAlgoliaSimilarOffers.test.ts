@@ -5,7 +5,6 @@ import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('features/auth/settings')
 jest.mock('features/auth/AuthContext')
 
 const ids = ['102280', '102272', '102249', '102310']

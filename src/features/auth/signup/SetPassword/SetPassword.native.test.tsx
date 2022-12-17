@@ -5,8 +5,6 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
-jest.mock('features/auth/settings')
-
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 describe('SetPassword Page', () => {

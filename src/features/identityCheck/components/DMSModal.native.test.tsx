@@ -7,7 +7,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 const hideModalMock = jest.fn()
-jest.mock('features/auth/settings')
+
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 

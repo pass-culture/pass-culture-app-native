@@ -9,7 +9,7 @@ import { act, fireEvent, render } from 'tests/utils'
 const venueId = venueResponseSnap.id
 
 jest.mock('react-query')
-jest.mock('features/auth/settings')
+
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary', () => ({

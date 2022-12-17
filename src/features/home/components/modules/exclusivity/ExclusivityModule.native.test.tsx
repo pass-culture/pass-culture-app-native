@@ -8,7 +8,6 @@ import { render } from 'tests/utils'
 
 import { ExclusivityModule, ExclusivityModuleProps } from './ExclusivityModule'
 
-jest.mock('features/auth/settings')
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300),
 }))

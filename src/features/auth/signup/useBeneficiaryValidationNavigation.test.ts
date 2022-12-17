@@ -17,7 +17,7 @@ import { server } from 'tests/server'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
-jest.mock('features/auth/settings')
+
 jest.mock('features/profile/api')
 jest.mock('features/profile/utils')
 

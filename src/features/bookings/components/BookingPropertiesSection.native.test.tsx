@@ -10,8 +10,6 @@ import { render, waitFor } from 'tests/utils'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-jest.mock('features/auth/settings')
-
 describe('<BookingPropertiesSection />', () => {
   beforeAll(() => {
     const { user: globalMockUser } = mockUseAuthContext()

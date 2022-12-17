@@ -19,8 +19,6 @@ const props = {
   maximumDate: MAXIMUM_DATE,
 }
 
-jest.mock('features/auth/settings')
-
 describe('<DatePickerSpinner />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
