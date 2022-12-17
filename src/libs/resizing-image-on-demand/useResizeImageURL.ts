@@ -1,7 +1,7 @@
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { env } from 'libs/environment'
 
 const MOBILE_MAX_SIZE = 327
@@ -17,7 +17,7 @@ export const useResizeImageURL = ({ imageURL, height, width }: Params) => {
   const { isDesktopViewport } = useTheme()
   const { scale: pixelRatio } = useWindowDimensions()
 
-  const { data: appSettings } = useAppSettings()
+  const { data: appSettings } = useSettingsContext()
   if (!appSettings?.enableFrontImageResizing) {
     return imageURL
   }
