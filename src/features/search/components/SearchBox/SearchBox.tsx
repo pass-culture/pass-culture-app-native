@@ -13,7 +13,7 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
@@ -67,7 +67,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appSettings } = useAppSettings()
+  const { data: appSettings } = useSettingsContext()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
   const isLandingOrResults =
     params === undefined || params.view === SearchView.Landing || params.view === SearchView.Results
