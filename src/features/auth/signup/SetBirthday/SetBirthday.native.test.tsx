@@ -9,7 +9,7 @@ import { SetBirthday } from './SetBirthday'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
-jest.mock('features/auth/settings')
+jest.mock('features/auth/SettingsContext')
 
 describe('<SetBirthday />', () => {
   beforeEach(() => {
