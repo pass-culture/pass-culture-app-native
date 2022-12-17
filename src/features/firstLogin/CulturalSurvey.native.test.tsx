@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { act, render, waitFor } from 'tests/utils'
@@ -19,8 +19,10 @@ function mockUseCurrentRoute(name: string) {
   mockedUseCurrentRoute.mockReturnValue({ name, key: 'key' })
 }
 
-jest.mock('features/auth/settings')
-const mockedUseAppSettings = useAppSettings as jest.MockedFunction<typeof useAppSettings>
+jest.mock('features/auth/SettingsContext')
+const mockedUseSettingsContext = useSettingsContext as jest.MockedFunction<
+  typeof useSettingsContext
+>
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -40,7 +42,7 @@ describe('<CulturalSurvey />', () => {
   })
 
   it('should redirect to native cultural survey if FF is active', async () => {
-    mockedUseAppSettings.mockReturnValueOnce({
+    mockedUseSettingsContext.mockReturnValueOnce({
       data: { enableNativeCulturalSurvey: true },
     } as UseQueryResult<SettingsResponse, unknown>)
     renderCulturalSurveyWithNavigation()

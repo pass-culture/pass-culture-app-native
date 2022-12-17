@@ -22,8 +22,8 @@ const mockSettings = {
   enableNativeCulturalSurvey: false,
 }
 
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
+jest.mock('features/auth/SettingsContext', () => ({
+  useSettingsContext: jest.fn(() => ({
     data: mockSettings,
   })),
 }))
