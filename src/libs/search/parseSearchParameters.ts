@@ -35,6 +35,7 @@ export const parseSearchParameters = (
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({
     beginningDatetime: parameters.beginningDatetime,
     endingDatetime: parameters.endingDatetime,
+    eventDuringNextXDays: parameters.eventDuringNextXDays,
     upcomingWeekendEvent: parameters.upcomingWeekendEvent,
     currentWeekEvent: parameters.currentWeekEvent,
   })

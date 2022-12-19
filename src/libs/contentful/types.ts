@@ -168,6 +168,7 @@ export interface SearchParametersFields {
   isEvent?: boolean
   beginningDatetime?: string
   endingDatetime?: string
+  eventDuringNextXDays?: number
   upcomingWeekendEvent?: boolean
   currentWeekEvent?: boolean
   isFree?: boolean
