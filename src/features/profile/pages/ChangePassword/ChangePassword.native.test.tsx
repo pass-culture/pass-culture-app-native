@@ -13,7 +13,7 @@ import { theme } from 'theme'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-import { ChangePassword } from '../ChangePassword'
+import { ChangePassword } from './ChangePassword'
 
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
 
@@ -62,21 +62,6 @@ describe('ChangePassword', () => {
       const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
       const color = notMatchingErrorText.props.style[0].color
       expect(color).toEqual(theme.colors.error)
-    })
-  })
-
-  it('should validate PasswordSecurityRules when password is correct', async () => {
-    const renderAPI = renderChangePassword()
-
-    const notValidatedRulesSnapshot = renderAPI.toJSON()
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton nouveau mot de passe')
-
-    fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
-
-    await waitFor(() => {
-      const validatedRulesSnapshot = renderAPI.toJSON()
-      expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
 

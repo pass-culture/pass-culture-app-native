@@ -24,15 +24,14 @@ beforeEach(() => {
 
 describe('<ForgottenPassword />', () => {
   it('should enable validate button when email input is filled', async () => {
-    const { getByPlaceholderText, toJSON } = renderForgottenPassword()
-    const disabledButtonSnapshot = toJSON()
+    const { getByPlaceholderText, getByText } = renderForgottenPassword()
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     await waitFor(() => {
-      const enabledButtonSnapshot = toJSON()
-      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
+      const validateButton = getByText('Valider')
+      expect(validateButton).toBeEnabled()
     })
   })
 

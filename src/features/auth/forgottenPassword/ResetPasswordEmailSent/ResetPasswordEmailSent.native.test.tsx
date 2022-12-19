@@ -7,43 +7,38 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { flushAllPromisesWithAct, act, fireEvent, render, cleanup } from 'tests/utils'
+import { flushAllPromisesWithAct, act, fireEvent, render } from 'tests/utils'
 
-import { ResetPasswordEmailSent } from '../ResetPasswordEmailSent'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
+import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {
-  afterEach(cleanup)
-
   it('should match snapshot', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
-    const renderAPI = await renderInitialPage('PreviousScreen')
+    const { getByLabelText, queryByText } = await renderInitialPage('PreviousScreen')
 
     await act(async () => {
       navigationRef.navigate('ResetPasswordEmailSent', { email: '' })
     })
 
-    fireEvent.press(renderAPI.getByTestId('leftIcon'))
+    fireEvent.press(getByLabelText('Revenir en arrière'))
 
     await waitForExpect(() => {
-      expect(renderAPI.queryByText('PreviousScreenText')).toBeTruthy()
+      expect(queryByText('PreviousScreenText')).toBeTruthy()
     })
   })
 
   it('should NOT display back button when previous screen is ForgottenPassword', async () => {
-    const renderAPI = await renderInitialPage('ForgottenPassword')
+    const { queryByTestId } = await renderInitialPage('ForgottenPassword')
 
-    const leftIconButton = renderAPI.queryByTestId('leftIcon')
+    const leftIconButton = queryByTestId('leftIcon')
 
     await waitForExpect(() => {
       expect(leftIconButton).toBeFalsy()
@@ -51,9 +46,9 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should redirect to Home when clicking on Close icon', async () => {
-    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
+    const { getByTestId } = await renderInitialPage('ResetPasswordEmailSent')
 
-    fireEvent.press(renderAPI.getByTestId('rightIcon'))
+    fireEvent.press(getByTestId('rightIcon'))
 
     await waitForExpect(() => {
       expect(navigateToHome).toHaveBeenCalledTimes(1)
@@ -61,9 +56,9 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should open mail app when clicking on check email button', async () => {
-    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
+    const { getByText } = await renderInitialPage('ResetPasswordEmailSent')
 
-    const checkEmailsButton = renderAPI.getByText('Consulter mes e-mails')
+    const checkEmailsButton = getByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
 
     await waitForExpect(() => {

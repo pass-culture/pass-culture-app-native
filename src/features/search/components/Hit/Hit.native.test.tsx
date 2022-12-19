@@ -67,19 +67,4 @@ describe('Hit component', () => {
     const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
     expect(queryByText('10 km')).toBeTruthy()
   })
-
-  it('offer name should take full space if no geolocation', () => {
-    mockDistance = '10 km'
-    const withDistance = render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />)
-    ).toJSON()
-
-    mockDistance = null
-    const withoutDistance = render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />)
-    ).toJSON()
-    expect(withoutDistance).toMatchDiffSnapshot(withDistance)
-  })
 })

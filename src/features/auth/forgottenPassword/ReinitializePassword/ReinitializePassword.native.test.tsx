@@ -7,7 +7,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
-import { ReinitializePassword } from '../ReinitializePassword'
+import { ReinitializePassword } from './ReinitializePassword'
 
 const ROUTE_PARAMS = {
   email: 'john@.example.com',
@@ -46,18 +46,6 @@ describe('ReinitializePassword Page', () => {
     await waitFor(async () => {
       const color = notMatchingErrorText.props.style[0].color
       expect(color).toEqual(theme.colors.error)
-    })
-  })
-
-  it('should validate PasswordSecurityRules when password is correct', async () => {
-    const { toJSON, getByPlaceholderText } = renderReinitializePassword()
-    const notValidatedRulesSnapshot = toJSON()
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
-
-    await waitFor(() => {
-      const validatedRulesSnapshot = toJSON()
-      expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
 
