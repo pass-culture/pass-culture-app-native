@@ -44,7 +44,7 @@ describe('useInitialScreen()', () => {
     ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: 3000 }}   | ${true}                      | ${'RecreditBirthdayNotification'} | ${'RecreditBirthdayNotification'}
     ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, recreditAmountToShow: null }}  | ${true}                      | ${'TabNavigator'}                 | ${'Home'}
     ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, recreditAmountToShow: null }}  | ${true}                      | ${'TabNavigator'}                 | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${true}                      | ${'FirstTutorial'}                | ${'FirstTutorial'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${true}                      | ${'OnboardingWelcome'}            | ${'OnboardingWelcome'}
   `(
     `should return $expectedScreen when 
       - has_seen_tutorials = $hasSeenTutorials 

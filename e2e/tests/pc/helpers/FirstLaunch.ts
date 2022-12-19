@@ -1,10 +1,10 @@
 import { flags } from './utils/platform'
 import CookiesConsent from '../features/cookies/CookiesConsent'
-import FirstTutorial from '../features/firstTutorial/FirstTutorial'
 import NativeAlert from './NativeAlert'
 import { TabBar } from '../features/navigation/TabBar'
 import AgeSelection from '../features/onboarding/AgeSelection'
 import AgeInformation from '../features/onboarding/AgeInformation'
+import OnboardingWelcome from '../features/onboarding/OnboardingWelcome'
 
 class FirstLaunch {
   retries = 2
@@ -30,8 +30,8 @@ class FirstLaunch {
       }
     }
     await CookiesConsent.randomChoice()
-    await FirstTutorial.proceed()
     if (!flags.isWeb) {
+      await OnboardingWelcome.proceed()
       await AgeSelection.randomChoiceAge()
       await AgeInformation.proceed()
     }

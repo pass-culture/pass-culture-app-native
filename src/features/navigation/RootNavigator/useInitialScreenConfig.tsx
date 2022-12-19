@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Platform } from 'react-native'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -65,14 +66,14 @@ async function getInitialScreen({
 
   try {
     const hasSeenTutorials = !!(await storage.readObject('has_seen_tutorials'))
-    if (hasSeenTutorials) {
+    if (hasSeenTutorials || Platform.OS === 'web') {
       return homeNavConfig[0]
     }
   } catch {
     return homeNavConfig[0]
   }
 
-  return 'FirstTutorial'
+  return 'OnboardingWelcome'
 }
 
 function triggerInitialScreenNameAnalytics(screenName: RootScreenNames) {
