@@ -47,6 +47,10 @@ interface Props {
   onScroll: () => void
 }
 
+const trackingOnHorizontalScroll = () => {
+  return analytics.logSimilarOfferPlaylistHorizontalScroll()
+}
+
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
@@ -240,6 +244,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             renderItem={renderItem}
             keyExtractor={(item) => item.objectID}
             title="Ça peut aussi te plaire"
+            onEndReached={trackingOnHorizontalScroll}
           />
         </SectionWithDivider>
       )}
