@@ -21,7 +21,7 @@ WithLabel.args = {
 export const WithValue = Template.bind({})
 WithValue.args = {
   label: 'Adresse e-mail',
-  value: 'email@example.com',
+  email: 'email@example.com',
 }
 
 export const Required = Template.bind({})

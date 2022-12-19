@@ -4,7 +4,7 @@ import { TextInput as RNTextInput } from 'react-native'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 
-interface Props extends TextInputProps {
+interface Props extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
   email: string
   onEmailChange: (email: string) => void

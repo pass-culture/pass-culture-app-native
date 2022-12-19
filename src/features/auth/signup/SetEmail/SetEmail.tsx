@@ -15,7 +15,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
-import { EmailInput } from 'ui/components/inputs/EmailInput'
+import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
