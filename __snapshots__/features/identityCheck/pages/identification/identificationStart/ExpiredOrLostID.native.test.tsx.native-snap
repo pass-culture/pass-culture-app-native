@@ -194,7 +194,7 @@ Array [
     />
     <View>
       <View
-        accessibilityLabel="M’identifier plus tard"
+        accessibilityLabel="Aller sur demarches-simplifiees.fr"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -223,67 +223,6 @@ Array [
             "width": "100%",
           }
         }
-        testID="M’identifier plus tard"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          M’identifier plus tard
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Aller sur demarches-simplifiees.fr"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
-        }
         testID="Aller sur demarches-simplifiees.fr"
       >
         <View
@@ -297,9 +236,9 @@ Array [
         >
           <View
             accessibilityLabel="Nouvelle fenêtre"
-            height={20}
+            height={24}
             testID="button-icon"
-            width={20}
+            width={24}
           >
             <Text>
               button-icon-SVG-Mock
@@ -312,7 +251,7 @@ Array [
           style={
             Array [
               Object {
-                "color": "#161617",
+                "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
