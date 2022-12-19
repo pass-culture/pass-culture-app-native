@@ -13,11 +13,14 @@ class FirstLaunch {
   async init(tabBar: TabBar) {
     if (flags.isWeb) {
       await browser.url('/')
+      await browser.execute(() => {
+        // @ts-ignore due to a bug with safaridriver not setting navigation.webdriver, this is only necessary for iOS Safari browser
+        globalThis.window.webdriver = true
+      })
     }
     if (!flags.isWeb && flags.isIOS) {
       // This while loop will take care of the DoNotTrack and Notification Alert
-      // kopax-polyconseil have random order and random language, despite forcing the iOS device to french language within the system
-      // They may or may not be displayed, so we try to pass both twice.
+      // They may or may not be displayed, so we try max twice.
       while (this.retries-- && this.nativeModalPassed !== 2) {
         try {
           await NativeAlert.waitForIsShown(true)
