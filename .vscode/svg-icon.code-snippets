@@ -1,0 +1,43 @@
+{
+    "React-Native Component": {
+      "prefix": "svg-icon",
+      "scope": "javascriptreact, typescriptreact",
+      "body": [
+        "import * as React from 'react'",
+        "import { Path } from 'react-native-svg'",
+        "import styled from 'styled-components/native'",
+        "",
+        "import { AccessibleSvg } from 'ui/svg/AccessibleSvg'",
+        "",
+        "import { AccessibleIcon } from './types'",
+        "",
+        "const ${1:IconName}Svg: React.FunctionComponent<AccessibleIcon> = ({",
+        "    size,",
+        "    color,",
+        "    accessibilityLabel,",
+        "    testID,",
+        "}) => (",
+        "    <AccessibleSvg",
+        "        width={size}",
+        "        height={size}",
+        "        viewBox='0 0 48 48'",
+        "        accessibilityLabel={accessibilityLabel}",
+        "        testID={testID}>",
+        "       <Path",
+        "           fill={color}", 
+        "           fillRule='${2:evenodd or to be removed}'",
+        "           clipRule='${2:evenodd or to be removed}'",
+        "           d='${0:path}'",
+        "       />",
+        "     </AccessibleSvg>",
+        ")",
+        "",
+        "export const ${1:IconName} = styled(${1:IconName}Svg).attrs(({ color, size, theme }) => ({",
+        "    color: color ?? theme.colors.black,",
+        "    size: size ?? theme.icons.sizes.standard,",
+        "}))``",
+      ],
+      "description": "Create icon template to fill with svg path, for unicolor icon"
+    }
+  }
+  
