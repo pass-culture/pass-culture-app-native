@@ -122,6 +122,7 @@ export const analytics: typeof actualAnalytics = {
   logSignUpFromFavorite: jest.fn(),
   logSignUpFromOffer: jest.fn(),
   logSignUpTooYoung: jest.fn(),
+  logSimilarOfferPlaylistHorizontalScroll: jest.fn(),
   logStartDMSTransmission: jest.fn(),
   logTrySelectDeposit: jest.fn(),
   logUseFilter: jest.fn(),

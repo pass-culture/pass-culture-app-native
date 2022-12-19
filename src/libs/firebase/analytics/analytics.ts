@@ -301,6 +301,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_OFFER, { offerId }),
   logSignUpTooYoung: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_TOO_YOUNG, { age }),
+  logSimilarOfferPlaylistHorizontalScroll: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.SIMILAR_OFFER_PLAYLIST_HORIZONTAL_SCROLL),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.TRY_SELECT_DEPOSIT, { age }),
