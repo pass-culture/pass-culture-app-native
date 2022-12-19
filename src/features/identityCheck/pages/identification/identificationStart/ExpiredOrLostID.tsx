@@ -2,13 +2,10 @@ import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -41,14 +38,8 @@ export const ExpiredOrLostID = (): JSX.Element => {
       </StyledBody>
       <Spacer.Flex flex={1} />
       <View>
-        <InternalTouchableLink
-          as={ButtonPrimary}
-          navigateTo={navigateToHomeConfig}
-          wording="M’identifier plus tard"
-        />
-        <Spacer.Column numberOfSpaces={5} />
         <ExternalTouchableLink
-          as={ButtonTertiaryBlack}
+          as={ButtonPrimary}
           wording="Aller sur demarches-simplifiees.fr"
           externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
           icon={ExternalSiteFilled}
