@@ -43,6 +43,7 @@ module.exports = {
     '<rootDir>/server/',
     '<rootDir>/e2e/',
   ],
+  timers: 'legacy',
   cacheDirectory: '.jest/cache',
   clearMocks: true,
   collectCoverageFrom: [
