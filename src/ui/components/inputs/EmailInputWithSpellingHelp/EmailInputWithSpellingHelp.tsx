@@ -41,17 +41,32 @@ export const EmailInputWithSpellingHelp = (props: EmailInputWithSpellingHelpProp
     setSuggestedEmail(undefined)
   }
 
+  // todo: faire des tests
+  // todo: clean / refactor
   const debouncedSetSuggestedEmail = useRef(
     debounce((email) => {
       setSuggestedEmail(
         emailSpellChecker.run({
-          email,
+          email: email.trim(),
           // domainThreshold: 1,
-          domains: ['gmail.com'],
+          domains: [
+            'gmail.com',
+            'icloud.com',
+            'hotmail.com',
+            'hotmail.fr',
+            'outlook.com',
+            'yahoo.com',
+            'orange.fr',
+            'laposte.net',
+            'free.fr',
+            'sfr.fr',
+          ],
           // secondLevelThreshold: 3,
           // secondLevelDomains: ['gmail'],
+          secondLevelDomains: [],
+          // secondLevelDomains: ['gmail', 'mail'],
           // topLevelThreshold: 4,
-          // topLevelDomains: [],
+          topLevelDomains: [],
         })
       )
     }, 600)
