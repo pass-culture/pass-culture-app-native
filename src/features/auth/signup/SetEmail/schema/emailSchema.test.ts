@@ -31,4 +31,10 @@ describe('emailSchema', () => {
       )
     )
   })
+
+  it('should ignore spaces in email', async () => {
+    const result = await emailSchema.validate('\t   john.doe@gmail.com  ')
+
+    expect(result).toEqual('john.doe@gmail.com')
+  })
 })
