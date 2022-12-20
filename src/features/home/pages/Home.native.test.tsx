@@ -62,8 +62,6 @@ describe('Home component', () => {
   })
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-  afterEach(jest.clearAllMocks)
-
   it('should render skeleton when there are no modules to display', () => {
     mockUseHomepageData.mockReturnValueOnce({
       modules: [],

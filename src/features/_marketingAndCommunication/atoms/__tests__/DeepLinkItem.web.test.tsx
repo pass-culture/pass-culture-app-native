@@ -41,8 +41,6 @@ describe('<DeeplinkItem />', () => {
     })
   })
 
-  afterEach(jest.clearAllMocks)
-
   it('should copy the universal link to clipboard', () => {
     const renderAPI = render(<DeeplinkItem deeplink={deeplink} />)
 

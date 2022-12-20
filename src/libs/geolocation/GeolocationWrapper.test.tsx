@@ -29,10 +29,8 @@ const MOCK_POSITION = { latitude: 90, longitude: 90 }
 
 describe('useGeolocation()', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
     mockGetPositionSuccess()
   })
-  afterAll(jest.clearAllMocks)
 
   it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns GRANTED', async () => {
     mockPermissionResult(GeolocPermissionState.GRANTED)

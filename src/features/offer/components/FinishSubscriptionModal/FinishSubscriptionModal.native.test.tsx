@@ -19,8 +19,6 @@ const hideModal = jest.fn()
 const visible = true
 
 describe('<FinishSubscriptionModal />', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should render correctly with undefined deposit amount', () => {
     mockDepositAmounts = undefined
     const renderAPI = render(

@@ -11,7 +11,6 @@ jest.mock('features/culturalSurvey/useGetNextQuestion')
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 describe('CulturalSurveyIntro page', () => {
-  afterEach(jest.clearAllMocks)
   it('should render the page with correct layout', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     expect(CulturalSurveyIntroPage).toMatchSnapshot()

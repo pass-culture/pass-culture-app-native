@@ -5,8 +5,6 @@ import { getBookingLabels } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 
 describe('getBookingLabels', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should return the correct dateLabel for permanent bookings', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isPermanent: true }

@@ -185,8 +185,6 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 mockUseAuthContext.mockReturnValue({ isLoggedIn, setIsLoggedIn: jest.fn() })
 ```
 
-Don't forget to use `afterEach(jest.clearAllMocks)` to clear mocks after each test.
-
 #### Navigation
 
 To test our `navigate` call, we can do:

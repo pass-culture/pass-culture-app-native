@@ -35,8 +35,6 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 useFeatureFlagSpy.mockReturnValue(false)
 
 describe('useSubscriptionSteps', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should return 3 steps if stepperIncludesPhoneValidation is false', () => {
     const steps = useSubscriptionSteps()
     expect(steps.length).toEqual(3)

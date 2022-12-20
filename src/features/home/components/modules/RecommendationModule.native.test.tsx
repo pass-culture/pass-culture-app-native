@@ -20,8 +20,6 @@ jest.mock('features/home/api/useHomeRecommendedHits', () => ({
 }))
 
 describe('RecommendationModule', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
     render(
       <RecommendationModule

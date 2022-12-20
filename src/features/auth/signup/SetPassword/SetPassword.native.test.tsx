@@ -8,9 +8,6 @@ import { SetPassword } from './SetPassword'
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 describe('SetPassword Page', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should enable the submit button when password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SetPassword {...props} />)
 
