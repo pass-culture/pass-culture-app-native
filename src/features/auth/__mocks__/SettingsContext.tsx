@@ -1,7 +1,6 @@
-import { UseQueryResult } from 'react-query'
-
 import { SettingsResponse } from 'api/gen'
-import { useAppSettings as actualUseAppSettings } from 'features/auth/settings'
+
+import { useSettingsContext as actualUseSettingsContext } from '../SettingsContext'
 
 export const mockDefaultSettings: SettingsResponse = {
   accountCreationMinimumAge: 15,
@@ -20,11 +19,7 @@ export const mockDefaultSettings: SettingsResponse = {
   objectStorageUrl: 'https://localhost-storage',
   proDisableEventsQrcode: false,
 }
-
-export const useAppSettings: typeof actualUseAppSettings = jest.fn(
-  () =>
-    ({ data: mockDefaultSettings, isLoading: false, isSuccess: true } as UseQueryResult<
-      SettingsResponse,
-      unknown
-    >)
-)
+export const useSettingsContext = jest.fn().mockReturnValue({
+  data: mockDefaultSettings,
+  isLoading: false,
+}) as jest.MockedFunction<typeof actualUseSettingsContext>

@@ -5,7 +5,7 @@ import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import { AccountRequest, AccountState, SigninRequest } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/login/useLoginRoutine'
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { campaignTracker } from 'libs/campaign'
 
 import { formatToFrenchDecimal } from '../../libs/parsers'
@@ -93,7 +93,7 @@ export function useAccountSuspend(onSuccess: () => void, onError: (error: unknow
 }
 
 export function useDepositAmountsByAge() {
-  const { data: settings } = useAppSettings()
+  const { data: settings } = useSettingsContext()
   const fifteenYearsOldAmount = settings?.depositAmountsByAge?.age_15 ?? 2000
   const sixteenYearsOldAmount = settings?.depositAmountsByAge?.age_16 ?? 3000
   const seventeenYearsOldAmount = settings?.depositAmountsByAge?.age_17 ?? 3000

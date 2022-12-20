@@ -11,6 +11,7 @@ import 'intl'
 import 'intl/locale-data/jsonp/en'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
+import { SettingsWrapper } from 'features/auth/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -82,35 +83,37 @@ const App: FunctionComponent = function () {
               {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
               <E2eContextProvider>
                 <NetInfoWrapper>
-                  <AuthWrapper>
-                    <GeolocationWrapper>
-                      <FavoritesWrapper>
-                        <SearchAnalyticsWrapper>
-                          <SearchWrapper>
-                            <SnackBarProvider>
-                              <CulturalSurveyContextProvider>
-                                <SubscriptionContextProvider>
-                                  <SplashScreenProvider>
-                                    <PushNotificationsWrapper>
-                                      <ShareAppWrapper>
-                                        <OnboardingWrapper>
-                                          <OfflineModeContainer>
-                                            <ScreenErrorProvider>
-                                              <AppNavigationContainer />
-                                            </ScreenErrorProvider>
-                                          </OfflineModeContainer>
-                                        </OnboardingWrapper>
-                                      </ShareAppWrapper>
-                                    </PushNotificationsWrapper>
-                                  </SplashScreenProvider>
-                                </SubscriptionContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarProvider>
-                          </SearchWrapper>
-                        </SearchAnalyticsWrapper>
-                      </FavoritesWrapper>
-                    </GeolocationWrapper>
-                  </AuthWrapper>
+                  <SettingsWrapper>
+                    <AuthWrapper>
+                      <GeolocationWrapper>
+                        <FavoritesWrapper>
+                          <SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <PushNotificationsWrapper>
+                                        <ShareAppWrapper>
+                                          <OnboardingWrapper>
+                                            <OfflineModeContainer>
+                                              <ScreenErrorProvider>
+                                                <AppNavigationContainer />
+                                              </ScreenErrorProvider>
+                                            </OfflineModeContainer>
+                                          </OnboardingWrapper>
+                                        </ShareAppWrapper>
+                                      </PushNotificationsWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
+                          </SearchAnalyticsWrapper>
+                        </FavoritesWrapper>
+                      </GeolocationWrapper>
+                    </AuthWrapper>
+                  </SettingsWrapper>
                 </NetInfoWrapper>
               </E2eContextProvider>
             </ErrorBoundary>

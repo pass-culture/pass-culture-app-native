@@ -87,7 +87,6 @@ jest.mock('features/auth/api', () => ({
     eighteenYearsOldDeposit: '300 €',
   })),
 }))
-jest.mock('features/auth/settings')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ identification: { processing: false } }),

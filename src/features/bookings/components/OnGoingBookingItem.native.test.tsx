@@ -9,8 +9,6 @@ import { fireEvent, render } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
-jest.mock('features/auth/settings')
-
 describe('OnGoingBookingItem', () => {
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
 

@@ -1,6 +1,6 @@
 import { useTheme } from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import {
   DEFAULT_YOUNGEST_AGE,
   UNDER_YOUNGEST_AGE,
@@ -17,7 +17,7 @@ export const useDatePickerErrorHandler = (date?: Date) => {
   )
   const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)
 
-  const { data: settings } = useAppSettings()
+  const { data: settings } = useSettingsContext()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
 
   if (date === undefined) {

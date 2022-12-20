@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'
@@ -18,7 +18,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
 
 export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
-  const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
+  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
 

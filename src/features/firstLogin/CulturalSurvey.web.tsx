@@ -2,14 +2,14 @@ import { useNavigation } from '@react-navigation/native'
 import { Widget as TypeformWidget } from '@typeform/embed-react'
 import React, { useEffect } from 'react'
 
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { withCulturalSurveyProvider } from 'features/firstLogin/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 
 export const CulturalSurvey: React.FC = withCulturalSurveyProvider(function (props) {
   const { formId, userId, userPk, source } = props.culturalSurveyConfig
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useAppSettings()
+  const { data: settings } = useSettingsContext()
 
   useEffect(() => {
     // make sure we redirect to the right cultural survey if feature flag is activated

@@ -15,8 +15,6 @@ const props = {
   minimumDate: MINIMUM_DATE,
 }
 
-jest.mock('features/auth/settings')
-
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ warn: true })
 

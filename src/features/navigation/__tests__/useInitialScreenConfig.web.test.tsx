@@ -7,14 +7,6 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
 
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: {
-      enableNativeCulturalSurvey: false,
-    },
-  })),
-}))
-
 const wrapper = (props: { children: unknown }) => (
   <SplashScreenProvider>{props.children as JSX.Element}</SplashScreenProvider>
 )

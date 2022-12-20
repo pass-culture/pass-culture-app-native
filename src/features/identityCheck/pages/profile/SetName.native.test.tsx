@@ -6,7 +6,6 @@ import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-jest.mock('features/auth/settings')
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ dispatch: mockDispatch, ...mockState }),

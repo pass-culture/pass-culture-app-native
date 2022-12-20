@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -14,7 +14,7 @@ import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustr
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
-  const { data: settings } = useAppSettings()
+  const { data: settings } = useSettingsContext()
   const reactivationLimit = settings?.accountUnsuspensionLimit
   return (
     <GenericInfoPage

@@ -3,6 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { SettingsWrapper } from 'features/auth/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { amplitude } from 'libs/amplitude'
@@ -111,8 +112,14 @@ describe('<SetAddress/>', () => {
 })
 
 function renderSetAddress() {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<SetAddress />))
+  return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <SettingsWrapper>
+        <SetAddress />
+      </SettingsWrapper>
+    )
+  )
 }
 
 function mockAddressesApiCall(response: FeatureCollection<Point, Properties>) {

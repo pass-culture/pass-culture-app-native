@@ -3,8 +3,6 @@ import React from 'react'
 import { render, fireEvent } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 
-jest.mock('features/auth/settings')
-
 const onChangeText = jest.fn()
 const onReset = jest.fn()
 

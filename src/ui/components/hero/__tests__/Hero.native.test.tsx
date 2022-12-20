@@ -5,8 +5,6 @@ import { render } from 'tests/utils'
 
 import { Hero } from '../Hero'
 
-jest.mock('features/auth/settings')
-
 describe('HeroImage', () => {
   it('shows both placeholders when url is empty', () => {
     const { queryByTestId } = render(

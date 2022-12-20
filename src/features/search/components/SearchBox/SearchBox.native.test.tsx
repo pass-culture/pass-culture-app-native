@@ -59,8 +59,8 @@ jest.mock('react-instantsearch-hooks', () => ({
 }))
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => mockSettings()),
+jest.mock('features/auth/SettingsContext', () => ({
+  useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }

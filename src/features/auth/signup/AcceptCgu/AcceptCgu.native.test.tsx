@@ -13,7 +13,7 @@ import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
 
-jest.mock('features/auth/settings')
+jest.mock('features/auth/SettingsContext')
 jest.mock('libs/monitoring')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 

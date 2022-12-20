@@ -15,8 +15,6 @@ const props = {
   minimumDate: MINIMUM_DATE,
 }
 
-jest.mock('features/auth/settings')
-
 describe('<DatePickerDropDown />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)

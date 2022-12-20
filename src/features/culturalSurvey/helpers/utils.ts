@@ -3,7 +3,7 @@ import {
   CulturalSurveyQuestionsResponse,
   UserProfileResponse,
 } from 'api/gen/api'
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 
 export const mapQuestionIdToPageTitle = (id: CulturalSurveyQuestionEnum | undefined) => {
   switch (id) {
@@ -19,7 +19,7 @@ export const mapQuestionIdToPageTitle = (id: CulturalSurveyQuestionEnum | undefi
 }
 
 export function useCulturalSurveyRoute() {
-  const { data: settings } = useAppSettings()
+  const { data: settings } = useSettingsContext()
 
   // as long as ENABLE_CULTURAL_SURVEY is still used in the api to define if user should
   // fill cultural survey, we use enableNativeCulturalSurvey to know which cultural survey

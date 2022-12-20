@@ -10,7 +10,7 @@ import { render, fireEvent } from 'tests/utils'
 import { VerifyEligibility } from '../VerifyEligibility'
 
 jest.mock('features/auth/api')
-jest.mock('features/auth/settings')
+
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 jest.mock('react-query')

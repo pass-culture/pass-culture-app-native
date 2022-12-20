@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring'
@@ -35,7 +35,7 @@ type FormValues = {
 const emailErrorMessageId = uuidv4()
 
 export const ForgottenPassword = () => {
-  const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
+  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
 
   const {
     control,

@@ -31,8 +31,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
-jest.mock('features/auth/settings')
-
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 useFeatureFlagSpy.mockReturnValue(false)
 

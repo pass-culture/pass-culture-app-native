@@ -8,6 +8,7 @@ import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
+import { SettingsWrapper } from 'features/auth/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -51,32 +52,34 @@ export function App() {
           <ThemeProvider theme={theme}>
             <SafeAreaProvider>
               <ReactQueryClientProvider>
-                <AuthWrapper>
-                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                    <E2eContextProvider>
-                      <GeolocationWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <AppWebHead />
-                                    <ScreenErrorProvider>
-                                      <Suspense fallback={<LoadingPage />}>
-                                        <AppNavigationContainer />
-                                      </Suspense>
-                                    </ScreenErrorProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </GeolocationWrapper>
-                    </E2eContextProvider>
-                  </ErrorBoundary>
-                </AuthWrapper>
+                <SettingsWrapper>
+                  <AuthWrapper>
+                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                      <E2eContextProvider>
+                        <GeolocationWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <AppWebHead />
+                                      <ScreenErrorProvider>
+                                        <Suspense fallback={<LoadingPage />}>
+                                          <AppNavigationContainer />
+                                        </Suspense>
+                                      </ScreenErrorProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </GeolocationWrapper>
+                      </E2eContextProvider>
+                    </ErrorBoundary>
+                  </AuthWrapper>
+                </SettingsWrapper>
               </ReactQueryClientProvider>
             </SafeAreaProvider>
           </ThemeProvider>

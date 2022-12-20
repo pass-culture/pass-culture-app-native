@@ -1,22 +1,23 @@
 /* eslint-disable local-rules/independent-mocks */
 import React from 'react'
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useAppSettings } from 'features/auth/settings'
+import { useSettingsContext } from 'features/auth/SettingsContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { render, fireEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
-const mockedUseAppSettings = mocked(useAppSettings, true)
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/auth/settings')
+jest.mock('features/auth/SettingsContext')
+const mockedUseSettingsContext = useSettingsContext as jest.MockedFunction<
+  typeof useSettingsContext
+>
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/AuthContext')
@@ -38,7 +39,7 @@ describe('<BeneficiaryRequestSent />', () => {
   })
 
   it('should redirect to native cultural survey page WHEN "On y va !" is clicked and feature flag is activated', () => {
-    mockedUseAppSettings.mockReturnValueOnce({
+    mockedUseSettingsContext.mockReturnValueOnce({
       data: { enableNativeCulturalSurvey: true },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>)
