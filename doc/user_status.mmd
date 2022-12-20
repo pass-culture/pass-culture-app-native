@@ -10,9 +10,8 @@ stateDiagram-v2
         state eligible {
             [*] --> has_to_complete_subscription
             has_subscription_pending --> has_subscription_issues
-            has_subscription_issues --> has_to_complete_subscription
 
-            has_subscription_pending --> has_to_complete_subscription
+            has_subscription_issues --> has_subscription_pending
 
             has_subscription_issues --> non_eligible : 😭
 
