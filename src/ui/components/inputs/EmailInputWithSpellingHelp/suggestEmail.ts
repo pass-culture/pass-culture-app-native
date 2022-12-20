@@ -1,7 +1,7 @@
 import emailSpellChecker from '@zootools/email-spell-checker'
 import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 
-import { emailSchema } from 'features/auth/signup/SetEmail/schema/emailSchema'
+import { emailSchema } from 'shared/forms/schemas/emailSchema'
 
 const TOP_MOST_USED_DOMAINS = [
   'gmail.com',

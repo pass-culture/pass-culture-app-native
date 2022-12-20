@@ -1,6 +1,6 @@
 import { string, object } from 'yup'
 
-import { emailSchema } from 'features/auth/signup/SetEmail/schema/emailSchema'
+import { emailSchema } from 'shared/forms/schemas/emailSchema'
 
 export const changeEmailSchema = object()
   .shape({

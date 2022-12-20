@@ -1,6 +1,6 @@
 import { bool, object } from 'yup'
 
-import { emailSchema } from './emailSchema'
+import { emailSchema } from 'shared/forms/schemas/emailSchema'
 
 export const setEmailSchema = object()
   .shape({
