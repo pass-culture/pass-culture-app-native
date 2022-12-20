@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, cleanup, superFlushWithAct } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -67,15 +66,11 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 describe('<Favorite /> component', () => {
-  beforeEach(() => jest.useFakeTimers())
-  afterEach(async () => {
-    jest.runOnlyPendingTimers()
-    cleanup()
-  })
-
   it('should navigate to the offer when clicking on the favorite', async () => {
     const { getByTestId } = renderFavorite()
+
     await fireEvent.press(getByTestId('favorite'))
+
     expect(navigate).toHaveBeenCalledWith('Offer', {
       from: 'favorites',
       id: favorite.offer.id,
@@ -94,13 +89,9 @@ describe('<Favorite /> component', () => {
     mockDistance = '10 km'
     const { getByText } = renderFavorite()
 
-    act(() => {
-      fireEvent.press(getByText('Supprimer'))
-      jest.advanceTimersByTime(1000)
-    })
-    await superFlushWithAct()
+    fireEvent.press(getByText('Supprimer'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
       expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
     })
@@ -115,13 +106,9 @@ describe('<Favorite /> component', () => {
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    act(() => {
-      fireEvent.press(getByText('Supprimer'))
-      jest.advanceTimersByTime(1000)
-    })
-    await superFlushWithAct()
+    fireEvent.press(getByText('Supprimer'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,
