@@ -8,8 +8,6 @@ jest.mock('features/navigation/helpers')
 const mockOpenUrl = mocked(openUrl)
 
 describe('openGoogleMapsItinerary()', () => {
-  afterEach(jest.clearAllMocks)
-
   it('should open the correct encoded url with address', () => {
     const address = '12 rue duhesme 75018 Paris'
     openGoogleMapsItinerary(address)

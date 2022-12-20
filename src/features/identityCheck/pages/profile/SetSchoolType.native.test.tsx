@@ -43,8 +43,6 @@ const mockUseIdentityCheckContext = useSubscriptionContext as jest.Mock
 jest.mock('react-query')
 
 describe('<SetSchoolType />', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('shoud render a list of middle school types if profile.status is middleSchoolStudent', () => {
     mockUseIdentityCheckContext.mockImplementationOnce(() => ({
       dispatch: jest.fn(),

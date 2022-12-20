@@ -43,9 +43,6 @@ const defaultProps = {
 } as StackScreenProps<RootStackParamList, 'SignupForm'>
 
 describe('<SignupForm />', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should display 4 step dots with the first one as current step', () => {
     const { getAllByTestId } = render(<SignupForm {...defaultProps} />)
     const dots = getAllByTestId('dot-icon')

@@ -7,9 +7,6 @@ import { act, fireEvent, render } from 'tests/utils'
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 describe('<SetEmail />', () => {
-  beforeEach(jest.clearAllMocks)
-  afterAll(jest.clearAllMocks)
-
   it('should display disabled validate button when email input is not filled', () => {
     const { getByText } = render(<SetEmail {...props} />)
 

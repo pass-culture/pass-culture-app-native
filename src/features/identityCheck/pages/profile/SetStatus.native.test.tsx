@@ -44,8 +44,6 @@ jest.mock('features/identityCheck/api/api', () => {
 const mockUseIsUserUnderage = useIsUserUnderage as jest.Mock
 
 describe('<SetStatus/>', () => {
-  beforeEach(jest.clearAllMocks)
-
   it('should render correctly', () => {
     mockUseIsUserUnderage.mockReturnValueOnce(true)
     const renderAPI = render(<SetStatus />)

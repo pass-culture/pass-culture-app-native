@@ -38,8 +38,6 @@ mockUseAuthContext.mockReturnValue({
 const hideOfferTypeModal = jest.fn()
 
 describe('<OfferTypeModal/>', () => {
-  afterEach(jest.clearAllMocks)
-
   describe('modal header', () => {
     it('should have header when viewport width is mobile', () => {
       const isDesktopViewport = false

@@ -6,7 +6,6 @@ import { render, fireEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 describe('CulturalSurveyThanksPage page', () => {
-  afterEach(jest.clearAllMocks)
   it('should render the page with correct layout', () => {
     const CulturalSurveyThanksPage = render(<CulturalSurveyThanks />)
     expect(CulturalSurveyThanksPage).toMatchSnapshot()
