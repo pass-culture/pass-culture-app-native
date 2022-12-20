@@ -7,6 +7,7 @@ import { OnboardingWrapper } from 'features/onboarding/context/OnboardingWrapper
 import { AgeSelectionOther } from 'features/onboarding/pages/AgeSelectionOther'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { analytics } from 'libs/firebase/analytics'
+import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -21,6 +22,10 @@ jest.mock('ui/components/modals/useModal', () => ({
 }))
 
 describe('AgeSelectionOther', () => {
+  beforeEach(async () => {
+    await storage.clear('user_age')
+  })
+
   it('should render correctly', () => {
     const renderAPI = renderAgeSelectionOther()
     expect(renderAPI).toMatchSnapshot()
@@ -80,20 +85,30 @@ describe('AgeSelectionOther', () => {
     })
   })
 
-  it('should log analytics when pressing "j’ai moins de 15 ans"', () => {
-    const { getByText } = renderAgeSelectionOther()
-    const button = getByText('moins de 15 ans')
-
-    fireEvent.press(button)
-    expect(analytics.logSelectAge).toHaveBeenCalledWith('under_15')
-  })
-
   it('should log analytics when pressing "j’ai plus de 18 ans"', () => {
     const { getByText } = renderAgeSelectionOther()
     const button = getByText('plus de 18 ans')
 
     fireEvent.press(button)
     expect(analytics.logSelectAge).toHaveBeenCalledWith('over_18')
+  })
+
+  it('should save user age to local storage "j’ai moins de 15 ans"', async () => {
+    const { getByText } = renderAgeSelectionOther()
+    const button = getByText('moins de 15 ans')
+
+    fireEvent.press(button)
+    const userAge = await storage.readObject('user_age')
+    expect(userAge).toBe('under_15')
+  })
+
+  it('should save user age to local storage when pressing "j’ai plus de 18 ans"', async () => {
+    const { getByText } = renderAgeSelectionOther()
+    const button = getByText('plus de 18 ans')
+
+    fireEvent.press(button)
+    const userAge = await storage.readObject('user_age')
+    expect(userAge).toBe('over_18')
   })
 })
 

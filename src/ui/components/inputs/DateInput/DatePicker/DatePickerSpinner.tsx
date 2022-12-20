@@ -9,18 +9,17 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export function DatePickerSpinner(props: DatePickerProps) {
-  const [date, setDate] = useState<Date>(props.defaultSelectedDate)
-
+  const [date, setDate] = useState<Date>()
   const birthdateInputErrorId = uuidv4()
 
   useEffect(() => {
-    props.onChange(date)
+    props.onChange(date || props.defaultSelectedDate)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (
     <React.Fragment>
-      <DateInputDisplay date={date} isError={!!props.errorMessage} />
+      <DateInputDisplay date={date || props.defaultSelectedDate} isError={!!props.errorMessage} />
       <InputError
         visible={!!props.errorMessage}
         messageId={props.errorMessage}
@@ -30,7 +29,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
-        date={date}
+        date={date || props.defaultSelectedDate}
         onDateChange={setDate}
         mode="date"
         locale="fr-FR"

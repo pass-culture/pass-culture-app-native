@@ -16,6 +16,7 @@ export type StorageKey =
   | 'traffic_campaign'
   | 'traffic_medium'
   | 'traffic_source'
+  | 'user_age'
 
 export const storage = {
   clear,

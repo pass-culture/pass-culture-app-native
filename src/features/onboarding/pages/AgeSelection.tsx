@@ -1,11 +1,13 @@
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
+import { EligibleAges } from 'features/onboarding/types'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import { storage } from 'libs/storage'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -14,20 +16,31 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-const ageButtons = [{ age: 15 }, { age: 16 }, { age: 17 }, { age: 18 }, { age: undefined }]
+const OTHER = 'other'
+
+const ageButtons: { age?: EligibleAges }[] = [
+  { age: 15 },
+  { age: 16 },
+  { age: 17 },
+  { age: 18 },
+  { age: undefined },
+]
+
+const onBeforeNavigate = async (age?: EligibleAges) => {
+  analytics.logSelectAge(age || OTHER)
+  age && (await storage.saveObject('user_age', age))
+}
+
+const logGoToParentsFAQ = () => analytics.logGoToParentsFAQ('ageselection')
 
 export const AgeSelection: FunctionComponent = () => {
-  const onBeforeNavigate = useCallback((age: number | string) => analytics.logSelectAge(age), [])
-
-  const logGoToParentsFAQ = useCallback(() => analytics.logGoToParentsFAQ('ageselection'), [])
-
   const AgeSelectionButtons = ageButtons.map(({ age }, index) => {
     return (
       <AgeButton
         key={index}
         icon={age ? BicolorAll : undefined}
         dense={!age}
-        onBeforeNavigate={() => onBeforeNavigate(age || 'other')}
+        onBeforeNavigate={async () => onBeforeNavigate(age)}
         navigateTo={
           age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
         }
