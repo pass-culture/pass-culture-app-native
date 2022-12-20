@@ -69,7 +69,7 @@ describe('OfferTile component', () => {
     await fireEvent.press(getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
-      from: 'home',
+      from: 'similar_offer',
       moduleName: props.moduleName,
       fromOfferId: 1,
     })

@@ -78,7 +78,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
     analytics.logConsultOffer({
       offerId,
-      from: analyticsFrom,
+      from: fromOfferId ? 'similar_offer' : analyticsFrom,
       moduleName,
       moduleId,
       venueId,
