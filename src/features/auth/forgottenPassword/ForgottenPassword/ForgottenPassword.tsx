@@ -9,6 +9,7 @@ import { ApiError } from 'api/apiHelpers'
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useIsE2e } from 'libs/e2e/E2eContextProvider'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
@@ -36,6 +37,8 @@ const emailErrorMessageId = uuidv4()
 
 export const ForgottenPassword = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
+  const isE2e = useIsE2e()
+  const isRecaptchaEnabled = settings?.isRecaptchaEnabled && !isE2e
 
   const {
     control,
@@ -55,7 +58,7 @@ export const ForgottenPassword = () => {
 
   return (
     <BottomContentPage>
-      {!!settings?.isRecaptchaEnabled && (
+      {!!isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
@@ -105,7 +108,7 @@ export const ForgottenPassword = () => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             wording="Valider"
-            onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
+            onPress={isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
             isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
             disabled={shouldDisableValidateButton}
           />

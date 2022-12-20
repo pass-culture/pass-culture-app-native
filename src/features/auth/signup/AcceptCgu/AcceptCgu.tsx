@@ -5,6 +5,7 @@ import { CardContent, Paragraphe } from 'features/auth/components/signupComponen
 import { useAppSettings } from 'features/auth/settings'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { contactSupport } from 'features/auth/support.services'
+import { useIsE2e } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -21,10 +22,12 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
+  const isE2e = useIsE2e()
 
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const isRecaptchaEnabled = settings?.isRecaptchaEnabled && !isE2e
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
@@ -76,9 +79,9 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   }
 
   const onSubmit = useCallback(() => {
-    settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
+    isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge])
+  }, [isRecaptchaEnabled, openReCaptchaChallenge])
 
   const disabled = useMemo(
     () => isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected || areSettingsLoading,
@@ -87,7 +90,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
 
   return (
     <React.Fragment>
-      {!!settings?.isRecaptchaEnabled && (
+      {!!isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
