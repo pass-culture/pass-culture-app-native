@@ -24,6 +24,8 @@ export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   filter,
 }) => {
   return (
+    // TODO(PC-18781) this component should be an InternalTouchableLink since it will only navigate to thematic home pages
+    // instead of setting an url in contentful, set an entry ID of homepageNatif content
     <StyledExternalTouchableLink externalNav={{ url: url }}>
       <ImageBackground source={{ uri: imageUrl }}>
         <ContainerWithFilter filter={filter}>
