@@ -12,10 +12,10 @@ import { v4 as uuidv4 } from 'uuid'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/signup/SetEmail/schema/setEmailSchema'
 import { analytics } from 'libs/firebase/analytics'
+import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
-import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
@@ -33,17 +33,6 @@ type InputControlled<fieldName extends keyof FormValues> = {
   fieldState: ControllerFieldState
   formState: UseFormStateReturn<FormValues>
 }
-
-const EmailInputControlled = ({ field: { onChange, onBlur, value } }: InputControlled<'email'>) => (
-  <EmailInput
-    label="Adresse e-mail"
-    email={value}
-    onEmailChange={onChange}
-    autoFocus
-    accessibilityDescribedBy={emailInputErrorId}
-    onBlur={onBlur}
-  />
-)
 
 const NewsletterCheckboxControlled = ({
   field: { value, onChange },
@@ -83,7 +72,13 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
 
   return (
     <Form.MaxWidth>
-      <Controller control={control} name="email" render={EmailInputControlled} />
+      <EmailInputController
+        control={control}
+        name="email"
+        label="Adresse e-mail"
+        autoFocus
+        emailInputErrorId={emailInputErrorId}
+      />
       <InputError
         visible={!!errors.email}
         messageId={errors.email?.message}
