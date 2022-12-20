@@ -32,6 +32,7 @@ export const EmailInputWithSpellingHelp = (props: EmailInputWithSpellingHelpProp
   const [suggestedEmail, setSuggestedEmail] = useState<MailSuggestion | undefined>(
     emailSpellChecker.run({
       email: props.email,
+      domains: ['gmail.com'],
     })
   )
 
@@ -45,6 +46,12 @@ export const EmailInputWithSpellingHelp = (props: EmailInputWithSpellingHelpProp
       setSuggestedEmail(
         emailSpellChecker.run({
           email,
+          // domainThreshold: 1,
+          domains: ['gmail.com'],
+          // secondLevelThreshold: 3,
+          // secondLevelDomains: ['gmail'],
+          // topLevelThreshold: 4,
+          // topLevelDomains: [],
         })
       )
     }, 600)
