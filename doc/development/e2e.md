@@ -44,7 +44,7 @@ appium --relaxed-security
 In case of problem, there is a useful tool called `appium-doctor`, you can install and run it as follow:
 
 ```bash
-npm i -g appium-doctor
+npm install @appium/doctor --location=global
 appium-doctor
 ```
 
