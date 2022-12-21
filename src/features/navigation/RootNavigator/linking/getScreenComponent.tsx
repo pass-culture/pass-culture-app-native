@@ -1,6 +1,7 @@
 import React, { ComponentType } from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors'
+import { withScreenWrapper } from 'features/navigation/RootNavigator/withScreenWrapper'
 import { TabRoute } from 'features/navigation/TabBar/types'
 
 import { Route } from '../types'
@@ -15,5 +16,6 @@ export function getScreenComponent(
   let component = route.component
   component = route.hoc ? route.hoc(component) : withAsyncErrorBoundary(component)
   if (route.secure) component = withAuthProtection(component)
+  component = withScreenWrapper(component, name)
   return <ScreenComponent key={name} name={name} component={component} options={route.options} />
 }
