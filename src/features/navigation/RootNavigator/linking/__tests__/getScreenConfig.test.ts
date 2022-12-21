@@ -68,27 +68,27 @@ describe('getScreensAndConfig()', () => {
     expect(Screens.length).toBe(5)
     expect(Screens[0].props).toEqual({
       name: 'Offer',
-      component: expect.any(Function),
+      component: expect.any(Object),
       options: { title: 'Offer title' },
     })
     expect(Screens[1].props).toEqual({
       name: '_DeeplinkOnlyOffer1',
-      component: expect.any(Function),
+      component: expect.any(Object),
       options: { title: 'Offer title' },
     })
     expect(Screens[2].props).toEqual({
       name: '_DeeplinkOnlyOffer2',
-      component: expect.any(Function),
+      component: expect.any(Object),
       options: { title: 'Offer title' },
     })
     expect(Screens[3].props).toEqual({
       name: 'Login',
-      component: expect.any(Function),
+      component: expect.any(Object),
       options: { title: 'Login title' },
     })
     expect(Screens[4].props).toEqual({
       name: '_DeeplinkOnlyLogin1',
-      component: expect.any(Function),
+      component: expect.any(Object),
       options: { title: 'Login title' },
     })
   })
