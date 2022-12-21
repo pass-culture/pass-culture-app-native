@@ -15,9 +15,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
-import { SectionTitle } from 'features/search/helpers/titles'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
-import { useLogFilterOnce } from 'features/search/helpers/useLogFilterOnce'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
 import { SearchState } from 'features/search/types'
@@ -100,7 +98,6 @@ export const LocationModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const { searchState } = useSearch()
-  const logUseFilter = useLogFilterOnce(SectionTitle.Location, searchState.searchId)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
   const {
@@ -125,8 +122,6 @@ export const LocationModal: FunctionComponent<Props> = ({
   }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
 
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
-
-  const logChangeRadius = useLogFilterOnce(SectionTitle.Radius, searchState.searchId)
 
   const defaultValues = useMemo(() => {
     return {
@@ -222,6 +217,7 @@ export const LocationModal: FunctionComponent<Props> = ({
         }
       }
 
+      analytics.logPerformSearch(additionalSearchState)
       navigate(
         ...getTabNavConfig('Search', {
           ...additionalSearchState,
@@ -279,7 +275,6 @@ export const LocationModal: FunctionComponent<Props> = ({
 
   const onSelectLocation = useCallback(
     async (locationChoice: RadioButtonLocation) => {
-      logUseFilter()
       if (locationChoice === RadioButtonLocation.AROUND_ME) {
         const grantedButUnknownPosition =
           position === null && permissionState === GeolocPermissionState.GRANTED
@@ -303,7 +298,6 @@ export const LocationModal: FunctionComponent<Props> = ({
       setValueWithValidation('locationChoice', locationChoice)
     },
     [
-      logUseFilter,
       position,
       permissionState,
       showGeolocPermissionModal,
@@ -318,10 +312,9 @@ export const LocationModal: FunctionComponent<Props> = ({
     (newValues: number[]) => {
       if (isVisible) {
         setValue('aroundRadius', newValues[0])
-        logChangeRadius()
       }
     },
-    [isVisible, logChangeRadius, setValue]
+    [isVisible, setValue]
   )
 
   return (
