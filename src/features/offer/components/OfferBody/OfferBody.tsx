@@ -51,6 +51,8 @@ const trackingOnHorizontalScroll = () => {
   return analytics.logSimilarOfferPlaylistHorizontalScroll()
 }
 
+const keyExtractor = (item: SearchHit) => item.objectID
+
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
@@ -242,7 +244,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             itemWidth={itemWidth}
             itemHeight={itemHeight}
             renderItem={renderItem}
-            keyExtractor={(item) => item.objectID}
+            keyExtractor={keyExtractor}
             title="Ça peut aussi te plaire"
             onEndReached={trackingOnHorizontalScroll}
           />
