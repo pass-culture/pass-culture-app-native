@@ -72,6 +72,7 @@ class MailClient {
   async confirmEmailFdl() {
     const mail = await simpleParser(confirmEmail)
     const res = mail.text && this.confirmEmailRe.exec(mail.text)
+    console.log(mail)
     return res instanceof Array && res[1]
   }
 
@@ -100,4 +101,32 @@ class MailClient {
   }
 }
 
-export default new MailClient()
+let i = 0
+const mailClient = new MailClient()
+
+// mailClient
+//   .validationCode()
+//   .then(console.log)
+//   .then(() => console.log(++i))
+mailClient
+  .confirmEmailFdl()
+  .then(console.log)
+  .then(() => console.log(++i))
+// mailClient
+//   .existingEmail()
+//   .then(console.log)
+//   .then(() => console.log(++i))
+// mailClient
+//   .forgottenPasswordEmail()
+//   .then(console.log)
+//   .then(() => console.log(++i))
+// mailClient
+//   .activationConfirmationEmail()
+//   .then(console.log)
+//   .then(() => console.log(++i))
+// mailClient
+//   .happy18BirthdayEmail()
+//   .then(console.log)
+//   .then(() => console.log(++i))
+
+export default mailClient
