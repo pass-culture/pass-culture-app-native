@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { ElementType } from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
+import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
@@ -30,29 +31,33 @@ export const TabBarComponent: React.FC<Props> = ({
   navigateTo,
   onPress,
   tabName,
-}) => (
-  <TabComponentContainer
-    navigateTo={navigateTo}
-    onBeforeNavigate={onPress}
-    activeOpacity={1}
-    selected={isSelected}
-    accessibilityLabel={menu[tabName].accessibilityLabel}
-    testID={menu[tabName].accessibilityLabel || menu[tabName].displayName}
-    aria-current={isSelected ? 'page' : undefined}>
-    {!!isSelected && (
-      <BicolorSelector
-        width={SELECTOR_WIDTH}
-        height={SELECTOR_HEIGHT}
-        testID={`${menu[tabName].accessibilityLabel} sélectionné`}
-      />
-    )}
-    <Spacer.Flex />
-    <StyledIcon as={BicolorIcon} selected={isSelected} />
-    <Title selected={isSelected}>{menu[tabName].displayName}</Title>
-    <Spacer.Flex />
-    {!!isSelected && <BicolorSelectorPlaceholder />}
-  </TabComponentContainer>
-)
+}) => {
+  const { tabBar } = useTheme()
+  const TitleComponent = (tabBar.showLabels ? Title : HiddenAccessibleText) as ElementType
+  return (
+    <TabComponentContainer
+      navigateTo={navigateTo}
+      onBeforeNavigate={onPress}
+      activeOpacity={1}
+      selected={isSelected}
+      accessibilityLabel={menu[tabName].accessibilityLabel}
+      testID={menu[tabName].accessibilityLabel || menu[tabName].displayName}
+      aria-current={isSelected ? 'page' : undefined}>
+      {!!isSelected && (
+        <BicolorSelector
+          width={SELECTOR_WIDTH}
+          height={SELECTOR_HEIGHT}
+          testID={`${menu[tabName].accessibilityLabel} sélectionné`}
+        />
+      )}
+      <Spacer.Flex />
+      <StyledIcon as={BicolorIcon} selected={isSelected} />
+      <TitleComponent selected={isSelected}>{menu[tabName].displayName}</TitleComponent>
+      <Spacer.Flex />
+      {!!isSelected && <BicolorSelectorPlaceholder />}
+    </TabComponentContainer>
+  )
+}
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected ? undefined : theme.colors.greyDark,
@@ -74,7 +79,6 @@ const TabComponentContainer = styled(InternalTouchableLink).attrs(
 }))
 
 const Title = styled(Typo.Caption)<{ selected?: boolean }>(({ theme, selected }) => ({
-  display: theme.tabBar.showLabels ? undefined : 'none',
   color: selected ? theme.colors.black : theme.colors.greyDark,
   fontSize: theme.tabBar.fontSize,
   textAlign: 'center',

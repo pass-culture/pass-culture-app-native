@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useFavoritesCount } from 'features/favorites/api'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { plural } from 'libs/plural'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
@@ -21,26 +20,14 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   thin = false,
   testID,
 }) => {
-  const {
-    showTabBar,
-    tabBar: { showLabels },
-  } = useTheme()
+  const { showTabBar } = useTheme()
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
   const { data: favoritesCount } = useFavoritesCount()
   const scale = useScaleFavoritesAnimation(favoritesCount)
 
   if (!netInfo.isConnected || !isLoggedIn || typeof favoritesCount === 'undefined') {
-    return (
-      <BicolorFavorite
-        size={size}
-        color={color}
-        color2={color2}
-        thin={thin}
-        accessibilityLabel={showTabBar && !showLabels ? 'Mes favoris' : undefined}
-        testID={testID}
-      />
-    )
+    return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
   }
 
   const widthFactor = showTabBar ? 0.95 : 0.8
@@ -52,13 +39,8 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   const hasTooMany = favoritesCount >= COUNT_MAX
   const count = hasTooMany ? COUNT_MAX - 1 : favoritesCount || '0'
   const plusSign = hasTooMany ? '+' : ''
-  const accessibilityLabel =
-    showTabBar && !showLabels
-      ? plural(favoritesCount, {
-          one: '# favori',
-          other: '# favoris',
-        })
-      : `${favoritesCount}`
+  const accessibilityLabel = favoritesCount.toString()
+
   return (
     <Container testID="bicolor-favorite-count">
       <BicolorFavoriteAuthed
