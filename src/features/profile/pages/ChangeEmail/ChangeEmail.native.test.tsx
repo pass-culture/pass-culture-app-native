@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -11,10 +10,11 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from './ChangeEmail'
 
-jest.mock('features/auth/AuthContext')
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = useMutation as jest.Mock
+const mockedUseQuery = useQuery as jest.Mock
+
 const mockUseMutationSuccess = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({
@@ -23,7 +23,6 @@ const mockUseMutationSuccess = () => {
     mutate: () => onSuccess(),
   }))
 }
-mockUseMutationSuccess()
 
 const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
@@ -36,12 +35,6 @@ const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
   }))
 }
 
-const mockedUseQuery = mocked(useQuery)
-const mockUseQueryWithoutExpirationTimestamp = () => {
-  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-  mockedUseQuery.mockImplementationOnce(() => ({}))
-}
-mockUseQueryWithoutExpirationTimestamp()
 const mockUseQueryWithExpirationTimestamp = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseQuery.mockImplementationOnce(() => ({
@@ -60,6 +53,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ChangeEmail/>', () => {
+  beforeEach(() => {
+    mockedUseQuery.mockImplementation(() => ({}))
+    mockUseMutationSuccess()
+  })
   it('should render correctly', () => {
     const renderAPI = render(<ChangeEmail />)
     expect(renderAPI.toJSON()).toMatchSnapshot()
@@ -73,8 +70,6 @@ describe('<ChangeEmail/>', () => {
     await waitForExpect(() => {
       expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
     })
-
-    mockUseQueryWithoutExpirationTimestamp()
   })
 
   it.each`
@@ -160,8 +155,6 @@ describe('<ChangeEmail/>', () => {
         CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
       )
     })
-
-    mockUseMutationSuccess()
   })
 
   it('should show the generic error message if the API call returns an attempts limit error', async () => {
@@ -186,7 +179,5 @@ describe('<ChangeEmail/>', () => {
         CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
       )
     })
-
-    mockUseMutationSuccess()
   })
 })
