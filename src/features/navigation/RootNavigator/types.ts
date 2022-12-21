@@ -13,6 +13,7 @@ export type Referrals =
   | 'deeplink'
   | 'exclusivity'
   | 'bookingimpossible'
+  | 'similar_offer'
 
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
