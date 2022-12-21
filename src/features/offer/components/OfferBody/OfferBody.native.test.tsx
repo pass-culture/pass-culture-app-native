@@ -8,7 +8,7 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
-import { cleanup, fireEvent, render } from 'tests/utils'
+import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')
@@ -83,6 +83,21 @@ describe('<OfferBody />', () => {
         fromOfferId: 1,
         id: 102280,
       })
+    })
+
+    it('should log analytics event logSimilarOfferPlaylistHorizontalScroll when scrolling on it', async () => {
+      const nativeEventMiddle = {
+        layoutMeasurement: { height: 296 },
+        contentOffset: { x: 50 }, // how far did we scroll
+        contentSize: { height: 296 },
+      }
+      const { getByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      const scrollView = getByTestId('offersModuleList')
+
+      await waitFor(() => {
+        scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+      })
+      expect(analytics.logSimilarOfferPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
     })
   })
 })
