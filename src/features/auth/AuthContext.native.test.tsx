@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { AuthWrapper, useAuthContext } from 'features/auth/AuthContext'
+import { beneficiaryUser } from 'fixtures/user'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
@@ -34,11 +35,7 @@ describe('AuthContext', () => {
       const result = renderUseAuthContext()
 
       await waitFor(() => {
-        expect(result.current.user).toEqual({
-          email: 'email@domain.ext',
-          firstName: 'Jean',
-          isBeneficiary: true,
-        })
+        expect(result.current.user).toEqual(beneficiaryUser)
       })
     })
 

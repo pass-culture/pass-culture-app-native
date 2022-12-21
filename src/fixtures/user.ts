@@ -1,4 +1,13 @@
-import { UserProfileResponse, UserRole, YoungStatusType } from 'api/gen'
+import { format } from 'date-fns'
+
+import {
+  DepositType,
+  EligibilityType,
+  UserProfileResponse,
+  UserRole,
+  YoungStatusType,
+} from 'api/gen'
+import { EIGHTEEN_AGE_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
 
 export const nonBeneficiaryUser: UserProfileResponse = {
   bookedOffers: {},
@@ -32,6 +41,11 @@ export const beneficiaryUser: UserProfileResponse = {
   isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
+  status: { statusType: YoungStatusType.beneficiary },
+  depositType: DepositType.GRANT_18,
+  eligibility: EligibilityType['age-18'],
+  eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+  birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
 }
 
 export const underageBeneficiaryUser: UserProfileResponse = {
@@ -39,4 +53,5 @@ export const underageBeneficiaryUser: UserProfileResponse = {
   isBeneficiary: false,
   roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
+  status: { statusType: YoungStatusType.eligible },
 }
