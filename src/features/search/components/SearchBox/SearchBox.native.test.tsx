@@ -93,7 +93,7 @@ describe('SearchBox component', () => {
     })
   })
 
-  it('should call logSearchQuery on submit', async () => {
+  it('should call logPerformSearch on submit', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -111,11 +111,14 @@ describe('SearchBox component', () => {
         searchId,
       })
     )
-    expect(analytics.logSearchQuery).toBeCalledWith(
-      'jazzaza',
-      ['Localisation', 'Catégories'],
-      searchId
-    )
+    expect(analytics.logPerformSearch).toBeCalledWith({
+      ...initialSearchState,
+      query: 'jazzaza',
+      view: SearchView.Results,
+      offerCategories: mockSearchState.offerCategories,
+      priceRange: mockSearchState.priceRange,
+      searchId,
+    })
   })
 
   it('should not show back button when being on the search landing view', async () => {

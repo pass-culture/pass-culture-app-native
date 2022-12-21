@@ -106,7 +106,7 @@ export const analytics: typeof actualAnalytics = {
   logResendEmailSignupConfirmationExpiredLink: jest.fn(),
   logSaveNewMail: jest.fn(),
   logScreenView: jest.fn(),
-  logSearchQuery: jest.fn(),
+  logPerformSearch: jest.fn(),
   logSearchScrollToPage: jest.fn(),
   logSeeMyBooking: jest.fn(),
   logSelectAge: jest.fn(),

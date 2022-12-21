@@ -10,11 +10,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import {
-  FILTER_TYPES,
-  useAppliedFilters,
-} from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -33,7 +29,6 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
   const { ['offer.searchGroupNamev2']: categories } = indexInfos.facets.analytics
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
-  let appliedFilters = useAppliedFilters(searchState)
   const searchGroupLabel = useSearchGroupLabel(
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
   )
@@ -47,22 +42,19 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const searchId = uuidv4()
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        query,
-        view: SearchView.Results,
-        searchId,
-        ...(shouldShowCategory && hasMostPopularHitCategory
-          ? { offerCategories: [categories[0].value] }
-          : {}),
-      })
-    )
-    if (shouldShowCategory && hasMostPopularHitCategory) {
-      appliedFilters = [...appliedFilters, FILTER_TYPES.CATEGORIES]
+    const shouldFilteredOnCategory = shouldShowCategory && hasMostPopularHitCategory
+    const newSearchState: SearchState = {
+      ...searchState,
+      query,
+      view: SearchView.Results,
+      searchId,
+      isAutocomplete: true,
+      ...(!!shouldFilteredOnCategory && { offerCategories: [categories[0].value] }),
     }
 
-    analytics.logSearchQuery(query || '', appliedFilters, searchId)
+    analytics.logPerformSearch(newSearchState)
+
+    navigate(...getTabNavConfig('Search', newSearchState))
   }
 
   return (
