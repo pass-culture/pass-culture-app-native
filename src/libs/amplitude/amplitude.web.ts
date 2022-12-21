@@ -41,4 +41,7 @@ export const amplitude: AmplitudeClient = {
     }
     removeGeneratedStorageKey('amplitude_unsent')
   },
+  setUserProperties: (properties) => {
+    ampInstance.setUserProperties(properties)
+  },
 }
