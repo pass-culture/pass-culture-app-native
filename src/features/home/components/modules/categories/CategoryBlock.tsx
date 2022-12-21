@@ -57,6 +57,5 @@ const ImageBackground = styled.ImageBackground({
 })
 
 const StyledExternalTouchableLink = styled(ExternalTouchableLink)({
-  flex: 1,
   height: getSpacing(18),
 })
