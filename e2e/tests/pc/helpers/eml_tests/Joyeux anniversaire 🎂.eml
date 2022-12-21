@@ -1,0 +1,632 @@
+Delivered-To: dimitri.kopriwa+alias1@passculture.app
+Received: by 2002:ab2:540e:0:b0:179:d91c:f0c6 with SMTP id c14csp3131691lql;
+        Tue, 20 Dec 2022 08:26:05 -0800 (PST)
+X-Google-Smtp-Source: AA0mqf5NnESDRSbBc51/oihB/fAPI97jNQehwmHoXhDJtIy6nGGzw8051fA8hVDHDwcYAijewGtg
+X-Received: by 2002:a5d:5187:0:b0:242:9e8:84b6 with SMTP id k7-20020a5d5187000000b0024209e884b6mr26912947wrv.13.1671553565483;
+        Tue, 20 Dec 2022 08:26:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671553565; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vg2Yj0LV1ik3bBpbyfVCIMhpcdIpgj45wd+zfzoWBtogld/a5vQ4e/PIfaP89AVTcv
+         MorbENFh4puTTwu4knXN44imHGY0WwjsEVXhDSF/PS6hkY58KmKCvjcJzm+fnAgfnJa5
+         GfDJMUee6u2wr+tEh0+rNvGknmMRsNK9BITbyO9/Rr7Mlbnlq+amrmLBKbKoVnkUG60e
+         WWw0rdb0lnZd+BqglEiZDGsQe+99ZXkXV0HWeC6KBOSWcDz0WPOzgx6bU/Oxte2Nfhdi
+         Z8G7zYkI0MXZum0/voyv2+HYZnAtvNKLtpFJnMgfP2lMHpk1+dhDnMhXCVIwE8xm46Rf
+         5loQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:from:feedback-id:list-unsubscribe-post
+         :mime-version:reply-to:origin-messageid:message-id:subject:date:to
+         :dkim-signature;
+        bh=4pwMBSwI6Bec1DCsoPynCkrsy87tXZkyu+3Das3Lc14=;
+        b=Gr37PXGhkG81HA1Pni/czbMhYPgl/LlG22GmBriM5f/OF47r2MlJTRz5uG+imZfcFm
+         w9EvBJ82n6nf+QRAD7it76vhkPaS49/qo8tJSMz2EHREEGICIuLl19uDEwetYYYpa6Tj
+         MxKtc13SqG8MLUS4Dc/nJ9tJ23P+1IejObu05J5UaickGu5SgNOOKEyw5fg9buEHLH6h
+         tQGa2LSDb058v91teFQyWOMbYTASbE63xCFBde0G52zm7/UEVTFaUclXS3tmeLL/Z54B
+         m7JbXZuOqFzvHUSVdgb0ohIE3tXTOoWjIRXKSeRREgl892cz/ektlKroAx6IEk1iYc1K
+         RK6w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@passculture.app header.s=mail header.b=ktq2ctMY;
+       spf=pass (google.com: domain of bounces-126286450-support=passculture.app@email.passculture.app designates 212.146.249.10 as permitted sender) smtp.mailfrom="bounces-126286450-support=passculture.app@email.passculture.app";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+Return-Path: <bounces-126286450-support=passculture.app@email.passculture.app>
+Received: from email.passculture.app (email.passculture.app. [212.146.249.10])
+        by mx.google.com with ESMTPS id n10-20020a5d588a000000b002366db17cb0si8628944wrf.915.2022.12.20.08.26.05
+        for <dimitri.kopriwa+alias1@passculture.app>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Dec 2022 08:26:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces-126286450-support=passculture.app@email.passculture.app designates 212.146.249.10 as permitted sender) client-ip=212.146.249.10;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@passculture.app header.s=mail header.b=ktq2ctMY;
+       spf=pass (google.com: domain of bounces-126286450-support=passculture.app@email.passculture.app designates 212.146.249.10 as permitted sender) smtp.mailfrom="bounces-126286450-support=passculture.app@email.passculture.app";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=passculture.app;
+ q=dns/txt; s=mail; bh=4pwMBSwI6Bec1DCsoPynCkrsy87tXZkyu+3Das3Lc14=;
+ h=from:reply-to:subject:date:to:mime-version:content-type:list-unsubscribe:x-csa-complaints:list-unsubscribe-post;
+        b=ktq2ctMYxaY7j/jT5VtblLPIA1WyANXpWHI6BbX+qyNkYZ+MB66nId7ur8NGmCsrN9okXQWz1hWQ
+        +y1AOnbxq2W9TtCWk6FywQiY4EglQiT6Cxe3IsM7hISAPyVZXXW3NxwOaI6S09IxTJfHEWpxdKns
+        H+o08pMFFJ0MNm7wcOc=
+X-Mailin-EID: MTI2Mjg2NDUwfmRpbWl0cmkua29wcml3YSthbGlhczFAcGFzc2N1bHR1cmUuYXBwfjwyMDIyMTIyMDE3MjYuODg0NDYwMzg0MDZAc210cC1yZWxheS5tYWlsaW4uZnI%2BfmVtYWlsLnBhc3NjdWx0dXJlLmFwcA%3D%3D
+To: "support@passculture.app" <dimitri.kopriwa+alias1@passculture.app>
+Date: Tue, 20 Dec 2022 16:26:03 +0000
+Subject: =?UTF-8?Q?Joyeux_anniversaire__=F0=9F=8E=82?=
+Message-Id: <5015b1b1-0762-4443-ae47-6e86e487f625@smtp-relay.sendinblue.com>
+Origin-messageId: <202212201726.88446038406@smtp-relay.mailin.fr>
+Content-Type: multipart/alternative;
+ boundary="--_SiB-5ce0c9d22b8ba13a-Part_1"
+Reply-To: support@passculture.app
+MIME-Version: 1.0
+X-sib-id: wdPUxfz_3J0qCTeAHjGDOXYdUPW2cli9Zs3EZ3x5cYuIO-EScCsYaIq9moKBxpYEfzlyLxMyfSQJnzzc42CaPrJ47SfcECNwShvCIfklcByx7lPEyhaL6FjNHqqC5hWlGkUa5kkD1sF_3c58WdEHAYCzSLGPU4ezBd56Ruk4jx3JUmwOJJ8hAQ1kiZsTa8lRvdgWeg
+X-CSA-Complaints: whitelist-complaints@eco.de
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: 212.146.249.10:3636252_-1:3636252:Sendinblue
+From: "pass Culture" <support@passculture.app>
+List-Unsubscribe: <mailto:unsubscribe-t@email.passculture.app?subject=unsub-MTI2Mjg2NDUwfmRpbWl0cmkua29wcml3YSthbGlhczFAcGFzc2N1bHR1cmUuYXBwfjwyMDIyMTIyMDE3MjYuODg0NDYwMzg0MDZAc210cC1yZWxheS5tYWlsaW4uZnI-fnBhc3MgQ3VsdHVyZSA8c3VwcG9ydEBwYXNzY3VsdHVyZS5hcHA-fjUwMTViMWIxLTA3NjItNDQ0My1hZTQ3LTZlODZlNDg3ZjYyNQ%3D%3D&body=MTI2Mjg2NDUwfmRpbWl0cmkua29wcml3YSthbGlhczFAcGFzc2N1bHR1cmUuYXBwfjwyMDIyMTIyMDE3MjYuODg0NDYwMzg0MDZAc210cC1yZWxheS5tYWlsaW4uZnI-fnBhc3MgQ3VsdHVyZSA8c3VwcG9ydEBwYXNzY3VsdHVyZS5hcHA-fjUwMTViMWIxLTA3NjItNDQ0My1hZTQ3LTZlODZlNDg3ZjYyNQ%3D%3D>, <https://r.email.passculture.app/tr/un/li/sy_sZDUhkkhXkiXeDlFEqc9wIhD9nAbOJ-d46tUO6ZcMyCkFFgJFld3cuZahyUHXwk1dfk4_uUZ97-zqhNFqC1d7OW7Dk9S4CVEJ27kEVo0KOUut-ZrRsFDvMyO9WO0sv409fd3xFiaFEcFW6aBPZscqv7Mc0ZuiV6iB8y80C_Wa9LMRJd_9ReAu4xntNck_8EHOH6ZQnO6Qu-O8ntH_uo7omfcwRfOD8P9C6qiwaXg1Wqj6cNr8FNt2RVTd4UFFylGOqq_vReLWKwtFddPgVQ5T6_EdJA>
+
+
+----_SiB-5ce0c9d22b8ba13a-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Toute l'=C3=A9quipe du pass Culture te souhaite un **tr=C3=A8s joyeux =
+anniversaire**!
+
+=C2=A0Tu es maintenant =C3=A9ligible pour recevoir les **300 =E2=82=AC du =
+pass Culture**. Pour d=C3=A9bloquer ton cr=C3=A9dit, tu n'as pas besoin de =
+cr=C3=A9er un nouveau compte : il te suffit d'ajouter ton **num=C3=A9ro de =
+t=C3=A9l=C3=A9phone** et de pr=C3=A9senter ta **carte d'identit=C3=A9** =
+depuis la page =E2=80=9Cprofil=E2=80=9D de ton application. =F0=9F=91=87
+
+[**Obtenir mes 300 =E2=82=AC**](https://passculture.=
+app/profil=3Futm=5Fcampaign=3Danniv18&utm=5Fsource=3Dtransac&utm=5Fmedium=
+=3Demail)
+
+*Le bouton ci-dessus ne fonctionne pas =3F D=C3=A9sactive ton bloqueur de =
+publicit=C3=A9.=C2=A0*
+
+**On a encore plein de choses =C3=A0 te dire !=C2=A0**
+[Clique ici pour t'abonner =C3=A0 notre newsletter](https://passculture.=
+app/profil/notifications=3Futm=5Fcampaign=3Dreinscriptionnl&utm=5Fsource=3D=
+transac&utm=5Fmedium=3Demail =22Clique ici pour t'abonner =C3=A0 notre =
+newsletter=22) et recevoir chaque mois nos bons plans, offres exclusives et=
+ recos personnalis=C3=A9es. =F0=9F=92=8C
+
+=C3=80 tr=C3=A8s vite sur le pass =F0=9F=91=8B=C2=A0
+
+**L'=C3=A9quipe pass Culture**
+
+[Afficher dans le navigateur](https://r.email.passculture.=
+app/tr/mr/=5FXDW9FPgX777DdMGkZ3CndgHK5dqf46rACKDkDaYTTiScl3fI00QUF78t0egDe4=
+O8FCiaLV0EJwRijay8ICzqLA3TUi16q8MzvDLPA8QveLiN59=5FhffG7MVeXHKX9iWqGPCaUiRO=
+0QVso=5F-ebSyh2pIChQPItXB-8trPGbV5FATyhiMkIm9Q74U)
+
+
+----_SiB-5ce0c9d22b8ba13a-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC =22-//W3C//DTD XHTML 1.0 Strict//EN=22 =22http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd=22>
+<html xmlns=3D=22http://www.w3.org/1999/xhtml=22 xmlns:v=3D=22urn:schemas-m=
+icrosoft-com:vml=22 xmlns:o=3D=22urn:schemas-microsoft-com:office:office=22=
+><head><meta http-equiv=3D=22Content-Type=22 content=3D=22text/html; =
+charset=3Dutf-8=22><meta http-equiv=3D=22X-UA-Compatible=22 =
+content=3D=22IE=3Dedge=22><meta name=3D=22format-detection=22 =
+content=3D=22telephone=3Dno=22><meta name=3D=22viewport=22 =
+content=3D=22width=3Ddevice-width, initial-scale=3D1.0=22><title>Joyeux =
+anniversaire  =F0=9F=8E=82</title><style type=3D=22text/css=22 =
+emogrify=3D=22no=22>#outlook a { padding:0; } .ExternalClass { width:100%; =
+} .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass =
+font, .ExternalClass td, .ExternalClass div { line-height: 100%; } table td=
+ { border-collapse: collapse; mso-line-height-rule: exactly; } .editable.=
+image { font-size: 0 !important; line-height: 0 !important; } .=
+nl2go=5Fpreheader { display: none !important; mso-hide:all !important; =
+mso-line-height-rule: exactly; visibility: hidden !important; line-height: =
+0px !important; font-size: 0px !important; } body { width:100% !important; =
+-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; =
+padding:0; } img { outline:none; text-decoration:none; =
+-ms-interpolation-mode: bicubic; } a img { border:none; } table { =
+border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; } th =
+{ font-weight: normal; text-align: left; } *[class=3D=22gmail-fix=22] { =
+display: none !important; } </style><style type=3D=22text/css=22 =
+emogrify=3D=22no=22> @media (max-width: 600px) { .gmx-killpill { content: '=
+ \03D1';} } </style><style type=3D=22text/css=22 emogrify=3D=22no=22>@media=
+ (max-width: 600px) { .gmx-killpill { content: ' \03D1';} .r0-c { =
+box-sizing: border-box !important; text-align: center !important; valign: =
+top !important; width: 320px !important } .r1-o { border-style: solid !=
+important; margin: 0 auto 0 auto !important; width: 320px !important } .=
+r2-i { background-color: #eff2f7 !important } .r3-c { box-sizing: =
+border-box !important; text-align: center !important; valign: middle !=
+important; width: 100% !important } .r4-o { border-style: solid !important;=
+ margin: 0 auto 0 auto !important; margin-top: 5px !important; width: 100% =
+!important } .r5-i { background-color: #eff2f7 !important; color: #3b3f44 !=
+important; padding-bottom: 0px !important; padding-left: 0px !important; =
+padding-right: 0px !important; padding-top: 0px !important } .r6-c { =
+box-sizing: border-box !important; display: block !important; valign: =
+middle !important; width: 100% !important } .r7-o { border-style: solid !=
+important; width: 100% !important } .r8-i { color: #3b3f44 !important; =
+padding-left: 0px !important; padding-right: 0px !important } .r9-c { =
+box-sizing: border-box !important; text-align: center !important; valign: =
+top !important; width: 100% !important } .r10-o { border-style: solid !=
+important; margin: 0 auto 0 auto !important; width: 100% !important } .=
+r11-i { color: #3b3f44 !important; padding-bottom: 0px !important; =
+padding-left: 0px !important; padding-right: 0px !important; padding-top: =
+0px !important } .r12-i { background-color: #ffffff !important; =
+padding-bottom: 15px !important; padding-left: 10px !important; =
+padding-right: 10px !important; padding-top: 20px !important } .r13-c { =
+box-sizing: border-box !important; display: block !important; valign: top !=
+important; width: 100% !important } .r14-i { padding-left: 0px !important; =
+padding-right: 0px !important } .r15-o { border-style: solid !important; =
+margin: 0 auto 0 auto !important; width: 90% !important } .r16-i { =
+padding-top: 5px !important } .r17-i { background-color: #ffffff !=
+important; padding-bottom: 0px !important; padding-left: 10px !important; =
+padding-right: 10px !important; padding-top: 5px !important } .r18-c { =
+box-sizing: border-box !important; text-align: left !important; valign: top=
+ !important; width: 100% !important } .r19-o { border-style: solid !=
+important; margin: 0 auto 0 0 !important; width: 100% !important } .r20-i {=
+ padding-bottom: 15px !important; padding-top: 5px !important; text-align: =
+center !important } .r21-o { border-style: solid !important; margin: 0 auto=
+ 0 auto !important; margin-bottom: 10px !important; margin-top: 15px !=
+important; width: 80% !important } .r22-i { text-align: center !important }=
+ .r23-r { background-color: #eb0055 !important; border-radius: 100px !=
+important; border-width: 0px !important; box-sizing: border-box; height: =
+initial !important; padding-bottom: 12px !important; padding-left: 5px !=
+important; padding-right: 5px !important; padding-top: 12px !important; =
+text-align: center !important; width: 100% !important } .r24-o { =
+border-style: solid !important; margin: 0 auto 0 0 !important; =
+margin-bottom: 0px !important; margin-top: 0px !important; width: 100% !=
+important } .r25-i { padding-bottom: 15px !important; padding-left: 3px !=
+important; padding-right: 3px !important; padding-top: 0px !important; =
+text-align: center !important } .r26-o { border-style: solid !important; =
+margin: 0 auto 0 0 !important; margin-bottom: 10px !important; margin-top: =
+10px !important; width: 100% !important } .r27-i { background-color: =
+#eff2f7 !important; color: #3b3f44 !important; padding-bottom: 20px !=
+important; padding-left: 10px !important; padding-right: 10px !important; =
+padding-top: 20px !important; text-align: center !important } .r28-i { =
+padding-bottom: 5px !important; padding-top: 15px !important; text-align: =
+left !important } .r29-o { border-style: solid !important; margin: 0 auto 0=
+ auto !important; margin-bottom: 0px !important; margin-top: 0px !=
+important; width: 100% !important } .r30-c { box-sizing: border-box !=
+important; text-align: center !important; width: 100% !important } .r31-i {=
+ color: #3b3f44 !important; font-size: 0px !important; padding-bottom: 0px =
+!important; padding-left: 67px !important; padding-right: 67px !important; =
+padding-top: 35px !important } .r32-c { box-sizing: border-box !important; =
+width: 32px !important } .r33-o { border-style: solid !important; =
+margin-right: 30px !important; width: 32px !important } .r34-i { color: =
+#3b3f44 !important } .r35-i { color: #3b3f44 !important; padding-bottom: =
+5px !important; padding-top: 5px !important } .r36-c { box-sizing: =
+border-box !important; text-align: center !important; valign: top !=
+important; width: 100px !important } .r37-o { border-style: solid !=
+important; margin: 0 auto 0 auto !important; margin-top: 10px !important; =
+width: 100px !important } .r38-i { color: #3b3f44 !important; =
+padding-bottom: 15px !important; padding-top: 20px !important } .r39-o { =
+border-style: solid !important; margin: 0 auto 0 auto !important; =
+margin-bottom: 0px !important; width: 100% !important } .r40-i { color: =
+#3b3f44 !important; padding-bottom: 0px !important; padding-top: 15px !=
+important; text-align: center !important } body { -webkit-text-size-adjust:=
+ none } .nl2go-responsive-hide { display: none } .nl2go-body-table { =
+min-width: unset !important } .mobshow { height: auto !important; overflow:=
+ visible !important; max-height: unset !important; visibility: visible !=
+important; border: none !important } .resp-table { display: inline-table !=
+important } .magic-resp { display: table-cell !important } } </style><!=
+--[if !mso]><!--><style type=3D=22text/css=22 emogrify=3D=22no=22>@import =
+url(=22https://fonts.googleapis.com/css2=3Ffamily=3DSource Sans Pro=22); =
+@import url(=22https://fonts.googleapis.com/css2=3Ffamily=3DMontserrat&fami=
+ly=3DMontserrat Alternates&family=3DNoto Sans JP&family=3DOpen Sans=22); =
+</style><!--<![endif]--><style type=3D=22text/css=22>p, h1, h2, h3, h4, ol,=
+ ul { margin: 0; } a, a:link { color: #0092ff; text-decoration: underline }=
+ .nl2go-default-textstyle { color: #3b3f44; font-family: arial,helvetica,=
+sans-serif; font-size: 16px; line-height: 1.5 } .default-button { =
+border-radius: 4px; color: #ffffff; font-family: arial,helvetica,=
+sans-serif; font-size: 16px; font-style: normal; font-weight: normal; =
+line-height: 1.15; text-decoration: none; width: 50% } .=
+sib=5Fclass=5Fimpressum { color: #999999; font-family: arial,helvetica,=
+sans-serif; font-size: 12px; font-style: italic } .default-heading1 { =
+color: #1F2D3D; font-family: arial,helvetica,sans-serif; font-size: 36px } =
+.default-heading2 { color: #1F2D3D; font-family: arial,helvetica,=
+sans-serif; font-size: 32px } .default-heading3 { color: #1F2D3D; =
+font-family: arial,helvetica,sans-serif; font-size: 24px } .=
+default-heading4 { color: #1F2D3D; font-family: arial,helvetica,sans-serif;=
+ font-size: 18px } a[x-apple-data-detectors] { color: inherit !important; =
+text-decoration: inherit !important; font-size: inherit !important; =
+font-family: inherit !important; font-weight: inherit !important; =
+line-height: inherit !important; } .no-show-for-you { border: none; =
+display: none; float: none; font-size: 0; height: 0; line-height: 0; =
+max-height: 0; mso-hide: all; overflow: hidden; table-layout: fixed; =
+visibility: hidden; width: 0; } </style><!--[if mso]><xml> =
+<o:OfficeDocumentSettings> <o:AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerIn=
+ch> </o:OfficeDocumentSettings> </xml><![endif]--><style =
+type=3D=22text/css=22>a:link{color: #0092ff; text-decoration: =
+underline}</style></head><body bgcolor=3D=22#eff2f7=22 text=3D=22#3b3f44=22=
+ link=3D=22#0092ff=22 yahoo=3D=22fix=22 style=3D=22background-color: =
+#eff2f7;=22><table cellpadding=3D=220=22 border=3D=220=22 =
+cellspacing=3D=220=22 style=3D=22 mso-hide: all; display: =
+none;=22><tr><td>Tu vas faire quoi avec les 300=E2=82=AC du pass Culture =
+=3F</td></tr></table> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 class=3D=22nl2go-body-table=22 =
+width=3D=22100%=22 style=3D=22background-color: #eff2f7; width: =
+100%;=22><tr><td align=3D=22center=22 class=3D=22r0-c=22> <table =
+cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22600=22 class=3D=22r1-o=22 =
+style=3D=22table-layout: fixed; width: 600px;=22><tr><td valign=3D=22top=22=
+ class=3D=22r2-i=22 style=3D=22background-color: #eff2f7;=22> <table =
+width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><td class=3D=22r3-c=22 =
+align=3D=22center=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22100%=22 =
+class=3D=22r4-o=22 style=3D=22table-layout: fixed; width: 100%;=22><!-- =
+--><tr class=3D=22nl2go-responsive-hide=22><td height=3D=225=22 =
+style=3D=22font-size: 5px; line-height: 5px;=22>=C2=AD</td> </tr><tr><td =
+class=3D=22r5-i=22 style=3D=22background-color: #eff2f7; color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 16px;=22> <table =
+width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><th width=3D=22100%=22 =
+valign=3D=22middle=22 class=3D=22r6-c=22 style=3D=22font-weight: =
+normal;=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22100%=22 =
+class=3D=22r7-o=22 style=3D=22table-layout: fixed; width: 100%;=22><!-- =
+--><tr><td valign=3D=22top=22 class=3D=22r8-i=22 style=3D=22color: #3b3f44;=
+ font-family: arial,helvetica,sans-serif; font-size: 16px;=22> <table =
+width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><td class=3D=22r9-c=22 =
+align=3D=22center=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22600=22 =
+class=3D=22r10-o=22 style=3D=22table-layout: fixed; width: =
+600px;=22><tr><td class=3D=22r11-i=22 style=3D=22color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 0px; line-height: =
+0px;=22> <img src=3D=22https://img.email.passculture.=
+app/im/3636252/22b5b1fb8ab49d24169d9f6eb13cb03e3cb3961724ccaf644ae6f1faff78=
+e8ce.png=3Fe=3DCX4zGOqyPB1QfjIqtYEg-r2uOBm3H3Z6bBQZSJmCuQ8C10Em-QvMgbQqS0-P=
+fkRN00BU-Xk8K3zxtujh1UlJTwOWPGL=5F2Pnww3=5F1S0RjqCPPYdWbYYNf-vb3DxYL8LVMwbg=
+C2P3Xv-vzJG6PmbxH-=5FcABvX3EBkLiafyQZo3I4AQjnzj6pOQFuLA0dkd5hnFpIBbiTQQ76OA=
+lV69pJki926pLP7iEgCaxszaxLCtjU3ytExjyMiqE5SD3y1Pmyfby4F8CFDTS461KaGQfG30Rmj=
+7zI-T9Qq8bOtuUqUGFlU7LunP6Wp6=5FmxozQgssE8NAg=22 width=3D=22600=22 =
+border=3D=220=22 class=3D=22=22 style=3D=22display: block; width: =
+100%;=22></td> </tr></table></td> </tr></table></td> </tr></table></th> =
+</tr></table></td> </tr></table></td> </tr><tr><td class=3D=22r9-c=22 =
+align=3D=22center=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22100%=22 =
+class=3D=22r10-o=22 style=3D=22table-layout: fixed; width: 100%;=22><!-- =
+--><tr class=3D=22nl2go-responsive-hide=22><td height=3D=2220=22 =
+width=3D=2210=22 style=3D=22font-size: 20px; line-height: 20px; =
+background-color: #ffffff;=22>=C2=AD </td> <td height=3D=2220=22 =
+style=3D=22font-size: 20px; line-height: 20px; background-color: =
+#ffffff;=22>=C2=AD</td> <td height=3D=2220=22 width=3D=2210=22 =
+style=3D=22font-size: 20px; line-height: 20px; background-color: =
+#ffffff;=22>=C2=AD </td> </tr><tr><td class=3D=22nl2go-responsive-hide=22 =
+width=3D=2210=22 style=3D=22font-size: 0px; line-height: 1px; =
+background-color: #ffffff;=22>=C2=AD </td> <td class=3D=22r12-i=22 =
+style=3D=22background-color: #ffffff;=22> <table width=3D=22100%=22 =
+cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22><tr><th width=3D=22100%=22 valign=3D=22top=22 =
+class=3D=22r13-c=22 style=3D=22font-weight: normal;=22> <table =
+cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100%=22 class=3D=22r7-o=22 =
+style=3D=22table-layout: fixed; width: 100%;=22><!-- --><tr><td =
+class=3D=22nl2go-responsive-hide=22 width=3D=2215=22 style=3D=22font-size: =
+0px; line-height: 1px;=22>=C2=AD </td> <td valign=3D=22top=22 =
+class=3D=22r14-i=22> <table width=3D=22100%=22 cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22><tr><td =
+class=3D=22r9-c=22 align=3D=22center=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22330=22 class=3D=22r15-o=22 style=3D=22table-layout: fixed; =
+width: 330px;=22><tr class=3D=22nl2go-responsive-hide=22><td =
+height=3D=2210=22 style=3D=22font-size: 10px; line-height: =
+10px;=22>=C2=AD</td> </tr><tr><td class=3D=22r16-i=22 style=3D=22font-size:=
+ 0px; line-height: 0px;=22> <img src=3D=22https://img.email.passculture.=
+app/im/3636252/ca328eeb624f0b16ac7d0d5430456fbd0d845572a56fb1cc4e8c78e75067=
+1946.gif=3Fe=3DNnXHYE3nbpY=5FgnRn46YgX2Si=5FpjQ1tQMaoxxXB6=5FIsoNHRXCQVFsjj=
+0wXiPyfJxApzqqCXplsxCa0doA9Jj9-wcDKezKnvs57czvtOq=5F3clShfTiXSQiAqEXDSoAkTb=
+rtUg00Rxjx-Ldo7vZNYlx=5FwETlByVlQBGhQHxGxLaDPjE1cgavDpBGAT9YqARa6Y9NdM9MwLG=
+licEnxDDMvpCguyQrG8ZDGMFXcD0qbV0dGFufghwsDc0felXo=5FdHsO4qe2qCTKUcv4jqELz6f=
+vjtLhJjCJ7sQz-qDEz-HuAT6Gm=5FEquPJA=22 width=3D=22330=22 border=3D=220=22 =
+class=3D=22=22 style=3D=22display: block; width: 100%;=22></td> =
+</tr></table></td> </tr></table></td> <td class=3D=22nl2go-responsive-hide=
+=22 width=3D=2215=22 style=3D=22font-size: 0px; line-height: 1px;=22>=C2=AD=
+ </td> </tr></table></th> </tr></table></td> <td class=3D=22nl2go-responsiv=
+e-hide=22 width=3D=2210=22 style=3D=22font-size: 0px; line-height: 1px; =
+background-color: #ffffff;=22>=C2=AD </td> </tr><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2215=22 width=3D=2210=22 =
+style=3D=22font-size: 15px; line-height: 15px; background-color: =
+#ffffff;=22>=C2=AD </td> <td height=3D=2215=22 style=3D=22font-size: 15px; =
+line-height: 15px; background-color: #ffffff;=22>=C2=AD</td> <td =
+height=3D=2215=22 width=3D=2210=22 style=3D=22font-size: 15px; line-height:=
+ 15px; background-color: #ffffff;=22>=C2=AD </td> </tr></table></td> =
+</tr><tr><td class=3D=22r9-c=22 align=3D=22center=22> <table =
+cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100%=22 class=3D=22r10-o=22 =
+style=3D=22table-layout: fixed; width: 100%;=22><!-- --><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=225=22 width=3D=2210=22 =
+style=3D=22font-size: 5px; line-height: 5px; background-color: =
+#ffffff;=22>=C2=AD </td> <td height=3D=225=22 style=3D=22font-size: 5px; =
+line-height: 5px; background-color: #ffffff;=22>=C2=AD</td> <td =
+height=3D=225=22 width=3D=2210=22 style=3D=22font-size: 5px; line-height: =
+5px; background-color: #ffffff;=22>=C2=AD </td> </tr><tr><td =
+class=3D=22nl2go-responsive-hide=22 width=3D=2210=22 style=3D=22font-size: =
+0px; line-height: 1px; background-color: #ffffff;=22>=C2=AD </td> <td =
+class=3D=22r17-i=22 style=3D=22background-color: #ffffff;=22> <table =
+width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><th width=3D=22100%=22 =
+valign=3D=22top=22 class=3D=22r13-c=22 style=3D=22font-weight: normal;=22> =
+<table cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100%=22 class=3D=22r7-o=22 =
+style=3D=22table-layout: fixed; width: 100%;=22><!-- --><tr><td =
+class=3D=22nl2go-responsive-hide=22 width=3D=2210=22 style=3D=22font-size: =
+0px; line-height: 1px;=22>=C2=AD </td> <td valign=3D=22top=22 =
+class=3D=22r14-i=22> <table width=3D=22100%=22 cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22><tr><td =
+class=3D=22r18-c=22 align=3D=22left=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22100%=22 class=3D=22r19-o=22 style=3D=22table-layout: fixed; =
+width: 100%;=22><tr class=3D=22nl2go-responsive-hide=22><td =
+height=3D=2215=22 style=3D=22font-size: 15px; line-height: =
+15px;=22>=C2=AD</td> </tr><tr><td align=3D=22center=22 valign=3D=22top=22 =
+class=3D=22r20-i nl2go-default-textstyle=22 style=3D=22color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 16px; line-height: 1.5;=
+ text-align: center;=22> <div><p style=3D=22margin: 0;=22><span =
+style=3D=22font-size: 15px;=22>Toute l'=C3=A9quipe du pass Culture te =
+souhaite un </span><span style=3D=22color: #320096; font-size: =
+15px;=22><strong>tr=C3=A8s joyeux anniversaire </strong></span><span =
+style=3D=22color: #3b3f44; font-size: 15px;=22>!</span><br><br><span =
+style=3D=22font-size: 15px;=22>=C2=A0Tu es maintenant =C3=A9ligible pour =
+recevoir les </span><span style=3D=22color: #320096; font-size: =
+15px;=22><strong>300 =E2=82=AC du pass Culture</strong></span><span =
+style=3D=22font-size: 15px;=22>. Pour d=C3=A9bloquer ton cr=C3=A9dit, tu =
+n'as pas besoin de cr=C3=A9er un nouveau compte : il te suffit d'ajouter =
+ton <strong>num=C3=A9ro de t=C3=A9l=C3=A9phone</strong> et de =
+pr=C3=A9senter ta <strong>carte d'identit=C3=A9</strong> depuis la page =
+=E2=80=9Cprofil=E2=80=9D de ton application. =F0=9F=91=87</span></p></div> =
+</td> </tr><tr class=3D=22nl2go-responsive-hide=22><td height=3D=2215=22 =
+style=3D=22font-size: 15px; line-height: 15px;=22>=C2=AD</td> =
+</tr></table></td> </tr><tr><td class=3D=22r9-c=22 align=3D=22center=22> =
+<table cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22224=22 class=3D=22r21-o=22 =
+style=3D=22table-layout: fixed; width: 224px;=22><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2215=22 =
+style=3D=22font-size: 15px; line-height: 15px;=22>=C2=AD</td> </tr><tr><td =
+height=3D=2218=22 align=3D=22center=22 valign=3D=22top=22 class=3D=22r22-i =
+nl2go-default-textstyle=22 style=3D=22color: #3b3f44; font-family: arial,=
+helvetica,sans-serif; font-size: 16px; line-height: 1.5;=22>  <!--[if mso]>=
+ <v:roundrect xmlns:v=3D=22urn:schemas-microsoft-com:vml=22 =
+xmlns:w=3D=22urn:schemas-microsoft-com:office:word=22 =
+href=3D=22https://passculture.app/profil=3Futm=5Fcampaign=3Danniv18&utm=5Fs=
+ource=3Dtransac&utm=5Fmedium=3Demail=22 style=3D=22v-text-anchor:middle; =
+height: 41px; width: 223px;=22 arcsize=3D=2250%=22 fillcolor=3D=22#eb0055=
+=22 strokecolor=3D=22#eb0055=22 strokeweight=3D=221px=22 =
+data-btn=3D=221=22> <w:anchorlock/> <div style=3D=22display:none;=22> =
+<center class=3D=22default-button=22><p style=3D=22direction:ltr;=22><span =
+style=3D=22font-family:Arial, helvetica, sans-serif;=22><strong>Obtenir mes=
+ 300 =E2=82=AC</strong></span></p></center> </div> </v:roundrect> <!=
+[endif]-->  <!--[if !mso]><!-- --> <a href=3D=22https://passculture.=
+app/profil=3Futm=5Fcampaign=3Danniv18&utm=5Fsource=3Dtransac&utm=5Fmedium=
+=3Demail=22 class=3D=22r23-r default-button=22 target=3D=22=5Fblank=22 =
+data-btn=3D=221=22 style=3D=22font-style: normal; font-weight: normal; =
+line-height: 1.15; text-decoration: none; border-style: solid; word-wrap: =
+break-word; display: inline-block; -webkit-text-size-adjust: none; =
+mso-hide: all; background-color: #eb0055; border-color: #eb0055; =
+border-radius: 100px; border-width: 0px; color: #ffffff; font-family: arial=
+,helvetica,sans-serif; font-size: 16px; height: 18px; padding-bottom: 12px;=
+ padding-left: 5px; padding-right: 5px; padding-top: 12px; width: =
+214px;=22><p style=3D=22margin: 0; direction: ltr;=22><span =
+style=3D=22font-family: Arial, helvetica, sans-serif;=22><strong>Obtenir =
+mes 300 =E2=82=AC</strong></span></p></a> <!--<![endif]--> </td> </tr><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2210=22 =
+style=3D=22font-size: 10px; line-height: 10px;=22>=C2=AD</td> =
+</tr></table></td> </tr><tr><td class=3D=22r18-c=22 align=3D=22left=22> =
+<table cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100%=22 class=3D=22r24-o=22 =
+style=3D=22table-layout: fixed; width: 100%;=22><tr><td =
+align=3D=22center=22 valign=3D=22top=22 class=3D=22r25-i =
+nl2go-default-textstyle=22 style=3D=22color: #3b3f44; font-family: arial,=
+helvetica,sans-serif; font-size: 16px; line-height: 1.15; text-align: =
+center;=22> <div><p style=3D=22margin: 0; direction: ltr;=22><span =
+style=3D=22color: #4e4b4b; font-family: Arial; font-size: 12px;=22><i>Le =
+bouton ci-dessus ne fonctionne pas =3F D=C3=A9sactive ton bloqueur de =
+publicit=C3=A9.=C2=A0</i></span></p></div> </td> </tr><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2215=22 =
+style=3D=22font-size: 15px; line-height: 15px;=22>=C2=AD</td> =
+</tr></table></td> </tr><tr><td class=3D=22r18-c=22 align=3D=22left=22> =
+<table cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100%=22 class=3D=22r26-o=22 =
+style=3D=22border-collapse: separate; border-radius: 20px; margin-bottom: =
+10px; margin-top: 10px; table-layout: fixed; width: 100%;=22><tr><td =
+align=3D=22center=22 valign=3D=22top=22 class=3D=22r27-i =
+nl2go-default-textstyle=22 style=3D=22line-height: 1.5; background-color: =
+#eff2f7; border-radius: 20px; color: #3b3f44; font-family: arial,helvetica,=
+sans-serif; font-size: 16px; padding-bottom: 20px; padding-left: 24px; =
+padding-right: 24px; padding-top: 20px; text-align: center;=22> <div><p =
+style=3D=22margin: 0;=22><span style=3D=22color: #320096; font-family: =
+Arial, helvetica, sans-serif; font-size: 15px;=22><strong>On a encore plein=
+ de choses =C3=A0 te dire !=C2=A0</strong></span><br><a =
+href=3D=22https://passculture.app/profil/notifications=3Futm=5Fcampaign=3Dr=
+einscriptionnl&utm=5Fsource=3Dtransac&utm=5Fmedium=3Demail=22 =
+title=3D=22Clique ici pour t'abonner =C3=A0 notre newsletter=22 =
+target=3D=22=5Fblank=22 style=3D=22color: #0092ff; text-decoration: =
+underline;=22><span style=3D=22color: #3b3f44; font-family: Arial, =
+helvetica, sans-serif; font-size: 15px;=22><u>Clique ici pour t'abonner =
+=C3=A0 notre newsletter</u></span></a><span style=3D=22font-family: Arial, =
+helvetica, sans-serif; font-size: 15px;=22> et recevoir chaque mois nos =
+bons plans, offres exclusives et recos personnalis=C3=A9es. =
+=F0=9F=92=8C</span></p></div> </td> </tr></table></td> </tr><tr><td =
+class=3D=22r18-c=22 align=3D=22left=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22100%=22 class=3D=22r19-o=22 style=3D=22table-layout: fixed; =
+width: 100%;=22><tr class=3D=22nl2go-responsive-hide=22><td =
+height=3D=2215=22 style=3D=22font-size: 15px; line-height: =
+15px;=22>=C2=AD</td> </tr><tr><td align=3D=22left=22 valign=3D=22top=22 =
+class=3D=22r28-i nl2go-default-textstyle=22 style=3D=22color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 16px; line-height: 1.5;=
+ text-align: left;=22> <div><p style=3D=22margin: 0; text-align: =
+right;=22><span style=3D=22color: #000000; font-family: Arial; font-size: =
+15px;=22>=C3=80 tr=C3=A8s vite sur le pass</span><span style=3D=22color: =
+#55575d; font-family: Arial; font-size: 16px;=22> =F0=9F=91=8B</span>=C2=A0=
+</p><p style=3D=22margin: 0; text-align: right;=22><span style=3D=22color: =
+#320096; font-family: Arial; font-size: 15px;=22><strong>L'=C3=A9quipe pass=
+ Culture</strong></span></p></div> </td> </tr><tr class=3D=22nl2go-responsi=
+ve-hide=22><td height=3D=225=22 style=3D=22font-size: 5px; line-height: =
+5px;=22>=C2=AD</td> </tr></table></td> </tr></table></td> <td =
+class=3D=22nl2go-responsive-hide=22 width=3D=2210=22 style=3D=22font-size: =
+0px; line-height: 1px;=22>=C2=AD </td> </tr></table></th> =
+</tr></table></td> <td class=3D=22nl2go-responsive-hide=22 width=3D=2210=22=
+ style=3D=22font-size: 0px; line-height: 1px; background-color: =
+#ffffff;=22>=C2=AD </td> </tr></table></td> </tr><tr><td class=3D=22r9-c=22=
+ align=3D=22center=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22100%=22 =
+class=3D=22r10-o=22 style=3D=22table-layout: fixed; width: 100%;=22><!-- =
+--><tr><td class=3D=22r5-i=22 style=3D=22background-color: #eff2f7; color: =
+#3b3f44; font-family: arial,helvetica,sans-serif; font-size: 16px;=22> =
+<table width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><th width=3D=22100%=22 =
+valign=3D=22top=22 class=3D=22r13-c=22 style=3D=22font-weight: normal;=22> =
+<table cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100%=22 class=3D=22r7-o=22 =
+style=3D=22table-layout: fixed; width: 100%;=22><!-- --><tr><td =
+valign=3D=22top=22 class=3D=22r8-i=22 style=3D=22color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 16px;=22> <table =
+width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><td class=3D=22r9-c=22 =
+align=3D=22center=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22600=22 =
+class=3D=22r29-o=22 style=3D=22border-collapse: separate; border-radius: =
+0px; margin-top: 0px; table-layout: fixed; width: 600px;=22><tr><td =
+class=3D=22r11-i=22 style=3D=22border-radius: 0px; color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 0px; line-height: =
+0px;=22> <img src=3D=22https://img.email.passculture.=
+app/im/3636252/139a86759285ac733d51b3122ac89ec53204769fb7dda658d75f2bfd355c=
+1a1e.png=3Fe=3DkStxVFyHExbeJcopDriAEv68oLF2E9KenZBd6I92I98nOCDo7uGOe5R-58oe=
+iNE9i8voGn=5FKLyGuQ3nvXPE5ucyGSrHPAEeWl4mVBjyJpVERhGEriGABVuRELiI7B9dyys1F3=
+GH8rsGdGg4NpP9fZbp-DAQCT0bdBatLAEXpGNHdnTVvCJqYrBDxnntEOC1dKOToSPGj85jwB1yi=
+UYfeM3Xmfoby5sB0x6rxZ7CbLc6FPPuzxCJtqaUTZ6SXcmKMLLoRatT7U8t2CsGXgsZiHqgQ3Nj=
+-veHaHhkqY2nQCEue20l5TA=22 width=3D=22600=22 border=3D=220=22 =
+class=3D=22=22 style=3D=22display: block; width: 100%; border-radius: =
+0px;=22></td> </tr></table></td> </tr><tr><td class=3D=22r30-c=22 =
+align=3D=22center=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22600=22 =
+class=3D=22r10-o=22 style=3D=22table-layout: fixed; width: 600px;=22><!-- =
+--><tr><td valign=3D=22top=22 class=3D=22=22> <table width=3D=22100%=22 =
+cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22><tr><td class=3D=22r30-c=22 align=3D=22center=22 =
+style=3D=22display: inline-block;=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22600=22 class=3D=22r10-o=22 style=3D=22table-layout: fixed; =
+width: 600px;=22><!-- --><tr class=3D=22nl2go-responsive-hide=22><td =
+height=3D=2235=22 width=3D=22207=22 style=3D=22font-size: 35px; =
+line-height: 35px;=22>=C2=AD </td> <td height=3D=2235=22 =
+style=3D=22font-size: 35px; line-height: 35px;=22>=C2=AD</td> <td =
+height=3D=2235=22 width=3D=22207=22 style=3D=22font-size: 35px; =
+line-height: 35px;=22>=C2=AD </td> </tr><tr><td class=3D=22nl2go-responsive=
+-hide=22 width=3D=22207=22 style=3D=22font-size: 0px; line-height: =
+1px;=22>=C2=AD </td> <td class=3D=22r31-i=22 style=3D=22color: #3b3f44; =
+font-family: arial,helvetica,sans-serif; font-size: 16px;=22> <table =
+width=3D=22100%=22 cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22><tr><th width=3D=2262=22 =
+valign=3D=22=22 class=3D=22r32-c mobshow resp-table=22 =
+style=3D=22font-weight: normal;=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22100%=22 class=3D=22r33-o=22 style=3D=22table-layout: fixed; =
+width: 100%;=22><!-- --><tr><td class=3D=22r34-i=22 style=3D=22color: =
+#3b3f44; font-family: arial,helvetica,sans-serif; font-size: 0px; =
+line-height: 0px;=22> <a href=3D=22https://www.instagram.=
+com/passcultureofficiel/=3Fhl=3Dfr=22 target=3D=22=5Fblank=22 =
+style=3D=22color: #0092ff; text-decoration: underline;=22> <img =
+src=3D=22https://img.email.passculture.app/im/3636252/f55f51748020b73fedcf7=
+aec985420eef7c6de1e208737d85bb305b88053cf5a.png=3Fe=3DN6JeCtzlL2f8PMtsne68N=
+0Ksc6qtew0=5FAcr3VhbmJZ1eN6QtcmSZ-gRFESv0DykoEVtwUy31f28pnJBNMcXCQ=5FYe7JVJ=
+ZGGs=5FMHmclTEwSPuI27CkYX0adkUAg=5Fr4-zujZP1ErD9mqg9ajq53cZ9kyVHqFqXRWhUjUD=
+xl3M9V9RUy4JiLlNIESP55ZQ4E0mNXQFfCNRoEynCiroE4rmafGQ43klUQAO3tQ10EIWKYdcoyo=
+=5FIhYtbDZ0ZFpO0zmRf7a2lbuCFSLxbwiIT8NRfWApEd37mLNRaOmA-Hav9OsfbjPQrbnD9rx1=
+UewzhWN4=22 width=3D=2232=22 border=3D=220=22 class=3D=22=22 =
+style=3D=22display: block; width: 100%;=22></a> </td> <td =
+class=3D=22nl2go-responsive-hide=22 width=3D=2230=22 style=3D=22font-size: =
+0px; line-height: 1px;=22>=C2=AD </td> </tr></table></th> <th =
+width=3D=2262=22 valign=3D=22=22 class=3D=22r32-c mobshow resp-table=22 =
+style=3D=22font-weight: normal;=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22100%=22 class=3D=22r33-o=22 style=3D=22table-layout: fixed; =
+width: 100%;=22><!-- --><tr class=3D=22nl2go-responsive-hide=22><td =
+height=3D=225=22 style=3D=22font-size: 5px; line-height: =
+5px;=22>=C2=AD</td> <td height=3D=225=22 width=3D=2230=22 =
+style=3D=22font-size: 5px; line-height: 5px;=22>=C2=AD </td> </tr><tr><td =
+class=3D=22r35-i=22 style=3D=22color: #3b3f44; font-family: arial,helvetica=
+,sans-serif; font-size: 0px; line-height: 0px;=22> <a href=3D=22https://www=
+.tiktok.com/@passcultureofficiel=3Flang=3Dfr=22 target=3D=22=5Fblank=22 =
+style=3D=22color: #0092ff; text-decoration: underline;=22> <img =
+src=3D=22https://img.email.passculture.app/im/3636252/e22250d34dc9aef83c363=
+8beed7b041f3c137522b8156d11dcc9c37ef7dc9451.png=3Fe=3DUVaqjnztfl3shn6d8Mo-A=
+U3VgGycbQSpq8f4iAWK-4BB=5FXDab1QwN35dMOStqAmoa60eTn2KtbOwTVb4aWlLIR6Rrv89LZ=
+EOHGihN=5FQiMyya4t4XQbTDmmaXia4A2ufoOsf3D2ZciYl8wRUu6L2biHRzl1FazmiT1ZMpBlg=
+3jjDpStbQY8H3P7IMJrF9=5FjZntCDWh1UZAVgwKYffiCM9ZcL8L0czkSuFj6boL3Q46xQyazj=
+=5Fy6AloDwX1GAj-mm8zSTq9O8UzbzBohljj8FaBhtDWaj9kvPmSpi2XkClfZ8vGPxxKPoxKQ0T=
+tC4=22 width=3D=2232=22 border=3D=220=22 class=3D=22=22 style=3D=22display:=
+ block; width: 100%;=22></a> </td> <td class=3D=22nl2go-responsive-hide=22 =
+width=3D=2230=22 style=3D=22font-size: 0px; line-height: 1px;=22>=C2=AD =
+</td> </tr><tr class=3D=22nl2go-responsive-hide=22><td height=3D=225=22 =
+style=3D=22font-size: 5px; line-height: 5px;=22>=C2=AD</td> <td =
+height=3D=225=22 width=3D=2230=22 style=3D=22font-size: 5px; line-height: =
+5px;=22>=C2=AD </td> </tr></table></th> <th width=3D=2262=22 =
+valign=3D=22=22 class=3D=22r32-c mobshow resp-table=22 =
+style=3D=22font-weight: normal;=22> <table cellspacing=3D=220=22 =
+cellpadding=3D=220=22 border=3D=220=22 role=3D=22presentation=22 =
+width=3D=22100%=22 class=3D=22r33-o=22 style=3D=22table-layout: fixed; =
+width: 100%;=22><!-- --><tr><td class=3D=22r34-i=22 style=3D=22color: =
+#3b3f44; font-family: arial,helvetica,sans-serif; font-size: 0px; =
+line-height: 0px;=22> <a href=3D=22https://www.facebook.=
+com/passCultureofficiel/=22 target=3D=22=5Fblank=22 style=3D=22color: =
+#0092ff; text-decoration: underline;=22> <img src=3D=22https://img.email.=
+passculture.app/im/3636252/d3c8b0ec96a1db65c1da4cee9b25a0acd5b3ee3a906b722b=
+e3708d0c6bba1080.png=3Fe=3DW5hkX8A1bJgbi9oiHZdmBlzSiYkJgxZ8TLrn1DZ11k6374Tp=
+ehzDVC=5F1aRteKqIuR9ggT6bLvpg1KWxAyOqiAWp3JKjTL2g=5FlPMjNajiGOgsDDO0AXt0iM8=
+bY8wBt-ttosa8NuUl9BvOLFz0e5PBhpurO0P2VMAD9P2awx9yQpoCCxXhcjkzzhtPW9XwOP3Sbs=
+t7MvH1QfcbG4s9Ke6bOXA1CmK7utigp8Yk0Y16JEYdXNuZSoat7IJsrrUab-Hs=5FhhTa0dDG2X=
+794c4okkelOrZ2sj7OtmshJsVINvt=5FLbA46ZAkfNFFmxPxXdcDw=22 width=3D=2232=22 =
+border=3D=220=22 class=3D=22=22 style=3D=22display: block; width: =
+100%;=22></a> </td> <td class=3D=22nl2go-responsive-hide=22 =
+width=3D=2230=22 style=3D=22font-size: 0px; line-height: 1px;=22>=C2=AD =
+</td> </tr></table></th> </tr></table></td> <td class=3D=22nl2go-responsive=
+-hide=22 width=3D=22207=22 style=3D=22font-size: 0px; line-height: =
+1px;=22>=C2=AD </td> </tr></table></td> </tr></table></td> =
+</tr></table></td> </tr><tr><td class=3D=22r36-c=22 align=3D=22center=22> =
+<table cellspacing=3D=220=22 cellpadding=3D=220=22 border=3D=220=22 =
+role=3D=22presentation=22 width=3D=22100=22 class=3D=22r37-o=22 =
+style=3D=22table-layout: fixed; width: 100px;=22><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2210=22 =
+style=3D=22font-size: 10px; line-height: 10px;=22>=C2=AD</td> </tr><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2220=22 =
+style=3D=22font-size: 20px; line-height: 20px;=22>=C2=AD</td> </tr><tr><td =
+class=3D=22r38-i=22 style=3D=22color: #3b3f44; font-family: arial,helvetica=
+,sans-serif; font-size: 0px; line-height: 0px;=22> <img =
+src=3D=22https://img.email.passculture.app/im/3636252/b363bd32e48109f2c1dd4=
+23e429f837040222c81c804c2fa932b8e734429bcbe.png=3Fe=3DolTM5x1iGKRkCi6zMPPPR=
+p2xYnVTpcFjPccVnpWfxlG1xMj8wSE19E3SOjqzef=5FjuiUflx=5FSpbiM37g=5F0eyH2-TPI7=
+Ped8h=5FGLRQ92EJ7WR1UTXhyPIz6h10X7AWPnwevsg5tWxcEc9Kv8=5FvGTizYWcwCRzSPNCj6=
+ahdQocdC58zPfikNzRQRr8b3S0men-ZUv8AKyxQOMhOhWIwt2UJk-MxzULr5iaa6gvklY1rXbeC=
+K6cV1vXZZcFuNyjbhFjwIOXpb87dcEZn9fr7TMA6oqzL8yE78Mvd8Q=5FWfbRIQ=5FaeDMAiBw=
+=22 width=3D=22100=22 border=3D=220=22 class=3D=22=22 style=3D=22display: =
+block; width: 100%;=22></td> </tr><tr class=3D=22nl2go-responsive-hide=22><=
+td height=3D=2215=22 style=3D=22font-size: 15px; line-height: =
+15px;=22>=C2=AD</td> </tr></table></td> </tr><tr><td class=3D=22r9-c=22 =
+align=3D=22left=22> <table cellspacing=3D=220=22 cellpadding=3D=220=22 =
+border=3D=220=22 role=3D=22presentation=22 width=3D=22100%=22 =
+class=3D=22r39-o=22 style=3D=22table-layout: fixed; width: 100%;=22><tr =
+class=3D=22nl2go-responsive-hide=22><td height=3D=2215=22 =
+style=3D=22font-size: 15px; line-height: 15px;=22>=C2=AD</td> </tr><tr><td =
+align=3D=22center=22 valign=3D=22top=22 class=3D=22r40-i =
+nl2go-default-textstyle=22 style=3D=22color: #3b3f44; font-family: arial,=
+helvetica,sans-serif; font-size: 18px; line-height: 1.15; text-align: =
+center;=22> <div><p style=3D=22margin: 0; font-size: 14px;=22><a =
+href=3D=22https://r.email.passculture.app/tr/mr/=5FXDW9FPgX777DdMGkZ3CndgHK=
+5dqf46rACKDkDaYTTiScl3fI00QUF78t0egDe4O8FCiaLV0EJwRijay8ICzqLA3TUi16q8MzvDL=
+PA8QveLiN59=5FhffG7MVeXHKX9iWqGPCaUiRO0QVso=5F-ebSyh2pIChQPItXB-8trPGbV5FAT=
+yhiMkIm9Q74U=22 style=3D=22color: #0092ff; text-decoration: =
+underline;=22><span style=3D=22color: #858588; font-size: =
+11px;=22><u>Afficher dans le navigateur</u></span></a></p></div> </td> =
+</tr><tr class=3D=22nl2go-responsive-hide=22><td height=3D=2215=22 =
+style=3D=22font-size: 15px; line-height: 15px;=22>=C2=AD</td> =
+</tr></table></td> </tr></table></td> </tr></table></th> </tr></table></td>=
+ </tr></table></td> </tr></table></td> </tr></table></td> </tr></table><img=
+ width=3D=221=22 height=3D=221=22 src=3D=22https://r.email.passculture.=
+app/tr/op/wwbE95DwQaEIf0NhC8F3oOJuzwGEO1Uc0bwUbuOEdfrKUO6-EMKW7HAmuwRteOkeU=
+vKci7ZCR4XuHG0OHi7p2uqixfzgURA9fNVxhGzLeWL=5FiiYSZ1qmErQEDl=5Ft-xiWODZtk5de=
+rTPXnz71wKDUHuCtx5MdFfBaxaVWscs=22 alt=3D=22=22 =
+/></body></html>
+
+
+----_SiB-5ce0c9d22b8ba13a-Part_1--

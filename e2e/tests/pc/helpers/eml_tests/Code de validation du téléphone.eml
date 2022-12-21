@@ -1,0 +1,174 @@
+Delivered-To: dimitri.kopriwa@passculture.app
+Received: by 2002:ab2:540e:0:b0:179:d91c:f0c6 with SMTP id c14csp3032804lql;
+        Tue, 20 Dec 2022 05:26:13 -0800 (PST)
+X-Received: by 2002:a17:906:b04e:b0:7ae:c0b:a25c with SMTP id bj14-20020a170906b04e00b007ae0c0ba25cmr36996418ejb.13.1671542773219;
+        Tue, 20 Dec 2022 05:26:13 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1671542773; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=leii+fNhIvSEWN9psylk5g+KjePhz27YdhtherNZlpz5gfK3Yk3LB1c1KTXHydHNu9
+         Sme5u1UH3fUrWb/JyDT55QNEm5ipxDepFyFD6avvvE8epEgHnq3F95AfhfFv24Vjr5HS
+         8RWBAuGyNvFn7vSy34Q3W0p1/NIJLyFuKvwev8GpYBVRdo1TfwiL4kp/9QLx6Bkxobvg
+         yLdG3dudi39dM5N7Juk2fqh5/Dgm8jHCi7JxxwE2BrJbOjWemA5ECPNzU1P7+6cd3L5L
+         f/2dEDJc6sfAAnAt1CDPWks7945U+j45FE1fkmcZBk/UC+m+n03m7lPk+mJkcJLJNGPW
+         VE1A==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-archive:list-help:list-post:list-id:mailing-list:precedence
+         :list-unsubscribe:from:feedback-id:list-unsubscribe-post
+         :mime-version:content-transfer-encoding:reply-to:origin-messageid
+         :message-id:subject:date:to:dkim-signature;
+        bh=ZVLom1FfIhxB+9KPPvqLGSd/yYXbVC3PXGVcC/QZCxU=;
+        b=x+jqSuKtXhYAw8sgZ56RQARyzIRkAy0MHQMr7Pzqw+NOYhDvOg961r/badrxSRsigV
+         cOYIF1MDY+LhqQD7lloAgWYB/zMI2A36tcebRpky3Ji3zsSlKmXtUdvUcuEWqcg0zi63
+         9GYboDWrY1hqc7/a8tdLIDnAWK75zgT9ARGXkklHJg6PgRODbbli6FR5uuJP/dA2hcFK
+         maefrRZkVXNA9dKfW6tcrs/e1my+CHlgur8SkmvuiNdyEI9gukpQARAh0B6W9G2d0d7G
+         KLpJD8pGRNHrTYQDyZu/pw5+G+D30nkQntOd/5r7ZwJTJf09l4ElRBvmBmplTZMORF6a
+         gnfA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@passculture.app header.s=google header.b="QH7c/HlF";
+       arc=pass (i=2 spf=pass spfdomain=ha.d.sender-sib.com dkim=pass dkdomain=sendinblue.com);
+       spf=pass (google.com: domain of dev+bncbck5rhxp34hrb2xpq2oqmgqeynygvza@passculture.app designates 209.85.220.69 as permitted sender) smtp.mailfrom=dev+bncBCK5RHXP34HRB2XPQ2OQMGQEYNYGVZA@passculture.app;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+Return-Path: <dev+bncBCK5RHXP34HRB2XPQ2OQMGQEYNYGVZA@passculture.app>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id gv22-20020a1709072bd600b007c083c16fb9sor5826078ejc.54.2022.12.20.05.26.13
+        for <dimitri.kopriwa@passculture.app>
+        (Google Transport Security);
+        Tue, 20 Dec 2022 05:26:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of dev+bncbck5rhxp34hrb2xpq2oqmgqeynygvza@passculture.app designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@passculture.app header.s=google header.b="QH7c/HlF";
+       arc=pass (i=2 spf=pass spfdomain=ha.d.sender-sib.com dkim=pass dkdomain=sendinblue.com);
+       spf=pass (google.com: domain of dev+bncbck5rhxp34hrb2xpq2oqmgqeynygvza@passculture.app designates 209.85.220.69 as permitted sender) smtp.mailfrom=dev+bncBCK5RHXP34HRB2XPQ2OQMGQEYNYGVZA@passculture.app;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+ARC-Seal: i=2; a=rsa-sha256; t=1671542773; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=yiz3RMkxo0M2+bl6WQK6WsPxehJJHxEYD6MFKL2/OZx0ySAvIyj9J7dkKqOLm2TV4g
+         7N3hnDwq/PuC+leflHFE+tnQStM58MEkxh/rFqbHLt7pFahG+l+H+57V+JYE28aDCBoB
+         X9VQGNgoUbFaxbGf0EVq+5uWMIOly5bfYvy3uaVErm7OvAGaX14g8W9uryg3TJyDTvEK
+         fiN6q582d5/+MYqPfLsSAhCZirJIbS6ZDmPKFj+41ga3ilStYU4/ltfRqym4KQwgDfvF
+         zx+O0Vq62CkORQH36kLSPiTXjC9a7r7kDjqxJJU9MvSbPs4iY9ycgujUV/oGyrTn+hsL
+         unMg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-archive:list-help:list-post:list-id:mailing-list:precedence
+         :list-unsubscribe:from:feedback-id:list-unsubscribe-post
+         :mime-version:content-transfer-encoding:reply-to:origin-messageid
+         :message-id:subject:date:to:dkim-signature;
+        bh=ZVLom1FfIhxB+9KPPvqLGSd/yYXbVC3PXGVcC/QZCxU=;
+        b=vKqTyxjIvBXVrHYMZvDpLFP7hzjHbDkyACEtjuJnwX7QGqMEUc4Oi7uKR0fJ+WeL0b
+         dF1Ty3vAjwmSsod7Ba0E746aCZB8ZrY6u4GUelZwOHjT+jW9DhE84W27ZBczoQ+houEe
+         HbsuC4/qz0WfcH9NeLOdj1SrxIYucaWS/nTZGTFpQw4N3M5Wl3S2HivTpKWg7h6+L6u/
+         ytu+7BuUYIY/OEN0YqrHSQrMTva/a+mBLtcJA69mm3tY38XaHjq7LNz3XpBRLpG1Kcz0
+         ZLJ9iL28n2pxTsy4G4pDkTqwGz0Obm9hdfuU6WeYTdtvXQvol5zpW6GUxuSPsjlAMT3f
+         Sabw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@sendinblue.com header.s=mail header.b="mLoIyCd/";
+       spf=pass (google.com: domain of bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com designates 77.32.148.27 as permitted sender) smtp.mailfrom="bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=passculture.app; s=google;
+        h=list-archive:list-help:list-post:list-id:mailing-list:precedence
+         :x-original-authentication-results:x-original-sender
+         :list-unsubscribe:from:feedback-id:list-unsubscribe-post
+         :mime-version:content-transfer-encoding:reply-to:origin-messageid
+         :message-id:subject:date:to:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZVLom1FfIhxB+9KPPvqLGSd/yYXbVC3PXGVcC/QZCxU=;
+        b=QH7c/HlFNvq4AlmaapvWRNTFyfZant+zvlCKeTTf4u5awlOfwt1OiOVsR4lHXtI6m0
+         ZYvFDIvms1f2ylvsI8owi0XZEO6sBDSIfZR8IqnAd54yf2dOkf3Dia1+cUBdkSq3lDBC
+         Uv4Pn1CRs8X0RjEnOZxGvPCpAnEqqBjG7soXY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=list-archive:list-help:list-post:x-spam-checked-in-group:list-id
+         :mailing-list:precedence:x-original-authentication-results
+         :x-original-sender:list-unsubscribe:from:feedback-id
+         :list-unsubscribe-post:mime-version:content-transfer-encoding
+         :reply-to:origin-messageid:message-id:subject:date:to
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZVLom1FfIhxB+9KPPvqLGSd/yYXbVC3PXGVcC/QZCxU=;
+        b=vW2l0JgVpZO0zc0++SOV65BkfX9pzJioMeKMre2ksPu9BqoC6JkWpERVWWEYFnHL2T
+         AxAKkbB5ZXlPX3I7gZrdRvTH57Tu1FlS/nqsjG2p6Q6Sr5JuhaRhpiEhj78OhzWLbKm4
+         FkQU4ybjcP3BBNCE7ZcHGnfMUEx4klfu8d56iGDPwa8zpmMKS2lY495HRZ53J6dWnk2o
+         gm9ca9DqQQuSAD6X20ji3H5+lp696ZEL46OPEwgRAHH9otVtxEQUzZC4bzJEB+J0L6oH
+         c73cPfaqxD/6f9tuAssFN+YBoD6uMNuHyhbEw/AiQXnSZTslsyE8rzdJDXG/CEbByjf0
+         D2LQ==
+X-Gm-Message-State: ANoB5pmO4bjxcQ1o46s3btsmhb359rqpFM+YdUoN9dbbm71FMr4J3QwI
+	WvIzT2lliKWOWw643eIr2YwdjpLX
+X-Google-Smtp-Source: AA0mqf5TRBpI/e4gOXlEYvZX7Mvf8Y5PnB25IZ5hPZCfRayJPZ+ma9yJbD4FE0L7AxwTzNSDbrQyoQ==
+X-Received: by 2002:a5d:444e:0:b0:242:32e9:3a74 with SMTP id x14-20020a5d444e000000b0024232e93a74mr20586691wrr.14.1671542762530;
+        Tue, 20 Dec 2022 05:26:02 -0800 (PST)
+X-BeenThere: dev@passculture.app
+Received: by 2002:a1c:f706:0:b0:3c6:efd6:9cd8 with SMTP id v6-20020a1cf706000000b003c6efd69cd8ls6808014wmh.0.-pod-control-gmail;
+ Tue, 20 Dec 2022 05:26:01 -0800 (PST)
+X-Received: by 2002:a05:600c:4451:b0:3c6:f8df:b2c7 with SMTP id v17-20020a05600c445100b003c6f8dfb2c7mr34969745wmn.22.1671542761400;
+        Tue, 20 Dec 2022 05:26:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1671542761; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dFYVmHINicJg7uOVFu4/zcR2qHlMqf8Oa0IPGK3zXh3kbwjDoQdQr1dcquZi8VLhLJ
+         RpBWQYTSel0dow9+cdWlNsOqfN4T9uiRFnjFffENywaRAC0aODcwjKcP1BhfOOMYz9lx
+         ZHjlPIa1dWUEhDoOLUUrNoZ5VyDl3p8pXWRdJAKvEK10xPlo5RukVPLxGMoByYzXHcZv
+         1SOPcMgYga0bCcW3jkya/4TfS/FDqFdaRRoWOrb3SDtl+YSPEOCv5yr0dhDowVqMM1dD
+         Lhs4SyjYhAure+DgZDWg7JnMxUw4jgF1st2zQSmEjO8jciM2vytGqCHjst+9ROMj+r8L
+         nCAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:from:feedback-id:list-unsubscribe-post
+         :mime-version:content-transfer-encoding:reply-to:origin-messageid
+         :message-id:subject:date:to:dkim-signature;
+        bh=ZVLom1FfIhxB+9KPPvqLGSd/yYXbVC3PXGVcC/QZCxU=;
+        b=qVQ6qVO/N/fDwt3lW918oVpmu6dN8pQa1JLRtTqgVmSG+FvdyGj8BkxBa0sfaKKsPP
+         El0BPLoSXAEJAw6slH5KHafwzsSZvrLnGZYGukoX8yuiAa0rktY9ghPd8EDe69HLOSzI
+         yG4BDfzTyJajrmQKy/6w3NGA4mOfhvHPuA++wcAdWPzpR3zBZCwIHr2ZjTh9FMdJUXmX
+         oOt+BwcJZm7T4YNamldswSUyCBHC+s91W672ikg92CfeZfzBYCCiZ0t1xjNsNVEm1Vpa
+         wxzQYlhBG2G+Za/sABI5n5th0A2IOMj3NbDIgTfhEegtRhm8GfbT3k+hDqi1veC+yoSy
+         b+Pw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sendinblue.com header.s=mail header.b="mLoIyCd/";
+       spf=pass (google.com: domain of bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com designates 77.32.148.27 as permitted sender) smtp.mailfrom="bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+Received: from ha.d.sender-sib.com (ha.d.sender-sib.com. [77.32.148.27])
+        by mx.google.com with ESMTPS id bd27-20020a05600c1f1b00b003d3593128f5si3129728wmb.183.2022.12.20.05.26.01
+        for <dev+staging@passculture.app>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Dec 2022 05:26:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com designates 77.32.148.27 as permitted sender) client-ip=77.32.148.27;
+X-Mailin-EID: MTMzNzY4NDc0fmRlditzdGFnaW5nQHBhc3NjdWx0dXJlLmFwcH48MjAyMjEyMjAxNDI1LjQ4ODY1NjYxNTIxQHNtdHAtcmVsYXkubWFpbGluLmZyPn5oYS5kLnNlbmRlci1zaWIuY29t
+To: <dev+staging@passculture.app>
+Date: Tue, 20 Dec 2022 13:25:59 +0000
+Subject: =?UTF-8?Q?Code_de_validation_du_t=C3=A9l=C3=A9phone?=
+Message-Id: <662df628-e5cf-4724-9781-c733b5e16513@smtp-relay.sendinblue.com>
+Origin-messageId: <202212201425.48865661521@smtp-relay.mailin.fr>
+Content-Type: text/html; charset=utf-8
+Reply-To: pass Culture <dev+staging@passculture.app>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-sib-id: O_wONiFpTmsSaJX-hMhTTN_mqIPfNHAyWwwYRzn3yScxmmDaP12gAkUuvteWY-rsiBEXGDugaSeDCSndNcjNtIMAGlVdGy37QOKyXl2LcKqUH_uVYaCh_LHKTEpM3f0yQGqQ1YEXx8zBKnnIcjNY-YKkmFrGXHZkEhny5eMl56TlXxARhvJULa8
+X-CSA-Complaints: whitelist-complaints@eco.de
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: 77.32.148.27:3897038_-1:3897038:Sendinblue
+From: "pass Culture" <dev+staging@passculture.app>
+List-Unsubscribe: <mailto:googlegroups-manage+541130730517+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/passculture.app/group/dev/subscribe>
+X-Original-Sender: dev@passculture.app
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@sendinblue.com header.s=mail header.b="mLoIyCd/";       spf=pass
+ (google.com: domain of bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com
+ designates 77.32.148.27 as permitted sender) smtp.mailfrom="bounces-133768474-dev+staging=passculture.app@ha.d.sender-sib.com";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=passculture.app
+Precedence: list
+Mailing-list: list dev@passculture.app; contact dev+owners@passculture.app
+List-ID: <dev.passculture.app>
+X-Spam-Checked-In-Group: dev@passculture.app
+X-Google-Group-Id: 541130730517
+List-Post: <https://groups.google.com/a/passculture.app/group/dev/post>, <mailto:dev@passculture.app>
+List-Help: <https://support.google.com/a/passculture.app/bin/topic.py?topic=25838>,
+ <mailto:dev+help@passculture.app>
+List-Archive: <https://groups.google.com/a/passculture.app/group/dev/>
+
+<div>Le contenu suivant serait envoy=C3=A9 par sms au num=C3=A9ro =
++33695826788</div><div>425544 est ton code de confirmation pass =
+Culture</div></div>
+<div><img width=3D=221=22 height=3D=221=22 src=3D=22https://dijhadi.r.af.d.=
+sendibt2.com/tr/op/PtwoPijd3aw94AnsZKpbcG9hmqxhJ4kklgze=5FJOEt1l3CxXwXn53Rs=
+6TTQLG0vV4FOw23kZ5O6P3DAyz=5FzJ4J=5FjzFV=5FJxuMPXZK5JQjbNp-2GMO-uxlsWufooFq=
+rCzdDPllTO=5FKno4G4Eimn56ZLandCDFVDNKxZJ3wqkJ2cTdgM=22 alt=3D=22=22 =
+/></div>
+
