@@ -1,39 +1,66 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useEffect, useState, useRef } from 'react'
+import { useForm } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
-import { useValidateEmail } from 'features/profile/helpers/useValidateEmail'
+import { useIsCurrentUserEmail } from 'features/profile/helpers/useValidateEmail'
+import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
 import { useSafeState } from 'libs/hooks'
+import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
+
+const passwordInputErrorId = uuidv4()
+const emailInputErrorId = uuidv4()
+
+type FormValues = {
+  newEmail: string
+  password: string
+}
 
 export function ChangeEmail() {
   const { isMobileViewport, isTouch } = useTheme()
-  const [email, setEmail] = useSafeState('')
-  const [password, setPassword] = useSafeState('')
-  const { emailErrorMessage, isEmailValid } = useValidateEmail(email)
-  const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+  const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
 
-  const passwordInputErrorId = uuidv4()
-  const emailInputErrorId = uuidv4()
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid },
+    getValues,
+    watch,
+  } = useForm<FormValues>({
+    defaultValues: {
+      newEmail: '',
+      password: '',
+    },
+    resolver: yupResolver(changeEmailSchema),
+    mode: 'all',
+  })
+
+  const emailValue = watch('newEmail')
+
+  const isCurrentEmail = useIsCurrentUserEmail(emailValue)
 
   const { changeEmail, isLoading } = useChangeEmailMutation({ setPasswordErrorMessage })
+
+  const removePasswordError = () => {
+    setPasswordErrorMessage(null)
+  }
+  const password = getValues('password')
 
   useEffect(() => {
     removePasswordError()
@@ -45,18 +72,15 @@ export function ChangeEmail() {
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const removePasswordError = () => {
-    setPasswordErrorMessage(null)
+  const submitEmailChange = ({ newEmail, password }: FormValues) => {
+    changeEmail({ email: newEmail, password })
   }
 
-  const submitEmailChange = () => {
-    changeEmail({ email, password })
-  }
+  const isSubmitButtonDisabled = !isValid || isLoading || isCurrentEmail
 
-  const isSubmitButtonDisabled =
-    !isLongEnough(password) || !isEmailValid || !!passwordErrorMessage || isLoading
-
-  useEnterKeyAction(!isSubmitButtonDisabled ? submitEmailChange : undefined)
+  const emailErrorMessage: string =
+    errors.newEmail?.message ??
+    (isCurrentEmail ? 'L’e-mail saisi est identique à ton e-mail actuel' : '')
 
   return (
     <React.Fragment>
@@ -76,36 +100,35 @@ export function ChangeEmail() {
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
           <Form.MaxWidth flex={1}>
-            <EmailInput
+            <EmailInputController
+              control={control}
+              name="newEmail"
               label="Nouvel e-mail"
-              email={email}
-              onEmailChange={setEmail}
               disabled={hasCurrentEmailChange}
-              isRequiredField
               autoFocus
-              accessibilityDescribedBy={emailInputErrorId}
+              isRequiredField
+              emailInputErrorId={emailInputErrorId}
             />
             <InputError
-              visible={!!emailErrorMessage}
+              visible={!!errors.newEmail || isCurrentEmail}
               messageId={emailErrorMessage}
               numberOfSpacesTop={2}
               relatedInputId={emailInputErrorId}
             />
             <Spacer.Column numberOfSpaces={4} />
-            <PasswordInput
-              value={password}
-              onChangeText={setPassword}
+            <PasswordInputController
+              control={control}
+              name="password"
               disabled={hasCurrentEmailChange}
-              accessibilityDescribedBy={passwordInputErrorId}
               isRequiredField
+              passwordInputErrorId={passwordInputErrorId}
             />
             <InputError
-              visible={!!passwordErrorMessage}
-              messageId={passwordErrorMessage}
+              visible={!!errors.password || !!passwordErrorMessage}
+              messageId={errors.password?.message || passwordErrorMessage}
               numberOfSpacesTop={2}
               relatedInputId={passwordInputErrorId}
             />
-
             {isMobileViewport && isTouch ? (
               <Spacer.Flex flex={1} />
             ) : (
@@ -117,7 +140,7 @@ export function ChangeEmail() {
               <ButtonPrimary
                 wording="Enregistrer"
                 accessibilityLabel="Enregistrer les modifications"
-                onPress={submitEmailChange}
+                onPress={handleSubmit(submitEmailChange)}
                 disabled={isSubmitButtonDisabled}
               />
             </ButtonContainer>

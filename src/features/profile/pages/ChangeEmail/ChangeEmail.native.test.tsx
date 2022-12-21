@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from './ChangeEmail'
@@ -85,14 +85,15 @@ describe('<ChangeEmail/>', () => {
       const submitButton = getByTestId('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()
 
-      const passwordInput = getByPlaceholderText('Ton mot de passe')
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(passwordInput, password)
-      fireEvent.changeText(emailInput, email)
-
-      await waitForExpect(() => {
-        expect(submitButton)[isDisabled ? 'toBeDisabled' : 'toBeEnabled']()
+      await act(async () => {
+        const passwordInput = getByPlaceholderText('Ton mot de passe')
+        fireEvent.changeText(passwordInput, password)
       })
+      await act(async () => {
+        const emailInput = getByPlaceholderText('tonadresse@email.com')
+        fireEvent.changeText(emailInput, email)
+      })
+      expect(submitButton)[isDisabled ? 'toBeDisabled' : 'toBeEnabled']()
     }
   )
 
@@ -101,60 +102,70 @@ describe('<ChangeEmail/>', () => {
     const submitButton = getByTestId('Enregistrer les modifications')
     expect(submitButton).toBeDisabled()
 
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(passwordInput, 'password>=12')
-    fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
-
-    await waitForExpect(() => {
-      expect(submitButton).toBeDisabled()
-
-      const errorMessage = queryByText('L’e-mail saisi est identique à ton e-mail actuel')
-      expect(errorMessage).toBeTruthy()
+    await act(async () => {
+      const passwordInput = getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(passwordInput, 'password>=12')
     })
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
+    })
+    expect(submitButton).toBeDisabled()
+
+    const errorMessage = queryByText('L’e-mail saisi est identique à ton e-mail actuel')
+    expect(errorMessage).toBeTruthy()
   })
 
   it('should navigate to Profile and log event if the API call is ok', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer les modifications')
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'tonadresse@email.com')
-    fireEvent.changeText(passwordInput, 'password>=12')
-
-    fireEvent.press(submitButton)
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
-      expect(mockShowSuccessSnackBar).toBeCalledWith({
-        message:
-          'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
-        timeout: 5000,
-      })
-      expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'tonadresse@email.com')
     })
+    await act(async () => {
+      const passwordInput = getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(passwordInput, 'password>=12')
+    })
+
+    await act(async () => {
+      fireEvent.press(submitButton)
+    })
+
+    expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(mockShowSuccessSnackBar).toBeCalledWith({
+      message:
+        'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
+      timeout: 5000,
+    })
+    expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
   })
 
   it('should show error message if the user gave a wrong password', async () => {
     mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
 
     const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer les modifications')
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'tonadresse@email.com')
-    fireEvent.changeText(passwordInput, 'password>=12')
-
-    fireEvent.press(submitButton)
-
-    await waitForExpect(() => {
-      expect(navigate).not.toBeCalled()
-      const errorMessage = queryByText('Mot de passe incorrect')
-      expect(errorMessage).toBeTruthy()
-      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
-        CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
-      )
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'tonadresse@email.com')
     })
+
+    await act(async () => {
+      const passwordInput = getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(passwordInput, 'password>=12')
+    })
+
+    await act(async () => {
+      const submitButton = getByTestId('Enregistrer les modifications')
+      fireEvent.press(submitButton)
+    })
+
+    expect(navigate).not.toBeCalled()
+    const errorMessage = queryByText('Mot de passe incorrect')
+    expect(errorMessage).toBeTruthy()
+    expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+      CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
+    )
   })
 
   it('should show the generic error message if the API call returns an attempts limit error', async () => {
@@ -162,22 +173,26 @@ describe('<ChangeEmail/>', () => {
 
     const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
     const submitButton = getByTestId('Enregistrer les modifications')
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'tonadresse@email.com')
-    fireEvent.changeText(passwordInput, 'password>=12')
-
-    fireEvent.press(submitButton)
-
-    await waitForExpect(() => {
-      expect(navigate).not.toBeCalled()
-      expect(mockShowErrorSnackBar).toBeCalledWith({
-        message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
-        timeout: 5000,
-      })
-      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
-        CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
-      )
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'tonadresse@email.com')
     })
+    await act(async () => {
+      const passwordInput = getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(passwordInput, 'password>=12')
+    })
+
+    await act(async () => {
+      fireEvent.press(submitButton)
+    })
+
+    expect(navigate).not.toBeCalled()
+    expect(mockShowErrorSnackBar).toBeCalledWith({
+      message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
+      timeout: 5000,
+    })
+    expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+      CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
+    )
   })
 })
