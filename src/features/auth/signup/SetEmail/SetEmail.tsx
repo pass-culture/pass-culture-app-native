@@ -59,14 +59,15 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
+    watch,
   } = useForm<FormValues>({
     defaultValues: {
       email: '',
       marketingEmailSubscription: false,
     },
     resolver: yupResolver(setEmailSchema),
-    mode: 'all',
+    mode: 'onSubmit',
   })
 
   const onLogAnalytics = useCallback(() => {
@@ -101,7 +102,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         accessibilityLabel={props.accessibilityLabelForNextStep}
         onPress={handleSubmit(goToNextStep)}
         isLoading={false}
-        disabled={!isValid}
+        disabled={watch('email').trim() === ''}
       />
       <Spacer.Column numberOfSpaces={8} />
       <AuthenticationButton type="login" onAdditionalPress={onLogAnalytics} />
