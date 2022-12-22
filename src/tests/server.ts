@@ -22,6 +22,7 @@ import { mockDefaultSettings } from 'features/auth/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { beneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -54,14 +55,7 @@ export const server = setupServer(
     }
   ),
   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-    res(
-      ctx.status(200),
-      ctx.json({
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        isBeneficiary: true,
-      })
-    )
+    res(ctx.status(200), ctx.json(beneficiaryUser))
   ),
   rest.get<OfferResponse>(
     env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,

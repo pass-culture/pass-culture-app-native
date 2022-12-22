@@ -1,12 +1,18 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { AuthWrapper, useAuthContext } from 'features/auth/AuthContext'
+import { CURRENT_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { beneficiaryUser } from 'fixtures/user'
+import { amplitude } from 'libs/amplitude'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { storage, StorageKey } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
+
+mockdate.set(CURRENT_DATE)
 
 jest.unmock('libs/jwt')
 jest.unmock('libs/network/NetInfoWrapper')
@@ -34,11 +40,7 @@ describe('AuthContext', () => {
       const result = renderUseAuthContext()
 
       await waitFor(() => {
-        expect(result.current.user).toEqual({
-          email: 'email@domain.ext',
-          firstName: 'Jean',
-          isBeneficiary: true,
-        })
+        expect(result.current.user).toEqual(beneficiaryUser)
       })
     })
 
@@ -55,6 +57,25 @@ describe('AuthContext', () => {
 
       await waitFor(() => {
         expect(result.current.refetchUser).toBeDefined()
+      })
+    })
+
+    it('should set user properties to Amplitude events', async () => {
+      storage.saveString('access_token', 'token')
+      renderUseAuthContext()
+
+      await waitFor(() => {
+        expect(amplitude.setUserProperties).toHaveBeenCalledWith({
+          age: 18,
+          appVersion: '1.10.5',
+          depositType: 'GRANT_18',
+          eligibility: 'age-18',
+          eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+          id: 1234,
+          isBeneficiary: true,
+          needsToFillCulturalSurvey: true,
+          status: 'beneficiary',
+        })
       })
     })
   })

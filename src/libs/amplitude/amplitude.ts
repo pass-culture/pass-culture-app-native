@@ -22,4 +22,7 @@ export const amplitude: AmplitudeClient = {
   disableCollection: () => {
     ampInstance.setOptOut(true)
   },
+  setUserProperties: (properties) => {
+    ampInstance.setUserProperties(properties)
+  },
 }

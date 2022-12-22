@@ -1,3 +1,4 @@
+import pick from 'lodash/pick'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { QueryObserverResult } from 'react-query'
 
@@ -5,6 +6,8 @@ import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
+import { getAge } from 'features/offer/helpers/getAge/getAge'
+import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
@@ -14,6 +17,8 @@ import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
+
+import { version as appVersion } from '../../../package.json'
 
 export interface IAuthContext {
   isLoggedIn: boolean
@@ -98,6 +103,24 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   useEffect(() => {
     readTokenAndConnectUser()
   }, [readTokenAndConnectUser])
+
+  useEffect(() => {
+    if (!user) return
+
+    amplitude.setUserProperties({
+      ...pick(user, [
+        'depositType',
+        'eligibility',
+        'eligibilityEndDatetime',
+        'id',
+        'isBeneficiary',
+        'needsToFillCulturalSurvey',
+      ]),
+      age: user.birthDate ? getAge(user.birthDate) : undefined,
+      status: user.status?.statusType, // eligible, beneficiaire, suspendu, etc
+      appVersion,
+    })
+  }, [user])
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
