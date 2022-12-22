@@ -6,12 +6,11 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { OFFER_TYPES } from 'features/search/components/sections/OfferType/OfferType'
 import { initialSearchState } from 'features/search/context/reducer'
 import { OfferType } from 'features/search/enums'
-import { SectionTitle } from 'features/search/helpers/titles'
 import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
 import { OfferTypes, SearchView } from 'features/search/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, act } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -101,20 +100,6 @@ describe('<OfferTypeModal/>', () => {
       fireEvent.press(radioButton)
 
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
-    })
-
-    it.each(
-      OFFER_TYPES.filter((item) => item.label !== OfferType.ALL_TYPE).map(({ label }) => label)
-    )(`should log offer type selected on press`, (label) => {
-      const renderAPI = renderOfferTypeModal({
-        hideOfferTypeModal,
-        offerTypeModalVisible: true,
-      })
-
-      const radioButton = renderAPI.getByTestId(label)
-      fireEvent.press(radioButton)
-
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferType, searchId)
     })
   })
 
@@ -217,7 +202,7 @@ describe('<OfferTypeModal/>', () => {
       OFFER_TYPES.filter(
         (item) => item.label !== OfferType.ALL_TYPE && item.label !== OfferType.EVENT
       ).map(({ label }) => label)
-    )(`should not display toggle offerIsDuo when %s on press`, async (label) => {
+    )(`should not display toggle offerIsDuo when %s on press`, (label) => {
       const renderAPI = renderOfferTypeModal({
         hideOfferTypeModal,
         offerTypeModalVisible: true,
@@ -225,9 +210,7 @@ describe('<OfferTypeModal/>', () => {
 
       const radioButton = renderAPI.getByTestId(label)
 
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
+      fireEvent.press(radioButton)
 
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
@@ -277,23 +260,10 @@ describe('<OfferTypeModal/>', () => {
         checked: true,
       })
     })
-
-    it('should log only duo offer search when pressing the toggle', () => {
-      const renderAPI = renderOfferTypeModal({
-        hideOfferTypeModal,
-        offerTypeModalVisible: true,
-      })
-
-      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
-
-      fireEvent.press(toggle)
-
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo, searchId)
-    })
   })
 
   describe('click reset button', () => {
-    it('should disable duo offer when click on reset button', async () => {
+    it('should disable duo offer when click on reset button', () => {
       const renderAPI = renderOfferTypeModal({
         hideOfferTypeModal,
         offerTypeModalVisible: true,
@@ -305,9 +275,7 @@ describe('<OfferTypeModal/>', () => {
 
       const resetButton = renderAPI.getByText('Réinitialiser')
 
-      await act(async () => {
-        fireEvent.press(resetButton)
-      })
+      fireEvent.press(resetButton)
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
@@ -315,7 +283,7 @@ describe('<OfferTypeModal/>', () => {
       })
     })
 
-    it('should be all type offer when click on reset button', async () => {
+    it('should be all type offer when click on reset button', () => {
       const renderAPI = renderOfferTypeModal({
         hideOfferTypeModal,
         offerTypeModalVisible: true,
@@ -330,9 +298,7 @@ describe('<OfferTypeModal/>', () => {
 
       const resetButton = renderAPI.getByText('Réinitialiser')
 
-      await act(async () => {
-        fireEvent.press(resetButton)
-      })
+      fireEvent.press(resetButton)
 
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
     })
@@ -346,11 +312,11 @@ describe('<OfferTypeModal/>', () => {
       })
       const button = getByText('Rechercher')
 
-      await act(async () => {
-        fireEvent.press(button)
-      })
+      fireEvent.press(button)
 
-      expect(hideOfferTypeModal).toHaveBeenCalledTimes(1)
+      await waitFor(() => {
+        expect(hideOfferTypeModal).toHaveBeenCalledTimes(1)
+      })
     })
 
     it('should navigate to Search results when selecting DUO offer and submit form', async () => {
@@ -363,17 +329,17 @@ describe('<OfferTypeModal/>', () => {
 
       fireEvent.press(toggle)
 
-      await act(async () => {
-        fireEvent.press(button)
-      })
+      fireEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          view: SearchView.Results,
-          offerIsDuo: true,
-        },
-        screen: 'Search',
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            view: SearchView.Results,
+            offerIsDuo: true,
+          },
+          screen: 'Search',
+        })
       })
     })
 
@@ -385,17 +351,17 @@ describe('<OfferTypeModal/>', () => {
 
       const button = getByText('Rechercher')
 
-      await act(async () => {
-        fireEvent.press(button)
-      })
+      fireEvent.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          view: SearchView.Results,
-          offerIsDuo: false,
-        },
-        screen: 'Search',
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            view: SearchView.Results,
+            offerIsDuo: false,
+          },
+          screen: 'Search',
+        })
       })
     })
 
@@ -418,24 +384,24 @@ describe('<OfferTypeModal/>', () => {
 
         const button = getByText('Rechercher')
 
-        await act(async () => {
-          fireEvent.press(button)
-        })
+        fireEvent.press(button)
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
-            ...mockSearchState,
-            view: SearchView.Results,
-            offerTypes: {
-              ...mockSearchState.offerTypes,
-              ...(offerType !== undefined
-                ? {
-                    [offerType]: true,
-                  }
-                : {}),
+        await waitFor(() => {
+          expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+            params: {
+              ...mockSearchState,
+              view: SearchView.Results,
+              offerTypes: {
+                ...mockSearchState.offerTypes,
+                ...(offerType !== undefined
+                  ? {
+                      [offerType]: true,
+                    }
+                  : {}),
+              },
             },
-          },
-          screen: 'Search',
+            screen: 'Search',
+          })
         })
       }
     )
@@ -450,6 +416,25 @@ describe('<OfferTypeModal/>', () => {
       fireEvent.press(previousButton)
 
       expect(hideOfferTypeModal).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should log PerformSearch when pressing search button', async () => {
+    const { getByText } = renderOfferTypeModal({
+      hideOfferTypeModal,
+      offerTypeModalVisible: true,
+    })
+
+    const button = getByText('Rechercher')
+
+    fireEvent.press(button)
+
+    await waitFor(() => {
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
+        ...mockSearchState,
+        view: SearchView.Results,
+        offerIsDuo: false,
+      })
     })
   })
 })
