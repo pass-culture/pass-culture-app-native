@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, waitFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor, flushAllPromisesWithAct } from 'tests/utils/web'
 
 import { SetPhoneNumber } from './SetPhoneNumber'
 
@@ -39,10 +39,13 @@ describe('<SetPhoneNumber/>', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<SetPhoneNumber />))
 
-      await waitFor(async () => {
-        const results = await checkAccessibilityFor(container)
-        expect(results).toHaveNoViolations()
-      })
+      // FIXME(PC-18141) this superflush fixes the flakiness of this tests but will hopefully be
+      // fixed when removing the flag on the country picker, which causes the error
+      // "ARIA progressbar nodes must have an accessible name (aria-progressbar-name)"
+      await flushAllPromisesWithAct()
+
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })
