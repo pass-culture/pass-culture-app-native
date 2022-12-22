@@ -81,8 +81,8 @@ describe('<ChangeEmail/>', () => {
   `(
     'CTA "Enregistrer les modifications" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
     async ({ password, email, isDisabled }) => {
-      const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
-      const submitButton = getByTestId('Enregistrer les modifications')
+      const { getByPlaceholderText, getByLabelText } = render(<ChangeEmail />)
+      const submitButton = getByLabelText('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()
 
       await act(async () => {
@@ -98,8 +98,8 @@ describe('<ChangeEmail/>', () => {
   )
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
-    const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer les modifications')
+    const { getByPlaceholderText, getByLabelText, queryByText } = render(<ChangeEmail />)
+    const submitButton = getByLabelText('Enregistrer les modifications')
     expect(submitButton).toBeDisabled()
 
     await act(async () => {
@@ -117,8 +117,8 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should navigate to Profile and log event if the API call is ok', async () => {
-    const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer les modifications')
+    const { getByPlaceholderText, getByLabelText } = render(<ChangeEmail />)
+    const submitButton = getByLabelText('Enregistrer les modifications')
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'tonadresse@email.com')
@@ -144,7 +144,7 @@ describe('<ChangeEmail/>', () => {
   it('should show error message if the user gave a wrong password', async () => {
     mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
 
-    const { getByPlaceholderText, getByTestId, queryByText } = render(<ChangeEmail />)
+    const { getByPlaceholderText, getByLabelText, queryByText } = render(<ChangeEmail />)
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'tonadresse@email.com')
@@ -156,7 +156,7 @@ describe('<ChangeEmail/>', () => {
     })
 
     await act(async () => {
-      const submitButton = getByTestId('Enregistrer les modifications')
+      const submitButton = getByLabelText('Enregistrer les modifications')
       fireEvent.press(submitButton)
     })
 
@@ -171,8 +171,8 @@ describe('<ChangeEmail/>', () => {
   it('should show the generic error message if the API call returns an attempts limit error', async () => {
     mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
 
-    const { getByPlaceholderText, getByTestId } = render(<ChangeEmail />)
-    const submitButton = getByTestId('Enregistrer les modifications')
+    const { getByPlaceholderText, getByLabelText } = render(<ChangeEmail />)
+    const submitButton = getByLabelText('Enregistrer les modifications')
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'tonadresse@email.com')
