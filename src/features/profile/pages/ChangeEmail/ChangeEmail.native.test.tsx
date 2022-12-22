@@ -35,13 +35,6 @@ const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
   }))
 }
 
-const mockUseQueryWithExpirationTimestamp = () => {
-  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-  mockedUseQuery.mockImplementationOnce(() => ({
-    data: { expiration: '2021-12-07T13:45:05.812190' },
-  }))
-}
-
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -63,7 +56,9 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should render and log correctly when an email change is already in progress', async () => {
-    mockUseQueryWithExpirationTimestamp()
+    mockedUseQuery.mockImplementationOnce(() => ({
+      data: { expiration: '2021-12-07T13:45:05.812190' },
+    }))
     const renderAPI = render(<ChangeEmail />)
     expect(renderAPI.toJSON()).toMatchSnapshot()
 
