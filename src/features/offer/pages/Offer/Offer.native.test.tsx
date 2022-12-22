@@ -1,10 +1,17 @@
 import { useAuthContext } from 'features/auth/AuthContext'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
+import { SearchHit } from 'libs/search'
 import { act, fireEvent } from 'tests/utils'
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+
+let mockSearchHits: SearchHit[] = []
+jest.mock('features/offer/api/useSimilarOffers', () => ({
+  useSimilarOffers: jest.fn(() => mockSearchHits),
+}))
 
 describe('<Offer />', () => {
   // fake timers are needed to avoid warning (because we use useTrackOfferSeenDuration)
@@ -52,12 +59,52 @@ describe('<Offer />', () => {
 
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
+
+  describe('with similar offers', () => {
+    beforeAll(() => {
+      mockSearchHits = mockedAlgoliaResponse.hits
+    })
+
+    it('should log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
+      const { getByTestId } = await renderOfferPage()
+      const scrollView = getByTestId('offer-container')
+
+      await act(async () => await fireEvent.scroll(scrollView, nativeEventBottom))
+
+      expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and not reaching the bottom', async () => {
+      const { getByTestId } = await renderOfferPage()
+      const scrollView = getByTestId('offer-container')
+
+      await act(async () => await fireEvent.scroll(scrollView, nativeEventTop))
+
+      expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(0)
+    })
+  })
 })
 
 const scrollEvent = {
   nativeEvent: {
     contentOffset: { y: 200 },
     layoutMeasurement: { height: 1000 },
+    contentSize: { height: 1600 },
+  },
+}
+
+const nativeEventBottom = {
+  nativeEvent: {
+    layoutMeasurement: { height: 1000 },
+    contentOffset: { y: 900 },
+    contentSize: { height: 1600 },
+  },
+}
+
+const nativeEventTop = {
+  nativeEvent: {
+    layoutMeasurement: { height: 1000 },
+    contentOffset: { y: 100 },
     contentSize: { height: 1600 },
   },
 }
