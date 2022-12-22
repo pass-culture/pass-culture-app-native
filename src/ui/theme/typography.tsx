@@ -76,6 +76,10 @@ export const CaptionNeutralInfo = styled(Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
+const Hint = styled(RNText)(({ theme }) => ({
+  ...theme.typography.hint,
+}))
+
 export const Typo = {
   Hero,
   Title1,
@@ -91,4 +95,5 @@ export const Typo = {
   CaptionPrimary,
   CaptionSecondary,
   CaptionNeutralInfo,
+  Hint,
 }
