@@ -31,7 +31,7 @@
     ]
   },
   "scripts": {
-    "android": " react-native run-android --variant=developmentDebug --appId=app.passculture.testing",
+    "android": "react-native run-android --variant=developmentDebug --appId=app.passculture.testing",
     "android:prod": "react-native run-android --variant=productionDebug --appId=app.passculture.webapp",
     "android:staging": "react-native run-android --variant=stagingDebug --appId=app.passculture.staging",
     "android:testing": "react-native run-android --variant=apptestingDebug --appId=app.passculture.testing",
