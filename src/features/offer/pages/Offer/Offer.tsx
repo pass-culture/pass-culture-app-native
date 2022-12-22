@@ -52,7 +52,7 @@ export const Offer: FunctionComponent = () => {
       if (isCloseToBottom(nativeEvent)) {
         logConsultWholeOffer()
       }
-      // The log event is trigger when the similar offer playlist is visible
+      // The log event is triggered when the similar offer playlist is visible
       if (isCloseToBottom({ ...nativeEvent, padding: 300 })) {
         logSimilarOfferPlaylistVerticalScroll()
       }
