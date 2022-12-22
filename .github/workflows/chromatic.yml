@@ -2,6 +2,9 @@ name: 'Chromatic'
 
 on: push
 
+env:
+  BUILD_DIR: /tmp/${{ github.sha }}
+
 jobs:
   test-and-publish-storybook:
     runs-on: ubuntu-latest
@@ -17,13 +20,13 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build Storybook
-        run: yarn build-storybook --output-dir /tmp/${{ github.sha }}
-      - name: Run axe storybook accessibility tests
-        run: yarn axe-storybook --build-dir /tmp/${{ github.sha }}
+        run: yarn build-storybook --output-dir $BUILD_DIR
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: /tmp/${{ github.sha }}
+          storybookBuildDir: ${{ env.BUILD_DIR }}
           onlyChanged: true
+      - name: Run axe storybook accessibility tests
+        run: yarn axe-storybook --build-dir $BUILD_DIR
