@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
+import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
@@ -36,9 +37,24 @@ export const Offer: FunctionComponent = () => {
     }
   })
 
+  const { data: offer } = useOffer({ offerId })
+  const similarOffers = useSimilarOffers(offerId, offer?.venue.coordinates)
+  const hasSimilarOffers = similarOffers && similarOffers.length > 0
+
+  const logSimilarOfferPlaylistVerticalScroll = useFunctionOnce(() => {
+    if (hasSimilarOffers) {
+      return analytics.logSimilarOfferPlaylistVerticalScroll()
+    }
+  })
+
   const { headerTransition, onScroll } = useOpacityTransition({
     listener: ({ nativeEvent }) => {
-      if (isCloseToBottom(nativeEvent)) logConsultWholeOffer()
+      if (isCloseToBottom(nativeEvent)) {
+        logConsultWholeOffer()
+      }
+      if (isCloseToBottom({ ...nativeEvent, padding: 300 })) {
+        logSimilarOfferPlaylistVerticalScroll()
+      }
     },
   })
 
