@@ -29,6 +29,7 @@ const screenshotsPath = join(process.cwd(), 'e2e/output/screenshots')
 const videosPath = join(process.cwd(), 'e2e/output/videos')
 
 /** Slack reporting */
+
 const useSlackService = !!(CI && SLACK_WEB_HOOK_URL)
 const eventName = GITHUB_EVENT_NAME === 'schedule' ? 'Scheduled' : 'Manually'
 const branchUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/tree/${GITHUB_REF_NAME}`
