@@ -1,7 +1,10 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { useOnboardingContext } from 'features/onboarding/context/OnboardingWrapper'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
@@ -19,24 +22,30 @@ const logGoToParentsFAQ = () => analytics.logGoToParentsFAQ('ageselectionother')
 
 export const AgeSelectionOther: FunctionComponent = () => {
   const { showNonEligibleModal } = useOnboardingContext()
+  const { reset } = useNavigation<UseNavigationType>()
 
   const onUnder15Press = useCallback(async () => {
     analytics.logSelectAge(NonEligible.UNDER_15)
     showNonEligibleModal(NonEligible.UNDER_15)
+    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
     await storage.saveObject('user_age', NonEligible.UNDER_15)
-  }, [showNonEligibleModal])
+  }, [showNonEligibleModal, reset])
 
   const onOver18Press = useCallback(async () => {
     analytics.logSelectAge(NonEligible.OVER_18)
     showNonEligibleModal(NonEligible.OVER_18)
+    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
     await storage.saveObject('user_age', NonEligible.OVER_18)
-  }, [showNonEligibleModal])
+  }, [showNonEligibleModal, reset])
 
   return (
     <OnboardingPage>
       <AgeButton
         onBeforeNavigate={onUnder15Press}
         navigateTo={navigateToHomeConfig}
+        // We disable navigation because we reset the navigation before,
+        // but we still want to use a link (not just a button) for accessibility reason
+        enableNavigate={false}
         accessibilityLabel="j’ai moins de 15 ans">
         <Title4Text>
           j’ai <Title3Text>moins de 15 ans</Title3Text>
@@ -46,6 +55,9 @@ export const AgeSelectionOther: FunctionComponent = () => {
       <AgeButton
         onBeforeNavigate={onOver18Press}
         navigateTo={navigateToHomeConfig}
+        // We disable navigation because we reset the navigation before,
+        // but we still want to use a link (not just a button) for accessibility reason
+        enableNavigate={false}
         accessibilityLabel="j’ai plus de 18 ans">
         <Title4Text>
           j’ai <Title3Text>plus de 18 ans</Title3Text>

@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
@@ -50,13 +50,16 @@ describe('AgeInformation', () => {
     }
   )
 
-  it.each(AGES)('should navigate to Home when pressing "Plus tard" for %s-year-old', (age) => {
-    const { getByTestId } = renderAgeInformation({ age })
-    const laterButton = getByTestId('Plus tard')
+  it.each(AGES)(
+    'should reset navigation on go to Home when pressing "Plus tard" for %s-year-old',
+    (age) => {
+      const { getByTestId } = renderAgeInformation({ age })
+      const laterButton = getByTestId('Plus tard')
 
-    fireEvent.press(laterButton)
-    expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
-  })
+      fireEvent.press(laterButton)
+      expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    }
+  )
 
   it.each(AGES)('should log analytics when attempting to click on credit block', (age) => {
     const { getByText } = renderAgeInformation({ age })

@@ -1,11 +1,16 @@
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useDepositAmountsByAge } from 'features/auth/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/types'
+import {
+  OnboardingRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeSeparator } from 'features/onboarding/components/AgeSeparator'
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
 import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
@@ -25,6 +30,7 @@ const logTrySelectDeposit = (age: number) => {
 }
 
 export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
+  const { reset } = useNavigation<UseNavigationType>()
   const userAge = route.params.age
   const isEighteen = userAge === 18
   const {
@@ -41,6 +47,10 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   ]
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
+  const onLaterPress = useCallback(() => {
+    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+  }, [reset])
+
   const buttons = [
     <InternalTouchableLink
       key={1}
@@ -53,8 +63,12 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
       as={ButtonTertiaryBlack}
       wording="Plus tard"
       icon={ClockFilled}
+      onBeforeNavigate={onLaterPress}
+      navigateTo={navigateToHomeConfig}
+      // We disable navigation because we reset the navigation before,
+      // but we still want to use a link (not just a button) for accessibility reason
+      enableNavigate={false}
       fullWidth
-      navigateTo={{ ...navigateToHomeConfig, fromRef: false }}
     />,
   ]
 
