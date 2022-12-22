@@ -15,10 +15,9 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
-import { SectionTitle } from 'features/search/helpers/titles'
-import { useLogFilterOnce } from 'features/search/helpers/useLogFilterOnce'
 import { SearchState, SearchView } from 'features/search/types'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
+import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
@@ -55,8 +54,6 @@ export const PriceModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const { searchState } = useSearch()
-  const logUsePriceFilter = useLogFilterOnce(SectionTitle.Price, searchState.searchId)
-  const logUseFreeOffersFilter = useLogFilterOnce(SectionTitle.Free, searchState.searchId)
   const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn, user } = useAuthContext()
   const availableCredit = useAvailableCredit()
@@ -92,6 +89,7 @@ export const PriceModal: FunctionComponent<Props> = ({
       minPrice: undefined,
       maxPrice: undefined,
       offerIsFree,
+      view: SearchView.Results,
     }
 
     if (values.minPrice) {
@@ -111,18 +109,8 @@ export const PriceModal: FunctionComponent<Props> = ({
       }
     }
 
-    if (offerIsFree) {
-      logUseFreeOffersFilter()
-    } else {
-      logUsePriceFilter()
-    }
-
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...additionalSearchState,
-        view: SearchView.Results,
-      })
-    )
+    analytics.logPerformSearch(additionalSearchState)
+    navigate(...getTabNavConfig('Search', additionalSearchState))
     hideModal()
   }
 
