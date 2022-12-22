@@ -2,10 +2,11 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SectionTitle } from 'features/search/helpers/titles'
+import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, act } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { CategoriesModal } from './CategoriesModal'
 
@@ -40,34 +41,34 @@ describe('<CategoriesModal/>', () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
-    await act(async () => {
-      fireEvent.press(someCategoryFilterCheckbox)
-    })
+    fireEvent.press(someCategoryFilterCheckbox)
 
-    expect(someCategoryFilterCheckbox).toHaveProp('isSelected', true)
-    const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
-    expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', false)
+    await waitFor(() => {
+      expect(someCategoryFilterCheckbox).toHaveProp('isSelected', true)
+      const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
+      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', false)
+    })
   })
 
   it('should set the selected category filter on navigate when one is set', async () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
-    await act(async () => {
-      fireEvent.press(someCategoryFilterCheckbox)
-    })
-    const button = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(button)
-    })
+    fireEvent.press(someCategoryFilterCheckbox)
 
-    const expectedSearchParams = {
+    const button = getByText('Rechercher')
+
+    fireEvent.press(button)
+
+    const expectedSearchParams: SearchState = {
       ...searchState,
-      offerCategories: ['ARTS_LOISIRS_CREATIFS'],
+      offerCategories: [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
     }
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: expectedSearchParams,
-      screen: 'Search',
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: expectedSearchParams,
+        screen: 'Search',
+      })
     })
   })
 
@@ -75,19 +76,17 @@ describe('<CategoriesModal/>', () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Toutes les catégories')
-    await act(async () => {
-      fireEvent.press(someCategoryFilterCheckbox)
-    })
+    fireEvent.press(someCategoryFilterCheckbox)
 
     const button = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(button)
-    })
+    fireEvent.press(button)
 
-    const expectedSearchParams = { ...searchState, offerCategories: [] }
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: expectedSearchParams,
-      screen: 'Search',
+    const expectedSearchParams: SearchState = { ...searchState, offerCategories: [] }
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: expectedSearchParams,
+        screen: 'Search',
+      })
     })
   })
 
@@ -95,14 +94,12 @@ describe('<CategoriesModal/>', () => {
     const { getByText } = renderCategories()
 
     const button = getByText('Réinitialiser')
+    fireEvent.press(button)
 
-    await act(async () => {
-      fireEvent.press(button)
+    await waitFor(() => {
+      const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
+      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
     })
-
-    const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
-
-    expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
   })
 
   describe('should close the modal ', () => {
@@ -110,40 +107,41 @@ describe('<CategoriesModal/>', () => {
       const { getByText } = renderCategories()
 
       const button = getByText('Rechercher')
+      fireEvent.press(button)
 
-      await act(async () => {
-        fireEvent.press(button)
+      await waitFor(() => {
+        expect(mockHideModal).toHaveBeenCalledTimes(1)
       })
-
-      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
     it('when pressing previous button', async () => {
       const { getByTestId } = renderCategories()
 
       const previousButton = getByTestId('backButton')
+      fireEvent.press(previousButton)
 
-      await act(async () => {
-        fireEvent.press(previousButton)
+      await waitFor(() => {
+        expect(mockHideModal).toHaveBeenCalledTimes(1)
       })
-
-      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should log event when pressing search button', async () => {
+  it('should log PerformSearch event when pressing search button', async () => {
     const { getByText } = renderCategories()
 
     const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
-    await act(async () => {
-      fireEvent.press(someCategoryFilterCheckbox)
-    })
-    const button = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(button)
-    })
+    fireEvent.press(someCategoryFilterCheckbox)
 
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Category, searchId)
+    const button = getByText('Rechercher')
+    fireEvent.press(button)
+
+    const expectedSearchParams: SearchState = {
+      ...searchState,
+      offerCategories: [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
+    }
+    await waitFor(() => {
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith(expectedSearchParams)
+    })
   })
 })
 

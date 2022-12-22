@@ -11,8 +11,8 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { SectionTitle } from 'features/search/helpers/titles'
-import { useLogFilterOnce } from 'features/search/helpers/useLogFilterOnce'
+import { SearchState } from 'features/search/types'
+import { analytics } from 'libs/firebase/analytics'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -44,7 +44,6 @@ export const CategoriesModal: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
-  const logUseCategoryFilter = useLogFilterOnce(SectionTitle.Category, searchState.searchId)
 
   const {
     handleSubmit,
@@ -76,15 +75,12 @@ export const CategoriesModal: FunctionComponent<Props> = ({
   const onSearchPress = useCallback(() => {
     const offerCategories = getValues('offerCategories')
     const payload = offerCategories === SearchGroupNameEnumv2.NONE ? [] : [offerCategories]
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        offerCategories: payload,
-      })
-    )
-    logUseCategoryFilter()
+    const additionalSearchState: SearchState = { ...searchState, offerCategories: payload }
+
+    analytics.logPerformSearch(additionalSearchState)
+    navigate(...getTabNavConfig('Search', additionalSearchState))
     hideModal()
-  }, [hideModal, getValues, navigate, searchState, logUseCategoryFilter])
+  }, [hideModal, getValues, navigate, searchState])
 
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const onSubmit = handleSubmit(onSearchPress)
