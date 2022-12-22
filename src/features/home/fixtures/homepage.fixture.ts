@@ -6,6 +6,7 @@ import {
   BusinessModule,
   Homepage,
   VenuesModule,
+  ThematicHighlightModule,
 } from 'features/home/types'
 
 export const formattedBusinessModule: BusinessModule = {
@@ -66,6 +67,20 @@ export const formattedRecommendedOffersModule: RecommendedOffersModule = {
   id: '3sAqNrRMXUOES7tFyRFFO8',
   displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
   recommendationParameters: undefined,
+}
+
+export const formattedThematicHighlightModule: ThematicHighlightModule = {
+  type: HomepageModuleType.ThematicHighlightModule,
+  id: '5Z1FGtRGbE3d1Q5oqHMfe9',
+  displayedSubtitle:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  displayedTitle:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  imageUrl:
+    'https://images.ctfassets.net/2bg01iqy0isv/6kYYW8Uwad2ZlLUmw1k4ax/9e1261e7010f4419506dc821b2d0bea8/be697ba0-3439-42fa-8f54-b917e988db66.jpeg',
+  beginningDate: new Date('2022-12-21T23:00:00.000Z'),
+  endingDate: new Date('2023-01-14T23:00:00.000Z'),
+  thematicHomeEntryId: '6DCThxvbPFKAo04SVRZtwY',
 }
 
 export const formattedExclusivityModule: ExclusivityModule = {

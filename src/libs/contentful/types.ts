@@ -9,6 +9,7 @@ export enum ContentTypes {
   BUSINESS = 'business',
   RECOMMENDATION = 'recommendation',
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
+  THEMATIC_HIGHLIGHT = 'thematicHighlight',
   VENUES_PLAYLIST = 'venuesPlaylist',
   VENUES_PARAMETERS = 'venuesParameters',
 }
@@ -119,6 +120,11 @@ export interface ExcluDisplayParameters {
 export interface RecommendationParameters {
   sys: Sys<typeof ContentTypes.RECOMMENDATION_PARAMETERS>
   fields: RecommendationParametersFields
+}
+
+export interface ThematicHighlightParameters {
+  sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT>
+  fields: ThematicHighlightFields
 }
 
 export interface Cover {
@@ -243,6 +249,16 @@ export interface RecommendationParametersFields {
   isRecoShuffled?: boolean
 }
 
+export type ThematicHighlightFields = {
+  title: string
+  displayedTitle: string
+  displayedSubtitle?: string
+  image: Image
+  beginningDatetime: string
+  endingDatetime: string
+  thematicHomeEntryId: string
+}
+
 export interface Image {
   sys: Sys<typeof ContentTypes.INFORMATION>
   fields: {
@@ -288,6 +304,7 @@ export type HomepageNatifModule =
   | BusinessContentModel
   | ExclusivityContentModel
   | RecommendationContentModel
+  | ThematicHighlightContentModel
   | VenuesContentModel
 
 export type AlgoliaContentModel = { sys: Sys<'algolia'>; fields: AlgoliaFields }
@@ -296,6 +313,10 @@ export type ExclusivityContentModel = { sys: Sys<'exclusivity'>; fields: Exclusi
 export type RecommendationContentModel = {
   sys: Sys<'recommendation'>
   fields: RecommendationFields
+}
+export type ThematicHighlightContentModel = {
+  sys: Sys<'thematicHighlight'>
+  fields: ThematicHighlightFields
 }
 export type VenuesContentModel = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
 
@@ -318,6 +339,11 @@ export const isRecommendationContentModel = (
   module: HomepageNatifModule
 ): module is RecommendationContentModel => {
   return module.sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
+}
+export const isThematicHighlightContentModel = (
+  module: HomepageNatifModule
+): module is ThematicHighlightContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT
 }
 export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel => {
   return module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
