@@ -108,6 +108,18 @@ jobs:
             sleep 5
           done
 
+      - name: Slack failure notification
+        if: ${{ env.WDIO_DEMO == 'false' && failure() }}
+        env:
+          BRANCH_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_REF_NAME }}
+          COMMIT_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_SHA_SHORT }}
+          ACTION_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/actions/runs/${{ env.GITHUB_RUN_ID }}
+          SLACK_WEBHOOK: ${{ env.GITHUB_EVENT_NAME == 'schedule' && env.SLACK_WEB_HOOK_URL || env.SLACK_WEB_HOOK_URL_MANUAL }}
+          EVENT_NAME: ${{ env.GITHUB_EVENT_NAME == 'schedule' && 'Scheduled' || 'Manually' }}
+        run: |
+          slackMessageTitle="<${BRANCH_URL}|${{ env.GITHUB_REF_NAME }}>/<${COMMIT_URL}|${{ env.GITHUB_SHA_SHORT }}> ${{ env.ENVIRONMENT }} - wdio ${{ env.GITHUB_REPOSITORY_NAME_PART }} \`e2e:browser.chrome\` <${ACTION_URL}|action> (${EVENT_NAME})"
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\":x: *CI NOK: ${slackMessageTitle}* :x:\"}"  "$SLACK_WEBHOOK"
+
       - run: ENVIRONMENT="${{ env.ENVIRONMENT }}" yarn e2e:browser.chrome
 
       - name: Save chromedriver output
