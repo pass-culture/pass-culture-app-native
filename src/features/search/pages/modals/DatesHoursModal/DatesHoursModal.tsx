@@ -16,7 +16,6 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
-import { SectionTitle } from 'features/search/helpers/titles'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -247,7 +246,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={6} />
                 <FilterSwitchWithLabel
-                  label={SectionTitle.Date}
+                  label="Date"
                   isActive={!!hasSelectedDate}
                   toggle={toggleDate}
                   subtitle={subtitleToggle}
@@ -293,7 +292,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
             render={({ field: { value } }) => (
               <React.Fragment>
                 <FilterSwitchWithLabel
-                  label={SectionTitle.Hour}
+                  label="Heure"
                   isActive={hasSelectedHours}
                   toggle={toggleHours}
                   subtitle={subtitleToggle}
