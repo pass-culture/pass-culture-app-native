@@ -69,7 +69,7 @@ describe('<Offer />', () => {
       const { getByTestId } = await renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
-      await act(async () => await fireEvent.scroll(scrollView, nativeEventBottom))
+      fireEvent.scroll(scrollView, nativeEventBottom)
 
       expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
     })
@@ -78,7 +78,7 @@ describe('<Offer />', () => {
       const { getByTestId } = await renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
-      await act(async () => await fireEvent.scroll(scrollView, nativeEventTop))
+      fireEvent.scroll(scrollView, nativeEventTop)
 
       expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(0)
     })
