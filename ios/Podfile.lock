@@ -610,7 +610,7 @@ PODS:
     - React
   - RNPermissions (3.5.0):
     - React-Core
-  - RNScreens (3.10.1):
+  - RNScreens (3.18.2):
     - React-Core
     - React-RCTImage
   - RNSentry (4.2.2):
@@ -1035,7 +1035,7 @@ SPEC CHECKSUMS:
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNPermissions: e5b6373c08831dc4b6b13a2b798143fac20bb100
-  RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
+  RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNSentry: f03937a2cf86c7029ba31fbbf5618c55d223cd62
   RNSVG: 3a79c0c4992213e4f06c08e62730c5e7b9e4dc17
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
