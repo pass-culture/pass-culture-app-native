@@ -110,7 +110,7 @@ export function CategoriesSection<T extends CategoriesViewData>({
               <FilterRow
                 icon={getIcon && getIcon(item.name as SearchGroupNameEnumv2)}
                 shouldColorIcon
-                title={item.value || 'Toutes les catégories'}
+                title={item.value ?? 'Toutes les catégories'}
                 description={getDescription(context, item)}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onPress={handleValueSelect(item)}

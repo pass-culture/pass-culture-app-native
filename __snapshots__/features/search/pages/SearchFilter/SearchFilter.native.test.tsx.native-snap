@@ -323,6 +323,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Affiner la recherche"
               height={20}
               width={20}
             >
@@ -488,6 +489,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Affiner la recherche"
               height={20}
               width={20}
             >
@@ -653,6 +655,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Affiner la recherche"
               height={20}
               width={20}
             >
@@ -819,6 +822,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Affiner la recherche"
               height={20}
               width={20}
             >
@@ -965,6 +969,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             />
             <View
+              accessibilityLabel="Affiner la recherche"
               height={20}
               width={20}
             >

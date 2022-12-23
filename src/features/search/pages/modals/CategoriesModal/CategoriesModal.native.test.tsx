@@ -37,6 +37,12 @@ describe('<CategoriesModal/>', () => {
       expect(toJSON()).toMatchSnapshot()
     })
 
+    it('should display arrows', () => {
+      const { queryAllByLabelText } = renderCategories()
+
+      expect(queryAllByLabelText('Affiner la recherche')).not.toHaveLength(0)
+    })
+
     it('should show all categories', () => {
       const { getByText } = renderCategories()
       expect(getByText('Toutes les catégories')).toBeTruthy()

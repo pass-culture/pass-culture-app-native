@@ -597,6 +597,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -717,6 +718,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -836,6 +838,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -955,6 +958,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1074,6 +1078,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1193,6 +1198,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1312,6 +1318,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1431,6 +1438,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1550,6 +1558,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1669,6 +1678,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1788,6 +1798,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -1907,6 +1918,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -2026,6 +2038,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -2145,6 +2158,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >
@@ -2264,6 +2278,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     }
                   />
                   <View
+                    accessibilityLabel="Affiner la recherche"
                     height={20}
                     width={20}
                   >

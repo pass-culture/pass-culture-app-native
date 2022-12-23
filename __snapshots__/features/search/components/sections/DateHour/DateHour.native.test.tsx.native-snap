@@ -82,6 +82,7 @@ Array [
       }
     />
     <View
+      accessibilityLabel="Affiner la recherche"
       height={20}
       width={20}
     >
@@ -206,6 +207,7 @@ Array [
       }
     />
     <View
+      accessibilityLabel="Affiner la recherche"
       height={20}
       width={20}
     >

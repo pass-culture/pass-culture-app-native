@@ -51,7 +51,7 @@ export const FilterRow = ({
       </TextContainer>
       <Spacer.Flex />
 
-      {shouldHideArrow ? null : <ArrowNext />}
+      {shouldHideArrow ? null : <ArrowNext accessibilityLabel="Affiner la recherche" />}
     </LocationContentContainer>
   )
 }
