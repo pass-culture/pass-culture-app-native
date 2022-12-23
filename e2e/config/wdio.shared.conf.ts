@@ -205,7 +205,7 @@ export const config: WebdriverIO.Config = {
   },
   afterTest: async function (test, context, { passed }) {
     if (!passed) {
-      await browser.takeScreenshot() // await is required
+      await context.browser.takeScreenshot() // await is required
       const timestamp = new Date()
         .toISOString()
         .replace(/[^0-9]/g, '')
@@ -214,7 +214,7 @@ export const config: WebdriverIO.Config = {
         / /g,
         '-'
       )}.png`
-      await browser.saveScreenshot(filePath)
+      await context.browser.saveScreenshot(filePath)
     }
   },
 }
