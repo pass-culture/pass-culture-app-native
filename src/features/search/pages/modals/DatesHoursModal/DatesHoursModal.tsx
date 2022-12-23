@@ -16,10 +16,9 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
-import { SectionTitle } from 'features/search/helpers/titles'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
-import { useLogFilterOnce } from 'features/search/helpers/useLogFilterOnce'
 import { SearchState, SearchView } from 'features/search/types'
+import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Form } from 'ui/components/Form'
@@ -81,10 +80,6 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
   const { searchState } = useSearch()
-  const logToggleDate = useLogFilterOnce(SectionTitle.Date, searchState.searchId)
-  const logToggleHour = useLogFilterOnce(SectionTitle.Hour, searchState.searchId)
-  const logSelectedDateChoice = useLogFilterOnce(SectionTitle.OfferDate, searchState.searchId)
-  const logChangeSelectedHours = useLogFilterOnce(SectionTitle.TimeSlot, searchState.searchId)
   const [showCalendarPicker, setShowCalendarPicker] = useState<boolean>(false)
   const { sliderLength } = useGetFullscreenModalSliderLength()
 
@@ -147,16 +142,13 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
             ? { selectedDate: selectedDate.toISOString(), option: selectedDateChoice }
             : null,
         timeRange: hasSelectedHours && selectedHours ? selectedHours : null,
+        beginningDatetime: undefined,
+        endingDatetime: undefined,
+        view: SearchView.Results,
       }
 
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...additionalSearchState,
-          beginningDatetime: undefined,
-          endingDatetime: undefined,
-          view: SearchView.Results,
-        })
-      )
+      analytics.logPerformSearch(additionalSearchState)
+      navigate(...getTabNavConfig('Search', additionalSearchState))
       hideModal()
     },
     [hideModal, navigate, searchState]
@@ -184,27 +176,22 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
     setValueWithValidation('hasSelectedDate', toggleDateValue)
     setValueWithValidation('selectedDateChoice', DATE_FILTER_OPTIONS.TODAY)
     setValueWithValidation('selectedDate', toggleDateValue ? TODAY : undefined)
-
-    logToggleDate()
-  }, [getValues, setValueWithValidation, logToggleDate, TODAY])
+  }, [getValues, setValueWithValidation, TODAY])
 
   const toggleHours = useCallback(() => {
     const toggleHoursValue = !getValues('hasSelectedHours')
     setValueWithValidation('hasSelectedHours', toggleHoursValue)
     setValueWithValidation('selectedHours', toggleHoursValue ? DEFAULT_TIME_RANGE : undefined)
-
-    logToggleHour()
-  }, [getValues, setValueWithValidation, logToggleHour])
+  }, [getValues, setValueWithValidation])
 
   const selectDateFilterOption = useCallback(
     (payload: DATE_FILTER_OPTIONS) => () => {
       setValueWithValidation('selectedDateChoice', payload)
-      logSelectedDateChoice()
       if (payload === DATE_FILTER_OPTIONS.USER_PICK) {
         setShowCalendarPicker(true)
       }
     },
-    [logSelectedDateChoice, setValueWithValidation]
+    [setValueWithValidation]
   )
 
   const setSelectedDate = useCallback(
@@ -219,10 +206,9 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
     (newValues: number[]) => {
       if (isVisible) {
         setValue('selectedHours', newValues as Range<number>)
-        logChangeSelectedHours()
       }
     },
-    [isVisible, logChangeSelectedHours, setValue]
+    [isVisible, setValue]
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
@@ -260,7 +246,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={6} />
                 <FilterSwitchWithLabel
-                  label={SectionTitle.Date}
+                  label="Date"
                   isActive={!!hasSelectedDate}
                   toggle={toggleDate}
                   subtitle={subtitleToggle}
@@ -306,7 +292,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
             render={({ field: { value } }) => (
               <React.Fragment>
                 <FilterSwitchWithLabel
-                  label={SectionTitle.Hour}
+                  label="Heure"
                   isActive={hasSelectedHours}
                   toggle={toggleHours}
                   subtitle={subtitleToggle}

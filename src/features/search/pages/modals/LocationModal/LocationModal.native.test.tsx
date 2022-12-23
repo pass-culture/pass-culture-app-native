@@ -6,7 +6,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SectionTitle } from 'features/search/helpers/titles'
 import { keyExtractor } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -202,6 +201,23 @@ describe('<LocationModal/>', () => {
         screen: 'Search',
       })
     })
+  })
+
+  it('should log PerformSearch when pressing search button', async () => {
+    mockSearchState = {
+      ...searchState,
+      view: SearchView.Results,
+    }
+    const { getByText } = renderLocationModal({ hideLocationModal })
+
+    await superFlushWithAct()
+
+    const searchButton = getByText('Rechercher')
+    await act(async () => {
+      fireEvent.press(searchButton)
+    })
+
+    expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
   })
 
   it.each`
@@ -441,36 +457,6 @@ describe('<LocationModal/>', () => {
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
     }
   )
-
-  it.each([
-    [RadioButtonLocation.EVERYWHERE],
-    [RadioButtonLocation.AROUND_ME],
-    [RadioButtonLocation.CHOOSE_PLACE_OR_VENUE],
-  ])('should log an event when pressing %s radio button', async (locationRadioButton) => {
-    const { getByTestId } = renderLocationModal({ hideLocationModal })
-
-    const radioButton = getByTestId(locationRadioButton)
-    await act(async () => {
-      fireEvent.press(radioButton)
-    })
-
-    expect(analytics.logUseFilter).toHaveBeenNthCalledWith(1, SectionTitle.Location, searchId)
-  })
-
-  it('should log change radius when changing radius with the slider', async () => {
-    mockSearchState = {
-      ...searchState,
-      locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
-    }
-    const { getByTestId } = renderLocationModal({ hideLocationModal })
-
-    await act(async () => {
-      const slider = getByTestId('slider').children[0] as ReactTestInstance
-      slider.props.onValuesChange([50])
-    })
-
-    expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius, searchId)
-  })
 
   describe('should reset', () => {
     it('the location radio group at "Partout" when pressing reset button and position is null', async () => {

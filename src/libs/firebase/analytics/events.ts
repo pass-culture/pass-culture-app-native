@@ -103,7 +103,7 @@ export enum AnalyticsEvent {
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
   SAVE_NEW_MAIL = 'SaveNewMail',
   SCREEN_VIEW = 'screen_view',
-  SEARCH_QUERY = 'SearchQuery',
+  PERFORM_SEARCH = 'PerformSearch',
   SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SEE_MY_BOOKING = 'SeeMyBooking',

@@ -15,9 +15,8 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { OFFER_TYPES } from 'features/search/components/sections/OfferType/OfferType'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { SectionTitle } from 'features/search/helpers/titles'
-import { useLogFilterOnce } from 'features/search/helpers/useLogFilterOnce'
 import { SearchState, SearchView } from 'features/search/types'
+import { analytics } from 'libs/firebase/analytics'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -54,8 +53,6 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   hideModal,
 }) => {
   const { searchState } = useSearch()
-  const logUseFilter = useLogFilterOnce(SectionTitle.OfferType, searchState.searchId)
-  const logDuoOfferFilter = useLogFilterOnce(SectionTitle.Duo, searchState.searchId)
   const [heightModal, setHeightModal] = useState(DEFAULT_HEIGHT_MODAL)
   const { user } = useAuthContext()
   const { isDesktopViewport, modal } = useTheme()
@@ -80,10 +77,9 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
   const offerTypes = watch('offerTypes')
 
   const toggleLimitDuoOfferSearch = useCallback(() => {
-    logDuoOfferFilter()
     const toggleLimitDuoOffer = !getValues('offerIsDuo')
     setValue('offerIsDuo', toggleLimitDuoOffer)
-  }, [logDuoOfferFilter, getValues, setValue])
+  }, [getValues, setValue])
 
   const onResetPress = useCallback(() => {
     reset({
@@ -130,13 +126,10 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
         ...searchState,
         offerIsDuo: hasDuoOfferToggle && values.offerIsDuo,
         offerTypes: values.offerTypes,
+        view: SearchView.Results,
       }
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...additionalSearchState,
-          view: SearchView.Results,
-        })
-      )
+      analytics.logPerformSearch(additionalSearchState)
+      navigate(...getTabNavConfig('Search', additionalSearchState))
       hideModal()
     },
     [hideModal, navigate, searchState, hasDuoOfferToggle]
@@ -146,7 +139,6 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
 
   const selectOfferType = useCallback(
     (type: string | undefined) => {
-      logUseFilter()
       setValue('offerTypes', {
         ...initialSearchState.offerTypes,
         ...(type !== undefined
@@ -156,7 +148,7 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
           : {}),
       })
     },
-    [logUseFilter, setValue]
+    [setValue]
   )
 
   return (

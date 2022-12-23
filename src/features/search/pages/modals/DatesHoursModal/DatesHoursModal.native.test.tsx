@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SectionTitle } from 'features/search/helpers/titles'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -235,71 +234,21 @@ describe('<DatesHoursModal/>', () => {
     })
   })
 
-  describe('should log', () => {
-    it('when pressing date toggle', async () => {
-      mockSearchState = {
-        ...searchState,
-      }
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+  it('should log PerformSearch when pressing search button', async () => {
+    mockSearchState = {
+      ...searchState,
+      view: SearchView.Results,
+    }
+    const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
 
-      const toggleDate = getByTestId('Interrupteur-date')
-      await act(async () => {
-        fireEvent.press(toggleDate)
-      })
+    await superFlushWithAct()
 
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Date, searchId)
+    const searchButton = getByText('Rechercher')
+    await act(async () => {
+      fireEvent.press(searchButton)
     })
 
-    it('when pressing hour toggle', async () => {
-      mockSearchState = {
-        ...searchState,
-      }
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
-
-      const toggleHour = getByTestId('Interrupteur-hour')
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
-
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour, searchId)
-    })
-
-    it.each([
-      [DATE_FILTER_OPTIONS.TODAY],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK_END],
-      [DATE_FILTER_OPTIONS.USER_PICK],
-    ])('when pressing %s radio button', async (option: DATE_FILTER_OPTIONS) => {
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
-
-      const toggleDate = getByTestId('Interrupteur-date')
-      await act(async () => {
-        fireEvent.press(toggleDate)
-      })
-
-      const radioButton = getByTestId(option)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.OfferDate, searchId)
-    })
-
-    it('when pressing slider time range button', async () => {
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
-
-      const toggleHour = getByTestId('Interrupteur-hour')
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
-
-      await act(async () => {
-        const slider = getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChangeFinish([18, 23])
-      })
-
-      expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot, searchId)
-    })
+    expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
   })
 
   describe('should desactivate', () => {

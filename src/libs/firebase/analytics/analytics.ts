@@ -5,7 +5,7 @@ import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { FILTER_TYPES } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
+import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
 import { ContentTypes } from 'libs/contentful'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -267,11 +267,9 @@ const logEventAnalytics = {
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
-  logSearchQuery: (query: string, filterTypes: FILTER_TYPES[], searchId: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SEARCH_QUERY, {
-      query,
-      filterTypes: JSON.stringify(filterTypes),
-      searchId,
+  logPerformSearch: (searchState: SearchState) =>
+    analyticsProvider.logEvent(AnalyticsEvent.PERFORM_SEARCH, {
+      searchState: JSON.stringify(searchState),
     }),
   logSearchScrollToPage: (page: number, searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page, searchId }),
@@ -308,8 +306,6 @@ const logEventAnalytics = {
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.TRY_SELECT_DEPOSIT, { age }),
-  logUseFilter: (filter: string, searchId?: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.USE_FILTER, { filter, searchId }),
   logUseLandingCategory: (categoryName: string, searchId: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName, searchId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>

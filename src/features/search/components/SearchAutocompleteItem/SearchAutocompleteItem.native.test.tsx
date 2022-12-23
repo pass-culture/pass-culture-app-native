@@ -88,6 +88,7 @@ describe('SearchAutocompleteItem component', () => {
           priceRange: mockSearchState.priceRange,
           view: SearchView.Results,
           searchId,
+          isAutocomplete: true,
         })
       )
     })
@@ -96,7 +97,15 @@ describe('SearchAutocompleteItem component', () => {
       const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
       await fireEvent.press(getByTestId('autocompleteItem'))
 
-      expect(analytics.logSearchQuery).toHaveBeenCalledWith(hit.query, ['Localisation'], searchId)
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
+        ...initialSearchState,
+        query: hit.query,
+        locationFilter: mockSearchState.locationFilter,
+        priceRange: mockSearchState.priceRange,
+        view: SearchView.Results,
+        searchId,
+        isAutocomplete: true,
+      })
     })
 
     it('should not display the most popular category of the query suggestion', async () => {
@@ -122,6 +131,7 @@ describe('SearchAutocompleteItem component', () => {
           priceRange: mockSearchState.priceRange,
           view: SearchView.Results,
           searchId,
+          isAutocomplete: true,
         })
       )
     })
@@ -132,11 +142,16 @@ describe('SearchAutocompleteItem component', () => {
       )
       await fireEvent.press(getByTestId('autocompleteItem'))
 
-      expect(analytics.logSearchQuery).toHaveBeenCalledWith(
-        hit.query,
-        ['Localisation', 'Catégories'],
-        searchId
-      )
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
+        ...initialSearchState,
+        query: hit.query,
+        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        locationFilter: mockSearchState.locationFilter,
+        priceRange: mockSearchState.priceRange,
+        view: SearchView.Results,
+        searchId,
+        isAutocomplete: true,
+      })
     })
 
     it('should display the most popular category of the query suggestion', async () => {

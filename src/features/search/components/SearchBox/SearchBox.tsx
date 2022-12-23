@@ -21,7 +21,6 @@ import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Bu
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useAppliedFilters } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
@@ -90,7 +89,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const activeFilters = useFilterCount(searchState)
 
   const hasPosition = useHasPosition()
-  const appliedFilters = useAppliedFilters(searchState)
 
   // Track when the value coming from the React state changes to synchronize
   // it with InstantSearch.
@@ -172,17 +170,18 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // price range depending on their available credit.
       const { offerCategories, priceRange } = searchState
       const searchId = uuidv4()
-      pushWithSearch({
+      const partialSearchState: Partial<SearchState> = {
         query: queryText,
         locationFilter,
         offerCategories,
         priceRange,
         view: SearchView.Results,
         searchId,
-      })
-      analytics.logSearchQuery(queryText, appliedFilters, searchId)
+      }
+      analytics.logPerformSearch({ ...searchState, ...partialSearchState })
+      pushWithSearch(partialSearchState)
     },
-    [appliedFilters, locationFilter, pushWithSearch, searchState]
+    [locationFilter, pushWithSearch, searchState]
   )
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
