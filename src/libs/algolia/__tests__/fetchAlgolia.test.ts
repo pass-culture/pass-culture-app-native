@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
+import { GenreType } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
@@ -390,6 +391,154 @@ describe('fetchOffer', () => {
           ['offer.isEducational:false'],
           ['offer.subcategoryId:CINE_PLEIN_AIR', 'offer.subcategoryId:ESCAPE_GAME'],
         ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when one native category is provided', () => {
+      const query = 'searched query'
+      const offerNativeCategories = ['LIVRES_PAPIER']
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerNativeCategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.nativeCategoryId:LIVRES_PAPIER']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when multiple native category is provided', () => {
+      const query = 'searched query'
+      const offerNativeCategories = ['LIVRES_PAPIER', 'LIVRES_NUMERIQUE_ET_AUDIO']
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerNativeCategories } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [
+          ['offer.isEducational:false'],
+          [
+            'offer.nativeCategoryId:LIVRES_PAPIER',
+            'offer.nativeCategoryId:LIVRES_NUMERIQUE_ET_AUDIO',
+          ],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when one movieGenre is provided', () => {
+      const query = 'searched query'
+      const offerGenreTypes = [{ key: GenreType.MOVIE, value: 'Drame', name: 'DRAMA' }]
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerGenreTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.movieGenres:DRAMA']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when one bookMacroSection is provided', () => {
+      const query = 'searched query'
+      const offerGenreTypes = [{ key: GenreType.BOOK, value: 'Droit', name: 'Droit' }]
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerGenreTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.bookMacroSection:Droit']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when one showType is provided', () => {
+      const query = 'searched query'
+      const offerGenreTypes = [
+        { key: GenreType.SHOW, value: 'Arts de la rue', name: 'Arts de la rue' },
+      ]
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerGenreTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.showType:Arts de la rue']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when one musicType is provided', () => {
+      const query = 'searched query'
+      const offerGenreTypes = [{ key: GenreType.MUSIC, value: 'Pop', name: 'Pop' }]
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerGenreTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.musicType:Pop']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when unknown genre type is provided', () => {
+      const query = 'searched query'
+      const offerGenreTypes = [{ key: 'UNKNOWN', value: 'Pop', name: 'Pop' }]
+
+      fetchOffer({
+        parameters: { ...baseParams, query, offerGenreTypes } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
