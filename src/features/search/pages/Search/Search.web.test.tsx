@@ -22,9 +22,6 @@ const mockSearchState: SearchState = {
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
-  useCommit: () => ({
-    commit: jest.fn(),
-  }),
 }))
 
 jest.mock('features/auth/AuthContext')

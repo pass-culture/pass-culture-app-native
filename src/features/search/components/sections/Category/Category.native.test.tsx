@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render } from 'tests/utils'
 
 import { Category } from './Category'
@@ -12,6 +13,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
+  }),
+}))
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 

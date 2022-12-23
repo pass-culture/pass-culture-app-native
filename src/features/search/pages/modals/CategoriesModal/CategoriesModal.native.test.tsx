@@ -6,6 +6,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { CategoriesModal } from './CategoriesModal'
@@ -18,6 +19,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
+  }),
+}))
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 
@@ -35,19 +42,6 @@ describe('<CategoriesModal/>', () => {
     expect(getByText('Films, séries, cinéma')).toBeTruthy()
     expect(getByText('Musées & visites culturelles')).toBeTruthy()
     expect(getByText('Jeux & jeux vidéos')).toBeTruthy()
-  })
-
-  it("should change the selected category filter when pressing on another filter's checkbox", async () => {
-    const { getByText } = renderCategories()
-
-    const someCategoryFilterCheckbox = getByText('Arts & loisirs créatifs')
-    fireEvent.press(someCategoryFilterCheckbox)
-
-    await waitFor(() => {
-      expect(someCategoryFilterCheckbox).toHaveProp('isSelected', true)
-      const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
-      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', false)
-    })
   })
 
   it('should set the selected category filter on navigate when one is set', async () => {
@@ -148,7 +142,6 @@ describe('<CategoriesModal/>', () => {
 function renderCategories() {
   return render(
     <CategoriesModal
-      title="Catégories"
       accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}

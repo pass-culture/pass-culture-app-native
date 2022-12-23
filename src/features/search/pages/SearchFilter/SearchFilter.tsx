@@ -123,4 +123,6 @@ const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVerti
 
 const StyledLi = styled(Li)({
   display: 'flex',
+  marginLeft: getSpacing(6),
+  marginRight: getSpacing(6),
 })

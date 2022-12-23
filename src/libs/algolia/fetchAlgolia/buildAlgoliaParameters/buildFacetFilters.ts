@@ -1,5 +1,11 @@
-import { SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
+import {
+  GenreType,
+  NativeCategoryIdEnumv2,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnumv2,
+} from 'api/gen'
 import { LocationType } from 'features/search/enums'
+import { OfferGenreType } from 'features/search/types'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
@@ -7,17 +13,26 @@ const underageFilter = [[`${FACETS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
 const defaultFilter = [[`${FACETS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 
 export const buildFacetFilters = ({
+  isUserUnderage,
   locationFilter,
   objectIds,
   offerCategories,
+  offerGenreTypes,
+  offerIsDuo,
+  offerNativeCategories,
   offerSubcategories,
   offerTypes,
-  offerIsDuo,
   tags,
-  isUserUnderage,
 }: Pick<
   SearchParametersQuery,
-  'locationFilter' | 'offerCategories' | 'offerSubcategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
+  | 'locationFilter'
+  | 'offerCategories'
+  | 'offerGenreTypes'
+  | 'offerIsDuo'
+  | 'offerNativeCategories'
+  | 'offerSubcategories'
+  | 'offerTypes'
+  | 'tags'
 > & { isUserUnderage: boolean; objectIds?: string[] }): null | {
   facetFilters: FiltersArray
 } => {
@@ -35,6 +50,16 @@ export const buildFacetFilters = ({
   if (offerSubcategories.length > 0) {
     const subcategoriesPredicate = buildOfferSubcategoriesPredicate(offerSubcategories)
     facetFilters.push(subcategoriesPredicate)
+  }
+
+  if (offerNativeCategories?.length) {
+    const nativeCategoriesPredicate = buildOfferNativeCategoriesPredicate(offerNativeCategories)
+    facetFilters.push(nativeCategoriesPredicate)
+  }
+
+  if (offerGenreTypes?.length) {
+    const offerGenreTypesPredicate = buildOfferGenreTypesPredicate(offerGenreTypes)
+    facetFilters.push(offerGenreTypesPredicate)
   }
 
   if (objectIds && objectIds.length > 0) {
@@ -66,6 +91,26 @@ const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): s
 
 const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnumv2[]): string[] =>
   subcategoryIds.map((subcategoryId) => `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${subcategoryId}`)
+
+const buildOfferNativeCategoriesPredicate = (nativeCategories: NativeCategoryIdEnumv2[]) =>
+  nativeCategories.map((nativeCategory) => `${FACETS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`)
+
+const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) => {
+  return offerGenreTypes.map((offerGenreType) => {
+    switch (offerGenreType.key) {
+      case GenreType.MOVIE:
+        return `${FACETS_ENUM.OFFER_MOVIE_GENRES}:${[offerGenreType.name]}`
+      case GenreType.BOOK:
+        return `${FACETS_ENUM.OFFER_BOOK_TYPE}:${offerGenreType.name}`
+      case GenreType.MUSIC:
+        return `${FACETS_ENUM.OFFER_MUSIC_TYPE}:${offerGenreType.name}`
+      case GenreType.SHOW:
+        return `${FACETS_ENUM.OFFER_SHOW_TYPE}:${offerGenreType.name}`
+      default:
+        return ''
+    }
+  })
+}
 
 const buildObjectIdsPredicate = (objectIds: string[]): string[] =>
   objectIds.map((objectId) => `${FACETS_ENUM.OBJECT_ID}:${objectId}`)

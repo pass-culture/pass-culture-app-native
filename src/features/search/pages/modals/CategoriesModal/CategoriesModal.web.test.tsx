@@ -1,14 +1,20 @@
 import React from 'react'
 
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { CategoriesModal } from './CategoriesModal'
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 describe('<CategoriesModal/>', () => {
   it('should display mobile header modal if mobile viewport', () => {
     const { getByTestId } = render(
       <CategoriesModal
-        title="Catégories"
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible
         hideModal={jest.fn()}
@@ -24,7 +30,6 @@ describe('<CategoriesModal/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
         <CategoriesModal
-          title="Catégories"
           accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
           isVisible
           hideModal={jest.fn()}

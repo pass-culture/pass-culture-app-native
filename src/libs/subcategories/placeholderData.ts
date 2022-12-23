@@ -1,8 +1,10 @@
 import {
   CategoryIdEnum,
-  SearchGroupNameEnumv2,
+  GenreType,
   HomepageLabelNameEnumv2,
+  NativeCategoryIdEnumv2,
   OnlineOfflinePlatformChoicesEnumv2,
+  SearchGroupNameEnumv2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
@@ -17,6 +19,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.BIBLIOTHEQUE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_CONCERT,
@@ -26,6 +29,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CONCERT,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
     },
     {
       id: SubcategoryIdEnumv2.ABO_JEU_VIDEO,
@@ -35,6 +39,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.JEUX_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_LIVRE_NUMERIQUE,
@@ -44,6 +49,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
     },
     {
       id: SubcategoryIdEnumv2.ABO_LUDOTHEQUE,
@@ -53,6 +59,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.LUDOTHEQUE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_MEDIATHEQUE,
@@ -62,6 +69,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.MEDIATHEQUE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_MUSEE,
@@ -71,6 +79,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSEE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PLATEFORME_MUSIQUE,
@@ -80,6 +89,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PLATEFORME_VIDEO,
@@ -89,6 +99,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PRATIQUE_ART,
@@ -98,6 +109,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PRESSE_EN_LIGNE,
@@ -107,6 +119,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MEDIAS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRESSE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_SPECTACLE,
@@ -116,6 +129,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ABONNEMENTS_SPECTACLE,
     },
     {
       id: SubcategoryIdEnumv2.ACHAT_INSTRUMENT,
@@ -125,15 +139,17 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.INSTRUMENT,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
     },
     {
       id: SubcategoryIdEnumv2.ACTIVATION_EVENT,
       categoryId: CategoryIdEnum.TECHNIQUE,
-      appLabel: "Catégorie technique d'évènement d'activation ",
+      appLabel: "Catégorie technique d'évènement d'activation",
       searchGroupName: SearchGroupNameEnumv2.NONE,
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.DEPRECIEE,
     },
     {
       id: SubcategoryIdEnumv2.ACTIVATION_THING,
@@ -143,6 +159,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.DEPRECIEE,
     },
     {
       id: SubcategoryIdEnumv2.APP_CULTURELLE,
@@ -152,6 +169,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MEDIAS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.AUTRES_MEDIAS,
     },
     {
       id: SubcategoryIdEnumv2.ATELIER_PRATIQUE_ART,
@@ -161,6 +179,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
     },
     {
       id: SubcategoryIdEnumv2.AUTRE_SUPPORT_NUMERIQUE,
@@ -170,6 +189,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.BON_ACHAT_INSTRUMENT,
@@ -179,6 +199,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.INSTRUMENT,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
     },
     {
       id: SubcategoryIdEnumv2.CAPTATION_MUSIQUE,
@@ -188,6 +209,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.CARTE_CINE_ILLIMITE,
@@ -197,6 +219,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CARTES_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.CARTE_CINE_MULTISEANCES,
@@ -206,6 +229,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CARTES_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.CARTE_JEUNES,
@@ -215,6 +239,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CARTE_JEUNES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CARTES_JEUNES,
     },
     {
       id: SubcategoryIdEnumv2.CARTE_MUSEE,
@@ -224,6 +249,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSEE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE,
     },
     {
       id: SubcategoryIdEnumv2.CINE_PLEIN_AIR,
@@ -233,6 +259,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.CINE_VENTE_DISTANCE,
@@ -242,6 +269,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.CONCERT,
@@ -251,6 +279,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CONCERT,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
     },
     {
       id: SubcategoryIdEnumv2.CONCOURS,
@@ -260,6 +289,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONCOURS,
     },
     {
       id: SubcategoryIdEnumv2.CONFERENCE,
@@ -269,6 +299,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.RENCONTRES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONFERENCES,
     },
     {
       id: SubcategoryIdEnumv2.DECOUVERTE_METIERS,
@@ -278,6 +309,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.RENCONTRES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SALONS_ET_METIERS,
     },
     {
       id: SubcategoryIdEnumv2.ESCAPE_GAME,
@@ -287,6 +319,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ESCAPE_GAMES,
     },
     {
       id: SubcategoryIdEnumv2.EVENEMENT_CINE,
@@ -296,6 +329,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.EVENEMENT_JEU,
@@ -305,6 +339,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.RENCONTRES_EVENEMENTS,
     },
     {
       id: SubcategoryIdEnumv2.EVENEMENT_MUSIQUE,
@@ -314,6 +349,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CONCERT,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
     },
     {
       id: SubcategoryIdEnumv2.EVENEMENT_PATRIMOINE,
@@ -323,6 +359,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.VISITES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_PATRIMOINE,
     },
     {
       id: SubcategoryIdEnumv2.FESTIVAL_ART_VISUEL,
@@ -332,6 +369,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FESTIVAL,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ARTS_VISUELS,
     },
     {
       id: SubcategoryIdEnumv2.FESTIVAL_CINE,
@@ -341,6 +379,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.EVENEMENTS_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.FESTIVAL_LIVRE,
@@ -350,6 +389,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.FESTIVAL_DU_LIVRE,
     },
     {
       id: SubcategoryIdEnumv2.FESTIVAL_MUSIQUE,
@@ -359,6 +399,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FESTIVAL,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
     },
     {
       id: SubcategoryIdEnumv2.FESTIVAL_SPECTACLE,
@@ -368,6 +409,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SPECTACLES_REPRESENTATIONS,
     },
     {
       id: SubcategoryIdEnumv2.JEU_EN_LIGNE,
@@ -377,6 +419,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.JEUX_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.JEU_SUPPORT_PHYSIQUE,
@@ -386,6 +429,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.JEUX_PHYSIQUES,
     },
     {
       id: SubcategoryIdEnumv2.LIVESTREAM_EVENEMENT,
@@ -395,6 +439,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.RENCONTRES_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.LIVESTREAM_MUSIQUE,
@@ -404,6 +449,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CONCERTS_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.LIVESTREAM_PRATIQUE_ARTISTIQUE,
@@ -413,6 +459,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.COURS,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.LIVRE_AUDIO_PHYSIQUE,
@@ -422,6 +469,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
     },
     {
       id: SubcategoryIdEnumv2.LIVRE_NUMERIQUE,
@@ -431,6 +479,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
     },
     {
       id: SubcategoryIdEnumv2.LIVRE_PAPIER,
@@ -440,6 +489,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_PAPIER,
     },
     {
       id: SubcategoryIdEnumv2.LOCATION_INSTRUMENT,
@@ -449,6 +499,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.INSTRUMENT,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
     },
     {
       id: SubcategoryIdEnumv2.MATERIEL_ART_CREATIF,
@@ -458,6 +509,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
     },
     {
       id: SubcategoryIdEnumv2.MUSEE_VENTE_DISTANCE,
@@ -467,6 +519,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSEE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VISITES_CULTURELLES,
     },
     {
       id: SubcategoryIdEnumv2.OEUVRE_ART,
@@ -476,6 +529,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.ARTS_VISUELS,
     },
     {
       id: SubcategoryIdEnumv2.PARTITION,
@@ -485,6 +539,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.INSTRUMENT,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PARTITIONS_DE_MUSIQUE,
     },
     {
       id: SubcategoryIdEnumv2.PLATEFORME_PRATIQUE_ARTISTIQUE,
@@ -494,6 +549,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.PLATEFORME,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.PRATIQUE_ART_VENTE_DISTANCE,
@@ -503,6 +559,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.PODCAST,
@@ -512,6 +569,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MEDIAS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PODCAST,
     },
     {
       id: SubcategoryIdEnumv2.RENCONTRE_EN_LIGNE,
@@ -521,6 +579,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.RENCONTRES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.RENCONTRES_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.RENCONTRE_JEU,
@@ -530,6 +589,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.JEUX,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.RENCONTRES_EVENEMENTS,
     },
     {
       id: SubcategoryIdEnumv2.RENCONTRE,
@@ -539,6 +599,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.RENCONTRES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.RENCONTRES,
     },
     {
       id: SubcategoryIdEnumv2.SALON,
@@ -548,6 +609,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.RENCONTRES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SALONS_ET_METIERS,
     },
     {
       id: SubcategoryIdEnumv2.SEANCE_CINE,
@@ -557,6 +619,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
     },
     {
       id: SubcategoryIdEnumv2.SEANCE_ESSAI_PRATIQUE_ART,
@@ -566,6 +629,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
     },
     {
       id: SubcategoryIdEnumv2.SPECTACLE_ENREGISTRE,
@@ -575,6 +639,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SPECTACLES_ENREGISTRES,
     },
     {
       id: SubcategoryIdEnumv2.SPECTACLE_REPRESENTATION,
@@ -584,6 +649,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SPECTACLES_REPRESENTATIONS,
     },
     {
       id: SubcategoryIdEnumv2.SPECTACLE_VENTE_DISTANCE,
@@ -593,6 +659,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.SPECTACLES_REPRESENTATIONS,
     },
     {
       id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_FILM,
@@ -602,6 +669,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.DVD_BLU_RAY,
     },
     {
       id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE,
@@ -611,6 +679,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.CD_VINYLES,
     },
     {
       id: SubcategoryIdEnumv2.TELECHARGEMENT_LIVRE_AUDIO,
@@ -620,6 +689,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.PLATEFORME,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
     },
     {
       id: SubcategoryIdEnumv2.TELECHARGEMENT_MUSIQUE,
@@ -629,6 +699,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.VISITE_GUIDEE,
@@ -638,6 +709,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.VISITES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VISITES_CULTURELLES,
     },
     {
       id: SubcategoryIdEnumv2.VISITE_VIRTUELLE,
@@ -647,6 +719,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.VISITES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VISITES_CULTURELLES_EN_LIGNE,
     },
     {
       id: SubcategoryIdEnumv2.VISITE,
@@ -656,6 +729,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.VISITES,
       isEvent: true,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VISITES_CULTURELLES,
     },
     {
       id: SubcategoryIdEnumv2.VOD,
@@ -665,6 +739,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
     },
   ],
   searchGroups: [
@@ -710,5 +785,629 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     { name: HomepageLabelNameEnumv2.RENCONTRES, value: 'Rencontres' },
     { name: HomepageLabelNameEnumv2.SPECTACLES, value: 'Spectacle' },
     { name: HomepageLabelNameEnumv2.VISITES, value: 'Visites' },
+  ],
+  genreTypes: [
+    {
+      name: GenreType.BOOK,
+      values: [
+        {
+          name: 'Art',
+          value: 'Art',
+        },
+        {
+          name: 'Arts Culinaires',
+          value: 'Arts Culinaires',
+        },
+        {
+          name: 'Bandes dessinées',
+          value: 'Bandes dessinées',
+        },
+        {
+          name: 'Carrière/Concours',
+          value: 'Carrière/Concours',
+        },
+        {
+          name: 'Droit',
+          value: 'Droit',
+        },
+        {
+          name: 'Economie',
+          value: 'Economie',
+        },
+        {
+          name: 'Faits, temoignages',
+          value: 'Faits, temoignages',
+        },
+        {
+          name: 'Gestion/entreprise',
+          value: 'Gestion/entreprise',
+        },
+        {
+          name: 'Géographie, cartographie',
+          value: 'Géographie, cartographie',
+        },
+        {
+          name: 'Histoire',
+          value: 'Histoire',
+        },
+        {
+          name: 'Humour',
+          value: 'Humour',
+        },
+        {
+          name: 'Informatique',
+          value: 'Informatique',
+        },
+        {
+          name: 'Jeunesse',
+          value: 'Jeunesse',
+        },
+        {
+          name: 'Jeux',
+          value: 'Jeux',
+        },
+        {
+          name: 'Langue',
+          value: 'Langue',
+        },
+        {
+          name: 'Littérature Etrangère',
+          value: 'Littérature Etrangère',
+        },
+        {
+          name: 'Littérature Europééne',
+          value: 'Littérature Europééne',
+        },
+        {
+          name: 'Littérature française',
+          value: 'Littérature française',
+        },
+        {
+          name: 'Loisirs',
+          value: 'Loisirs',
+        },
+        {
+          name: 'Manga',
+          value: 'Manga',
+        },
+        {
+          name: 'Marketing et audio-visuel',
+          value: 'Marketing et audio-visuel',
+        },
+        {
+          name: 'Policier',
+          value: 'Policier',
+        },
+        {
+          name: 'Poèsie, théâtre et spectacle',
+          value: 'Poèsie, théâtre et spectacle',
+        },
+        {
+          name: 'Psychanalyse, psychologie',
+          value: 'Psychanalyse, psychologie',
+        },
+        {
+          name: 'Religions, spiritualitées',
+          value: 'Religions, spiritualitées',
+        },
+        {
+          name: 'Santé',
+          value: 'Santé',
+        },
+        {
+          name: 'Science-fiction, fantastique & terreur',
+          value: 'Science-fiction, fantastique & terreur',
+        },
+        {
+          name: 'Sciences Humaines, Encyclopédie, dictionnaire',
+          value: 'Sciences Humaines, Encyclopédie, dictionnaire',
+        },
+        {
+          name: 'Sciences, vie & Nature',
+          value: 'Sciences, vie & Nature',
+        },
+        {
+          name: 'Scolaire & Parascolaire',
+          value: 'Scolaire & Parascolaire',
+        },
+        {
+          name: 'Sexualité',
+          value: 'Sexualité',
+        },
+        {
+          name: 'Sociologie',
+          value: 'Sociologie',
+        },
+        {
+          name: 'Sport',
+          value: 'Sport',
+        },
+        {
+          name: 'Tourisme',
+          value: 'Tourisme',
+        },
+        {
+          name: 'Vie pratique',
+          value: 'Vie pratique',
+        },
+      ],
+    },
+    {
+      name: GenreType.MUSIC,
+      values: [
+        {
+          name: 'Autre',
+          value: 'Autre',
+        },
+        {
+          name: 'Blues',
+          value: 'Blues',
+        },
+        {
+          name: 'Chansons / Variétés',
+          value: 'Chansons / Variétés',
+        },
+        {
+          name: 'Classique',
+          value: 'Classique',
+        },
+        {
+          name: 'Country',
+          value: 'Country',
+        },
+        {
+          name: 'Electro',
+          value: 'Electro',
+        },
+        {
+          name: 'Folk',
+          value: 'Folk',
+        },
+        {
+          name: 'Gospel',
+          value: 'Gospel',
+        },
+        {
+          name: 'Hip-Hop/Rap',
+          value: 'Hip-Hop/Rap',
+        },
+        {
+          name: 'Jazz',
+          value: 'Jazz',
+        },
+        {
+          name: 'Metal',
+          value: 'Metal',
+        },
+        {
+          name: 'Musique du Monde',
+          value: 'Musique du Monde',
+        },
+        {
+          name: 'Pop',
+          value: 'Pop',
+        },
+        {
+          name: 'Punk',
+          value: 'Punk',
+        },
+        {
+          name: 'Reggae',
+          value: 'Reggae',
+        },
+        {
+          name: 'Rock',
+          value: 'Rock',
+        },
+      ],
+    },
+    {
+      name: GenreType.SHOW,
+      values: [
+        {
+          name: 'Arts de la rue',
+          value: 'Arts de la rue',
+        },
+        {
+          name: 'Autre',
+          value: 'Autre',
+        },
+        {
+          name: 'Autre (spectacle sur glace, historique, aquatique, …)  ',
+          value: 'Autre (spectacle sur glace, historique, aquatique, …)  ',
+        },
+        {
+          name: 'Cirque',
+          value: 'Cirque',
+        },
+        {
+          name: 'Danse',
+          value: 'Danse',
+        },
+        {
+          name: 'Humour / Café-théâtre',
+          value: 'Humour / Café-théâtre',
+        },
+        {
+          name: 'Opéra',
+          value: 'Opéra',
+        },
+        {
+          name: 'Pluridisciplinaire',
+          value: 'Pluridisciplinaire',
+        },
+        {
+          name: 'Spectacle Jeunesse',
+          value: 'Spectacle Jeunesse',
+        },
+        {
+          name: 'Spectacle Musical / Cabaret / Opérette',
+          value: 'Spectacle Musical / Cabaret / Opérette',
+        },
+        {
+          name: 'Théâtre',
+          value: 'Théâtre',
+        },
+      ],
+    },
+    {
+      name: GenreType.MOVIE,
+      values: [
+        {
+          name: 'ACTION',
+          value: 'Action',
+        },
+        {
+          name: 'ANIMATION',
+          value: 'Animation',
+        },
+        {
+          name: 'MARTIAL_ARTS',
+          value: 'Arts martiaux',
+        },
+        {
+          name: 'ADVENTURE',
+          value: 'Aventure',
+        },
+        {
+          name: 'BIOPIC',
+          value: 'Biopic',
+        },
+        {
+          name: 'BOLLYWOOD',
+          value: 'Bollywood',
+        },
+        {
+          name: 'COMEDY',
+          value: 'Comédie',
+        },
+        {
+          name: 'COMEDY_DRAMA',
+          value: 'Comédie dramatique',
+        },
+        {
+          name: 'MUSICAL',
+          value: 'Comédie musicale',
+        },
+        {
+          name: 'CONCERT',
+          value: 'Concert',
+        },
+        {
+          name: 'DIVERS',
+          value: 'Divers',
+        },
+        {
+          name: 'DOCUMENTARY',
+          value: 'Documentaire',
+        },
+        {
+          name: 'DRAMA',
+          value: 'Drame',
+        },
+        {
+          name: 'KOREAN_DRAMA',
+          value: 'Drame coréen',
+        },
+        {
+          name: 'SPY',
+          value: 'Espionnage',
+        },
+        {
+          name: 'EXPERIMENTAL',
+          value: 'Expérimental',
+        },
+        {
+          name: 'FAMILY',
+          value: 'Familial',
+        },
+        {
+          name: 'FANTASY',
+          value: 'Fantastique',
+        },
+        {
+          name: 'WARMOVIE',
+          value: 'Guerre',
+        },
+        {
+          name: 'HISTORICAL',
+          value: 'Historique',
+        },
+        {
+          name: 'HISTORICAL_EPIC',
+          value: 'Historique-épique',
+        },
+        {
+          name: 'HORROR',
+          value: 'Horreur',
+        },
+        {
+          name: 'JUDICIAL',
+          value: 'Judiciaire',
+        },
+        {
+          name: 'MUSIC',
+          value: 'Musique',
+        },
+        {
+          name: 'OPERA',
+          value: 'Opéra',
+        },
+        {
+          name: 'PERFORMANCE',
+          value: 'Performance',
+        },
+        {
+          name: 'DETECTIVE',
+          value: 'Policier',
+        },
+        {
+          name: 'ROMANCE',
+          value: 'Romance',
+        },
+        {
+          name: 'SCIENCE_FICTION',
+          value: 'Science-fiction',
+        },
+        {
+          name: 'SPORT_EVENT',
+          value: 'Sport',
+        },
+        {
+          name: 'THRILLER',
+          value: 'Thriller',
+        },
+        {
+          name: 'WESTERN',
+          value: 'Western',
+        },
+        {
+          name: 'EROTIC',
+          value: 'Érotique',
+        },
+      ],
+    },
+  ],
+  nativeCategories: [
+    {
+      name: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+      value: 'Livres papier',
+      genreType: GenreType.BOOK,
+    },
+    {
+      name: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+      value: 'Livres numérique & audio',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
+      value: 'Livres audio physiques',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
+      value: "Achat & location d'instrument",
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.PARTITIONS_DE_MUSIQUE,
+      value: 'Partitions de musique',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.VISITES_CULTURELLES_EN_LIGNE,
+      value: 'Visites culturelles en ligne',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.VISITES_CULTURELLES,
+      value: 'Visites culturelles',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE,
+      value: 'Abonnements musée',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.EVENEMENTS_PATRIMOINE,
+      value: 'Evènements patrimoine',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CARTES_CINEMA,
+      value: 'Cartes cinéma',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+      value: 'Séances de cinéma',
+      genreType: GenreType.MOVIE,
+    },
+    {
+      name: NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE,
+      value: 'Films, séries en ligne',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.DVD_BLU_RAY,
+      value: 'DVD, Blu-Ray',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
+      value: 'Concerts, évènements',
+      genreType: GenreType.MUSIC,
+    },
+    {
+      name: NativeCategoryIdEnumv2.FESTIVALS,
+      value: 'Festivals',
+      genreType: GenreType.MUSIC,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CONCERTS_EN_LIGNE,
+      value: 'Concerts en ligne',
+      genreType: GenreType.MUSIC,
+    },
+    {
+      name: NativeCategoryIdEnumv2.JEUX_PHYSIQUES,
+      value: 'Jeux physiques',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.JEUX_EN_LIGNE,
+      value: 'Jeux en ligne',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.ESCAPE_GAMES,
+      value: 'Escape games',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.RENCONTRES_EVENEMENTS,
+      value: 'Rencontres évènements',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CONCOURS,
+      value: 'Concours',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.SPECTACLES_REPRESENTATIONS,
+      value: 'Spectacles & représentations',
+      genreType: GenreType.SHOW,
+    },
+    {
+      name: NativeCategoryIdEnumv2.ABONNEMENTS_SPECTACLE,
+      value: 'Abonnements spectacle',
+      genreType: GenreType.SHOW,
+    },
+    {
+      name: NativeCategoryIdEnumv2.SPECTACLES_ENREGISTRES,
+      value: 'Spectacles enregistrés',
+      genreType: GenreType.SHOW,
+    },
+    {
+      name: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
+      value: 'Pratiques & ateliers artistiques',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
+      value: 'Matériels créatifs',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CD_VINYLES,
+      value: 'CD, vinyles',
+      genreType: GenreType.MUSIC,
+    },
+    {
+      name: NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
+      value: 'Musique en ligne',
+      genreType: GenreType.MUSIC,
+    },
+    {
+      name: NativeCategoryIdEnumv2.BIBLIOTHEQUE,
+      value: 'Bibliothèque',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.MEDIATHEQUE,
+      value: 'Médiathèque',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.LUDOTHEQUE,
+      value: 'Ludothèque',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.RENCONTRES,
+      value: 'Rencontres',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.RENCONTRES_EN_LIGNE,
+      value: 'Rencontres en ligne',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CONFERENCES,
+      value: 'Conférences',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.SALONS_ET_METIERS,
+      value: 'Salons & métiers',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.PRESSE_EN_LIGNE,
+      value: 'Presse en ligne',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.PODCAST,
+      value: 'Podcast',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.AUTRES_MEDIAS,
+      value: 'Autres médias',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.CARTES_JEUNES,
+      value: 'Cartes jeunes',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.EVENEMENTS_CINEMA,
+      value: 'Evènements cinéma',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.ARTS_VISUELS,
+      value: 'Arts visuels',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.FESTIVAL_DU_LIVRE,
+      value: 'Festivals du livre',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE,
+      value: 'Pratique artistique en ligne',
+      genreType: null,
+    },
+    {
+      name: NativeCategoryIdEnumv2.DEPRECIEE,
+      value: 'Dépréciée',
+      genreType: null,
+    },
   ],
 }

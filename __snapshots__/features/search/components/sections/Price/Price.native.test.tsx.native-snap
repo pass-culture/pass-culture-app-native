@@ -19,8 +19,6 @@ Array [
         "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "space-between",
-        "marginLeft": 24,
-        "marginRight": 24,
         "opacity": 1,
         "userSelect": "auto",
       }

@@ -19,9 +19,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: mockStateDispatch,
   }),
-  useCommit: () => ({
-    commit: jest.fn(),
-  }),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }

@@ -342,7 +342,6 @@ export const SearchResults: React.FC = () => {
         </ScrollToTopContainer>
       )}
       <CategoriesModal
-        title="Catégories"
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}

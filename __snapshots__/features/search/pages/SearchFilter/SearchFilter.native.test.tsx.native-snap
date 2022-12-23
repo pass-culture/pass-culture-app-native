@@ -210,6 +210,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             Array [
               Object {
                 "display": "flex",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -241,8 +243,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
-                "marginLeft": 24,
-                "marginRight": 24,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -392,6 +392,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             Array [
               Object {
                 "display": "flex",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -423,8 +425,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
-                "marginLeft": 24,
-                "marginRight": 24,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -557,6 +557,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             Array [
               Object {
                 "display": "flex",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -588,8 +590,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
-                "marginLeft": 24,
-                "marginRight": 24,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -732,6 +732,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             Array [
               Object {
                 "display": "flex",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -753,8 +755,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
-                "marginLeft": 24,
-                "marginRight": 24,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -879,6 +879,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             Array [
               Object {
                 "display": "flex",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -900,8 +902,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
-                "marginLeft": 24,
-                "marginRight": 24,
                 "opacity": 1,
                 "userSelect": "auto",
               }
