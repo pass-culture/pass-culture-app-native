@@ -158,8 +158,7 @@ function getCategoryFilterDescription(ctx: DescriptionContext) {
 
   if (selectedGenreType && selectedNativeCategory)
     return `${selectedNativeCategory.value} - ${selectedGenreType.value}`
-  if (selectedCategory && selectedNativeCategory)
-    return `${selectedCategory.value} - ${selectedNativeCategory.value}`
+  if (selectedNativeCategory) return `${selectedNativeCategory.value}`
   if (selectedCategory) return selectedCategory.value ?? undefined
   return undefined
 }
