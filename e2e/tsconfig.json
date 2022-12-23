@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "target": "es2022",
+    "moduleResolution": "node",
+    "module": "commonjs",
     "sourceMap": false,
     "removeComments": true,
     "noImplicitAny": true,
@@ -12,9 +15,10 @@
     "allowJs": true,
     "types": [
       "node",
-      "@wdio/global/types",
-      "@wdio/mocha-framework",
+      "@wdio/globals/types",
       "expect-webdriverio",
+      "@wdio/mocha-framework",
+      "@wdio/appium-service"
     ]
   },
   "include": [
