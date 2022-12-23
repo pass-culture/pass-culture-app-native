@@ -4,11 +4,7 @@ import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import {
-  NativeCategoryResponseModelv2,
-  SearchGroupNameEnumv2,
-  SearchGroupResponseModelv2,
-} from 'api/gen'
+import { NativeCategoryResponseModelv2, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
@@ -39,10 +35,6 @@ export interface CategoriesModalProps {
   accessibilityLabel: string
   isVisible?: boolean
   hideModal: VoidFunction
-  /**
-   * @default CategoriesModalView.CATEGORIES
-   */
-  defaultView?: CategoriesModalView
 }
 
 const titleId = uuidv4()
@@ -51,7 +43,6 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   accessibilityLabel,
-  defaultView = CategoriesModalView.CATEGORIES,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -66,7 +57,7 @@ export const CategoriesModal = ({
     watch,
     reset,
   } = useForm<CategoriesModalFormProps>({
-    defaultValues: getDefaultFormValues(data, searchState, defaultView),
+    defaultValues: getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES),
   })
 
   const { nativeCategory, category, genreType, currentView } = watch()
@@ -141,9 +132,13 @@ export const CategoriesModal = ({
   )
 
   const handleReset = useCallback(() => {
-    reset()
-    setValue('currentView', CategoriesModalView.CATEGORIES)
-  }, [reset, setValue])
+    reset({
+      category: categoryAllValue,
+      nativeCategory: null,
+      genreType: null,
+      currentView: CategoriesModalView.CATEGORIES,
+    })
+  }, [reset])
 
   const handleSearch = useCallback(
     (form: CategoriesModalFormProps) => {

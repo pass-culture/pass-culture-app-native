@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CategoriesModal/> should render correctly 1`] = `
+exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
 <Modal
   accessibilityRole="none"
   animationType="none"
