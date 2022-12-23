@@ -123,6 +123,7 @@ export const analytics: typeof actualAnalytics = {
   logSignUpFromOffer: jest.fn(),
   logSignUpTooYoung: jest.fn(),
   logSimilarOfferPlaylistHorizontalScroll: jest.fn(),
+  logSimilarOfferPlaylistVerticalScroll: jest.fn(),
   logStartDMSTransmission: jest.fn(),
   logTrySelectDeposit: jest.fn(),
   logUseFilter: jest.fn(),
