@@ -59,20 +59,20 @@ commands:
           command: |
             # Store OIDC token in temp file
             echo $CIRCLE_OIDC_TOKEN > << parameters.oidc_token_file_path >>
-            
+
             # Create a credential configuration for the generated OIDC ID Token
             gcloud iam workload-identity-pools create-cred-config \
                 "${<< parameters.workload_identity_pool_provider_id >>}"\
                 --output-file="<< parameters.gcp_cred_config_file_path >>" \
                 --service-account="${<< parameters.service_account_email >>}" \
                 --credential-source-file=<< parameters.oidc_token_file_path >>
-            
+
             # Configure gcloud to leverage the generated credential configuration
             gcloud auth login --brief --cred-file "<< parameters.gcp_cred_config_file_path >>"
-            
+
             # Configure Application Default Credentials
             echo "export GOOGLE_APPLICATION_CREDENTIALS='<< parameters.gcp_cred_config_file_path >>'" | tee -a $BASH_ENV
-            
+
             # Set default project
             gcloud --quiet config set project ${GCP_PROJECT}
 
