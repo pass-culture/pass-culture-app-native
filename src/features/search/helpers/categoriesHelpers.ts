@@ -241,9 +241,9 @@ export function getCategoriesModalTitle(
     case CategoriesModalView.CATEGORIES:
       return 'Catégories'
     case CategoriesModalView.NATIVE_CATEGORIES:
-      return (category as SearchGroupResponseModelv2).value
+      return category?.value ?? 'Sous-catégories'
     case CategoriesModalView.GENRES:
-      return (nativeCategory as NativeCategoryResponseModelv2).value
+      return nativeCategory?.value || 'Genres'
     default:
       return 'Catégories'
   }

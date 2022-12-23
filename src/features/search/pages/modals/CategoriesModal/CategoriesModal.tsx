@@ -4,7 +4,11 @@ import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { NativeCategoryResponseModelv2, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
+import {
+  NativeCategoryResponseModelv2,
+  SearchGroupNameEnumv2,
+  SearchGroupResponseModelv2,
+} from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
