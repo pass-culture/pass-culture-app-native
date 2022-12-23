@@ -155,6 +155,13 @@ describe('<CategoriesModal/>', () => {
       expect(getByText('Livres papier')).toBeTruthy()
     })
 
+    it('should handle "CARTES JEUNES" special case correctly', () => {
+      const { getByText, queryAllByText } = renderCategories()
+      fireEvent.press(getByText('Cartes jeunes'))
+
+      expect(queryAllByText('Cartes jeunes')).toHaveLength(2)
+    })
+
     it('should go back to categories view', () => {
       const { getByTestId, getByText } = renderCategories()
       const previousButton = getByTestId('backButton')
