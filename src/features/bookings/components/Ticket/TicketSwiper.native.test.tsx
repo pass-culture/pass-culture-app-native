@@ -7,14 +7,14 @@ import { render } from 'tests/utils'
 const booking = bookingsSnap.ongoing_bookings[1]
 
 describe('<TicketSwiper/>', () => {
-  it('should display ticket without external bookings information if there are no external bookings', () => {
+  it('should display ticket without external bookings information if there are no external bookings (externalBookings is null)', () => {
     booking.externalBookings = null
     const { queryByTestId } = render(<TicketSwiper booking={booking} />)
     expect(queryByTestId('ticket-without-external-bookings-information')).toBeNull()
     expect(queryByTestId('ticket-with-external-bookings-information')).toBeNull()
   })
 
-  it('should display ticket without external bookings information if there are no external bookings', () => {
+  it('should display ticket without external bookings information if there are no external bookings (empty externalBookings array)', () => {
     booking.externalBookings = []
     const { queryByTestId } = render(<TicketSwiper booking={booking} />)
     expect(queryByTestId('ticket-without-external-bookings-information')).toBeTruthy()

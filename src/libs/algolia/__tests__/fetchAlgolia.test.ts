@@ -73,25 +73,6 @@ describe('fetchOffer', () => {
     })
   })
 
-  it('should fetch with provided query and default page number', () => {
-    const query = 'searched query'
-
-    fetchOffer({
-      parameters: { ...baseParams, query } as SearchParametersQuery,
-      userLocation: null,
-      isUserUnderage: false,
-    })
-
-    expect(search).toHaveBeenCalledWith(query, {
-      page: 0,
-      attributesToHighlight: [],
-      attributesToRetrieve: offerAttributesToRetrieve,
-      facetFilters: [['offer.isEducational:false']],
-      numericFilters: [['offer.prices: 0 TO 300']],
-      clickAnalytics: true,
-    })
-  })
-
   it('should store Algolia query ID after fetching an offer', async () => {
     const spyStoreQueryID = jest.fn()
     const query = 'searched query'

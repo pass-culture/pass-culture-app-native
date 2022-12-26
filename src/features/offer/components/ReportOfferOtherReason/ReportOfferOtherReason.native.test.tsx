@@ -41,7 +41,7 @@ describe('<ReportOfferOtherReason />', () => {
       })
     })
 
-    it('should show error snackbar on report offer mutation error', async () => {
+    it('should show success snackbar on report offer mutation success', async () => {
       const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
         onSuccess: () => {},
         onError: () => {},
