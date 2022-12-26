@@ -7,9 +7,6 @@ import { render, fireEvent } from 'tests/utils'
 
 import { AsyncErrorBoundary } from '../AsyncErrorBoundary'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 jest.mock('libs/monitoring/services')
 
 describe('AsyncErrorBoundary component', () => {
@@ -47,7 +44,9 @@ describe('AsyncErrorBoundary component', () => {
 
 describe('Usage of AsyncErrorBoundary as fallback in ErrorBoundary', () => {
   it('should display custom error page when children raise error', () => {
-    // TODO(PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
+    // Console error displayed in DEV mode even if caught by ErrorBoundary
+    jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
+
     const { getByText } = renderErrorBoundary()
 
     expect(getByText('Oups\u00a0!')).toBeTruthy()

@@ -7,7 +7,7 @@ import waitForExpect from 'wait-for-expect'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, superFlushWithAct } from 'tests/utils'
+import { render, superFlushWithAct, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
 
@@ -19,36 +19,20 @@ type TestData = {
   description: string
 }
 
-// We allow console to prevent the test to fail, it may be fixable, but I didn't found how
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
+const offlineData: TestData[] = [
+  { id: 1, description: 'maverick' },
+  { id: 2, description: 'leon' },
+]
+
+const queryKey = 'TestData'
+const queryFn: QueryFunction<TestData[]> = async () => onlineData
+const additionalData: TestData[] = [{ id: 3, description: 'sierra' }]
+const onlineData: TestData[] = [...offlineData, ...additionalData]
+
+mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
 describe('usePersistQuery', () => {
-  const queryKey = 'TestData'
-  const offlineData: TestData[] = [
-    {
-      id: 1,
-      description: 'maverick',
-    },
-    {
-      id: 2,
-      description: 'leon',
-    },
-  ]
-
-  const additionalData: TestData[] = [{ id: 3, description: 'sierra' }]
-
-  const onlineData: TestData[] = [...offlineData, ...additionalData]
-
-  const queryFn: QueryFunction<TestData[]> = async () => onlineData
-
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-
-  afterEach(async () => {
-    await AsyncStorage.removeItem(queryKey)
-  })
+  afterEach(async () => await AsyncStorage.removeItem(queryKey))
 
   describe('without initial local data', () => {
     it('should save distant data locally', async () => {
@@ -88,6 +72,8 @@ describe('usePersistQuery', () => {
 
   describe('with initial local data', () => {
     beforeEach(async () => {
+      // Console error displayed when offline mode
+      jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
       await AsyncStorage.setItem(queryKey, JSON.stringify(offlineData))
     })
 
@@ -97,8 +83,12 @@ describe('usePersistQuery', () => {
 
       renderUsePersistQuery({ queryKey, queryFn })
 
+      // Console error displayed when offline mode
+      jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
       expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(offlineData))
+
       await superFlushWithAct()
+
       expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(onlineData))
     })
 
@@ -111,7 +101,7 @@ describe('usePersistQuery', () => {
       renderUsePersistQuery({ queryKey, queryFn })
 
       await superFlushWithAct()
-      await waitForExpect(async () => {
+      await waitForExpect(() => {
         expect(eventMonitoring.captureException).toBeCalledWith(error, {
           context: { queryKey },
         })
@@ -132,7 +122,8 @@ describe('usePersistQuery', () => {
             },
           },
         })
-        await waitForExpect(() => {
+
+        await waitFor(() => {
           expect(cursor).toEqual(offlineData[1])
         })
       })

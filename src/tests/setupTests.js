@@ -9,38 +9,23 @@ import { flushAllPromises } from './utils'
 
 global.expect.extend(toHaveNoViolations)
 
-const allowConsoleDefaultConfig = {
-  debug: false,
-  error: false,
-  log: false,
-  warn: false,
-}
-
-let allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig)
-global.allowConsole = function (config = allowConsoleDefaultConfig) {
-  allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig, config)
-}
-
-global.allowConsole({
-  debug: false,
-  error: false,
-  log: false,
-  warn: false,
-})
-
 global.beforeAll(() => {
   server.listen()
   consoleFailTestModule.cft({
     testFramework: 'jest',
     spyLibrary: 'jest',
-    console: allowConsoleRuntimeConfig,
+    console: {
+      debug: false,
+      error: false,
+      log: false,
+      warn: false,
+    },
   })
 })
 
 global.afterAll(() => {
   server.resetHandlers()
   server.close()
-  allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig)
 })
 
 global.afterEach(async () => {

@@ -45,9 +45,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: mockSnackBarTimeout,
 }))
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true }) // we allow it just for 1 test which is error throwing when no booking is found 404
-
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -243,6 +240,9 @@ describe('BookingDetails', () => {
 
   describe('booking not found', () => {
     it('should render ScreenError BookingNotFound when booking is not found when data already exists', async () => {
+      // We allow this console error because throwing an error when no booking is found 404
+      jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
+
       const renderAPI = renderBookingDetails(undefined, {
         dataUpdatedAt: new Date().getTime(),
       })

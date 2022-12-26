@@ -15,9 +15,6 @@ const props = {
   minimumDate: MINIMUM_DATE,
 }
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ warn: true })
-
 describe('<DateInput />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
@@ -25,6 +22,9 @@ describe('<DateInput />', () => {
 
   describe('touch device', () => {
     it('should render correctly', () => {
+      // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+
       const { queryByTestId } = render(<DateInput {...props} />, { theme: { isTouch: true } })
       expect(queryByTestId('date-picker-spinner-touch')).toBeTruthy()
       expect(queryByTestId('date-picker-spinner-native')).toBeFalsy()

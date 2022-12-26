@@ -9,11 +9,6 @@ import { renderHook, waitFor } from 'tests/utils'
 const onSuccess = jest.fn()
 const onError = jest.fn()
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
-
 function simulateUnsuspension() {
   server.use(
     rest.post(env.API_BASE_URL + '/native/v1/account/unsuspend', async (_, res, ctx) =>

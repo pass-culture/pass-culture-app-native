@@ -8,9 +8,6 @@ import { Check } from 'ui/svg/icons/Check'
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings } from './types'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 const getAnimatedTimingImplementation = () =>
   jest
     .spyOn(Animated, 'timing')
@@ -175,14 +172,14 @@ describe('SnackBar Component', () => {
       const container = getByTestId('snackbar-container')
       await waitFor(() => {
         expect(container.props.style[0].display).toEqual('none')
+        /**
+         * It's called twice because of the following function being triggered
+         * in triggerApparitionAnimation:
+         * - progressBarContainerRef?.current?.fadeOutUp
+         * - containerRef?.current?.fadeOutUpé@
+         */
+        expect(timing).toBeCalledTimes(2)
       })
-      /**
-       * It's called twice because of the following function being triggered
-       * in triggerApparitionAnimation:
-       * - progressBarContainerRef?.current?.fadeOutUp
-       * - containerRef?.current?.fadeOutUpé@
-       */
-      await waitFor(async () => expect(timing).toBeCalledTimes(2))
     })
     /**
      * "refresher" updated
@@ -206,13 +203,13 @@ describe('SnackBar Component', () => {
 
         expect(container.props.isVisible).toEqual(true)
         expect(text.props.children).toEqual('a new message')
+        /**
+         * It's called once because of the following function being triggered
+         * in animateProgressBarWidth:
+         * - Animated.timing
+         */
+        expect(timing).toBeCalledTimes(1)
       })
-      /**
-       * It's called once because of the following function being triggered
-       * in animateProgressBarWidth:
-       * - Animated.timing
-       */
-      await waitFor(async () => expect(timing).toBeCalledTimes(1))
     })
     it('should reset the timer when "refresher" is updated', async () => {
       const onClose = jest.fn()

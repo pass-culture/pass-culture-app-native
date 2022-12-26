@@ -149,12 +149,6 @@ These are tips to avoid `console` within your tests.
 - To test an expected error, clean it from your test (we already have the test description):
   - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test
 
-If none of those methods works, and your test still fail:
-
-- ask other developers for help you resolve `console` within your tests
-- if agreed, use at the top of your test `allowConsole({ error: true })`,
-  this will pollute the test log output, but it will pass (aka volkswagen)
-
 ### Test cook book
 
 #### Date

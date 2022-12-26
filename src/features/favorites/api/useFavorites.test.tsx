@@ -19,9 +19,6 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavorites } from './useFavorites'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))

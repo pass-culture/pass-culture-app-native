@@ -15,16 +15,14 @@ const props = {
   minimumDate: MINIMUM_DATE,
 }
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ warn: true })
-
 describe('<DatePickerSpinner />', () => {
-  beforeEach(() => {
-    mockdate.set(CURRENT_DATE)
-    props.onChange.mockReset()
-  })
+  mockdate.set(CURRENT_DATE)
+  props.onChange.mockReset()
 
   it('should call onChange with the selected date when a date is selected', () => {
+    // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+    jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+
     const { container } = render(<DatePickerSpinner {...props} />)
 
     const day = container.getElementsByClassName('picker-scroller')[0].childNodes[1] // 02

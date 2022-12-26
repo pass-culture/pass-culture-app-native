@@ -1,7 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
@@ -16,20 +15,10 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import {
-  flushAllPromisesWithAct,
-  flushAllPromisesTimes,
-  act,
-  fireEvent,
-  render,
-  waitFor,
-} from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from './BookingDetails'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -150,17 +139,12 @@ describe('<BookingDetails />', () => {
       rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
-    const page = await renderBookingDetails(mockStocks)
+    const { getByText } = renderBookingDetails(mockStocks)
 
-    await act(async () => {
-      await fireEvent.press(page.getByText('Confirmer la réservation'))
-    })
+    const ConfirmButton = getByText('Confirmer la réservation')
+    fireEvent.press(ConfirmButton)
 
-    await act(async () => {
-      await flushAllPromisesTimes(10)
-    })
-
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
       expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
         mockOfferId,
@@ -198,19 +182,18 @@ describe('<BookingDetails />', () => {
   })
 
   it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { from: 'search' },
-    })
+    useRoute.mockReturnValueOnce({ params: { from: 'search' } })
 
     server.use(
       rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
-    const page = await renderBookingDetails(mockStocks)
+    const { getByText } = renderBookingDetails(mockStocks)
 
-    await fireEvent.press(page.getByText('Confirmer la réservation'))
+    const ConfirmButton = getByText('Confirmer la réservation')
+    fireEvent.press(ConfirmButton)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(spyLogOfferConversion).toHaveBeenCalledWith('1337')
     })
   })
@@ -220,11 +203,12 @@ describe('<BookingDetails />', () => {
       rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
     )
 
-    const page = await renderBookingDetails(mockStocks)
+    const { getByText } = renderBookingDetails(mockStocks)
 
-    await fireEvent.press(page.getByText('Confirmer la réservation'))
+    const ConfirmButton = getByText('Confirmer la réservation')
+    fireEvent.press(ConfirmButton)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(spyLogOfferConversion).not.toHaveBeenCalled()
     })
   })
@@ -246,11 +230,12 @@ describe('<BookingDetails />', () => {
         )
       )
 
-      const page = await renderBookingDetails(mockStocks)
+      const { getByText } = renderBookingDetails(mockStocks)
 
-      await fireEvent.press(page.getByText('Confirmer la réservation'))
+      const ConfirmButton = getByText('Confirmer la réservation')
+      fireEvent.press(ConfirmButton)
 
-      await waitForExpect(() => {
+      await waitFor(() => {
         expect(mockShowErrorSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ timeout: 5000, message })
       })
@@ -266,11 +251,12 @@ describe('<BookingDetails />', () => {
       )
     )
 
-    const page = await renderBookingDetails(mockStocks)
+    const { getByText } = renderBookingDetails(mockStocks)
 
-    await fireEvent.press(page.getByText('Confirmer la réservation'))
+    const ConfirmButton = getByText('Confirmer la réservation')
+    fireEvent.press(ConfirmButton)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
       expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, 'INSUFFICIENT_CREDIT')
     })
@@ -285,29 +271,30 @@ describe('<BookingDetails />', () => {
       )
     )
 
-    const page = await renderBookingDetails(mockStocks)
+    const { getByText } = renderBookingDetails(mockStocks)
 
-    await fireEvent.press(page.getByText('Confirmer la réservation'))
+    const ConfirmButton = getByText('Confirmer la réservation')
+    fireEvent.press(ConfirmButton)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logBookingError).not.toHaveBeenCalled()
     })
   })
 
   describe('duo selector', () => {
-    it('should not display the Duo selector when the offer is not duo', async () => {
+    it('should not display the Duo selector when the offer is not duo', () => {
       mockBookingState = {
         bookingState: mockInitialBookingState,
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       }
 
-      const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
+      const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
 
       expect(queryByTestId('DuoChoiceSelector')).toBeNull()
     })
 
-    it('should not display the Duo selector when the offer is duo but is an event', async () => {
+    it('should not display the Duo selector when the offer is duo but is an event', () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
       const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
@@ -321,12 +308,12 @@ describe('<BookingDetails />', () => {
         EVENEMENT_PATRIMOINE: { isEvent: true },
       })
 
-      const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
+      const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
 
       expect(queryByTestId('DuoChoiceSelector')).toBeNull()
     })
 
-    it('should display the Duo selector when the offer is duo and not an event', async () => {
+    it('should display the Duo selector when the offer is duo and not an event', () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
       const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
@@ -340,20 +327,15 @@ describe('<BookingDetails />', () => {
         EVENEMENT_PATRIMOINE: { isEvent: false },
       })
 
-      const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
+      const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
 
       expect(queryByTestId('DuoChoiceSelector')).toBeTruthy()
     })
   })
 })
 
-const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
-  const renderAPI = render(
+const renderBookingDetails = (stocks: OfferStockResponse[]) =>
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<BookingDetails stocks={stocks} />)
   )
-
-  await flushAllPromisesWithAct()
-
-  return renderAPI
-}
