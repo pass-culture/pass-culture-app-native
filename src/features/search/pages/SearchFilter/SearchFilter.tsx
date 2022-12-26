@@ -48,6 +48,8 @@ export const SearchFilter: React.FC = () => {
             : { locationType: LocationType.EVERYWHERE },
         minPrice: undefined,
         maxPrice: undefined,
+        offerGenreTypes: undefined,
+        offerNativeCategories: undefined,
       },
     })
     logReinitializeFilters()

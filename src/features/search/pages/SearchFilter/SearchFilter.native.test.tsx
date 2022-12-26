@@ -87,6 +87,8 @@ describe('<SearchFilter/>', () => {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
           minPrice: undefined,
           maxPrice: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
         },
       })
     })
@@ -105,6 +107,8 @@ describe('<SearchFilter/>', () => {
           locationFilter: { locationType: LocationType.EVERYWHERE },
           minPrice: undefined,
           maxPrice: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
         },
       })
     })
