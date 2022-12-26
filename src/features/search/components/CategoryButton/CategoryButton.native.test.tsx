@@ -41,9 +41,7 @@ describe('CategoryButton', () => {
       <CategoryButton label="Bibliothèques & Médiathèques" Icon={Bookstore} onPress={handleClick} />
     )
 
-    const button = getByLabelText(
-      'Retrouver les offres dans la catégorie Bibliothèques & Médiathèques'
-    )
+    const button = getByLabelText('Catégorie Bibliothèques & Médiathèques')
     fireEvent.press(button)
 
     expect(handleClick).toHaveBeenCalledTimes(1)
