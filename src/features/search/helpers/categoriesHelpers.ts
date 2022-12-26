@@ -243,7 +243,7 @@ export function getCategoriesModalTitle(
     case CategoriesModalView.NATIVE_CATEGORIES:
       return category?.value ?? 'Sous-catégories'
     case CategoriesModalView.GENRES:
-      return nativeCategory?.value || 'Genres'
+      return nativeCategory?.value ?? 'Genres'
     default:
       return 'Catégories'
   }
@@ -252,7 +252,7 @@ export function getCategoriesModalTitle(
 export function buildSearchPayloadValues(form: CategoriesModalFormProps) {
   return {
     offerCategories: form.category?.name === SearchGroupNameEnumv2.NONE ? [] : [form.category.name],
-    ...(form.nativeCategory && { offerNativeCategories: [form.nativeCategory.name] }),
-    ...(form.genreType && { offerGenreTypes: [form.genreType] }),
+    offerNativeCategories: form.nativeCategory ? [form.nativeCategory.name] : [],
+    offerGenreTypes: form.genreType ? [form.genreType] : [],
   }
 }

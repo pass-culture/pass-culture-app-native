@@ -78,6 +78,7 @@ export function CategoriesSection<T extends CategoriesViewData>({
   )
 
   const handleAllValueSelect = useCallback(() => onChange(allValue), [allValue, onChange])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleValueSelect = (item: CategoriesViewData) => () => onChange(item as any)
 
   return (

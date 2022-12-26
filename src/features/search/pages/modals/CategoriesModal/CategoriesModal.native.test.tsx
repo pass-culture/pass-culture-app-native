@@ -64,6 +64,8 @@ describe('<CategoriesModal/>', () => {
       const expectedSearchParams: SearchState = {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
       }
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -82,7 +84,12 @@ describe('<CategoriesModal/>', () => {
       const button = getByText('Rechercher')
       fireEvent.press(button)
 
-      const expectedSearchParams: SearchState = { ...searchState, offerCategories: [] }
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: expectedSearchParams,
@@ -139,6 +146,8 @@ describe('<CategoriesModal/>', () => {
       const expectedSearchParams: SearchState = {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
       }
       await waitFor(() => {
         expect(analytics.logPerformSearch).toHaveBeenCalledWith(expectedSearchParams)
@@ -151,6 +160,8 @@ describe('<CategoriesModal/>', () => {
       mockSearchState = {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
       }
     })
 
@@ -192,7 +203,7 @@ describe('<CategoriesModal/>', () => {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
         offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-        offerGenreTypes: undefined,
+        offerGenreTypes: [],
       }
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -215,7 +226,8 @@ describe('<CategoriesModal/>', () => {
       const expectedSearchParams: SearchState = {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
-        offerNativeCategories: undefined,
+        offerNativeCategories: [],
+        offerGenreTypes: [],
       }
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -309,7 +321,7 @@ describe('<CategoriesModal/>', () => {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
         offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-        offerGenreTypes: undefined,
+        offerGenreTypes: [],
       }
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {

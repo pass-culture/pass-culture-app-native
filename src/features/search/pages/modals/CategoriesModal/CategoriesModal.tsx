@@ -146,6 +146,8 @@ export const CategoriesModal = ({
 
   const handleSearch = useCallback(
     (form: CategoriesModalFormProps) => {
+      setValue('currentView', CategoriesModalView.CATEGORIES)
+
       const payload = buildSearchPayloadValues(form)
       const additionalSearchState: SearchState = { ...searchState, ...payload }
 
@@ -154,7 +156,7 @@ export const CategoriesModal = ({
 
       hideModal()
     },
-    [hideModal, navigate, searchState]
+    [hideModal, navigate, searchState, setValue]
   )
 
   const onSubmit = handleSubmit(handleSearch)
