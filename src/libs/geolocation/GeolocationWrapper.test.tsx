@@ -1,17 +1,13 @@
 import { mocked } from 'ts-jest/utils'
-import waitForExpect from 'wait-for-expect'
 
 import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
-import { renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './enums'
 import { GeolocationWrapper, useGeolocation } from './GeolocationWrapper'
 import { getPosition } from './getPosition'
 import { GeolocationError } from './types'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 const mockGetPosition = mocked(getPosition)
 const mockCheckGeolocPermission = mocked(checkGeolocPermission)
@@ -37,7 +33,7 @@ describe('useGeolocation()', () => {
     const { result } = renderGeolocationHook()
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
       expect(result.current.position).toBe(MOCK_POSITION)
       expect(onSubmit).toHaveBeenCalledTimes(1)
@@ -51,7 +47,7 @@ describe('useGeolocation()', () => {
     const { result } = renderGeolocationHook()
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
       expect(result.current.position).toBe(null)
       expect(onSubmit).toHaveBeenCalledTimes(1)
@@ -65,7 +61,7 @@ describe('useGeolocation()', () => {
     const { result } = renderGeolocationHook()
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
       expect(result.current.position).toBe(null)
       expect(onSubmit).toHaveBeenCalledTimes(1)
@@ -79,7 +75,7 @@ describe('useGeolocation()', () => {
     const { result } = renderGeolocationHook()
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
       expect(result.current.position).toBe(MOCK_POSITION)
       expect(onSubmit).toHaveBeenCalledTimes(1)
@@ -94,7 +90,7 @@ describe('useGeolocation()', () => {
     const { result } = renderGeolocationHook()
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
       expect(result.current.position).toBe(null)
       expect(onSubmit).toHaveBeenCalledTimes(1)
@@ -115,7 +111,8 @@ describe('useGeolocation()', () => {
       const { permission, statement } = params
       mockPermissionResult(permission)
       renderGeolocationHook()
-      await waitForExpect(() => {
+
+      await waitFor(() => {
         if (statement === 'call') expect(mockGetPosition).toHaveBeenCalledTimes(1)
         else expect(mockGetPosition).not.toHaveBeenCalled()
       })
