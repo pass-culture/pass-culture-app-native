@@ -33,11 +33,6 @@ jest.mock('@react-navigation/native', () => ({
 }))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
-// We allow console.error here because of act warning that we can't reproduce locally
-// We allow warning for android 'Expected style "elevation: 4px" to be unitless' due to shadow style
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true, warn: true })
-
 describe('NotificationSettings', () => {
   afterEach(() => {
     cleanup()
@@ -48,16 +43,20 @@ describe('NotificationSettings', () => {
       Platform.OS = 'ios'
       const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
       await waitForExpect(() => {
-        queryByText('Autoriser l’envoi d’e-mails')
-        queryByText('Autoriser les notifications marketing')
+        expect(queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+        expect(queryByText('Autoriser les notifications marketing')).toBeTruthy()
       })
     })
 
     it('should only display the email switch on android', async () => {
+      // We allow warning for android 'Expected style "elevation: 4px" to be unitless' due to shadow style
+      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+
       Platform.OS = 'android'
       const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
       await waitForExpect(() => {
-        queryByText('Autoriser l’envoi d’e-mails')
+        expect(queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+        expect(queryByText('Autoriser les notifications marketing')).toBeFalsy()
       })
     })
   })
