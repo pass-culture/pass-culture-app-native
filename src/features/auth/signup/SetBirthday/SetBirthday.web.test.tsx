@@ -10,9 +10,6 @@ const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 jest.mock('features/auth/SettingsContext')
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ warn: true })
-
 describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
@@ -39,6 +36,9 @@ describe('<SetBirthday />', () => {
 
   describe('touch device', () => {
     it('should render correctly', () => {
+      // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+
       const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: true } })
       expect(renderAPI).toMatchSnapshot()
     })
