@@ -332,6 +332,7 @@ module.exports = {
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'warn',
         'jest/no-disabled-tests': 'warn',
+        'jest/no-focused-tests': 'warn',
       },
     },
   ],
