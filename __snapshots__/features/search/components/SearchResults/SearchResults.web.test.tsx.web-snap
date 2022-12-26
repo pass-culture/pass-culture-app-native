@@ -273,18 +273,6 @@ Array [
   border-radius: 24px;
 }
 
-.c1:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c1:active {
-  outline: none;
-  opacity: 0.7;
-}
-
 .c1:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -318,18 +306,6 @@ Array [
   border-color: #161617;
   border-width: 1px;
   border-radius: 24px;
-}
-
-.c2:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c2:active {
-  outline: none;
-  opacity: 0.7;
 }
 
 .c2:hover {
@@ -673,18 +649,6 @@ Array [
 .c0:disabled {
   cursor: initial;
   background: none;
-}
-
-.c0:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c0:active {
-  outline: none;
-  opacity: 0.7;
 }
 
 .c0:hover {

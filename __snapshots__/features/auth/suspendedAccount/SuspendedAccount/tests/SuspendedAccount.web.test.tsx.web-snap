@@ -41,18 +41,6 @@ Object {
   background: none;
 }
 
-.c0:focus-visible {
-  outline-color: #ffffff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c0:active {
-  outline: none;
-  opacity: 0.7;
-}
-
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -100,18 +88,6 @@ Object {
 .c2:disabled {
   cursor: initial;
   background: none;
-}
-
-.c2:focus-visible {
-  outline-color: #ffffff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c2:active {
-  outline: none;
-  opacity: 0.7;
 }
 
 .c2:hover {
@@ -311,18 +287,6 @@ Object {
   background: none;
 }
 
-.c0:focus-visible {
-  outline-color: #ffffff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c0:active {
-  outline: none;
-  opacity: 0.7;
-}
-
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -370,18 +334,6 @@ Object {
 .c2:disabled {
   cursor: initial;
   background: none;
-}
-
-.c2:focus-visible {
-  outline-color: #ffffff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c2:active {
-  outline: none;
-  opacity: 0.7;
 }
 
 .c2:hover {

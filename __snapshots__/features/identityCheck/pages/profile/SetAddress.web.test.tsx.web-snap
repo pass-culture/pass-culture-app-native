@@ -97,18 +97,6 @@ Object {
   background: none;
 }
 
-.c4:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c4:active {
-  outline: none;
-  opacity: 0.7;
-}
-
 .c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -441,18 +429,6 @@ Object {
 .c4:disabled {
   cursor: initial;
   background: none;
-}
-
-.c4:focus-visible {
-  outline-color: #0066ff;
-  outline-width: 2px;
-  outline-style: solid;
-  outline-offset: 2px;
-}
-
-.c4:active {
-  outline: none;
-  opacity: 0.7;
 }
 
 .c4:hover {
