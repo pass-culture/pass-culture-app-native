@@ -1,6 +1,13 @@
 module.exports = {
   root: true,
-  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules', 'testing-library', 'jest'],
+  plugins: [
+    'react-native',
+    'react-hooks',
+    'typescript-sort-keys',
+    'eslint-plugin-local-rules',
+    'testing-library',
+    'jest',
+  ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
@@ -272,7 +279,15 @@ module.exports = {
     jest: true,
     serviceworker: true,
   },
-  ignorePatterns: ['/build', '.*.js', '*.config.js', 'node_modules', '/coverage', '/server', '/e2e'],
+  ignorePatterns: [
+    '/build',
+    '.*.js',
+    '*.config.js',
+    'node_modules',
+    '/coverage',
+    '/server',
+    '/e2e',
+  ],
   // TypeScript files overrides
   overrides: [
     {
@@ -316,6 +331,7 @@ module.exports = {
         'local-rules/nbsp-in-text': 'off',
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'warn',
+        'jest/no-disabled-tests': 'warn',
       },
     },
   ],

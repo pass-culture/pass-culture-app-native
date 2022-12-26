@@ -511,6 +511,7 @@ describe('<LocationModal/>', () => {
 
     // FIXME(kopax-polyconseil): aroundRadius value keep jumping from 50 to 100, if defaultValues is set to fixed value, it stop to jump,
     //  I assume there's a problem with the mock of mockSearchState.
+    // eslint-disable-next-line jest/no-disabled-tests
     it.skip('the around me radius value when pressing reset button', async () => {
       mockSearchState = {
         ...searchState,
