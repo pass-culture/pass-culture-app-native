@@ -334,6 +334,7 @@ module.exports = {
         'jest/no-disabled-tests': 'warn',
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
+        'jest/valid-expect': 'error',
       },
     },
   ],
