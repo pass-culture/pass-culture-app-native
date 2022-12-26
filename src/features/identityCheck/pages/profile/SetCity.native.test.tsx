@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
@@ -24,9 +25,6 @@ jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 describe('<SetCity/>', () => {
   afterEach(cleanup)
@@ -83,7 +81,7 @@ describe('<SetCity/>', () => {
     fireEvent.press(getByText(city.nom))
     fireEvent.press(getByText('Continuer'))
 
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
       expect(mockNavigateToNextScreen).toBeCalledTimes(1)
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
