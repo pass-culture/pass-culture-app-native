@@ -89,7 +89,7 @@ describe('Home component', () => {
       isLoggedIn: false,
     })
     const { getByText } = renderHome()
-    await waitFor(() => getByText('Bienvenue\u00a0!'))
+    await waitFor(() => expect(getByText('Bienvenue\u00a0!')).toBeTruthy())
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
@@ -101,7 +101,7 @@ describe('Home component', () => {
     })
     const { getByText } = renderHome()
 
-    await waitFor(() => getByText('Bonjour Jean'))
+    await waitFor(() => expect(getByText('Bonjour Jean')).toBeTruthy())
   })
 
   it('should show the available credit to the user - remaining', async () => {
@@ -120,7 +120,7 @@ describe('Home component', () => {
     mockUseAvailableCredit.mockReturnValue({ amount: 49600, isExpired: false })
     const { getByText } = renderHome()
 
-    await waitFor(() => getByText('Tu as 496\u00a0€ sur ton pass'))
+    await waitFor(() => expect(getByText('Tu as 496\u00a0€ sur ton pass')).toBeTruthy())
     mockUseAvailableCredit.mockReset()
   })
 

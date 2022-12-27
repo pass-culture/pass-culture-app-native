@@ -80,7 +80,7 @@ describe('BookingDetails', () => {
     it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { getByText } = renderBookingDetails(booking)
-      getByText('352UW4')
+      expect(getByText('352UW4')).toBeTruthy()
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
@@ -109,14 +109,14 @@ describe('BookingDetails', () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = false
       const { getByTestId } = renderBookingDetails(booking)
-      getByTestId('qr-code')
+      expect(getByTestId('qr-code')).toBeTruthy()
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       const { getByText } = renderBookingDetails(booking)
-      getByText('123456789')
+      expect(getByText('123456789')).toBeTruthy()
     })
   })
 
@@ -127,10 +127,13 @@ describe('BookingDetails', () => {
 
       const { getByText } = renderBookingDetails(booking)
 
-      getByText(
-        'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
-      )
+      expect(
+        getByText(
+          'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        )
+      ).toBeTruthy()
     })
+
     it('should display rules for a digital offer with activation code', () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
@@ -140,9 +143,11 @@ describe('BookingDetails', () => {
 
       const { getByText } = renderBookingDetails(booking)
 
-      getByText(
-        'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
-      )
+      expect(
+        getByText(
+          'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        )
+      ).toBeTruthy()
     })
 
     it.each([
@@ -160,9 +165,11 @@ describe('BookingDetails', () => {
 
       const { getByText } = renderBookingDetails(booking)
 
-      getByText(
-        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
-      )
+      expect(
+        getByText(
+          'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        )
+      ).toBeTruthy()
     })
   })
 
@@ -172,8 +179,8 @@ describe('BookingDetails', () => {
       booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
       const { getByText } = renderBookingDetails(booking)
 
-      getByText('Modalités de retrait')
-      getByText(booking.stock.offer.withdrawalDetails)
+      expect(getByText('Modalités de retrait')).toBeTruthy()
+      expect(getByText(booking.stock.offer.withdrawalDetails)).toBeTruthy()
     })
 
     it('should not display withdrawal details', () => {
@@ -287,12 +294,16 @@ describe('BookingDetails', () => {
         .mockReturnValue(dataProvider)
 
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { queryByText } = renderBookingDetails(booking)
-      queryByText("Voir l'itinéraire")
+      const { queryByText, debug } = renderBookingDetails(booking)
+      debug()
+
+      const itineraryButton = queryByText('Voir l’itinéraire')
+      expect(itineraryButton).toBeTruthy()
 
       openItinerary.mockRestore()
       getBookingProperties.mockRestore()
     })
+
     it.each([
       ['canOpenItinerary == false', false, {}],
       [
@@ -318,8 +329,8 @@ describe('BookingDetails', () => {
 
         const booking = bookingsSnap.ongoing_bookings[0]
         const { queryByText } = renderBookingDetails(booking)
-        const button = queryByText("Voir l'itinéraire")
-        expect(button).toBeFalsy()
+        const itineraryButton = queryByText('Voir l’itinéraire')
+        expect(itineraryButton).toBeFalsy()
 
         openItinerary.mockRestore()
         getBookingProperties.mockRestore()

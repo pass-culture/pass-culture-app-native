@@ -84,7 +84,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         />
       )
 
-      getByTestId('eligibility-banner-container')
+      expect(getByTestId('eligibility-banner-container')).toBeTruthy()
     })
 
     it.each`
@@ -160,7 +160,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         />
       )
 
-      getByTestId('subscription-message-badge')
+      expect(getByTestId('subscription-message-badge')).toBeTruthy()
     })
   })
 
@@ -173,7 +173,7 @@ describe('<NonBeneficiaryHeader/>', () => {
         />
       )
 
-      getByTestId('younger-badge')
+      expect(getByTestId('younger-badge')).toBeTruthy()
     })
   })
 

@@ -14,8 +14,10 @@ describe('YoungerBadge', () => {
     const { queryByText } = render(
       <YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />
     )
-    queryByText(
-      'Patience ! Reviens à partir du 17/12/2021 pour continuer ton inscription et bénéficier du crédit pass Culture.'
-    )
+    expect(
+      queryByText(
+        'Patience ! Reviens à partir du 17/12/2021 pour continuer ton inscription et bénéficier du crédit pass Culture.'
+      )
+    ).toBeTruthy()
   })
 })

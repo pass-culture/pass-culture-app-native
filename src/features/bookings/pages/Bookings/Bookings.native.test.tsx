@@ -28,7 +28,7 @@ describe('Bookings', () => {
 
   it('should display the empty bookings dedicated view', async () => {
     const { getByText } = await renderBookings(emptyBookingsSnap)
-    getByText('Découvrir le catalogue')
+    expect(getByText('Découvrir le catalogue')).toBeTruthy()
   })
 
   it('should display ended bookings CTA with the right number', async () => {

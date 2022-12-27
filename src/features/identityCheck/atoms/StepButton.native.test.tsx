@@ -31,9 +31,26 @@ describe('StepButton', () => {
     })
   })
 
-  it('icon check is present only if step is completed', () => {
-    render(<StepButton step={step} state="completed" />).getByTestId('StepCompleted')
-    render(<StepButton step={step} state="disabled" />).getByTestId('StepNotCompleted')
-    render(<StepButton step={step} state="current" />).getByTestId('StepNotCompleted')
+  describe('icons', () => {
+    it('icon check is displaying when step is completed', () => {
+      const { queryByTestId } = render(<StepButton step={step} state="completed" />)
+
+      expect(queryByTestId('StepCompleted')).toBeTruthy()
+      expect(queryByTestId('StepNotCompleted')).toBeFalsy()
+    })
+
+    it('icon check is not displaying when step is disabled', () => {
+      const { queryByTestId } = render(<StepButton step={step} state="disabled" />)
+
+      expect(queryByTestId('StepCompleted')).toBeFalsy()
+      expect(queryByTestId('StepNotCompleted')).toBeTruthy()
+    })
+
+    it('icon check is not displaying when step is current', () => {
+      const { queryByTestId } = render(<StepButton step={step} state="current" />)
+
+      expect(queryByTestId('StepCompleted')).toBeFalsy()
+      expect(queryByTestId('StepNotCompleted')).toBeTruthy()
+    })
   })
 })

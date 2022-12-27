@@ -148,7 +148,7 @@ describe('Profile component', () => {
         }
 
         const { getByText } = await renderProfile()
-        getByText(mockPositionError.message)
+        expect(getByText(mockPositionError.message)).toBeTruthy()
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {

@@ -162,7 +162,7 @@ describe('NotificationSettings', () => {
         })
         await superFlushWithAct(10)
         await waitForExpect(() => {
-          getAllByTestId('modal-notifications-permission-modal')
+          expect(getAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
         })
       }
     )

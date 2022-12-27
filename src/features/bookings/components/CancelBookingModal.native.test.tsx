@@ -93,7 +93,7 @@ describe('<CancelBookingModal />', () => {
     const { getByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    getByText('Avez-vous déjà vu ?')
+    expect(getByText('Avez-vous déjà vu ?')).toBeTruthy()
   })
 
   it('should display refund rule if user is beneficiary and offer is not free', () => {
@@ -101,7 +101,7 @@ describe('<CancelBookingModal />', () => {
     const { getByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    getByText('19\u00a0€ seront recrédités sur ton pass Culture.')
+    expect(getByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeTruthy()
   })
 
   it('should display refund rule if user is ex beneficiary and offer is not free', () => {
@@ -111,7 +111,9 @@ describe('<CancelBookingModal />', () => {
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
 
-    getByText('Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.')
+    expect(
+      getByText('Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.')
+    ).toBeTruthy()
   })
 
   it('should navigate to bookings and show error snackbar if cancel booking request fails', async () => {

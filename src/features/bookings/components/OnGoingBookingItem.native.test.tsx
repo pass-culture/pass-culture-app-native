@@ -38,7 +38,7 @@ describe('OnGoingBookingItem', () => {
     it('should display withdrawal reminder', () => {
       const { getByTestId } = renderOnGoingBookingItem(booking)
 
-      getByTestId('on-site-withdrawal-container')
+      expect(getByTestId('on-site-withdrawal-container')).toBeTruthy()
     })
 
     it('should not display event reminder', () => {
@@ -68,7 +68,7 @@ describe('OnGoingBookingItem', () => {
 
     it('should display event reminder', () => {
       const { getByTestId } = renderOnGoingBookingItem(booking)
-      getByTestId('withdraw-container')
+      expect(getByTestId('withdraw-container')).toBeTruthy()
     })
   })
 })

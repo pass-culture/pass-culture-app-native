@@ -356,7 +356,7 @@ describe('<LocationModal/>', () => {
       fireEvent.press(radioButton)
     })
 
-    queryByText(mockPositionError.message)
+    expect(queryByText(mockPositionError.message)).toBeTruthy()
   })
 
   it('should display the selected radius when select Autour de moi radio button', async () => {
