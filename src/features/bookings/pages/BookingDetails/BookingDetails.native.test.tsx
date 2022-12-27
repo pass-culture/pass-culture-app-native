@@ -294,8 +294,7 @@ describe('BookingDetails', () => {
         .mockReturnValue(dataProvider)
 
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { queryByText, debug } = renderBookingDetails(booking)
-      debug()
+      const { queryByText } = renderBookingDetails(booking)
 
       const itineraryButton = queryByText('Voir l’itinéraire')
       expect(itineraryButton).toBeTruthy()

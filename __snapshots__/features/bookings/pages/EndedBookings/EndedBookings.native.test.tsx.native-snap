@@ -215,6 +215,7 @@ Array [
               "name": "Avez-vous déjà vu ?",
               "subcategoryId": "EVENEMENT_PATRIMOINE",
               "venue": Object {
+                "address": "1 boulevard de la brique",
                 "city": "Drancy",
                 "coordinates": Object {
                   "latitude": 48.91683,
@@ -222,6 +223,8 @@ Array [
                 },
                 "id": 2185,
                 "name": "Maison de la Brique",
+                "postalCode": "93700",
+                "publicName": "Maison de la Brique en mousse",
               },
               "withdrawalDetails": null,
             },
