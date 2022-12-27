@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -47,9 +47,9 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   ]
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
-  const onLaterPress = useCallback(() => {
+  const onLaterPress = () => {
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-  }, [reset])
+  }
 
   const buttons = [
     <InternalTouchableLink
