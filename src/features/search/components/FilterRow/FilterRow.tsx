@@ -39,19 +39,19 @@ export const FilterRow = ({
 
   return (
     <LocationContentContainer testID="FilterRow" onPress={onPress} aria-describedby={captionId}>
-      {StyledIcon ? (
+      {!!StyledIcon && (
         <React.Fragment>
           <StyledIcon />
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
-      ) : null}
+      )}
       <TextContainer>
         <Title numberOfLines={1}>{title}</Title>
         {!!description && <Description numberOfLines={1}>{description}</Description>}
       </TextContainer>
       <Spacer.Flex />
 
-      {shouldHideArrow ? null : <ArrowNext accessibilityLabel="Affiner la recherche" />}
+      {!shouldHideArrow && <ArrowNext accessibilityLabel="Affiner la recherche" />}
     </LocationContentContainer>
   )
 }

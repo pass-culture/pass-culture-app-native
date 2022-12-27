@@ -32,9 +32,6 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
   return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>
 })
 
-export const useSearch = () => {
-  // The searchState is initialized so this can't be null
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { searchState, dispatch } = useContext(SearchContext)!
-  return { searchState, dispatch }
-}
+// The searchState is initialized so his can't be null
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+export const useSearch = () => useContext(SearchContext)!

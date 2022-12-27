@@ -95,22 +95,19 @@ const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnumv2[])
 const buildOfferNativeCategoriesPredicate = (nativeCategories: NativeCategoryIdEnumv2[]) =>
   nativeCategories.map((nativeCategory) => `${FACETS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`)
 
-const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) => {
-  return offerGenreTypes.map((offerGenreType) => {
-    switch (offerGenreType.key) {
-      case GenreType.MOVIE:
-        return `${FACETS_ENUM.OFFER_MOVIE_GENRES}:${[offerGenreType.name]}`
-      case GenreType.BOOK:
-        return `${FACETS_ENUM.OFFER_BOOK_TYPE}:${offerGenreType.name}`
-      case GenreType.MUSIC:
-        return `${FACETS_ENUM.OFFER_MUSIC_TYPE}:${offerGenreType.name}`
-      case GenreType.SHOW:
-        return `${FACETS_ENUM.OFFER_SHOW_TYPE}:${offerGenreType.name}`
-      default:
-        return ''
-    }
-  })
+const offerGenreTypesPredicate = {
+  [GenreType.MOVIE]: FACETS_ENUM.OFFER_MOVIE_GENRES,
+  [GenreType.BOOK]: FACETS_ENUM.OFFER_BOOK_TYPE,
+  [GenreType.MUSIC]: FACETS_ENUM.OFFER_MUSIC_TYPE,
+  [GenreType.SHOW]: FACETS_ENUM.OFFER_SHOW_TYPE,
 }
+
+const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) =>
+  offerGenreTypes.map((offerGenreType) =>
+    offerGenreTypesPredicate[offerGenreType.key]
+      ? `${offerGenreTypesPredicate[offerGenreType.key]}:${[offerGenreType.name]}`
+      : ''
+  )
 
 const buildObjectIdsPredicate = (objectIds: string[]): string[] =>
   objectIds.map((objectId) => `${FACETS_ENUM.OBJECT_ID}:${objectId}`)

@@ -81,6 +81,14 @@ export function CategoriesSection<T extends CategoriesViewData>({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleValueSelect = (item: CategoriesViewData) => () => onChange(item as any)
 
+  const handleGetIcon = (category: SearchGroupNameEnumv2) => {
+    if (getIcon) {
+      return getIcon(category)
+    }
+
+    return undefined
+  }
+
   return (
     <VerticalUl>
       <ListItem>
@@ -89,7 +97,7 @@ export function CategoriesSection<T extends CategoriesViewData>({
           isSelected={value?.name === allValue?.name}
           onSelect={handleAllValueSelect}
           marginVertical={getSpacing(3)}
-          icon={getIcon ? getIcon(SearchGroupNameEnumv2.NONE) : undefined}
+          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>
 
@@ -105,11 +113,11 @@ export function CategoriesSection<T extends CategoriesViewData>({
                 isSelected={value?.name === item.name}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onSelect={handleValueSelect(item)}
-                icon={getIcon && getIcon(item.name as SearchGroupNameEnumv2)}
+                icon={handleGetIcon(item.name as SearchGroupNameEnumv2)}
               />
             ) : (
               <FilterRow
-                icon={getIcon && getIcon(item.name as SearchGroupNameEnumv2)}
+                icon={handleGetIcon(item.name as SearchGroupNameEnumv2)}
                 shouldColorIcon
                 title={item.value ?? 'Toutes les catégories'}
                 description={getDescription(context, item)}
