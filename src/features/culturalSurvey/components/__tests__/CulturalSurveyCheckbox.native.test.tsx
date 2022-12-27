@@ -27,7 +27,7 @@ describe('CulturalSurveyCheckbox', () => {
         onPress={jest.fn()}
       />
     )
-    const Button = CulturalSurveyCheckboxComponent.getByTestId(
+    const Button = CulturalSurveyCheckboxComponent.getByLabelText(
       'Visité un musée, un monument, une exposition...'
     )
     fireEvent.press(Button)

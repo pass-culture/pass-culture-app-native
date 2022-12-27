@@ -3,6 +3,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -26,14 +27,6 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
       }))``
     : null
 
-  const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
-    colors: selected
-      ? [theme.colors.secondary, theme.colors.primary]
-      : [theme.colors.greyMedium, theme.colors.greyMedium],
-    useAngle: true,
-    angle: 175,
-  }))({ borderRadius: getSpacing(2) })
-
   const onPress = () => {
     setIsSelected(!selected)
     props.onPress()
@@ -43,14 +36,18 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
     setIsSelected(props.selected)
   }, [props.selected])
 
-  const label = props.subtitle ? `${props.title} ${props.subtitle}` : props.title
+  const colors = selected
+    ? [theme.colors.secondary, theme.colors.primary]
+    : [theme.colors.greyMedium, theme.colors.greyMedium]
+
+  const accessibilityLabel = props.subtitle ? `${props.title} ${props.subtitle}` : props.title
   return (
-    <StyledLinearGradient>
+    <StyledLinearGradient colors={colors}>
       <AnswerContainer
         accessibilityRole={AccessibilityRole.CHECKBOX}
         accessibilityState={{ checked: selected }}
-        accessibilityLabel={label}
-        onPress={onPress}>
+        onPress={onPress}
+        accessibilityLabel={accessibilityLabel}>
         {!!AnswerIcon && (
           <ActivityIconContainer>
             <AnswerIcon />
@@ -69,6 +66,12 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
     </StyledLinearGradient>
   )
 }
+
+const StyledLinearGradient = styled(LinearGradient).attrs(({ colors }) => ({
+  colors,
+  useAngle: true,
+  angle: 175,
+}))({ borderRadius: getSpacing(2) })
 
 const RedValidate = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
