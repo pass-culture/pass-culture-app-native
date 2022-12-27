@@ -2,7 +2,7 @@
 
 exports[`CategoryButton should render correctly 1`] = `
 <View
-  accessibilityLabel="Retrouver les offres dans la catégorie Bibliothèques & Médiathèques"
+  accessibilityLabel="Catégorie Bibliothèques & Médiathèques"
   accessibilityRole="button"
   accessible={true}
   collapsable={false}

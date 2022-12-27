@@ -691,7 +691,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Arts & loisirs créatifs"
+                accessibilityLabel="Catégorie Arts & loisirs créatifs"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -767,7 +767,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Bibliothèques, Médiathèques"
+                accessibilityLabel="Catégorie Bibliothèques, Médiathèques"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -857,7 +857,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Cartes jeunes"
+                accessibilityLabel="Catégorie Cartes jeunes"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -933,7 +933,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie CD, vinyles, musique en ligne"
+                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1022,7 +1022,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Concerts & festivals"
+                accessibilityLabel="Catégorie Concerts & festivals"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1098,7 +1098,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Conférences & rencontres"
+                accessibilityLabel="Catégorie Conférences & rencontres"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1187,7 +1187,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Évènements en ligne"
+                accessibilityLabel="Catégorie Évènements en ligne"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1263,7 +1263,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Films, séries, cinéma"
+                accessibilityLabel="Catégorie Films, séries, cinéma"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1352,7 +1352,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Instruments de musique"
+                accessibilityLabel="Catégorie Instruments de musique"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1428,7 +1428,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Jeux & jeux vidéos"
+                accessibilityLabel="Catégorie Jeux & jeux vidéos"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1517,7 +1517,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Livres"
+                accessibilityLabel="Catégorie Livres"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1593,7 +1593,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Médias & presse"
+                accessibilityLabel="Catégorie Médias & presse"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1682,7 +1682,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Musées & visites culturelles"
+                accessibilityLabel="Catégorie Musées & visites culturelles"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1758,7 +1758,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Plateformes en ligne"
+                accessibilityLabel="Catégorie Plateformes en ligne"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -1847,7 +1847,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Retrouver les offres dans la catégorie Spectacles"
+                accessibilityLabel="Catégorie Spectacles"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
