@@ -77,7 +77,7 @@ describe('CreditHeader', () => {
     })
   })
 
-  describe('Beneficiary is not underage', () => {
+  describe('Beneficiary is underage', () => {
     beforeAll(() => {
       jest.spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary').mockReturnValue(true)
     })

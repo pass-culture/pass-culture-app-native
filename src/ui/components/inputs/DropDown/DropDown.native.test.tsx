@@ -9,6 +9,6 @@ describe('<DropDown />', () => {
     const renderAPI = render(
       <DropDown label="Mois" placeholder="MM" options={monthNames} onChange={jest.fn()} />
     )
-    expect(renderAPI).toBeNull
+    expect(renderAPI.toJSON()).toBeNull()
   })
 })

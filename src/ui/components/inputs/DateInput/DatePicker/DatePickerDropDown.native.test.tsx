@@ -16,6 +16,6 @@ const props = {
 describe('<DatePickerDropDown />', () => {
   it('should not render component when is native', () => {
     const renderAPI = render(<DatePickerDropDown {...props} />)
-    expect(renderAPI).toBeNull
+    expect(renderAPI.toJSON()).toBeNull()
   })
 })

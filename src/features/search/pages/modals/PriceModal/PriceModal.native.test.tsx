@@ -367,7 +367,7 @@ describe('<PriceModal/>', () => {
       })
     })
 
-    it('should preserve limit credit search toggle when closing the modal', async () => {
+    it('should preserve only free offers search toggle when closing the modal', async () => {
       mockSearchState = { ...searchState, offerIsFree: true }
       const { getByTestId } = renderSearchPrice()
 
