@@ -1,8 +1,5 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
@@ -35,20 +32,6 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
   return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>
 })
 
-export const useSearch = (): Pick<ISearchContext, 'searchState' | 'dispatch'> => {
-  // The searchState is initialized so this can't be null
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { searchState, dispatch } = useContext(SearchContext)!
-  return { searchState, dispatch }
-}
-
-export const useCommit = (): { commit: () => void } => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
-
-  return {
-    commit() {
-      navigate(...getTabNavConfig('Search', searchState))
-    },
-  }
-}
+// The searchState is initialized so his can't be null
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+export const useSearch = () => useContext(SearchContext)!

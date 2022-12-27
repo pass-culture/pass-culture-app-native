@@ -17,6 +17,12 @@ export enum LocationType {
   VENUE = 'VENUE',
 }
 
+export enum CategoriesModalView {
+  CATEGORIES = 'CATEGORIES',
+  NATIVE_CATEGORIES = 'NATIVE_CATEGORIES',
+  GENRES = 'GENRES',
+}
+
 type CategoryCriteria = {
   [category in SearchGroupNameEnumv2]: {
     icon: React.FC<BicolorIconInterface>

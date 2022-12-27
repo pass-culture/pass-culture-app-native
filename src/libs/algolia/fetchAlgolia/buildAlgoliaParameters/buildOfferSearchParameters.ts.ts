@@ -13,6 +13,8 @@ export const buildOfferSearchParameters = (
     endingDatetime = undefined,
     locationFilter,
     offerCategories = [],
+    offerNativeCategories = [],
+    offerGenreTypes = [],
     offerSubcategories = [],
     objectIds = [],
     offerIsDuo = false,
@@ -35,14 +37,16 @@ export const buildOfferSearchParameters = (
   isUserUnderage: boolean
 ) => ({
   ...buildFacetFilters({
-    locationFilter,
-    offerCategories,
-    offerSubcategories,
-    objectIds,
-    offerTypes,
-    offerIsDuo,
-    tags,
     isUserUnderage,
+    locationFilter,
+    objectIds,
+    offerCategories,
+    offerGenreTypes,
+    offerIsDuo,
+    offerNativeCategories,
+    offerSubcategories,
+    offerTypes,
+    tags,
   }),
   ...buildNumericFilters({
     beginningDatetime,

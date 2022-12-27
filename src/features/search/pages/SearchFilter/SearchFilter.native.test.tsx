@@ -19,9 +19,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: mockStateDispatch,
   }),
-  useCommit: () => ({
-    commit: jest.fn(),
-  }),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
@@ -90,6 +87,8 @@ describe('<SearchFilter/>', () => {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
           minPrice: undefined,
           maxPrice: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
         },
       })
     })
@@ -108,6 +107,8 @@ describe('<SearchFilter/>', () => {
           locationFilter: { locationType: LocationType.EVERYWHERE },
           minPrice: undefined,
           maxPrice: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
         },
       })
     })

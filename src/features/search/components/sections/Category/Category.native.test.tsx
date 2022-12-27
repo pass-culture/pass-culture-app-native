@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render } from 'tests/utils'
 
 import { Category } from './Category'
@@ -12,6 +13,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
+  }),
+}))
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 
@@ -27,6 +34,31 @@ describe('Category component', () => {
     const { getByText } = render(<Category />)
 
     expect(getByText('Livres')).toBeTruthy()
+  })
+
+  it('should display selected native category', () => {
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+    }
+    const { getByText } = render(<Category />)
+
+    expect(getByText('Livres papier')).toBeTruthy()
+  })
+
+  it('should display selected genre', () => {
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+      offerGenreTypes: [
+        { key: GenreType.BOOK, name: 'Bandes dessinées', value: 'Bandes dessinées' },
+      ],
+    }
+    const { getByText } = render(<Category />)
+
+    expect(getByText('Livres papier - Bandes dessinées')).toBeTruthy()
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {

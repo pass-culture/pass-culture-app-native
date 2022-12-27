@@ -1,5 +1,13 @@
-import { SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import {
+  GenreType,
+  GenreTypeContentModel,
+  NativeCategoryIdEnumv2,
+  NativeCategoryResponseModelv2,
+  SearchGroupNameEnumv2,
+  SearchGroupResponseModelv2,
+  SubcategoryIdEnumv2,
+} from 'api/gen'
+import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { SuggestedVenue } from 'libs/venue'
@@ -23,6 +31,8 @@ export enum SearchView {
   Results = 'Results',
 }
 
+export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
+
 export interface SearchState {
   beginningDatetime?: string
   date: SelectedDate | null
@@ -30,6 +40,8 @@ export interface SearchState {
   hitsPerPage: number | null
   locationFilter: LocationFilter
   offerCategories: SearchGroupNameEnumv2[]
+  offerGenreTypes?: OfferGenreType[]
+  offerNativeCategories?: NativeCategoryIdEnumv2[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
   offerIsFree: boolean
@@ -58,3 +70,20 @@ export type OfferTypes = keyof SearchState['offerTypes']
 export type UserData = {
   message: string
 }
+
+export type CategoriesModalFormProps = {
+  category: SearchGroupResponseModelv2
+  nativeCategory: NativeCategoryResponseModelv2 | null
+  genreType: OfferGenreType | null
+  currentView: CategoriesModalView
+}
+
+export type DescriptionContext = {
+  selectedCategory: SearchGroupResponseModelv2
+  selectedNativeCategory: NativeCategoryResponseModelv2 | null
+  selectedGenreType: OfferGenreType | null
+}
+export type CategoriesViewData =
+  | NativeCategoryResponseModelv2
+  | SearchGroupResponseModelv2
+  | OfferGenreType

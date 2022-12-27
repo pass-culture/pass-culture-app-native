@@ -1010,6 +1010,49 @@ export interface FavoritesCountResponse {
  * @export
  * @enum {string}
  */
+export enum GenreType {
+  'BOOK' = 'BOOK',
+  'MUSIC' = 'MUSIC',
+  'SHOW' = 'SHOW',
+  'MOVIE' = 'MOVIE',
+}
+/**
+ * @export
+ * @interface GenreTypeContentModel
+ */
+export interface GenreTypeContentModel {
+  /**
+   * @type {string}
+   * @memberof GenreTypeContentModel
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof GenreTypeContentModel
+   */
+  value: string
+}
+/**
+ * @export
+ * @interface GenreTypeModel
+ */
+export interface GenreTypeModel {
+  /**
+   * @type {GenreType}
+   * @memberof GenreTypeModel
+   */
+  name: GenreType
+  /**
+   * @type {Array<GenreTypeContentModel>}
+   * @memberof GenreTypeModel
+   */
+  values: Array<GenreTypeContentModel>
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
 export enum HomepageLabelNameEnum {
   'FILM' = 'FILM',
   'CINEMA' = 'CINEMA',
@@ -1121,6 +1164,78 @@ export enum IdentityCheckMethod {
 export enum MaintenancePageType {
   'with-dms' = 'with-dms',
   'without-dms' = 'without-dms',
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum NativeCategoryIdEnumv2 {
+  'LIVRES_PAPIER' = 'LIVRES_PAPIER',
+  'LIVRES_NUMERIQUE_ET_AUDIO' = 'LIVRES_NUMERIQUE_ET_AUDIO',
+  'LIVRES_AUDIO_PHYSIQUES' = 'LIVRES_AUDIO_PHYSIQUES',
+  'ACHAT_LOCATION_INSTRUMENT' = 'ACHAT_LOCATION_INSTRUMENT',
+  'PARTITIONS_DE_MUSIQUE' = 'PARTITIONS_DE_MUSIQUE',
+  'VISITES_CULTURELLES_EN_LIGNE' = 'VISITES_CULTURELLES_EN_LIGNE',
+  'VISITES_CULTURELLES' = 'VISITES_CULTURELLES',
+  'ABONNEMENTS_MUSEE' = 'ABONNEMENTS_MUSEE',
+  'EVENEMENTS_PATRIMOINE' = 'EVENEMENTS_PATRIMOINE',
+  'CARTES_CINEMA' = 'CARTES_CINEMA',
+  'SEANCES_DE_CINEMA' = 'SEANCES_DE_CINEMA',
+  'FILMS_SERIES_EN_LIGNE' = 'FILMS_SERIES_EN_LIGNE',
+  'DVD_BLU_RAY' = 'DVD_BLU_RAY',
+  'CONCERTS_EVENEMENTS' = 'CONCERTS_EVENEMENTS',
+  'FESTIVALS' = 'FESTIVALS',
+  'CONCERTS_EN_LIGNE' = 'CONCERTS_EN_LIGNE',
+  'JEUX_PHYSIQUES' = 'JEUX_PHYSIQUES',
+  'JEUX_EN_LIGNE' = 'JEUX_EN_LIGNE',
+  'ESCAPE_GAMES' = 'ESCAPE_GAMES',
+  'RENCONTRES_EVENEMENTS' = 'RENCONTRES_EVENEMENTS',
+  'CONCOURS' = 'CONCOURS',
+  'SPECTACLES_REPRESENTATIONS' = 'SPECTACLES_REPRESENTATIONS',
+  'ABONNEMENTS_SPECTACLE' = 'ABONNEMENTS_SPECTACLE',
+  'SPECTACLES_ENREGISTRES' = 'SPECTACLES_ENREGISTRES',
+  'PRATIQUES_ET_ATELIERS_ARTISTIQUES' = 'PRATIQUES_ET_ATELIERS_ARTISTIQUES',
+  'MATERIELS_CREATIFS' = 'MATERIELS_CREATIFS',
+  'CD_VINYLES' = 'CD_VINYLES',
+  'MUSIQUE_EN_LIGNE' = 'MUSIQUE_EN_LIGNE',
+  'BIBLIOTHEQUE' = 'BIBLIOTHEQUE',
+  'MEDIATHEQUE' = 'MEDIATHEQUE',
+  'LUDOTHEQUE' = 'LUDOTHEQUE',
+  'RENCONTRES' = 'RENCONTRES',
+  'RENCONTRES_EN_LIGNE' = 'RENCONTRES_EN_LIGNE',
+  'CONFERENCES' = 'CONFERENCES',
+  'SALONS_ET_METIERS' = 'SALONS_ET_METIERS',
+  'PRESSE_EN_LIGNE' = 'PRESSE_EN_LIGNE',
+  'PODCAST' = 'PODCAST',
+  'AUTRES_MEDIAS' = 'AUTRES_MEDIAS',
+  'CARTES_JEUNES' = 'CARTES_JEUNES',
+  'EVENEMENTS_CINEMA' = 'EVENEMENTS_CINEMA',
+  'ARTS_VISUELS' = 'ARTS_VISUELS',
+  'FESTIVAL_DU_LIVRE' = 'FESTIVAL_DU_LIVRE',
+  'PRATIQUE_ARTISTIQUE_EN_LIGNE' = 'PRATIQUE_ARTISTIQUE_EN_LIGNE',
+  'DEPRECIEE' = 'DEPRECIEE',
+}
+/**
+ * @export
+ * @interface NativeCategoryResponseModelv2
+ */
+export interface NativeCategoryResponseModelv2 {
+  /**
+   * @type {GenreType}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  genreType?: GenreType | null
+  /**
+   * @type {NativeCategoryIdEnumv2}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  name: NativeCategoryIdEnumv2
+  /**
+   * @type {string}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  value?: string | null
 }
 /**
  * @export
@@ -1921,11 +2036,6 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  disableStoreReview: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   displayDmsRedirection: boolean
   /**
    * @type {boolean}
@@ -1942,11 +2052,6 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   enableNativeIdCheckVerboseDebugging: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  enableNewIdentificationFlow: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse
@@ -2037,10 +2142,20 @@ export interface SubcategoriesResponseModel {
  */
 export interface SubcategoriesResponseModelv2 {
   /**
+   * @type {Array<GenreTypeModel>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  genreTypes: Array<GenreTypeModel>
+  /**
    * @type {Array<HomepageLabelResponseModelv2>}
    * @memberof SubcategoriesResponseModelv2
    */
   homepageLabels: Array<HomepageLabelResponseModelv2>
+  /**
+   * @type {Array<NativeCategoryResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  nativeCategories: Array<NativeCategoryResponseModelv2>
   /**
    * @type {Array<SearchGroupResponseModelv2>}
    * @memberof SubcategoriesResponseModelv2
@@ -2283,6 +2398,11 @@ export interface SubcategoryResponseModelv2 {
    * @memberof SubcategoryResponseModelv2
    */
   isEvent: boolean
+  /**
+   * @type {NativeCategoryIdEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  nativeCategoryId: NativeCategoryIdEnumv2
   /**
    * @type {OnlineOfflinePlatformChoicesEnumv2}
    * @memberof SubcategoryResponseModelv2
