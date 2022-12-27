@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -44,7 +44,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(getByTestId('tileImage'))
-    expect(navigate).toHaveBeenCalledWith('Offer', {
+    expect(push).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'home',
       moduleName: 'Module Name',
