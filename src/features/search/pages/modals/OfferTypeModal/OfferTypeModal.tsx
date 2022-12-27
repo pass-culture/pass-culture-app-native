@@ -192,7 +192,6 @@ export const OfferTypeModal: FunctionComponent<Props> = ({
                       isSelected={getSelectedOfferType() === type}
                       label={label}
                       icon={icon}
-                      testID={label}
                     />
                     <Spacer.Column numberOfSpaces={6} />
                   </Li>

@@ -227,7 +227,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="Revenir en arrière"
                 >
                   <View
                     accessibilityLabel="Revenir en arrière"
@@ -253,7 +252,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="backButton"
+                    testID="Revenir en arrière"
                   >
                     <View
                       height={24}
@@ -373,6 +372,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Toutes les catégories"
                   accessibilityRole="radio"
                   accessibilityState={
                     Object {
@@ -400,6 +400,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       "userSelect": "auto",
                     }
                   }
+                  testID="Toutes les catégories"
                 >
                   <View
                     flex={0.9}
@@ -519,7 +520,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -639,7 +640,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -760,7 +761,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -880,7 +881,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1000,7 +1001,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1120,7 +1121,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1240,7 +1241,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1360,7 +1361,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1480,7 +1481,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1600,7 +1601,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1720,7 +1721,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1840,7 +1841,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -1960,7 +1961,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -2080,7 +2081,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -2200,7 +2201,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
-                  accessible={true}
+                  accessible={false}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}

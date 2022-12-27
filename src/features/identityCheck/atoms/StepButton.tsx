@@ -25,24 +25,21 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
     opacity: state === 'disabled' ? 0.5 : 1,
   })
 
+  const iconLabel = state === 'completed' ? 'Complété' : 'Non complété'
+  const accessibilityLabel = `${label} ${iconLabel}`
+
   return (
     <StyledTouchableLink
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={state !== 'current'}
-      {...accessibilityAndTestId(undefined, label)}>
+      accessibilityLabel={accessibilityLabel}>
       <IconContainer>
         <Icon />
       </IconContainer>
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
-        <Validate
-          isCompleted={state === 'completed'}
-          {...accessibilityAndTestId(
-            state === 'completed' ? 'Complété' : 'Non complété',
-            state === 'completed' ? 'StepCompleted' : 'StepNotCompleted'
-          )}
-        />
+        <Validate isCompleted={state === 'completed'} {...accessibilityAndTestId(iconLabel)} />
       </CompletionContainer>
     </StyledTouchableLink>
   )

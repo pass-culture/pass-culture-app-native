@@ -95,7 +95,6 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -121,7 +120,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -915,7 +914,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -941,7 +939,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}

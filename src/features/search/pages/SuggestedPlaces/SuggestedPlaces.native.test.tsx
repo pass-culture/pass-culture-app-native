@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  keyExtractor,
-  SuggestedPlaces,
-} from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
+import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
@@ -28,7 +25,7 @@ describe('<SuggestedPlaces/>', () => {
       <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
     )
 
-    fireEvent.press(getByTestId(keyExtractor(mockPlaces[1])))
+    fireEvent.press(getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`))
 
     expect(mockSetSelectedPlaceOrVenue).toHaveBeenCalledWith(mockPlaces[1])
   })

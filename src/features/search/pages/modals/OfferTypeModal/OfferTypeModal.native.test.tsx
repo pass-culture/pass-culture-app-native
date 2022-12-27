@@ -412,7 +412,7 @@ describe('<OfferTypeModal/>', () => {
         offerTypeModalVisible: true,
       })
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       expect(hideOfferTypeModal).toHaveBeenCalledTimes(1)

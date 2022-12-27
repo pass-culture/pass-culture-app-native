@@ -29,7 +29,7 @@ describe('VenueTile component', () => {
   it('should navigate to the venue when clicking on the venue tile', async () => {
     const { getByTestId } = render(<VenueTile {...props} />)
 
-    fireEvent.press(getByTestId('venueTile'))
+    fireEvent.press(getByTestId(/Lieu/))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
@@ -39,7 +39,7 @@ describe('VenueTile component', () => {
   it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
     const { getByTestId } = render(<VenueTile {...props} />)
 
-    fireEvent.press(getByTestId('venueTile'))
+    fireEvent.press(getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
@@ -52,7 +52,7 @@ describe('VenueTile component', () => {
   it('should log analytics event ConsultVenue with homeEntryId when provided', () => {
     const { getByTestId } = render(<VenueTile {...props} homeEntryId={'abcd'} />)
 
-    fireEvent.press(getByTestId('venueTile'))
+    fireEvent.press(getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,

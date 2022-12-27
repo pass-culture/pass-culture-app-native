@@ -25,8 +25,7 @@ export const LocationFilterChoice = (props: Props) => {
       <Li>
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
-          testID="everywhere"
-          label={'Partout'}
+          label="Partout"
           Icon={Everywhere}
           onPress={onPressEverywhere}
           isSelected={LocationType.EVERYWHERE === selected}

@@ -62,6 +62,8 @@ describe('<BookingOfferModalComponent />', () => {
       )
     )
     expect(renderAPI.queryByText('Tu as déjà réservé :')).toBeTruthy()
-    expect(renderAPI.queryByTestId('external-link-booking-limit-exceeded')).toBeTruthy()
+    expect(
+      renderAPI.queryByTestId(`Nouvelle fenêtre : Pourquoi limiter les réservations\u00a0?`)
+    ).toBeTruthy()
   })
 })

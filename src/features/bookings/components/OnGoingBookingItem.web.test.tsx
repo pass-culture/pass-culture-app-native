@@ -13,7 +13,7 @@ describe('OnGoingBookingItem', () => {
   it('should navigate to the booking details page', () => {
     const { getByTestId } = renderOnGoingBookingItem(booking)
 
-    const item = getByTestId('OnGoingBookingItem')
+    const item = getByTestId(/Réservation de l’offre/)
     fireEvent.click(item)
 
     expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })

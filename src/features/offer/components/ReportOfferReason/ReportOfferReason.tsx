@@ -64,7 +64,6 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
             isSelected={selectedReason === reason.id}
             onSelect={() => setSelectedReason(reason.id)}
             marginVertical={marginVertical}
-            testID={`radio-button-${reason.id}`}
           />
         ) : (
           <StyledSectionRow

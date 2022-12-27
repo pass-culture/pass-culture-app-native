@@ -8,7 +8,7 @@ import { fireEvent, render } from 'tests/utils'
 describe('ThematicHomeHeader', () => {
   it('should navigate to home page on press go back button', () => {
     const { getByTestId } = render(<ThematicHomeHeader headerTitle="toto" />)
-    const backButton = getByTestId('backButton')
+    const backButton = getByTestId('Revenir en arrière')
 
     fireEvent.press(backButton)
 

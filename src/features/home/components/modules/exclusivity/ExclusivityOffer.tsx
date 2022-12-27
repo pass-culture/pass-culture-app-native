@@ -62,9 +62,9 @@ const UnmemoizedExclusivityOffer = ({
       onFocus={onFocus}
       onBlur={onBlur}
       isFocus={isFocus}
-      testID="link-exclusivity-offer"
       disabled={offerId === undefined}
-      style={style}>
+      style={style}
+      accessibilityLabel={alt}>
       <ExclusivityImage imageURL={imageURL} alt={alt} />
     </StyledTouchableLink>
   )

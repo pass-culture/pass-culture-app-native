@@ -93,7 +93,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -119,7 +118,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -228,7 +227,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             accessibilityRole="button"
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -411,7 +410,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             accessibilityRole="button"
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -577,7 +576,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             accessibilityRole="button"
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -743,7 +742,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         >
           <View
             accessibilityRole="button"
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -891,7 +890,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         >
           <View
             accessibilityRole="button"
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}

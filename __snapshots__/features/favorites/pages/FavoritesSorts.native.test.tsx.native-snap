@@ -93,7 +93,6 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -119,7 +118,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -292,7 +291,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="RECENTLY_ADDED"
+              testID="Trier par Ajouté récemment"
             >
               <View
                 flex={0.9}
@@ -401,7 +400,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="ASCENDING_PRICE"
+              testID="Trier par Prix croissant"
             >
               <View
                 flex={0.9}
@@ -510,7 +509,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="AROUND_ME"
+              testID="Trier par Proximité géographique"
             >
               <View
                 flex={0.9}

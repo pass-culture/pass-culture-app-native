@@ -67,8 +67,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       enableNavigate={!!netInfo.isConnected}
       navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
       onBeforeNavigate={handlePressOffer}
-      accessibilityLabel={accessibilityLabel}
-      testID="EndedBookingItem">
+      accessibilityLabel={accessibilityLabel}>
       <ItemContainer>
         <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />

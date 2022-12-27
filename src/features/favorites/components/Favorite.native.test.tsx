@@ -75,7 +75,7 @@ describe('<Favorite /> component', () => {
 
   it('should navigate to the offer when clicking on the favorite', async () => {
     const { getByTestId } = renderFavorite()
-    await fireEvent.press(getByTestId('favorite'))
+    await fireEvent.press(getByTestId(/Offre/))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       from: 'favorites',
       id: favorite.offer.id,

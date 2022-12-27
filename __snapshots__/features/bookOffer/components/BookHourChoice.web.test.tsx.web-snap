@@ -25,8 +25,9 @@ Object {
       >
         <div
           aria-disabled="true"
+          aria-label="10h00 épuisé"
           class="css-view-1dbjc4n"
-          data-testid="HourChoice148411"
+          data-testid="10h00 épuisé"
           style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="-1"
         >
@@ -66,8 +67,9 @@ Object {
           </div>
         </div>
         <div
+          aria-label="20h00 24 €"
           class="css-view-1dbjc4n"
-          data-testid="HourChoice148409"
+          data-testid="20h00 24 €"
           style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="0"
         >
@@ -126,8 +128,9 @@ Object {
     >
       <div
         aria-disabled="true"
+        aria-label="10h00 épuisé"
         class="css-view-1dbjc4n"
-        data-testid="HourChoice148411"
+        data-testid="10h00 épuisé"
         style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
         tabindex="-1"
       >
@@ -167,8 +170,9 @@ Object {
         </div>
       </div>
       <div
+        aria-label="20h00 24 €"
         class="css-view-1dbjc4n"
-        data-testid="HourChoice148409"
+        data-testid="20h00 24 €"
         style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
         tabindex="0"
       >

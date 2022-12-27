@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -359,7 +358,7 @@ Array [
                   "disabled": false,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -487,7 +486,7 @@ Array [
                   "disabled": false,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -563,7 +562,7 @@ Array [
               "expanded": false,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -829,7 +828,7 @@ Array [
                   "disabled": false,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -905,7 +904,7 @@ Array [
               "expanded": false,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -1171,7 +1170,7 @@ Array [
                   "disabled": false,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -1247,7 +1246,7 @@ Array [
               "expanded": false,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -1513,7 +1512,7 @@ Array [
                   "disabled": true,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -1592,7 +1591,7 @@ Array [
               "expanded": false,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -1907,6 +1906,7 @@ Array [
         />
         <View>
           <View
+            accessibilityLabel="Politique de gestion des cookies"
             accessibilityRole="link"
             accessible={true}
             collapsable={false}
@@ -1925,6 +1925,7 @@ Array [
                 "userSelect": "auto",
               }
             }
+            testID="Politique de gestion des cookies"
           >
             <View
               paddingForIcon={0}

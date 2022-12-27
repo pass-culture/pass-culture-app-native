@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -628,7 +627,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
-                testID="toggle-password-visibility"
+                testID="Afficher le mot de passe"
               >
                 <View
                   fill="#161617"
@@ -822,7 +821,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -848,7 +846,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -1310,7 +1308,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
-                testID="toggle-password-visibility"
+                testID="Afficher le mot de passe"
               >
                 <View
                   fill="#161617"

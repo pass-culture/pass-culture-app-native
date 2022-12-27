@@ -40,6 +40,7 @@ Array [
     testID="DuoChoiceSelector"
   >
     <View
+      accessibilityLabel="Solo 20 € sélectionné"
       accessibilityState={
         Object {
           "disabled": false,
@@ -66,7 +67,7 @@ Array [
           "width": "33%",
         }
       }
-      testID="DuoChoice1"
+      testID="Solo 20 € sélectionné"
     >
       <View
         disabled={false}
@@ -166,6 +167,7 @@ Array [
       </View>
     </View>
     <View
+      accessibilityLabel="Duo 40 €"
       accessibilityState={
         Object {
           "disabled": false,
@@ -192,7 +194,7 @@ Array [
           "width": "33%",
         }
       }
-      testID="DuoChoice2"
+      testID="Duo 40 €"
     >
       <View
         disabled={false}

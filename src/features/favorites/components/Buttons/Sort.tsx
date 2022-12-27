@@ -8,7 +8,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Sort: React.FC = () => {
   return (
-    <Container navigateTo={{ screen: 'FavoritesSorts' }} testID="SortButton">
+    <Container navigateTo={{ screen: 'FavoritesSorts' }} accessibilityLabel="Trier">
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}

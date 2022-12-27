@@ -159,7 +159,6 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Revenir en arrière"
                   style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
                 >
                   <button
@@ -498,7 +497,6 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="Revenir en arrière"
                 style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
               >
                 <button

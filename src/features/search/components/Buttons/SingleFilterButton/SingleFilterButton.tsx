@@ -28,8 +28,12 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
   const filterButtonIcon = testID ? `${testID}Icon` : 'filterButtonIcon'
   const filterButtonLabel = testID ? `${testID}Label` : 'filterButtonLabel'
 
+  const accessibilityLabel = isSelected ? `${label}\u00a0: Filtre sélectionné` : label
   return (
-    <TouchableContainer isSelected={isSelected} onPress={onPress} testID={testID}>
+    <TouchableContainer
+      isSelected={isSelected}
+      onPress={onPress}
+      accessibilityLabel={accessibilityLabel}>
       <Label isSelected={isSelected} testID={filterButtonLabel}>
         {label}
       </Label>

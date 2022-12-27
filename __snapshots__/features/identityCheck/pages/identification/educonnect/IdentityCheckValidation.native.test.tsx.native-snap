@@ -95,7 +95,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -121,7 +120,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}

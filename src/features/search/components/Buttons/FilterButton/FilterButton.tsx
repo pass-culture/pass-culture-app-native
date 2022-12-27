@@ -31,9 +31,8 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
     <StyledTouchableLink
       navigateTo={{ screen: 'SearchFilter' }}
       onBeforeNavigate={reinitFilters}
-      testID="searchFilterButton"
-      accessibilityLabel={accessibilityLabel}
-      title={accessibilityLabel}>
+      title={accessibilityLabel}
+      accessibilityLabel={accessibilityLabel}>
       <FilterIconDefault size={24} />
       {activeFilters > 0 && <FloatingBadge value={activeFilters} testID="searchFilterBadge" />}
     </StyledTouchableLink>

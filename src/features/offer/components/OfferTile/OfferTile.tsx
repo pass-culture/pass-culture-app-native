@@ -101,7 +101,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}
-        testID={`offre ${name}`}
         accessibilityLabel={accessibilityLabel}>
         <Container>
           <OfferCaption

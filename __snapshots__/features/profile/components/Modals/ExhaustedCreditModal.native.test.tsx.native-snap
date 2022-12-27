@@ -11,7 +11,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
   visible={true}
 >
   <View
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}

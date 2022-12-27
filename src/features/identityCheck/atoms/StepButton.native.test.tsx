@@ -17,17 +17,17 @@ describe('StepButton', () => {
   describe('button is enabled/disabled', () => {
     it('should be disabled if step is "completed"', () => {
       const { getByTestId } = render(<StepButton step={step} state="completed" />)
-      expect(getByTestId(label).props.accessibilityState.disabled).toBe(true)
+      expect(getByTestId(`${label} Complété`).props.accessibilityState.disabled).toBe(true)
     })
 
     it('should be disabled if step is "disabled"', () => {
       const { getByTestId } = render(<StepButton step={step} state="disabled" />)
-      expect(getByTestId(label).props.accessibilityState.disabled).toBe(true)
+      expect(getByTestId(`${label} Non complété`).props.accessibilityState.disabled).toBe(true)
     })
 
     it('should be active if step is "current"', () => {
       const { getByTestId } = render(<StepButton step={step} state="current" />)
-      expect(getByTestId(label).props.accessibilityState.disabled).toBe(false)
+      expect(getByTestId(`${label} Non complété`).props.accessibilityState.disabled).toBe(false)
     })
   })
 
@@ -35,22 +35,22 @@ describe('StepButton', () => {
     it('icon check is displaying when step is completed', () => {
       const { queryByTestId } = render(<StepButton step={step} state="completed" />)
 
-      expect(queryByTestId('StepCompleted')).toBeTruthy()
-      expect(queryByTestId('StepNotCompleted')).toBeFalsy()
+      expect(queryByTestId('Complété')).toBeTruthy()
+      expect(queryByTestId('Non complété')).toBeFalsy()
     })
 
     it('icon check is not displaying when step is disabled', () => {
       const { queryByTestId } = render(<StepButton step={step} state="disabled" />)
 
-      expect(queryByTestId('StepCompleted')).toBeFalsy()
-      expect(queryByTestId('StepNotCompleted')).toBeTruthy()
+      expect(queryByTestId('Complété')).toBeFalsy()
+      expect(queryByTestId('Non complété')).toBeTruthy()
     })
 
     it('icon check is not displaying when step is current', () => {
       const { queryByTestId } = render(<StepButton step={step} state="current" />)
 
-      expect(queryByTestId('StepCompleted')).toBeFalsy()
-      expect(queryByTestId('StepNotCompleted')).toBeTruthy()
+      expect(queryByTestId('Complété')).toBeFalsy()
+      expect(queryByTestId('Non complété')).toBeTruthy()
     })
   })
 })

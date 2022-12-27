@@ -50,7 +50,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Arts & loisirs créatifs"
         className="css-view-1dbjc4n"
+        data-testid="Arts & loisirs créatifs"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -157,7 +159,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Bibliothèques, Médiathèques"
         className="css-view-1dbjc4n"
+        data-testid="Bibliothèques, Médiathèques"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -264,7 +268,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Cartes jeunes"
         className="css-view-1dbjc4n"
+        data-testid="Cartes jeunes"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -371,7 +377,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="CD, vinyles, musique en ligne"
         className="css-view-1dbjc4n"
+        data-testid="CD, vinyles, musique en ligne"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -478,7 +486,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Concerts & festivals"
         className="css-view-1dbjc4n"
+        data-testid="Concerts & festivals"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -585,7 +595,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Conférences & rencontres"
         className="css-view-1dbjc4n"
+        data-testid="Conférences & rencontres"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -692,7 +704,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Évènements en ligne"
         className="css-view-1dbjc4n"
+        data-testid="Évènements en ligne"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -799,7 +813,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Films, séries, cinéma"
         className="css-view-1dbjc4n"
+        data-testid="Films, séries, cinéma"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -906,7 +922,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Instruments de musique"
         className="css-view-1dbjc4n"
+        data-testid="Instruments de musique"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1013,7 +1031,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Jeux & jeux vidéos"
         className="css-view-1dbjc4n"
+        data-testid="Jeux & jeux vidéos"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1120,7 +1140,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Livres"
         className="css-view-1dbjc4n"
+        data-testid="Livres"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1227,7 +1249,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Médias & presse"
         className="css-view-1dbjc4n"
+        data-testid="Médias & presse"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1334,7 +1358,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Musées & visites culturelles"
         className="css-view-1dbjc4n"
+        data-testid="Musées & visites culturelles"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1441,7 +1467,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Plateformes en ligne"
         className="css-view-1dbjc4n"
+        data-testid="Plateformes en ligne"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1548,7 +1576,9 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Spectacles"
         className="css-view-1dbjc4n"
+        data-testid="Spectacles"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}

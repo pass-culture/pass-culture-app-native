@@ -237,6 +237,7 @@ Array [
           />
           <View>
             <View
+              accessibilityLabel="Se connecter"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -255,6 +256,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="Se connecter"
             >
               <View
                 paddingForIcon={0}

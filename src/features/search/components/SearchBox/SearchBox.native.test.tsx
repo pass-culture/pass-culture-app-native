@@ -124,7 +124,7 @@ describe('SearchBox component', () => {
   it('should not show back button when being on the search landing view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const previousButton = queryByTestId('backButton')
+    const previousButton = queryByTestId('Revenir en arrière')
 
     await act(async () => {
       expect(previousButton).toBeFalsy()
@@ -134,7 +134,7 @@ describe('SearchBox component', () => {
   it('should show back button when being on the search results view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const previousButton = getByTestId('backButton')
+    const previousButton = getByTestId('Revenir en arrière')
 
     await act(async () => {
       expect(previousButton).toBeTruthy()
@@ -144,7 +144,7 @@ describe('SearchBox component', () => {
   it('should show back button when being on the suggestions view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
     const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-    const previousButton = getByTestId('backButton')
+    const previousButton = getByTestId('Revenir en arrière')
 
     await act(async () => {
       expect(previousButton).toBeTruthy()
@@ -185,7 +185,7 @@ describe('SearchBox component', () => {
 
       const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
 
       await act(async () => {
         fireEvent.press(previousButton)
@@ -207,7 +207,7 @@ describe('SearchBox component', () => {
       async (previousView) => {
         useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, previousView } })
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
-        const previousButton = getByTestId('backButton')
+        const previousButton = getByTestId('Revenir en arrière')
 
         await act(async () => {
           fireEvent.press(previousButton)
@@ -239,7 +239,7 @@ describe('SearchBox component', () => {
         useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-        const resetIcon = getByTestId('resetSearchInput')
+        const resetIcon = getByTestId('Réinitialiser la recherche')
         await act(async () => {
           fireEvent.press(resetIcon)
         })
@@ -282,7 +282,7 @@ describe('SearchBox component', () => {
         useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
         const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
-        const resetIcon = getByTestId('resetSearchInput')
+        const resetIcon = getByTestId('Réinitialiser la recherche')
         await act(async () => {
           fireEvent.press(resetIcon)
         })
@@ -362,7 +362,7 @@ describe('SearchBox component', () => {
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
     await act(async () => {
-      expect(queryByTestId('searchFilterButton')).toBeTruthy()
+      expect(queryByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')).toBeTruthy()
     })
   })
 
@@ -373,7 +373,7 @@ describe('SearchBox component', () => {
       const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
       await act(async () => {
-        expect(queryByTestId('searchFilterButton')).toBeNull()
+        expect(queryByTestId(/Voir tous les filtres/)).toBeNull()
       })
     }
   )

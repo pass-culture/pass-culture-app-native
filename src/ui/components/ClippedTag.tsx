@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clear } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
@@ -9,18 +8,18 @@ import { getSpacing, Typo } from 'ui/theme'
 interface Props {
   label: string
   onPress: () => void
-  testId: string
+  iconAccessibilityLabel: string
   children?: never
 }
 
-export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
+export const ClippedTag: React.FC<Props> = ({ label, onPress, iconAccessibilityLabel }) => {
   return (
     <Container>
       <VenueLabelContainer>
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
-      <StyledTouchableOpacity onPress={onPress} testID="retirer-lieu">
-        <ClearIcon {...accessibilityAndTestId(testId)} />
+      <StyledTouchableOpacity onPress={onPress} accessibilityLabel={iconAccessibilityLabel}>
+        <ClearIcon />
       </StyledTouchableOpacity>
     </Container>
   )

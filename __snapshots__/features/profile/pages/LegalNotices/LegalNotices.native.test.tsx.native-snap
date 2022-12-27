@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -238,6 +237,7 @@ Array [
 
         <View>
           <View
+            accessibilityLabel="https://passculture.app/accueil"
             accessibilityRole="link"
             accessible={true}
             collapsable={false}
@@ -256,6 +256,7 @@ Array [
                 "userSelect": "auto",
               }
             }
+            testID="https://passculture.app/accueil"
           >
             <View
               paddingForIcon={0}
@@ -329,6 +330,7 @@ Array [
         Nous contacter : 
         <View>
           <View
+            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
             accessibilityRole="link"
             accessible={true}
             collapsable={false}
@@ -347,6 +349,7 @@ Array [
                 "userSelect": "auto",
               }
             }
+            testID="Ouvrir le gestionnaire mail pour contacter le support"
           >
             <View
               paddingForIcon={0}
@@ -411,6 +414,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Nouvelle fenêtre : Conditions Générales d’Utilisation"
         accessibilityRole="link"
         accessibilityState={
           Object {
@@ -433,7 +437,7 @@ Array [
             "userSelect": "auto",
           }
         }
-        testID="touchable-link-section-row"
+        testID="Nouvelle fenêtre : Conditions Générales d’Utilisation"
       >
         <View
           style={
@@ -509,6 +513,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Nouvelle fenêtre : Charte de protection des données personnelles"
         accessibilityRole="link"
         accessibilityState={
           Object {
@@ -531,7 +536,7 @@ Array [
             "userSelect": "auto",
           }
         }
-        testID="touchable-link-section-row"
+        testID="Nouvelle fenêtre : Charte de protection des données personnelles"
       >
         <View
           style={

@@ -3,6 +3,7 @@
 exports[`ExpiredOrLostID should render correctly 1`] = `
 Array [
   <View
+    accessibilityLabel="Revenir en arrière"
     accessibilityRole="button"
     accessible={true}
     collapsable={false}

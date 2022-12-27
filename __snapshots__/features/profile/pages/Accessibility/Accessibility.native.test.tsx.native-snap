@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -216,6 +215,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Les engagements du pass Culture"
           accessibilityRole="link"
           accessibilityState={
             Object {
@@ -238,7 +238,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="touchable-link-section-row"
+          testID="Les engagements du pass Culture"
         >
           <View
             style={
@@ -325,6 +325,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Parcours recommandés"
           accessibilityRole="link"
           accessibilityState={
             Object {
@@ -347,7 +348,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="touchable-link-section-row"
+          testID="Parcours recommandés"
         >
           <View
             style={
@@ -434,6 +435,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Déclaration d’accessibilité"
           accessibilityRole="link"
           accessibilityState={
             Object {
@@ -456,7 +458,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="touchable-link-section-row"
+          testID="Déclaration d’accessibilité"
         >
           <View
             style={
@@ -543,6 +545,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Schéma pluriannuel"
           accessibilityRole="link"
           accessibilityState={
             Object {
@@ -565,7 +568,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="touchable-link-section-row"
+          testID="Schéma pluriannuel"
         >
           <View
             style={

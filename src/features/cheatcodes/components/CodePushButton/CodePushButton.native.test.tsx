@@ -49,7 +49,7 @@ describe('CodePushButton', () => {
 
     // We press the sync button
     const { getByTestId, getByText } = render(<CodePushButton />)
-    fireEvent.press(getByTestId('container'))
+    fireEvent.press(getByTestId('Check update'))
     expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
     // We expect our component to render that a new version is available
@@ -83,7 +83,7 @@ describe('CodePushButton', () => {
 
       // We press the sync button
       const button = render(<CodePushButton />)
-      fireEvent.press(button.getByTestId('container'))
+      fireEvent.press(button.getByTestId('Check update'))
       expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
       // We expect our component to render that the corresponding message status

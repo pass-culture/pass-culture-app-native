@@ -40,11 +40,7 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
           subtitle="Il ne peut être associé qu’à un seul compte"
         />
         <Spacer.Column numberOfSpaces={13} />
-        <ButtonPrimary
-          wording="J'ai compris"
-          onPress={props.dismissModal}
-          testID="dismiss-phone-validation-tips-modal"
-        />
+        <ButtonPrimary wording="J'ai compris" onPress={props.dismissModal} />
       </React.Fragment>
     </AppModal>
   )

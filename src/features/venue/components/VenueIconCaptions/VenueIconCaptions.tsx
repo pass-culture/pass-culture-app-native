@@ -36,7 +36,6 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
       <ActiveGeolocationButton
         onPress={onPressActiveGeolocation}
         disabled={!!distanceToLocation}
-        testID="iconLocation"
         accessibilityLabel={
           distanceToLocation ? 'Distance depuis la localisation' : 'Géolocalisation désactivée'
         }>

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -31,7 +30,7 @@ export const AgeButton: FunctionComponent<AgeButtonProps> = ({
       enableNavigate={enableNavigate}
       onBeforeNavigate={onBeforeNavigate}
       navigateTo={navigateTo}
-      {...accessibilityAndTestId(accessibilityLabel)}>
+      accessibilityLabel={accessibilityLabel}>
       <StyledBanner dense={dense} LeftIcon={icon}>
         {children}
       </StyledBanner>

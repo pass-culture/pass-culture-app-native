@@ -283,7 +283,11 @@ export const AppComponents: FunctionComponent = () => {
 
         {/* Tags */}
         <AccordionItem title="Tags">
-          <ClippedTag label="Musée du Louvre" onPress={onButtonPress} testId="Enlever le lieu" />
+          <ClippedTag
+            label="Musée du Louvre"
+            onPress={onButtonPress}
+            iconAccessibilityLabel="Enlever le lieu"
+          />
           <Spacer.Column numberOfSpaces={getSpacing(2)} />
           <Text>
             The text in SlantTag is always straight. Developers should play on slantAngle to include

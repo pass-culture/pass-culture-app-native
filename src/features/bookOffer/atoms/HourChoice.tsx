@@ -35,8 +35,13 @@ export const HourChoice: React.FC<Props> = ({
   const disabled = !isBookable || !enoughCredit
   const wording = getWording(price, isBookable, enoughCredit)
 
+  const accessibilityLabel = `${hour} ${wording}`
   return (
-    <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
+    <ChoiceBloc
+      onPress={onPress}
+      accessibilityLabel={accessibilityLabel}
+      selected={selected}
+      disabled={disabled}>
       <Container>
         <ButtonText testID={`${testID}-hour`} selected={selected} disabled={disabled}>
           {hour}

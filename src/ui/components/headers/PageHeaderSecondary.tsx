@@ -14,20 +14,13 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 interface Props {
   title: string
   titleID?: string
-  goBackAccessibilityLabel?: string
   onGoBack?: () => void
   testID?: string
 }
 
 const HEIGHT_CONTAINER = getSpacing(12)
 
-export const PageHeaderSecondary: React.FC<Props> = ({
-  title,
-  titleID,
-  goBackAccessibilityLabel = 'Revenir en arrière',
-  onGoBack,
-  testID,
-}) => {
+export const PageHeaderSecondary: React.FC<Props> = ({ title, titleID, onGoBack, testID }) => {
   useWhiteStatusBar()
 
   const { top } = useCustomSafeInsets()
@@ -39,7 +32,7 @@ export const PageHeaderSecondary: React.FC<Props> = ({
         <Spacer.TopScreen />
         <Container>
           <Row>
-            <ButtonContainer positionInHeader="left" testID={goBackAccessibilityLabel}>
+            <ButtonContainer positionInHeader="left">
               <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
             </ButtonContainer>
             <Title nativeID={titleID}>{title}</Title>

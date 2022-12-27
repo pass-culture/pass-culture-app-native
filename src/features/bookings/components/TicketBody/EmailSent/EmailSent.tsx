@@ -21,7 +21,6 @@ export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
         <ButtonWithLinearGradient
           wording="Consulter mes e-mails"
           onPress={openInbox}
-          testID="withdrawal-info-email-btn"
           icon={Email}
         />
       )}

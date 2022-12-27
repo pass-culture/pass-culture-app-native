@@ -125,7 +125,7 @@ describe('<CategoriesModal/>', () => {
       it('when pressing previous button', async () => {
         const { getByTestId } = renderCategories()
 
-        const previousButton = getByTestId('backButton')
+        const previousButton = getByTestId('Revenir en arrière')
         fireEvent.press(previousButton)
 
         await waitFor(() => {
@@ -181,7 +181,7 @@ describe('<CategoriesModal/>', () => {
 
     it('should go back to categories view', () => {
       const { getByTestId, getByText } = renderCategories()
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(getByText('Livres'))
 
       fireEvent.press(previousButton)
@@ -270,7 +270,7 @@ describe('<CategoriesModal/>', () => {
 
     it('should go back to native categories view', () => {
       const { getByTestId, getByText } = renderCategories()
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(getByText('Livres'))
       fireEvent.press(getByText('Livres papier'))
 

@@ -69,8 +69,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}
-        accessibilityLabel={accessibilityLabel}
-        testID="venueTile">
+        accessibilityLabel={accessibilityLabel}>
         <Container>
           <VenueDetails
             width={width}

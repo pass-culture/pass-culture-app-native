@@ -36,6 +36,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Arts & loisirs créatifs"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -68,6 +69,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Arts & loisirs créatifs"
       >
         <View
           numberOfSpaces={5}
@@ -119,6 +121,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Bibliothèques, Médiathèques"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -151,6 +154,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Bibliothèques, Médiathèques"
       >
         <View
           numberOfSpaces={5}
@@ -202,6 +206,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Cartes jeunes"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -234,6 +239,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Cartes jeunes"
       >
         <View
           numberOfSpaces={5}
@@ -285,6 +291,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="CD, vinyles, musique en ligne"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -317,6 +324,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="CD, vinyles, musique en ligne"
       >
         <View
           numberOfSpaces={5}
@@ -368,6 +376,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Concerts & festivals"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -400,6 +409,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Concerts & festivals"
       >
         <View
           numberOfSpaces={5}
@@ -451,6 +461,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Conférences & rencontres"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -483,6 +494,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Conférences & rencontres"
       >
         <View
           numberOfSpaces={5}
@@ -534,6 +546,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Évènements en ligne"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -566,6 +579,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Évènements en ligne"
       >
         <View
           numberOfSpaces={5}
@@ -617,6 +631,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Films, séries, cinéma"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -649,6 +664,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Films, séries, cinéma"
       >
         <View
           numberOfSpaces={5}
@@ -700,6 +716,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Instruments de musique"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -732,6 +749,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Instruments de musique"
       >
         <View
           numberOfSpaces={5}
@@ -783,6 +801,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Jeux & jeux vidéos"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -815,6 +834,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Jeux & jeux vidéos"
       >
         <View
           numberOfSpaces={5}
@@ -866,6 +886,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Livres"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -898,6 +919,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Livres"
       >
         <View
           numberOfSpaces={5}
@@ -949,6 +971,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Médias & presse"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -981,6 +1004,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Médias & presse"
       >
         <View
           numberOfSpaces={5}
@@ -1032,6 +1056,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Musées & visites culturelles"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -1064,6 +1089,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Musées & visites culturelles"
       >
         <View
           numberOfSpaces={5}
@@ -1115,6 +1141,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Plateformes en ligne"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -1147,6 +1174,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Plateformes en ligne"
       >
         <View
           numberOfSpaces={5}
@@ -1198,6 +1226,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Spectacles"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -1230,6 +1259,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Spectacles"
       >
         <View
           numberOfSpaces={5}

@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -459,6 +458,7 @@ Array [
          
         <View>
           <View
+            accessibilityLabel="notre centre d’aide"
             accessibilityRole="link"
             accessible={true}
             collapsable={false}
@@ -477,6 +477,7 @@ Array [
                 "userSelect": "auto",
               }
             }
+            testID="notre centre d’aide"
           >
             <View
               paddingForIcon={0}

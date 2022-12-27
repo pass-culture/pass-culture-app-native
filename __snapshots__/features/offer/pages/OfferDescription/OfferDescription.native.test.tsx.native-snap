@@ -408,7 +408,6 @@ exports[`<OfferDescription /> should render 1`] = `
                                       },
                                     ]
                                   }
-                                  testID="Revenir en arrière"
                                 >
                                   <View
                                     accessibilityLabel="Revenir en arrière"
@@ -434,7 +433,7 @@ exports[`<OfferDescription /> should render 1`] = `
                                         "userSelect": "auto",
                                       }
                                     }
-                                    testID="backButton"
+                                    testID="Revenir en arrière"
                                   >
                                     <View
                                       height={24}
@@ -612,6 +611,8 @@ Tous les détails du film sur AlloCiné: ",
                                   Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: 
                                   <Text
+                                    accessibilityLabel="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
+                                    accessible={true}
                                     onPress={[Function]}
                                     style={
                                       Array [
@@ -623,6 +624,7 @@ Tous les détails du film sur AlloCiné:
                                         },
                                       ]
                                     }
+                                    testID="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                                   >
                                     <View
                                       numberOfSpaces={1}

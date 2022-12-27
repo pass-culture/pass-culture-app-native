@@ -159,9 +159,11 @@ Object {
 <body>
     <div>
       <button
+        aria-label="Revenir en arrière"
         class="c0 c1 sc-cCcXHH c1"
         data-testid="Revenir en arrière"
         tabindex="0"
+        title="Revenir en arrière"
         type="button"
       >
         <div
@@ -570,9 +572,11 @@ Object {
 
 <div>
     <button
+      aria-label="Revenir en arrière"
       class="c0 c1 sc-cCcXHH c1"
       data-testid="Revenir en arrière"
       tabindex="0"
+      title="Revenir en arrière"
       type="button"
     >
       <div

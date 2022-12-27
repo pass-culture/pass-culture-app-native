@@ -10,7 +10,7 @@ describe('<EmailSent/>', () => {
   it('should display the button "Consulter mes e-mails"', async () => {
     const { queryByTestId } = render(<EmailSent offerDate={offerDate} />)
     await waitForExpect(() => {
-      expect(queryByTestId('withdrawal-info-email-btn')).toBeTruthy()
+      expect(queryByTestId('Consulter mes e-mails')).toBeTruthy()
     })
   })
 })

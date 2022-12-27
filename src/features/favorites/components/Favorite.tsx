@@ -123,8 +123,7 @@ export const Favorite: React.FC<Props> = (props) => {
           offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
         }
         onBeforeNavigate={handlePressOffer}
-        accessibilityLabel={accessibilityLabel}
-        testID="favorite">
+        accessibilityLabel={accessibilityLabel}>
         <Row>
           <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />

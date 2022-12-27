@@ -292,7 +292,7 @@ describe('<PriceModal/>', () => {
 
       const minPriceInput = getByPlaceholderText('0')
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       await waitFor(() => {
@@ -320,7 +320,7 @@ describe('<PriceModal/>', () => {
 
       const maxPriceInput = getByPlaceholderText('80')
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       await waitFor(() => {
@@ -345,7 +345,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, maxPrice: '70' }
       const { getByTestId } = renderSearchPrice()
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
@@ -371,7 +371,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, offerIsFree: true }
       const { getByTestId } = renderSearchPrice()
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
@@ -684,7 +684,7 @@ describe('<PriceModal/>', () => {
 
       await superFlushWithAct()
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       expect(mockHideModal).toHaveBeenCalledTimes(1)

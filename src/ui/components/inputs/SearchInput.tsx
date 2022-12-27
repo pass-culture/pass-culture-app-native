@@ -3,7 +3,6 @@ import { Insets, Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
@@ -95,7 +94,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Touchable
             hitSlop={hitSlop}
             onPress={onPressRightIcon}
-            {...accessibilityAndTestId('Réinitialiser la recherche', 'resetSearchInput')}
+            accessibilityLabel="Réinitialiser la recherche"
             type="reset">
             <Invalidate />
           </Touchable>

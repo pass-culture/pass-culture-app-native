@@ -96,7 +96,7 @@ describe('<GenericAchievementCard />', () => {
     )
     expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial1')
     expect(analytics.logScreenView).toBeCalledTimes(1)
-    fireEvent.press(getByTestId('control-button-next'))
+    fireEvent.press(getByTestId('Continuer vers l’étape suivante'))
     expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
     expect(analytics.logScreenView).toBeCalledTimes(2)
   })

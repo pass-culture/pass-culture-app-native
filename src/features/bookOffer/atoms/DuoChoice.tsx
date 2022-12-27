@@ -32,8 +32,14 @@ export const DuoChoice: React.FC<Props> = ({
     color: getTextColor(theme, selected, disabled),
   }))``
 
+  const accessibilityLabel = `${title} ${price}`
+
   return (
-    <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
+    <ChoiceBloc
+      onPress={onPress}
+      accessibilityLabel={accessibilityLabel}
+      selected={selected}
+      disabled={disabled}>
       <Container>
         <StyledIcon />
         <ButtonText selected={selected} disabled={disabled}>

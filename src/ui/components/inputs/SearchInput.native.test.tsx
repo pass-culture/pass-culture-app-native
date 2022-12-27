@@ -26,7 +26,7 @@ describe('SearchInput component', () => {
     const { getByTestId } = render(
       <SearchInput value="Some text" onChangeText={onChangeText} onPressRightIcon={onReset} />
     )
-    const resetIcon = getByTestId('resetSearchInput')
+    const resetIcon = getByTestId('Réinitialiser la recherche')
 
     await fireEvent.press(resetIcon)
 

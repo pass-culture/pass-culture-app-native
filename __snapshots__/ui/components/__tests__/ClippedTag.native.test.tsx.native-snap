@@ -41,6 +41,7 @@ exports[`<ClippedTag/> should render correctly 1`] = `
     </Text>
   </View>
   <View
+    accessibilityLabel="Enlever le lieu"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -64,17 +65,15 @@ exports[`<ClippedTag/> should render correctly 1`] = `
         "userSelect": "auto",
       }
     }
-    testID="retirer-lieu"
+    testID="Enlever le lieu"
   >
     <View
-      accessibilityLabel="Enlever le lieu"
       fill="#ffffff"
       height={20}
-      testID="Enlever le lieu"
       width={20}
     >
       <Text>
-        Enlever le lieu-SVG-Mock
+        undefined-SVG-Mock
       </Text>
     </View>
   </View>

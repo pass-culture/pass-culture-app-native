@@ -227,7 +227,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       },
                     ]
                   }
-                  testID="Revenir en arrière"
                 >
                   <View
                     accessibilityLabel="Revenir en arrière"
@@ -253,7 +252,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                         "userSelect": "auto",
                       }
                     }
-                    testID="backButton"
+                    testID="Revenir en arrière"
                   >
                     <View
                       height={24}
@@ -475,7 +474,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "disabled": false,
                         }
                       }
-                      accessible={true}
+                      accessible={false}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -681,7 +680,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "disabled": false,
                         }
                       }
-                      accessible={true}
+                      accessible={false}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}

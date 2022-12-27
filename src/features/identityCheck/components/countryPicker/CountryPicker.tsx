@@ -12,7 +12,6 @@ import {
   ALLOWED_COUNTRY_CODES,
   FLAG_TYPE,
 } from 'features/identityCheck/components/countryPicker/constants'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -77,10 +76,10 @@ export const CountryPicker: React.FC<Props> = (props) => {
         accessibilityRole={AccessibilityRole.RADIO}
         accessibilityState={{ checked: selected }}
         key={item.cca2}
-        testID={`country-selector-${item.cca2}`}
         onFocus={onFocus}
         onBlur={onBlur}
-        onPress={onPress}>
+        onPress={onPress}
+        accessibilityLabel={itemTitle}>
         <CountryContainer ref={containerRef}>
           <Flag countryCode={item.cca2} withEmoji flagSize={25} />
           <Typo.Body>{itemTitle}</Typo.Body>
@@ -110,7 +109,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
       <StyledTouchable
         onPress={showModal}
         hoverUnderlineColor={null}
-        {...accessibilityAndTestId('Ouvrir la modale de choix de l’indicatif téléphonique')}>
+        accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique">
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
         <ArrowDown />

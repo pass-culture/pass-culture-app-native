@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -258,7 +257,7 @@ Array [
                   "expanded": true,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -376,6 +375,7 @@ Array [
                 }
               />
               <View
+                accessibilityLabel="Offer"
                 accessibilityRole="radio"
                 accessibilityState={
                   Object {
@@ -403,6 +403,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
+                testID="Offer"
               >
                 <View
                   flex={0.9}
@@ -503,6 +504,7 @@ Array [
                 }
               />
               <View
+                accessibilityLabel="Venue"
                 accessibilityRole="radio"
                 accessibilityState={
                   Object {
@@ -530,6 +532,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
+                testID="Venue"
               >
                 <View
                   flex={0.9}
@@ -630,6 +633,7 @@ Array [
                 }
               />
               <View
+                accessibilityLabel="Home"
                 accessibilityRole="radio"
                 accessibilityState={
                   Object {
@@ -657,6 +661,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
+                testID="Home"
               >
                 <View
                   flex={0.9}
@@ -757,6 +762,7 @@ Array [
                 }
               />
               <View
+                accessibilityLabel="Search"
                 accessibilityRole="radio"
                 accessibilityState={
                   Object {
@@ -784,6 +790,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
+                testID="Search"
               >
                 <View
                   flex={0.9}
@@ -884,6 +891,7 @@ Array [
                 }
               />
               <View
+                accessibilityLabel="Profile"
                 accessibilityRole="radio"
                 accessibilityState={
                   Object {
@@ -911,6 +919,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
+                testID="Profile"
               >
                 <View
                   flex={0.9}
@@ -1011,6 +1020,7 @@ Array [
                 }
               />
               <View
+                accessibilityLabel="SignupForm"
                 accessibilityRole="radio"
                 accessibilityState={
                   Object {
@@ -1038,6 +1048,7 @@ Array [
                     "userSelect": "auto",
                   }
                 }
+                testID="SignupForm"
               >
                 <View
                   flex={0.9}
@@ -1146,7 +1157,7 @@ Array [
                   "expanded": true,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -1389,7 +1400,7 @@ Array [
                   "expanded": true,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -1983,7 +1994,7 @@ Array [
                   "expanded": false,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
               focusable={true}
               onClick={[Function]}
@@ -2545,7 +2556,7 @@ Array [
           }
         >
           <View
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={false}
             onClick={[Function]}
@@ -2594,6 +2605,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
+              testID="Conserver l’historique"
             >
               <View
                 isChecked={false}

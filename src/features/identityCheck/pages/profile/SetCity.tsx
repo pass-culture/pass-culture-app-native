@@ -10,7 +10,6 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckError } from 'features/identityCheck/errors'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { amplitude } from 'libs/amplitude'
 import { eventMonitoring } from 'libs/monitoring'
@@ -137,9 +136,7 @@ export const SetCity = () => {
                     }
                     onPressOption={onPressOption}
                     optionKey={keyExtractor(city)}
-                    {...accessibilityAndTestId(
-                      `Proposition de ville ${index + 1}\u00a0: ${city.name}`
-                    )}
+                    accessibilityLabel={`Proposition de ville ${index + 1}\u00a0: ${city.name}`}
                   />
                 </Li>
               ))}

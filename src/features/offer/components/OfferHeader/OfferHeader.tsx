@@ -105,7 +105,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="back"
             onPress={goBack}
-            testID="Revenir en arrière"
+            accessibilityLabel="Revenir en arrière"
           />
           <Spacer.Row numberOfSpaces={3} />
           <Spacer.Row testID="leftShareIconPlaceholder" numberOfSpaces={10} />
@@ -123,7 +123,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="share"
             onPress={pressShareOffer}
-            testID="Partager"
+            accessibilityLabel="Partager"
           />
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
@@ -132,7 +132,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             initialColor={favorite ? theme.colors.primary : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
-            testID="Mettre en favoris"
+            accessibilityLabel="Mettre en favoris"
             accessibilityRole={AccessibilityRole.CHECKBOX}
             accessibilityState={{ checked: !!favorite }}
           />

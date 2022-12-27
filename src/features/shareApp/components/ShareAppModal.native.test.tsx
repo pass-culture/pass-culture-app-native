@@ -101,7 +101,7 @@ describe('ShareAppModal', () => {
       <ShareAppModal visible={visible} hideModal={hideModal} modalType={modalType} />
     )
 
-    const closeButton = getByTestId('rightIcon')
+    const closeButton = getByTestId('Fermer la modale')
     fireEvent.press(closeButton)
 
     expect(analytics.logDismissShareApp).toHaveBeenNthCalledWith(1, modalType)

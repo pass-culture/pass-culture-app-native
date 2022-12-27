@@ -132,13 +132,13 @@ describe('SearchResults component', () => {
       const { getByTestId } = render(<SearchResults />)
 
       await waitFor(() => {
-        expect(getByTestId('categoryButton')).toBeTruthy()
+        expect(getByTestId('Catégories')).toBeTruthy()
       })
     })
 
     it('should open the categories filter modal when pressing the category button', async () => {
       const { getByTestId } = render(<SearchResults />)
-      const categoryButton = getByTestId('categoryButton')
+      const categoryButton = getByTestId('Catégories')
 
       await waitFor(() => {
         fireEvent.press(categoryButton)
@@ -160,7 +160,7 @@ describe('SearchResults component', () => {
         expect(categoryButtonIcon).toBeTruthy()
       })
 
-      const categoryButton = getByTestId('categoryButton')
+      const categoryButton = getByTestId('Catégories\u00a0: Filtre sélectionné')
       expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
 
       const categoryButtonLabel = getByTestId('categoryButtonLabel')
@@ -173,13 +173,13 @@ describe('SearchResults component', () => {
       const { getByTestId } = render(<SearchResults />)
 
       await waitFor(() => {
-        expect(getByTestId('priceButton')).toBeTruthy()
+        expect(getByTestId('Prix')).toBeTruthy()
       })
     })
 
     it('should open the prices filter modal when pressing the prices filter button', async () => {
       const { getByTestId } = render(<SearchResults />)
-      const priceButton = getByTestId('priceButton')
+      const priceButton = getByTestId('Prix')
 
       await waitFor(() => {
         fireEvent.press(priceButton)
@@ -201,7 +201,7 @@ describe('SearchResults component', () => {
         expect(priceButtonIcon).toBeTruthy()
       })
 
-      const priceButton = getByTestId('priceButton')
+      const priceButton = getByTestId('Prix\u00a0: Filtre sélectionné')
       expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
 
       const priceButtonLabel = getByTestId('priceButtonLabel')
@@ -214,13 +214,13 @@ describe('SearchResults component', () => {
       const { getByTestId } = render(<SearchResults />)
 
       await waitFor(() => {
-        expect(getByTestId('typeButton')).toBeTruthy()
+        expect(getByTestId('Type')).toBeTruthy()
       })
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
       const { getByTestId, queryByTestId } = render(<SearchResults />)
-      const typeButton = getByTestId('typeButton')
+      const typeButton = getByTestId('Type')
 
       await waitFor(() => {
         fireEvent.press(typeButton)
@@ -254,7 +254,7 @@ describe('SearchResults component', () => {
           expect(typeButtonIcon).toBeTruthy()
         })
 
-        const typeButton = getByTestId('typeButton')
+        const typeButton = getByTestId('Type\u00a0: Filtre sélectionné')
         expect(typeButton).toHaveStyle({ borderColor: theme.colors.primary })
 
         const typeButtonLabel = getByTestId('typeButtonLabel')
@@ -303,7 +303,7 @@ describe('SearchResults component', () => {
     it('should display location filter button', async () => {
       const { getByTestId } = render(<SearchResults />)
       await waitFor(() => {
-        expect(getByTestId('locationButton')).toBeTruthy()
+        expect(getByTestId('Localisation')).toBeTruthy()
       })
     })
 
@@ -343,13 +343,13 @@ describe('SearchResults component', () => {
     it('should display dates and hours filter button', async () => {
       const { queryByTestId } = render(<SearchResults />)
       await waitFor(() => {
-        expect(queryByTestId('datesHoursButton')).toBeTruthy()
+        expect(queryByTestId('Dates & heures')).toBeTruthy()
       })
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
       const { getByTestId } = render(<SearchResults />)
-      const datesHoursButton = getByTestId('datesHoursButton')
+      const datesHoursButton = getByTestId('Dates & heures')
 
       await waitFor(() => {
         fireEvent.press(datesHoursButton)
@@ -377,7 +377,7 @@ describe('SearchResults component', () => {
           expect(datesHoursButtonIcon).toBeTruthy()
         })
 
-        const datesHoursButton = getByTestId('datesHoursButton')
+        const datesHoursButton = getByTestId('Dates & heures\u00a0: Filtre sélectionné')
         expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
 
         const datesHoursButtonLabel = getByTestId('datesHoursButtonLabel')

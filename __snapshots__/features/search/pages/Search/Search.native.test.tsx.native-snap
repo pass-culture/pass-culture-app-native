@@ -723,6 +723,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Arts & loisirs créatifs"
               >
                 <View
                   height={24}
@@ -799,6 +800,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Bibliothèques, Médiathèques"
               >
                 <View
                   fill="#eb0055"
@@ -889,6 +891,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Cartes jeunes"
               >
                 <View
                   height={24}
@@ -965,6 +968,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie CD, vinyles, musique en ligne"
               >
                 <View
                   height={24}
@@ -1054,6 +1058,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Concerts & festivals"
               >
                 <View
                   height={24}
@@ -1130,6 +1135,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Conférences & rencontres"
               >
                 <View
                   height={24}
@@ -1219,6 +1225,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Évènements en ligne"
               >
                 <View
                   height={24}
@@ -1295,6 +1302,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Films, séries, cinéma"
               >
                 <View
                   height={24}
@@ -1384,6 +1392,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Instruments de musique"
               >
                 <View
                   height={24}
@@ -1460,6 +1469,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Jeux & jeux vidéos"
               >
                 <View
                   height={24}
@@ -1549,6 +1559,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Livres"
               >
                 <View
                   height={24}
@@ -1625,6 +1636,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Médias & presse"
               >
                 <View
                   height={24}
@@ -1714,6 +1726,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Musées & visites culturelles"
               >
                 <View
                   height={24}
@@ -1790,6 +1803,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Plateformes en ligne"
               >
                 <View
                   height={24}
@@ -1879,6 +1893,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Catégorie Spectacles"
               >
                 <View
                   height={24}

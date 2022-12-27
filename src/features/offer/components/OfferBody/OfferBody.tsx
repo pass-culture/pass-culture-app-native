@@ -14,6 +14,7 @@ import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
   formatFullAddress,
   formatFullAddressWithVenueName,
@@ -156,11 +157,10 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       <Spacer.Column numberOfSpaces={2} />
       <MarginContainer>
         <OfferTitle
-          testID="offerTitle"
           numberOfLines={3}
           adjustsFontSizeToFit
           allowFontScaling={false}
-          accessibilityLabel={`Nom de l'offre\u00a0: ${offer.name}`}>
+          {...accessibilityAndTestId(`Nom de l'offre\u00a0: ${offer.name}`)}>
           {offer.name}
         </OfferTitle>
       </MarginContainer>

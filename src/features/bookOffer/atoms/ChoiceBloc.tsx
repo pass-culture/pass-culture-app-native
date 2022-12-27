@@ -20,8 +20,8 @@ export const getTextColor = (theme: DefaultTheme, selected: boolean, disabled: b
 interface Props {
   selected: boolean
   onPress: () => void
-  testID?: string
   children: JSX.Element
+  accessibilityLabel: string
   disabled?: boolean
 }
 
@@ -29,13 +29,21 @@ const LINE_THICKNESS = 1
 const CHOICE_BLOCS_BY_LINE = 3
 const BUTTON_HEIGHT = getSpacing(20)
 
-export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, children, disabled }) => {
+export const ChoiceBloc: React.FC<Props> = ({
+  selected,
+  onPress,
+  accessibilityLabel,
+  children,
+  disabled,
+}) => {
   const { appContentWidth } = useTheme()
   const buttonWidth =
     (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
     CHOICE_BLOCS_BY_LINE
+
+  const label = selected ? `${accessibilityLabel} sélectionné` : accessibilityLabel
   return (
-    <ChoiceContainer onPress={onPress} testID={testID} disabled={disabled}>
+    <ChoiceContainer onPress={onPress} disabled={disabled} accessibilityLabel={label}>
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>

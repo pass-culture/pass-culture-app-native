@@ -45,7 +45,7 @@ describe('ExclusivityModule component', () => {
 
   it('should navigate to the offer when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityOffer {...props} />)
-    fireEvent.press(getByTestId('link-exclusivity-offer'))
+    fireEvent.press(getByTestId("Image d'Adèle"))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: mockOffer.id,
       from: 'home',
@@ -54,7 +54,7 @@ describe('ExclusivityModule component', () => {
 
   it('should log a click event when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityOffer {...props} />)
-    fireEvent.press(getByTestId('link-exclusivity-offer'))
+    fireEvent.press(getByTestId("Image d'Adèle"))
     expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,
       moduleId: props.moduleId,

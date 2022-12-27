@@ -3,6 +3,7 @@
 exports[`DMSIntroduction foreign version should render correctly 1`] = `
 Array [
   <View
+    accessibilityLabel="Revenir en arrière"
     accessibilityRole="button"
     accessible={true}
     collapsable={false}
@@ -539,6 +540,7 @@ Array [
 exports[`DMSIntroduction french version should render correctly 1`] = `
 Array [
   <View
+    accessibilityLabel="Revenir en arrière"
     accessibilityRole="button"
     accessible={true}
     collapsable={false}

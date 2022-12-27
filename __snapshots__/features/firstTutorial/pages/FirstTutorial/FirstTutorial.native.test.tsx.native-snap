@@ -1592,7 +1592,7 @@ quotidiennes
                       "userSelect": "auto",
                     }
                   }
-                  testID="control-button-next"
+                  testID="Continuer vers l’étape suivante"
                 >
                   <View
                     height={24}

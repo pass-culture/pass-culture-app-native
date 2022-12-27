@@ -93,10 +93,15 @@ export class CodePushButton extends Component<unknown, State> {
       return <Text style={styles.newVersion}>Nouvelle version sur AppCenter</Text>
     }
 
+    const wording = this.state.status || 'Check update'
+
     return (
-      <TouchableOpacity testID="container" style={styles.button} onPress={this.lookForUpdate}>
+      <TouchableOpacity
+        accessibilityLabel={wording}
+        style={styles.button}
+        onPress={this.lookForUpdate}>
         <Text style={styles.status} testID="status">
-          {this.state.status || 'Check update'}
+          {wording}
         </Text>
         {!!this.state.info && (
           <Text style={styles.info} numberOfLines={3}>

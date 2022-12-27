@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -305,7 +304,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="EndedBookingItem"
+          testID="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
         >
           <View
             style={

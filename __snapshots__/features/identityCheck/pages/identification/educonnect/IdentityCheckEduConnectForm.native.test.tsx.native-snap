@@ -95,7 +95,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -121,7 +120,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}

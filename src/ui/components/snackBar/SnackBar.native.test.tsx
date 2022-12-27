@@ -97,9 +97,12 @@ describe('SnackBar Component', () => {
     })
     it('should trigger onClose when the closeIcon is clicked', async () => {
       const onClose = jest.fn()
-      const { getByTestId } = render(renderHelperSnackBar(true, { message: 'message', onClose }))
+      const snackBarMessage = 'message'
+      const { getByTestId } = render(
+        renderHelperSnackBar(true, { message: snackBarMessage, onClose })
+      )
 
-      const touchable = getByTestId('snackbar-close')
+      const touchable = getByTestId(`Supprimer le message\u00a0: ${snackBarMessage}`)
 
       fireEvent.press(touchable)
 

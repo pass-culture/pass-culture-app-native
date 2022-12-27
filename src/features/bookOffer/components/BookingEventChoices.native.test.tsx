@@ -139,7 +139,7 @@ describe('<BookingEventChoices />', () => {
 
     const page = render(<BookingEventChoices stocks={[]} />)
 
-    const hourBloc = page.getByTestId('HourChoice1')
+    const hourBloc = page.getByTestId('HourChoice1-hour')
     fireEvent.press(hourBloc)
 
     expect(page.queryByTestId('DuoStep')).toBeNull()

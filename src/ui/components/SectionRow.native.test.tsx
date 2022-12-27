@@ -10,7 +10,7 @@ describe('<SectionRow/>', () => {
       <SectionRow type="navigable" title="navigable" navigateTo={{ screen: 'Accessibility' }} />
     )
 
-    expect(queryByTestId('touchable-link-section-row')).toBeTruthy()
+    expect(queryByTestId('navigable')).toBeTruthy()
   })
 
   it('should use TouchableLink when is external navigation', () => {
@@ -18,7 +18,7 @@ describe('<SectionRow/>', () => {
       <SectionRow type="clickable" title="clickable" externalNav={{ url: 'https://url-externe' }} />
     )
 
-    expect(queryByTestId('touchable-link-section-row')).toBeTruthy()
+    expect(queryByTestId('Nouvelle fenêtre\u00a0: clickable')).toBeTruthy()
   })
 
   it('should use Touchable when no navigation', () => {
@@ -26,6 +26,6 @@ describe('<SectionRow/>', () => {
       <SectionRow type="clickable" title="clickable" onPress={jest.fn()} />
     )
 
-    expect(queryByTestId('touchable-section-row')).toBeTruthy()
+    expect(queryByTestId('clickable')).toBeTruthy()
   })
 })

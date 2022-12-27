@@ -40,9 +40,9 @@ describe('BookDuoChoice', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookDuoChoice />))
 
-    const soloChoice = page.queryByTestId('DuoChoice1')
+    const soloChoice = page.queryByTestId('DuoChoice1-price')
 
-    const duoChoice = page.queryByTestId('DuoChoice2')
+    const duoChoice = page.queryByTestId('DuoChoice2-price')
 
     expect(soloChoice).toBeTruthy()
     expect(duoChoice).toBeTruthy()
@@ -54,7 +54,7 @@ describe('BookDuoChoice', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const page = render(reactQueryProviderHOC(<BookDuoChoice />))
 
-    const soloChoice = page.getByTestId('DuoChoice1')
+    const soloChoice = page.getByTestId('DuoChoice1-price')
 
     fireEvent.click(soloChoice)
 

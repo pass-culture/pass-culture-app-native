@@ -50,7 +50,7 @@ describe('<SearchFilter/>', () => {
       const { getByTestId } = renderSearchFilter()
 
       await act(async () => {
-        fireEvent.press(getByTestId('backButton'))
+        fireEvent.press(getByTestId('Revenir en arrière'))
       })
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {

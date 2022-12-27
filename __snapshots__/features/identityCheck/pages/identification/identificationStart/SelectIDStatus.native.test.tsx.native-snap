@@ -95,7 +95,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -121,7 +120,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -413,7 +412,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 >
                   <View
                     accessibilityRole="link"
-                    accessible={true}
+                    accessible={false}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -594,7 +593,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 >
                   <View
                     accessibilityRole="link"
-                    accessible={true}
+                    accessible={false}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -752,7 +751,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 >
                   <View
                     accessibilityRole="link"
-                    accessible={true}
+                    accessible={false}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}

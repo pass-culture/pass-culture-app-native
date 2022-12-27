@@ -33,7 +33,6 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> =
       {...inputProps}
       ref={forwardedRef}
       rightButton={{
-        testID: 'toggle-password-visibility',
         icon: shouldHidePassword ? EyeSlash : Eye,
         onPress: togglePasswordDisplay,
         accessibilityLabel: shouldHidePassword

@@ -44,13 +44,14 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
   useArrowNavigationForRadioButton(containerRef)
   useSpaceBarAction(isFocus ? onPress : undefined)
 
+  const accessibilityLabel = `${hit.label} ${hit.info}`
   return (
     <TouchableOpacity
       accessibilityRole={AccessibilityRole.RADIO}
       onFocus={onFocus}
       onBlur={onBlur}
       onPress={onPress}
-      testID={keyExtractor(hit)}>
+      accessibilityLabel={accessibilityLabel}>
       <RefContainer ref={containerRef}>
         <Icon />
         <Spacer.Row numberOfSpaces={4} />

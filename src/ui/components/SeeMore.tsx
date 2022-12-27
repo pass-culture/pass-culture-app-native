@@ -18,11 +18,15 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onP
   return (
     <Container height={height} width={width}>
       <Spacer.Column numberOfSpaces={2} />
-      <ClickableArea activeOpacity={1} navigateTo={navigateTo} onPress={onPress}>
+      <ClickableArea
+        activeOpacity={1}
+        navigateTo={navigateTo}
+        onPress={onPress}
+        accessibilityLabel="En voir plus">
         <Row>
           <Spacer.Row numberOfSpaces={16} />
           <RoundContainer>
-            <ArrowNext testID={'arrow-next'} />
+            <ArrowNext />
           </RoundContainer>
           <Spacer.Row numberOfSpaces={16} />
         </Row>
@@ -39,19 +43,21 @@ const ClickableArea: React.FC<{
   activeOpacity: number
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress: () => void
-}> = ({ activeOpacity, children, onPress, navigateTo }) => {
+  accessibilityLabel: string
+}> = ({ activeOpacity, children, onPress, navigateTo, ...props }) => {
   if (navigateTo)
     return (
       <StyledTouchableLink
         activeOpacity={activeOpacity}
         navigateTo={navigateTo}
-        onBeforeNavigate={onPress}>
+        onBeforeNavigate={onPress}
+        {...props}>
         {children}
       </StyledTouchableLink>
     )
   else
     return (
-      <StyledTouchableOpacity activeOpacity={activeOpacity} onPress={onPress}>
+      <StyledTouchableOpacity activeOpacity={activeOpacity} onPress={onPress} {...props}>
         {children}
       </StyledTouchableOpacity>
     )

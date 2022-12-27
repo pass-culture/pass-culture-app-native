@@ -504,7 +504,7 @@ exports[`BookingDetails should render correctly 1`] = `
                             "disabled": true,
                           }
                         }
-                        accessible={true}
+                        accessible={false}
                         collapsable={false}
                         focusable={false}
                         onClick={[Function]}
@@ -742,7 +742,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="touchable-section-row"
+            testID="Date : Le 15 mars 2021 à 20h00"
           >
             <View
               style={

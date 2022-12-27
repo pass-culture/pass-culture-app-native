@@ -56,7 +56,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="back"
             onPress={goBack}
-            testID="Revenir en arrière"
+            accessibilityLabel="Revenir en arrière"
           />
           <Spacer.Flex />
 
@@ -72,7 +72,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
             animationState={animationState}
             iconName="share"
             onPress={onSharePress}
-            testID="Partager"
+            accessibilityLabel="Partager"
           />
           <Spacer.Row numberOfSpaces={6} />
         </Row>

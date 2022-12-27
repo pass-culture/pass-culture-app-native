@@ -2,7 +2,6 @@ import React from 'react'
 import { AccessibilityRole, AccessibilityState, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -26,7 +25,7 @@ interface HeaderIconProps {
   }
   accessibilityRole?: AccessibilityRole
   accessibilityState?: AccessibilityState
-  testID: string
+  accessibilityLabel: string
 }
 
 const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
@@ -46,7 +45,7 @@ export const HeaderIcon = (props: HeaderIconProps) => {
       onPress={props.onPress}
       accessibilityRole={props.accessibilityRole}
       accessibilityState={props.accessibilityState}
-      {...accessibilityAndTestId(props.testID)}>
+      accessibilityLabel={props.accessibilityLabel}>
       <StyledAnimatedView
         testID="headerIconRoundContainer"
         style={{

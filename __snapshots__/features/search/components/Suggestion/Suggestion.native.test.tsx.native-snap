@@ -2,7 +2,7 @@
 
 exports[`Suggestion should display component correctly 1`] = `
 <View
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={false}
   onClick={[Function]}
