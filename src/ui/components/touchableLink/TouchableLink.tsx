@@ -3,6 +3,7 @@ import React, { createRef, ElementType, useCallback, useEffect } from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
@@ -27,6 +28,8 @@ export function TouchableLink({
   as: Tag,
   isOnPressDebounced,
   hoverUnderlineColor,
+  accessibilityLabel,
+  testID,
   ...rest
 }: TouchableLinkProps) {
   const TouchableComponent = (
@@ -92,7 +95,8 @@ export function TouchableLink({
       onBlur={onLinkBlur}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onPress={disabled ? undefined : callOnClick}>
+      onPress={disabled ? undefined : callOnClick}
+      {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
     </TouchableLinkComponent>
   )

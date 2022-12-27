@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppButtonInner } from 'ui/components/buttons/AppButton/AppButtonInner'
 import { DefaultLoadingIndicator } from 'ui/components/buttons/AppButton/DefaultLoadingIndicator'
 import { appButtonStyles } from 'ui/components/buttons/AppButton/styleUtils'
@@ -28,7 +27,6 @@ const _AppButton = <T extends AppButtonProps>({
   inlineHeight,
   accessibilityLabel,
   accessibilityDescribedBy,
-  testID,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
@@ -45,10 +43,7 @@ const _AppButton = <T extends AppButtonProps>({
     disabled || isLoading ? undefined : (onLongPress as AppButtonEventNative)
   return (
     <TouchableOpacityButton
-      {...accessibilityAndTestId(
-        accessibilityLabel || wording,
-        accessibilityLabel || wording || testID
-      )}
+      accessibilityLabel={accessibilityLabel || wording}
       aria-describedby={accessibilityDescribedBy}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}

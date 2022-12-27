@@ -15,7 +15,7 @@ export function ButtonInsideText({
   onLongPress,
   icon: Icon,
   buttonColor,
-  testID,
+  accessibilityLabel,
   accessibilityRole,
 }: ButtonInsideTexteProps) {
   return (
@@ -24,7 +24,7 @@ export function ButtonInsideText({
         onPress={onPress as AppButtonEventNative}
         onLongPress={onLongPress as AppButtonEventNative}
         accessibilityRole={accessibilityRole}
-        testID={testID}>
+        accessibilityLabel={accessibilityLabel || wording}>
         <ButtonInsideTextInner
           wording={wording}
           icon={Icon}

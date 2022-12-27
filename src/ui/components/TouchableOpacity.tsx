@@ -8,10 +8,18 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
-export function TouchableOpacity({ onFocus, onBlur, children, ...props }: TouchableOpacityProps) {
+export function TouchableOpacity({
+  onFocus,
+  onBlur,
+  children,
+  accessibilityLabel,
+  testID,
+  ...props
+}: TouchableOpacityProps) {
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
 
   const onStyledFocus = (e: NativeSyntheticEvent<TargetedEvent>) => {
@@ -28,7 +36,8 @@ export function TouchableOpacity({ onFocus, onBlur, children, ...props }: Toucha
       isFocus={isFocus}
       onFocus={onStyledFocus}
       onBlur={onStyledBlur}
-      {...props}>
+      {...props}
+      {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
     </StyledTouchableOpacity>
   )

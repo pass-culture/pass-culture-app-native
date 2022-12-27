@@ -2,6 +2,7 @@ import React, { MouseEventHandler, useCallback } from 'react'
 import styled, { CSSObject } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
   AppButtonEventWeb,
   TouchableOpacityButtonProps,
@@ -22,6 +23,7 @@ export function ButtonInsideText({
   href,
   target,
   type = 'button',
+  accessibilityLabel,
   testID,
 }: ButtonInsideTexteProps) {
   const ButtonComponent = (href ? Link : Button) as React.ElementType
@@ -60,7 +62,7 @@ export function ButtonInsideText({
       onDoubleClick={onDoubleClick}
       type={href ? undefined : type}
       buttonColor={buttonColor}
-      testID={testID || 'button-inside-text'}
+      {...accessibilityAndTestId(accessibilityLabel || wording, testID)}
       {...buttonLinkProps}>
       <ButtonInsideTextInner
         wording={wording}
@@ -93,9 +95,9 @@ const webStyle = ({
     ...getHoverStyle(buttonColor ?? theme.colors.primary),
   } as CSSObject)
 
-const Button = styled.button.attrs<Pick<ButtonInsideTexteProps, 'testID'>>(({ testID }) => ({
-  ['data-testid']: testID,
-}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>>(webStyle)
-const Link = styled.a.attrs<Pick<ButtonInsideTexteProps, 'testID'>>(({ testID }) => ({
-  ['data-testid']: testID,
-}))<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>>(webStyle)
+const Button = styled.button<
+  TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>
+>(webStyle)
+const Link = styled.a<TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>>(
+  webStyle
+)
