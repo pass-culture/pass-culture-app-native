@@ -1,12 +1,15 @@
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
+import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { Typo } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
+  useWhiteStatusBarWithoutReactNavigation()
+
   return (
     <Container>
       {/**
