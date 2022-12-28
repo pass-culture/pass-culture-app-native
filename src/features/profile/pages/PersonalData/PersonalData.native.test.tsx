@@ -8,7 +8,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 
-import { PersonalData } from '../PersonalData'
+import { PersonalData } from './PersonalData'
 
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
