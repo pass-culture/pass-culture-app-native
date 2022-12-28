@@ -14,7 +14,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
 }))
 jest.mock('react-query')
-jest.mock('features/profile/utils')
+jest.mock('features/profile/helpers/useIsUserUnderage')
 jest.mock('features/identityCheck/pages/profile/utils')
 
 const mockNavigateToNextScreen = jest.fn()

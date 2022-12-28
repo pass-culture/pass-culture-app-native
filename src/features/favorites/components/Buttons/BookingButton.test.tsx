@@ -17,7 +17,8 @@ import { BookingButton } from './BookingButton'
 
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('features/user/helpers/useAvailableCredit')
-jest.mock('features/profile/utils')
+jest.mock('features/profile/helpers/isUserExBeneficiary')
+jest.mock('features/profile/helpers/isUserBeneficiary')
 
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 

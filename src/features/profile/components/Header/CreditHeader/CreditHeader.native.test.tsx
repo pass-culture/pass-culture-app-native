@@ -8,11 +8,19 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
-import * as ProfileUtils from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { render } from 'tests/utils'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useResetRecreditAmountToShow')
+
+let mockedUseIsUserUnderageBeneficiary = false
+jest.mock('features/profile/helpers/useIsUserUnderageBeneficiary', () => {
+  return {
+    useIsUserUnderageBeneficiary: jest.fn(() => {
+      return mockedUseIsUserUnderageBeneficiary
+    }),
+  }
+})
 
 const dateInPast = '2022-08-01T18:00:00'
 const dateInFuture = '2023-02-09T11:17:14.786670'
@@ -79,7 +87,7 @@ describe('CreditHeader', () => {
 
   describe('Beneficiary is underage', () => {
     beforeAll(() => {
-      jest.spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary').mockReturnValue(true)
+      mockedUseIsUserUnderageBeneficiary = true
     })
 
     it('should render correctly for underage beneficiary', () => {

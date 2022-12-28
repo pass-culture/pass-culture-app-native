@@ -3,7 +3,7 @@ import React from 'react'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { flushAllPromisesWithAct, render } from 'tests/utils'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('<CookiesDetails/>', () => {
   it('should render correctly', async () => {

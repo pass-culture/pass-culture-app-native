@@ -56,7 +56,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
 
-jest.mock('features/profile/utils')
+jest.mock('features/profile/helpers/useIsUserUnderage')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
 const mockUseSubcategoriesMapping = jest.fn()

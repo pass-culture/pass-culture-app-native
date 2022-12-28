@@ -6,7 +6,7 @@ import { render, fireEvent } from 'tests/utils'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
-jest.mock('features/profile/utils')
+jest.mock('features/profile/helpers/shouldOpenInbox')
 
 describe('ProfileBadge', () => {
   it('should render component correctly if no icon is provided', () => {

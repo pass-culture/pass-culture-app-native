@@ -3,7 +3,7 @@ import React from 'react'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { checkAccessibilityFor, render, flushAllPromisesWithAct } from 'tests/utils/web'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('<CookiesDetails/>', () => {
   describe('Accessibility', () => {

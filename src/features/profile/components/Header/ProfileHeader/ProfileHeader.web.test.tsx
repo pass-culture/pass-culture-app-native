@@ -27,7 +27,7 @@ const user: UserProfileResponse = {
   status: { statusType: YoungStatusType.beneficiary },
 }
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,

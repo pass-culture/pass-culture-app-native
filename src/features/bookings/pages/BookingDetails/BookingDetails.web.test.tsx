@@ -15,7 +15,7 @@ import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
