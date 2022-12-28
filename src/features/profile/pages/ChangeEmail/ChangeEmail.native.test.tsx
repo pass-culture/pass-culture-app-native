@@ -9,7 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { ChangeEmail } from '../ChangeEmail'
+import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('features/auth/AuthContext')
 jest.mock('react-query')
