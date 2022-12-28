@@ -2023,11 +2023,6 @@ export interface SettingsResponse {
    */
   appEnableAutocomplete: boolean
   /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  appEnableCookiesV2: boolean
-  /**
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
    */

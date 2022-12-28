@@ -6,7 +6,6 @@ export const mockDefaultSettings: SettingsResponse = {
   accountCreationMinimumAge: 15,
   accountUnsuspensionLimit: 60,
   appEnableAutocomplete: true,
-  appEnableCookiesV2: true,
   displayDmsRedirection: true,
   enableFrontImageResizing: true,
   enableNativeCulturalSurvey: false,
