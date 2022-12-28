@@ -22,27 +22,29 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
+const reasonsMock = {
+  IMPROPER: {
+    description: 'La date ne correspond pas, mauvaise description...',
+    title: 'La description est non conforme',
+  },
+  INAPPROPRIATE: {
+    description: 'violence, incitation à la haine, nudité...',
+    title: 'Le contenu est inapproprié',
+  },
+  OTHER: {
+    description: '',
+    title: 'Autre',
+  },
+  PRICE_TOO_HIGH: {
+    description: "comparé à l'offre public",
+    title: 'Le tarif est trop élevé',
+  },
+}
+
 jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting', () => ({
   useReasonsForReporting: jest.fn(() => ({
     data: {
-      reasons: {
-        IMPROPER: {
-          description: 'La date ne correspond pas, mauvaise description...',
-          title: 'La description est non conforme',
-        },
-        INAPPROPRIATE: {
-          description: 'violence, incitation à la haine, nudité...',
-          title: 'Le contenu est inapproprié',
-        },
-        OTHER: {
-          description: '',
-          title: 'Autre',
-        },
-        PRICE_TOO_HIGH: {
-          description: "comparé à l'offre public",
-          title: 'Le tarif est trop élevé',
-        },
-      },
+      reasons: reasonsMock,
     },
   })),
 }))
@@ -60,7 +62,9 @@ describe('<ReportOfferReason />', () => {
     it('should be enabled if a reason is selected', () => {
       const renderAPI = renderReportReason()
 
-      const radioButton = renderAPI.getByTestId('radio-button-INAPPROPRIATE')
+      const radioButton = renderAPI.getByTestId(
+        `${reasonsMock.INAPPROPRIATE.title} ${reasonsMock.INAPPROPRIATE.description}`
+      )
       const reportButton = renderAPI.getByTestId('Signaler l’offre')
 
       fireEvent.press(radioButton)

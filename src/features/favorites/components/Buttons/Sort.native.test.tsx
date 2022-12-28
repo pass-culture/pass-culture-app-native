@@ -9,7 +9,7 @@ describe('Sort component', () => {
   afterAll(() => jest.resetAllMocks())
   it('should navigate to Sort page on pressing', () => {
     const { getByTestId } = render(<Sort />)
-    fireEvent.press(getByTestId('SortButton'))
+    fireEvent.press(getByTestId('Trier'))
     expect(navigate).toHaveBeenCalledWith('FavoritesSorts', undefined)
   })
 })

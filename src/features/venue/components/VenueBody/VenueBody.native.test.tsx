@@ -43,7 +43,7 @@ describe('<VenueBody />', () => {
 
   it('should not show venue banner in where section', async () => {
     const venue = await renderVenueBody(venueId)
-    expect(venue.queryByTestId('VenueBannerComponent')).toBeNull()
+    expect(venue.queryByTestId(`Lieu ${venueResponseSnap.name}`)).toBeNull()
   })
 
   it('should show withdrawalDetails', async () => {

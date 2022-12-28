@@ -99,19 +99,13 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
       <CardContent>
         <Paragraphe>
           <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes nos </Typo.Body>
-          <ExternalLink
-            text="Conditions Générales d’Utilisation"
-            url={env.CGU_LINK}
-            primary
-            testID="external-link-cgu"
-          />
+          <ExternalLink text="Conditions Générales d’Utilisation" url={env.CGU_LINK} primary />
           <Spacer.Row numberOfSpaces={1} />
           <Typo.Body> ainsi que notre </Typo.Body>
           <ExternalLink
             text="Politique de confidentialité."
             primary
             url={env.PRIVACY_POLICY_LINK}
-            testID="external-link-privacy-policy"
           />
         </Paragraphe>
         <Spacer.Column numberOfSpaces={5} />

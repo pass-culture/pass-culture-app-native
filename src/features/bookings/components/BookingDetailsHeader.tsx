@@ -36,7 +36,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
               animationState={animationState}
               iconName="back"
               onPress={goBack}
-              testID="Revenir en arrière"
+              accessibilityLabel="Revenir en arrière"
             />
           </IconContainer>
           <Spacer.Flex />

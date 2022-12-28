@@ -25,8 +25,9 @@ Object {
         style="flex-direction: row; flex-wrap: wrap; margin-right: -8px; margin-left: -8px;"
       >
         <div
+          aria-label="Solo 20 € sélectionné"
           class="css-view-1dbjc4n"
-          data-testid="DuoChoice1"
+          data-testid="Solo 20 € sélectionné"
           style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="0"
         >
@@ -83,8 +84,9 @@ Object {
           </div>
         </div>
         <div
+          aria-label="Duo 40 €"
           class="css-view-1dbjc4n"
-          data-testid="DuoChoice2"
+          data-testid="Duo 40 €"
           style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="0"
         >
@@ -167,8 +169,9 @@ Object {
       style="flex-direction: row; flex-wrap: wrap; margin-right: -8px; margin-left: -8px;"
     >
       <div
+        aria-label="Solo 20 € sélectionné"
         class="css-view-1dbjc4n"
-        data-testid="DuoChoice1"
+        data-testid="Solo 20 € sélectionné"
         style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
         tabindex="0"
       >
@@ -225,8 +228,9 @@ Object {
         </div>
       </div>
       <div
+        aria-label="Duo 40 €"
         class="css-view-1dbjc4n"
-        data-testid="DuoChoice2"
+        data-testid="Duo 40 €"
         style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
         tabindex="0"
       >

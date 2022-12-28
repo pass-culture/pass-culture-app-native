@@ -32,6 +32,13 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
   useAngle={true}
 >
   <View
+    accessibilityLabel="Visité un musée, un monument, une exposition..."
+    accessibilityRole="checkbox"
+    accessibilityState={
+      Object {
+        "checked": false,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -58,7 +65,7 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
         "userSelect": "auto",
       }
     }
-    testID="Visité un musée,-CulturalSurveyAnswer"
+    testID="Visité un musée, un monument, une exposition..."
   >
     <View
       style={
@@ -155,6 +162,13 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
   useAngle={true}
 >
   <View
+    accessibilityLabel="Visité un musée, un monument, une exposition..."
+    accessibilityRole="checkbox"
+    accessibilityState={
+      Object {
+        "checked": true,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -181,7 +195,7 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
         "userSelect": "auto",
       }
     }
-    testID="Visité un musée,-CulturalSurveyAnswer"
+    testID="Visité un musée, un monument, une exposition..."
   >
     <View
       style={

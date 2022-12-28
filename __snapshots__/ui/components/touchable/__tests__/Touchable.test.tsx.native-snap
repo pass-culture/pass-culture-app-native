@@ -3,7 +3,7 @@
 exports[`<Touchable /> should render correctly 1`] = `
 <View
   accessibilityRole="button"
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={true}
   onClick={[Function]}
@@ -29,7 +29,7 @@ exports[`<Touchable /> should render correctly 1`] = `
 exports[`<Touchable /> should render correctly on custom type 1`] = `
 <View
   accessibilityRole="button"
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={true}
   onClick={[Function]}

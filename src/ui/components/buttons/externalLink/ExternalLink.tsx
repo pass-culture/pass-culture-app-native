@@ -3,6 +3,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
@@ -17,8 +18,12 @@ interface Props {
 export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) => {
   const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
+  const accessibilityLabel = `Nouvelle fenêtre\u00a0: ${text || url}`
   return (
-    <ButtonText primary={primary} onPress={() => openUrl(url)} testID={testID}>
+    <ButtonText
+      primary={primary}
+      onPress={() => openUrl(url)}
+      {...accessibilityAndTestId(accessibilityLabel, testID)}>
       <Spacer.Row numberOfSpaces={1} />
       <Text>
         <ExternalSite primary={primary} testID="externalSiteIcon" />

@@ -55,9 +55,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
           <TouchableOpacity
             style={iconContainerStyle}
             onPress={() => copyToClipboard(deeplink.universalLink)}
-            accessibilityLabel="Copier"
-            accessible
-            testID="copy-universalLink">
+            accessibilityLabel="Copier">
             <Share />
           </TouchableOpacity>
         </Spacer.Flex>
@@ -75,9 +73,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
           <TouchableOpacity
             style={iconContainerStyle}
             onPress={() => copyToClipboard(deeplink.firebaseLink)}
-            accessibilityLabel="Copier dans le press-papier"
-            accessible
-            testID="copy-firebaselink">
+            accessibilityLabel="Copier dans le presse-papier">
             <Share />
           </TouchableOpacity>
         </Spacer.Flex>

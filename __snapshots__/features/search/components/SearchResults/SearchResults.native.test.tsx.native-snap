@@ -44,6 +44,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Partout : Filtre sélectionné"
               accessibilityRole="button"
               accessible={true}
               collapsable={false}
@@ -73,7 +74,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="locationButton"
+              testID="Partout : Filtre sélectionné"
             >
               <Text
                 isSelected={true}
@@ -128,6 +129,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Catégories"
               accessibilityRole="button"
               accessible={true}
               collapsable={false}
@@ -157,7 +159,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="categoryButton"
+              testID="Catégories"
             >
               <Text
                 isSelected={false}
@@ -192,6 +194,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Prix"
               accessibilityRole="button"
               accessible={true}
               collapsable={false}
@@ -221,7 +224,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="priceButton"
+              testID="Prix"
             >
               <Text
                 isSelected={false}
@@ -256,6 +259,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Type"
               accessibilityRole="button"
               accessible={true}
               collapsable={false}
@@ -285,7 +289,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="typeButton"
+              testID="Type"
             >
               <Text
                 isSelected={false}
@@ -320,6 +324,7 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Dates & heures"
               accessibilityRole="button"
               accessible={true}
               collapsable={false}
@@ -349,7 +354,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="datesHoursButton"
+              testID="Dates & heures"
             >
               <Text
                 isSelected={false}

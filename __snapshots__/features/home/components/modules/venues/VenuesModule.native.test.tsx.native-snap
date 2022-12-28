@@ -782,7 +782,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                           "width": 252,
                         }
                       }
-                      testID="venueTile"
+                      testID="Lieu Le Petit Rintintin 1 du type Salle de projections, "
                     >
                       <View
                         style={
@@ -1001,7 +1001,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                           "width": 252,
                         }
                       }
-                      testID="venueTile"
+                      testID="Lieu Le Petit Rintintin 2 du type Salle de projections, "
                     >
                       <View
                         style={
@@ -1220,7 +1220,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                           "width": 252,
                         }
                       }
-                      testID="venueTile"
+                      testID="Lieu Le Petit Rintintin 3 du type Salle de projections, "
                     >
                       <View
                         style={
@@ -1439,7 +1439,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                           "width": 252,
                         }
                       }
-                      testID="venueTile"
+                      testID="Lieu Le Petit Rintintin 4 du type Salle de projections, "
                     >
                       <View
                         style={
@@ -1606,7 +1606,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "width": 252,
                     }
                   }
-                  testID="venueTile"
+                  testID="Lieu Le Petit Rintintin 2 du type Salle de projections, "
                 >
                   <View
                     style={

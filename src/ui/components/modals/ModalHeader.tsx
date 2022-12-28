@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 // eslint-disable-next-line no-restricted-imports
@@ -52,8 +51,8 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     <Container onLayout={onLayout} testID="modalHeader" modalSpacing={modalSpacing}>
       <HeaderActionContainer justifyContent="left">
         {!!LeftIcon && (
-          <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
-            <LeftIcon {...accessibilityAndTestId(leftIconAccessibilityLabel, 'leftIcon')} />
+          <HeaderAction onPress={onLeftIconPress} accessibilityLabel={leftIconAccessibilityLabel}>
+            <LeftIcon />
             <HiddenAccessibleText>Retour</HiddenAccessibleText>
           </HeaderAction>
         )}
@@ -68,10 +67,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       </TitleContainer>
       <HeaderActionContainer justifyContent="right">
         {!!RightIcon && (
-          <HeaderAction
-            onPress={onRightIconPress}
-            testID={rightIconAccessibilityLabel}
-            accessibilityLabel={rightIconAccessibilityLabel}>
+          <HeaderAction onPress={onRightIconPress} accessibilityLabel={rightIconAccessibilityLabel}>
             <RightIcon testID="rightIcon" />
           </HeaderAction>
         )}

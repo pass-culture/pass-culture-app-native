@@ -95,7 +95,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -121,7 +120,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -335,6 +334,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Collégien"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -365,6 +365,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Collégien"
                     >
                       <View
                         style={
@@ -407,6 +408,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Lycéen"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -437,6 +439,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Lycéen"
                     >
                       <View
                         style={
@@ -479,6 +482,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Étudiant"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -509,6 +513,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Étudiant"
                     >
                       <View
                         style={
@@ -551,6 +556,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Employé"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -581,6 +587,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Employé"
                     >
                       <View
                         style={
@@ -623,6 +630,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Apprenti"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -653,6 +661,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Apprenti"
                     >
                       <View
                         style={
@@ -695,6 +704,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Alternant"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -725,6 +735,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Alternant"
                     >
                       <View
                         style={
@@ -767,6 +778,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Volontaire"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -797,6 +809,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Volontaire"
                     >
                       <View
                         style={
@@ -853,6 +866,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Inactif"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -883,6 +897,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Inactif"
                     >
                       <View
                         style={
@@ -939,6 +954,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                     }
                   >
                     <View
+                      accessibilityLabel="Chômeur"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -969,6 +985,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "width": "100%",
                         }
                       }
+                      testID="Chômeur"
                     >
                       <View
                         style={

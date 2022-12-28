@@ -28,7 +28,7 @@ describe('CulturalSurveyCheckbox', () => {
       />
     )
     const Button = CulturalSurveyCheckboxComponent.getByTestId(
-      'Visité un musée,-CulturalSurveyAnswer'
+      'Visité un musée, un monument, une exposition...'
     )
     fireEvent.press(Button)
     expect(CulturalSurveyCheckboxComponent).toMatchSnapshot()

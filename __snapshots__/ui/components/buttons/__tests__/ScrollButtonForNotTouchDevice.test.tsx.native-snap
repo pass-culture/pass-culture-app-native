@@ -2,7 +2,7 @@
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direction 1`] = `
 <View
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={false}
   onClick={[Function]}
@@ -41,7 +41,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direc
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right direction 1`] = `
 <View
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={false}
   onClick={[Function]}
@@ -80,7 +80,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right dire
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top given 1`] = `
 <View
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={false}
   onClick={[Function]}

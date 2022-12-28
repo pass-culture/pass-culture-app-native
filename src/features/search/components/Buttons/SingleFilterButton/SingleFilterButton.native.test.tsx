@@ -15,7 +15,7 @@ describe('SingleFilterButton', () => {
       />
     )
 
-    const button = getByTestId('filterButton')
+    const button = getByTestId('CD, vinyles, musique en ligne\u00a0: Filtre sélectionné')
     fireEvent.press(button)
 
     expect(mockedOnPress).toHaveBeenCalledTimes(1)

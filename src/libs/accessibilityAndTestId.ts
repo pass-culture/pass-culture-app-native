@@ -6,6 +6,6 @@ export function accessibilityAndTestId(accessibilityLabel?: string, testID?: str
   return {
     accessible: !!accessibilityLabel,
     accessibilityLabel,
-    testID: testID || accessibilityLabel,
+    testID: accessibilityLabel || testID,
   }
 }

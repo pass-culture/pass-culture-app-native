@@ -2,13 +2,14 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 
 type CulturalSurveyCheckboxProps = {
-  title?: string
+  title: string
   subtitle?: string | null
   icon?: FunctionComponent<IconInterface> | null
   onPress: () => void
@@ -42,17 +43,22 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
     setIsSelected(props.selected)
   }, [props.selected])
 
+  const label = props.subtitle ? `${props.title} ${props.subtitle}` : props.title
   return (
     <StyledLinearGradient>
-      <AnswerContainer onPress={onPress} testID={`${props?.title}-CulturalSurveyAnswer`}>
+      <AnswerContainer
+        accessibilityRole={AccessibilityRole.CHECKBOX}
+        accessibilityState={{ checked: selected }}
+        accessibilityLabel={label}
+        onPress={onPress}>
         {!!AnswerIcon && (
           <ActivityIconContainer>
             <AnswerIcon />
           </ActivityIconContainer>
         )}
         <DescriptionContainer>
-          <Typo.ButtonText>{props?.title}</Typo.ButtonText>
-          {!!props.subtitle && <Typo.CaptionNeutralInfo>{props?.subtitle}</Typo.CaptionNeutralInfo>}
+          <Typo.ButtonText>{props.title}</Typo.ButtonText>
+          {!!props.subtitle && <Typo.CaptionNeutralInfo>{props.subtitle}</Typo.CaptionNeutralInfo>}
         </DescriptionContainer>
         {!!selected && (
           <ValidateIconContainer>

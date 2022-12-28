@@ -372,6 +372,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Participé à un festival, à une avant-première"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -398,7 +405,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Participé à un festival,-CulturalSurveyAnswer"
+                testID="Participé à un festival, à une avant-première"
               >
                 <View
                   style={
@@ -514,6 +521,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Assisté à un spectacle Pièce de théâtre, cirque, danse..."
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -540,7 +554,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Assisté à un spectacle-CulturalSurveyAnswer"
+                testID="Assisté à un spectacle Pièce de théâtre, cirque, danse..."
               >
                 <View
                   style={
@@ -655,6 +669,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Allé à la bibliothèque ou à la médiathèque"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -681,7 +702,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Allé à la bibliothèque-CulturalSurveyAnswer"
+                testID="Allé à la bibliothèque ou à la médiathèque"
               >
                 <View
                   style={
@@ -796,6 +817,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Participé à un jeu escape game, jeu concours"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -822,7 +850,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Participé à un jeu-CulturalSurveyAnswer"
+                testID="Participé à un jeu escape game, jeu concours"
               >
                 <View
                   style={
@@ -937,6 +965,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Allé à un concert"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -963,7 +998,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Allé à un concert-CulturalSurveyAnswer"
+                testID="Allé à un concert"
               >
                 <View
                   style={
@@ -1064,6 +1099,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Allé au cinéma"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1090,7 +1132,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Allé au cinéma-CulturalSurveyAnswer"
+                testID="Allé au cinéma"
               >
                 <View
                   style={
@@ -1191,6 +1233,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Visité un musée, un monument, une exposition..."
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1217,7 +1266,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Visité un musée,-CulturalSurveyAnswer"
+                testID="Visité un musée, un monument, une exposition..."
               >
                 <View
                   style={
@@ -1332,6 +1381,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Participé à une conférence, rencontre ou découverte des métiers de la culture"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1358,7 +1414,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Participé à une conférence,-CulturalSurveyAnswer"
+                testID="Participé à une conférence, rencontre ou découverte des métiers de la culture"
               >
                 <View
                   style={
@@ -1473,6 +1529,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Pris un cours danse, théâtre, musique, dessin"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1499,7 +1562,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Pris un cours-CulturalSurveyAnswer"
+                testID="Pris un cours danse, théâtre, musique, dessin"
               >
                 <View
                   style={
@@ -1614,6 +1677,13 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               useAngle={true}
             >
               <View
+                accessibilityLabel="Aucune de ces sorties culturelles"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1640,7 +1710,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                     "userSelect": "auto",
                   }
                 }
-                testID="Aucune de ces sorties culturelles-CulturalSurveyAnswer"
+                testID="Aucune de ces sorties culturelles"
               >
                 <View
                   style={

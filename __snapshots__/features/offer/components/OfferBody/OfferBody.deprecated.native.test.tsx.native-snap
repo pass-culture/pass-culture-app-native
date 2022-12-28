@@ -563,6 +563,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                           >
                             <Text
                               accessibilityLabel="Nom de l'offre : Sous les étoiles de Paris - VF"
+                              accessible={true}
                               adjustsFontSizeToFit={true}
                               allowFontScaling={false}
                               numberOfLines={3}
@@ -577,7 +578,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   },
                                 ]
                               }
-                              testID="offerTitle"
+                              testID="Nom de l'offre : Sous les étoiles de Paris - VF"
                             >
                               Sous les étoiles de Paris - VF
                             </Text>
@@ -802,6 +803,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: 
                               <Text
+                                accessibilityLabel="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
+                                accessible={true}
                                 onPress={[Function]}
                                 style={
                                   Array [
@@ -813,6 +816,7 @@ Tous les détails du film sur AlloCiné:
                                     },
                                   ]
                                 }
+                                testID="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                               >
                                 <View
                                   numberOfSpaces={1}
@@ -1040,7 +1044,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "expanded": false,
                                   }
                                 }
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -1161,6 +1165,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   How to withdraw, 
                                   <Text
+                                    accessibilityLabel="Nouvelle fenêtre : https://test.com"
+                                    accessible={true}
                                     onPress={[Function]}
                                     style={
                                       Array [
@@ -1172,6 +1178,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         },
                                       ]
                                     }
+                                    testID="Nouvelle fenêtre : https://test.com"
                                   >
                                     <View
                                       numberOfSpaces={1}
@@ -1232,7 +1239,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "expanded": false,
                                   }
                                 }
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -2659,6 +2666,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                           >
                             <Text
                               accessibilityLabel="Nom de l'offre : Sous les étoiles de Paris - VF"
+                              accessible={true}
                               adjustsFontSizeToFit={true}
                               allowFontScaling={false}
                               numberOfLines={3}
@@ -2673,7 +2681,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   },
                                 ]
                               }
-                              testID="offerTitle"
+                              testID="Nom de l'offre : Sous les étoiles de Paris - VF"
                             >
                               Sous les étoiles de Paris - VF
                             </Text>
@@ -2974,6 +2982,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: 
                               <Text
+                                accessibilityLabel="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
+                                accessible={true}
                                 onPress={[Function]}
                                 style={
                                   Array [
@@ -2985,6 +2995,7 @@ Tous les détails du film sur AlloCiné:
                                     },
                                   ]
                                 }
+                                testID="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                               >
                                 <View
                                   numberOfSpaces={1}
@@ -3257,7 +3268,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "userSelect": "auto",
                                   }
                                 }
-                                testID="VenueBannerComponent"
+                                testID="Lieu PATHE BEAUGRENELLE"
                               >
                                 <View
                                   numberOfSpaces={2}
@@ -3588,7 +3599,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "expanded": false,
                                   }
                                 }
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}
@@ -3709,6 +3720,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   How to withdraw, 
                                   <Text
+                                    accessibilityLabel="Nouvelle fenêtre : https://test.com"
+                                    accessible={true}
                                     onPress={[Function]}
                                     style={
                                       Array [
@@ -3720,6 +3733,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         },
                                       ]
                                     }
+                                    testID="Nouvelle fenêtre : https://test.com"
                                   >
                                     <View
                                       numberOfSpaces={1}
@@ -3780,7 +3794,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "expanded": false,
                                   }
                                 }
-                                accessible={true}
+                                accessible={false}
                                 collapsable={false}
                                 focusable={true}
                                 onClick={[Function]}

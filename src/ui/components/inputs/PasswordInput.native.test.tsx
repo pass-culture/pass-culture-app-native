@@ -12,7 +12,7 @@ describe('<PasswordInput />', () => {
     expect(queryByLabelText('Afficher le mot de passe')).toBeTruthy()
     expect(queryByLabelText('Cacher le mot de passe')).toBeNull()
 
-    const switchPasswordVisibilityButton = getByTestId('toggle-password-visibility')
+    const switchPasswordVisibilityButton = getByTestId('Afficher le mot de passe')
 
     fireEvent.press(switchPasswordVisibilityButton)
     expect(queryByLabelText('Cacher le mot de passe')).toBeTruthy()

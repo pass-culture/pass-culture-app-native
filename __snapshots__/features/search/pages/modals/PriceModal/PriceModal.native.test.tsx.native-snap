@@ -227,7 +227,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       },
                     ]
                   }
-                  testID="Revenir en arrière"
                 >
                   <View
                     accessibilityLabel="Revenir en arrière"
@@ -253,7 +252,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "userSelect": "auto",
                       }
                     }
-                    testID="backButton"
+                    testID="Revenir en arrière"
                   >
                     <View
                       height={24}
@@ -523,7 +522,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "disabled": false,
                       }
                     }
-                    accessible={true}
+                    accessible={false}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -702,7 +701,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "disabled": false,
                       }
                     }
-                    accessible={true}
+                    accessible={false}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}

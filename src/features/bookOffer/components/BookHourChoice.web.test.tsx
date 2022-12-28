@@ -68,11 +68,11 @@ describe('BookHourChoice', () => {
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     // firstStock corresponds to 2021-03-02 stock 20h
-    const firstStock = page.queryAllByTestId('HourChoice148409')
+    const firstStock = page.queryAllByTestId('HourChoice148409-hour')
     // secondStock corresponds to 2021-03-17 stock
-    const secondStock = page.queryAllByTestId('HourChoice148410')
+    const secondStock = page.queryAllByTestId('HourChoice148410-hour')
     // thirdStock corresponds to 2021-03-02 stock 10h
-    const thirdStock = page.queryAllByTestId('HourChoice148411')
+    const thirdStock = page.queryAllByTestId('HourChoice148411-hour')
 
     expect(firstStock.length).toBe(1)
     expect(secondStock.length).toBe(0)
@@ -86,7 +86,7 @@ describe('BookHourChoice', () => {
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     // firstStock correspond to 2021-03-02 stock
-    const firstStock = page.queryByTestId('HourChoice148409')
+    const firstStock = page.queryByTestId('HourChoice148409-hour')
 
     if (firstStock) {
       fireEvent.click(firstStock)

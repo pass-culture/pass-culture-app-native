@@ -6,7 +6,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { keyExtractor } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
@@ -323,7 +322,7 @@ describe('<LocationModal/>', () => {
         locationFilter.locationType === LocationType.VENUE ? mockVenues[0] : mockPlaces[0]
 
       await act(async () => {
-        fireEvent.press(getByTestId(keyExtractor(venueOrPlace)))
+        fireEvent.press(getByTestId(`${venueOrPlace.label} ${venueOrPlace.info}`))
       })
 
       const searchButton = getByText('Rechercher')
@@ -464,7 +463,7 @@ describe('<LocationModal/>', () => {
       mockSearchState = searchState
       const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
 
-      const defaultRadioButton = getByTestId(RadioButtonLocation.EVERYWHERE)
+      const defaultRadioButton = getByTestId(RadioButtonLocation.NO_LOCATION)
       const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
@@ -590,11 +589,11 @@ describe('<LocationModal/>', () => {
       const venue = mockVenues[0]
 
       await act(async () => {
-        fireEvent.press(getByTestId(keyExtractor(venue)))
+        fireEvent.press(getByTestId(`${venue.label} ${venue.info}`))
       })
 
       await act(async () => {
-        fireEvent.press(getByTestId('resetSearchInput'))
+        fireEvent.press(getByTestId('Réinitialiser la recherche'))
       })
 
       expect(searchInput.props.value).toEqual('')
@@ -621,7 +620,7 @@ describe('<LocationModal/>', () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       await act(async () => {
         fireEvent.press(previousButton)
       })
@@ -647,7 +646,7 @@ describe('<LocationModal/>', () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       await act(async () => {
         fireEvent.press(previousButton)
       })
@@ -680,7 +679,7 @@ describe('<LocationModal/>', () => {
 
       await superFlushWithAct()
 
-      const previousButton = getByTestId('backButton')
+      const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
 
       expect(hideLocationModal).toHaveBeenCalledTimes(1)

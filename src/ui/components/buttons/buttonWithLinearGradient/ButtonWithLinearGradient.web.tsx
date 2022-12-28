@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
 import styledNative, { DefaultTheme } from 'styled-components/native'
 
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -51,8 +52,8 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       disabled={isDisabled}
       type={href ? undefined : type}
       className={className}
-      testID={testID}
       fitContentWidth={fitContentWidth}
+      {...accessibilityAndTestId(wording, testID)}
       {...buttonLinkProps}>
       <LegendContainer reverse={iconAfterWording}>
         {!!Icon && <Icon />}

@@ -463,6 +463,7 @@ retrouver tes favoris
                   />
                   <View>
                     <View
+                      accessibilityLabel="Se connecter"
                       accessibilityRole="link"
                       accessible={true}
                       collapsable={false}
@@ -481,6 +482,7 @@ retrouver tes favoris
                           "userSelect": "auto",
                         }
                       }
+                      testID="Se connecter"
                     >
                       <View
                         paddingForIcon={0}

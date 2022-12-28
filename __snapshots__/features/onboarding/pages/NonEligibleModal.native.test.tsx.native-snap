@@ -11,7 +11,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
   visible={true}
 >
   <View
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -354,7 +354,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
   visible={true}
 >
   <View
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}

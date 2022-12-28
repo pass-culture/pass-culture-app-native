@@ -38,7 +38,7 @@ describe('<ForgottenPassword />', () => {
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
     const { getByTestId } = renderForgottenPassword()
 
-    const leftIcon = getByTestId('leftIcon')
+    const leftIcon = getByTestId('Revenir en arrière')
     fireEvent.press(leftIcon)
 
     await waitFor(() => {
@@ -59,7 +59,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
-    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
+    expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
@@ -89,7 +89,7 @@ describe('<ForgottenPassword />', () => {
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
+      expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
 
@@ -114,7 +114,7 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordOnRecaptchaError'
       )
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
+      expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
 
@@ -140,7 +140,7 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordRequestResetError'
       )
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeNull()
+      expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
 

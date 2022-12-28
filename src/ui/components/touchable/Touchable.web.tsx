@@ -10,7 +10,7 @@ const StyledTouchable = styled.button.attrs<TouchableProps>(
     tabIndex: '0',
     type: type || 'button',
     onClick,
-    'data-testid': testID,
+    'data-testid': accessibilityLabel || testID,
     'aria-label': accessibilityLabel,
     title: accessibilityLabel,
     ...rest,

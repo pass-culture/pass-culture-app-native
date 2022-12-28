@@ -18,4 +18,5 @@ export type ButtonInsideTexteProps = {
   target?: string
   type?: 'button' | 'submit' | 'reset'
   testID?: string
+  accessibilityLabel?: string
 }

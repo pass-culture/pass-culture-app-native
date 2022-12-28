@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
@@ -57,7 +56,7 @@ const BackIcon: React.FC<BackButtonProps> = (props) => {
   return (
     <StyledTouchableOpacity
       onPress={props.onGoBack ?? goBack}
-      {...accessibilityAndTestId('Revenir en arrière')}>
+      accessibilityLabel="Revenir en arrière">
       <ArrowPrevious testID="icon-back" />
     </StyledTouchableOpacity>
   )

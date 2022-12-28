@@ -262,7 +262,6 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
                           <Li key={item.label}>
                             <Spacer.Column numberOfSpaces={4} />
                             <RadioButton
-                              testID={item.type}
                               label={item.label}
                               isSelected={value === item.type}
                               onSelect={selectDateFilterOption(item.type)}

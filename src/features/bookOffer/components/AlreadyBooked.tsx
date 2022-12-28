@@ -27,7 +27,6 @@ export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
         text="Pourquoi limiter les réservations&nbsp;?"
         url={env.BOOKING_LIMIT_EXCEEDED_URL}
         primary
-        testID="external-link-booking-limit-exceeded"
       />
       <Spacer.Column numberOfSpaces={getSpacing(3)} />
       <InternalTouchableLink

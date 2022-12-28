@@ -83,6 +83,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
+  const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
@@ -92,7 +93,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}
-        disabled={isDisabled}>
+        disabled={isDisabled}
+        accessibilityLabel={accessibilityLabel}>
         <ImageContainer>
           <StyledImageBackground
             url={imageURL}

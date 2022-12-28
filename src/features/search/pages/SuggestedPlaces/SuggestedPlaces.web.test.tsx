@@ -6,7 +6,7 @@ import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces
 import { SuggestedVenue } from 'libs/venue'
 import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
-import { keyExtractor, SuggestedPlaces } from './SuggestedPlaces'
+import { SuggestedPlaces } from './SuggestedPlaces'
 
 let mockPlaces: SuggestedPlace[] = []
 const mockVenues: SuggestedVenue[] = []
@@ -25,8 +25,10 @@ describe('<SuggestedPlaces/>', () => {
       <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
     )
 
-    fireEvent.focus(getByTestId(keyExtractor(mockPlaces[1])))
-    fireEvent.keyDown(getByTestId(keyExtractor(mockPlaces[1])), { key: 'Spacebar' })
+    fireEvent.focus(getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`))
+    fireEvent.keyDown(getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`), {
+      key: 'Spacebar',
+    })
 
     expect(mockSetSelectedPlaceOrVenue).toHaveBeenCalledWith(mockPlaces[1])
   })

@@ -70,7 +70,7 @@ Array [
             "userSelect": "auto",
           }
         }
-        testID="backButton"
+        testID="Revenir en arrière"
       >
         <View
           height={24}

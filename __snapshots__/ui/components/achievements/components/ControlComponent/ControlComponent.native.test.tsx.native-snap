@@ -24,7 +24,7 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
       "userSelect": "auto",
     }
   }
-  testID="control-button-next"
+  testID="Next"
 >
   <View
     height={24}
@@ -62,7 +62,7 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
       "userSelect": "auto",
     }
   }
-  testID="control-button-prev"
+  testID="Previous"
 >
   <View
     height={24}
@@ -100,7 +100,7 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
       "userSelect": "auto",
     }
   }
-  testID="control-button-prev"
+  testID="Previous"
 >
   <View
     height={24}

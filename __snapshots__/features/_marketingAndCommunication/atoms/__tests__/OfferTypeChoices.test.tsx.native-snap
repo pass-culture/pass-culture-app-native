@@ -36,6 +36,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Numérique"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -68,6 +69,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Numérique"
       >
         <View
           numberOfSpaces={5}
@@ -119,6 +121,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Sorties"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -151,6 +154,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Sorties"
       >
         <View
           numberOfSpaces={5}
@@ -202,6 +206,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
+        accessibilityLabel="Bien physique"
         accessibilityRole="checkbox"
         accessibilityState={
           Object {
@@ -234,6 +239,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
+        testID="Bien physique"
       >
         <View
           numberOfSpaces={5}

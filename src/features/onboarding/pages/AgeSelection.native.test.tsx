@@ -27,7 +27,7 @@ describe('AgeSelection', () => {
 
   it('should navigate to Home on goBack press', () => {
     const { getByTestId } = render(<AgeSelection />)
-    const backButton = getByTestId('backButton')
+    const backButton = getByTestId('Revenir en arrière')
 
     fireEvent.press(backButton)
     expect(navigateFromRef).toHaveBeenCalledWith(...homeNavConfig)

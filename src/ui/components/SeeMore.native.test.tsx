@@ -14,7 +14,7 @@ describe('<SeeMore />', () => {
 
   it('calls onPress when clicking the arrow', () => {
     const seeMore = render(<SeeMore {...props} />)
-    fireEvent.press(seeMore.getByTestId('arrow-next'))
+    fireEvent.press(seeMore.getByTestId('En voir plus'))
     expect(props.onPress).toHaveBeenCalledTimes(1)
   })
 

@@ -3,7 +3,6 @@ import { Animated } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
@@ -22,10 +21,7 @@ export const ScrollToTopButton = ({
   })
   return (
     <Animated.View style={{ opacity: transition }}>
-      <Container
-        onPress={onPress}
-        disabled={disabled}
-        {...accessibilityAndTestId('Revenir en haut', 'ScrollToTop')}>
+      <Container onPress={onPress} disabled={disabled} accessibilityLabel="Revenir en haut">
         <StyledLinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}

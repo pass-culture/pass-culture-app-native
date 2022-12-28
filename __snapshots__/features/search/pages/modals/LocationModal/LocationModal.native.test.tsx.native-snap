@@ -227,7 +227,6 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                       },
                     ]
                   }
-                  testID="Revenir en arrière"
                 >
                   <View
                     accessibilityLabel="Revenir en arrière"
@@ -253,7 +252,7 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         "userSelect": "auto",
                       }
                     }
-                    testID="backButton"
+                    testID="Revenir en arrière"
                   >
                     <View
                       height={24}
@@ -384,6 +383,7 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                     }
                   />
                   <View
+                    accessibilityLabel="Choisir un lieu"
                     accessibilityRole="radio"
                     accessibilityState={
                       Object {
@@ -552,6 +552,7 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                     }
                   />
                   <View
+                    accessibilityLabel="Autour de moi"
                     accessibilityRole="radio"
                     accessibilityState={
                       Object {
@@ -719,6 +720,7 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                     }
                   />
                   <View
+                    accessibilityLabel="Partout"
                     accessibilityRole="radio"
                     accessibilityState={
                       Object {

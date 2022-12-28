@@ -99,7 +99,7 @@ describe('<VenueIconCaptions />', () => {
     expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
   })
 
-  it('should open "Activate geolocation" modal when clicking on iconLocation if geolocation disabled', () => {
+  it('should open "Activate geolocation" modal when clicking on "Géolocalisation désactivée" if geolocation disabled', () => {
     mockDistance = null
 
     const { getByTestId } = render(
@@ -109,7 +109,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    fireEvent.press(getByTestId('iconLocation'))
+    fireEvent.press(getByTestId('Géolocalisation désactivée'))
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
 })

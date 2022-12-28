@@ -4,7 +4,7 @@ exports[`DateHour component should not display anything when nothing selected 1`
 Array [
   <View
     accessibilityRole="button"
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -129,7 +129,7 @@ exports[`DateHour component should render correctly 1`] = `
 Array [
   <View
     accessibilityRole="button"
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}

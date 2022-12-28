@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useSubcategory } from 'libs/subcategories'
 import { theme } from 'theme'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -49,7 +50,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
               <Title>{title}</Title>
               <Spacer.Row numberOfSpaces={2} />
               {!!properties.isDuo && (
-                <IconDuoContainer accessibilityLabel="DUO&nbsp;: Elle comporte 2 places.">
+                <IconDuoContainer {...accessibilityAndTestId('DUO&nbsp;: Elle comporte 2 places.')}>
                   <Duo testID="duo-icon" />
                 </IconDuoContainer>
               )}
@@ -64,10 +65,10 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           <Spacer.Column numberOfSpaces={5} />
           <SectionRow
             title={propertiesLabels.dateLabel}
-            accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
             renderTitle={renderRowTitle}
             type="clickable"
             icon={() => <Calendar />}
+            accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
           />
         </React.Fragment>
       )}
@@ -75,10 +76,10 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
       {!!propertiesLabels.locationLabel && (
         <SectionRow
           title={propertiesLabels.locationLabel}
-          accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
           renderTitle={renderRowTitle}
           type="clickable"
           icon={() => <LocationBuilding />}
+          accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
         />
       )}
     </View>

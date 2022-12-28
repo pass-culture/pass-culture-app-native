@@ -82,7 +82,6 @@ Array [
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -108,7 +107,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -298,6 +297,7 @@ Array [
               >
                 <View>
                   <View
+                    accessibilityLabel="Schéma pluriannuel"
                     accessibilityRole="link"
                     accessible={true}
                     collapsable={false}
@@ -316,6 +316,7 @@ Array [
                         "userSelect": "auto",
                       }
                     }
+                    testID="Schéma pluriannuel"
                   >
                     <View
                       paddingForIcon={0}
@@ -1430,6 +1431,7 @@ Array [
                  
                 <View>
                   <View
+                    accessibilityLabel="Défenseur des droits"
                     accessibilityRole="link"
                     accessible={true}
                     collapsable={false}
@@ -1448,6 +1450,7 @@ Array [
                         "userSelect": "auto",
                       }
                     }
+                    testID="Défenseur des droits"
                   >
                     <View
                       paddingForIcon={0}
@@ -1573,6 +1576,7 @@ Array [
                  
                 <View>
                   <View
+                    accessibilityLabel="Défenseur des droits dans votre région"
                     accessibilityRole="link"
                     accessible={true}
                     collapsable={false}
@@ -1591,6 +1595,7 @@ Array [
                         "userSelect": "auto",
                       }
                     }
+                    testID="Défenseur des droits dans votre région"
                   >
                     <View
                       paddingForIcon={0}

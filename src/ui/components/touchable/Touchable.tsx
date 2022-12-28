@@ -4,6 +4,6 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { TouchableProps } from './types'
 
-export const Touchable: React.FC<TouchableProps> = ({ ...props }) => (
-  <TouchableOpacity accessibilityRole="button" {...props} />
+export const Touchable: React.FC<TouchableProps> = ({ accessibilityLabel, ...props }) => (
+  <TouchableOpacity accessibilityRole="button" accessibilityLabel={accessibilityLabel} {...props} />
 )

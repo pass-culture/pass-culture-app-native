@@ -699,7 +699,7 @@ Array [
                             },
                           ]
                         }
-                        testID="offre Bac Nord - VF"
+                        testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                       >
                         <View
                           style={
@@ -971,7 +971,7 @@ Array [
                             },
                           ]
                         }
-                        testID="offre Black Widow - VF"
+                        testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                       >
                         <View
                           style={
@@ -1222,7 +1222,7 @@ Array [
                             },
                           ]
                         }
-                        testID="offre Titane - VF"
+                        testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                       >
                         <View
                           style={
@@ -1492,6 +1492,7 @@ Array [
                         }
                       />
                       <View
+                        accessibilityLabel="En voir plus"
                         accessibilityRole="link"
                         accessible={true}
                         collapsable={false}
@@ -1510,6 +1511,7 @@ Array [
                             "userSelect": "auto",
                           }
                         }
+                        testID="En voir plus"
                       >
                         <View
                           style={
@@ -1557,11 +1559,10 @@ Array [
                           >
                             <View
                               height={32}
-                              testID="arrow-next"
                               width={32}
                             >
                               <Text>
-                                arrow-next-SVG-Mock
+                                undefined-SVG-Mock
                               </Text>
                             </View>
                           </View>
@@ -1677,7 +1678,7 @@ Array [
                         },
                       ]
                     }
-                    testID="offre Bac Nord - VF"
+                    testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                   >
                     <View
                       style={

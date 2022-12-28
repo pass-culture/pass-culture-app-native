@@ -48,7 +48,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
 
-    const closeButton = getByTestId('rightIcon')
+    const closeButton = getByTestId('Fermer la modale')
     await fireEvent.press(closeButton)
 
     expect(dismissModal).toHaveBeenCalledTimes(1)

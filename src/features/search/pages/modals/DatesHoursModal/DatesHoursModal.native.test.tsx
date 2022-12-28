@@ -6,9 +6,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
+import {
+  DatesHoursModal,
+  DATE_TYPES,
+  RadioButtonDate,
+} from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
+import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 
 const searchId = uuidv4()
@@ -93,8 +98,12 @@ describe('<DatesHoursModal/>', () => {
     }
     const { getByTestId, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
 
+    const radioButton = getByTestId(
+      `${RadioButtonDate.PRECISE_DATE} ${formatToCompleteFrenchDate(TODAY)}`
+    )
+
     await act(async () => {
-      fireEvent.press(getByTestId(DATE_FILTER_OPTIONS.USER_PICK))
+      fireEvent.press(radioButton)
     })
 
     const withCalendar = toJSON()
@@ -104,7 +113,7 @@ describe('<DatesHoursModal/>', () => {
     }
 
     await act(async () => {
-      fireEvent.press(getByTestId(DATE_FILTER_OPTIONS.USER_PICK))
+      fireEvent.press(radioButton)
     })
 
     const withoutCalendar = toJSON()
@@ -138,13 +147,9 @@ describe('<DatesHoursModal/>', () => {
       })
     })
 
-    it.each([
-      [DATE_FILTER_OPTIONS.TODAY],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK_END],
-    ])(
+    it.each(DATE_TYPES)(
       'with %s date filter when toggle date activated and pressing search button',
-      async (option: DATE_FILTER_OPTIONS) => {
+      async ({ label, type }) => {
         mockSearchState = {
           ...searchState,
         }
@@ -155,7 +160,7 @@ describe('<DatesHoursModal/>', () => {
           fireEvent.press(toggleDate)
         })
 
-        const radioButton = getByTestId(option)
+        const radioButton = getByTestId(label)
         await act(async () => {
           fireEvent.press(radioButton)
         })
@@ -168,7 +173,7 @@ describe('<DatesHoursModal/>', () => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: {
             ...mockSearchState,
-            date: { selectedDate: TODAY.toISOString(), option },
+            date: { selectedDate: TODAY.toISOString(), option: type },
             view: SearchView.Results,
           },
           screen: 'Search',
@@ -292,64 +297,62 @@ describe('<DatesHoursModal/>', () => {
   })
 
   describe('should reset', () => {
-    it.each([
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK_END],
-      [DATE_FILTER_OPTIONS.USER_PICK],
-    ])('%s radio button when pressing reset button', async (option: DATE_FILTER_OPTIONS) => {
-      mockSearchState = {
-        ...searchState,
+    it.each([[RadioButtonDate.WEEK], [RadioButtonDate.WEEK_END], [RadioButtonDate.PRECISE_DATE]])(
+      '%s radio button when pressing reset button',
+      async (option: RadioButtonDate) => {
+        mockSearchState = {
+          ...searchState,
+        }
+        const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+
+        const toggleDate = getByTestId('Interrupteur-date')
+        await act(async () => {
+          fireEvent.press(toggleDate)
+        })
+
+        const radioButton = getByTestId(option)
+        await act(async () => {
+          fireEvent.press(radioButton)
+        })
+        expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+
+        const resetButton = getByText('Réinitialiser')
+        await act(async () => {
+          fireEvent.press(resetButton)
+          fireEvent.press(toggleDate)
+        })
+
+        expect(radioButton.props.accessibilityState).toEqual({ checked: false })
       }
-      const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+    )
 
-      const toggleDate = getByTestId('Interrupteur-date')
-      await act(async () => {
-        fireEvent.press(toggleDate)
-      })
+    it.each([[RadioButtonDate.WEEK], [RadioButtonDate.WEEK_END], [RadioButtonDate.PRECISE_DATE]])(
+      '%s radio button when desactivating date toggle',
+      async (option: RadioButtonDate) => {
+        mockSearchState = {
+          ...searchState,
+        }
+        const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
-      const radioButton = getByTestId(option)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+        const toggleDate = getByTestId('Interrupteur-date')
+        await act(async () => {
+          fireEvent.press(toggleDate)
+        })
 
-      const resetButton = getByText('Réinitialiser')
-      await act(async () => {
-        fireEvent.press(resetButton)
-        fireEvent.press(toggleDate)
-      })
+        const radioButton = getByTestId(option)
+        await act(async () => {
+          fireEvent.press(radioButton)
+        })
+        expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
-      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
-    })
+        await act(async () => {
+          fireEvent.press(toggleDate)
+          fireEvent.press(toggleDate)
+        })
 
-    it.each([
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK_END],
-      [DATE_FILTER_OPTIONS.USER_PICK],
-    ])('%s radio button when desactivating date toggle', async (option: DATE_FILTER_OPTIONS) => {
-      mockSearchState = {
-        ...searchState,
+        expect(radioButton.props.accessibilityState).toEqual({ checked: false })
       }
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
-
-      const toggleDate = getByTestId('Interrupteur-date')
-      await act(async () => {
-        fireEvent.press(toggleDate)
-      })
-
-      const radioButton = getByTestId(option)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-      expect(radioButton.props.accessibilityState).toEqual({ checked: true })
-
-      await act(async () => {
-        fireEvent.press(toggleDate)
-        fireEvent.press(toggleDate)
-      })
-
-      expect(radioButton.props.accessibilityState).toEqual({ checked: false })
-    })
+    )
 
     it('time range selected when pressing reset button', async () => {
       mockSearchState = {
@@ -407,7 +410,7 @@ describe('<DatesHoursModal/>', () => {
 
     await superFlushWithAct()
 
-    const previousButton = getByTestId('backButton')
+    const previousButton = getByTestId('Revenir en arrière')
     fireEvent.press(previousButton)
 
     expect(hideDatesHoursModal).toHaveBeenCalledTimes(1)
@@ -444,23 +447,21 @@ describe('<DatesHoursModal/>', () => {
   })
 
   describe('should select by default', () => {
-    it.each([
-      [DATE_FILTER_OPTIONS.TODAY],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK],
-      [DATE_FILTER_OPTIONS.CURRENT_WEEK_END],
-      [DATE_FILTER_OPTIONS.USER_PICK],
-    ])('%s radio button when date defined in search state', async (option: DATE_FILTER_OPTIONS) => {
-      mockSearchState = {
-        ...searchState,
-        date: { selectedDate: TODAY.toISOString(), option },
-      }
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+    it.each(DATE_TYPES)(
+      '%s radio button when date defined in search state',
+      async ({ label, type }) => {
+        mockSearchState = {
+          ...searchState,
+          date: { selectedDate: TODAY.toISOString(), option: type },
+        }
+        const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
 
-      const radioButton = getByTestId(option)
-      await act(async () => {
-        expect(radioButton.props.accessibilityState).toEqual({ checked: true })
-      })
-    })
+        const radioButton = getByTestId(label, { exact: false })
+        await act(async () => {
+          expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+        })
+      }
+    )
   })
 })
 

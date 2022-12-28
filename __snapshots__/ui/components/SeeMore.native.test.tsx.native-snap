@@ -26,6 +26,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
     }
   />
   <View
+    accessibilityLabel="En voir plus"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -43,6 +44,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
         "userSelect": "auto",
       }
     }
+    testID="En voir plus"
   >
     <View
       style={
@@ -90,11 +92,10 @@ exports[`<SeeMore /> renders correctly 1`] = `
       >
         <View
           height={32}
-          testID="arrow-next"
           width={32}
         >
           <Text>
-            arrow-next-SVG-Mock
+            undefined-SVG-Mock
           </Text>
         </View>
       </View>

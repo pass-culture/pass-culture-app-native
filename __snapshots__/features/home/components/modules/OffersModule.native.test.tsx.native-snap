@@ -685,7 +685,7 @@ exports[`OffersModule component should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="offre Un lit sous une rivière"
+                      testID="Offre Un lit sous une rivière de la catégorie Concert,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
                     >
                       <View
                         style={
@@ -947,7 +947,7 @@ exports[`OffersModule component should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="offre I want something more"
+                      testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                     >
                       <View
                         style={
@@ -1194,7 +1194,7 @@ exports[`OffersModule component should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="offre La nuit des temps"
+                      testID="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                     >
                       <View
                         style={
@@ -1439,7 +1439,7 @@ exports[`OffersModule component should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="offre I want something more"
+                      testID="Offre I want something more de la catégorie Concert,   prix 28 €. "
                     >
                       <View
                         style={
@@ -1650,7 +1650,7 @@ exports[`OffersModule component should render correctly 1`] = `
                       },
                     ]
                   }
-                  testID="offre I want something more"
+                  testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                 >
                   <View
                     style={

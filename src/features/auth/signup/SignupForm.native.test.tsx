@@ -66,7 +66,7 @@ describe('<SignupForm />', () => {
 
   it('should open quit signup modal when preventCancellation route param is false', () => {
     const { getByTestId, queryByText } = render(<SignupForm {...defaultProps} />)
-    fireEvent.press(getByTestId('rightIcon'))
+    fireEvent.press(getByTestId('Abandonner l’inscription'))
     expect(queryByText('Veux-tu abandonner l’inscription ?')).toBeTruthy()
   })
 
@@ -76,13 +76,13 @@ describe('<SignupForm />', () => {
       route: { ...defaultProps.route, params: { preventCancellation: true } },
     }
     const { queryByTestId } = render(<SignupForm {...props} />)
-    const icon = queryByTestId('rightIcon')
+    const icon = queryByTestId('Abandonner l’inscription')
     expect(icon).toBeFalsy()
   })
 
   it('should call logCancelSignup with Email when clicking on quit signup modal on first step', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
-    fireEvent.press(getByTestId('rightIcon'))
+    fireEvent.press(getByTestId('Abandonner l’inscription'))
     fireEvent.press(getByText('Abandonner l’inscription'))
     expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
     expect(analytics.logCancelSignup).toHaveBeenCalledWith('Email')
@@ -91,7 +91,7 @@ describe('<SignupForm />', () => {
   it('should call logCancelSignup with Password when clicking on quit signup modal on second step', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
     fireEvent.press(getByTestId('goToNextStep'))
-    fireEvent.press(getByTestId('rightIcon'))
+    fireEvent.press(getByTestId('Abandonner l’inscription'))
     fireEvent.press(getByText('Abandonner l’inscription'))
     expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
     expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
@@ -99,7 +99,7 @@ describe('<SignupForm />', () => {
 
   it('should call goBack() when left icon is pressed from first step', () => {
     const { getByTestId } = render(<SignupForm {...defaultProps} />)
-    const icon = getByTestId('leftIcon')
+    const icon = getByTestId('Revenir en arrière')
     fireEvent.press(icon)
     expect(mockGoBack).toBeCalledTimes(1)
   })
@@ -109,7 +109,7 @@ describe('<SignupForm />', () => {
     getByText('SetEmail')
     fireEvent.press(getByTestId('goToNextStep'))
     getByText('SetPassword')
-    fireEvent.press(getByTestId('leftIcon'))
+    fireEvent.press(getByTestId('Revenir en arrière'))
     getByText('SetEmail')
     expect(mockGoBack).toBeCalledTimes(0)
   })
@@ -139,7 +139,7 @@ describe('<SignupForm />', () => {
     const { getByTestId, getByText } = render(<SignupForm {...defaultProps} />)
     fireEvent.press(getByTestId('goToNextStep'))
     getByText('SetPassword')
-    fireEvent.press(getByTestId('leftIcon'))
+    fireEvent.press(getByTestId('Revenir en arrière'))
     getByText('SetEmail')
     fireEvent.press(getByTestId('goToNextStep'))
 

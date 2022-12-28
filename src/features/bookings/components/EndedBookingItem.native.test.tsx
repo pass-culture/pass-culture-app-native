@@ -56,7 +56,7 @@ describe('EndedBookingItem', () => {
   it('should navigate to offer page ', async () => {
     const { getByTestId } = renderEndedBookingItem(bookingsSnap.ended_bookings[0])
 
-    const item = getByTestId('EndedBookingItem')
+    const item = getByTestId(/Réservation annulée/)
     await fireEvent.press(item)
 
     expect(navigate).toHaveBeenCalledWith('Offer', {

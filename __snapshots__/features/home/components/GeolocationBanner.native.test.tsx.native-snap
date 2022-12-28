@@ -20,6 +20,7 @@ exports[`<GeolocationBanner /> should display according to snapshot 1`] = `
       "userSelect": "auto",
     }
   }
+  testID="Active ta géolocalisation"
 >
   <View
     style={

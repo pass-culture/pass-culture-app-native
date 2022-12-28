@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 
 import { api } from 'api/api'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -58,7 +59,7 @@ describe('<OfferBody />', () => {
 
   it('should show venue banner in where section', async () => {
     const venue = await renderOfferBodyPage({ isDigital: false })
-    expect(venue.queryByTestId('VenueBannerComponent')).toBeTruthy()
+    expect(venue.queryByTestId(`Lieu ${offerResponseSnap.venue.name}`)).toBeTruthy()
   })
 
   it('should show accessibilityDetails', async () => {

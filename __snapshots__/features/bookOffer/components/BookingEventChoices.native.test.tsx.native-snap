@@ -47,7 +47,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     Date
   </Text>
   <View
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -145,7 +145,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
   />
   <View
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}
@@ -245,6 +245,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     testID="DuoChoiceSelector"
   >
     <View
+      accessibilityLabel="Solo crédit insuffisant sélectionné"
       accessibilityState={
         Object {
           "disabled": true,
@@ -271,7 +272,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           "width": "33%",
         }
       }
-      testID="DuoChoice1"
+      testID="Solo crédit insuffisant sélectionné"
     >
       <View
         disabled={true}
@@ -390,6 +391,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       </View>
     </View>
     <View
+      accessibilityLabel="Duo crédit insuffisant"
       accessibilityState={
         Object {
           "disabled": true,
@@ -416,7 +418,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           "width": "33%",
         }
       }
-      testID="DuoChoice2"
+      testID="Duo crédit insuffisant"
     >
       <View
         disabled={true}

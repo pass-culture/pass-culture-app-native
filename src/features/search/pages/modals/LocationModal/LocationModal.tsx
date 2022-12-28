@@ -354,7 +354,6 @@ export const LocationModal: FunctionComponent<Props> = ({
                       <RadioButton
                         onSelect={() => onSelectLocation(item.label)}
                         isSelected={value === item.label}
-                        testID={item.label}
                         label={
                           item.label === RadioButtonLocation.EVERYWHERE && position === null
                             ? RadioButtonLocation.NO_LOCATION

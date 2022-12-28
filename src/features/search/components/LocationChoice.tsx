@@ -12,7 +12,6 @@ import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  testID: string
   onPress?: () => void
   arrowNext?: boolean
   accessibilityDescribedBy?: string
@@ -26,7 +25,6 @@ type Props = {
 export const LocationChoice: React.FC<Props> = ({
   onPress,
   arrowNext = false,
-  testID,
   accessibilityDescribedBy,
   isSelected,
   disabled = false,
@@ -52,7 +50,7 @@ export const LocationChoice: React.FC<Props> = ({
       disabled={disabled}
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: isSelected }}
-      testID={`locationChoice-${testID}`}>
+      accessibilityLabel={label}>
       <FirstPart ref={containerRef}>
         <Spacer.Row numberOfSpaces={3} />
         <StyledIcon />

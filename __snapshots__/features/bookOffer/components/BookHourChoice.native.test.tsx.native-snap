@@ -39,6 +39,7 @@ Array [
     }
   >
     <View
+      accessibilityLabel="10h00 épuisé"
       accessibilityState={
         Object {
           "disabled": true,
@@ -65,7 +66,7 @@ Array [
           "width": "33%",
         }
       }
-      testID="HourChoice148411"
+      testID="10h00 épuisé"
     >
       <View
         disabled={true}
@@ -165,6 +166,7 @@ Array [
       </View>
     </View>
     <View
+      accessibilityLabel="20h00 24 €"
       accessibilityState={
         Object {
           "disabled": false,
@@ -191,7 +193,7 @@ Array [
           "width": "33%",
         }
       }
-      testID="HourChoice148409"
+      testID="20h00 24 €"
     >
       <View
         disabled={false}
@@ -303,7 +305,7 @@ Array [
     }
   />,
   <View
-    accessible={true}
+    accessible={false}
     collapsable={false}
     focusable={true}
     onClick={[Function]}

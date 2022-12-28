@@ -291,6 +291,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         />
         <View>
           <View
+            accessibilityLabel="Se connecter"
             accessibilityRole="link"
             accessible={true}
             collapsable={false}
@@ -309,6 +310,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="Se connecter"
           >
             <View
               paddingForIcon={0}

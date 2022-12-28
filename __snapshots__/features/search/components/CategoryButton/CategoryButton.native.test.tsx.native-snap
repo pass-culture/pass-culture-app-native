@@ -34,6 +34,7 @@ exports[`CategoryButton should render correctly 1`] = `
       "userSelect": "auto",
     }
   }
+  testID="Catégorie Bibliothèques & Médiathèques"
 >
   <View
     fill="#161617"

@@ -38,7 +38,7 @@ describe('<ResetPasswordEmailSent />', () => {
   it('should NOT display back button when previous screen is ForgottenPassword', async () => {
     const { queryByTestId } = await renderInitialPage('ForgottenPassword')
 
-    const leftIconButton = queryByTestId('leftIcon')
+    const leftIconButton = queryByTestId('Revenir en arrière')
 
     await waitForExpect(() => {
       expect(leftIconButton).toBeFalsy()
@@ -48,7 +48,7 @@ describe('<ResetPasswordEmailSent />', () => {
   it('should redirect to Home when clicking on Close icon', async () => {
     const { getByTestId } = await renderInitialPage('ResetPasswordEmailSent')
 
-    fireEvent.press(getByTestId('rightIcon'))
+    fireEvent.press(getByTestId('Revenir à l’accueil'))
 
     await waitForExpect(() => {
       expect(navigateToHome).toHaveBeenCalledTimes(1)

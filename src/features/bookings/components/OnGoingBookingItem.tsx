@@ -32,8 +32,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <Container
       navigateTo={{ screen: 'BookingDetails', params: { id: booking.id } }}
-      accessibilityLabel={accessibilityLabel}
-      testID="OnGoingBookingItem">
+      accessibilityLabel={accessibilityLabel}>
       <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
       <AttributesView>
         <BookingItemTitle title={stock.offer.name} />

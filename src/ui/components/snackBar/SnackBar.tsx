@@ -135,7 +135,6 @@ const _SnackBar = (props: SnackBarProps) => {
               </Spacer.Flex>
               <Touchable
                 accessibilityLabel={`Supprimer le message\u00a0: ${props.message}`}
-                testID="snackbar-close"
                 onPress={onClose}>
                 <Close color={props.color} />
               </Touchable>

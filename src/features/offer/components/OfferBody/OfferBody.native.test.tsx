@@ -44,7 +44,9 @@ describe('<OfferBody />', () => {
   it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
     const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    const venueBannerComponent = await OfferBodyComponent.findByTestId('VenueBannerComponent')
+    const venueBannerComponent = await OfferBodyComponent.findByTestId(
+      `Lieu ${mockOffer.venue.name}`
+    )
 
     fireEvent.press(venueBannerComponent)
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
@@ -75,9 +77,9 @@ describe('<OfferBody />', () => {
     })
 
     it('should navigate to a similar offer when pressing on it', async () => {
-      const { getByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      const { getByText } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      await fireEvent.press(getByTestId('offre La nuit des temps'))
+      await fireEvent.press(getByText('La nuit des temps'))
       expect(push).toHaveBeenCalledWith('Offer', {
         from: 'offer',
         fromOfferId: 1,

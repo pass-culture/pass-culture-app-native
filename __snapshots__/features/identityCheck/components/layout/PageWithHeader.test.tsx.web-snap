@@ -157,7 +157,6 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         >
           <div
             className="css-view-1dbjc4n"
-            data-testid="Revenir en arrière"
             style={
               Object {
                 "WebkitAlignItems": "center",

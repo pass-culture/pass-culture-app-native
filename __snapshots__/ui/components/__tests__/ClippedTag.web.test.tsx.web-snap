@@ -22,21 +22,20 @@ Object {
           </div>
         </div>
         <div
+          aria-label="Enlever le lieu"
           class="css-view-1dbjc4n"
-          data-testid="retirer-lieu"
+          data-testid="Enlever le lieu"
           style="background-color: rgb(235, 0, 85); border-bottom-right-radius: 24px; border-top-right-radius: 24px; cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
-            aria-label="Enlever le lieu"
             class="css-view-1dbjc4n"
-            data-testid="Enlever le lieu"
           >
             <div
               class="css-text-901oao"
               dir="ltr"
             >
-              Enlever le lieu-SVG-Mock
+              undefined-SVG-Mock
             </div>
           </div>
         </div>
@@ -61,21 +60,20 @@ Object {
         </div>
       </div>
       <div
+        aria-label="Enlever le lieu"
         class="css-view-1dbjc4n"
-        data-testid="retirer-lieu"
+        data-testid="Enlever le lieu"
         style="background-color: rgb(235, 0, 85); border-bottom-right-radius: 24px; border-top-right-radius: 24px; cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
-          aria-label="Enlever le lieu"
           class="css-view-1dbjc4n"
-          data-testid="Enlever le lieu"
         >
           <div
             class="css-text-901oao"
             dir="ltr"
           >
-            Enlever le lieu-SVG-Mock
+            undefined-SVG-Mock
           </div>
         </div>
       </div>

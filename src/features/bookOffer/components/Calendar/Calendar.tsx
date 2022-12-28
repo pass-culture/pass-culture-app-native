@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { OfferStatus } from 'features/bookOffer/services/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -27,8 +28,8 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const renderArrow = (direction: string) => {
-  if (direction === 'left') return <ArrowPrevious accessibilityLabel="Mois précédent" />
-  if (direction === 'right') return <ArrowNext accessibilityLabel="Mois suivant" />
+  if (direction === 'left') return <ArrowPrevious {...accessibilityAndTestId('Mois précédent')} />
+  if (direction === 'right') return <ArrowNext {...accessibilityAndTestId('Mois suivant')} />
   return <React.Fragment />
 }
 

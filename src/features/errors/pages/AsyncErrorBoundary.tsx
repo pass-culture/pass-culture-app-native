@@ -88,7 +88,10 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
       {...props}
       header={
         !!canGoBack() && (
-          <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="Revenir en arrière">
+          <HeaderContainer
+            onPress={goBack}
+            top={top + getSpacing(3.5)}
+            accessibilityLabel="Revenir en arrière">
             <StyledArrowPrevious />
           </HeaderContainer>
         )
@@ -100,7 +103,6 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
 const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
   color: theme.colors.white,
   size: theme.icons.sizes.small,
-  accessibilityLabel: 'Revenir en arrière',
 }))``
 
 const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({

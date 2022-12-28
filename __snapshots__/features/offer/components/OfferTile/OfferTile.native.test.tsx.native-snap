@@ -28,7 +28,7 @@ exports[`OfferTile component should render correctly 1`] = `
         },
       ]
     }
-    testID="offre La nuit des temps"
+    testID="Offre La nuit des temps de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
   >
     <View
       style={

@@ -248,6 +248,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
     >
       <Text
         accessibilityLabel="Nom de l'offre : Je ne sais pas ce que je dis"
+        accessible={true}
         adjustsFontSizeToFit={true}
         allowFontScaling={false}
         numberOfLines={3}
@@ -262,7 +263,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             },
           ]
         }
-        testID="offerTitle"
+        testID="Nom de l'offre : Je ne sais pas ce que je dis"
       >
         Je ne sais pas ce que je dis
       </Text>
@@ -777,7 +778,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "userSelect": "auto",
             }
           }
-          testID="VenueBannerComponent"
+          testID="Lieu Cinéma de la fin"
         >
           <View
             numberOfSpaces={2}

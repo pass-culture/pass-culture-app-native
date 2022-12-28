@@ -20,6 +20,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
       selected={selected}
       accessibilityRole={AccessibilityRole.CHECKBOX}
       accessibilityState={{ checked: selected }}
+      accessibilityLabel={label}
       onPress={onPress}>
       {selected ? (
         <IconContainer>

@@ -95,7 +95,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -121,7 +120,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -335,6 +334,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                     }
                   >
                     <View
+                      accessibilityLabel="Lycée agricole"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -365,6 +365,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "width": "100%",
                         }
                       }
+                      testID="Lycée agricole"
                     >
                       <View
                         style={
@@ -413,7 +414,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "checked": false,
                         }
                       }
-                      accessible={true}
+                      accessible={false}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -483,7 +484,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "checked": false,
                         }
                       }
-                      accessible={true}
+                      accessible={false}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -553,7 +554,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "checked": false,
                         }
                       }
-                      accessible={true}
+                      accessible={false}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -623,7 +624,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "checked": false,
                         }
                       }
-                      accessible={true}
+                      accessible={false}
                       collapsable={false}
                       focusable={true}
                       onClick={[Function]}
@@ -687,6 +688,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                     }
                   >
                     <View
+                      accessibilityLabel="Accompagnement spécialisé"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -717,6 +719,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "width": "100%",
                         }
                       }
+                      testID="Accompagnement spécialisé"
                     >
                       <View
                         style={
@@ -773,6 +776,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                     }
                   >
                     <View
+                      accessibilityLabel="Centre de formation d'apprentis"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -803,6 +807,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "width": "100%",
                         }
                       }
+                      testID="Centre de formation d'apprentis"
                     >
                       <View
                         style={
@@ -1025,7 +1030,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 },
               ]
             }
-            testID="Revenir en arrière"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -1051,7 +1055,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   "userSelect": "auto",
                 }
               }
-              testID="backButton"
+              testID="Revenir en arrière"
             >
               <View
                 height={24}
@@ -1265,6 +1269,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                     }
                   >
                     <View
+                      accessibilityLabel="Collège privé"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -1295,6 +1300,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           "width": "100%",
                         }
                       }
+                      testID="Collège privé"
                     >
                       <View
                         style={
@@ -1337,6 +1343,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                     }
                   >
                     <View
+                      accessibilityLabel="Collège public"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -1367,6 +1374,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           "width": "100%",
                         }
                       }
+                      testID="Collège public"
                     >
                       <View
                         style={
@@ -1409,6 +1417,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                     }
                   >
                     <View
+                      accessibilityLabel="Accompagnement spécialisé"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -1439,6 +1448,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           "width": "100%",
                         }
                       }
+                      testID="Accompagnement spécialisé"
                     >
                       <View
                         style={

@@ -402,10 +402,12 @@ Array [
             }
           >
             <button
+              aria-label="Partout : Filtre sélectionné"
               className="c0 c1 sc-eCImPb c1"
-              data-testid="locationButton"
+              data-testid="Partout : Filtre sélectionné"
               onClick={[Function]}
               tabIndex="0"
+              title="Partout : Filtre sélectionné"
               type="button"
             >
               <div
@@ -459,10 +461,12 @@ Array [
             }
           >
             <button
+              aria-label="Catégories"
               className="c0 c2 sc-eCImPb c2"
-              data-testid="categoryButton"
+              data-testid="Catégories"
               onClick={[Function]}
               tabIndex="0"
+              title="Catégories"
               type="button"
             >
               <div
@@ -496,10 +500,12 @@ Array [
             }
           >
             <button
+              aria-label="Prix"
               className="c0 c2 sc-eCImPb c2"
-              data-testid="priceButton"
+              data-testid="Prix"
               onClick={[Function]}
               tabIndex="0"
+              title="Prix"
               type="button"
             >
               <div
@@ -533,10 +539,12 @@ Array [
             }
           >
             <button
+              aria-label="Type"
               className="c0 c2 sc-eCImPb c2"
-              data-testid="typeButton"
+              data-testid="Type"
               onClick={[Function]}
               tabIndex="0"
+              title="Type"
               type="button"
             >
               <div
@@ -570,10 +578,12 @@ Array [
             }
           >
             <button
+              aria-label="Dates & heures"
               className="c0 c2 sc-eCImPb c2"
-              data-testid="datesHoursButton"
+              data-testid="Dates & heures"
               onClick={[Function]}
               tabIndex="0"
+              title="Dates & heures"
               type="button"
             >
               <div

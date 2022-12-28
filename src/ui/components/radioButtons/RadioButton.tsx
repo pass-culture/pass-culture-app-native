@@ -18,7 +18,6 @@ interface RadioButtonProps {
   isSelected: boolean
   icon?: FunctionComponent<IconInterface>
   accessibilityLabel?: string
-  testID?: string
   marginVertical?: number
 }
 
@@ -38,18 +37,19 @@ export function RadioButton(props: RadioButtonProps) {
 
   const onPress = () => props.onSelect(props.label)
 
+  const accessibilityLabel = props.description ? `${props.label} ${props.description}` : props.label
+
   useArrowNavigationForRadioButton(containerRef)
   useSpaceBarAction(isFocus ? onPress : undefined)
   return (
     <StyledTouchableOpacity
       accessibilityRole={AccessibilityRole.RADIO}
       accessibilityState={{ checked: props.isSelected }}
-      accessibilityLabel={props.accessibilityLabel}
       onPress={onPress}
       onFocus={onFocus}
       onBlur={onBlur}
       marginVertical={props.marginVertical ?? 0}
-      testID={props.testID}>
+      accessibilityLabel={props.accessibilityLabel || accessibilityLabel}>
       <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
           <React.Fragment>

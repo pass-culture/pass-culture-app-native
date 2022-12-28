@@ -30,7 +30,8 @@ export const RadioButtonWithBorder = ({ label, description, selected, onPress }:
       selected={selected}
       onFocus={onFocus}
       onBlur={onBlur}
-      onPress={onPressFn}>
+      onPress={onPressFn}
+      accessibilityLabel={label}>
       <TextContainer ref={containerRef}>
         <ButtonText selected={selected}>{label}</ButtonText>
         {description ? <Typo.CaptionNeutralInfo>{description}</Typo.CaptionNeutralInfo> : null}

@@ -1,7 +1,6 @@
 import React, { ComponentProps, ComponentType, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Cover } from 'ui/components/Cover'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
@@ -57,7 +56,7 @@ export const PassPlaylist = (props: Props) => {
         <StyledTouchableLink
           navigateTo={props.titleSeeMoreLink}
           onBeforeNavigate={props.onPressSeeMore}
-          {...accessibilityAndTestId(`Voir plus d’offres de la sélection ${props.title}`)}>
+          accessibilityLabel={`Voir plus d’offres de la sélection ${props.title}`}>
           <EyeSophisticated />
           <Spacer.Row numberOfSpaces={2} />
           <StyledButtonText>En voir plus</StyledButtonText>

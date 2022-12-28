@@ -487,6 +487,7 @@ pour réserver l’offre
                   />
                   <View>
                     <View
+                      accessibilityLabel="Se connecter"
                       accessibilityRole="link"
                       accessible={true}
                       collapsable={false}
@@ -505,6 +506,7 @@ pour réserver l’offre
                           "userSelect": "auto",
                         }
                       }
+                      testID="Se connecter"
                     >
                       <View
                         paddingForIcon={0}

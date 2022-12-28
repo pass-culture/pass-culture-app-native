@@ -63,6 +63,7 @@ exports[`<Favorites/> should render correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="Trier"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -81,7 +82,7 @@ exports[`<Favorites/> should render correctly 1`] = `
           "userSelect": "auto",
         }
       }
-      testID="SortButton"
+      testID="Trier"
     >
       <BVLinearGradient
         colors={

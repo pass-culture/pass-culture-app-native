@@ -29,11 +29,10 @@ export const ControlComponent = ({
 }: ControlComponentProps) => {
   return (
     <StyledTouchable
-      accessibilityLabel={title}
       onPress={onPress}
       withMargin={withMargin}
       type={type}
-      testID={`control-button-${type}`}>
+      accessibilityLabel={title}>
       {type === 'prev' ? (
         <ArrowPrevious testID="arrowPrevious" />
       ) : (

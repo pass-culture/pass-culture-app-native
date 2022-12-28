@@ -160,7 +160,7 @@ describe('<Search/>', () => {
     it('should navigate to the search filter page when pressing the search filter button', async () => {
       const { getByTestId } = render(<Search />)
 
-      const searchFilterButton = getByTestId('searchFilterButton')
+      const searchFilterButton = getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
       fireEvent.press(searchFilterButton)
 
       const screen = 'SearchFilter'
@@ -174,7 +174,7 @@ describe('<Search/>', () => {
     it('should reinitialize the filters from the current one', async () => {
       const { getByTestId } = render(<Search />)
 
-      const searchFilterButton = getByTestId('searchFilterButton')
+      const searchFilterButton = getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
       fireEvent.press(searchFilterButton)
 
       await waitFor(() => {

@@ -16,8 +16,13 @@ interface Props {
 export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) => {
   const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
+  const accessibilityLabel = `Nouvelle fenêtre\u00a0: ${text}`
   return (
-    <StyledTouchableLink externalNav={{ url }} primary={primary} testID={testID}>
+    <StyledTouchableLink
+      externalNav={{ url }}
+      primary={primary}
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <ButtonText primary={primary}>
         <Spacer.Row numberOfSpaces={1} />
         <Text>

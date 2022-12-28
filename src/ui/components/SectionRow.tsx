@@ -14,43 +14,44 @@ export function SectionRow({
   externalNav,
   onPress,
   accessibilityLabel,
+  title,
   ...props
 }: SectionRowProps) {
   const { activeOpacity } = useTheme()
   const hasNavProps = navigateTo || externalNav
+  const label = accessibilityLabel || title
+  const externalLabel = `Nouvelle fenêtre\u00a0: ${label}`
   const touchableProps = {
     activeOpacity: onPress || hasNavProps ? activeOpacity : 1,
     onPress,
     disabled: !onPress && !hasNavProps,
-    accessibilityLabel,
+    accessibilityLabel: externalNav ? externalLabel : label,
   }
 
   if (navigateTo) {
     return (
       <InternalTouchableLink
-        testID="touchable-link-section-row"
         onBeforeNavigate={touchableProps.onPress}
         navigateTo={navigateTo}
         {...touchableProps}>
-        <SectionRowContent {...props} />
+        <SectionRowContent title={title} {...props} />
       </InternalTouchableLink>
     )
   }
   if (externalNav) {
     return (
       <ExternalTouchableLink
-        testID="touchable-link-section-row"
         onBeforeNavigate={touchableProps.onPress}
         externalNav={externalNav}
         {...touchableProps}>
-        <SectionRowContent {...props} />
+        <SectionRowContent title={title} {...props} />
       </ExternalTouchableLink>
     )
   }
 
   return (
-    <Touchable testID="touchable-section-row" {...touchableProps}>
-      <SectionRowContent {...props} />
+    <Touchable {...touchableProps}>
+      <SectionRowContent title={title} {...props} />
     </Touchable>
   )
 }

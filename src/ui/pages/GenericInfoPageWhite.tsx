@@ -90,7 +90,10 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   return (
     <React.Fragment>
       {props.headerGoBack && canGoBack() ? (
-        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="Revenir en arrière">
+        <HeaderContainer
+          onPress={goBack}
+          top={top + getSpacing(3.5)}
+          accessibilityLabel="Revenir en arrière">
           <StyledArrowPrevious />
         </HeaderContainer>
       ) : null}

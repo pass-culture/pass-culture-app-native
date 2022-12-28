@@ -17,14 +17,12 @@ export function AppButtonInner({
   return (
     <Fragment>
       {!!LoadingIndicator && isLoading ? (
-        <LoadingIndicator
-          {...accessibilityAndTestId('Chargement en cours', 'button-isloading-icon')}
-        />
+        <LoadingIndicator {...accessibilityAndTestId('Chargement en cours')} />
       ) : (
         <Fragment>
           {!!Icon && (
             <IconWrapper>
-              <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />
+              <Icon testID="button-icon" />
             </IconWrapper>
           )}
           {!!Title && (

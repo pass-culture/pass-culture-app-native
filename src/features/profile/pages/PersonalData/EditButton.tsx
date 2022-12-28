@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId.web'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -25,7 +24,7 @@ export const EditButton = ({
     onBeforeNavigate={onPress}
     wording={wording}
     icon={EditPen}
-    {...accessibilityAndTestId(accessibilityLabel || wording)}
+    accessibilityLabel={accessibilityLabel}
     inline
   />
 )

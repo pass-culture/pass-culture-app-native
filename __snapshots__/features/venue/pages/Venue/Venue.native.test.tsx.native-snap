@@ -784,7 +784,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               "userSelect": "auto",
             }
           }
-          testID="iconLocation"
+          testID="Géolocalisation désactivée"
         >
           <View
             style={
@@ -910,6 +910,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
                
               <Text
+                accessibilityLabel="Nouvelle fenêtre : https://pass.culture.fr/"
+                accessible={true}
                 onPress={[Function]}
                 style={
                   Array [
@@ -921,6 +923,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     },
                   ]
                 }
+                testID="Nouvelle fenêtre : https://pass.culture.fr/"
               >
                 <View
                   numberOfSpaces={1}
@@ -1660,7 +1663,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                 ]
                               }
-                              testID="offre Bac Nord - VF"
+                              testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                             >
                               <View
                                 style={
@@ -1932,7 +1935,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                 ]
                               }
-                              testID="offre Black Widow - VF"
+                              testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                             >
                               <View
                                 style={
@@ -2183,7 +2186,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                 ]
                               }
-                              testID="offre Titane - VF"
+                              testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                             >
                               <View
                                 style={
@@ -2453,6 +2456,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             />
                             <View
+                              accessibilityLabel="En voir plus"
                               accessibilityRole="link"
                               accessible={true}
                               collapsable={false}
@@ -2471,6 +2475,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   "userSelect": "auto",
                                 }
                               }
+                              testID="En voir plus"
                             >
                               <View
                                 style={
@@ -2518,11 +2523,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 >
                                   <View
                                     height={32}
-                                    testID="arrow-next"
                                     width={32}
                                   >
                                     <Text>
-                                      arrow-next-SVG-Mock
+                                      undefined-SVG-Mock
                                     </Text>
                                   </View>
                                 </View>
@@ -2638,7 +2642,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               },
                             ]
                           }
-                          testID="offre Bac Nord - VF"
+                          testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         >
                           <View
                             style={
@@ -3151,7 +3155,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "expanded": false,
               }
             }
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -3272,6 +3276,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               How to withdraw, 
               <Text
+                accessibilityLabel="Nouvelle fenêtre : https://test.com"
+                accessible={true}
                 onPress={[Function]}
                 style={
                   Array [
@@ -3283,6 +3289,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     },
                   ]
                 }
+                testID="Nouvelle fenêtre : https://test.com"
               >
                 <View
                   numberOfSpaces={1}
@@ -3343,7 +3350,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "expanded": false,
               }
             }
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -4061,7 +4068,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "expanded": false,
               }
             }
-            accessible={true}
+            accessible={false}
             collapsable={false}
             focusable={true}
             onClick={[Function]}
@@ -4178,6 +4185,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             >
               <View
+                accessibilityLabel="E-mail"
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -4197,6 +4205,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="E-mail"
               >
                 <View
                   height={24}
@@ -4233,6 +4242,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 </Text>
               </View>
               <View
+                accessibilityLabel="Téléphone"
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -4252,6 +4262,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Téléphone"
               >
                 <View
                   height={24}
@@ -4288,6 +4299,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 </Text>
               </View>
               <View
+                accessibilityLabel="Site internet"
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -4307,6 +4319,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   }
                 }
+                testID="Site internet"
               >
                 <View
                   accessibilityLabel="Nouvelle fenêtre"
