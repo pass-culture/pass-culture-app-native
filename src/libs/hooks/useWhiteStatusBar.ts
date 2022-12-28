@@ -1,8 +1,9 @@
 import { useFocusEffect } from '@react-navigation/native'
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 import { StatusBar } from 'react-native'
 
 export const useWhiteStatusBar = () => {
+  const timeRef = useRef(0)
   return useFocusEffect(
     useCallback(() => {
       StatusBar.setBarStyle('light-content', true)
@@ -25,11 +26,14 @@ export const useWhiteStatusBar = () => {
        *
        * We haven't found a better solution at the moment
        */
-      setTimeout(() => {
+      timeRef.current = setTimeout(() => {
         StatusBar.setBarStyle('light-content', false)
       })
 
-      return () => StatusBar.setBarStyle('dark-content', true)
+      return () => {
+        clearTimeout(timeRef.current)
+        StatusBar.setBarStyle('dark-content', true)
+      }
     }, [])
   )
 }

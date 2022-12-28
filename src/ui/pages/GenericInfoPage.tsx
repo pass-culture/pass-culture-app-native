@@ -1,7 +1,7 @@
-import React, { ReactNode, useMemo, FunctionComponent, useEffect } from 'react'
-import { StatusBar } from 'react-native'
+import React, { ReactNode, useMemo, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
@@ -34,6 +34,8 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
+  useWhiteStatusBarWithoutReactNavigation()
+
   const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   const StyledIcon =
@@ -52,13 +54,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
     return spacingMatrix.bottom
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      StatusBar.setBarStyle('light-content', true)
-    })
-    return () => StatusBar.setBarStyle('dark-content', true)
-  }, [])
-
   return (
     <Wrapper>
       {!!noIndex && (
@@ -66,6 +61,12 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
+      {/**
+       * BackgroundWithWhiteStatusBar set the light theme
+       * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is potentialy not mounted at this moment
+       *
+       * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
+       */}
       <BackgroundWithDefaultStatusBar />
       <Content>
         <Spacer.TopScreen />

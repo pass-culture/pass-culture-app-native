@@ -1,8 +1,9 @@
 import React, { ReactNode, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
+import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -16,6 +17,10 @@ type Props = {
   noBackground?: boolean
 }
 
+// NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
+// ON THIS PAGE OR IT WILL BREAK!!!
+// THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION!
 export const GenericErrorPage: FunctionComponent<Props> = ({
   children,
   header,
@@ -25,6 +30,8 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttons,
   noBackground,
 }) => {
+  useWhiteStatusBarWithoutReactNavigation(noBackground)
+
   const { isTouch } = useTheme()
   const Icon =
     !!icon &&
@@ -40,7 +47,13 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
-      {!noBackground && <BackgroundWithWhiteStatusBar />}
+      {/**
+       * BackgroundWithWhiteStatusBar set the light theme
+       * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is potentialy not mounted at this moment
+       *
+       * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
+       */}
+      {!noBackground && <BackgroundWithDefaultStatusBar />}
       {header}
       <Content>
         <Spacer.TopScreen />

@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GenericErrorPage /> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    height="100%"
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
+          "zIndex": -1,
+        },
+      ]
+    }
+    width="100%"
+  >
+    <View
+      height="100%"
+      width="100%"
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
+      fill="none"
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 22,
+            "lineHeight": 26,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      GenericErrorPage
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
