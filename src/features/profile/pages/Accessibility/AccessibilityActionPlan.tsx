@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ActionPlanTag } from 'features/profile/pages/Accessibility/components/ActionPlanTag'
+import { ActionPlanTag } from 'features/profile/components/Buttons/ActionPlanTag/ActionPlanTag'
 import { ContactSupportButton } from 'features/profile/pages/Accessibility/components/ContactSupportButton'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
