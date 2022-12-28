@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
-import { Subtitle } from 'features/profile/atoms/Subtitle'
+import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { ProfileBadge } from 'features/profile/components/Badges/ProfileBadge'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
