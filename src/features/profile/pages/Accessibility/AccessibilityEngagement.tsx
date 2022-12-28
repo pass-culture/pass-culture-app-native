@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ContactSupportButton } from 'features/profile/pages/Accessibility/components/ContactSupportButton'
+import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
 import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
