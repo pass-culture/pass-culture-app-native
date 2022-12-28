@@ -257,7 +257,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   tes réservations seront annulées et supprimées
                 </div>
@@ -290,7 +290,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
                 </div>
@@ -323,7 +323,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   tu n’auras plus accès au catalogue
                 </div>
@@ -670,7 +670,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 tes réservations seront annulées et supprimées
               </div>
@@ -703,7 +703,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
               </div>
@@ -736,7 +736,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 tu n’auras plus accès au catalogue
               </div>

@@ -373,6 +373,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -432,6 +435,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -491,6 +497,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -550,6 +559,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -722,6 +734,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -781,6 +796,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -840,6 +858,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -899,6 +920,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -958,6 +982,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1139,6 +1166,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1198,6 +1228,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1257,6 +1290,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1316,6 +1352,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1489,6 +1528,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1548,6 +1590,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2122,6 +2167,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2181,6 +2229,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2240,6 +2291,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2299,6 +2353,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2358,6 +2415,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2869,6 +2929,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2943,6 +3006,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -3017,6 +3083,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -3091,6 +3160,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -3165,6 +3237,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -3239,6 +3314,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -3313,6 +3391,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -3387,6 +3468,9 @@ Array [
                 Array [
                   Object {
                     "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
