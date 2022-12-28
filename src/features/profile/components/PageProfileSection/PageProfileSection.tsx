@@ -1,8 +1,9 @@
 import React, { PropsWithChildren } from 'react'
+import styled from 'styled-components/native'
 
-import { ProfileContainer, ScrollableProfileContainer } from 'features/profile/components/reusables'
+import { ProfileContainer } from 'features/profile/components/PageProfileSection/ProfileContainer'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   title: string
@@ -22,3 +23,10 @@ export function PageProfileSection({ title, scrollable = false, children }: Prop
     </React.Fragment>
   )
 }
+
+const ScrollableProfileContainer = styled.ScrollView(({ theme }) => ({
+  flex: 1,
+  flexDirection: 'column',
+  backgroundColor: theme.colors.white,
+  paddingHorizontal: getSpacing(6),
+}))
