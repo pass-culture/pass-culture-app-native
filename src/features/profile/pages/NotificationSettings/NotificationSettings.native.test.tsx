@@ -148,7 +148,7 @@ describe('NotificationSettings', () => {
     it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
       'should open the modal when permission!="granted" (==%s) and trying to allow',
       async (permission) => {
-        const { getAllByTestId } = await renderNotificationSettings(permission, {
+        const { getAllByTestId, queryAllByTestId } = await renderNotificationSettings(permission, {
           subscriptions: {
             marketingEmail: true,
             marketingPush: false, // the user push setting doesnt care
@@ -162,7 +162,7 @@ describe('NotificationSettings', () => {
         })
         await superFlushWithAct(10)
         await waitForExpect(() => {
-          expect(getAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
+          expect(queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
         })
       }
     )

@@ -90,29 +90,29 @@ describe('<CancelBookingModal />', () => {
 
   it('should display offer name', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
+    const { queryByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    expect(getByText('Avez-vous déjà vu ?')).toBeTruthy()
+    expect(queryByText('Avez-vous déjà vu ?')).toBeTruthy()
   })
 
   it('should display refund rule if user is beneficiary and offer is not free', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
+    const { queryByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
-    expect(getByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeTruthy()
+    expect(queryByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeTruthy()
   })
 
   it('should display refund rule if user is ex beneficiary and offer is not free', () => {
     mockIsCreditExpired = true
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
+    const { queryByText } = render(
       <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
     )
 
     expect(
-      getByText('Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.')
+      queryByText('Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.')
     ).toBeTruthy()
   })
 

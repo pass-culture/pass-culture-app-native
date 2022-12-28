@@ -79,8 +79,8 @@ describe('BookingDetails', () => {
   describe('<DetailedBookingTicket />', () => {
     it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { getByText } = renderBookingDetails(booking)
-      expect(getByText('352UW4')).toBeTruthy()
+      const { queryByText } = renderBookingDetails(booking)
+      expect(queryByText('352UW4')).toBeTruthy()
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
@@ -108,15 +108,15 @@ describe('BookingDetails', () => {
     it('should display booking qr code if offer is physical', async () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = false
-      const { getByTestId } = renderBookingDetails(booking)
-      expect(getByTestId('qr-code')).toBeTruthy()
+      const { queryByTestId } = renderBookingDetails(booking)
+      expect(queryByTestId('qr-code')).toBeTruthy()
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
-      const { getByText } = renderBookingDetails(booking)
-      expect(getByText('123456789')).toBeTruthy()
+      const { queryByText } = renderBookingDetails(booking)
+      expect(queryByText('123456789')).toBeTruthy()
     })
   })
 
@@ -125,10 +125,10 @@ describe('BookingDetails', () => {
       const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
 
-      const { getByText } = renderBookingDetails(booking)
+      const { queryByText } = renderBookingDetails(booking)
 
       expect(
-        getByText(
+        queryByText(
           'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
         )
       ).toBeTruthy()
@@ -141,10 +141,10 @@ describe('BookingDetails', () => {
         code: 'fdfdfsds',
       }
 
-      const { getByText } = renderBookingDetails(booking)
+      const { queryByText } = renderBookingDetails(booking)
 
       expect(
-        getByText(
+        queryByText(
           'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
         )
       ).toBeTruthy()
@@ -163,10 +163,10 @@ describe('BookingDetails', () => {
         .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent, isDigital: false, isPhysical: !isEvent })
 
-      const { getByText } = renderBookingDetails(booking)
+      const { queryByText } = renderBookingDetails(booking)
 
       expect(
-        getByText(
+        queryByText(
           'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
         )
       ).toBeTruthy()
@@ -177,10 +177,10 @@ describe('BookingDetails', () => {
     it('should display withdrawal details', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
-      const { getByText } = renderBookingDetails(booking)
+      const { queryByText } = renderBookingDetails(booking)
 
-      expect(getByText('Modalités de retrait')).toBeTruthy()
-      expect(getByText(booking.stock.offer.withdrawalDetails)).toBeTruthy()
+      expect(queryByText('Modalités de retrait')).toBeTruthy()
+      expect(queryByText(booking.stock.offer.withdrawalDetails)).toBeTruthy()
     })
 
     it('should not display withdrawal details', () => {

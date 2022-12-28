@@ -25,15 +25,15 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.activationCode = {
       code: 'someCode',
     }
-    const { getByTestId } = renderBookingDetailsCancelButton(booking)
-    expect(getByTestId('Terminer')).toBeTruthy()
+    const { queryByTestId } = renderBookingDetailsCancelButton(booking)
+    expect(queryByTestId('Terminer')).toBeTruthy()
   })
 
   it('should display button if confirmationDate is null', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
-    const { getByTestId } = renderBookingDetailsCancelButton(booking)
-    expect(getByTestId('Annuler ma réservation')).toBeTruthy()
+    const { queryByTestId } = renderBookingDetailsCancelButton(booking)
+    expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
   })
 
   it('should display button if confirmation date is not expired', () => {
@@ -41,8 +41,8 @@ describe('<BookingDetailsCancelButton />', () => {
     const date = new Date()
     date.setDate(date.getDate() + 1)
     booking.confirmationDate = date.toISOString()
-    const { getByTestId } = renderBookingDetailsCancelButton(booking)
-    expect(getByTestId('Annuler ma réservation')).toBeTruthy()
+    const { queryByTestId } = renderBookingDetailsCancelButton(booking)
+    expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
   })
 
   it('should not display button if confirmation date is expired', async () => {
@@ -83,9 +83,9 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should block user if cancellation date is over', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
-    const { getByText } = renderBookingDetailsCancelButton(booking)
+    const { queryByText } = renderBookingDetailsCancelButton(booking)
     expect(
-      getByText(
+      queryByText(
         'Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a01 novembre 2020'
       )
     ).toBeTruthy()
@@ -95,9 +95,9 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
     mockedisUserExBeneficiary.mockReturnValueOnce(true)
-    const { getByText } = renderBookingDetailsCancelButton(booking)
+    const { queryByText } = renderBookingDetailsCancelButton(booking)
     expect(
-      getByText(
+      queryByText(
         'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1 novembre 2020'
       )
     ).toBeTruthy()
