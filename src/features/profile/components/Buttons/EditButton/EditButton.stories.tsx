@@ -5,7 +5,7 @@ import React from 'react'
 import { EditButton } from './EditButton'
 
 export default {
-  title: 'features/profile/EditButton',
+  title: 'features/profile/buttons/EditButton',
   component: EditButton,
   decorators: [
     (Story) => (

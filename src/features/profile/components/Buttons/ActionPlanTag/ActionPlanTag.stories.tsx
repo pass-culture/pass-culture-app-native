@@ -4,7 +4,7 @@ import React from 'react'
 import { ActionPlanTag } from './ActionPlanTag'
 
 export default {
-  title: 'features/profile/ActionPlanTag',
+  title: 'features/profile/buttons/ActionPlanTag',
   component: ActionPlanTag,
 } as ComponentMeta<typeof ActionPlanTag>
 
