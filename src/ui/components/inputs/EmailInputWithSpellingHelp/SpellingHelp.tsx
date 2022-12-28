@@ -1,14 +1,11 @@
+import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 import React from 'react'
 
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  suggestedEmail: {
-    full: string
-    address: string
-    domain: string
-  }
+  suggestedEmail: MailSuggestion
   onEmailChange: (email: string) => void
 }
 
