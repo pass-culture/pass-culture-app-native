@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, FunctionComponent, useEffect } from 'react'
+import React, { ReactNode, useMemo, FunctionComponent, useEffect, useRef } from 'react'
 import { StatusBar } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -34,6 +34,17 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
+  const timeRef = useRef(0)
+  useEffect(() => {
+    timeRef.current = setTimeout(() => {
+      StatusBar.setBarStyle('light-content', true)
+    })
+    return () => {
+      clearTimeout(timeRef.current)
+      StatusBar.setBarStyle('dark-content', true)
+    }
+  }, [])
+
   const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   const StyledIcon =
@@ -51,13 +62,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
     }
     return spacingMatrix.bottom
   }
-
-  useEffect(() => {
-    setTimeout(() => {
-      StatusBar.setBarStyle('light-content', true)
-    })
-    return () => StatusBar.setBarStyle('dark-content', true)
-  }, [])
 
   return (
     <Wrapper>
