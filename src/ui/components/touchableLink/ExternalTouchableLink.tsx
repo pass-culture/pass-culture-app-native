@@ -12,7 +12,7 @@ export function ExternalTouchableLink({ externalNav, ...rest }: ExternalTouchabl
     if (address) {
       navigateToItinerary(address)
     } else {
-      openUrl(url, params).then(onSuccess).catch(onError)
+      openUrl(url, params, true).then(onSuccess).catch(onError)
     }
   }, [externalNav, navigateToItinerary])
   return (

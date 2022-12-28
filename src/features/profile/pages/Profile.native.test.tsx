@@ -203,7 +203,7 @@ describe('Profile component', () => {
       const row = getByText(`Centre d'aide`)
       fireEvent.press(row)
 
-      expect(openUrl).toBeCalledWith(env.FAQ_LINK, undefined)
+      expect(openUrl).toBeCalledWith(env.FAQ_LINK, undefined, true)
     })
   })
 

@@ -22,6 +22,6 @@ describe('AccessibilityActionPlan', () => {
     const linkComponent = getByText(link)
     fireEvent.press(linkComponent)
 
-    expect(openURLSpy).toHaveBeenCalledWith(link, undefined)
+    expect(openURLSpy).toHaveBeenCalledWith(link, undefined, true)
   })
 })

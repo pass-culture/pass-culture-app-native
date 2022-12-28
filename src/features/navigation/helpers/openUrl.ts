@@ -60,9 +60,10 @@ const showAlert = (url: string) => {
 
 export async function openUrl(
   url: string,
-  { shouldLogEvent = true, fallbackUrl, analyticsData }: UrlParamsProps = {}
+  { shouldLogEvent = true, fallbackUrl, analyticsData }: UrlParamsProps = {},
+  isExternal?: boolean
 ) {
-  if (isAppUrl(url)) {
+  if (isAppUrl(url) && !isExternal) {
     return openAppUrl(url)
   }
 

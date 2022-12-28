@@ -22,6 +22,6 @@ describe('AccessibilityDeclaration', () => {
     const link = getByText(title)
     fireEvent.press(link)
 
-    expect(openURLSpy).toHaveBeenCalledWith(url, undefined)
+    expect(openURLSpy).toHaveBeenCalledWith(url, undefined, true)
   })
 })

@@ -39,7 +39,7 @@ describe('<ExternalTouchableLink />', () => {
       )
       fireEvent.press(getByText(linkText))
       await waitForExpect(() => {
-        expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params)
+        expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params, true)
       })
     })
 

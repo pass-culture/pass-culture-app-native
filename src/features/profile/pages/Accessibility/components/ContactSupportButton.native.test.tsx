@@ -16,7 +16,8 @@ describe('ContactSupportButton', () => {
 
     expect(openURLSpy).toHaveBeenCalledWith(
       contactSupport.forGenericQuestion.url,
-      contactSupport.forGenericQuestion.params
+      contactSupport.forGenericQuestion.params,
+      true
     )
   })
 })

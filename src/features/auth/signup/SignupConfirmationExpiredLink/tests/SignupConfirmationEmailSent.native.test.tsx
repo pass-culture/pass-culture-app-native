@@ -65,7 +65,8 @@ describe('<SignupConfirmationEmailSent />', () => {
       expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toBeCalledTimes(1)
       expect(mockedOpenUrl).toBeCalledWith(
         contactSupport.forSignupConfirmationEmailNotReceived.url,
-        contactSupport.forSignupConfirmationEmailNotReceived.params
+        contactSupport.forSignupConfirmationEmailNotReceived.params,
+        true
       )
     })
   })

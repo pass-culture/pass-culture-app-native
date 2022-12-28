@@ -29,7 +29,7 @@ describe('<FraudulentAccount />', () => {
     fireEvent.press(contactFraudButton)
 
     await waitForExpect(() => {
-      expect(mockedOpenUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined)
+      expect(mockedOpenUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
     })
   })
 
