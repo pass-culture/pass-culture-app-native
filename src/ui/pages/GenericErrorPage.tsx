@@ -2,6 +2,7 @@ import React, { ReactNode, FunctionComponent, useEffect, useRef } from 'react'
 import { StatusBar } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -30,6 +31,8 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttons,
   noBackground,
 }) => {
+  useWhiteStatusBarWithoutReactNavigation(noBackground)
+
   const timeRef = useRef(0)
   useEffect(() => {
     timeRef.current = setTimeout(() => {
@@ -56,6 +59,12 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <meta name="robots" content="noindex" />
         </Helmet>
       )}
+      {/**
+       * BackgroundWithWhiteStatusBar set the light theme
+       * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is potentialy not mounted at this moment
+       *
+       * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
+       */}
       {!noBackground && <BackgroundWithDefaultStatusBar />}
       {header}
       <Content>
