@@ -7,7 +7,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { AfterChangeEmailValidationBuffer } from '../AfterChangeEmailValidationBuffer'
+import { AfterChangeEmailValidationBuffer } from './AfterChangeEmailValidationBuffer'
 
 jest.mock('react-query')
 
