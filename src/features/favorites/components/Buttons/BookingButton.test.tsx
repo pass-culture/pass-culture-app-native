@@ -64,6 +64,7 @@ const isUserExBeneficiaryMock = isUserExBeneficiary as jest.Mock
 describe('<BookingButton />', () => {
   describe('when user is beneficiary', () => {
     // prettier-ignore : do not format the following "table" to keep it readable
+    // eslint-disable-next-line jest/expect-expect
     it.each`
       user                                                     | offer                                                                            | expectedCTA
       ${getUser()}                                             | ${getOffer()}                                                                    | ${ExpectedCTA.InAppBooking}
@@ -101,6 +102,7 @@ describe('<BookingButton />', () => {
     const expiredCredit = { ...credit, isExpired: true }
 
     // prettier-ignore : do not format the following "table" to keep it readable
+    // eslint-disable-next-line jest/expect-expect
     it.each`
       user                                | offer                                                                             | expectedCTA
       ${getUser()}                        | ${getOffer({ price: 0 })}                                                         | ${ExpectedCTA.InAppBooking}
@@ -137,6 +139,7 @@ describe('<BookingButton />', () => {
 
   describe('when user is NOT a beneficiary', () => {
     // prettier-ignore : do not format the following "table" to keep it readable
+    // eslint-disable-next-line jest/expect-expect
     it.each`
       user                                                      | offer                                              | expectedCTA
       ${getUser({ isBeneficiary: false })}                      | ${getOffer({})}                                    | ${ExpectedCTA.ExternalBooking}

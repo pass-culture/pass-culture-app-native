@@ -88,8 +88,8 @@ describe('Home component', () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
     })
-    const { getByText } = renderHome()
-    await waitFor(() => getByText('Bienvenue\u00a0!'))
+    const { queryByText } = renderHome()
+    await waitFor(() => expect(queryByText('Bienvenue\u00a0!')).toBeTruthy())
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
@@ -99,9 +99,9 @@ describe('Home component', () => {
       user: beneficiaryUser,
       isUserLoading: false,
     })
-    const { getByText } = renderHome()
+    const { queryByText } = renderHome()
 
-    await waitFor(() => getByText('Bonjour Jean'))
+    await waitFor(() => expect(queryByText('Bonjour Jean')).toBeTruthy())
   })
 
   it('should show the available credit to the user - remaining', async () => {
@@ -118,9 +118,9 @@ describe('Home component', () => {
     })
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAvailableCredit.mockReturnValue({ amount: 49600, isExpired: false })
-    const { getByText } = renderHome()
+    const { queryByText } = renderHome()
 
-    await waitFor(() => getByText('Tu as 496\u00a0€ sur ton pass'))
+    await waitFor(() => expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeTruthy())
     mockUseAvailableCredit.mockReset()
   })
 
@@ -131,9 +131,9 @@ describe('Home component', () => {
       user: { ...beneficiaryUser, depositExpirationDate: '2020-02-16T17:16:04.735235' },
       isUserLoading: false,
     })
-    const { queryByText, getByText } = renderHome()
+    const { queryByText } = renderHome()
     await waitFor(() => {
-      expect(getByText('Ton crédit est expiré')).toBeTruthy()
+      expect(queryByText('Ton crédit est expiré')).toBeTruthy()
       expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeNull()
     })
   })

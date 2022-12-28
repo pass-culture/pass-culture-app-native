@@ -92,11 +92,11 @@ describe('<FavoritesSorts/>', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const renderAPI = renderFavoritesSort()
+    const { getByText, queryByText } = renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Proximité géographique'))
+    fireEvent.press(getByText('Proximité géographique'))
 
-    renderAPI.getByText(mockPositionError.message)
+    expect(queryByText(mockPositionError.message)).toBeTruthy()
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {

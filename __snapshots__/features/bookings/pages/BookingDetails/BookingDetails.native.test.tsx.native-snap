@@ -335,6 +335,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "name": "Avez-vous déjà vu ?",
                       "subcategoryId": "EVENEMENT_PATRIMOINE",
                       "venue": Object {
+                        "address": "1 boulevard de la brique",
                         "city": "Drancy",
                         "coordinates": Object {
                           "latitude": 48.91683,
@@ -342,6 +343,7 @@ exports[`BookingDetails should render correctly 1`] = `
                         },
                         "id": 2185,
                         "name": "Maison de la Brique",
+                        "postalCode": "93700",
                       },
                       "withdrawalDetails": null,
                     },
@@ -811,6 +813,120 @@ exports[`BookingDetails should render correctly 1`] = `
               ]
             }
           />
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "width": "100%",
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "flex-start",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Voir l’itinéraire"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 20,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Voir l’itinéraire"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 8,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Voir l’itinéraire
+            </Text>
+          </View>
         </View>
         <View
           numberOfSpaces={8}

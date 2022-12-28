@@ -36,6 +36,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 
 describe('<CancellationDetails /> when isDigital = true', () => {
   describe('activationCode with expiration date', () => {
+    // eslint-disable-next-line jest/expect-expect
     it.each([null, pastDate, futureDate])(
       'should not be cancellable when cancellation limit date=%s',
       (cancellationLimitDatetime) => {
@@ -54,6 +55,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
   })
 
   describe('activationCode with no expiration date', () => {
+    // eslint-disable-next-line jest/expect-expect
     it.each([null, pastDate, futureDate])(
       'should not be cancellable when cancellation limit date=%s',
       (cancellationLimitDatetime) => {
@@ -72,6 +74,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
   })
 
   describe('no activationCode', () => {
+    // eslint-disable-next-line jest/expect-expect
     it('should be cancellable if no cancellation limit date', () => {
       mockStock = {
         ...offerStockResponseSnap,
@@ -85,6 +88,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
       expectCancellable(page)
     })
 
+    // eslint-disable-next-line jest/expect-expect
     it('should not be cancellable if limitDate is past', () => {
       mockStock = {
         ...offerStockResponseSnap,
@@ -98,6 +102,7 @@ describe('<CancellationDetails /> when isDigital = true', () => {
       expectNotCancellable(page)
     })
 
+    // eslint-disable-next-line jest/expect-expect
     it('should be cancellable before limitDate if future', () => {
       mockStock = {
         ...offerStockResponseSnap,

@@ -147,8 +147,8 @@ describe('Profile component', () => {
           message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
         }
 
-        const { getByText } = await renderProfile()
-        getByText(mockPositionError.message)
+        const { queryByText } = await renderProfile()
+        expect(queryByText(mockPositionError.message)).toBeTruthy()
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {

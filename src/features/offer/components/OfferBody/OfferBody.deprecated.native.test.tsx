@@ -107,7 +107,7 @@ describe('<OfferBody />', () => {
         isPermanent: true,
       },
     })
-    expect(wrapper.queryByText("Voir l'itinéraire")).toBeNull()
+    expect(wrapper.queryByText('Voir l’itinéraire')).toBeNull()
     expect(wrapper.queryByText('Distance')).toBeNull()
   })
 
