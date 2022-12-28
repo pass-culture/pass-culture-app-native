@@ -5,7 +5,7 @@ import { mocked } from 'ts-jest/utils'
 import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
-import { isUserUnderageBeneficiary } from 'features/profile/utils'
+import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')

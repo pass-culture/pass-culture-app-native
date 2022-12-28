@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import {
   fetchMultipleOffers,

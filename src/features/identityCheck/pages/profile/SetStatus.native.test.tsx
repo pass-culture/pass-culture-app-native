@@ -5,7 +5,7 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 

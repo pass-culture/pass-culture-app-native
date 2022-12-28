@@ -7,7 +7,8 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
+import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'

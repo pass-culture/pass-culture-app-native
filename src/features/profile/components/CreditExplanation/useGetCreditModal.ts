@@ -2,7 +2,7 @@ import { DomainsCredit } from 'api/gen'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { analytics } from 'libs/firebase/analytics'
 
 interface Props {
