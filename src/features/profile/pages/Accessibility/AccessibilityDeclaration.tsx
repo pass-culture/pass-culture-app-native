@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/support.services'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
-import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
+import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'

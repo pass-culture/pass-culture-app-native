@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
+import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'

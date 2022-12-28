@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
+import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/firebase/analytics'
 import { SectionRow } from 'ui/components/SectionRow'
