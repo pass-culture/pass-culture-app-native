@@ -1,5 +1,4 @@
-import React, { ReactNode, FunctionComponent, useEffect, useRef } from 'react'
-import { StatusBar } from 'react-native'
+import React, { ReactNode, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
@@ -32,17 +31,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   noBackground,
 }) => {
   useWhiteStatusBarWithoutReactNavigation(noBackground)
-
-  const timeRef = useRef(0)
-  useEffect(() => {
-    timeRef.current = setTimeout(() => {
-      StatusBar.setBarStyle(noBackground ? 'dark-content' : 'light-content', true)
-    })
-    return () => {
-      clearTimeout(timeRef.current)
-      StatusBar.setBarStyle('dark-content', true)
-    }
-  }, [noBackground])
 
   const { isTouch } = useTheme()
   const Icon =
