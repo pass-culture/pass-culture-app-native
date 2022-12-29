@@ -8,19 +8,15 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
+import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { render } from 'tests/utils'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 
-let mockedUseIsUserUnderageBeneficiary = false
-jest.mock('features/profile/helpers/useIsUserUnderageBeneficiary', () => {
-  return {
-    useIsUserUnderageBeneficiary: jest.fn(() => {
-      return mockedUseIsUserUnderageBeneficiary
-    }),
-  }
-})
+const mockUseIsUserUnderageBeneficiary = jest
+  .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
+  .mockReturnValue(false)
 
 const dateInPast = '2022-08-01T18:00:00'
 const dateInFuture = '2023-02-09T11:17:14.786670'
@@ -79,15 +75,15 @@ describe('CreditHeader', () => {
       const creditInfo = queryByTestId('credit-info')
       const digitalCredit = queryByTestId('domains-credit-digital')
       const physicalCredit = queryByTestId('domains-credit-physical')
-      expect(creditInfo).toBeNull()
-      expect(digitalCredit).toBeNull()
-      expect(physicalCredit).toBeNull()
+      expect(creditInfo).toBeFalsy()
+      expect(digitalCredit).toBeFalsy()
+      expect(physicalCredit).toBeFalsy()
     })
   })
 
   describe('Beneficiary is underage', () => {
-    beforeAll(() => {
-      mockedUseIsUserUnderageBeneficiary = true
+    beforeEach(() => {
+      mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     })
 
     it('should render correctly for underage beneficiary', () => {
@@ -99,8 +95,8 @@ describe('CreditHeader', () => {
       const { queryByTestId } = renderCreditHeader()
       const digitalCredit = queryByTestId('domains-credit-digital')
       const physicalCredit = queryByTestId('domains-credit-physical')
-      expect(digitalCredit).toBeNull()
-      expect(physicalCredit).toBeNull()
+      expect(digitalCredit).toBeFalsy()
+      expect(physicalCredit).toBeFalsy()
     })
   })
 })

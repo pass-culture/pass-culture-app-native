@@ -7,16 +7,12 @@ import {
   domains_credit_v2,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
+import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { render, waitFor } from 'tests/utils'
 
-let mockedUseIsUserUnderageBeneficiary = false
-jest.mock('features/profile/helpers/useIsUserUnderageBeneficiary', () => {
-  return {
-    useIsUserUnderageBeneficiary: jest.fn(() => {
-      return mockedUseIsUserUnderageBeneficiary
-    }),
-  }
-})
+const mockUseIsUserUnderageBeneficiary = jest
+  .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
+  .mockReturnValue(false)
 
 describe('BeneficiaryCeilings', () => {
   it('should not return credits if credit is exhausted', () => {
@@ -60,7 +56,7 @@ describe('BeneficiaryCeilings', () => {
   })
 
   it('should not return credits if user underage beneficiary', () => {
-    mockedUseIsUserUnderageBeneficiary = true
+    mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     const renderAPI = render(<BeneficiaryCeilings domainsCredit={domains_credit_v1} />)
     expect(renderAPI.toJSON()).toBeNull()
   })

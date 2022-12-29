@@ -5,17 +5,13 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
+import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 
-let mockedUseIsUserUnderageBeneficiary = false
-jest.mock('features/profile/helpers/useIsUserUnderageBeneficiary', () => {
-  return {
-    useIsUserUnderageBeneficiary: jest.fn(() => {
-      return mockedUseIsUserUnderageBeneficiary
-    }),
-  }
-})
+const mockUseIsUserUnderageBeneficiary = jest
+  .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
+  .mockReturnValue(false)
 
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
@@ -90,7 +86,7 @@ describe('<CreditExplanation/>', () => {
     })
 
     it('should render nothing for valid credit and underage beneficiary', () => {
-      mockedUseIsUserUnderageBeneficiary = true
+      mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
       const renderAPI = render(
         <CreditExplanation isDepositExpired={false} domainsCredit={domains_credit_v1} />
       )

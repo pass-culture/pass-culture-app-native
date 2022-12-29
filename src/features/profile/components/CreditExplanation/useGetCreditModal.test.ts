@@ -2,17 +2,13 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
+import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 
 import { useGetCreditModal } from './useGetCreditModal'
 
-let mockedUseIsUserUnderageBeneficiary = false
-jest.mock('features/profile/helpers/useIsUserUnderageBeneficiary', () => {
-  return {
-    useIsUserUnderageBeneficiary: jest.fn(() => {
-      return mockedUseIsUserUnderageBeneficiary
-    }),
-  }
-})
+const mockUseIsUserUnderageBeneficiary = jest
+  .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
+  .mockReturnValue(false)
 
 describe('useGetCreditModal()', () => {
   it('should return ExpiredCreditModal if deposit is expired', async () => {
@@ -52,7 +48,7 @@ describe('useGetCreditModal()', () => {
   })
 
   it('should return null for creditModal if deposit is not expired and not exhausted and beneficiary is underage', async () => {
-    mockedUseIsUserUnderageBeneficiary = true
+    mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     const { creditModal } = useGetCreditModal({
       domainsCredit: domains_credit_v1,
       isDepositExpired: false,
