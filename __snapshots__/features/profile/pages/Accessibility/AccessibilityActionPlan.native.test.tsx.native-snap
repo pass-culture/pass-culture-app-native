@@ -3404,11 +3404,11 @@ Array [
             >
               Rencontre avec des utilisateurs en situation de handicap
               <Text
-                done={false}
+                done={true}
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
+                      "color": "#15884f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -3416,7 +3416,7 @@ Array [
                   ]
                 }
               >
-                 - Prochainement
+                 - Réalisé
               </Text>
             </Text>
           </View>
