@@ -102,7 +102,7 @@ export interface AlgoliaParameters {
 }
 
 export interface VenuesSearchParameters {
-  sys: Sys<typeof ContentTypes.VENUES_PLAYLIST>
+  sys: Sys<typeof ContentTypes.VENUES_SEARCH_PARAMETERS>
   fields: VenuesSearchParametersFields
 }
 

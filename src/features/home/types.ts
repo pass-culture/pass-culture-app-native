@@ -100,7 +100,7 @@ type RecommendedOffersParameters = {
   isRecoShuffled?: boolean
 }
 
-type VenuesModule = {
+export type VenuesModule = {
   id: string
   venuesSearchParameters: VenuesParameters[]
   displayParameters: DisplayParameters

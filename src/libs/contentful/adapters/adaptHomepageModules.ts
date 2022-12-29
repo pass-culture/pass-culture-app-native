@@ -1,8 +1,14 @@
-import { BusinessModule, ExclusivityModule, RecommendedOffersModule } from 'features/home/types'
+import {
+  BusinessModule,
+  ExclusivityModule,
+  RecommendedOffersModule,
+  VenuesModule,
+} from 'features/home/types'
 import {
   BusinessNatifModule,
   ExclusivityNatifModule,
   RecommendationNatifModule,
+  VenuesNatifModule,
 } from 'libs/contentful/types'
 
 const buildImageUrl = (url: string): string => {
@@ -11,6 +17,10 @@ const buildImageUrl = (url: string): string => {
 
 const formatOfferIdToNumber = (offerId: string): number | undefined => {
   return Number.isNaN(Number(offerId)) ? undefined : Number(offerId)
+}
+
+const hasAtLeastOneField = (object: any) => {
+  return Object.keys(object).length > 0
 }
 
 export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule => {
@@ -27,6 +37,19 @@ export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule
     leftIcon: leftIcon,
     url: module.fields.url,
     shouldTargetNotConnectedUsers: module.fields.targetNotConnectedUsersOnly,
+  }
+}
+
+export const adaptVenuesModule = (modules: VenuesNatifModule): VenuesModule | null => {
+  const venuesSearchParameters = modules.fields.venuesSearchParameters
+    .filter((params) => params.fields && hasAtLeastOneField(params.fields))
+    .map(({ fields }) => fields)
+
+  if (venuesSearchParameters.length === 0) return null
+  return {
+    id: modules.sys.id,
+    venuesSearchParameters: venuesSearchParameters,
+    displayParameters: modules.fields.displayParameters.fields,
   }
 }
 
