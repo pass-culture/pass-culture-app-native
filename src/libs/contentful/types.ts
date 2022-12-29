@@ -257,7 +257,6 @@ export type HomepageModule =
   | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
   | { sys: Sys<'recommendation'>; fields: RecommendationFields }
   | { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
-
 export interface Image {
   sys: Sys<typeof ContentTypes.INFORMATION>
   fields: {
@@ -290,3 +289,23 @@ export interface HomepageEntry {
   sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
 }
+
+// Nouveaux types avec adapter
+export interface HomepageNatifEntry {
+  metadata: { tags: Tag[] }
+  sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
+  fields: HomepageNatifFields
+}
+
+export type HomepageNatifModule =
+  | AlgoliaNatifModule
+  | BusinessNatifModule
+  | ExclusivityNatifModule
+  | RecommendationNatifModule
+  | VenuesNatifModule
+
+export type AlgoliaNatifModule = { sys: Sys<'algolia'>; fields: AlgoliaFields }
+export type BusinessNatifModule = { sys: Sys<'business'>; fields: BusinessFields }
+export type ExclusivityNatifModule = { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
+export type RecommendationNatifModule = { sys: Sys<'recommendation'>; fields: RecommendationFields }
+export type VenuesNatifModule = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
