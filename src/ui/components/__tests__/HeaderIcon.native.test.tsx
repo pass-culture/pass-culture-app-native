@@ -25,32 +25,54 @@ const DummyComponent: React.FC = () => {
     <TouchableOpacity testID="dummyPressable" onPress={onPress}>
       <HeaderIcon
         iconName="back"
-        onPress={() => null}
+        onPress={jest.fn()}
         animationState={{ iconBackgroundColor, iconBorderColor, transition: animatedValue }}
         accessibilityLabel="Revenir en arrière"
       />
     </TouchableOpacity>
   )
 }
-describe('AnimatedIcon', () => {
-  it('should display initial colors before animation', () => {
-    const { getByTestId } = render(<DummyComponent />)
-    const roundContainer = getByTestId('headerIconRoundContainer')
-    expect(roundContainer.props.style.backgroundColor).toBe('rgba(0, 255, 0, 1)')
-    expect(roundContainer.props.style.borderColor).toBe('rgba(0, 0, 0, 1)')
-  })
-  it('should display final colors after animation', async () => {
-    const { getByTestId } = render(<DummyComponent />)
-    fireEvent.press(getByTestId('dummyPressable'))
-    const roundContainer = getByTestId('headerIconRoundContainer')
-    await waitForExpect(() => {
-      expect(roundContainer.props.style.backgroundColor).toBe('rgba(255, 0, 255, 0)')
+
+describe('HeaderIcon', () => {
+  describe('Icon', () => {
+    it('should display icon without animation', () => {
+      const { queryByTestId } = render(
+        <HeaderIcon iconName="back" onPress={jest.fn()} accessibilityLabel="Revenir en arrière" />
+      )
+      expect(queryByTestId('icon-back')).toBeTruthy()
+      expect(queryByTestId('animated-icon-back')).toBeFalsy()
     })
-    expect(roundContainer.props.style.borderColor).toBe('rgba(255, 255, 255, 0)')
   })
-  it('should convey animatedValue to AnimatedIcon', () => {
-    const { getByTestId } = render(<DummyComponent />)
-    const animatedIcon = getByTestId('headerIconRoundContainer').children[0] as ReactTestInstance
-    expect(animatedIcon.props.transition).toBe(animatedValue)
+
+  describe('AnimatedIcon', () => {
+    it('should display animated icon', () => {
+      const { queryByTestId } = render(<DummyComponent />)
+      expect(queryByTestId('icon-back')).toBeFalsy()
+      expect(queryByTestId('animated-icon-back')).toBeTruthy()
+    })
+
+    it('should display initial colors before animation', () => {
+      const { getByTestId } = render(<DummyComponent />)
+      const roundContainer = getByTestId('AnimatedHeaderIconRoundContainer')
+      expect(roundContainer.props.style.backgroundColor).toBe('rgba(0, 255, 0, 1)')
+      expect(roundContainer.props.style.borderColor).toBe('rgba(0, 0, 0, 1)')
+    })
+
+    it('should display final colors after animation', async () => {
+      const { getByTestId } = render(<DummyComponent />)
+      fireEvent.press(getByTestId('dummyPressable'))
+      const roundContainer = getByTestId('AnimatedHeaderIconRoundContainer')
+      await waitForExpect(() => {
+        expect(roundContainer.props.style.backgroundColor).toBe('rgba(255, 0, 255, 0)')
+      })
+      expect(roundContainer.props.style.borderColor).toBe('rgba(255, 255, 255, 0)')
+    })
+
+    it('should convey animatedValue to AnimatedIcon', () => {
+      const { getByTestId } = render(<DummyComponent />)
+      const animatedIcon = getByTestId('AnimatedHeaderIconRoundContainer')
+        .children[0] as ReactTestInstance
+      expect(animatedIcon.props.transition).toBe(animatedValue)
+    })
   })
 })

@@ -3,7 +3,7 @@ import { AccessibilityRole, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
+import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
@@ -19,7 +19,7 @@ interface HeaderIconProps {
   initialColor?: ColorsEnum
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
-  animationState: {
+  animationState?: {
     iconBackgroundColor: Animated.AnimatedInterpolation
     iconBorderColor: Animated.AnimatedInterpolation
     transition: Animated.AnimatedInterpolation
@@ -38,7 +38,7 @@ const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface>
 
 export const HeaderIcon = (props: HeaderIconProps) => {
   const Icon = getIcon(props.iconName)
-  const { colors } = useTheme()
+  const { colors, icons } = useTheme()
 
   const accessibilityProps = useMemo(() => {
     return props.accessibilityRole
@@ -51,31 +51,38 @@ export const HeaderIcon = (props: HeaderIconProps) => {
 
   return (
     <Touchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
-      <StyledAnimatedView
-        testID="headerIconRoundContainer"
-        style={{
-          borderColor: props.animationState.iconBorderColor,
-          backgroundColor: props.animationState.iconBackgroundColor,
-          transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
-        }}>
-        <AnimatedIcon
-          Icon={Icon}
-          initialColor={props.initialColor || colors.black}
-          testID={`icon-${props.iconName}`}
-          transition={props.animationState.transition}
-          finalColor={colors.white}
-        />
-      </StyledAnimatedView>
+      {props.animationState ? (
+        <IconContainer
+          testID="AnimatedHeaderIconRoundContainer"
+          style={{
+            borderColor: props.animationState?.iconBorderColor,
+            backgroundColor: props.animationState?.iconBackgroundColor,
+            transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
+          }}>
+          <AnimatedIcon
+            Icon={Icon}
+            initialColor={props.initialColor || colors.black}
+            testID={`animated-icon-${props.iconName}`}
+            transition={props.animationState.transition}
+            finalColor={colors.white}
+            size={icons.sizes.small}
+          />
+        </IconContainer>
+      ) : (
+        <IconContainer>
+          <Icon size={icons.sizes.small} testID={`icon-${props.iconName}`} />
+        </IconContainer>
+      )}
     </Touchable>
   )
 }
 
 const CONTAINER_SIZE = getSpacing(10)
-const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
+const IconContainer = styled(Animated.View)(({ theme }) => ({
   width: CONTAINER_SIZE,
   height: CONTAINER_SIZE,
   aspectRatio: '1',
-  borderRadius: getSpacing(10),
+  borderRadius: CONTAINER_SIZE,
   backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',
@@ -83,7 +90,3 @@ const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
   overflow: 'hidden',
   borderColor: theme.colors.greyLight,
 }))
-
-const AnimatedIcon = styled(DefaultAnimatedIcon).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
