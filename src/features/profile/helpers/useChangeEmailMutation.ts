@@ -21,7 +21,9 @@ export const useChangeEmailMutation = ({
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
   const onEmailChangeError = (errorCode?: string) => {
-    errorCode && analytics.logErrorSavingNewEmail(errorCode)
+    if (errorCode) {
+      analytics.logErrorSavingNewEmail(errorCode)
+    }
     if (errorCode === CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD) {
       setPasswordErrorMessage('Mot de passe incorrect')
     } else {
