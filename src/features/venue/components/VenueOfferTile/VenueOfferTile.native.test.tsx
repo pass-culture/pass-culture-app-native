@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -41,7 +41,7 @@ describe('VenueOfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
     await fireEvent.press(getByTestId('tileImage'))
-    expect(navigate).toHaveBeenCalledWith('Offer', {
+    expect(push).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'venue',
     })

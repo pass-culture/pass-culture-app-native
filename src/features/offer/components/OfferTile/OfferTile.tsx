@@ -95,7 +95,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         navigateTo={{
           screen: 'Offer',
           params: { id: offerId, from: analyticsFrom, moduleName, moduleId, fromOfferId },
-          withPush: !!fromOfferId,
+          withPush: true,
         }}
         onBeforeNavigate={handlePressOffer}
         onFocus={onFocus}
