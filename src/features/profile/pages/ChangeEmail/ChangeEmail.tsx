@@ -6,11 +6,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
-import { useIsCurrentUserEmail } from 'features/profile/helpers/useValidateEmail'
 import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
 import { useSafeState } from 'libs/hooks'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
@@ -35,25 +35,21 @@ export function ChangeEmail() {
   const { isMobileViewport, isTouch } = useTheme()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
+  const { user } = useAuthContext()
 
   const {
     control,
     handleSubmit,
     formState: { errors, isValid },
     getValues,
-    watch,
   } = useForm<FormValues>({
     defaultValues: {
       newEmail: '',
       password: '',
     },
-    resolver: yupResolver(changeEmailSchema),
+    resolver: yupResolver(changeEmailSchema(user?.email)),
     mode: 'all',
   })
-
-  const emailValue = watch('newEmail')
-
-  const isCurrentEmail = useIsCurrentUserEmail(emailValue)
 
   const { changeEmail, isLoading } = useChangeEmailMutation({ setPasswordErrorMessage })
 
@@ -75,11 +71,9 @@ export function ChangeEmail() {
     changeEmail({ email: newEmail, password })
   }
 
-  const isSubmitButtonDisabled = !isValid || isLoading || isCurrentEmail
+  const isSubmitButtonDisabled = !isValid || isLoading
 
-  const emailErrorMessage: string =
-    errors.newEmail?.message ??
-    (isCurrentEmail ? 'L’e-mail saisi est identique à ton e-mail actuel' : '')
+  const emailErrorMessage = errors.newEmail?.message
 
   return (
     <React.Fragment>
@@ -109,7 +103,7 @@ export function ChangeEmail() {
               emailInputErrorId={emailInputErrorId}
             />
             <InputError
-              visible={!!errors.newEmail || isCurrentEmail}
+              visible={!!errors.newEmail}
               messageId={emailErrorMessage}
               numberOfSpacesTop={2}
               relatedInputId={emailInputErrorId}
