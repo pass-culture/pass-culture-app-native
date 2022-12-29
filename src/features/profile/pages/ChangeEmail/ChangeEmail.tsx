@@ -64,7 +64,6 @@ export function ChangeEmail() {
 
   useEffect(() => {
     removePasswordError()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [password])
 
   const scrollRef = useRef<ScrollView | null>(null)
