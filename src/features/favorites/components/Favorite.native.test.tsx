@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, cleanup, superFlushWithAct } from 'tests/utils'
+import { act, fireEvent, render, cleanup, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -74,11 +73,18 @@ describe('<Favorite /> component', () => {
   })
 
   it('should navigate to the offer when clicking on the favorite', async () => {
-    const { getByTestId } = renderFavorite()
-    await fireEvent.press(getByTestId(/Offre/))
-    expect(navigate).toHaveBeenCalledWith('Offer', {
-      from: 'favorites',
-      id: favorite.offer.id,
+    const { getByText } = renderFavorite()
+
+    act(() => {
+      const offre = getByText(favorite.offer.name)
+      fireEvent.press(offre)
+    })
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        from: 'favorites',
+        id: favorite.offer.id,
+      })
     })
   })
 
@@ -96,11 +102,9 @@ describe('<Favorite /> component', () => {
 
     act(() => {
       fireEvent.press(getByText('Supprimer'))
-      jest.advanceTimersByTime(1000)
     })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
       expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
     })
@@ -117,11 +121,9 @@ describe('<Favorite /> component', () => {
 
     act(() => {
       fireEvent.press(getByText('Supprimer'))
-      jest.advanceTimersByTime(1000)
     })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,

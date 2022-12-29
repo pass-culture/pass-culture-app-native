@@ -7,13 +7,17 @@ import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'ap
 import { useRemoveFavorite } from 'features/favorites/api'
 import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
+import { useShareOffer } from 'features/offer/helpers/useShareOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
+import { WebShareModal } from 'libs/share/WebShareModal'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
+import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -106,84 +110,113 @@ export const Favorite: React.FC<Props> = (props) => {
     }
   }
 
+  const {
+    visible: shareOfferModalVisible,
+    showModal: showShareOfferModal,
+    hideModal: hideShareOfferModal,
+  } = useModal(false)
+
+  const { share: shareOffer, shareContent } = useShareOffer(offer.id)
+
+  const pressShareOffer = () => {
+    shareOffer()
+    showShareOfferModal()
+  }
+
   return (
-    <Animated.View
-      onLayout={onLayout}
-      style={{
-        opacity: animatedOpacity,
-        height: height
-          ? animatedCollapse.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0, height],
-            })
-          : undefined,
-      }}>
-      <Container
-        navigateTo={
-          offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
-        }
-        onBeforeNavigate={handlePressOffer}
-        accessibilityLabel={accessibilityLabel}>
-        <Row>
-          <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-          <Spacer.Row numberOfSpaces={4} />
-          <Column>
-            <Row>
-              {distanceToOffer ? (
-                <React.Fragment>
-                  <Spacer.Flex flex={0.7}>
-                    <Name numberOfLines={2}>{offer.name}</Name>
-                  </Spacer.Flex>
-                  <Spacer.Flex flex={0.3}>
-                    <Distance>{distanceToOffer}</Distance>
-                  </Spacer.Flex>
-                </React.Fragment>
-              ) : (
-                <Name numberOfLines={2}>{offer.name}</Name>
-              )}
-            </Row>
-            <Spacer.Column numberOfSpaces={1} />
-            <Body>{searchGroupLabel}</Body>
-            {!!formattedDate && <Body>{formattedDate}</Body>}
-            <Spacer.Column numberOfSpaces={1} />
-            <Typo.Caption>{displayPrice}</Typo.Caption>
-          </Column>
-        </Row>
-      </Container>
-      <ButtonsRow>
-        <ButtonContainer>
-          <ButtonSecondary
-            wording="Supprimer"
-            accessibilityLabel={`Supprimer l'offre ${offer.name} de mes favoris`}
-            onPress={onRemove}
-            buttonHeight="tall"
-            disabled={isLoading}
-          />
-        </ButtonContainer>
-        {!theme.isMobileViewport && <Spacer.Flex flex={1 / 30} />}
-        <ButtonContainer>
-          <BookingButton offer={offer} user={props.user} onInAppBooking={props.onInAppBooking} />
-        </ButtonContainer>
-      </ButtonsRow>
-      <Separator />
-    </Animated.View>
+    <React.Fragment>
+      <Animated.View
+        onLayout={onLayout}
+        style={{
+          opacity: animatedOpacity,
+          height: height
+            ? animatedCollapse.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, height],
+              })
+            : undefined,
+        }}>
+        <Container
+          navigateTo={
+            offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
+          }
+          onBeforeNavigate={handlePressOffer}
+          accessibilityLabel={accessibilityLabel}>
+          <Row>
+            <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
+            <Spacer.Row numberOfSpaces={4} />
+            <ContentContainer>
+              <LeftContent>
+                <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
+                <Spacer.Column numberOfSpaces={1} />
+                <Body>{searchGroupLabel}</Body>
+                {!!formattedDate && <Body>{formattedDate}</Body>}
+                <Spacer.Column numberOfSpaces={1} />
+                <Typo.Caption>{displayPrice}</Typo.Caption>
+              </LeftContent>
+              <Spacer.Row numberOfSpaces={2} />
+              <RightContent>
+                <HeaderIcon
+                  iconName="share"
+                  onPress={pressShareOffer}
+                  accessibilityLabel="Partager"
+                />
+                {!!distanceToOffer && <Distance>{distanceToOffer}</Distance>}
+              </RightContent>
+            </ContentContainer>
+          </Row>
+        </Container>
+        <ButtonsRow>
+          <ButtonContainer>
+            <ButtonSecondary
+              wording="Supprimer"
+              accessibilityLabel={`Supprimer l'offre ${offer.name} de mes favoris`}
+              onPress={onRemove}
+              buttonHeight="tall"
+              disabled={isLoading}
+            />
+          </ButtonContainer>
+          {!theme.isMobileViewport && <Spacer.Flex flex={1 / 30} />}
+          <ButtonContainer>
+            <BookingButton offer={offer} user={props.user} onInAppBooking={props.onInAppBooking} />
+          </ButtonContainer>
+        </ButtonsRow>
+        <Separator />
+      </Animated.View>
+      {shareContent ? (
+        <WebShareModal
+          visible={shareOfferModalVisible}
+          headerTitle="Partager l'offre"
+          shareContent={shareContent}
+          dismissModal={hideShareOfferModal}
+        />
+      ) : null}
+    </React.Fragment>
   )
 }
 
-const imageWidth = getSpacing(16)
+const ContentContainer = styled.View({
+  flexDirection: 'row',
+  flex: 1,
+})
+
+const LeftContent = styled.View({
+  flex: 1,
+})
+
+const RightContent = styled.View({
+  justifyContent: 'space-between',
+  alignItems: 'flex-end',
+})
 
 const Container = styled(InternalTouchableLink)({
   marginHorizontal: getSpacing(6),
 })
 
-const columnPadding = 4
-const columnMargin = 2 * 6
-
-const Column = styled.View(({ theme }) => ({
-  width: theme.appContentWidth - getSpacing(columnMargin + columnPadding) - imageWidth,
-}))
-
-const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+const Row = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
 
 const ButtonContainer = styled.View({
   maxWidth: getSpacing(70),
@@ -196,8 +229,6 @@ const ButtonsRow = styled.View(({ theme }) => ({
   marginTop: getSpacing(6),
   marginHorizontal: getSpacing(6),
 }))
-
-const Name = styled(Typo.ButtonText)``
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
