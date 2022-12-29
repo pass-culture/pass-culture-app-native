@@ -271,11 +271,15 @@ function favoriteBookingButtonTestRunner({
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeTruthy()
-    expect(mockedOpenUrl).toBeCalledWith(offer.externalTicketOfficeUrl, {
-      analyticsData: {
-        offerId: offer.id,
+    expect(mockedOpenUrl).toBeCalledWith(
+      offer.externalTicketOfficeUrl,
+      {
+        analyticsData: {
+          offerId: offer.id,
+        },
       },
-    })
+      true
+    )
     expect(renderAPI.queryByText('Offre réservée')).toBeNull()
     expect(renderAPI.queryByText('Offre expirée')).toBeNull()
     expect(renderAPI.queryByText('Offre épuisée')).toBeNull()

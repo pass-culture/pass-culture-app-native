@@ -63,7 +63,7 @@ describe('AgeSelection', () => {
 
     fireEvent.press(button)
     await waitFor(() => {
-      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_LEGAL_GUARDIAN, undefined)
+      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_LEGAL_GUARDIAN, undefined, true)
     })
   })
 

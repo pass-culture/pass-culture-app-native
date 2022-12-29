@@ -356,7 +356,7 @@ export function AccessibilityActionPlan() {
           <ActionPlanTag />
         </BulletListItem>
         <BulletListItem text="Rencontre avec des utilisateurs en situation de handicap">
-          <ActionPlanTag done={false} />
+          <ActionPlanTag />
         </BulletListItem>
         <BulletListItem text="Formation du pôle Communication, Marketing, Recherche">
           <ActionPlanTag done={false} />

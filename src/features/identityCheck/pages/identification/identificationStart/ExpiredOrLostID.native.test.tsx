@@ -20,7 +20,7 @@ describe('ExpiredOrLostID', () => {
 
     fireEvent.press(getByText('Aller sur demarches-simplifiees.fr'))
 
-    expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined)
+    expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })
 
   it('should send a amplitude event when the screen is mounted', async () => {

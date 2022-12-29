@@ -87,7 +87,7 @@ describe('ConfirmDeleteProfile component', () => {
     fireEvent.press(renderAPI.getByText('Consulter l’article d’aide'))
     await waitForExpect(() => {
       expect(analytics.logConsultArticleAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined)
+      expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined, true)
     })
   })
 

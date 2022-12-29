@@ -20,7 +20,7 @@ describe('LegalNotices', () => {
     const row = getByText('Conditions Générales d’Utilisation')
     fireEvent.press(row)
 
-    expect(openUrl).toHaveBeenCalledWith(env.CGU_LINK, undefined)
+    expect(openUrl).toHaveBeenCalledWith(env.CGU_LINK, undefined, true)
   })
   it('should navigate when the data-privacy-chart row is clicked', async () => {
     const { getByText } = render(<LegalNotices />)
@@ -28,6 +28,6 @@ describe('LegalNotices', () => {
     const row = getByText('Charte de protection des données personnelles')
     fireEvent.press(row)
 
-    expect(openUrl).toHaveBeenCalledWith(env.DATA_PRIVACY_CHART_LINK, undefined)
+    expect(openUrl).toHaveBeenCalledWith(env.DATA_PRIVACY_CHART_LINK, undefined, true)
   })
 })
