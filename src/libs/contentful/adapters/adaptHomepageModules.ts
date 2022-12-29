@@ -1,8 +1,16 @@
-import { BusinessModule, RecommendedOffersModule } from 'features/home/types'
-import { BusinessNatifModule, RecommendationNatifModule } from 'libs/contentful/types'
+import { BusinessModule, ExclusivityModule, RecommendedOffersModule } from 'features/home/types'
+import {
+  BusinessNatifModule,
+  ExclusivityNatifModule,
+  RecommendationNatifModule,
+} from 'libs/contentful/types'
 
 const buildImageUrl = (url: string): string => {
   return `https:${url}`
+}
+
+const formatOfferIdToNumber = (offerId: string): number | undefined => {
+  return Number.isNaN(Number(offerId)) ? undefined : Number(offerId)
 }
 
 export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule => {
@@ -29,3 +37,15 @@ export const adaptRecommendationModule = (
   displayParameters: modules.fields.displayParameters.fields,
   recommendationParameters: modules.fields.recommendationParameters?.fields,
 })
+
+export const adaptExclusivityModule = (modules: ExclusivityNatifModule): ExclusivityModule => {
+  return {
+    id: modules.sys.id,
+    title: modules.fields.title,
+    alt: modules.fields.alt,
+    image: buildImageUrl(modules.fields.image?.fields.file.url),
+    url: modules.fields.url,
+    displayParameters: modules.fields.displayParameters?.fields,
+    offerId: formatOfferIdToNumber(modules.fields.offerId),
+  }
+}

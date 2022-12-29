@@ -68,7 +68,7 @@ export type ExclusivityModule = {
   title: string
   alt: string
   image: string
-  offerId?: string
+  offerId?: number
   url?: string
   displayParameters?: ExclusivityDisplayParameters
 }

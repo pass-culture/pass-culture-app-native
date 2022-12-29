@@ -1,9 +1,11 @@
-import { BusinessModule, RecommendedOffersModule } from 'features/home/types'
+import { BusinessModule, ExclusivityModule, RecommendedOffersModule } from 'features/home/types'
 import {
   adaptBusinessModule,
+  adaptExclusivityModule,
   adaptRecommendationModule,
 } from 'libs/contentful/adapters/adaptHomepageModules'
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/BusinessModule.fixture'
+import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/ExclusivityModule.fixture'
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/RecommendationNatifModule.fixture'
 
 describe('adaptHomepageModules', () => {
@@ -36,5 +38,21 @@ describe('adaptHomepageModules', () => {
     expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(
       formattedRecommendedOffersModule
     )
+  })
+
+  it('should adapt an exclusivity module', () => {
+    const rawExclusivityNatifModule = exclusivityNatifModuleFixture
+
+    const formattedExclusivityModule: ExclusivityModule = {
+      id: 'AEYnm9QjIo2rZKoCfSvMD',
+      title: 'WE FRAC CAEN',
+      alt: 'Week-end FRAC',
+      image:
+        'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
+      url: undefined,
+      offerId: 123456789,
+    }
+
+    expect(adaptExclusivityModule(rawExclusivityNatifModule)).toEqual(formattedExclusivityModule)
   })
 })
