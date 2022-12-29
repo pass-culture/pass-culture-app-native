@@ -31,7 +31,7 @@ describe('processHomepageEntry', () => {
   })
 
   describe('buildSearchParams', () => {
-    const algoliaType: ContentTypes = ContentTypes.ALGOLIA
+    const algoliaType: ContentTypes = ContentTypes.ALGOLIA_PARAMETERS
     const algoliaParameters = {
       metadata: { tags: [] },
       sys: {

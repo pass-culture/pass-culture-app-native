@@ -3,12 +3,15 @@ import {
   ExclusivityModule,
   RecommendedOffersModule,
   VenuesModule,
+  OffersModule,
 } from 'features/home/types'
 import {
   BusinessNatifModule,
   ExclusivityNatifModule,
   RecommendationNatifModule,
   VenuesNatifModule,
+  AlgoliaNatifModule,
+  AlgoliaParameters,
 } from 'libs/contentful/types'
 
 const buildImageUrl = (url: string): string => {
@@ -70,5 +73,36 @@ export const adaptExclusivityModule = (modules: ExclusivityNatifModule): Exclusi
     url: modules.fields.url,
     displayParameters: modules.fields.displayParameters?.fields,
     offerId: formatOfferIdToNumber(modules.fields.offerId),
+  }
+}
+
+const buildOffersParams = (
+  firstParams: AlgoliaParameters,
+  additionalParams: AlgoliaParameters[]
+): OffersModule['offersModuleParameters'] =>
+  [firstParams, ...additionalParams]
+    .filter((params) => params.fields && hasAtLeastOneField(params.fields))
+    .map(({ fields }) => fields)
+
+export const adaptOffersModule = (modules: AlgoliaNatifModule): OffersModule | null => {
+  const additionalAlgoliaParameters = modules.fields.additionalAlgoliaParameters ?? []
+
+  const offersList = buildOffersParams(
+    modules.fields.algoliaParameters,
+    additionalAlgoliaParameters
+  )
+
+  if (offersList.length === 0) return null
+
+  const coverUrl = modules.fields.cover
+    ? buildImageUrl(modules.fields.cover.fields.image?.fields.file.url)
+    : undefined
+
+  return {
+    id: modules.sys.id,
+    title: modules.fields.title,
+    displayParameters: modules.fields.displayParameters.fields,
+    offersModuleParameters: offersList,
+    cover: coverUrl,
   }
 }

@@ -16,10 +16,9 @@ export type HomepageModule =
 export type OffersModule = {
   id: string
   title: string
-  offersModuleParameters: OffersModuleParameters
+  offersModuleParameters: OffersModuleParameters[]
   displayParameters: DisplayParameters
   cover?: string | null
-  additionalOffersModuleParameters?: OffersModuleParameters[]
 }
 
 type DisplayParameters = {

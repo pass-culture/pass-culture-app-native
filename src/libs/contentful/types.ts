@@ -97,7 +97,7 @@ interface EntryCollectionError {
 }
 
 export interface AlgoliaParameters {
-  sys: Sys<typeof ContentTypes.ALGOLIA>
+  sys: Sys<typeof ContentTypes.ALGOLIA_PARAMETERS>
   fields: SearchParametersFields
 }
 
