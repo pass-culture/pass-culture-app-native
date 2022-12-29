@@ -29,4 +29,14 @@ describe('changeEmailSchema', () => {
 
     await expect(result).rejects.toEqual(new ValidationError(''))
   })
+
+  it('should accept when email and password are valid', async () => {
+    const input = {
+      newEmail: 'passculture@mail.co',
+      password: 'password>=12',
+    }
+    const result = changeEmailSchema.validate(input)
+
+    await expect(result).resolves.toEqual(input)
+  })
 })
