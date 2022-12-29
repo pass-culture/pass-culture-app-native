@@ -78,7 +78,7 @@ type ExclusivityDisplayParameters = {
   aroundRadius?: number
 }
 
-type RecommendedOffersModule = {
+export type RecommendedOffersModule = {
   id: string
   displayParameters: DisplayParameters
   recommendationParameters?: RecommendedOffersParameters

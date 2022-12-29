@@ -1,6 +1,10 @@
-import { BusinessModule } from 'features/home/types'
-import { adaptBusinessModule } from 'libs/contentful/adapters/adaptHomepageModules'
+import { BusinessModule, RecommendedOffersModule } from 'features/home/types'
+import {
+  adaptBusinessModule,
+  adaptRecommendationModule,
+} from 'libs/contentful/adapters/adaptHomepageModules'
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/BusinessModule.fixture'
+import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/RecommendationNatifModule.fixture'
 
 describe('adaptHomepageModules', () => {
   it('should adapt a business module', () => {
@@ -20,5 +24,17 @@ describe('adaptHomepageModules', () => {
     }
 
     expect(adaptBusinessModule(rawBusinessModule)).toEqual(formattedBusinessModule)
+  })
+  it('should adapt a recommendedOffers module', () => {
+    const rawRecommendationModule = recommendationNatifModuleFixture
+
+    const formattedRecommendedOffersModule: RecommendedOffersModule = {
+      id: '3sAqNrRMXUOES7tFyRFFO8',
+      displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
+    }
+
+    expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(
+      formattedRecommendedOffersModule
+    )
   })
 })

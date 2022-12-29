@@ -1,5 +1,9 @@
-import { BusinessModule } from 'features/home/types'
-import { BusinessNatifModule } from 'libs/contentful/types'
+import { BusinessModule, RecommendedOffersModule } from 'features/home/types'
+import { BusinessNatifModule, RecommendationNatifModule } from 'libs/contentful/types'
+
+const buildImageUrl = (url: string): string => {
+  return `https:${url}`
+}
 
 export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule => {
   const leftIcon = module.fields.leftIcon?.fields.file.url
@@ -18,6 +22,10 @@ export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule
   }
 }
 
-const buildImageUrl = (url: string): string => {
-  return `https:${url}`
-}
+export const adaptRecommendationModule = (
+  modules: RecommendationNatifModule
+): RecommendedOffersModule => ({
+  id: modules.sys.id,
+  displayParameters: modules.fields.displayParameters.fields,
+  recommendationParameters: modules.fields.recommendationParameters?.fields,
+})
