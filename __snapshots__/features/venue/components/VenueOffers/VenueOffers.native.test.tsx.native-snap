@@ -789,6 +789,7 @@ Array [
                               }
                             >
                               <FastImageView
+                                defaultSource={null}
                                 resizeMode="cover"
                                 source={
                                   Object {
@@ -1061,6 +1062,7 @@ Array [
                               }
                             >
                               <FastImageView
+                                defaultSource={null}
                                 resizeMode="cover"
                                 source={
                                   Object {
@@ -1312,6 +1314,7 @@ Array [
                               }
                             >
                               <FastImageView
+                                defaultSource={null}
                                 resizeMode="cover"
                                 source={
                                   Object {
@@ -1768,6 +1771,7 @@ Array [
                           }
                         >
                           <FastImageView
+                            defaultSource={null}
                             resizeMode="cover"
                             source={
                               Object {

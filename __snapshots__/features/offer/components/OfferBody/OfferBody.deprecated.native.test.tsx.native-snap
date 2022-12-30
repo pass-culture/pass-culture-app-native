@@ -435,6 +435,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <FastImageView
+                                  defaultSource={null}
                                   resizeMode="cover"
                                   source={
                                     Object {
@@ -2538,6 +2539,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <FastImageView
+                                  defaultSource={null}
                                   resizeMode="cover"
                                   source={
                                     Object {

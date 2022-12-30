@@ -120,6 +120,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <FastImageView
+            defaultSource={null}
             resizeMode="cover"
             source={
               Object {
