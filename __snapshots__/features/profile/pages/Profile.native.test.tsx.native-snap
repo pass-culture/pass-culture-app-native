@@ -12,7 +12,7 @@ exports[`Profile component should render correctly 1`] = `
     ]
   }
 >
-  <RNSScreenContainer
+  <RNSScreenNavigationContainer
     style={
       Object {
         "flex": 1,
@@ -2141,7 +2141,7 @@ exports[`Profile component should render correctly 1`] = `
         </View>
       </View>
     </RNSScreen>
-  </RNSScreenContainer>
+  </RNSScreenNavigationContainer>
   <View
     collapsable={false}
     onLayout={[Function]}
