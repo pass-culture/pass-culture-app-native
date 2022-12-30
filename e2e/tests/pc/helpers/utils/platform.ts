@@ -7,13 +7,14 @@ function getIsWeb() {
 
 function getIsSafari() {
   const { browserName, platformName } = driver.capabilities as Capabilities
-  return browserName === 'safari' && platformName !== 'ios'
+  return browserName?.toLowerCase() === 'safari' && platformName?.toLowerCase() !== 'ios'
 }
 
 export const flags = {
   isAndroid: driver.isAndroid,
   isIOS: driver.isIOS,
   isWeb: getIsWeb(),
+  isDesktop: getIsWeb() && !driver.isAndroid && !driver.isIOS,
   // below flags concerns desktop only (always false on iOS and Android)
   isChrome: driver.isChrome,
   isFirefox: driver.isFirefox,

@@ -11,10 +11,6 @@ on:
         description: Select the environment
         required: true
         default: staging
-      build-local:
-        type: boolean
-        description: if true it will run the webapp locally
-        default: false
       specs:
         type: string
         description: |
@@ -23,6 +19,17 @@ on:
           paths into an array using "," delimiter to run them within a single worker process.
           [Default: run all tests]
         required: false
+      pcapi-docker-tag:
+        type: string
+        description: pcapi docker tag
+        required: false
+
+env:
+  PROJECT_ID: passculture-infra-prod
+  REGION: europe-west1
+  REPOSITORY: pass-culture-artifact-registry
+  PCAPI_DOCKER_IMAGE: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-artifact-registry/pcapi
+  PCAPI_BASE_URL: http://127.0.0.1:6001
 
 jobs:
   e2e-android-browser:
@@ -41,13 +48,15 @@ jobs:
       ANDROID_DEVICE_NAME: pixel_xl
       APPIUM_TEST_SERVER_PORT: 4723
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
+      DEV_TEST_SERVER_HOST_WITHIN_EMULATOR: 10.0.2.2
+      DEV_TEST_SERVER_HOST: localhost
       DEV_TEST_SERVER_PORT: 3000
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
       # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
-      BUILD_LOCAL: ${{ inputs.build-local || 'true' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
+      PC_API_DOCKER_TAG: ${{ inputs.pcapi-docker-tag }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
       SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
       SLACK_WEB_HOOK_URL_MANUAL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL_MANUAL }}
@@ -57,19 +66,58 @@ jobs:
     # No hardware acceleration is available for emulators on Ubuntu:
     # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
     runs-on: macos-latest
+    environment: ${{ inputs.environment || 'staging' }}
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
 
-      - name: Set LOCAL_IP environment variable
-        run: echo LOCAL_IP=$(ifconfig | grep 'inet' | grep 'broadcast' | awk -F ' ' '{print $2}') >> $GITHUB_ENV
-
-      - name: Show LOCAL_IP
-        run: |
-          ifconfig
-          echo ${{ env.LOCAL_IP }}
+      - name: Set PCAPI_DOCKER_TAGS environments variables
+        run: echo PCAPI_DOCKER_TAG=${PC_API_DOCKER_TAG:-$(curl -sS https://backend.staging.passculture.team/health/api)} >> $GITHUB_ENV
 
       - uses: actions/checkout@v3
+
+      - name: Decode Gmail token
+        env:
+          END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN }}
+        run: echo $END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN | base64 -d > token.json
+
+      - name: "Install and start Docker engine"
+        run: |
+          brew install colima
+          brew install docker docker-compose
+          mkdir -p ~/.docker/cli-plugins
+          ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+          colima start
+
+      - id: openid-auth
+        name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v0'
+        with:
+          create_credentials_file: false
+          token_format: 'access_token'
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
+
+      - id: docker-login
+        uses: 'docker/login-action@v1'
+        name: 'Docker login'
+        with:
+          registry: '${{ env.REGION }}-docker.pkg.dev'
+          username: 'oauth2accesstoken'
+          password: '${{ steps.openid-auth.outputs.access_token }}'
+
+      - name: "Start pcapi backend"
+        env:
+          SENDINBLUE_API_KEY: ${{ secrets.EHP_SENDINBLUE_API_KEY }}
+          END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
+          ANDROID: true
+        run: |
+          ./e2e/generate-env.sh
+          docker-compose -f e2e/docker-compose-e2e.yml up -d
+          docker-compose -f e2e/docker-compose-e2e.yml ps
 
       - uses: actions/setup-node@v3
         with:
@@ -91,20 +139,7 @@ jobs:
           npm install --no-save mjpeg-consumer
           appium driver install uiautomator2
 
-      - name: Sets WDIO_BASE_URL for local or distributed Web app
-        run: |
-          if [[ "${{ env.BUILD_LOCAL }}" = "true" ]]; then
-            echo "WDIO_BASE_URL=http://${{ env.LOCAL_IP }}:${{ env.DEV_TEST_SERVER_PORT }}" >> $GITHUB_ENV
-          elif [[ "${{ env.ENVIRONMENT }}" = "testing" ]]; then
-            echo "WDIO_BASE_URL=https://app.testing.passculture.team" >> $GITHUB_ENV
-          elif [[ "${{ env.ENVIRONMENT }}" = "staging" ]]; then
-            echo "WDIO_BASE_URL=https://app.staging.passculture.team" >> $GITHUB_ENV
-          fi
-
-      ## Local
-
       - name: Start Local dev server
-        if: ${{ env.BUILD_LOCAL == 'true' }}
         env:
           NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
         run: |
@@ -115,15 +150,13 @@ jobs:
           popd
 
       - name: Wait for local dev server
-        if: ${{ env.BUILD_LOCAL == 'true' }}
         timeout-minutes: 15
         run: |
-          until curl --output /dev/null --silent --head --fail http://${{ env.LOCAL_IP }}:3000; do
+          until curl --output /dev/null --silent --head --fail http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}; do
             printf '.'
             sleep 5
           done
 
-      ## Common
       - name: Start Appium server
         run: |
           cwd=$(pwd)
@@ -153,9 +186,16 @@ jobs:
           curl -X POST -H 'Content-type: application/json' --data "{\"text\":\":x: *CI NOK: ${slackMessageTitle}* :x:\"}"  "$SLACK_WEBHOOK"
 
       - uses: reactivecircus/android-emulator-runner@v2
-        name: e2e_api${{ matrix.apiLevel }}
+        name: Run end-to-end tests apiLevel-${{ matrix.apiLevel }}
+        env:
+          WDIO_BASE_URL: "http://${{ env.DEV_TEST_SERVER_HOST_WITHIN_EMULATOR }}:${{ env.DEV_TEST_SERVER_PORT }}"
+          END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
+          API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
+          ENVIRONMENT: ${{ env.ENVIRONMENT }}
+          ANDROID_DEVICE_NAME: "${{ env.ANDROID_DEVICE_NAME }}"
+          ANDROID_PLATFORM_VERSION: "${{ matrix.platformVersion }}"
         with:
-          script: ENVIRONMENT="${{ env.ENVIRONMENT }}" ANDROID_DEVICE_NAME="${{ env.ANDROID_DEVICE_NAME }}" ANDROID_PLATFORM_VERSION="${{ matrix.platformVersion }}" yarn e2e:android.browser
+          script: yarn e2e:android.browser
           avd-name: ${{ env.ANDROID_DEVICE_NAME }}
           sdcard-path-or-size: 1500M
           api-level: ${{ matrix.apiLevel }}
@@ -164,34 +204,17 @@ jobs:
           arch: ${{ matrix.arch }}
           profile: ${{ matrix.profile }}
 
-      - name: Save logcat output
+      - name: Show logcat server output
         if: ${{ always() }}
-        uses: actions/upload-artifact@master
-        with:
-          name: logcat-api-${{ matrix.apiLevel }}
-          path: logcat.log
-
-      - name: Save server output
-        if: ${{ always() }}
-        uses: actions/upload-artifact@master
-        with:
-          name: appium-api-${{ matrix.apiLevel }}
-          path: appium.log
+        run: cat logcat.log
 
       - name: Show appium server output
         if: ${{ always() }}
         run: cat appium.log
 
-      - name: Save dev server output
-        if: ${{ (always()) && (env.BUILD_LOCAL == 'local') }}
-        uses: actions/upload-artifact@master
-        with:
-          name: webpack-dev-server-${{ matrix.apiLevel }}
-          path: webpack-dev-server.log
-
-      - name: Show dev server output
-        if: ${{ (always()) && (env.BUILD_LOCAL == 'local') }}
-        run: cat webpack-dev-server.log
+      - name: Show pcapi server output
+        if: ${{ always() }}
+        run: docker logs pc-api-e2e
 
       - uses: actions/upload-artifact@v3
         if: ${{ always() }}

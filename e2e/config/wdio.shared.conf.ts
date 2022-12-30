@@ -6,6 +6,7 @@ import slack from 'wdio-slack-service'
 import video from 'wdio-video-reporter'
 import { env } from './environment/env'
 import { ServiceEntry } from '@wdio/types/build/Services'
+import FeatureClient from '../tests/pc/helpers/FeatureClient'
 
 const {
   /** Required e2e test env */
@@ -184,7 +185,7 @@ export const config: WebdriverIO.Config = {
      * NOTE: This has been increased for more stable Appium Native app
      * tests because they can take a bit longer.
      */
-    timeout: 5 * 60 * 1000, // 5min
+    timeout: 10 * 60 * 1000, // 10min
   },
   //
   // =====
@@ -201,6 +202,7 @@ export const config: WebdriverIO.Config = {
   onPrepare: async function () {
     mkdirSync(screenshotsPath, { recursive: true })
     mkdirSync(videosPath, { recursive: true })
+    await FeatureClient.setEnableNativeAppRecaptcha(false)
   },
   afterTest: async function (test, context, { passed }) {
     if (!passed) {

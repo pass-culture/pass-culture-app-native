@@ -19,6 +19,13 @@ export async function openDeepLinkUrl(deeplinkUrl: string) {
       : url.href
   )
 
+  console.log()
+  console.log()
+  console.log(forcedHostUrl.host, forcedHostUrl.origin, url.href)
+  console.log()
+  console.log()
+  console.log()
+
   if (flags.isWeb) {
     // On the web, just open path
     return await Browser.url(forcedHostUrl.href.replace(forcedHostUrl.origin, ''))
