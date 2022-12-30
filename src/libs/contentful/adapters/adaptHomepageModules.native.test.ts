@@ -8,6 +8,7 @@ import {
 import {
   adaptBusinessModule,
   adaptExclusivityModule,
+  adaptHomepageNatifModules,
   adaptOffersModule,
   adaptRecommendationModule,
   adaptVenuesModule,
@@ -227,5 +228,27 @@ describe('adaptHomepageModules', () => {
         'https://images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
     }
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
+  })
+
+  it('should adapt a list of HomepageNatifModules', () => {
+    const rawHomepageNatifModules = [
+      algoliaNatifModuleFixture,
+      businessNatifModuleFixture,
+      venuesNatifModuleFixture,
+      exclusivityNatifModuleFixture,
+      recommendationNatifModuleFixture,
+    ]
+
+    const formattedHomepageModules = [
+      formattedOffersModule,
+      formattedBusinessModule,
+      formattedVenuesModule,
+      formattedExclusivityModule,
+      formattedRecommendedOffersModule,
+    ]
+
+    expect(adaptHomepageNatifModules(rawHomepageNatifModules)).toStrictEqual(
+      formattedHomepageModules
+    )
   })
 })

@@ -4,6 +4,7 @@ import {
   RecommendedOffersModule,
   VenuesModule,
   OffersModule,
+  HomepageModule,
 } from 'features/home/types'
 import {
   BusinessNatifModule,
@@ -12,6 +13,12 @@ import {
   VenuesNatifModule,
   AlgoliaNatifModule,
   AlgoliaParameters,
+  isAlgoliaNatifModule,
+  HomepageNatifModule,
+  isBusinessNatifModule,
+  isRecommendationNatifModule,
+  isVenuesNatifModule,
+  isExclusivityNatifModule,
 } from 'libs/contentful/types'
 
 const buildImageUrl = (url: string): string => {
@@ -24,6 +31,36 @@ const formatOfferIdToNumber = (offerId: string): number | undefined => {
 
 const hasAtLeastOneField = (object: any) => {
   return Object.keys(object).length > 0
+}
+
+export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): HomepageModule[] => {
+  const adaptedHomepageNatifModules = modules.map((module) => {
+    const { fields } = module
+    if (!fields || !hasAtLeastOneField(fields)) return null
+
+    if (isAlgoliaNatifModule(module)) {
+      return adaptOffersModule(module)
+    }
+    if (isBusinessNatifModule(module)) {
+      return adaptBusinessModule(module)
+    }
+    if (isRecommendationNatifModule(module)) {
+      return adaptRecommendationModule(module)
+    }
+    if (isVenuesNatifModule(module)) {
+      return adaptVenuesModule(module)
+    }
+    if (isExclusivityNatifModule(module)) {
+      return adaptExclusivityModule(module)
+    }
+    return null
+  })
+
+  const adaptedHomepageNatifModulesWithoutNull = adaptedHomepageNatifModules.filter(
+    (module) => module != null
+  ) as HomepageModule[]
+
+  return adaptedHomepageNatifModulesWithoutNull
 }
 
 export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule => {
