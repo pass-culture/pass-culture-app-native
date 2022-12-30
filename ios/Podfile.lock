@@ -494,7 +494,7 @@ PODS:
     - React
   - react-native-netinfo (9.0.0):
     - React-Core
-  - react-native-safe-area-context (3.3.2):
+  - react-native-safe-area-context (3.4.1):
     - React-Core
   - react-native-tracking-transparency (0.1.1):
     - React
@@ -1005,7 +1005,7 @@ SPEC CHECKSUMS:
   react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
   react-native-lottie-splash-screen: 068688c15dd478301fda00f8d87d7fb7d5b9a93e
   react-native-netinfo: 5b664b2945a8f02102b296f0f812bddd6827ed9c
-  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
+  react-native-safe-area-context: 9e40fb181dac02619414ba1294d6c2a807056ab9
   react-native-tracking-transparency: b2029ff756f1128b1f2c7c7c7f3003bc3c950f9f
   react-native-webview: e771bc375f789ebfa02a26939a57dbc6fa897336
   React-perflogger: 0458a87ea9a7342079e7a31b0d32b3734fb8415f
