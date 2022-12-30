@@ -1,4 +1,4 @@
-import { Homepage } from 'features/home/types'
+import { Homepage, HomepageModuleType } from 'features/home/types'
 import {
   BusinessModule,
   ExclusivityModule,
@@ -11,6 +11,7 @@ import { homepageNatifEntryFixture } from 'libs/contentful/fixtures/HomepageNati
 
 describe('adaptHomepageNatifEntries', () => {
   const formattedBusinessModule: BusinessModule = {
+    type: HomepageModuleType.BusinessModule,
     id: '20SId61p6EFTG7kgBTFrOa',
     analyticsTitle:
       'Crée un compte\u00a0! 15-18 [A MAINTENIR EN BLOC 2 et paramétré pour être visible seulement pour les non connectés]',
@@ -23,6 +24,7 @@ describe('adaptHomepageNatifEntries', () => {
     leftIcon: undefined,
   }
   const formattedVenuesModule: VenuesModule = {
+    type: HomepageModuleType.VenuesModule,
     id: '105MMz59tftcxXJICXt7ja',
     venuesSearchParameters: [
       {
@@ -60,11 +62,13 @@ describe('adaptHomepageNatifEntries', () => {
     },
   }
   const formattedRecommendedOffersModule: RecommendedOffersModule = {
+    type: HomepageModuleType.RecommendedOffersModule,
     id: '3sAqNrRMXUOES7tFyRFFO8',
     displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
     recommendationParameters: undefined,
   }
   const formattedExclusivityModule: ExclusivityModule = {
+    type: HomepageModuleType.ExclusivityModule,
     id: 'AEYnm9QjIo2rZKoCfSvMD',
     title: 'WE FRAC CAEN',
     alt: 'Week-end FRAC',
@@ -75,6 +79,7 @@ describe('adaptHomepageNatifEntries', () => {
     displayParameters: undefined,
   }
   const formattedOffersModule: OffersModule = {
+    type: HomepageModuleType.OffersModule,
     id: '2DYuR6KoSLElDuiMMjxx8g',
     title: 'Fais le plein de lecture',
     displayParameters: {

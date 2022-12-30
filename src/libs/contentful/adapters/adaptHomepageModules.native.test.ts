@@ -1,6 +1,7 @@
 import {
   BusinessModule,
   ExclusivityModule,
+  HomepageModuleType,
   OffersModule,
   RecommendedOffersModule,
   VenuesModule,
@@ -34,6 +35,7 @@ import {
 
 describe('adaptHomepageModules', () => {
   const formattedBusinessModule: BusinessModule = {
+    type: HomepageModuleType.BusinessModule,
     id: '20SId61p6EFTG7kgBTFrOa',
     analyticsTitle:
       'Crée un compte\u00a0! 15-18 [A MAINTENIR EN BLOC 2 et paramétré pour être visible seulement pour les non connectés]',
@@ -46,6 +48,7 @@ describe('adaptHomepageModules', () => {
     leftIcon: undefined,
   }
   const formattedVenuesModule: VenuesModule = {
+    type: HomepageModuleType.VenuesModule,
     id: '105MMz59tftcxXJICXt7ja',
     venuesSearchParameters: [
       {
@@ -83,11 +86,13 @@ describe('adaptHomepageModules', () => {
     },
   }
   const formattedRecommendedOffersModule: RecommendedOffersModule = {
+    type: HomepageModuleType.RecommendedOffersModule,
     id: '3sAqNrRMXUOES7tFyRFFO8',
     displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
     recommendationParameters: undefined,
   }
   const formattedExclusivityModule: ExclusivityModule = {
+    type: HomepageModuleType.ExclusivityModule,
     id: 'AEYnm9QjIo2rZKoCfSvMD',
     title: 'WE FRAC CAEN',
     alt: 'Week-end FRAC',
@@ -98,6 +103,7 @@ describe('adaptHomepageModules', () => {
     displayParameters: undefined,
   }
   const formattedOffersModule: OffersModule = {
+    type: HomepageModuleType.OffersModule,
     id: '2DYuR6KoSLElDuiMMjxx8g',
     title: 'Fais le plein de lecture',
     displayParameters: {
@@ -158,6 +164,7 @@ describe('adaptHomepageModules', () => {
     }
 
     const formattedOffersModule: OffersModule = {
+      type: HomepageModuleType.OffersModule,
       id: '2DYuR6KoSLElDuiMMjxx8g',
       title: 'Fais le plein de lecture',
       displayParameters: {
@@ -188,6 +195,7 @@ describe('adaptHomepageModules', () => {
     }
 
     const formattedOffersModule: OffersModule = {
+      type: HomepageModuleType.OffersModule,
       id: '2DYuR6KoSLElDuiMMjxx8g',
       title: 'Fais le plein de lecture',
       displayParameters: {
@@ -213,6 +221,7 @@ describe('adaptHomepageModules', () => {
     }
 
     const formattedOffersModule: OffersModule = {
+      type: HomepageModuleType.OffersModule,
       id: '2DYuR6KoSLElDuiMMjxx8g',
       title: 'Fais le plein de lecture',
       displayParameters: {

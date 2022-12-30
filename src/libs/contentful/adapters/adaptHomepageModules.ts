@@ -5,6 +5,7 @@ import {
   VenuesModule,
   OffersModule,
   HomepageModule,
+  HomepageModuleType,
 } from 'features/home/types'
 import {
   BusinessNatifModule,
@@ -69,6 +70,7 @@ export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule
     : undefined
   const image = buildImageUrl(module.fields.image?.fields.file.url)
   return {
+    type: HomepageModuleType.BusinessModule,
     id: module.sys.id,
     analyticsTitle: module.fields.title,
     image: image,
@@ -87,6 +89,7 @@ export const adaptVenuesModule = (modules: VenuesNatifModule): VenuesModule | nu
 
   if (venuesSearchParameters.length === 0) return null
   return {
+    type: HomepageModuleType.VenuesModule,
     id: modules.sys.id,
     venuesSearchParameters: venuesSearchParameters,
     displayParameters: modules.fields.displayParameters.fields,
@@ -96,6 +99,7 @@ export const adaptVenuesModule = (modules: VenuesNatifModule): VenuesModule | nu
 export const adaptRecommendationModule = (
   modules: RecommendationNatifModule
 ): RecommendedOffersModule => ({
+  type: HomepageModuleType.RecommendedOffersModule,
   id: modules.sys.id,
   displayParameters: modules.fields.displayParameters.fields,
   recommendationParameters: modules.fields.recommendationParameters?.fields,
@@ -103,6 +107,7 @@ export const adaptRecommendationModule = (
 
 export const adaptExclusivityModule = (modules: ExclusivityNatifModule): ExclusivityModule => {
   return {
+    type: HomepageModuleType.ExclusivityModule,
     id: modules.sys.id,
     title: modules.fields.title,
     alt: modules.fields.alt,
@@ -136,6 +141,7 @@ export const adaptOffersModule = (modules: AlgoliaNatifModule): OffersModule | n
     : undefined
 
   return {
+    type: HomepageModuleType.OffersModule,
     id: modules.sys.id,
     title: modules.fields.title,
     displayParameters: modules.fields.displayParameters.fields,

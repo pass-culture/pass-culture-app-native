@@ -1,7 +1,14 @@
 import { Tag } from 'libs/contentful'
 
+export enum HomepageModuleType {
+  'OffersModule' = 'OffersModule',
+  'VenuesModule' = 'VenuesModule',
+  'BusinessModule' = 'BusinessModule',
+  'RecommendedOffersModule' = 'RecommendedOffersModule',
+  'ExclusivityModule' = 'ExclusivityModule',
+}
 export type Homepage = {
-  tag: Tag[] //TODO: do not import Tag from 'libs/contentful
+  tag: Tag[] // TODO(evejulliard): do not import Tag from 'libs/contentful
   id: string
   modules: HomepageModule[]
   thematicHeader?: {
@@ -18,6 +25,7 @@ export type HomepageModule =
   | VenuesModule
 
 export type OffersModule = {
+  type: HomepageModuleType.OffersModule
   id: string
   title: string
   offersModuleParameters: OffersModuleParameters[]
@@ -32,7 +40,7 @@ type DisplayParameters = {
   subtitle?: string
 }
 
-type OffersModuleParameters = {
+export type OffersModuleParameters = {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -56,6 +64,7 @@ type OffersModuleParameters = {
 }
 
 export type BusinessModule = {
+  type: HomepageModuleType.BusinessModule
   id: string
   analyticsTitle: string
   image: string
@@ -67,6 +76,7 @@ export type BusinessModule = {
 }
 
 export type ExclusivityModule = {
+  type: HomepageModuleType.ExclusivityModule
   id: string
   title: string
   alt: string
@@ -82,6 +92,7 @@ type ExclusivityDisplayParameters = {
 }
 
 export type RecommendedOffersModule = {
+  type: HomepageModuleType.RecommendedOffersModule
   id: string
   displayParameters: DisplayParameters
   recommendationParameters?: RecommendedOffersParameters
@@ -104,6 +115,7 @@ type RecommendedOffersParameters = {
 }
 
 export type VenuesModule = {
+  type: HomepageModuleType.VenuesModule
   id: string
   venuesSearchParameters: VenuesParameters[]
   displayParameters: DisplayParameters
@@ -116,4 +128,22 @@ type VenuesParameters = {
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number
+}
+
+export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
+  return module.type === HomepageModuleType.VenuesModule
+}
+export const isOffersModule = (module: HomepageModule): module is OffersModule => {
+  return module.type === HomepageModuleType.OffersModule
+}
+export const isRecommendedOffersModule = (
+  module: HomepageModule
+): module is RecommendedOffersModule => {
+  return module.type === HomepageModuleType.RecommendedOffersModule
+}
+export const isBusinessModule = (module: HomepageModule): module is BusinessModule => {
+  return module.type === HomepageModuleType.BusinessModule
+}
+export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
+  return module.type === HomepageModuleType.ExclusivityModule
 }
