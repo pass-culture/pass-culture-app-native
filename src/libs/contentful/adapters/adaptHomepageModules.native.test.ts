@@ -148,9 +148,13 @@ describe('adaptHomepageModules', () => {
   })
 
   it('should adapt an offers module with additional offers', () => {
-    const rawAlgoliaNatifModule = algoliaNatifModuleFixture
-    rawAlgoliaNatifModule.fields.additionalAlgoliaParameters =
-      additionalAlgoliaParametersWithOffersFixture
+    const rawAlgoliaNatifModule = {
+      ...algoliaNatifModuleFixture,
+      fields: {
+        ...algoliaNatifModuleFixture.fields,
+        additionalAlgoliaParameters: additionalAlgoliaParametersWithOffersFixture,
+      },
+    }
 
     const formattedOffersModule: OffersModule = {
       id: '2DYuR6KoSLElDuiMMjxx8g',
@@ -173,9 +177,14 @@ describe('adaptHomepageModules', () => {
 
   // Prevent crash due to unpublished submodules on contentful
   it('should filter out unpublished modules', () => {
-    const rawAlgoliaNatifModule = algoliaNatifModuleFixture
-    rawAlgoliaNatifModule.fields.additionalAlgoliaParameters =
-      additionalAlgoliaParametersWithoutOffersFixture as unknown as AlgoliaParameters[]
+    const rawAlgoliaNatifModule = {
+      ...algoliaNatifModuleFixture,
+      fields: {
+        ...algoliaNatifModuleFixture.fields,
+        additionalAlgoliaParameters:
+          additionalAlgoliaParametersWithoutOffersFixture as unknown as AlgoliaParameters[],
+      },
+    }
 
     const formattedOffersModule: OffersModule = {
       id: '2DYuR6KoSLElDuiMMjxx8g',
@@ -194,8 +203,13 @@ describe('adaptHomepageModules', () => {
   })
 
   it('should adapt an offers module with a cover', () => {
-    const rawAlgoliaNatifModule = algoliaNatifModuleFixture
-    rawAlgoliaNatifModule.fields.cover = algoliaNatifModuleCoverFixture
+    const rawAlgoliaNatifModule = {
+      ...algoliaNatifModuleFixture,
+      fields: {
+        ...algoliaNatifModuleFixture.fields,
+        cover: algoliaNatifModuleCoverFixture,
+      },
+    }
 
     const formattedOffersModule: OffersModule = {
       id: '2DYuR6KoSLElDuiMMjxx8g',
