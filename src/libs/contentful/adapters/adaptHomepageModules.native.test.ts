@@ -22,7 +22,14 @@ import { businessNatifModuleFixture } from 'libs/contentful/fixtures/BusinessMod
 import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/ExclusivityModule.fixture'
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/RecommendationNatifModule.fixture'
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/VenuesModule.fixture'
-import { AlgoliaParameters } from 'libs/contentful/types'
+import {
+  AlgoliaParameters,
+  isAlgoliaNatifModule,
+  isBusinessNatifModule,
+  isExclusivityNatifModule,
+  isRecommendationNatifModule,
+  isVenuesNatifModule,
+} from 'libs/contentful/types'
 
 describe('adaptHomepageModules', () => {
   it('should adapt a business module', () => {
@@ -41,6 +48,7 @@ describe('adaptHomepageModules', () => {
       leftIcon: undefined,
     }
 
+    expect(isBusinessNatifModule(rawBusinessModule)).toBeTruthy()
     expect(adaptBusinessModule(rawBusinessModule)).toEqual(formattedBusinessModule)
   })
   it('should adapt a venues module', () => {
@@ -84,6 +92,7 @@ describe('adaptHomepageModules', () => {
       },
     }
 
+    expect(isVenuesNatifModule(rawVenuesModule)).toBeTruthy()
     expect(adaptVenuesModule(rawVenuesModule)).toEqual(formattedVenuesModule)
   })
 
@@ -95,6 +104,7 @@ describe('adaptHomepageModules', () => {
       displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
     }
 
+    expect(isRecommendationNatifModule(rawRecommendationModule)).toBeTruthy()
     expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(
       formattedRecommendedOffersModule
     )
@@ -112,7 +122,7 @@ describe('adaptHomepageModules', () => {
       url: undefined,
       offerId: 123456789,
     }
-
+    expect(isExclusivityNatifModule(rawExclusivityNatifModule)).toBeTruthy()
     expect(adaptExclusivityModule(rawExclusivityNatifModule)).toEqual(formattedExclusivityModule)
   })
 
@@ -132,6 +142,8 @@ describe('adaptHomepageModules', () => {
         { title: 'Livre', isGeolocated: false, categories: ['Livres'], hitsPerPage: 10 },
       ],
     }
+
+    expect(isAlgoliaNatifModule(rawAlgoliaNatifModule)).toBeTruthy()
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
   })
 

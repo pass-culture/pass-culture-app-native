@@ -309,3 +309,27 @@ export type BusinessNatifModule = { sys: Sys<'business'>; fields: BusinessFields
 export type ExclusivityNatifModule = { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
 export type RecommendationNatifModule = { sys: Sys<'recommendation'>; fields: RecommendationFields }
 export type VenuesNatifModule = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
+
+export const isAlgoliaNatifModule = (module: HomepageNatifModule): module is AlgoliaNatifModule => {
+  return (module as AlgoliaNatifModule).sys.contentType?.sys.id === ContentTypes.ALGOLIA
+}
+export const isBusinessNatifModule = (
+  module: HomepageNatifModule
+): module is BusinessNatifModule => {
+  return (module as BusinessNatifModule).sys.contentType?.sys.id === ContentTypes.BUSINESS
+}
+export const isExclusivityNatifModule = (
+  module: HomepageNatifModule
+): module is ExclusivityNatifModule => {
+  return (module as ExclusivityNatifModule).sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
+}
+export const isRecommendationNatifModule = (
+  module: HomepageNatifModule
+): module is RecommendationNatifModule => {
+  return (
+    (module as RecommendationNatifModule).sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
+  )
+}
+export const isVenuesNatifModule = (module: HomepageNatifModule): module is VenuesNatifModule => {
+  return (module as VenuesNatifModule).sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
+}
