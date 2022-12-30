@@ -28,3 +28,9 @@ ListItemWithSpacing.args = {
   text: 'List item with spacing',
   spacing: 3,
 }
+
+export const ListWithNestedList = Template.bind({})
+ListWithNestedList.args = {
+  text: 'List item',
+  nestedListTexts: ['First item', 'Second item', 'Third item'],
+}

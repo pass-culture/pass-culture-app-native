@@ -39,7 +39,7 @@ describe('DMSIntroduction', () => {
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined)
+        expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
       })
     })
 
@@ -74,7 +74,7 @@ describe('DMSIntroduction', () => {
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(openUrl).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined)
+        expect(openUrl).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
       })
     })
 

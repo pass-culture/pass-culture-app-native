@@ -477,7 +477,7 @@ PODS:
     - React-Core
   - react-native-date-picker (4.2.2):
     - React-Core
-  - react-native-flipper (0.123.0):
+  - react-native-flipper (0.161.0):
     - React-Core
   - react-native-flipper-performance-plugin (0.3.1):
     - React-Core
@@ -998,7 +998,7 @@ SPEC CHECKSUMS:
   react-native-appsflyer: 530a07183bedd33e47c76ba2f5592d7b74caff1c
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
-  react-native-flipper: 33bba1cad647f4d56403012993f201e10518b78c
+  react-native-flipper: ea555c5b21d9d15814999327aecf31b98ac87079
   react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
   react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da

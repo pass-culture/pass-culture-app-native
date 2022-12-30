@@ -19,6 +19,6 @@ describe('AccessibilityEngagement', () => {
     const button = getByText('notre centre d’aide')
     fireEvent.press(button)
 
-    expect(openURLSpy).toHaveBeenCalledWith(env.FAQ_LINK, undefined)
+    expect(openURLSpy).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
   })
 })

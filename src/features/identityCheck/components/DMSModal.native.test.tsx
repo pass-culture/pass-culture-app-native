@@ -31,7 +31,7 @@ describe('<DMSModal/>', () => {
     const frenchCitizenDMSButton = getByText('Je suis de nationalité française')
     await fireEvent.press(frenchCitizenDMSButton)
     expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
-    expect(mockedOpenUrl).toBeCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined)
+    expect(mockedOpenUrl).toBeCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })
 
   it('should open DSM french citizen when clicking on "Je suis de nationalité étrangère" button', async () => {
@@ -39,6 +39,6 @@ describe('<DMSModal/>', () => {
     const foreignCitizenDMSButton = getByText('Je suis de nationalité étrangère')
     await fireEvent.press(foreignCitizenDMSButton)
     expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
-    expect(mockedOpenUrl).toBeCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined)
+    expect(mockedOpenUrl).toBeCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
   })
 })

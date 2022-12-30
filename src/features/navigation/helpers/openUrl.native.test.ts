@@ -41,6 +41,17 @@ describe('openUrl', () => {
     expect(navigateFromRef).toBeCalledWith('Offer', { id: 1, from: 'offer' })
   })
 
+  it('should navigate to external screen even when screen is in-app when isExternal is true (ex: Offer)', async () => {
+    const openURL = openURLSpy.mockResolvedValueOnce(undefined)
+
+    const path = getScreenPath('Offer', { id: 1, from: 'offer', moduleName: undefined })
+    const link = 'https://mockValidPrefix1' + `/${path}`
+    await openUrl(link, undefined, true)
+
+    expect(navigateFromRef).not.toHaveBeenCalled()
+    expect(openURL).toBeCalledWith(link)
+  })
+
   it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
     const openURL = openURLSpy.mockResolvedValueOnce(undefined)
     getScreenFromDeeplinkModuleSpy.mockImplementationOnce(

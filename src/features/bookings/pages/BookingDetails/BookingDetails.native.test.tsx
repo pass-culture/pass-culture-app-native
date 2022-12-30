@@ -92,11 +92,15 @@ describe('BookingDetails', () => {
       const offerButton = getByText('Accéder à l’offre')
       await fireEvent.press(offerButton)
 
-      expect(mockedOpenUrl).toHaveBeenCalledWith(booking.completedUrl, {
-        analyticsData: {
-          offerId: booking.stock.offer.id,
+      expect(mockedOpenUrl).toHaveBeenCalledWith(
+        booking.completedUrl,
+        {
+          analyticsData: {
+            offerId: booking.stock.offer.id,
+          },
         },
-      })
+        true
+      )
     })
 
     it('should not display offer link button if no url', async () => {

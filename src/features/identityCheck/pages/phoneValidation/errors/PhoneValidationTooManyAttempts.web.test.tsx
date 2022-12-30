@@ -20,7 +20,8 @@ describe('Contact support button', () => {
     await waitForExpect(() => {
       expect(openUrl).toBeCalledWith(
         contactSupport.forPhoneNumberConfirmation.url,
-        contactSupport.forPhoneNumberConfirmation.params
+        contactSupport.forPhoneNumberConfirmation.params,
+        true
       )
     })
   })

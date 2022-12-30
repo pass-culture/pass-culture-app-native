@@ -37,6 +37,6 @@ describe('ExclusivityExternalLink component', () => {
 
     fireEvent.press(getByTestId("Image d'Adèle"))
 
-    expect(openUrl).toHaveBeenCalledWith(props.url, undefined)
+    expect(openUrl).toHaveBeenCalledWith(props.url, undefined, true)
   })
 })

@@ -47,7 +47,8 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(getByText('E-mail'))
     expect(openUrl).toHaveBeenCalledWith(
       'mailto:?subject=Voici une super offre !&body=https://url.com/offer',
-      undefined
+      undefined,
+      true
     )
   })
 
@@ -56,7 +57,8 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(getByText('Facebook'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!',
-      undefined
+      undefined,
+      true
     )
   })
 
@@ -65,7 +67,8 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(getByText('Twitter'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer',
-      undefined
+      undefined,
+      true
     )
   })
 
@@ -74,7 +77,8 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(getByText('WhatsApp'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer',
-      undefined
+      undefined,
+      true
     )
   })
 
@@ -83,7 +87,8 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(getByText('Telegram'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !',
-      undefined
+      undefined,
+      true
     )
   })
 })
