@@ -1,9 +1,13 @@
+import { Tag } from 'libs/contentful'
+
 export type Homepage = {
-  tag: []
+  tag: Tag[] //TODO: do not import Tag from 'libs/contentful
   id: string
   modules: HomepageModule[]
-  thematicHeaderTitle?: string
-  thematicHeaderSubtitle?: string
+  thematicHeader?: {
+    title?: string
+    subtitle?: string
+  }
 }
 
 export type HomepageModule =
