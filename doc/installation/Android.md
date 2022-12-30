@@ -33,6 +33,8 @@ This will also start the metro server. If not, run `yarn start` in another tab.
 
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
 
+En cas de soucis avec le JDK installer via `brew install --cask zulu11` et ajouter le chemin `JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` dans .zshrc
+
 </details>
 <br/>
 <details>
