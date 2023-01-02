@@ -7,7 +7,7 @@ import {
   domains_credit_v2,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
-import * as ProfileUtils from 'features/profile/utils'
+import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { render, waitFor } from 'tests/utils'
 
 const mockUseIsUserUnderageBeneficiary = jest

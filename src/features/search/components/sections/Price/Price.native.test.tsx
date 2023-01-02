@@ -13,7 +13,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('Price component', () => {
   it('should render correctly', () => {

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOfferHits, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { QueryKeys } from 'libs/queryKeys'
 import { IncompleteSearchHit, SearchHit } from 'libs/search'

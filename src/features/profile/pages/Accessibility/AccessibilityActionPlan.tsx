@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ActionPlanTag } from 'features/profile/pages/Accessibility/components/ActionPlanTag'
-import { ContactSupportButton } from 'features/profile/pages/Accessibility/components/ContactSupportButton'
-import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
+import { ActionPlanTag } from 'features/profile/components/Buttons/ActionPlanTag/ActionPlanTag'
+import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
+import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { Separator } from 'ui/components/Separator'

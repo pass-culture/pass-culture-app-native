@@ -8,14 +8,14 @@ import {
 } from 'features/bookings/components/BookingDetailsCancelButton'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
-import { isUserExBeneficiary } from 'features/profile/utils'
+import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { fireEvent, render } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
 jest.mock('features/auth/AuthContext')
 jest.mock('features/user/helpers/useAvailableCredit')
-jest.mock('features/profile/utils')
+jest.mock('features/profile/helpers/isUserExBeneficiary')
 const mockedisUserExBeneficiary = mocked(isUserExBeneficiary, true)
 
 describe('<BookingDetailsCancelButton />', () => {

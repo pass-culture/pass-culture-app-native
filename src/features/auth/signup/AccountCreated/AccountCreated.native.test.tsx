@@ -12,7 +12,7 @@ import { render, fireEvent } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/AuthContext')

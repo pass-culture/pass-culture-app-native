@@ -5,7 +5,7 @@ import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
-import * as ProfileUtils from 'features/profile/utils'
+import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
 

@@ -11,7 +11,7 @@ import { renderHook } from 'tests/utils'
 
 import { parseSearchParameters } from './parseSearchParameters'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 mockdate.set(new Date('2020-10-01T00:00+00:00'))
 
 const defaultSearchParameters = {

@@ -8,7 +8,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { isUserBeneficiary } from 'features/profile/utils'
+import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useGetDepositAmountsByAge } from 'features/user/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'
 import { env } from 'libs/environment'

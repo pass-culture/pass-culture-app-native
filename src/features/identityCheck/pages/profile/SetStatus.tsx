@@ -10,7 +10,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

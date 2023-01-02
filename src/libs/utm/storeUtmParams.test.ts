@@ -7,7 +7,7 @@ import { storage } from 'libs/storage'
 import { storeUtmParams } from 'libs/utm/storeUtmParams'
 import { act, flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('api/api')
 
 const COOKIES_CONSENT_KEY = 'cookies'

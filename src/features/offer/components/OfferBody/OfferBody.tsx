@@ -13,7 +13,8 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
-import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
+import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
   formatFullAddress,

@@ -4,11 +4,9 @@ import { useCallback } from 'react'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
-import {
-  isUserBeneficiary18,
-  isUserUnderage,
-  isUserUnderageBeneficiary,
-} from 'features/profile/utils'
+import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
+import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
+import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { HomepageEntry, TagId } from 'libs/contentful'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'

@@ -8,7 +8,7 @@ import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
@@ -56,7 +56,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 const mockStocks = mockOffer.stocks
 const mockDigitalStocks = mockDigitalOffer.stocks
 
-jest.mock('features/profile/utils')
+jest.mock('features/profile/helpers/useIsUserUnderage')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
 const mockUseSubcategoriesMapping = jest.fn()

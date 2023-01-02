@@ -10,7 +10,7 @@ import {
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome } from 'features/navigation/helpers'
-import { useResetRecreditAmountToShow } from 'features/profile/api'
+import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PageProfileSection } from 'features/profile/pages/PageProfileSection/PageProfileSection'
+import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

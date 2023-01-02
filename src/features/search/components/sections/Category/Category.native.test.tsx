@@ -22,7 +22,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('Category component', () => {
   it('should render correctly', () => {

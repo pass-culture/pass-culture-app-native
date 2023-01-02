@@ -9,13 +9,14 @@ import { fireEvent, render } from 'tests/utils'
 jest.mock('react-query')
 
 let mockIsUserUnderageBeneficiary = true
-jest.mock('features/profile/utils', () => {
+jest.mock('features/profile/helpers/isUserUnderageBeneficiary', () => {
   return {
     isUserUnderageBeneficiary: jest.fn(() => {
       return mockIsUserUnderageBeneficiary
     }),
   }
 })
+
 const mockShowAppModal = jest.fn()
 jest.mock('features/shareApp/context/ShareAppWrapper', () => ({
   ...jest.requireActual('features/shareApp/context/ShareAppWrapper'),

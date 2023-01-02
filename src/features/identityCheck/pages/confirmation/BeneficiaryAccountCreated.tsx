@@ -14,7 +14,7 @@ import {
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
-import { isUserUnderageBeneficiary } from 'features/profile/utils'
+import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'

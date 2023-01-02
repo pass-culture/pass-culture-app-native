@@ -1,7 +1,7 @@
 import uniqBy from 'lodash/uniqBy'
 import { useQuery } from 'react-query'
 
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'

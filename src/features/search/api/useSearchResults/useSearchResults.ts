@@ -3,7 +3,7 @@ import flatten from 'lodash/flatten'
 import { useMemo, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
-import { useIsUserUnderage } from 'features/profile/utils'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'

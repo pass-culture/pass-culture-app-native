@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { DomainsCredit } from 'api/gen/api'
-import { Subtitle } from 'features/profile/atoms/Subtitle'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
+import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { Spacer } from 'ui/theme'
 

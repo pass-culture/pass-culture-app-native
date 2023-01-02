@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
-import { useIsUserUnderageBeneficiary } from 'features/profile/utils'
+import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'

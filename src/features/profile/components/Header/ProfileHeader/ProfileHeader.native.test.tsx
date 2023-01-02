@@ -5,7 +5,7 @@ import { mocked } from 'ts-jest/utils'
 import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
-import { isUserUnderageBeneficiary } from 'features/profile/utils'
+import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')
@@ -46,8 +46,8 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
   isEligibleForBeneficiaryUpgrade: true,
 }
 
-jest.mock('features/profile/api')
-jest.mock('features/profile/utils')
+jest.mock('features/profile/api/useUpdateProfileMutation')
+jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
 const mockedisUserUnderageBeneficiary = mocked(isUserUnderageBeneficiary, true)
 
 jest.mock('features/auth/AuthContext', () => ({

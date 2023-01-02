@@ -1,6 +1,6 @@
 import { UserProfileResponse } from 'api/gen/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { computeCredit } from 'features/profile/utils'
+import { computeCredit } from 'features/profile/helpers/computeCredit'
 
 export type Credit = { amount: number; isExpired: boolean }
 

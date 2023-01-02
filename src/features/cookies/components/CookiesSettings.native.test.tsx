@@ -6,7 +6,7 @@ import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-jest.mock('features/profile/api')
+jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('<CookiesSettings/>', () => {
   it('should render correctly', () => {
