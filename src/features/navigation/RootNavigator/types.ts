@@ -35,6 +35,7 @@ export type OnboardingRootStackParamList = {
   AgeSelection: undefined
   AgeSelectionOther: undefined
   NavigationOnboarding: undefined
+  OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
 }
 

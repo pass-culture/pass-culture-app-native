@@ -11,14 +11,14 @@ describe('OnboardingWelcome', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should redirect to AgeSelection when "C’est parti !" is clicked', async () => {
+  it('should redirect to OnboardingGeolocation when "C’est parti !" is clicked', async () => {
     const { getByText } = render(<OnboardingWelcome />)
 
     const button = getByText('C’est parti\u00a0!')
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('AgeSelection', undefined)
+      expect(navigate).toHaveBeenCalledWith('OnboardingGeolocation', undefined)
     })
   })
 
