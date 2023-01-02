@@ -22,6 +22,7 @@ exports[`<ImageTile/> should render correctly 1`] = `
   }
 >
   <FastImageView
+    defaultSource={null}
     resizeMode="cover"
     source={
       Object {

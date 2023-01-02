@@ -572,7 +572,7 @@ PODS:
     - React-Core
   - RNDeviceInfo (8.4.8):
     - React-Core
-  - RNFastImage (8.5.11):
+  - RNFastImage (8.6.3):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
@@ -1023,7 +1023,7 @@ SPEC CHECKSUMS:
   RNBatchPush: 6f2a3fe76aab9e6fa42cfe058418925ac80fdb84
   RNCAsyncStorage: d81ee5c3db1060afd49ea7045ad460eff82d2b7d
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
-  RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
+  RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFBAnalytics: 774973f4b8aacd5e12a4d59754739af564e6b6ba
   RNFBApp: d3a0f69a3cc67c609f962acf67f483a841ffc49f
   RNFBDynamicLinks: 9df795c9d3fe892ed8f7520d69ea60be82b3e077
