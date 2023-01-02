@@ -50,7 +50,7 @@ describe('adaptHomepageModules', () => {
   const formattedVenuesModule: VenuesModule = {
     type: HomepageModuleType.VenuesModule,
     id: '105MMz59tftcxXJICXt7ja',
-    venuesSearchParameters: [
+    venuesParameters: [
       {
         title: 'Exemple de playlist de lieux',
         isGeolocated: false,

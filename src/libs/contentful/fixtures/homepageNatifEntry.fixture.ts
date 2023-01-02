@@ -255,7 +255,7 @@ export const homepageNatifEntryFixture: HomepageNatifEntry = {
                   sys: {
                     type: 'Link',
                     linkType: 'ContentType',
-                    id: ContentTypes.VENUES_SEARCH_PARAMETERS,
+                    id: ContentTypes.VENUES_PARAMETERS,
                   },
                 },
                 locale: 'en-US',

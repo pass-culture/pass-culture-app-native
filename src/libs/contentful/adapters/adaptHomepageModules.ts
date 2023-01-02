@@ -83,15 +83,15 @@ export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule
 }
 
 export const adaptVenuesModule = (modules: VenuesNatifModule): VenuesModule | null => {
-  const venuesSearchParameters = modules.fields.venuesSearchParameters
+  const venuesParameters = modules.fields.venuesSearchParameters
     .filter((params) => params.fields && hasAtLeastOneField(params.fields))
     .map(({ fields }) => fields)
 
-  if (venuesSearchParameters.length === 0) return null
+  if (venuesParameters.length === 0) return null
   return {
     type: HomepageModuleType.VenuesModule,
     id: modules.sys.id,
-    venuesSearchParameters: venuesSearchParameters,
+    venuesParameters: venuesParameters,
     displayParameters: modules.fields.displayParameters.fields,
   }
 }

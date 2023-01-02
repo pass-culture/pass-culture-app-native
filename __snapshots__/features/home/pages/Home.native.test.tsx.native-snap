@@ -52,7 +52,7 @@ exports[`Home N-1 should render correctly 1`] = `
             },
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
-            "venuesSearchParameters": Array [
+            "venuesParameters": Array [
               Object {
                 "hitsPerPage": 15,
                 "isGeolocated": false,
@@ -339,7 +339,7 @@ exports[`Home component should render correctly without login modal 1`] = `
             },
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
-            "venuesSearchParameters": Array [
+            "venuesParameters": Array [
               Object {
                 "hitsPerPage": 15,
                 "isGeolocated": false,

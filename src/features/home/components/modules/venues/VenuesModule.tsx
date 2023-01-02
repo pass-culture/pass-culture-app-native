@@ -2,11 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useVenueModule } from 'features/home/api/useVenueModule'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
-import {
-  ContentTypes,
-  DisplayParametersFields,
-  VenuesSearchParametersFields,
-} from 'libs/contentful'
+import { ContentTypes, DisplayParametersFields, VenuesParametersFields } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { VenueHit } from 'libs/search'
@@ -17,7 +13,7 @@ import { LENGTH_S } from 'ui/theme'
 type VenuesModuleProps = {
   moduleId: string
   display: DisplayParametersFields
-  search: VenuesSearchParametersFields[]
+  search: VenuesParametersFields[]
   homeEntryId: string | undefined
   index: number
 }
@@ -36,7 +32,7 @@ export const VenuesModule = ({
 }: VenuesModuleProps) => {
   const { position } = useGeolocation()
   const moduleName = display.title
-  const hits = useVenueModule({ venuesSearchParameters: search, id: moduleId }) || []
+  const hits = useVenueModule({ venuesParameters: search, id: moduleId }) || []
 
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (

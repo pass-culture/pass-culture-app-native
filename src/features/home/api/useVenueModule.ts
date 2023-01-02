@@ -9,15 +9,15 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 
 export const useVenueModule = ({
-  venuesSearchParameters,
+  venuesParameters,
   id,
-}: Pick<VenuesModule, 'venuesSearchParameters' | 'id'>): VenueHit[] | undefined => {
+}: Pick<VenuesModule, 'venuesParameters' | 'id'>): VenueHit[] | undefined => {
   const { position } = useGeolocation()
   const netInfo = useNetInfoContext()
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_VENUES_MODULE, id],
-    async () => fetchMultipleVenues(venuesSearchParameters, position),
+    async () => fetchMultipleVenues(venuesParameters, position),
     { enabled: !!netInfo.isConnected }
   )
 

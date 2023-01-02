@@ -42,7 +42,7 @@ const UnmemoizedModule = ({
       <VenuesModule
         moduleId={item.id}
         display={item.displayParameters}
-        search={item.venuesSearchParameters}
+        search={item.venuesParameters}
         homeEntryId={homeEntryId}
         index={index}
       />

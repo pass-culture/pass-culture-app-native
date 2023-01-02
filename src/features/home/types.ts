@@ -117,7 +117,7 @@ type RecommendedOffersParameters = {
 export type VenuesModule = {
   type: HomepageModuleType.VenuesModule
   id: string
-  venuesSearchParameters: VenuesParameters[]
+  venuesParameters: VenuesParameters[]
   displayParameters: DisplayParameters
 }
 

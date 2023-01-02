@@ -1,7 +1,7 @@
 import { buildVenuesQueryOptions } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
-import { VenuesSearchParametersFields } from 'libs/contentful'
+import { VenuesParametersFields } from 'libs/contentful'
 
-const defaultParams: VenuesSearchParametersFields = {
+const defaultParams: VenuesParametersFields = {
   title: 'les cinémas de ta région',
   hitsPerPage: 10,
 }

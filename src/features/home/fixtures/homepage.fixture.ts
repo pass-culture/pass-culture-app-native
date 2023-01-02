@@ -21,10 +21,11 @@ export const formattedBusinessModule: BusinessModule = {
     'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
   leftIcon: undefined,
 }
+
 export const formattedVenuesModule: VenuesModule = {
   type: HomepageModuleType.VenuesModule,
   id: '105MMz59tftcxXJICXt7ja',
-  venuesSearchParameters: [
+  venuesParameters: [
     {
       title: 'Exemple de playlist de lieux',
       isGeolocated: false,
@@ -59,12 +60,14 @@ export const formattedVenuesModule: VenuesModule = {
     minOffers: 1,
   },
 }
+
 export const formattedRecommendedOffersModule: RecommendedOffersModule = {
   type: HomepageModuleType.RecommendedOffersModule,
   id: '3sAqNrRMXUOES7tFyRFFO8',
   displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
   recommendationParameters: undefined,
 }
+
 export const formattedExclusivityModule: ExclusivityModule = {
   type: HomepageModuleType.ExclusivityModule,
   id: 'AEYnm9QjIo2rZKoCfSvMD',
@@ -76,6 +79,7 @@ export const formattedExclusivityModule: ExclusivityModule = {
   offerId: 123456789,
   displayParameters: undefined,
 }
+
 export const formattedOffersModule: OffersModule = {
   type: HomepageModuleType.OffersModule,
   id: '2DYuR6KoSLElDuiMMjxx8g',
@@ -91,6 +95,7 @@ export const formattedOffersModule: OffersModule = {
   ],
   cover: undefined,
 }
+
 export const adaptedHomepage: Homepage = {
   tag: [],
   id: '6DCThxvbPFKAo04SVRZtwY',

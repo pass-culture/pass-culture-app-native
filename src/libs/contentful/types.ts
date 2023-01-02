@@ -10,7 +10,7 @@ export enum ContentTypes {
   RECOMMENDATION = 'recommendation',
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
   VENUES_PLAYLIST = 'venuesPlaylist',
-  VENUES_SEARCH_PARAMETERS = 'venuesSearchParameters',
+  VENUES_PARAMETERS = 'venuesParameters',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -101,9 +101,9 @@ export interface AlgoliaParameters {
   fields: SearchParametersFields
 }
 
-export interface VenuesSearchParameters {
-  sys: Sys<typeof ContentTypes.VENUES_SEARCH_PARAMETERS>
-  fields: VenuesSearchParametersFields
+export interface VenuesParameters {
+  sys: Sys<typeof ContentTypes.VENUES_PARAMETERS>
+  fields: VenuesParametersFields
 }
 
 export interface DisplayParameters {
@@ -144,7 +144,7 @@ export interface AlgoliaFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesPlaylist/fields
 export interface VenuesFields {
   title: string
-  venuesSearchParameters: VenuesSearchParameters[]
+  venuesSearchParameters: VenuesParameters[]
   displayParameters: DisplayParameters
 }
 
@@ -180,7 +180,7 @@ export interface SearchParametersFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
-export interface VenuesSearchParametersFields {
+export interface VenuesParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
