@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -27,13 +27,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   endingDate,
   thematicHomeEntryId,
 }) => {
-  const navigationConfig = getTabNavConfig('Home', {
-    entryId: thematicHomeEntryId,
-  })
-  const navigateTo = {
-    screen: navigationConfig[0],
-    params: navigationConfig[1],
-  }
+  const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
   if (dateRange === null) return <React.Fragment></React.Fragment>
