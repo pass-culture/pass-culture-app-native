@@ -5,7 +5,7 @@ import { useDebounce } from 'ui/hooks/useDebounce'
 import { suggestEmail } from './suggestEmail'
 
 type Props = {
-  email?: string
+  email: string
 }
 
 type SuggestedEmail = {

@@ -9,16 +9,13 @@ const initialProps: Parameters<typeof useEmailSpellingHelp>[0] = {
 jest.useFakeTimers()
 
 describe('useEmailSpellingHelp', () => {
-  it.each(['', undefined])(
-    'should not display suggestion for empty email',
-    (email: string | undefined) => {
-      const { result } = renderHook(useEmailSpellingHelp, {
-        initialProps: { ...initialProps, email },
-      })
+  it('should not display suggestion for empty email', () => {
+    const { result } = renderHook(useEmailSpellingHelp, {
+      initialProps: { ...initialProps, email: '' },
+    })
 
-      expect(result.current.suggestedEmail).toBeUndefined()
-    }
-  )
+    expect(result.current.suggestedEmail).toBeUndefined()
+  })
 
   it('should display suggestion with a corrected email when the email is mystyped', async () => {
     const { result, rerender } = renderHook(useEmailSpellingHelp, { initialProps })
