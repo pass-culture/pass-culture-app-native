@@ -34,24 +34,7 @@ describe('useEmailSpellingHelp', () => {
     expect(result.current.suggestedEmail?.full).toEqual('firstname.lastname@gmail.com')
   })
 
-  it('should not display suggestion before a delay', async () => {
-    const { result, rerender } = renderHook(useEmailSpellingHelp, { initialProps })
-
-    await act(async () => {
-      rerender({
-        ...initialProps,
-        email: 'firstname.lastname@gmal.com',
-      })
-    })
-
-    await act(async () => {
-      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS - 1)
-    })
-
-    expect(result.current.suggestedEmail).toBeUndefined()
-  })
-
-  it('should not display suggestion before a delay after the last typed email', async () => {
+  it('should not display the suggestion before a delay once the user has finished typing his email', async () => {
     const { result, rerender } = renderHook(useEmailSpellingHelp, { initialProps })
 
     await act(async () => {
