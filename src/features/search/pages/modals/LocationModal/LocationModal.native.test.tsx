@@ -40,6 +40,7 @@ const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 const mockHideGeolocPermissionModal = jest.fn()
 const mockOnPressGeolocPermissionModalButton = jest.fn()
+const mockRequestGeolocPermission = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -50,6 +51,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
     hideGeolocPermissionModal: mockHideGeolocPermissionModal,
     onPressGeolocPermissionModalButton: mockOnPressGeolocPermissionModalButton,
+    requestGeolocPermission: mockRequestGeolocPermission,
   }),
 }))
 
@@ -684,6 +686,21 @@ describe('<LocationModal/>', () => {
 
       expect(hideLocationModal).toHaveBeenCalledTimes(1)
     })
+  })
+
+  it('should open the request geolocation permission when position is null and permission state is denied when pressing Autour de moi radio button', async () => {
+    mockPosition = null
+    mockPermissionState = GeolocPermissionState.DENIED
+    const { getByTestId } = renderLocationModal({ hideLocationModal })
+
+    await superFlushWithAct()
+
+    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    await act(async () => {
+      fireEvent.press(radioButton)
+    })
+
+    expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
 })
 

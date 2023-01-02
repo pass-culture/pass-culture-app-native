@@ -286,7 +286,15 @@ export const LocationModal: FunctionComponent<Props> = ({
             showGeolocPermissionModal()
             return
           } else {
-            await requestGeolocPermission()
+            await requestGeolocPermission({
+              onAcceptance: () => {
+                setValueWithValidation('locationChoice', locationChoice)
+              },
+              onRefusal: () => {
+                showGeolocPermissionModal()
+              },
+            })
+            return
           }
         }
       }
@@ -298,11 +306,11 @@ export const LocationModal: FunctionComponent<Props> = ({
       setValueWithValidation('locationChoice', locationChoice)
     },
     [
-      position,
       permissionState,
-      showGeolocPermissionModal,
+      position,
       requestGeolocPermission,
       setValueWithValidation,
+      showGeolocPermissionModal,
     ]
   )
 
