@@ -3,6 +3,7 @@ import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/onboarding/pages/AgeSelectionOther'
+import { OnboardingGeolocation } from 'features/onboarding/pages/OnboardingGeolocation'
 import { OnboardingWelcome } from 'features/onboarding/pages/OnboardingWelcome'
 
 export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
@@ -28,6 +29,12 @@ export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
     name: 'NavigationOnboarding',
     component: NavigationOnboarding,
     path: 'cheat-navigation-onboarding',
+  },
+  {
+    name: 'OnboardingGeolocation',
+    component: OnboardingGeolocation,
+    path: 'geolocalisation',
+    options: { title: 'Active ta géolocalisation' },
   },
   {
     name: 'OnboardingWelcome',
