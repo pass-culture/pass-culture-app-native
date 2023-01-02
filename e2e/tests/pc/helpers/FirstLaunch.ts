@@ -5,6 +5,7 @@ import { TabBar } from '../features/navigation/TabBar'
 import AgeSelection from '../features/onboarding/AgeSelection'
 import AgeInformation from '../features/onboarding/AgeInformation'
 import OnboardingWelcome from '../features/onboarding/OnboardingWelcome'
+import OnboardingGeolocation from '../features/onboarding/OnboardingGeolocation'
 
 class FirstLaunch {
   retries = 2
@@ -35,6 +36,7 @@ class FirstLaunch {
     await CookiesConsent.randomChoice()
     if (!flags.isWeb) {
       await OnboardingWelcome.proceed()
+      await OnboardingGeolocation.proceed()
       await AgeSelection.randomChoiceAge()
       await AgeInformation.proceed()
     }
