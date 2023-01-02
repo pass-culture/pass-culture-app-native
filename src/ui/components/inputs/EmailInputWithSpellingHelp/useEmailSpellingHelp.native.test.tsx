@@ -51,7 +51,7 @@ describe('useEmailSpellingHelp', () => {
     expect(result.current.suggestedEmail).toBeUndefined()
   })
 
-  it('should not display suggestion before a delay with the last typed stuff', async () => {
+  it('should not display suggestion before a delay after the last typed email', async () => {
     const { result, rerender } = renderHook(useEmailSpellingHelp, { initialProps })
 
     await act(async () => {
