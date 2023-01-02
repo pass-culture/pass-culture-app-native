@@ -8,7 +8,7 @@ import {
   VenuesModule,
 } from 'features/home/types'
 
-const formattedBusinessModule: BusinessModule = {
+export const formattedBusinessModule: BusinessModule = {
   type: HomepageModuleType.BusinessModule,
   id: '20SId61p6EFTG7kgBTFrOa',
   analyticsTitle:
@@ -21,7 +21,7 @@ const formattedBusinessModule: BusinessModule = {
     'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
   leftIcon: undefined,
 }
-const formattedVenuesModule: VenuesModule = {
+export const formattedVenuesModule: VenuesModule = {
   type: HomepageModuleType.VenuesModule,
   id: '105MMz59tftcxXJICXt7ja',
   venuesSearchParameters: [
@@ -59,13 +59,13 @@ const formattedVenuesModule: VenuesModule = {
     minOffers: 1,
   },
 }
-const formattedRecommendedOffersModule: RecommendedOffersModule = {
+export const formattedRecommendedOffersModule: RecommendedOffersModule = {
   type: HomepageModuleType.RecommendedOffersModule,
   id: '3sAqNrRMXUOES7tFyRFFO8',
   displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
   recommendationParameters: undefined,
 }
-const formattedExclusivityModule: ExclusivityModule = {
+export const formattedExclusivityModule: ExclusivityModule = {
   type: HomepageModuleType.ExclusivityModule,
   id: 'AEYnm9QjIo2rZKoCfSvMD',
   title: 'WE FRAC CAEN',
@@ -76,7 +76,7 @@ const formattedExclusivityModule: ExclusivityModule = {
   offerId: 123456789,
   displayParameters: undefined,
 }
-const formattedOffersModule: OffersModule = {
+export const formattedOffersModule: OffersModule = {
   type: HomepageModuleType.OffersModule,
   id: '2DYuR6KoSLElDuiMMjxx8g',
   title: 'Fais le plein de lecture',
