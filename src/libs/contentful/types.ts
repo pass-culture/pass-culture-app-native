@@ -243,20 +243,6 @@ export interface RecommendationParametersFields {
   isRecoShuffled?: boolean
 }
 
-// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
-interface HomepageNatifFields {
-  title: string
-  modules: HomepageModule[]
-  thematicHeaderTitle?: string
-  thematicHeaderSubtitle?: string
-}
-
-export type HomepageModule =
-  | { sys: Sys<'algolia'>; fields: AlgoliaFields }
-  | { sys: Sys<'business'>; fields: BusinessFields }
-  | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
-  | { sys: Sys<'recommendation'>; fields: RecommendationFields }
-  | { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
 export interface Image {
   sys: Sys<typeof ContentTypes.INFORMATION>
   fields: {
@@ -284,20 +270,13 @@ export interface Tag {
   sys: { type: 'Link'; linkType: 'Tag'; id: TagId }
 }
 
-export interface HomepageEntry {
+export interface HomepageNatifEntry {
   metadata: { tags: Tag[] }
   sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
 }
 
-// Nouveaux types avec adapter
-export interface HomepageNatifEntry {
-  metadata: { tags: Tag[] }
-  sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
-  fields: HomepageNatifFields2
-}
-
-interface HomepageNatifFields2 {
+interface HomepageNatifFields {
   title: string
   modules: HomepageNatifModule[]
   thematicHeaderTitle?: string
