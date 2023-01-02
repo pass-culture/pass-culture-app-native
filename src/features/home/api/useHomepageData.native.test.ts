@@ -1,13 +1,11 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
 import { rest } from 'msw'
 
-import { processHomepageEntry } from 'libs/contentful'
+import { homepageList } from 'features/home/fixtures/homepageList.fixtures'
+import { Homepage } from 'features/home/types'
 import { BASE_URL, PARAMS } from 'libs/contentful/fetchHomepageNatifContent'
+import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { analytics } from 'libs/firebase/analytics'
-import { adaptedHomepageEntry } from 'tests/fixtures/adaptedHomepageEntry'
-import { adaptedSecondHomepageEntry } from 'tests/fixtures/adaptedSecondHomepageEntry'
-import { adaptedThematicHomepageEntry } from 'tests/fixtures/adaptedThematicHomepageEntry'
-import { homepageEntriesAPIResponse } from 'tests/fixtures/homepageEntriesAPIResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
@@ -23,63 +21,46 @@ server.use(
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
-const entryId = homepageEntriesAPIResponse.items[1].sys.id
 
-describe('Home api calls', () => {
-  describe('useHomepageModules', () => {
-    it('calls the API and returns the data', async () => {
-      const { result } = renderHook(useHomepageData, {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+const homepageEntryIds = [
+  homepageEntriesAPIResponse.items[0].sys.id,
+  homepageEntriesAPIResponse.items[1].sys.id,
+]
 
-      await waitFor(() => {
-        expect(result.current).toEqual({
-          modules: processHomepageEntry(adaptedHomepageEntry),
-          homeEntryId: '16PgpnlCOYYIhUTclR0oO4',
-          thematicHomeHeader: undefined,
-        })
-      })
+describe('useHomepageModules', () => {
+  it('calls the API and returns the data', async () => {
+    const { result } = renderHook(useHomepageData, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    it('calls the API and returns the data with specified entryId', async () => {
-      const { result } = renderHook(() => useHomepageData(entryId), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+    const expectedResult: Homepage = homepageList[0]
 
-      await waitFor(() => {
-        expect(result.current).toEqual({
-          modules: processHomepageEntry(adaptedSecondHomepageEntry),
-          homeEntryId: '7IuIeovqUykM1uvWwwPPh7',
-          thematicHomeHeader: undefined,
-        })
-      })
+    await waitFor(() => {
+      expect(result.current).toEqual(expectedResult)
     })
-    it('calls the API and returns the data of a thematic home page', async () => {
-      const thematicHomeId = '7IuIeovqUykM1uvWwwPPh8'
-      const { result } = renderHook(() => useHomepageData(thematicHomeId), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+  })
 
-      await waitFor(() => {
-        expect(result.current).toEqual({
-          modules: processHomepageEntry(adaptedThematicHomepageEntry),
-          homeEntryId: '7IuIeovqUykM1uvWwwPPh8',
-          thematicHeader: {
-            title: 'cinéma',
-            subtitle: 'Fais le plein de cinéma',
-          },
-        })
-      })
+  it('calls the API and returns the data of a thematic home page', async () => {
+    const entryId = homepageEntryIds[1]
+    const { result } = renderHook(() => useHomepageData(entryId), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    it('should log ConsultHome with specified entryId', async () => {
-      renderHook(() => useHomepageData(entryId), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+    const expectedResult = homepageList[1]
 
-      await waitFor(() =>
-        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: entryId })
-      )
+    await waitFor(() => {
+      expect(result.current).toEqual(expectedResult)
     })
+  })
+
+  it('should log ConsultHome with specified entryId', async () => {
+    const entryId = homepageEntryIds[0]
+    renderHook(() => useHomepageData(entryId), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(() =>
+      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: entryId })
+    )
   })
 })
