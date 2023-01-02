@@ -157,7 +157,7 @@
     "react-native-lottie-splash-screen": "^1.0.1",
     "react-native-modal": "^13.0.0",
     "react-native-permissions": "3.5.0",
-    "react-native-qrcode-svg": "^6.1.1",
+    "react-native-qrcode-svg": "^6.1.2",
     "react-native-safe-area-context": "3.4.1",
     "react-native-screens": "^3.10.1",
     "react-native-svg": "^13.6.0",
