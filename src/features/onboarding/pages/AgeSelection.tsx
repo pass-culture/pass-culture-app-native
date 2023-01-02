@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
 import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { EligibleAges } from 'features/onboarding/types'
@@ -77,8 +76,7 @@ export const AgeSelection: FunctionComponent = () => {
   return (
     <OnboardingPage
       title="Pour commencer, peux-tu nous dire ton âge&nbsp;?"
-      subtitle="Cela permet de savoir si tu peux bénéficier du pass Culture."
-      onGoBack={navigateToHome}>
+      subtitle="Cela permet de savoir si tu peux bénéficier du pass Culture.">
       <AccessibilityList
         items={AgeSelectionButtons}
         Separator={<Spacer.Column numberOfSpaces={4} />}
