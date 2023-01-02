@@ -3,9 +3,10 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
+import { OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
-import { SearchParametersFields, DisplayParametersFields, ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -18,8 +19,8 @@ import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 
 type OffersModuleProps = {
-  search: SearchParametersFields[]
-  display: DisplayParametersFields
+  search: OffersModuleType['offersModuleParameters']
+  display: OffersModuleType['displayParameters']
   moduleId: string
   cover: string | null
   index: number

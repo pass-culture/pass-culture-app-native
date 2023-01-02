@@ -36,7 +36,7 @@ export const VenuesModule = ({
 }: VenuesModuleProps) => {
   const { position } = useGeolocation()
   const moduleName = display.title
-  const hits = useVenueModule({ search, moduleId }) || []
+  const hits = useVenueModule({ venuesSearchParameters: search, id: moduleId }) || []
 
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (

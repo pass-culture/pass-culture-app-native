@@ -3,11 +3,8 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
-import {
-  ContentTypes,
-  DisplayParametersFields,
-  RecommendationParametersFields,
-} from 'libs/contentful'
+import { RecommendedOffersModule } from 'features/home/types'
+import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -22,7 +19,7 @@ type RecommendationModuleProps = {
   moduleId: string
   displayParameters: DisplayParametersFields
   index: number
-  recommendationParameters?: RecommendationParametersFields
+  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
   homeEntryId: string | undefined
 }
 

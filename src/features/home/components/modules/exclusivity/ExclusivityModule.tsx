@@ -5,10 +5,17 @@ import styled from 'styled-components/native'
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
-import { ExclusivityPane } from 'libs/contentful'
+import { ExclusivityModule as ExclusivityModuleType } from 'features/home/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
-export interface ExclusivityModuleProps extends ExclusivityPane {
+export interface ExclusivityModuleProps {
+  title: string
+  alt: string
+  image: string
+  moduleId: string
+  offerId?: number
+  display?: ExclusivityModuleType['displayParameters']
+  url?: string
   homeEntryId: string | undefined
   index: number
   style?: ViewStyle

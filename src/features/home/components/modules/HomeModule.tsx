@@ -7,46 +7,51 @@ import {
   VenuesModule,
 } from 'features/home/components'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
-import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
-import { BusinessPane, ExclusivityPane, OffersWithCover } from 'libs/contentful'
-import { ProcessedModule, RecommendationPane } from 'libs/contentful/moduleTypes'
+import {
+  HomepageModule,
+  isBusinessModule,
+  isExclusivityModule,
+  isOffersModule,
+  isRecommendedOffersModule,
+  isVenuesModule,
+} from 'features/home/types'
 
 const UnmemoizedModule = ({
   item,
   index,
   homeEntryId,
 }: {
-  item: ProcessedModule
+  item: HomepageModule
   index: number
   homeEntryId: string | undefined
 }) => {
-  if (isOfferModuleTypeguard(item))
+  if (isOffersModule(item))
     return (
       <OffersModule
-        moduleId={item.moduleId}
-        search={item.search}
-        display={item.display}
-        cover={item instanceof OffersWithCover ? item.cover : null}
+        moduleId={item.id}
+        search={item.offersModuleParameters}
+        display={item.displayParameters}
+        cover={item.cover ?? null}
         index={index}
         homeEntryId={homeEntryId}
       />
     )
 
-  if (isVenuesModuleTypeguard(item))
+  if (isVenuesModule(item))
     return (
       <VenuesModule
-        moduleId={item.moduleId}
-        display={item.display}
-        search={item.search}
+        moduleId={item.id}
+        display={item.displayParameters}
+        search={item.venuesSearchParameters}
         homeEntryId={homeEntryId}
         index={index}
       />
     )
 
-  if (item instanceof RecommendationPane)
+  if (isRecommendedOffersModule(item))
     return (
       <RecommendationModule
-        moduleId={item.moduleId}
+        moduleId={item.id}
         index={index}
         displayParameters={item.displayParameters}
         recommendationParameters={item.recommendationParameters}
@@ -54,23 +59,23 @@ const UnmemoizedModule = ({
       />
     )
 
-  if (item instanceof ExclusivityPane)
+  if (isExclusivityModule(item))
     return (
       <ExclusivityModule
-        moduleId={item.moduleId}
+        moduleId={item.id}
         title={item.title}
         alt={item.alt}
         image={item.image}
         offerId={item.offerId}
-        display={item.display}
+        display={item.displayParameters}
         homeEntryId={homeEntryId}
         index={index}
         url={item.url}
       />
     )
 
-  if (item instanceof BusinessPane)
-    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} />
+  if (isBusinessModule(item))
+    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
 
   return <React.Fragment></React.Fragment>
 }
