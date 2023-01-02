@@ -1,21 +1,20 @@
 import { rest } from 'msw'
 
-import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
+import { homepageList } from 'features/home/fixtures/homepageList.fixtures'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { BASE_URL, PARAMS } from 'libs/contentful/fetchHomepageNatifContent'
-import { homepageNatifEntryFixture } from 'libs/contentful/fixtures/homepageNatifEntry.fixture'
+import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { server } from 'tests/server'
 
 server.use(
   rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(homepageNatifEntryFixture))
+    return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
   })
 )
 
 describe('Contentful fetchHomepageNatifContent', () => {
-  //TODO(EveJulliard): fix this test
-  it.skip('should ', async () => {
+  it('should retrieve a list of adapted homepages', async () => {
     const result = await fetchHomepageNatifContent()
-    expect(result).toEqual(adaptedHomepage)
+    expect(result).toEqual(homepageList)
   })
 })
