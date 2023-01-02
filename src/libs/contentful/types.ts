@@ -294,7 +294,14 @@ export interface HomepageEntry {
 export interface HomepageNatifEntry {
   metadata: { tags: Tag[] }
   sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
-  fields: HomepageNatifFields
+  fields: HomepageNatifFields2
+}
+
+interface HomepageNatifFields2 {
+  title: string
+  modules: HomepageNatifModule[]
+  thematicHeaderTitle?: string
+  thematicHeaderSubtitle?: string
 }
 
 export type HomepageNatifModule =

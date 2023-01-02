@@ -15,8 +15,8 @@ import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { HomepageModule } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { ProcessedModule } from 'libs/contentful/moduleTypes'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -26,8 +26,7 @@ import { theme } from 'theme'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
-const keyExtractor = (item: ProcessedModule, index: number) =>
-  'moduleId' in item ? item.moduleId : `recommendation${index}`
+const keyExtractor = (item: HomepageModule) => item.id
 
 const Header = ({
   isThematicHome,
@@ -49,7 +48,7 @@ const Header = ({
 )
 
 const renderModule = (
-  { item, index }: { item: ProcessedModule; index: number },
+  { item, index }: { item: HomepageModule; index: number },
   homeEntryId: string | undefined
 ) => <HomeModule item={item} index={index} homeEntryId={homeEntryId} />
 
@@ -68,7 +67,7 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
 
 export const OnlineHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, homeEntryId, thematicHeader } = useHomepageData(params?.entryId) || {}
+  const { modules, id: homeEntryId, thematicHeader } = useHomepageData(params?.entryId) || {}
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
-import { RecommendationParametersFields } from 'libs/contentful'
+import { RecommendedOffersModule } from 'features/home/types'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { RecommendedIdsRequest } from 'libs/recommendation/types'
@@ -24,7 +24,7 @@ export const getRecommendationEndpoint = (
 }
 
 export function getRecommendationParameters(
-  parameters: RecommendationParametersFields | undefined,
+  parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
   subcategoryLabelMapping: SubcategoryLabelMapping
 ): RecommendedIdsRequest {
   if (!parameters) return {}
@@ -53,7 +53,7 @@ export const useHomeRecommendedHits = (
   userId: number | undefined,
   position: GeoCoordinates | null,
   moduleId: string,
-  recommendationParameters?: RecommendationParametersFields
+  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
 ): SearchHit[] | undefined => {
   const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
   const [recommendedIds, setRecommendedIds] = useState<string[]>()
