@@ -19,11 +19,11 @@ import {
   additionalAlgoliaParametersWithoutOffersFixture,
   algoliaNatifModuleCoverFixture,
   algoliaNatifModuleFixture,
-} from 'libs/contentful/fixtures/AlgoliaModules.fixture'
-import { businessNatifModuleFixture } from 'libs/contentful/fixtures/BusinessModule.fixture'
-import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/ExclusivityModule.fixture'
-import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/RecommendationNatifModule.fixture'
-import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/VenuesModule.fixture'
+} from 'libs/contentful/fixtures/algoliaModules.fixture'
+import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
+import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/exclusivityModule.fixture'
+import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
+import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
 import {
   AlgoliaParameters,
   isAlgoliaNatifModule,
