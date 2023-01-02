@@ -20,6 +20,7 @@ export function NavigationOnboarding(): JSX.Element {
       <PageHeaderSecondary title="Onboarding 🛶" />
       <StyledContainer>
         <LinkToComponent name="OnboardingWelcome" />
+        <LinkToComponent name="OnboardingGeolocation" />
         <LinkToComponent name="AgeSelection" />
         <LinkToComponent name="AgeSelectionOther" />
         <LinkToComponent

@@ -8,6 +8,7 @@ import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
+import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -37,12 +38,14 @@ type Props = {
   mobileBottomFlex?: number
   fullWidth?: true
   separateIconFromTitle?: boolean
+  onSkip?: () => void
 } & (PropsWithAnimation | PropsWithIcon)
 
 const SMALL_HEIGHT = 576
 
 export const GenericInfoPageWhite: React.FC<Props> = ({
   separateIconFromTitle = true,
+  onSkip,
   ...props
 }) => {
   const { canGoBack, goBack } = useGoBack(...(props.goBackParams ?? homeNavConfig))
@@ -97,6 +100,15 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
           <StyledArrowPrevious />
         </HeaderContainer>
       ) : null}
+      {!!onSkip && (
+        <SkipButtonContainer top={top + getSpacing(3.5)}>
+          <ButtonTertiaryNeutralInfo
+            wording="Passer"
+            accessibilityLabel="Aller à l’écran suivant"
+            onPress={onSkip}
+          />
+        </SkipButtonContainer>
+      )}
       <ContentContainer fullWidth={props.fullWidth as boolean}>
         <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
         <StyledLottieContainer hasHeight={separateIconFromTitle}>
@@ -159,5 +171,12 @@ const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }
   position: 'absolute',
   top,
   left: getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
+
+const SkipButtonContainer = styled.View<{ top: number }>(({ theme, top }) => ({
+  position: 'absolute',
+  top,
+  right: getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))

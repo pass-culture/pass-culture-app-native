@@ -31,7 +31,7 @@ export const OnboardingWelcome: FunctionComponent = () => (
         wording="C’est parti&nbsp;!"
         icon={PlainArrowNext}
         iconAfterWording
-        navigateTo={{ screen: 'AgeSelection' }}
+        navigateTo={{ screen: 'OnboardingGeolocation' }}
         onBeforeNavigate={setHasSeenTutorials}
       />
       <Spacer.Column numberOfSpaces={4} />
