@@ -31,7 +31,7 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
   const params: SearchState = {
     beginningDatetime: undefined,
     endingDatetime: undefined,
-    hitsPerPage: 10,
+    hitsPerPage: 30,
     locationFilter,
     offerCategories: [],
     offerSubcategories: [],

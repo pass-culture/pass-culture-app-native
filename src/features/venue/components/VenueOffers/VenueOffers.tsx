@@ -31,7 +31,7 @@ interface Props {
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
-export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-medium' }) => {
+export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) => {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
