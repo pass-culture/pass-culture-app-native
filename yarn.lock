@@ -7804,6 +7804,11 @@
   resolved "https://registry.yarnpkg.com/@yarnpkg/lockfile/-/lockfile-1.1.0.tgz#e77a97fbd345b76d83245edcd17d393b1b41fb31"
   integrity sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==
 
+"@zootools/email-spell-checker@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@zootools/email-spell-checker/-/email-spell-checker-1.11.0.tgz#122983ac54246a5c5722d530a96a29781f3b6986"
+  integrity sha512-zC09W3xQrb+Sy2CUf6EG0x8JXhDCuBbQzAoTgD/6CdVUQip1jLy6V+Ky4Rp9S51UPJNc2vsME5gfA4yOVYRk/w==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"
