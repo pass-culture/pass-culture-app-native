@@ -302,25 +302,23 @@ export type VenuesContentModel = { sys: Sys<'venuesPlaylist'>; fields: VenuesFie
 export const isAlgoliaContentModel = (
   module: HomepageNatifModule
 ): module is AlgoliaContentModel => {
-  return (module as AlgoliaContentModel).sys.contentType?.sys.id === ContentTypes.ALGOLIA
+  return module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
 }
 export const isBusinessContentModel = (
   module: HomepageNatifModule
 ): module is BusinessContentModel => {
-  return (module as BusinessContentModel).sys.contentType?.sys.id === ContentTypes.BUSINESS
+  return module.sys.contentType?.sys.id === ContentTypes.BUSINESS
 }
 export const isExclusivityContentModel = (
   module: HomepageNatifModule
 ): module is ExclusivityContentModel => {
-  return (module as ExclusivityContentModel).sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
+  return module.sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
 }
 export const isRecommendationContentModel = (
   module: HomepageNatifModule
 ): module is RecommendationContentModel => {
-  return (
-    (module as RecommendationContentModel).sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
-  )
+  return module.sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
 }
 export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel => {
-  return (module as VenuesContentModel).sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
+  return module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
 }
