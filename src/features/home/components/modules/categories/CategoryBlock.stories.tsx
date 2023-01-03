@@ -35,7 +35,7 @@ export const CategoryBlockWithImage: ComponentStory<typeof CategoryBlock> = () =
       title={'Le plein de cinéma'}
       homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       filter={{ color: theme.uniqueColors.brand, opacity: 0.7 }}
-      imageUrl="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
+      image="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
     />
     <Spacer.Column numberOfSpaces={10} />
 
@@ -43,7 +43,7 @@ export const CategoryBlockWithImage: ComponentStory<typeof CategoryBlock> = () =
       title={'Le plein de cinéma'}
       homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       filter={{ color: theme.colors.secondary, opacity: 0.64 }}
-      imageUrl="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
+      image="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
     />
   </Container>
 )

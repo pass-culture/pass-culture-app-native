@@ -6,11 +6,13 @@ import {
   OffersModule,
   VenuesModule,
 } from 'features/home/components'
+import { CategoryListModule as CategoryListComponent } from 'features/home/components/modules/categories/CategoryListModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import {
   HomepageModule,
   isBusinessModule,
+  isCategoryListModule,
   isExclusivityModule,
   isOffersModule,
   isRecommendedOffersModule,
@@ -80,6 +82,8 @@ const UnmemoizedModule = ({
     return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
 
   if (isThematicHighlightModule(item)) return <ThematicHighlightModule {...item} />
+
+  if (isCategoryListModule(item)) return <CategoryListComponent {...item} />
 
   return <React.Fragment></React.Fragment>
 }

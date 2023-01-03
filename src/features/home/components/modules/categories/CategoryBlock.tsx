@@ -16,19 +16,19 @@ export interface CategoryBlockProps {
   title: string
   homeEntryId: string
   filter: FilterProps
-  imageUrl?: string
+  image?: string
 }
 
 export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   title,
   homeEntryId,
-  imageUrl,
+  image,
   filter,
 }) => {
   const navigateTo = getNavigateToThematicHomeConfig(homeEntryId)
   return (
     <StyledInternalTouchableLink navigateTo={navigateTo}>
-      <ImageBackground source={{ uri: imageUrl }}>
+      <ImageBackground source={{ uri: image }}>
         <ContainerWithFilter filter={filter}>
           <StyledTitle numberOfLines={2}>{title}</StyledTitle>
         </ContainerWithFilter>

@@ -56,7 +56,7 @@ export const CategoryListModule = (props: CategoryListProps) => {
 }
 
 const FlatListContainer = styled.View({
-  // marginHorizontal: getSpacing(6), // TODO(PC-18781) uncomment this when component is rendered on home page
+  marginHorizontal: getSpacing(6),
 })
 
 const CategoryBlockContainer = styled.View<{ index: number }>(({ index }) => ({
