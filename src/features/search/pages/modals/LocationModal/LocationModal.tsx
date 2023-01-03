@@ -122,6 +122,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
 
   const [isSearchInputFocused, setIsSearchInputFocused] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const defaultValues = useMemo(() => {
     return {
@@ -286,7 +287,18 @@ export const LocationModal: FunctionComponent<Props> = ({
             showGeolocPermissionModal()
             return
           } else {
-            await requestGeolocPermission()
+            setIsLoading(true)
+            await requestGeolocPermission({
+              onAcceptance: () => {
+                setIsLoading(false)
+                setValueWithValidation('locationChoice', locationChoice)
+              },
+              onRefusal: () => {
+                setIsLoading(false)
+                showGeolocPermissionModal()
+              },
+            })
+            return
           }
         }
       }
@@ -298,11 +310,11 @@ export const LocationModal: FunctionComponent<Props> = ({
       setValueWithValidation('locationChoice', locationChoice)
     },
     [
-      position,
       permissionState,
-      showGeolocPermissionModal,
+      position,
       requestGeolocPermission,
       setValueWithValidation,
+      showGeolocPermissionModal,
     ]
   )
 
@@ -360,6 +372,9 @@ export const LocationModal: FunctionComponent<Props> = ({
                             : item.label
                         }
                         icon={item.icon}
+                        isLoading={
+                          item.label === RadioButtonLocation.AROUND_ME ? isLoading : undefined
+                        }
                       />
                       {item.label === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE &&
                       value === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE ? (

@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { Spinner } from 'ui/components/Spinner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -19,6 +20,27 @@ interface RadioButtonProps {
   icon?: FunctionComponent<IconInterface>
   accessibilityLabel?: string
   marginVertical?: number
+  isLoading?: boolean
+}
+
+type RadioButtonIconProps = {
+  isSelected?: boolean
+  isLoading?: boolean
+}
+
+function RadioButtonIcon({ isSelected, isLoading }: RadioButtonIconProps) {
+  const { isMobileViewport, icons } = useTheme()
+  const ValidateOff = isMobileViewport ? ValidateOffIcon : Fragment
+
+  if (isSelected) {
+    return <ValidateIconPrimary />
+  }
+
+  if (isLoading) {
+    return <Spinner size={icons.sizes.smaller} />
+  }
+
+  return <ValidateOff />
 }
 
 export function RadioButton(props: RadioButtonProps) {
@@ -26,7 +48,6 @@ export function RadioButton(props: RadioButtonProps) {
   const { isMobileViewport } = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
-  const ValidateOff = isMobileViewport ? ValidateOffIcon : Fragment
   const StyledIcon =
     !!props.icon &&
     styled(props.icon).attrs(({ theme }) => ({
@@ -68,7 +89,9 @@ export function RadioButton(props: RadioButtonProps) {
           )}
         </LabelWrapper>
       </LabelContainer>
-      <IconContainer>{props.isSelected ? <ValidateIconPrimary /> : <ValidateOff />}</IconContainer>
+      <IconContainer>
+        <RadioButtonIcon isSelected={props.isSelected} isLoading={props.isLoading} />
+      </IconContainer>
     </StyledTouchableOpacity>
   )
 }
