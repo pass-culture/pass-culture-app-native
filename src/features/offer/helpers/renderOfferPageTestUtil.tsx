@@ -76,14 +76,21 @@ export async function renderOfferBodyPage(
   return wrapper
 }
 
-export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
+export async function renderOfferPage(
+  fromOfferId?: number,
+  extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen name="Offer" component={Offer} initialParams={{ id: offerId }} />
+          <RootStack.Screen
+            name="Offer"
+            component={Offer}
+            initialParams={{ id: offerId, fromOfferId }}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
     )
