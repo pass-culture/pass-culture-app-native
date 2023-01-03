@@ -1,5 +1,7 @@
 import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 
+import { SearchState } from 'features/search/types'
+
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 
 export const isCloseToBottom = ({
@@ -27,3 +29,27 @@ export const prepareLogEventParams = (params: Record<string, unknown>) =>
 
 const STRING_VALUE_MAX_LENGTH = 100
 export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
+
+export const buildPerformSearchState = (searchState: SearchState) => ({
+  ...(searchState.date !== null && { searchDate: JSON.stringify(searchState.date) }),
+  ...(!!searchState.isAutocomplete && { searchIsAutocomplete: searchState.isAutocomplete }),
+  searchLocationFilter: JSON.stringify(searchState.locationFilter),
+  ...(!!searchState.maxPrice && { searchMaxPrice: searchState.maxPrice }),
+  ...(!!searchState.minPrice && { searchMinPrice: searchState.minPrice }),
+  ...(searchState.offerCategories.length > 0 && {
+    searchCategories: JSON.stringify(searchState.offerCategories),
+  }),
+  ...(searchState.offerGenreTypes &&
+    searchState.offerGenreTypes.length > 0 && {
+      searchGenreTypes: JSON.stringify(searchState.offerGenreTypes),
+    }),
+  ...(searchState.offerIsDuo && { searchOfferIsDuo: searchState.offerIsDuo }),
+  ...(searchState.offerIsFree && { searchOfferIsFree: searchState.offerIsFree }),
+  ...(searchState.offerNativeCategories &&
+    searchState.offerNativeCategories.length > 0 && {
+      searchNativeCategories: JSON.stringify(searchState.offerNativeCategories),
+    }),
+  ...(searchState.query !== '' && { searchQuery: searchState.query }),
+  searchId: searchState.searchId,
+  ...(searchState.timeRange !== null && { searchTimeRange: JSON.stringify(searchState.timeRange) }),
+})

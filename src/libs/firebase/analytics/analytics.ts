@@ -12,7 +12,7 @@ import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { analyticsProvider } from 'libs/firebase/analytics/provider'
 import { LoginRoutineMethod, OfferAnalyticsData } from 'libs/firebase/analytics/types'
 import { useInit } from 'libs/firebase/analytics/useInit'
-import { urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
+import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
 
 type OfferIdOrVenueId = { offerId: number } | { venueId: number }
 export type ChangeSearchLocationParam =
@@ -268,9 +268,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
   logPerformSearch: (searchState: SearchState) =>
-    analyticsProvider.logEvent(AnalyticsEvent.PERFORM_SEARCH, {
-      searchState: JSON.stringify(searchState),
-    }),
+    analyticsProvider.logEvent(AnalyticsEvent.PERFORM_SEARCH, buildPerformSearchState(searchState)),
   logSearchScrollToPage: (page: number, searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
