@@ -11,7 +11,12 @@ export const adaptExclusivityModule = (modules: ExclusivityContentModel): Exclus
     alt: modules.fields.alt,
     image: buildImageUrl(modules.fields.image?.fields.file.url),
     url: modules.fields.url,
-    displayParameters: modules.fields.displayParameters?.fields,
+    displayParameters: modules.fields.displayParameters?.fields
+      ? {
+          aroundRadius: modules.fields.displayParameters?.fields.aroundRadius,
+          isGeolocated: modules.fields.displayParameters?.fields.isGeolocated,
+        }
+      : undefined,
     offerId: parseStringToNumber(modules.fields.offerId),
   }
 }

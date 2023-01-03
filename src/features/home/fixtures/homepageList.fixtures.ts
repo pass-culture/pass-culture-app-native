@@ -6,7 +6,7 @@ export const homepageList: Homepage[] = [
     modules: [
       {
         alt: 'Exclusitivité du moment',
-        displayParameters: { aroundRadius: 20, isGeolocated: true, title: 'Rayon 20km' },
+        displayParameters: { aroundRadius: 20, isGeolocated: true },
         id: 'KiG6rWuQYhHuGIBXZNeB2',
         image:
           'https://images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
