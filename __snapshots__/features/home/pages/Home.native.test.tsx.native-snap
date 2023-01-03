@@ -44,22 +44,40 @@ exports[`Home N-1 should render correctly 1`] = `
       data={
         Array [
           Object {
-            "display": Object {
-              "layout": "two-items",
+            "displayParameters": Object {
+              "layout": "one-item-medium",
               "minOffers": 1,
-              "subtitle": "Un sous-titre",
-              "title": "Playlist de livres",
+              "subtitle": "Ceci n'est pas une playlist de lieux",
+              "title": "Exemple de playlist de lieux",
             },
-            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
-            "search": Array [
+            "id": "105MMz59tftcxXJICXt7ja",
+            "type": "VenuesModule",
+            "venuesParameters": Array [
               Object {
-                "categories": Array [
-                  "Livres",
-                ],
-                "hitsPerPage": 10,
-                "isDigital": false,
+                "hitsPerPage": 15,
                 "isGeolocated": false,
-                "title": "Playlist de livres",
+                "title": "Exemple de playlist de lieux",
+                "venueTypes": Array [
+                  "Bibliothèque ou médiathèque",
+                  "Arts visuels, arts plastiques et galeries",
+                  "Centre culturel",
+                  "Cinéma - Salle de projections",
+                  "Cours et pratique artistiques",
+                  "Culture scientifique",
+                  "Festival",
+                  "Jeux / Jeux vidéos",
+                  "Librairie",
+                  "Magasin arts créatifs",
+                  "Musique - Disquaire",
+                  "Musique - Magasin d’instruments",
+                  "Musique - Salle de concerts",
+                  "Musée",
+                  "Offre numérique",
+                  "Patrimoine et tourisme",
+                  "Spectacle vivant",
+                  "Cinéma itinérant",
+                  "Autre type de lieu",
+                ],
               },
             ],
           },
@@ -313,22 +331,40 @@ exports[`Home component should render correctly without login modal 1`] = `
       data={
         Array [
           Object {
-            "display": Object {
-              "layout": "two-items",
+            "displayParameters": Object {
+              "layout": "one-item-medium",
               "minOffers": 1,
-              "subtitle": "Un sous-titre",
-              "title": "Playlist de livres",
+              "subtitle": "Ceci n'est pas une playlist de lieux",
+              "title": "Exemple de playlist de lieux",
             },
-            "moduleId": "1M8CiTNyeTxKsY3Gk9wePI",
-            "search": Array [
+            "id": "105MMz59tftcxXJICXt7ja",
+            "type": "VenuesModule",
+            "venuesParameters": Array [
               Object {
-                "categories": Array [
-                  "Livres",
-                ],
-                "hitsPerPage": 10,
-                "isDigital": false,
+                "hitsPerPage": 15,
                 "isGeolocated": false,
-                "title": "Playlist de livres",
+                "title": "Exemple de playlist de lieux",
+                "venueTypes": Array [
+                  "Bibliothèque ou médiathèque",
+                  "Arts visuels, arts plastiques et galeries",
+                  "Centre culturel",
+                  "Cinéma - Salle de projections",
+                  "Cours et pratique artistiques",
+                  "Culture scientifique",
+                  "Festival",
+                  "Jeux / Jeux vidéos",
+                  "Librairie",
+                  "Magasin arts créatifs",
+                  "Musique - Disquaire",
+                  "Musique - Magasin d’instruments",
+                  "Musique - Salle de concerts",
+                  "Musée",
+                  "Offre numérique",
+                  "Patrimoine et tourisme",
+                  "Spectacle vivant",
+                  "Cinéma itinérant",
+                  "Autre type de lieu",
+                ],
               },
             ],
           },

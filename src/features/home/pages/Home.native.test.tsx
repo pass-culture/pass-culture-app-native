@@ -3,6 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
+import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
@@ -32,32 +33,11 @@ const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof 
 
 jest.mock('libs/geolocation')
 
-const modules = [
-  {
-    search: [
-      {
-        categories: ['Livres'],
-        hitsPerPage: 10,
-        isDigital: false,
-        isGeolocated: false,
-        title: 'Playlist de livres',
-      },
-    ],
-    display: {
-      layout: 'two-items',
-      minOffers: 1,
-      subtitle: 'Un sous-titre',
-      title: 'Playlist de livres',
-    },
-    moduleId: '1M8CiTNyeTxKsY3Gk9wePI',
-  },
-]
-
 describe('Home component', () => {
   useRoute.mockReturnValue({ params: {} })
 
   mockUseHomepageData.mockReturnValue({
-    modules,
+    modules: [formattedVenuesModule],
     homeEntryId: 'fakeEntryId',
   })
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -81,7 +61,9 @@ describe('Home component', () => {
     })
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { toJSON } = renderHome()
-    expect(toJSON()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(toJSON()).toMatchSnapshot()
+    })
   })
 
   it('should have a welcome message', async () => {
@@ -180,7 +162,9 @@ describe('Home component', () => {
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { queryByText } = renderHome()
-    expect(queryByText('CheatMenu')).toBeNull()
+    await waitFor(() => {
+      expect(queryByText('CheatMenu')).toBeNull()
+    })
   })
 
   it('should render offline page when not connected', () => {
@@ -194,7 +178,7 @@ describe('Home N-1', () => {
   it('should render correctly', () => {
     useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
     mockUseHomepageData.mockReturnValueOnce({
-      modules,
+      modules: [formattedVenuesModule],
       homeEntryId: 'fakeEntryId',
       thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
     })

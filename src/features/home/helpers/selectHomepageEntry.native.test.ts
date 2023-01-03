@@ -3,12 +3,13 @@ import shuffle from 'lodash/shuffle'
 import { EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
+import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
+import { Homepage } from 'features/home/types'
 import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
-import { HomepageEntry, Tag } from 'libs/contentful'
+import { Tag } from 'libs/contentful'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { adaptedHomepageEntry as defaultHomeEntry } from 'tests/fixtures/adaptedHomepageEntry'
 import { renderHook } from 'tests/utils'
 
 const masterTag: Tag = { sys: { id: 'master', linkType: 'Tag', type: 'Link' } }
@@ -17,48 +18,54 @@ const underageTag: Tag = { sys: { id: 'userunderage', linkType: 'Tag', type: 'Li
 
 const homeEntryId = 'homeEntryId'
 
-const homeEntryWithId: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: homeEntryId },
+const homeEntryWithId: Homepage = {
+  ...adaptedHomepage,
+  id: homeEntryId,
 }
-const homeEntryUnderage: HomepageEntry = {
-  ...defaultHomeEntry,
-  metadata: { tags: [underageTag] },
+const homeEntryUnderage: Homepage = {
+  ...adaptedHomepage,
+  tag: [underageTag],
 }
-const homeEntryUnderageMaster: HomepageEntry = {
-  ...defaultHomeEntry,
-  metadata: { tags: [masterTag, underageTag] },
+const homeEntryUnderageMaster: Homepage = {
+  ...adaptedHomepage,
+  tag: [masterTag, underageTag],
 }
-const homeEntryAll: HomepageEntry = { ...defaultHomeEntry, metadata: { tags: [grandpublicTag] } }
-const homeEntryAllMaster: HomepageEntry = {
-  ...defaultHomeEntry,
-  metadata: { tags: [masterTag, grandpublicTag] },
+const homeEntryAll: Homepage = {
+  ...adaptedHomepage,
+  tag: [grandpublicTag],
 }
-const homeEntryMaster: HomepageEntry = { ...defaultHomeEntry, metadata: { tags: [masterTag] } }
+const homeEntryAllMaster: Homepage = {
+  ...adaptedHomepage,
+  tag: [masterTag, grandpublicTag],
+}
+const homeEntryMaster: Homepage = {
+  ...adaptedHomepage,
+  tag: [masterTag],
+}
 
-const homeEntryNotConnected: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: 'homeEntryIdNotConnected' },
+const homeEntryNotConnected: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdNotConnected',
 }
-const homeEntryGeneral: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: 'homeEntryIdGeneral' },
+const homeEntryGeneral: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdGeneral',
 }
-const homeEntryWithoutBooking_18: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: 'homeEntryIdWithoutBooking_18' },
+const homeEntryWithoutBooking_18: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdWithoutBooking_18',
 }
-const homeEntryWithoutBooking_15_17: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: 'homeEntryIdWithoutBooking_15_17' },
+const homeEntryWithoutBooking_15_17: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdWithoutBooking_15_17',
 }
-const homeEntry_18: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: 'homeEntryId_18' },
+const homeEntry_18: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryId_18',
 }
-const homeEntry_15_17: HomepageEntry = {
-  ...defaultHomeEntry,
-  sys: { ...defaultHomeEntry.sys, id: 'homeEntryId_15_17' },
+const homeEntry_15_17: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryId_15_17',
 }
 
 const homepageEntries = [
@@ -67,7 +74,7 @@ const homepageEntries = [
   homeEntryAll,
   homeEntryAllMaster,
   homeEntryMaster,
-  defaultHomeEntry,
+  adaptedHomepage,
   homeEntryWithId,
   homeEntryNotConnected,
   homeEntryGeneral,
@@ -109,20 +116,20 @@ describe('useSelectHomepageEntry', () => {
   it('should not return anything when no homepageEntries retrieved from contentful', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry())
-    const homepageEntry = result.current([])
-    expect(homepageEntry).toBeUndefined()
+    const Homepage = result.current([])
+    expect(Homepage).toBeUndefined()
   })
 
   it('should return home entry corresponding to id provided', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry(homeEntryId))
-    const homepageEntry = result.current(shuffle(homepageEntries))
-    expect(homepageEntry).toBe(homeEntryWithId)
+    const Homepage = result.current(shuffle(homepageEntries))
+    expect(Homepage).toBe(homeEntryWithId)
   })
 
   describe('remote config entry', () => {
     it.each`
-      isLoggedIn | user                                          | hasBookings | credit                  | expectedHomepageEntry            | expectedHomepageEntryName
+      isLoggedIn | user                                          | hasBookings | credit                  | expectedHomepage                 | expectedHomepageName
       ${false}   | ${undefined}                                  | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
       ${true}    | ${undefined}                                  | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
       ${true}    | ${{ eligibility: EligibilityType['age-18'] }} | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
@@ -133,19 +140,19 @@ describe('useSelectHomepageEntry', () => {
       ${true}    | ${{ eligibility: EligibilityType.underage }}  | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
       ${true}    | ${{ eligibility: undefined }}                 | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
     `(
-      `should return remote config $expectedHomepageEntryName when isLoggedIn=$isLoggedIn, user=$user, hasBookings=$hasBookings, credit=$credit`,
+      `should return remote config $expectedHomepageName when isLoggedIn=$isLoggedIn, user=$user, hasBookings=$hasBookings, credit=$credit`,
       ({
         isLoggedIn,
         user,
         hasBookings,
         credit,
-        expectedHomepageEntry,
+        expectedHomepage,
       }: {
         isLoggedIn: boolean
         user: UserProfileResponse
         hasBookings: boolean
         credit: Credit
-        expectedHomepageEntry: HomepageEntry
+        expectedHomepage: Homepage
       }) => {
         mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
         mockUseAuthContext.mockReturnValueOnce({
@@ -159,9 +166,9 @@ describe('useSelectHomepageEntry', () => {
         mockGetAvailableCredit.mockReturnValueOnce(credit)
 
         const { result } = renderHook(() => useSelectHomepageEntry())
-        const homepageEntry = result.current(shuffle(homepageEntries))
+        const Homepage = result.current(shuffle(homepageEntries))
 
-        expect(homepageEntry).toBe(expectedHomepageEntry)
+        expect(Homepage).toBe(expectedHomepage)
 
         mockGetAvailableCredit.mockReset()
       }
@@ -208,7 +215,7 @@ describe('useSelectHomepageEntry', () => {
           homeEntryAll,
           homeEntryAllMaster,
           homeEntryMaster,
-          defaultHomeEntry,
+          adaptedHomepage,
           homeEntryWithId,
         ]
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
@@ -216,19 +223,19 @@ describe('useSelectHomepageEntry', () => {
 
       it('should retrieve the only playlist tagged master if no tag userunderage available', () => {
         const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = [homeEntryAll, homeEntryMaster, defaultHomeEntry, homeEntryWithId]
+        const playlists = [homeEntryAll, homeEntryMaster, adaptedHomepage, homeEntryWithId]
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
       })
 
       it('should retrieve the first userunderage playlist even if no playlist tagged master', () => {
         const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = [homeEntryUnderage, homeEntryAll, defaultHomeEntry, homeEntryWithId]
+        const playlists = [homeEntryUnderage, homeEntryAll, adaptedHomepage, homeEntryWithId]
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryUnderage)
       })
 
       it('should retrieve the first playlist if no playlist tagged master or userunderage', () => {
         const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = shuffle([homeEntryAll, defaultHomeEntry, homeEntryWithId])
+        const playlists = shuffle([homeEntryAll, adaptedHomepage, homeEntryWithId])
         expect(result.current(playlists)).toStrictEqual(playlists[0])
       })
     })
@@ -265,7 +272,7 @@ describe('useSelectHomepageEntry', () => {
           homeEntryUnderage,
           homeEntryAll,
           homeEntryMaster,
-          defaultHomeEntry,
+          adaptedHomepage,
           homeEntryWithId,
         ]
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
@@ -276,7 +283,7 @@ describe('useSelectHomepageEntry', () => {
         const playlists = shuffle([
           homeEntryUnderage,
           homeEntryAll,
-          defaultHomeEntry,
+          adaptedHomepage,
           homeEntryWithId,
         ])
         expect(result.current(playlists)).toStrictEqual(homeEntryAll)
@@ -284,7 +291,7 @@ describe('useSelectHomepageEntry', () => {
 
       it('should retrieve the first playlist if no playlist tagged master or usergrandpublic', () => {
         const { result } = renderHook(useSelectHomepageEntry)
-        const playlists = shuffle([homeEntryUnderage, defaultHomeEntry, homeEntryWithId])
+        const playlists = shuffle([homeEntryUnderage, adaptedHomepage, homeEntryWithId])
         expect(result.current(playlists)).toStrictEqual(playlists[0])
       })
     })

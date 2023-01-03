@@ -4,16 +4,15 @@ import { mocked } from 'ts-jest/utils'
 import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
+import { ExclusivityModule } from 'features/home/types'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
-import { ExclusivityPane } from 'libs/contentful'
 import { GeoCoordinates } from 'libs/geolocation'
 import { renderHook } from 'tests/utils'
 
-let display: ExclusivityPane['display'] = {
+let display: ExclusivityModule['displayParameters'] = {
   aroundRadius: 20,
   isGeolocated: true,
-  title: 'Rayon de 20 km',
 }
 
 let mockPosition: GeoCoordinates | null = null
@@ -79,13 +78,13 @@ describe('useShouldDisplayExcluOffer', () => {
     })
 
     it('should display offer if module is not geolocated', () => {
-      display = { aroundRadius: 20, isGeolocated: false, title: 'Rayon de 20 km' }
+      display = { aroundRadius: 20, isGeolocated: false }
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
       expect(result.current).toBe(true)
     })
 
     it('should not display offer if module is geolocated', () => {
-      display = { aroundRadius: 20, isGeolocated: true, title: 'Rayon de 20 km' }
+      display = { aroundRadius: 20, isGeolocated: true }
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
       expect(result.current).toBe(false)
     })

@@ -12,7 +12,7 @@ export const homepageEntriesAPIResponse = {
       },
       sys: {
         space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-        id: '16PgpnlCOYYIhUTclR0oO4',
+        id: '6DCThxvbPFKAo04SVRZtwY',
         type: 'Entry',
         createdAt: '2020-07-02T13:36:02.919Z',
         updatedAt: '2020-10-30T10:07:29.549Z',
@@ -37,26 +37,6 @@ export const homepageEntriesAPIResponse = {
           { sys: { type: 'Link', linkType: 'Entry', id: '6lk6vCol5Qza2mfdtsTzW' } },
         ],
         title: "Page d'accueil de la webappp",
-      },
-    },
-    {
-      metadata: {
-        tags: [],
-      },
-      sys: {
-        space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-        id: '7IuIeovqUykM1uvWwwPPh7',
-        type: 'Entry',
-        createdAt: '2020-10-28T17:32:42.192Z',
-        updatedAt: '2020-10-28T17:32:42.192Z',
-        environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-        revision: 1,
-        contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
-        locale: 'en-US',
-      },
-      fields: {
-        modules: [{ sys: { type: 'Link', linkType: 'Entry', id: '24FUVnnPPJ9v7JHkO7eaXK' } }],
-        title: 'Homepage test démo août 2020',
       },
     },
     {

@@ -1,12 +1,15 @@
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
+import { ExclusivityModule } from 'features/home/types'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
-import { ExclusivityPane } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
-export function useShouldDisplayExcluOffer(display: ExclusivityPane['display'], offerId: number) {
+export function useShouldDisplayExcluOffer(
+  display: ExclusivityModule['displayParameters'],
+  offerId: number
+) {
   const { position } = useGeolocation()
   const maxPrice = useMaxPrice()
   const { data: offer } = useExcluOffer(offerId)

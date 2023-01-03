@@ -1,23 +1,23 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
+import { VenuesModule } from 'features/home/types'
 import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
-import { VenuesModule } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 
 export const useVenueModule = ({
-  search,
-  moduleId,
-}: Pick<VenuesModule, 'search' | 'moduleId'>): VenueHit[] | undefined => {
+  venuesParameters,
+  id,
+}: Pick<VenuesModule, 'venuesParameters' | 'id'>): VenueHit[] | undefined => {
   const { position } = useGeolocation()
   const netInfo = useNetInfoContext()
 
   const { data, refetch } = useQuery(
-    [QueryKeys.HOME_VENUES_MODULE, moduleId],
-    async () => fetchMultipleVenues(search, position),
+    [QueryKeys.HOME_VENUES_MODULE, id],
+    async () => fetchMultipleVenues(venuesParameters, position),
     { enabled: !!netInfo.isConnected }
   )
 

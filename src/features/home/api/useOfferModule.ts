@@ -3,6 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import {
@@ -10,7 +11,6 @@ import {
   filterOfferHit,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia'
-import { SearchParametersFields } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -20,7 +20,7 @@ const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
 
 interface UseOfferModuleProps {
-  search: SearchParametersFields[]
+  search: OffersModuleParameters[]
   moduleId: string
 }
 

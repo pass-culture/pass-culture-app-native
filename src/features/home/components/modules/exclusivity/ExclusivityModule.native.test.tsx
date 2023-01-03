@@ -26,7 +26,7 @@ const props: ExclusivityModuleProps = {
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   offerId: mockOffer.id,
   moduleId: 'module-id',
-  display: { isGeolocated: false, aroundRadius: undefined, title: '' },
+  display: { isGeolocated: false, aroundRadius: undefined },
   homeEntryId: 'abcd',
   index: 1,
   url: undefined,

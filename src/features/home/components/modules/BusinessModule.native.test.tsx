@@ -22,13 +22,13 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const props: BusinessModuleProps = {
-  title: 'Title of module',
-  firstLine: 'firstLine',
-  secondLine: 'secondLine',
+  analyticsTitle: 'Title of module',
+  title: 'firstLine',
+  subtitle: 'secondLine',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   url: 'url',
   moduleId: 'module-id',
-  targetNotConnectedUsersOnly: undefined,
+  shouldTargetNotConnectedUsers: undefined,
   leftIcon: undefined,
   homeEntryId: 'abcd',
   index: 1,
@@ -63,7 +63,7 @@ describe('BusinessModule component', () => {
     const { getByTestId } = renderModule(props)
     fireEvent.press(getByTestId('imageBusiness'))
     expect(analytics.logBusinessBlockClicked).toHaveBeenCalledWith({
-      moduleName: props.title,
+      moduleName: props.analyticsTitle,
       moduleId: props.moduleId,
       homeEntryId: props.homeEntryId,
     })
@@ -83,7 +83,7 @@ describe('BusinessModule component', () => {
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
     mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
-    renderModule({ ...props, targetNotConnectedUsersOnly: true })
+    renderModule({ ...props, shouldTargetNotConnectedUsers: true })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })

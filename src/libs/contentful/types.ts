@@ -10,7 +10,7 @@ export enum ContentTypes {
   RECOMMENDATION = 'recommendation',
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
   VENUES_PLAYLIST = 'venuesPlaylist',
-  VENUES_SEARCH_PARAMETERS = 'venuesSearchParameters',
+  VENUES_PARAMETERS = 'venuesParameters',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -97,13 +97,13 @@ interface EntryCollectionError {
 }
 
 export interface AlgoliaParameters {
-  sys: Sys<typeof ContentTypes.ALGOLIA>
+  sys: Sys<typeof ContentTypes.ALGOLIA_PARAMETERS>
   fields: SearchParametersFields
 }
 
-export interface VenuesSearchParameters {
-  sys: Sys<typeof ContentTypes.VENUES_PLAYLIST>
-  fields: VenuesSearchParametersFields
+export interface VenuesParameters {
+  sys: Sys<typeof ContentTypes.VENUES_PARAMETERS>
+  fields: VenuesParametersFields
 }
 
 export interface DisplayParameters {
@@ -144,7 +144,7 @@ export interface AlgoliaFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesPlaylist/fields
 export interface VenuesFields {
   title: string
-  venuesSearchParameters: VenuesSearchParameters[]
+  venuesSearchParameters: VenuesParameters[]
   displayParameters: DisplayParameters
 }
 
@@ -180,7 +180,7 @@ export interface SearchParametersFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
-export interface VenuesSearchParametersFields {
+export interface VenuesParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -243,21 +243,6 @@ export interface RecommendationParametersFields {
   isRecoShuffled?: boolean
 }
 
-// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
-interface HomepageNatifFields {
-  title: string
-  modules: HomepageModule[]
-  thematicHeaderTitle?: string
-  thematicHeaderSubtitle?: string
-}
-
-export type HomepageModule =
-  | { sys: Sys<'algolia'>; fields: AlgoliaFields }
-  | { sys: Sys<'business'>; fields: BusinessFields }
-  | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
-  | { sys: Sys<'recommendation'>; fields: RecommendationFields }
-  | { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
-
 export interface Image {
   sys: Sys<typeof ContentTypes.INFORMATION>
   fields: {
@@ -285,8 +270,55 @@ export interface Tag {
   sys: { type: 'Link'; linkType: 'Tag'; id: TagId }
 }
 
-export interface HomepageEntry {
+export interface HomepageNatifEntry {
   metadata: { tags: Tag[] }
   sys: Sys<typeof ContentTypes.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
+}
+
+interface HomepageNatifFields {
+  title: string
+  modules: HomepageNatifModule[]
+  thematicHeaderTitle?: string
+  thematicHeaderSubtitle?: string
+}
+
+export type HomepageNatifModule =
+  | AlgoliaContentModel
+  | BusinessContentModel
+  | ExclusivityContentModel
+  | RecommendationContentModel
+  | VenuesContentModel
+
+export type AlgoliaContentModel = { sys: Sys<'algolia'>; fields: AlgoliaFields }
+export type BusinessContentModel = { sys: Sys<'business'>; fields: BusinessFields }
+export type ExclusivityContentModel = { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
+export type RecommendationContentModel = {
+  sys: Sys<'recommendation'>
+  fields: RecommendationFields
+}
+export type VenuesContentModel = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
+
+export const isAlgoliaContentModel = (
+  module: HomepageNatifModule
+): module is AlgoliaContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
+}
+export const isBusinessContentModel = (
+  module: HomepageNatifModule
+): module is BusinessContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.BUSINESS
+}
+export const isExclusivityContentModel = (
+  module: HomepageNatifModule
+): module is ExclusivityContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
+}
+export const isRecommendationContentModel = (
+  module: HomepageNatifModule
+): module is RecommendationContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
+}
+export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
 }

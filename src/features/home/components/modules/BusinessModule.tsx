@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { openUrl } from 'features/navigation/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { BusinessPane, ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Image } from 'libs/resizing-image-on-demand/Image'
@@ -18,23 +18,31 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 import { getBusinessUrl, showBusinessModule } from './BusinessModule.utils'
 
-export interface BusinessModuleProps extends BusinessPane {
+export interface BusinessModuleProps {
   homeEntryId: string | undefined
+  moduleId: string
+  analyticsTitle: string
+  title?: string
+  subtitle?: string
   index: number
+  image: string
+  leftIcon?: string
+  url?: string
+  shouldTargetNotConnectedUsers?: boolean
 }
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const {
-    title,
-    firstLine,
-    secondLine,
+    analyticsTitle: title,
+    title: firstLine,
+    subtitle: secondLine,
     leftIcon,
     image: imageURL,
     url,
     homeEntryId,
     index,
-    targetNotConnectedUsersOnly,
+    shouldTargetNotConnectedUsers: targetNotConnectedUsersOnly,
     moduleId,
   } = props
   const isDisabled = !url
