@@ -1106,7 +1106,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 }
                 contentHeight={250}
-                contentWidth={768}
+                contentWidth={576}
                 data={
                   Array [
                     Object {
@@ -1274,7 +1274,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 }
                 disableRecycling={false}
-                estimatedItemSize={192}
+                estimatedItemSize={144}
                 extendedState={Object {}}
                 externalScrollView={[Function]}
                 finalRenderAheadOffset={187.5}
@@ -1302,29 +1302,29 @@ exports[`<Venue /> should match snapshot 1`] = `
                         Object {
                           "height": 250,
                           "type": 0,
-                          "width": 192,
+                          "width": 144,
                           "x": 0,
                           "y": 0,
                         },
                         Object {
                           "height": 250,
                           "type": 0,
-                          "width": 192,
-                          "x": 192,
+                          "width": 144,
+                          "x": 144,
                           "y": 0,
                         },
                         Object {
                           "height": 250,
                           "type": 0,
-                          "width": 192,
-                          "x": 384,
+                          "width": 144,
+                          "x": 288,
                           "y": 0,
                         },
                         Object {
                           "height": 250,
                           "type": 0,
-                          "width": 192,
-                          "x": 576,
+                          "width": 144,
+                          "x": 432,
                           "y": 0,
                         },
                       ],
@@ -1334,7 +1334,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "width": 800,
                       },
                       "_totalHeight": 250,
-                      "_totalWidth": 768,
+                      "_totalWidth": 576,
                       "_window": Object {
                         "height": 250,
                         "width": 800,
@@ -1351,10 +1351,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "width": 0,
                     },
                     "averageWindow": AverageWindow {
-                      "currentAverage": 192,
+                      "currentAverage": 144,
                       "currentCount": 1,
                       "inputValues": Array [
-                        192,
+                        144,
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
                         undefined,
                         undefined,
                         undefined,
@@ -1491,7 +1495,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         },
                       ],
                       "drawDistance": 187.5,
-                      "estimatedItemSize": 192,
+                      "estimatedItemSize": 144,
                       "getItemLayout": [Function],
                       "horizontal": true,
                       "keyExtractor": [Function],
@@ -1610,7 +1614,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       style={
                         Object {
                           "height": 250,
-                          "width": 768,
+                          "width": 576,
                         }
                       }
                       windowSize={800}
@@ -1623,7 +1627,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
-                            "left": 192,
+                            "left": 144,
                             "position": "absolute",
                             "top": 0,
                           }
@@ -1658,7 +1662,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                   Object {
                                     "borderRadius": 8,
-                                    "height": 360,
+                                    "height": 288,
                                     "marginVertical": 4,
                                   },
                                 ]
@@ -1675,12 +1679,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 }
                               >
                                 <View
-                                  imageWidth={192}
+                                  imageWidth={144}
                                   style={
                                     Array [
                                       Object {
                                         "marginTop": 8,
-                                        "maxWidth": 192,
+                                        "maxWidth": 144,
                                       },
                                     ]
                                   }
@@ -1745,8 +1749,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           Object {
                                             "borderTopLeftRadius": 8,
                                             "borderTopRightRadius": 8,
-                                            "height": 264,
-                                            "width": 192,
+                                            "height": 192,
+                                            "width": 144,
                                           },
                                         ],
                                       ]
@@ -1783,11 +1787,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           "borderBottomRightRadius": 8,
                                           "flexDirection": "row",
                                           "height": 24,
-                                          "width": 192,
+                                          "width": 144,
                                         },
                                       ]
                                     }
-                                    width={192}
+                                    width={144}
                                   >
                                     <View
                                       style={
@@ -1896,7 +1900,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
-                            "left": 384,
+                            "left": 288,
                             "position": "absolute",
                             "top": 0,
                           }
@@ -1931,7 +1935,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                   Object {
                                     "borderRadius": 8,
-                                    "height": 360,
+                                    "height": 288,
                                     "marginVertical": 4,
                                   },
                                 ]
@@ -1948,12 +1952,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 }
                               >
                                 <View
-                                  imageWidth={192}
+                                  imageWidth={144}
                                   style={
                                     Array [
                                       Object {
                                         "marginTop": 8,
-                                        "maxWidth": 192,
+                                        "maxWidth": 144,
                                       },
                                     ]
                                   }
@@ -2018,8 +2022,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           Object {
                                             "borderTopLeftRadius": 8,
                                             "borderTopRightRadius": 8,
-                                            "height": 264,
-                                            "width": 192,
+                                            "height": 192,
+                                            "width": 144,
                                           },
                                         ],
                                       ]
@@ -2056,11 +2060,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           "borderBottomRightRadius": 8,
                                           "flexDirection": "row",
                                           "height": 24,
-                                          "width": 192,
+                                          "width": 144,
                                         },
                                       ]
                                     }
-                                    width={192}
+                                    width={144}
                                   >
                                     <View
                                       style={
@@ -2183,7 +2187,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                   Object {
                                     "borderRadius": 8,
-                                    "height": 360,
+                                    "height": 288,
                                     "marginVertical": 4,
                                   },
                                 ]
@@ -2200,12 +2204,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 }
                               >
                                 <View
-                                  imageWidth={192}
+                                  imageWidth={144}
                                   style={
                                     Array [
                                       Object {
                                         "marginTop": 8,
-                                        "maxWidth": 192,
+                                        "maxWidth": 144,
                                       },
                                     ]
                                   }
@@ -2270,8 +2274,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           Object {
                                             "borderTopLeftRadius": 8,
                                             "borderTopRightRadius": 8,
-                                            "height": 264,
-                                            "width": 192,
+                                            "height": 192,
+                                            "width": 144,
                                           },
                                         ],
                                       ]
@@ -2308,11 +2312,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           "borderBottomRightRadius": 8,
                                           "flexDirection": "row",
                                           "height": 24,
-                                          "width": 192,
+                                          "width": 144,
                                         },
                                       ]
                                     }
-                                    width={192}
+                                    width={144}
                                   >
                                     <View
                                       style={
@@ -2421,7 +2425,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
-                            "left": 576,
+                            "left": 432,
                             "position": "absolute",
                             "top": 0,
                           }
@@ -2435,18 +2439,18 @@ exports[`<Venue /> should match snapshot 1`] = `
                           }
                         >
                           <View
-                            height={288}
+                            height={216}
                             style={
                               Array [
                                 Object {
                                   "alignItems": "center",
-                                  "height": 288,
+                                  "height": 216,
                                   "justifyContent": "center",
-                                  "width": 192,
+                                  "width": 144,
                                 },
                               ]
                             }
-                            width={192}
+                            width={144}
                           >
                             <View
                               numberOfSpaces={2}
@@ -2640,7 +2644,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               },
                               Object {
                                 "borderRadius": 8,
-                                "height": 360,
+                                "height": 288,
                                 "marginVertical": 4,
                               },
                             ]
@@ -2657,12 +2661,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           >
                             <View
-                              imageWidth={192}
+                              imageWidth={144}
                               style={
                                 Array [
                                   Object {
                                     "marginTop": 8,
-                                    "maxWidth": 192,
+                                    "maxWidth": 144,
                                   },
                                 ]
                               }
@@ -2727,8 +2731,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       Object {
                                         "borderTopLeftRadius": 8,
                                         "borderTopRightRadius": 8,
-                                        "height": 264,
-                                        "width": 192,
+                                        "height": 192,
+                                        "width": 144,
                                       },
                                     ],
                                   ]
@@ -2765,11 +2769,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       "borderBottomRightRadius": 8,
                                       "flexDirection": "row",
                                       "height": 24,
-                                      "width": 192,
+                                      "width": 144,
                                     },
                                   ]
                                 }
-                                width={192}
+                                width={144}
                               >
                                 <View
                                   style={

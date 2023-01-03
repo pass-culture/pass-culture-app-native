@@ -27,7 +27,7 @@ const defaultParams = {
   beginningDatetime: undefined,
   date: null,
   endingDatetime: undefined,
-  hitsPerPage: 10,
+  hitsPerPage: 30,
   offerCategories: [],
   offerSubcategories: [],
   offerIsDuo: false,

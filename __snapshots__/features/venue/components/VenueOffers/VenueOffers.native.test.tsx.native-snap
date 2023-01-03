@@ -142,7 +142,7 @@ Array [
             }
           }
           contentHeight={250}
-          contentWidth={768}
+          contentWidth={576}
           data={
             Array [
               Object {
@@ -310,7 +310,7 @@ Array [
             }
           }
           disableRecycling={false}
-          estimatedItemSize={192}
+          estimatedItemSize={144}
           extendedState={Object {}}
           externalScrollView={[Function]}
           finalRenderAheadOffset={187.5}
@@ -338,29 +338,29 @@ Array [
                   Object {
                     "height": 250,
                     "type": 0,
-                    "width": 192,
+                    "width": 144,
                     "x": 0,
                     "y": 0,
                   },
                   Object {
                     "height": 250,
                     "type": 0,
-                    "width": 192,
-                    "x": 192,
+                    "width": 144,
+                    "x": 144,
                     "y": 0,
                   },
                   Object {
                     "height": 250,
                     "type": 0,
-                    "width": 192,
-                    "x": 384,
+                    "width": 144,
+                    "x": 288,
                     "y": 0,
                   },
                   Object {
                     "height": 250,
                     "type": 0,
-                    "width": 192,
-                    "x": 576,
+                    "width": 144,
+                    "x": 432,
                     "y": 0,
                   },
                 ],
@@ -370,7 +370,7 @@ Array [
                   "width": 800,
                 },
                 "_totalHeight": 250,
-                "_totalWidth": 768,
+                "_totalWidth": 576,
                 "_window": Object {
                   "height": 250,
                   "width": 800,
@@ -387,10 +387,14 @@ Array [
                 "width": 0,
               },
               "averageWindow": AverageWindow {
-                "currentAverage": 192,
+                "currentAverage": 144,
                 "currentCount": 1,
                 "inputValues": Array [
-                  192,
+                  144,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
                   undefined,
                   undefined,
                   undefined,
@@ -527,7 +531,7 @@ Array [
                   },
                 ],
                 "drawDistance": 187.5,
-                "estimatedItemSize": 192,
+                "estimatedItemSize": 144,
                 "getItemLayout": [Function],
                 "horizontal": true,
                 "keyExtractor": [Function],
@@ -646,7 +650,7 @@ Array [
                 style={
                   Object {
                     "height": 250,
-                    "width": 768,
+                    "width": 576,
                   }
                 }
                 windowSize={800}
@@ -659,7 +663,7 @@ Array [
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
-                      "left": 192,
+                      "left": 144,
                       "position": "absolute",
                       "top": 0,
                     }
@@ -694,7 +698,7 @@ Array [
                             },
                             Object {
                               "borderRadius": 8,
-                              "height": 360,
+                              "height": 288,
                               "marginVertical": 4,
                             },
                           ]
@@ -711,12 +715,12 @@ Array [
                           }
                         >
                           <View
-                            imageWidth={192}
+                            imageWidth={144}
                             style={
                               Array [
                                 Object {
                                   "marginTop": 8,
-                                  "maxWidth": 192,
+                                  "maxWidth": 144,
                                 },
                               ]
                             }
@@ -781,8 +785,8 @@ Array [
                                     Object {
                                       "borderTopLeftRadius": 8,
                                       "borderTopRightRadius": 8,
-                                      "height": 264,
-                                      "width": 192,
+                                      "height": 192,
+                                      "width": 144,
                                     },
                                   ],
                                 ]
@@ -819,11 +823,11 @@ Array [
                                     "borderBottomRightRadius": 8,
                                     "flexDirection": "row",
                                     "height": 24,
-                                    "width": 192,
+                                    "width": 144,
                                   },
                                 ]
                               }
-                              width={192}
+                              width={144}
                             >
                               <View
                                 style={
@@ -932,7 +936,7 @@ Array [
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
-                      "left": 384,
+                      "left": 288,
                       "position": "absolute",
                       "top": 0,
                     }
@@ -967,7 +971,7 @@ Array [
                             },
                             Object {
                               "borderRadius": 8,
-                              "height": 360,
+                              "height": 288,
                               "marginVertical": 4,
                             },
                           ]
@@ -984,12 +988,12 @@ Array [
                           }
                         >
                           <View
-                            imageWidth={192}
+                            imageWidth={144}
                             style={
                               Array [
                                 Object {
                                   "marginTop": 8,
-                                  "maxWidth": 192,
+                                  "maxWidth": 144,
                                 },
                               ]
                             }
@@ -1054,8 +1058,8 @@ Array [
                                     Object {
                                       "borderTopLeftRadius": 8,
                                       "borderTopRightRadius": 8,
-                                      "height": 264,
-                                      "width": 192,
+                                      "height": 192,
+                                      "width": 144,
                                     },
                                   ],
                                 ]
@@ -1092,11 +1096,11 @@ Array [
                                     "borderBottomRightRadius": 8,
                                     "flexDirection": "row",
                                     "height": 24,
-                                    "width": 192,
+                                    "width": 144,
                                   },
                                 ]
                               }
-                              width={192}
+                              width={144}
                             >
                               <View
                                 style={
@@ -1219,7 +1223,7 @@ Array [
                             },
                             Object {
                               "borderRadius": 8,
-                              "height": 360,
+                              "height": 288,
                               "marginVertical": 4,
                             },
                           ]
@@ -1236,12 +1240,12 @@ Array [
                           }
                         >
                           <View
-                            imageWidth={192}
+                            imageWidth={144}
                             style={
                               Array [
                                 Object {
                                   "marginTop": 8,
-                                  "maxWidth": 192,
+                                  "maxWidth": 144,
                                 },
                               ]
                             }
@@ -1306,8 +1310,8 @@ Array [
                                     Object {
                                       "borderTopLeftRadius": 8,
                                       "borderTopRightRadius": 8,
-                                      "height": 264,
-                                      "width": 192,
+                                      "height": 192,
+                                      "width": 144,
                                     },
                                   ],
                                 ]
@@ -1344,11 +1348,11 @@ Array [
                                     "borderBottomRightRadius": 8,
                                     "flexDirection": "row",
                                     "height": 24,
-                                    "width": 192,
+                                    "width": 144,
                                   },
                                 ]
                               }
-                              width={192}
+                              width={144}
                             >
                               <View
                                 style={
@@ -1457,7 +1461,7 @@ Array [
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
-                      "left": 576,
+                      "left": 432,
                       "position": "absolute",
                       "top": 0,
                     }
@@ -1471,18 +1475,18 @@ Array [
                     }
                   >
                     <View
-                      height={288}
+                      height={216}
                       style={
                         Array [
                           Object {
                             "alignItems": "center",
-                            "height": 288,
+                            "height": 216,
                             "justifyContent": "center",
-                            "width": 192,
+                            "width": 144,
                           },
                         ]
                       }
-                      width={192}
+                      width={144}
                     >
                       <View
                         numberOfSpaces={2}
@@ -1676,7 +1680,7 @@ Array [
                         },
                         Object {
                           "borderRadius": 8,
-                          "height": 360,
+                          "height": 288,
                           "marginVertical": 4,
                         },
                       ]
@@ -1693,12 +1697,12 @@ Array [
                       }
                     >
                       <View
-                        imageWidth={192}
+                        imageWidth={144}
                         style={
                           Array [
                             Object {
                               "marginTop": 8,
-                              "maxWidth": 192,
+                              "maxWidth": 144,
                             },
                           ]
                         }
@@ -1763,8 +1767,8 @@ Array [
                                 Object {
                                   "borderTopLeftRadius": 8,
                                   "borderTopRightRadius": 8,
-                                  "height": 264,
-                                  "width": 192,
+                                  "height": 192,
+                                  "width": 144,
                                 },
                               ],
                             ]
@@ -1801,11 +1805,11 @@ Array [
                                 "borderBottomRightRadius": 8,
                                 "flexDirection": "row",
                                 "height": 24,
-                                "width": 192,
+                                "width": 144,
                               },
                             ]
                           }
-                          width={192}
+                          width={144}
                         >
                           <View
                             style={
