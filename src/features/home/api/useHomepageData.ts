@@ -51,5 +51,5 @@ export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
     }
   }, [homepageEntryId])
 
-  return useMemo(() => homepage, [homepage, homepageEntryId])
+  return useMemo(() => homepage, [homepage])
 }
