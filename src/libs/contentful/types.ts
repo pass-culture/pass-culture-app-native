@@ -284,38 +284,43 @@ interface HomepageNatifFields {
 }
 
 export type HomepageNatifModule =
-  | AlgoliaNatifModule
-  | BusinessNatifModule
-  | ExclusivityNatifModule
-  | RecommendationNatifModule
-  | VenuesNatifModule
+  | AlgoliaContentModel
+  | BusinessContentModel
+  | ExclusivityContentModel
+  | RecommendationContentModel
+  | VenuesContentModel
 
-export type AlgoliaNatifModule = { sys: Sys<'algolia'>; fields: AlgoliaFields }
-export type BusinessNatifModule = { sys: Sys<'business'>; fields: BusinessFields }
-export type ExclusivityNatifModule = { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
-export type RecommendationNatifModule = { sys: Sys<'recommendation'>; fields: RecommendationFields }
-export type VenuesNatifModule = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
+export type AlgoliaContentModel = { sys: Sys<'algolia'>; fields: AlgoliaFields }
+export type BusinessContentModel = { sys: Sys<'business'>; fields: BusinessFields }
+export type ExclusivityContentModel = { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
+export type RecommendationContentModel = {
+  sys: Sys<'recommendation'>
+  fields: RecommendationFields
+}
+export type VenuesContentModel = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
 
-export const isAlgoliaNatifModule = (module: HomepageNatifModule): module is AlgoliaNatifModule => {
-  return (module as AlgoliaNatifModule).sys.contentType?.sys.id === ContentTypes.ALGOLIA
-}
-export const isBusinessNatifModule = (
+export const isAlgoliaContentModel = (
   module: HomepageNatifModule
-): module is BusinessNatifModule => {
-  return (module as BusinessNatifModule).sys.contentType?.sys.id === ContentTypes.BUSINESS
+): module is AlgoliaContentModel => {
+  return (module as AlgoliaContentModel).sys.contentType?.sys.id === ContentTypes.ALGOLIA
 }
-export const isExclusivityNatifModule = (
+export const isBusinessContentModel = (
   module: HomepageNatifModule
-): module is ExclusivityNatifModule => {
-  return (module as ExclusivityNatifModule).sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
+): module is BusinessContentModel => {
+  return (module as BusinessContentModel).sys.contentType?.sys.id === ContentTypes.BUSINESS
 }
-export const isRecommendationNatifModule = (
+export const isExclusivityContentModel = (
   module: HomepageNatifModule
-): module is RecommendationNatifModule => {
+): module is ExclusivityContentModel => {
+  return (module as ExclusivityContentModel).sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
+}
+export const isRecommendationContentModel = (
+  module: HomepageNatifModule
+): module is RecommendationContentModel => {
   return (
-    (module as RecommendationNatifModule).sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
+    (module as RecommendationContentModel).sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
   )
 }
-export const isVenuesNatifModule = (module: HomepageNatifModule): module is VenuesNatifModule => {
-  return (module as VenuesNatifModule).sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
+export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel => {
+  return (module as VenuesContentModel).sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
 }

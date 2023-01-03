@@ -1,6 +1,6 @@
-import { ExclusivityNatifModule } from 'libs/contentful/types'
+import { ExclusivityContentModel } from 'libs/contentful/types'
 
-export const exclusivityNatifModuleFixture: ExclusivityNatifModule = {
+export const exclusivityNatifModuleFixture: ExclusivityContentModel = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: 'AEYnm9QjIo2rZKoCfSvMD',

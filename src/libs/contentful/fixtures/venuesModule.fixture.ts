@@ -1,7 +1,7 @@
-import { ContentTypes, VenuesNatifModule } from 'libs/contentful/types'
+import { ContentTypes, VenuesContentModel } from 'libs/contentful/types'
 
 // This fixture reflects the contentful data after the resolveResponse formatting
-export const venuesNatifModuleFixture: VenuesNatifModule = {
+export const venuesNatifModuleFixture: VenuesContentModel = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '105MMz59tftcxXJICXt7ja',

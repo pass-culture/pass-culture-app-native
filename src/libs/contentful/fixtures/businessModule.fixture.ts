@@ -1,6 +1,6 @@
-import { BusinessNatifModule } from 'libs/contentful/types'
+import { BusinessContentModel } from 'libs/contentful/types'
 
-export const businessNatifModuleFixture: BusinessNatifModule = {
+export const businessNatifModuleFixture: BusinessContentModel = {
   sys: {
     space: {
       sys: {

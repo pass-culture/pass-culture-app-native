@@ -26,11 +26,11 @@ import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recom
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
 import {
   AlgoliaParameters,
-  isAlgoliaNatifModule,
-  isBusinessNatifModule,
-  isExclusivityNatifModule,
-  isRecommendationNatifModule,
-  isVenuesNatifModule,
+  isAlgoliaContentModel,
+  isBusinessContentModel,
+  isExclusivityContentModel,
+  isRecommendationContentModel,
+  isVenuesContentModel,
 } from 'libs/contentful/types'
 
 describe('adaptHomepageModules', () => {
@@ -121,20 +121,20 @@ describe('adaptHomepageModules', () => {
   it('should adapt a business module', () => {
     const rawBusinessModule = businessNatifModuleFixture
 
-    expect(isBusinessNatifModule(rawBusinessModule)).toBeTruthy()
+    expect(isBusinessContentModel(rawBusinessModule)).toBeTruthy()
     expect(adaptBusinessModule(rawBusinessModule)).toEqual(formattedBusinessModule)
   })
   it('should adapt a venues module', () => {
     const rawVenuesModule = venuesNatifModuleFixture
 
-    expect(isVenuesNatifModule(rawVenuesModule)).toBeTruthy()
+    expect(isVenuesContentModel(rawVenuesModule)).toBeTruthy()
     expect(adaptVenuesModule(rawVenuesModule)).toEqual(formattedVenuesModule)
   })
 
   it('should adapt a recommendedOffers module', () => {
     const rawRecommendationModule = recommendationNatifModuleFixture
 
-    expect(isRecommendationNatifModule(rawRecommendationModule)).toBeTruthy()
+    expect(isRecommendationContentModel(rawRecommendationModule)).toBeTruthy()
     expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(
       formattedRecommendedOffersModule
     )
@@ -143,14 +143,14 @@ describe('adaptHomepageModules', () => {
   it('should adapt an exclusivity module', () => {
     const rawExclusivityNatifModule = exclusivityNatifModuleFixture
 
-    expect(isExclusivityNatifModule(rawExclusivityNatifModule)).toBeTruthy()
+    expect(isExclusivityContentModel(rawExclusivityNatifModule)).toBeTruthy()
     expect(adaptExclusivityModule(rawExclusivityNatifModule)).toEqual(formattedExclusivityModule)
   })
 
   it('should adapt an offers module without additional offers', () => {
     const rawAlgoliaNatifModule = algoliaNatifModuleFixture
 
-    expect(isAlgoliaNatifModule(rawAlgoliaNatifModule)).toBeTruthy()
+    expect(isAlgoliaContentModel(rawAlgoliaNatifModule)).toBeTruthy()
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
   })
 

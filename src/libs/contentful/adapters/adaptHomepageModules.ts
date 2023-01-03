@@ -8,18 +8,18 @@ import {
   HomepageModuleType,
 } from 'features/home/types'
 import {
-  BusinessNatifModule,
-  ExclusivityNatifModule,
-  RecommendationNatifModule,
-  VenuesNatifModule,
-  AlgoliaNatifModule,
+  BusinessContentModel,
+  ExclusivityContentModel,
+  RecommendationContentModel,
+  VenuesContentModel,
+  AlgoliaContentModel,
   AlgoliaParameters,
-  isAlgoliaNatifModule,
+  isAlgoliaContentModel,
   HomepageNatifModule,
-  isBusinessNatifModule,
-  isRecommendationNatifModule,
-  isVenuesNatifModule,
-  isExclusivityNatifModule,
+  isBusinessContentModel,
+  isRecommendationContentModel,
+  isVenuesContentModel,
+  isExclusivityContentModel,
 } from 'libs/contentful/types'
 
 const buildImageUrl = (url: string): string => {
@@ -39,19 +39,19 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
     const { fields } = module
     if (!fields || !hasAtLeastOneField(fields)) return null
 
-    if (isAlgoliaNatifModule(module)) {
+    if (isAlgoliaContentModel(module)) {
       return adaptOffersModule(module)
     }
-    if (isBusinessNatifModule(module)) {
+    if (isBusinessContentModel(module)) {
       return adaptBusinessModule(module)
     }
-    if (isRecommendationNatifModule(module)) {
+    if (isRecommendationContentModel(module)) {
       return adaptRecommendationModule(module)
     }
-    if (isVenuesNatifModule(module)) {
+    if (isVenuesContentModel(module)) {
       return adaptVenuesModule(module)
     }
-    if (isExclusivityNatifModule(module)) {
+    if (isExclusivityContentModel(module)) {
       return adaptExclusivityModule(module)
     }
     return null
@@ -64,7 +64,7 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
   return adaptedHomepageNatifModulesWithoutNull
 }
 
-export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule => {
+export const adaptBusinessModule = (module: BusinessContentModel): BusinessModule => {
   const leftIcon = module.fields.leftIcon?.fields.file.url
     ? buildImageUrl(module.fields.leftIcon?.fields.file.url)
     : undefined
@@ -82,7 +82,7 @@ export const adaptBusinessModule = (module: BusinessNatifModule): BusinessModule
   }
 }
 
-export const adaptVenuesModule = (modules: VenuesNatifModule): VenuesModule | null => {
+export const adaptVenuesModule = (modules: VenuesContentModel): VenuesModule | null => {
   const venuesParameters = modules.fields.venuesSearchParameters
     .filter((params) => params.fields && hasAtLeastOneField(params.fields))
     .map(({ fields }) => fields)
@@ -97,7 +97,7 @@ export const adaptVenuesModule = (modules: VenuesNatifModule): VenuesModule | nu
 }
 
 export const adaptRecommendationModule = (
-  modules: RecommendationNatifModule
+  modules: RecommendationContentModel
 ): RecommendedOffersModule => ({
   type: HomepageModuleType.RecommendedOffersModule,
   id: modules.sys.id,
@@ -105,7 +105,7 @@ export const adaptRecommendationModule = (
   recommendationParameters: modules.fields.recommendationParameters?.fields,
 })
 
-export const adaptExclusivityModule = (modules: ExclusivityNatifModule): ExclusivityModule => {
+export const adaptExclusivityModule = (modules: ExclusivityContentModel): ExclusivityModule => {
   return {
     type: HomepageModuleType.ExclusivityModule,
     id: modules.sys.id,
@@ -126,7 +126,7 @@ const buildOffersParams = (
     .filter((params) => params.fields && hasAtLeastOneField(params.fields))
     .map(({ fields }) => fields)
 
-export const adaptOffersModule = (modules: AlgoliaNatifModule): OffersModule | null => {
+export const adaptOffersModule = (modules: AlgoliaContentModel): OffersModule | null => {
   const additionalAlgoliaParameters = modules.fields.additionalAlgoliaParameters ?? []
 
   const offersList = buildOffersParams(

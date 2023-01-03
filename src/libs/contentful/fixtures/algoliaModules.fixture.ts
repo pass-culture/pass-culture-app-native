@@ -1,7 +1,7 @@
-import { AlgoliaNatifModule, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
+import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
 
 // This fixture reflects the contentful data after the resolveResponse formatting
-export const algoliaNatifModuleFixture: AlgoliaNatifModule = {
+export const algoliaNatifModuleFixture: AlgoliaContentModel = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '2DYuR6KoSLElDuiMMjxx8g',
@@ -110,7 +110,7 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
   },
 ]
 
-export const algoliaNatifModuleCoverFixture: AlgoliaNatifModule['fields']['cover'] = {
+export const algoliaNatifModuleCoverFixture: AlgoliaContentModel['fields']['cover'] = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '1ZGleldomxaHjZeVZs6wCM',

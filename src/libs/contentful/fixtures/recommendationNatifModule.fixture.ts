@@ -1,6 +1,6 @@
-import { ContentTypes, RecommendationNatifModule } from 'libs/contentful/types'
+import { ContentTypes, RecommendationContentModel } from 'libs/contentful/types'
 
-export const recommendationNatifModuleFixture: RecommendationNatifModule = {
+export const recommendationNatifModuleFixture: RecommendationContentModel = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '3sAqNrRMXUOES7tFyRFFO8',
