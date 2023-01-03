@@ -2,15 +2,14 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
+import {
+  CategoryBlock,
+  CategoryBlockProps,
+} from 'features/home/components/modules/categories/CategoryBlock'
 import { getColorFilter } from 'features/home/components/modules/categories/helpers/getColorFilter'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type CategoryBlockData = {
-  title: string
-  url: string
-  imageUrl?: string
-}
+type CategoryBlockData = Omit<CategoryBlockProps, 'filter'>
 
 type CategoryListProps = {
   title: string

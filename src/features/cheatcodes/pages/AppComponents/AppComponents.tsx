@@ -758,22 +758,22 @@ const categoryBlockList = [
   {
     title: 'Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma',
     imageUrl: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    url: 'https://app.testing.passculture.team/accueil?entryId=6DCThxvbPFKAo04SVRZtwY',
+    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
   },
   {
     title: 'Toto au cinéma',
     imageUrl: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    url: 'https://app.testing.passculture.team/accueil?entryId=6DCThxvbPFKAo04SVRZtwY',
+    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
   },
   {
     title: 'Martine au cinéma',
     imageUrl: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    url: 'https://app.testing.passculture.team/accueil?entryId=6DCThxvbPFKAo04SVRZtwY',
+    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
   },
   {
     title: 'Babar au cinéma',
     imageUrl: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    url: 'https://app.testing.passculture.team/accueil?entryId=6DCThxvbPFKAo04SVRZtwY',
+    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
   },
 ]
 
