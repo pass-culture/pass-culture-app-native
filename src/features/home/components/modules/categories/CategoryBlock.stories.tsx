@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -10,6 +11,13 @@ import { CategoryBlock } from './CategoryBlock'
 export default {
   title: 'features/home/CategoryBlock',
   component: CategoryBlock,
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 } as ComponentMeta<typeof CategoryBlock>
 
 export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = () => (
