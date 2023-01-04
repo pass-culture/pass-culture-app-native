@@ -108,7 +108,7 @@ type RecommendedOffersParameters = {
   beginningDatetime?: string
   endingDatetime?: string
   upcomingWeekendEvent?: boolean
-  eventDuringNextXDays?: string
+  eventDuringNextXDays?: number
   currentWeekEvent?: boolean
   newestOnly?: boolean
   isFree?: boolean

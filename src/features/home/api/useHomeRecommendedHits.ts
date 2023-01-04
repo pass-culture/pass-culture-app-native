@@ -19,7 +19,7 @@ export function getRecommendationParameters(
 ): Omit<RecommendedIdsRequest, 'endpointUrl'> {
   if (!parameters) return {}
   const eventDuringNextXDays = parameters.eventDuringNextXDays
-    ? parseInt(parameters.eventDuringNextXDays)
+    ? parameters.eventDuringNextXDays
     : undefined
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({
     ...parameters,
