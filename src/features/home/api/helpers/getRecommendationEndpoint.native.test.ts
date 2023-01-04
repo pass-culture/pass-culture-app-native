@@ -9,13 +9,25 @@ const position = {
 
 describe('getRecommendationEndpoint', () => {
   it('should return undefined when no user id is provided', () => {
-    const endpoint = getRecommendationEndpoint(undefined, null)
+    const endpoint = getRecommendationEndpoint({
+      userId: undefined,
+      position: null,
+      modelEndpoint: undefined,
+    })
     expect(endpoint).toBeUndefined()
   })
   it('should return endpoint with latitude and longitude query params when position is provided', () => {
-    const endpoint = getRecommendationEndpoint(mockUserId, position)
+    const modelEndpoint = undefined
+    const endpoint = getRecommendationEndpoint({ userId: mockUserId, position, modelEndpoint })
     expect(endpoint).toEqual(
       `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${mockUserId}?token=${env.RECOMMENDATION_TOKEN}&longitude=${position.longitude}&latitude=${position.latitude}`
+    )
+  })
+  it('should return endpoint with endpoint query params when a endpoint is provided', () => {
+    const modelEndpoint = 'endpoint'
+    const endpoint = getRecommendationEndpoint({ userId: mockUserId, position, modelEndpoint })
+    expect(endpoint).toEqual(
+      `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${mockUserId}?token=${env.RECOMMENDATION_TOKEN}&modelEndpoint=${modelEndpoint}&longitude=${position.longitude}&latitude=${position.latitude}`
     )
   })
 })

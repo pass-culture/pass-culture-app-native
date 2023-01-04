@@ -45,7 +45,11 @@ export const useHomeRecommendedHits = (
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
 ): SearchHit[] | undefined => {
-  const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
+  const recommendationEndpoint = getRecommendationEndpoint({
+    userId,
+    position,
+    modelEndpoint: recommendationParameters?.modelEndpoint,
+  }) as string
   const [recommendedIds, setRecommendedIds] = useState<string[]>()
   const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation(recommendationEndpoint)
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
