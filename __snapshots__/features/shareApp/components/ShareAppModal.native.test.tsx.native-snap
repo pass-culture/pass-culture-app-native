@@ -3,10 +3,10 @@
 exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 1`] = `
 <Modal
   animationType="fade"
+  aria-labelledby="testUuidV4"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -34,6 +34,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
         "width": "100%",
       }
     }
+    testID="clickaway-area"
   />
   <View
     style={
@@ -48,7 +49,6 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
     }
   />
   <View
-    aria-labelledby="testUuidV4"
     style={
       Array [
         Object {
@@ -56,10 +56,9 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
           "borderRadius": 16,
-          "paddingBottom": 32,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
+          "maxHeight": 650,
+          "minHeight": 360,
+          "overflow": "hidden",
           "width": 928,
         },
       ]
@@ -69,228 +68,345 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
       style={
         Array [
           Object {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "flexGrow": 1,
             "width": "100%",
           },
         ]
       }
-      testID="modalHeader"
     >
       <View
-        justifyContent="left"
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-start",
-              "width": 28,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
-              "zIndex": 1,
-            },
-          ]
-        }
-      >
-        <Text
-          nativeID="testUuidV4"
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
-                "textAlign": "center",
-              },
-            ]
-          }
-          testID="modalHeaderTitle"
-        >
-          La culture, ça se partage !
-        </Text>
-      </View>
-      <View
-        justifyContent="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-end",
-              "width": 28,
+              "alignItems": "center",
+              "flexGrow": 0.5,
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Fermer la modale"
-          accessibilityRole="button"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
-          }
-          testID="Fermer la modale"
-        >
-          <View
-            height={20}
-            testID="rightIcon"
-            width={20}
-          >
-            <Text>
-              rightIcon-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "width": "100%",
-          },
-        ]
-      }
-    >
-      <View
-        fill="none"
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Recommande l’appli à tes amis pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Partager l'application"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
-        }
-        testID="Partager l'application"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+          accessibilityIgnoresInvertColors={true}
           style={
             Array [
               Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "height": 252,
+                "width": "100%",
               },
             ]
           }
         >
-          Partager
-        </Text>
+          <Image
+            source={
+              Object {
+                "testUri": "../../../public/images/ShareAppImage.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "height": 252,
+                  "width": "100%",
+                },
+                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+      <BVLinearGradient
+        colors={
+          Array [
+            16777215,
+            4294967295,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={
+          Array [
+            0,
+            0.85,
+          ]
+        }
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 72,
+              "marginTop": -72,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexGrow": 0.5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "maxWidth": 500,
+                "paddingBottom": 32,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 24,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Text
+            nativeID="testUuidV4"
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 20,
+                  "lineHeight": 24,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            La culture, ça se partage !
+          </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Recommande l’appli à tes amis pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
+          </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Partager l’appli"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Partager l’appli"
+            >
+              <View
+                height={48}
+                width="100%"
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "position": "absolute",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#ffffff"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  adjustsFontSizeToFit={true}
+                  isDisabled={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                    ]
+                  }
+                >
+                  Partager l’appli
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Fermer la modale"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Fermer la modale"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={16}
+                  testID="button-icon"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Non merci
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   </View>
@@ -312,10 +428,10 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
 exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
 <Modal
   animationType="fade"
+  aria-labelledby="testUuidV4"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -343,6 +459,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
         "width": "100%",
       }
     }
+    testID="clickaway-area"
   />
   <View
     style={
@@ -357,7 +474,6 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
     }
   />
   <View
-    aria-labelledby="testUuidV4"
     style={
       Array [
         Object {
@@ -365,10 +481,9 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
           "borderRadius": 16,
-          "paddingBottom": 32,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
+          "maxHeight": 650,
+          "minHeight": 360,
+          "overflow": "hidden",
           "width": 928,
         },
       ]
@@ -378,228 +493,345 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
       style={
         Array [
           Object {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "flexGrow": 1,
             "width": "100%",
           },
         ]
       }
-      testID="modalHeader"
     >
       <View
-        justifyContent="left"
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-start",
-              "width": 28,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
-              "zIndex": 1,
-            },
-          ]
-        }
-      >
-        <Text
-          nativeID="testUuidV4"
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
-                "textAlign": "center",
-              },
-            ]
-          }
-          testID="modalHeaderTitle"
-        >
-          Le bon pote, c’est toi !
-        </Text>
-      </View>
-      <View
-        justifyContent="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-end",
-              "width": 28,
+              "alignItems": "center",
+              "flexGrow": 0.5,
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Fermer la modale"
-          accessibilityRole="button"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
-          }
-          testID="Fermer la modale"
-        >
-          <View
-            height={20}
-            testID="rightIcon"
-            width={20}
-          >
-            <Text>
-              rightIcon-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "width": "100%",
-          },
-        ]
-      }
-    >
-      <View
-        fill="none"
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Recommande l’appli à tes proches pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Partager l'application"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
-        }
-        testID="Partager l'application"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+          accessibilityIgnoresInvertColors={true}
           style={
             Array [
               Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "height": 252,
+                "width": "100%",
               },
             ]
           }
         >
-          Partager
-        </Text>
+          <Image
+            source={
+              Object {
+                "testUri": "../../../public/images/ShareAppImage.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "height": 252,
+                  "width": "100%",
+                },
+                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+      <BVLinearGradient
+        colors={
+          Array [
+            16777215,
+            4294967295,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={
+          Array [
+            0,
+            0.85,
+          ]
+        }
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 72,
+              "marginTop": -72,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexGrow": 0.5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "maxWidth": 500,
+                "paddingBottom": 32,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 24,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Text
+            nativeID="testUuidV4"
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 20,
+                  "lineHeight": 24,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Le bon pote, c’est toi !
+          </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Recommande l’appli à tes proches pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
+          </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Partager l’appli"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Partager l’appli"
+            >
+              <View
+                height={48}
+                width="100%"
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "position": "absolute",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#ffffff"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  adjustsFontSizeToFit={true}
+                  isDisabled={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                    ]
+                  }
+                >
+                  Partager l’appli
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Fermer la modale"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Fermer la modale"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={16}
+                  testID="button-icon"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Non merci
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   </View>
@@ -621,10 +853,10 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
 exports[`ShareAppModal should match underage modal snapshot when underage 1`] = `
 <Modal
   animationType="fade"
+  aria-labelledby="testUuidV4"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -652,6 +884,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
         "width": "100%",
       }
     }
+    testID="clickaway-area"
   />
   <View
     style={
@@ -666,7 +899,6 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
     }
   />
   <View
-    aria-labelledby="testUuidV4"
     style={
       Array [
         Object {
@@ -674,10 +906,9 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
           "borderRadius": 16,
-          "paddingBottom": 32,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
+          "maxHeight": 650,
+          "minHeight": 360,
+          "overflow": "hidden",
           "width": 928,
         },
       ]
@@ -687,230 +918,347 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
       style={
         Array [
           Object {
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "flexGrow": 1,
             "width": "100%",
           },
         ]
       }
-      testID="modalHeader"
     >
       <View
-        justifyContent="left"
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-start",
-              "width": 28,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
-              "zIndex": 1,
-            },
-          ]
-        }
-      >
-        <Text
-          nativeID="testUuidV4"
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 20,
-                "lineHeight": 24,
-                "textAlign": "center",
-              },
-            ]
-          }
-          testID="modalHeaderTitle"
-        >
-          Passe la culture à ton voisin !
-        </Text>
-      </View>
-      <View
-        justifyContent="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
-              "height": 28,
-              "justifyContent": "flex-end",
-              "width": 28,
+              "alignItems": "center",
+              "flexGrow": 0.5,
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Fermer la modale"
-          accessibilityRole="button"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
-          }
-          testID="Fermer la modale"
-        >
-          <View
-            height={20}
-            testID="rightIcon"
-            width={20}
-          >
-            <Text>
-              rightIcon-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "maxWidth": 500,
-            "width": "100%",
-          },
-        ]
-      }
-    >
-      <View
-        fill="none"
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Pour les 15-18 ans, le pass Culture offre un crédit dédié à la culture. 
-
- Fais-en profiter ton entourage !
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Partager l'application"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
-        }
-        testID="Partager l'application"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+          accessibilityIgnoresInvertColors={true}
           style={
             Array [
               Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "height": 252,
+                "width": "100%",
               },
             ]
           }
         >
-          Partager
-        </Text>
+          <Image
+            source={
+              Object {
+                "testUri": "../../../public/images/ShareAppImage.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "height": 252,
+                  "width": "100%",
+                },
+                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+      <BVLinearGradient
+        colors={
+          Array [
+            16777215,
+            4294967295,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={
+          Array [
+            0,
+            0.85,
+          ]
+        }
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 72,
+              "marginTop": -72,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexGrow": 0.5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "maxWidth": 500,
+                "paddingBottom": 32,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 24,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Text
+            nativeID="testUuidV4"
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 20,
+                  "lineHeight": 24,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Passe la culture à ton voisin !
+          </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Pour les 15-18 ans, le pass Culture offre un crédit dédié à la culture. 
+
+ Fais-en profiter ton entourage !
+          </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Partager l’appli"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Partager l’appli"
+            >
+              <View
+                height={48}
+                width="100%"
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "position": "absolute",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#ffffff"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  adjustsFontSizeToFit={true}
+                  isDisabled={false}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                      },
+                    ]
+                  }
+                >
+                  Partager l’appli
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Fermer la modale"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Fermer la modale"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={16}
+                  testID="button-icon"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Non merci
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   </View>

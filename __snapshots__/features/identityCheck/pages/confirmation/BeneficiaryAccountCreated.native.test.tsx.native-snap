@@ -1,655 +1,677 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "maxWidth": 500,
-        "overflow": "scroll",
-        "paddingHorizontal": 24,
-      },
-    ]
-  }
->
+Array [
   <View
-    flex={2}
     style={
       Array [
         Object {
+          "alignSelf": "center",
           "flexBasis": 0,
-          "flexGrow": 2,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    hasHeight={true}
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
           "flexGrow": 1,
-          "height": "30%",
-          "justifyContent": "center",
-        },
-      ]
-    }
-  >
-    <View>
-      undefined-Lottie-Mock
-    </View>
-  </View>
-  <View
-    flex={0.5}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
           "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Black",
-          "fontSize": 26,
-          "lineHeight": 34,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Bonne nouvelle !
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 18,
-          "lineHeight": 22,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    300 € viennent d'être crédités sur ton compte pass Culture
-  </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "paddingHorizontal": 40,
+          "maxWidth": 500,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
         },
       ]
     }
   >
     <View
+      flex={2}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      hasHeight={true}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flexDirection": "row",
-            "height": 40,
-            "maxHeight": 40,
+            "flexGrow": 1,
+            "height": "30%",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View>
+        undefined-Lottie-Mock
+      </View>
+    </View>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Bonne nouvelle !
+    </Text>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      300 € viennent d'être crédités sur ton compte pass Culture
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "paddingHorizontal": 40,
           },
         ]
       }
     >
       <View
-        backgroundColor="#870087"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "#870087",
-              "borderRadius": 32,
-              "height": 32,
-              "justifyContent": "center",
-              "position": "absolute",
-              "width": 32,
-              "zIndex": 2,
-            },
-          ]
-        }
-      >
-        <View
-          height={20}
-          testID="progress-bar-icon"
-          width={20}
-        >
-          <Text>
-            progress-bar-icon-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "borderColor": "#CBCDD2",
-              "borderRadius": 20,
-              "borderWidth": 2,
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "height": 20,
-              "marginLeft": 20,
-              "overflow": "hidden",
-              "position": "relative",
-              "zIndex": 1,
+              "height": 40,
+              "maxHeight": 40,
             },
           ]
         }
       >
         <View
           backgroundColor="#870087"
-          barWidth={0}
-          collapsable={false}
-          forwardedRef={[Function]}
-          isAnimated={true}
-          onLayout={[Function]}
-          progress={1}
           style={
-            Object {
-              "backgroundColor": "#870087",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "left": 0,
-              "opacity": 0,
-              "position": "relative",
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#870087",
+                "borderRadius": 32,
+                "height": 32,
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": 32,
+                "zIndex": 2,
+              },
+            ]
           }
-          testID="animated-progress-bar"
-        />
+        >
+          <View
+            height={20}
+            testID="progress-bar-icon"
+            width={20}
+          >
+            <Text>
+              progress-bar-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "borderColor": "#CBCDD2",
+                "borderRadius": 20,
+                "borderWidth": 2,
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": 20,
+                "marginLeft": 20,
+                "overflow": "hidden",
+                "position": "relative",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="#870087"
+            barWidth={0}
+            collapsable={false}
+            forwardedRef={[Function]}
+            isAnimated={true}
+            onLayout={[Function]}
+            progress={1}
+            style={
+              Object {
+                "backgroundColor": "#870087",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "left": 0,
+                "opacity": 0,
+                "position": "relative",
+              }
+            }
+            testID="animated-progress-bar"
+          />
+        </View>
       </View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#870087",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 22,
+              "lineHeight": 26,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        300 €
+      </Text>
     </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       style={
         Array [
           Object {
-            "color": "#870087",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 22,
-            "lineHeight": 26,
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
             "textAlign": "center",
           },
         ]
       }
     >
-      300 €
+      Tu as deux ans pour profiter de ton budget.
     </Text>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Tu as deux ans pour profiter de ton budget.
-  </Text>
-  <View
-    numberOfSpaces={5}
-    style={
-      Array [
-        Object {
-          "height": 20,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-        },
-      ]
-    }
-  >
     <View
-      accessibilityLabel="C’est parti !"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      numberOfSpaces={5}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
       }
-      testID="C’est parti !"
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+          },
+        ]
+      }
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
+        accessibilityLabel="C’est parti !"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
+        testID="C’est parti !"
       >
-        C’est parti !
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          C’est parti !
+        </Text>
+      </View>
     </View>
-  </View>
-  <View
-    flex={1.5}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-</View>
+    <View
+      flex={1.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>,
+  <Modal
+    animationType="fade"
+    aria-labelledby="testUuidV4"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    statusBarTranslucent={true}
+    transparent={true}
+    visible={false}
+  />,
+]
 `;
 
 exports[`<BeneficiaryAccountCreated/> should render correctly for underage beneficiaries 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "maxWidth": 500,
-        "overflow": "scroll",
-        "paddingHorizontal": 24,
-      },
-    ]
-  }
->
+Array [
   <View
-    flex={2}
     style={
       Array [
         Object {
+          "alignSelf": "center",
           "flexBasis": 0,
-          "flexGrow": 2,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    hasHeight={true}
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
           "flexGrow": 1,
-          "height": "30%",
-          "justifyContent": "center",
-        },
-      ]
-    }
-  >
-    <View>
-      undefined-Lottie-Mock
-    </View>
-  </View>
-  <View
-    flex={0.5}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
           "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Black",
-          "fontSize": 26,
-          "lineHeight": 34,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Bonne nouvelle !
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 18,
-          "lineHeight": 22,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    300 € viennent d'être crédités sur ton compte pass Culture
-  </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "paddingHorizontal": 40,
+          "maxWidth": 500,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
         },
       ]
     }
   >
     <View
+      flex={2}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      hasHeight={true}
       style={
         Array [
           Object {
             "alignItems": "center",
-            "flexDirection": "row",
-            "height": 40,
-            "maxHeight": 40,
+            "flexGrow": 1,
+            "height": "30%",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View>
+        undefined-Lottie-Mock
+      </View>
+    </View>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Bonne nouvelle !
+    </Text>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      300 € viennent d'être crédités sur ton compte pass Culture
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "paddingHorizontal": 40,
           },
         ]
       }
     >
       <View
-        backgroundColor="#870087"
         style={
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "#870087",
-              "borderRadius": 32,
-              "height": 32,
-              "justifyContent": "center",
-              "position": "absolute",
-              "width": 32,
-              "zIndex": 2,
-            },
-          ]
-        }
-      >
-        <View
-          height={20}
-          testID="progress-bar-icon"
-          width={20}
-        >
-          <Text>
-            progress-bar-icon-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "borderColor": "#CBCDD2",
-              "borderRadius": 20,
-              "borderWidth": 2,
-              "flexBasis": 0,
               "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "height": 20,
-              "marginLeft": 20,
-              "overflow": "hidden",
-              "position": "relative",
-              "zIndex": 1,
+              "height": 40,
+              "maxHeight": 40,
             },
           ]
         }
       >
         <View
           backgroundColor="#870087"
-          barWidth={0}
-          collapsable={false}
-          forwardedRef={[Function]}
-          isAnimated={true}
-          onLayout={[Function]}
-          progress={1}
           style={
-            Object {
-              "backgroundColor": "#870087",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "left": 0,
-              "opacity": 0,
-              "position": "relative",
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#870087",
+                "borderRadius": 32,
+                "height": 32,
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": 32,
+                "zIndex": 2,
+              },
+            ]
           }
-          testID="animated-progress-bar"
-        />
+        >
+          <View
+            height={20}
+            testID="progress-bar-icon"
+            width={20}
+          >
+            <Text>
+              progress-bar-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "borderColor": "#CBCDD2",
+                "borderRadius": 20,
+                "borderWidth": 2,
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": 20,
+                "marginLeft": 20,
+                "overflow": "hidden",
+                "position": "relative",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="#870087"
+            barWidth={0}
+            collapsable={false}
+            forwardedRef={[Function]}
+            isAnimated={true}
+            onLayout={[Function]}
+            progress={1}
+            style={
+              Object {
+                "backgroundColor": "#870087",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "left": 0,
+                "opacity": 0,
+                "position": "relative",
+              }
+            }
+            testID="animated-progress-bar"
+          />
+        </View>
       </View>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#870087",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 22,
+              "lineHeight": 26,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        300 €
+      </Text>
     </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <Text
       style={
         Array [
           Object {
-            "color": "#870087",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 22,
-            "lineHeight": 26,
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
             "textAlign": "center",
           },
         ]
       }
     >
-      300 €
+      Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.
     </Text>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.
-  </Text>
-  <View
-    numberOfSpaces={5}
-    style={
-      Array [
-        Object {
-          "height": 20,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-        },
-      ]
-    }
-  >
     <View
-      accessibilityLabel="C’est parti !"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      numberOfSpaces={5}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
       }
-      testID="C’est parti !"
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+          },
+        ]
+      }
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
+        accessibilityLabel="C’est parti !"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
+        testID="C’est parti !"
       >
-        C’est parti !
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          C’est parti !
+        </Text>
+      </View>
     </View>
-  </View>
-  <View
-    flex={1.5}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-</View>
+    <View
+      flex={1.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>,
+  <Modal
+    animationType="fade"
+    aria-labelledby="testUuidV4"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    statusBarTranslucent={true}
+    transparent={true}
+    visible={false}
+  />,
+]
 `;
