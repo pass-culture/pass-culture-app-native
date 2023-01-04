@@ -89,6 +89,7 @@ export const CategoriesModal = ({
       setValue('category', selectedCategory)
       if (selectedCategory.name !== category?.name) {
         setValue('nativeCategory', null)
+        setValue('genreType', null)
       }
       if (selectedCategory !== categoryAllValue)
         setValue('currentView', CategoriesModalView.NATIVE_CATEGORIES)
