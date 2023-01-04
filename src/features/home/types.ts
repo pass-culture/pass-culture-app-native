@@ -119,8 +119,8 @@ type RecommendedOffersParameters = {
 export type ThematicHighlightModule = {
   type: HomepageModuleType.ThematicHighlightModule
   id: string
-  displayedTitle: string
-  displayedSubtitle?: string
+  title: string
+  subtitle?: string
   imageUrl: string
   beginningDate: Date
   endingDate: Date

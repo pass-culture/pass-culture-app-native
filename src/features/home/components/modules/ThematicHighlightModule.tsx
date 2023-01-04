@@ -11,8 +11,8 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 const TILE_HEIGHT = 244
 
 type Props = {
-  displayedTitle: string
-  displayedSubtitle?: string
+  title: string
+  subtitle?: string
   imageUrl: string
   beginningDate: Date
   endingDate: Date
@@ -20,8 +20,8 @@ type Props = {
 }
 
 export const ThematicHighlightModule: FunctionComponent<Props> = ({
-  displayedTitle,
-  displayedSubtitle,
+  title,
+  subtitle,
   imageUrl,
   beginningDate,
   endingDate,
@@ -39,13 +39,13 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
           <DateRangeCaption>{dateRange}</DateRangeCaption>
         </DateRangeCaptionContainer>
         <TextContainer>
-          {!!displayedSubtitle && (
+          {!!subtitle && (
             <React.Fragment>
-              <Subtitle numberOfLines={1}>{displayedSubtitle}</Subtitle>
+              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
               <Spacer.Column numberOfSpaces={1} />
             </React.Fragment>
           )}
-          <Title numberOfLines={1}>{displayedTitle}</Title>
+          <Title numberOfLines={1}>{title}</Title>
         </TextContainer>
       </ImageBackground>
     </StyledInternalTouchableLink>

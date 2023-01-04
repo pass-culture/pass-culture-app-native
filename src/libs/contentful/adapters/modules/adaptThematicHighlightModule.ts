@@ -9,8 +9,8 @@ export const adaptThematicHighlightModule = (
   return {
     id: module.sys.id,
     type: HomepageModuleType.ThematicHighlightModule,
-    displayedTitle: module.fields.displayedTitle,
-    displayedSubtitle: module.fields.displayedSubtitle,
+    title: module.fields.displayedTitle,
+    subtitle: module.fields.displayedSubtitle,
     imageUrl,
     beginningDate: new Date(module.fields.beginningDatetime),
     endingDate: new Date(module.fields.endingDatetime),
