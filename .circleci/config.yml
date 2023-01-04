@@ -986,10 +986,10 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - checkout-and-install-deps
-          # filters:
-          #   tags:
-          #     only: /.*/
+      - checkout-and-install-deps:
+          filters:
+            tags:
+              only: /.*/
       - checkout-and-install-proxy-deps:
           filters:
             tags:
@@ -1036,29 +1036,24 @@ workflows:
 
       - deploy-android-testing-hard:
           filters:
+            tags:
+              only: /^testing\/v.*/
             branches:
-              only: PC-19465-App-Native---Tech---Maj-react-native-safe-area-context
-            # tags:
-            #   only: /^testing\/v.*/
-            # branches:
-            #   ignore: /.*/
+              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            # - test-native
+            - test-native
       - deploy-ios-testing-hard:
           filters:
+            tags:
+              only: /^testing\/v.*/
             branches:
-              only: PC-19465-App-Native---Tech---Maj-react-native-safe-area-context
-          # filters:
-          #   tags:
-          #     only: /^testing\/v.*/
-          #   branches:
-          #     ignore: /.*/
+              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            # - test-native
+            - test-native
       - notify-hard-testing-release:
           filters:
             tags:
