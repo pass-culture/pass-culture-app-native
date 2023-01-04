@@ -177,6 +177,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         priceRange,
         view: SearchView.Results,
         searchId,
+        isAutocomplete: undefined,
       }
       analytics.logPerformSearch({ ...searchState, ...partialSearchState })
       pushWithSearch(partialSearchState)
