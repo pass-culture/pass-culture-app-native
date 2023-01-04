@@ -82,6 +82,16 @@ describe('<Offer />', () => {
 
       expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(0)
     })
+
+    it('should log logSimilarOfferPlaylistVerticalScroll with the event param fromOfferId', async () => {
+      const fromOfferId = 1
+      const { getByTestId } = await renderOfferPage(fromOfferId)
+      const scrollView = getByTestId('offer-container')
+
+      fireEvent.scroll(scrollView, nativeEventBottom)
+
+      expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledWith(1)
+    })
   })
 })
 
