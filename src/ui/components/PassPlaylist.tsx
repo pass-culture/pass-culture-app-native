@@ -95,9 +95,9 @@ export const PassPlaylist = (props: Props) => {
   )
 }
 
-const Container = styled.View({
-  paddingBottom: getSpacing(6),
-})
+const Container = styled.View(({ theme }) => ({
+  paddingBottom: theme.home.spaceBetweenModules,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',

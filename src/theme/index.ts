@@ -408,6 +408,9 @@ export interface AppThemeType {
       LG: number
     }
   }
+  home: {
+    spaceBetweenModules: number
+  }
 }
 
 export const theme: AppThemeType = {
@@ -832,5 +835,8 @@ export const theme: AppThemeType = {
   modal: {
     spacing: ModalSpacing,
     desktopMaxWidth: getSpacing(130),
+  },
+  home: {
+    spaceBetweenModules: getSpacing(6),
   },
 }

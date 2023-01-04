@@ -133,10 +133,10 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
 export const BusinessModule = memo(UnmemoizedBusinessModule)
 
-const Row = styled.View({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  paddingBottom: getSpacing(6),
-})
+  paddingBottom: theme.home.spaceBetweenModules,
+}))
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,

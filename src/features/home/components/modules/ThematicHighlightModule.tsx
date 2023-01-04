@@ -59,7 +59,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme
 }))(({ theme }) => ({
   height: TILE_HEIGHT,
   marginHorizontal: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(6),
+  marginBottom: theme.home.spaceBetweenModules,
 }))
 
 const ImageBackground = styled.ImageBackground({
