@@ -97,7 +97,7 @@ export const formattedOffersModule: OffersModule = {
 }
 
 export const adaptedHomepage: Homepage = {
-  tag: [],
+  tags: [],
   id: '6DCThxvbPFKAo04SVRZtwY',
   thematicHeader: {
     title: 'Un titre court',

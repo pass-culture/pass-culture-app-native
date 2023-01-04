@@ -8,7 +8,7 @@ export enum HomepageModuleType {
   'ExclusivityModule' = 'ExclusivityModule',
 }
 export type Homepage = {
-  tag: Tag[] // TODO(evejulliard): do not import Tag from 'libs/contentful
+  tags: Tag[]
   id: string
   modules: HomepageModule[]
   thematicHeader?: {

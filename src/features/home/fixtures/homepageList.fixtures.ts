@@ -156,11 +156,11 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
     ],
-    tag: [],
+    tags: [],
     thematicHeader: { subtitle: undefined, title: undefined },
   },
   {
-    tag: [],
+    tags: [],
     id: '7IuIeovqUykM1uvWwwPPh8',
     modules: [
       {

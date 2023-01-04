@@ -24,23 +24,23 @@ const homeEntryWithId: Homepage = {
 }
 const homeEntryUnderage: Homepage = {
   ...adaptedHomepage,
-  tag: [underageTag],
+  tags: [underageTag],
 }
 const homeEntryUnderageMaster: Homepage = {
   ...adaptedHomepage,
-  tag: [masterTag, underageTag],
+  tags: [masterTag, underageTag],
 }
 const homeEntryAll: Homepage = {
   ...adaptedHomepage,
-  tag: [grandpublicTag],
+  tags: [grandpublicTag],
 }
 const homeEntryAllMaster: Homepage = {
   ...adaptedHomepage,
-  tag: [masterTag, grandpublicTag],
+  tags: [masterTag, grandpublicTag],
 }
 const homeEntryMaster: Homepage = {
   ...adaptedHomepage,
-  tag: [masterTag],
+  tags: [masterTag],
 }
 
 const homeEntryNotConnected: Homepage = {
