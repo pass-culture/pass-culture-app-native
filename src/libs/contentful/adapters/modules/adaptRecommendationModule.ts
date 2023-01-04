@@ -1,3 +1,5 @@
+import omit from 'lodash/omit'
+
 import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
 import { RecommendationContentModel } from 'libs/contentful/types'
 
@@ -7,5 +9,5 @@ export const adaptRecommendationModule = (
   type: HomepageModuleType.RecommendedOffersModule,
   id: modules.sys.id,
   displayParameters: modules.fields.displayParameters.fields,
-  recommendationParameters: modules.fields.recommendationParameters?.fields,
+  recommendationParameters: omit(modules.fields.recommendationParameters?.fields, 'title'),
 })
