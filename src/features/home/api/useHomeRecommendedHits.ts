@@ -29,7 +29,7 @@ export function getRecommendationParameters(
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
     end_date: endingDatetime,
     isEvent: parameters?.isEvent,
-    price_max: parameters?.isFree ? 0 : parameters?.priceMax,
+    price_max: parameters?.priceMax,
     start_date: beginningDatetime,
     subcategories: (parameters?.subcategories || []).map(
       (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]

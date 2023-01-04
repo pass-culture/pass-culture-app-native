@@ -243,7 +243,6 @@ export interface RecommendationParametersFields {
   eventDuringNextXDays?: number
   currentWeekEvent?: boolean
   newestOnly?: boolean
-  isFree?: boolean
   isEvent?: boolean
   priceMax?: number
   subcategories?: string[]
