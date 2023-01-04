@@ -55,13 +55,15 @@ features
     |- homepage
     |- search
 
-libs ===> external modules implementations or reusable helpers
+libs ===> external modules implementations
   \
     |- analytics
     |- pushNotification
     |- errorReporting
     |- geolocation
     |- ...
+
+shared ==> reusable helpers, often crossed-features
 
 theme ==> theme object used in styled-components
 
