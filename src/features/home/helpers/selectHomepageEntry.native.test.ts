@@ -5,16 +5,15 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
-import { Homepage } from 'features/home/types'
+import { Homepage, HomepageTag } from 'features/home/types'
 import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
-import { Tag } from 'libs/contentful'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { renderHook } from 'tests/utils'
 
-const masterTag: Tag = { sys: { id: 'master', linkType: 'Tag', type: 'Link' } }
-const grandpublicTag: Tag = { sys: { id: 'usergrandpublic', linkType: 'Tag', type: 'Link' } }
-const underageTag: Tag = { sys: { id: 'userunderage', linkType: 'Tag', type: 'Link' } }
+const masterTag: HomepageTag = 'master'
+const grandpublicTag: HomepageTag = 'usergrandpublic'
+const underageTag: HomepageTag = 'userunderage'
 
 const homeEntryId = 'homeEntryId'
 

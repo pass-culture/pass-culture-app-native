@@ -1,5 +1,3 @@
-import { Tag } from 'libs/contentful'
-
 export enum HomepageModuleType {
   'OffersModule' = 'OffersModule',
   'VenuesModule' = 'VenuesModule',
@@ -7,8 +5,11 @@ export enum HomepageModuleType {
   'RecommendedOffersModule' = 'RecommendedOffersModule',
   'ExclusivityModule' = 'ExclusivityModule',
 }
+
+export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
+
 export type Homepage = {
-  tags: Tag[]
+  tags: HomepageTag[]
   id: string
   modules: HomepageModule[]
   thematicHeader?: {

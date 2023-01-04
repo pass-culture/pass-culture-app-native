@@ -6,7 +6,7 @@ export const adaptHomepageNatifEntries = (
   homepageNatifEntries: HomepageNatifEntry[]
 ): Homepage[] => {
   return homepageNatifEntries.map((entry) => ({
-    tags: entry.metadata.tags,
+    tags: entry.metadata.tags.map((tag) => tag.sys.id),
     id: entry.sys.id,
     modules: adaptHomepageNatifModules(entry.fields.modules),
     thematicHeader: {
