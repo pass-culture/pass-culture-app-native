@@ -56,8 +56,7 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme
   hoverUnderlineColor: theme.colors.white,
 }))(({ theme }) => ({
   height: TILE_HEIGHT,
-  marginLeft: theme.contentPage.marginHorizontal,
-  marginRight: theme.contentPage.marginHorizontal,
+  marginHorizontal: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(6),
 }))
 
@@ -74,10 +73,8 @@ const DateRangeCaptionContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.black,
   borderTopRightRadius: getSpacing(2),
   borderBottomLeftRadius: getSpacing(2),
-  paddingTop: getSpacing(1),
-  paddingLeft: getSpacing(2),
-  paddingRight: getSpacing(2),
-  paddingBottom: getSpacing(1),
+  paddingVertical: getSpacing(1),
+  paddingHorizontal: getSpacing(2),
 }))
 
 const DateRangeCaption = styled(Typo.Hint)(({ theme }) => ({
@@ -90,8 +87,7 @@ const TextContainer = styled(LinearGradient).attrs(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   paddingTop: getSpacing(8),
-  paddingLeft: getSpacing(4),
-  paddingRight: getSpacing(4),
+  paddingHorizontal: getSpacing(4),
   paddingBottom: getSpacing(4),
 })
 
