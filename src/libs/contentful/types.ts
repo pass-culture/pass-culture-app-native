@@ -241,6 +241,7 @@ export interface RecommendationParametersFields {
   subcategories?: string[]
   isDuo?: boolean
   isRecoShuffled?: boolean
+  modelEndpoint?: string
 }
 
 export interface Image {
