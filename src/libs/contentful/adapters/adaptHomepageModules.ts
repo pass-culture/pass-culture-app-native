@@ -1,5 +1,6 @@
+import isEmpty from 'lodash/isEmpty'
+
 import { HomepageModule } from 'features/home/types'
-import { hasAtLeastOneField } from 'libs/contentful/adapters/helpers/hasAtLeastOneField'
 import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusinessModule'
 import { adaptExclusivityModule } from 'libs/contentful/adapters/modules/adaptExclusivityModule'
 import { adaptOffersModule } from 'libs/contentful/adapters/modules/adaptOffersModule'
@@ -17,7 +18,7 @@ import {
 export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): HomepageModule[] => {
   const adaptedHomepageNatifModules = modules.map((module) => {
     const { fields } = module
-    if (!fields || !hasAtLeastOneField(fields)) return null
+    if (!fields || isEmpty(fields)) return null
 
     if (isAlgoliaContentModel(module)) {
       return adaptOffersModule(module)
