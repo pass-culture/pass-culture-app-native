@@ -16,6 +16,7 @@ export interface RecommendedIdsRequest {
   end_date?: string
   isEvent?: boolean
   categories?: string[]
+  price_min?: number
   price_max?: number
   subcategories?: string[]
   isDuo?: boolean

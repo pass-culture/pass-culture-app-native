@@ -112,6 +112,7 @@ type RecommendedOffersParameters = {
   currentWeekEvent?: boolean
   newestOnly?: boolean
   isEvent?: boolean
+  priceMin?: number
   priceMax?: number
   subcategories?: string[]
   isDuo?: boolean
