@@ -1,6 +1,7 @@
+import isEmpty from 'lodash/isEmpty'
+
 import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
-import { hasAtLeastOneField } from 'libs/contentful/adapters/helpers/hasAtLeastOneField'
 import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
 
 const buildOffersParams = (
@@ -8,7 +9,7 @@ const buildOffersParams = (
   additionalParams: AlgoliaParameters[]
 ): OffersModule['offersModuleParameters'] =>
   [firstParams, ...additionalParams]
-    .filter((params) => params.fields && hasAtLeastOneField(params.fields))
+    .filter((params) => params.fields && !isEmpty(params.fields))
     .map(({ fields }) => fields)
 
 export const adaptOffersModule = (modules: AlgoliaContentModel): OffersModule | null => {
