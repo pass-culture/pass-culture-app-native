@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
+import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
 import { RecommendedOffersModule } from 'features/home/types'
-import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { RecommendedIdsRequest } from 'libs/recommendation/types'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
@@ -12,16 +12,6 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 import { useAlgoliaRecommendedHits } from './useAlgoliaRecommendedHits'
-
-export const getRecommendationEndpoint = (
-  userId: number | undefined,
-  position: GeoCoordinates | null
-): string | undefined => {
-  if (!userId) return undefined
-  const endpoint = `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${userId}?token=${env.RECOMMENDATION_TOKEN}`
-  if (position) return `${endpoint}&longitude=${position.longitude}&latitude=${position.latitude}`
-  return endpoint
-}
 
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
