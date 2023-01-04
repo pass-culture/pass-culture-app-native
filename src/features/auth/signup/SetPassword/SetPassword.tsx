@@ -28,6 +28,8 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <PasswordInput
+        autoFocus
+        nativeAutoFocus
         accessibilityDescribedBy={passwordDescribedBy}
         value={password}
         onChangeText={setPassword}
