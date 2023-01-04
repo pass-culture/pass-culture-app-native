@@ -112,3 +112,10 @@ export const CaptionNeutralInfo: ComponentStory<typeof Typo.CaptionNeutralInfo> 
 CaptionNeutralInfo.args = {
   children: 'CaptionNeutralInfo',
 }
+
+export const Hint: ComponentStory<typeof Typo.Hint> = ({ children }) => (
+  <Typo.Hint>{children}</Typo.Hint>
+)
+Hint.args = {
+  children: 'Hint',
+}
