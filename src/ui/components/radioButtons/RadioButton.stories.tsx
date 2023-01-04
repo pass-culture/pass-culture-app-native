@@ -60,12 +60,6 @@ WithIcon.args = {
   icon: VideoGame,
 }
 
-export const WithLoading = Template.bind({})
-WithLoading.args = {
-  label: 'label 1',
-  isLoading: true,
-}
-
 const items = [{ label: 'label 1' }, { label: 'label 2' }, { label: 'label 3' }]
 const ListTemplate = () => {
   const [selectedValue, setSelectedRadioButton] = useState('')
