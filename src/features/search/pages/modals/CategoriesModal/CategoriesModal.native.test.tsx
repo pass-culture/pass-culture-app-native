@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
@@ -343,6 +343,34 @@ describe('<CategoriesModal/>', () => {
       await waitFor(() => {
         const defaultCategoryFilterCheckbox = getByText('Toutes les catégories')
         expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
+      })
+    })
+
+    it('should filter on category, native category and genre/type then only on category with all native categories', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          offerCategories: [SearchGroupNameEnumv2.LIVRES],
+          offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+          offerGenreTypes: ['Bandes dessinées'],
+        },
+      })
+      const { getByText } = renderCategories()
+      fireEvent.press(getByText('Jeux & jeux vidéos'))
+
+      const button = getByText('Rechercher')
+      fireEvent.press(button)
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: expectedSearchParams,
+          screen: 'Search',
+        })
       })
     })
   })
