@@ -23,13 +23,4 @@ describe('computeDateRangeDisplay', () => {
 
     expect(dateRange).toEqual('le 03/12')
   })
-
-  it('should return null when date range is exceeded', () => {
-    const beginningDate = new Date('2020-11-01')
-    const endingDate = new Date('2020-11-30')
-
-    const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
-
-    expect(dateRange).toBeNull()
-  })
 })

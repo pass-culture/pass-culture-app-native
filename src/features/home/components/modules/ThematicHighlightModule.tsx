@@ -1,4 +1,5 @@
 import colorAlpha from 'color-alpha'
+import { isBefore } from 'date-fns'
 import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -27,10 +28,11 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   endingDate,
   thematicHomeEntryId,
 }) => {
-  const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
+  const isAlreadyEnded = isBefore(endingDate, new Date())
+  if (isAlreadyEnded) return null
 
+  const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
-  if (dateRange === null) return <React.Fragment></React.Fragment>
 
   return (
     <StyledInternalTouchableLink navigateTo={navigateTo}>

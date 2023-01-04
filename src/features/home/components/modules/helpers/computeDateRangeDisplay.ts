@@ -1,9 +1,6 @@
-import { format, isBefore, isSameDay } from 'date-fns'
+import { format, isSameDay } from 'date-fns'
 
 export const computeDateRangeDisplay = (beginningDate: Date, endingDate: Date): string | null => {
-  const isAlreadyEnded = isBefore(endingDate, new Date())
-  if (isAlreadyEnded) return null
-
   if (isSameDay(beginningDate, endingDate)) {
     return `le ${formatDate(beginningDate)}`
   } else {
