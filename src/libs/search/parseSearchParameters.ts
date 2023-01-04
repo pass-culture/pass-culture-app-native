@@ -57,7 +57,6 @@ export const parseSearchParameters = (
     offerCategories,
     offerSubcategories,
     offerIsDuo: parameters.isDuo || false,
-    offerIsFree: parameters.isFree || false,
     offerIsNew: parameters.newestOnly || false,
     offerTypes: {
       isDigital: parameters.isDigital || false,
