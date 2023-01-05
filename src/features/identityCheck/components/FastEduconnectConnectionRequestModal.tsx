@@ -5,8 +5,6 @@ import { IdentityCheckMethod } from 'api/gen'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useUbbleETAMessage } from 'libs/firebase/firestore/ubbleETAMessage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -30,9 +28,6 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 > = ({ visible, hideModal }) => {
   const { dispatch } = useSubscriptionContext()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
-  const enableNewIdentificationFlow = useFeatureFlag(
-    RemoteStoreFeatureFlags.NEW_IDENTIFICATION_FLOW
-  )
 
   const onModalRightIconPress = () => {
     analytics.logQuitAuthenticationMethodSelection()
@@ -85,11 +80,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         as={ButtonTertiaryBlack}
         icon={EditPen}
         wording="Identification manuelle"
-        navigateTo={
-          enableNewIdentificationFlow
-            ? { screen: 'SelectIDOrigin' }
-            : { screen: 'IdentityCheckStart' }
-        }
+        navigateTo={{ screen: 'SelectIDOrigin' }}
         onBeforeNavigate={onPressManualIdentification}
       />
       <DurationInfoText>{ubbleETAMessage}</DurationInfoText>
