@@ -100,6 +100,14 @@ export function getNativeCategories(
     // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
     .filter(Boolean) as NativeCategoryResponseModelv2[]
 
+  return getUniqueBy(nativeCategories, 'name').sort((a, b) =>
+    (a?.value || '').localeCompare(b?.value || '')
+  )
+}
+
+    // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
+    .filter(Boolean) as NativeCategoryResponseModelv2[]
+
   return getUniqueBy(nativeCategories, 'name')
 }
 

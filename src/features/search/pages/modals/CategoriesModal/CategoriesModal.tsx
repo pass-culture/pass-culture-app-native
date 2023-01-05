@@ -68,8 +68,9 @@ export const CategoriesModal = ({
 
   const categories = useMemo(
     () =>
-      data?.searchGroups.filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE) ||
-      [],
+      data?.searchGroups
+        .filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
+        .sort((a, b) => (a.value || '').localeCompare(b.value || '')) || [],
     [data?.searchGroups]
   )
   const nativeCategories = useMemo(() => getNativeCategories(data, category), [category, data])
