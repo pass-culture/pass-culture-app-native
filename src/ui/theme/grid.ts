@@ -40,7 +40,7 @@ export enum Breakpoints {
   XXS = 320,
   XS = 358,
   SM = 576,
-  MD = 960,
+  MD = 768,
   LG = 1024,
   XL = 1200,
   XXL = 1400,
