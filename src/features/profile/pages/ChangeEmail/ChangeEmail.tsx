@@ -19,6 +19,7 @@ import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -49,6 +50,7 @@ export function ChangeEmail() {
     },
     resolver: yupResolver(changeEmailSchema(user?.email)),
     mode: 'all',
+    delayError: SUGGESTION_DELAY_IN_MS,
   })
 
   const { changeEmail, isLoading } = useChangeEmailMutation({ setPasswordErrorMessage })

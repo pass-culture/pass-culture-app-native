@@ -12,6 +12,7 @@ import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('react-query')
 jest.mock('features/auth/AuthContext')
+jest.useFakeTimers()
 const mockedUseMutation = useMutation as jest.Mock
 const mockedUseQuery = useQuery as jest.Mock
 
@@ -107,6 +108,9 @@ describe('<ChangeEmail/>', () => {
     })
     expect(submitButton).toBeDisabled()
 
+    await act(async () => {
+      await jest.advanceTimersByTime(600)
+    })
     const errorMessage = queryByText('L’e-mail saisi est identique à ton e-mail actuel')
     expect(errorMessage).toBeTruthy()
   })
