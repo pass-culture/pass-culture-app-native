@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
@@ -20,11 +19,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { InputError } from 'ui/components/inputs/InputError'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { getSpacing, Spacer } from 'ui/theme'
-
-const passwordInputErrorId = uuidv4()
 
 type FormValues = {
   newEmail: string
@@ -40,7 +36,7 @@ export function ChangeEmail() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
     getValues,
   } = useForm<FormValues>({
     defaultValues: {
@@ -106,13 +102,7 @@ export function ChangeEmail() {
               name="password"
               disabled={hasCurrentEmailChange}
               isRequiredField
-              passwordInputErrorId={passwordInputErrorId}
-            />
-            <InputError
-              visible={!!errors.password || !!passwordErrorMessage}
-              messageId={errors.password?.message || passwordErrorMessage}
-              numberOfSpacesTop={2}
-              relatedInputId={passwordInputErrorId}
+              additionnalErrorMessage={passwordErrorMessage}
             />
             {isMobileViewport && isTouch ? (
               <Spacer.Flex flex={1} />
