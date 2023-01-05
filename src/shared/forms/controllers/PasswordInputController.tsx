@@ -4,13 +4,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
+import { getSpacing } from 'ui/theme'
 
 const passwordInputErrorId = uuidv4()
 
 interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputProps {
   name: TName
   control: Control<TFieldValues>
-  additionnalErrorMessage: string | null
 }
 
 export const PasswordInputController = <
@@ -19,7 +19,6 @@ export const PasswordInputController = <
 >({
   name,
   control,
-  additionnalErrorMessage,
   ...otherPasswordInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   return (
@@ -38,9 +37,9 @@ export const PasswordInputController = <
             {...otherPasswordInputProps}
           />
           <InputError
-            visible={!!error || !!additionnalErrorMessage}
-            messageId={error?.message || additionnalErrorMessage}
-            numberOfSpacesTop={2}
+            visible={!!error}
+            messageId={error?.message}
+            numberOfSpacesTop={getSpacing(0.5)}
             relatedInputId={passwordInputErrorId}
           />
         </React.Fragment>

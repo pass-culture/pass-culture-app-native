@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native'
-import { Dispatch, SetStateAction } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
@@ -14,7 +13,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export const useChangeEmailMutation = ({
   setPasswordErrorMessage,
 }: {
-  setPasswordErrorMessage: Dispatch<SetStateAction<string | null>>
+  setPasswordErrorMessage: (message: string) => void
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()

@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -11,7 +11,6 @@ import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/C
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
-import { useSafeState } from 'libs/hooks'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { theme } from 'theme'
@@ -30,14 +29,15 @@ type FormValues = {
 export function ChangeEmail() {
   const { isMobileViewport, isTouch } = useTheme()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
-  const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { user } = useAuthContext()
 
   const {
     control,
     handleSubmit,
     formState: { isValid },
-    getValues,
+    setError,
+    watch,
+    clearErrors,
   } = useForm<FormValues>({
     defaultValues: {
       newEmail: '',
@@ -48,16 +48,20 @@ export function ChangeEmail() {
     delayError: SUGGESTION_DELAY_IN_MS,
   })
 
-  const { changeEmail, isLoading } = useChangeEmailMutation({ setPasswordErrorMessage })
+  const { changeEmail, isLoading } = useChangeEmailMutation({
+    setPasswordErrorMessage: (message: string) =>
+      setError('password', { message, type: 'validate' }),
+  })
 
-  const removePasswordError = () => {
-    setPasswordErrorMessage(null)
-  }
-  const password = getValues('password')
+  const removePasswordError = useCallback(() => {
+    clearErrors('password')
+  }, [clearErrors])
+
+  const password = watch('password')
 
   useEffect(() => {
     removePasswordError()
-  }, [password])
+  }, [password, removePasswordError])
 
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -102,7 +106,6 @@ export function ChangeEmail() {
               name="password"
               disabled={hasCurrentEmailChange}
               isRequiredField
-              additionnalErrorMessage={passwordErrorMessage}
             />
             {isMobileViewport && isTouch ? (
               <Spacer.Flex flex={1} />
