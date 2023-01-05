@@ -30,6 +30,7 @@ type FocusProps = {
 type LocationProps = {
   showLocationButton?: boolean
   locationLabel?: string
+  numberOfLinesForLocation: number
   onPressLocationButton: () => void
 }
 
@@ -52,6 +53,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     showLocationButton = false,
     locationLabel,
     onPressLocationButton,
+    numberOfLinesForLocation,
     ...props
   }: Props,
   ref
@@ -78,6 +80,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
           icon={LocationPointer}
           buttonHeight="extraSmall"
           ellipsizeMode="tail"
+          numberOfLines={numberOfLinesForLocation}
         />
       )}
     </StyledSearchInput>
