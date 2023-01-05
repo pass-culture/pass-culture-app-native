@@ -381,6 +381,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                   }
                 >
                   <Text
+                    aria-describedby="testUuidV4"
                     htmlFor="testUuidV4"
                     id="testUuidV4"
                     style={
@@ -395,33 +396,31 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     }
                   >
                     Date
-
-                    <View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#696A6F",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        Seules les sorties seront affichées
-                      </Text>
-                    </View>
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    nativeID="testUuidV4"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Seules les sorties seront affichées
                   </Text>
                 </View>
                 <View
@@ -587,6 +586,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                   }
                 >
                   <Text
+                    aria-describedby="testUuidV4"
                     htmlFor="testUuidV4"
                     id="testUuidV4"
                     style={
@@ -601,33 +601,31 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     }
                   >
                     Heure
-
-                    <View>
-                      <View
-                        numberOfSpaces={1}
-                        style={
-                          Array [
-                            Object {
-                              "height": 4,
-                            },
-                          ]
-                        }
-                      />
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#696A6F",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        Seules les sorties seront affichées
-                      </Text>
-                    </View>
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    nativeID="testUuidV4"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Seules les sorties seront affichées
                   </Text>
                 </View>
                 <View

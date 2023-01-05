@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -52,10 +52,12 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     <React.Fragment>
       {!!label && (
         <React.Fragment>
-          <LabelContainer>
-            <InputLabel htmlFor={searchInputID}>{label}</InputLabel>
-            {!!isRequiredField && <RequiredLabel />}
-          </LabelContainer>
+          <FlexInputLabel htmlFor={searchInputID}>
+            <LabelContainer>
+              <Typo.Body>{label}</Typo.Body>
+              {!!isRequiredField && <RequiredLabel />}
+            </LabelContainer>
+          </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
@@ -87,7 +89,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           aria-describedby={accessibilityDescribedBy}
           aria-required={isRequiredField}
           enablesReturnKeyAutomatically
-          testID={'searchInput'}
+          testID="searchInput"
         />
         {children}
         {value.length > 0 && (

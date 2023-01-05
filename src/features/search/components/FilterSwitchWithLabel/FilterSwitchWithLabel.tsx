@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -7,7 +6,6 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { Spacer, Typo } from 'ui/theme'
-import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -30,28 +28,31 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const checkboxID = useMemo(uuidv4, [])
   const labelID = useMemo(uuidv4, [])
   const describedByID = useMemo(uuidv4, [])
+  const labelDescriptionID = useMemo(uuidv4, [])
   const { isDesktopViewport } = useTheme()
-  const labelFormatted = subtitle ? label + LINE_BREAK : label
 
   const TitleWithSubtitle = useMemo(
     () =>
       function TitleWithSubtitle() {
         return (
-          <StyledInputLabel
-            {...getHeadingAttrs(accessibilityLevel ?? 2)}
-            id={labelID}
-            htmlFor={checkboxID}>
-            {labelFormatted}
+          <React.Fragment>
+            <StyledInputLabel
+              {...getHeadingAttrs(accessibilityLevel ?? 2)}
+              id={labelID}
+              htmlFor={checkboxID}
+              aria-describedby={labelDescriptionID}>
+              {label}
+            </StyledInputLabel>
+            <Spacer.Column numberOfSpaces={1} />
             {!!subtitle && (
-              <View>
-                <Spacer.Column numberOfSpaces={1} />
-                <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
-              </View>
+              <Typo.CaptionNeutralInfo nativeID={labelDescriptionID}>
+                {subtitle}
+              </Typo.CaptionNeutralInfo>
             )}
-          </StyledInputLabel>
+          </React.Fragment>
         )
       },
-    [accessibilityLevel, labelID, checkboxID, labelFormatted, subtitle]
+    [accessibilityLevel, label, labelID, labelDescriptionID, checkboxID, subtitle]
   )
 
   return (

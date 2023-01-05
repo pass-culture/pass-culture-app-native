@@ -59,7 +59,7 @@ Object {
   align-items: center;
 }
 
-.c4 {
+.c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -92,24 +92,24 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
@@ -119,6 +119,10 @@ Object {
   line-height: 20px;
   color: #161617;
   cursor: pointer;
+}
+
+.c4 {
+  width: 100%;
 }
 
 .c2 {
@@ -243,16 +247,22 @@ Object {
                     class="css-view-1dbjc4n"
                     style="height: 20px;"
                   />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                  <label
+                    class="c3 c4"
                   >
-                    <label
-                      class="c3"
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                     >
-                      Entre ton adresse
-                    </label>
-                  </div>
+                      <div
+                        class="css-text-901oao"
+                        dir="ltr"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                      >
+                        Entre ton adresse
+                      </div>
+                    </div>
+                  </label>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 8px;"
@@ -312,7 +322,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l’étape suivante"
-                  class="c4 c5"
+                  class="c5 c6"
                   data-testid="Continuer vers l’étape suivante"
                   disabled=""
                   type="submit"
@@ -392,7 +402,7 @@ Object {
   align-items: center;
 }
 
-.c4 {
+.c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -425,24 +435,24 @@ Object {
   box-sizing: border-box;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c4:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c4:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c5:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
@@ -452,6 +462,10 @@ Object {
   line-height: 20px;
   color: #161617;
   cursor: pointer;
+}
+
+.c4 {
+  width: 100%;
 }
 
 .c2 {
@@ -575,16 +589,22 @@ Object {
                   class="css-view-1dbjc4n"
                   style="height: 20px;"
                 />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                <label
+                  class="c3 c4"
                 >
-                  <label
-                    class="c3"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                   >
-                    Entre ton adresse
-                  </label>
-                </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                    >
+                      Entre ton adresse
+                    </div>
+                  </div>
+                </label>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"
@@ -644,7 +664,7 @@ Object {
             >
               <button
                 aria-label="Continuer vers l’étape suivante"
-                class="c4 c5"
+                class="c5 c6"
                 data-testid="Continuer vers l’étape suivante"
                 disabled=""
                 type="submit"

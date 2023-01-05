@@ -286,33 +286,34 @@ exports[`<SetCity/> should render correctly 1`] = `
                 ]
               }
             />
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
-                htmlFor="testUuidV4"
+            <View>
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Indique ton code postal et choisis ta ville
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Indique ton code postal et choisis ta ville
+                </Text>
+              </View>
             </View>
             <View
               numberOfSpaces={2}
