@@ -13,6 +13,7 @@ export enum ColorsEnum {
   PRIMARY_DISABLED = '#ff99be',
   PRIMARY_DARK = '#c10046',
   SECONDARY = '#320096',
+  SECONDARY_LIGHT = '#f3ecff',
   TERTIARY = '#cc1673',
   TRANSPARENT = 'transparent',
   WHITE = '#ffffff',

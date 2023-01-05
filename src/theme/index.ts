@@ -126,6 +126,7 @@ export interface AppThemeType {
     primaryDisabled: ColorsEnum
     primaryDark: ColorsEnum
     secondary: ColorsEnum
+    secondaryLight: ColorsEnum
     tertiary: ColorsEnum
     transparent: ColorsEnum
     white: ColorsEnum
@@ -553,6 +554,7 @@ export const theme: AppThemeType = {
     primaryDisabled: ColorsEnum.PRIMARY_DISABLED,
     primaryDark: ColorsEnum.PRIMARY_DARK,
     secondary: ColorsEnum.SECONDARY,
+    secondaryLight: ColorsEnum.SECONDARY_LIGHT,
     tertiary: ColorsEnum.TERTIARY,
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
