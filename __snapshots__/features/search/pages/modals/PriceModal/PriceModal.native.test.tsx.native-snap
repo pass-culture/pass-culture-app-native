@@ -456,6 +456,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               >
                 <Text
+                  aria-describedby="testUuidV4"
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
@@ -471,6 +472,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   Uniquement les offres gratuites
                 </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "height": 4,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 numberOfSpaces={2}
@@ -635,6 +646,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               >
                 <Text
+                  aria-describedby="testUuidV4"
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
@@ -650,6 +662,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   Limiter la recherche à mon crédit
                 </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "height": 4,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 numberOfSpaces={2}
