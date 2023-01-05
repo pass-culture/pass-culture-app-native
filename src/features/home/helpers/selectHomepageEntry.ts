@@ -9,7 +9,6 @@ import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary1
 import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
-import { TagId } from 'libs/contentful'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 
 const scoreHomepageByTags = (
@@ -17,7 +16,7 @@ const scoreHomepageByTags = (
   user?: UserProfileResponse
 ): Homepage & { score: number } => {
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const tags: TagId[] = homepage.tag.map(({ sys }) => sys.id)
+  const tags = homepage.tags
 
   let score = 0
   if (tags.includes('master')) score += 5

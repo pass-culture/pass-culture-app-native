@@ -34,7 +34,7 @@ const useGetHomepageList = () => {
 const emptyHomepage: Homepage = {
   id: '-1',
   modules: [],
-  tag: [],
+  tags: [],
 }
 export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
   const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
