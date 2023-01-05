@@ -5,7 +5,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Again } from 'ui/svg/icons/Again'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   isModal?: boolean
@@ -24,13 +24,14 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   return (
     <Container isModal={isModal}>
       <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
+      <Spacer.Column numberOfSpaces={4} />
       <SearchButton wording="Rechercher" onPress={onSearchPress} disabled={isSearchDisabled} />
     </Container>
   )
 }
 
 const Container = styled.View<{ isModal: boolean }>(({ isModal, theme }) => ({
-  flexDirection: 'row',
+  flexDirection: theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column',
   justifyContent: 'center',
   paddingHorizontal: theme.modal.spacing.MD,
   paddingTop: getSpacing(2),

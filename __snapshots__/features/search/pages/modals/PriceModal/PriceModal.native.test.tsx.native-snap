@@ -1176,6 +1176,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               </Text>
             </View>
             <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {

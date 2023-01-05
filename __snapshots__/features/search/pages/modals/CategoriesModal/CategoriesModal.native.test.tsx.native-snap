@@ -2406,6 +2406,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               </Text>
             </View>
             <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {

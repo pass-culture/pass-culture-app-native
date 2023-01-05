@@ -964,6 +964,16 @@ exports[`<LocationModal/> should render modal correctly after animation and with
               </Text>
             </View>
             <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Rechercher"
               accessibilityState={
                 Object {
