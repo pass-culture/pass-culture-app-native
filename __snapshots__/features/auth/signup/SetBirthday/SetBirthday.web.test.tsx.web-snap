@@ -186,11 +186,11 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+            style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="flex-shrink: 0;"
+              style="padding-right: 16px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -205,11 +205,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="width: 16px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-shrink: 1;"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-text-901oao"
@@ -1658,11 +1654,11 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+          style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="flex-shrink: 0;"
+            style="padding-right: 16px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -1677,11 +1673,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="width: 16px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-shrink: 1;"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <div
               class="css-text-901oao"
@@ -3082,11 +3074,11 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+            style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="flex-shrink: 0;"
+              style="padding-right: 16px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -3101,11 +3093,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="width: 16px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-shrink: 1;"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 class="css-text-901oao"
@@ -4212,11 +4200,11 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+          style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="flex-shrink: 0;"
+            style="padding-right: 16px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -4231,11 +4219,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="width: 16px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-shrink: 1;"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <div
               class="css-text-901oao"

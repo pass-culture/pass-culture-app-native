@@ -46,7 +46,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     <Form.MaxWidth>
       <InnerContainer>
         <Banner
-          title="Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite."
+          message="Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite."
           icon={BicolorIdCard}
         />
         <Spacer.Column numberOfSpaces={6} />

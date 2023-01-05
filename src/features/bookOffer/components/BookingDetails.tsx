@@ -16,6 +16,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
@@ -113,7 +114,10 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   return (
     <Container>
-      <Banner title="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente." />
+      <Banner
+        message="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
+        icon={Error}
+      />
       <Spacer.Column numberOfSpaces={4} />
 
       <BookingInformations />

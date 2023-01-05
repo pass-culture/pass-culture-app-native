@@ -56,7 +56,7 @@ export const SetName = () => {
         <Form.MaxWidth>
           <Banner
             icon={BicolorIdCard}
-            title="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
+            message="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
 Nous les vérifions et ils ne pourront plus être modifiés par la suite."
           />
           <Spacer.Column numberOfSpaces={4} />

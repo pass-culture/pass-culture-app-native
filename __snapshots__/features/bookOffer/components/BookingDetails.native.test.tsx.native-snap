@@ -15,10 +15,10 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#F1F1F4",
+          "backgroundColor": "#f3ecff",
           "borderRadius": 8,
-          "display": "flex",
           "flexDirection": "row",
+          "justifyContent": "space-between",
           "paddingBottom": 16,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -31,7 +31,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       style={
         Array [
           Object {
-            "flexShrink": 0,
+            "paddingRight": 16,
           },
         ]
       }
@@ -46,19 +46,11 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       </View>
     </View>
     <View
-      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "width": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
@@ -75,6 +67,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
             },
           ]
         }
+        withLightColorMessage={false}
       >
         Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
@@ -591,10 +584,10 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#F1F1F4",
+          "backgroundColor": "#f3ecff",
           "borderRadius": 8,
-          "display": "flex",
           "flexDirection": "row",
+          "justifyContent": "space-between",
           "paddingBottom": 16,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -607,7 +600,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       style={
         Array [
           Object {
-            "flexShrink": 0,
+            "paddingRight": 16,
           },
         ]
       }
@@ -622,19 +615,11 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       </View>
     </View>
     <View
-      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "width": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
@@ -651,6 +636,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
             },
           ]
         }
+        withLightColorMessage={false}
       >
         Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>

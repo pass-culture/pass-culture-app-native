@@ -358,10 +358,10 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f3ecff",
                       "borderRadius": 8,
-                      "display": "flex",
                       "flexDirection": "row",
+                      "justifyContent": "space-between",
                       "paddingBottom": 16,
                       "paddingLeft": 16,
                       "paddingRight": 16,
@@ -374,7 +374,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     Array [
                       Object {
-                        "flexShrink": 0,
+                        "paddingRight": 16,
                       },
                     ]
                   }
@@ -389,19 +389,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={4}
                   style={
                     Array [
                       Object {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
                         "flexShrink": 1,
                       },
                     ]
@@ -418,6 +410,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         },
                       ]
                     }
+                    withLightColorMessage={false}
                   >
                     Il te reste 70 € sur ton pass Culture.
                   </Text>

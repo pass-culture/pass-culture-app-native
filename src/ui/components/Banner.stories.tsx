@@ -1,10 +1,11 @@
+import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
-import { Error } from 'ui/svg/icons/Error'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { BicolorClock } from 'ui/svg/icons/BicolorClock'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { Banner } from './Banner'
 
@@ -13,16 +14,55 @@ export default {
   component: Banner,
   argTypes: {
     icon: selectArgTypeFromObject({
-      Error,
-      Warning,
-      BicolorIdCard,
+      BicolorClock,
+      NoIcon: undefined,
     }),
   },
 } as ComponentMeta<typeof Banner>
 
 const Template: ComponentStory<typeof Banner> = (props) => <Banner {...props} />
 
+const message =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'
+
 export const Default = Template.bind({})
 Default.args = {
-  title: 'Je suis une bannière',
+  message,
+}
+
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  message,
+  icon: BicolorClock,
+}
+
+export const WithChildren = Template.bind({})
+WithChildren.args = {
+  message,
+  children: (
+    <ButtonQuaternarySecondary
+      numberOfLines={2}
+      justifyContent="flex-start"
+      onPress={action('Press\u00a0!')}
+      icon={PlainArrowNext}
+      wording="Call to action message"
+      testID="call-to-action-press"
+    />
+  ),
+}
+
+export const WithLightColorMessage = Template.bind({})
+WithLightColorMessage.args = {
+  message,
+  withLightColorMessage: true,
+  children: (
+    <ButtonQuaternarySecondary
+      numberOfLines={2}
+      justifyContent="flex-start"
+      onPress={action('Press\u00a0!')}
+      icon={PlainArrowNext}
+      wording="Call to action message"
+      testID="call-to-action-press"
+    />
+  ),
 }
