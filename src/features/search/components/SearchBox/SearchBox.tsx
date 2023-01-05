@@ -21,6 +21,7 @@ import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Bu
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
@@ -52,7 +53,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(params?.query || '')
-  const { locationFilter, section } = useLocationType(searchState)
+  const { locationFilter, section, locationType } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
   const {
@@ -235,6 +236,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}
+              numberOfLinesForLocation={locationType === LocationType.PLACE ? 1 : 2}
             />
           </FlexView>
         </SearchInputA11yContainer>
