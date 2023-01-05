@@ -19,6 +19,7 @@ interface Props {
   maxLabel?: string
   shouldShowMinMaxValues?: boolean
   minMaxValuesComplement?: string
+  accessibilityLabelledBy?: string
 }
 
 const DEFAULT_MIN = 0
@@ -106,7 +107,8 @@ export function Slider(props: Props) {
         leftCursor?.setAttribute('aria-valuemax', `${values.length === 1 ? max : values[1]}`)
         leftCursor?.setAttribute('aria-valuenow', `${values[0]}`)
         const leftCursorValue = `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
-        leftCursor?.setAttribute('aria-label', leftCursorValue)
+        props.accessibilityLabelledBy &&
+          leftCursor?.setAttribute('aria-labelledby', props.accessibilityLabelledBy)
         leftCursor?.setAttribute('aria-valuetext', leftCursorValue)
         leftCursor?.setAttribute('title', leftCursorValue)
 
@@ -115,7 +117,8 @@ export function Slider(props: Props) {
         rightCursor?.setAttribute('aria-valuemax', `${max}`)
         rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
         const rightCursorValue = `${maxLabel} ${formatValues(values[1])}`
-        rightCursor?.setAttribute('aria-label', rightCursorValue)
+        props.accessibilityLabelledBy &&
+          rightCursor?.setAttribute('aria-labelledby', props.accessibilityLabelledBy)
         rightCursor?.setAttribute('aria-valuetext', rightCursorValue)
         rightCursor?.setAttribute('title', rightCursorValue)
       }

@@ -66,6 +66,7 @@ const formatKm = (km: number) => `${km}\u00a0km`
 
 const titleId = uuidv4()
 const accessibilityDescribedBy = uuidv4()
+const radiusLabelId = uuidv4()
 
 const getLocationChoice = (locationType: LocationType) => {
   if (locationType === LocationType.EVERYWHERE) {
@@ -426,7 +427,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                               {value === RadioButtonLocation.AROUND_ME && (
                                 <View>
                                   <Spacer.Column numberOfSpaces={4} />
-                                  <LabelRadiusContainer>
+                                  <LabelRadiusContainer nativeID={radiusLabelId}>
                                     <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
                                     <Typo.ButtonText>{`${aroundRadius}\u00a0km`}</Typo.ButtonText>
                                   </LabelRadiusContainer>
@@ -441,6 +442,7 @@ export const LocationModal: FunctionComponent<Props> = ({
                                     maxLabel="Dans un rayon de&nbsp;:"
                                     sliderLength={sliderLength}
                                     formatValues={formatKm}
+                                    accessibilityLabelledBy={radiusLabelId}
                                   />
                                 </View>
                               )}

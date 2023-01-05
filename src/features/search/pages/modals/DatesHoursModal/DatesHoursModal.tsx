@@ -70,6 +70,7 @@ const DEFAULT_TIME_RANGE: Range<number> = [8, 22]
 const formatHour = (hour: number) => `${hour}h`
 
 const titleId = uuidv4()
+const hoursLabelId = uuidv4()
 
 export const DatesHoursModal: FunctionComponent<Props> = ({
   title,
@@ -304,7 +305,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
                     render={({ field: { value } }) => (
                       <View>
                         <Spacer.Column numberOfSpaces={4} />
-                        <LabelHoursContainer>
+                        <LabelHoursContainer nativeID={hoursLabelId}>
                           <Typo.Body>{`Sortir entre`}</Typo.Body>
                           <Typo.ButtonText>{`${value?.[0]}\u00a0h et ${value?.[1]}\u00a0h`}</Typo.ButtonText>
                         </LabelHoursContainer>
@@ -320,6 +321,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
                           shouldShowMinMaxValues
                           minMaxValuesComplement="h"
                           sliderLength={sliderLength}
+                          accessibilityLabelledBy={hoursLabelId}
                         />
                       </View>
                     )}
