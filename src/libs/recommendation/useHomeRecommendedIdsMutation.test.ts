@@ -13,7 +13,7 @@ describe('useHomeRecommendedIdsMutation', () => {
   const mockUseMutation = jest.spyOn(reactQueryAPI, 'useMutation')
 
   it('should call useMutation', () => {
-    renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+    renderHook(() => useHomeRecommendedIdsMutation(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -21,10 +21,10 @@ describe('useHomeRecommendedIdsMutation', () => {
   })
 
   it('should call fetch when mutate', async () => {
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({})
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledWith('http://passculture.reco', {
@@ -40,10 +40,10 @@ describe('useHomeRecommendedIdsMutation', () => {
 
   it('should capture an exception when fetch call fails', async () => {
     mockFetch.mockRejectedValueOnce('some error')
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({})
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
@@ -60,10 +60,10 @@ describe('useHomeRecommendedIdsMutation', () => {
         status: 200,
       })
     )
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({})
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
     await waitFor(() => {
       expect(result.current.data).toEqual(body)
     })
@@ -87,10 +87,10 @@ describe('useHomeRecommendedIdsMutation', () => {
         status: 200,
       })
     )
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation('http://passculture.reco'), {
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({})
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
     await waitFor(() => {
       expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
     })

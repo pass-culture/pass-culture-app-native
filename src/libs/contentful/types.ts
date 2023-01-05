@@ -247,6 +247,7 @@ export interface RecommendationParametersFields {
   subcategories?: string[]
   isDuo?: boolean
   isRecoShuffled?: boolean
+  modelEndpoint?: string
 }
 
 export type ThematicHighlightFields = {

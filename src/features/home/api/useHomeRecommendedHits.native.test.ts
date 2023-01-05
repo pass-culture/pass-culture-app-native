@@ -3,12 +3,10 @@ import { UseMutationResult } from 'react-query'
 
 import * as algoliaRecommendedHitsAPI from 'features/home/api/useAlgoliaRecommendedHits'
 import {
-  getRecommendationEndpoint,
   getRecommendationParameters,
   useHomeRecommendedHits,
 } from 'features/home/api/useHomeRecommendedHits'
 import { RecommendationParametersFields } from 'libs/contentful'
-import { env } from 'libs/environment'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
@@ -52,19 +50,6 @@ describe('useHomeRecommendedHits', () => {
     expect(algoliaSpy).toHaveBeenCalledTimes(1)
     renderHook(() => useHomeRecommendedHits(mockUserId, position, mockModuleId))
     expect(algoliaSpy).toHaveBeenCalledTimes(2)
-  })
-})
-
-describe('getRecommendationEndpoint', () => {
-  it('should return undefined when no user id is provided', () => {
-    const endpoint = getRecommendationEndpoint(undefined, null)
-    expect(endpoint).toBeUndefined()
-  })
-  it('should return endpoint with latitude and longitude query params when position is provided', () => {
-    const endpoint = getRecommendationEndpoint(mockUserId, position)
-    expect(endpoint).toEqual(
-      `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${mockUserId}?token=${env.RECOMMENDATION_TOKEN}&longitude=${position.longitude}&latitude=${position.latitude}`
-    )
   })
 })
 

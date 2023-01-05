@@ -115,6 +115,7 @@ type RecommendedOffersParameters = {
   subcategories?: string[]
   isDuo?: boolean
   isRecoShuffled?: boolean
+  modelEndpoint?: string
 }
 
 export type ThematicHighlightModule = {
