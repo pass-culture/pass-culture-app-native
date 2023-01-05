@@ -5,6 +5,7 @@ import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusin
 import { adaptExclusivityModule } from 'libs/contentful/adapters/modules/adaptExclusivityModule'
 import { adaptOffersModule } from 'libs/contentful/adapters/modules/adaptOffersModule'
 import { adaptRecommendationModule } from 'libs/contentful/adapters/modules/adaptRecommendationModule'
+import { adaptThematicHighlightModule } from 'libs/contentful/adapters/modules/adaptThematicHighlightModule'
 import { adaptVenuesModule } from 'libs/contentful/adapters/modules/adaptVenuesModule'
 import {
   isAlgoliaContentModel,
@@ -13,6 +14,7 @@ import {
   isRecommendationContentModel,
   isVenuesContentModel,
   isExclusivityContentModel,
+  isThematicHighlightContentModel,
 } from 'libs/contentful/types'
 
 export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): HomepageModule[] => {
@@ -28,6 +30,9 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
     }
     if (isRecommendationContentModel(module)) {
       return adaptRecommendationModule(module)
+    }
+    if (isThematicHighlightContentModel(module)) {
+      return adaptThematicHighlightModule(module)
     }
     if (isVenuesContentModel(module)) {
       return adaptVenuesModule(module)

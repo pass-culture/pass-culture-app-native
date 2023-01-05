@@ -6,7 +6,7 @@ import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { ExclusivityModule as ExclusivityModuleType } from 'features/home/types'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export interface ExclusivityModuleProps {
   title: string
@@ -35,9 +35,9 @@ const UnmemoizedExclusivityModule = ({ offerId, url, ...props }: ExclusivityModu
 
     return <ExclusivityBanner {...props} style={style} />
   }
-  const StyledExclusivityComponent = styled(ExclusivityComponent)({
-    marginBottom: getSpacing(6),
-  })
+  const StyledExclusivityComponent = styled(ExclusivityComponent)(({ theme }) => ({
+    marginBottom: theme.home.spaceBetweenModules,
+  }))
 
   return (
     <Row>

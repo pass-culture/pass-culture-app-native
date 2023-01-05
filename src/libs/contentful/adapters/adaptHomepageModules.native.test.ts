@@ -3,6 +3,7 @@ import {
   formattedExclusivityModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
+  formattedThematicHighlightModule,
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
@@ -10,6 +11,7 @@ import { algoliaNatifModuleFixture } from 'libs/contentful/fixtures/algoliaModul
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
 import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/exclusivityModule.fixture'
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
+import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/thematicHighlightModule.fixture'
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
 
 describe('adaptHomepageModules', () => {
@@ -20,6 +22,7 @@ describe('adaptHomepageModules', () => {
       venuesNatifModuleFixture,
       exclusivityNatifModuleFixture,
       recommendationNatifModuleFixture,
+      thematicHighlightModuleFixture,
     ]
 
     const formattedHomepageModules = [
@@ -28,6 +31,7 @@ describe('adaptHomepageModules', () => {
       formattedVenuesModule,
       formattedExclusivityModule,
       formattedRecommendedOffersModule,
+      formattedThematicHighlightModule,
     ]
 
     expect(adaptHomepageNatifModules(rawHomepageNatifModules)).toStrictEqual(

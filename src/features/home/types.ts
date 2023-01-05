@@ -6,6 +6,7 @@ export enum HomepageModuleType {
   'BusinessModule' = 'BusinessModule',
   'RecommendedOffersModule' = 'RecommendedOffersModule',
   'ExclusivityModule' = 'ExclusivityModule',
+  'ThematicHighlightModule' = 'ThematicHighlightModule',
 }
 export type Homepage = {
   tag: Tag[] // TODO(evejulliard): do not import Tag from 'libs/contentful
@@ -22,6 +23,7 @@ export type HomepageModule =
   | BusinessModule
   | ExclusivityModule
   | RecommendedOffersModule
+  | ThematicHighlightModule
   | VenuesModule
 
 export type OffersModule = {
@@ -114,6 +116,17 @@ type RecommendedOffersParameters = {
   isRecoShuffled?: boolean
 }
 
+export type ThematicHighlightModule = {
+  type: HomepageModuleType.ThematicHighlightModule
+  id: string
+  title: string
+  subtitle?: string
+  imageUrl: string
+  beginningDate: Date
+  endingDate: Date
+  thematicHomeEntryId: string
+}
+
 export type VenuesModule = {
   type: HomepageModuleType.VenuesModule
   id: string
@@ -146,4 +159,9 @@ export const isBusinessModule = (module: HomepageModule): module is BusinessModu
 }
 export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
   return module.type === HomepageModuleType.ExclusivityModule
+}
+export const isThematicHighlightModule = (
+  module: HomepageModule
+): module is ThematicHighlightModule => {
+  return module.type === HomepageModuleType.ThematicHighlightModule
 }

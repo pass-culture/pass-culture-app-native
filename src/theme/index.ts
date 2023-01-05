@@ -108,6 +108,7 @@ export interface AppThemeType {
     buttonText: Typography
     body: Typography
     caption: Typography
+    hint: Typography
     placeholder: Typography
   }
   colors: {
@@ -407,6 +408,9 @@ export interface AppThemeType {
       LG: number
     }
   }
+  home: {
+    spaceBetweenModules: number
+  }
 }
 
 export const theme: AppThemeType = {
@@ -519,6 +523,12 @@ export const theme: AppThemeType = {
       fontFamily: 'Montserrat-SemiBold',
       fontSize: getSpacing(3),
       lineHeight: getSpacingString(4),
+      color: ColorsEnum.BLACK,
+    },
+    hint: {
+      fontFamily: 'Montserrat-SemiBold',
+      fontSize: getSpacing(2.5),
+      lineHeight: getSpacingString(3),
       color: ColorsEnum.BLACK,
     },
     placeholder: {
@@ -825,5 +835,8 @@ export const theme: AppThemeType = {
   modal: {
     spacing: ModalSpacing,
     desktopMaxWidth: getSpacing(130),
+  },
+  home: {
+    spaceBetweenModules: getSpacing(6),
   },
 }
