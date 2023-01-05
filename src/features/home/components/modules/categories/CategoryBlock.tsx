@@ -2,8 +2,9 @@ import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { theme } from 'theme'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface FilterProps {
@@ -11,28 +12,28 @@ interface FilterProps {
   opacity: number
 }
 
-interface CategoryBlockProps {
+export interface CategoryBlockProps {
   title: string
-  url: string
+  homeEntryId: string
   filter: FilterProps
-  imageUrl?: string
+  image?: string
 }
+
 export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   title,
-  url,
-  imageUrl,
+  homeEntryId,
+  image,
   filter,
 }) => {
+  const navigateTo = getNavigateToThematicHomeConfig(homeEntryId)
   return (
-    // TODO(PC-18781) this component should be an InternalTouchableLink since it will only navigate to thematic home pages
-    // instead of setting an url in contentful, set an entry ID of homepageNatif content
-    <StyledExternalTouchableLink externalNav={{ url: url }}>
-      <ImageBackground source={{ uri: imageUrl }}>
+    <StyledInternalTouchableLink navigateTo={navigateTo}>
+      <ImageBackground source={{ uri: image }}>
         <ContainerWithFilter filter={filter}>
           <StyledTitle numberOfLines={2}>{title}</StyledTitle>
         </ContainerWithFilter>
       </ImageBackground>
-    </StyledExternalTouchableLink>
+    </StyledInternalTouchableLink>
   )
 }
 
@@ -56,6 +57,6 @@ const ImageBackground = styled.ImageBackground({
   flex: 1,
 })
 
-const StyledExternalTouchableLink = styled(ExternalTouchableLink)({
+const StyledInternalTouchableLink = styled(InternalTouchableLink)({
   height: getSpacing(18),
 })

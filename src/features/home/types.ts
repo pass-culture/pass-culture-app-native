@@ -5,6 +5,7 @@ export enum HomepageModuleType {
   'RecommendedOffersModule' = 'RecommendedOffersModule',
   'ExclusivityModule' = 'ExclusivityModule',
   'ThematicHighlightModule' = 'ThematicHighlightModule',
+  'CategoryListModule' = 'CategoryListModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -26,6 +27,7 @@ export type HomepageModule =
   | RecommendedOffersModule
   | ThematicHighlightModule
   | VenuesModule
+  | CategoryListModule
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -145,25 +147,47 @@ type VenuesParameters = {
   hitsPerPage: number
 }
 
+export type CategoryListModule = {
+  id: string
+  type: HomepageModuleType.CategoryListModule
+  title: string
+  categoryBlockList: CategoryBlock[]
+}
+
+export type CategoryBlock = {
+  title: string
+  homeEntryId: string
+  image?: string
+}
+
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
   return module.type === HomepageModuleType.VenuesModule
 }
+
 export const isOffersModule = (module: HomepageModule): module is OffersModule => {
   return module.type === HomepageModuleType.OffersModule
 }
+
 export const isRecommendedOffersModule = (
   module: HomepageModule
 ): module is RecommendedOffersModule => {
   return module.type === HomepageModuleType.RecommendedOffersModule
 }
+
 export const isBusinessModule = (module: HomepageModule): module is BusinessModule => {
   return module.type === HomepageModuleType.BusinessModule
 }
+
 export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
   return module.type === HomepageModuleType.ExclusivityModule
 }
+
 export const isThematicHighlightModule = (
   module: HomepageModule
 ): module is ThematicHighlightModule => {
   return module.type === HomepageModuleType.ThematicHighlightModule
+}
+
+export const isCategoryListModule = (module: HomepageModule): module is CategoryListModule => {
+  return module.type === HomepageModuleType.CategoryListModule
 }
