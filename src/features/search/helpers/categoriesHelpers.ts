@@ -85,14 +85,14 @@ export function getNativeCategoriesFromEnumArray(
  */
 export function getNativeCategories(
   data: SubcategoriesResponseModelv2 | undefined,
-  category: SearchGroupResponseModelv2 | undefined
+  categoryEnum: SearchGroupNameEnumv2 | undefined
 ) {
   if (!data) return []
-  if (!category) return []
-  if (category.name === SearchGroupNameEnumv2.NONE) return []
+  if (!categoryEnum) return []
+  if (categoryEnum === SearchGroupNameEnumv2.NONE) return []
 
   const nativeCategories = data.subcategories
-    .filter((subcategory) => subcategory.searchGroupName === category.name)
+    .filter((subcategory) => subcategory.searchGroupName === categoryEnum)
     .map((subcategory) => subcategory.nativeCategoryId)
     .map((nativeCategoryId) =>
       data.nativeCategories.find((nativeCategory) => nativeCategory.name === nativeCategoryId)
@@ -103,12 +103,6 @@ export function getNativeCategories(
   return getUniqueBy(nativeCategories, 'name').sort((a, b) =>
     (a?.value || '').localeCompare(b?.value || '')
   )
-}
-
-    // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
-    .filter(Boolean) as NativeCategoryResponseModelv2[]
-
-  return getUniqueBy(nativeCategories, 'name')
 }
 
 export function getGenreTypes(

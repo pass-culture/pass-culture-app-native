@@ -73,7 +73,7 @@ export const CategoriesModal = ({
         .sort((a, b) => (a.value || '').localeCompare(b.value || '')) || [],
     [data?.searchGroups]
   )
-  const nativeCategories = useMemo(() => getNativeCategories(data, category), [category, data])
+  const nativeCategories = useMemo(() => getNativeCategories(data, category.name), [category, data])
   const genreTypes = useMemo(() => getGenreTypes(data, nativeCategory), [data, nativeCategory])
 
   const handleModalClose = useCallback(() => {
