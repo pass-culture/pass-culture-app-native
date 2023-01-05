@@ -25,7 +25,6 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { getSpacing, Spacer } from 'ui/theme'
 
 const passwordInputErrorId = uuidv4()
-const emailInputErrorId = uuidv4()
 
 type FormValues = {
   newEmail: string
@@ -75,8 +74,6 @@ export function ChangeEmail() {
 
   const isSubmitButtonDisabled = !isValid || isLoading
 
-  const emailErrorMessage = errors.newEmail?.message
-
   return (
     <React.Fragment>
       <PageHeaderSecondary title="Modifier mon e-mail" />
@@ -102,13 +99,6 @@ export function ChangeEmail() {
               disabled={hasCurrentEmailChange}
               autoFocus
               isRequiredField
-              emailInputErrorId={emailInputErrorId}
-            />
-            <InputError
-              visible={!!errors.newEmail}
-              messageId={emailErrorMessage}
-              numberOfSpacesTop={2}
-              relatedInputId={emailInputErrorId}
             />
             <Spacer.Column numberOfSpaces={4} />
             <PasswordInputController
