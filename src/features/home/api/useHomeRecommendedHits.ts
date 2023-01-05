@@ -16,7 +16,7 @@ import { useAlgoliaRecommendedHits } from './useAlgoliaRecommendedHits'
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
   subcategoryLabelMapping: SubcategoryLabelMapping
-): RecommendedIdsRequest {
+): Omit<RecommendedIdsRequest, 'endpointUrl'> {
   if (!parameters) return {}
   const eventDuringNextXDays = parameters.eventDuringNextXDays
     ? parseInt(parameters.eventDuringNextXDays)
@@ -49,9 +49,9 @@ export const useHomeRecommendedHits = (
     userId,
     position,
     modelEndpoint: recommendationParameters?.modelEndpoint,
-  }) as string
+  })
   const [recommendedIds, setRecommendedIds] = useState<string[]>()
-  const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation(recommendationEndpoint)
+  const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   useEffect(() => {
@@ -60,9 +60,12 @@ export const useHomeRecommendedHits = (
       recommendationParameters,
       subcategoryLabelMapping
     )
-    getRecommendedIds(requestParameters, {
-      onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
-    })
+    getRecommendedIds(
+      { ...requestParameters, endpointUrl: recommendationEndpoint },
+      {
+        onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
+      }
+    )
   }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
   return useAlgoliaRecommendedHits(recommendedIds || [], moduleId)

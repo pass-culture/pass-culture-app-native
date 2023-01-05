@@ -11,6 +11,7 @@ export interface RecommendedIdsResponse {
 }
 
 export interface RecommendedIdsRequest {
+  endpointUrl: string
   start_date?: string
   end_date?: string
   isEvent?: boolean
