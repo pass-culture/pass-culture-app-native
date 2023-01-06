@@ -5,7 +5,7 @@ import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
+import { useInitialScreen } from './useInitialScreenConfig'
 
 const wrapper = (props: { children: unknown }) => (
   <SplashScreenProvider>{props.children as JSX.Element}</SplashScreenProvider>

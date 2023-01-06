@@ -1,7 +1,7 @@
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { renderHook } from 'tests/utils'
 
-import { useGoBack } from '../useGoBack'
+import { useGoBack } from './useGoBack'
 
 let mockCanGoBack = false
 

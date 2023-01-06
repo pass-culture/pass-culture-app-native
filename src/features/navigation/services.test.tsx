@@ -6,7 +6,7 @@ import React from 'react'
 import { analytics } from 'libs/firebase/analytics'
 import { flushAllPromises, act, render } from 'tests/utils'
 
-import { onNavigationStateChange } from '../services'
+import { onNavigationStateChange } from './services'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))

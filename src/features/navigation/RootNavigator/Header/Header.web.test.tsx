@@ -8,7 +8,7 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { theme } from 'theme'
 
-import { Header } from '../Header'
+import { Header } from './Header'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/AuthContext')

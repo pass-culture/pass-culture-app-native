@@ -11,7 +11,7 @@ import { storage } from 'libs/storage'
 import { server } from 'tests/server'
 import { renderHook, superFlushWithAct } from 'tests/utils'
 
-import { useInitialScreen } from '../RootNavigator/useInitialScreenConfig'
+import { useInitialScreen } from './useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/AuthContext')
