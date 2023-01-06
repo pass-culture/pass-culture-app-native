@@ -21,6 +21,7 @@ export const analytics: typeof actualAnalytics = {
   logCampaignTrackerEnabled: jest.fn(),
   logCancelBooking: jest.fn(),
   logCancelSignup: jest.fn(),
+  logCategoryBlockClicked: jest.fn(),
   logChangeSearchLocation: jest.fn(),
   logChooseEduConnectMethod: jest.fn(),
   logChooseUbbleMethod: jest.fn(),

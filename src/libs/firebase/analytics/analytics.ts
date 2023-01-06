@@ -61,6 +61,11 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId }),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
+  logCategoryBlockClicked: (params: {
+    moduleID: string
+    moduleListID: string
+    toEntryId: string
+  }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, { params }),
   logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, {
       type: params.type,
