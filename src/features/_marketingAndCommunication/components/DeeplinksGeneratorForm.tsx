@@ -2,11 +2,12 @@ import omit from 'lodash/omit'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
 import { LocationFilterChoice } from 'features/_marketingAndCommunication/atoms/LocationFilterChoice'
 import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
+import { OfferNativeCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferNativeCategoryChoices'
 import { OfferTypeChoices } from 'features/_marketingAndCommunication/atoms/OfferTypeChoices'
 import {
   FDL_CONFIG,
@@ -153,10 +154,14 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             }
       )
     }
+
+    function onChangeOfferNativeCategories(nativeCategories: NativeCategoryIdEnumv2[]) {
+      setScreenParams((prevPageParams) =>
+        !nativeCategories.length
           ? omit(prevPageParams, name)
           : {
               ...prevPageParams,
-              [name]: categories,
+              [name]: nativeCategories,
             }
       )
     }
@@ -236,6 +241,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         )}
         {config.type === 'offerCategories' && (
           <OfferCategoryChoices onChange={onChangeOfferCategories} />
+        )}
+        {!!(config.type === 'offerNativeCategories' && screenParams.offerCategories) && (
+          <OfferNativeCategoryChoices
+            categories={screenParams.offerCategories as SearchGroupNameEnumv2[]}
+            onChange={onChangeOfferNativeCategories}
+          />
         )}
         {config.type === 'offerTypes' && <OfferTypeChoices onChange={onChangeOfferTypes} />}
         {config.type === 'date' && (

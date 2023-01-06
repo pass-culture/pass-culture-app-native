@@ -1,0 +1,480 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxLines": "multiple",
+      "WebkitBoxOrient": "vertical",
+      "WebkitFlexDirection": "column",
+      "WebkitFlexWrap": "wrap",
+      "flexDirection": "column",
+      "flexWrap": "wrap",
+      "marginBottom": "-12px",
+      "marginRight": "-12px",
+      "msFlexDirection": "column",
+      "msFlexWrap": "wrap",
+    }
+  }
+>
+  <ul
+    className="css-reset-4rbku5 css-view-1dbjc4n"
+    role="list"
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxLines": "multiple",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitFlexDirection": "row",
+        "WebkitFlexWrap": "wrap",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "msFlexDirection": "row",
+        "msFlexWrap": "wrap",
+        "overflowX": "auto",
+        "overflowY": "auto",
+        "paddingLeft": "0px",
+      }
+    }
+  >
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        aria-label="Arts visuels"
+        className="css-view-1dbjc4n"
+        data-testid="Arts visuels"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Arts visuels
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Arts visuels"
+          checked={false}
+          hidden={true}
+          name="Arts visuels"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        aria-label="Matériels créatifs"
+        className="css-view-1dbjc4n"
+        data-testid="Matériels créatifs"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Matériels créatifs
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Matériels créatifs"
+          checked={false}
+          hidden={true}
+          name="Matériels créatifs"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        aria-label="Pratique artistique en ligne"
+        className="css-view-1dbjc4n"
+        data-testid="Pratique artistique en ligne"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Pratique artistique en ligne
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Pratique artistique en ligne"
+          checked={false}
+          hidden={true}
+          name="Pratique artistique en ligne"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-reset-4rbku5 css-view-1dbjc4n"
+      role="listitem"
+      style={
+        Object {
+          "display": "list-item",
+        }
+      }
+    >
+      <div
+        aria-checked={false}
+        aria-label="Pratiques & ateliers artistiques"
+        className="css-view-1dbjc4n"
+        data-testid="Pratiques & ateliers artistiques"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "auto",
+            "WebkitAlignItems": "center",
+            "WebkitAlignSelf": "flex-start",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitFlexDirection": "row",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "auto",
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomColor": "rgba(144,148,157,1.00)",
+            "borderBottomLeftRadius": "40px",
+            "borderBottomRightRadius": "40px",
+            "borderBottomWidth": "2px",
+            "borderLeftColor": "rgba(144,148,157,1.00)",
+            "borderLeftWidth": "2px",
+            "borderRightColor": "rgba(144,148,157,1.00)",
+            "borderRightWidth": "2px",
+            "borderTopColor": "rgba(144,148,157,1.00)",
+            "borderTopLeftRadius": "40px",
+            "borderTopRightRadius": "40px",
+            "borderTopWidth": "2px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "marginBottom": "12px",
+            "marginRight": "12px",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexItemAlign": "start",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "auto",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="ltr"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginBottom": "10px",
+              "marginTop": "10px",
+            }
+          }
+        >
+          Pratiques & ateliers artistiques
+        </div>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "width": "20px",
+            }
+          }
+        />
+        <input
+          aria-label="Pratiques & ateliers artistiques"
+          checked={false}
+          hidden={true}
+          name="Pratiques & ateliers artistiques"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+  </ul>
+</div>
+`;

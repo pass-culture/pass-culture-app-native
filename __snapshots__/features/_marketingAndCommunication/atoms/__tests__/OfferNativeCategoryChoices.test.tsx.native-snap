@@ -1,0 +1,370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "column",
+        "flexWrap": "wrap",
+        "marginBottom": -12,
+        "marginRight": -12,
+      },
+    ]
+  }
+>
+  <View
+    accessibilityRole="list"
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "paddingLeft": 0,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Arts visuels"
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Arts visuels"
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Arts visuels
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Matériels créatifs"
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Matériels créatifs"
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Matériels créatifs
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Pratique artistique en ligne"
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Pratique artistique en ligne"
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Pratique artistique en ligne
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessibilityRole="none"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Pratiques & ateliers artistiques"
+        accessibilityRole="checkbox"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 40,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "marginBottom": 12,
+            "marginRight": 12,
+            "maxWidth": 500,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Pratiques & ateliers artistiques"
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={1}
+          selected={false}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginVertical": 10,
+              },
+            ]
+          }
+        >
+          Pratiques & ateliers artistiques
+        </Text>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
