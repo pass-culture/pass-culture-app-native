@@ -3,10 +3,9 @@ import { openInbox } from 'react-native-email-link'
 
 import { SubscriptionMessage } from 'api/gen'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
+import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
-import { formatToSlashedFrenchDate } from 'libs/dates'
-import { formatToHour } from 'libs/parsers/formatDates'
 import { Banner } from 'ui/components/Banner'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
@@ -18,13 +17,6 @@ import { Spacer } from 'ui/theme'
 
 type Props = {
   subscriptionMessage: SubscriptionMessage
-}
-
-const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) => {
-  if (!lastUpdatedDate) return
-  const day = formatToSlashedFrenchDate(new Date(lastUpdatedDate).toISOString())
-  const hour = formatToHour(new Date(lastUpdatedDate))
-  return `${day} à ${hour}`
 }
 
 const CallToAction = ({ subscriptionMessage }: Props) => {
