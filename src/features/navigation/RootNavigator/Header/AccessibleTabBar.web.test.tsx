@@ -3,7 +3,7 @@ import React from 'react'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils/web'
 
-import { AccessibleTabBar } from '../AccessibleTabBar'
+import { AccessibleTabBar } from './AccessibleTabBar'
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
