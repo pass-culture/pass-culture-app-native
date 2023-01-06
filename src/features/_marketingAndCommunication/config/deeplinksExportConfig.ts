@@ -17,6 +17,7 @@ export type ParamConfig = {
     | 'priceRange'
     | 'boolean'
     | 'offerCategories'
+    | 'offerNativeCategories'
     | 'offerTypes'
     | 'date'
     | 'locationFilter'
@@ -75,6 +76,11 @@ export const SCREENS_CONFIG: {
       type: 'offerCategories',
       required: false,
       description: 'Categories',
+    },
+    offerNativeCategories: {
+      type: 'offerNativeCategories',
+      required: false,
+      description: 'Sous-catégories',
     },
     offerTypes: {
       type: 'offerTypes',
