@@ -14,12 +14,6 @@ type CategoryListProps = {
 
 const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
 
-const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
-  <CategoryBlockContainer index={index}>
-    <CategoryBlock {...item} filter={getColorFilter(index)} />
-  </CategoryBlockContainer>
-)
-
 const ListFooterComponent = () => <Spacer.Column numberOfSpaces={6} />
 
 const ItemSeparatorComponent = () => <VerticalSeparator />
@@ -32,6 +26,11 @@ const ListHeaderComponent = (title: string) => (
 )
 
 export const CategoryListModule = ({ title, categoryBlockList }: CategoryListProps) => {
+  const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
+    <CategoryBlockContainer index={index}>
+      <CategoryBlock {...item} filter={getColorFilter(index)} />
+    </CategoryBlockContainer>
+  )
   return (
     <FlatListContainer>
       <FlatList
