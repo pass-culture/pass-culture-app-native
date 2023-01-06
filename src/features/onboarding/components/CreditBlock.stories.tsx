@@ -7,9 +7,14 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
+const ANIMATION_DELAY = 2
 export default {
   title: 'features/onboarding/CreditBlock',
   component: CreditBlock,
+  parameters: {
+    // Wait for animation to finish before snapshot
+    chromatic: { delay: ANIMATION_DELAY },
+  },
 } as ComponentMeta<typeof CreditBlock>
 
 const Template: ComponentStory<typeof CreditBlock> = (props) => <CreditBlock {...props} />
