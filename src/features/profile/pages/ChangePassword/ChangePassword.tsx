@@ -1,26 +1,23 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError } from 'api/apiHelpers'
-import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
 import { useChangePasswordMutation } from 'features/auth/mutations'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { AppThemeType } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { InputError } from 'ui/components/inputs/InputError'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -31,10 +28,6 @@ type ChangePasswordFormData = {
   newPassword: string
   confirmedPassword: string
 }
-
-const passwordDescribedBy = uuidv4()
-const passwordInputErrorId = uuidv4()
-const passwordConfirmationErrorId = uuidv4()
 
 export function ChangePassword() {
   const defaultValues: ChangePasswordFormData = {
@@ -62,8 +55,7 @@ export function ChangePassword() {
     clearErrors,
     setError,
     reset,
-    getValues,
-    formState: { errors, isSubmitting, isValid, isValidating, isDirty },
+    formState: { isSubmitting, isValid, isValidating, isDirty },
   } = useForm<ChangePasswordFormData>({
     mode: 'onChange',
     defaultValues,
@@ -136,83 +128,28 @@ export function ChangePassword() {
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={8} />
         <Form.MaxWidth flex={1}>
-          <Controller
+          <PasswordInputController
             control={control}
-            name="currentPassword"
-            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-              <React.Fragment>
-                <PasswordInput
-                  label="Mot de passe actuel"
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  placeholder="Ton mot de passe actuel"
-                  isRequiredField
-                  accessibilityDescribedBy={passwordInputErrorId}
-                  isError={error && value.length > 0}
-                />
-                <InputError
-                  visible={!!error && value.length > 0}
-                  messageId="Mot de passe incorrect"
-                  numberOfSpacesTop={getSpacing(0.5)}
-                  relatedInputId={passwordInputErrorId}
-                />
-              </React.Fragment>
-            )}
+            name={'currentPassword'}
+            label="Mot de passe actuel"
+            placeholder="Ton mot de passe actuel"
+            isRequiredField
           />
           <Spacer.Column numberOfSpaces={7} />
-          <Controller
+          <PasswordInputController
             control={control}
             name="newPassword"
-            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-              <React.Fragment>
-                <PasswordInput
-                  label="Nouveau mot de passe"
-                  accessibilityDescribedBy={passwordDescribedBy}
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  placeholder="Ton nouveau mot de passe"
-                  isRequiredField
-                  isError={error && value.length > 0}
-                />
-                <PasswordSecurityRules
-                  password={value}
-                  visible={value.length > 0}
-                  nativeID={passwordDescribedBy}
-                />
-              </React.Fragment>
-            )}
+            label="Nouveau mot de passe"
+            placeholder="Ton nouveau mot de passe"
+            withSecurityRules
           />
           <Spacer.Column numberOfSpaces={5} />
-          <Controller
+          <PasswordInputController
             control={control}
             name="confirmedPassword"
-            render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
-              <React.Fragment>
-                <PasswordInput
-                  label="Confirmer le mot de passe"
-                  value={value}
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  placeholder="Confirmer le mot de passe"
-                  onFocus={onFocusConfirmedPassword}
-                  isRequiredField
-                  accessibilityDescribedBy={passwordConfirmationErrorId}
-                  isError={
-                    !!errors.confirmedPassword &&
-                    getValues('newPassword').length > 0 &&
-                    value.length > 0
-                  }
-                />
-                <InputError
-                  visible={!!error && getValues('newPassword').length > 0 && value.length > 0}
-                  messageId={error?.message}
-                  numberOfSpacesTop={getSpacing(0.5)}
-                  relatedInputId={passwordConfirmationErrorId}
-                />
-              </React.Fragment>
-            )}
+            label="Confirmer le mot de passe"
+            placeholder="Confirmer le mot de passe"
+            onFocus={onFocusConfirmedPassword}
           />
 
           {isMobileViewport && isTouch ? (
