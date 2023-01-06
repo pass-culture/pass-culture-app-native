@@ -5,13 +5,12 @@ export enum FILTER_TYPES {
   LOCATION = 'Localisation',
   CATEGORIES = 'Catégories',
   PRICES = 'Prix',
-  OFFER_TYPE = 'Type',
+  OFFER_DUO = 'Duo',
   DATES_HOURS = 'Dates & heures',
 }
 
 export const useAppliedFilters = (searchState: Partial<SearchState>) => {
-  const { offerCategories, minPrice, maxPrice, offerIsDuo, offerTypes, date, timeRange } =
-    searchState
+  const { offerCategories, minPrice, maxPrice, offerIsDuo, date, timeRange } = searchState
   let filterTypes: FILTER_TYPES[] = [FILTER_TYPES.LOCATION]
 
   const hasCategory = offerCategories ? offerCategories.length > 0 : false
@@ -19,7 +18,7 @@ export const useAppliedFilters = (searchState: Partial<SearchState>) => {
   const maxPriceAsNumber: number | undefined = getPriceAsNumber(maxPrice)
   const hasPrice =
     (minPriceAsNumber !== undefined && minPriceAsNumber > 0) || maxPriceAsNumber !== undefined
-  const hasType = offerIsDuo || offerTypes?.isDigital || offerTypes?.isEvent || offerTypes?.isThing
+  const hasDuoOffer = offerIsDuo
   const hasDatesHours = Boolean(date || timeRange)
 
   if (hasCategory) {
@@ -28,8 +27,8 @@ export const useAppliedFilters = (searchState: Partial<SearchState>) => {
   if (hasPrice) {
     filterTypes = [...filterTypes, FILTER_TYPES.PRICES]
   }
-  if (hasType) {
-    filterTypes = [...filterTypes, FILTER_TYPES.OFFER_TYPE]
+  if (hasDuoOffer) {
+    filterTypes = [...filterTypes, FILTER_TYPES.OFFER_DUO]
   }
   if (hasDatesHours) {
     filterTypes = [...filterTypes, FILTER_TYPES.DATES_HOURS]
