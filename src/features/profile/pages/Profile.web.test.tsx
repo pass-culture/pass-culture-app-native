@@ -11,7 +11,7 @@ describe('<Profile/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<Profile />)
       const results = await checkAccessibilityFor(container, {
-        // TODO(LucasBeneston): Fix geolocation toggle accessibility errors
+        // TODO(PC-19659): Fix FilterSwitch accessibility errors
         rules: {
           'aria-toggle-field-name': { enabled: false },
           'duplicate-id-aria': { enabled: false },
