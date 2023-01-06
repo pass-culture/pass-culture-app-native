@@ -24,6 +24,14 @@ exports[`Profile component should render correctly 1`] = `
       activityState={2}
       collapsable={false}
       forwardedRef={[Function]}
+      gestureResponseDistance={
+        Object {
+          "bottom": -1,
+          "end": -1,
+          "start": -1,
+          "top": -1,
+        }
+      }
       style={
         Object {
           "bottom": 0,
