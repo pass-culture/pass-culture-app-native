@@ -70,10 +70,6 @@ export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
     ? matchSubscriptionMessageIconToSvg(popOverIcon)
     : Clock
 
-  const message =
-    userMessage ??
-    'Ton dossier est déposé. Nous avons bien reçu ton dossier et sommes en train de l’analyser\u00a0!'
-
   return (
     <React.Fragment>
       {!!updatedAt && (
@@ -88,7 +84,7 @@ export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
       <Spacer.Column numberOfSpaces={2} />
       <Banner
         icon={icon}
-        message={message}
+        message={userMessage}
         withLightColorMessage={!!callToAction?.callToActionTitle}
         testID="subscription-message-badge">
         <CallToAction subscriptionMessage={subscriptionMessage} />
