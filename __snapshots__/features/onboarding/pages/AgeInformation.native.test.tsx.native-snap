@@ -218,13 +218,8 @@ Array [
                   ]
                 }
               >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  undefined-Lottie-Mock
                 </View>
               </View>
               <View>
@@ -1392,13 +1387,8 @@ Array [
                   ]
                 }
               >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  undefined-Lottie-Mock
                 </View>
               </View>
               <View>
@@ -2567,13 +2557,8 @@ Array [
                   ]
                 }
               >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  undefined-Lottie-Mock
                 </View>
               </View>
               <View>
@@ -3812,13 +3797,8 @@ Array [
                   ]
                 }
               >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                <View>
+                  undefined-Lottie-Mock
                 </View>
               </View>
               <View>
