@@ -155,6 +155,7 @@ export type CategoryListModule = {
 }
 
 export type CategoryBlock = {
+  id: string
   title: string
   homeEntryId: string
   image?: string
