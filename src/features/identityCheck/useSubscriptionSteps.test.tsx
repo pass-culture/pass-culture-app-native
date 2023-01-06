@@ -102,19 +102,10 @@ describe('useSubscriptionSteps', () => {
     expect(steps[0].screens.includes('PhoneValidationTooManySMSSent')).toEqual(false)
   })
 
-  it.each`
-    enableNewIdentificationFlow | expectedUbbleFlow
-    ${true}                     | ${['SelectIDOrigin']}
-    ${false}                    | ${['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd']}
-  `(
-    'should return $expectedUbbleFlow identity screen list when enableNewIdentificationFlow is $enableNewIdentificationFlow',
-    ({ enableNewIdentificationFlow: enableNewIdentificationFlowValue, expectedUbbleFlow }) => {
-      useFeatureFlagSpy.mockReturnValueOnce(enableNewIdentificationFlowValue)
+  it("should return ['SelectIDOrigin'] identity screen list", () => {
+    const steps = useSubscriptionSteps()
+    const identificationScreensFlow = steps[2].screens
 
-      const steps = useSubscriptionSteps()
-      const identificationScreensFlow = steps[2].screens
-
-      expect(identificationScreensFlow).toEqual(expectedUbbleFlow)
-    }
-  )
+    expect(identificationScreensFlow).toEqual(['SelectIDOrigin'])
+  })
 })

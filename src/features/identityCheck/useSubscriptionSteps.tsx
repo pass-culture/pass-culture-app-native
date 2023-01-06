@@ -6,8 +6,6 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -21,9 +19,6 @@ export const useSubscriptionSteps = (): StepConfig[] => {
   const hasSchoolTypes = profile.hasSchoolTypes
   const { data: nextSubscriptionStep } = useNextSubscriptionStep()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const enableNewIdentificationFlow = useFeatureFlag(
-    RemoteStoreFeatureFlags.NEW_IDENTIFICATION_FLOW
-  )
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
     'IdentityCheckEduConnect',
@@ -31,9 +26,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
     'IdentityCheckValidation',
   ]
 
-  const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = enableNewIdentificationFlow
-    ? ['SelectIDOrigin']
-    : ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd']
+  const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
   const steps: StepConfig[] = [
     {

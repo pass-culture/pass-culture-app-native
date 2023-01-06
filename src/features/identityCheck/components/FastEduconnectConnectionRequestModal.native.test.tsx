@@ -75,18 +75,7 @@ describe('<IdentityCheckEnd/>', () => {
     })
   })
 
-  it('should redirect to identity check start screen on "Identification manuelle" button press when enableNewIdentificationFlow is false', async () => {
-    const { getByText } = render(
-      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
-    )
-    await fireEvent.press(getByText('Identification manuelle'))
-
-    expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckStart', undefined)
-  })
-
-  it('should redirect to select ID Origin screen on "Identification manuelle" button press when enableNewIdentificationFlow is true', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-
+  it('should redirect to select ID Origin screen on "Identification manuelle" button press', async () => {
     const { getByText } = render(
       <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )

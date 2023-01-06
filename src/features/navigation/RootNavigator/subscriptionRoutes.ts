@@ -15,7 +15,6 @@ import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identi
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
 import { ComeBackLater } from 'features/identityCheck/pages/identification/identificationStart/ComeBackLater'
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/identificationStart/ExpiredOrLostID'
-import { IdentityCheckStart } from 'features/identityCheck/pages/identification/identificationStart/IdentityCheckStart'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectPhoneStatus.web'
@@ -141,13 +140,6 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   // Identification
-  {
-    name: 'IdentityCheckStart',
-    component: IdentityCheckStart,
-    path: 'verification-identite/identification',
-    options: { title: 'Identification' },
-    secure: true,
-  },
   {
     name: 'UbbleWebview',
     component: UbbleWebview,
