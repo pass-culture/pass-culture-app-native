@@ -1,5 +1,5 @@
 import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { Banner } from 'ui/components/Banner'
@@ -13,9 +13,9 @@ type Props = {
 }
 
 export const SpellingHelp = ({ suggestedEmail, onEmailChange }: Props) => {
-  function replaceEmail() {
+  const replaceEmail = useCallback(() => {
     onEmailChange(suggestedEmail.full)
-  }
+  }, [onEmailChange, suggestedEmail.full])
 
   return (
     <Container>
