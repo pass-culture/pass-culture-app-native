@@ -2,7 +2,7 @@ import { LinkingOptions } from '@react-navigation/native'
 import { Platform } from 'react-native'
 
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
-import { withAsyncErrorBoundary } from 'features/errors'
+import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'

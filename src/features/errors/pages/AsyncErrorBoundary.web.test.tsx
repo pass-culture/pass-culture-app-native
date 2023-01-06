@@ -4,7 +4,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { AsyncError } from 'libs/monitoring'
 import { render, fireEvent } from 'tests/utils/web'
 
-import { AsyncErrorBoundary } from '../AsyncErrorBoundary'
+import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 
 jest.mock('libs/monitoring/services')
 

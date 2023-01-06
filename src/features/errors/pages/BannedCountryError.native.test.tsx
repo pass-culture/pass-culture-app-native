@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
+
+import { BannedCountryError } from './BannedCountryError'
 
 describe('BannedCountryError', () => {
   it('should render correctly', () => {

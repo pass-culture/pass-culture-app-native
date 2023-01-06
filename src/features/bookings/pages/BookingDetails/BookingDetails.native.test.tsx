@@ -8,7 +8,7 @@ import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEnd
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
 import { Booking } from 'features/bookings/types'
-import { withAsyncErrorBoundary } from 'features/errors'
+import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'

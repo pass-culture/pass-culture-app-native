@@ -2,7 +2,7 @@ import { NavigationCulturalSurvey } from 'features/cheatcodes/pages/NavigationCu
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
-import { withAsyncErrorBoundary } from 'features/errors'
+import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import {
   CulturalSurveyRootStackParamList,
   GenericRoute,
