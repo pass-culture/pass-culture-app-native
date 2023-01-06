@@ -141,6 +141,18 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     function onChangeOfferCategories(categories: SearchGroupNameEnumv2[]) {
       setScreenParams((prevPageParams) =>
         !categories.length
+          ? {
+              ...prevPageParams,
+              [name]: undefined,
+              offerNativeCategories: undefined,
+            }
+          : {
+              ...prevPageParams,
+              [name]: categories,
+              offerNativeCategories: undefined,
+            }
+      )
+    }
           ? omit(prevPageParams, name)
           : {
               ...prevPageParams,
