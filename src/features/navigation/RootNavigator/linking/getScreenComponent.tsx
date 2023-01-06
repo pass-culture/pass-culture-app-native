@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react'
 
-import { withAsyncErrorBoundary } from 'features/errors'
+import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { withScreenWrapper } from 'features/navigation/RootNavigator/withScreenWrapper'
 import { TabRoute } from 'features/navigation/TabBar/types'
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AsyncErrorBoundary component should render 1`] = `
+exports[`AsyncErrorBoundary component should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": .c2 {
