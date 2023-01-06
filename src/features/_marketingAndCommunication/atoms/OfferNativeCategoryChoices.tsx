@@ -7,7 +7,7 @@ import {
   SearchGroupNameEnumv2,
 } from 'api/gen'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
-import { getNativeCategories } from 'features/search/helpers/categoriesHelpers'
+import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'

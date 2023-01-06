@@ -7,7 +7,7 @@ import {
   getDescription,
   getNativeCategoriesFromEnumArray,
   getSearchGroupsFromEnumArray,
-} from 'features/search/helpers/categoriesHelpers'
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DescriptionContext } from 'features/search/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'

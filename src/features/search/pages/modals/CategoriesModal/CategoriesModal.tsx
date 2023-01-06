@@ -4,11 +4,7 @@ import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import {
-  NativeCategoryResponseModelv2,
-  SearchGroupNameEnumv2,
-  SearchGroupResponseModelv2,
-} from 'api/gen'
+import { NativeCategoryResponseModelv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
@@ -23,7 +19,8 @@ import {
   getGenreTypes,
   getIcon,
   getNativeCategories,
-} from 'features/search/helpers/categoriesHelpers'
+  getSearchGroupsByAlphabeticalSorting,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModalFormProps, SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -67,10 +64,7 @@ export const CategoriesModal = ({
   const { nativeCategory, category, genreType, currentView } = watch()
 
   const categories = useMemo(
-    () =>
-      data?.searchGroups
-        .filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
-        .sort((a, b) => (a.value || '').localeCompare(b.value || '')) || [],
+    () => (data?.searchGroups ? getSearchGroupsByAlphabeticalSorting(data.searchGroups) : []),
     [data?.searchGroups]
   )
   const nativeCategories = useMemo(() => getNativeCategories(data, category.name), [category, data])

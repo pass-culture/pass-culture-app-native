@@ -30,6 +30,12 @@ export const categoryAllValue: SearchGroupResponseModelv2 = {
   name: SearchGroupNameEnumv2.NONE,
 }
 
+export function getSearchGroupsByAlphabeticalSorting(data: SearchGroupResponseModelv2[]) {
+  return data
+    .filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
+    .sort((a, b) => (a.value || '').localeCompare(b.value || ''))
+}
+
 /**
  * Returns a `SearchGroupResponseModelv2` from a `SearchGroupEnumv2`.
  */
