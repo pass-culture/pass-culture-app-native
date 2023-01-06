@@ -1,6 +1,6 @@
 import { SearchView } from 'features/search/types'
 
-import { sanitizeNavigationState } from '../sanitizeNavigationState'
+import { sanitizeNavigationState } from './sanitizeNavigationState'
 
 describe('sanitizeNavigationState', () => {
   const state = {
