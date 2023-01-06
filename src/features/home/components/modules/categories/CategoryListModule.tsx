@@ -31,9 +31,7 @@ const ListHeaderComponent = (title: string) => (
   </React.Fragment>
 )
 
-export const CategoryListModule = (props: CategoryListProps) => {
-  const { title, categoryBlockList } = props
-
+export const CategoryListModule = ({ title, categoryBlockList }: CategoryListProps) => {
   return (
     <FlatListContainer>
       <FlatList
