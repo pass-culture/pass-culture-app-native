@@ -10,6 +10,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TILE_HEIGHT = 244
+const TEXT_BACKGROUND_OPACITY = 0.67
 
 type Props = {
   title: string
@@ -41,13 +42,16 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
           <DateRangeCaption>{dateRange}</DateRangeCaption>
         </DateRangeCaptionContainer>
         <TextContainer>
-          {!!subtitle && (
-            <React.Fragment>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-              <Spacer.Column numberOfSpaces={1} />
-            </React.Fragment>
-          )}
-          <Title numberOfLines={1}>{title}</Title>
+          <Gradient />
+          <BlackBackground>
+            {!!subtitle && (
+              <React.Fragment>
+                <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
+                <Spacer.Column numberOfSpaces={1} />
+              </React.Fragment>
+            )}
+            <Title numberOfLines={1}>{title}</Title>
+          </BlackBackground>
         </TextContainer>
       </ImageBackground>
     </StyledInternalTouchableLink>
@@ -83,15 +87,20 @@ const DateRangeCaption = styled(Typo.Hint)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const TextContainer = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [colorAlpha(theme.colors.black, 0), colorAlpha(theme.colors.black, 0.92)],
-}))({
-  position: 'absolute',
-  bottom: 0,
-  paddingTop: getSpacing(8),
+const TextContainer = styled.View({ position: 'absolute', bottom: 0 })
+
+const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    colorAlpha(theme.colors.black, 0),
+    colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
+  ],
+}))({ height: getSpacing(8) })
+
+const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(4),
   paddingBottom: getSpacing(4),
-})
+  backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
+}))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.white,
