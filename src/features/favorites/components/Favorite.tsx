@@ -1,5 +1,5 @@
-import React, { useMemo, useRef, useState } from 'react'
-import { Animated, LayoutChangeEvent } from 'react-native'
+import React, { useCallback, useMemo, useRef } from 'react'
+import { Animated } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -21,6 +21,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { useElementHeight } from 'ui/hooks/useElementHeight'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -32,7 +33,7 @@ interface Props {
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
   const theme = useTheme()
-  const [height, setHeight] = useState<number | undefined>(undefined)
+  const { onLayout, height } = useElementHeight()
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const queryClient = useQueryClient()
@@ -113,13 +114,6 @@ export const Favorite: React.FC<Props> = (props) => {
       : undefined,
   }
 
-  function onLayout(event: LayoutChangeEvent) {
-    const { height: newHeight } = event.nativeEvent.layout
-    if (!height) {
-      setHeight(newHeight)
-    }
-  }
-
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
@@ -128,10 +122,10 @@ export const Favorite: React.FC<Props> = (props) => {
 
   const { share: shareOffer, shareContent } = useShareOffer(offer.id)
 
-  const pressShareOffer = () => {
+  const pressShareOffer = useCallback(() => {
     shareOffer()
     showShareOfferModal()
-  }
+  }, [shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>
