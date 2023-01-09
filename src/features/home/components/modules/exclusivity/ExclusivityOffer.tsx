@@ -53,11 +53,7 @@ const UnmemoizedExclusivityOffer = ({
   return (
     <StyledTouchableLink
       highlight
-      navigateTo={
-        typeof offerId === 'number'
-          ? { screen: 'Offer', params: { id: offerId, from: 'home' } }
-          : undefined
-      }
+      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'home' } }}
       onAfterNavigate={handlePressExclu}
       onFocus={onFocus}
       onBlur={onBlur}
@@ -72,10 +68,10 @@ const UnmemoizedExclusivityOffer = ({
 
 export const ExclusivityOffer = memo(UnmemoizedExclusivityOffer)
 
-const StyledTouchableLink = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => ({
-    flex: 1,
-    borderRadius: theme.borderRadius.radius,
-    ...customFocusOutline({ isFocus, color: theme.colors.black }),
-  })
-)
+const StyledTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
+  isFocus?: boolean
+}>(({ theme, isFocus }) => ({
+  flex: 1,
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
