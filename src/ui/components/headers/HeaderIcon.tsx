@@ -55,8 +55,8 @@ export const HeaderIcon = (props: HeaderIconProps) => {
         <IconContainer
           testID="AnimatedHeaderIconRoundContainer"
           style={{
-            borderColor: props.animationState?.iconBorderColor,
-            backgroundColor: props.animationState?.iconBackgroundColor,
+            borderColor: props.animationState.iconBorderColor,
+            backgroundColor: props.animationState.iconBackgroundColor,
             transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
           }}>
           <AnimatedIcon

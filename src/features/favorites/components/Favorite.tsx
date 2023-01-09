@@ -103,6 +103,16 @@ export const Favorite: React.FC<Props> = (props) => {
     })
   }
 
+  const animatedViewStyle = {
+    opacity: animatedOpacity,
+    height: height
+      ? animatedCollapse.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, height],
+        })
+      : undefined,
+  }
+
   function onLayout(event: LayoutChangeEvent) {
     const { height: newHeight } = event.nativeEvent.layout
     if (!height) {
@@ -125,17 +135,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <Animated.View
-        onLayout={onLayout}
-        style={{
-          opacity: animatedOpacity,
-          height: height
-            ? animatedCollapse.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0, height],
-              })
-            : undefined,
-        }}>
+      <Animated.View onLayout={onLayout} style={animatedViewStyle}>
         <Container
           navigateTo={
             offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
@@ -209,9 +209,9 @@ const RightContent = styled.View({
   alignItems: 'flex-end',
 })
 
-const Container = styled(InternalTouchableLink)({
-  marginHorizontal: getSpacing(6),
-})
+const Container = styled(InternalTouchableLink)(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',
