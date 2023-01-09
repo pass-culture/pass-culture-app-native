@@ -3,11 +3,10 @@ const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFro
 
 module.exports = {
   ...base,
-  preset: 'react-native-web',
+  preset: '',
   testEnvironment: 'jest-environment-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
   setupFiles: [
-    'react-native-web/jest/setup.js',
     ...base.setupFiles,
     '<rootDir>/jest/jest.web.setup.ts',
   ],
