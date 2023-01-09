@@ -38,15 +38,13 @@ const UnmemoizedExclusivityOffer = ({
       from: 'exclusivity',
       homeEntryId,
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offerId])
+  }, [homeEntryId, moduleId, offerId, title])
 
   useEffect(() => {
     if (shouldDisplayExcluOffer) {
       analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldDisplayExcluOffer])
+  }, [homeEntryId, index, moduleId, shouldDisplayExcluOffer])
 
   if (!shouldDisplayExcluOffer) return <React.Fragment />
 
