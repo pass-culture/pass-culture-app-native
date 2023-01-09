@@ -29,7 +29,7 @@ export function BookingConfirmation() {
 
   const trackBooking = useCallback(() => BatchUser.trackEvent(BatchEvent.hasBooked), [])
 
-  const displayBookingDetails = () => {
+  const displayBookingDetails = useCallback(() => {
     analytics.logSeeMyBooking(params.offerId)
     trackBooking()
     reset({
@@ -50,7 +50,7 @@ export function BookingConfirmation() {
         },
       ],
     })
-  }
+  }, [params.bookingId, params.offerId, reset, trackBooking])
 
   const {
     visible: shareOfferModalVisible,
@@ -58,10 +58,10 @@ export function BookingConfirmation() {
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const pressShareOffer = () => {
+  const pressShareOffer = useCallback(() => {
     shareOffer()
     showShareOfferModal()
-  }
+  }, [shareOffer, showShareOfferModal])
 
   useShowReview()
 
