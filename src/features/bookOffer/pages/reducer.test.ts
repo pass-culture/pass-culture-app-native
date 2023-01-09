@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { initialBookingState, bookOfferReducer, Step } from '../reducer'
+import { initialBookingState, bookOfferReducer, Step } from './reducer'
 
 const Today = new Date(2020, 10, 1)
 

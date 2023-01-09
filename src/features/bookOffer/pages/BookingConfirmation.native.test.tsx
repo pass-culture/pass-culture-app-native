@@ -8,7 +8,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render } from 'tests/utils'
 
-import { BookingConfirmation } from '../BookingConfirmation'
+import { BookingConfirmation } from './BookingConfirmation'
 
 jest.mock('features/user/helpers/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
