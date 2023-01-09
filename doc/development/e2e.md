@@ -65,7 +65,7 @@ We use environment variable to customize the configuration:
 | `IOS_PLATFORM_VERSION`     | `string`  |          | `15.2`      | iOS platform version                                    |
 | `APPIUM_TEST_SERVER_PORT`  | `number`  |          | `4723`      | Appium service port (if you don't use the default)      |
 | `APPIUM_TEST_SERVER_HOST`  | `string`  |          | `127.0.0.1` | Appium listening interface                              |
-| `APPIUM_APP`               | `string`  | yes      |             | ipa or apk application to install before running test   |
+| `APPIUM_APP`               | `string`  | yes      |             | ipa or apk application to install before running test. Or iOS bundle id if already installed  |
 | `APPIUM_APP_WAIT_ACTIVITY` | `string`  |          |             | The android apk main activity to start (default: auto)  |
 | `APPIUM_APP_PACKAGE`       | `string`  |          |             | Android bundle id (if app is already installed)         | 
 | `APPIUM_APP_ACTIVITY`      | `string`  |          |             | Android package activity (if app is already installed)  |
@@ -133,8 +133,6 @@ yarn e2e:android.app
 
 It will use capability `appium:noReset` to `true`, read more here: https://github.com/appium/appium-uiautomator2-driver#general
 
-> It is not possible to test the Android development application
-
 ### Testing on iOS
 
 - It is not possible to use the `ipa` from appcenter.
@@ -157,7 +155,14 @@ cd ..
 APPIUM_APP=./PassCulture.zip yarn e2e:ios.app
 ```
 
-> It is not possible to test the iOS application using the development environment
+> It is not possible to test the iOS application using the development environment (because you cannot erase application cache on iOS, re-running test will fail due to FirstLaunch requirements).
+
+If the application is already installed, you can inspect it (with Appium Inspector) without building the application. For instance, for staging app you will do:
+
+```bash
+# or for testing: app.passculture.test
+APPIUM_APP="app.passculture.staging" yarn e2e:ios.app
+``` 
 
 ### Writing tests
 
@@ -236,6 +241,18 @@ $('[data-testid="Accueil"]')
 
 We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `$$$` 
 and this allow to write less verbose selector for our cross platforms cases.
+
+### ~ Selector
+
+The selector used to access component is the `accessibility id` :
+- For Android: the `accessibility id` corresponds to the `accessibilityLabel`.
+- For iOS: the `accessibility id` corresponds to the `testID`.
+
+The following component have been refactored to easily set a cross-platform selector :
+- `AppButton`, `ButtonInsideText`, `ButtonWithLinearGradient`: The `accessibilityLabel` and `testID` are automatically set to the `wording` prop, or to `accessibilityLabel` prop if given. This means that `accessibility id` is the `wording` or `accessibilityLabel`, which allow us to have a cross-platform selector.
+- `TouchableOpacity`, `Touchable`, `InternalTouchableLink`, `ExternalTouchableLink`:  The `testID` is automatically set to the `accessibilityLabel` prop. This means that this element needs to have an `accessibilityLabel` if we  want to have a cross-platform selector.
+
+For more information on selectors, please check [this notion page](https://www.notion.so/passcultureapp/Documentation-E2E-S-lecteurs-42cd859559454454a3a4a37ef1e86f41).
 
 ### Demo
 
