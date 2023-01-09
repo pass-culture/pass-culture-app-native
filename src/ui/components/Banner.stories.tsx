@@ -36,33 +36,25 @@ WithIcon.args = {
   icon: BicolorClock,
 }
 
+const ActionButton = () => (
+  <ButtonQuaternarySecondary
+    numberOfLines={2}
+    justifyContent="flex-start"
+    onPress={action('Press\u00a0!')}
+    icon={PlainArrowNext}
+    wording="Call to action message"
+  />
+)
+
 export const WithChildren = Template.bind({})
 WithChildren.args = {
   message,
-  children: (
-    <ButtonQuaternarySecondary
-      numberOfLines={2}
-      justifyContent="flex-start"
-      onPress={action('Press\u00a0!')}
-      icon={PlainArrowNext}
-      wording="Call to action message"
-      testID="call-to-action-press"
-    />
-  ),
+  children: ActionButton,
 }
 
 export const WithLightColorMessage = Template.bind({})
 WithLightColorMessage.args = {
   message,
   withLightColorMessage: true,
-  children: (
-    <ButtonQuaternarySecondary
-      numberOfLines={2}
-      justifyContent="flex-start"
-      onPress={action('Press\u00a0!')}
-      icon={PlainArrowNext}
-      wording="Call to action message"
-      testID="call-to-action-press"
-    />
-  ),
+  children: ActionButton,
 }
