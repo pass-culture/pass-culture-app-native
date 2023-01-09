@@ -58,14 +58,14 @@ describe('<OfferHeader />', () => {
 
   it('should render all the icons', () => {
     const offerHeader = renderOfferHeader()
-    expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
+    expect(offerHeader.queryByTestId('animated-icon-back')).toBeTruthy()
+    expect(offerHeader.queryByTestId('animated-icon-share')).toBeTruthy()
+    expect(offerHeader.queryByTestId('animated-icon-favorite')).toBeTruthy()
   })
 
   it('should goBack when we press on the back button', () => {
     const { getByTestId } = renderOfferHeader()
-    fireEvent.press(getByTestId('icon-back'))
+    fireEvent.press(getByTestId('animated-icon-back'))
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
@@ -93,7 +93,7 @@ describe('<OfferHeader />', () => {
       isUserLoading: false,
     })
     const { getByTestId, getByText } = renderOfferHeader()
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
     expect(getByText('Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris')).toBeTruthy()
   })
 
@@ -102,7 +102,7 @@ describe('<OfferHeader />', () => {
     const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
 
     await waitFor(() => {
-      expect(getByTestId('icon-favorite-filled')).toBeTruthy()
+      expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
     })
   })
 
@@ -111,10 +111,10 @@ describe('<OfferHeader />', () => {
       id: addFavoriteJsonResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
-      expect(getByTestId('icon-favorite-filled')).toBeTruthy()
+      expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
 
       const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
       expect(
@@ -142,10 +142,10 @@ describe('<OfferHeader />', () => {
     const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
 
     await waitFor(async () => {
-      fireEvent.press(getByTestId('icon-favorite-filled'))
+      fireEvent.press(getByTestId('animated-icon-favorite-filled'))
 
       await waitFor(() => {
-        expect(getByTestId('icon-favorite')).toBeTruthy()
+        expect(getByTestId('animated-icon-favorite')).toBeTruthy()
       })
     })
   })
@@ -158,7 +158,7 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(async () => {
-      fireEvent.press(getByTestId('icon-favorite-filled'))
+      fireEvent.press(getByTestId('animated-icon-favorite-filled'))
 
       await waitFor(() => {
         expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -175,7 +175,7 @@ describe('<OfferHeader />', () => {
       id: addFavoriteJsonResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -199,7 +199,7 @@ describe('<OfferHeader />', () => {
       id: offerId,
     })
 
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
@@ -214,12 +214,12 @@ describe('<OfferHeader />', () => {
     it('should log ShareOffer once when clicking on the Share button', () => {
       const { getByTestId } = renderOfferHeader()
 
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
       expect(analytics.logShareOffer).toHaveBeenCalledWith(offerId)
 
-      fireEvent.press(getByTestId('icon-share'))
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
     })
   })

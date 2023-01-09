@@ -105,7 +105,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "width": 40,
               }
             }
-            testID="headerIconRoundContainer"
+            testID="AnimatedHeaderIconRoundContainer"
           >
             <View
               size={24}
@@ -130,11 +130,11 @@ exports[`BookingDetails should render correctly 1`] = `
               >
                 <View
                   height={24}
-                  testID="icon-back"
+                  testID="animated-icon-back"
                   width={24}
                 >
                   <Text>
-                    icon-back-SVG-Mock
+                    animated-icon-back-SVG-Mock
                   </Text>
                 </View>
               </View>
@@ -150,11 +150,11 @@ exports[`BookingDetails should render correctly 1`] = `
               >
                 <View
                   height={24}
-                  testID="final-icon-back"
+                  testID="final-animated-icon-back"
                   width={24}
                 >
                   <Text>
-                    final-icon-back-SVG-Mock
+                    final-animated-icon-back-SVG-Mock
                   </Text>
                 </View>
               </View>

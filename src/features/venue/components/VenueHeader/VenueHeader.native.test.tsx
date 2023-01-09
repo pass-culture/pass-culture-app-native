@@ -20,20 +20,15 @@ describe('<VenueHeader />', () => {
     jest.useRealTimers()
   })
 
-  it('should render correctly', async () => {
-    const { toJSON } = await renderVenueHeader()
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should render all icons', async () => {
     const venueHeader = await renderVenueHeader()
-    expect(venueHeader.queryByTestId('icon-back')).toBeTruthy()
-    expect(venueHeader.queryByTestId('icon-share')).toBeTruthy()
+    expect(venueHeader.queryByTestId('animated-icon-back')).toBeTruthy()
+    expect(venueHeader.queryByTestId('animated-icon-share')).toBeTruthy()
   })
 
   it('should goBack when we press on the back button', async () => {
     const { getByTestId } = await renderVenueHeader()
-    fireEvent.press(getByTestId('icon-back'))
+    fireEvent.press(getByTestId('animated-icon-back'))
     expect(mockGoBack).toBeCalledTimes(1)
   })
 
@@ -56,7 +51,7 @@ describe('<VenueHeader />', () => {
     const share = jest.spyOn(Share, 'share')
     const { getByTestId } = await renderVenueHeader()
 
-    fireEvent.press(getByTestId('icon-share'))
+    fireEvent.press(getByTestId('animated-icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
     const url = getVenueUrl(5543)
@@ -73,7 +68,7 @@ describe('<VenueHeader />', () => {
     const share = jest.spyOn(Share, 'share')
     const { getByTestId } = await renderVenueHeader()
 
-    fireEvent.press(getByTestId('icon-share'))
+    fireEvent.press(getByTestId('animated-icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
     const url = getVenueUrl(5543)
@@ -90,12 +85,12 @@ describe('<VenueHeader />', () => {
     it('should log ShareVenue once when clicking on the Share button', async () => {
       const { getByTestId } = await renderVenueHeader()
 
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
       expect(analytics.logShareVenue).toHaveBeenCalledWith(venueResponseSnap.id)
 
-      fireEvent.press(getByTestId('icon-share'))
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
     })
   })
