@@ -209,10 +209,9 @@ export const config: WebdriverIO.Config = {
         .toISOString()
         .replace(/[^0-9]/g, '')
         .slice(0, -5)
-      const filePath = `${screenshotsPath}/${timestamp}_${test.parent}_${test.title.replace(
-        / /g,
-        '-'
-      )}.png`
+      const filePath = `${screenshotsPath}/${timestamp}_${test.parent}_${test.title
+        .replace(/ /g, '-')
+        .replace(/"|:|<|>|\||\*|\?|\\r|\\n/g, '_')}.png`
       await browser.saveScreenshot(filePath)
     }
   },
