@@ -141,7 +141,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
-          headerTitle="Partager l'offre"
+          headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />

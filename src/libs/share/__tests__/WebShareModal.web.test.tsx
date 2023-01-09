@@ -12,7 +12,7 @@ navigator.clipboard = { writeText: mockClipboardWriteText }
 const mockDismissModal = jest.fn()
 const defaultProps = {
   visible: true,
-  headerTitle: "Partager l'offre",
+  headerTitle: 'Partager l’offre',
   shareContent: { message: 'Voici une super offre !', url: 'https://url.com/offer' },
   dismissModal: mockDismissModal,
 }
