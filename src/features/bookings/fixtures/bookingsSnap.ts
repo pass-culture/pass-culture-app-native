@@ -128,9 +128,11 @@ export const bookingsSnap: BookingsResponse = {
       ],
     },
   ],
+  hasBookingsAfter18: true,
 }
 
 export const emptyBookingsSnap: BookingsResponse = {
   ended_bookings: [],
   ongoing_bookings: [],
+  hasBookingsAfter18: true,
 }
