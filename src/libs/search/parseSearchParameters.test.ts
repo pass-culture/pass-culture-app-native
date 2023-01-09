@@ -1,3 +1,4 @@
+import omit from 'lodash/omit'
 import mockdate from 'mockdate'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
@@ -14,11 +15,14 @@ import { parseSearchParameters } from './parseSearchParameters'
 jest.mock('features/profile/api/useUpdateProfileMutation')
 mockdate.set(new Date('2020-10-01T00:00+00:00'))
 
-const defaultSearchParameters = {
-  ...initialSearchState,
-  hitsPerPage: null,
-  priceRange: [0, 300],
-}
+const defaultSearchParameters = omit(
+  {
+    ...initialSearchState,
+    hitsPerPage: null,
+    priceRange: [0, 300],
+  },
+  'offerIsFree'
+)
 
 describe('parseSearchParameters', () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
@@ -59,6 +63,7 @@ describe('parseSearchParameters', () => {
 
   it('should return parsed algolia parameters with tags when provided', () => {
     const parameters = {
+      title: 'title',
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
       hitsPerPage: 5,
       isDuo: true,
@@ -66,7 +71,6 @@ describe('parseSearchParameters', () => {
       isDigital: true,
       isEvent: true,
       isThing: true,
-      isFree: true,
       beginningDatetime: '2020-10-01T00:00+00:00',
       endingDatetime: '2020-10-02T00:00+00:00',
       upcomingWeekendEvent: true,
@@ -85,7 +89,6 @@ describe('parseSearchParameters', () => {
         isEvent: true,
         isThing: true,
       },
-      offerIsFree: true,
       beginningDatetime: '2020-10-01T00:00+00:00',
       endingDatetime: '2020-10-02T00:00+00:00',
     })
