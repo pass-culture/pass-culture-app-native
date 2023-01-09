@@ -70,16 +70,13 @@ describe('useAppliedFilters', () => {
     it.each`
       description         | searchState
       ${'only duo offer'} | ${{ offerIsDuo: true }}
-      ${'digital offer'}  | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
-      ${'event offer'}    | ${{ offerTypes: { isDigital: false, isEvent: true, isThing: false } }}
-      ${'thing offer'}    | ${{ offerTypes: { isDigital: false, isEvent: false, isThing: true } }}
     `(
       'with Localisation and Type when search state has $description',
       ({ searchState }: { searchState: Partial<SearchState> }) => {
         mockSearchState = { ...initialSearchState, ...searchState }
         const filterTypes = useAppliedFilters(mockSearchState)
 
-        expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.OFFER_TYPE])
+        expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.OFFER_DUO])
       }
     )
 
@@ -103,7 +100,7 @@ describe('useAppliedFilters', () => {
         offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
         minPrice: '10',
         maxPrice: '10',
-        offerTypes: { isDigital: true, isEvent: false, isThing: false },
+        offerIsDuo: true,
         date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY },
       }
       const filterTypes = useAppliedFilters(mockSearchState)
@@ -112,7 +109,7 @@ describe('useAppliedFilters', () => {
         FILTER_TYPES.LOCATION,
         FILTER_TYPES.CATEGORIES,
         FILTER_TYPES.PRICES,
-        FILTER_TYPES.OFFER_TYPE,
+        FILTER_TYPES.OFFER_DUO,
         FILTER_TYPES.DATES_HOURS,
       ])
     })
