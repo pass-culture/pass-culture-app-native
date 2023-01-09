@@ -27,7 +27,6 @@ import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustr
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Star } from 'ui/svg/icons/Star'
-import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 
 export const BicolorIllustrations = {
@@ -42,6 +41,7 @@ export const BicolorIllustrations = {
   BicolorIdCardWithMagnifyingGlass,
   BicolorPhonePending,
   BicolorRingingBell,
+  BicolorTicketBooked,
   BicolorUserError,
   BicolorUserFavorite,
   BicolorUserIdentification,
@@ -63,6 +63,5 @@ export const UniqueColorIllustrations = {
   RequestSent,
   SadFace,
   Star,
-  TicketBooked,
   UserBlocked,
 }
