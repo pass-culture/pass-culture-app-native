@@ -19,7 +19,8 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange }: Props) => {
 
   return (
     <Container>
-      <Banner message={`Veux-tu plutôt dire ${suggestedEmail.address}@${suggestedEmail.domain}`}>
+      <Banner
+        message={`Veux-tu plutôt dire ${suggestedEmail.address}@${suggestedEmail.domain}\u00a0?`}>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonQuaternarySecondary
           numberOfLines={2}

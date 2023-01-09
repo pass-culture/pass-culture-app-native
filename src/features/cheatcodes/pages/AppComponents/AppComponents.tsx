@@ -447,7 +447,6 @@ export const AppComponents: FunctionComponent = () => {
         <AccordionItem title="Banners">
           <Spacer.Column numberOfSpaces={2} />
 
-          <StyledTitle4>Banner</StyledTitle4>
           <Banner message="Banner with message" />
 
           <Spacer.Column numberOfSpaces={2} />

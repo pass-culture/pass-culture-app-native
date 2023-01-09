@@ -32,7 +32,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    const suggestionButton = queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com')
+    const suggestionButton = queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')
     expect(suggestionButton).toBeTruthy()
   })
 
