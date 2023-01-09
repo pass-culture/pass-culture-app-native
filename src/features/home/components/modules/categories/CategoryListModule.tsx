@@ -5,9 +5,11 @@ import styled from 'styled-components/native'
 import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
 import { getColorFilter } from 'features/home/components/modules/categories/helpers/getColorFilter'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
+import { analytics } from 'libs/firebase/analytics'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CategoryListProps = {
+  id: string
   title: string
   categoryBlockList: CategoryBlockData[]
 }
@@ -25,12 +27,23 @@ const ListHeaderComponent = (title: string) => (
   </React.Fragment>
 )
 
-export const CategoryListModule = ({ title, categoryBlockList }: CategoryListProps) => {
+export const CategoryListModule = ({ id, title, categoryBlockList }: CategoryListProps) => {
   const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
     <CategoryBlockContainer index={index}>
-      <CategoryBlock {...item} filter={getColorFilter(index)} />
+      <CategoryBlock
+        {...item}
+        filter={getColorFilter(index)}
+        onBeforePress={() => {
+          analytics.logCategoryBlockClicked({
+            moduleID: item.id,
+            moduleListID: id,
+            toEntryId: item.homeEntryId,
+          })
+        }}
+      />
     </CategoryBlockContainer>
   )
+
   return (
     <FlatListContainer>
       <FlatList
