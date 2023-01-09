@@ -539,45 +539,6 @@ Array [
             }
           >
             <button
-              aria-label="Type"
-              className="c0 c2 sc-eCImPb c2"
-              data-testid="Type"
-              onClick={[Function]}
-              tabIndex="0"
-              title="Type"
-              type="button"
-            >
-              <div
-                className="css-text-901oao"
-                data-testid="typeButtonLabel"
-                dir="ltr"
-                style={
-                  Object {
-                    "color": "rgba(22,22,23,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
-              >
-                Type
-              </div>
-            </button>
-          </li>
-          <li
-            className="css-reset-4rbku5 css-view-1dbjc4n"
-            role="listitem"
-            style={
-              Object {
-                "display": "list-item",
-                "marginBottom": "4px",
-                "marginLeft": "4px",
-                "marginRight": "4px",
-                "marginTop": "4px",
-              }
-            }
-          >
-            <button
               aria-label="Dates & heures"
               className="c0 c2 sc-eCImPb c2"
               data-testid="Dates & heures"

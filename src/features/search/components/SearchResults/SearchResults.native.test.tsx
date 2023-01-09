@@ -3,11 +3,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, UserData } from 'features/search/types'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
@@ -30,6 +32,18 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
+jest.mock('features/auth/AuthContext')
+const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: mockUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+})
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 let mockHits: SearchHit[] = []
@@ -209,58 +223,103 @@ describe('SearchResults component', () => {
     })
   })
 
-  describe('Offer type filter', () => {
-    it('should display type filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-
-      await waitFor(() => {
-        expect(getByTestId('Type')).toBeTruthy()
-      })
-    })
-
-    it('should open the type filter modal when pressing the type filter button', async () => {
-      const { getByTestId, queryByTestId } = render(<SearchResults />)
-      const typeButton = getByTestId('Type')
-
-      await waitFor(() => {
-        fireEvent.press(typeButton)
-      })
-
-      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
-
-      expect(fullscreenModalScrollView).toBeTruthy()
-
-      const isInverseLayout = queryByTestId('inverseLayout')
-
-      expect(isInverseLayout).toBeFalsy()
-    })
-
-    it.each`
-      type               | params
-      ${'duo offer'}     | ${{ offerIsDuo: true }}
-      ${'digital offer'} | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
-      ${'event offer'}   | ${{ offerTypes: { isDigital: false, isEvent: true, isThing: false } }}
-      ${'thing offer'}   | ${{ offerTypes: { isDigital: false, isEvent: false, isThing: true } }}
-    `(
-      'should display an icon and change color in type button when has $type selected',
-      async ({ params }) => {
-        useRoute.mockReturnValueOnce({
-          params,
+  describe('Offer Duo filter', () => {
+    describe('When user is logged in and is benificiary with credit', () => {
+      beforeEach(() => {
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          user: beneficiaryUser,
+          refetchUser: jest.fn(),
+          isUserLoading: false,
         })
+      })
+
+      it('should display Duo filter button', async () => {
         const { getByTestId } = render(<SearchResults />)
 
         await waitFor(() => {
-          const typeButtonIcon = getByTestId('typeButtonIcon')
-          expect(typeButtonIcon).toBeTruthy()
+          expect(getByTestId('Duo')).toBeTruthy()
+        })
+      })
+
+      it('should open the duo filter modal when pressing the duo filter button', async () => {
+        const { getByTestId, queryByTestId } = render(<SearchResults />)
+        const duoButton = getByTestId('Duo')
+
+        await waitFor(() => {
+          fireEvent.press(duoButton)
         })
 
-        const typeButton = getByTestId('Type\u00a0: Filtre sélectionné')
-        expect(typeButton).toHaveStyle({ borderColor: theme.colors.primary })
+        const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 
-        const typeButtonLabel = getByTestId('typeButtonLabel')
-        expect(typeButtonLabel).toHaveStyle({ color: theme.colors.primary })
-      }
-    )
+        expect(fullscreenModalScrollView).toBeTruthy()
+
+        const isInverseLayout = queryByTestId('inverseLayout')
+
+        expect(isInverseLayout).toBeFalsy()
+      })
+    })
+
+    describe('when user is logged in and benificiary with no credit', () => {
+      beforeEach(() => {
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: false,
+          setIsLoggedIn: jest.fn(),
+          user: { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 0 } } },
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
+      })
+
+      it('should not display Duo filter button', async () => {
+        const { queryByText } = render(<SearchResults />)
+
+        await waitFor(() => {
+          expect(queryByText('Duo')).toBeFalsy()
+        })
+      })
+    })
+
+    describe('when user is not logged in', () => {
+      beforeEach(() => {
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: false,
+          setIsLoggedIn: jest.fn(),
+          user: undefined,
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
+      })
+
+      it('should not display Duo offer button', async () => {
+        const { queryByText } = render(<SearchResults />)
+
+        await waitFor(() => {
+          expect(queryByText('Duo')).toBeFalsy()
+        })
+      })
+    })
+
+    describe('when user is not a beneficiary', () => {
+      beforeEach(() => {
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: false,
+          setIsLoggedIn: jest.fn(),
+          user: nonBeneficiaryUser,
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
+      })
+
+      it('should not display Duo offer button', async () => {
+        const { queryByText } = render(<SearchResults />)
+
+        await waitFor(() => {
+          expect(queryByText('Duo')).toBeFalsy()
+        })
+      })
+    })
   })
 
   describe('should not display geolocation incitation button', () => {
@@ -274,7 +333,6 @@ describe('SearchResults component', () => {
 
     it.each`
       filter                                                      | params
-      ${'digital offer'}                                          | ${{ offerTypes: { isDigital: true, isEvent: false, isThing: false } }}
       ${`${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE} category`}  | ${{ offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE] }}
       ${`${SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE} category`} | ${{ offerCategories: [SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE] }}
     `('when $filter filter selected and position is null', async ({ params }) => {
