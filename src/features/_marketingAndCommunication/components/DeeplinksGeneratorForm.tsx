@@ -140,19 +140,13 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     }
 
     function onChangeOfferCategories(categories: SearchGroupNameEnumv2[]) {
-      setScreenParams((prevPageParams) =>
-        !categories.length
-          ? {
-              ...prevPageParams,
-              [name]: undefined,
-              offerNativeCategories: undefined,
-            }
-          : {
-              ...prevPageParams,
-              [name]: categories,
-              offerNativeCategories: undefined,
-            }
-      )
+      setScreenParams((prevPageParams) => {
+        return {
+          ...prevPageParams,
+          [name]: !categories.length ? undefined : categories,
+          offerNativeCategories: undefined,
+        }
+      })
     }
 
     function onChangeOfferNativeCategories(nativeCategories: NativeCategoryIdEnumv2[]) {

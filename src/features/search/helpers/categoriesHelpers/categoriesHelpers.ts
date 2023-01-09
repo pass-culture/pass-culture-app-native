@@ -31,9 +31,9 @@ export const categoryAllValue: SearchGroupResponseModelv2 = {
 }
 
 export function getSearchGroupsByAlphabeticalSorting(data: SearchGroupResponseModelv2[]) {
-  return data
-    .filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
-    .sort((a, b) => (a.value || '').localeCompare(b.value || ''))
+  return getDataByAlphabeticalSorting(
+    data.filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
+  )
 }
 
 /**
@@ -99,16 +99,15 @@ export function getNativeCategories(
 
   const nativeCategories = data.subcategories
     .filter((subcategory) => subcategory.searchGroupName === categoryEnum)
-    .map((subcategory) => subcategory.nativeCategoryId)
-    .map((nativeCategoryId) =>
-      data.nativeCategories.find((nativeCategory) => nativeCategory.name === nativeCategoryId)
+    .map((subcategory) =>
+      data.nativeCategories.find(
+        (nativeCategory) => nativeCategory.name === subcategory.nativeCategoryId
+      )
     )
     // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
     .filter(Boolean) as NativeCategoryResponseModelv2[]
 
-  return getUniqueBy(nativeCategories, 'name').sort((a, b) =>
-    (a?.value || '').localeCompare(b?.value || '')
-  )
+  return getDataByAlphabeticalSorting(getUniqueBy(nativeCategories, 'name'))
 }
 
 export function getGenreTypes(
@@ -263,4 +262,10 @@ export function buildSearchPayloadValues(form: CategoriesModalFormProps) {
     offerNativeCategories: form.nativeCategory ? [form.nativeCategory.name] : [],
     offerGenreTypes: form.genreType ? [form.genreType] : [],
   }
+}
+
+export function getDataByAlphabeticalSorting(
+  data: SearchGroupResponseModelv2[] | NativeCategoryResponseModelv2[]
+) {
+  return data.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
 }

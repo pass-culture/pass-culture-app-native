@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import {
@@ -24,27 +24,34 @@ export const OfferNativeCategoryChoices = (props: Props) => {
   )
 
   const { data } = useSubcategories()
+  const { categories, onChange } = props
 
   const nativeCategories = useMemo(() => {
     let nativeCategories: NativeCategoryResponseModelv2[] = []
-    props.categories.forEach((categoryEnum) => {
-      nativeCategories = [...nativeCategories, ...getNativeCategories(data, categoryEnum)]
+    categories.forEach((categoryEnum) => {
+      nativeCategories = [
+        ...nativeCategories,
+        ...(getNativeCategories(data, categoryEnum) as NativeCategoryResponseModelv2[]),
+      ]
     })
     return nativeCategories.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
-  }, [data, props.categories])
+  }, [data, categories])
 
-  const onPress = (nativeCategoryEnum: NativeCategoryIdEnumv2) => {
-    setSelection((prevSelection) => {
-      let nextSelection = [...prevSelection]
-      if (nextSelection.includes(nativeCategoryEnum)) {
-        nextSelection = []
-      } else {
-        nextSelection = [nativeCategoryEnum]
-      }
-      props.onChange(nextSelection)
-      return nextSelection
-    })
-  }
+  const onPress = useCallback(
+    (nativeCategoryEnum: NativeCategoryIdEnumv2) => {
+      setSelection((prevSelection) => {
+        let nextSelection = [...prevSelection]
+        if (nextSelection.includes(nativeCategoryEnum)) {
+          nextSelection = []
+        } else {
+          nextSelection = [nativeCategoryEnum]
+        }
+        onChange(nextSelection)
+        return nextSelection
+      })
+    },
+    [onChange]
+  )
 
   return (
     <BodyContainer>

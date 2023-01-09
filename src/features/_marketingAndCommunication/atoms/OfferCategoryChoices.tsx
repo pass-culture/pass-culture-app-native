@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -17,18 +17,23 @@ export const OfferCategoryChoices = (props: Props) => {
   const [selection, setSelection] = useState<SearchGroupNameEnumv2[]>([] as SearchGroupNameEnumv2[])
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
-  const onPress = (facetFilter: SearchGroupNameEnumv2) => {
-    setSelection((prevSelection) => {
-      let nextSelection = [...prevSelection]
-      if (nextSelection.includes(facetFilter)) {
-        nextSelection = []
-      } else {
-        nextSelection = [facetFilter]
-      }
-      props.onChange(nextSelection)
-      return nextSelection
-    })
-  }
+  const { onChange } = props
+
+  const onPress = useCallback(
+    (facetFilter: SearchGroupNameEnumv2) => {
+      setSelection((prevSelection) => {
+        let nextSelection = [...prevSelection]
+        if (nextSelection.includes(facetFilter)) {
+          nextSelection = []
+        } else {
+          nextSelection = [facetFilter]
+        }
+        onChange(nextSelection)
+        return nextSelection
+      })
+    },
+    [onChange]
+  )
 
   return (
     <BodyContainer>

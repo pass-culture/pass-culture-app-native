@@ -67,7 +67,10 @@ export const CategoriesModal = ({
     () => (data?.searchGroups ? getSearchGroupsByAlphabeticalSorting(data.searchGroups) : []),
     [data?.searchGroups]
   )
-  const nativeCategories = useMemo(() => getNativeCategories(data, category.name), [category, data])
+  const nativeCategories = useMemo(
+    () => getNativeCategories(data, category.name),
+    [category.name, data]
+  )
   const genreTypes = useMemo(() => getGenreTypes(data, nativeCategory), [data, nativeCategory])
 
   const handleModalClose = useCallback(() => {
@@ -164,7 +167,7 @@ export const CategoriesModal = ({
       field: ControllerRenderProps<CategoriesModalFormProps, 'category'>
     }) => (
       <CategoriesSection
-        items={categories}
+        items={categories as SearchGroupResponseModelv2[]}
         value={value}
         onChange={handleCategorySelect}
         context={descriptionContext}
@@ -184,7 +187,7 @@ export const CategoriesModal = ({
       field: ControllerRenderProps<CategoriesModalFormProps, 'nativeCategory'>
     }) => (
       <CategoriesSection
-        items={nativeCategories}
+        items={nativeCategories as NativeCategoryResponseModelv2[]}
         value={value}
         onChange={handleNativeCategorySelect}
         context={descriptionContext}
