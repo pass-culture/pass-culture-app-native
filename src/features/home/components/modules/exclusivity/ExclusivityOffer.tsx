@@ -32,7 +32,7 @@ const UnmemoizedExclusivityOffer = ({
     if (typeof offerId !== 'number') return
     analytics.logExclusivityBlockClicked({ moduleName: title, moduleId, homeEntryId })
     analytics.logConsultOffer({
-      offerId: offerId,
+      offerId,
       moduleName: title,
       moduleId,
       from: 'exclusivity',
