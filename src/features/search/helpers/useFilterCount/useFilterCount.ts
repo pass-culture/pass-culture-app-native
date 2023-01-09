@@ -17,7 +17,7 @@ export const useFilterCount = (searchState: SearchState): number => {
     // Prix
     +(priceRange[0] > 0 || priceRange[1] < maxPrice) +
     // Uniquement les offres gratuites
-    +searchState.offerIsFree +
+    +(searchState.offerIsFree ?? false) +
     // Uniquement les offres duo
     +searchState.offerIsDuo +
     // Uniquement les nouveautés

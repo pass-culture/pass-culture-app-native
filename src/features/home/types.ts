@@ -60,7 +60,6 @@ export type OffersModuleParameters = {
   eventDuringNextXDays?: number
   upcomingWeekendEvent?: boolean
   currentWeekEvent?: boolean
-  isFree?: boolean
   priceMin?: number
   priceMax?: number
   isDuo?: boolean
@@ -108,11 +107,11 @@ type RecommendedOffersParameters = {
   beginningDatetime?: string
   endingDatetime?: string
   upcomingWeekendEvent?: boolean
-  eventDuringNextXDays?: string
+  eventDuringNextXDays?: number
   currentWeekEvent?: boolean
   newestOnly?: boolean
-  isFree?: boolean
   isEvent?: boolean
+  priceMin?: number
   priceMax?: number
   subcategories?: string[]
   isDuo?: boolean

@@ -64,7 +64,6 @@ describe('getRecommendationParameters', () => {
     const parameters: RecommendationParametersFields = {
       title: 'some parameters',
       categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-      isFree: true,
       isEvent: true,
       isDuo: true,
       priceMax: 10,
@@ -80,7 +79,7 @@ describe('getRecommendationParameters', () => {
       categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
       end_date: '2022-05-08T00:00+00:00',
       start_date: '2022-09-08T00:00+00:00',
-      price_max: 0,
+      price_max: 10,
       isEvent: true,
       isDuo: true,
       subcategories: ['ACHAT_INSTRUMENT'],

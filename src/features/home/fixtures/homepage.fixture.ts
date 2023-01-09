@@ -65,9 +65,23 @@ export const formattedVenuesModule: VenuesModule = {
 
 export const formattedRecommendedOffersModule: RecommendedOffersModule = {
   type: HomepageModuleType.RecommendedOffersModule,
-  id: '3sAqNrRMXUOES7tFyRFFO8',
-  displayParameters: { title: 'Nos recos', layout: 'two-items', minOffers: 1 },
-  recommendationParameters: undefined,
+  id: '2TD5BEKL2zUGLhfzhkWhwL',
+  displayParameters: { title: 'Tes évènements en ligne', layout: 'two-items', minOffers: 1 },
+  recommendationParameters: {
+    categories: ['Livres'],
+    beginningDatetime: '2021-01-01T00:00+00:00',
+    endingDatetime: '2024-01-01T00:00+00:00',
+    upcomingWeekendEvent: true,
+    eventDuringNextXDays: 5,
+    currentWeekEvent: true,
+    newestOnly: false,
+    isEvent: true,
+    priceMin: 0.99,
+    priceMax: 99.99,
+    subcategories: ['Livre'],
+    isDuo: false,
+    isRecoShuffled: false,
+  },
 }
 
 export const formattedThematicHighlightModule: ThematicHighlightModule = {

@@ -44,7 +44,7 @@ export interface SearchState {
   offerNativeCategories?: NativeCategoryIdEnumv2[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
-  offerIsFree: boolean
+  offerIsFree?: boolean
   offerIsNew: boolean
   offerTypes: {
     isDigital: boolean
