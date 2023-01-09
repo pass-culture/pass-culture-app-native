@@ -312,10 +312,10 @@ exports[`<SetName/> should render correctly 1`] = `
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f3ecff",
                       "borderRadius": 8,
-                      "display": "flex",
                       "flexDirection": "row",
+                      "justifyContent": "space-between",
                       "paddingBottom": 16,
                       "paddingLeft": 16,
                       "paddingRight": 16,
@@ -328,7 +328,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexShrink": 0,
+                        "paddingRight": 16,
                       },
                     ]
                   }
@@ -343,19 +343,11 @@ exports[`<SetName/> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={4}
                   style={
                     Array [
                       Object {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
                         "flexShrink": 1,
                       },
                     ]
@@ -372,6 +364,7 @@ exports[`<SetName/> should render correctly 1`] = `
                         },
                       ]
                     }
+                    withLightColorMessage={false}
                   >
                     Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
 Nous les vérifions et ils ne pourront plus être modifiés par la suite.

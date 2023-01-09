@@ -27,6 +27,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
+import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type PriceModalFormData = {
@@ -228,7 +229,7 @@ export const PriceModal: FunctionComponent<Props> = ({
       <Form.MaxWidth>
         {!!isLoggedInAndBeneficiary && (
           <View testID="creditBanner">
-            <Banner title={bannerTitle} />
+            <Banner message={bannerTitle} icon={Error} />
             <Spacer.Column numberOfSpaces={6} />
           </View>
         )}

@@ -43,6 +43,7 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeh
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Ul } from 'ui/components/Ul'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
+import { Error } from 'ui/svg/icons/Error'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -177,7 +178,7 @@ export const SearchResults: React.FC = () => {
           <BannerOfferNotPresentContainer
             accessibilityRole={AccessibilityRole.STATUS}
             nbHits={nbHits}>
-            <Banner title={unavailableOfferMessage} />
+            <Banner message={unavailableOfferMessage} icon={Error} />
           </BannerOfferNotPresentContainer>
         )}
       </React.Fragment>

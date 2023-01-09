@@ -52,6 +52,7 @@ function NonBeneficiaryHeaderComponent({
     if (isUserTooYoungToBeEligible) {
       return (
         <BannerContainer>
+          <Spacer.Column numberOfSpaces={2} />
           <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
         </BannerContainer>
       )
@@ -60,7 +61,7 @@ function NonBeneficiaryHeaderComponent({
     if (subscription?.subscriptionMessage) {
       return (
         <BannerContainer>
-          <SubscriptionMessageBadge subscriptionMessage={subscription?.subscriptionMessage} />
+          <SubscriptionMessageBadge subscriptionMessage={subscription.subscriptionMessage} />
         </BannerContainer>
       )
     }
@@ -93,6 +94,7 @@ function NonBeneficiaryHeaderComponent({
     if (subscription?.hasIdentityCheckPending) {
       return (
         <BannerContainer>
+          <Spacer.Column numberOfSpaces={2} />
           <IdentityCheckPendingBadge />
         </BannerContainer>
       )

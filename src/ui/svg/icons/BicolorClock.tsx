@@ -7,7 +7,7 @@ import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from './types'
 
-const ClockSvg: React.FunctionComponent<AccessibleIcon> = ({
+const NotMemoizedBicolorClock: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
@@ -37,8 +37,18 @@ const ClockSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const BicolorClock = styled(ClockSvg).attrs(({ color, color2, size, theme }) => ({
-  color: color ?? theme.colors.primary,
-  color2: color2 ?? theme.colors.secondary,
-  size: size ?? theme.icons.sizes.standard,
-}))``
+export const BicolorClock = React.memo(
+  styled(NotMemoizedBicolorClock).attrs(({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+  }))``
+)
+
+export const Clock = React.memo(
+  styled(NotMemoizedBicolorClock).attrs(({ color, size, theme }) => ({
+    color: color ?? theme.colors.black,
+    color2: color ?? theme.colors.black,
+    size: size ?? theme.icons.sizes.standard,
+  }))``
+)

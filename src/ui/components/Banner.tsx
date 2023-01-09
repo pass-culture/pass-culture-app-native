@@ -1,45 +1,66 @@
-import React from 'react'
-import { View } from 'react-native'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { Error } from 'ui/svg/icons/Error'
-import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, getSpacing, Typo } from 'ui/theme'
+import { IconInterface } from 'ui/svg/icons/types'
+import { getSpacing, Typo } from 'ui/theme'
 
-export const Banner: React.FC<{ title: string; icon?: React.FC<AccessibleIcon> }> = ({
-  title,
-  icon: Icon,
-}) => (
-  <Background>
-    <IconWrapper>
-      <StyledIcon as={Icon} />
-    </IconWrapper>
-    <Spacer.Row numberOfSpaces={4} />
-    <TextContainer>
-      <Typo.Caption>{title}</Typo.Caption>
-    </TextContainer>
-  </Background>
-)
+type ColorMessageProps = {
+  withLightColorMessage?: boolean
+}
 
-const Background = styled(View)(({ theme }) => ({
-  display: 'flex',
-  backgroundColor: theme.colors.greyLight,
-  padding: getSpacing(4),
-  alignItems: 'center',
+type Props = ColorMessageProps & {
+  message: string
+  icon?: FunctionComponent<IconInterface>
+  testID?: string
+}
+
+export const Banner: FunctionComponent<Props> = ({
+  message,
+  withLightColorMessage,
+  icon,
+  testID,
+  children,
+}) => {
+  const Icon =
+    icon &&
+    styled(icon).attrs(({ theme }) => ({
+      color: theme.colors.greyDark,
+      color2: theme.colors.greyDark,
+      size: theme.icons.sizes.small,
+    }))``
+
+  return (
+    <Container testID={testID}>
+      {!!Icon && (
+        <IconContainer>
+          <Icon />
+        </IconContainer>
+      )}
+      <TextContainer>
+        <Caption withLightColorMessage={!!withLightColorMessage}>{message}</Caption>
+        {children}
+      </TextContainer>
+    </Container>
+  )
+}
+
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: theme.colors.secondaryLight,
   borderRadius: getSpacing(2),
+  padding: getSpacing(4),
 }))
 
-const IconWrapper = styled.View({
-  flexShrink: 0,
+const IconContainer = styled.View({
+  paddingRight: getSpacing(4),
 })
 
-const StyledIcon = styled(Error).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  color: theme.colors.greyDark,
-  color2: theme.colors.greyDark,
-}))``
-
-const TextContainer = styled(View)({
-  flexShrink: 1,
+const TextContainer = styled.View({
+  flex: 1,
 })
+
+const Caption = styled(Typo.Caption)<ColorMessageProps>(({ theme, withLightColorMessage }) => ({
+  color: withLightColorMessage ? theme.colors.greyDark : theme.colors.black,
+}))

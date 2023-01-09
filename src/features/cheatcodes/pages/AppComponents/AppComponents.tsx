@@ -29,6 +29,7 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -59,6 +60,7 @@ import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -68,8 +70,10 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Info } from 'ui/svg/icons/Info'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, LENGTH_S, Spacer, Typo } from 'ui/theme'
@@ -441,9 +445,42 @@ export const AppComponents: FunctionComponent = () => {
 
         {/* Banner components */}
         <AccordionItem title="Banners">
-          <AlignedText>
-            <Banner title="Je suis une bannière" />
-          </AlignedText>
+          <Spacer.Column numberOfSpaces={2} />
+
+          <Banner message="Banner with message" />
+
+          <Spacer.Column numberOfSpaces={2} />
+
+          <Banner message="Banner with message and icon" icon={Info} />
+
+          <Spacer.Column numberOfSpaces={2} />
+
+          <Banner message="Banner with ButtonQuaternarySecondary" withLightColorMessage>
+            <Spacer.Column numberOfSpaces={2} />
+            <ButtonQuaternarySecondary
+              wording="Call to action title"
+              numberOfLines={2}
+              justifyContent="flex-start"
+              onPress={() => null}
+              icon={EmailFilled}
+              inline
+            />
+          </Banner>
+
+          <Spacer.Column numberOfSpaces={2} />
+
+          <Banner message="Banner with ExternalTouchableLink" withLightColorMessage>
+            <Spacer.Column numberOfSpaces={2} />
+            <ExternalTouchableLink
+              wording="Call to action title"
+              numberOfLines={2}
+              justifyContent="flex-start"
+              as={ButtonQuaternarySecondary}
+              externalNav={{ url: 'callToActionLink' }}
+              icon={ExternalSiteFilled}
+              inline
+            />
+          </Banner>
         </AccordionItem>
 
         <Divider />
