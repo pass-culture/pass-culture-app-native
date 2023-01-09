@@ -13,25 +13,22 @@ jest.mock('@react-navigation/native', () => ({
   useFocusEffect: jest.fn(),
 }))
 
-const mockV4 = jest.fn()
-jest.mock('uuid', () => ({
-  v1: jest.fn(),
-  v4: jest.fn(mockV4),
-}))
+// Hack to not fail accessibility tests 'aria-toggle-field-name'
+jest.mock('uuid', () => {
+  let value = 0
+  return {
+    v1: jest.fn(),
+    v4: jest.fn(() => value++),
+  }
+})
 
 describe('<ConsentSettings/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockV4.mockReturnValueOnce('acceptedAll').mockReturnValueOnce('declineAll')
       const { container } = render(<ConsentSettings />)
 
       await act(async () => {
-        const results = await checkAccessibilityFor(container, {
-          // TODO(PC-19659): Fix FilterSwitch accessibility errors
-          rules: {
-            'aria-toggle-field-name': { enabled: false },
-          },
-        })
+        const results = await checkAccessibilityFor(container)
         expect(results).toHaveNoViolations()
       })
     })
