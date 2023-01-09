@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
+import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -130,6 +131,18 @@ describe('<Favorite /> component', () => {
         timeout: SNACK_BAR_TIME_OUT,
       })
     })
+  })
+
+  it('should call share when press share icon', async () => {
+    const share = jest.spyOn(Share, 'share')
+    const { getByTestId } = renderFavorite()
+
+    await act(async () => {
+      const shareButton = getByTestId('icon-share')
+      fireEvent.press(shareButton)
+    })
+
+    expect(share).toBeCalledTimes(1)
   })
 })
 
