@@ -1,6 +1,7 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
 
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 
@@ -26,8 +27,11 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
             navigation.navigate('TabNavigator', { screen: route.name, params })
           }
         }
+        const tabNavConfig = getTabNavConfig(route.name)
         return (
           <TabBarComponent
+            navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1] }}
+            enableNavigate={false}
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}

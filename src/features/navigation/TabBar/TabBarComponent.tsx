@@ -18,7 +18,8 @@ const SELECTOR_HEIGHT = getSpacing(1)
 interface Props {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
-  navigateTo?: InternalNavigationProps['navigateTo']
+  navigateTo: InternalNavigationProps['navigateTo']
+  enableNavigate?: boolean
   onPress?: () => void
   tabName: TabRouteName
 }
@@ -29,11 +30,13 @@ export const TabBarComponent: React.FC<Props> = ({
   isSelected,
   BicolorIcon,
   navigateTo,
+  enableNavigate = true,
   onPress,
   tabName,
 }) => (
   <TabComponentContainer
     navigateTo={navigateTo}
+    enableNavigate={enableNavigate}
     onBeforeNavigate={onPress}
     activeOpacity={1}
     selected={isSelected}
@@ -63,7 +66,7 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
 
 const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
-const TabComponentContainer = styled(InternalTouchableLink).attrs(
+const TabComponentContainer: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
   ({ theme, accessibilityLabel, selected }) => ({
     accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
     hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,

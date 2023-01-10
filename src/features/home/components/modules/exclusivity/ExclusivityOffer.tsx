@@ -32,32 +32,26 @@ const UnmemoizedExclusivityOffer = ({
     if (typeof offerId !== 'number') return
     analytics.logExclusivityBlockClicked({ moduleName: title, moduleId, homeEntryId })
     analytics.logConsultOffer({
-      offerId: offerId,
+      offerId,
       moduleName: title,
       moduleId,
       from: 'exclusivity',
       homeEntryId,
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offerId])
+  }, [homeEntryId, moduleId, offerId, title])
 
   useEffect(() => {
     if (shouldDisplayExcluOffer) {
       analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldDisplayExcluOffer])
+  }, [homeEntryId, index, moduleId, shouldDisplayExcluOffer])
 
   if (!shouldDisplayExcluOffer) return <React.Fragment />
 
   return (
     <StyledTouchableLink
       highlight
-      navigateTo={
-        typeof offerId === 'number'
-          ? { screen: 'Offer', params: { id: offerId, from: 'home' } }
-          : undefined
-      }
+      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'home' } }}
       onAfterNavigate={handlePressExclu}
       onFocus={onFocus}
       onBlur={onBlur}
@@ -72,10 +66,10 @@ const UnmemoizedExclusivityOffer = ({
 
 export const ExclusivityOffer = memo(UnmemoizedExclusivityOffer)
 
-const StyledTouchableLink = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => ({
-    flex: 1,
-    borderRadius: theme.borderRadius.radius,
-    ...customFocusOutline({ isFocus, color: theme.colors.black }),
-  })
-)
+const StyledTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink)<{
+  isFocus?: boolean
+}>(({ theme, isFocus }) => ({
+  flex: 1,
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
