@@ -245,8 +245,11 @@ and this allow to write less verbose selector for our cross platforms cases.
 ### ~ Selector
 
 The selector used to access component is the `accessibility id` :
-- For Android: the `accessibility id` corresponds to the `accessibilityLabel`.
+- For Android: the `accessibility id` corresponds to the `accessibilityLabel`
 - For iOS: the `accessibility id` corresponds to the `testID`.
+
+> You don't always want to set an `accessibilityLabel` as screen readers will read it.
+> This is why we have created `useE2eTestId` hook that will set both `testID` and `accessibilityLabel` but `accessibilityLabel` will be set only during e2e execution.
 
 The following component have been refactored to easily set a cross-platform selector :
 - `AppButton`, `ButtonInsideText`, `ButtonWithLinearGradient`: The `accessibilityLabel` and `testID` are automatically set to the `wording` prop, or to `accessibilityLabel` prop if given. This means that `accessibility id` is the `wording` or `accessibilityLabel`, which allow us to have a cross-platform selector.
