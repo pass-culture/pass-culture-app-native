@@ -1657,6 +1657,56 @@ describe('fetchOffer', () => {
       })
     })
   })
+
+  describe('isOnline & geolocation shared with around me location filter param', () => {
+    it('should fetch with around me parameters when isOnline is undefined', () => {
+      const query = 'searched query'
+
+      fetchOffer({
+        parameters: {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
+          query,
+          isOnline: undefined,
+        } as SearchParametersQuery,
+        userLocation,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        aroundLatLng: '42, 43',
+        aroundRadius: 15000,
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
+      })
+    })
+
+    it('should not fetch with around me parameters when isOnline is undefined', () => {
+      const query = 'searched query'
+
+      fetchOffer({
+        parameters: {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
+          query,
+          isOnline: true,
+        } as SearchParametersQuery,
+        userLocation,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
+      })
+    })
+  })
 })
 
 describe('fetchOfferHits', () => {
