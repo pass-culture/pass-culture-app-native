@@ -81,6 +81,7 @@ exports[`BookingDetails should render correctly 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             Object {
+              "borderRadius": 40,
               "opacity": 1,
               "userSelect": "auto",
             }

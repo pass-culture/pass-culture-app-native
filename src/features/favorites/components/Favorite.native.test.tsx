@@ -17,6 +17,9 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from './Favorite'
 
+// TODO(lucasBeneston): voir pour ne pas mocker
+jest.mock('features/offer/api/useOffer')
+
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
@@ -133,14 +136,12 @@ describe('<Favorite /> component', () => {
     })
   })
 
-  it('should call share when press share icon', async () => {
+  it('should call share when press share icon', () => {
     const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = renderFavorite()
+    const { getByLabelText } = renderFavorite()
 
-    await act(async () => {
-      const shareButton = getByTestId('icon-share')
-      fireEvent.press(shareButton)
-    })
+    const shareButton = getByLabelText(`Partager l’offre ${favorite.offer.name}`)
+    fireEvent.press(shareButton)
 
     expect(share).toBeCalledTimes(1)
   })

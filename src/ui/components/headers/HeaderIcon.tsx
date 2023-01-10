@@ -4,13 +4,13 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -73,16 +73,19 @@ export const HeaderIcon = (props: HeaderIconProps) => {
           <Icon size={icons.sizes.small} testID={`icon-${props.iconName}`} />
         </IconContainer>
       )}
-    </Touchable>
+    </StyledTouchable>
   )
 }
 
-const CONTAINER_SIZE = getSpacing(10)
+const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
+  borderRadius: theme.buttons.roundedButton.size,
+}))
+
 const IconContainer = styled(Animated.View)(({ theme }) => ({
-  width: CONTAINER_SIZE,
-  height: CONTAINER_SIZE,
+  width: theme.buttons.roundedButton.size,
+  height: theme.buttons.roundedButton.size,
   aspectRatio: '1',
-  borderRadius: CONTAINER_SIZE,
+  borderRadius: theme.buttons.roundedButton.size,
   backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',

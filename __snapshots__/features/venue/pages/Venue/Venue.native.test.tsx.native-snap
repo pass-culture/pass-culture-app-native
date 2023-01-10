@@ -86,6 +86,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
+            "borderRadius": 40,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -231,6 +232,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
+            "borderRadius": 40,
             "opacity": 1,
             "userSelect": "auto",
           }

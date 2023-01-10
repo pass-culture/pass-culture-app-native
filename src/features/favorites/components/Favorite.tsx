@@ -130,35 +130,41 @@ export const Favorite: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <Animated.View onLayout={onLayout} style={animatedViewStyle}>
-        <Container
-          navigateTo={
-            offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
-          }
-          onBeforeNavigate={handlePressOffer}
-          accessibilityLabel={accessibilityLabel}>
-          <Row>
-            <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-            <Spacer.Row numberOfSpaces={4} />
-            <ContentContainer>
-              <LeftContent>
-                <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
-                <Spacer.Column numberOfSpaces={1} />
-                <Body>{searchGroupLabel}</Body>
-                {!!formattedDate && <Body>{formattedDate}</Body>}
-                <Spacer.Column numberOfSpaces={1} />
-                <Typo.Caption>{displayPrice}</Typo.Caption>
-              </LeftContent>
-              <Spacer.Row numberOfSpaces={2} />
-              <RightContent>
-                <HeaderIcon
-                  iconName="share"
-                  onPress={pressShareOffer}
-                  accessibilityLabel="Partager"
-                />
-                {!!distanceToOffer && <Distance>{distanceToOffer}</Distance>}
-              </RightContent>
-            </ContentContainer>
-          </Row>
+        <Container>
+          <StyledTouchableLink
+            navigateTo={
+              offer.id
+                ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } }
+                : undefined
+            }
+            onBeforeNavigate={handlePressOffer}
+            accessibilityLabel={accessibilityLabel}>
+            <Row>
+              <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
+              <Spacer.Row numberOfSpaces={4} />
+              <ContentContainer>
+                <LeftContent>
+                  <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
+                  <Spacer.Column numberOfSpaces={1} />
+                  <Body>{searchGroupLabel}</Body>
+                  {!!formattedDate && <Body>{formattedDate}</Body>}
+                  <Spacer.Column numberOfSpaces={1} />
+                  <Typo.Caption>{displayPrice}</Typo.Caption>
+                </LeftContent>
+                <Spacer.Row numberOfSpaces={2} />
+                <RightContent>
+                  {!!distanceToOffer && <Distance>{distanceToOffer}</Distance>}
+                </RightContent>
+              </ContentContainer>
+            </Row>
+          </StyledTouchableLink>
+          <ShareContainer>
+            <HeaderIcon
+              iconName="share"
+              onPress={pressShareOffer}
+              accessibilityLabel={`Partager l’offre ${offer.name}`}
+            />
+          </ShareContainer>
         </Container>
         <ButtonsRow>
           <ButtonContainer>
@@ -189,27 +195,39 @@ export const Favorite: React.FC<Props> = (props) => {
   )
 }
 
-const ContentContainer = styled.View({
-  flexDirection: 'row',
-  flex: 1,
+const Container = styled.View({
+  position: 'relative',
 })
+
+const ShareContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  marginRight: theme.contentPage.marginHorizontal,
+}))
 
 const LeftContent = styled.View({
   flex: 1,
 })
 
-const RightContent = styled.View({
-  justifyContent: 'space-between',
+const RightContent = styled.View(({ theme }) => ({
+  justifyContent: 'flex-end',
   alignItems: 'flex-end',
-})
+  minWidth: theme.buttons.roundedButton.size,
+}))
 
-const Container = styled(InternalTouchableLink)(({ theme }) => ({
+const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const ContentContainer = styled.View({
+  flexDirection: 'row',
+  flex: 1,
 })
 
 const ButtonContainer = styled.View({
