@@ -99,7 +99,7 @@ describe('<OfferBody />', () => {
       await waitFor(() => {
         scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
       })
-      expect(analytics.logSimilarOfferPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+      expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
     })
   })
 })

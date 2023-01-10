@@ -302,8 +302,10 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_FROM_OFFER, { offerId }),
   logSignUpTooYoung: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_UP_TOO_YOUNG, { age }),
-  logSimilarOfferPlaylistHorizontalScroll: () =>
-    analyticsProvider.logEvent(AnalyticsEvent.SIMILAR_OFFER_PLAYLIST_HORIZONTAL_SCROLL),
+  logPlaylistHorizontalScroll: (fromOfferId?: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL, {
+      fromOfferId,
+    }),
   logSimilarOfferPlaylistVerticalScroll: (fromOfferId?: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIMILAR_OFFER_PLAYLIST_VERTICAL_SCROLL, {
       fromOfferId,

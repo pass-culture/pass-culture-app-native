@@ -1,9 +1,11 @@
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -49,13 +51,10 @@ interface Props {
   onScroll: () => void
 }
 
-const trackingOnHorizontalScroll = () => {
-  return analytics.logSimilarOfferPlaylistHorizontalScroll()
-}
-
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
+  const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -82,6 +81,11 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { position } = useGeolocation()
   const similarOffers = useSimilarOffers(offerId, offer?.venue.coordinates)
   const hasSimilarOffers = similarOffers && similarOffers.length > 0
+  const fromOfferId = route.params?.fromOfferId
+
+  const trackingOnHorizontalScroll = useCallback(() => {
+    return analytics.logPlaylistHorizontalScroll(fromOfferId)
+  }, [fromOfferId])
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
