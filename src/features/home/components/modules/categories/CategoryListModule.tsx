@@ -1,6 +1,6 @@
 import React from 'react'
 import { FlatList } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
 import { getColorFilter } from 'features/home/components/modules/categories/helpers/getColorFilter'
@@ -14,22 +14,26 @@ type CategoryListProps = {
   categoryBlockList: CategoryBlockData[]
 }
 
+const DESKTOP_COLUMNS = 4
+const DESKTOP_TITLE_MARGIN = 2
+const DESKTOP_CATEGORY_LIST_MARGIN = 4
+const DESKTOP_CATEGORY_BLOCK_MARGIN = 2
+
+const MOBILE_COLUMNS = 2
+const MOBILE_TITLE_MARGIN = 3
+const MOBILE_CATEGORY_LIST_MARGIN = 5
+const MOBILE_CATEGORY_BLOCK_MARGIN = 1
+
 const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
 
-const ListFooterComponent = () => <Spacer.Column numberOfSpaces={6} />
-
-const ItemSeparatorComponent = () => <VerticalSeparator />
-
-const ListHeaderComponent = (title: string) => (
-  <React.Fragment>
-    <Typo.Title3 numberOfLines={2}>{title}</Typo.Title3>
-    <Spacer.Column numberOfSpaces={4} />
-  </React.Fragment>
-)
+const ListFooterComponent = () => <Footer />
 
 export const CategoryListModule = ({ id, title, categoryBlockList }: CategoryListProps) => {
+  const theme = useTheme()
+  const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
+
   const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
-    <CategoryBlockContainer index={index}>
+    <CategoryBlockContainer>
       <CategoryBlock
         {...item}
         filter={getColorFilter(index)}
@@ -45,31 +49,47 @@ export const CategoryListModule = ({ id, title, categoryBlockList }: CategoryLis
   )
 
   return (
-    <FlatListContainer>
-      <FlatList
-        ListHeaderComponent={ListHeaderComponent(title)}
-        ListFooterComponent={ListFooterComponent}
-        data={categoryBlockList}
-        numColumns={2}
-        horizontal={false}
-        renderItem={renderItem}
-        ItemSeparatorComponent={ItemSeparatorComponent}
-        scrollEnabled={false}
-        keyExtractor={keyExtractor}
-      />
-    </FlatListContainer>
+    <React.Fragment>
+      <HeaderContainer>
+        <Typo.Title3 numberOfLines={2}>{title}</Typo.Title3>
+        <Spacer.Column
+          numberOfSpaces={theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN}
+        />
+      </HeaderContainer>
+      <FlatListContainer>
+        <FlatList
+          ListFooterComponent={ListFooterComponent}
+          data={categoryBlockList}
+          numColumns={numColumns}
+          horizontal={false}
+          renderItem={renderItem}
+          scrollEnabled={false}
+          keyExtractor={keyExtractor}
+        />
+      </FlatListContainer>
+    </React.Fragment>
   )
 }
 
-const FlatListContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-})
-
-const CategoryBlockContainer = styled.View<{ index: number }>(({ index }) => ({
-  flex: 0.5,
-  marginRight: index % 2 === 0 ? getSpacing(2) : 0,
+const FlatListContainer = styled.View(({ theme }) => ({
+  marginHorizontal: getSpacing(
+    theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
+  ),
 }))
 
-const VerticalSeparator = styled.View({
-  height: getSpacing(2),
-})
+const HeaderContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const CategoryBlockContainer = styled.View(({ theme }) => ({
+  padding: getSpacing(
+    theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
+  ),
+  flexBasis: theme.isDesktopViewport ? '25%' : '50%',
+}))
+
+const Footer = styled.View(({ theme }) => ({
+  height: getSpacing(
+    theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
+  ),
+}))
