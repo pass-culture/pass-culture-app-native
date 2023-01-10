@@ -2,27 +2,19 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  CategoryBlock,
-  CategoryBlockProps,
-} from 'features/home/components/modules/categories/CategoryBlock'
+import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
 import { getColorFilter } from 'features/home/components/modules/categories/helpers/getColorFilter'
+import { CategoryBlock as CategoryBlockData } from 'features/home/types'
+import { analytics } from 'libs/firebase/analytics'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type CategoryBlockData = Omit<CategoryBlockProps, 'filter'>
-
 type CategoryListProps = {
+  id: string
   title: string
   categoryBlockList: CategoryBlockData[]
 }
 
 const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
-
-const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
-  <CategoryBlockContainer index={index}>
-    <CategoryBlock {...item} filter={getColorFilter(index)} />
-  </CategoryBlockContainer>
-)
 
 const ListFooterComponent = () => <Spacer.Column numberOfSpaces={6} />
 
@@ -35,8 +27,22 @@ const ListHeaderComponent = (title: string) => (
   </React.Fragment>
 )
 
-export const CategoryListModule = (props: CategoryListProps) => {
-  const { title, categoryBlockList } = props
+export const CategoryListModule = ({ id, title, categoryBlockList }: CategoryListProps) => {
+  const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
+    <CategoryBlockContainer index={index}>
+      <CategoryBlock
+        {...item}
+        filter={getColorFilter(index)}
+        onBeforePress={() => {
+          analytics.logCategoryBlockClicked({
+            moduleID: item.id,
+            moduleListID: id,
+            toEntryId: item.homeEntryId,
+          })
+        }}
+      />
+    </CategoryBlockContainer>
+  )
 
   return (
     <FlatListContainer>

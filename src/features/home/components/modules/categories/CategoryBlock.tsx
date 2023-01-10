@@ -17,6 +17,7 @@ export interface CategoryBlockProps {
   homeEntryId: string
   filter: FilterProps
   image?: string
+  onBeforePress: () => void | Promise<void>
 }
 
 export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
@@ -24,10 +25,11 @@ export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   homeEntryId,
   image,
   filter,
+  onBeforePress,
 }) => {
   const navigateTo = getNavigateToThematicHomeConfig(homeEntryId)
   return (
-    <StyledInternalTouchableLink navigateTo={navigateTo}>
+    <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
       <ImageBackground source={{ uri: image }}>
         <ContainerWithFilter filter={filter}>
           <StyledTitle numberOfLines={2}>{title}</StyledTitle>
