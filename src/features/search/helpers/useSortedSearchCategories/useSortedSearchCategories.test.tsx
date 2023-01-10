@@ -9,7 +9,7 @@ describe('useSortedSearchCategories', () => {
   it('should return all categories', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current.length).toEqual(15)
+    expect(result.current.length).toEqual(14)
   })
 
   it("should format category's label", () => {
@@ -42,7 +42,6 @@ describe('useSortedSearchCategories', () => {
       'Livres',
       'Médias & presse',
       'Musées & visites culturelles',
-      'Plateformes en ligne',
       'Spectacles',
     ])
   })

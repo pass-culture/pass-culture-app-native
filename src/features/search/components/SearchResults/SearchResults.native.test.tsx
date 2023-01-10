@@ -332,9 +332,8 @@ describe('SearchResults component', () => {
     })
 
     it.each`
-      filter                                                      | params
-      ${`${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE} category`}  | ${{ offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE] }}
-      ${`${SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE} category`} | ${{ offerCategories: [SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE] }}
+      filter                                                     | params
+      ${`${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE} category`} | ${{ offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE] }}
     `('when $filter filter selected and position is null', async ({ params }) => {
       mockPosition = null
       useRoute.mockReturnValueOnce({
