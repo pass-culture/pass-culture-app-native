@@ -6,7 +6,7 @@ import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { LENGTH_XL, MARGIN_DP, RATIO_EXCLU } from 'ui/theme'
 
 export const ExclusivityImage = ({ alt, imageURL }: { alt: string; imageURL: string }) => {
-  return <Image url={imageURL} accessible={false} accessibilityLabel={alt} />
+  return <Image url={imageURL} accessibilityLabel={alt} />
 }
 
 const Image = styled(FastImage)(({ theme }) => ({
