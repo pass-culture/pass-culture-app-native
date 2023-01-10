@@ -20,14 +20,14 @@ describe('<VenueHeader />', () => {
     jest.useRealTimers()
   })
 
-  it('should render all icons', async () => {
-    const venueHeader = await renderVenueHeader()
+  it('should render all icons', () => {
+    const venueHeader = renderVenueHeader()
     expect(venueHeader.queryByTestId('animated-icon-back')).toBeTruthy()
     expect(venueHeader.queryByTestId('animated-icon-share')).toBeTruthy()
   })
 
-  it('should goBack when we press on the back button', async () => {
-    const { getByTestId } = await renderVenueHeader()
+  it('should goBack when we press on the back button', () => {
+    const { getByTestId } = renderVenueHeader()
     fireEvent.press(getByTestId('animated-icon-back'))
     expect(mockGoBack).toBeCalledTimes(1)
   })
@@ -46,10 +46,10 @@ describe('<VenueHeader />', () => {
     await waitForExpect(() => expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1))
   })
 
-  it('should call Share with the right arguments on IOS', async () => {
+  it('should call Share with the right arguments on IOS', () => {
     Platform.OS = 'ios'
     const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderVenueHeader()
+    const { getByTestId } = renderVenueHeader()
 
     fireEvent.press(getByTestId('animated-icon-share'))
 
@@ -63,10 +63,10 @@ describe('<VenueHeader />', () => {
     )
   })
 
-  it('should call Share with the right arguments on Android', async () => {
+  it('should call Share with the right arguments on Android', () => {
     Platform.OS = 'android'
     const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderVenueHeader()
+    const { getByTestId } = renderVenueHeader()
 
     fireEvent.press(getByTestId('animated-icon-share'))
 
@@ -82,8 +82,8 @@ describe('<VenueHeader />', () => {
   })
 
   describe('<VenueHeader /> - Analytics', () => {
-    it('should log ShareVenue once when clicking on the Share button', async () => {
-      const { getByTestId } = await renderVenueHeader()
+    it('should log ShareVenue once when clicking on the Share button', () => {
+      const { getByTestId } = renderVenueHeader()
 
       fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
@@ -96,7 +96,7 @@ describe('<VenueHeader />', () => {
   })
 })
 
-async function renderVenueHeader() {
+function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
