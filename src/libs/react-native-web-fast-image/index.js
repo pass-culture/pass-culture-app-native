@@ -5,10 +5,10 @@ import styled from 'styled-components'
 
 const FastImageViewNativeModule = NativeModules.FastImageView
 
-function FastImageBase({ source, style, children, forwardedRef, ...props }) {
+function FastImageBase({ source, style, accessibilityLabel, children, forwardedRef, ...props }) {
   return (
     <View style={[styles.imageContainer, style]} ref={forwardedRef}>
-      <StyledImg src={source.uri} loading="lazy" {...props} />
+      <StyledImg src={source.uri} loading="lazy" alt={accessibilityLabel || ''} {...props} />
       {children}
     </View>
   )

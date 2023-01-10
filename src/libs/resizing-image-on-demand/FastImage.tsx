@@ -8,6 +8,7 @@ type Props = Omit<FastImageProps, 'source'> & {
   url: string
   height?: number
   width?: number
+  accessibilityLabel?: string
   children?: never
 }
 
