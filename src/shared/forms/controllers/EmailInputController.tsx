@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react'
 import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
-import { EmailInput, Props as EmailInputProps } from 'ui/components/inputs/EmailInput/EmailInput'
+import { EmailInput, EmailInputProps } from 'ui/components/inputs/EmailInput/EmailInput'
 import { InputError } from 'ui/components/inputs/InputError'
 
 const emailInputErrorId = uuidv4()

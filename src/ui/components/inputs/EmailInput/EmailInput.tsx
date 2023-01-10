@@ -4,14 +4,14 @@ import { TextInput as RNTextInput } from 'react-native'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 
-export interface Props extends Omit<TextInputProps, 'value' | 'onChangeText'> {
+export interface EmailInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
   email: string
   onEmailChange: (email: string) => void
   isRequiredField?: boolean
 }
 
-const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
+const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, EmailInputProps> = (
   { email, onEmailChange, ...inputProps },
   forwardedRef
 ) => (
@@ -30,4 +30,4 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   />
 )
 
-export const EmailInput = forwardRef<RNTextInput, Props>(withRefEmailInput)
+export const EmailInput = forwardRef<RNTextInput, EmailInputProps>(withRefEmailInput)
