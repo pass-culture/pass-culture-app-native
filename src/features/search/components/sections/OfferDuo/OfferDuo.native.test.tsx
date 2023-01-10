@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
 import { OfferDuo } from './OfferDuo'
@@ -39,5 +38,5 @@ describe('OfferDuo component', () => {
 
 function renderOfferDuo() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<OfferDuo />))
+  return render(<OfferDuo />)
 }
