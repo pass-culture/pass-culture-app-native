@@ -13,6 +13,7 @@ import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
@@ -79,6 +80,7 @@ export const RoundedButton = (props: Props) => {
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
+  ...customFocusOutline({ color: theme.colors.accent }),
 }))
 
 const IconContainer = styled(Animated.View)(({ theme }) => ({
