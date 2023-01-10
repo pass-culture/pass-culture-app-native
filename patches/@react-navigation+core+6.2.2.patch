@@ -1,5 +1,5 @@
 diff --git a/node_modules/@react-navigation/core/lib/module/getPathFromState.js b/node_modules/@react-navigation/core/lib/module/getPathFromState.js
-index faf8720..0503093 100644
+index d6a18ae..40e67e9 100644
 --- a/node_modules/@react-navigation/core/lib/module/getPathFromState.js
 +++ b/node_modules/@react-navigation/core/lib/module/getPathFromState.js
 @@ -38,11 +38,12 @@ const getActiveRoute = state => {

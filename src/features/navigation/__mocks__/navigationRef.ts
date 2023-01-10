@@ -7,6 +7,7 @@ export const navigationRef: typeof actualNavigationRef = {
   emit: jest.fn(),
   getCurrentOptions: jest.fn(),
   getCurrentRoute: jest.fn(),
+  getId: jest.fn(),
   getParent: jest.fn(),
   getRootState: jest.fn(),
   getState: jest.fn(),
