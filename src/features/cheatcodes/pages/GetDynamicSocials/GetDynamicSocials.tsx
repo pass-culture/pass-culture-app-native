@@ -5,7 +5,11 @@ import styled from 'styled-components/native'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const GetDynamicSocials: FunctionComponent = () => {
+interface Props {
+  children?: never
+}
+
+export const GetDynamicSocials: FunctionComponent<Props> = () => {
   const [instagramText, setInstagramText] = useState('Does not have Instagram')
   const [snapchatText, setSnapchatText] = useState('Does not have Snapchat')
   const [tiktokText, setTiktokText] = useState('Does not have Tiktok')
