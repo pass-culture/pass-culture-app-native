@@ -45,7 +45,7 @@ describe('useFilterCount', () => {
     ${'priceRange - default'}        | ${{ priceRange: [0, MAX_PRICE] }}            | ${0}
     ${'priceRange - [1, MAX_PRICE]'} | ${{ priceRange: [1, MAX_PRICE] }}            | ${1}
     ${'priceRange - [0, 30]'}        | ${{ priceRange: [1, 30] }}                   | ${1}
-    ${'sixFilters'}                  | ${fiveFilters}                               | ${5}
+    ${'fiveFilters'}                 | ${fiveFilters}                               | ${5}
   `(
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {

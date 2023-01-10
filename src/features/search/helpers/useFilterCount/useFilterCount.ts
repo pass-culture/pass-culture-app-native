@@ -11,18 +11,18 @@ export const useFilterCount = (searchState: SearchState): number => {
     offerIsNew,
     date,
     timeRange,
-    priceRange: _priceRange,
+    priceRange,
   } = searchState
 
   const maxPrice = useMaxPrice()
-  const priceRange = _priceRange ?? [0, maxPrice]
+  const currentPriceRange = priceRange ?? [0, maxPrice]
   return (
     // Localisation
     +(locationFilter.locationType !== LocationType.EVERYWHERE) +
     // Catégories
     offerCategories.length +
     // Prix
-    +(priceRange[0] > 0 || priceRange[1] < maxPrice) +
+    +(currentPriceRange[0] > 0 || currentPriceRange[1] < maxPrice) +
     // Uniquement les offres gratuites
     +(offerIsFree ?? false) +
     // Uniquement les offres duo

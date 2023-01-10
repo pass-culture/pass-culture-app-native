@@ -64,7 +64,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
 
   const subtitleToggle = 'Seules les sorties seront affichées'
 
-  const ToggleOfferDuo = useCallback(
+  const ToggleOfferDuoController = useCallback(
     ({ field: { value } }: { field: ControllerRenderProps<SearchTypeFormData, 'offerIsDuo'> }) => (
       <React.Fragment>
         <FilterSwitchWithLabel
@@ -101,8 +101,8 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
 
         view: SearchView.Results,
       }
-      analytics.logPerformSearch(additionalSearchState)
       navigate(...getTabNavConfig('Search', additionalSearchState))
+      analytics.logPerformSearch(additionalSearchState)
       hideModal()
     },
     [hideModal, navigate, searchState]
@@ -135,7 +135,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
       }>
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
-        <Controller control={control} name="offerIsDuo" render={ToggleOfferDuo} />
+        <Controller control={control} name="offerIsDuo" render={ToggleOfferDuoController} />
       </Form.MaxWidth>
     </AppModal>
   )
