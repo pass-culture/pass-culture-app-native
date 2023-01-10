@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, ControllerRenderProps } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -62,6 +62,24 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
     setValue('offerIsDuo', toggleLimitDuoOffer)
   }, [getValues, setValue])
 
+  const subtitleToggle = 'Seules les sorties seront affichées'
+
+  const ToggleOfferDuo = useCallback(
+    ({ field: { value } }: { field: ControllerRenderProps<SearchTypeFormData, 'offerIsDuo'> }) => (
+      <React.Fragment>
+        <FilterSwitchWithLabel
+          isActive={value}
+          toggle={toggleLimitDuoOfferSearch}
+          label="Uniquement les offres duo"
+          subtitle={subtitleToggle}
+          testID="limitDuoOfferSearch"
+        />
+        <Spacer.Column numberOfSpaces={6} />
+      </React.Fragment>
+    ),
+    [toggleLimitDuoOfferSearch]
+  )
+
   const onResetPress = useCallback(() => {
     reset({
       offerIsDuo: initialSearchState.offerIsDuo,
@@ -92,8 +110,6 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
 
   const onSubmit = handleSubmit(search)
 
-  const subtitleToggle = 'Seules les sorties seront affichées'
-
   return (
     <AppModal
       visible={isVisible}
@@ -119,22 +135,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
       }>
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
-        <Controller
-          control={control}
-          name="offerIsDuo"
-          render={({ field: { value } }) => (
-            <React.Fragment>
-              <FilterSwitchWithLabel
-                isActive={value}
-                toggle={toggleLimitDuoOfferSearch}
-                label="Uniquement les offres duo"
-                subtitle={subtitleToggle}
-                testID="limitDuoOfferSearch"
-              />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
-          )}
-        />
+        <Controller control={control} name="offerIsDuo" render={ToggleOfferDuo} />
       </Form.MaxWidth>
     </AppModal>
   )
