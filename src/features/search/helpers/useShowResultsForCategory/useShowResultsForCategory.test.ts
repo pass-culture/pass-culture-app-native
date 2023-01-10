@@ -6,6 +6,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from './useShowResultsForCategory'
@@ -15,6 +16,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
+  }),
+}))
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 
@@ -43,7 +50,7 @@ describe('useShowResultsForCategory', () => {
         endingDatetime: undefined,
         hitsPerPage: 20,
         locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: ['SPECTACLES'],
+        offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
         offerIsDuo: false,
         offerIsFree: false,
         offerIsNew: false,
@@ -69,5 +76,35 @@ describe('useShowResultsForCategory', () => {
       SearchGroupNameEnumv2.SPECTACLES,
       searchId
     )
+  })
+
+  it('should navigate with isOnline param when category selected is only online platform', () => {
+    const { result: resultCallback } = renderHook(useShowResultsForCategory)
+
+    resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
+
+    expect(mockNavigate).toBeCalledWith('TabNavigator', {
+      params: {
+        beginningDatetime: undefined,
+        date: null,
+        endingDatetime: undefined,
+        hitsPerPage: 20,
+        isOnline: true,
+        locationFilter: { locationType: 'EVERYWHERE' },
+        offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
+        offerIsDuo: false,
+        offerIsFree: false,
+        offerIsNew: false,
+        offerSubcategories: [],
+        offerTypes: { isDigital: false, isEvent: false, isThing: false },
+        priceRange: [0, 300],
+        query: 'Big flo et Oli',
+        view: SearchView.Results,
+        tags: [],
+        timeRange: null,
+        searchId,
+      },
+      screen: 'Search',
+    })
   })
 })
