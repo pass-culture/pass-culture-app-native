@@ -9,7 +9,7 @@ import { useShareVenue } from 'features/venue/helpers/useShareVenue'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -52,7 +52,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />
-          <HeaderIcon
+          <RoundedButton
             animationState={animationState}
             iconName="back"
             onPress={goBack}
@@ -68,7 +68,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
           </Title>
 
           <Spacer.Flex />
-          <HeaderIcon
+          <RoundedButton
             animationState={animationState}
             iconName="share"
             onPress={onSharePress}

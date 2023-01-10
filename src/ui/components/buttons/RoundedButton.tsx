@@ -14,7 +14,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-interface HeaderIconProps {
+interface Props {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
   initialColor?: ColorsEnum
   onPress: () => void
@@ -29,14 +29,14 @@ interface HeaderIconProps {
   accessibilityLabel?: string
 }
 
-const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
+const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
   if (iconName === 'favorite-filled') return FavoriteFilled
   return Favorite
 }
 
-export const HeaderIcon = (props: HeaderIconProps) => {
+export const RoundedButton = (props: Props) => {
   const Icon = getIcon(props.iconName)
   const { colors, icons } = useTheme()
 

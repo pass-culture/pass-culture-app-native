@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
@@ -32,7 +32,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <IconContainer>
-            <HeaderIcon
+            <RoundedButton
               animationState={animationState}
               iconName="back"
               onPress={goBack}

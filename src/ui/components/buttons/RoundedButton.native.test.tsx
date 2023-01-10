@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render } from 'tests/utils'
 
-import { HeaderIcon } from '../headers/HeaderIcon'
+import { RoundedButton } from './RoundedButton'
 
 const animatedValue = new Animated.Value(0)
 const DummyComponent: React.FC = () => {
@@ -23,7 +23,7 @@ const DummyComponent: React.FC = () => {
   }
   return (
     <TouchableOpacity testID="dummyPressable" onPress={onPress}>
-      <HeaderIcon
+      <RoundedButton
         iconName="back"
         onPress={jest.fn()}
         animationState={{ iconBackgroundColor, iconBorderColor, transition: animatedValue }}
@@ -33,11 +33,15 @@ const DummyComponent: React.FC = () => {
   )
 }
 
-describe('HeaderIcon', () => {
+describe('RoundedButton', () => {
   describe('Icon', () => {
     it('should display icon without animation', () => {
       const { queryByTestId } = render(
-        <HeaderIcon iconName="back" onPress={jest.fn()} accessibilityLabel="Revenir en arrière" />
+        <RoundedButton
+          iconName="back"
+          onPress={jest.fn()}
+          accessibilityLabel="Revenir en arrière"
+        />
       )
       expect(queryByTestId('icon-back')).toBeTruthy()
       expect(queryByTestId('animated-icon-back')).toBeFalsy()

@@ -16,7 +16,7 @@ import { WebShareModal } from 'libs/share/WebShareModal'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -159,7 +159,7 @@ export const Favorite: React.FC<Props> = (props) => {
             </Row>
           </StyledTouchableLink>
           <ShareContainer>
-            <HeaderIcon
+            <RoundedButton
               iconName="share"
               onPress={pressShareOffer}
               accessibilityLabel={`Partager l’offre ${offer.name}`}
