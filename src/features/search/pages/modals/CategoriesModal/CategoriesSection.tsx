@@ -8,7 +8,10 @@ import {
 } from 'api/gen'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { CategoriesModalView } from 'features/search/enums'
-import { getDescription, isCategory } from 'features/search/helpers/categoriesHelpers'
+import {
+  getDescription,
+  isCategory,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesViewData, DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'

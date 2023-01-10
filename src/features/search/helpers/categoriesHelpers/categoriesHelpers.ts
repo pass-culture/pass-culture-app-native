@@ -30,6 +30,12 @@ export const categoryAllValue: SearchGroupResponseModelv2 = {
   name: SearchGroupNameEnumv2.NONE,
 }
 
+export function getSearchGroupsByAlphabeticalSorting(data: SearchGroupResponseModelv2[]) {
+  return getDataByAlphabeticalSorting(
+    data.filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
+  )
+}
+
 /**
  * Returns a `SearchGroupResponseModelv2` from a `SearchGroupEnumv2`.
  */
@@ -85,22 +91,23 @@ export function getNativeCategoriesFromEnumArray(
  */
 export function getNativeCategories(
   data: SubcategoriesResponseModelv2 | undefined,
-  category: SearchGroupResponseModelv2 | undefined
+  categoryEnum: SearchGroupNameEnumv2 | undefined
 ) {
   if (!data) return []
-  if (!category) return []
-  if (category.name === SearchGroupNameEnumv2.NONE) return []
+  if (!categoryEnum) return []
+  if (categoryEnum === SearchGroupNameEnumv2.NONE) return []
 
   const nativeCategories = data.subcategories
-    .filter((subcategory) => subcategory.searchGroupName === category.name)
-    .map((subcategory) => subcategory.nativeCategoryId)
-    .map((nativeCategoryId) =>
-      data.nativeCategories.find((nativeCategory) => nativeCategory.name === nativeCategoryId)
+    .filter((subcategory) => subcategory.searchGroupName === categoryEnum)
+    .map((subcategory) =>
+      data.nativeCategories.find(
+        (nativeCategory) => nativeCategory.name === subcategory.nativeCategoryId
+      )
     )
     // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
     .filter(Boolean) as NativeCategoryResponseModelv2[]
 
-  return getUniqueBy(nativeCategories, 'name')
+  return getDataByAlphabeticalSorting(getUniqueBy(nativeCategories, 'name'))
 }
 
 export function getGenreTypes(
@@ -255,4 +262,10 @@ export function buildSearchPayloadValues(form: CategoriesModalFormProps) {
     offerNativeCategories: form.nativeCategory ? [form.nativeCategory.name] : [],
     offerGenreTypes: form.genreType ? [form.genreType] : [],
   }
+}
+
+export function getDataByAlphabeticalSorting(
+  data: SearchGroupResponseModelv2[] | NativeCategoryResponseModelv2[]
+) {
+  return data.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
 }

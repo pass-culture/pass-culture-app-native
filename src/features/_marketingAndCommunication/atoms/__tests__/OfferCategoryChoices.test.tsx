@@ -10,15 +10,15 @@ describe('<OfferCategoryChoices />', () => {
 
     expect(renderAPI).toMatchSnapshot()
   })
-  it('should call onChange with proper categories when toggling', () => {
+  it('should call onChange with proper category when toggling', () => {
     const onChange = jest.fn()
     const renderAPI = render(<OfferCategoryChoices onChange={onChange} />)
 
     fireEvent.press(renderAPI.getByText('Arts & loisirs créatifs'))
     expect(onChange).toHaveBeenNthCalledWith(1, ['ARTS_LOISIRS_CREATIFS'])
     fireEvent.press(renderAPI.getByText('Conférences & rencontres'))
-    expect(onChange).toHaveBeenNthCalledWith(2, ['ARTS_LOISIRS_CREATIFS', 'RENCONTRES_CONFERENCES'])
+    expect(onChange).toHaveBeenNthCalledWith(2, ['RENCONTRES_CONFERENCES'])
     fireEvent.press(renderAPI.getByText('Conférences & rencontres'))
-    expect(onChange).toHaveBeenNthCalledWith(3, ['ARTS_LOISIRS_CREATIFS'])
+    expect(onChange).toHaveBeenNthCalledWith(3, [])
   })
 })
