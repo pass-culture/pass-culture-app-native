@@ -565,6 +565,16 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
             accessibilityRole="button"
             accessible={false}
             collapsable={false}
