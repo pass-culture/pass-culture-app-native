@@ -33,10 +33,12 @@ type HighlightProps = {
 export const Highlight: FunctionComponent<HighlightProps> = ({ hit, attribute }) => {
   const { value } = getPropertyByPath(hit._highlightResult, attribute) || {}
   const attributeValue = value.toString()
-  const parts = getHighlightedParts(
-    // it is necessary to have a good display when a search was executed and autocomplete redisplayed in iOS and Android
-    attributeValue.replaceAll('&lt;em&gt;', '<mark>').replaceAll('&lt;/em&gt;', '</mark>')
-  )
+  // it is necessary to have a good display when a search was executed and autocomplete redisplayed in iOS and Android
+  const attributeValueEncoded = attributeValue
+    .replaceAll('&lt;em&gt;', '<mark>')
+    .replaceAll('&lt;/em&gt;', '</mark>')
+    .replaceAll('&#39;', "'")
+  const parts = getHighlightedParts(attributeValueEncoded)
 
   return (
     <React.Fragment>
