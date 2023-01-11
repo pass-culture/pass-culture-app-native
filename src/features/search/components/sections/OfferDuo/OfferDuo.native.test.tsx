@@ -37,6 +37,5 @@ describe('OfferDuo component', () => {
 })
 
 function renderOfferDuo() {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(<OfferDuo />)
 }
