@@ -259,7 +259,7 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Type"
+              accessibilityLabel="Duo"
               accessibilityRole="button"
               accessible={true}
               collapsable={false}
@@ -289,7 +289,7 @@ Array [
                   "userSelect": "auto",
                 }
               }
-              testID="Type"
+              testID="Duo"
             >
               <Text
                 isSelected={false}
@@ -303,9 +303,9 @@ Array [
                     },
                   ]
                 }
-                testID="typeButtonLabel"
+                testID="DuoButtonLabel"
               >
-                Type
+                Duo
               </Text>
             </View>
           </View>

@@ -8,7 +8,6 @@ import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice
 import { LocationFilterChoice } from 'features/_marketingAndCommunication/atoms/LocationFilterChoice'
 import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
 import { OfferNativeCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferNativeCategoryChoices'
-import { OfferTypeChoices } from 'features/_marketingAndCommunication/atoms/OfferTypeChoices'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
@@ -160,21 +159,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    function onChangeOfferTypes(offerTypes: {
-      isDigital: boolean
-      isEvent: boolean
-      isThing: boolean
-    }) {
-      setScreenParams((prevPageParams) =>
-        !offerTypes.isDigital && !offerTypes.isEvent && !offerTypes.isThing
-          ? omit(prevPageParams, name)
-          : {
-              ...prevPageParams,
-              [name]: offerTypes,
-            }
-      )
-    }
-
     function onChangeDate(date: Date | undefined) {
       setScreenParams((prevPageParams) =>
         !date
@@ -242,7 +226,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             onChange={onChangeOfferNativeCategories}
           />
         )}
-        {config.type === 'offerTypes' && <OfferTypeChoices onChange={onChangeOfferTypes} />}
         {config.type === 'date' && (
           <PaddingContainer>
             <DateChoice onChange={onChangeDate} />

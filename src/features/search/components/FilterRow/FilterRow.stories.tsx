@@ -31,9 +31,9 @@ Category.args = {
   icon: All,
 }
 
-export const OfferType = Template.bind({})
-OfferType.args = {
-  title: `Type d'offre`,
+export const Duo = Template.bind({})
+Duo.args = {
+  title: `Duo`,
   icon: OtherOffer,
 }
 

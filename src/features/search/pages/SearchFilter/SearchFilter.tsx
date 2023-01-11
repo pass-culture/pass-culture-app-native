@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
@@ -27,6 +28,7 @@ export const SearchFilter: React.FC = () => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
   const { position } = useGeolocation()
+  const { user } = useAuthContext()
 
   const onGoBack = useCallback(() => {
     navigate(
@@ -55,6 +57,13 @@ export const SearchFilter: React.FC = () => {
     logReinitializeFilters()
   }, [dispatch, logReinitializeFilters, position])
 
+  const hasDuoOfferToggle = useMemo(() => {
+    const isBeneficiary = !!user?.isBeneficiary
+    const hasRemainingCredit = !!user?.domainsCredit?.all?.remaining
+
+    return isBeneficiary && hasRemainingCredit
+  }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
+
   return (
     <Container>
       <PageHeaderSecondary title="Filtrer" onGoBack={onGoBack} />
@@ -77,14 +86,16 @@ export const SearchFilter: React.FC = () => {
               <Separator />
             </StyledLi>
 
-            {/* Type d'offre */}
-            <StyledLi>
-              <Spacer.Column numberOfSpaces={4} />
-              <Section.OfferType />
-              <Spacer.Column numberOfSpaces={4} />
-              <Separator />
-              <Spacer.Column numberOfSpaces={4} />
-            </StyledLi>
+            {/* Duo */}
+            {!!hasDuoOfferToggle && (
+              <StyledLi>
+                <Spacer.Column numberOfSpaces={4} />
+                <Section.OfferDuo />
+                <Spacer.Column numberOfSpaces={4} />
+                <Separator />
+                <Spacer.Column numberOfSpaces={4} />
+              </StyledLi>
+            )}
 
             {/* Prix */}
             <StyledLi>

@@ -184,13 +184,6 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
   },
 }
 
-export enum OfferType {
-  ALL_TYPE = 'Tous les types',
-  DIGITAL = 'Numérique',
-  EVENT = 'Sorties',
-  THING = 'Bien physique',
-}
-
 export enum RadioButtonLocation {
   EVERYWHERE = 'Partout',
   AROUND_ME = 'Autour de moi',

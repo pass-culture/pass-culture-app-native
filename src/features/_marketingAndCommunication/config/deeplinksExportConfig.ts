@@ -18,7 +18,6 @@ export type ParamConfig = {
     | 'boolean'
     | 'offerCategories'
     | 'offerNativeCategories'
-    | 'offerTypes'
     | 'date'
     | 'locationFilter'
   required?: boolean
@@ -81,11 +80,6 @@ export const SCREENS_CONFIG: {
       type: 'offerNativeCategories',
       required: false,
       description: 'Sous-catégories',
-    },
-    offerTypes: {
-      type: 'offerTypes',
-      required: false,
-      description: 'Type d’offre',
     },
     tags: {
       type: 'stringArray',

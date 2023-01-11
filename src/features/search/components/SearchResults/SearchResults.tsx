@@ -5,6 +5,7 @@ import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -24,7 +25,7 @@ import { useLocationType } from 'features/search/helpers/useLocationType/useLoca
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
-import { OfferTypeModal } from 'features/search/pages/modals/OfferTypeModal/OfferTypeModal'
+import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
@@ -71,6 +72,7 @@ export const SearchResults: React.FC = () => {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
+  const { user } = useAuthContext()
 
   const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
   const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''
@@ -92,9 +94,9 @@ export const SearchResults: React.FC = () => {
     hideModal: hideSearchPriceModal,
   } = useModal(false)
   const {
-    visible: offerTypeModalVisible,
-    showModal: showOfferTypeModal,
-    hideModal: hideOfferTypeModal,
+    visible: offerDuoModalVisible,
+    showModal: showOfferDuoModal,
+    hideModal: hideOfferDuoModal,
   } = useModal(false)
   const {
     visible: locationModalVisible,
@@ -142,6 +144,13 @@ export const SearchResults: React.FC = () => {
     [searchState.query, searchState.searchId]
   )
 
+  const hasDuoOfferToggle = useMemo(() => {
+    const isBeneficiary = !!user?.isBeneficiary
+    const hasRemainingCredit = !!user?.domainsCredit?.all?.remaining
+
+    return isBeneficiary && hasRemainingCredit
+  }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
+
   const logActivateGeolocfromSearchResults = useCallback(() => {
     analytics.logActivateGeolocfromSearchResults()
   }, [])
@@ -149,7 +158,6 @@ export const SearchResults: React.FC = () => {
   const ListHeaderComponent = useMemo(() => {
     const shouldDisplayGeolocationButton =
       position === null &&
-      !params?.offerTypes?.isDigital &&
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE &&
       nbHits > 0 &&
@@ -188,7 +196,6 @@ export const SearchResults: React.FC = () => {
     nbHits,
     searchState.locationFilter.locationType,
     position,
-    params?.offerTypes?.isDigital,
     params?.offerCategories,
     showGeolocPermissionModal,
     shouldDisplayUnavailableOfferMessage,
@@ -286,14 +293,16 @@ export const SearchResults: React.FC = () => {
               />
             </StyledLi>
 
-            <StyledLi>
-              <SingleFilterButton
-                label="Type"
-                testID="typeButton"
-                onPress={showOfferTypeModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.OFFER_TYPE)}
-              />
-            </StyledLi>
+            {!!hasDuoOfferToggle && (
+              <StyledLi>
+                <SingleFilterButton
+                  label="Duo"
+                  testID="DuoButton"
+                  onPress={showOfferDuoModal}
+                  isSelected={appliedFilters.includes(FILTER_TYPES.OFFER_DUO)}
+                />
+              </StyledLi>
+            )}
 
             <StyledLi>
               <SingleFilterButton
@@ -353,11 +362,11 @@ export const SearchResults: React.FC = () => {
         isVisible={searchPriceModalVisible}
         hideModal={hideSearchPriceModal}
       />
-      <OfferTypeModal
-        title="Type d'offre"
-        accessibilityLabel="Ne pas filtrer sur les type d'offre et retourner aux résultats"
-        isVisible={offerTypeModalVisible}
-        hideModal={hideOfferTypeModal}
+      <OfferDuoModal
+        title="Duo"
+        accessibilityLabel="Ne pas filtrer sur les offres duo et retourner aux résultats"
+        isVisible={offerDuoModalVisible}
+        hideModal={hideOfferDuoModal}
       />
       <LocationModal
         title="Localisation"

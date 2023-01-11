@@ -12,16 +12,11 @@ import { useFilterCount } from './useFilterCount'
 
 const date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: new Date() }
 const timeRange = DEFAULT_TIME_RANGE
-const zeroOfferType = { isDigital: false, isEvent: false, isThing: false }
-const oneOfferType = { isDigital: true, isEvent: false, isThing: false }
-const twoOfferTypes = { isDigital: true, isEvent: true, isThing: false }
-const threeOfferTypes = { isDigital: true, isEvent: true, isThing: true }
 const venueId = 5959
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
-const sevenFilters = {
+const fiveFilters = {
   offerCategories: ['FILMS_SERIES_CINEMA', 'MEDIA_PRESSE'], // 2
-  offerTypes: twoOfferTypes, // 2
   offerIsNew: true, // 1
   timeRange, // 1
   priceRange: [1, MAX_PRICE], // 1
@@ -50,11 +45,7 @@ describe('useFilterCount', () => {
     ${'priceRange - default'}        | ${{ priceRange: [0, MAX_PRICE] }}            | ${0}
     ${'priceRange - [1, MAX_PRICE]'} | ${{ priceRange: [1, MAX_PRICE] }}            | ${1}
     ${'priceRange - [0, 30]'}        | ${{ priceRange: [1, 30] }}                   | ${1}
-    ${'offerTypes - 0'}              | ${{ offerTypes: zeroOfferType }}             | ${0}
-    ${'offerTypes - 1'}              | ${{ offerTypes: oneOfferType }}              | ${1}
-    ${'offerTypes - 2'}              | ${{ offerTypes: twoOfferTypes }}             | ${2}
-    ${'offerTypes - 3'}              | ${{ offerTypes: threeOfferTypes }}           | ${3}
-    ${'sevenFilters'}                | ${sevenFilters}                              | ${7}
+    ${'fiveFilters'}                 | ${fiveFilters}                               | ${5}
   `(
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {
