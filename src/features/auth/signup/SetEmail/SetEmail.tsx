@@ -7,21 +7,17 @@ import {
   useForm,
   UseFormStateReturn,
 } from 'react-hook-form'
-import { v4 as uuidv4 } from 'uuid'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/signup/SetEmail/schema/setEmailSchema'
 import { analytics } from 'libs/firebase/analytics'
+import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
-import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
-import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
 import { PreValidationSignupStepProps } from '../types'
-
-const emailInputErrorId = uuidv4()
 
 type FormValues = {
   email: string
@@ -34,17 +30,6 @@ type InputControlled<fieldName extends keyof FormValues> = {
   formState: UseFormStateReturn<FormValues>
 }
 
-const EmailInputControlled = ({ field: { onChange, onBlur, value } }: InputControlled<'email'>) => (
-  <EmailInput
-    label="Adresse e-mail"
-    email={value}
-    onEmailChange={onChange}
-    autoFocus
-    accessibilityDescribedBy={emailInputErrorId}
-    onBlur={onBlur}
-  />
-)
-
 const NewsletterCheckboxControlled = ({
   field: { value, onChange },
 }: InputControlled<'marketingEmailSubscription'>) => (
@@ -56,12 +41,7 @@ const NewsletterCheckboxControlled = ({
 )
 
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<FormValues>({
+  const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: '',
       marketingEmailSubscription: false,
@@ -83,13 +63,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
 
   return (
     <Form.MaxWidth>
-      <Controller control={control} name="email" render={EmailInputControlled} />
-      <InputError
-        visible={!!errors.email}
-        messageId={errors.email?.message}
-        numberOfSpacesTop={2}
-        relatedInputId={emailInputErrorId}
-      />
+      <EmailInputController control={control} name="email" label="Adresse e-mail" autoFocus />
       <Spacer.Column numberOfSpaces={4} />
       <Controller
         control={control}

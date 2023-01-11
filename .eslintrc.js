@@ -259,6 +259,7 @@ module.exports = {
           ['features', './src/features'],
           ['fixtures', './src/fixtures'],
           ['libs', './src/libs'],
+          ['shared', './src/shared'],
           ['theme', './src/theme'],
           ['types', './src/types'],
           ['tests', './src/tests'],

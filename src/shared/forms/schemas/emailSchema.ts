@@ -5,6 +5,7 @@ const EMAIL_REGEX =
 
 export const emailSchema = string()
   .trim()
+  .lowercase()
   .matches(
     EMAIL_REGEX,
     'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'

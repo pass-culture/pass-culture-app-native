@@ -1,104 +1,78 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState, useRef } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
+import { useForm } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useMutation } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
-import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
-import { isLongEnough } from 'features/auth/components/PasswordSecurityRules'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
-import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
+import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
-import { useValidateEmail } from 'features/profile/helpers/useValidateEmail'
-import { ChangeEmailRequest } from 'features/profile/types'
-import { analytics } from 'libs/firebase/analytics'
-import { useSafeState } from 'libs/hooks'
+import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
+import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
-import { InputError } from 'ui/components/inputs/InputError'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
+
+type FormValues = {
+  newEmail: string
+  password: string
+}
 
 export function ChangeEmail() {
   const { isMobileViewport, isTouch } = useTheme()
-  const [email, setEmail] = useSafeState('')
-  const [password, setPassword] = useSafeState('')
-  const { emailErrorMessage, isEmailValid } = useValidateEmail(email)
-  const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+  const { user } = useAuthContext()
 
-  const passwordInputErrorId = uuidv4()
-  const emailInputErrorId = uuidv4()
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+    setError,
+    watch,
+    clearErrors,
+  } = useForm<FormValues>({
+    defaultValues: {
+      newEmail: '',
+      password: '',
+    },
+    resolver: yupResolver(changeEmailSchema(user?.email)),
+    mode: 'all',
+    delayError: SUGGESTION_DELAY_IN_MS,
+  })
 
-  const { mutate: changeEmail, isLoading } = useMutation(
-    (body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body),
-    {
-      onSuccess: () => {
-        showSuccessSnackBar({
-          message:
-            'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-        navigateToProfile()
-        analytics.logSaveNewMail()
-      },
-      onError: (error: ApiError | unknown) => {
-        onEmailChangeError((error as ApiError)?.content?.code)
-      },
-    }
-  )
+  const { changeEmail, isLoading } = useChangeEmailMutation({
+    setPasswordErrorMessage: (message: string) =>
+      setError('password', { message, type: 'validate' }),
+  })
+
+  const removePasswordError = useCallback(() => {
+    clearErrors('password')
+  }, [clearErrors])
+
+  const password = watch('password')
 
   useEffect(() => {
     removePasswordError()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [password])
+  }, [password, removePasswordError])
 
   const scrollRef = useRef<ScrollView | null>(null)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const { bottom } = useSafeAreaInsets()
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const onEmailChangeError = (errorCode?: string) => {
-    errorCode && analytics.logErrorSavingNewEmail(errorCode)
-    if (errorCode === CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD) {
-      setPasswordErrorMessage('Mot de passe incorrect')
-    } else {
-      showErrorSnackBar({
-        message:
-          'Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    }
+  const submitEmailChange = ({ newEmail, password }: FormValues) => {
+    changeEmail({ email: newEmail, password })
   }
 
-  const removePasswordError = () => {
-    setPasswordErrorMessage(null)
-  }
-
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
-
-  const submitEmailChange = () => {
-    changeEmail({ email, password })
-  }
-
-  const isSubmitButtonDisabled =
-    !isLongEnough(password) || !isEmailValid || !!passwordErrorMessage || isLoading
-
-  useEnterKeyAction(!isSubmitButtonDisabled ? submitEmailChange : undefined)
+  const isSubmitButtonDisabled = !isValid || isLoading
 
   return (
     <React.Fragment>
@@ -118,36 +92,21 @@ export function ChangeEmail() {
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
           <Form.MaxWidth flex={1}>
-            <EmailInput
+            <EmailInputController
+              control={control}
+              name="newEmail"
               label="Nouvel e-mail"
-              email={email}
-              onEmailChange={setEmail}
               disabled={hasCurrentEmailChange}
-              isRequiredField
               autoFocus
-              accessibilityDescribedBy={emailInputErrorId}
-            />
-            <InputError
-              visible={!!emailErrorMessage}
-              messageId={emailErrorMessage}
-              numberOfSpacesTop={2}
-              relatedInputId={emailInputErrorId}
+              isRequiredField
             />
             <Spacer.Column numberOfSpaces={4} />
-            <PasswordInput
-              value={password}
-              onChangeText={setPassword}
+            <PasswordInputController
+              control={control}
+              name="password"
               disabled={hasCurrentEmailChange}
-              accessibilityDescribedBy={passwordInputErrorId}
               isRequiredField
             />
-            <InputError
-              visible={!!passwordErrorMessage}
-              messageId={passwordErrorMessage}
-              numberOfSpacesTop={2}
-              relatedInputId={passwordInputErrorId}
-            />
-
             {isMobileViewport && isTouch ? (
               <Spacer.Flex flex={1} />
             ) : (
@@ -159,7 +118,7 @@ export function ChangeEmail() {
               <ButtonPrimary
                 wording="Enregistrer"
                 accessibilityLabel="Enregistrer les modifications"
-                onPress={submitEmailChange}
+                onPress={handleSubmit(submitEmailChange)}
                 disabled={isSubmitButtonDisabled}
               />
             </ButtonContainer>

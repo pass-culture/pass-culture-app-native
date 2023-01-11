@@ -6,7 +6,7 @@ import { TextInputProps } from 'ui/components/inputs/types'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 
-interface Props extends TextInputProps {
+export interface Props extends TextInputProps {
   label?: string
   placeholder?: string
   isRequiredField?: boolean
