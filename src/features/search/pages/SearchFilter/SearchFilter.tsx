@@ -93,12 +93,12 @@ export const SearchFilter: React.FC = () => {
                 <Section.OfferDuo />
                 <Spacer.Column numberOfSpaces={4} />
                 <Separator />
-                <Spacer.Column numberOfSpaces={4} />
               </StyledLi>
             )}
 
             {/* Prix */}
             <StyledLi>
+              <Spacer.Column numberOfSpaces={4} />
               <Section.Price />
               <Separator marginVertical={getSpacing(4)} />
             </StyledLi>
