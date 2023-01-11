@@ -3,7 +3,10 @@ import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
-import { getMobileColorFilter } from 'features/home/components/modules/categories/helpers/getColorFilter'
+import {
+  getDesktopColorFilter,
+  getMobileColorFilter,
+} from 'features/home/components/modules/categories/helpers/getColorFilter'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/firebase/analytics'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -36,7 +39,9 @@ export const CategoryListModule = ({ id, title, categoryBlockList }: CategoryLis
     <CategoryBlockContainer>
       <CategoryBlock
         {...item}
-        filter={getMobileColorFilter(index)}
+        filter={
+          theme.isDesktopViewport ? getDesktopColorFilter(index) : getMobileColorFilter(index)
+        }
         onBeforePress={() => {
           analytics.logCategoryBlockClicked({
             moduleID: item.id,
