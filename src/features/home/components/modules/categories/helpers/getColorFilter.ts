@@ -7,7 +7,10 @@ export const brandFilter = { color: theme.uniqueColors.brand, opacity: BRAND_OPA
 export const secondaryFilter = { color: theme.colors.secondary, opacity: SECONDARY_OPACITY }
 
 export function getMobileColorFilter(index: number) {
-  if (index % 4 === 0 || index % 4 === 3) {
+  // we define this list of indices (only 3 because there will be 6 blocks max) so that the colors
+  // alternate over 2 columns and 3 lines of CategoryBlock components
+  const brandFilterIndices = [0, 3, 4]
+  if (brandFilterIndices.includes(index)) {
     return brandFilter
   }
   return secondaryFilter
