@@ -121,7 +121,7 @@ export enum AnalyticsEvent {
   SIGN_UP_FROM_FAVORITE = 'SignUpFromFavorite',
   SIGN_UP_FROM_OFFER = 'SignUpFromOffer',
   SIGN_UP_TOO_YOUNG = 'SignUpTooYoung',
-  SIMILAR_OFFER_PLAYLIST_HORIZONTAL_SCROLL = 'SimilarOfferPlaylistHorizontalScroll',
+  PLAYLIST_HORIZONTAL_SCROLL = 'PlaylistHorizontalScroll',
   SIMILAR_OFFER_PLAYLIST_VERTICAL_SCROLL = 'SimilarOfferPlaylistVerticalScroll',
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
