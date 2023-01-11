@@ -27,7 +27,7 @@ export function getTheme({
 }): DefaultTheme {
   const isTouch = driver.isAndroid || driver.isIOS
   const breakpoints = {
-    md: 960,
+    md: 768,
     lg: 1024,
   }
   const tabletMinWidth = breakpoints.md
