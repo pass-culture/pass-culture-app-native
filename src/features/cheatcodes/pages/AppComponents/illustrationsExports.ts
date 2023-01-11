@@ -29,7 +29,6 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { Star } from 'ui/svg/icons/Star'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 
 export const BicolorIllustrations = {
   BicolorBirthdayCake,
@@ -66,5 +65,4 @@ export const UniqueColorIllustrations = {
   Star,
   TicketBooked,
   UserBlocked,
-  UserFavorite,
 }
