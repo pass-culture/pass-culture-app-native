@@ -1,34 +1,25 @@
-import { LocationType } from 'features/search/enums'
-import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
+import { useGeolocation } from 'libs/geolocation'
 
 export const useFilterCount = (searchState: SearchState): number => {
-  const {
-    locationFilter,
-    offerCategories,
-    offerIsDuo,
-    offerIsFree,
-    offerIsNew,
-    date,
-    timeRange,
-    priceRange,
-  } = searchState
+  const { offerCategories, minPrice, maxPrice, offerIsFree, offerIsDuo, date, timeRange } =
+    searchState
+  const { position } = useGeolocation()
+  const hasCategories = offerCategories.length > 0
+  const hasPrices = ((!!minPrice && Number(minPrice) > 0) || !!maxPrice) && !offerIsFree
+  const hasActivatedFreeOffer = offerIsFree ?? false
 
-  const maxPrice = useMaxPrice()
-  const currentPriceRange = priceRange ?? [0, maxPrice]
   return (
     // Localisation
-    +(locationFilter.locationType !== LocationType.EVERYWHERE) +
+    +!!position +
     // Catégories
-    offerCategories.length +
+    +hasCategories +
     // Prix
-    +(currentPriceRange[0] > 0 || currentPriceRange[1] < maxPrice) +
+    +hasPrices +
     // Uniquement les offres gratuites
-    +(offerIsFree ?? false) +
+    +hasActivatedFreeOffer +
     // Uniquement les offres duo
     +offerIsDuo +
-    // Uniquement les nouveautés
-    +offerIsNew +
     // Date
     +!!date +
     // Heure
