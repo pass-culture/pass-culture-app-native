@@ -36,7 +36,8 @@ const UnmemoizedExclusivityExternalLink = ({
       isFocus={isFocus}
       externalNav={{ url }}
       style={style}
-      accessibilityLabel={alt}>
+      accessibilityLabel={alt}
+      openInNewWindow={false}>
       <ExclusivityImage imageURL={imageURL} alt={alt} />
     </StyledTouchableLink>
   )

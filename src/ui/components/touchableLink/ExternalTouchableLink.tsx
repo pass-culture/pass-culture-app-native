@@ -5,16 +5,20 @@ import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
-export function ExternalTouchableLink({ externalNav, ...rest }: ExternalTouchableLinkProps) {
+export function ExternalTouchableLink({
+  externalNav,
+  openInNewWindow = true,
+  ...rest
+}: ExternalTouchableLinkProps) {
   const { navigateTo: navigateToItinerary } = useItinerary()
   const handleNavigation = useCallback(() => {
     const { url, params, address, onSuccess, onError } = externalNav
     if (address) {
       navigateToItinerary(address)
     } else {
-      openUrl(url, params, true).then(onSuccess).catch(onError)
+      openUrl(url, params, openInNewWindow).then(onSuccess).catch(onError)
     }
-  }, [externalNav, navigateToItinerary])
+  }, [externalNav, openInNewWindow, navigateToItinerary])
   return (
     <TouchableLink
       handleNavigation={handleNavigation}
