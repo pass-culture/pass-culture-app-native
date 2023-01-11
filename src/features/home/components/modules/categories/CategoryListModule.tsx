@@ -21,11 +21,13 @@ const DESKTOP_COLUMNS = 4
 const DESKTOP_TITLE_MARGIN = 2
 const DESKTOP_CATEGORY_LIST_MARGIN = 4
 const DESKTOP_CATEGORY_BLOCK_MARGIN = 2
+const DESKTOP_CATEGORY_BLOCK_FLEX_BASIS = `${100 / DESKTOP_COLUMNS}%` // 25%
 
 const MOBILE_COLUMNS = 2
 const MOBILE_TITLE_MARGIN = 3
 const MOBILE_CATEGORY_LIST_MARGIN = 5
 const MOBILE_CATEGORY_BLOCK_MARGIN = 1
+const MOBILE_CATEGORY_BLOCK_FLEX_BASIS = `${100 / MOBILE_COLUMNS}%` // 50%
 
 const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
 
@@ -90,7 +92,9 @@ const CategoryBlockContainer = styled.View(({ theme }) => ({
   padding: getSpacing(
     theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
   ),
-  flexBasis: theme.isDesktopViewport ? '25%' : '50%',
+  flexBasis: theme.isDesktopViewport
+    ? DESKTOP_CATEGORY_BLOCK_FLEX_BASIS
+    : MOBILE_CATEGORY_BLOCK_FLEX_BASIS,
 }))
 
 const Footer = styled.View(({ theme }) => ({
