@@ -36,7 +36,7 @@ mockUseAuthContext.mockReturnValue({
 
 #### Mock route params
 
-When the tested component use route params through `useRoute` hook, `params` can be mocked like follow:
+When the tested component use route params through `useRoute` hook, `params` can be mocked as follows:
 
 ```tsx
 import { useRoute } from '__mocks__/@react-navigation/native'

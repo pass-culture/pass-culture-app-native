@@ -64,7 +64,7 @@ If you want to disable accessibility rules use the `enabled` from `rules` proper
 ```
 
 If you encounter an error with `duplicate-id-aria` this is due to the global uuid mock, we systematically mock `testUuidV4`
-To correct this error it is necessary to mock uuid in your test file like this :
+To correct this error it is necessary to mock uuid in your test file like this:
 
 ```jsx
 const mockV4 = jest.fn()

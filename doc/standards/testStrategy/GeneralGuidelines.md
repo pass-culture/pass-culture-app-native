@@ -2,12 +2,12 @@
 
 ## FIRST principles
 
-- Fast : Could be run anytime during the development phase
-- Independant/Isolated : Test should also follow 3A (Arrange, Act, Assert, ou Given-When-Then) and test one functionality
-- Repeatable : Each test sould give the same result each time it runs
-- Self-validating : The output of a test should be "yes" or "no", and not some values to check
-- Thorough : Tests must cover all possibilities and edge cases
-- Timely : Test should be written before their feature (TDD)
+- Fast: Could be run anytime during the development phase
+- Independant/Isolated: Test should also follow 3A (Arrange, Act, Assert, ou Given-When-Then) and test one functionality
+- Repeatable: Each test sould give the same result each time it runs
+- Self-validating: The output of a test should be "yes" or "no", and not some values to check
+- Thorough: Tests must cover all possibilities and edge cases
+- Timely: Test should be written before their feature (TDD)
 
 ---
 
@@ -16,11 +16,11 @@
 use `MyComponent.native.test.tsx` if
 
 - the logic is shared between web and native
-- it exists a file `MyComponent.native.tsx.`
+- there is a file `MyComponent.native.tsx.`
 
 use `MyComponent.web.test.tsx` if
 
-- it exists a file `MyComponent.web.tsx`
+- there is a file `MyComponent.web.tsx`
 - the logic and/or design differs from web to native
 
   - if you used `Platform.OS === web`, `isWeb`
@@ -62,7 +62,7 @@ use `MyComponent.test.ts` if there is no render, for example when testing a hook
 
 - Prove that an element exists with `getBy` / `queryBy` + `expect(…).toBeTruthy()`
 - Prove that an element does not exist with `queryBy` + `expect(…).toBeNull()`
-- Query an element to process some action on it : `getBy` + action
+- Query an element to process some action on it with `getBy` + action
 - **Do not** use `waitFor(getBy)`or `waitFor(queryBy)`, use `findBy`instead
 
 More details in [react testing library doc](https://testing-library.com/docs/queries/about/#priority)
