@@ -1,10 +1,10 @@
 import {
   brandFilter,
-  getColorFilter,
+  getMobileColorFilter,
   secondaryFilter,
 } from 'features/home/components/modules/categories/helpers/getColorFilter'
 
-describe('getColorFilter', () => {
+describe('getMobileColorFilter', () => {
   it.each`
     index | filter             | expectedFilter
     ${0}  | ${brandFilter}     | ${'brandFilter'}
@@ -15,6 +15,6 @@ describe('getColorFilter', () => {
     ${5}  | ${secondaryFilter} | ${'secondaryFilter'}
     ${6}  | ${secondaryFilter} | ${'secondaryFilter'}
   `('should return $expectedFilter when index=$index', ({ index, filter }) => {
-    expect(getColorFilter(index)).toEqual(filter)
+    expect(getMobileColorFilter(index)).toEqual(filter)
   })
 })
