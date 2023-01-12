@@ -675,7 +675,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
+            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
       - install_node_version
       - install_node_modules
       - install_ruby_modules
@@ -705,7 +705,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
+            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
       - install_node_version
       - install_node_modules
       - install_ruby_modules
@@ -812,7 +812,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
+            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
       - install_node_version
       - install_node_modules
       - install_ruby_modules
