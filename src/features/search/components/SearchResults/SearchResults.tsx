@@ -354,6 +354,7 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
+        shouldTriggerSearch
       />
       <PriceModal
         title="Prix"
@@ -367,18 +368,21 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les offres duo et retourner aux résultats"
         isVisible={offerDuoModalVisible}
         hideModal={hideOfferDuoModal}
+        shouldTriggerSearch
       />
       <LocationModal
         title="Localisation"
         accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
         isVisible={locationModalVisible}
         hideModal={hideLocationModal}
+        shouldTriggerSearch
       />
       <DatesHoursModal
         title="Dates & heures"
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
         isVisible={datesHoursModalVisible}
         hideModal={hideDatesHoursModal}
+        shouldTriggerSearch
       />
     </React.Fragment>
   )

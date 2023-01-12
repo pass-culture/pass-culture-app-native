@@ -54,6 +54,7 @@ type Props = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  shouldTriggerSearch?: boolean
 }
 
 const LOCATION_TYPES = [
@@ -97,6 +98,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
+  shouldTriggerSearch,
 }) => {
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -354,6 +356,7 @@ export const LocationModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
+          willTriggerSearch={shouldTriggerSearch}
         />
       }
       keyboardShouldPersistTaps="handled">

@@ -27,6 +27,7 @@ type Props = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  shouldTriggerSearch?: boolean
 }
 
 const titleId = uuidv4()
@@ -38,6 +39,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
+  shouldTriggerSearch,
 }) => {
   const { searchState } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
@@ -135,6 +137,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={isSubmitting}
+          willTriggerSearch={shouldTriggerSearch}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />

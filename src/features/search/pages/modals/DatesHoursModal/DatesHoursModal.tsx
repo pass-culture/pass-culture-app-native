@@ -51,6 +51,7 @@ type Props = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  shouldTriggerSearch?: boolean
 }
 
 export const DATE_TYPES: Array<{
@@ -77,6 +78,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
+  shouldTriggerSearch,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
@@ -240,6 +242,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
+          willTriggerSearch={shouldTriggerSearch}
         />
       }>
       <FormWrapper>

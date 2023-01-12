@@ -9,12 +9,14 @@ type Props = {
   onResetPress: () => void
   onSearchPress: () => void
   isSearchDisabled?: boolean
+  willTriggerSearch?: boolean
 }
 
 export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   onResetPress,
   onSearchPress,
   isSearchDisabled,
+  willTriggerSearch,
 }: Props) {
   const { modal } = useTheme()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -29,6 +31,7 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
         onSearchPress={onSearchPress}
         isModal
         isSearchDisabled={isSearchDisabled}
+        willTriggerSearch={willTriggerSearch}
       />
     </FilterPageButtonsContainer>
   )

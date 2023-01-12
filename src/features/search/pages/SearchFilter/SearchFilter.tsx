@@ -129,6 +129,7 @@ export const SearchFilter: React.FC = () => {
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
         isModal={false}
+        willTriggerSearch
       />
       <Spacer.BottomScreen />
     </Container>

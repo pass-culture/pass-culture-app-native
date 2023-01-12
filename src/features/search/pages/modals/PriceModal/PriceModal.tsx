@@ -242,6 +242,7 @@ export const PriceModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
+          willTriggerSearch={shouldTriggerSearch}
         />
       }
       shouldScrollToEnd>

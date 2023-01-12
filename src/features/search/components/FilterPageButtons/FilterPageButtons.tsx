@@ -13,6 +13,7 @@ type Props = {
   onSearchPress: () => void
   isSearchDisabled?: boolean
   children?: never
+  willTriggerSearch?: boolean
 }
 
 export const FilterPageButtons: FunctionComponent<Props> = ({
@@ -20,12 +21,19 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   onResetPress,
   onSearchPress,
   isSearchDisabled,
+  willTriggerSearch,
 }) => {
+  const searchButtonText = willTriggerSearch ? 'Rechercher' : 'Appliquer le filtre'
+
   return (
     <Container isModal={isModal}>
       <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
       <Spacer.Column numberOfSpaces={4} />
-      <SearchButton wording="Rechercher" onPress={onSearchPress} disabled={isSearchDisabled} />
+      <SearchButton
+        wording={searchButtonText}
+        onPress={onSearchPress}
+        disabled={isSearchDisabled}
+      />
     </Container>
   )
 }

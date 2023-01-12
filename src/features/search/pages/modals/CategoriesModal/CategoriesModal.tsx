@@ -37,6 +37,7 @@ export interface CategoriesModalProps {
   accessibilityLabel: string
   isVisible?: boolean
   hideModal: VoidFunction
+  shouldTriggerSearch?: boolean
 }
 
 const titleId = uuidv4()
@@ -45,6 +46,7 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   accessibilityLabel,
+  shouldTriggerSearch,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -259,6 +261,7 @@ export const CategoriesModal = ({
           onResetPress={handleReset}
           onSearchPress={onSubmit}
           isSearchDisabled={isSubmitting}
+          willTriggerSearch={shouldTriggerSearch}
         />
       }>
       <Form.MaxWidth>
