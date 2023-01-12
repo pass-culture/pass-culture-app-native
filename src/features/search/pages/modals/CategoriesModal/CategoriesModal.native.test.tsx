@@ -9,16 +9,17 @@ import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-import { CategoriesModal } from './CategoriesModal'
+import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
+const mockDispatch = jest.fn()
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -374,14 +375,47 @@ describe('<CategoriesModal/>', () => {
       })
     })
   })
+
+  describe('with "Appliquer le filtre" button', () => {
+    it('should display alternative button title', async () => {
+      const { getByText } = renderCategories({
+        shouldTriggerSearch: false,
+      })
+
+      await waitFor(() => {
+        expect(getByText('Appliquer le filtre')).toBeTruthy()
+      })
+    })
+
+    it('should dispatch when pressing submit button', async () => {
+      const { getByText } = renderCategories({
+        shouldTriggerSearch: false,
+      })
+
+      const searchButton = getByText('Appliquer le filtre')
+      fireEvent.press(searchButton)
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expect.any(Object),
+        })
+      })
+    })
+  })
 })
 
-function renderCategories() {
+function renderCategories({
+  shouldTriggerSearch = true,
+  ...props
+}: Partial<CategoriesModalProps> = {}) {
   return render(
     <CategoriesModal
       accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
+      shouldTriggerSearch={shouldTriggerSearch}
+      {...props}
     />
   )
 }

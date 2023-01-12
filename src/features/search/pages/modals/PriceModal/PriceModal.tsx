@@ -37,7 +37,7 @@ type PriceModalFormData = {
   isOnlyFreeOffersSearch: boolean
 }
 
-type Props = {
+export type PriceModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
@@ -49,7 +49,7 @@ const titleId = uuidv4()
 const minPriceInputId = uuidv4()
 const maxPriceInputId = uuidv4()
 
-export const PriceModal: FunctionComponent<Props> = ({
+export const PriceModal: FunctionComponent<PriceModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,

@@ -44,7 +44,7 @@ describe('NoSearchResult component', () => {
 
     await fireEvent.press(button)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', {})
   })
 
   it('should log NoSearchResult with the query', () => {

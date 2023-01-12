@@ -22,7 +22,7 @@ type SearchTypeFormData = {
   offerIsDuo: boolean
 }
 
-type Props = {
+export type OfferDuoModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
@@ -34,7 +34,7 @@ const titleId = uuidv4()
 
 const DEFAULT_HEIGHT_MODAL = 500
 
-export const OfferDuoModal: FunctionComponent<Props> = ({
+export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,

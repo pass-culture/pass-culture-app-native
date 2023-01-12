@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -47,6 +47,7 @@ describe('<SearchFilter/>', () => {
 
   describe('should navigate on search results with the current search state', () => {
     it('when pressing go back', async () => {
+      useRoute.mockReturnValueOnce({ params: initialSearchState })
       const { getByTestId } = renderSearchFilter()
 
       await act(async () => {
@@ -54,7 +55,7 @@ describe('<SearchFilter/>', () => {
       })
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { ...mockSearchState, view: SearchView.Results },
+        params: { ...initialSearchState, view: SearchView.Results },
         screen: 'Search',
       })
     })

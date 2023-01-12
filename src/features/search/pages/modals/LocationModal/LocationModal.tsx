@@ -49,7 +49,7 @@ type LocationModalFormData = {
   searchPlaceOrVenue: string
 }
 
-type Props = {
+export type LocationModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
@@ -93,7 +93,7 @@ const getPlaceOrVenueLabel = (searchState: SearchState) => {
   return placeOrVenue?.label ?? ''
 }
 
-export const LocationModal: FunctionComponent<Props> = ({
+export const LocationModal: FunctionComponent<LocationModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,

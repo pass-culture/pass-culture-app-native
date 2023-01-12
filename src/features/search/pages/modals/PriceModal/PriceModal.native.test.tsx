@@ -5,20 +5,21 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act, superFlushWithAct, waitFor } from 'tests/utils'
 
-import { PriceModal } from './PriceModal'
+import { PriceModal, PriceModalProps } from './PriceModal'
 
 const searchId = uuidv4()
-const searchState = { ...initialSearchState, searchId }
+const searchState: SearchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
+const mockDispatch = jest.fn()
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -43,14 +44,7 @@ describe('<PriceModal/>', () => {
 
   it('should render modal correctly after animation and with enabled submit', async () => {
     jest.useFakeTimers()
-    const renderAPI = render(
-      <PriceModal
-        title="Prix"
-        accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-        isVisible
-        hideModal={mockHideModal}
-      />
-    )
+    const renderAPI = renderSearchPrice()
     await superFlushWithAct()
     jest.advanceTimersByTime(2000)
     expect(renderAPI).toMatchSnapshot()
@@ -652,14 +646,7 @@ describe('<PriceModal/>', () => {
 
   describe('should close the modal ', () => {
     it('when pressing the search button', async () => {
-      const { getByTestId } = render(
-        <PriceModal
-          title="Prix"
-          accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-          isVisible
-          hideModal={mockHideModal}
-        />
-      )
+      const { getByTestId } = renderSearchPrice()
 
       await superFlushWithAct()
 
@@ -673,14 +660,7 @@ describe('<PriceModal/>', () => {
     })
 
     it('when pressing previous button', async () => {
-      const { getByTestId } = render(
-        <PriceModal
-          title="Prix"
-          accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
-          isVisible
-          hideModal={mockHideModal}
-        />
-      )
+      const { getByTestId } = renderSearchPrice()
 
       await superFlushWithAct()
 
@@ -840,15 +820,44 @@ describe('<PriceModal/>', () => {
       })
     })
   })
+
+  describe('with "Appliquer le filtre" button', () => {
+    it('should display alternative button title', async () => {
+      const { getByText } = renderSearchPrice({ shouldTriggerSearch: false })
+
+      await waitFor(() => {
+        expect(getByText('Appliquer le filtre')).toBeTruthy()
+      })
+    })
+
+    it('should dispatch when pressing submit button', async () => {
+      const { getByText } = renderSearchPrice({ shouldTriggerSearch: false })
+
+      await superFlushWithAct()
+
+      const searchButton = getByText('Appliquer le filtre')
+
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expect.any(Object),
+      })
+    })
+  })
 })
 
-function renderSearchPrice() {
+function renderSearchPrice(props?: Partial<PriceModalProps>) {
   return render(
     <PriceModal
       title="Prix"
       accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
+      shouldTriggerSearch
+      {...props}
     />
   )
 }

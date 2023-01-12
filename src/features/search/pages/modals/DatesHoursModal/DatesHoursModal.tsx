@@ -46,7 +46,7 @@ type DatesHoursModalFormData = {
   selectedHours?: Range<number>
 }
 
-type Props = {
+export type DatesHoursModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
@@ -73,7 +73,7 @@ const formatHour = (hour: number) => `${hour}h`
 const titleId = uuidv4()
 const hoursLabelId = uuidv4()
 
-export const DatesHoursModal: FunctionComponent<Props> = ({
+export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,
