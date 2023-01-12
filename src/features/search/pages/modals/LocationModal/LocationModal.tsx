@@ -100,7 +100,7 @@ export const LocationModal: FunctionComponent<Props> = ({
   hideModal,
   shouldTriggerSearch,
 }) => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
   const {
@@ -226,14 +226,14 @@ export const LocationModal: FunctionComponent<Props> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...additionalSearchState,
-        })
-      )
+      if (shouldTriggerSearch) {
+        navigate(...getTabNavConfig('Search', additionalSearchState))
+      } else {
+        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+      }
       hideModal()
     },
-    [searchState, navigate, hideModal, getValues]
+    [searchState, navigate, hideModal, getValues, shouldTriggerSearch, dispatch]
   )
 
   const close = useCallback(() => {

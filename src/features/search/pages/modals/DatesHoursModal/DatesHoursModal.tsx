@@ -82,7 +82,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const [showCalendarPicker, setShowCalendarPicker] = useState<boolean>(false)
   const { sliderLength } = useGetFullscreenModalSliderLength()
 
@@ -155,10 +155,14 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(...getTabNavConfig('Search', additionalSearchState))
+      if (shouldTriggerSearch) {
+        navigate(...getTabNavConfig('Search', additionalSearchState))
+      } else {
+        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+      }
       hideModal()
     },
-    [hideModal, navigate, searchState]
+    [hideModal, navigate, searchState, shouldTriggerSearch, dispatch]
   )
 
   const onSubmit = handleSubmit(search)

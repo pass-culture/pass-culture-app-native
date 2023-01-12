@@ -50,7 +50,7 @@ export const CategoriesModal = ({
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
 
   const {
@@ -171,11 +171,14 @@ export const CategoriesModal = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(...getTabNavConfig('Search', additionalSearchState))
-
+      if (shouldTriggerSearch) {
+        navigate(...getTabNavConfig('Search', additionalSearchState))
+      } else {
+        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+      }
       hideModal()
     },
-    [data, hideModal, navigate, searchState, setValue]
+    [data, setValue, searchState, shouldTriggerSearch, hideModal, navigate, dispatch]
   )
 
   const onSubmit = handleSubmit(handleSearch)

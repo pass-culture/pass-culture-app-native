@@ -41,7 +41,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
   hideModal,
   shouldTriggerSearch,
 }) => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -107,11 +107,15 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
 
         view: SearchView.Results,
       }
-      navigate(...getTabNavConfig('Search', additionalSearchState))
       analytics.logPerformSearch(additionalSearchState)
+      if (shouldTriggerSearch) {
+        navigate(...getTabNavConfig('Search', additionalSearchState))
+      } else {
+        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+      }
       hideModal()
     },
-    [hideModal, navigate, searchState]
+    [hideModal, navigate, searchState, shouldTriggerSearch, dispatch]
   )
 
   const onSubmit = handleSubmit(search)
