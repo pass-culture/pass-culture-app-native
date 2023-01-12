@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -42,6 +42,7 @@ type Props = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  shouldTriggerSearch?: boolean
 }
 
 const titleId = uuidv4()
@@ -53,8 +54,9 @@ export const PriceModal: FunctionComponent<Props> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
+  shouldTriggerSearch,
 }) => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn, user } = useAuthContext()
   const availableCredit = useAvailableCredit()
@@ -111,7 +113,11 @@ export const PriceModal: FunctionComponent<Props> = ({
     }
 
     analytics.logPerformSearch(additionalSearchState)
-    navigate(...getTabNavConfig('Search', additionalSearchState))
+    if (shouldTriggerSearch) {
+      navigate(...getTabNavConfig('Search', additionalSearchState))
+    } else {
+      dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+    }
     hideModal()
   }
 
@@ -133,6 +139,23 @@ export const PriceModal: FunctionComponent<Props> = ({
     },
     resolver: yupResolver(searchPriceSchema),
   })
+
+  useEffect(() => {
+    if (shouldTriggerSearch) return
+    reset({
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+    })
+  }, [
+    isLimitCreditSearchDefaultValue,
+    isOnlyFreeOffersSearchDefaultValue,
+    reset,
+    searchState?.maxPrice,
+    searchState?.minPrice,
+    shouldTriggerSearch,
+  ])
 
   const onSubmit = handleSubmit(search)
 

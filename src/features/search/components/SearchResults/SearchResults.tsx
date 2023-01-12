@@ -360,6 +360,7 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
         isVisible={searchPriceModalVisible}
         hideModal={hideSearchPriceModal}
+        shouldTriggerSearch
       />
       <OfferDuoModal
         title="Duo"
