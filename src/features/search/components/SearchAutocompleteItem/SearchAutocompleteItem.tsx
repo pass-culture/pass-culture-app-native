@@ -49,6 +49,8 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
       view: SearchView.Results,
       searchId,
       isAutocomplete: true,
+      offerGenreTypes: undefined,
+      offerNativeCategories: undefined,
       ...(!!shouldFilteredOnCategory && { offerCategories: [categories[0].value] }),
     }
 
