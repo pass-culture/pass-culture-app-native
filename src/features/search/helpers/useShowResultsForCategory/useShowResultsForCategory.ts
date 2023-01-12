@@ -30,7 +30,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
           offerGenreTypes: undefined,
           view: SearchView.Results,
           searchId,
-          isOnline: isOnlyOnline(data, pressedCategory),
+          isOnline: isOnlyOnline(data, pressedCategory) || undefined,
         })
       )
     },

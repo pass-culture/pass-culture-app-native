@@ -277,7 +277,7 @@ export function isOnlyOnline(
   nativeCategoryId?: NativeCategoryIdEnumv2
 ) {
   if (!categoryId && !nativeCategoryId) {
-    return undefined
+    return false
   }
 
   const platforms: OnlineOfflinePlatformChoicesEnumv2[] = [
@@ -297,5 +297,5 @@ export function isOnlyOnline(
     !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE) &&
     !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.OFFLINE)
 
-  return isOnlyOnline ? isOnlyOnline : undefined
+  return isOnlyOnline
 }

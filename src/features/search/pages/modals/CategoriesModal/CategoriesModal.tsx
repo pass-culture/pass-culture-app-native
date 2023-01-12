@@ -153,18 +153,15 @@ export const CategoriesModal = ({
 
       const payload = buildSearchPayloadValues(form)
       let additionalSearchState: SearchState = { ...searchState, ...payload }
+      let isOnline = false
       if (payload.offerNativeCategories.length > 0) {
-        additionalSearchState = {
-          ...additionalSearchState,
-          isOnline: isOnlyOnline(data, undefined, payload.offerNativeCategories[0]),
-        }
+        isOnline = isOnlyOnline(data, undefined, payload.offerNativeCategories[0])
       } else if (payload.offerCategories.length > 0) {
-        additionalSearchState = {
-          ...additionalSearchState,
-          isOnline: isOnlyOnline(data, payload.offerCategories[0]),
-        }
-      } else {
-        additionalSearchState = { ...additionalSearchState, isOnline: undefined }
+        isOnline = isOnlyOnline(data, payload.offerCategories[0])
+      }
+      additionalSearchState = {
+        ...additionalSearchState,
+        isOnline: isOnline || undefined,
       }
 
       analytics.logPerformSearch(additionalSearchState)

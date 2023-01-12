@@ -103,9 +103,9 @@ describe('categoriesHelpers', () => {
   })
 
   describe('isOnlyOnline', () => {
-    it('should return undefined when category and native category are undefined', () => {
+    it('should return false when category and native category are undefined', () => {
       const value = isOnlyOnline(mockData)
-      expect(value).toEqual(undefined)
+      expect(value).toEqual(false)
     })
 
     describe('Category', () => {
@@ -114,19 +114,19 @@ describe('categoriesHelpers', () => {
         expect(value).toEqual(true)
       })
 
-      it('should return undefined when all native categories of the category are offline', () => {
+      it('should return false when all native categories of the category are offline', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE)
-        expect(value).toEqual(undefined)
+        expect(value).toEqual(false)
       })
 
-      it('should return undefined when native categories of the category are online and offline platform', () => {
+      it('should return false when native categories of the category are online and offline platform', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.SPECTACLES)
-        expect(value).toEqual(undefined)
+        expect(value).toEqual(false)
       })
 
-      it('should return undefined when native categories of the category are online, offline and online or offline platform', () => {
+      it('should return false when native categories of the category are online, offline and online or offline platform', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS)
-        expect(value).toEqual(undefined)
+        expect(value).toEqual(false)
       })
     })
 
@@ -140,23 +140,23 @@ describe('categoriesHelpers', () => {
         expect(value).toEqual(true)
       })
 
-      it('should return undefined when all pro subcategories of the native category are offline', () => {
+      it('should return false when all pro subcategories of the native category are offline', () => {
         const value = isOnlyOnline(
           mockData,
           undefined,
           NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
         )
-        expect(value).toEqual(undefined)
+        expect(value).toEqual(false)
       })
 
-      it('should return undefined when pro subcategories of the native category are online and offline platform', () => {
+      it('should return false when pro subcategories of the native category are online and offline platform', () => {
         const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.VISITES_CULTURELLES)
-        expect(value).toEqual(undefined)
+        expect(value).toEqual(false)
       })
 
-      it('should return undefined when pro subcategories of the native category are offline and online or offline platform', () => {
+      it('should return false when pro subcategories of the native category are offline and online or offline platform', () => {
         const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
-        expect(value).toEqual(undefined)
+        expect(value).toEqual(false)
       })
     })
   })
