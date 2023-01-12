@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem/SearchAutocompleteItem'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -17,7 +17,7 @@ import { render, fireEvent } from 'tests/utils'
 
 const venue: SuggestedVenue = mockedSuggestedVenues[0]
 
-const mockSearchState: SearchState = {
+let mockSearchState: SearchState = {
   ...initialSearchState,
   locationFilter: { locationType: LocationType.VENUE, venue },
   priceRange: [0, 20],
@@ -61,6 +61,14 @@ describe('SearchAutocompleteItem component', () => {
       },
     },
   } as AlgoliaSuggestionHit
+
+  beforeEach(() => {
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: { locationType: LocationType.VENUE, venue },
+      priceRange: [0, 20],
+    }
+  })
 
   it('should render SearchAutocompleteItem', () => {
     expect(
@@ -112,6 +120,32 @@ describe('SearchAutocompleteItem component', () => {
       const { queryByText } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
 
       expect(queryByText('Films, séries, cinéma')).toBeFalsy()
+    })
+
+    it('should not execute the search with the native category and genre of the previous search on hit click', async () => {
+      mockSearchState = {
+        ...mockSearchState,
+        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+        offerGenreTypes: [
+          { key: GenreType.BOOK, name: 'Bandes dessinées', value: 'Bandes dessinées' },
+        ],
+      }
+      const { getByTestId } = render(<SearchAutocompleteItem hit={hit} sendEvent={mockSendEvent} />)
+      await fireEvent.press(getByTestId('autocompleteItem'))
+
+      expect(navigate).toBeCalledWith(
+        ...getTabNavConfig('Search', {
+          ...initialSearchState,
+          query: hit.query,
+          locationFilter: mockSearchState.locationFilter,
+          priceRange: mockSearchState.priceRange,
+          view: SearchView.Results,
+          searchId,
+          isAutocomplete: true,
+          offerNativeCategories: undefined,
+          offerGenreTypes: undefined,
+        })
+      )
     })
   })
 
