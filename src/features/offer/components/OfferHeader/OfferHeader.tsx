@@ -9,11 +9,11 @@ import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorit
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useOffer } from 'features/offer/api/useOffer'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
-import { useShareOffer } from 'features/offer/helpers/useShareOffer'
+import { useShareOffer } from 'features/shareOffer/useShareOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
-import { WebShareModal } from 'libs/share/WebShareModal'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -40,14 +40,10 @@ export const OfferHeader: React.FC<Props> = (props) => {
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
-  const {
-    visible: shareOfferModalVisible,
-    showModal: showShareOfferModal,
-    hideModal: hideShareOfferModal,
-  } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { share: shareOffer, shareContent } = useShareOffer(offerId)
+  const { data: offer } = useOffer({ offerId })
+  const { share, WebShareModal } = useShareOffer({ offer })
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
@@ -88,11 +84,6 @@ export const OfferHeader: React.FC<Props> = (props) => {
     }
   }
 
-  const pressShareOffer = () => {
-    shareOffer()
-    showShareOfferModal()
-  }
-
   return (
     <React.Fragment>
       <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
@@ -121,7 +112,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <RoundedButton
             animationState={animationState}
             iconName="share"
-            onPress={pressShareOffer}
+            onPress={share}
             accessibilityLabel="Partager"
           />
           <Spacer.Row numberOfSpaces={3} />
@@ -137,14 +128,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
         </Row>
         <Spacer.Column numberOfSpaces={2} />
       </HeaderContainer>
-      {shareContent ? (
-        <WebShareModal
-          visible={shareOfferModalVisible}
-          headerTitle="Partager l’offre"
-          shareContent={shareContent}
-          dismissModal={hideShareOfferModal}
-        />
-      ) : null}
+      <WebShareModal />
       <SignUpSignInChoiceOfferModal
         visible={signInModalVisible}
         offerId={offerId}
