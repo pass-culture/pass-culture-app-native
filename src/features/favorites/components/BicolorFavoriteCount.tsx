@@ -56,8 +56,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
           {...pastilleDimensions}
           showTabBar={showTabBar}
           accessibilityLabel={accessibilityLabel}
-          aria-live="polite"
-          aria-relevant="text">
+          accessibilityLiveRegion="polite">
           <Count {...pastilleDimensions}>{count}</Count>
           <Plus {...pastilleDimensions}>{plusSign}</Plus>
         </PastilleContent>

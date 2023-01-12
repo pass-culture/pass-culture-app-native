@@ -2,7 +2,7 @@
 
 exports[`FourthCard should render fourth card 1`] = `
 <View
-  aria-hidden={false}
+  accessibilityHidden={false}
   style={
     Array [
       Object {
@@ -27,7 +27,7 @@ exports[`FourthCard should render fourth card 1`] = `
     }
   />
   <View
-    aria-hidden={true}
+    accessibilityHidden={true}
     style={
       Array [
         Object {

@@ -15,7 +15,7 @@ type Props = {
   children?: never
   noBorderRadiusRight?: boolean
   noBorderRadiusLeft?: boolean
-  ariaLabel?: string
+  accessibilityLabel?: string
   isError?: boolean
 }
 
@@ -26,7 +26,7 @@ export function DropDown({
   onChange,
   noBorderRadiusRight = false,
   noBorderRadiusLeft = false,
-  ariaLabel,
+  accessibilityLabel,
   isError = false,
 }: Props) {
   const [isEmpty, setIsEmpty] = useState(true)
@@ -43,7 +43,7 @@ export function DropDown({
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
         <StyledSelect
-          aria-label={ariaLabel}
+          aria-label={accessibilityLabel}
           data-testid={`select-${label}`}
           id={dropDownInputID}
           onChange={onChangeDate}

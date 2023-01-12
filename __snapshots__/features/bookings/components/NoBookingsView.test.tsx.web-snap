@@ -2,141 +2,53 @@
 
 exports[`<NoBookingsView /> should render offline no bookings view when netInfo.isConnected is false 1`] = `
 <div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitBoxFlex": 1,
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "flexBasis": "0px",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "marginBottom": "64px",
-      "marginLeft": "24px",
-      "marginRight": "24px",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
+  className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginBottom-emhjjp r-marginHorizontal-1hy1u7s"
+  dir={null}
 >
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-Regular",
-        "fontSize": "15px",
-        "lineHeight": "20px",
-      }
-    }
   >
     Retrouve tes réservations en un clin d’oeil
   </div>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxPack": "center",
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitJustifyContent": "center",
-        "alignItems": "center",
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "justifyContent": "center",
-        "msFlexAlign": "center",
-        "msFlexNegative": 1,
-        "msFlexPack": "center",
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      dir={null}
     />
     <div
-      className="css-view-1dbjc4n"
+      className="css-view-175oi2r"
+      dir={null}
     >
       <div
-        className="css-text-901oao"
+        className="css-text-1rynq56"
         dir="ltr"
       >
         undefined-SVG-Mock
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
+      className="css-view-175oi2r r-height-10ptun7"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-1ik5qf4 r-textAlign-q4m81j"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "maxWidth": "500px",
-          "textAlign": "center",
-        }
-      }
     >
       Aucune réservations en cours.
 
 Il est possible que certaines réservations ne s’affichent pas hors connexion. Connecte-toi à internet pour vérifier.
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
+      className="css-view-175oi2r r-height-10ptun7"
+      dir={null}
     />
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      dir={null}
     />
   </div>
 </div>
@@ -198,130 +110,51 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
 }
 
 <div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitBoxFlex": 1,
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "flexBasis": "0px",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "marginBottom": "64px",
-      "marginLeft": "24px",
-      "marginRight": "24px",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
+  className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginBottom-emhjjp r-marginHorizontal-1hy1u7s"
+  dir={null}
 >
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-Regular",
-        "fontSize": "15px",
-        "lineHeight": "20px",
-      }
-    }
   >
     Retrouve tes réservations en un clin d’oeil
   </div>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxPack": "center",
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "WebkitJustifyContent": "center",
-        "alignItems": "center",
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "justifyContent": "center",
-        "msFlexAlign": "center",
-        "msFlexNegative": 1,
-        "msFlexPack": "center",
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      dir={null}
     />
     <div
-      className="css-view-1dbjc4n"
+      className="css-view-175oi2r"
+      dir={null}
     >
       <div
-        className="css-text-901oao"
+        className="css-text-1rynq56"
         dir="ltr"
       >
         undefined-SVG-Mock
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
+      className="css-view-175oi2r r-height-10ptun7"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-1ik5qf4 r-textAlign-q4m81j"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "maxWidth": "500px",
-          "textAlign": "center",
-        }
-      }
     >
       Tu n’as pas de réservation en cours. Explore le catalogue pour trouver ton bonheur !
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
+      className="css-view-175oi2r r-height-10ptun7"
+      dir={null}
     />
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "marginTop": "8px",
-        }
-      }
+      className="css-view-175oi2r r-marginTop-knv0ih"
+      dir={null}
     >
       <button
         aria-label="Découvrir le catalogue"
@@ -333,21 +166,16 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
         type="button"
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitFlexShrink": 0,
-              "flexShrink": 0,
-              "msFlexNegative": 0,
-            }
-          }
+          className="css-view-175oi2r r-flexShrink-1q142lx"
+          dir={null}
         >
           <div
-            className="css-view-1dbjc4n"
+            className="css-view-175oi2r"
             data-testid="button-icon"
+            dir={null}
           >
             <div
-              className="css-text-901oao"
+              className="css-text-1rynq56"
               dir="ltr"
             >
               button-icon-SVG-Mock
@@ -355,40 +183,16 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
           </div>
         </div>
         <div
-          className="css-text-901oao css-textMultiLine-cens5h"
+          className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-              "color": "rgba(255,255,255,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "marginLeft": "8px",
-              "maxWidth": "100%",
-            }
-          }
         >
           Découvrir le catalogue
         </div>
       </button>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "flexBasis": "0px",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-        }
-      }
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      dir={null}
     />
   </div>
 </div>

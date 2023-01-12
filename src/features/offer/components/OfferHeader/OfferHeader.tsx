@@ -10,10 +10,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/firebase/analytics'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { WebShareModal } from 'libs/share/WebShareModal'
+import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
@@ -114,7 +114,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <Title
             testID="offerHeaderName"
             style={{ opacity: headerTransition }}
-            aria-hidden={ariaHiddenTitle}>
+            accessibilityHidden={ariaHiddenTitle}>
             <Body>{title}</Body>
           </Title>
 
@@ -132,9 +132,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             initialColor={favorite ? theme.colors.primary : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
-            accessibilityLabel="Mettre en favoris"
-            accessibilityRole={AccessibilityRole.CHECKBOX}
-            accessibilityState={{ checked: !!favorite }}
+            {...accessibleCheckboxProps({ checked: !!favorite, label: 'Mettre en favoris' })}
           />
           <Spacer.Row numberOfSpaces={6} />
         </Row>

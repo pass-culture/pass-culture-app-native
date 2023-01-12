@@ -2,22 +2,16 @@
 
 exports[`<QrCode/> should render correctly 1`] = `
 <div
-  className="css-view-1dbjc4n"
+  className="css-view-175oi2r r-alignItems-1awozwy"
   data-testid="qr-code"
-  style={
-    Object {
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "alignItems": "center",
-      "msFlexAlign": "center",
-    }
-  }
+  dir={null}
 >
   <div
-    className="css-view-1dbjc4n"
+    className="css-view-175oi2r"
+    dir={null}
   >
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56"
       dir="ltr"
     >
       undefined-SVG-Mock

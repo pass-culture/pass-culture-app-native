@@ -36,7 +36,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
         maximumDate={props.maximumDate}
         minimumDate={props.minimumDate}
         androidVariant="nativeAndroid"
-        aria-describedby={birthdateInputErrorId}
+        accessibilityDescribedBy={birthdateInputErrorId}
       />
     </React.Fragment>
   )

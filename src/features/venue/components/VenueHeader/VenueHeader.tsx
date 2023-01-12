@@ -63,7 +63,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
           <Title
             testID="venueHeaderName"
             style={{ opacity: headerTransition }}
-            aria-hidden={ariaHiddenTitle}>
+            accessibilityHidden={ariaHiddenTitle}>
             <Body>{title}</Body>
           </Title>
 

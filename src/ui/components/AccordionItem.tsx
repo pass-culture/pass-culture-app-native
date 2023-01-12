@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Platform, Animated, Easing, StyleProp, ViewStyle, View, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -25,6 +25,7 @@ interface AccordionItemProps {
   switchProps?: FilterSwitchProps
 }
 
+const isWeb = Platform.OS === 'web'
 export const AccordionItem = ({
   title,
   children,
@@ -77,6 +78,10 @@ export const AccordionItem = ({
   const accordionLabelId = uuidv4()
   const accordionBodyId = uuidv4()
 
+  const accessibilityProps = useMemo(() => {
+    return isWeb ? { accessibilityExpanded: open } : { accessibilityState: { expanded: open } }
+  }, [open])
+
   return (
     <React.Fragment>
       <SwitchContainer>
@@ -89,8 +94,8 @@ export const AccordionItem = ({
         <StyledTouchableOpacity
           accessibilityRole={AccessibilityRole.BUTTON}
           onPress={toggleListItem}
-          accessibilityState={{ expanded: open }}
-          aria-controls={accordionBodyId}>
+          accessibilityControls={accordionBodyId}
+          {...accessibilityProps}>
           <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
             <Title>{title}</Title>
             <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
@@ -106,7 +111,7 @@ export const AccordionItem = ({
           testID="accordionBodyContainer"
           onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}
           hidden={!showChildren}
-          aria-labelledby={accordionLabelId}>
+          accessibilityLabelledBy={accordionLabelId}>
           {children}
         </StyledView>
       </StyledAnimatedView>
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: getSpacing(5),
     paddingHorizontal: getSpacing(6),
-    ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
+    ...(isWeb ? { cursor: 'pointer' } : {}),
   },
 })
 

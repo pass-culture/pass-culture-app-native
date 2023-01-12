@@ -27,7 +27,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
     navigateTo={navigateTo}
     activeOpacity={1}
     testID={`${tabName} tab`}
-    aria-current={isSelected ? 'page' : undefined}>
+    accessibilityCurrent={isSelected ? 'page' : undefined}>
     <StyledIcon as={BicolorIcon} selected={isSelected} />
     <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
   </StyledTouchableLink>

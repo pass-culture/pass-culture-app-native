@@ -38,7 +38,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           onRequestClose={onCloseIconPress}>
           <ClicAwayArea onPress={onCloseIconPress} />
           <FlexSpacer />
-          <Container aria-labelledby={titleID}>
+          <Container accessibilityLabelledBy={titleID}>
             <ModalHeader
               title={title}
               titleID={titleID}

@@ -2,33 +2,20 @@
 
 exports[`<NoTicket/> should render correctly 1`] = `
 <div
-  className="css-view-1dbjc4n"
+  className="css-view-175oi2r r-width-13qz1uu"
   data-testid="withdrawal-info-no-ticket"
-  style={
-    Object {
-      "width": "100%",
-    }
-  }
+  dir={null}
 >
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "alignItems": "center",
-        "marginBottom": "12px",
-        "marginTop": "-16px",
-        "msFlexAlign": "center",
-        "width": "100%",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-marginBottom-6gpygo r-marginTop-1x4s0f8 r-width-13qz1uu"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
+      className="css-view-175oi2r"
+      dir={null}
     >
       <div
-        className="css-text-901oao"
+        className="css-text-1rynq56"
         dir="ltr"
       >
         undefined-SVG-Mock
@@ -36,18 +23,8 @@ exports[`<NoTicket/> should render correctly 1`] = `
     </div>
   </div>
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs r-textAlign-q4m81j"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-Regular",
-        "fontSize": "15px",
-        "lineHeight": "20px",
-        "maxWidth": "100%",
-        "textAlign": "center",
-      }
-    }
   >
     Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’évènement.
   </div>

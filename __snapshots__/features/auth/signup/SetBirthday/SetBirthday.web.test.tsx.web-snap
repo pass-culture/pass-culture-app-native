@@ -181,22 +181,19 @@ Object {
         class="c0"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; width: 100%;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="padding-right: 16px;"
+              class="css-view-175oi2r r-paddingRight-i023vh"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   undefined-SVG-Mock
@@ -204,34 +201,29 @@ Object {
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
               </div>
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 24px;"
+            class="css-view-175oi2r r-height-1472mwg"
           />
           <div
-            class="css-view-1dbjc4n"
+            aria-describedby="testUuidV4"
+            class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
             data-testid="date-picker-dropdown"
-            style="flex-direction: row; max-width: 500px; width: 100%;"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+                class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
                 <label
                   class="c1"
@@ -240,8 +232,7 @@ Object {
                   Jour
                 </label>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
                 <div
                   class="c2"
@@ -480,10 +471,10 @@ Object {
                     class="c5"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         undefined-SVG-Mock
@@ -494,16 +485,13 @@ Object {
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
+              class="css-view-175oi2r r-width-1jg9483"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+                class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
                 <label
                   class="c1"
@@ -512,8 +500,7 @@ Object {
                   Mois
                 </label>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
                 <div
                   class="c2"
@@ -619,10 +606,10 @@ Object {
                     class="c5"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         undefined-SVG-Mock
@@ -633,16 +620,13 @@ Object {
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
+              class="css-view-175oi2r r-width-1jg9483"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+                class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
               >
                 <label
                   class="c1"
@@ -651,8 +635,7 @@ Object {
                   Année
                 </label>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
                 <div
                   class="c2"
@@ -1423,10 +1406,10 @@ Object {
                     class="c5"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         undefined-SVG-Mock
@@ -1442,12 +1425,10 @@ Object {
             role="alert"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
+            class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
+            class="css-view-175oi2r r-height-3da1kt"
           />
           <button
             aria-label="Continuer"
@@ -1457,16 +1438,14 @@ Object {
             type="button"
           >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
               dir="ltr"
-              style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
             </div>
           </button>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
+            class="css-view-175oi2r r-height-z80fyv"
           />
         </div>
       </form>
@@ -1649,22 +1628,19 @@ Object {
       class="c0"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; width: 100%;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="padding-right: 16px;"
+            class="css-view-175oi2r r-paddingRight-i023vh"
           >
             <div
-              class="css-view-1dbjc4n"
+              class="css-view-175oi2r"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56"
                 dir="ltr"
               >
                 undefined-SVG-Mock
@@ -1672,34 +1648,29 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
               dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
             </div>
           </div>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 24px;"
+          class="css-view-175oi2r r-height-1472mwg"
         />
         <div
-          class="css-view-1dbjc4n"
+          aria-describedby="testUuidV4"
+          class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
           data-testid="date-picker-dropdown"
-          style="flex-direction: row; max-width: 500px; width: 100%;"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <label
                 class="c1"
@@ -1708,8 +1679,7 @@ Object {
                 Jour
               </label>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-view-175oi2r r-height-3da1kt"
               />
               <div
                 class="c2"
@@ -1948,10 +1918,10 @@ Object {
                   class="c5"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -1962,16 +1932,13 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="width: 8px;"
+            class="css-view-175oi2r r-width-1jg9483"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <label
                 class="c1"
@@ -1980,8 +1947,7 @@ Object {
                 Mois
               </label>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-view-175oi2r r-height-3da1kt"
               />
               <div
                 class="c2"
@@ -2087,10 +2053,10 @@ Object {
                   class="c5"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -2101,16 +2067,13 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="width: 8px;"
+            class="css-view-175oi2r r-width-1jg9483"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <label
                 class="c1"
@@ -2119,8 +2082,7 @@ Object {
                 Année
               </label>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-view-175oi2r r-height-3da1kt"
               />
               <div
                 class="c2"
@@ -2891,10 +2853,10 @@ Object {
                   class="c5"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -2910,12 +2872,10 @@ Object {
           role="alert"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="height: 16px;"
+          class="css-view-175oi2r r-height-10ptun7"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
+          class="css-view-175oi2r r-height-3da1kt"
         />
         <button
           aria-label="Continuer"
@@ -2925,16 +2885,14 @@ Object {
           type="button"
         >
           <div
-            class="css-text-901oao css-textMultiLine-cens5h"
+            class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
             dir="ltr"
-            style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer
           </div>
         </button>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
+          class="css-view-175oi2r r-height-z80fyv"
         />
       </div>
     </form>
@@ -3069,22 +3027,19 @@ Object {
         class="c0"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; width: 100%;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="padding-right: 16px;"
+              class="css-view-175oi2r r-paddingRight-i023vh"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
                   undefined-SVG-Mock
@@ -3092,29 +3047,24 @@ Object {
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
               </div>
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 24px;"
+            class="css-view-175oi2r r-height-1472mwg"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+              class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
             >
               <label
                 class="c1"
@@ -3124,19 +3074,16 @@ Object {
               </label>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="height: 8px;"
+              class="css-view-175oi2r r-height-3da1kt"
             />
             <div
-              class="css-view-1dbjc4n"
+              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-16uyjmq r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
               data-testid="styled-input-container"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 0px 17px 0px 17px; width: 100%;"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                 dir="ltr"
                 id="testUuidV4"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 1 décembre 2006
               </div>
@@ -3147,13 +3094,11 @@ Object {
             role="alert"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
+            class="css-view-175oi2r r-height-3da1kt"
           />
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
             data-testid="date-picker-spinner-touch"
-            style="align-self: stretch; flex-direction: row; font-family: Montserrat-Regular; max-width: 500px; user-select: none; width: 100%;"
           >
             <div
               class="picker-container"
@@ -4097,8 +4042,7 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
+            class="css-view-175oi2r r-height-3da1kt"
           />
           <button
             aria-label="Continuer"
@@ -4108,16 +4052,14 @@ Object {
             type="button"
           >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
               dir="ltr"
-              style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
             </div>
           </button>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
+            class="css-view-175oi2r r-height-z80fyv"
           />
         </div>
       </form>
@@ -4195,22 +4137,19 @@ Object {
       class="c0"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; width: 100%;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(243, 236, 255); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; flex-direction: row; justify-content: space-between; padding: 16px 16px 16px 16px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="padding-right: 16px;"
+            class="css-view-175oi2r r-paddingRight-i023vh"
           >
             <div
-              class="css-view-1dbjc4n"
+              class="css-view-175oi2r"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56"
                 dir="ltr"
               >
                 undefined-SVG-Mock
@@ -4218,29 +4157,24 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
               dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
             </div>
           </div>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 24px;"
+          class="css-view-175oi2r r-height-1472mwg"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+          class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+            class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
           >
             <label
               class="c1"
@@ -4250,19 +4184,16 @@ Object {
             </label>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
+            class="css-view-175oi2r r-height-3da1kt"
           />
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-16uyjmq r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
             data-testid="styled-input-container"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 0px 17px 0px 17px; width: 100%;"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
               dir="ltr"
               id="testUuidV4"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
             >
               1 décembre 2006
             </div>
@@ -4273,13 +4204,11 @@ Object {
           role="alert"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
+          class="css-view-175oi2r r-height-3da1kt"
         />
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
           data-testid="date-picker-spinner-touch"
-          style="align-self: stretch; flex-direction: row; font-family: Montserrat-Regular; max-width: 500px; user-select: none; width: 100%;"
         >
           <div
             class="picker-container"
@@ -5223,8 +5152,7 @@ Object {
           </div>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
+          class="css-view-175oi2r r-height-3da1kt"
         />
         <button
           aria-label="Continuer"
@@ -5234,16 +5162,14 @@ Object {
           type="button"
         >
           <div
-            class="css-text-901oao css-textMultiLine-cens5h"
+            class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
             dir="ltr"
-            style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer
           </div>
         </button>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
+          class="css-view-175oi2r r-height-z80fyv"
         />
       </div>
     </form>

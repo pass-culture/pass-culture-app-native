@@ -2,10 +2,10 @@
 
 exports[`<AppModal /> on big screen 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -59,9 +59,9 @@ exports[`<AppModal /> on big screen 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -252,10 +252,10 @@ exports[`<AppModal /> on big screen 1`] = `
 
 exports[`<AppModal /> on small screen 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -309,9 +309,9 @@ exports[`<AppModal /> on small screen 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -503,10 +503,10 @@ exports[`<AppModal /> on small screen 1`] = `
 
 exports[`<AppModal /> with backdrop disabled 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -534,9 +534,9 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
   visible={true}
 >
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -728,10 +728,10 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
 
 exports[`<AppModal /> with backdrop enabled by default 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -785,9 +785,9 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -979,10 +979,10 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
 
 exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -1036,9 +1036,9 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1230,10 +1230,10 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
 
 exports[`<AppModal /> with left icon render 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -1287,9 +1287,9 @@ exports[`<AppModal /> with left icon render 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1527,10 +1527,10 @@ exports[`<AppModal /> with left icon render 1`] = `
 
 exports[`<AppModal /> with minimal props 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -1584,9 +1584,9 @@ exports[`<AppModal /> with minimal props 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -1778,10 +1778,10 @@ exports[`<AppModal /> with minimal props 1`] = `
 
 exports[`<AppModal /> with right icon render 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -1835,9 +1835,9 @@ exports[`<AppModal /> with right icon render 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -2065,10 +2065,10 @@ exports[`<AppModal /> with right icon render 1`] = `
 
 exports[`<AppModal /> without children 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -2122,9 +2122,9 @@ exports[`<AppModal /> without children 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}

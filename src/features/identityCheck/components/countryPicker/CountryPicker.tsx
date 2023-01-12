@@ -14,6 +14,7 @@ import {
 } from 'features/identityCheck/components/countryPicker/constants'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -73,13 +74,11 @@ export const CountryPicker: React.FC<Props> = (props) => {
     useSpaceBarAction(isFocus ? onPress : undefined)
     return (
       <TouchableOpacity
-        accessibilityRole={AccessibilityRole.RADIO}
-        accessibilityState={{ checked: selected }}
+        {...accessibleRadioProps({ checked: selected, label: itemTitle })}
         key={item.cca2}
         onFocus={onFocus}
         onBlur={onBlur}
-        onPress={onPress}
-        accessibilityLabel={itemTitle}>
+        onPress={onPress}>
         <CountryContainer ref={containerRef}>
           <Flag countryCode={item.cca2} withEmoji flagSize={25} />
           <Typo.Body>{itemTitle}</Typo.Body>

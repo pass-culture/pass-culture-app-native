@@ -38,7 +38,10 @@ export const FilterRow = ({
   const shouldHideArrow = isDesktopViewport && shouldHideArrowOnWeb
 
   return (
-    <LocationContentContainer testID="FilterRow" onPress={onPress} aria-describedby={captionId}>
+    <LocationContentContainer
+      testID="FilterRow"
+      onPress={onPress}
+      accessibilityDescribedBy={captionId}>
       {!!StyledIcon && (
         <React.Fragment>
           <StyledIcon />

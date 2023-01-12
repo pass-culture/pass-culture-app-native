@@ -135,7 +135,7 @@ export const SetPhoneValidationCode = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <View aria-labelledby={titleID}>
+          <View accessibilityLabelledBy={titleID}>
             <StyledBody>{enterCodeInstructions}</StyledBody>
             <Spacer.Column numberOfSpaces={6} />
             <InputContainer>

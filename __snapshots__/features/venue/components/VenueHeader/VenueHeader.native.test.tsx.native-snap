@@ -61,6 +61,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -165,7 +166,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
       }
     />
     <Text
-      aria-hidden={true}
+      accessibilityHidden={true}
       collapsable={false}
       numberOfLines={1}
       style={
@@ -205,6 +206,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Partager"
+      accessibilityRole="button"
       accessible={true}
       collapsable={false}
       focusable={true}

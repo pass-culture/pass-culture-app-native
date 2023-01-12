@@ -25,7 +25,7 @@ export const TitleWithCount: React.FC<{
         <RedTitle
           accessibilityLabel={ariaLive === 'polite' ? countLabel : undefined}
           testID="titleCount"
-          aria-live={ariaLive}>
+          accessibilityLiveRegion={ariaLive}>
           {countString}
         </RedTitle>
       )}

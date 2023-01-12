@@ -2,10 +2,10 @@
 
 exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -59,9 +59,9 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}

@@ -182,13 +182,13 @@ exports[`<Search/> should render Search 1`] = `
                   }
                 />
                 <TextInput
-                  accessible={true}
-                  aria-describedby="testUuidV4"
-                  aria-hidden={false}
+                  accessibilityDescribedBy="testUuidV4"
+                  accessibilityHidden={false}
                   autoCorrect={false}
                   autoFocus={false}
                   editable={true}
                   enablesReturnKeyAutomatically={true}
+                  focusable={true}
                   isEmpty={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
@@ -237,10 +237,10 @@ exports[`<Search/> should render Search 1`] = `
           Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
         </Text>
         <Modal
+          accessibilityLabelledBy="testUuidV4"
+          accessibilityModal={true}
           accessibilityRole="none"
           animationType="none"
-          aria-labelledby="testUuidV4"
-          aria-modal={true}
           deviceHeight={1334}
           deviceWidth={750}
           hardwareAccelerated={false}

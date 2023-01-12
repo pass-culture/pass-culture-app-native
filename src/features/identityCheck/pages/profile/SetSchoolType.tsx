@@ -59,7 +59,7 @@ export const SetSchoolType = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
+          <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
             <VerticalUl>
               {hasData &&
                 activitySchoolTypes.map((schoolTypeId) => {

@@ -33,7 +33,7 @@ export const MarketingModal: FunctionComponent<Props> = ({
       transparent
       visible={visible}
       onRequestClose={onBackdropPress}
-      aria-labelledby={titleID}>
+      accessibilityLabelledBy={titleID}>
       <ClickAwayArea onPress={onBackdropPress} testID="clickaway-area" />
       <FlexSpacer />
       <Container>

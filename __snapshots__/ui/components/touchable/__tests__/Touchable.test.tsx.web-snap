@@ -47,7 +47,7 @@ exports[`<Touchable /> should render correctly 1`] = `
   type="button"
 >
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56"
     dir="ltr"
   >
     Touchable content
@@ -102,7 +102,7 @@ exports[`<Touchable /> should render correctly on custom type 1`] = `
   type="reset"
 >
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56"
     dir="ltr"
   >
     Touchable content

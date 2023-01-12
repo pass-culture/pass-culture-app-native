@@ -2,10 +2,10 @@
 
 exports[`<PriceModal/> should render modal correctly after animation and with enabled submit 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -59,9 +59,9 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -449,7 +449,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               >
                 <Text
-                  aria-describedby="testUuidV4"
+                  accessibilityDescribedBy="testUuidV4"
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
@@ -506,7 +506,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   }
                 >
                   <Text
-                    aria-hidden={true}
+                    accessibilityHidden={true}
                     style={
                       Array [
                         Object {
@@ -639,7 +639,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               >
                 <Text
-                  aria-describedby="testUuidV4"
+                  accessibilityDescribedBy="testUuidV4"
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
@@ -696,7 +696,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   }
                 >
                   <Text
-                    aria-hidden={true}
+                    accessibilityHidden={true}
                     style={
                       Array [
                         Object {
@@ -886,7 +886,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 testID="styled-input-container"
               >
                 <TextInput
-                  aria-describedby="testUuidV4"
+                  accessibilityDescribedBy="testUuidV4"
                   autoCapitalize="none"
                   autoComplete="off"
                   disabled={false}
@@ -1026,7 +1026,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 testID="styled-input-container"
               >
                 <TextInput
-                  aria-describedby="testUuidV4"
+                  accessibilityDescribedBy="testUuidV4"
                   autoCapitalize="none"
                   autoComplete="off"
                   disabled={false}

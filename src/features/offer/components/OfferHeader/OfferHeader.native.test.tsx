@@ -71,7 +71,7 @@ describe('<OfferHeader />', () => {
 
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue, getByTestId } = renderOfferHeader()
-    expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeTruthy()
+    expect(getByTestId('offerHeaderName').props.accessibilityHidden).toBeTruthy()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
     act(() => {
@@ -80,7 +80,7 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(() => {
-      expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeFalsy()
+      expect(getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
       expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
     })
   })

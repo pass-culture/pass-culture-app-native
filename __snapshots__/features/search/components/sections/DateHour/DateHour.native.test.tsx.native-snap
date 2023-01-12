@@ -92,10 +92,10 @@ Array [
     </View>
   </View>,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -217,10 +217,10 @@ Array [
     </View>
   </View>,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}

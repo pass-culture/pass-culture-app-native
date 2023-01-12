@@ -2,52 +2,19 @@
 
 exports[`<Ean/> should render correctly 1`] = `
 <div
-  className="css-view-1dbjc4n"
+  className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-1s2bzr4"
   data-testid="ean"
-  style={
-    Object {
-      "WebkitAlignItems": "center",
-      "WebkitBoxAlign": "center",
-      "WebkitBoxDirection": "normal",
-      "WebkitBoxOrient": "horizontal",
-      "WebkitBoxPack": "center",
-      "WebkitFlexDirection": "row",
-      "WebkitJustifyContent": "center",
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
-      "marginTop": "12px",
-      "msFlexAlign": "center",
-      "msFlexDirection": "row",
-      "msFlexPack": "center",
-    }
-  }
+  dir={null}
 >
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-      }
-    }
   >
     EAN 
   </div>
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(105,106,111,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-      }
-    }
   >
     123456789
   </div>

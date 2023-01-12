@@ -474,8 +474,8 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   testID="styled-input-container"
                 >
                   <TextInput
-                    aria-describedby="testUuidV4"
-                    aria-required={true}
+                    accessibilityDescribedBy="testUuidV4"
+                    accessibilityRequired={true}
                     editable={true}
                     isEmpty={true}
                     nativeID="testUuidV4"
@@ -611,8 +611,8 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   testID="styled-input-container"
                 >
                   <TextInput
-                    aria-describedby="testUuidV4"
-                    aria-required={true}
+                    accessibilityDescribedBy="testUuidV4"
+                    accessibilityRequired={true}
                     editable={true}
                     isEmpty={true}
                     nativeID="testUuidV4"

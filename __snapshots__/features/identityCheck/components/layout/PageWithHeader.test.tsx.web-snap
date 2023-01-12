@@ -58,40 +58,17 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
 }
 
 <div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitBoxDirection": "normal",
-      "WebkitBoxFlex": 1,
-      "WebkitBoxOrient": "vertical",
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexDirection": "column",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "backgroundColor": "rgba(235,0,85,1.00)",
-      "display": "flex",
-      "flexBasis": "0px",
-      "flexDirection": "column",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "msFlexDirection": "column",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-    }
-  }
+  className="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+  dir={null}
 >
   <header
-    className="css-view-1dbjc4n"
+    className="css-view-175oi2r r-width-13qz1uu"
+    dir={null}
     role="banner"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
   >
     <div
-      className="css-view-1dbjc4n"
+      className="css-view-175oi2r"
+      dir={null}
       style={
         Object {
           "height": "64px",
@@ -99,93 +76,24 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       }
     />
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "backgroundColor": "rgba(235,0,85,1.00)",
-          "position": "absolute",
-          "top": "0px",
-          "width": "100%",
-          "zIndex": 1,
-        }
-      }
+      className="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
+        className="css-view-175oi2r r-height-10ptun7"
+        dir={null}
       />
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxPack": "center",
-            "WebkitJustifyContent": "center",
-            "alignItems": "center",
-            "height": "48px",
-            "justifyContent": "center",
-            "msFlexAlign": "center",
-            "msFlexPack": "center",
-          }
-        }
+        className="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
+        dir={null}
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitAlignItems": "center",
-              "WebkitBoxAlign": "center",
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxOrient": "horizontal",
-              "WebkitBoxPack": "justify",
-              "WebkitFlexDirection": "row",
-              "WebkitJustifyContent": "space-between",
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "msFlexAlign": "center",
-              "msFlexDirection": "row",
-              "msFlexPack": "justify",
-              "width": "100%",
-            }
-          }
+          className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+          dir={null}
         >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "start",
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexDirection": "row",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitJustifyContent": "flex-start",
-                "alignItems": "center",
-                "flexBasis": "0px",
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexNegative": 1,
-                "msFlexPack": "start",
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-                "paddingLeft": "12px",
-                "paddingRight": "12px",
-              }
-            }
+            className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            dir={null}
           >
             <button
               aria-label="Revenir en arrière"
@@ -197,29 +105,20 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               type="button"
             >
               <div
-                className="css-view-1dbjc4n"
+                className="css-view-175oi2r"
                 data-testid="icon-back"
+                dir={null}
               >
                 <div
-                  className="css-text-901oao"
+                  className="css-text-1rynq56"
                   dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
               </div>
               <div
-                className="css-text-901oao"
+                className="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
-                style={
-                  Object {
-                    "WebkitClipPath": "inset(50%)",
-                    "clipPath": "inset(50%)",
-                    "height": "1px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "1px",
-                  }
-                }
               >
                 Retour
               </div>
@@ -227,184 +126,59 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           </div>
           <h1
             aria-level={1}
-            className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+            className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
-            style={
-              Object {
-                "WebkitLineClamp": 1,
-                "color": "rgba(255,255,255,1.00)",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": "15px",
-                "lineHeight": "20px",
-                "textAlign": "center",
-              }
-            }
           >
             Page with header title
           </h1>
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "end",
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexDirection": "row",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "WebkitJustifyContent": "flex-end",
-                "alignItems": "center",
-                "flexBasis": "0px",
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexNegative": 1,
-                "msFlexPack": "end",
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-                "paddingLeft": "12px",
-                "paddingRight": "12px",
-              }
-            }
+            className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            dir={null}
           />
         </div>
       </div>
     </div>
   </header>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitFlexBasis": "0px",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "alignItems": "center",
-          "backgroundColor": "rgba(255,255,255,1.00)",
-          "borderTopLeftRadius": "22px",
-          "borderTopRightRadius": "22px",
-          "display": "flex",
-          "flexBasis": "0px",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "height": "100%",
-          "msFlexAlign": "center",
-          "msFlexDirection": "column",
-          "msFlexPositive": 1,
-          "msFlexPreferredSize": "0px",
-          "overflowX": "scroll",
-          "overflowY": "scroll",
-          "paddingTop": "12px",
-        }
-      }
+      className="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxFlex": 1,
-            "WebkitFlexBasis": "0px",
-            "WebkitFlexGrow": 1,
-            "WebkitFlexShrink": 1,
-            "flexBasis": "0px",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "maxWidth": "500px",
-            "msFlexNegative": 1,
-            "msFlexPositive": 1,
-            "msFlexPreferredSize": "0px",
-            "width": "100%",
-          }
-        }
+        className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+        dir={null}
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "paddingLeft": "20px",
-              "paddingRight": "20px",
-              "paddingTop": "20px",
-            }
-          }
+          className="css-view-175oi2r r-paddingHorizontal-d9fdf6 r-paddingTop-1knelpx"
+          dir={null}
         >
           <div
-            className="css-text-901oao"
+            className="css-text-1rynq56"
             dir="ltr"
           >
             fixed top children
           </div>
         </div>
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+          dir={null}
           onScroll={[Function]}
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
           onWheel={[Function]}
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "vertical",
-              "WebkitFlexDirection": "column",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitOverflowScrolling": "touch",
-              "WebkitTransform": "translateZ(0px)",
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexDirection": "column",
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "overflowX": "hidden",
-              "overflowY": "auto",
-              "transform": "translateZ(0px)",
-            }
-          }
         >
           <div
-            className="css-view-1dbjc4n"
+            className="css-view-175oi2r"
+            dir={null}
             style={
               Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxFlex": 1,
-                "WebkitBoxOrient": "vertical",
-                "WebkitFlexDirection": "column",
-                "WebkitFlexGrow": 1,
                 "flexDirection": "column",
                 "flexGrow": 1,
-                "msFlexDirection": "column",
-                "msFlexPositive": 1,
                 "paddingBottom": "0px",
                 "paddingLeft": "20px",
                 "paddingRight": "20px",
@@ -412,7 +186,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
             }
           >
             <div
-              className="css-text-901oao"
+              className="css-text-1rynq56"
               dir="ltr"
             >
               scroll children
@@ -420,34 +194,18 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           </div>
         </div>
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "backgroundColor": "rgba(255,255,255,1.00)",
-              "bottom": "0px",
-              "left": "0px",
-              "paddingBottom": "20px",
-              "paddingLeft": "20px",
-              "paddingRight": "20px",
-              "paddingTop": "12px",
-              "position": "absolute",
-              "right": "0px",
-            }
-          }
+          className="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+          dir={null}
         >
           <div
-            className="css-text-901oao"
+            className="css-text-1rynq56"
             dir="ltr"
           >
             fixed bottom children
           </div>
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "height": "8px",
-              }
-            }
+            className="css-view-175oi2r r-height-3da1kt"
+            dir={null}
           />
         </div>
       </div>

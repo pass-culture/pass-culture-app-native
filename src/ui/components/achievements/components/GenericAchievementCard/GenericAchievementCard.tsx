@@ -110,9 +110,9 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   }, [props.name, props.index, props.activeIndex])
 
   return (
-    <GenericCardContainer aria-hidden={props.activeIndex !== props.index}>
+    <GenericCardContainer accessibilityHidden={props.activeIndex !== props.index}>
       <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
-      <StyledLottieContainer aria-hidden>
+      <StyledLottieContainer accessibilityHidden>
         <StyledLottieView
           style={lottieStyle}
           key={props.activeIndex}

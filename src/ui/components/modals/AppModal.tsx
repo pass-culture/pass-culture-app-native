@@ -163,9 +163,9 @@ export const AppModal: FunctionComponent<Props> = ({
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
-      aria-labelledby={titleId}
+      accessibilityLabelledBy={titleId}
       accessibilityRole={AccessibilityRole.DIALOG}
-      aria-modal>
+      accessibilityModal>
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"

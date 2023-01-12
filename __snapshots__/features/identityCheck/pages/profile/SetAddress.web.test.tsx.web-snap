@@ -133,37 +133,30 @@ Object {
 <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <header
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-width-13qz1uu"
           role="banner"
-          style="width: 100%;"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
             style="height: 64px;"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+            class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
+              class="css-view-175oi2r r-height-10ptun7"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; height: 48px; justify-content: center;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
                 >
                   <button
                     aria-label="Revenir en arrière"
@@ -174,20 +167,19 @@ Object {
                     type="button"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                       data-testid="icon-back"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
                     </div>
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
-                      style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                     >
                       Retour
                     </div>
@@ -195,99 +187,84 @@ Object {
                 </div>
                 <h1
                   aria-level="1"
-                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                   dir="ltr"
                   role="heading"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                 >
                   Profil
                 </h1>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
                 />
               </div>
             </div>
           </div>
         </header>
         <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
+                class="css-view-175oi2r r-paddingHorizontal-d9fdf6 r-paddingTop-1knelpx"
               >
                 <form
                   class="c2"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; width: 100%;"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
                   >
                     <h2
                       aria-level="2"
-                      class="css-reset-4rbku5 css-text-901oao"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
                       dir="ltr"
                       role="heading"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
                       Quelle est ton adresse ?
                     </h2>
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 20px;"
+                    class="css-view-175oi2r r-height-z80fyv"
                   />
                   <label
                     class="c3 c4"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                      class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                         dir="ltr"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                       >
                         Entre ton adresse
                       </div>
                     </div>
                   </label>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 8px;"
+                    class="css-view-175oi2r r-height-3da1kt"
                   />
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
                     data-testid="styled-input-container"
-                    style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; outline-offset: 0px; padding: 0px 17px 0px 17px; width: 100%;"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="width: 4px;"
+                      class="css-view-175oi2r r-width-10g5efv"
                     />
                     <input
-                      aria-hidden="false"
                       autocapitalize="sentences"
                       autocomplete="on"
                       autocorrect="off"
-                      class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                      class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1twveob r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
                       data-testid="searchInput"
                       dir="ltr"
                       enterkeyhint="next"
                       placeholder="Ex : 34 avenue de l'Opéra"
                       spellcheck="false"
-                      style="color: rgb(105, 106, 111); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Italic; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
+                      style="--placeholderTextColor: #696A6F;"
                       type="search"
                       value=""
                     />
@@ -296,29 +273,25 @@ Object {
                     role="alert"
                   />
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 8px;"
+                    class="css-view-175oi2r r-height-3da1kt"
                   />
                 </form>
               </div>
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                  class="css-view-175oi2r"
+                  style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
                     role="radiogroup"
-                    style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                   />
                 </div>
               </div>
               <div
-                class="css-view-1dbjc4n"
-                style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
               >
                 <button
                   aria-label="Continuer vers l’étape suivante"
@@ -328,16 +301,14 @@ Object {
                   type="submit"
                 >
                   <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                   >
                     Continuer
                   </div>
                 </button>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
               </div>
             </div>
@@ -475,37 +446,30 @@ Object {
 
 <div>
     <div
-      class="css-view-1dbjc4n"
-      style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+      class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     >
       <header
-        class="css-view-1dbjc4n"
+        class="css-view-175oi2r r-width-13qz1uu"
         role="banner"
-        style="width: 100%;"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
           style="height: 64px;"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+          class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
+            class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; height: 48px; justify-content: center;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
               >
                 <button
                   aria-label="Revenir en arrière"
@@ -516,20 +480,19 @@ Object {
                   type="button"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                     data-testid="icon-back"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                     dir="ltr"
-                    style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                   >
                     Retour
                   </div>
@@ -537,99 +500,84 @@ Object {
               </div>
               <h1
                 aria-level="1"
-                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                 dir="ltr"
                 role="heading"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
               >
                 Profil
               </h1>
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
               />
             </div>
           </div>
         </div>
       </header>
       <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
+              class="css-view-175oi2r r-paddingHorizontal-d9fdf6 r-paddingTop-1knelpx"
             >
               <form
                 class="c2"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; width: 100%;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
                 >
                   <h2
                     aria-level="2"
-                    class="css-reset-4rbku5 css-text-901oao"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
                     dir="ltr"
                     role="heading"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                   >
                     Quelle est ton adresse ?
                   </h2>
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 20px;"
+                  class="css-view-175oi2r r-height-z80fyv"
                 />
                 <label
                   class="c3 c4"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                    class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                     >
                       Entre ton adresse
                     </div>
                   </div>
                 </label>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
                   data-testid="styled-input-container"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; outline-offset: 0px; padding: 0px 17px 0px 17px; width: 100%;"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="width: 4px;"
+                    class="css-view-175oi2r r-width-10g5efv"
                   />
                   <input
-                    aria-hidden="false"
                     autocapitalize="sentences"
                     autocomplete="on"
                     autocorrect="off"
-                    class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1twveob r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
                     data-testid="searchInput"
                     dir="ltr"
                     enterkeyhint="next"
                     placeholder="Ex : 34 avenue de l'Opéra"
                     spellcheck="false"
-                    style="color: rgb(105, 106, 111); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Italic; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px; width: inherit;"
+                    style="--placeholderTextColor: #696A6F;"
                     type="search"
                     value=""
                   />
@@ -638,29 +586,25 @@ Object {
                   role="alert"
                 />
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
               </form>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                class="css-view-175oi2r"
+                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
                   role="radiogroup"
-                  style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                 />
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
             >
               <button
                 aria-label="Continuer vers l’étape suivante"
@@ -670,16 +614,14 @@ Object {
                 type="submit"
               >
                 <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                 >
                   Continuer
                 </div>
               </button>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-view-175oi2r r-height-3da1kt"
               />
             </div>
           </div>

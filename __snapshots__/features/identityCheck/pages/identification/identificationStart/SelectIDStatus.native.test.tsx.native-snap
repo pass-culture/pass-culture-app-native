@@ -540,8 +540,8 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                               }
                             >
                               <Text
+                                accessibilityHidden={true}
                                 accessibilityRole="image"
-                                aria-hidden={true}
                                 style={
                                   Array [
                                     Object {

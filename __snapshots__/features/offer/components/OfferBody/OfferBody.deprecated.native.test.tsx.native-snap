@@ -1141,7 +1141,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionBody"
                             >
                               <View
-                                aria-labelledby="testUuidV4"
+                                accessibilityLabelledBy="testUuidV4"
                                 hidden={true}
                                 nativeID="testUuidV4"
                                 onLayout={[Function]}
@@ -1336,7 +1336,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionBody"
                             >
                               <View
-                                aria-labelledby="testUuidV4"
+                                accessibilityLabelledBy="testUuidV4"
                                 hidden={true}
                                 nativeID="testUuidV4"
                                 onLayout={[Function]}
@@ -2045,10 +2045,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
+                            accessibilityLabelledBy="testUuidV4"
+                            accessibilityModal={true}
                             accessibilityRole="none"
                             animationType="none"
-                            aria-labelledby="testUuidV4"
-                            aria-modal={true}
                             deviceHeight={1334}
                             deviceWidth={750}
                             hardwareAccelerated={false}
@@ -3705,7 +3705,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionBody"
                             >
                               <View
-                                aria-labelledby="testUuidV4"
+                                accessibilityLabelledBy="testUuidV4"
                                 hidden={true}
                                 nativeID="testUuidV4"
                                 onLayout={[Function]}
@@ -3900,7 +3900,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionBody"
                             >
                               <View
-                                aria-labelledby="testUuidV4"
+                                accessibilityLabelledBy="testUuidV4"
                                 hidden={true}
                                 nativeID="testUuidV4"
                                 onLayout={[Function]}
@@ -4609,10 +4609,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             </View>
                           </View>
                           <Modal
+                            accessibilityLabelledBy="testUuidV4"
+                            accessibilityModal={true}
                             accessibilityRole="none"
                             animationType="none"
-                            aria-labelledby="testUuidV4"
-                            aria-modal={true}
                             deviceHeight={1334}
                             deviceWidth={750}
                             hardwareAccelerated={false}

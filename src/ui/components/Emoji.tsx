@@ -26,7 +26,7 @@ const ContainerText: React.FC<Props> = ({
       style={style}
       accessibilityRole={AccessibilityRole.IMAGE}
       accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}>
+      accessibilityHidden={!accessibilityLabel}>
       {withSpaceBefore && nonBreakingSpace}
       {children}
       {withSpaceAfter && nonBreakingSpace}

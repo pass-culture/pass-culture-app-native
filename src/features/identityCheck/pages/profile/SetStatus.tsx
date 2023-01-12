@@ -79,7 +79,7 @@ export const SetStatus = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
+          <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
             <Controller
               control={control}
               name="selectedStatus"

@@ -125,8 +125,12 @@ const _SnackBar = (props: SnackBarProps) => {
         duration={animationDuration}
         ref={containerRef}>
         {!!renderContent && (
-          <View accessibilityRole={AccessibilityRole.STATUS} aria-relevant="additions">
-            <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
+          <View accessibilityRole={AccessibilityRole.STATUS}>
+            <SnackBarContainer
+              isVisible={isVisible}
+              marginTop={top}
+              testID="snackbar-container"
+              accessibilityHidden={!isVisible}>
               {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
               <Spacer.Flex flex={1}>
                 <StyledBody testID="snackbar-message" color={props.color}>

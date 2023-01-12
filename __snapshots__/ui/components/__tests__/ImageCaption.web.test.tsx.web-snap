@@ -6,35 +6,29 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 20px; width: 50px;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-z80fyv r-width-ttb5dx"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
         >
           <div
-            class="css-text-901oao css-textMultiLine-cens5h"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
             data-testid="categoryImageCaption"
             dir="ltr"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             Musique
           </div>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="background-color: rgb(255, 255, 255); height: 16px; width: 1px;"
+          class="css-view-175oi2r r-backgroundColor-14lw9ot r-height-10ptun7 r-width-92ng3h"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
             data-testid="distanceImageCaption"
             dir="ltr"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             1,2km
           </div>
@@ -44,35 +38,29 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="css-view-1dbjc4n"
-      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 20px; width: 50px;"
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-z80fyv r-width-ttb5dx"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
       >
         <div
-          class="css-text-901oao css-textMultiLine-cens5h"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
           data-testid="categoryImageCaption"
           dir="ltr"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Musique
         </div>
       </div>
       <div
-        class="css-view-1dbjc4n"
-        style="background-color: rgb(255, 255, 255); height: 16px; width: 1px;"
+        class="css-view-175oi2r r-backgroundColor-14lw9ot r-height-10ptun7 r-width-92ng3h"
       />
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
       >
         <div
-          class="css-text-901oao"
+          class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
           data-testid="distanceImageCaption"
           dir="ltr"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           1,2km
         </div>

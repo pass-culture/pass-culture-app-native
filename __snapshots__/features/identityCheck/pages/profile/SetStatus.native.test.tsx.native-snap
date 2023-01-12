@@ -309,8 +309,8 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             >
               <View
+                accessibilityLabelledBy="testUuidV4"
                 accessibilityRole="radiogroup"
-                aria-labelledby="testUuidV4"
               >
                 <View
                   accessibilityRole="list"

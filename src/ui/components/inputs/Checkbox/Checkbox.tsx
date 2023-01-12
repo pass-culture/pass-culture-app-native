@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
@@ -21,8 +21,6 @@ type Props = IsCheckedProps & {
 export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
 
-  const accessibilityState = useMemo(() => ({ checked: isChecked }), [isChecked])
-
   const onToggle = useCallback(() => {
     onPress(!isChecked)
   }, [isChecked, onPress])
@@ -31,9 +29,7 @@ export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }
 
   return (
     <CheckboxContainer
-      accessibilityRole={AccessibilityRole.CHECKBOX}
-      accessibilityLabel={label}
-      accessibilityState={accessibilityState}
+      {...accessibleCheckboxProps({ checked: isChecked, label })}
       onPress={onToggle}
       onFocus={onFocus}
       onBlur={onBlur}>

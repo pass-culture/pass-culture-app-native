@@ -6,28 +6,24 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="margin-top: 8px; max-width: 50px;"
+        class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-5kp9u6"
       >
         <div
-          class="css-text-901oao css-textMultiLine-cens5h"
+          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
           dir="ltr"
-          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Mensch ! Où sont les Hommes ?
         </div>
         <div
-          class="css-text-901oao css-textMultiLine-cens5h"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
           dir="ltr"
-          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Dès le 2 mars 2020
         </div>
         <div
-          class="css-text-901oao"
+          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
           data-testid="priceIsDuo"
           dir="ltr"
-          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Dès 5€ - Duo
         </div>
@@ -36,28 +32,24 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="css-view-1dbjc4n"
-      style="margin-top: 8px; max-width: 50px;"
+      class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-5kp9u6"
     >
       <div
-        class="css-text-901oao css-textMultiLine-cens5h"
+        class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
         dir="ltr"
-        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
       >
         Mensch ! Où sont les Hommes ?
       </div>
       <div
-        class="css-text-901oao css-textMultiLine-cens5h"
+        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
         dir="ltr"
-        style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
       >
         Dès le 2 mars 2020
       </div>
       <div
-        class="css-text-901oao"
+        class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
         data-testid="priceIsDuo"
         dir="ltr"
-        style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
       >
         Dès 5€ - Duo
       </div>

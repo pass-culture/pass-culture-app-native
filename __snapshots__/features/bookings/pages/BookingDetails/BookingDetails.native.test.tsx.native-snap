@@ -68,6 +68,7 @@ exports[`BookingDetails should render correctly 1`] = `
       >
         <View
           accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -173,7 +174,7 @@ exports[`BookingDetails should render correctly 1`] = `
         }
       />
       <Text
-        aria-hidden={true}
+        accessibilityHidden={true}
         collapsable={false}
         numberOfLines={1}
         style={
@@ -1027,10 +1028,10 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -1058,10 +1059,10 @@ exports[`BookingDetails should render correctly 1`] = `
     visible={false}
   />
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}

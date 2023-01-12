@@ -2,8 +2,8 @@
 
 exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
   animationType="fade"
-  aria-labelledby="testUuidV4"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
@@ -427,8 +427,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
 
 exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
   animationType="fade"
-  aria-labelledby="testUuidV4"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
@@ -852,8 +852,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
 
 exports[`ShareAppModal should match underage modal snapshot when underage 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
   animationType="fade"
-  aria-labelledby="testUuidV4"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}

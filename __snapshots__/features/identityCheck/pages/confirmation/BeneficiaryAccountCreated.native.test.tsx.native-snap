@@ -327,8 +327,8 @@ Array [
     />
   </View>,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
     animationType="fade"
-    aria-labelledby="testUuidV4"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     statusBarTranslucent={true}
@@ -665,8 +665,8 @@ Array [
     />
   </View>,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
     animationType="fade"
-    aria-labelledby="testUuidV4"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     statusBarTranslucent={true}

@@ -7,97 +7,83 @@ Object {
     <div>
       <h2
         aria-level="2"
-        class="css-reset-4rbku5 css-text-901oao"
+        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
         data-testid="HourStep"
         dir="ltr"
         role="heading"
-        style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Heure
       </h2>
       <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
+        class="css-view-175oi2r r-height-3da1kt"
       />
       <div
-        class="css-view-1dbjc4n"
-        style="flex-direction: row; flex-wrap: wrap; margin-right: -8px; margin-left: -8px;"
+        class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-marginHorizontal-y285pg"
       >
         <div
           aria-disabled="true"
           aria-label="10h00 épuisé"
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb r-width-30z84g r-pointerEvents-633pao"
           data-testid="10h00 épuisé"
-          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
+          style="transition-duration: 0s;"
           tabindex="-1"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-103ggtu r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-justifyContent-1777fci r-overflow-1udh08x r-paddingHorizontal-1orpq53"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="width: 20px;"
+              class="css-view-175oi2r r-width-19wmn03"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; justify-content: center; min-height: 80px;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-mjyw6"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
                 data-testid="HourChoice148411-hour"
                 dir="ltr"
-                style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 10h00
               </div>
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                 data-testid="HourChoice148411-price"
                 dir="ltr"
-                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 épuisé
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(203, 205, 210); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-14.774550275046582deg); width: 325.3333333333333px;"
+              class="css-view-175oi2r r-backgroundColor-bg9z1y r-borderRadius-esiwgw r-height-109y4c4 r-position-u8s1d r-transform-vcvtj9 r-width-1yzssgc"
             />
           </div>
         </div>
         <div
           aria-label="20h00 24 €"
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb r-width-30z84g"
           data-testid="20h00 24 €"
-          style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
+          style="transition-duration: 0s;"
           tabindex="0"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(105,106,111,1.00); border-right-color: rgba(105,106,111,1.00); border-bottom-color: rgba(105,106,111,1.00); border-left-color: rgba(105,106,111,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-uj9wiw r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-justifyContent-1777fci r-overflow-1udh08x r-paddingHorizontal-1orpq53"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="width: 20px;"
+              class="css-view-175oi2r r-width-19wmn03"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; justify-content: center; min-height: 80px;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-mjyw6"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
                 data-testid="HourChoice148409-hour"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 20h00
               </div>
               <div
-                class="css-text-901oao"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                 data-testid="HourChoice148409-price"
                 dir="ltr"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 24 €
               </div>
@@ -110,97 +96,83 @@ Object {
   "container": <div>
     <h2
       aria-level="2"
-      class="css-reset-4rbku5 css-text-901oao"
+      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
       data-testid="HourStep"
       dir="ltr"
       role="heading"
-      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
     >
       Heure
     </h2>
     <div
-      class="css-view-1dbjc4n"
-      style="height: 8px;"
+      class="css-view-175oi2r r-height-3da1kt"
     />
     <div
-      class="css-view-1dbjc4n"
-      style="flex-direction: row; flex-wrap: wrap; margin-right: -8px; margin-left: -8px;"
+      class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-marginHorizontal-y285pg"
     >
       <div
         aria-disabled="true"
         aria-label="10h00 épuisé"
-        class="css-view-1dbjc4n"
+        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb r-width-30z84g r-pointerEvents-633pao"
         data-testid="10h00 épuisé"
-        style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
+        style="transition-duration: 0s;"
         tabindex="-1"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-103ggtu r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-justifyContent-1777fci r-overflow-1udh08x r-paddingHorizontal-1orpq53"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="width: 20px;"
+            class="css-view-175oi2r r-width-19wmn03"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; justify-content: center; min-height: 80px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-mjyw6"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
               data-testid="HourChoice148411-hour"
               dir="ltr"
-              style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               10h00
             </div>
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
               data-testid="HourChoice148411-price"
               dir="ltr"
-              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
             >
               épuisé
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(203, 205, 210); border-top-left-radius: 0.5px; border-top-right-radius: 0.5px; border-bottom-right-radius: 0.5px; border-bottom-left-radius: 0.5px; height: 1px; position: absolute; transform: rotate(-14.774550275046582deg); width: 325.3333333333333px;"
+            class="css-view-175oi2r r-backgroundColor-bg9z1y r-borderRadius-esiwgw r-height-109y4c4 r-position-u8s1d r-transform-vcvtj9 r-width-1yzssgc"
           />
         </div>
       </div>
       <div
         aria-label="20h00 24 €"
-        class="css-view-1dbjc4n"
+        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb r-width-30z84g"
         data-testid="20h00 24 €"
-        style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
+        style="transition-duration: 0s;"
         tabindex="0"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(105,106,111,1.00); border-right-color: rgba(105,106,111,1.00); border-bottom-color: rgba(105,106,111,1.00); border-left-color: rgba(105,106,111,1.00); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; padding-right: 13px; padding-left: 13px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-uj9wiw r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-justifyContent-1777fci r-overflow-1udh08x r-paddingHorizontal-1orpq53"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="width: 20px;"
+            class="css-view-175oi2r r-width-19wmn03"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; justify-content: center; min-height: 80px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-mjyw6"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
               data-testid="HourChoice148409-hour"
               dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               20h00
             </div>
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
               data-testid="HourChoice148409-price"
               dir="ltr"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
             >
               24 €
             </div>
@@ -270,27 +242,24 @@ Object {
     <div>
       <h2
         aria-level="2"
-        class="css-reset-4rbku5 css-text-901oao"
+        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
         data-testid="HourStep"
         dir="ltr"
         role="heading"
-        style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Heure
       </h2>
       <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
+        class="css-view-175oi2r r-height-3da1kt"
       />
       <div
-        class="css-view-1dbjc4n"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+        style="transition-duration: 0s;"
         tabindex="0"
       >
         <div
-          class="css-text-901oao"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
           dir="ltr"
-          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         >
           20:00
         </div>
@@ -300,27 +269,24 @@ Object {
   "container": <div>
     <h2
       aria-level="2"
-      class="css-reset-4rbku5 css-text-901oao"
+      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
       data-testid="HourStep"
       dir="ltr"
       role="heading"
-      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
     >
       Heure
     </h2>
     <div
-      class="css-view-1dbjc4n"
-      style="height: 8px;"
+      class="css-view-175oi2r r-height-3da1kt"
     />
     <div
-      class="css-view-1dbjc4n"
-      style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+      style="transition-duration: 0s;"
       tabindex="0"
     >
       <div
-        class="css-text-901oao"
+        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
         dir="ltr"
-        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
       >
         20:00
       </div>

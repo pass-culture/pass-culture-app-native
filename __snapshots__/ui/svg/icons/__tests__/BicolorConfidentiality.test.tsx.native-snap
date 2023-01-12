@@ -2,8 +2,8 @@
 
 exports[`BicolorConfidentiality should render component correctly 1`] = `
 <RNSVGSvgView
+  accessibilityHidden={true}
   align="xMidYMid"
-  aria-hidden={true}
   bbHeight="32"
   bbWidth="32"
   focusable={false}

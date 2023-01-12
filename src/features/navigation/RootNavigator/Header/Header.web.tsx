@@ -103,7 +103,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
           margin={margin}
           isVisible
           style={fadeAnimSmall}
-          aria-hidden={!!isBrandVisible}>
+          accessibilityHidden={!!isBrandVisible}>
           <LogoPassCulture color={theme.uniqueColors.brand} height={getSpacing(6.5)} width={80} />
         </LeftContainer>
         <Nav
@@ -115,7 +115,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
           margin={margin}
           isVisible
           style={fadeAnimSmall}
-          aria-hidden={!!isBrandVisible}>
+          accessibilityHidden={!!isBrandVisible}>
           <FlexContainer alignItems="flex-end">
             <LogoMinistereContainer height={getSpacing(11)} width={getSpacing(15.5)}>
               <LogoMinistere />
@@ -127,7 +127,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
         margin={margin}
         isVisible={!!isDesktopOffset}
         style={fadeAnim}
-        aria-hidden={!isBrandVisible}>
+        accessibilityHidden={!isBrandVisible}>
         <FlexContainer />
         <FlexContainer>
           <LogoMinistereContainer>

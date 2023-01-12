@@ -123,7 +123,9 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
-      <StyledBody aria-live="assertive">Aucun lieu ne correspond à ta recherche</StyledBody>
+      <StyledBody accessibilityLiveRegion="assertive">
+        Aucun lieu ne correspond à ta recherche
+      </StyledBody>
     </DescriptionErrorTextContainer>
   ) : (
     <React.Fragment />

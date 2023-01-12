@@ -56,71 +56,20 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
 }
 
 <div
-  className="css-view-1dbjc4n"
-  style={
-    Object {
-      "WebkitAlignSelf": "center",
-      "WebkitBoxFlex": 1,
-      "WebkitFlexBasis": "0px",
-      "WebkitFlexGrow": 1,
-      "WebkitFlexShrink": 1,
-      "alignSelf": "center",
-      "flexBasis": "0px",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "maxWidth": "500px",
-      "msFlexItemAlign": "center",
-      "msFlexNegative": 1,
-      "msFlexPositive": 1,
-      "msFlexPreferredSize": "0px",
-      "msGridRowAlign": "center",
-      "overflowX": "scroll",
-      "overflowY": "scroll",
-      "paddingLeft": "24px",
-      "paddingRight": "24px",
-      "width": "100%",
-    }
-  }
+  className="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk r-width-13qz1uu"
+  dir={null}
 >
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    dir={null}
   />
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxFlex": 1,
-        "WebkitBoxPack": "center",
-        "WebkitFlexGrow": 1,
-        "WebkitJustifyContent": "center",
-        "alignItems": "center",
-        "flexGrow": 1,
-        "height": "30%",
-        "justifyContent": "center",
-        "msFlexAlign": "center",
-        "msFlexPack": "center",
-        "msFlexPositive": 1,
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexGrow-16y2uox r-height-o29g2o r-justifyContent-1777fci"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
+      className="css-view-175oi2r"
+      dir={null}
       style={
         Object {
           "height": "100%",
@@ -130,110 +79,40 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
     />
   </div>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 0.5,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 0.5,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 0.5,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 0.5,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
+    dir={null}
   />
   <h1
     aria-level={1}
-    className="css-reset-4rbku5 css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-9h9n7a r-fontSize-yy2aun r-lineHeight-2agvir r-textAlign-q4m81j"
     dir="ltr"
     role="heading"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-Black",
-        "fontSize": "26px",
-        "lineHeight": "34px",
-        "textAlign": "center",
-      }
-    }
   >
     Ton compte a été réactivé
   </h1>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 0.5,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 0.5,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 0.5,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 0.5,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
+    dir={null}
   />
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-Regular",
-        "fontSize": "15px",
-        "lineHeight": "20px",
-        "textAlign": "center",
-      }
-    }
   >
     On est ravi de te revoir !
   </div>
   <div
-    className="css-text-901oao"
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
     dir="ltr"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-Regular",
-        "fontSize": "15px",
-        "lineHeight": "20px",
-        "textAlign": "center",
-      }
-    }
   >
     Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
   </div>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 2,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 2,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 2,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 2,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16xksha r-flexShrink-1wbh5a2"
+    dir={null}
   />
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "paddingBottom": "40px",
-      }
-    }
+    className="css-view-175oi2r r-paddingBottom-1uwte3a"
+    dir={null}
   >
     <button
       aria-label="Découvrir le catalogue"
@@ -245,40 +124,16 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
       type="button"
     >
       <div
-        className="css-text-901oao css-textMultiLine-cens5h"
+        className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
         dir="ltr"
-        style={
-          Object {
-            "WebkitLineClamp": 1,
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "marginLeft": "0px",
-            "maxWidth": "100%",
-          }
-        }
       >
         Découvrir le catalogue
       </div>
     </button>
   </div>
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitBoxFlex": 0.1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 0.1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 0.1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 0.1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-4kte42 r-flexShrink-1wbh5a2"
+    dir={null}
   />
 </div>
 `;

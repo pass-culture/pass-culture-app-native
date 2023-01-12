@@ -63,7 +63,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
       <RulesContainer
         isVisible={visible}
         accessibilityRole={AccessibilityRole.STATUS}
-        aria-atomic={false}>
+        accessibilityAtomic={false}>
         <PasswordRule title="12 Caractères" isValidated={isLongEnough(password)} />
         <PasswordRule title="1 Majuscule" isValidated={containsCapital(password)} />
         <PasswordRule title="1 Minuscule" isValidated={containsLowercase(password)} />

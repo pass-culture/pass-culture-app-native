@@ -366,12 +366,12 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 }
               />
               <TextInput
-                accessible={true}
-                aria-describedby="testUuidV4"
-                aria-hidden={false}
+                accessibilityDescribedBy="testUuidV4"
+                accessibilityHidden={false}
                 autoCorrect={false}
                 editable={true}
                 enablesReturnKeyAutomatically={true}
+                focusable={true}
                 isEmpty={true}
                 nativeID="testUuidV4"
                 onBlur={[Function]}

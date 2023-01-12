@@ -20,8 +20,8 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const { headerTransition, title } = props
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
-  const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
-  headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
+  const [accessibilityHiddenTitle, setAccessibilityHiddenTitle] = useState(true)
+  headerTransition.addListener((opacity) => setAccessibilityHiddenTitle(opacity.value !== 1))
 
   const { animationState, backgroundColor } = getAnimationState(theme, headerTransition)
 
@@ -40,7 +40,9 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
             />
           </IconContainer>
           <Spacer.Flex />
-          <Title style={{ opacity: headerTransition }} aria-hidden={ariaHiddenTitle}>
+          <Title
+            style={{ opacity: headerTransition }}
+            accessibilityHidden={accessibilityHiddenTitle}>
             <StyledBody>{title}</StyledBody>
           </Title>
           <Spacer.Flex />
