@@ -63,13 +63,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
 
   return (
     <Form.MaxWidth>
-      <EmailInputController
-        control={control}
-        name="email"
-        label="Adresse e-mail"
-        withSpellingHelp
-        autoFocus
-      />
+      <EmailInputController control={control} name="email" label="Adresse e-mail" autoFocus />
       <Spacer.Column numberOfSpaces={4} />
       <Controller
         control={control}
