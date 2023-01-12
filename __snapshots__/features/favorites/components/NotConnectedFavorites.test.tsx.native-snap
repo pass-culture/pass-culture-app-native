@@ -136,7 +136,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "maxWidth": 176,
+            "paddingHorizontal": 32,
           },
         ]
       }
@@ -228,54 +228,113 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       />
       <View
-        accessibilityLabel="Se connecter"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 48,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
         }
-        testID="Se connecter"
       >
         <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
           style={
             Array [
               Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "textAlign": "center",
               },
             ]
           }
         >
-          Se connecter
+          Déjà un compte ?
+          <View
+            numberOfSpaces={1}
+            style={
+              Array [
+                Object {
+                  "width": 4,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              accessibilityLabel="Se connecter"
+              accessibilityRole="link"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "top": 3,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Se connecter"
+            >
+              <View
+                paddingForIcon={0}
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "row",
+                      "top": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#320096"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="#320096"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  typography="ButtonText"
+                >
+                  Se connecter
+                </Text>
+              </View>
+            </View>
+          </View>
         </Text>
       </View>
     </View>

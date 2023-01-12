@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { analytics } from 'libs/firebase/analytics'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
@@ -37,12 +37,9 @@ export const NotConnectedFavorites = () => {
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
-          <InternalTouchableLink
-            as={ButtonTertiaryWhite}
-            wording="Se connecter"
-            navigateTo={{ screen: 'Login' }}
-            onBeforeNavigate={analytics.logSignInFromFavorite}
-            buttonHeight="tall"
+          <StyledAuthenticationButton
+            type="login"
+            onAdditionalPress={analytics.logSignInFromFavorite}
           />
         </ButtonContainer>
       </Row>
@@ -79,7 +76,7 @@ const CenteredContainer = styled.View({
   marginHorizontal: getSpacing(8),
 })
 
-const ButtonContainer = styled.View({ flex: 1, maxWidth: getSpacing(44) })
+const ButtonContainer = styled.View({ flex: 1, paddingHorizontal: getSpacing(8) })
 
 const TextContainer = styled.View({ maxWidth: getSpacing(88) })
 
@@ -90,3 +87,7 @@ const CenteredText = styled(Typo.Body)({
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
+
+const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
+  linkColor: theme.colors.secondary,
+}))``
