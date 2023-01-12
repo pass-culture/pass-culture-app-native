@@ -1,6 +1,8 @@
+import { useRoute } from '@react-navigation/core'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
@@ -22,14 +24,15 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
         })
       : 'Voir tous les filtres'
   const { searchState, dispatch } = useSearch()
+  const { params } = useRoute<UseRouteType<'Search'>>()
 
   const reinitFilters = useCallback(() => {
-    dispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: searchState })
-  }, [dispatch, searchState])
+    dispatch({ type: 'SET_STATE_FROM_DEFAULT', payload: params ?? searchState })
+  }, [dispatch, params, searchState])
 
   return (
     <StyledTouchableLink
-      navigateTo={{ screen: 'SearchFilter' }}
+      navigateTo={{ screen: 'SearchFilter', params }}
       onBeforeNavigate={reinitFilters}
       title={accessibilityLabel}
       accessibilityLabel={accessibilityLabel}>
