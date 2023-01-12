@@ -14,33 +14,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   }
 >
   <View
-    height="100%"
-    style={
-      Array [
-        Object {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
-        },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
     customHeight={16}
     enable={true}
     style={
@@ -87,7 +60,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 18,
             "lineHeight": 22,
@@ -134,7 +107,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           style={
             Array [
               Object {
-                "color": "#ffffff",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -170,6 +143,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     >
       <View
         accessibilityLabel="S’inscrire"
+        accessibilityRole="link"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -183,41 +162,60 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "flexDirection": "row",
             "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 48,
             "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 2,
+            "overflow": "hidden",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
             "userSelect": "auto",
-            "width": "100%",
           }
         }
         testID="S’inscrire"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
+          height={48}
+          width="100%"
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
           style={
             Array [
               Object {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
+                "position": "absolute",
               },
             ]
           }
         >
-          S’inscrire
-        </Text>
+          <Text
+            adjustsFontSizeToFit={true}
+            isDisabled={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                },
+              ]
+            }
+          >
+            S’inscrire
+          </Text>
+        </View>
       </View>
       <View
         numberOfSpaces={4}

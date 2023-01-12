@@ -2,17 +2,15 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/firebase/analytics'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {
   return (
     <Container>
-      <BackgroundWithWhiteStatusBar />
       <Spacer.TopScreen />
       <Spacer.Flex />
       <StyledUserFavorite />
@@ -32,7 +30,7 @@ export const NotConnectedFavorites = () => {
       <Row>
         <ButtonContainer>
           <InternalTouchableLink
-            as={ButtonPrimaryWhite}
+            as={ButtonWithLinearGradient}
             wording="S’inscrire"
             navigateTo={{ screen: 'SignupForm' }}
             onBeforeNavigate={analytics.logSignUpFromFavorite}
@@ -70,7 +68,7 @@ const Row = styled.View({ flexDirection: 'row' })
 
 const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   textAlign: 'center',
-  color: theme.colors.white,
+  color: theme.colors.black,
 }))
 
 const CenteredContainer = styled.View({
@@ -90,5 +88,5 @@ const CenteredText = styled(Typo.Body)({
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.colors.black,
 }))
