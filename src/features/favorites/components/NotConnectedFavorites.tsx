@@ -15,13 +15,13 @@ export const NotConnectedFavorites = () => {
       <Spacer.Flex />
       <StyledUserFavorite />
       <CenteredContainer>
-        <StyledTitle4>Connecte-toi pour profiter de cette fonctionnalité&nbsp;!</StyledTitle4>
+        <StyledTitle4>Identifie-toi pour retrouver tes favoris</StyledTitle4>
         <Spacer.Column numberOfSpaces={4} />
 
         <TextContainer>
           <CenteredText>
             <StyledBody>
-              Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil&nbsp;!
+              Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
             </StyledBody>
           </CenteredText>
         </TextContainer>
@@ -31,7 +31,7 @@ export const NotConnectedFavorites = () => {
         <ButtonContainer>
           <InternalTouchableLink
             as={ButtonWithLinearGradient}
-            wording="S’inscrire"
+            wording="Créer un compte"
             navigateTo={{ screen: 'SignupForm' }}
             onBeforeNavigate={analytics.logSignUpFromFavorite}
             buttonHeight="tall"

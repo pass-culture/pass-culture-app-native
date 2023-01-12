@@ -69,7 +69,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         ]
       }
     >
-      Connecte-toi pour profiter de cette fonctionnalité !
+      Identifie-toi pour retrouver tes favoris
     </Text>
     <View
       numberOfSpaces={4}
@@ -115,7 +115,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             ]
           }
         >
-          Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !
+          Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
         </Text>
       </Text>
     </View>
@@ -142,7 +142,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       <View
-        accessibilityLabel="S’inscrire"
+        accessibilityLabel="Créer un compte"
         accessibilityRole="link"
         accessibilityState={
           Object {
@@ -173,7 +173,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             "userSelect": "auto",
           }
         }
-        testID="S’inscrire"
+        testID="Créer un compte"
       >
         <View
           height={48}
@@ -213,7 +213,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               ]
             }
           >
-            S’inscrire
+            Créer un compte
           </Text>
         </View>
       </View>
