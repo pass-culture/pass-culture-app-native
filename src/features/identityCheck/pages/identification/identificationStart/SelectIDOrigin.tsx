@@ -41,6 +41,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
         icon={BicolorFrance}
         navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
         key={1}
+        accessibilityLabel="J’ai une carte d’identité ou un passeport français"
       />
       <Spacer.Column numberOfSpaces={7} />
       <SeparatorWithText label="ou" />

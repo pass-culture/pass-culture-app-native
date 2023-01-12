@@ -340,8 +340,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                 }
               />
               <View
+                accessibilityLabel="J’ai une carte d’identité ou un passeport français"
                 accessibilityRole="link"
-                accessible={false}
+                accessible={true}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
@@ -357,7 +358,7 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     "userSelect": "auto",
                   }
                 }
-                testID="HeroButtonList"
+                testID="J’ai une carte d’identité ou un passeport français"
               >
                 <View
                   style={

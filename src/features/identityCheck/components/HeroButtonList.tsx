@@ -12,6 +12,7 @@ type HeroButtonListProps = {
   Subtitle?: ReactElement
   icon: FunctionComponent<IconInterface>
   navigateTo: InternalNavigationProps['navigateTo']
+  accessibilityLabel?: string
 }
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
@@ -21,7 +22,10 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
   }))``
 
   return (
-    <InternalTouchableLink navigateTo={props.navigateTo} testID={`HeroButtonList`}>
+    <InternalTouchableLink
+      navigateTo={props.navigateTo}
+      testID={`HeroButtonList`}
+      accessibilityLabel={props.accessibilityLabel}>
       <GenericBanner LeftIcon={Icon}>
         <TextWrapper>
           {props.Title}
