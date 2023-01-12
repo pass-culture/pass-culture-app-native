@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -121,6 +121,20 @@ export const PriceModal: FunctionComponent<Props> = ({
     hideModal()
   }
 
+  const initialFormValues = useMemo(() => {
+    return {
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+    }
+  }, [
+    isLimitCreditSearchDefaultValue,
+    isOnlyFreeOffersSearchDefaultValue,
+    searchState?.maxPrice,
+    searchState?.minPrice,
+  ])
+
   const {
     handleSubmit,
     control,
@@ -131,31 +145,14 @@ export const PriceModal: FunctionComponent<Props> = ({
     formState: { isSubmitting, isValid, isValidating },
   } = useForm<PriceModalFormData>({
     mode: 'onChange',
-    defaultValues: {
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
-      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-    },
+    defaultValues: initialFormValues,
     resolver: yupResolver(searchPriceSchema),
   })
 
   useEffect(() => {
     if (shouldTriggerSearch) return
-    reset({
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
-      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-    })
-  }, [
-    isLimitCreditSearchDefaultValue,
-    isOnlyFreeOffersSearchDefaultValue,
-    reset,
-    searchState?.maxPrice,
-    searchState?.minPrice,
-    shouldTriggerSearch,
-  ])
+    reset(initialFormValues)
+  }, [initialFormValues, reset, shouldTriggerSearch])
 
   const onSubmit = handleSubmit(search)
 

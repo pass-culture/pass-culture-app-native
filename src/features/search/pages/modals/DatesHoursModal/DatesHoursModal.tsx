@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -112,6 +112,10 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
     defaultValues,
   })
   const { hasSelectedDate, selectedDate, hasSelectedHours } = watch()
+
+  useEffect(() => {
+    reset(defaultValues)
+  }, [defaultValues, reset])
 
   const close = useCallback(() => {
     reset(defaultValues)

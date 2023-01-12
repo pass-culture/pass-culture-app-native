@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -61,6 +61,10 @@ export const CategoriesModal = ({
   } = useForm<CategoriesModalFormProps>({
     defaultValues: getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES),
   })
+
+  useEffect(() => {
+    reset(getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES))
+  }, [data, reset, searchState])
 
   const { nativeCategory, category, genreType, currentView } = watch()
 

@@ -151,6 +151,10 @@ export const LocationModal: FunctionComponent<Props> = ({
     defaultValues,
   })
 
+  useEffect(() => {
+    reset(defaultValues)
+  }, [defaultValues, reset])
+
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
   const watchedLocationChoice = watch('locationChoice')

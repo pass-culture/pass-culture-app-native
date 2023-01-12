@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { useForm, Controller, ControllerRenderProps } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
@@ -56,6 +56,10 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
       offerIsDuo: searchState.offerIsDuo,
     },
   })
+
+  useEffect(() => {
+    reset({ offerIsDuo: searchState.offerIsDuo })
+  }, [reset, searchState])
 
   const toggleLimitDuoOfferSearch = useCallback(() => {
     const toggleLimitDuoOffer = !getValues('offerIsDuo')
