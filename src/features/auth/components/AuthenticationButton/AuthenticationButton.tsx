@@ -15,22 +15,23 @@ interface Props {
   linkColor?: ColorsEnum
   onAdditionalPress?: () => void
   children?: never
+  preventCancellation?: boolean
 }
 
 export const AuthenticationButton: FunctionComponent<Props> = ({
   type,
   linkColor,
   onAdditionalPress: onPress,
+  preventCancellation,
 }) => {
   const isLogin = type === 'login'
+  const params = preventCancellation ? { preventCancellation } : undefined
   const nextNavigation: {
     screen: RootNavigateParams[0]
     params?: {
       preventCancellation: boolean
     }
-  } = isLogin
-    ? { screen: 'Login', params: { preventCancellation: true } }
-    : { screen: 'SignupForm' }
+  } = isLogin ? { screen: 'Login', params } : { screen: 'SignupForm', params }
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const buttonWording = isLogin ? 'Se connecter' : 'Créer un compte'

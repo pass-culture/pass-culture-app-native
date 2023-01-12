@@ -85,7 +85,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={watch('email').trim() === ''}
       />
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton type="login" onAdditionalPress={onLogAnalytics} />
+      <AuthenticationButton type="login" onAdditionalPress={onLogAnalytics} preventCancellation />
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )
