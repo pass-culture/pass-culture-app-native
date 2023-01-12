@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
-import { Animated } from 'react-native'
+import { Animated, Share } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
@@ -35,6 +35,8 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
 })
 
+jest.mock('features/offer/api/useOffer')
+
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: jest.fn(() => ({})),
 }))
@@ -48,6 +50,10 @@ mockedUseSnackBarContext.mockReturnValue({
   showSuccessSnackBar,
   showErrorSnackBar,
 })
+
+const mockShare = jest
+  .spyOn(Share, 'share')
+  .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
 describe('<OfferHeader />', () => {
   beforeAll(() => {
@@ -102,6 +108,15 @@ describe('<OfferHeader />', () => {
     await waitFor(() => {
       expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
     })
+  })
+
+  it('should open share modal when pressing share', async () => {
+    const favoriteOfferId = 146112
+    const { getByLabelText } = renderOfferHeader({ id: favoriteOfferId })
+
+    fireEvent.press(getByLabelText('Partager'))
+
+    expect(mockShare).toHaveBeenCalledTimes(1)
   })
 
   it('should add favorite when adding an offer in favorite - logged in users', async () => {
@@ -205,20 +220,6 @@ describe('<OfferHeader />', () => {
         offerId,
         moduleName,
       })
-    })
-  })
-
-  describe('<OfferHeader /> - Analytics', () => {
-    it('should log ShareOffer once when clicking on the Share button', () => {
-      const { getByTestId } = renderOfferHeader()
-
-      fireEvent.press(getByTestId('animated-icon-share'))
-      expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
-      expect(analytics.logShareOffer).toHaveBeenCalledWith(offerId)
-
-      fireEvent.press(getByTestId('animated-icon-share'))
-      fireEvent.press(getByTestId('animated-icon-share'))
-      expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
     })
   })
 })
