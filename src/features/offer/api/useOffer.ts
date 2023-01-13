@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery, UseQueryOptions } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
@@ -21,7 +21,15 @@ async function getOfferById(offerId: number) {
   }
 }
 
-export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () =>
-    offerId ? getOfferById(offerId) : undefined
+export const useOffer = ({
+  offerId,
+  options = {},
+}: {
+  offerId: number
+  options?: UseQueryOptions<OfferResponse | undefined>
+}) =>
+  useQuery<OfferResponse | undefined>(
+    [QueryKeys.OFFER, offerId],
+    () => (offerId ? getOfferById(offerId) : undefined),
+    options
   )

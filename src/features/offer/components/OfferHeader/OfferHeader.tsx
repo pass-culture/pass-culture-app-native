@@ -42,7 +42,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { data: offer } = useOffer({ offerId })
+  const { data: offer } = useOffer({ offerId, options: { refetchOnWindowFocus: false } })
   const { share, WebShareModal } = useShareOffer({ offer })
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
