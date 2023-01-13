@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/core'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
