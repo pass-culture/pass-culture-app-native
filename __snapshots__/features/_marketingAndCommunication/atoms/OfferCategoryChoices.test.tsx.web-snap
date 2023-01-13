@@ -2,21 +2,25 @@
 
 exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
 <div
-  className="css-view-1dbjc4n r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-marginBottom-bvlit7 r-marginRight-1liyp63"
+  className="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-marginBottom-bvlit7 r-marginRight-1liyp63"
+  dir={null}
 >
   <ul
-    className="css-reset-4rbku5 css-view-1dbjc4n r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+    className="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+    dir={null}
     role="list"
   >
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Arts & loisirs créatifs"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Arts & loisirs créatifs"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -25,28 +29,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Arts & loisirs créatifs
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Arts & loisirs créatifs"
@@ -59,14 +59,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Bibliothèques, Médiathèques"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Bibliothèques, Médiathèques"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -75,28 +77,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Bibliothèques, Médiathèques
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Bibliothèques, Médiathèques"
@@ -109,14 +107,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Cartes jeunes"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Cartes jeunes"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -125,28 +125,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Cartes jeunes
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Cartes jeunes"
@@ -159,14 +155,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="CD, vinyles, musique en ligne"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="CD, vinyles, musique en ligne"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -175,28 +173,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           CD, vinyles, musique en ligne
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="CD, vinyles, musique en ligne"
@@ -209,14 +203,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Concerts & festivals"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Concerts & festivals"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -225,28 +221,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Concerts & festivals
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Concerts & festivals"
@@ -259,14 +251,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Conférences & rencontres"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Conférences & rencontres"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -275,28 +269,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Conférences & rencontres
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Conférences & rencontres"
@@ -309,14 +299,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Évènements en ligne"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Évènements en ligne"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -325,28 +317,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Évènements en ligne
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Évènements en ligne"
@@ -359,14 +347,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Films, séries, cinéma"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Films, séries, cinéma"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -375,28 +365,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Films, séries, cinéma
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Films, séries, cinéma"
@@ -409,14 +395,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Instruments de musique"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Instruments de musique"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -425,28 +413,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Instruments de musique
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Instruments de musique"
@@ -459,14 +443,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Jeux & jeux vidéos"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Jeux & jeux vidéos"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -475,28 +461,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Jeux & jeux vidéos
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Jeux & jeux vidéos"
@@ -509,14 +491,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Livres"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Livres"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -525,28 +509,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Livres
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Livres"
@@ -559,14 +539,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Médias & presse"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Médias & presse"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -575,28 +557,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Médias & presse
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Médias & presse"
@@ -609,14 +587,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Musées & visites culturelles"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Musées & visites culturelles"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -625,28 +605,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Musées & visites culturelles
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Musées & visites culturelles"
@@ -659,14 +635,16 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       </div>
     </li>
     <li
-      className="css-reset-4rbku5 css-view-1dbjc4n r-display-ixj5dj"
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
       role="listitem"
     >
       <div
         aria-checked={false}
         aria-label="Spectacles"
-        className="css-view-1dbjc4n r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-cursor-1loqt21 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-bj6uhd"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Spectacles"
+        dir={null}
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -675,28 +653,24 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         role="checkbox"
         style={
           Object {
-            "WebkitTransitionDuration": "0s",
             "transitionDuration": "0s",
           }
         }
         tabIndex="0"
       >
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <div
-          className="css-text-901oao css-textMultiLine-cens5h r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
           dir="ltr"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-            }
-          }
         >
           Spectacles
         </div>
         <div
-          className="css-view-1dbjc4n r-width-19wmn03"
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <input
           aria-label="Spectacles"
