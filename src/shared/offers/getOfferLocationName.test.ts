@@ -1,5 +1,4 @@
 import { offerVenueResponseSnap } from 'features/offer/fixtures/offerVenueReponse'
-import { renderHook } from 'tests/utils'
 
 import { getOfferLocationName } from './getOfferLocationName'
 
@@ -7,9 +6,9 @@ describe('getOfferLocationName', () => {
   it('should return offerer name when is digital offer', () => {
     const isDigital = true
     const venue = offerVenueResponseSnap
-    const { result } = renderHook(() => getOfferLocationName(venue, isDigital))
+    const locationName = getOfferLocationName(venue, isDigital)
 
-    expect(result.current).toEqual('Le Grand Rex')
+    expect(locationName).toEqual('Le Grand Rex')
   })
 
   describe('not digital offer', () => {
@@ -21,9 +20,9 @@ describe('getOfferLocationName', () => {
         name: 'Le Grande Rex - name',
         publicName: 'Le Grande Rex - publicName',
       }
-      const { result } = renderHook(() => getOfferLocationName(venue, isDigital))
+      const locationName = getOfferLocationName(venue, isDigital)
 
-      expect(result.current).toEqual('Le Grande Rex - publicName')
+      expect(locationName).toEqual('Le Grande Rex - publicName')
     })
 
     it('should return venue name when venue.publicName is undefined', () => {
@@ -32,9 +31,9 @@ describe('getOfferLocationName', () => {
         name: 'Le Grande Rex - name',
         publicName: undefined,
       }
-      const { result } = renderHook(() => getOfferLocationName(venue, isDigital))
+      const locationName = getOfferLocationName(venue, isDigital)
 
-      expect(result.current).toEqual('Le Grande Rex - name')
+      expect(locationName).toEqual('Le Grande Rex - name')
     })
   })
 })
