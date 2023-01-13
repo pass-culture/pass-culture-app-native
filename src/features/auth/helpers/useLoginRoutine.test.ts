@@ -1,7 +1,7 @@
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState } from 'api/gen'
-import { useLoginRoutine } from 'features/auth/login/useLoginRoutine'
+import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
 import { analytics } from 'libs/firebase/analytics'

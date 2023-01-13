@@ -4,7 +4,7 @@ import React from 'react'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import * as Login from 'features/auth/login/useLoginRoutine'
+import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -17,7 +17,7 @@ import { AfterSignupEmailValidationBuffer } from '../AfterSignupEmailValidationB
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('features/auth/login/useLoginRoutine')
+jest.mock('features/auth/helpers/useLoginRoutine')
 const loginRoutine = jest.fn()
 const mockLoginRoutine = Login.useLoginRoutine as jest.Mock
 
