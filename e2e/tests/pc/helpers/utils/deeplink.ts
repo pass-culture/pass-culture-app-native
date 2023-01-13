@@ -6,11 +6,11 @@ import { env } from '../../../../config/environment/env'
  * Create a cross platform solution for opening a deep link
  */
 export async function openDeepLinkUrl(deeplinkUrl: string) {
-  const canBeFdlUrl = new URL(deeplinkUrl)
+  const canBeFirebaseDynamicLink = new URL(deeplinkUrl)
   const url = new URL(
-    canBeFdlUrl.search.startsWith('?link=')
-      ? decodeURIComponent(canBeFdlUrl.search.replace(/^\?link=/, ''))
-      : canBeFdlUrl.href
+    canBeFirebaseDynamicLink.search.startsWith('?link=')
+      ? decodeURIComponent(canBeFirebaseDynamicLink.search.replace(/^\?link=/, ''))
+      : canBeFirebaseDynamicLink.href
   )
   const forcedHostUrl = new URL(
     url.host.startsWith('localhost') ||
