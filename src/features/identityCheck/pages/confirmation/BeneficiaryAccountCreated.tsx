@@ -1,14 +1,7 @@
 import React, { useCallback } from 'react'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  Amount,
-  ProgressBarContainer,
-  StyledSubtitle,
-  StyledBody,
-  ButtonContainer,
-} from 'features/auth/pages/signup/underageSignup/notificationPagesStyles'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
@@ -27,7 +20,8 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
   const maxPrice = useMaxPrice()
@@ -80,3 +74,24 @@ export function BeneficiaryAccountCreated() {
     </GenericInfoPageWhite>
   )
 }
+
+const StyledSubtitle = styled(Typo.Title4).attrs(getNoHeadingAttrs())({
+  textAlign: 'center',
+})
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
+
+const ProgressBarContainer = styled.View({
+  paddingHorizontal: getSpacing(10),
+})
+
+const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.uniqueColors.brand,
+}))
+
+const ButtonContainer = styled.View({
+  alignItems: 'center',
+})

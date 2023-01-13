@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { StyledBody } from 'features/auth/pages/signup/underageSignup/notificationPagesStyles'
 import { openUrl } from 'features/navigation/helpers'
 import { getModalInfoForNonEligible } from 'features/onboarding/helpers/getModalInfoForNonEligible'
 import { NonEligible } from 'features/onboarding/types'
@@ -11,7 +10,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   visible: boolean
@@ -54,3 +53,7 @@ export const NonEligibleModal = ({ visible, hideModal, modalType }: Props) => {
 const BirthdayCake = styled(BicolorBirthdayCake).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
