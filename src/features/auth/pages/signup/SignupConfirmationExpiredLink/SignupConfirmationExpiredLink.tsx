@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -36,12 +36,15 @@ export function SignupConfirmationExpiredLink(props: Props) {
     }
   }
 
-  const renderResendEmailButton = () => (
-    <ButtonPrimaryWhite
-      wording="Renvoyer l’email"
-      onPress={signupConfirmationExpiredLinkQuery}
-      disabled={isFetching}
-    />
+  const renderResendEmailButton = useCallback(
+    () => (
+      <ButtonPrimaryWhite
+        wording="Renvoyer l’email"
+        onPress={signupConfirmationExpiredLinkQuery}
+        disabled={isFetching}
+      />
+    ),
+    [isFetching, signupConfirmationExpiredLinkQuery]
   )
 
   return (
