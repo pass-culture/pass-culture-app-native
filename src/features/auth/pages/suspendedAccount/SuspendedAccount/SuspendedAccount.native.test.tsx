@@ -19,7 +19,7 @@ jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
 jest.mock('features/navigation/helpers')
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/logout/useLogoutRoutine', () => ({
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 

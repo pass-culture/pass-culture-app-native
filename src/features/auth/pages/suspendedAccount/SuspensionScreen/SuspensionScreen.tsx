@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { AccountState } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
-import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
+import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'

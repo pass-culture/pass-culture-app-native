@@ -50,7 +50,7 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
 }) as jest.Mock
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/logout/useLogoutRoutine', () => ({
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 

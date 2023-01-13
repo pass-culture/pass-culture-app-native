@@ -2,11 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQueryClient } from 'react-query'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { LoggedInQueryKeys } from 'features/auth/logout/useLogoutRoutine'
-import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { renderHook } from 'tests/utils'
+
+import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
 
 jest.mock('api/api')
 jest.mock('react-query', () => ({
