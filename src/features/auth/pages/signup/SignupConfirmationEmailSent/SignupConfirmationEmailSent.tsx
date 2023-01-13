@@ -46,6 +46,11 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         leftIcon: ArrowPrevious,
         onLeftIconPress: goBack,
       }
+
+  function logAnalytics() {
+    analytics.logHelpCenterContactSignupConfirmationEmailSent()
+  }
+
   return (
     <BottomContentPage>
       <ModalHeader
@@ -78,7 +83,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             as={ButtonTertiaryPrimary}
             wording="Consulter notre centre d’aide"
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
-            onBeforeNavigate={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}
+            onBeforeNavigate={logAnalytics}
             icon={ExternalSite}
           />
         </Description>
