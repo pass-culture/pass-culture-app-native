@@ -22,8 +22,8 @@ export const OnboardingWelcome: FunctionComponent = () => (
       <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
-        Plus de 200 000 offres culturelles et un crédit à dépenser sur l’application si tu as entre
-        15 et 18 ans.
+        Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
+        entre 15 et 18 ans.
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <InternalTouchableLink
