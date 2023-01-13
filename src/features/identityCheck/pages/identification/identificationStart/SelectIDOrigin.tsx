@@ -50,7 +50,9 @@ const buttonListSeparator = <Spacer.Column numberOfSpaces={6} />
 const SelectIDOriginContent: FunctionComponent = () => {
   return (
     <Container>
-      <StyledBicolorIdCardWithMagnifyingGlass />
+      <StyledIconContainer>
+        <StyledBicolorIdCardWithMagnifyingGlass />
+      </StyledIconContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledTitle4>Munis-toi de ta pièce d’identité et débloque ton crédit&nbsp;!</StyledTitle4>
       <Spacer.Column numberOfSpaces={4} />
@@ -62,12 +64,12 @@ const SelectIDOriginContent: FunctionComponent = () => {
 }
 
 const Container = styled.View({
-  height: '100%',
-  alignItems: 'center',
   marginHorizontal: getSpacing(1),
   marginVertical: getSpacing(8),
 })
-
+const StyledIconContainer = styled.View({
+  alignItems: 'center',
+})
 const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
   ({ theme }) => ({
     size: theme.illustrations.sizes.fullPage,
