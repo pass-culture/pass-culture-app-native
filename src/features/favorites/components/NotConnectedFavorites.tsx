@@ -6,7 +6,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
-import { UserFavorite } from 'ui/svg/icons/UserFavorite'
+import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {
@@ -55,8 +55,9 @@ export const NotConnectedFavorites = () => {
   )
 }
 
-const StyledUserFavorite = styled(UserFavorite).attrs(({ theme }) => ({
+const StyledUserFavorite = styled(BicolorUserFavorite).attrs(({ theme }) => ({
   color: theme.colors.white,
+  color2: theme.colors.white,
   size: theme.illustrations.sizes.fullPage,
 }))``
 

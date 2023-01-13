@@ -7,7 +7,7 @@ import { theme } from 'theme'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
+import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -26,7 +26,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris'}
-      Illustration={BicolorUserIdentification}
+      Illustration={BicolorUserFavorite}
       hideModal={() => {
         analytics.logQuitFavoriteModalForSignIn(offerId)
         dismissModal()

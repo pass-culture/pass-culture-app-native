@@ -11,6 +11,7 @@ import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
@@ -28,7 +29,6 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { Star } from 'ui/svg/icons/Star'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 
 export const BicolorIllustrations = {
   BicolorBirthdayCake,
@@ -43,6 +43,7 @@ export const BicolorIllustrations = {
   BicolorPhonePending,
   BicolorRingingBell,
   BicolorUserError,
+  BicolorUserFavorite,
   BicolorUserIdentification,
 }
 
@@ -64,5 +65,4 @@ export const UniqueColorIllustrations = {
   Star,
   TicketBooked,
   UserBlocked,
-  UserFavorite,
 }

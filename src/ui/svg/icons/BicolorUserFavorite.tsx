@@ -1,17 +1,21 @@
 import * as React from 'react'
-import { Path } from 'react-native-svg'
+import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { svgIdentifier } from 'ui/svg/utils'
 
-const UserFavoriteSvg: React.FunctionComponent<AccessibleIcon> = ({
+const BicolorUserFavoriteSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
+  color2,
   accessibilityLabel,
   testID,
 }) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+
   return (
     <AccessibleSvg
       width={size}
@@ -19,8 +23,14 @@ const UserFavoriteSvg: React.FunctionComponent<AccessibleIcon> = ({
       viewBox="0 0 200 156"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
+      <Defs>
+        <LinearGradient id={gradientId} x1="16.056%" x2="83.944%" y1="0%" y2="100%">
+          <Stop offset="0%" stopColor={color} />
+          <Stop offset="100%" stopColor={color2} />
+        </LinearGradient>
+      </Defs>
       <Path
-        fill={color}
+        fill={gradientFill}
         fillRule="evenodd"
         clipRule="evenodd"
         d="M82.55 19C71.5071 19 62.775 28.3999 62.775 39.7378V49.6461C62.775 60.9584 71.5099 70.3553 82.55 70.3553C93.5929 70.3553 102.325 60.9554 102.325 49.6175V39.7378C102.325 28.3999 93.5929 19 82.55 19ZM68.425 39.7378C68.425 31.2591 74.8914 24.6687 82.55 24.6687C90.2086 24.6687 96.675 31.2591 96.675 39.7378V49.6175C96.675 58.0962 90.2086 64.6866 82.55 64.6866C74.8886 64.6866 68.425 58.0932 68.425 49.6461V39.7378ZM82.55 82.7762C65.8868 82.7762 51.9029 95.2244 48.8312 111.869C57.1807 121.489 69.1836 127.506 82.5501 127.506L82.571 127.506C85.3568 127.506 89.3337 127.497 92.9372 126.838C94.7376 126.508 96.3079 126.039 97.5257 125.41C98.7368 124.785 99.4384 124.089 99.7945 123.369C100.123 122.705 100.675 122.228 101.315 121.982C96.9697 116.682 93.85 110.371 93.85 103.677C93.85 94.4494 101.445 87 110.768 87C116.684 87 121.9 89.9985 124.925 94.5444C127.95 89.9985 133.166 87 139.082 87C148.405 87 156 94.4494 156 103.677C156 112.916 150.457 119.088 146.937 123.008L146.874 123.078C146.574 123.412 146.291 123.727 146.026 124.028C145.021 125.167 143.277 125.281 142.13 124.283C140.983 123.285 140.868 121.553 141.873 120.414C142.145 120.107 142.424 119.794 142.707 119.478L142.71 119.474C146.31 115.447 150.478 110.721 150.478 103.677C150.478 97.5208 145.399 92.4827 139.082 92.4827C132.765 92.4827 127.686 97.5208 127.686 103.677C127.686 105.191 126.45 106.418 124.925 106.418C123.4 106.418 122.164 105.191 122.164 103.677C122.164 97.5208 117.085 92.4827 110.768 92.4827C104.451 92.4827 99.3716 97.5208 99.3716 103.677C99.3716 109.762 102.874 116.01 108.177 121.383C113.182 126.453 119.464 130.402 124.855 132.363C128.135 131.237 130.316 129.897 133.006 128.114C134.274 127.274 135.989 127.614 136.835 128.873C137.681 130.133 137.339 131.835 136.071 132.675C132.997 134.711 130.169 136.458 125.663 137.872C125.108 138.047 124.511 138.042 123.959 137.86C117.72 135.798 110.598 131.454 104.872 125.855C104.867 125.867 104.861 125.878 104.855 125.889C103.799 128.025 102.011 129.47 100.11 130.451C98.2163 131.429 96.0523 132.03 93.9507 132.414C89.7964 133.174 85.3518 133.174 82.623 133.174H82.55C66.9282 133.174 53.0146 125.895 43.6478 114.528C43.2235 114.013 42.9969 113.368 43 112.709C42.9991 112.509 43.0191 112.309 43.0598 112.113C46.0957 92.3631 62.5223 77.1076 82.55 77.1076C86.8441 77.1076 90.9873 77.8157 94.856 79.1089C96.3362 79.6037 97.1363 81.2087 96.6432 82.6938C96.15 84.1789 94.5503 84.9817 93.0701 84.4869C89.7633 83.3816 86.2225 82.7762 82.55 82.7762Z"
@@ -29,7 +39,10 @@ const UserFavoriteSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const UserFavorite = styled(UserFavoriteSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  size: size ?? theme.illustrations.sizes.medium,
-}))``
+export const BicolorUserFavorite = styled(BicolorUserFavoriteSvg).attrs(
+  ({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? color ?? theme.colors.secondary,
+    size: size ?? theme.illustrations.sizes.medium,
+  })
+)``
