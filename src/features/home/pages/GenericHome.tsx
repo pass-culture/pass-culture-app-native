@@ -93,6 +93,13 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
     return () => clearInterval(loadMore)
   }, [modules.length, isLoading, maxIndex])
 
+  const renderItem = useCallback(
+    ({ item, index }) => renderModule({ item, index }, homeId),
+    [homeId]
+  )
+
+  const onContentSizeChange = () => setTimeout(() => setIsLoading(false), 1000)
+
   return (
     <Container>
       {showSkeleton ? (
@@ -115,13 +122,13 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
           scrollEventThrottle={1000}
           onScroll={onScroll}
           data={modulesToDisplay}
-          renderItem={({ item, index }) => renderModule({ item, index }, homeId)}
+          renderItem={renderItem}
           keyExtractor={keyExtractor}
           ListFooterComponent={<FooterComponent isLoading={isLoading} />}
           ListHeaderComponent={Header}
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
-          onContentSizeChange={() => setTimeout(() => setIsLoading(false), 1000)}
+          onContentSizeChange={onContentSizeChange}
           bounces
         />
       </HomeBodyLoadingContainer>
