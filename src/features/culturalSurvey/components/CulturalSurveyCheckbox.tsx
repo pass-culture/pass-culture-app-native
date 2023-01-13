@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -44,10 +44,8 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
   return (
     <StyledLinearGradient colors={colors}>
       <AnswerContainer
-        accessibilityRole={AccessibilityRole.CHECKBOX}
-        accessibilityState={{ checked: selected }}
-        onPress={onPress}
-        accessibilityLabel={accessibilityLabel}>
+        {...accessibleCheckboxProps({ checked: selected, label: accessibilityLabel })}
+        onPress={onPress}>
         {!!AnswerIcon && (
           <ActivityIconContainer>
             <AnswerIcon />

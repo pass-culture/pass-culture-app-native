@@ -64,7 +64,9 @@ export function DateInputDesktop(props: DatePickerProps) {
   }, [date])
 
   return (
-    <Container testID="date-picker-dropdown">
+    <Container
+      testID="date-picker-dropdown"
+      accessibilityDescribedBy={props.accessibilityDescribedBy}>
       <DropDownContainer>
         <DropDown
           label="Jour"
@@ -72,7 +74,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           options={optionGroups.days.map(String)}
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
-          ariaLabel="Entrée pour le jour de la date de naissance"
+          accessibilityLabel="Entrée pour le jour de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>
@@ -85,7 +87,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           onChange={onPartialDateChange('month')}
           noBorderRadiusRight
           noBorderRadiusLeft
-          ariaLabel="Entrée pour le mois de la date de naissance"
+          accessibilityLabel="Entrée pour le mois de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>
@@ -97,7 +99,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           options={optionGroups.years.map(String)}
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
-          ariaLabel="Entrée pour l'année de la date de naissance"
+          accessibilityLabel="Entrée pour l'année de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>

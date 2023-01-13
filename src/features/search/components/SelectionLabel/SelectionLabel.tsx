@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -18,9 +18,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
   return (
     <StyledTouchableOpacity
       selected={selected}
-      accessibilityRole={AccessibilityRole.CHECKBOX}
-      accessibilityState={{ checked: selected }}
-      accessibilityLabel={label}
+      {...accessibleCheckboxProps({ checked: selected, label })}
       onPress={onPress}>
       {selected ? (
         <IconContainer>

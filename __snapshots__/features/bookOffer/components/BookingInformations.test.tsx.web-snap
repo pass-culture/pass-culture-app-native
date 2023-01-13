@@ -3,39 +3,19 @@
 exports[`<BookingInformations /> should display expirationDate section when offer is digital and has expirationDate 1`] = `
 Array [
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -43,84 +23,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       mon nom
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -128,84 +64,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       0,22 €
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -213,46 +105,22 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       À activer avant le 1 décembre 2020
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
@@ -263,39 +131,19 @@ Array [
 exports[`<BookingInformations /> should display free wording is free 1`] = `
 Array [
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -303,84 +151,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       mon nom
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -388,84 +192,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       1 décembre 2020, 00h00
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -473,101 +233,45 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-alignItems-1awozwy r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textTransform-1ozqkpa"
       dir="ltr"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "alignItems": "center",
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "msFlexAlign": "center",
-          "textTransform": "capitalize",
-        }
-      }
     >
       <span
-        className="css-text-901oao css-textHasAncestor-16my406"
-        style={
-          Object {
-            "color": "rgba(22,22,23,1.00)",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": "12px",
-            "lineHeight": "16px",
-          }
-        }
+        className="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+        dir={null}
       >
         PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
       </span>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -575,46 +279,22 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       Gratuit
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
@@ -625,39 +305,19 @@ Array [
 exports[`<BookingInformations /> should display location when offer is not digital 1`] = `
 Array [
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -665,84 +325,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       mon nom
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -750,101 +366,45 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-alignItems-1awozwy r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textTransform-1ozqkpa"
       dir="ltr"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "alignItems": "center",
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "msFlexAlign": "center",
-          "textTransform": "capitalize",
-        }
-      }
     >
       <span
-        className="css-text-901oao css-textHasAncestor-16my406"
-        style={
-          Object {
-            "color": "rgba(22,22,23,1.00)",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": "12px",
-            "lineHeight": "16px",
-          }
-        }
+        className="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+        dir={null}
       >
         PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
       </span>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -852,46 +412,22 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       0,22 €
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
@@ -902,39 +438,19 @@ Array [
 exports[`<BookingInformations /> should display unique price when quantity is unique 1`] = `
 Array [
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -942,84 +458,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       mon nom
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1027,84 +499,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       1 décembre 2020, 00h00
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1112,101 +540,45 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-alignItems-1awozwy r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textTransform-1ozqkpa"
       dir="ltr"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "alignItems": "center",
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "msFlexAlign": "center",
-          "textTransform": "capitalize",
-        }
-      }
     >
       <span
-        className="css-text-901oao css-textHasAncestor-16my406"
-        style={
-          Object {
-            "color": "rgba(22,22,23,1.00)",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": "12px",
-            "lineHeight": "16px",
-          }
-        }
+        className="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+        dir={null}
       >
         PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
       </span>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1214,46 +586,22 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       0,11 €
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
@@ -1264,39 +612,19 @@ Array [
 exports[`<BookingInformations /> should not display expirationDate section when offer is digital and has no expirationDate 1`] = `
 Array [
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1304,84 +632,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       mon nom
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1389,46 +673,22 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       Gratuit
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
@@ -1439,39 +699,19 @@ Array [
 exports[`<BookingInformations /> should render event date section when event 1`] = `
 Array [
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1479,84 +719,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       mon nom
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1564,84 +760,40 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       1 décembre 2020, 00h00
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1649,101 +801,45 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-alignItems-1awozwy r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textTransform-1ozqkpa"
       dir="ltr"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "alignItems": "center",
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "msFlexAlign": "center",
-          "textTransform": "capitalize",
-        }
-      }
     >
       <span
-        className="css-text-901oao css-textHasAncestor-16my406"
-        style={
-          Object {
-            "color": "rgba(22,22,23,1.00)",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": "12px",
-            "lineHeight": "16px",
-          }
-        }
+        className="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+        dir={null}
       >
         PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
       </span>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       
     </div>
   </div>,
   <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitBoxAlign": "center",
-        "WebkitBoxDirection": "normal",
-        "WebkitBoxOrient": "horizontal",
-        "WebkitFlexDirection": "row",
-        "alignItems": "center",
-        "flexDirection": "row",
-        "msFlexAlign": "center",
-        "msFlexDirection": "row",
-        "paddingBottom": "2px",
-        "paddingTop": "2px",
-        "width": "864px",
-      }
-    }
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1vvnge1 r-width-ew71w8"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitFlexShrink": 0,
-          "flexShrink": 0,
-          "msFlexNegative": 0,
-        }
-      }
+      className="css-view-175oi2r r-flexShrink-1q142lx"
+      dir={null}
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56"
           dir="ltr"
         >
           undefined-SVG-Mock
@@ -1751,46 +847,22 @@ Array [
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "12px",
-        }
-      }
+      className="css-view-175oi2r r-width-16eto9q"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       0,22 €
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "width": "8px",
-        }
-      }
+      className="css-view-175oi2r r-width-1jg9483"
+      dir={null}
     />
     <div
-      className="css-text-901oao"
+      className="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
       dir="ltr"
-      style={
-        Object {
-          "color": "rgba(105,106,111,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
     >
       (0,11 € x 2 places)
     </div>

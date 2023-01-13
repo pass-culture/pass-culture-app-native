@@ -45,35 +45,13 @@ Array [
       className="c1"
     >
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "alignItems": "center",
-            "flexDirection": "row",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-          }
-        }
+        className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+        dir={null}
       >
         <div
           aria-hidden={true}
-          className="css-text-901oao"
+          className="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
           dir="ltr"
-          style={
-            Object {
-              "WebkitClipPath": "inset(50%)",
-              "clipPath": "inset(50%)",
-              "height": "1px",
-              "overflowX": "hidden",
-              "overflowY": "hidden",
-              "width": "1px",
-            }
-          }
         >
           Case à cocher - 
           cochée
@@ -81,8 +59,9 @@ Array [
         <div
           aria-checked={true}
           aria-labelledby="testUuidV4"
-          className="css-view-1dbjc4n"
+          className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
           data-testid="Interrupteur"
+          dir={null}
           onBlur={[Function]}
           onClick={[Function]}
           onContextMenu={[Function]}
@@ -91,48 +70,20 @@ Array [
           role="checkbox"
           style={
             Object {
-              "MozTransitionProperty": "opacity",
-              "MozUserSelect": "auto",
-              "WebkitTransitionDuration": "0s",
-              "WebkitTransitionProperty": "opacity",
-              "WebkitUserSelect": "auto",
-              "cursor": "pointer",
-              "msTouchAction": "manipulation",
-              "msUserSelect": "auto",
-              "touchAction": "manipulation",
               "transitionDuration": "0s",
-              "transitionProperty": "opacity",
-              "userSelect": "auto",
             }
           }
           tabIndex="0"
         >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxPack": "center",
-                "WebkitJustifyContent": "center",
-                "backgroundColor": "rgba(21,136,79,1.00)",
-                "borderBottomLeftRadius": "16px",
-                "borderBottomRightRadius": "16px",
-                "borderTopLeftRadius": "16px",
-                "borderTopRightRadius": "16px",
-                "height": "32px",
-                "justifyContent": "center",
-                "msFlexPack": "center",
-                "width": "56px",
-              }
-            }
+            className="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+            dir={null}
           >
             <div
-              className="css-view-1dbjc4n"
+              className="css-view-175oi2r"
+              dir={null}
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxPack": "center",
-                  "WebkitJustifyContent": "center",
                   "alignItems": "center",
                   "aspectRatio": "1",
                   "backgroundColor": "rgba(255,255,255,1.00)",
@@ -144,18 +95,17 @@ Array [
                   "height": "28px",
                   "justifyContent": "center",
                   "marginLeft": "26px",
-                  "msFlexAlign": "center",
-                  "msFlexPack": "center",
                   "width": "28px",
                 }
               }
             >
               <div
                 aria-label="Activé"
-                className="css-view-1dbjc4n"
+                className="css-view-175oi2r"
+                dir={null}
               >
                 <div
-                  className="css-text-901oao"
+                  className="css-text-1rynq56"
                   dir="ltr"
                 >
                   undefined-SVG-Mock
@@ -174,12 +124,8 @@ Array [
         />
       </div>
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "width": "20px",
-          }
-        }
+        className="css-view-175oi2r r-width-19wmn03"
+        dir={null}
       />
       <label
         className="c2"
@@ -187,27 +133,15 @@ Array [
         id="testUuidV4"
       >
         <div
-          className="css-text-901oao"
+          className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
           dir="ltr"
-          style={
-            Object {
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
         >
           Activer le chargement automatique des résultats
         </div>
       </label>
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
+        className="css-view-175oi2r r-height-3da1kt"
+        dir={null}
       />
     </div>
   </div>,
@@ -321,85 +255,35 @@ Array [
 }
 
 <div
-    className="css-view-1dbjc4n"
+    className="css-view-175oi2r"
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+      className="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
+      dir={null}
       onScroll={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
       onWheel={[Function]}
-      style={
-        Object {
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "horizontal",
-          "WebkitFlexDirection": "row",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitOverflowScrolling": "touch",
-          "WebkitTransform": "translateZ(0px)",
-          "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexDirection": "row",
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "overflowX": "auto",
-          "overflowY": "hidden",
-          "transform": "translateZ(0px)",
-        }
-      }
     >
       <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "flexDirection": "row",
-            "msFlexDirection": "row",
-          }
-        }
+        className="css-view-175oi2r r-flexDirection-18u37iz"
+        dir={null}
       >
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "20px",
-            }
-          }
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
         <ul
-          className="css-reset-4rbku5 css-view-1dbjc4n"
+          className="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+          dir={null}
           role="list"
-          style={
-            Object {
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxOrient": "horizontal",
-              "WebkitFlexDirection": "row",
-              "flexDirection": "row",
-              "msFlexDirection": "row",
-              "overflowX": "auto",
-              "overflowY": "auto",
-              "paddingLeft": "0px",
-            }
-          }
         >
           <li
-            className="css-reset-4rbku5 css-view-1dbjc4n"
+            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            dir={null}
             role="listitem"
-            style={
-              Object {
-                "display": "list-item",
-                "marginBottom": "4px",
-                "marginLeft": "4px",
-                "marginRight": "4px",
-                "marginTop": "4px",
-              }
-            }
           >
             <button
               aria-label="Partout : Filtre sélectionné"
@@ -411,35 +295,24 @@ Array [
               type="button"
             >
               <div
-                className="css-text-901oao"
+                className="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 data-testid="locationButtonLabel"
                 dir="ltr"
-                style={
-                  Object {
-                    "color": "rgba(235,0,85,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
               >
                 Partout
               </div>
               <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "width": "4px",
-                  }
-                }
+                className="css-view-175oi2r r-width-10g5efv"
+                dir={null}
               />
               <div
                 aria-label="Filtre sélectionné"
-                className="css-view-1dbjc4n"
+                className="css-view-175oi2r"
                 data-testid="locationButtonIcon"
+                dir={null}
               >
                 <div
-                  className="css-text-901oao"
+                  className="css-text-1rynq56"
                   dir="ltr"
                 >
                   locationButtonIcon-SVG-Mock
@@ -448,17 +321,9 @@ Array [
             </button>
           </li>
           <li
-            className="css-reset-4rbku5 css-view-1dbjc4n"
+            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            dir={null}
             role="listitem"
-            style={
-              Object {
-                "display": "list-item",
-                "marginBottom": "4px",
-                "marginLeft": "4px",
-                "marginRight": "4px",
-                "marginTop": "4px",
-              }
-            }
           >
             <button
               aria-label="Catégories"
@@ -470,34 +335,18 @@ Array [
               type="button"
             >
               <div
-                className="css-text-901oao"
+                className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 data-testid="categoryButtonLabel"
                 dir="ltr"
-                style={
-                  Object {
-                    "color": "rgba(22,22,23,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
               >
                 Catégories
               </div>
             </button>
           </li>
           <li
-            className="css-reset-4rbku5 css-view-1dbjc4n"
+            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            dir={null}
             role="listitem"
-            style={
-              Object {
-                "display": "list-item",
-                "marginBottom": "4px",
-                "marginLeft": "4px",
-                "marginRight": "4px",
-                "marginTop": "4px",
-              }
-            }
           >
             <button
               aria-label="Prix"
@@ -509,34 +358,18 @@ Array [
               type="button"
             >
               <div
-                className="css-text-901oao"
+                className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 data-testid="priceButtonLabel"
                 dir="ltr"
-                style={
-                  Object {
-                    "color": "rgba(22,22,23,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
               >
                 Prix
               </div>
             </button>
           </li>
           <li
-            className="css-reset-4rbku5 css-view-1dbjc4n"
+            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            dir={null}
             role="listitem"
-            style={
-              Object {
-                "display": "list-item",
-                "marginBottom": "4px",
-                "marginLeft": "4px",
-                "marginRight": "4px",
-                "marginTop": "4px",
-              }
-            }
           >
             <button
               aria-label="Dates & heures"
@@ -548,17 +381,9 @@ Array [
               type="button"
             >
               <div
-                className="css-text-901oao"
+                className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 data-testid="datesHoursButtonLabel"
                 dir="ltr"
-                style={
-                  Object {
-                    "color": "rgba(22,22,23,1.00)",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": "12px",
-                    "lineHeight": "16px",
-                  }
-                }
               >
                 Dates & heures
               </div>
@@ -566,22 +391,14 @@ Array [
           </li>
         </ul>
         <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "20px",
-            }
-          }
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
         />
       </div>
     </div>
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "12px",
-        }
-      }
+      className="css-view-175oi2r r-height-tbmifm"
+      dir={null}
     />
   </div>,
   .c0 {
@@ -639,131 +456,52 @@ Array [
 }
 
 <div
-    className="css-view-1dbjc4n"
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     data-testid="searchResults"
-    style={
-      Object {
-        "WebkitBoxFlex": 1,
-        "WebkitFlexBasis": "0px",
-        "WebkitFlexGrow": 1,
-        "WebkitFlexShrink": 1,
-        "flexBasis": "0px",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "msFlexNegative": 1,
-        "msFlexPositive": 1,
-        "msFlexPreferredSize": "0px",
-      }
-    }
+    dir={null}
   >
     <div
-      className="css-view-1dbjc4n"
+      className="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z"
       data-testid="searchResultsFlatlist"
+      dir={null}
       onScroll={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
       onWheel={[Function]}
-      style={
-        Object {
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "WebkitFlexShrink": 1,
-          "WebkitOverflowScrolling": "touch",
-          "WebkitTransform": "translateZ(0px)",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "msFlexDirection": "column",
-          "msFlexNegative": 1,
-          "msFlexPositive": 1,
-          "msTouchAction": "none",
-          "overflowX": "hidden",
-          "overflowY": "hidden",
-          "touchAction": "none",
-          "transform": "translateZ(0px)",
-        }
-      }
     >
       <div
-        className="css-view-1dbjc4n"
+        className="css-view-175oi2r"
+        dir={null}
         style={
           Object {
-            "WebkitBoxFlex": 1,
-            "WebkitFlexGrow": 1,
             "flexGrow": 1,
-            "msFlexPositive": 1,
           }
         }
       >
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-175oi2r"
+          dir={null}
         />
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-minHeight-g8fybc"
+          dir={null}
           role="status"
-          style={
-            Object {
-              "WebkitAlignItems": "center",
-              "WebkitBoxAlign": "center",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxPack": "center",
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitJustifyContent": "center",
-              "alignItems": "center",
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "height": "100%",
-              "justifyContent": "center",
-              "marginLeft": "24px",
-              "marginRight": "24px",
-              "minHeight": "250px",
-              "msFlexAlign": "center",
-              "msFlexNegative": 1,
-              "msFlexPack": "center",
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
         >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxFlex": 1,
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "flexBasis": "0px",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "msFlexNegative": 1,
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-              }
-            }
+            className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            dir={null}
           />
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitFlexShrink": 0,
-                "flexShrink": 0,
-                "msFlexNegative": 0,
-              }
-            }
+            className="css-view-175oi2r r-flexShrink-1q142lx"
+            dir={null}
           >
             <div
-              className="css-view-1dbjc4n"
+              className="css-view-175oi2r"
+              dir={null}
             >
               <div
-                className="css-text-901oao"
+                className="css-text-1rynq56"
                 dir="ltr"
               >
                 undefined-SVG-Mock
@@ -771,73 +509,37 @@ Array [
             </div>
           </div>
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "alignItems": "center",
-                "msFlexAlign": "center",
-              }
-            }
+            className="css-view-175oi2r r-alignItems-1awozwy"
+            dir={null}
           >
             <h2
               aria-level={2}
-              className="css-reset-4rbku5 css-text-901oao"
+              className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
               dir="ltr"
               role="heading"
-              style={
-                Object {
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": "18px",
-                  "lineHeight": "22px",
-                  "marginTop": "16px",
-                }
-              }
             >
               Pas de résultat
             </h2>
             <div
-              className="css-text-901oao"
+              className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
               dir="ltr"
-              style={
-                Object {
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                  "marginTop": "24px",
-                  "textAlign": "center",
-                }
-              }
             >
               <span
                 aria-live="assertive"
-                className="css-text-901oao css-textHasAncestor-16my406"
-                style={
-                  Object {
-                    "color": "rgba(105,106,111,1.00)",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                  }
-                }
+                className="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir={null}
               >
                 Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
               </span>
             </div>
           </div>
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "height": "24px",
-              }
-            }
+            className="css-view-175oi2r r-height-1472mwg"
+            dir={null}
           />
           <div
-            className="css-view-1dbjc4n"
+            className="css-view-175oi2r"
+            dir={null}
           >
             <button
               aria-label="Modifier mes filtres"
@@ -849,56 +551,25 @@ Array [
               type="button"
             >
               <div
-                className="css-text-901oao css-textMultiLine-cens5h"
+                className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
                 dir="ltr"
-                style={
-                  Object {
-                    "WebkitLineClamp": 1,
-                    "color": "rgba(255,255,255,1.00)",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": "15px",
-                    "lineHeight": "20px",
-                    "marginLeft": "0px",
-                    "maxWidth": "100%",
-                  }
-                }
               >
                 Modifier mes filtres
               </div>
             </button>
           </div>
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxFlex": 1,
-                "WebkitFlexBasis": "0px",
-                "WebkitFlexGrow": 1,
-                "WebkitFlexShrink": 1,
-                "flexBasis": "0px",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "msFlexNegative": 1,
-                "msFlexPositive": 1,
-                "msFlexPreferredSize": "0px",
-              }
-            }
+            className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            dir={null}
           />
         </div>
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-175oi2r"
+          dir={null}
         >
           <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "alignItems": "center",
-                "height": "104px",
-                "msFlexAlign": "center",
-              }
-            }
+            className="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
+            dir={null}
           />
         </div>
       </div>

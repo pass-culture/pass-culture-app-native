@@ -44,7 +44,7 @@ const _AppButton = <T extends AppButtonProps>({
   return (
     <TouchableOpacityButton
       accessibilityLabel={accessibilityLabel || wording}
-      aria-describedby={accessibilityDescribedBy}
+      accessibilityDescribedBy={accessibilityDescribedBy}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}
       onPress={pressHandler}

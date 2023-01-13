@@ -26,7 +26,7 @@ export function DatePickerDropDown(props: DatePickerProps) {
         onChange={setDate}
         minimumDate={props.minimumDate}
         defaultSelectedDate={props.defaultSelectedDate}
-        aria-describedby={birthdateInputErrorId}
+        accessibilityDescribedBy={birthdateInputErrorId}
         errorMessage={props.errorMessage}
       />
       <InputError

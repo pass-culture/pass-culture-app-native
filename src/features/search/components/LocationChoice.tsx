@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -48,9 +48,7 @@ export const LocationChoice: React.FC<Props> = ({
       onFocus={onFocus}
       onBlur={onBlur}
       disabled={disabled}
-      accessibilityRole={AccessibilityRole.RADIO}
-      accessibilityState={{ checked: isSelected }}
-      accessibilityLabel={label}>
+      {...accessibleRadioProps({ checked: isSelected, label })}>
       <FirstPart ref={containerRef}>
         <Spacer.Row numberOfSpaces={3} />
         <StyledIcon />
@@ -59,7 +57,7 @@ export const LocationChoice: React.FC<Props> = ({
           <ButtonText
             numberOfLines={3}
             isSelected={isSelected}
-            aria-describedby={accessibilityDescribedBy}>
+            accessibilityDescribedBy={accessibilityDescribedBy}>
             {label}
           </ButtonText>
         </TextContainer>

@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -25,13 +25,11 @@ export const RadioButtonWithBorder = ({ label, description, selected, onPress }:
 
   return (
     <Label
-      accessibilityRole={AccessibilityRole.RADIO}
-      accessibilityState={{ checked: selected }}
+      {...accessibleRadioProps({ checked: selected, label })}
       selected={selected}
       onFocus={onFocus}
       onBlur={onBlur}
-      onPress={onPressFn}
-      accessibilityLabel={label}>
+      onPress={onPressFn}>
       <TextContainer ref={containerRef}>
         <ButtonText selected={selected}>{label}</ButtonText>
         {description ? <Typo.CaptionNeutralInfo>{description}</Typo.CaptionNeutralInfo> : null}

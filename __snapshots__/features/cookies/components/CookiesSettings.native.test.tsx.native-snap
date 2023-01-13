@@ -99,7 +99,7 @@ Array [
         }
       >
         <Text
-          aria-hidden={true}
+          accessibilityHidden={true}
           style={
             Array [
               Object {
@@ -227,7 +227,7 @@ Array [
         }
       >
         <Text
-          aria-hidden={true}
+          accessibilityHidden={true}
           style={
             Array [
               Object {
@@ -427,7 +427,7 @@ Array [
     testID="accordionBody"
   >
     <View
-      aria-labelledby="testUuidV4"
+      accessibilityLabelledBy="testUuidV4"
       hidden={true}
       nativeID="testUuidV4"
       onLayout={[Function]}
@@ -569,7 +569,7 @@ Array [
         }
       >
         <Text
-          aria-hidden={true}
+          accessibilityHidden={true}
           style={
             Array [
               Object {
@@ -769,7 +769,7 @@ Array [
     testID="accordionBody"
   >
     <View
-      aria-labelledby="testUuidV4"
+      accessibilityLabelledBy="testUuidV4"
       hidden={true}
       nativeID="testUuidV4"
       onLayout={[Function]}
@@ -911,7 +911,7 @@ Array [
         }
       >
         <Text
-          aria-hidden={true}
+          accessibilityHidden={true}
           style={
             Array [
               Object {
@@ -1111,7 +1111,7 @@ Array [
     testID="accordionBody"
   >
     <View
-      aria-labelledby="testUuidV4"
+      accessibilityLabelledBy="testUuidV4"
       hidden={true}
       nativeID="testUuidV4"
       onLayout={[Function]}
@@ -1253,7 +1253,7 @@ Array [
         }
       >
         <Text
-          aria-hidden={true}
+          accessibilityHidden={true}
           style={
             Array [
               Object {
@@ -1456,7 +1456,7 @@ Array [
     testID="accordionBody"
   >
     <View
-      aria-labelledby="testUuidV4"
+      accessibilityLabelledBy="testUuidV4"
       hidden={true}
       nativeID="testUuidV4"
       onLayout={[Function]}

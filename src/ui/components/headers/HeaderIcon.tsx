@@ -1,7 +1,8 @@
-import React from 'react'
-import { AccessibilityRole, AccessibilityState, Animated } from 'react-native'
+import React, { useMemo } from 'react'
+import { AccessibilityRole, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -24,8 +25,8 @@ interface HeaderIconProps {
     transition: Animated.AnimatedInterpolation
   }
   accessibilityRole?: AccessibilityRole
-  accessibilityState?: AccessibilityState
-  accessibilityLabel: string
+  accessibilityChecked?: boolean
+  accessibilityLabel?: string
 }
 
 const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
@@ -39,13 +40,17 @@ export const HeaderIcon = (props: HeaderIconProps) => {
   const Icon = getIcon(props.iconName)
   const { colors } = useTheme()
 
+  const accessibilityProps = useMemo(() => {
+    return props.accessibilityRole
+      ? accessibleCheckboxProps({
+          checked: props.accessibilityChecked,
+          label: props.accessibilityLabel,
+        })
+      : { accessibilityLabel: props.accessibilityLabel }
+  }, [props.accessibilityRole, props.accessibilityChecked, props.accessibilityLabel])
+
   return (
-    <Touchable
-      activeOpacity={0.5}
-      onPress={props.onPress}
-      accessibilityRole={props.accessibilityRole}
-      accessibilityState={props.accessibilityState}
-      accessibilityLabel={props.accessibilityLabel}>
+    <Touchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
       <StyledAnimatedView
         testID="headerIconRoundContainer"
         style={{

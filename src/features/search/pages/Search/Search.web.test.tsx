@@ -93,10 +93,13 @@ describe('<Search/>', () => {
         .mockReturnValueOnce('searchInputAccessibilityDescribedByID')
       const { container } = render(<Search />)
 
-      await waitFor(async () => {
-        const results = await checkAccessibilityFor(container)
-        expect(results).toHaveNoViolations()
-      })
+      await waitFor(
+        async () => {
+          const results = await checkAccessibilityFor(container)
+          expect(results).toHaveNoViolations()
+        },
+        { timeout: 10000 }
+      )
     })
   })
 })

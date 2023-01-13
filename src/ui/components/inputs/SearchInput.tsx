@@ -84,10 +84,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           returnKeyType={props.returnKeyType ?? 'search'}
           keyboardType={props.keyboardType ?? defaultKeyboardType}
           selectionColor={undefined}
-          accessible={isFocusable}
-          aria-hidden={!isFocusable}
-          aria-describedby={accessibilityDescribedBy}
-          aria-required={isRequiredField}
+          focusable={isFocusable}
+          accessibilityHidden={!isFocusable}
+          accessibilityDescribedBy={accessibilityDescribedBy}
+          accessibilityRequired={isRequiredField}
           enablesReturnKeyAutomatically
           testID="searchInput"
         />

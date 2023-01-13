@@ -2,10 +2,10 @@
 
 exports[`<FinishSubscriptionModal /> should render correctly with eighteen years old deposit amount 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -59,9 +59,9 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
@@ -395,10 +395,10 @@ pour réserver cette offre
 
 exports[`<FinishSubscriptionModal /> should render correctly with undefined deposit amount 1`] = `
 <Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
   accessibilityRole="none"
   animationType="none"
-  aria-labelledby="testUuidV4"
-  aria-modal={true}
   deviceHeight={1334}
   deviceWidth={750}
   hardwareAccelerated={false}
@@ -452,9 +452,9 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     }
   />
   <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}

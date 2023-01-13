@@ -42,7 +42,9 @@ export const NoSearchResult: React.FC = () => {
         <MainTitle>{mainTitle}</MainTitle>
         {!!query && <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>}
         <DescriptionErrorTextContainer>
-          <DescriptionErrorText aria-live="assertive">{descriptionErrorText}</DescriptionErrorText>
+          <DescriptionErrorText accessibilityLiveRegion="assertive">
+            {descriptionErrorText}
+          </DescriptionErrorText>
         </DescriptionErrorTextContainer>
       </ContainerText>
       <Spacer.Column numberOfSpaces={6} />

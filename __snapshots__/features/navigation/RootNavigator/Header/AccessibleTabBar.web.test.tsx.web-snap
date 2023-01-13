@@ -15,237 +15,210 @@ Object {
         role="navigation"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-top-style: solid; border-top-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1yc6c17 r-borderTopColor-1yjfu75 r-borderTopStyle-1efd50x r-borderTopWidth-5kkj8d r-bottom-1p0dtai r-boxShadow-1q9gwvi r-position-u8s1d r-width-13qz1uu"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="flex-direction: row; width: 100%;"
+            class="css-view-175oi2r r-flexDirection-18u37iz r-width-13qz1uu"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="width: 16px;"
+              class="css-view-175oi2r r-width-1janqcz"
             />
             <ul
-              class="css-reset-4rbku5 css-view-1dbjc4n"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflow-bztko3 r-paddingLeft-gy4na3"
               role="list"
-              style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
             >
               <li
-                class="css-reset-4rbku5 css-view-1dbjc4n"
+                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
-                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
                   aria-current="page"
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Accueil"
-                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="transition-duration: 0s;"
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                     data-testid="Accueil sélectionné"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       Accueil sélectionné-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Accueil
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 4px;"
+                    class="css-view-175oi2r r-height-hdaws3"
                   />
                 </div>
               </li>
               <li
-                class="css-reset-4rbku5 css-view-1dbjc4n"
+                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
-                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Rechercher des offres"
-                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="transition-duration: 0s;"
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Recherche
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                 </div>
               </li>
               <li
-                class="css-reset-4rbku5 css-view-1dbjc4n"
+                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
-                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Mes réservations"
-                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="transition-duration: 0s;"
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Réservations
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                 </div>
               </li>
               <li
-                class="css-reset-4rbku5 css-view-1dbjc4n"
+                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
-                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Favoris"
-                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="transition-duration: 0s;"
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Favoris
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                 </div>
               </li>
               <li
-                class="css-reset-4rbku5 css-view-1dbjc4n"
+                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
-                style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Mon profil"
-                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="transition-duration: 0s;"
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Profil
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
                 </div>
               </li>
             </ul>
             <div
-              class="css-view-1dbjc4n"
-              style="width: 16px;"
+              class="css-view-175oi2r r-width-1janqcz"
             />
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
+            class="css-view-175oi2r r-height-3da1kt"
           />
         </div>
       </nav>
@@ -262,237 +235,210 @@ Object {
       role="navigation"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-top-style: solid; border-top-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1yc6c17 r-borderTopColor-1yjfu75 r-borderTopStyle-1efd50x r-borderTopWidth-5kkj8d r-bottom-1p0dtai r-boxShadow-1q9gwvi r-position-u8s1d r-width-13qz1uu"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="flex-direction: row; width: 100%;"
+          class="css-view-175oi2r r-flexDirection-18u37iz r-width-13qz1uu"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="width: 16px;"
+            class="css-view-175oi2r r-width-1janqcz"
           />
           <ul
-            class="css-reset-4rbku5 css-view-1dbjc4n"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflow-bztko3 r-paddingLeft-gy4na3"
             role="list"
-            style="flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: visible; overflow-y: visible; padding-left: 0px;"
           >
             <li
-              class="css-reset-4rbku5 css-view-1dbjc4n"
+              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
-              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
                 aria-current="page"
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Accueil"
-                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="transition-duration: 0s;"
                 tabindex="0"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r"
                   data-testid="Accueil sélectionné"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     Accueil sélectionné-SVG-Mock
                   </div>
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Accueil
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 4px;"
+                  class="css-view-175oi2r r-height-hdaws3"
                 />
               </div>
             </li>
             <li
-              class="css-reset-4rbku5 css-view-1dbjc4n"
+              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
-              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Rechercher des offres"
-                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="transition-duration: 0s;"
                 tabindex="0"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Recherche
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
               </div>
             </li>
             <li
-              class="css-reset-4rbku5 css-view-1dbjc4n"
+              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
-              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Mes réservations"
-                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="transition-duration: 0s;"
                 tabindex="0"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Réservations
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
               </div>
             </li>
             <li
-              class="css-reset-4rbku5 css-view-1dbjc4n"
+              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
-              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Favoris"
-                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="transition-duration: 0s;"
                 tabindex="0"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Favoris
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
               </div>
             </li>
             <li
-              class="css-reset-4rbku5 css-view-1dbjc4n"
+              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
-              style="display: list-item; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Mon profil"
-                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="transition-duration: 0s;"
                 tabindex="0"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
                     undefined-SVG-Mock
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Profil
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
               </div>
             </li>
           </ul>
           <div
-            class="css-view-1dbjc4n"
-            style="width: 16px;"
+            class="css-view-175oi2r r-width-1janqcz"
           />
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
+          class="css-view-175oi2r r-height-3da1kt"
         />
       </div>
     </nav>

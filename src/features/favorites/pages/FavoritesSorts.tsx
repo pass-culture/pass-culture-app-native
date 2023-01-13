@@ -77,7 +77,7 @@ export const FavoritesSorts: React.FC = () => {
           </Typo.Title4>
         </TitleContainer>
 
-        <View accessibilityRole={AccessibilityRole.RADIOGROUP} aria-labelledby={titleID}>
+        <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
           <VerticalUl>
             {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
               return (

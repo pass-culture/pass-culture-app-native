@@ -48,7 +48,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
     }
   />
   <View
-    aria-labelledby="testUuidV4"
+    accessibilityLabelledBy="testUuidV4"
     style={
       Array [
         Object {
@@ -391,7 +391,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
     }
   />
   <View
-    aria-labelledby="testUuidV4"
+    accessibilityLabelledBy="testUuidV4"
     style={
       Array [
         Object {

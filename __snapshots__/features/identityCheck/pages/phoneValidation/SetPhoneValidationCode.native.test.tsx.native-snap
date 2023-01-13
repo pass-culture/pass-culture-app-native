@@ -309,7 +309,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
               }
             >
               <View
-                aria-labelledby="testUuidV4"
+                accessibilityLabelledBy="testUuidV4"
               >
                 <Text
                   style={
@@ -440,7 +440,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       testID="styled-input-container"
                     >
                       <TextInput
-                        aria-describedby="testUuidV4"
+                        accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
                         editable={true}
                         isEmpty={true}
@@ -571,10 +571,10 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   </View>
                 </View>
                 <Modal
+                  accessibilityLabelledBy="testUuidV4"
+                  accessibilityModal={true}
                   accessibilityRole="none"
                   animationType="none"
-                  aria-labelledby="testUuidV4"
-                  aria-modal={true}
                   deviceHeight={1334}
                   deviceWidth={750}
                   hardwareAccelerated={false}

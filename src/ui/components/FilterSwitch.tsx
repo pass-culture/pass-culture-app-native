@@ -2,8 +2,8 @@ import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
@@ -54,14 +54,15 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   return (
     <FilterSwitchContainer>
-      <HiddenAccessibleText aria-hidden>Case à cocher - {hiddenTextStatus}</HiddenAccessibleText>
+      <HiddenAccessibleText accessibilityHidden>
+        Case à cocher - {hiddenTextStatus}
+      </HiddenAccessibleText>
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        accessibilityRole={AccessibilityRole.CHECKBOX}
-        accessibilityState={{ checked: active }}
-        aria-describedby={props.accessibilityDescribedBy}
-        aria-labelledby={props.accessibilityLabelledBy}
+        {...accessibleCheckboxProps({ checked: active })}
+        accessibilityDescribedBy={props.accessibilityDescribedBy}
+        accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}
         onBlur={onBlur}
         testID={testId}>

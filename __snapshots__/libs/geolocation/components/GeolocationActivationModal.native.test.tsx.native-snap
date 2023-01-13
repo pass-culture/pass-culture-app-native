@@ -48,7 +48,7 @@ exports[`GeolocationActivationModal should render properly 1`] = `
     }
   />
   <View
-    aria-labelledby="testUuidV4"
+    accessibilityLabelledBy="testUuidV4"
     style={
       Array [
         Object {

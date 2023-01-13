@@ -116,37 +116,30 @@ Object {
 <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <header
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-width-13qz1uu"
           role="banner"
-          style="width: 100%;"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
             style="height: 64px;"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+            class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
+              class="css-view-175oi2r r-height-10ptun7"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; height: 48px; justify-content: center;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
                 >
                   <button
                     aria-label="Revenir en arrière"
@@ -157,20 +150,19 @@ Object {
                     type="button"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                       data-testid="icon-back"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
                     </div>
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
-                      style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                     >
                       Retour
                     </div>
@@ -178,50 +170,43 @@ Object {
                 </div>
                 <h1
                   aria-level="1"
-                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                   dir="ltr"
                   role="heading"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                 >
                   Mon identité
                 </h1>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
                 />
               </div>
             </div>
           </div>
         </header>
         <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                  class="css-view-175oi2r"
+                  style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-self: center; padding: 28px 28px 28px 28px;"
+                    class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         undefined-SVG-Mock
@@ -229,62 +214,53 @@ Object {
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; text-align: center;"
                   >
                     Identification
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
+                    class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                   >
                     Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
+                    class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-view-1dbjc4n"
-                    style="background-color: rgb(241, 241, 244); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-z2wwpe r-display-6koalj r-flexDirection-18u37iz r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
                     </div>
                     <div
-                      class="css-view-1dbjc4n"
-                      style="width: 8px;"
+                      class="css-view-175oi2r r-width-1jg9483"
                     />
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                       dir="ltr"
-                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
                       Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
                     </div>
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 32px;"
+                    class="css-view-175oi2r r-height-mabqd8"
                   />
                 </div>
               </div>
               <div
-                class="css-view-1dbjc4n"
-                style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
               >
                 <button
                   aria-label="Ouvrir un onglet ÉduConnect"
@@ -294,16 +270,15 @@ Object {
                   type="button"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-shrink: 0;"
+                    class="css-view-175oi2r r-flexShrink-1q142lx"
                   >
                     <div
                       aria-label="Nouvelle fenêtre"
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                       data-testid="button-icon"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         button-icon-SVG-Mock
@@ -311,16 +286,14 @@ Object {
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
                     dir="ltr"
-                    style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                   >
                     Ouvrir un onglet ÉduConnect
                   </div>
                 </button>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-view-175oi2r r-height-3da1kt"
                 />
               </div>
             </div>
@@ -441,37 +414,30 @@ Object {
 
 <div>
     <div
-      class="css-view-1dbjc4n"
-      style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+      class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     >
       <header
-        class="css-view-1dbjc4n"
+        class="css-view-175oi2r r-width-13qz1uu"
         role="banner"
-        style="width: 100%;"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
           style="height: 64px;"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+          class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
+            class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; height: 48px; justify-content: center;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
               >
                 <button
                   aria-label="Revenir en arrière"
@@ -482,20 +448,19 @@ Object {
                   type="button"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                     data-testid="icon-back"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                     dir="ltr"
-                    style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                   >
                     Retour
                   </div>
@@ -503,50 +468,43 @@ Object {
               </div>
               <h1
                 aria-level="1"
-                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                 dir="ltr"
                 role="heading"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
               >
                 Mon identité
               </h1>
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
               />
             </div>
           </div>
         </div>
       </header>
       <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                class="css-view-175oi2r"
+                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-self: center; padding: 28px 28px 28px 28px;"
+                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
@@ -554,62 +512,53 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; text-align: center;"
                 >
                   Identification
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 16px;"
+                  class="css-view-175oi2r r-height-10ptun7"
                 />
                 <div
-                  class="css-text-901oao"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                   dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                 >
                   Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 16px;"
+                  class="css-view-175oi2r r-height-10ptun7"
                 />
                 <div
-                  class="css-view-1dbjc4n"
-                  style="background-color: rgb(241, 241, 244); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-z2wwpe r-display-6koalj r-flexDirection-18u37iz r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="width: 8px;"
+                    class="css-view-175oi2r r-width-1jg9483"
                   />
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                     dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
                     Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
                   </div>
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 32px;"
+                  class="css-view-175oi2r r-height-mabqd8"
                 />
               </div>
             </div>
             <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
             >
               <button
                 aria-label="Ouvrir un onglet ÉduConnect"
@@ -619,16 +568,15 @@ Object {
                 type="button"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-shrink: 0;"
+                  class="css-view-175oi2r r-flexShrink-1q142lx"
                 >
                   <div
                     aria-label="Nouvelle fenêtre"
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                     data-testid="button-icon"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       button-icon-SVG-Mock
@@ -636,16 +584,14 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
                   dir="ltr"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                 >
                   Ouvrir un onglet ÉduConnect
                 </div>
               </button>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-view-175oi2r r-height-3da1kt"
               />
             </div>
           </div>

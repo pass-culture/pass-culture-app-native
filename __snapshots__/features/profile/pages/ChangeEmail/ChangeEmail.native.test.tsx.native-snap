@@ -421,8 +421,8 @@ Array [
               testID="styled-input-container"
             >
               <TextInput
-                aria-describedby="testUuidV4"
-                aria-required={true}
+                accessibilityDescribedBy="testUuidV4"
+                accessibilityRequired={true}
                 autoCapitalize="none"
                 autoComplete="email"
                 disabled={true}
@@ -562,8 +562,8 @@ Array [
               testID="styled-input-container"
             >
               <TextInput
-                aria-describedby="testUuidV4"
-                aria-required={true}
+                accessibilityDescribedBy="testUuidV4"
+                accessibilityRequired={true}
                 autoCapitalize="none"
                 disabled={true}
                 editable={false}
@@ -1101,8 +1101,8 @@ Array [
               testID="styled-input-container"
             >
               <TextInput
-                aria-describedby="testUuidV4"
-                aria-required={true}
+                accessibilityDescribedBy="testUuidV4"
+                accessibilityRequired={true}
                 autoCapitalize="none"
                 autoComplete="email"
                 disabled={false}
@@ -1243,8 +1243,8 @@ Array [
               testID="styled-input-container"
             >
               <TextInput
-                aria-describedby="testUuidV4"
-                aria-required={true}
+                accessibilityDescribedBy="testUuidV4"
+                accessibilityRequired={true}
                 autoCapitalize="none"
                 disabled={false}
                 editable={true}

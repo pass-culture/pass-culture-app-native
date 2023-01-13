@@ -270,72 +270,65 @@ Object {
     <div />
     <div>
       <div
-        style="bottom: 0px; left: 0px; position: fixed; right: 0px; top: 0px; z-index: 9999;"
+        class="r-bottom-1p0dtai r-left-1d2f490 r-position-1xcajam r-right-zchlnj r-top-ipm5af r-zIndex-sfbmgh"
       >
         <div
+          class="r-outlineStyle-1ny4l3l"
           role="presentation"
-          style="outline-style: none;"
           tabindex="0"
         />
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
         >
           <div
+            aria-labelledby="testUuidV4"
             aria-modal="true"
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r r-bottom-1p0dtai r-left-1d2f490 r-position-1xcajam r-right-zchlnj r-top-ipm5af r-backgroundColor-1niwhzg"
+            data-testid="modal"
             role="dialog"
-            style="background-color: rgba(0, 0, 0, 0); bottom: 0px; left: 0px; position: fixed; right: 0px; top: 0px;"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex: 1; top: 0px;"
+              class="css-view-175oi2r r-flex-13awgt0 r-top-ipm5af"
             >
               <div
-                class="css-view-1dbjc4n"
-                data-focusvisible-polyfill="true"
-                style="background-color: rgb(0, 0, 0); bottom: 0px; height: 0px; left: 0px; opacity: 0.7; position: absolute; right: 0px; top: 0px; width: 0px;"
+                class="css-view-175oi2r"
+                style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0.7; background-color: rgb(0, 0, 0); width: 0px; height: 0px;"
                 tabindex="0"
               />
               <div
                 aria-labelledby="testUuidV4"
                 aria-modal="true"
-                class="css-view-1dbjc4n r-pointerEvents-12vffkv"
+                class="css-view-175oi2r r-pointerEvents-12vffkv"
                 role="dialog"
-                style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
+                style="margin: auto auto auto auto; transform: translateY(0px); flex: 1; justify-content: center; position: absolute; right: 0px; left: 0px; bottom: 0px; align-items: center;"
               >
                 <div
-                  class="css-view-1dbjc4n"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderBottomRightRadius-zmljjp r-borderBottomLeftRadius-pm2fo r-borderBottomRightRadius-zmljjp r-borderBottomLeftRadius-pm2fo r-borderTopRightRadius-1qk6wnv r-borderTopLeftRadius-f1w8kp r-borderTopRightRadius-cqzzvf r-borderTopLeftRadius-c67a83 r-flexDirection-eqz5dr r-height-1ln4yuo r-justifyContent-1777fci r-maxHeight-68cu2u r-maxWidth-1ge9hsw r-paddingBottom-11rk87y r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt r-width-13qz1uu"
                   data-testid="modalContainer"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 24px 24px 32px 24px; width: 100%;"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz r-justifyContent-1777fci r-width-13qz1uu"
                     data-testid="modalHeader"
-                    style="display: flex; flex-direction: row; justify-content: center; width: 100%;"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: flex-start; flex-direction: row; height: 28px; justify-content: flex-start; width: 28px;"
+                      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-1h0z5md r-width-1iww7jx"
                     />
                     <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 12px; padding-left: 12px; z-index: 1;"
+                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1e081e0 r-zIndex-184en5c"
                     >
                       <h1
                         aria-level="1"
-                        class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                        class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
                         data-testid="modalHeaderTitle"
                         dir="ltr"
                         id="testUuidV4"
                         role="heading"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
                         Partager l'offre
                       </h1>
                     </div>
                     <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: flex-start; flex-direction: row; height: 28px; justify-content: flex-end; width: 28px;"
+                      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-height-h0d30l r-justifyContent-17s6mgv r-width-1iww7jx"
                     >
                       <button
                         aria-label="Fermer la modale"
@@ -346,11 +339,11 @@ Object {
                         type="button"
                       >
                         <div
-                          class="css-view-1dbjc4n"
+                          class="css-view-175oi2r"
                           data-testid="rightIcon"
                         >
                           <div
-                            class="css-text-901oao"
+                            class="css-text-1rynq56"
                             dir="ltr"
                           >
                             rightIcon-SVG-Mock
@@ -360,45 +353,36 @@ Object {
                     </div>
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 20px;"
+                    class="css-view-175oi2r r-height-z80fyv"
                   />
                   <div
-                    class="css-view-1dbjc4n"
-                    style="max-height: 100%; max-width: 480px; padding-bottom: 8px; width: 100%;"
+                    class="css-view-175oi2r r-maxHeight-pm9dpa r-maxWidth-iz080l r-paddingBottom-xd6kpl r-width-13qz1uu"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
                       data-testid="modalScrollView"
-                      style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
                     >
                       <div
-                        class="css-view-1dbjc4n"
+                        class="css-view-175oi2r"
                         style="padding: 5px 10px 5px 10px;"
                       >
                         <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center;"
+                          class="css-view-175oi2r r-alignItems-1awozwy"
                         >
                           <div
-                            class="css-view-1dbjc4n"
-                            style="height: 12px;"
+                            class="css-view-175oi2r r-height-tbmifm"
                           />
                           <div
-                            class="css-view-1dbjc4n"
-                            style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
+                            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
                           />
                           <div
-                            class="css-view-1dbjc4n"
-                            style="height: 12px;"
+                            class="css-view-175oi2r r-height-tbmifm"
                           />
                           <div
-                            class="css-view-1dbjc4n"
-                            style="flex-basis: auto; flex-direction: row; flex-grow: 1; flex-shrink: 1; width: 100%;"
+                            class="css-view-175oi2r r-flexBasis-1mlwlqe r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+                              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                             >
                               <button
                                 aria-label="Copier le lien"
@@ -408,15 +392,14 @@ Object {
                                 type="button"
                               >
                                 <div
-                                  class="css-view-1dbjc4n"
-                                  style="flex-shrink: 0;"
+                                  class="css-view-175oi2r r-flexShrink-1q142lx"
                                 >
                                   <div
-                                    class="css-view-1dbjc4n"
+                                    class="css-view-175oi2r"
                                     data-testid="button-icon"
                                   >
                                     <div
-                                      class="css-text-901oao"
+                                      class="css-text-1rynq56"
                                       dir="ltr"
                                     >
                                       button-icon-SVG-Mock
@@ -424,17 +407,15 @@ Object {
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                                 >
                                   Copier
                                 </div>
                               </button>
                             </div>
                             <div
-                              class="css-view-1dbjc4n"
-                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
+                              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci"
                             >
                               <a
                                 aria-label="Ouvrir le gestionnaire mail"
@@ -445,15 +426,14 @@ Object {
                                 target="_blank"
                               >
                                 <div
-                                  class="css-view-1dbjc4n"
-                                  style="flex-shrink: 0;"
+                                  class="css-view-175oi2r r-flexShrink-1q142lx"
                                 >
                                   <div
-                                    class="css-view-1dbjc4n"
+                                    class="css-view-175oi2r"
                                     data-testid="button-icon"
                                   >
                                     <div
-                                      class="css-text-901oao"
+                                      class="css-text-1rynq56"
                                       dir="ltr"
                                     >
                                       button-icon-SVG-Mock
@@ -461,9 +441,8 @@ Object {
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                                 >
                                   E-mail
                                 </div>
@@ -471,149 +450,133 @@ Object {
                             </div>
                           </div>
                           <div
-                            class="css-view-1dbjc4n"
-                            style="height: 12px;"
+                            class="css-view-175oi2r r-height-tbmifm"
                           />
                           <div
-                            class="css-view-1dbjc4n"
-                            style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
+                            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
                           />
                           <div
-                            class="css-view-1dbjc4n"
-                            style="height: 24px;"
+                            class="css-view-175oi2r r-height-1472mwg"
                           />
                           <ul
-                            class="css-reset-4rbku5 css-view-1dbjc4n"
+                            class="css-view-175oi2r r-display-6413gk r-flexDirection-18u37iz r-gap-fulv98 r-gridTemplateColumns-1yfggyn r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
                             role="list"
-                            style="display: grid; flex-direction: row; gap: 24px 0px; grid-template-columns: repeat(auto-fill, minmax(100px,1fr)); overflow-x: auto; overflow-y: auto; padding-left: 0px; width: 100%;"
                           >
                             <li
-                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              class="css-view-175oi2r r-display-ixj5dj"
                               role="listitem"
-                              style="display: list-item;"
                             >
                               <a
-                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!"
-                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                                style="transition-duration: 0s;"
                               >
                                 <div
-                                  class="css-view-1dbjc4n"
+                                  class="css-view-175oi2r"
                                 >
                                   <div
-                                    class="css-text-901oao"
+                                    class="css-text-1rynq56"
                                     dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
                                 </div>
                                 <div
-                                  class="css-view-1dbjc4n"
-                                  style="height: 8px;"
+                                  class="css-view-175oi2r r-height-3da1kt"
                                 />
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   Facebook
                                 </div>
                               </a>
                             </li>
                             <li
-                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              class="css-view-175oi2r r-display-ixj5dj"
                               role="listitem"
-                              style="display: list-item;"
                             >
                               <a
-                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                                 href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer"
-                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                                style="transition-duration: 0s;"
                               >
                                 <div
-                                  class="css-view-1dbjc4n"
+                                  class="css-view-175oi2r"
                                 >
                                   <div
-                                    class="css-text-901oao"
+                                    class="css-text-1rynq56"
                                     dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
                                 </div>
                                 <div
-                                  class="css-view-1dbjc4n"
-                                  style="height: 8px;"
+                                  class="css-view-175oi2r r-height-3da1kt"
                                 />
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   Twitter
                                 </div>
                               </a>
                             </li>
                             <li
-                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              class="css-view-175oi2r r-display-ixj5dj"
                               role="listitem"
-                              style="display: list-item;"
                             >
                               <a
-                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                                 href="https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer"
-                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                                style="transition-duration: 0s;"
                               >
                                 <div
-                                  class="css-view-1dbjc4n"
+                                  class="css-view-175oi2r"
                                 >
                                   <div
-                                    class="css-text-901oao"
+                                    class="css-text-1rynq56"
                                     dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
                                 </div>
                                 <div
-                                  class="css-view-1dbjc4n"
-                                  style="height: 8px;"
+                                  class="css-view-175oi2r r-height-3da1kt"
                                 />
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   WhatsApp
                                 </div>
                               </a>
                             </li>
                             <li
-                              class="css-reset-4rbku5 css-view-1dbjc4n"
+                              class="css-view-175oi2r r-display-ixj5dj"
                               role="listitem"
-                              style="display: list-item;"
                             >
                               <a
-                                class="css-reset-4rbku5 css-view-1dbjc4n"
+                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
                                 href="https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !"
-                                style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                                style="transition-duration: 0s;"
                               >
                                 <div
-                                  class="css-view-1dbjc4n"
+                                  class="css-view-175oi2r"
                                 >
                                   <div
-                                    class="css-text-901oao"
+                                    class="css-text-1rynq56"
                                     dir="ltr"
                                   >
                                     undefined-SVG-Mock
                                   </div>
                                 </div>
                                 <div
-                                  class="css-view-1dbjc4n"
-                                  style="height: 8px;"
+                                  class="css-view-175oi2r r-height-3da1kt"
                                 />
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   Telegram
                                 </div>
@@ -621,8 +584,7 @@ Object {
                             </li>
                           </ul>
                           <div
-                            class="css-view-1dbjc4n"
-                            style="height: 32px;"
+                            class="css-view-175oi2r r-height-mabqd8"
                           />
                           <button
                             aria-label="Annuler"
@@ -632,9 +594,8 @@ Object {
                             type="button"
                           >
                             <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
+                              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
                               dir="ltr"
-                              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                             >
                               Annuler
                             </div>
@@ -649,8 +610,8 @@ Object {
           </div>
         </div>
         <div
+          class="r-outlineStyle-1ny4l3l"
           role="presentation"
-          style="outline-style: none;"
           tabindex="0"
         />
       </div>

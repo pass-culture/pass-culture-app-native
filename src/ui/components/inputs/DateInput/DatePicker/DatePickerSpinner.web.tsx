@@ -63,7 +63,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}
-          aria-describedby={birthdateInputErrorId}
+          accessibilityDescribedBy={birthdateInputErrorId}
         />
       </SpinnerPickerWrapper>
     </React.Fragment>

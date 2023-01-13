@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
@@ -24,10 +24,8 @@ export const AddressOption = ({
   return (
     <Container>
       <StyledTouchableOpacity
-        accessibilityRole={AccessibilityRole.RADIO}
-        accessibilityState={{ checked: selected }}
-        onPress={() => onPressOption(optionKey)}
-        accessibilityLabel={accessibilityLabel}>
+        {...accessibleRadioProps({ checked: selected, label: accessibilityLabel })}
+        onPress={() => onPressOption(optionKey)}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
           <IconContainer>{!!selected && <Validate />}</IconContainer>

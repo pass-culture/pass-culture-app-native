@@ -146,8 +146,8 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <Text
+        accessibilityHidden={true}
         accessibilityRole="image"
-        aria-hidden={true}
       >
         😢
          

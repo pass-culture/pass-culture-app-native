@@ -48,7 +48,7 @@ exports[`<ExpiredCreditModal/> should render correctly 1`] = `
     }
   />
   <View
-    aria-labelledby="testUuidV4"
+    accessibilityLabelledBy="testUuidV4"
     style={
       Array [
         Object {

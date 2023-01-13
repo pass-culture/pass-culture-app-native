@@ -40,7 +40,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
               {...getHeadingAttrs(accessibilityLevel ?? 2)}
               id={labelID}
               htmlFor={checkboxID}
-              aria-describedby={labelDescriptionID}>
+              accessibilityDescribedBy={labelDescriptionID}>
               {label}
             </StyledInputLabel>
             <Spacer.Column numberOfSpaces={1} />

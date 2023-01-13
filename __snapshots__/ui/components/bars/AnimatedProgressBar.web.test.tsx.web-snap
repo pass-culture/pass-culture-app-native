@@ -6,19 +6,17 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-direction: row; height: 40px; max-height: 40px;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-height-eu3ka r-maxHeight-yca7ao"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; height: 32px; justify-content: center; position: absolute; width: 32px; z-index: 2;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-bdcx94 r-borderRadius-nsiyw1 r-height-mabqd8 r-justifyContent-1777fci r-position-u8s1d r-width-1yvhtrz r-zIndex-136ojw6"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
             data-testid="progress-bar-icon"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               progress-bar-icon-SVG-Mock
@@ -26,13 +24,12 @@ Object {
           </div>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; height: 20px; margin-left: 20px; overflow-x: hidden; overflow-y: hidden; position: relative; z-index: 1;"
+          class="css-view-175oi2r r-borderColor-103ggtu r-borderRadius-y47klf r-borderWidth-d045u9 r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-z80fyv r-marginLeft-1joea0r r-overflow-1udh08x r-position-bnwqim r-zIndex-184en5c"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
             data-testid="animated-progress-bar"
-            style="background-color: rgb(235, 0, 85); flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; left: 0px; opacity: 1; position: relative;"
+            style="background-color: rgb(235, 0, 85); flex-grow: 0.5; flex-shrink: 1; flex-basis: 0px; position: relative; left: 0px; opacity: 1;"
           />
         </div>
       </div>
@@ -40,19 +37,17 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="css-view-1dbjc4n"
-      style="align-items: center; flex-direction: row; height: 40px; max-height: 40px;"
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-height-eu3ka r-maxHeight-yca7ao"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 32px; border-top-right-radius: 32px; border-bottom-right-radius: 32px; border-bottom-left-radius: 32px; height: 32px; justify-content: center; position: absolute; width: 32px; z-index: 2;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-bdcx94 r-borderRadius-nsiyw1 r-height-mabqd8 r-justifyContent-1777fci r-position-u8s1d r-width-1yvhtrz r-zIndex-136ojw6"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
           data-testid="progress-bar-icon"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             progress-bar-icon-SVG-Mock
@@ -60,13 +55,12 @@ Object {
         </div>
       </div>
       <div
-        class="css-view-1dbjc4n"
-        style="border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; height: 20px; margin-left: 20px; overflow-x: hidden; overflow-y: hidden; position: relative; z-index: 1;"
+        class="css-view-175oi2r r-borderColor-103ggtu r-borderRadius-y47klf r-borderWidth-d045u9 r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-z80fyv r-marginLeft-1joea0r r-overflow-1udh08x r-position-bnwqim r-zIndex-184en5c"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
           data-testid="animated-progress-bar"
-          style="background-color: rgb(235, 0, 85); flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; left: 0px; opacity: 1; position: relative;"
+          style="background-color: rgb(235, 0, 85); flex-grow: 0.5; flex-shrink: 1; flex-basis: 0px; position: relative; left: 0px; opacity: 1;"
         />
       </div>
     </div>

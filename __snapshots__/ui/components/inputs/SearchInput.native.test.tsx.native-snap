@@ -42,11 +42,11 @@ exports[`SearchInput component should render SearchInput 1`] = `
     }
   />
   <TextInput
-    accessible={true}
-    aria-hidden={false}
+    accessibilityHidden={false}
     autoCorrect={false}
     editable={true}
     enablesReturnKeyAutomatically={true}
+    focusable={true}
     isEmpty={true}
     nativeID="testUuidV4"
     onBlur={[Function]}

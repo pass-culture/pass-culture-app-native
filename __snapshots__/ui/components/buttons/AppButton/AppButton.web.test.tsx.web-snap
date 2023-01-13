@@ -65,15 +65,14 @@ Object {
         type="button"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="flex-shrink: 0;"
+          class="css-view-175oi2r r-flexShrink-1q142lx"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
             data-testid="button-icon"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               button-icon-SVG-Mock
@@ -81,9 +80,8 @@ Object {
           </div>
         </div>
         <div
-          class="css-text-901oao css-textMultiLine-cens5h"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
           dir="ltr"
-          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         >
           Testing inline
         </div>
@@ -151,15 +149,14 @@ Object {
       type="button"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="flex-shrink: 0;"
+        class="css-view-175oi2r r-flexShrink-1q142lx"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
           data-testid="button-icon"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             button-icon-SVG-Mock
@@ -167,9 +164,8 @@ Object {
         </div>
       </div>
       <div
-        class="css-text-901oao css-textMultiLine-cens5h"
+        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
         dir="ltr"
-        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
       >
         Testing inline
       </div>

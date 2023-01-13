@@ -238,8 +238,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         </Text>
       </View>
       <View
+        accessibilityLabelledBy="testUuidV4"
         accessibilityRole="radiogroup"
-        aria-labelledby="testUuidV4"
       >
         <View
           accessibilityRole="list"

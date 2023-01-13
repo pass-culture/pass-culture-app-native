@@ -73,6 +73,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       />
       <View
         accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -177,7 +178,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <Text
-        aria-hidden={true}
+        accessibilityHidden={true}
         collapsable={false}
         numberOfLines={1}
         style={
@@ -217,6 +218,7 @@ exports[`<Venue /> should match snapshot 1`] = `
       />
       <View
         accessibilityLabel="Partager"
+        accessibilityRole="button"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -3251,7 +3253,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionBody"
         >
           <View
-            aria-labelledby="testUuidV4"
+            accessibilityLabelledBy="testUuidV4"
             hidden={true}
             nativeID="testUuidV4"
             onLayout={[Function]}
@@ -3446,7 +3448,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionBody"
         >
           <View
-            aria-labelledby="testUuidV4"
+            accessibilityLabelledBy="testUuidV4"
             hidden={true}
             nativeID="testUuidV4"
             onLayout={[Function]}
@@ -4164,7 +4166,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionBody"
         >
           <View
-            aria-labelledby="testUuidV4"
+            accessibilityLabelledBy="testUuidV4"
             hidden={true}
             nativeID="testUuidV4"
             onLayout={[Function]}

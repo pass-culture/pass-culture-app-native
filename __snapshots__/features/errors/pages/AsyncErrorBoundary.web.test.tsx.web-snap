@@ -106,18 +106,16 @@ Object {
 <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+          class="css-view-175oi2r r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               undefined-SVG-Mock
@@ -133,10 +131,10 @@ Object {
           type="button"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               undefined-SVG-Mock
@@ -144,58 +142,49 @@ Object {
           </div>
         </button>
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-maxWidth-7mdpej r-paddingHorizontal-ymttw5"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
+            class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           />
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               undefined-SVG-Mock
             </div>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
+            class="css-view-175oi2r r-height-z80fyv"
           />
           <h1
             aria-level="1"
-            class="css-reset-4rbku5 css-text-901oao"
+            class="css-text-1rynq56 r-color-jwli3a r-fontFamily-g6644c r-fontSize-evnaw r-lineHeight-eaezby r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 26px; text-align: center;"
           >
             Oups !
           </h1>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 20px;"
+            class="css-view-175oi2r r-height-z80fyv"
           />
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56 r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
             dir="ltr"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Une erreur s’est produite pendant le chargement.
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="height: 40px;"
+            class="css-view-175oi2r r-height-eu3ka"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           >
             <button
               aria-label="Réessayer"
@@ -205,21 +194,18 @@ Object {
               type="button"
             >
               <div
-                class="css-text-901oao css-textMultiLine-cens5h"
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
                 dir="ltr"
-                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Réessayer
               </div>
             </button>
           </div>
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
+            class="css-view-175oi2r r-height-3da1kt"
           />
         </div>
       </div>
@@ -327,18 +313,16 @@ Object {
 
 <div>
     <div
-      class="css-view-1dbjc4n"
-      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+        class="css-view-175oi2r r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             undefined-SVG-Mock
@@ -354,10 +338,10 @@ Object {
         type="button"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             undefined-SVG-Mock
@@ -365,58 +349,49 @@ Object {
         </div>
       </button>
       <div
-        class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-maxWidth-7mdpej r-paddingHorizontal-ymttw5"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="height: 16px;"
+          class="css-view-175oi2r r-height-10ptun7"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         />
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             undefined-SVG-Mock
           </div>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
+          class="css-view-175oi2r r-height-z80fyv"
         />
         <h1
           aria-level="1"
-          class="css-reset-4rbku5 css-text-901oao"
+          class="css-text-1rynq56 r-color-jwli3a r-fontFamily-g6644c r-fontSize-evnaw r-lineHeight-eaezby r-textAlign-q4m81j"
           dir="ltr"
           role="heading"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 26px; text-align: center;"
         >
           Oups !
         </h1>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 20px;"
+          class="css-view-175oi2r r-height-z80fyv"
         />
         <div
-          class="css-text-901oao"
+          class="css-text-1rynq56 r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
           dir="ltr"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Une erreur s’est produite pendant le chargement.
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="height: 40px;"
+          class="css-view-175oi2r r-height-eu3ka"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <button
             aria-label="Réessayer"
@@ -426,21 +401,18 @@ Object {
             type="button"
           >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
               dir="ltr"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Réessayer
             </div>
           </button>
         </div>
         <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
+          class="css-view-175oi2r r-height-3da1kt"
         />
       </div>
     </div>

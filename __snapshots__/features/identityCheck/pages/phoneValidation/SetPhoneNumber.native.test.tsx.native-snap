@@ -309,7 +309,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
               }
             >
               <View
-                aria-labelledby="testUuidV4"
+                accessibilityLabelledBy="testUuidV4"
               >
                 <Text
                   style={
@@ -531,10 +531,10 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                         />
                       </View>
                       <Modal
+                        accessibilityLabelledBy="testUuidV4"
+                        accessibilityModal={true}
                         accessibilityRole="none"
                         animationType="none"
-                        aria-labelledby="testUuidV4"
-                        aria-modal={true}
                         deviceHeight={1334}
                         deviceWidth={750}
                         hardwareAccelerated={false}
@@ -572,7 +572,7 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                         }
                       />
                       <TextInput
-                        aria-describedby="testUuidV4"
+                        accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
                         autoComplete="off"
                         editable={true}
@@ -621,10 +621,10 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                   }
                 />
                 <Modal
+                  accessibilityLabelledBy="testUuidV4"
+                  accessibilityModal={true}
                   accessibilityRole="none"
                   animationType="none"
-                  aria-labelledby="testUuidV4"
-                  aria-modal={true}
                   deviceHeight={1334}
                   deviceWidth={750}
                   hardwareAccelerated={false}
@@ -1128,7 +1128,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               }
             >
               <View
-                aria-labelledby="testUuidV4"
+                accessibilityLabelledBy="testUuidV4"
               >
                 <Text
                   style={
@@ -1350,10 +1350,10 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         />
                       </View>
                       <Modal
+                        accessibilityLabelledBy="testUuidV4"
+                        accessibilityModal={true}
                         accessibilityRole="none"
                         animationType="none"
-                        aria-labelledby="testUuidV4"
-                        aria-modal={true}
                         deviceHeight={1334}
                         deviceWidth={750}
                         hardwareAccelerated={false}
@@ -1391,7 +1391,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         }
                       />
                       <TextInput
-                        aria-describedby="testUuidV4"
+                        accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
                         autoComplete="off"
                         editable={true}
@@ -1440,10 +1440,10 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   }
                 />
                 <Modal
+                  accessibilityLabelledBy="testUuidV4"
+                  accessibilityModal={true}
                   accessibilityRole="none"
                   animationType="none"
-                  aria-labelledby="testUuidV4"
-                  aria-modal={true}
                   deviceHeight={1334}
                   deviceWidth={750}
                   hardwareAccelerated={false}

@@ -8,6 +8,7 @@ declare module 'react-mobile-picker' {
     onClick?: () => void
     itemHeight?: number
     height?: number
+    accessibilityDescribedBy?: string
   }
 
   const Component: React.FC<Props> = () => ReactElement

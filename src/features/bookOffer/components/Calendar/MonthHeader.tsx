@@ -12,7 +12,7 @@ type Props = {
 export const MonthHeader: React.FC<Props> = ({ date }) => {
   const month = `${monthNames[date.getMonth()]} ${date.getFullYear()}`
   return (
-    <Typo.Body {...getHeadingAttrs(2)} aria-live="polite">
+    <Typo.Body {...getHeadingAttrs(2)} accessibilityLiveRegion="polite">
       {month}
     </Typo.Body>
   )

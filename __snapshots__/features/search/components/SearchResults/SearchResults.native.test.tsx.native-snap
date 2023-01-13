@@ -559,7 +559,7 @@ Array [
               }
             >
               <Text
-                aria-live="assertive"
+                accessibilityLiveRegion="assertive"
                 style={
                   Array [
                     Object {
@@ -668,10 +668,10 @@ Array [
     </RCTScrollView>
   </View>,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -699,10 +699,10 @@ Array [
     visible={false}
   />,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -730,10 +730,10 @@ Array [
     visible={false}
   />,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -761,10 +761,10 @@ Array [
     visible={false}
   />,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}
@@ -792,10 +792,10 @@ Array [
     visible={false}
   />,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
     accessibilityRole="none"
     animationType="none"
-    aria-labelledby="testUuidV4"
-    aria-modal={true}
     deviceHeight={1334}
     deviceWidth={750}
     hardwareAccelerated={false}

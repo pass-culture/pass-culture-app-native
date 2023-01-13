@@ -6,6 +6,6 @@ export const DropDown = (_: {
   children?: never
   noBorderRadiusRight?: boolean
   noBorderRadiusLeft?: boolean
-  ariaLabel?: string
+  accessibilityLabel?: string
   isError?: boolean
 }) => null

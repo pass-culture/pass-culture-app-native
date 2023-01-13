@@ -245,8 +245,8 @@ Array [
     </View>
   </View>,
   <Modal
+    accessibilityLabelledBy="testUuidV4"
     animationType="fade"
-    aria-labelledby="testUuidV4"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     statusBarTranslucent={true}

@@ -199,8 +199,8 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <RNDatePicker
+      accessibilityDescribedBy="testUuidV4"
       androidVariant="nativeAndroid"
-      aria-describedby="testUuidV4"
       cancelText="Cancel"
       confirmText="Confirm"
       date={1164931200000}

@@ -309,8 +309,8 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               }
             >
               <View
+                accessibilityLabelledBy="testUuidV4"
                 accessibilityRole="radiogroup"
-                aria-labelledby="testUuidV4"
               >
                 <View
                   accessibilityRole="list"
@@ -1244,8 +1244,8 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               }
             >
               <View
+                accessibilityLabelledBy="testUuidV4"
                 accessibilityRole="radiogroup"
-                aria-labelledby="testUuidV4"
               >
                 <View
                   accessibilityRole="list"

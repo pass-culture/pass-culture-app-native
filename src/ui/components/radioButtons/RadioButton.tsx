@@ -1,8 +1,8 @@
 import React, { Fragment, FunctionComponent, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { Spinner } from 'ui/components/Spinner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
@@ -64,13 +64,14 @@ export function RadioButton(props: RadioButtonProps) {
   useSpaceBarAction(isFocus ? onPress : undefined)
   return (
     <StyledTouchableOpacity
-      accessibilityRole={AccessibilityRole.RADIO}
-      accessibilityState={{ checked: props.isSelected }}
+      {...accessibleRadioProps({
+        checked: props.isSelected,
+        label: props.accessibilityLabel || accessibilityLabel,
+      })}
       onPress={onPress}
       onFocus={onFocus}
       onBlur={onBlur}
-      marginVertical={props.marginVertical ?? 0}
-      accessibilityLabel={props.accessibilityLabel || accessibilityLabel}>
+      marginVertical={props.marginVertical ?? 0}>
       <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
           <React.Fragment>

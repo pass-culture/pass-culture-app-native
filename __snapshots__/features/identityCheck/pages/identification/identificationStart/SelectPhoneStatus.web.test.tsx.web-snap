@@ -62,37 +62,30 @@ Object {
 <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <header
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-width-13qz1uu"
           role="banner"
-          style="width: 100%;"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
             style="height: 64px;"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+            class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="height: 16px;"
+              class="css-view-175oi2r r-height-10ptun7"
             />
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; height: 48px; justify-content: center;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
                 >
                   <button
                     aria-label="Revenir en arrière"
@@ -103,20 +96,19 @@ Object {
                     type="button"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                       data-testid="icon-back"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         icon-back-SVG-Mock
                       </div>
                     </div>
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                       dir="ltr"
-                      style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                     >
                       Retour
                     </div>
@@ -124,113 +116,97 @@ Object {
                 </div>
                 <h1
                   aria-level="1"
-                  class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                   dir="ltr"
                   role="heading"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                 >
                   Identification
                 </h1>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
                 />
               </div>
             </div>
           </div>
         </header>
         <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                  class="css-view-175oi2r"
+                  style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; height: 100%; margin: 32px 4px 32px 4px;"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginHorizontal-4amgru r-marginVertical-764hgp"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-text-901oao"
+                        class="css-text-1rynq56"
                         dir="ltr"
                       >
                         undefined-SVG-Mock
                       </div>
                     </div>
                     <div
-                      class="css-view-1dbjc4n"
-                      style="height: 16px;"
+                      class="css-view-175oi2r r-height-10ptun7"
                     />
                     <h2
                       aria-level="2"
-                      class="css-reset-4rbku5 css-text-901oao"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
                       dir="ltr"
                       role="heading"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
                       Vérifie ton identité avec un smartphone
                     </h2>
                     <div
-                      class="css-view-1dbjc4n"
-                      style="height: 16px;"
+                      class="css-view-175oi2r r-height-10ptun7"
                     />
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                       dir="ltr"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                     >
                       Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
                     </div>
                     <div
-                      class="css-view-1dbjc4n"
-                      style="height: 32px;"
+                      class="css-view-175oi2r r-height-mabqd8"
                     />
                     <ul
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
                       role="list"
-                      style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px; width: 100%;"
                     >
                       <li
-                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        class="css-view-175oi2r r-display-ixj5dj"
                         role="listitem"
-                        style="display: list-item;"
                       >
                         <div
-                          class="css-view-1dbjc4n"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           data-testid="HeroButtonList"
-                          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                          style="transition-duration: 0s;"
                           tabindex="0"
                         >
                           <div
-                            class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="align-content: center; margin-right: 16px;"
+                              class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
                             >
                               <div
-                                class="css-view-1dbjc4n"
+                                class="css-view-175oi2r"
                                 data-testid="BicolorSmartphone"
                               >
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   BicolorSmartphone-SVG-Mock
@@ -238,30 +214,27 @@ Object {
                               </div>
                             </div>
                             <div
-                              class="css-view-1dbjc4n"
-                              style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; text-align: left;"
+                              class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
                             >
                               <div
-                                class="css-view-1dbjc4n"
-                                style="justify-content: center; min-height: 58px;"
+                                class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                               >
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                                 >
                                   J’ai un smartphone à proximité
                                 </div>
                               </div>
                             </div>
                             <div
-                              class="css-view-1dbjc4n"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-1dbjc4n"
+                                class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -271,34 +244,30 @@ Object {
                           </div>
                         </div>
                         <div
-                          class="css-view-1dbjc4n"
-                          style="height: 24px;"
+                          class="css-view-175oi2r r-height-1472mwg"
                         />
                       </li>
                       <li
-                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        class="css-view-175oi2r r-display-ixj5dj"
                         role="listitem"
-                        style="display: list-item;"
                       >
                         <div
-                          class="css-view-1dbjc4n"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                           data-testid="HeroButtonList"
-                          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                          style="transition-duration: 0s;"
                           tabindex="0"
                         >
                           <div
-                            class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="align-content: center; margin-right: 16px;"
+                              class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
                             >
                               <div
-                                class="css-view-1dbjc4n"
+                                class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -306,30 +275,27 @@ Object {
                               </div>
                             </div>
                             <div
-                              class="css-view-1dbjc4n"
-                              style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; text-align: left;"
+                              class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
                             >
                               <div
-                                class="css-view-1dbjc4n"
-                                style="justify-content: center; min-height: 58px;"
+                                class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                               >
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                                   dir="ltr"
-                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                                 >
                                   Je n’ai pas de smartphone à proximité
                                 </div>
                               </div>
                             </div>
                             <div
-                              class="css-view-1dbjc4n"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-1dbjc4n"
+                                class="css-view-175oi2r"
                               >
                                 <div
-                                  class="css-text-901oao"
+                                  class="css-text-1rynq56"
                                   dir="ltr"
                                 >
                                   undefined-SVG-Mock
@@ -407,37 +373,30 @@ Object {
 
 <div>
     <div
-      class="css-view-1dbjc4n"
-      style="background-color: rgb(235, 0, 85); display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+      class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     >
       <header
-        class="css-view-1dbjc4n"
+        class="css-view-175oi2r r-width-13qz1uu"
         role="banner"
-        style="width: 100%;"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
           style="height: 64px;"
         />
         <div
-          class="css-view-1dbjc4n"
-          style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
+          class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="height: 16px;"
+            class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; height: 48px; justify-content: center;"
+            class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; justify-content: space-between; width: 100%;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
               >
                 <button
                   aria-label="Revenir en arrière"
@@ -448,20 +407,19 @@ Object {
                   type="button"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                     data-testid="icon-back"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       icon-back-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                     dir="ltr"
-                    style="clip-path: inset(50%); height: 1px; overflow-x: hidden; overflow-y: hidden; width: 1px;"
                   >
                     Retour
                   </div>
@@ -469,113 +427,97 @@ Object {
               </div>
               <h1
                 aria-level="1"
-                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                 dir="ltr"
                 role="heading"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
               >
                 Identification
               </h1>
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
               />
             </div>
           </div>
         </div>
       </header>
       <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; height: 100%; overflow-x: scroll; overflow-y: scroll; padding-top: 12px;"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                class="css-view-175oi2r"
+                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; height: 100%; margin: 32px 4px 32px 4px;"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginHorizontal-4amgru r-marginVertical-764hgp"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-text-901oao"
+                      class="css-text-1rynq56"
                       dir="ltr"
                     >
                       undefined-SVG-Mock
                     </div>
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
+                    class="css-view-175oi2r r-height-10ptun7"
                   />
                   <h2
                     aria-level="2"
-                    class="css-reset-4rbku5 css-text-901oao"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
                     dir="ltr"
                     role="heading"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                   >
                     Vérifie ton identité avec un smartphone
                   </h2>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
+                    class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-text-901oao"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
                     dir="ltr"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                   >
                     Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
                   </div>
                   <div
-                    class="css-view-1dbjc4n"
-                    style="height: 32px;"
+                    class="css-view-175oi2r r-height-mabqd8"
                   />
                   <ul
-                    class="css-reset-4rbku5 css-view-1dbjc4n"
+                    class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
                     role="list"
-                    style="flex-direction: column; overflow-x: auto; overflow-y: auto; padding-left: 0px; width: 100%;"
                   >
                     <li
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      class="css-view-175oi2r r-display-ixj5dj"
                       role="listitem"
-                      style="display: list-item;"
                     >
                       <div
-                        class="css-view-1dbjc4n"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                         data-testid="HeroButtonList"
-                        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                        style="transition-duration: 0s;"
                         tabindex="0"
                       >
                         <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
                         >
                           <div
-                            class="css-view-1dbjc4n"
-                            style="align-content: center; margin-right: 16px;"
+                            class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
                           >
                             <div
-                              class="css-view-1dbjc4n"
+                              class="css-view-175oi2r"
                               data-testid="BicolorSmartphone"
                             >
                               <div
-                                class="css-text-901oao"
+                                class="css-text-1rynq56"
                                 dir="ltr"
                               >
                                 BicolorSmartphone-SVG-Mock
@@ -583,30 +525,27 @@ Object {
                             </div>
                           </div>
                           <div
-                            class="css-view-1dbjc4n"
-                            style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; text-align: left;"
+                            class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="justify-content: center; min-height: 58px;"
+                              class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                             >
                               <div
-                                class="css-text-901oao"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                                 dir="ltr"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                               >
                                 J’ai un smartphone à proximité
                               </div>
                             </div>
                           </div>
                           <div
-                            class="css-view-1dbjc4n"
+                            class="css-view-175oi2r"
                           >
                             <div
-                              class="css-view-1dbjc4n"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-text-901oao"
+                                class="css-text-1rynq56"
                                 dir="ltr"
                               >
                                 undefined-SVG-Mock
@@ -616,34 +555,30 @@ Object {
                         </div>
                       </div>
                       <div
-                        class="css-view-1dbjc4n"
-                        style="height: 24px;"
+                        class="css-view-175oi2r r-height-1472mwg"
                       />
                     </li>
                     <li
-                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      class="css-view-175oi2r r-display-ixj5dj"
                       role="listitem"
-                      style="display: list-item;"
                     >
                       <div
-                        class="css-view-1dbjc4n"
+                        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                         data-testid="HeroButtonList"
-                        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                        style="transition-duration: 0s;"
                         tabindex="0"
                       >
                         <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(144,148,157,1.00); border-right-color: rgba(144,148,157,1.00); border-bottom-color: rgba(144,148,157,1.00); border-left-color: rgba(144,148,157,1.00); border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; padding: 16px 16px 16px 16px; width: 100%;"
+                          class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
                         >
                           <div
-                            class="css-view-1dbjc4n"
-                            style="align-content: center; margin-right: 16px;"
+                            class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
                           >
                             <div
-                              class="css-view-1dbjc4n"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-text-901oao"
+                                class="css-text-1rynq56"
                                 dir="ltr"
                               >
                                 undefined-SVG-Mock
@@ -651,30 +586,27 @@ Object {
                             </div>
                           </div>
                           <div
-                            class="css-view-1dbjc4n"
-                            style="flex-grow: 1; flex-shrink: 1; margin-right: 16px; text-align: left;"
+                            class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="justify-content: center; min-height: 58px;"
+                              class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
                             >
                               <div
-                                class="css-text-901oao"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                                 dir="ltr"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                               >
                                 Je n’ai pas de smartphone à proximité
                               </div>
                             </div>
                           </div>
                           <div
-                            class="css-view-1dbjc4n"
+                            class="css-view-175oi2r"
                           >
                             <div
-                              class="css-view-1dbjc4n"
+                              class="css-view-175oi2r"
                             >
                               <div
-                                class="css-text-901oao"
+                                class="css-text-1rynq56"
                                 dir="ltr"
                               >
                                 undefined-SVG-Mock

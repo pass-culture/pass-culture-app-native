@@ -126,7 +126,7 @@ export const SetPhoneNumber = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <View aria-labelledby={titleID}>
+          <View accessibilityLabelledBy={titleID}>
             <StyledBody>
               Tu vas recevoir un code de validation pour confirmer ton numéro.
             </StyledBody>

@@ -166,7 +166,7 @@ export const CalendarPicker: React.FC<Props> = ({
             theme={calendarTheme}
             markedDates={markedDates}
             onDayPress={handleDesktopDateChange}
-            aria-describedby={bookingDateChoiceErrorId}
+            accessibilityDescribedBy={bookingDateChoiceErrorId}
             disableAllTouchEventsForDisabledDays
           />
         </CalendarPickerWrapperDesktop>

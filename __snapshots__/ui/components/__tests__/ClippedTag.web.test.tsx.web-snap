@@ -6,33 +6,30 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="css-view-1dbjc4n"
-        style="flex-direction: row;"
+        class="css-view-175oi2r r-flexDirection-18u37iz"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="background-color: rgb(235, 0, 85); border-bottom-left-radius: 4px; border-top-left-radius: 4px; max-width: 70%; padding-left: 12px; padding-top: 8px; padding-bottom: 8px;"
+          class="css-view-175oi2r r-backgroundColor-bdcx94 r-borderBottomLeftRadius-6t5ypu r-borderTopLeftRadius-kicko2 r-maxWidth-zmhzs6 r-paddingLeft-f727ji r-paddingVertical-5njf8e"
         >
           <div
-            class="css-text-901oao css-textMultiLine-cens5h"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
             dir="ltr"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           >
             Musée du louvre
           </div>
         </div>
         <div
           aria-label="Enlever le lieu"
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-backgroundColor-bdcx94 r-borderBottomRightRadius-wab3e5 r-borderTopRightRadius-oho8x9 r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
           data-testid="Enlever le lieu"
-          style="background-color: rgb(235, 0, 85); border-bottom-right-radius: 24px; border-top-right-radius: 24px; cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+          style="transition-duration: 0s;"
           tabindex="0"
         >
           <div
-            class="css-view-1dbjc4n"
+            class="css-view-175oi2r"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-1rynq56"
               dir="ltr"
             >
               undefined-SVG-Mock
@@ -44,33 +41,30 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="css-view-1dbjc4n"
-      style="flex-direction: row;"
+      class="css-view-175oi2r r-flexDirection-18u37iz"
     >
       <div
-        class="css-view-1dbjc4n"
-        style="background-color: rgb(235, 0, 85); border-bottom-left-radius: 4px; border-top-left-radius: 4px; max-width: 70%; padding-left: 12px; padding-top: 8px; padding-bottom: 8px;"
+        class="css-view-175oi2r r-backgroundColor-bdcx94 r-borderBottomLeftRadius-6t5ypu r-borderTopLeftRadius-kicko2 r-maxWidth-zmhzs6 r-paddingLeft-f727ji r-paddingVertical-5njf8e"
       >
         <div
-          class="css-text-901oao css-textMultiLine-cens5h"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
           dir="ltr"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         >
           Musée du louvre
         </div>
       </div>
       <div
         aria-label="Enlever le lieu"
-        class="css-view-1dbjc4n"
+        class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-backgroundColor-bdcx94 r-borderBottomRightRadius-wab3e5 r-borderTopRightRadius-oho8x9 r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
         data-testid="Enlever le lieu"
-        style="background-color: rgb(235, 0, 85); border-bottom-right-radius: 24px; border-top-right-radius: 24px; cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+        style="transition-duration: 0s;"
         tabindex="0"
       >
         <div
-          class="css-view-1dbjc4n"
+          class="css-view-175oi2r"
         >
           <div
-            class="css-text-901oao"
+            class="css-text-1rynq56"
             dir="ltr"
           >
             undefined-SVG-Mock

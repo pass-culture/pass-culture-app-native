@@ -1,0 +1,235 @@
+diff --git a/node_modules/react-native-web/dist/cjs/exports/Image/index.js b/node_modules/react-native-web/dist/cjs/exports/Image/index.js
+index 870acc3..fee871c 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/Image/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/Image/index.js
+@@ -183,6 +183,7 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
+       onLoadStart = props.onLoadStart,
+       pointerEvents = props.pointerEvents,
+       source = props.source,
++      transform = props.transform,
+       style = props.style,
+       rest = (0, _objectWithoutPropertiesLoose2.default)(props, _excluded);
+ 
+@@ -322,7 +323,8 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
+   }), /*#__PURE__*/React.createElement(_View.default, {
+     style: [styles.image, resizeModeStyles[resizeMode], {
+       backgroundImage,
+-      filter
++      filter,
++      transform
+     }, backgroundSize != null && {
+       backgroundSize
+     }],
+diff --git a/node_modules/react-native-web/dist/cjs/exports/Text/index.js b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+index c24a3eb..1c8df84 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/Text/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+@@ -104,10 +104,10 @@ var Text = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   var componentDirection = props.dir || langDirection;
+   var writingDirection = componentDirection || contextDirection;
+   var supportedProps = pickProps(rest);
+-  supportedProps.dir = componentDirection; // 'auto' by default allows browsers to infer writing direction (root elements only)
++  supportedProps.dir = componentDirection; // 'ltr' by default allows browsers to infer writing direction (root elements only)
+ 
+   if (!hasTextAncestor) {
+-    supportedProps.dir = componentDirection != null ? componentDirection : 'auto';
++    supportedProps.dir = componentDirection != null ? componentDirection : 'ltr';
+   }
+ 
+   if (onClick || onPress) {
+diff --git a/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js b/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
+index 0b99520..fe0c083 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
+@@ -367,7 +367,7 @@ var TextInput = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   supportedProps.autoComplete = autoComplete || autoCompleteType || 'on';
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off'; // 'auto' by default allows browsers to infer writing direction
+ 
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   supportedProps.enterKeyHint = returnKeyType;
+   supportedProps.inputMode = inputMode;
+   supportedProps.onBlur = handleBlur;
+diff --git a/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js
+index aab7558..c0c294e 100644
+--- a/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js
++++ b/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js
+@@ -1198,7 +1198,17 @@ class VirtualizedList extends React.PureComponent {
+       stickyHeaderIndices,
+       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
+     });
++
+     this._hasMore = this.state.last < this.props.getItemCount(this.props.data) - 1;
++
++    const headerIdx = cells.findIndex((cell) => cell.key === "$header")
++    const footerIdx = cells.findIndex((cell) => cell.key === "$footer")
++    const emptyComponentIdx = cells.findIndex((cell) => cell.key === "$empty")
++    const cellsWithoutHeaderAndFooter = cells.filter((_,idx) => !([headerIdx, footerIdx].includes(idx)))
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs && emptyComponentIdx === -1
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null
++    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells
++
+     var innerRet = /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListContextProvider, {
+       value: {
+         cellKey: null,
+@@ -1212,7 +1222,7 @@ class VirtualizedList extends React.PureComponent {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
++    }, cellsToDisplay));
+     var ret = innerRet;
+     /* https://github.com/necolas/react-native-web/issues/2239: Re-enable when ScrollView.Context.Consumer is available.
+     if (__DEV__) {
+@@ -1646,7 +1656,7 @@ class CellRenderer extends React.Component {
+     }), element, itemSeparator);
+     return /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
+   }
+ 
+ }
+diff --git a/node_modules/react-native-web/dist/exports/Image/index.js b/node_modules/react-native-web/dist/exports/Image/index.js
+index 93c5f22..8caa3aa 100644
+--- a/node_modules/react-native-web/dist/exports/Image/index.js
++++ b/node_modules/react-native-web/dist/exports/Image/index.js
+@@ -171,6 +171,7 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
+       pointerEvents = props.pointerEvents,
+       source = props.source,
+       style = props.style,
++      transform = props.transform,
+       rest = _objectWithoutPropertiesLoose(props, _excluded);
+ 
+   if (process.env.NODE_ENV !== 'production') {
+@@ -308,7 +309,8 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
+   }), /*#__PURE__*/React.createElement(View, {
+     style: [styles.image, resizeModeStyles[resizeMode], {
+       backgroundImage,
+-      filter
++      filter,
++      transform
+     }, backgroundSize != null && {
+       backgroundSize
+     }],
+diff --git a/node_modules/react-native-web/dist/exports/Text/index.js b/node_modules/react-native-web/dist/exports/Text/index.js
+index 2f99718..98c6ef7 100644
+--- a/node_modules/react-native-web/dist/exports/Text/index.js
++++ b/node_modules/react-native-web/dist/exports/Text/index.js
+@@ -93,10 +93,10 @@ var Text = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   var componentDirection = props.dir || langDirection;
+   var writingDirection = componentDirection || contextDirection;
+   var supportedProps = pickProps(rest);
+-  supportedProps.dir = componentDirection; // 'auto' by default allows browsers to infer writing direction (root elements only)
++  supportedProps.dir = componentDirection; // 'ltr' by default allows browsers to infer writing direction (root elements only)
+ 
+   if (!hasTextAncestor) {
+-    supportedProps.dir = componentDirection != null ? componentDirection : 'auto';
++    supportedProps.dir = componentDirection != null ? componentDirection : 'ltr';
+   }
+ 
+   if (onClick || onPress) {
+diff --git a/node_modules/react-native-web/dist/exports/TextInput/index.js b/node_modules/react-native-web/dist/exports/TextInput/index.js
+index f57d4bd..c3810c8 100644
+--- a/node_modules/react-native-web/dist/exports/TextInput/index.js
++++ b/node_modules/react-native-web/dist/exports/TextInput/index.js
+@@ -346,7 +346,7 @@ var TextInput = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   supportedProps.autoComplete = autoComplete || autoCompleteType || 'on';
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off'; // 'auto' by default allows browsers to infer writing direction
+ 
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   supportedProps.enterKeyHint = returnKeyType;
+   supportedProps.inputMode = inputMode;
+   supportedProps.onBlur = handleBlur;
+diff --git a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
+index 801cc86..6f7baa1 100644
+--- a/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
++++ b/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
+@@ -1176,6 +1176,15 @@ class VirtualizedList extends React.PureComponent {
+     });
+ 
+     this._hasMore = this.state.last < this.props.getItemCount(this.props.data) - 1;
++
++    const headerIdx = cells.findIndex((cell) => cell.key === "$header")
++    const footerIdx = cells.findIndex((cell) => cell.key === "$footer")
++    const emptyComponentIdx = cells.findIndex((cell) => cell.key === "$empty")
++    const cellsWithoutHeaderAndFooter = cells.filter((_,idx) => !([headerIdx, footerIdx].includes(idx)))
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs && emptyComponentIdx === -1
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null
++    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells
++
+     var innerRet = /*#__PURE__*/React.createElement(VirtualizedListContextProvider, {
+       value: {
+         cellKey: null,
+@@ -1189,7 +1198,7 @@ class VirtualizedList extends React.PureComponent {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
++    }, cellsToDisplay));
+     var ret = innerRet;
+     /* https://github.com/necolas/react-native-web/issues/2239: Re-enable when ScrollView.Context.Consumer is available.
+     if (__DEV__) {
+@@ -1623,7 +1632,7 @@ class CellRenderer extends React.Component {
+     }), element, itemSeparator);
+     return /*#__PURE__*/React.createElement(VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
+   }
+ 
+ }
+diff --git a/node_modules/react-native-web/src/exports/Image/index.js b/node_modules/react-native-web/src/exports/Image/index.js
+index 7f6a62f..27897a9 100644
+--- a/node_modules/react-native-web/src/exports/Image/index.js
++++ b/node_modules/react-native-web/src/exports/Image/index.js
+@@ -180,6 +180,7 @@ const Image: React.AbstractComponent<
+     pointerEvents,
+     source,
+     style,
++    transform,
+     ...rest
+   } = props;
+ 
+@@ -326,7 +327,7 @@ const Image: React.AbstractComponent<
+         style={[
+           styles.image,
+           resizeModeStyles[resizeMode],
+-          { backgroundImage, filter },
++          { backgroundImage, filter, transform },
+           backgroundSize != null && { backgroundSize }
+         ]}
+         suppressHydrationWarning={true}
+diff --git a/node_modules/react-native-web/src/exports/Text/index.js b/node_modules/react-native-web/src/exports/Text/index.js
+index d5b47c2..2f56d9b 100644
+--- a/node_modules/react-native-web/src/exports/Text/index.js
++++ b/node_modules/react-native-web/src/exports/Text/index.js
+@@ -115,10 +115,10 @@ const Text: React.AbstractComponent<TextProps, HTMLElement & PlatformMethods> =
+ 
+     const supportedProps = pickProps(rest);
+     supportedProps.dir = componentDirection;
+-    // 'auto' by default allows browsers to infer writing direction (root elements only)
++    // 'ltr' by default allows browsers to infer writing direction (root elements only)
+     if (!hasTextAncestor) {
+       supportedProps.dir =
+-        componentDirection != null ? componentDirection : 'auto';
++        componentDirection != null ? componentDirection : 'ltr';
+     }
+ 
+     if (onClick || onPress) {
+diff --git a/node_modules/react-native-web/src/exports/TextInput/index.js b/node_modules/react-native-web/src/exports/TextInput/index.js
+index 1a0cf24..11abb8f 100644
+--- a/node_modules/react-native-web/src/exports/TextInput/index.js
++++ b/node_modules/react-native-web/src/exports/TextInput/index.js
+@@ -353,8 +353,8 @@ const TextInput: React.AbstractComponent<
+   supportedProps.autoCapitalize = autoCapitalize;
+   supportedProps.autoComplete = autoComplete || autoCompleteType || 'on';
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+-  // 'auto' by default allows browsers to infer writing direction
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  // 'ltr' by default allows browsers to infer writing direction
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   supportedProps.enterKeyHint = returnKeyType;
+   supportedProps.inputMode = inputMode;
+   supportedProps.onBlur = handleBlur;
