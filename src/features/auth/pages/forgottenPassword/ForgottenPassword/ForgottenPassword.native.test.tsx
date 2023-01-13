@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -9,10 +8,10 @@ import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 't
 import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
+import { ForgottenPassword } from './ForgottenPassword'
+
 jest.mock('features/navigation/helpers')
-
 jest.mock('features/auth/context/SettingsContext')
-
 jest.mock('libs/monitoring')
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
