@@ -5,8 +5,6 @@ import { fireEvent, render } from 'tests/utils'
 
 import { SecondCard } from './SecondCard'
 
-jest.mock('features/auth/api')
-
 describe('SecondCard', () => {
   it('should render second card', () => {
     const firstTutorial = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)

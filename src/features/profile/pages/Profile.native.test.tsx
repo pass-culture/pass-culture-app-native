@@ -79,14 +79,8 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
     dispatch: mockFavoriteDispatch,
   }),
 }))
-jest.mock('features/auth/api', () => ({
-  useDepositAmountsByAge: jest.fn(() => ({
-    fifteenYearsOldDeposit: '20 €',
-    sixteenYearsOldDeposit: '30 €',
-    seventeenYearsOldDeposit: '30 €',
-    eighteenYearsOldDeposit: '300 €',
-  })),
-}))
+
+jest.mock('features/auth/api/useDepositAmountsByAge')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ identification: { processing: false } }),
