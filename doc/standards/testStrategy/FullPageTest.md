@@ -3,8 +3,8 @@
 ## Render test
 
 ```jsx
-it('should render correctly', async () => {
-  const page = await render(<Page />)
+it('should render correctly', () => {
+  const page = render(<Page />)
 
   expect(page).toMatchSnapshot()
 })

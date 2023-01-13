@@ -18,15 +18,14 @@ it('should navigate to the previous when back navigation triggered', () => {
 
 ```jsx
 it('should redirect to home page when signin is successful', async () => {
-  const { findByText } = renderLogin()
-  mockSignIn.mockImplementationOnce(() => true)
+  const { findByText } = render(<Login />)
+  mockSignIn.mockReturnValueOnce(true)
 
   const connexionButton = await findByText('Se connecter')
   fireEvent.press(connexionButton)
 
-  await waitForExpect(() => {
-    expect(mockSignIn).toHaveBeenCalledTimes(1)
-    expect(navigate).ttoHaveBeenCalledTimes(1)
+  await waitFor(() => {
+    expect(navigate).toHaveBeenCalledTimes(1)
   })
 })
 ```

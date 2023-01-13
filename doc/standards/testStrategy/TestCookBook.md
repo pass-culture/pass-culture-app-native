@@ -25,7 +25,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 // ... and then within each test
-mockUseAuthContext.mockReturnValue({
+mockUseAuthContext.mockReturnValueOnce({
   isLoggedIn,
   setIsLoggedIn: jest.fn(),
   user: anUserFixtures,
