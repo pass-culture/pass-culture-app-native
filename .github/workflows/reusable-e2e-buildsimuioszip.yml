@@ -48,13 +48,6 @@ jobs:
           bundle exec pod install
           cd ..
 
-      - name: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
-        run: |
-          export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
-
-      - name: Setup secrets env variables
-        run: |
-          echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.${{ inputs.environment }}
 
       - name: Setup iOS Google services config
         run: |
