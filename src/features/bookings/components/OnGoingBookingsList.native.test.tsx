@@ -57,6 +57,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         data: {
           ended_bookings: [],
           ongoing_bookings: [],
+          hasBookingsAfter18: false,
         } as BookingsResponse,
         isLoading: false,
         isFetching: false,
@@ -76,6 +77,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         data: {
           ended_bookings: [],
           ongoing_bookings: [],
+          hasBookingsAfter18: false,
         } as BookingsResponse,
         isLoading: false,
         isFetching: false,

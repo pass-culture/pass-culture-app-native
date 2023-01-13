@@ -1,15 +1,18 @@
 import shuffle from 'lodash/shuffle'
+import { UseQueryResult } from 'react-query'
 
-import { EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
+import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useBookings } from 'features/bookings/api'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage, HomepageTag } from 'features/home/types'
 import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const masterTag: HomepageTag = 'master'
 const grandpublicTag: HomepageTag = 'usergrandpublic'
@@ -98,6 +101,14 @@ jest.mock('features/bookings/api', () => ({
 jest.mock('features/bookings/api/useUserHasBookings')
 const mockUseUserHasBookings = useUserHasBookings as jest.MockedFunction<typeof useUserHasBookings>
 
+jest.mock('features/bookings/api')
+const mockUseBookings = useBookings as jest.MockedFunction<typeof useBookings>
+mockUseBookings.mockReturnValue({
+  data: bookingsSnap,
+  isLoading: false,
+  isFetching: false,
+} as UseQueryResult<BookingsResponse, unknown>)
+
 jest.mock('features/user/helpers/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
 
@@ -128,19 +139,17 @@ describe('useSelectHomepageEntry', () => {
 
   describe('remote config entry', () => {
     it.each`
-      isLoggedIn | user                                          | hasBookings | credit                  | expectedHomepage                 | expectedHomepageName
-      ${false}   | ${undefined}                                  | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
-      ${true}    | ${undefined}                                  | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
-      ${true}    | ${{ eligibility: EligibilityType['age-18'] }} | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
-      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_18}    | ${'homeEntryWithoutBooking_18'}
-      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${true}     | ${{ isExpired: false }} | ${homeEntry_18}                  | ${'homeEntry_18'}
-      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}          | ${true}     | ${{ isExpired: true }}  | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
-      ${true}    | ${{ eligibility: EligibilityType.underage }}  | ${true}     | ${{ isExpired: false }} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
-      ${true}    | ${{ eligibility: EligibilityType.underage }}  | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
-      ${true}    | ${{ eligibility: undefined }}                 | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      isLoggedIn | user                                         | hasBookings | credit                  | expectedHomepage                 | expectedHomepageName
+      ${false}   | ${undefined}                                 | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
+      ${true}    | ${undefined}                                 | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}         | ${true}     | ${{ isExpired: false }} | ${homeEntry_18}                  | ${'homeEntry_18'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}         | ${true}     | ${{ isExpired: true }}  | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      ${true}    | ${{ eligibility: EligibilityType.underage }} | ${true}     | ${{ isExpired: false }} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
+      ${true}    | ${{ eligibility: EligibilityType.underage }} | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
+      ${true}    | ${{ eligibility: undefined }}                | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
     `(
       `should return remote config $expectedHomepageName when isLoggedIn=$isLoggedIn, user=$user, hasBookings=$hasBookings, credit=$credit`,
-      ({
+      async ({
         isLoggedIn,
         user,
         hasBookings,
@@ -167,9 +176,44 @@ describe('useSelectHomepageEntry', () => {
         const { result } = renderHook(() => useSelectHomepageEntry())
         const Homepage = result.current(shuffle(homepageEntries))
 
-        expect(Homepage).toBe(expectedHomepage)
+        await waitFor(() => {
+          expect(Homepage).toBe(expectedHomepage)
+        })
 
         mockGetAvailableCredit.mockReset()
+      }
+    )
+
+    it.each`
+      user
+      ${{ eligibility: EligibilityType['age-18'] }}
+      ${{ roles: [UserRole.BENEFICIARY] }}
+    `(
+      'should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old ',
+      async ({ user }) => {
+        mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+        mockUseAuthContext.mockReturnValueOnce({
+          isLoggedIn: true,
+          user: user as UserProfileResponse,
+          setIsLoggedIn: jest.fn(),
+          refetchUser: jest.fn(),
+          isUserLoading: false,
+        })
+        mockUseUserHasBookings.mockReturnValueOnce(true)
+        mockGetAvailableCredit.mockReturnValueOnce({ isExpired: false, amount: 100 })
+
+        mockUseBookings.mockReturnValueOnce({
+          data: { ...bookingsSnap, hasBookingsAfter18: false },
+          isLoading: false,
+          isFetching: false,
+        } as UseQueryResult<BookingsResponse, unknown>)
+
+        const { result } = renderHook(() => useSelectHomepageEntry())
+        const Homepage = result.current(shuffle(homepageEntries))
+
+        await waitFor(() => {
+          expect(Homepage).toBe(homeEntryWithoutBooking_18)
+        })
       }
     )
   })

@@ -470,6 +470,11 @@ export interface BookingsResponse {
    */
   ended_bookings: Array<BookingReponse>
   /**
+   * @type {boolean}
+   * @memberof BookingsResponse
+   */
+  hasBookingsAfter18: boolean
+  /**
    * @type {Array<BookingReponse>}
    * @memberof BookingsResponse
    */

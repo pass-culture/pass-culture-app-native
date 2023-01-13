@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useBookings } from 'features/bookings/api'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { Homepage } from 'features/home/types'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
@@ -31,6 +32,7 @@ export const useSelectHomepageEntry = (
 ): ((homepageList: Homepage[]) => Homepage | undefined) => {
   const { isLoggedIn, user } = useAuthContext()
   const userHasBookings = useUserHasBookings()
+  const { data: userBookings } = useBookings()
   const {
     homeEntryIdNotConnected,
     homeEntryIdGeneral,
@@ -76,7 +78,7 @@ export const useSelectHomepageEntry = (
 
       const credit = getAvailableCredit(user)
       if (user?.eligibility === 'age-18' || (isUserBeneficiary18(user) && !credit.isExpired)) {
-        if (userHasBookings) {
+        if (userBookings?.hasBookingsAfter18) {
           return homepageList.find(({ id }) => id === homeEntryId_18) || defaultHomepageEntry
         }
         return (
@@ -97,6 +99,7 @@ export const useSelectHomepageEntry = (
       homeEntryId_15_17,
       isLoggedIn,
       userHasBookings,
+      userBookings,
     ]
   )
 }
