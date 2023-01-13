@@ -37,8 +37,7 @@ export const Offer: FunctionComponent = () => {
     }
   })
 
-  const { data: offer } = useOffer({ offerId })
-  const similarOffers = useSimilarOffers(offerId, offer?.venue.coordinates)
+  const similarOffers = useSimilarOffers(offerId, offerResponse?.venue.coordinates)
   const hasSimilarOffers = similarOffers && similarOffers.length > 0
   const fromOfferId = route.params?.fromOfferId
 
