@@ -466,35 +466,19 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         ]
                       }
                     >
-                      <Text>
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          J’ai ma pièce d’identité 
-                        </Text>
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          en cours de validité avec moi
-                        </Text>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        J’ai ma pièce d’identité en cours de validité
                       </Text>
                       <View
                         style={
@@ -517,20 +501,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                             ]
                           }
                         >
-                          <Text
-                            accessibilityHidden={true}
-                            accessibilityRole="image"
-                            style={
-                              Array [
-                                Object {
-                                  "fontFamily": "Montserrat-SemiBold",
-                                },
-                              ]
-                            }
-                          >
-                            ⚠️
-                             
-                          </Text>
                           Les copies ne sont pas acceptées
                         </Text>
                       </View>

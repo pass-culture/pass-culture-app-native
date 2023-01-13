@@ -11,10 +11,10 @@ describe('SelectIDStatus', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité" button', () => {
+  it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité en cours de validité" button', () => {
     const { getByText } = render(<SelectIDStatus />)
 
-    const button = getByText('J’ai ma pièce d’identité')
+    const button = getByText('J’ai ma pièce d’identité en cours de validité')
     fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('UbbleWebview', undefined)

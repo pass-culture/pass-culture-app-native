@@ -7,7 +7,6 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { amplitude } from 'libs/amplitude'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
-import { Emoji } from 'ui/components/Emoji'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
@@ -24,18 +23,8 @@ export const SelectIDStatus: FunctionComponent = () => {
 
 const MainOptionButton = (
   <HeroButtonList
-    Title={
-      <Text>
-        <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
-        <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
-      </Text>
-    }
-    Subtitle={
-      <Typo.Caption>
-        <Emoji.Warning withSpaceAfter />
-        {'Les copies ne sont pas acceptées'}
-      </Typo.Caption>
-    }
+    Title={<Typo.ButtonText>J’ai ma pièce d’identité en cours de validité</Typo.ButtonText>}
+    Subtitle={<Typo.Caption>Les copies ne sont pas acceptées</Typo.Caption>}
     icon={BicolorIdCard}
     navigateTo={{ screen: 'UbbleWebview' }}
   />
