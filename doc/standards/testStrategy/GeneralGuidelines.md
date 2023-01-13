@@ -13,12 +13,12 @@
 
 ## When to use .web and .native?
 
-use `MyComponent.native.test.tsx` if
+use `MyComponent.native.test.tsx` either if
 
 - the logic is shared between web and native
 - there is a file `MyComponent.native.tsx.`
 
-use `MyComponent.web.test.tsx` if
+use `MyComponent.web.test.tsx` either if
 
 - there is a file `MyComponent.web.tsx`
 - the logic and/or design differs from web to native
@@ -27,7 +27,7 @@ use `MyComponent.web.test.tsx` if
   - if you used `isTouch` or `isNative`
     -> in that case, you should use userEvent instead of fireEvent
 
-use `MyComponent.test.ts` if there is no render, for example when testing a hook
+use `useSomeHook.test.ts` if there is no render, for example when testing a hook
 
 **Do not use** `MyComponent.test.tsx` without `.web` or `.native`
 
