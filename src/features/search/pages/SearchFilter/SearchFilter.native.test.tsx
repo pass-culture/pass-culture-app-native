@@ -45,6 +45,16 @@ describe('<SearchFilter/>', () => {
     })
   })
 
+  it('should dispatch params on mount', () => {
+    useRoute.mockReturnValueOnce({ params: { query: 'test' } })
+    renderSearchFilter()
+
+    expect(mockStateDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: { query: 'test' },
+    })
+  })
+
   describe('should navigate on search results with the current search state', () => {
     it('when pressing go back', async () => {
       useRoute.mockReturnValueOnce({ params: initialSearchState })
