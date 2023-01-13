@@ -34,7 +34,7 @@ it('should redirect to home page when signin is successful', async () => {
 
 ## Test the responsibility of the components
 
-Ideally, you want to make sure that the tests for a component only test that which is the responsibility of the component. There are several reasons for this:
+Ideally, you want to make sure to only test the responsibility of the component and not the one of the components it calls. There are several reasons for this:
 
 - With jest, we test our components in a unitary way, so they must be separated from the rest of the code
 - If a component is used in several places and its behavior is tested each time, we have unnecessary duplicates and this creates a waste of time, both in writing these tests and in launching them
