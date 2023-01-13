@@ -5,7 +5,7 @@ import {
   MINIMUM_DATE,
   CURRENT_DATE,
   DEFAULT_SELECTED_DATE,
-} from 'features/auth/signup/SetBirthday/utils/fixtures'
+} from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils/web'
 import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
 

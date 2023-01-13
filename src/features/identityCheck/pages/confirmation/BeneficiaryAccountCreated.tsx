@@ -8,7 +8,7 @@ import {
   StyledSubtitle,
   StyledBody,
   ButtonContainer,
-} from 'features/auth/signup/underageSignup/notificationPagesStyles'
+} from 'features/auth/pages/signup/underageSignup/notificationPagesStyles'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,

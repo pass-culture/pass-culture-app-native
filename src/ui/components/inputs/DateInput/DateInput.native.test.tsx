@@ -5,7 +5,7 @@ import {
   MINIMUM_DATE,
   CURRENT_DATE,
   DEFAULT_SELECTED_DATE,
-} from 'features/auth/signup/SetBirthday/utils/fixtures'
+} from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
 import { render } from 'tests/utils'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 

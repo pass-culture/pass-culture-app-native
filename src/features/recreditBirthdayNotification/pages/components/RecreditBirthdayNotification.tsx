@@ -8,7 +8,7 @@ import {
   StyledSubtitle,
   StyledBody,
   ButtonContainer,
-} from 'features/auth/signup/underageSignup/notificationPagesStyles'
+} from 'features/auth/pages/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'

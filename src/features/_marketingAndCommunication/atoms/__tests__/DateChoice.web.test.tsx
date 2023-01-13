@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
-import { CURRENT_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { CURRENT_DATE } from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils/web'
 
 const onChange = jest.fn()

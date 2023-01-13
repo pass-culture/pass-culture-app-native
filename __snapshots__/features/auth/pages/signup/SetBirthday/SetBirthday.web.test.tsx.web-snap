@@ -1,0 +1,5229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SetBirthday /> no touch device should render correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": .c8 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c8:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c8:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c8:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c9:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 500px;
+}
+
+.c1 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c2 {
+  width: 100%;
+  position: relative;
+}
+
+.c5 {
+  padding-right: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  width: 16px;
+  pointer-events: none;
+}
+
+.c3 {
+  font-family: Montserrat-Italic;
+  font-size: 15px;
+  line-height: 20px;
+  color: #696A6F;
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 40px;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: solid 1px #696A6F;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3:focus-visible,
+.c3:active {
+  border-color: #eb0055;
+}
+
+.c6 {
+  font-family: Montserrat-Italic;
+  font-size: 15px;
+  line-height: 20px;
+  color: #696A6F;
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 40px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: solid 1px #696A6F;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6:focus-visible,
+.c6:active {
+  border-color: #eb0055;
+}
+
+.c7 {
+  font-family: Montserrat-Italic;
+  font-size: 15px;
+  line-height: 20px;
+  color: #696A6F;
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 40px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  border: solid 1px #696A6F;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c7:focus-visible,
+.c7:active {
+  border-color: #eb0055;
+}
+
+.c4 {
+  font-family: 'Arial',sans-serif;
+}
+
+<body>
+    <div>
+      <form
+        class="c0"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+          >
+            <div
+              class="css-view-175oi2r r-paddingRight-i023vh"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                dir="ltr"
+              >
+                Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-1472mwg"
+          />
+          <div
+            aria-describedby="testUuidV4"
+            class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            data-testid="date-picker-dropdown"
+          >
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              >
+                <label
+                  class="c1"
+                  for="testUuidV4"
+                >
+                  Jour
+                </label>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="c2"
+                >
+                  <select
+                    aria-label="Entrée pour le jour de la date de naissance"
+                    class="c3"
+                    data-testid="select-Jour"
+                    id="testUuidV4"
+                  >
+                    <option
+                      class="c4"
+                      value=""
+                    >
+                      JJ
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1"
+                    >
+                      1
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2"
+                    >
+                      2
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="3"
+                    >
+                      3
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="4"
+                    >
+                      4
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="5"
+                    >
+                      5
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="6"
+                    >
+                      6
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="7"
+                    >
+                      7
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="8"
+                    >
+                      8
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="9"
+                    >
+                      9
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="10"
+                    >
+                      10
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="11"
+                    >
+                      11
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="12"
+                    >
+                      12
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="13"
+                    >
+                      13
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="14"
+                    >
+                      14
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="15"
+                    >
+                      15
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="16"
+                    >
+                      16
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="17"
+                    >
+                      17
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="18"
+                    >
+                      18
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="19"
+                    >
+                      19
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="20"
+                    >
+                      20
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="21"
+                    >
+                      21
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="22"
+                    >
+                      22
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="23"
+                    >
+                      23
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="24"
+                    >
+                      24
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="25"
+                    >
+                      25
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="26"
+                    >
+                      26
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="27"
+                    >
+                      27
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="28"
+                    >
+                      28
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="29"
+                    >
+                      29
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="30"
+                    >
+                      30
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="31"
+                    >
+                      31
+                    </option>
+                  </select>
+                  <div
+                    class="c5"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-width-1jg9483"
+            />
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              >
+                <label
+                  class="c1"
+                  for="testUuidV4"
+                >
+                  Mois
+                </label>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="c2"
+                >
+                  <select
+                    aria-label="Entrée pour le mois de la date de naissance"
+                    class="c6"
+                    data-testid="select-Mois"
+                    id="testUuidV4"
+                  >
+                    <option
+                      class="c4"
+                      value=""
+                    >
+                      MM
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Janvier"
+                    >
+                      Janvier
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Février"
+                    >
+                      Février
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Mars"
+                    >
+                      Mars
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Avril"
+                    >
+                      Avril
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Mai"
+                    >
+                      Mai
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Juin"
+                    >
+                      Juin
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Juillet"
+                    >
+                      Juillet
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Août"
+                    >
+                      Août
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Septembre"
+                    >
+                      Septembre
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Octobre"
+                    >
+                      Octobre
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Novembre"
+                    >
+                      Novembre
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="Décembre"
+                    >
+                      Décembre
+                    </option>
+                  </select>
+                  <div
+                    class="c5"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-width-1jg9483"
+            />
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              >
+                <label
+                  class="c1"
+                  for="testUuidV4"
+                >
+                  Année
+                </label>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="c2"
+                >
+                  <select
+                    aria-label="Entrée pour l'année de la date de naissance"
+                    class="c7"
+                    data-testid="select-Année"
+                    id="testUuidV4"
+                  >
+                    <option
+                      class="c4"
+                      value=""
+                    >
+                      AAAA
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2006"
+                    >
+                      2006
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2005"
+                    >
+                      2005
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2004"
+                    >
+                      2004
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2003"
+                    >
+                      2003
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2002"
+                    >
+                      2002
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2001"
+                    >
+                      2001
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="2000"
+                    >
+                      2000
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1999"
+                    >
+                      1999
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1998"
+                    >
+                      1998
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1997"
+                    >
+                      1997
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1996"
+                    >
+                      1996
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1995"
+                    >
+                      1995
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1994"
+                    >
+                      1994
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1993"
+                    >
+                      1993
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1992"
+                    >
+                      1992
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1991"
+                    >
+                      1991
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1990"
+                    >
+                      1990
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1989"
+                    >
+                      1989
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1988"
+                    >
+                      1988
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1987"
+                    >
+                      1987
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1986"
+                    >
+                      1986
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1985"
+                    >
+                      1985
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1984"
+                    >
+                      1984
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1983"
+                    >
+                      1983
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1982"
+                    >
+                      1982
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1981"
+                    >
+                      1981
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1980"
+                    >
+                      1980
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1979"
+                    >
+                      1979
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1978"
+                    >
+                      1978
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1977"
+                    >
+                      1977
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1976"
+                    >
+                      1976
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1975"
+                    >
+                      1975
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1974"
+                    >
+                      1974
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1973"
+                    >
+                      1973
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1972"
+                    >
+                      1972
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1971"
+                    >
+                      1971
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1970"
+                    >
+                      1970
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1969"
+                    >
+                      1969
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1968"
+                    >
+                      1968
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1967"
+                    >
+                      1967
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1966"
+                    >
+                      1966
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1965"
+                    >
+                      1965
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1964"
+                    >
+                      1964
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1963"
+                    >
+                      1963
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1962"
+                    >
+                      1962
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1961"
+                    >
+                      1961
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1960"
+                    >
+                      1960
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1959"
+                    >
+                      1959
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1958"
+                    >
+                      1958
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1957"
+                    >
+                      1957
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1956"
+                    >
+                      1956
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1955"
+                    >
+                      1955
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1954"
+                    >
+                      1954
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1953"
+                    >
+                      1953
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1952"
+                    >
+                      1952
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1951"
+                    >
+                      1951
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1950"
+                    >
+                      1950
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1949"
+                    >
+                      1949
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1948"
+                    >
+                      1948
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1947"
+                    >
+                      1947
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1946"
+                    >
+                      1946
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1945"
+                    >
+                      1945
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1944"
+                    >
+                      1944
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1943"
+                    >
+                      1943
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1942"
+                    >
+                      1942
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1941"
+                    >
+                      1941
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1940"
+                    >
+                      1940
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1939"
+                    >
+                      1939
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1938"
+                    >
+                      1938
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1937"
+                    >
+                      1937
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1936"
+                    >
+                      1936
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1935"
+                    >
+                      1935
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1934"
+                    >
+                      1934
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1933"
+                    >
+                      1933
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1932"
+                    >
+                      1932
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1931"
+                    >
+                      1931
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1930"
+                    >
+                      1930
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1929"
+                    >
+                      1929
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1928"
+                    >
+                      1928
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1927"
+                    >
+                      1927
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1926"
+                    >
+                      1926
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1925"
+                    >
+                      1925
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1924"
+                    >
+                      1924
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1923"
+                    >
+                      1923
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1922"
+                    >
+                      1922
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1921"
+                    >
+                      1921
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1920"
+                    >
+                      1920
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1919"
+                    >
+                      1919
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1918"
+                    >
+                      1918
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1917"
+                    >
+                      1917
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1916"
+                    >
+                      1916
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1915"
+                    >
+                      1915
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1914"
+                    >
+                      1914
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1913"
+                    >
+                      1913
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1912"
+                    >
+                      1912
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1911"
+                    >
+                      1911
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1910"
+                    >
+                      1910
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1909"
+                    >
+                      1909
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1908"
+                    >
+                      1908
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1907"
+                    >
+                      1907
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1906"
+                    >
+                      1906
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1905"
+                    >
+                      1905
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1904"
+                    >
+                      1904
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1903"
+                    >
+                      1903
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1902"
+                    >
+                      1902
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1901"
+                    >
+                      1901
+                    </option>
+                    <option
+                      class="c4"
+                      data-testid="select-option"
+                      value="1900"
+                    >
+                      1900
+                    </option>
+                  </select>
+                  <div
+                    class="c5"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="testUuidV4"
+            role="alert"
+          />
+          <div
+            class="css-view-175oi2r r-height-10ptun7"
+          />
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+          <button
+            aria-label="Continuer"
+            class="c8 c9"
+            data-testid="Continuer"
+            disabled=""
+            type="button"
+          >
+            <div
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+              dir="ltr"
+            >
+              Continuer
+            </div>
+          </button>
+          <div
+            class="css-view-175oi2r r-height-z80fyv"
+          />
+        </div>
+      </form>
+    </div>
+  </body>,
+  "container": .c8 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c8:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c8:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c8:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c9:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 500px;
+}
+
+.c1 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c2 {
+  width: 100%;
+  position: relative;
+}
+
+.c5 {
+  padding-right: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  width: 16px;
+  pointer-events: none;
+}
+
+.c3 {
+  font-family: Montserrat-Italic;
+  font-size: 15px;
+  line-height: 20px;
+  color: #696A6F;
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 40px;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: solid 1px #696A6F;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c3:focus-visible,
+.c3:active {
+  border-color: #eb0055;
+}
+
+.c6 {
+  font-family: Montserrat-Italic;
+  font-size: 15px;
+  line-height: 20px;
+  color: #696A6F;
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 40px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: solid 1px #696A6F;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6:focus-visible,
+.c6:active {
+  border-color: #eb0055;
+}
+
+.c7 {
+  font-family: Montserrat-Italic;
+  font-size: 15px;
+  line-height: 20px;
+  color: #696A6F;
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 40px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  border: solid 1px #696A6F;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c7:focus-visible,
+.c7:active {
+  border-color: #eb0055;
+}
+
+.c4 {
+  font-family: 'Arial',sans-serif;
+}
+
+<div>
+    <form
+      class="c0"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        >
+          <div
+            class="css-view-175oi2r r-paddingRight-i023vh"
+          >
+            <div
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          >
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+              dir="ltr"
+            >
+              Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <div
+          aria-describedby="testUuidV4"
+          class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          data-testid="date-picker-dropdown"
+        >
+          <div
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            >
+              <label
+                class="c1"
+                for="testUuidV4"
+              >
+                Jour
+              </label>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+              <div
+                class="c2"
+              >
+                <select
+                  aria-label="Entrée pour le jour de la date de naissance"
+                  class="c3"
+                  data-testid="select-Jour"
+                  id="testUuidV4"
+                >
+                  <option
+                    class="c4"
+                    value=""
+                  >
+                    JJ
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="3"
+                  >
+                    3
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="4"
+                  >
+                    4
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="5"
+                  >
+                    5
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="6"
+                  >
+                    6
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="7"
+                  >
+                    7
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="8"
+                  >
+                    8
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="9"
+                  >
+                    9
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="10"
+                  >
+                    10
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="11"
+                  >
+                    11
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="12"
+                  >
+                    12
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="13"
+                  >
+                    13
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="14"
+                  >
+                    14
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="15"
+                  >
+                    15
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="16"
+                  >
+                    16
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="17"
+                  >
+                    17
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="18"
+                  >
+                    18
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="19"
+                  >
+                    19
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="20"
+                  >
+                    20
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="21"
+                  >
+                    21
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="22"
+                  >
+                    22
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="23"
+                  >
+                    23
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="24"
+                  >
+                    24
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="25"
+                  >
+                    25
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="26"
+                  >
+                    26
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="27"
+                  >
+                    27
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="28"
+                  >
+                    28
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="29"
+                  >
+                    29
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="30"
+                  >
+                    30
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="31"
+                  >
+                    31
+                  </option>
+                </select>
+                <div
+                  class="c5"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-width-1jg9483"
+          />
+          <div
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            >
+              <label
+                class="c1"
+                for="testUuidV4"
+              >
+                Mois
+              </label>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+              <div
+                class="c2"
+              >
+                <select
+                  aria-label="Entrée pour le mois de la date de naissance"
+                  class="c6"
+                  data-testid="select-Mois"
+                  id="testUuidV4"
+                >
+                  <option
+                    class="c4"
+                    value=""
+                  >
+                    MM
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Janvier"
+                  >
+                    Janvier
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Février"
+                  >
+                    Février
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Mars"
+                  >
+                    Mars
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Avril"
+                  >
+                    Avril
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Mai"
+                  >
+                    Mai
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Juin"
+                  >
+                    Juin
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Juillet"
+                  >
+                    Juillet
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Août"
+                  >
+                    Août
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Septembre"
+                  >
+                    Septembre
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Octobre"
+                  >
+                    Octobre
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Novembre"
+                  >
+                    Novembre
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="Décembre"
+                  >
+                    Décembre
+                  </option>
+                </select>
+                <div
+                  class="c5"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-width-1jg9483"
+          />
+          <div
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            >
+              <label
+                class="c1"
+                for="testUuidV4"
+              >
+                Année
+              </label>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+              <div
+                class="c2"
+              >
+                <select
+                  aria-label="Entrée pour l'année de la date de naissance"
+                  class="c7"
+                  data-testid="select-Année"
+                  id="testUuidV4"
+                >
+                  <option
+                    class="c4"
+                    value=""
+                  >
+                    AAAA
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2006"
+                  >
+                    2006
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2005"
+                  >
+                    2005
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2004"
+                  >
+                    2004
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2003"
+                  >
+                    2003
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2002"
+                  >
+                    2002
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2001"
+                  >
+                    2001
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="2000"
+                  >
+                    2000
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1999"
+                  >
+                    1999
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1998"
+                  >
+                    1998
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1997"
+                  >
+                    1997
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1996"
+                  >
+                    1996
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1995"
+                  >
+                    1995
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1994"
+                  >
+                    1994
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1993"
+                  >
+                    1993
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1992"
+                  >
+                    1992
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1991"
+                  >
+                    1991
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1990"
+                  >
+                    1990
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1989"
+                  >
+                    1989
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1988"
+                  >
+                    1988
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1987"
+                  >
+                    1987
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1986"
+                  >
+                    1986
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1985"
+                  >
+                    1985
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1984"
+                  >
+                    1984
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1983"
+                  >
+                    1983
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1982"
+                  >
+                    1982
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1981"
+                  >
+                    1981
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1980"
+                  >
+                    1980
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1979"
+                  >
+                    1979
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1978"
+                  >
+                    1978
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1977"
+                  >
+                    1977
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1976"
+                  >
+                    1976
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1975"
+                  >
+                    1975
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1974"
+                  >
+                    1974
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1973"
+                  >
+                    1973
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1972"
+                  >
+                    1972
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1971"
+                  >
+                    1971
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1970"
+                  >
+                    1970
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1969"
+                  >
+                    1969
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1968"
+                  >
+                    1968
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1967"
+                  >
+                    1967
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1966"
+                  >
+                    1966
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1965"
+                  >
+                    1965
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1964"
+                  >
+                    1964
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1963"
+                  >
+                    1963
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1962"
+                  >
+                    1962
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1961"
+                  >
+                    1961
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1960"
+                  >
+                    1960
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1959"
+                  >
+                    1959
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1958"
+                  >
+                    1958
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1957"
+                  >
+                    1957
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1956"
+                  >
+                    1956
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1955"
+                  >
+                    1955
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1954"
+                  >
+                    1954
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1953"
+                  >
+                    1953
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1952"
+                  >
+                    1952
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1951"
+                  >
+                    1951
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1950"
+                  >
+                    1950
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1949"
+                  >
+                    1949
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1948"
+                  >
+                    1948
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1947"
+                  >
+                    1947
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1946"
+                  >
+                    1946
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1945"
+                  >
+                    1945
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1944"
+                  >
+                    1944
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1943"
+                  >
+                    1943
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1942"
+                  >
+                    1942
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1941"
+                  >
+                    1941
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1940"
+                  >
+                    1940
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1939"
+                  >
+                    1939
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1938"
+                  >
+                    1938
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1937"
+                  >
+                    1937
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1936"
+                  >
+                    1936
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1935"
+                  >
+                    1935
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1934"
+                  >
+                    1934
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1933"
+                  >
+                    1933
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1932"
+                  >
+                    1932
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1931"
+                  >
+                    1931
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1930"
+                  >
+                    1930
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1929"
+                  >
+                    1929
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1928"
+                  >
+                    1928
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1927"
+                  >
+                    1927
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1926"
+                  >
+                    1926
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1925"
+                  >
+                    1925
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1924"
+                  >
+                    1924
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1923"
+                  >
+                    1923
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1922"
+                  >
+                    1922
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1921"
+                  >
+                    1921
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1920"
+                  >
+                    1920
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1919"
+                  >
+                    1919
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1918"
+                  >
+                    1918
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1917"
+                  >
+                    1917
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1916"
+                  >
+                    1916
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1915"
+                  >
+                    1915
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1914"
+                  >
+                    1914
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1913"
+                  >
+                    1913
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1912"
+                  >
+                    1912
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1911"
+                  >
+                    1911
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1910"
+                  >
+                    1910
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1909"
+                  >
+                    1909
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1908"
+                  >
+                    1908
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1907"
+                  >
+                    1907
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1906"
+                  >
+                    1906
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1905"
+                  >
+                    1905
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1904"
+                  >
+                    1904
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1903"
+                  >
+                    1903
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1902"
+                  >
+                    1902
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1901"
+                  >
+                    1901
+                  </option>
+                  <option
+                    class="c4"
+                    data-testid="select-option"
+                    value="1900"
+                  >
+                    1900
+                  </option>
+                </select>
+                <div
+                  class="c5"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="testUuidV4"
+          role="alert"
+        />
+        <div
+          class="css-view-175oi2r r-height-10ptun7"
+        />
+        <div
+          class="css-view-175oi2r r-height-3da1kt"
+        />
+        <button
+          aria-label="Continuer"
+          class="c8 c9"
+          data-testid="Continuer"
+          disabled=""
+          type="button"
+        >
+          <div
+            class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+            dir="ltr"
+          >
+            Continuer
+          </div>
+        </button>
+        <div
+          class="css-view-175oi2r r-height-z80fyv"
+        />
+      </div>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`<SetBirthday /> touch device should render correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 500px;
+}
+
+.c1 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+<body>
+    <div>
+      <form
+        class="c0"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+          >
+            <div
+              class="css-view-175oi2r r-paddingRight-i023vh"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                dir="ltr"
+              >
+                Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-1472mwg"
+          />
+          <div
+            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+            >
+              <label
+                class="c1"
+                for="testUuidV4"
+              >
+                Date de naissance
+              </label>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-3da1kt"
+            />
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-16uyjmq r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
+              data-testid="styled-input-container"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir="ltr"
+                id="testUuidV4"
+              >
+                1 décembre 2006
+              </div>
+            </div>
+          </div>
+          <div
+            id="testUuidV4"
+            role="alert"
+          />
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
+            data-testid="date-picker-spinner-touch"
+          >
+            <div
+              class="picker-container"
+              style="height: 216px;"
+            >
+              <div
+                class="picker-inner"
+              >
+                <div
+                  class="picker-column"
+                >
+                  <div
+                    class="picker-scroller"
+                    style="transform: translate3d(0, 90px, 0);"
+                  >
+                    <div
+                      class="picker-item picker-item-selected"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      3
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      4
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      5
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      6
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      7
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      8
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      9
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      10
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      11
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      12
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      13
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      14
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      15
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      16
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      17
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      18
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      19
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      20
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      21
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      22
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      23
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      24
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      25
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      26
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      27
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      28
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      29
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      30
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      31
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="picker-column"
+                >
+                  <div
+                    class="picker-scroller"
+                    style="transform: translate3d(0, -306px, 0);"
+                  >
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Janv.
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Févr.
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Mars
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Avril
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Mai
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Juin
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Juil.
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Août
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Sept.
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Oct.
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Nov.
+                    </div>
+                    <div
+                      class="picker-item picker-item-selected"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      Déc.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="picker-column"
+                >
+                  <div
+                    class="picker-scroller"
+                    style="transform: translate3d(0, 90px, 0);"
+                  >
+                    <div
+                      class="picker-item picker-item-selected"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2006
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2005
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2004
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2003
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2002
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2001
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      2000
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1999
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1998
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1997
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1996
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1995
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1994
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1993
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1992
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1991
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1990
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1989
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1988
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1987
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1986
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1985
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1984
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1983
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1982
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1981
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1980
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1979
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1978
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1977
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1976
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1975
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1974
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1973
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1972
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1971
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1970
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1969
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1968
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1967
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1966
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1965
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1964
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1963
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1962
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1961
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1960
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1959
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1958
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1957
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1956
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1955
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1954
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1953
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1952
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1951
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1950
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1949
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1948
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1947
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1946
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1945
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1944
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1943
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1942
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1941
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1940
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1939
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1938
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1937
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1936
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1935
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1934
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1933
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1932
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1931
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1930
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1929
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1928
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1927
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1926
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1925
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1924
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1923
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1922
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1921
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1920
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1919
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1918
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1917
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1916
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1915
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1914
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1913
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1912
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1911
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1910
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1909
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1908
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1907
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1906
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1905
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1904
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1903
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1902
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1901
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      1900
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="picker-highlight"
+                  style="height: 36px; margin-top: -18px;"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+          <button
+            aria-label="Continuer"
+            class="c2 c3"
+            data-testid="Continuer"
+            disabled=""
+            type="button"
+          >
+            <div
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+              dir="ltr"
+            >
+              Continuer
+            </div>
+          </button>
+          <div
+            class="css-view-175oi2r r-height-z80fyv"
+          />
+        </div>
+      </form>
+    </div>
+  </body>,
+  "container": .c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #F1F1F4;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 500px;
+}
+
+.c1 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+<div>
+    <form
+      class="c0"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+        >
+          <div
+            class="css-view-175oi2r r-paddingRight-i023vh"
+          >
+            <div
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          >
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+              dir="ltr"
+            >
+              Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <div
+          class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+          >
+            <label
+              class="c1"
+              for="testUuidV4"
+            >
+              Date de naissance
+            </label>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-16uyjmq r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
+            data-testid="styled-input-container"
+          >
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+              dir="ltr"
+              id="testUuidV4"
+            >
+              1 décembre 2006
+            </div>
+          </div>
+        </div>
+        <div
+          id="testUuidV4"
+          role="alert"
+        />
+        <div
+          class="css-view-175oi2r r-height-3da1kt"
+        />
+        <div
+          class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
+          data-testid="date-picker-spinner-touch"
+        >
+          <div
+            class="picker-container"
+            style="height: 216px;"
+          >
+            <div
+              class="picker-inner"
+            >
+              <div
+                class="picker-column"
+              >
+                <div
+                  class="picker-scroller"
+                  style="transform: translate3d(0, 90px, 0);"
+                >
+                  <div
+                    class="picker-item picker-item-selected"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    3
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    4
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    5
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    6
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    7
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    8
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    9
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    10
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    11
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    12
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    13
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    14
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    15
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    16
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    17
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    18
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    19
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    20
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    21
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    22
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    23
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    24
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    25
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    26
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    27
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    28
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    29
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    30
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    31
+                  </div>
+                </div>
+              </div>
+              <div
+                class="picker-column"
+              >
+                <div
+                  class="picker-scroller"
+                  style="transform: translate3d(0, -306px, 0);"
+                >
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Janv.
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Févr.
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Mars
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Avril
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Mai
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Juin
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Juil.
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Août
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Sept.
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Oct.
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Nov.
+                  </div>
+                  <div
+                    class="picker-item picker-item-selected"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    Déc.
+                  </div>
+                </div>
+              </div>
+              <div
+                class="picker-column"
+              >
+                <div
+                  class="picker-scroller"
+                  style="transform: translate3d(0, 90px, 0);"
+                >
+                  <div
+                    class="picker-item picker-item-selected"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2006
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2005
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2004
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2003
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2002
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2001
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    2000
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1999
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1998
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1997
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1996
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1995
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1994
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1993
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1992
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1991
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1990
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1989
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1988
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1987
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1986
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1985
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1984
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1983
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1982
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1981
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1980
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1979
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1978
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1977
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1976
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1975
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1974
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1973
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1972
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1971
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1970
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1969
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1968
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1967
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1966
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1965
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1964
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1963
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1962
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1961
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1960
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1959
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1958
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1957
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1956
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1955
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1954
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1953
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1952
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1951
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1950
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1949
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1948
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1947
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1946
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1945
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1944
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1943
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1942
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1941
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1940
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1939
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1938
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1937
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1936
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1935
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1934
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1933
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1932
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1931
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1930
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1929
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1928
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1927
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1926
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1925
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1924
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1923
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1922
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1921
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1920
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1919
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1918
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1917
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1916
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1915
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1914
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1913
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1912
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1911
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1910
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1909
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1908
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1907
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1906
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1905
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1904
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1903
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1902
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1901
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    1900
+                  </div>
+                </div>
+              </div>
+              <div
+                class="picker-highlight"
+                style="height: 36px; margin-top: -18px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-3da1kt"
+        />
+        <button
+          aria-label="Continuer"
+          class="c2 c3"
+          data-testid="Continuer"
+          disabled=""
+          type="button"
+        >
+          <div
+            class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+            dir="ltr"
+          >
+            Continuer
+          </div>
+        </button>
+        <div
+          class="css-view-175oi2r r-height-z80fyv"
+        />
+      </div>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { StyledBody } from 'features/auth/signup/underageSignup/notificationPagesStyles'
+import { StyledBody } from 'features/auth/pages/signup/underageSignup/notificationPagesStyles'
 import { openUrl } from 'features/navigation/helpers'
 import { getModalInfoForNonEligible } from 'features/onboarding/helpers/getModalInfoForNonEligible'
 import { NonEligible } from 'features/onboarding/types'

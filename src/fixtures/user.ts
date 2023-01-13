@@ -7,7 +7,7 @@ import {
   UserRole,
   YoungStatusType,
 } from 'api/gen'
-import { EIGHTEEN_AGE_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { EIGHTEEN_AGE_DATE } from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
 
 export const nonBeneficiaryUser: UserProfileResponse = {
   bookedOffers: {},

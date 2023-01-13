@@ -1,6 +1,6 @@
 import mockDate from 'mockdate'
 
-import { CURRENT_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { CURRENT_DATE } from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
 import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
 
 mockDate.set(CURRENT_DATE)
