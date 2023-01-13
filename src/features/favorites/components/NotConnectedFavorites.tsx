@@ -51,8 +51,6 @@ export const NotConnectedFavorites = () => {
 }
 
 const StyledUserFavorite = styled(BicolorUserFavorite).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  color2: theme.colors.white,
   size: theme.illustrations.sizes.fullPage,
 }))``
 
