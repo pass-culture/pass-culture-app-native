@@ -6,10 +6,9 @@ describe('getNavigateToThematicHomeConfig', () => {
 
     expect(navigateTo).toEqual({
       params: {
-        params: { entryId: 'entry-id' },
-        screen: 'Home',
+        homeId: 'entry-id',
       },
-      screen: 'TabNavigator',
+      screen: 'ThematicHome',
     })
   })
 })
