@@ -4,8 +4,8 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { render, fireEvent } from 'tests/utils'
@@ -14,13 +14,13 @@ import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 const mockedUseSettingsContext = useSettingsContext as jest.MockedFunction<
   typeof useSettingsContext
 >
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 describe('<BeneficiaryRequestSent />', () => {
   it('should render correctly', () => {

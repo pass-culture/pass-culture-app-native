@@ -6,8 +6,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { AccountState } from 'api/gen'
-import { useSignIn, SignInResponseFailure } from 'features/auth/api'
+import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { SignInResponseFailure } from 'features/auth/types'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,

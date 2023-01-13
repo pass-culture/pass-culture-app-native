@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { analytics } from 'libs/firebase/analytics'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { render, fireEvent } from 'tests/utils'
@@ -8,7 +8,7 @@ import { render, fireEvent } from 'tests/utils'
 import { BookingEventChoices } from './BookingEventChoices'
 
 jest.mock('react-query')
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 const mockUseBooking = useBooking as jest.Mock
 const mockUseBookingOffer = useBookingOffer as jest.Mock

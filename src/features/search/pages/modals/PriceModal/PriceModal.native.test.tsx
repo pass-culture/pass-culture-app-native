@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
@@ -22,7 +22,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockedUseAuthContext = useAuthContext as jest.Mock
 mockedUseAuthContext.mockReturnValue({
   isLoggedIn: true,

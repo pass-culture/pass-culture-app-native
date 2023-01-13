@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BusinessModule } from 'features/home/components'
 import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
@@ -11,7 +11,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessModuleProps } from './BusinessModule'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockShowInfoSnackBar = jest.fn()

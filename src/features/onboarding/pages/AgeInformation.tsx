@@ -4,7 +4,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
+import { useDepositAmountsByAge } from 'features/auth/api/useDepositAmountsByAge'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import {
   OnboardingRootStackParamList,

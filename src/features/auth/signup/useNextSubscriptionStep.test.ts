@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 import { IdentityCheckMethod, NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -10,7 +10,7 @@ import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 const setError = jest.fn()
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]

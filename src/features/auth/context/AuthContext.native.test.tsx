@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { AuthWrapper, useAuthContext } from 'features/auth/AuthContext'
 import { CURRENT_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { beneficiaryUser } from 'fixtures/user'
 import { amplitude } from 'libs/amplitude'
@@ -11,6 +10,8 @@ import { QueryKeys } from 'libs/queryKeys'
 import { storage, StorageKey } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
+
+import { AuthWrapper, useAuthContext } from './AuthContext'
 
 mockdate.set(CURRENT_DATE)
 

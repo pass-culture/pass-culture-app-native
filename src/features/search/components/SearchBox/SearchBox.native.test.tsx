@@ -59,7 +59,7 @@ jest.mock('react-instantsearch-hooks', () => ({
 }))
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 

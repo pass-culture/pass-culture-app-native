@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
@@ -15,14 +15,14 @@ import { AccountCreated } from './AccountCreated'
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockSettings = {
   enableNativeCulturalSurvey: false,
 }
 
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => ({
     data: mockSettings,
   })),

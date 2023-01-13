@@ -2,7 +2,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { AuthContext } from 'features/auth/AuthContext'
+import { AuthContext } from 'features/auth/context/AuthContext'
 import { contactSupport } from 'features/auth/support.services'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
@@ -13,7 +13,7 @@ import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
 
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 

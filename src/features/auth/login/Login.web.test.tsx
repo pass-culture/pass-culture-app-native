@@ -2,10 +2,9 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { AuthContext } from 'features/auth/context/AuthContext'
 import { render } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
-
-import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 

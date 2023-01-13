@@ -5,14 +5,13 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
+import { AuthContext } from 'features/auth/context/AuthContext'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
 import { fireEvent, render, act, waitFor } from 'tests/utils'
-
-import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 
@@ -33,7 +32,7 @@ const mockSettings = {
   enableNativeCulturalSurvey: false,
 }
 
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => ({
     data: mockSettings,
   })),

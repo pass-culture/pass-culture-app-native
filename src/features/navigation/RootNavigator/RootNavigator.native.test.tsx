@@ -13,7 +13,7 @@ const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
 
 jest.mock('features/forceUpdate/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))

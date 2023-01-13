@@ -2,7 +2,7 @@ import omit from 'lodash/omit'
 import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { Homepage } from 'features/home/types'

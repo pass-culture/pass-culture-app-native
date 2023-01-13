@@ -3,8 +3,8 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { act, render, waitFor } from 'tests/utils'
@@ -19,12 +19,12 @@ function mockUseCurrentRoute(name: string) {
   mockedUseCurrentRoute.mockReturnValue({ name, key: 'key' })
 }
 
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 const mockedUseSettingsContext = useSettingsContext as jest.MockedFunction<
   typeof useSettingsContext
 >
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 const DEFAULT_USER = {

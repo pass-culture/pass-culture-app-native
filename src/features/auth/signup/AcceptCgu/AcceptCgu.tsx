@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'

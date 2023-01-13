@@ -10,13 +10,13 @@ import { fireEvent, render } from 'tests/utils'
 const hideModalMock = jest.fn()
 const mockDispatch = jest.fn()
 
-jest.mock('features/auth/api')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
     dispatch: mockDispatch,
     ...mockState,
   })),
 }))
+
 jest.mock('libs/firebase/firestore/ubbleETAMessage', () => ({
   useUbbleETAMessage: jest.fn(() => ({ data: 'Environ 3 heures' })),
 }))

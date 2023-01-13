@@ -1,14 +1,14 @@
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
 import { renderHook } from 'tests/utils'
 
 jest.mock('libs/environment')
 jest.mock('react-native', () => ({ useWindowDimensions: jest.fn() }))
 jest.mock('styled-components/native')
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 
 const mockUseWindowDimensions = useWindowDimensions as jest.Mock
 mockUseWindowDimensions.mockReturnValue({ scale: 1 })

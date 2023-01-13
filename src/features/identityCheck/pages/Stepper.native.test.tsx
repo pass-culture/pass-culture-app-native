@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -32,7 +32,7 @@ let mockUserProfileData: Partial<UserProfileResponse> = {
   domainsCredit: { all: { initial: 3000, remaining: 3000 } },
 }
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

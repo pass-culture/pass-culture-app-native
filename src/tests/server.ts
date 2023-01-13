@@ -18,7 +18,7 @@ import {
   ValidateEmailResponse,
   VenueResponse,
 } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/__mocks__/SettingsContext'
+import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'

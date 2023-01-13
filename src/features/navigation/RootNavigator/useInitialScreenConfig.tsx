@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { api } from 'api/api'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,

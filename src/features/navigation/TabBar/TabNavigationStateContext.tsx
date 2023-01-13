@@ -1,6 +1,6 @@
 import React, { createContext, useContext, memo, useState, useMemo } from 'react'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 
 import { getShouldDisplayTab } from './helpers'

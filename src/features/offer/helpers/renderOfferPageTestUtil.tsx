@@ -4,7 +4,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -21,7 +21,7 @@ jest.mock('@react-navigation/native', () => ({
 }))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 jest.mock('libs/itinerary/useItinerary', () => ({

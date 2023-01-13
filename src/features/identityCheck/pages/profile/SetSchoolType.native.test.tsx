@@ -8,7 +8,6 @@ import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolTyp
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-jest.mock('features/auth/api')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),

@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { FavoritesCountResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { STALE_TIME_FAVORITES } from 'features/favorites/api/useFavorites'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'

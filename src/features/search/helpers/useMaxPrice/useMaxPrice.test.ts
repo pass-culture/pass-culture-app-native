@@ -1,6 +1,6 @@
 import { mocked } from 'ts-jest/utils'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -9,7 +9,7 @@ import { renderHook } from 'tests/utils'
 jest.mock('features/profile/helpers/isUserExBeneficiary')
 const mockedIsUserExBeneificiary = mocked(isUserExBeneficiary)
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('useMaxPrice when no user', () => {

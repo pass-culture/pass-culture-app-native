@@ -1,4 +1,4 @@
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'

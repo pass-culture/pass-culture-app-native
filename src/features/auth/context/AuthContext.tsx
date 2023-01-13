@@ -18,7 +18,7 @@ import { BatchUser } from 'libs/react-native-batch'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 
-import { version as appVersion } from '../../../package.json'
+import { version as appVersion } from '../../../../package.json'
 
 export interface IAuthContext {
   isLoggedIn: boolean

@@ -9,13 +9,12 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-jest.mock('features/auth/api')
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
-}))
 jest.mock('react-query')
 jest.mock('features/profile/helpers/useIsUserUnderage')
 jest.mock('features/identityCheck/pages/profile/utils')
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
+}))
 
 const mockNavigateToNextScreen = jest.fn()
 let mockIsSavingCheckpoint = false

@@ -24,7 +24,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 }))
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 

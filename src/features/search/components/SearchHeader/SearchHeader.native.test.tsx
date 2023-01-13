@@ -33,7 +33,7 @@ jest.mock('react-instantsearch-hooks', () => ({
   }),
 }))
 
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 

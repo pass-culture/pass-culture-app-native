@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring'

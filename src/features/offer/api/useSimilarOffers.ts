@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { Coordinates } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'

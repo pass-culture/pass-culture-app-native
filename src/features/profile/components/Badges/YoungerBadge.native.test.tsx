@@ -4,8 +4,6 @@ import React from 'react'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { render } from 'tests/utils'
 
-jest.mock('features/auth/api')
-
 mockdate.set(new Date('2021-12-15T00:00:00.000Z'))
 const eligibilityStartDatetime = new Date('2021-12-17T00:00:00.000Z')
 
