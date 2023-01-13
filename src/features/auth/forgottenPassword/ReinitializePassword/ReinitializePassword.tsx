@@ -2,11 +2,11 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import React, { useCallback, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
 import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
-import { useResetPasswordMutation } from 'features/auth/mutations'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { isTimestampExpired } from 'libs/dates'
