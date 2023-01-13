@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -19,11 +19,11 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   const passwordInput = useRef<RNTextInput | null>(null)
   const passwordDescribedBy = uuidv4()
 
-  function submitPassword() {
+  const submitPassword = useCallback(() => {
     if (!disabled) {
       props.goToNextStep({ password })
     }
-  }
+  }, [disabled, password, props])
 
   return (
     <Form.MaxWidth>
