@@ -1,4 +1,4 @@
-import { useDepositAmountsByAge } from 'features/auth/api/useDepositAmountsByAge'
+import { useDepositAmountsByAge } from 'features/auth/helpers/useDepositAmountsByAge'
 import { getAge } from 'features/offer/helpers/getAge/getAge'
 
 export const useGetDepositAmountsByAge = (birthDate?: string | null): string | undefined => {

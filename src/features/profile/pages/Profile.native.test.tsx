@@ -80,7 +80,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
-jest.mock('features/auth/api/useDepositAmountsByAge')
+jest.mock('features/auth/helpers/useDepositAmountsByAge')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ identification: { processing: false } }),

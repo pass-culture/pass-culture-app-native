@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useDepositAmountsByAge } from 'features/auth/api/useDepositAmountsByAge'
+import { useDepositAmountsByAge } from 'features/auth/helpers/useDepositAmountsByAge'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
