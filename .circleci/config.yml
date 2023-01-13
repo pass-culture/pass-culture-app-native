@@ -281,34 +281,6 @@ commands:
     steps:
       - run: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
 
-  setup_staging_secrets:
-    description: Setup staging secrets env variables
-    steps:
-      - run:
-          name: Setup secrets env variables
-          command: |
-            echo "CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING" >> .env.staging
-            echo "CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING" >> .env.staging
-            echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.staging
-
-  setup_integration_secrets:
-    description: Setup integration secrets env variables
-    steps:
-      - run:
-          name: Setup secrets env variables
-          command: |
-            echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.integration
-
-  setup_production_secrets:
-    description: Setup production secrets env variables
-    steps:
-      - run:
-          name: Setup secrets env variables
-          command: |
-            echo "CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_PRODUCTION" >> .env.production
-            echo "CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION" >> .env.production
-            echo "APPS_FLYER_DEV_KEY=$APPS_FLYER_DEV_KEY" >> .env.production
-
   install_cocoapods:
     description: Install cocoapods
     steps:
@@ -620,13 +592,11 @@ jobs:
           name: Deploy Android App for testing environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
       - run:
           name: Deploy IOS App for testing environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
       - run:
           name: Notify failed deploy
@@ -711,7 +681,6 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
-      - setup_staging_secrets
       - setup_sentry
       - run:
           name: Setup iOS Google services config
@@ -733,7 +702,6 @@ jobs:
       - install_node_modules
       - install_ruby_version
       - install_ruby_modules
-      - setup_staging_secrets
       - setup_sentry
       - run:
           name: Setup android keystore for staging environment
@@ -760,19 +728,16 @@ jobs:
       - install_node_modules
       - install_ruby_version
       - install_ruby_modules
-      - setup_staging_secrets
       - setup_sentry
       - run:
           name: Deploy Android Code push for staging environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING
             ./scripts/deploy.sh -o android -t soft -e staging
       - run:
           name: Deploy IOS Code push for staging environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING
             ./scripts/deploy.sh -o ios -t soft -e staging
       - notify-soft-release:
           env: staging
@@ -787,7 +752,6 @@ jobs:
       - install_node_modules
       - install_ruby_version
       - install_ruby_modules
-      - setup_production_secrets
       - setup_sentry
       - run:
           name: Setup production keystore for production environment
@@ -818,7 +782,6 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
-      - setup_production_secrets
       - setup_sentry
       - run:
           name: Setup iOS Google services config
@@ -838,19 +801,16 @@ jobs:
       - install_node_modules
       - install_ruby_version
       - install_ruby_modules
-      - setup_production_secrets
       - setup_sentry
       - run:
           name: Deploy Android Code push for production environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_PRODUCTION_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_PRODUCTION
             ./scripts/deploy.sh -o android -t soft -e production
       - run:
           name: Deploy IOS Code push for production environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION
             ./scripts/deploy.sh -o ios -t soft -e production
       - notify-soft-release:
           env: production
@@ -904,7 +864,6 @@ jobs:
       - copy_assetlinks:
           env: staging
       - install_node_modules
-      - setup_staging_secrets
       - setup_sentry
       - gcp-oidc-authenticate
       - build_web:
@@ -921,7 +880,6 @@ jobs:
     steps:
       - checkout
       - install_node_modules
-      - setup_integration_secrets
       - setup_sentry
       - gcp-oidc-authenticate
       - build_web:
@@ -940,7 +898,6 @@ jobs:
       - copy_assetlinks:
           env: production
       - install_node_modules
-      - setup_production_secrets
       - setup_sentry
       - gcp-oidc-authenticate
       - build_web:
