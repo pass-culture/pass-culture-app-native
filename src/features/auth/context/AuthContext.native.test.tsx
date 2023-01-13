@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { CURRENT_DATE } from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { beneficiaryUser } from 'fixtures/user'
 import { amplitude } from 'libs/amplitude'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'

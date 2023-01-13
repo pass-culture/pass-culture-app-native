@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  MINIMUM_DATE,
-  DEFAULT_SELECTED_DATE,
-} from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
+import { MINIMUM_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
 import { render } from 'tests/utils'
 import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown'
 

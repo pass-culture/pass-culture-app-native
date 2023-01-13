@@ -1,10 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import {
-  DEFAULT_SELECTED_DATE,
-  MINIMUM_DATE,
-} from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
+import { DEFAULT_SELECTED_DATE, MINIMUM_DATE } from 'features/auth/fixtures/fixtures'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
 export default {

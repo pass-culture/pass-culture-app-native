@@ -9,7 +9,7 @@ import {
   FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
   FUTUR_DATE,
   NOT_ELIGIBLE_YOUNGEST_AGE_DATE,
-} from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
+} from 'features/auth/fixtures/fixtures'
 import { analytics } from 'libs/firebase/analytics'
 import { renderHook } from 'tests/utils'
 

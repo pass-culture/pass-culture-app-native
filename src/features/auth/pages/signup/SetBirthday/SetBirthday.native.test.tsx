@@ -5,7 +5,7 @@ import {
   CURRENT_DATE,
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
-} from 'features/auth/pages/signup/SetBirthday/utils/fixtures'
+} from 'features/auth/fixtures/fixtures'
 import { NonEligible } from 'features/onboarding/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
