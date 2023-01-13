@@ -32,10 +32,6 @@ it('should redirect to home page when signin is successful', async () => {
 
 ---
 
-## ToHaveBeenCalled...
-
----
-
 ## Test the responsibility of the components
 
 Ideally, you want to make sure that the tests for a component only test that which is the responsibility of the component. There are several reasons for this:
