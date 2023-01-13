@@ -12,7 +12,7 @@ import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/Cultu
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
-import { CategoryBlock } from 'features/home/types'
+import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
@@ -792,33 +792,6 @@ export const AppComponents: FunctionComponent = () => {
     </React.Fragment>
   )
 }
-
-const categoryBlockList: CategoryBlock[] = [
-  {
-    id: '1',
-    title: 'Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma',
-    image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
-  },
-  {
-    id: '2',
-    title: 'Toto au cinéma',
-    image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
-  },
-  {
-    id: '3',
-    title: 'Martine au cinéma',
-    image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
-  },
-  {
-    id: '4',
-    title: 'Babar au cinéma',
-    image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
-    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
-  },
-]
 
 const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.tertiary,

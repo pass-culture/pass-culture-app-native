@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-import { homepageList } from 'features/home/fixtures/homepageList.fixtures'
+import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { BASE_URL, PARAMS } from 'libs/contentful/fetchHomepageNatifContent'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
