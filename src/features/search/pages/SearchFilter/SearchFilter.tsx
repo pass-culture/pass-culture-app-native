@@ -82,7 +82,7 @@ export const SearchFilter: React.FC = () => {
     <Container>
       <PageHeaderSecondary title="Filtrer" onGoBack={onGoBack} />
       <React.Fragment>
-        <StyledScrollView scrollEnabled>
+        <StyledScrollView scrollEnabled keyboardShouldPersistTaps="always">
           {/* Localisation */}
           <VerticalUl>
             <StyledLi>
