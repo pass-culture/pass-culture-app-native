@@ -25,26 +25,25 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange }: Props) => {
     if (suggestedEmail) onEmailChange(suggestedEmail.full)
   }, [onEmailChange, suggestedEmail])
 
-  if (showBanner)
-    return (
-      <Container>
-        <Spacer.Column numberOfSpaces={2} />
-        <Banner
-          message={`Veux-tu plutôt dire ${suggestedEmail?.address}@${suggestedEmail?.domain}\u00a0?`}>
-          <Spacer.Column numberOfSpaces={2} />
-          <ButtonQuaternarySecondary
-            numberOfLines={2}
-            justifyContent="flex-start"
-            onPress={replaceEmail}
-            icon={PlainArrowNext}
-            wording="Appliquer la modification"
-            inline
-          />
-        </Banner>
-      </Container>
-    )
+  if (!showBanner) return <React.Fragment />
 
-  return <React.Fragment />
+  return (
+    <Container>
+      <Spacer.Column numberOfSpaces={2} />
+      <Banner
+        message={`Veux-tu plutôt dire ${suggestedEmail?.address}@${suggestedEmail?.domain}\u00a0?`}>
+        <Spacer.Column numberOfSpaces={2} />
+        <ButtonQuaternarySecondary
+          numberOfLines={2}
+          justifyContent="flex-start"
+          onPress={replaceEmail}
+          icon={PlainArrowNext}
+          wording="Appliquer la modification"
+          inline
+        />
+      </Banner>
+    </Container>
+  )
 }
 
 const Container = styled.View(({ theme }) => ({
