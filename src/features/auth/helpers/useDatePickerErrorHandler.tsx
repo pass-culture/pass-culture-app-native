@@ -1,10 +1,7 @@
 import { useTheme } from 'styled-components/native'
 
+import { DEFAULT_YOUNGEST_AGE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import {
-  DEFAULT_YOUNGEST_AGE,
-  UNDER_YOUNGEST_AGE,
-} from 'features/auth/pages/signup/SetBirthday/utils/constants'
 import { dateDiffInFullYears } from 'libs/dates'
 import { analytics } from 'libs/firebase/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'

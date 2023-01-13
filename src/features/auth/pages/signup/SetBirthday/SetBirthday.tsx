@@ -1,11 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
 import { useDatePickerErrorHandler } from 'features/auth/helpers/useDatePickerErrorHandler'
-import {
-  MINIMUM_DATE,
-  UNDER_YOUNGEST_AGE,
-} from 'features/auth/pages/signup/SetBirthday/utils/constants'
 import { PreValidationSignupStepProps } from 'features/auth/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
