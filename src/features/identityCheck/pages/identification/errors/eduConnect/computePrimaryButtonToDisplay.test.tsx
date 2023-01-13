@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { contactSupport } from 'features/auth/__mocks__/support.services'
+import { contactSupport } from 'features/auth/helpers/__mocks__/contactSupport'
 import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/computePrimaryButtonToDisplay'
 import { navigateToHomeConfig } from 'features/navigation/helpers/__mocks__'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

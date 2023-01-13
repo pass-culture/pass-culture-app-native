@@ -1,4 +1,4 @@
-import { contactSupport as actualContactSupport } from '../support.services'
+import { contactSupport as actualContactSupport } from '../contactSupport'
 
 export const contactSupport: typeof actualContactSupport = {
   forGenericQuestion: {

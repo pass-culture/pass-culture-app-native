@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'

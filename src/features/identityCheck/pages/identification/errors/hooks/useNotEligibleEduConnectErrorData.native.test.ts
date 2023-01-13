@@ -1,4 +1,4 @@
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import {
   EduConnectErrorMessageEnum,
   useNotEligibleEduConnectErrorData,
@@ -9,7 +9,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
-jest.mock('features/auth/support.services')
+jest.mock('features/auth/helpers/contactSupport')
 
 describe('useNotEligibleEduConnectErrorData', () => {
   const mockSetError = jest.fn()

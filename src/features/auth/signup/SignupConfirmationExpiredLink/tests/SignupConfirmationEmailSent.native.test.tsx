@@ -3,7 +3,7 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { usePreviousRoute, navigateToHome, openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'

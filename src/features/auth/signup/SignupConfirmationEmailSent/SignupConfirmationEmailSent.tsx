@@ -7,7 +7,7 @@ import {
   Description,
   EmailSentModalContent,
 } from 'features/auth/components/signupComponents'
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
