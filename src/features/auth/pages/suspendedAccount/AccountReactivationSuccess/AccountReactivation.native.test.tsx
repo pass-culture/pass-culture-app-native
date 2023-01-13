@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils'
 
-import { AccountReactivationSuccess } from '../AccountReactivationSuccess'
+import { AccountReactivationSuccess } from './AccountReactivationSuccess'
 
 jest.mock('features/navigation/helpers')
 

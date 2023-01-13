@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 import { AccountState } from 'api/gen'
-import { useAccountSuspensionStatus } from 'features/auth/suspendedAccount/SuspensionScreen/useAccountSuspensionStatus'
+import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'

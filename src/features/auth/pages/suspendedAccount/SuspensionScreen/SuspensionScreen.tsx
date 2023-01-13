@@ -2,10 +2,10 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 
 import { AccountState } from 'api/gen'
+import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
-import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
-import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
-import { useAccountSuspensionStatus } from 'features/auth/suspendedAccount/SuspensionScreen/useAccountSuspensionStatus'
+import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
+import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { LoadingPage } from 'ui/components/LoadingPage'
 

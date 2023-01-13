@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
+<View
+  fullWidth={true}
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": 500,
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    hasHeight={true}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexGrow": 1,
+          "height": "30%",
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View>
+      undefined-Lottie-Mock
+    </View>
+  </View>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Black",
+          "fontSize": 26,
+          "lineHeight": 34,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Ton compte a été réactivé
+  </Text>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    On est ravi de te revoir !
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.
+  </Text>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "paddingBottom": 40,
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Découvrir le catalogue"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Découvrir le catalogue"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Découvrir le catalogue
+      </Text>
+    </View>
+  </View>
+  <View
+    flex={0.1}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+</View>
+`;

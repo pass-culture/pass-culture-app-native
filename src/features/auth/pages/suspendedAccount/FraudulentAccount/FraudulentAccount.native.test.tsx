@@ -6,7 +6,7 @@ import { navigateToHomeConfig, openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { fireEvent, render } from 'tests/utils'
 
-import { FraudulentAccount } from '../FraudulentAccount'
+import { FraudulentAccount } from './FraudulentAccount'
 
 jest.mock('features/navigation/helpers')
 
@@ -23,9 +23,9 @@ describe('<FraudulentAccount />', () => {
   })
 
   it('should open mail app when clicking on contact service button', async () => {
-    const { getByTestId } = render(<FraudulentAccount />)
+    const { getByText } = render(<FraudulentAccount />)
 
-    const contactFraudButton = getByTestId('Ouvrir le gestionnaire mail pour contacter le support')
+    const contactFraudButton = getByText('Contacter le service')
     fireEvent.press(contactFraudButton)
 
     await waitForExpect(() => {
@@ -34,9 +34,9 @@ describe('<FraudulentAccount />', () => {
   })
 
   it('should go to home page when clicking on go to home button', async () => {
-    const { getByTestId } = render(<FraudulentAccount />)
+    const { getByText } = render(<FraudulentAccount />)
 
-    const homeButton = getByTestId('Retourner à l’accueil')
+    const homeButton = getByText('Retourner à l’accueil')
     fireEvent.press(homeButton)
 
     await waitForExpect(() => {

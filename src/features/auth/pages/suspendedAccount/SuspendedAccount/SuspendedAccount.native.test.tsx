@@ -4,16 +4,16 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { queriesToInvalidateOnUnsuspend } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountUnsuspend'
+import { queriesToInvalidateOnUnsuspend } from 'features/auth/api/useAccountUnsuspend'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, useMutationFactory } from 'tests/utils/web'
+import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { SuspendedAccount } from '../SuspendedAccount'
+import { SuspendedAccount } from './SuspendedAccount'
 
-jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate', () => ({
+jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
   useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
 }))
 jest.mock('features/navigation/helpers')
@@ -49,7 +49,7 @@ describe('<SuspendedAccount />', () => {
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const { getByText } = render(<SuspendedAccount />)
 
-    await fireEvent.click(getByText('Réactiver mon compte'))
+    await fireEvent.press(getByText('Réactiver mon compte'))
     expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     useMutationCallbacks.onSuccess()
@@ -66,7 +66,7 @@ describe('<SuspendedAccount />', () => {
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     const { getByText } = render(<SuspendedAccount />)
 
-    await fireEvent.click(getByText('Réactiver mon compte'))
+    await fireEvent.press(getByText('Réactiver mon compte'))
     expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     const response = {
@@ -86,7 +86,7 @@ describe('<SuspendedAccount />', () => {
     const { getByText } = render(<SuspendedAccount />)
 
     const homeButton = getByText('Retourner à l’accueil')
-    fireEvent.click(homeButton)
+    fireEvent.press(homeButton)
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)

@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-import { useAccountSuspensionDate } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate'
+import { useAccountSuspensionDate } from 'features/auth/api/useAccountSuspensionDate'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
