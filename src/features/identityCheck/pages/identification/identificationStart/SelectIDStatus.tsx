@@ -4,9 +4,11 @@ import styled from 'styled-components/native'
 
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { amplitude } from 'libs/amplitude'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { Emoji } from 'ui/components/Emoji'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
@@ -20,7 +22,7 @@ export const SelectIDStatus: FunctionComponent = () => {
   return <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
 }
 
-const FirstHeroButtonLink = (
+const MainOptionButton = (
   <HeroButtonList
     Title={
       <Text>
@@ -39,34 +41,23 @@ const FirstHeroButtonLink = (
   />
 )
 
-const SecondHeroButtonLink = (
-  <HeroButtonList
-    Title={
-      <Text>
-        <Typo.ButtonText>Je n’ai pas </Typo.ButtonText>
-        <Typo.Body>ma pièce d’identité originale </Typo.Body>
-        <Typo.ButtonText>avec moi</Typo.ButtonText>
-      </Text>
-    }
-    icon={BicolorNoId}
+const FirstOtherOption = (
+  <SecondButtonList
+    label="Je n’ai pas ma pièce d’identité originale avec moi"
+    leftIcon={BicolorNoId}
     navigateTo={{ screen: 'ComeBackLater' }}
   />
 )
 
-const ThirdHeroButtonLink = (
-  <HeroButtonList
-    Title={
-      <Text>
-        <Typo.Body>Ma pièce d’identité est </Typo.Body>
-        <Typo.ButtonText>expirée ou perdue</Typo.ButtonText>
-      </Text>
-    }
-    icon={BicolorLostId}
+const SecondOtherOption = (
+  <SecondButtonList
+    label="Ma pièce d’identité est expirée ou perdue"
+    leftIcon={BicolorLostId}
     navigateTo={{ screen: 'ExpiredOrLostID' }}
   />
 )
 
-const buttonListSeparator = <Spacer.Column numberOfSpaces={6} />
+const buttonListSeparator = <Spacer.Column numberOfSpaces={9} />
 
 const SelectIDStatusContent: FunctionComponent = () => {
   return (
@@ -82,8 +73,12 @@ const SelectIDStatusContent: FunctionComponent = () => {
         <Typo.Body>avec toi.</Typo.Body>
       </StyledText>
       <Spacer.Column numberOfSpaces={12} />
+      {MainOptionButton}
+      <Spacer.Column numberOfSpaces={7} />
+      <SeparatorWithText label="ou" />
+      <Spacer.Column numberOfSpaces={7} />
       <AccessibilityList
-        items={[FirstHeroButtonLink, SecondHeroButtonLink, ThirdHeroButtonLink]}
+        items={[FirstOtherOption, SecondOtherOption]}
         Separator={buttonListSeparator}
       />
     </Container>
