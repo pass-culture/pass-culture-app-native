@@ -7,7 +7,12 @@ import { renderHook } from 'tests/utils'
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 
+<<<<<<< HEAD
 jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
+=======
+jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+
+>>>>>>> 8f70fe3dc ((PC-17806) refactor(auth): rename support.service > contactSupport and move in helpers folder)
 jest.mock('features/auth/helpers/contactSupport')
 
 describe('useNotEligibleEduConnectErrorData', () => {
