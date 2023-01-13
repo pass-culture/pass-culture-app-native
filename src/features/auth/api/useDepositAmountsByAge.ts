@@ -1,4 +1,4 @@
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { formatToFrenchDecimal } from 'libs/parsers'
 
 export function useDepositAmountsByAge() {

@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'

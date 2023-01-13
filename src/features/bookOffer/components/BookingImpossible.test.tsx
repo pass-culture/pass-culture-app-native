@@ -9,7 +9,7 @@ import { BookingImpossible } from './BookingImpossible'
 jest.mock('react-query')
 const mockedUseMutation = mocked(useMutation)
 
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 

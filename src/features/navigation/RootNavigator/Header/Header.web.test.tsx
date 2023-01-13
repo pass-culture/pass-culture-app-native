@@ -3,7 +3,7 @@ import React from 'react'
 import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { theme } from 'theme'
@@ -11,7 +11,7 @@ import { theme } from 'theme'
 import { Header } from './Header'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('features/navigation/RootNavigator/routes', () => ({
   routes: [

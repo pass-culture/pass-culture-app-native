@@ -2,7 +2,7 @@ import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 import waitForExpect from 'wait-for-expect'
 
-import { AuthContext } from 'features/auth/AuthContext'
+import { AuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'

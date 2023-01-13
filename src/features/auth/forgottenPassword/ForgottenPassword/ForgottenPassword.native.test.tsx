@@ -11,7 +11,7 @@ import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 jest.mock('features/navigation/helpers')
 
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 
 jest.mock('libs/monitoring')
 

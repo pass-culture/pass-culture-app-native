@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferCategory } from 'features/offer/components/OfferCategory/OfferCategory'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'

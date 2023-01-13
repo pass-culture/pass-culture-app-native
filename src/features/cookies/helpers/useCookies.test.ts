@@ -5,7 +5,7 @@ import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import Package from '__mocks__/package.json'
 import { v4 } from '__mocks__/uuid'
 import { api } from 'api/api'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
@@ -15,7 +15,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(

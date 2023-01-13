@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 import { v1 as uuidv1 } from 'uuid'
 
 import { api } from 'api/api'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { shouldShowCulturalSurvey } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'

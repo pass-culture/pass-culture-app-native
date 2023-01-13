@@ -3,7 +3,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'

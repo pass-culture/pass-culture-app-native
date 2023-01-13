@@ -3,7 +3,7 @@ import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'

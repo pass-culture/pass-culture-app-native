@@ -19,7 +19,7 @@ const specificUserAges = [15, 16, 17, 18]
 // null is the return value of storage when there is no value corresponding to the key
 const nonSpecificUserAges = [null, NonEligible.UNDER_15, NonEligible.OVER_18]
 
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 
 describe('<SetBirthday />', () => {
   beforeEach(async () => {

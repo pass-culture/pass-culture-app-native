@@ -13,7 +13,7 @@ import { fireEvent, render } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 jest.mock('features/user/helpers/useAvailableCredit')
 jest.mock('features/profile/helpers/isUserExBeneficiary')
 const mockedisUserExBeneficiary = mocked(isUserExBeneficiary, true)

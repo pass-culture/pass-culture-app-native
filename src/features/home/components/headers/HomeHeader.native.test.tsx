@@ -7,7 +7,7 @@ import {
   UserProfileResponse,
   YoungStatusType,
 } from 'api/gen'
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { Credit, useAvailableCredit } from 'features/user/helpers/useAvailableCredit'

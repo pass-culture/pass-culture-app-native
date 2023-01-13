@@ -2,7 +2,7 @@ import uniqBy from 'lodash/uniqBy'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'

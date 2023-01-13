@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback } from 'react'
 import { useQueryClient } from 'react-query'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/firebase/analytics'
 import { clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'

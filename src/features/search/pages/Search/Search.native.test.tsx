@@ -52,7 +52,7 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 

@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
@@ -28,7 +28,7 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,

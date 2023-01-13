@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'

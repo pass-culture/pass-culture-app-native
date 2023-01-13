@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { mockDefaultSettings } from 'features/auth/__mocks__/SettingsContext'
-import { SettingsWrapper, useSettingsContext } from 'features/auth/SettingsContext'
+import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
+import { SettingsWrapper, useSettingsContext } from 'features/auth/context/SettingsContext'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

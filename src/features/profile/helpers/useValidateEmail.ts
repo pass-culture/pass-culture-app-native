@@ -1,4 +1,4 @@
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 
 export const useIsCurrentUserEmail = (email: string): boolean => {

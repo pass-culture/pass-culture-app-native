@@ -3,7 +3,7 @@ import * as React from 'react'
 import { View } from 'react-native'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import {
   addFavoriteJsonResponseSnap,
@@ -19,7 +19,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavorites } from './useFavorites'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock

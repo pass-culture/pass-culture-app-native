@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { ExpenseDomain, OfferResponse } from 'api/gen'
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { beneficiaryUser } from 'fixtures/user'
 import { renderHook } from 'tests/utils'

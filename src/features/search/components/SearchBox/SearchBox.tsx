@@ -13,7 +13,7 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'

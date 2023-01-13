@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { WebView } from 'react-native-webview'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { withCulturalSurveyProvider } from 'features/firstLogin/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Spacer } from 'ui/theme'

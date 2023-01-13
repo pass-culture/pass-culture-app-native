@@ -6,7 +6,7 @@ import {
   YoungStatusResponse,
   SubscriptionStatus,
 } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useEndedBookingFromOfferId } from 'features/bookings/api'
 import { OfferModal } from 'features/offer/enums'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'

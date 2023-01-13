@@ -1,6 +1,6 @@
 import { useTheme } from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import {
   DEFAULT_YOUNGEST_AGE,
   UNDER_YOUNGEST_AGE,

@@ -23,7 +23,7 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 

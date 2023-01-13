@@ -1,6 +1,6 @@
 import { api } from 'api/api'
 import { BookingsResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'

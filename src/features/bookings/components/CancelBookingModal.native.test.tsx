@@ -17,7 +17,7 @@ jest.mock('react-query')
 const mockedUseMutation = mocked(useMutation)
 const mockDismissModal = jest.fn()
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 let mockIsCreditExpired = false
 jest.mock('features/user/helpers/useAvailableCredit', () => ({

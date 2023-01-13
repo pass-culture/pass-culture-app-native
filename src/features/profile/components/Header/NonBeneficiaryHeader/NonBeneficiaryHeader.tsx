@@ -2,7 +2,7 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'

@@ -15,7 +15,7 @@ import { renderHook } from 'tests/utils'
 
 import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'
 
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 
 describe('useDatePickerErrorHandler', () => {
   beforeEach(() => {

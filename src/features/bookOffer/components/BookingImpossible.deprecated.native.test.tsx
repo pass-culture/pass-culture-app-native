@@ -29,7 +29,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   })),
 }))
 
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 

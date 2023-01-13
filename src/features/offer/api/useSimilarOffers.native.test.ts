@@ -10,7 +10,7 @@ const position = {
   longitude: 22,
 }
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 describe('useSimilarOffers', () => {
   const algoliaSpy = jest

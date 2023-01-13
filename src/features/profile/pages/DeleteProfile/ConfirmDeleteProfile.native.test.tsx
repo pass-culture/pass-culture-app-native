@@ -24,7 +24,7 @@ jest.mock('features/auth/logout/useLogoutRoutine', () => ({
   useLogoutRoutine: () => mockSignOut,
 }))
 
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
 import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'

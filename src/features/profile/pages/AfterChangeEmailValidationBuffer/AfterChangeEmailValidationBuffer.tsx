@@ -4,7 +4,7 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { ChangeBeneficiaryEmailBody } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/logout/useLogoutRoutine'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { isTimestampExpired } from 'libs/dates'

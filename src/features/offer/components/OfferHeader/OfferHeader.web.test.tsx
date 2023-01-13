@@ -1,13 +1,13 @@
 import React from 'react'
 import { Animated } from 'react-native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils/web'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 mockUseAuthContext.mockImplementation(() => ({
   isLoggedIn: true,

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useCancelBookingMutation } from 'features/bookings/api'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'

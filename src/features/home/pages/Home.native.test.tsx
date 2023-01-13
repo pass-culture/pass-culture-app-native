@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
@@ -25,7 +25,7 @@ const mockUseHomepageData = useHomepageData as jest.Mock
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/user/helpers/useAvailableCredit')

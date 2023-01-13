@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { FavoriteResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
@@ -14,7 +14,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, waitFor, render } from 'tests/utils'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,

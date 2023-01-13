@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   Amount,
   ProgressBarContainer,
