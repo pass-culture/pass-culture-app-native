@@ -592,13 +592,11 @@ jobs:
           name: Deploy Android App for testing environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
       - run:
           name: Deploy IOS App for testing environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
       - run:
           name: Notify failed deploy
@@ -735,13 +733,11 @@ jobs:
           name: Deploy Android Code push for staging environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING
             ./scripts/deploy.sh -o android -t soft -e staging
       - run:
           name: Deploy IOS Code push for staging environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING
             ./scripts/deploy.sh -o ios -t soft -e staging
       - notify-soft-release:
           env: staging
@@ -810,13 +806,11 @@ jobs:
           name: Deploy Android Code push for production environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_PRODUCTION_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_PRODUCTION
             ./scripts/deploy.sh -o android -t soft -e production
       - run:
           name: Deploy IOS Code push for production environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION
             ./scripts/deploy.sh -o ios -t soft -e production
       - notify-soft-release:
           env: production
