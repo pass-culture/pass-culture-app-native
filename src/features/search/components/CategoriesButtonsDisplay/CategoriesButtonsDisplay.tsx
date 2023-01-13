@@ -17,7 +17,7 @@ type Props = {
   children?: never
 }
 
-const CategoyButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
+const CategoryButtonItem: FunctionComponent<{ item: CategoryButtonProps }> = ({ item }) => (
   <CategoryButtonContainer>
     <CategoryButton {...item} />
   </CategoryButtonContainer>
@@ -30,7 +30,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   return (
     <FlatList
       data={sortedCategories}
-      renderItem={CategoyButtonItem}
+      renderItem={CategoryButtonItem}
       keyExtractor={(item) => item.label}
       numColumns={numColumns}
       key={key}
