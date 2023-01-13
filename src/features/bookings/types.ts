@@ -13,4 +13,5 @@ export type Booking = BookingReponse
 
 export interface BookingItemProps {
   booking: Booking
+  digitalBookingWithoutExpirationDate?: Booking[]
 }

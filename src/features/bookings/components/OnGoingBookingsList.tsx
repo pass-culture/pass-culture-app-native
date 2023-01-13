@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
+import { getDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -81,6 +82,19 @@ export function OnGoingBookingsList() {
     }
   }
 
+  const digitalBookingWithoutExpirationDate =
+    getDigitalBookingWithoutExpirationDate(ongoingBookings)
+
+  const renderItem: ListRenderItem<Booking> = useCallback(
+    ({ item }) => (
+      <OnGoingBookingItem
+        booking={item}
+        digitalBookingWithoutExpirationDate={digitalBookingWithoutExpirationDate}
+      />
+    ),
+    [digitalBookingWithoutExpirationDate]
+  )
+
   if (showSkeleton) return <BookingsPlaceholder />
   return (
     <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
@@ -107,8 +121,6 @@ export function OnGoingBookingsList() {
 }
 
 const keyExtractor = (item: Booking) => item.id.toString()
-
-const renderItem: ListRenderItem<Booking> = ({ item }) => <OnGoingBookingItem booking={item} />
 
 const contentContainerStyle = {
   flexGrow: 1,
