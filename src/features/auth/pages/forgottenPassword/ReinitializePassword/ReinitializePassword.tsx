@@ -59,14 +59,14 @@ export const ReinitializePassword = () => {
     navigation.navigate('Login')
   })
 
-  function submitPassword() {
+  const submitPassword = useCallback(() => {
     if (allowSubmission) {
       resetPassword({
         newPassword: password,
         resetPasswordToken: route.params.token,
       })
     }
-  }
+  }, [allowSubmission, password, resetPassword, route.params.token])
 
   if (!isTimestampExpirationVerified) {
     return <LoadingPage />
