@@ -63,6 +63,6 @@ use `useSomeHook.test.ts` if there is no render, for example when testing a hook
 - Prove that an element exists with `getBy` + `expect(…).toBeTruthy()`
 - Prove that an element does not exist with `queryBy` + `expect(…).toBeNull()`
 - Query an element to process some action on it with `getBy` + action
-- **Prefer to use** `await findBy`instead of `waitFor(getBy)`or `waitFor(queryBy)`,
+- **Prefer to use** `await findBy`instead of `waitFor(getBy)`or `waitFor(queryBy)` as it is equivalent`,
 
 More details in [react testing library doc](https://testing-library.com/docs/queries/about/#priority)
