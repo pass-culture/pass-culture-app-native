@@ -13,6 +13,7 @@ describe('<AuthenticationButton />', () => {
 
     expect(navigate).toBeCalledWith('Login', undefined)
   })
+
   it('should navigate to the signup page when is type signup', async () => {
     const { getByRole } = render(<AuthenticationButton type="signup" />)
 
@@ -21,6 +22,7 @@ describe('<AuthenticationButton />', () => {
 
     expect(navigate).toBeCalledWith('SignupForm', undefined)
   })
+
   it('should prevent cancellation when asked for login', async () => {
     const { getByRole } = render(<AuthenticationButton type="login" preventCancellation />)
 
@@ -29,6 +31,7 @@ describe('<AuthenticationButton />', () => {
 
     expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
   })
+
   it('should prevent cancellation when asked for signup', async () => {
     const { getByRole } = render(<AuthenticationButton type="signup" preventCancellation />)
 

@@ -20,9 +20,7 @@ export const NotConnectedFavorites = () => {
 
         <TextContainer>
           <CenteredText>
-            <StyledBody>
-              Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
-            </StyledBody>
+            Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
           </CenteredText>
         </TextContainer>
       </CenteredContainer>
@@ -54,37 +52,32 @@ const StyledUserFavorite = styled(BicolorUserFavorite).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   alignItems: 'center',
-})
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const Row = styled.View({ flexDirection: 'row' })
 
-const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
-  color: theme.colors.black,
-}))
+})
 
 const CenteredContainer = styled.View({
   flexGrow: 1,
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
-  marginHorizontal: getSpacing(8),
 })
 
-const ButtonContainer = styled.View({ flex: 1, paddingHorizontal: getSpacing(8) })
+const ButtonContainer = styled.View({ flex: 1 })
 
 const TextContainer = styled.View({ maxWidth: getSpacing(88) })
 
 const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
 })
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.black,
-}))
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.colors.secondary,

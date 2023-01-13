@@ -75,7 +75,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
 }
 
 <div
-  className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+  className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
   dir={null}
 >
   <div
@@ -98,7 +98,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     </div>
   </div>
   <div
-    className="css-view-175oi2r r-alignItems-1awozwy r-flexGrow-16y2uox r-justifyContent-1777fci r-marginHorizontal-1n7yuxj r-textAlign-q4m81j"
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexGrow-16y2uox r-justifyContent-1777fci r-textAlign-q4m81j"
     dir={null}
   >
     <h4
@@ -121,12 +121,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
         dir="ltr"
       >
-        <span
-          className="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-          dir={null}
-        >
-          Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
-        </span>
+        Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
       </div>
     </div>
   </div>
@@ -135,7 +130,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     dir={null}
   >
     <div
-      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-paddingHorizontal-1dye5f7"
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       dir={null}
     >
       <button
