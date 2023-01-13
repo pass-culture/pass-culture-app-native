@@ -1,49 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotConnectedFavorites component should render not connected favorites 1`] = `
-.c0 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 24px;
-  padding-right: 24px;
-  min-height: 48px;
-  width: 100%;
-  background-color: #ffffff;
-  max-width: 500px;
+.c1 {
+  border: none;
   cursor: pointer;
   outline: none;
-  border-width: 0;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #320096;
+  text-decoration-color: #320096;
+}
+
+.c1:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  overflow: hidden;
+  cursor: pointer;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #eb0055;
+  background-image: linear-gradient(0.25turn,#eb0055,#320096);
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .c0:disabled {
   cursor: initial;
   background: none;
+  color: #696A6F;
+  background-color: #F1F1F4;
 }
 
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #eb0055;
-  text-decoration-color: #eb0055;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
 }
 
 .c0:hover:disabled {
@@ -51,83 +74,10 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   text-decoration: none;
 }
 
-.c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  min-height: 48px;
-  width: 100%;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c2:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1:disabled {
-  background-color: #F1F1F4;
-}
-
-.c3 {
-  background-color: transparent;
-}
-
 <div
   className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
   dir={null}
 >
-  <div
-    className="css-view-175oi2r r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw"
-    dir={null}
-  >
-    <div
-      className="css-view-175oi2r"
-      dir={null}
-    >
-      <div
-        className="css-text-1rynq56"
-        dir="ltr"
-      >
-        undefined-SVG-Mock
-      </div>
-    </div>
-  </div>
   <div
     className="css-view-175oi2r r-height-10ptun7"
     dir={null}
@@ -153,11 +103,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   >
     <h4
       aria-level={4}
-      className="css-text-1rynq56 r-color-jwli3a r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
       dir="ltr"
       role="heading"
     >
-      Connecte-toi pour profiter de cette fonctionnalité !
+      Identifie-toi pour retrouver tes favoris
     </h4>
     <div
       className="css-view-175oi2r r-height-10ptun7"
@@ -172,10 +122,10 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         dir="ltr"
       >
         <span
-          className="css-textHasAncestor-1qaijid r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+          className="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
           dir={null}
         >
-          Ton compte te permettra de retrouver tous tes favoris en un clin d’oeil !
+          Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
         </span>
       </div>
     </div>
@@ -185,45 +135,84 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     dir={null}
   >
     <div
-      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-dfixsg"
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-paddingHorizontal-1dye5f7"
       dir={null}
     >
       <button
-        aria-label="S’inscrire"
-        className="c0 c1"
-        data-testid="S’inscrire"
+        aria-label="Créer un compte"
+        className="c0"
+        data-testid="Créer un compte"
+        disabled={false}
         onClick={[Function]}
-        onDoubleClick={[Function]}
-        tabIndex={0}
         type="button"
       >
         <div
-          className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
-          dir="ltr"
+          className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+          dir={null}
         >
-          S’inscrire
+          <div
+            className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
+            dir="ltr"
+          >
+            Créer un compte
+          </div>
         </div>
       </button>
       <div
         className="css-view-175oi2r r-height-10ptun7"
         dir={null}
       />
-      <button
-        aria-label="Se connecter"
-        className="c2 c3"
-        data-testid="Se connecter"
-        onClick={[Function]}
-        onDoubleClick={[Function]}
-        tabIndex={0}
-        type="button"
+      <div
+        className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1777fci"
+        dir={null}
       >
         <div
-          className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+          className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
           dir="ltr"
         >
-          Se connecter
+          Déjà un compte ?
+          <div
+            className="css-view-175oi2r r-display-xoduu5 r-width-10g5efv"
+            dir={null}
+          />
+          <button
+            aria-label="Se connecter"
+            className="c1"
+            data-testid="Se connecter"
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            type="button"
+          >
+            <div
+              className="css-view-175oi2r r-display-xoduu5 r-flexDirection-18u37iz r-top-12pp1o0"
+              dir={null}
+            >
+              <div
+                className="css-view-175oi2r r-display-xoduu5"
+                data-testid="button-icon"
+                dir={null}
+              >
+                <span
+                  className="css-textHasAncestor-1qaijid"
+                  dir={null}
+                >
+                  button-icon-SVG-Mock
+                </span>
+              </div>
+              <div
+                className="css-view-175oi2r r-display-xoduu5 r-width-10g5efv"
+                dir={null}
+              />
+              <span
+                className="css-textHasAncestor-1qaijid r-color-1tv3mag r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir={null}
+              >
+                Se connecter
+              </span>
+            </div>
+          </button>
         </div>
-      </button>
+      </div>
     </div>
   </div>
   <div
