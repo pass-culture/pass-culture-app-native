@@ -59,6 +59,8 @@ const ImageBackground = styled.ImageBackground({
   flex: 1,
 })
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink)({
+const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
+  hoverUnderlineColor: theme.colors.white,
+}))({
   height: getSpacing(18),
 })
