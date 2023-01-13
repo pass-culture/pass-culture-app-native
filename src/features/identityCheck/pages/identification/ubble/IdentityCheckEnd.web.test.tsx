@@ -5,7 +5,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { IdentityCheckEnd } from './IdentityCheckEnd'
 
-jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
+jest.mock('features/auth/helpers/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockStep,
   })),

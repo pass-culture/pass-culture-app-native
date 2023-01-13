@@ -6,7 +6,7 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
-import { PreValidationSignupStepProps } from 'features/auth/signup/types'
+import { PreValidationSignupStepProps } from 'features/auth/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'

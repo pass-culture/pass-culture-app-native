@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigation } from '__mocks__/@react-navigation/native'
-import { PreValidationSignupStepProps } from 'features/auth/signup/types'
+import { PreValidationSignupStepProps } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'

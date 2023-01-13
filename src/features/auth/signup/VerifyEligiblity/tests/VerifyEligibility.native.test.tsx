@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { render, fireEvent } from 'tests/utils'
@@ -12,7 +12,7 @@ import { VerifyEligibility } from '../VerifyEligibility'
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 jest.mock('react-query')
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', () => {

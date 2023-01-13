@@ -6,6 +6,8 @@ import { Keyboard } from 'react-native'
 import { useSignUp } from 'features/auth/api/useSignUp'
 import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
+import { PreValidationSignupStep } from 'features/auth/enums'
+import { PreValidationSignupStepProps, SignupData } from 'features/auth/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -23,11 +25,9 @@ import { Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 import { AcceptCgu } from './AcceptCgu'
-import { PreValidationSignupStep } from './enums'
 import { SetBirthday } from './SetBirthday'
 import { SetEmail } from './SetEmail'
 import { SetPassword } from './SetPassword'
-import { SignupData, PreValidationSignupStepProps } from './types'
 
 type SignupStepConfig = {
   name: PreValidationSignupStep

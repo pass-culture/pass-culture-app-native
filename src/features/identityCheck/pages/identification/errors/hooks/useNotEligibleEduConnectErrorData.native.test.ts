@@ -7,8 +7,7 @@ import { renderHook } from 'tests/utils'
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
-
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 jest.mock('features/auth/helpers/contactSupport')
 
 describe('useNotEligibleEduConnectErrorData', () => {

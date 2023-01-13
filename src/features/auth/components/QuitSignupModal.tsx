@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { SignupStep } from 'features/auth/signup/enums'
+import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

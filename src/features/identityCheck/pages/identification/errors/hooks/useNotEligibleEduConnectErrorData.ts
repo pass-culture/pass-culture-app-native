@@ -3,7 +3,7 @@ import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'

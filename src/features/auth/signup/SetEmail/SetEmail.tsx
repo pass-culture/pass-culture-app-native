@@ -10,14 +10,13 @@ import {
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/signup/SetEmail/schema/setEmailSchema'
+import { PreValidationSignupStepProps } from 'features/auth/types'
 import { analytics } from 'libs/firebase/analytics'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Spacer } from 'ui/theme'
-
-import { PreValidationSignupStepProps } from '../types'
 
 type FormValues = {
   email: string

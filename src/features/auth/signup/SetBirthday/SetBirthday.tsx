@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
-import { PreValidationSignupStepProps } from 'features/auth/signup/types'
+import { PreValidationSignupStepProps } from 'features/auth/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import { Banner } from 'ui/components/Banner'

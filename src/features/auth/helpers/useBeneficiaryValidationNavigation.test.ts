@@ -9,7 +9,7 @@ import {
   SubscriptionStep,
   MaintenancePageType,
 } from 'api/gen'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

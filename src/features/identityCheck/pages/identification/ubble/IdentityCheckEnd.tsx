@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
-import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
+import { useNextSubscriptionStep } from 'features/auth/helpers/useNextSubscriptionStep'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
