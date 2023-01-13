@@ -40,7 +40,7 @@ jest.mock('./AcceptCgu', () => ({
 const defaultProps = {
   navigation,
   route: { name: 'SignupForm', key: '', params: { preventCancellation: false } },
-} as unknown as StackScreenProps<RootStackParamList, 'SignupForm'>
+} as StackScreenProps<RootStackParamList, 'SignupForm'>
 
 describe('<SignupForm />', () => {
   it('should display 4 step dots with the first one as current step', () => {
