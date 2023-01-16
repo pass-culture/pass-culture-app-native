@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { SignupStep } from 'features/auth/enums'
@@ -25,16 +25,16 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
   testIdSuffix,
   signupStep,
 }) => {
-  function quitSignup() {
+  const quitSignup = useCallback(() => {
     analytics.logCancelSignup(signupStep)
     resume()
     navigateToHome()
-  }
+  }, [resume, signupStep])
 
-  function continueSignup() {
+  const continueSignup = useCallback(() => {
     analytics.logContinueSignup()
     resume()
-  }
+  }, [resume])
 
   const title = 'Veux-tu abandonner l’inscription\u00a0?'
   const description = 'Les informations que tu as renseignées ne seront pas enregistrées.'
