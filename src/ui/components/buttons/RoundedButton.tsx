@@ -3,23 +3,24 @@ import { AccessibilityRole, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
+import { AnimatedIcon } from 'ui/components/AnimatedIcon'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-interface HeaderIconProps {
+interface Props {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
   initialColor?: ColorsEnum
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
-  animationState: {
+  animationState?: {
     iconBackgroundColor: Animated.AnimatedInterpolation
     iconBorderColor: Animated.AnimatedInterpolation
     transition: Animated.AnimatedInterpolation
@@ -29,16 +30,16 @@ interface HeaderIconProps {
   accessibilityLabel?: string
 }
 
-const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
+const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
   if (iconName === 'favorite-filled') return FavoriteFilled
   return Favorite
 }
 
-export const HeaderIcon = (props: HeaderIconProps) => {
+export const RoundedButton = (props: Props) => {
   const Icon = getIcon(props.iconName)
-  const { colors } = useTheme()
+  const { colors, icons } = useTheme()
 
   const accessibilityProps = useMemo(() => {
     return props.accessibilityRole
@@ -50,32 +51,43 @@ export const HeaderIcon = (props: HeaderIconProps) => {
   }, [props.accessibilityRole, props.accessibilityChecked, props.accessibilityLabel])
 
   return (
-    <Touchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
-      <StyledAnimatedView
-        testID="headerIconRoundContainer"
-        style={{
-          borderColor: props.animationState.iconBorderColor,
-          backgroundColor: props.animationState.iconBackgroundColor,
-          transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
-        }}>
-        <AnimatedIcon
-          Icon={Icon}
-          initialColor={props.initialColor || colors.black}
-          testID={`icon-${props.iconName}`}
-          transition={props.animationState.transition}
-          finalColor={colors.white}
-        />
-      </StyledAnimatedView>
-    </Touchable>
+    <StyledTouchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
+      {props.animationState ? (
+        <IconContainer
+          testID="AnimatedHeaderIconRoundContainer"
+          style={{
+            borderColor: props.animationState.iconBorderColor,
+            backgroundColor: props.animationState.iconBackgroundColor,
+            transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
+          }}>
+          <AnimatedIcon
+            Icon={Icon}
+            initialColor={props.initialColor || colors.black}
+            testID={`animated-icon-${props.iconName}`}
+            transition={props.animationState.transition}
+            finalColor={colors.white}
+            size={icons.sizes.small}
+          />
+        </IconContainer>
+      ) : (
+        <IconContainer>
+          <Icon size={icons.sizes.small} testID={`icon-${props.iconName}`} />
+        </IconContainer>
+      )}
+    </StyledTouchable>
   )
 }
 
-const CONTAINER_SIZE = getSpacing(10)
-const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
-  width: CONTAINER_SIZE,
-  height: CONTAINER_SIZE,
+const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
+  borderRadius: theme.buttons.roundedButton.size,
+  ...customFocusOutline({ color: theme.colors.accent }),
+}))
+
+const IconContainer = styled(Animated.View)(({ theme }) => ({
+  width: theme.buttons.roundedButton.size,
+  height: theme.buttons.roundedButton.size,
   aspectRatio: '1',
-  borderRadius: getSpacing(10),
+  borderRadius: theme.buttons.roundedButton.size,
   backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',
@@ -83,7 +95,3 @@ const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
   overflow: 'hidden',
   borderColor: theme.colors.greyLight,
 }))
-
-const AnimatedIcon = styled(DefaultAnimatedIcon).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``

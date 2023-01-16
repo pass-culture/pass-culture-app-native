@@ -1,9 +1,4 @@
-import {
-  ExpenseDomain,
-  FavoriteResponse,
-  PaginatedFavoritesResponse,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { ExpenseDomain, PaginatedFavoritesResponse, SubcategoryIdEnum } from 'api/gen'
 
 // humanizedId AHD3A
 export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
@@ -100,25 +95,4 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       },
     },
   ],
-}
-
-export const addFavoriteJsonResponseSnap: FavoriteResponse = {
-  id: 1000,
-  offer: {
-    id: 10000,
-    name: 'Spectacle de test',
-    expenseDomains: [ExpenseDomain.all],
-    externalTicketOfficeUrl: null,
-    image: null,
-    coordinates: {
-      latitude: 48.12108,
-      longitude: -1.17896,
-    },
-    subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
-    price: 0,
-    startPrice: null,
-    date: '2021-04-01T12:00:00',
-    startDate: null,
-    isReleased: true,
-  },
 }

@@ -1,5 +1,5 @@
 import { FavoriteResponse } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/favoritesResponse'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { GeoCoordinates } from 'libs/geolocation'
 
 import { sortByIdDesc, sortByAscendingPrice, sortByDistanceAroundMe } from './sorts'
