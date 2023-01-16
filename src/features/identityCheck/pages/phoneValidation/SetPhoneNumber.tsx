@@ -110,7 +110,7 @@ export const SetPhoneNumber = () => {
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
-    await amplitude.logEvent('young18_set_phone_number_clicked_front')
+    amplitude.logEvent('phone_number_clicked')
   }
 
   const LeftCountryPicker = <CountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
