@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PreValidationSignupStepProps } from 'features/auth/types'
@@ -144,3 +144,14 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
     </React.Fragment>
   )
 }
+
+const CardContent = styled.View({
+  width: '100%',
+  alignItems: 'center',
+})
+
+const Paragraphe = styled(Typo.Body)({
+  flexWrap: 'wrap',
+  flexShrink: 1,
+  textAlign: 'center',
+})
