@@ -5,10 +5,8 @@ import { Animated } from 'react-native'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  paginatedFavoritesResponseSnap,
-  addFavoriteJsonResponseSnap,
-} from 'features/favorites/fixtures/favoritesResponse'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
@@ -108,7 +106,7 @@ describe('<OfferHeader />', () => {
 
   it('should add favorite when adding an offer in favorite - logged in users', async () => {
     const { getByTestId } = renderOfferHeader({
-      id: addFavoriteJsonResponseSnap.offer.id,
+      id: favoriteResponseSnap.offer.id,
     })
 
     fireEvent.press(getByTestId('animated-icon-favorite'))
@@ -119,19 +117,19 @@ describe('<OfferHeader />', () => {
       const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
       expect(
         mutateData.favorites?.find(
-          (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
+          (f: FavoriteResponse) => f.offer.id === favoriteResponseSnap.offer.id
         )?.offer.id
-      ).toEqual(addFavoriteJsonResponseSnap.offer.id)
+      ).toEqual(favoriteResponseSnap.offer.id)
 
       expect(
         (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
           (f: FavoriteResponse) => f.id === 1000
         )
       ).toEqual({
-        ...addFavoriteJsonResponseSnap,
+        ...favoriteResponseSnap,
         offer: {
-          ...addFavoriteJsonResponseSnap.offer,
-          date: addFavoriteJsonResponseSnap.offer.date,
+          ...favoriteResponseSnap.offer,
+          date: favoriteResponseSnap.offer.date,
         },
       })
     })
@@ -172,7 +170,7 @@ describe('<OfferHeader />', () => {
   it('should show error when adding an offer in favorite fails because user as too many favorites - logged in users', async () => {
     const { getByTestId } = renderOfferHeader({
       hasTooManyFavorites: true,
-      id: addFavoriteJsonResponseSnap.offer.id,
+      id: favoriteResponseSnap.offer.id,
     })
 
     fireEvent.press(getByTestId('animated-icon-favorite'))
@@ -188,7 +186,7 @@ describe('<OfferHeader />', () => {
   it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
     const from = 'favorites'
     const moduleName = 'testModule'
-    const offerId = addFavoriteJsonResponseSnap.offer.id
+    const offerId = favoriteResponseSnap.offer.id
     useRoute.mockImplementationOnce(() => ({
       params: {
         from,
@@ -261,7 +259,7 @@ function renderOfferHeader(options: Options = defaultOptions) {
       } else if (hasTooManyFavorites) {
         return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))
       } else {
-        return res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
       }
     }),
     rest.delete<EmptyResponse>(
