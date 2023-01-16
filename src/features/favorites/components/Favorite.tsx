@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
@@ -7,11 +7,11 @@ import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'ap
 import { useRemoveFavorite } from 'features/favorites/api'
 import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
+import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { useShareOffer } from 'features/offer/helpers/useShareOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { formatToFrenchDate } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
@@ -46,6 +46,7 @@ export const Favorite: React.FC<Props> = (props) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
+  const formattedDate = useFavoriteFormattedDate({ offer })
 
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
@@ -55,12 +56,6 @@ export const Favorite: React.FC<Props> = (props) => {
       })
     },
   })
-
-  const formattedDate = useMemo(() => {
-    if (offer.date) return formatToFrenchDate(new Date(offer.date))
-    if (offer.startDate) return `Dès le ${formatToFrenchDate(new Date(offer.startDate))}`
-    return undefined
-  }, [offer])
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
