@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
@@ -43,10 +43,6 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         onLeftIconPress: goBack,
       }
 
-  const logAnalytics = useCallback(() => {
-    analytics.logHelpCenterContactSignupConfirmationEmailSent()
-  }, [])
-
   return (
     <BottomContentPage>
       <ModalHeader
@@ -79,7 +75,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             as={ButtonTertiaryPrimary}
             wording="Consulter notre centre d’aide"
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
-            onBeforeNavigate={logAnalytics}
+            onBeforeNavigate={analytics.logHelpCenterContactSignupConfirmationEmailSent}
             icon={ExternalSite}
           />
         </Description>

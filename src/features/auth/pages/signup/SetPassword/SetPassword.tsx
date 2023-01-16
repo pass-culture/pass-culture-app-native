@@ -23,7 +23,8 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
     if (!disabled) {
       props.goToNextStep({ password })
     }
-  }, [disabled, password, props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [disabled, password, props.goToNextStep])
 
   return (
     <Form.MaxWidth>

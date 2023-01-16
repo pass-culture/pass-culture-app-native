@@ -40,7 +40,8 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     if (birthdate) {
       props.goToNextStep({ birthdate })
     }
-  }, [birthdate, props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [birthdate, props.goToNextStep])
 
   return (
     <Form.MaxWidth>
