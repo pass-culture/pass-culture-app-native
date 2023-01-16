@@ -148,8 +148,12 @@ export const Favorite: React.FC<Props> = (props) => {
                   <Spacer.Column numberOfSpaces={1} />
                   <Body>{searchGroupLabel}</Body>
                   {!!formattedDate && <Body>{formattedDate}</Body>}
-                  <Spacer.Column numberOfSpaces={1} />
-                  <Typo.Caption>{displayPrice}</Typo.Caption>
+                  {!!displayPrice && (
+                    <React.Fragment>
+                      <Spacer.Column numberOfSpaces={1} />
+                      <Typo.Caption>{displayPrice}</Typo.Caption>
+                    </React.Fragment>
+                  )}
                 </LeftContent>
                 <Spacer.Row numberOfSpaces={2} />
                 <RightContent>
