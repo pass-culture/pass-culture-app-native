@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/helpers/useDepositAmountsByAge'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import {
   AchievementCardKeyProps,

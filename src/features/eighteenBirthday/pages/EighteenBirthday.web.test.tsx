@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
-import { useDepositAmountsByAge } from 'features/auth/helpers/useDepositAmountsByAge'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { EighteenBirthday } from './EighteenBirthday'
 
-jest.mock('features/auth/helpers/useDepositAmountsByAge')
+jest.mock('shared/user/useDepositAmountsByAge')
 const mockUseDepositAmountsByAge = useDepositAmountsByAge as jest.Mock
 mockUseDepositAmountsByAge.mockReturnValue({ eighteenYearsOldDeposit: '300 €' })
 

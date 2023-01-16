@@ -1,5 +1,5 @@
-import { useDepositAmountsByAge } from 'features/auth/helpers/useDepositAmountsByAge'
 import { getAge } from 'features/offer/helpers/getAge/getAge'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 
 export const useGetDepositAmountsByAge = (birthDate?: string | null): string | undefined => {
   const {
