@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
@@ -43,9 +43,9 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         onLeftIconPress: goBack,
       }
 
-  function logAnalytics() {
+  const logAnalytics = useCallback(() => {
     analytics.logHelpCenterContactSignupConfirmationEmailSent()
-  }
+  }, [])
 
   return (
     <BottomContentPage>
