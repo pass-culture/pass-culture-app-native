@@ -60,6 +60,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
     [props]
   )
 
+  const onLogHasCorrectedEmail = useCallback(() => {
+    analytics.logHasCorrectedEmail({ from: 'setemail' })
+  }, [])
+
   return (
     <Form.MaxWidth>
       <EmailInputController
@@ -67,6 +71,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         name="email"
         label="Adresse e-mail"
         withSpellingHelp
+        onSpellingHelpPress={onLogHasCorrectedEmail}
         autoFocus
       />
       <Spacer.Column numberOfSpaces={4} />
