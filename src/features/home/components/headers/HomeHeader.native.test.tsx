@@ -42,7 +42,7 @@ const mockedUser = {
 }
 
 const mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
-jest.mock('features/auth/helpers/useNextSubscriptionStep', () => ({
+jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),
