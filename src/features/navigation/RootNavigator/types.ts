@@ -14,6 +14,7 @@ export type Referrals =
   | 'exclusivity'
   | 'bookingimpossible'
   | 'similar_offer'
+  | 'setemail'
 
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
