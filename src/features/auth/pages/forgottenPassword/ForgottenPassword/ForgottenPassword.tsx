@@ -53,20 +53,6 @@ export const ForgottenPassword = () => {
     shouldDisableValidateButton,
   } = useForgottenPasswordForm()
 
-  const renderEmailInput = ({
-    field: { value, onChange },
-  }: {
-    field: ControllerRenderProps<FormValues, 'email'>
-  }) => (
-    <EmailInput
-      label="Adresse e-mail"
-      email={value}
-      onEmailChange={onChange}
-      autoFocus
-      accessibilityDescribedBy={emailErrorMessageId}
-    />
-  )
-
   return (
     <BottomContentPage>
       {!!settings?.isRecaptchaEnabled && (
@@ -96,7 +82,7 @@ export const ForgottenPassword = () => {
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
         <Form.MaxWidth>
-          <Controller control={control} name="email" render={renderEmailInput} />
+          <Controller control={control} name="email" render={EmailInputController} />
 
           <InputError
             visible={hasError}
@@ -116,6 +102,20 @@ export const ForgottenPassword = () => {
     </BottomContentPage>
   )
 }
+
+const EmailInputController = ({
+  field: { value, onChange },
+}: {
+  field: ControllerRenderProps<FormValues, 'email'>
+}) => (
+  <EmailInput
+    label="Adresse e-mail"
+    email={value}
+    onEmailChange={onChange}
+    autoFocus
+    accessibilityDescribedBy={emailErrorMessageId}
+  />
+)
 
 const useForgottenPasswordForm = () => {
   const { navigate } = useNavigation<UseNavigationType>()
