@@ -89,7 +89,7 @@ const ImageBackground = styled.ImageBackground(({ theme }) => {
   }
 })
 
-const ClickAwayArea = styled(TouchableOpacity)(({ theme }) => ({
+const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ theme }) => ({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',
