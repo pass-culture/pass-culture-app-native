@@ -55,21 +55,25 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
     setErrorMessage(null)
   }, [networkInfo.isConnected])
 
+  // TODO: useCallback or remove function to call direct setState
   function onReCaptchaClose() {
     setIsDoingReCaptchaChallenge(false)
   }
 
+  // TODO: useCallback
   function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
     captureMonitoringError(error, 'AcceptCguOnReCaptchaError')
   }
 
+  // TODO: useCallback
   function onReCaptchaExpire() {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Le token reCAPTCHA a expiré, tu peux réessayer.')
   }
 
+  // TODO: useCallback
   function onReCaptchaSuccess(token: string) {
     setIsDoingReCaptchaChallenge(false)
     handleSignup(token)
@@ -85,6 +89,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
     [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
   )
 
+  // ReCaptcha needs previous callbacks 
   return (
     <React.Fragment>
       {!!settings?.isRecaptchaEnabled && (
