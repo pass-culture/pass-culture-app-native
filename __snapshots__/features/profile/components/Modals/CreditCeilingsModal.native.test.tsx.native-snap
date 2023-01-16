@@ -197,29 +197,31 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
         ]
       }
     >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-            },
-          ]
-        }
-      >
-        <Text
+      <View>
+        <View
           style={
             Array [
               Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "alignItems": "center",
               },
             ]
           }
         >
-          Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :
-        </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux dépenser :
+          </Text>
+        </View>
         <View
           testID="creditText"
         >
