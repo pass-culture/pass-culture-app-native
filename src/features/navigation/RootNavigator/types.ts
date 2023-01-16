@@ -136,6 +136,7 @@ export type RootStackParamList = {
   Login?: {
     preventCancellation?: boolean
     displayForcedLoginHelpMessage?: boolean
+    offerId?: number
   }
   Navigation: undefined
   NavigationAccountSuspension: undefined

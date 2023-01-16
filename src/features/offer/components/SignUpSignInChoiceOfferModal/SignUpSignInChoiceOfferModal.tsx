@@ -39,7 +39,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true, offerId } }}
           onBeforeNavigate={() => {
             analytics.logSignUpFromOffer(offerId)
             dismissModal()
@@ -50,6 +50,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
+        params={{ offerId }}
         onAdditionalPress={() => {
           analytics.logSignInFromOffer(offerId)
           dismissModal()
