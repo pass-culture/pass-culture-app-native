@@ -5,7 +5,7 @@ import { render } from 'tests/utils'
 
 const defaultProps = {
   visible: true,
-  headerTitle: "Partager l'offre",
+  headerTitle: 'Partager l’offre',
   shareContent: { message: 'Voici une super offre !', url: 'https://url.com/offer' },
   dismissModal: jest.fn(),
 }

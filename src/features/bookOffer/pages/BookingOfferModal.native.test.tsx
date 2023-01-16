@@ -5,8 +5,8 @@ import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
-import { BookingOfferModalComponent } from '../BookingOfferModal'
-import { Step } from '../reducer'
+import { BookingOfferModalComponent } from './BookingOfferModal'
+import { Step } from './reducer'
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()

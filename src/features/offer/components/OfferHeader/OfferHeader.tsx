@@ -10,6 +10,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
+import { useShareOffer } from 'features/offer/helpers/useShareOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { WebShareModal } from 'libs/share/WebShareModal'
@@ -19,8 +20,6 @@ import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-
-import { useShareOffer } from '../../helpers/useShareOffer'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
@@ -141,7 +140,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
-          headerTitle="Partager l'offre"
+          headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
