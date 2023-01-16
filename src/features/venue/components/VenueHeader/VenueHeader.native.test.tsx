@@ -1,6 +1,5 @@
 import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
@@ -13,12 +12,8 @@ import { act, fireEvent, render } from 'tests/utils'
 jest.mock('features/venue/api/useVenue')
 
 describe('<VenueHeader />', () => {
-  beforeAll(() => {
-    jest.useFakeTimers()
-  })
-  afterAll(() => {
-    jest.useRealTimers()
-  })
+  beforeAll(() => jest.useFakeTimers())
+  afterAll(() => jest.useRealTimers())
 
   it('should render all icons', () => {
     const venueHeader = renderVenueHeader()
@@ -32,18 +27,18 @@ describe('<VenueHeader />', () => {
     expect(mockGoBack).toBeCalledTimes(1)
   })
 
-  it('should fully display the title at the end of the animation', async () => {
-    const { animatedValue, getByTestId } = await renderVenueHeader()
+  it('should fully display the title at the end of the animation', () => {
+    const { animatedValue, getByTestId } = renderVenueHeader()
     expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeTruthy()
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(0)
+
     act(() => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
       jest.advanceTimersByTime(100)
     })
-    await waitForExpect(() =>
-      expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()
-    )
-    await waitForExpect(() => expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1))
+
+    expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()
+    expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1)
   })
 
   it('should call Share with the right arguments on IOS', () => {

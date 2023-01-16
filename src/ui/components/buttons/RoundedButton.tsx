@@ -51,7 +51,7 @@ export const RoundedButton = (props: Props) => {
   }, [props.accessibilityRole, props.accessibilityChecked, props.accessibilityLabel])
 
   return (
-    <Touchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
+    <StyledTouchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
       {props.animationState ? (
         <IconContainer
           testID="AnimatedHeaderIconRoundContainer"
