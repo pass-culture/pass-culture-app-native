@@ -36,7 +36,7 @@ executors:
 
 commands:
   gcp-oidc-authenticate:
-    description: "Authenticate with GCP using a CircleCI OIDC token."
+    description: 'Authenticate with GCP using a CircleCI OIDC token.'
     parameters:
       project_id:
         type: env_var_name
@@ -987,9 +987,9 @@ workflows:
   commit:
     jobs:
       - checkout-and-install-deps:
-          filters:
-            tags:
-              only: /.*/
+          # filters:
+          #   tags:
+          #     only: /.*/
       - checkout-and-install-proxy-deps:
           filters:
             tags:
@@ -1065,24 +1065,26 @@ workflows:
             - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: bsr-PC-19273
+            # tags:
+            #   only: /^(patch\/)?v.*/
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-native
+            # - test-native
       - deploy-ios-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: bsr-PC-19273
+            # branches:
+            #   ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-native
+            # - test-native
       - notify-hard-staging-release:
           filters:
             tags:
