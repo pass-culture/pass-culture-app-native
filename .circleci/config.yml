@@ -986,10 +986,10 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - checkout-and-install-deps:
-          # filters:
-          #   tags:
-          #     only: /.*/
+      - checkout-and-install-deps
+        # filters:
+        #   tags:
+        #     only: /.*/
       - checkout-and-install-proxy-deps:
           filters:
             tags:
