@@ -11,6 +11,7 @@ import { act, fireEvent, render, waitFor } from 'tests/utils'
 import { BookingConfirmation } from './BookingConfirmation'
 
 jest.mock('react-query')
+jest.mock('features/offer/api/useOffer')
 
 jest.mock('features/user/helpers/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
@@ -88,9 +89,7 @@ describe('<BookingConfirmation />', () => {
   })
 
   describe('buttons', () => {
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should call display share when press share button', async () => {
-      // const share = jest.spyOn(Share, 'share')
+    it('should call display share when press share button', async () => {
       const { getByText } = render(<BookingConfirmation />)
 
       await act(async () => {
