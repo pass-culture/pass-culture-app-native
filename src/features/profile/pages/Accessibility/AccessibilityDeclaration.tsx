@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { WEBAPP_V2_URL } from 'libs/environment'

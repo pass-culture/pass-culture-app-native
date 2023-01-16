@@ -12,7 +12,7 @@ const mockRemainingAttempts = {
   isLastAttempt: false,
 }
 
-jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
+jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),

@@ -7,7 +7,7 @@ import {
   ELIGIBLE_AGE_DATE,
   MAXIMUM_DATE,
   MINIMUM_DATE,
-} from 'features/auth/signup/SetBirthday/utils/fixtures'
+} from 'features/auth/fixtures/fixtures'
 import { fireEvent, render } from 'tests/utils'
 
 import { DatePickerSpinner } from './DatePickerSpinner'

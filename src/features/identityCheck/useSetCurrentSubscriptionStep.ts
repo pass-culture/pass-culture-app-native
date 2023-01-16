@@ -2,7 +2,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import { useCallback, useState } from 'react'
 
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/signup/useNextSubscriptionStep'
+import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'

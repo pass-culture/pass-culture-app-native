@@ -8,7 +8,7 @@ import {
   YoungStatusType,
 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { Credit, useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
@@ -20,11 +20,12 @@ import { HomeHeader } from './HomeHeader'
 
 const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 const mockedUseBeneficiaryValidationNavigation =
   useBeneficiaryValidationNavigation as jest.MockedFunction<
     typeof useBeneficiaryValidationNavigation
   >
+
 jest.mock('features/user/helpers/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
@@ -41,7 +42,7 @@ const mockedUser = {
 }
 
 const mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
-jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
+jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),

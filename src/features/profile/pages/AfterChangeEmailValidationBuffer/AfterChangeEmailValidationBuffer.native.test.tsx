@@ -42,7 +42,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/logout/useLogoutRoutine', () => ({
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: () => mockSignOut,
 }))
 

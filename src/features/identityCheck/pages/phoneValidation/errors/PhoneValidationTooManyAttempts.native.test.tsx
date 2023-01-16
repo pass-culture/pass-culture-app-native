@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'

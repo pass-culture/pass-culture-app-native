@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import mockDate from 'mockdate'
 import React from 'react'
 
-import { CURRENT_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 
 import { ThematicHighlightModule } from './ThematicHighlightModule'
 

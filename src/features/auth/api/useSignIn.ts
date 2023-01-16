@@ -1,7 +1,7 @@
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import { AccountState, SigninRequest } from 'api/gen'
-import { useLoginRoutine } from 'features/auth/login/useLoginRoutine'
+import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { SignInResponseFailure } from 'features/auth/types'
 
 type SignInResponse = SignInResponseSuccess | SignInResponseFailure

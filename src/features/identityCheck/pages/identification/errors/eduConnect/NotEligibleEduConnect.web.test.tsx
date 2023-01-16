@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { NotEligibleEduConnect } from './NotEligibleEduConnect'
 
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 
 describe('<NotEligibleEduConnect/>', () => {
   describe('Accessibility', () => {

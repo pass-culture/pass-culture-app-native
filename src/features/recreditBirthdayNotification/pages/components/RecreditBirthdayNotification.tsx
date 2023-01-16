@@ -1,14 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  Amount,
-  ProgressBarContainer,
-  StyledSubtitle,
-  StyledBody,
-  ButtonContainer,
-} from 'features/auth/signup/underageSignup/notificationPagesStyles'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
@@ -24,6 +17,8 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { getSpacing, Typo } from 'ui/theme'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
@@ -95,3 +90,24 @@ export const RecreditBirthdayNotification = () => {
     </GenericInfoPageWhite>
   )
 }
+
+const StyledSubtitle = styled(Typo.Title4).attrs(getNoHeadingAttrs())({
+  textAlign: 'center',
+})
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
+
+const ProgressBarContainer = styled.View({
+  paddingHorizontal: getSpacing(10),
+})
+
+const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.uniqueColors.brand,
+}))
+
+const ButtonContainer = styled.View({
+  alignItems: 'center',
+})

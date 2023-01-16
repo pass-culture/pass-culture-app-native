@@ -1,11 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import {
-  MINIMUM_DATE,
-  CURRENT_DATE,
-  DEFAULT_SELECTED_DATE,
-} from 'features/auth/signup/SetBirthday/utils/fixtures'
+import { MINIMUM_DATE, CURRENT_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
 import { render } from 'tests/utils'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
