@@ -175,6 +175,7 @@ export type RootStackParamList = {
   Venue: { id: number }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
+  ThematicHome: { homeId: string }
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   OnboardingRootStackParamList &

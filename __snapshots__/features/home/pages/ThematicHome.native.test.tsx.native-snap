@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home page should render correctly 1`] = `
+exports[`ThematicHome should render correctly 1`] = `
 <View
   style={
     Array [
@@ -29,7 +29,16 @@ exports[`Home page should render correctly 1`] = `
           isLoading={false}
         />
       }
-      ListHeaderComponent={<Header />}
+      ListHeaderComponent={
+        <Header
+          thematicHeader={
+            Object {
+              "subtitle": "HeaderSubtitle",
+              "title": "HeaderTitle",
+            }
+          }
+        />
+      }
       bounces={true}
       data={
         Array [
@@ -106,56 +115,12 @@ exports[`Home page should render correctly 1`] = `
             }
           >
             <View
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "borderColor": "black",
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "opacity": 1,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
-                  "position": "absolute",
-                  "right": 8,
-                  "top": 28,
-                  "userSelect": "auto",
-                  "zIndex": 1,
-                }
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                CheatMenu
-              </Text>
-            </View>
-            <View
               style={
                 Array [
                   Object {
                     "marginBottom": 8,
                     "marginHorizontal": 24,
-                    "marginTop": 24,
+                    "marginTop": 8,
                   },
                 ]
               }
@@ -171,45 +136,114 @@ exports[`Home page should render correctly 1`] = `
                   ]
                 }
               />
-              <Text
-                numberOfLines={2}
+              <View
+                accessibilityLabel="Revenir en arrière"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Black",
-                      "fontSize": 26,
-                      "lineHeight": 34,
-                    },
-                  ]
-                }
-              >
-                Bienvenue !
-              </Text>
-            </View>
-            <View
-              style={
-                Array [
                   Object {
-                    "marginHorizontal": 24,
-                  },
-                ]
-              }
-            >
-              <Text
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Revenir en arrière"
+              >
+                <View
+                  height={24}
+                  testID="icon-back"
+                  width={24}
+                >
+                  <Text>
+                    icon-back-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "display": "none",
+                      },
+                    ]
+                  }
+                >
+                  Retour
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={4}
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxHeight": 96,
+                      "overflow": "hidden",
                     },
                   ]
                 }
               >
-                Toute la culture à portée de main
-              </Text>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Black",
+                        "fontSize": 26,
+                        "lineHeight": 34,
+                      },
+                    ]
+                  }
+                >
+                  HeaderTitle
+                </Text>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  numberOfLines={2}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  HeaderSubtitle
+                </Text>
+              </View>
               <View
                 numberOfSpaces={6}
                 style={

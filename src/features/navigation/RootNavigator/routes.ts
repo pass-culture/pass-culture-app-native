@@ -35,6 +35,7 @@ import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
@@ -413,5 +414,15 @@ export const routes: Route[] = [
     name: 'GetDynamicSocials',
     component: GetDynamicSocials,
     path: 'get-dynamic-socials',
+  },
+  {
+    name: 'ThematicHome',
+    component: ThematicHome,
+    pathConfig: {
+      path: 'accueil-thematique',
+      deeplinkPaths: ['thematic-home'],
+      parse: screenParamsParser['ThematicHome'],
+    },
+    options: { title: 'Page d’accueil thématique' },
   },
 ]
