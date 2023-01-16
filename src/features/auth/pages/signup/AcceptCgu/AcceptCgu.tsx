@@ -17,7 +17,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
 
-export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
+export const AcceptCgu: FC<PreValidationSignupStepProps> = ({ signUp }) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
@@ -35,17 +35,20 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
     }
   }, [networkInfo.isConnected])
 
-  async function handleSignup(token: string) {
-    setErrorMessage(null)
-    try {
-      setIsFetching(true)
-      await props.signUp(token)
-    } catch {
-      setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
-    } finally {
-      setIsFetching(false)
-    }
-  }
+  const handleSignup = useCallback(
+    async (token: string) => {
+      setErrorMessage(null)
+      try {
+        setIsFetching(true)
+        await signUp(token)
+      } catch {
+        setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
+      } finally {
+        setIsFetching(false)
+      }
+    },
+    [signUp]
+  )
 
   const openReCaptchaChallenge = useCallback(() => {
     if (!networkInfo.isConnected) {
@@ -55,41 +58,39 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
     setErrorMessage(null)
   }, [networkInfo.isConnected])
 
-  // TODO: useCallback or remove function to call direct setState
-  function onReCaptchaClose() {
+  const onReCaptchaClose = useCallback(() => {
     setIsDoingReCaptchaChallenge(false)
-  }
+  }, [])
 
-  // TODO: useCallback
-  function onReCaptchaError(error: string) {
+  const onReCaptchaError = useCallback((error: string) => {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
     captureMonitoringError(error, 'AcceptCguOnReCaptchaError')
-  }
+  }, [])
 
-  // TODO: useCallback
-  function onReCaptchaExpire() {
+  const onReCaptchaExpire = useCallback(() => {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Le token reCAPTCHA a expiré, tu peux réessayer.')
-  }
+  }, [])
 
-  // TODO: useCallback
-  function onReCaptchaSuccess(token: string) {
-    setIsDoingReCaptchaChallenge(false)
-    handleSignup(token)
-  }
+  const onReCaptchaSuccess = useCallback(
+    (token: string) => {
+      setIsDoingReCaptchaChallenge(false)
+      handleSignup(token)
+    },
+    [handleSignup]
+  )
 
   const onSubmit = useCallback(() => {
     settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge])
+  }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup])
 
   const disabled = useMemo(
     () => isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected || areSettingsLoading,
     [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
   )
 
-  // ReCaptcha needs previous callbacks 
+  // ReCaptcha needs previous callbacks
   return (
     <React.Fragment>
       {!!settings?.isRecaptchaEnabled && (
