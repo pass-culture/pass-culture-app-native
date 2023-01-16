@@ -187,14 +187,14 @@ export const Favorite: React.FC<Props> = (props) => {
         </ButtonsRow>
         <Separator />
       </Animated.View>
-      {shareContent ? (
+      {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l'offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      ) : null}
+      )}
     </React.Fragment>
   )
 }
