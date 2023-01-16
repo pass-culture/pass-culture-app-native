@@ -58,11 +58,8 @@ describe('<Login/>', () => {
 
   it('should redirect to home WHEN signin is successful', async () => {
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -80,11 +77,8 @@ describe('<Login/>', () => {
       showEligibleCard: false,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -100,11 +94,8 @@ describe('<Login/>', () => {
       showEligibleCard: false,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -120,11 +111,8 @@ describe('<Login/>', () => {
       showEligibleCard: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -138,11 +126,8 @@ describe('<Login/>', () => {
       showEligibleCard: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -157,11 +142,8 @@ describe('<Login/>', () => {
       recreditAmountToShow: 3000,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -176,11 +158,8 @@ describe('<Login/>', () => {
       recreditAmountToShow: null,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -191,11 +170,8 @@ describe('<Login/>', () => {
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {
     simulateSigninEmailNotValidated()
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -209,11 +185,8 @@ describe('<Login/>', () => {
     simulateSignin200(AccountState.INACTIVE)
     mockSuspensionStatusApiCall(AccountState.SUSPENDED)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -246,12 +219,7 @@ describe('<Login/>', () => {
     simulateSigninWrongCredentials()
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -264,12 +232,7 @@ describe('<Login/>', () => {
     simulateSigninNetworkFailure()
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -284,12 +247,7 @@ describe('<Login/>', () => {
     simulateSigninRateLimitExceeded()
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -303,10 +261,7 @@ describe('<Login/>', () => {
   it('should enable login button when both text inputs are filled', async () => {
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
+    fillInputs(renderAPI)
 
     await waitFor(() => {
       const connectedButton = renderAPI.getByText('Se connecter')
@@ -336,10 +291,7 @@ describe('<Login/>', () => {
 
     it('should redirect to the previous offer page when signin is successful', async () => {
       const renderAPI = renderLogin()
-      const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-      const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.changeText(passwordInput, 'mypassword')
+      fillInputs(renderAPI)
       fireEvent.press(renderAPI.getByText('Se connecter'))
 
       await waitFor(() => {
@@ -351,12 +303,9 @@ describe('<Login/>', () => {
 
     it('should add the previous offer to favorites when signin is successful', async () => {
       simulateAddToFavorites()
-      const renderAPI = renderLogin()
-      const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-      const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.changeText(passwordInput, 'mypassword')
 
+      const renderAPI = renderLogin()
+      fillInputs(renderAPI)
       fireEvent.press(renderAPI.getByText('Se connecter'))
 
       await waitFor(() => {
@@ -367,11 +316,7 @@ describe('<Login/>', () => {
     it('should log analytics when adding the previous offer to favorites', async () => {
       simulateAddToFavorites()
       const renderAPI = renderLogin()
-      const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-      const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.changeText(passwordInput, 'mypassword')
-
+      fillInputs(renderAPI)
       fireEvent.press(renderAPI.getByText('Se connecter'))
 
       await waitFor(() => {
@@ -388,19 +333,22 @@ describe('<Login/>', () => {
         showEligibleCard: false,
       } as UserProfileResponse)
       const renderAPI = renderLogin()
-      const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-      const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.changeText(passwordInput, 'mypassword')
-
+      fillInputs(renderAPI)
       fireEvent.press(renderAPI.getByText('Se connecter'))
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('CulturalSurvey')
+        expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
       })
     })
   })
 })
+
+const fillInputs = (renderAPI: ReturnType<typeof render>) => {
+  const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+  const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+  fireEvent.changeText(emailInput, 'email@gmail.com')
+  fireEvent.changeText(passwordInput, 'mypassword')
+}
 
 function renderLogin() {
   return render(
