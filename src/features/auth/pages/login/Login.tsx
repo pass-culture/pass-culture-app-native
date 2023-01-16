@@ -74,13 +74,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     }
   }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
 
-  function onEmailChange(mail: string) {
-    if (emailErrorMessage) {
-      setIsLoading(false)
-      setEmailErrorMessage(null)
-    }
-    setEmail(mail)
-  }
+  const onEmailChange = useCallback(
+    (mail: string) => {
+      if (emailErrorMessage) {
+        setIsLoading(false)
+        setEmailErrorMessage(null)
+      }
+      setEmail(mail)
+    },
+    [emailErrorMessage, setEmailErrorMessage, setIsLoading]
+  )
 
   const handleSigninSuccess = useCallback(
     async (accountState: AccountState) => {

@@ -1,12 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
-import {
-  CenteredText,
-  Description,
-  EmailSentModalContent,
-} from 'features/auth/components/signupComponents'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -20,7 +16,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo } from 'ui/theme'
+import { padding, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
@@ -46,6 +42,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
         leftIcon: ArrowPrevious,
         onLeftIconPress: goBack,
       }
+
   return (
     <BottomContentPage>
       <ModalHeader
@@ -78,7 +75,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             as={ButtonTertiaryPrimary}
             wording="Consulter notre centre d’aide"
             externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
-            onBeforeNavigate={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}
+            onBeforeNavigate={analytics.logHelpCenterContactSignupConfirmationEmailSent}
             icon={ExternalSite}
           />
         </Description>
@@ -88,3 +85,18 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
     </BottomContentPage>
   )
 }
+
+const EmailSentModalContent = styled.View(({ theme }) => ({
+  ...padding(4, 1),
+  alignItems: 'center',
+  width: '100%',
+  maxWidth: theme.contentPage.maxWidth,
+}))
+
+const Description = styled.View({
+  alignItems: 'center',
+})
+
+const CenteredText = styled(Typo.Body)({
+  textAlign: 'center',
+})
