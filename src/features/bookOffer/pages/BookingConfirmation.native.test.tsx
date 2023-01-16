@@ -30,21 +30,20 @@ const share = jest
 
 const useReviewInAppInformationMock = useReviewInAppInformation as jest.Mock
 
-const isAvailable = jest
-  .spyOn(reactNativeInAppReview, 'isAvailable')
-  .mockImplementation(() => false)
+const isAvailable = jest.spyOn(reactNativeInAppReview, 'isAvailable')
+const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
 
 const mockOfferId = 1337
 
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
     jest.useFakeTimers()
-    useRoute.mockImplementation(() => ({
+    useRoute.mockReturnValue({
       params: {
         offerId: mockOfferId,
         bookingId: 345,
       },
-    }))
+    })
   })
   afterEach(() => {
     jest.useRealTimers()
@@ -57,34 +56,33 @@ describe('<BookingConfirmation />', () => {
 
   describe('InAppReview', () => {
     it('should call InAppReview Modal after 3 seconds if isAvailable and rules are respected', () => {
-      isAvailable.mockImplementationOnce(() => true)
-      const requestInAppReview = jest
-        .spyOn(reactNativeInAppReview, 'RequestInAppReview')
-        .mockResolvedValue(() => true)
+      isAvailable.mockReturnValueOnce(true)
+      requestInAppReview.mockResolvedValueOnce(true)
 
       render(<BookingConfirmation />)
       jest.advanceTimersByTime(3000)
+
       expect(requestInAppReview).toHaveBeenCalledTimes(1)
     })
 
     it('should not call InAppReview Modal if isAvailable is false', () => {
-      isAvailable.mockImplementationOnce(() => false)
-      const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
+      isAvailable.mockReturnValueOnce(false)
 
       render(<BookingConfirmation />)
       jest.advanceTimersByTime(3000)
-      expect(requestInAppReview).toHaveBeenCalledTimes(0)
+
+      expect(requestInAppReview).not.toHaveBeenCalled()
     })
 
     it('should not call InAppReview Modal if isAvailable is true and rules are not respected', () => {
-      const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppReview')
-      useReviewInAppInformationMock.mockImplementationOnce(() => ({
+      useReviewInAppInformationMock.mockReturnValueOnce(() => ({
         shouldReviewBeRequested: false,
       }))
 
       render(<BookingConfirmation />)
       jest.advanceTimersByTime(3000)
-      expect(requestInAppReview).toHaveBeenCalledTimes(0)
+
+      expect(requestInAppReview).not.toHaveBeenCalled()
     })
   })
 
