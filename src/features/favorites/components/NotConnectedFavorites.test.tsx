@@ -28,7 +28,7 @@ describe('NotConnectedFavorites component', () => {
     fireEvent.press(renderAPI.getByText(`Se connecter`))
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Login', undefined)
+      expect(navigate).toBeCalledWith('Login', {})
       expect(analytics.logSignInFromFavorite).toBeCalledTimes(1)
     })
   })
