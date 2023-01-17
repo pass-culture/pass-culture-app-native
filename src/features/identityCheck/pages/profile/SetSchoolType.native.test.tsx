@@ -41,14 +41,14 @@ const mockUseIdentityCheckContext = useSubscriptionContext as jest.Mock
 
 jest.mock('react-query')
 
+mockUseIdentityCheckContext.mockImplementation(() => ({
+  dispatch: jest.fn(),
+  ...mockState,
+  profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT },
+}))
+
 describe('<SetSchoolType />', () => {
   it('shoud render a list of middle school types if profile.status is middleSchoolStudent', () => {
-    mockUseIdentityCheckContext.mockImplementationOnce(() => ({
-      dispatch: jest.fn(),
-      ...mockState,
-      profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT },
-    }))
-
     const renderAPI = render(<SetSchoolType />)
     expect(renderAPI).toMatchSnapshot()
   })
@@ -64,11 +64,6 @@ describe('<SetSchoolType />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
   it('should not display "Continuer" if isSavingCheckpoint is true', async () => {
-    mockUseIdentityCheckContext.mockImplementationOnce(() => ({
-      dispatch: jest.fn(),
-      ...mockState,
-      profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT },
-    }))
     mockIsSavingCheckpoint = true
     const { queryByText, getByText } = render(<SetSchoolType />)
 
