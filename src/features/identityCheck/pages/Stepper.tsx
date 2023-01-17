@@ -15,6 +15,7 @@ import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionStep
 import { getStepState } from 'features/identityCheck/utils/getStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { hasOngoingCredit } from 'features/user/helpers/useAvailableCredit'
+import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Li } from 'ui/components/Li'
@@ -119,7 +120,10 @@ export const IdentityCheckStepper = () => {
                       ? undefined
                       : { screen: step.screens[0] }
                   }
-                  onPress={() => navigateToStep(step)}
+                  onPress={() => {
+                    amplitude.logEvent('stepper_clicked', { step: step.name })
+                    return navigateToStep(step)
+                  }}
                 />
               </Li>
             ))}
