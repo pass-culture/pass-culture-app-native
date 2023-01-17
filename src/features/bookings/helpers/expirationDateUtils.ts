@@ -13,3 +13,23 @@ export function isBookingInList(
 ) {
   return getDigitalBookingWithoutExpirationDate?.some((b) => b.id === booking.id)
 }
+
+const expirationMessages = {
+  lastDay: "Ta réservation s'archive aujourd'hui",
+  oneDayLeft: 'Billet à retirer sur place dès demain',
+  manyDaysLeft: (daysLeft: number) => `Ta réservation s'archivera dans ${daysLeft} jours`,
+}
+
+export const displayExpirationMessage = (daysLeft: number) => {
+  let expirationMessage = ''
+
+  if (daysLeft > 1) {
+    expirationMessage = expirationMessages.manyDaysLeft(daysLeft)
+  } else if (daysLeft === 1) {
+    expirationMessage = expirationMessages.oneDayLeft
+  } else if (daysLeft === 0) {
+    expirationMessage = expirationMessages.lastDay
+  }
+
+  return expirationMessage
+}

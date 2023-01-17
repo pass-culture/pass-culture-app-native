@@ -3,12 +3,16 @@ import styled from 'styled-components/native'
 
 import { WithdrawalTypeEnum } from 'api/gen'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
-import { isBookingInList } from 'features/bookings/helpers/expirationDateUtils'
+import {
+  displayExpirationMessage,
+  isBookingInList,
+} from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { useCountdownDays } from 'ui/hooks/useCountDownDays'
 import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -20,6 +24,7 @@ export const OnGoingBookingItem = ({
   booking,
   digitalBookingWithoutExpirationDate,
 }: BookingItemProps) => {
+  const daysLeft = useCountdownDays(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
@@ -34,6 +39,8 @@ export const OnGoingBookingItem = ({
   })
 
   const isBookingValid = isBookingInList(booking, digitalBookingWithoutExpirationDate)
+  const canDisplayMessage = !!isBookingValid && daysLeft >= 0
+  const correctMessages = displayExpirationMessage(daysLeft)
 
   return (
     <Container
@@ -62,11 +69,13 @@ export const OnGoingBookingItem = ({
             )}
           </React.Fragment>
         )}
-        <ExpirationBookingContainer>
-          <Clock />
-          <Spacer.Row numberOfSpaces={1} />
-          <ExpirationBookingLabel>Ta reservation s’archivera dans 30 jours</ExpirationBookingLabel>
-        </ExpirationBookingContainer>
+        {!!canDisplayMessage && (
+          <ExpirationBookingContainer>
+            <Clock />
+            <Spacer.Row numberOfSpaces={1} />
+            <ExpirationBookingLabel>{correctMessages}</ExpirationBookingLabel>
+          </ExpirationBookingContainer>
+        )}
       </AttributesView>
     </Container>
   )
