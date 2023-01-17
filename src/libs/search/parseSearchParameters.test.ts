@@ -3,9 +3,9 @@ import mockdate from 'mockdate'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
+import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
-import { SearchParametersFields } from 'libs/contentful'
 import { useParseSearchParameters } from 'libs/search'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
@@ -28,7 +28,7 @@ describe('parseSearchParameters', () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   it('should return default parameters when no parameters are provided', () => {
-    const parameters = {} as SearchParametersFields
+    const parameters = {} as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -38,7 +38,7 @@ describe('parseSearchParameters', () => {
   it('should return parsed algolia parameters with mapped categories when provided', () => {
     const parameters = {
       categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
-    } as SearchParametersFields
+    } as OffersModuleParameters
 
     const { result } = renderHook(() => useParseSearchParameters())
     const parsedParameters = result.current(parameters)
@@ -51,7 +51,7 @@ describe('parseSearchParameters', () => {
   it('should return parsed algolia parameters with mapped subcategories when provided', () => {
     const parameters = {
       subcategories: ['Cinéma plein air', 'Escape game', 'Festival et salon du livre'],
-    } as SearchParametersFields
+    } as OffersModuleParameters
 
     const { result } = renderHook(() => useParseSearchParameters())
     const parsedParameters = result.current(parameters)
@@ -75,7 +75,7 @@ describe('parseSearchParameters', () => {
       endingDatetime: '2020-10-02T00:00+00:00',
       upcomingWeekendEvent: true,
       currentWeekEvent: true,
-    } as SearchParametersFields
+    } as OffersModuleParameters
     const geolocation = null
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
     expect(result).toStrictEqual({
@@ -99,7 +99,7 @@ describe('parseSearchParameters', () => {
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
       hitsPerPage: 5,
       eventDuringNextXDays: days,
-    } as SearchParametersFields
+    } as OffersModuleParameters
     const geolocation = null
     const mockedComputer = jest.spyOn(
       computeBeginningAndEndingDatetimes,
@@ -116,7 +116,7 @@ describe('parseSearchParameters', () => {
   })
 
   it('should return algolia parameters with isDigital when provided', () => {
-    const parameters = { isDigital: true } as SearchParametersFields
+    const parameters = { isDigital: true } as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -127,7 +127,7 @@ describe('parseSearchParameters', () => {
   })
 
   it('should return algolia parameters with isEvent when provided', () => {
-    const parameters = { isEvent: true } as SearchParametersFields
+    const parameters = { isEvent: true } as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -138,7 +138,7 @@ describe('parseSearchParameters', () => {
   })
 
   it('should return algolia parameters with isThing when provided', () => {
-    const parameters = { isThing: true } as SearchParametersFields
+    const parameters = { isThing: true } as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -149,7 +149,7 @@ describe('parseSearchParameters', () => {
   })
 
   it('should return algolia parameters with a price range when minimum price is provided', () => {
-    const parameters = { priceMin: 50 } as SearchParametersFields
+    const parameters = { priceMin: 50 } as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -157,7 +157,7 @@ describe('parseSearchParameters', () => {
   })
 
   it('should return algolia parameters with a price range when maximum price is provided', () => {
-    const parameters = { priceMax: 200 } as SearchParametersFields
+    const parameters = { priceMax: 200 } as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -165,7 +165,7 @@ describe('parseSearchParameters', () => {
   })
 
   it('should return algolia parameters with a price range when minimum and maximum prices are provided', () => {
-    const parameters = { priceMin: 50, priceMax: 200 } as SearchParametersFields
+    const parameters = { priceMin: 50, priceMax: 200 } as OffersModuleParameters
     const geolocation = null
 
     const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
@@ -176,7 +176,7 @@ describe('parseSearchParameters', () => {
     const geolocation = { latitude: 1, longitude: 2 } as GeoCoordinates
 
     it('should return algolia parameters with geolocation with no distance limit when isGeolocated is provided', () => {
-      const parameters = { isGeolocated: true } as SearchParametersFields
+      const parameters = { isGeolocated: true } as OffersModuleParameters
 
       const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
       expect(result?.locationFilter).toStrictEqual({
@@ -187,7 +187,7 @@ describe('parseSearchParameters', () => {
     })
 
     it('should return algolia parameters with geolocation with distance limit when isGeolocated is provided and radius as well', () => {
-      const parameters = { aroundRadius: 10, isGeolocated: true } as SearchParametersFields
+      const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
 
       const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
       expect(result?.locationFilter).toStrictEqual({
@@ -198,14 +198,14 @@ describe('parseSearchParameters', () => {
     })
 
     it('should return null when isGeolocated is true & around radius is provided but geolocation is null', () => {
-      const parameters = { aroundRadius: 10, isGeolocated: true } as SearchParametersFields
+      const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
 
       const result = parseSearchParameters(parameters, null, subcategoryLabelMapping)
       expect(result).toBeUndefined()
     })
 
     it('should return null when isGeolocated is false & around radius is provided', () => {
-      const parameters = { aroundRadius: 10, isGeolocated: false } as SearchParametersFields
+      const parameters = { aroundRadius: 10, isGeolocated: false } as OffersModuleParameters
 
       const result = parseSearchParameters(parameters, null, subcategoryLabelMapping)
       expect(result).toBeUndefined()
