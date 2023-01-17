@@ -1,7 +1,8 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import {
   getNativeCategories,
   getSearchGroupsByAlphabeticalSorting,
+  isOnlyOnline,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 
@@ -99,5 +100,64 @@ describe('categoriesHelpers', () => {
         value: 'Pratiques & ateliers artistiques',
       },
     ])
+  })
+
+  describe('isOnlyOnline', () => {
+    it('should return false when category and native category are undefined', () => {
+      const value = isOnlyOnline(mockData)
+      expect(value).toEqual(false)
+    })
+
+    describe('Category', () => {
+      it('should return true when all native categories of the category are online platform', () => {
+        const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
+        expect(value).toEqual(true)
+      })
+
+      it('should return false when all native categories of the category are offline', () => {
+        const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE)
+        expect(value).toEqual(false)
+      })
+
+      it('should return false when native categories of the category are online and offline platform', () => {
+        const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.SPECTACLES)
+        expect(value).toEqual(false)
+      })
+
+      it('should return false when native categories of the category are online, offline and online or offline platform', () => {
+        const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS)
+        expect(value).toEqual(false)
+      })
+    })
+
+    describe('Native category', () => {
+      it('should return true when all pro subcategories of the native category are online platform', () => {
+        const value = isOnlyOnline(
+          mockData,
+          undefined,
+          NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE
+        )
+        expect(value).toEqual(true)
+      })
+
+      it('should return false when all pro subcategories of the native category are offline', () => {
+        const value = isOnlyOnline(
+          mockData,
+          undefined,
+          NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
+        )
+        expect(value).toEqual(false)
+      })
+
+      it('should return false when pro subcategories of the native category are online and offline platform', () => {
+        const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.VISITES_CULTURELLES)
+        expect(value).toEqual(false)
+      })
+
+      it('should return false when pro subcategories of the native category are offline and online or offline platform', () => {
+        const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
+        expect(value).toEqual(false)
+      })
+    })
   })
 })
