@@ -22,7 +22,6 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
-import { GetDynamicSocials } from 'features/cheatcodes/pages/GetDynamicSocials/GetDynamicSocials'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
@@ -408,12 +407,6 @@ export const routes: Route[] = [
     component: ThematicHomeHeaderCheatcode,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-thematic-home-header',
-  },
-  {
-    // debug route: in navigation component
-    name: 'GetDynamicSocials',
-    component: GetDynamicSocials,
-    path: 'get-dynamic-socials',
   },
   {
     name: 'ThematicHome',
