@@ -6,7 +6,6 @@
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-  <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
   <application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/icon" android:roundIcon="@mipmap/icon_round" android:allowBackup="false" android:theme="@style/AppTheme" android:requestLegacyExternalStorage="true">
     <activity android:name=".MainActivity" android:label="@string/app_name" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:exported="true">
@@ -19,30 +18,11 @@
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
         <data android:scheme="https" />
-        <data android:scheme="instagram"/>
         <data android:host="@string/WEBAPP_V2_DOMAIN" />
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     <meta-data android:name="asset_statements" android:resource="@string/asset_statements" />
   </application>
-  <queries>
-      <intent>
-          <action android:name="android.intent.action.VIEW" />
-          <data android:scheme="instagram"/>
-      </intent>
-      <intent>
-          <action android:name="android.intent.action.VIEW" />
-          <data android:scheme="snapchat"/>
-      </intent>
-      <intent>
-          <action android:name="android.intent.action.VIEW" />
-          <data android:scheme="tiktok"/>
-      </intent>
-      <intent>
-          <action android:name="android.intent.action.VIEW" />
-          <data android:scheme="whatsapp"/>
-      </intent>
-  </queries>
 
 </manifest>
