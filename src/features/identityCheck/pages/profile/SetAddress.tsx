@@ -102,6 +102,7 @@ export const SetAddress = () => {
   const submitAddress = () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
+    amplitude.logEvent('set_address_clicked')
     navigateToNextScreen()
   }
 

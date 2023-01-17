@@ -88,6 +88,7 @@ export const SetCity = () => {
   const submitCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
+    amplitude.logEvent('set_postal_code_clicked')
     navigateToNextScreen()
   }
 
