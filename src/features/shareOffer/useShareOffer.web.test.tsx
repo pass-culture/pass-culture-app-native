@@ -19,6 +19,8 @@ const Toto = ({ offer }: { offer?: OfferResponse }) => {
   )
 }
 
+jest.useFakeTimers()
+
 describe('useShareOffer', () => {
   it('should not display web share modal when did not open it', async () => {
     const { queryByText } = render(<Toto offer={mockOffer} />)
@@ -52,9 +54,15 @@ describe('useShareOffer', () => {
     await act(async () => {
       await userEvent.click(getByText('Partager'))
     })
+    await act(async () => {
+      await jest.advanceTimersByTime(250)
+    })
 
     await act(async () => {
       await userEvent.click(getByLabelText('Fermer la modale'))
+    })
+    await act(async () => {
+      await jest.advanceTimersByTime(250)
     })
 
     expect(queryByText('Partager l’offre')).toBeFalsy()

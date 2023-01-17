@@ -9,6 +9,7 @@ import { share } from 'libs/share'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getOfferLocationName } from 'shared/offers/getOfferLocationName'
 import { useModal } from 'ui/components/modals/useModal'
+import { useDebounce } from 'ui/hooks/useDebounce'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -26,7 +27,9 @@ const shareOptions = {
   dialogTitle: shareTitle, // android only
 }
 
-export const useShareOffer = ({ offer }: Props): ShareOfferOutput => {
+export const useShareOffer = ({ offer: offer2 }: Props): ShareOfferOutput => {
+  const offer = useDebounce(offer2, 1000)
+  console.log({ offer })
   const { hideModal, showModal, visible } = useModal()
 
   const logShareOffer = useFunctionOnce(() => {
@@ -40,7 +43,18 @@ export const useShareOffer = ({ offer }: Props): ShareOfferOutput => {
       share() {
         // do nothing when we don't have an offer
       },
-      WebShareModal: () => null,
+      WebShareModal: () => {
+        console.log('websharemodal', { visible })
+        return (
+          <WebShareModal
+            key="ma-cle"
+            shareContent={shareContent}
+            dismissModal={hideModal}
+            headerTitle="Partager l’offre"
+            visible={visible}
+          />
+        )
+      },
     }
   }
 
@@ -62,13 +76,17 @@ export const useShareOffer = ({ offer }: Props): ShareOfferOutput => {
       logShareOffer()
       share(shareContent, shareOptions)
     },
-    WebShareModal: () => (
-      <WebShareModal
-        shareContent={shareContent}
-        dismissModal={hideModal}
-        headerTitle="Partager l’offre"
-        visible={visible}
-      />
-    ),
+    WebShareModal: () => {
+      console.log('websharemodal', { visible })
+      return (
+        <WebShareModal
+          key="ma-cle"
+          shareContent={shareContent}
+          dismissModal={hideModal}
+          headerTitle="Partager l’offre"
+          visible={visible}
+        />
+      )
+    },
   }
 }
