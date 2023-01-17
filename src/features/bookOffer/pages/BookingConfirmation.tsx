@@ -13,6 +13,7 @@ import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -79,7 +80,7 @@ export function BookingConfirmation() {
         mobileBottomFlex={0.1}>
         <StyledBody>{amountLeftText}</StyledBody>
         <StyledBody>
-          Tu peux retrouver toutes les informations concernant ta réservation sur l’application
+          Tu peux retrouver toutes les informations concernant ta réservation sur l’application.
         </StyledBody>
         <Spacer.Flex />
         <ButtonContainer>
@@ -89,7 +90,7 @@ export function BookingConfirmation() {
           <Spacer.Column numberOfSpaces={4} />
           <InternalTouchableLink
             key={2}
-            as={ButtonSecondary}
+            as={ButtonTertiaryPrimary}
             wording="Retourner à l'accueil"
             navigateTo={navigateToHomeConfig}
             onBeforeNavigate={trackBooking}

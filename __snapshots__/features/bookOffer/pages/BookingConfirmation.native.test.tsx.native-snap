@@ -104,7 +104,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       ]
     }
   >
-    Tu peux retrouver toutes les informations concernant ta réservation sur l’application
+    Tu peux retrouver toutes les informations concernant ta réservation sur l’application.
   </Text>
   <View
     style={
@@ -266,17 +266,15 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "transparent",
-          "borderColor": "#eb0055",
           "borderRadius": 24,
-          "borderWidth": 2,
           "flexDirection": "row",
           "justifyContent": "center",
           "maxWidth": 500,
           "minHeight": 40,
           "opacity": 1,
           "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 2,
+          "paddingRight": 2,
           "paddingTop": 2,
           "userSelect": "auto",
           "width": "100%",
@@ -294,9 +292,9 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         }
       >
         <View
-          height={24}
+          height={20}
           testID="button-icon"
-          width={24}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
