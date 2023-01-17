@@ -4,17 +4,16 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useShareOffer } from 'features/offer/helpers/useShareOffer'
+import { useOffer } from 'features/offer/api/useOffer'
+import { useShareOffer } from 'features/shareOffer/useShareOffer'
 import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { analytics } from 'libs/firebase/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { WebShareModal } from 'libs/share/WebShareModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
-import { useModal } from 'ui/components/modals/useModal'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
@@ -23,7 +22,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-  const { share: shareOffer, shareContent } = useShareOffer(params.offerId)
+
   const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
@@ -53,16 +52,12 @@ export function BookingConfirmation() {
     })
   }, [params.bookingId, params.offerId, reset, trackBooking])
 
-  const {
-    visible: shareOfferModalVisible,
-    showModal: showShareOfferModal,
-    hideModal: hideShareOfferModal,
-  } = useModal(false)
+  const { data: offer } = useOffer({ offerId: params.offerId })
+  const { share: shareOffer, WebShareModal } = useShareOffer({ offer })
 
   const pressShareOffer = useCallback(() => {
     shareOffer()
-    showShareOfferModal()
-  }, [shareOffer, showShareOfferModal])
+  }, [shareOffer])
 
   useShowReview()
 
@@ -98,14 +93,7 @@ export function BookingConfirmation() {
           />
         </ButtonContainer>
       </GenericInfoPageWhite>
-      {!!shareContent && (
-        <WebShareModal
-          visible={shareOfferModalVisible}
-          headerTitle="Partager l’offre"
-          shareContent={shareContent}
-          dismissModal={hideShareOfferModal}
-        />
-      )}
+      <WebShareModal />
     </React.Fragment>
   )
 }

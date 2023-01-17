@@ -8,17 +8,16 @@ import { useRemoveFavorite } from 'features/favorites/api'
 import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
+import { useOffer } from 'features/offer/api/useOffer'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
-import { useShareOffer } from 'features/offer/helpers/useShareOffer'
+import { useShareOffer } from 'features/shareOffer/useShareOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
-import { WebShareModal } from 'libs/share/WebShareModal'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -110,18 +109,12 @@ export const Favorite: React.FC<Props> = (props) => {
       : undefined,
   }
 
-  const {
-    visible: shareOfferModalVisible,
-    showModal: showShareOfferModal,
-    hideModal: hideShareOfferModal,
-  } = useModal(false)
-
-  const { share: shareOffer, shareContent } = useShareOffer(offer.id)
+  const { data: offerForShare } = useOffer({ offerId: offer.id })
+  const { share: shareOffer, WebShareModal } = useShareOffer({ offer: offerForShare })
 
   const pressShareOffer = useCallback(() => {
     shareOffer()
-    showShareOfferModal()
-  }, [shareOffer, showShareOfferModal])
+  }, [shareOffer])
 
   return (
     <React.Fragment>
@@ -183,14 +176,7 @@ export const Favorite: React.FC<Props> = (props) => {
         </ButtonsRow>
         <Separator />
       </Animated.View>
-      {!!shareContent && (
-        <WebShareModal
-          visible={shareOfferModalVisible}
-          headerTitle="Partager l'offre"
-          shareContent={shareContent}
-          dismissModal={hideShareOfferModal}
-        />
-      )}
+      <WebShareModal />
     </React.Fragment>
   )
 }

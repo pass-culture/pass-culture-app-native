@@ -24,7 +24,7 @@ jest.mock('features/bookOffer/services/useReviewInAppInformation', () => ({
   })),
 }))
 
-const share = jest
+const mockShare = jest
   .spyOn(Share, 'share')
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
@@ -95,7 +95,7 @@ describe('<BookingConfirmation />', () => {
         fireEvent.press(shareButton)
       })
 
-      expect(share).toBeCalledTimes(1)
+      expect(mockShare).toHaveBeenCalledTimes(1)
     })
 
     it('should go to Bookings and log analytics event', async () => {
