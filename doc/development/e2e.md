@@ -265,7 +265,9 @@ We have two utilities that can be used:
 
 ```tsx
 function ExampleComponent() {
-  return <MyComponent {...accessibilityAndTestId('unique text')} />
+  return <MyComponent {...accessibilityAndTestId('Un texte unique')} />
+  
+  return React.createElement(MyComponent, accessibilityAndTestId('Un texte unique'))
 }
 ```
 
@@ -276,7 +278,7 @@ Use `accessibilityAndTestId` only if you want `accessibilityLabel` to be set out
 
 ```tsx
 function ExampleComponent() {
-  const e2eTestId = useE2eTestId('unique text')
+  const e2eTestId = useE2eTestId('Un texte unique')
   return <MyComponent {...e2eTestId} />
 }
 ```
