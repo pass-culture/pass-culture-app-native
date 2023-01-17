@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Idea } from 'ui/svg/icons/Idea'
@@ -39,7 +40,7 @@ Default.args = {
 
 export const WithCustomImage = Template.bind({})
 WithCustomImage.args = {
-  backgroundSource: { uri: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg' },
+  backgroundSource: SHARE_APP_BANNER_IMAGE_SOURCE,
   children: <TextComponent />,
 }
 
