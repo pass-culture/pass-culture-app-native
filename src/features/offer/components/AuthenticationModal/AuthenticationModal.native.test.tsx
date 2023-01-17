@@ -54,6 +54,22 @@ describe('<AuthenticationModal />', () => {
     })
   })
 
+  it('should go to Login from booking with offerId', async () => {
+    const { getByText } = render(
+      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} />
+    )
+    const signinButton = getByText('Se connecter')
+
+    fireEvent.press(signinButton)
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+        preventCancellation: true,
+        offerId: OFFER_ID,
+      })
+    })
+  })
+
   it('should log analytics when clicking on close button with label "Fermer la modale', async () => {
     const { getByLabelText } = render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} />

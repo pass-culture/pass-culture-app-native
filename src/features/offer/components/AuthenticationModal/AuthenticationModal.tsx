@@ -56,7 +56,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" onAdditionalPress={signIn} />
+      <StyledAuthenticationButton type="login" onAdditionalPress={signIn} params={{ offerId }} />
     </AppModalWithIllustration>
   )
 }
