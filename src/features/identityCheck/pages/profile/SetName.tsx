@@ -38,6 +38,7 @@ export const SetName = () => {
   function submitName() {
     if (disabled) return
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
+    amplitude.logEvent('set_name_clicked')
     navigateToNextScreen()
   }
 

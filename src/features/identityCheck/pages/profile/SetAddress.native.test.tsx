@@ -109,6 +109,22 @@ describe('<SetAddress/>', () => {
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_address')
     )
   })
+
+  it('should send a amplitude event set_address_clicked on press Continuer', async () => {
+    mockAddressesApiCall(mockedSuggestedPlaces)
+
+    const { getByText, getByPlaceholderText } = renderSetAddress()
+
+    const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
+    fireEvent.changeText(input, QUERY_ADDRESS)
+
+    fireEvent.press(getByText('Continuer'))
+
+    await waitFor(() =>
+      // first call will be the event screen_view_set_address on mount
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_address_clicked')
+    )
+  })
 })
 
 function renderSetAddress() {

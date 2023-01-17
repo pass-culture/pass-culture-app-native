@@ -78,4 +78,17 @@ describe('<SetSchoolType />', () => {
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_school_type')
     )
   })
+
+  it('should send a amplitude event set_school_type_clicked on press Continuer', async () => {
+    mockIsSavingCheckpoint = false
+    const { getByText } = render(<SetSchoolType />)
+
+    fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
+    fireEvent.press(getByText('Continuer'))
+
+    await waitFor(() =>
+      // first call will be the event screen_view_set_school_type on mount
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_school_type')
+    )
+  })
 })
