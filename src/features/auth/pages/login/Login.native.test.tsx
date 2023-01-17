@@ -262,7 +262,7 @@ describe('<Login/>', () => {
         .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // password input rerender
     })
 
-    it('should redirect to the previous offer page when signin is successful', async () => {
+    it('should redirect to Offer page when signin is successful and user comes from offer', async () => {
       const renderAPI = renderLogin()
       fillInputs(renderAPI)
       fireEvent.press(renderAPI.getByText('Se connecter'))
