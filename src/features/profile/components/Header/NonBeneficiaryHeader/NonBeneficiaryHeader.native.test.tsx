@@ -3,8 +3,8 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { fireEvent, render } from 'tests/utils'
@@ -21,11 +21,11 @@ jest.mock('@react-navigation/native', () => {
   }
 })
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
 
@@ -36,7 +36,7 @@ const mockedSubscriptionMessage = {
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
 
-jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
+jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),

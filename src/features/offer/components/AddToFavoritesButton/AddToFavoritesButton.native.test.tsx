@@ -2,11 +2,9 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { FavoriteResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
-import {
-  paginatedFavoritesResponseSnap,
-  addFavoriteJsonResponseSnap,
-} from 'features/favorites/fixtures/favoritesResponse'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -14,7 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, waitFor, render } from 'tests/utils'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
@@ -37,7 +35,7 @@ describe('<AddToFavoriteButton />', () => {
 
   it('should add favorite', async () => {
     const { getByText } = renderButton({
-      offerId: addFavoriteJsonResponseSnap.offer.id,
+      offerId: favoriteResponseSnap.offer.id,
     })
 
     fireEvent.press(getByText('Mettre en favori'))
@@ -76,7 +74,7 @@ const renderButton = (options?: Options) => {
         return res(ctx.status(415), ctx.json({}))
       } else {
         mockPostFavorite()
-        return res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
       }
     })
   )

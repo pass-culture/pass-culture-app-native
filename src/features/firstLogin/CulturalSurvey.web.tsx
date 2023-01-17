@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Widget as TypeformWidget } from '@typeform/embed-react'
 import React, { useEffect } from 'react'
 
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { withCulturalSurveyProvider } from 'features/firstLogin/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 

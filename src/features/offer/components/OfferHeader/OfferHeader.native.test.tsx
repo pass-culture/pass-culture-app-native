@@ -4,11 +4,9 @@ import { Animated } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
-import {
-  paginatedFavoritesResponseSnap,
-  addFavoriteJsonResponseSnap,
-} from 'features/favorites/fixtures/favoritesResponse'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
@@ -28,7 +26,7 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
@@ -58,14 +56,14 @@ describe('<OfferHeader />', () => {
 
   it('should render all the icons', () => {
     const offerHeader = renderOfferHeader()
-    expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
+    expect(offerHeader.queryByTestId('animated-icon-back')).toBeTruthy()
+    expect(offerHeader.queryByTestId('animated-icon-share')).toBeTruthy()
+    expect(offerHeader.queryByTestId('animated-icon-favorite')).toBeTruthy()
   })
 
   it('should goBack when we press on the back button', () => {
     const { getByTestId } = renderOfferHeader()
-    fireEvent.press(getByTestId('icon-back'))
+    fireEvent.press(getByTestId('animated-icon-back'))
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
@@ -93,7 +91,7 @@ describe('<OfferHeader />', () => {
       isUserLoading: false,
     })
     const { getByTestId, getByText } = renderOfferHeader()
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
     expect(getByText('Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris')).toBeTruthy()
   })
 
@@ -102,36 +100,36 @@ describe('<OfferHeader />', () => {
     const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
 
     await waitFor(() => {
-      expect(getByTestId('icon-favorite-filled')).toBeTruthy()
+      expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
     })
   })
 
   it('should add favorite when adding an offer in favorite - logged in users', async () => {
     const { getByTestId } = renderOfferHeader({
-      id: addFavoriteJsonResponseSnap.offer.id,
+      id: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
-      expect(getByTestId('icon-favorite-filled')).toBeTruthy()
+      expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
 
       const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
       expect(
         mutateData.favorites?.find(
-          (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
+          (f: FavoriteResponse) => f.offer.id === favoriteResponseSnap.offer.id
         )?.offer.id
-      ).toEqual(addFavoriteJsonResponseSnap.offer.id)
+      ).toEqual(favoriteResponseSnap.offer.id)
 
       expect(
         (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
           (f: FavoriteResponse) => f.id === 1000
         )
       ).toEqual({
-        ...addFavoriteJsonResponseSnap,
+        ...favoriteResponseSnap,
         offer: {
-          ...addFavoriteJsonResponseSnap.offer,
-          date: addFavoriteJsonResponseSnap.offer.date,
+          ...favoriteResponseSnap.offer,
+          date: favoriteResponseSnap.offer.date,
         },
       })
     })
@@ -142,10 +140,10 @@ describe('<OfferHeader />', () => {
     const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
 
     await waitFor(async () => {
-      fireEvent.press(getByTestId('icon-favorite-filled'))
+      fireEvent.press(getByTestId('animated-icon-favorite-filled'))
 
       await waitFor(() => {
-        expect(getByTestId('icon-favorite')).toBeTruthy()
+        expect(getByTestId('animated-icon-favorite')).toBeTruthy()
       })
     })
   })
@@ -158,7 +156,7 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(async () => {
-      fireEvent.press(getByTestId('icon-favorite-filled'))
+      fireEvent.press(getByTestId('animated-icon-favorite-filled'))
 
       await waitFor(() => {
         expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -172,10 +170,10 @@ describe('<OfferHeader />', () => {
   it('should show error when adding an offer in favorite fails because user as too many favorites - logged in users', async () => {
     const { getByTestId } = renderOfferHeader({
       hasTooManyFavorites: true,
-      id: addFavoriteJsonResponseSnap.offer.id,
+      id: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -188,7 +186,7 @@ describe('<OfferHeader />', () => {
   it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
     const from = 'favorites'
     const moduleName = 'testModule'
-    const offerId = addFavoriteJsonResponseSnap.offer.id
+    const offerId = favoriteResponseSnap.offer.id
     useRoute.mockImplementationOnce(() => ({
       params: {
         from,
@@ -199,7 +197,7 @@ describe('<OfferHeader />', () => {
       id: offerId,
     })
 
-    fireEvent.press(getByTestId('icon-favorite'))
+    fireEvent.press(getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
@@ -214,12 +212,12 @@ describe('<OfferHeader />', () => {
     it('should log ShareOffer once when clicking on the Share button', () => {
       const { getByTestId } = renderOfferHeader()
 
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
       expect(analytics.logShareOffer).toHaveBeenCalledWith(offerId)
 
-      fireEvent.press(getByTestId('icon-share'))
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
     })
   })
@@ -261,7 +259,7 @@ function renderOfferHeader(options: Options = defaultOptions) {
       } else if (hasTooManyFavorites) {
         return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))
       } else {
-        return res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
       }
     }),
     rest.delete<EmptyResponse>(

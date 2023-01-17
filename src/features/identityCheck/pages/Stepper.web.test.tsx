@@ -12,7 +12,7 @@ import { IdentityCheckStepper } from './Stepper'
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
-jest.mock('features/auth/signup/useNextSubscriptionStep')
+jest.mock('features/auth/api/useNextSubscriptionStep')
 
 jest.mock('features/identityCheck/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
@@ -20,7 +20,7 @@ jest.mock('features/identityCheck/useSetCurrentSubscriptionStep', () => ({
   })),
 }))
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

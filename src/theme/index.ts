@@ -396,6 +396,9 @@ export interface AppThemeType {
       borderColor: ColorsEnum
       backgroundColor: ColorsEnum
     }
+    roundedButton: {
+      size: number
+    }
   }
   slider: {
     markerSize: number
@@ -828,6 +831,9 @@ export const theme: AppThemeType = {
       borderWidth: getSpacing(0.25),
       borderColor: ColorsEnum.GREY_MEDIUM,
       backgroundColor: ColorsEnum.WHITE,
+    },
+    roundedButton: {
+      size: getSpacing(10),
     },
   },
   slider: {

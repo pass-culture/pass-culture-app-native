@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/apiHelpers'
-import { useChangePasswordMutation } from 'features/auth/mutations'
+import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'

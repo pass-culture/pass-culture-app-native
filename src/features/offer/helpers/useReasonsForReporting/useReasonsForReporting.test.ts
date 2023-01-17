@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 import { OfferReportReasons } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { offerReportReasonResponseSnap } from 'features/offer/fixtures/offerReportReasonResponse'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -11,7 +11,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useReasonsForReporting } from './useReasonsForReporting'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock

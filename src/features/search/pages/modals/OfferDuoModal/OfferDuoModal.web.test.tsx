@@ -5,7 +5,7 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('react-query')
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 describe('<OfferDuoModal/>', () => {
   describe('Accessibility', () => {

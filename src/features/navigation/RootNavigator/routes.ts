@@ -1,21 +1,21 @@
 import { DeeplinksGenerator } from 'features/_marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/_marketingAndCommunication/pages/UTMParameters'
-import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
-import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
-import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
-import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
-import { Login } from 'features/auth/login/Login'
-import { AccountCreated } from 'features/auth/signup/AccountCreated'
-import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
-import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
-import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
-import { SignupForm } from 'features/auth/signup/SignupForm'
-import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
-import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
-import { AccountReactivationSuccess } from 'features/auth/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
-import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
-import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
-import { SuspensionScreen } from 'features/auth/suspendedAccount/SuspensionScreen/SuspensionScreen'
+import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
+import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
+import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
+import { ResetPasswordExpiredLink } from 'features/auth/pages/forgottenPassword/ResetPasswordExpiredLink/ResetPasswordExpiredLink'
+import { Login } from 'features/auth/pages/login/Login'
+import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
+import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
+import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
+import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
+import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
+import { SignupForm } from 'features/auth/pages/signup/SignupForm'
+import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
+import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
+import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
+import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
+import { SuspensionScreen } from 'features/auth/pages/suspendedAccount/SuspensionScreen/SuspensionScreen'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -35,6 +35,7 @@ import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
@@ -413,5 +414,15 @@ export const routes: Route[] = [
     name: 'GetDynamicSocials',
     component: GetDynamicSocials,
     path: 'get-dynamic-socials',
+  },
+  {
+    name: 'ThematicHome',
+    component: ThematicHome,
+    pathConfig: {
+      path: 'accueil-thematique',
+      deeplinkPaths: ['thematic-home'],
+      parse: screenParamsParser['ThematicHome'],
+    },
+    options: { title: 'Page d’accueil thématique' },
   },
 ]

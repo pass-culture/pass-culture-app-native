@@ -2,7 +2,7 @@ import shuffle from 'lodash/shuffle'
 import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
@@ -91,7 +91,7 @@ const mockUseRemoteConfigContext = useRemoteConfigContext as jest.MockedFunction
   typeof useRemoteConfigContext
 >
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 jest.mock('features/bookings/api', () => ({

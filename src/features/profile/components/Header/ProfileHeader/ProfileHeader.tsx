@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'

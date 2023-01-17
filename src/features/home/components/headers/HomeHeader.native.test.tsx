@@ -7,11 +7,12 @@ import {
   UserProfileResponse,
   YoungStatusType,
 } from 'api/gen'
-import * as Auth from 'features/auth/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import * as Auth from 'features/auth/context/AuthContext'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { Credit, useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
@@ -20,11 +21,12 @@ import { HomeHeader } from './HomeHeader'
 
 const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 const mockedUseBeneficiaryValidationNavigation =
   useBeneficiaryValidationNavigation as jest.MockedFunction<
     typeof useBeneficiaryValidationNavigation
   >
+
 jest.mock('features/user/helpers/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
@@ -41,7 +43,7 @@ const mockedUser = {
 }
 
 const mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
-jest.mock('features/auth/signup/useNextSubscriptionStep', () => ({
+jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockNextSubscriptionStep,
   })),
@@ -143,6 +145,18 @@ describe('HomeHeader', () => {
       expect(queryByText(' à dépenser sur l’application')).toBeTruthy()
     }
   )
+
+  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
+    const { getByText } = renderHomeHeader()
+    expect(getByText('CheatMenu')).toBeTruthy()
+  })
+
+  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
+    const { queryByText } = renderHomeHeader()
+    expect(queryByText('CheatMenu')).toBeNull()
+  })
 })
 
 function renderHomeHeader() {

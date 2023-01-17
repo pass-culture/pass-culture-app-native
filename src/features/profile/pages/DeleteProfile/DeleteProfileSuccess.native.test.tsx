@@ -11,7 +11,7 @@ import { DeleteProfileSuccess } from './DeleteProfileSuccess'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/auth/SettingsContext')
+jest.mock('features/auth/context/SettingsContext')
 
 describe('DeleteProfileSuccess component', () => {
   it('should render delete profile success', () => {

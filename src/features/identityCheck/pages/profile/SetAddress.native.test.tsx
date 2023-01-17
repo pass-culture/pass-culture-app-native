@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { SettingsWrapper } from 'features/auth/SettingsContext'
+import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { amplitude } from 'libs/amplitude'

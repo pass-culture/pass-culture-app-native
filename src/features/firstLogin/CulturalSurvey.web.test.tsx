@@ -7,7 +7,7 @@ import { CulturalSurvey } from './CulturalSurvey'
 
 jest.mock('react-query')
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('features/navigation/helpers')
 const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>

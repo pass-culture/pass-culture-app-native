@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'

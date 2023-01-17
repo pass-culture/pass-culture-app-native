@@ -2,8 +2,8 @@ import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 import waitForExpect from 'wait-for-expect'
 
-import { AuthContext } from 'features/auth/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
+import { AuthContext } from 'features/auth/context/AuthContext'
+import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -11,15 +11,13 @@ import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
 const mockShowInfoSnackBar = jest.fn()
 
+jest.mock('react-query')
+jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
-
-jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
-
-jest.mock('react-query')
 
 describe('<EighteenBirthdayCard />', () => {
   it('should render eighteen birthday card', async () => {

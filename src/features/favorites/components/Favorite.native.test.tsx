@@ -1,21 +1,24 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
+import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { ExpenseDomain, FavoriteResponse, SubcategoryIdEnum, UserProfileResponse } from 'api/gen'
+import { ExpenseDomain, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
+import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { Credit } from 'features/user/helpers/useAvailableCredit'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, cleanup, superFlushWithAct } from 'tests/utils'
+import { act, fireEvent, render, cleanup, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from './Favorite'
+
+jest.mock('features/offer/api/useOffer')
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -25,28 +28,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const credit: Credit = { amount: 100, isExpired: false }
-const favorite: FavoriteResponse = {
-  id: 393,
-  offer: {
-    coordinates: { latitude: 48.9263, longitude: 2.49008 },
-    date: null,
-    expenseDomains: [ExpenseDomain.all],
-    externalTicketOfficeUrl: 'https://externalbooking.test.com',
-    id: 146105,
-    subcategoryId: SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE,
-    image: {
-      credit: null,
-      url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
-    },
-    name: 'Un lit sous une rivière',
-    price: null,
-    startDate: '2021-03-04T20:00:00',
-    startPrice: 270,
-    isSoldOut: false,
-    isExpired: false,
-    isReleased: true,
-  },
-}
+
 const user: UserProfileResponse = {
   isBeneficiary: true,
   bookedOffers: {},
@@ -74,11 +56,18 @@ describe('<Favorite /> component', () => {
   })
 
   it('should navigate to the offer when clicking on the favorite', async () => {
-    const { getByTestId } = renderFavorite()
-    await fireEvent.press(getByTestId(/Offre/))
-    expect(navigate).toHaveBeenCalledWith('Offer', {
-      from: 'favorites',
-      id: favorite.offer.id,
+    const { getByText } = renderFavorite()
+
+    act(() => {
+      const offre = getByText(favorite.offer.name)
+      fireEvent.press(offre)
+    })
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        from: 'favorites',
+        id: favorite.offer.id,
+      })
     })
   })
 
@@ -96,11 +85,9 @@ describe('<Favorite /> component', () => {
 
     act(() => {
       fireEvent.press(getByText('Supprimer'))
-      jest.advanceTimersByTime(1000)
     })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
       expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
     })
@@ -117,17 +104,25 @@ describe('<Favorite /> component', () => {
 
     act(() => {
       fireEvent.press(getByText('Supprimer'))
-      jest.advanceTimersByTime(1000)
     })
-    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
     })
+  })
+
+  it('should call share when press share icon', () => {
+    const share = jest.spyOn(Share, 'share')
+    const { getByLabelText } = renderFavorite()
+
+    const shareButton = getByLabelText(`Partager l’offre ${favorite.offer.name}`)
+    fireEvent.press(shareButton)
+
+    expect(share).toHaveBeenCalledTimes(1)
   })
 })
 

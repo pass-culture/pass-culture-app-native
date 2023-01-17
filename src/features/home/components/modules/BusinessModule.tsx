@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ContentTypes } from 'libs/contentful'

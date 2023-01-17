@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGetDepositAmountsByAge } from 'features/user/helpers/useGetDepositAmountsByAge/useGetDepositAmountsByAge'

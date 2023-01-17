@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
@@ -50,7 +50,7 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
 }) as jest.Mock
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/logout/useLogoutRoutine', () => ({
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
@@ -79,14 +79,8 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
     dispatch: mockFavoriteDispatch,
   }),
 }))
-jest.mock('features/auth/api', () => ({
-  useDepositAmountsByAge: jest.fn(() => ({
-    fifteenYearsOldDeposit: '20 €',
-    sixteenYearsOldDeposit: '30 €',
-    seventeenYearsOldDeposit: '30 €',
-    eighteenYearsOldDeposit: '300 €',
-  })),
-}))
+
+jest.mock('shared/user/useDepositAmountsByAge')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ identification: { processing: false } }),

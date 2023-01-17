@@ -58,7 +58,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   )
 }
 
-const ClicAwayArea = styled(TouchableOpacity)(({ theme }) => ({
+const ClicAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ theme }) => ({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',

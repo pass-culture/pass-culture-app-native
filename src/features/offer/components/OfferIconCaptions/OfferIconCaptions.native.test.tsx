@@ -3,7 +3,7 @@ import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { CategoryIdEnum, OfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor } from 'tests/utils'
 

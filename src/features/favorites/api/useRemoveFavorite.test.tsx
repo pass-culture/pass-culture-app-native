@@ -3,12 +3,10 @@ import * as React from 'react'
 import { View } from 'react-native'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import {
-  addFavoriteJsonResponseSnap,
-  paginatedFavoritesResponseSnap,
-} from 'features/favorites/fixtures/favoritesResponse'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -18,7 +16,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useRemoveFavorite } from './useRemoveFavorite'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 
@@ -49,7 +47,7 @@ function simulateBackend(options: Options = defaultOptions) {
     ),
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
       !hasAddFavoriteError
-        ? res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+        ? res(ctx.status(200), ctx.json(favoriteResponseSnap))
         : res(ctx.status(422), ctx.json({}))
     ),
     rest.delete<EmptyResponse>(

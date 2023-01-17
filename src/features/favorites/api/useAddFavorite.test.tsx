@@ -3,12 +3,10 @@ import * as React from 'react'
 import { View } from 'react-native'
 
 import { FavoriteResponse, OfferResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import {
-  addFavoriteJsonResponseSnap,
-  paginatedFavoritesResponseSnap,
-} from 'features/favorites/fixtures/favoritesResponse'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -25,7 +23,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 import { useAddFavorite } from './useAddFavorite'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 
@@ -80,7 +78,7 @@ function simulateBackend(options: Options = defaultOptions) {
       } else if (hasAddFavoriteError) {
         return res(ctx.status(422), ctx.json({}))
       } else {
-        return res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
       }
     }),
     rest.delete<EmptyResponse>(
@@ -114,10 +112,10 @@ describe('useAddFavorite hook', () => {
 
     await waitFor(() => {
       expect(onSuccess).toBeCalledWith({
-        ...addFavoriteJsonResponseSnap,
+        ...favoriteResponseSnap,
         offer: {
-          ...addFavoriteJsonResponseSnap.offer,
-          date: addFavoriteJsonResponseSnap.offer.date,
+          ...favoriteResponseSnap.offer,
+          date: favoriteResponseSnap.offer.date,
         },
       })
     })

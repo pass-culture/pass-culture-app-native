@@ -1,7 +1,7 @@
 import React, { ComponentType } from 'react'
 
-import { useAuthContext } from 'features/auth/AuthContext'
-import { Login } from 'features/auth/login/Login'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { Login } from 'features/auth/pages/login/Login'
 
 type Props = any // eslint-disable-line @typescript-eslint/no-explicit-any
 

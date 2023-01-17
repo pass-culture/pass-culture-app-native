@@ -147,7 +147,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         ]
       }
     >
-      Plus de 200 000 offres culturelles et un crédit à dépenser sur l’application si tu as entre 15 et 18 ans.
+      Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as entre 15 et 18 ans.
     </Text>
     <View
       numberOfSpaces={6}

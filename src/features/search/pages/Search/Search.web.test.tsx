@@ -24,7 +24,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 jest.mock('react-query')
 
@@ -45,7 +45,7 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 

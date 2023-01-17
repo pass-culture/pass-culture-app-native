@@ -1,5 +1,5 @@
 import { FavoriteOfferResponse, OfferResponse, UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOffer } from 'features/offer/api/useOffer'
 
 import { getOfferPrice } from '../getOfferPrice/getOfferPrice'

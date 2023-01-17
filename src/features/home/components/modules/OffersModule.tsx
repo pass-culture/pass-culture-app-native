@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { OffersModule as OffersModuleType } from 'features/home/types'

@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import * as React from 'react'
 import { QueryClient } from 'react-query'
 
-import { addFavoriteJsonResponseSnap } from 'features/favorites/fixtures/favoritesResponse'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
@@ -29,13 +29,13 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   })),
 }))
 
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
 server.use(
   rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+    res(ctx.status(200), ctx.json(favoriteResponseSnap))
   )
 )
 

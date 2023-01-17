@@ -4,23 +4,22 @@ import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
+import { useShareOffer } from 'features/offer/helpers/useShareOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-
-import { useShareOffer } from '../../helpers/useShareOffer'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
@@ -101,7 +100,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />
-          <HeaderIcon
+          <RoundedButton
             animationState={animationState}
             iconName="back"
             onPress={goBack}
@@ -119,14 +118,14 @@ export const OfferHeader: React.FC<Props> = (props) => {
           </Title>
 
           <Spacer.Flex />
-          <HeaderIcon
+          <RoundedButton
             animationState={animationState}
             iconName="share"
             onPress={pressShareOffer}
             accessibilityLabel="Partager"
           />
           <Spacer.Row numberOfSpaces={3} />
-          <HeaderIcon
+          <RoundedButton
             animationState={animationState}
             scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
             initialColor={favorite ? theme.colors.primary : undefined}
@@ -141,7 +140,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
-          headerTitle="Partager l'offre"
+          headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />

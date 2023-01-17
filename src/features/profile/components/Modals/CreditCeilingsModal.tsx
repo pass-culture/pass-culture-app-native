@@ -52,13 +52,15 @@ export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props
       visible={visible}
       onCloseIconPress={hideModal}
       testIdSuffix="credit-ceiling-information">
-      <ModalChildrenContainer>
-        <Typo.Body>
-          Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux
-          dépenser&nbsp;:
-        </Typo.Body>
+      <View>
+        <ModalChildrenContainer>
+          <Typo.Body>
+            Pour faire le plein de culture et rencontrer ceux qui la font vivre, tu peux
+            dépenser&nbsp;:
+          </Typo.Body>
+        </ModalChildrenContainer>
         <CreditText domainsCredit={domainsCredit} />
-      </ModalChildrenContainer>
+      </View>
     </AppInformationModal>
   )
 }

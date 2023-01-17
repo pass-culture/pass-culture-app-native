@@ -3,7 +3,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
@@ -14,13 +14,13 @@ import { renderHook, superFlushWithAct } from 'tests/utils'
 import { useInitialScreen } from './useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 
 const mockSettings = {
   enableNativeCulturalSurvey: false,
 }
 
-jest.mock('features/auth/SettingsContext', () => ({
+jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => ({
     data: mockSettings,
   })),

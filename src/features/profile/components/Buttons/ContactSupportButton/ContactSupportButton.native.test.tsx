@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { render, fireEvent } from 'tests/utils'

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFavoritesCount } from 'features/favorites/api'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'

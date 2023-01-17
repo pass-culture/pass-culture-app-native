@@ -3,7 +3,7 @@ import {
   CulturalSurveyQuestionsResponse,
   UserProfileResponse,
 } from 'api/gen/api'
-import { useSettingsContext } from 'features/auth/SettingsContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 
 export const mapQuestionIdToPageTitle = (id: CulturalSurveyQuestionEnum | undefined) => {
   switch (id) {

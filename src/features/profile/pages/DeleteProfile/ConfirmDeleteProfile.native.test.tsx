@@ -20,11 +20,11 @@ const mockedUseMutation = mocked(useMutation)
 jest.mock('react-query')
 
 const mockSignOut = jest.fn()
-jest.mock('features/auth/logout/useLogoutRoutine', () => ({
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: () => mockSignOut,
 }))
 
-jest.mock('features/auth/AuthContext', () => ({
+jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 

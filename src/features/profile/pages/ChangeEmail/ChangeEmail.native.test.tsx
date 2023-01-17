@@ -11,7 +11,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('react-query')
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 jest.useFakeTimers()
 const mockedUseMutation = useMutation as jest.Mock
 const mockedUseQuery = useQuery as jest.Mock

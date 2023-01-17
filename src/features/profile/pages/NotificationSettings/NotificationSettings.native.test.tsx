@@ -9,7 +9,7 @@ import { act, ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
-import * as Auth from 'features/auth/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -19,7 +19,7 @@ import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = Auth.useAuthContext as jest.Mock
 
 jest.mock('@react-navigation/native', () => ({

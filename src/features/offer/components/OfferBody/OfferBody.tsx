@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'

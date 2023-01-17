@@ -4,7 +4,6 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import {
   OnboardingRootStackParamList,
@@ -16,6 +15,7 @@ import { CreditBlock } from 'features/onboarding/components/CreditBlock'
 import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { analytics } from 'libs/firebase/analytics'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
