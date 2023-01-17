@@ -37,6 +37,12 @@ Default.args = {
   children: <TextComponent />,
 }
 
+export const WithCustomImage = Template.bind({})
+WithCustomImage.args = {
+  backgroundSource: { uri: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg' },
+  children: <TextComponent />,
+}
+
 export const WithCustomRightIcon = Template.bind({})
 WithCustomRightIcon.args = {
   children: <TextComponent />,

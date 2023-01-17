@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
@@ -21,6 +22,7 @@ type TouchableProps =
 type BannerWithBackgroundProps = TouchableProps & {
   leftIcon?: FunctionComponent<IconInterface>
   rightIcon?: FunctionComponent<IconInterface>
+  backgroundSource?: ImageSourcePropType
   testID?: string
 }
 
@@ -28,6 +30,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   leftIcon,
   rightIcon,
   children,
+  backgroundSource,
   testID,
   ...touchableProps
 }) => {
@@ -51,7 +54,9 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   return (
     <TouchableComponent {...touchableProps} testID={testID}>
       <ImageContainer>
-        <ImageBackground source={BACKGROUND_IMAGE_SOURCE} testID="module-background">
+        <ImageBackground
+          source={backgroundSource || BACKGROUND_IMAGE_SOURCE}
+          testID="module-background">
           <GenericBanner LeftIcon={StyledLeftIcon} RighIcon={StyledRightIcon}>
             {children}
           </GenericBanner>
