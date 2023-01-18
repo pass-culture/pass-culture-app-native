@@ -1,5 +1,8 @@
+import waitForExpect from 'wait-for-expect'
+
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
@@ -16,7 +19,15 @@ jest.mock('features/offer/api/useSimilarOffers', () => ({
 describe('<Offer />', () => {
   // fake timers are needed to avoid warning (because we use useTrackOfferSeenDuration)
   // See https://github.com/facebook/jest/issues/6434
-  beforeEach(() => jest.useFakeTimers())
+  beforeEach(() => {
+    jest.useFakeTimers()
+    mockUseAuthContext.mockReturnValue({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+  })
   afterEach(() => jest.useRealTimers())
 
   it('animates on scroll', async () => {
@@ -91,6 +102,25 @@ describe('<Offer />', () => {
       fireEvent.scroll(scrollView, nativeEventBottom)
 
       expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledWith(1)
+    })
+  })
+
+  it('should open booking modale when login after booking attempt', async () => {
+    const newLocal = {
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+      user: beneficiaryUser,
+    }
+    // Multiple renders force us to mock auth context as loggedIn user in this test
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue(newLocal)
+    const fromOfferId = 1
+    const { queryByText } = await renderOfferPage(fromOfferId, undefined, true)
+
+    await waitForExpect(async () => {
+      expect(queryByText('Mes options')).toBeTruthy()
     })
   })
 })

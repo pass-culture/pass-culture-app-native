@@ -85,8 +85,15 @@ export const Offer: FunctionComponent = () => {
     useCallback(() => {
       trackEventHasSeenOffer()
       dismissBookingOfferModal && dismissBookingOfferModal()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dismissBookingOfferModal])
+      if (route.params.openModalOnNavigation) {
+        showOfferModal?.()
+      }
+    }, [
+      dismissBookingOfferModal,
+      trackEventHasSeenOffer,
+      route.params.openModalOnNavigation,
+      showOfferModal,
+    ])
   )
 
   const onPress = () => {

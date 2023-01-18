@@ -78,7 +78,8 @@ export async function renderOfferBodyPage(
 
 export async function renderOfferPage(
   fromOfferId?: number,
-  extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+  extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
+  openModalOnNavigation?: boolean
 ) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
   const wrapper = render(
@@ -89,7 +90,7 @@ export async function renderOfferPage(
           <RootStack.Screen
             name="Offer"
             component={Offer}
-            initialParams={{ id: offerId, fromOfferId }}
+            initialParams={{ id: offerId, fromOfferId, openModalOnNavigation }}
           />
         </RootStack.Navigator>
       </NavigationContainer>
