@@ -5,108 +5,93 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   style={
     Array [
       Object {
-        "alignItems": "center",
+        "alignSelf": "center",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "marginHorizontal": 24,
+        "maxWidth": 500,
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
       },
     ]
   }
 >
   <View
-    customHeight={16}
-    enable={true}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
+    flex={2}
     style={
       Array [
         Object {
           "flexBasis": 0,
-          "flexGrow": 1,
+          "flexGrow": 2,
           "flexShrink": 1,
         },
       ]
     }
   />
   <View
-    height={156}
-    width={200}
-  >
-    <Text>
-      undefined-SVG-Mock
-    </Text>
-  </View>
-  <View
+    hasHeight={false}
     style={
       Array [
         Object {
           "alignItems": "center",
           "flexGrow": 1,
           "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 18,
+          "lineHeight": 22,
+          "marginBottom": 16,
           "textAlign": "center",
         },
       ]
     }
   >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 18,
-            "lineHeight": 22,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Identifie-toi pour retrouver tes favoris
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "maxWidth": 352,
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
-      </Text>
-    </View>
-  </View>
+    Identifie-toi pour retrouver tes favoris
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
+  </Text>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
   <View
     style={
       Array [
@@ -336,23 +321,24 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     }
   />
   <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
     customHeight={8}
     enable={true}
     style={
       Array [
         Object {
           "height": 8,
+        },
+      ]
+    }
+  />
+  <View
+    flex={1.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1.5,
+          "flexShrink": 1,
         },
       ]
     }

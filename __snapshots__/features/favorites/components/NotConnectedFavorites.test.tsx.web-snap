@@ -75,56 +75,47 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
 }
 
 <div
-  className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+  className="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk"
   dir={null}
 >
-  <div
-    className="css-view-175oi2r r-height-10ptun7"
-    dir={null}
-  />
   <div
     className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     dir={null}
   />
   <div
-    className="css-view-175oi2r"
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexGrow-16y2uox r-justifyContent-1777fci"
     dir={null}
   >
     <div
-      className="css-text-1rynq56"
-      dir="ltr"
-    >
-      undefined-SVG-Mock
-    </div>
-  </div>
-  <div
-    className="css-view-175oi2r r-alignItems-1awozwy r-flexGrow-16y2uox r-justifyContent-1777fci r-textAlign-q4m81j"
-    dir={null}
-  >
-    <h4
-      aria-level={4}
-      className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-      dir="ltr"
-      role="heading"
-    >
-      Identifie-toi pour retrouver tes favoris
-    </h4>
-    <div
-      className="css-view-175oi2r r-height-10ptun7"
-      dir={null}
-    />
-    <div
-      className="css-view-175oi2r r-maxWidth-1yda1mg"
+      className="css-view-175oi2r"
       dir={null}
     >
       <div
-        className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+        className="css-text-1rynq56"
         dir="ltr"
       >
-        Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
+        undefined-SVG-Mock
       </div>
     </div>
   </div>
+  <h4
+    aria-level={4}
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginBottom-1ifxtd0 r-textAlign-q4m81j"
+    dir="ltr"
+    role="heading"
+  >
+    Identifie-toi pour retrouver tes favoris
+  </h4>
+  <div
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+    dir="ltr"
+  >
+    Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
+  </div>
+  <div
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
+    dir={null}
+  />
   <div
     className="css-view-175oi2r r-flexDirection-18u37iz"
     dir={null}
@@ -215,11 +206,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     dir={null}
   />
   <div
-    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    className="css-view-175oi2r r-height-3da1kt"
     dir={null}
   />
   <div
-    className="css-view-175oi2r r-height-3da1kt"
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16xksha r-flexShrink-1wbh5a2"
     dir={null}
   />
 </div>
