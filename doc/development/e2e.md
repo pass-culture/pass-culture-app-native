@@ -266,8 +266,6 @@ We have two utilities that can be used:
 ```tsx
 function ExampleComponent() {
   return <MyComponent {...accessibilityAndTestId('Un texte unique')} />
-  
-  return React.createElement(MyComponent, accessibilityAndTestId('Un texte unique'))
 }
 ```
 
