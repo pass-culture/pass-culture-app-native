@@ -1,40 +1,19 @@
+import { rest } from 'msw'
 import React from 'react'
-import { useMutation, useQuery } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
+import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { act, fireEvent, render } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
+import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from './ChangeEmail'
 
-jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.useFakeTimers()
-const mockedUseMutation = useMutation as jest.Mock
-const mockedUseQuery = useQuery as jest.Mock
-
-const mockUseMutationSuccess = () => {
-  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-  mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({
-    mutationFunction,
-    mutationOptions: { onSuccess },
-    mutate: () => onSuccess(),
-  }))
-}
-
-const mockUseMutationError = (code: CHANGE_EMAIL_ERROR_CODE) => {
-  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
-  mockedUseMutation.mockImplementation((mutationFunction, { onError }) => ({
-    mutationFunction,
-    mutationOptions: { onError },
-    mutate: () => {
-      onError({ content: { code } })
-    },
-  }))
-}
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -47,23 +26,21 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ChangeEmail/>', () => {
-  beforeEach(() => {
-    mockedUseQuery.mockImplementation(() => ({}))
-    mockUseMutationSuccess()
-  })
+  beforeEach(simulateUpdateEmailSuccess)
+
   it('should render correctly', () => {
-    const renderAPI = render(<ChangeEmail />)
-    expect(renderAPI.toJSON()).toMatchSnapshot()
+    const renderAPI = renderChangeEmail()
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render and log correctly when an email change is already in progress', async () => {
-    mockedUseQuery.mockImplementationOnce(() => ({
-      data: { expiration: '2021-12-07T13:45:05.812190' },
-    }))
-    const renderAPI = render(<ChangeEmail />)
-    expect(renderAPI.toJSON()).toMatchSnapshot()
+    simulateCurrentEmailChange()
+    const renderAPI = renderChangeEmail()
+    await superFlushWithAct()
 
-    await waitForExpect(() => {
+    expect(renderAPI).toMatchSnapshot()
+
+    await waitFor(() => {
       expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
     })
   })
@@ -77,7 +54,7 @@ describe('<ChangeEmail/>', () => {
   `(
     'CTA "Enregistrer les modifications" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
     async ({ password, email, isDisabled }) => {
-      const { getByPlaceholderText, getByLabelText } = render(<ChangeEmail />)
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
       const submitButton = getByLabelText('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()
 
@@ -94,7 +71,7 @@ describe('<ChangeEmail/>', () => {
   )
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
-    const { getByPlaceholderText, getByLabelText, queryByText } = render(<ChangeEmail />)
+    const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
     const submitButton = getByLabelText('Enregistrer les modifications')
     expect(submitButton).toBeDisabled()
 
@@ -116,7 +93,7 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should navigate to Profile and log event if the API call is ok', async () => {
-    const { getByPlaceholderText, getByLabelText } = render(<ChangeEmail />)
+    const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
     const submitButton = getByLabelText('Enregistrer les modifications')
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -141,9 +118,9 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should show error message if the user gave a wrong password', async () => {
-    mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
+    simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
 
-    const { getByPlaceholderText, getByLabelText, queryByText } = render(<ChangeEmail />)
+    const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'tonadresse@email.com')
@@ -168,9 +145,9 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should show the generic error message if the API call returns an attempts limit error', async () => {
-    mockUseMutationError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
+    simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
 
-    const { getByPlaceholderText, getByLabelText } = render(<ChangeEmail />)
+    const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
     const submitButton = getByLabelText('Enregistrer les modifications')
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -195,3 +172,30 @@ describe('<ChangeEmail/>', () => {
     )
   })
 })
+
+// eslint-disable-next-line local-rules/no-react-query-provider-hoc
+const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
+
+function simulateUpdateEmailSuccess() {
+  server.use(
+    rest.post(env.API_BASE_URL + '/native/v1/profile/update_email', async (_, res, ctx) =>
+      res.once(ctx.status(200))
+    )
+  )
+}
+
+function simulateUpdateEmailError(code: CHANGE_EMAIL_ERROR_CODE) {
+  server.use(
+    rest.post(env.API_BASE_URL + '/native/v1/profile/update_email', async (_, res, ctx) =>
+      res.once(ctx.status(400), ctx.json({ code }))
+    )
+  )
+}
+
+function simulateCurrentEmailChange() {
+  server.use(
+    rest.get(env.API_BASE_URL + '/native/v1/profile/token_expiration', async (_, res, ctx) =>
+      res.once(ctx.status(200), ctx.json({ expiration: '2021-12-07T13:45:05.812190' }))
+    )
+  )
+}
