@@ -29,7 +29,10 @@ export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
 }) => {
   const navigateTo = getNavigateToThematicHomeConfig(homeEntryId)
   return (
-    <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
+    <StyledInternalTouchableLink
+      onBeforeNavigate={onBeforePress}
+      navigateTo={navigateTo}
+      accessibilityLabel={title}>
       <ImageBackground source={{ uri: image }}>
         <ContainerWithFilter filter={filter}>
           <StyledTitle numberOfLines={2}>{title}</StyledTitle>
