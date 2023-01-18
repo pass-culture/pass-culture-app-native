@@ -150,9 +150,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   })
 
   useEffect(() => {
-    if (shouldTriggerSearch) return
     reset(initialFormValues)
-  }, [initialFormValues, reset, shouldTriggerSearch])
+  }, [initialFormValues, reset])
 
   const onSubmit = handleSubmit(search)
 

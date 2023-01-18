@@ -2,10 +2,11 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/context/AuthContext'
+import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act, superFlushWithAct, waitFor } from 'tests/utils'
 
@@ -23,15 +24,13 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/auth/context/AuthContext')
-const mockedUseAuthContext = useAuthContext as jest.Mock
-mockedUseAuthContext.mockReturnValue({
+const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
-  user: {
-    isBeneficiary: true,
-    domainsCredit: { all: { initial: 8000, remaining: 7000 } },
-  },
-})
+  user: { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } },
+  isUserLoading: false,
+  refetchUser: jest.fn(),
+  setIsLoggedIn: jest.fn(),
+}) as jest.Mock
 
 jest.mock('react-query')
 
@@ -730,16 +729,17 @@ describe('<PriceModal/>', () => {
 
   describe('when user is not logged in', () => {
     beforeEach(() => {
-      mockedUseAuthContext.mockReturnValueOnce(() => ({ user: undefined, isLoggedIn: false }))
+      mockedUseAuthContext.mockImplementation(() => ({ user: undefined, isLoggedIn: false }))
     })
 
     it('should not display limit credit search toggle', async () => {
       const { queryByTestId } = renderSearchPrice()
 
+      await superFlushWithAct()
+
       const toggleLimitCreditSearch = queryByTestId('Interrupteur-limitCreditSearch')
-      await waitFor(() => {
-        expect(toggleLimitCreditSearch).toBeFalsy()
-      })
+
+      expect(toggleLimitCreditSearch).toBeFalsy()
     })
 
     it('should not display credit banner', async () => {
@@ -774,10 +774,10 @@ describe('<PriceModal/>', () => {
 
   describe('when user is not a beneficiary', () => {
     beforeEach(() => {
-      mockedUseAuthContext.mockReturnValueOnce({
+      mockedUseAuthContext.mockImplementation(() => ({
         user: { isBeneficiary: false, domainsCredit: undefined },
         isLoggedIn: true,
-      })
+      }))
     })
 
     it('should not display limit credit search toggle', async () => {
@@ -849,14 +849,17 @@ describe('<PriceModal/>', () => {
   })
 })
 
-function renderSearchPrice(props?: Partial<PriceModalProps>) {
+function renderSearchPrice({
+  shouldTriggerSearch = true,
+  ...props
+}: Partial<PriceModalProps> = {}) {
   return render(
     <PriceModal
       title="Prix"
       accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
-      shouldTriggerSearch
+      shouldTriggerSearch={shouldTriggerSearch}
       {...props}
     />
   )
