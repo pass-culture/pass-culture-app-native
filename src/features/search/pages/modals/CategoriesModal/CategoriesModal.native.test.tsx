@@ -387,18 +387,27 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    it('should dispatch when pressing submit button', async () => {
+    it('should update search state when pressing submit button', async () => {
       const { getByText } = renderCategories({
         shouldTriggerSearch: false,
       })
 
+      fireEvent.press(getByText('Jeux & jeux vidéos'))
+
       const searchButton = getByText('Appliquer le filtre')
       fireEvent.press(searchButton)
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
 
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
-          payload: expect.any(Object),
+          payload: expectedSearchParams,
         })
       })
     })

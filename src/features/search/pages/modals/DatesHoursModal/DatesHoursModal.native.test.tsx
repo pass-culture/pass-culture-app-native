@@ -12,7 +12,7 @@ import {
   DATE_TYPES,
   RadioButtonDate,
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
@@ -478,21 +478,41 @@ describe('<DatesHoursModal/>', () => {
       })
     })
 
-    it('should dispatch when pressing submit button', async () => {
-      const { getByText } = renderDatesHoursModal({
+    it('should update search state when pressing submit button', async () => {
+      mockSearchState = {
+        ...searchState,
+      }
+      const { getByText, getByTestId } = renderDatesHoursModal({
         shouldTriggerSearch: false,
       })
 
-      await superFlushWithAct()
+      const toggleDate = getByTestId('Interrupteur-date')
+      await act(async () => {
+        fireEvent.press(toggleDate)
+      })
+
+      const radioButton = getByText(RadioButtonDate.WEEK)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
 
       const searchButton = getByText('Appliquer le filtre')
       await act(async () => {
         fireEvent.press(searchButton)
       })
 
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        date: {
+          option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
+          selectedDate: '2022-10-28T00:00:00.000Z',
+        },
+        view: SearchView.Results,
+      }
+
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
-        payload: expect.any(Object),
+        payload: expectedSearchParams,
       })
     })
   })

@@ -1,14 +1,10 @@
 import React from 'react'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { FilterButton } from './FilterButton'
-
-const mockDispatch = jest.fn()
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ dispatch: mockDispatch }),
-}))
 
 describe('FilterButton', () => {
   it('should contains the number of active filters', async () => {
@@ -27,16 +23,18 @@ describe('FilterButton', () => {
     })
   })
 
-  it('should reset filters when pressing filter button', async () => {
+  it('should navigate with url params filters when pressing filter button', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
+    })
     const { getByTestId } = render(<FilterButton activeFilters={1} />)
 
     const filterButton = getByTestId('searchFilterBadge')
     fireEvent.press(filterButton)
 
     await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE_FROM_DEFAULT',
-        payload: expect.any(Object),
+      expect(navigate).toHaveBeenCalledWith('SearchFilter', {
+        offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
       })
     })
   })

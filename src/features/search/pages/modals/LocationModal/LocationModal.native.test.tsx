@@ -6,7 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
 import {
@@ -716,25 +716,30 @@ describe('<LocationModal/>', () => {
       })
     })
 
-    it('should dispatch when pressing submit button', async () => {
-      mockSearchState = {
-        ...searchState,
-        view: SearchView.Results,
-      }
+    it('should update search state when pressing submit button', async () => {
       const { getByText } = renderLocationModal({
         shouldTriggerSearch: false,
       })
 
       await superFlushWithAct()
 
+      await act(async () => {
+        fireEvent.press(getByText('Autour de moi'))
+      })
+
       const searchButton = getByText('Appliquer le filtre')
       await act(async () => {
         fireEvent.press(searchButton)
       })
 
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+      }
+
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
-        payload: expect.any(Object),
+        payload: expectedSearchParams,
       })
     })
   })

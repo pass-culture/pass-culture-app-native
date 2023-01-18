@@ -8,7 +8,7 @@ import {
   OfferDuoModal,
   OfferDuoModalProps,
 } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -230,20 +230,30 @@ describe('<OfferDuoModal/>', () => {
       })
     })
 
-    it('should dispatch when pressing submit button', async () => {
-      const { getByText } = renderOfferDuoModal({
+    it('should update search state when pressing submit button', async () => {
+      const { getByText, getByTestId } = renderOfferDuoModal({
         isVisible: true,
         shouldTriggerSearch: false,
       })
+
+      const toggle = getByTestId('Interrupteur-limitDuoOfferSearch')
+
+      fireEvent.press(toggle)
 
       const searchButton = getByText('Appliquer le filtre')
 
       fireEvent.press(searchButton)
 
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerIsDuo: true,
+        view: SearchView.Results,
+      }
+
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
-          payload: expect.any(Object),
+          payload: expectedSearchParams,
         })
       })
     })

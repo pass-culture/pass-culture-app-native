@@ -830,10 +830,15 @@ describe('<PriceModal/>', () => {
       })
     })
 
-    it('should dispatch when pressing submit button', async () => {
-      const { getByText } = renderSearchPrice({ shouldTriggerSearch: false })
+    it('should update search state when pressing submit button', async () => {
+      const { getByText, getByPlaceholderText } = renderSearchPrice({ shouldTriggerSearch: false })
 
       await superFlushWithAct()
+
+      const maxPriceInput = getByPlaceholderText('300')
+      await act(async () => {
+        fireEvent(maxPriceInput, 'onChangeText', '50')
+      })
 
       const searchButton = getByText('Appliquer le filtre')
 
@@ -841,9 +846,15 @@ describe('<PriceModal/>', () => {
         fireEvent.press(searchButton)
       })
 
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        maxPrice: '50',
+        view: SearchView.Results,
+      }
+
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
-        payload: expect.any(Object),
+        payload: expectedSearchParams,
       })
     })
   })
