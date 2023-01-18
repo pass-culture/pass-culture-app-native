@@ -82,8 +82,10 @@ export function OnGoingBookingsList() {
     }
   }
 
-  const digitalBookingWithoutExpirationDate =
-    getDigitalBookingWithoutExpirationDate(ongoingBookings)
+  const digitalBookingWithoutExpirationDate = useMemo(
+    () => getDigitalBookingWithoutExpirationDate(ongoingBookings),
+    [ongoingBookings]
+  )
 
   const renderItem: ListRenderItem<Booking> = useCallback(
     ({ item }) => (
