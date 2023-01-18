@@ -33,7 +33,6 @@ export const NotConnectedFavorites = () => (
         />
       </ButtonContainer>
     </Row>
-    <Spacer.Column numberOfSpaces={12} />
     <Spacer.BottomScreen />
   </GenericInfoPageWhite>
 )
@@ -45,7 +44,7 @@ const StyledTitle4 = styled(Typo.Title4)({
   marginBottom: getSpacing(4),
 })
 
-const ButtonContainer = styled.View({ flex: 1 })
+const ButtonContainer = styled.View({ flex: 1, paddingBottom: getSpacing(10) })
 
 const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
