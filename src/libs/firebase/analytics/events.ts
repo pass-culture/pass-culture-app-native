@@ -112,8 +112,6 @@ export enum AnalyticsEvent {
   SEND_ACTIVATION_MAIL_AGAIN = 'SendActivationMailAgain',
   SHARE = 'Share',
   SHARE_APP = 'ShareApp',
-  SHARE_OFFER = 'ShareOffer',
-  SHARE_VENUE = 'ShareVenue',
   SIGN_IN_FROM_AUTHENTICATION_MODAL = 'SignInFromAuthenticationModal',
   SIGN_IN_FROM_FAVORITE = 'SignInFromFavorite',
   SIGN_IN_FROM_OFFER = 'SignInFromOffer',

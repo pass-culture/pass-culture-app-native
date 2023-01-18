@@ -286,10 +286,6 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SHARE, { params }),
   logShareApp: (type: ShareAppModalType) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { type }),
-  logShareOffer: (offerId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
-  logShareVenue: (venueId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SHARE_VENUE, { venueId }),
   logSignInFromAuthenticationModal: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),

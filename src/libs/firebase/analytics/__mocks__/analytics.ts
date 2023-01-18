@@ -114,8 +114,6 @@ export const analytics: typeof actualAnalytics = {
   logSendActivationMailAgain: jest.fn(),
   logShare: jest.fn(),
   logShareApp: jest.fn(),
-  logShareOffer: jest.fn(),
-  logShareVenue: jest.fn(),
   logSignInFromAuthenticationModal: jest.fn(),
   logSignInFromFavorite: jest.fn(),
   logSignInFromOffer: jest.fn(),
