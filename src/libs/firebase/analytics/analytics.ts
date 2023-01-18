@@ -282,6 +282,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SELECT_AGE, { age }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
+  logShare: (params: { type: 'App' | 'Offer' | 'Venue'; from: Referrals; id: number }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SHARE, { params }),
   logShareApp: (type: ShareAppModalType) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { type }),
   logShareOffer: (offerId: number) =>

@@ -112,6 +112,7 @@ export const analytics: typeof actualAnalytics = {
   logSeeMyBooking: jest.fn(),
   logSelectAge: jest.fn(),
   logSendActivationMailAgain: jest.fn(),
+  logShare: jest.fn(),
   logShareApp: jest.fn(),
   logShareOffer: jest.fn(),
   logShareVenue: jest.fn(),
