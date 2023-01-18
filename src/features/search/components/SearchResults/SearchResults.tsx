@@ -159,7 +159,6 @@ export const SearchResults: React.FC = () => {
     const shouldDisplayGeolocationButton =
       position === null &&
       params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
-      params?.offerCategories?.[0] !== SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE &&
       nbHits > 0 &&
       !shouldDisplayUnavailableOfferMessage
 

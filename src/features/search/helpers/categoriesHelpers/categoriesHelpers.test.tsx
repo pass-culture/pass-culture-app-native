@@ -62,10 +62,6 @@ describe('categoriesHelpers', () => {
         value: 'Musées & visites culturelles',
       },
       {
-        name: 'PLATEFORMES_EN_LIGNE',
-        value: 'Plateformes en ligne',
-      },
-      {
         name: 'SPECTACLES',
         value: 'Spectacles',
       },

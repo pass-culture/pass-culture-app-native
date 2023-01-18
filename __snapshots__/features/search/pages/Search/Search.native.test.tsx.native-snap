@@ -602,26 +602,6 @@ exports[`<Search/> should render Search 1`] = `
               "target": [Function],
               "withComponent": [Function],
             },
-            "label": "Plateformes en ligne",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
             "label": "Spectacles",
             "onPress": [Function],
           },
@@ -1757,96 +1737,6 @@ exports[`<Search/> should render Search 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Plateformes en ligne"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderBottomColor": "#90949D",
-                    "borderBottomWidth": 1,
-                    "borderLeftColor": "#90949D",
-                    "borderLeftWidth": 1,
-                    "borderRadius": 4,
-                    "borderRightColor": "#90949D",
-                    "borderRightWidth": 1,
-                    "borderTopColor": "#90949D",
-                    "borderTopWidth": 1,
-                    "flexDirection": "row",
-                    "height": 72,
-                    "opacity": 1,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Plateformes en ligne"
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 8,
-                        "textAlign": "left",
-                      },
-                    ]
-                  }
-                >
-                  Plateformes en ligne
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 Array [

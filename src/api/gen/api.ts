@@ -355,6 +355,11 @@ export interface BookingReponse {
    * @type {string}
    * @memberof BookingReponse
    */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingReponse
+   */
   dateUsed?: string | null
   /**
    * @type {string}
@@ -1955,7 +1960,6 @@ export enum SearchGroupNameEnumv2 {
   'MEDIA_PRESSE' = 'MEDIA_PRESSE',
   'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
   'NONE' = 'NONE',
-  'PLATEFORMES_EN_LIGNE' = 'PLATEFORMES_EN_LIGNE',
   'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
   'SPECTACLES' = 'SPECTACLES',
 }

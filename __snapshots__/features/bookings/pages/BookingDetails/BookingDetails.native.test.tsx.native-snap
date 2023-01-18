@@ -316,6 +316,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "cancellationReason": null,
                   "completedUrl": "https://example.com",
                   "confirmationDate": "2021-03-15T23:01:37.925926",
+                  "dateCreated": "2021-02-15T23:01:37.925926",
                   "dateUsed": null,
                   "expirationDate": null,
                   "externalBookings": Array [],

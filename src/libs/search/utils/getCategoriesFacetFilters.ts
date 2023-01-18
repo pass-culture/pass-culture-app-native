@@ -16,7 +16,6 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
   ['Livres']: SearchGroupNameEnumv2.LIVRES,
   ['Médias & presse']: SearchGroupNameEnumv2.MEDIA_PRESSE,
   ['Musées & visites culturelles']: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
-  ['Plateformes en ligne']: SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE,
   ['Spectacles']: SearchGroupNameEnumv2.SPECTACLES,
 }
 
