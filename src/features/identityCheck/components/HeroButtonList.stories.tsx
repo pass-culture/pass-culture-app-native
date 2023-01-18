@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { Text } from 'react-native'
@@ -10,6 +11,13 @@ import { Typo } from 'ui/theme'
 export default {
   title: 'Features/HeroButtonList',
   component: HeroButtonList,
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 } as ComponentMeta<typeof HeroButtonList>
 
 const Template: ComponentStory<typeof HeroButtonList> = (props) => <HeroButtonList {...props} />
@@ -35,13 +43,12 @@ const caption = (
   </Text>
 )
 
-// TODO(PC-17931): Fix those stories
-const Default = Template.bind({})
+export const Default = Template.bind({})
 Default.args = {
   Title: description,
   icon: BicolorSmartphone,
 }
-const HeroButtonListWithCaption = Template.bind({})
+export const HeroButtonListWithCaption = Template.bind({})
 HeroButtonListWithCaption.args = {
   Title: description2,
   Subtitle: caption,
