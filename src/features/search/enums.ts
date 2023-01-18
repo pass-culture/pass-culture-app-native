@@ -186,3 +186,8 @@ export enum RadioButtonLocation {
   CHOOSE_PLACE_OR_VENUE = 'Choisir un lieu',
   NO_LOCATION = 'Aucune localisation',
 }
+
+export enum FilterBehaviourEnum {
+  SEARCH = 'Search',
+  APPLY_WITHOUT_SEARCHING = 'ApplyWithoutSearching',
+}

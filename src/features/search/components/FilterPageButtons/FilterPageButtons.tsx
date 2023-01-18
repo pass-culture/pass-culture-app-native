@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { FilterBehaviourEnum } from 'features/search/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -13,7 +14,7 @@ type Props = {
   onSearchPress: () => void
   isSearchDisabled?: boolean
   children?: never
-  willTriggerSearch?: boolean
+  filterBehaviour: FilterBehaviourEnum
 }
 
 export const FilterPageButtons: FunctionComponent<Props> = ({
@@ -21,9 +22,10 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   onResetPress,
   onSearchPress,
   isSearchDisabled,
-  willTriggerSearch,
+  filterBehaviour,
 }) => {
-  const searchButtonText = willTriggerSearch ? 'Rechercher' : 'Appliquer le filtre'
+  const searchButtonText =
+    filterBehaviour === FilterBehaviourEnum.SEARCH ? 'Rechercher' : 'Appliquer le filtre'
 
   return (
     <Container isModal={isModal}>

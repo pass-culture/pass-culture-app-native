@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, FilterBehaviourEnum } from 'features/search/enums'
 import {
   DatesHoursModal,
   DatesHoursModalProps,
@@ -470,7 +470,7 @@ describe('<DatesHoursModal/>', () => {
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
       const { getByText } = renderDatesHoursModal({
-        shouldTriggerSearch: false,
+        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
@@ -483,7 +483,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
       }
       const { getByText, getByTestId } = renderDatesHoursModal({
-        shouldTriggerSearch: false,
+        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
       })
 
       const toggleDate = getByTestId('Interrupteur-date')
@@ -520,7 +520,7 @@ describe('<DatesHoursModal/>', () => {
 
 function renderDatesHoursModal({
   hideModal = () => {},
-  shouldTriggerSearch = true,
+  filterBehaviour = FilterBehaviourEnum.SEARCH,
 }: Partial<DatesHoursModalProps>) {
   return render(
     <DatesHoursModal
@@ -528,7 +528,7 @@ function renderDatesHoursModal({
       accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
       isVisible
       hideModal={hideModal}
-      shouldTriggerSearch={shouldTriggerSearch}
+      filterBehaviour={filterBehaviour}
     />
   )
 }

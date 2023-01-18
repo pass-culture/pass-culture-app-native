@@ -21,7 +21,7 @@ import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Bu
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
+import { FilterBehaviourEnum, LocationType } from 'features/search/enums'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
@@ -251,6 +251,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
         isVisible={locationModalVisible}
         hideModal={hideLocationModal}
+        filterBehaviour={FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING}
       />
     </RowContainer>
   )

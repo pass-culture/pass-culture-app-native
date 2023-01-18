@@ -12,7 +12,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviourEnum, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
@@ -54,7 +54,7 @@ export type LocationModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  shouldTriggerSearch?: boolean
+  filterBehaviour: FilterBehaviourEnum
 }
 
 const LOCATION_TYPES = [
@@ -98,7 +98,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
-  shouldTriggerSearch,
+  filterBehaviour,
 }) => {
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -226,14 +226,14 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      if (shouldTriggerSearch) {
+      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       }
       hideModal()
     },
-    [searchState, navigate, hideModal, getValues, shouldTriggerSearch, dispatch]
+    [searchState, filterBehaviour, hideModal, getValues, navigate, dispatch]
   )
 
   const close = useCallback(() => {
@@ -356,7 +356,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
-          willTriggerSearch={shouldTriggerSearch}
+          filterBehaviour={filterBehaviour}
         />
       }
       keyboardShouldPersistTaps="handled">

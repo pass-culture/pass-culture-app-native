@@ -13,6 +13,7 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { FilterBehaviourEnum } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState, SearchView } from 'features/search/types'
@@ -42,7 +43,7 @@ export type PriceModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  shouldTriggerSearch?: boolean
+  filterBehaviour: FilterBehaviourEnum
 }
 
 const titleId = uuidv4()
@@ -54,7 +55,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
-  shouldTriggerSearch,
+  filterBehaviour,
 }) => {
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -113,7 +114,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     }
 
     analytics.logPerformSearch(additionalSearchState)
-    if (shouldTriggerSearch) {
+    if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
       navigate(...getTabNavConfig('Search', additionalSearchState))
     } else {
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
@@ -241,7 +242,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
-          willTriggerSearch={shouldTriggerSearch}
+          filterBehaviour={filterBehaviour}
         />
       }
       shouldScrollToEnd>

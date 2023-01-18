@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
+import { FilterBehaviourEnum } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
@@ -379,7 +380,7 @@ describe('<CategoriesModal/>', () => {
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
       const { getByText } = renderCategories({
-        shouldTriggerSearch: false,
+        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
@@ -389,7 +390,7 @@ describe('<CategoriesModal/>', () => {
 
     it('should update search state when pressing submit button', async () => {
       const { getByText } = renderCategories({
-        shouldTriggerSearch: false,
+        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
       })
 
       fireEvent.press(getByText('Jeux & jeux vidéos'))
@@ -415,7 +416,7 @@ describe('<CategoriesModal/>', () => {
 })
 
 function renderCategories({
-  shouldTriggerSearch = true,
+  filterBehaviour = FilterBehaviourEnum.SEARCH,
   ...props
 }: Partial<CategoriesModalProps> = {}) {
   return render(
@@ -423,7 +424,7 @@ function renderCategories({
       accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
-      shouldTriggerSearch={shouldTriggerSearch}
+      filterBehaviour={filterBehaviour}
       {...props}
     />
   )

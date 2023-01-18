@@ -11,6 +11,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { FilterBehaviourEnum } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { Form } from 'ui/components/Form'
@@ -27,7 +28,7 @@ export type OfferDuoModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  shouldTriggerSearch?: boolean
+  filterBehaviour: FilterBehaviourEnum
 }
 
 const titleId = uuidv4()
@@ -39,7 +40,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
-  shouldTriggerSearch,
+  filterBehaviour,
 }) => {
   const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
@@ -108,14 +109,14 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
         view: SearchView.Results,
       }
       analytics.logPerformSearch(additionalSearchState)
-      if (shouldTriggerSearch) {
+      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       }
       hideModal()
     },
-    [hideModal, navigate, searchState, shouldTriggerSearch, dispatch]
+    [searchState, filterBehaviour, hideModal, navigate, dispatch]
   )
 
   const onSubmit = handleSubmit(search)
@@ -141,7 +142,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={isSubmitting}
-          willTriggerSearch={shouldTriggerSearch}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />

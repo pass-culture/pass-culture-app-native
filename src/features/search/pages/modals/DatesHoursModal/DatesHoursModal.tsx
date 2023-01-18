@@ -14,7 +14,7 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, FilterBehaviourEnum } from 'features/search/enums'
 import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { SearchState, SearchView } from 'features/search/types'
@@ -51,7 +51,7 @@ export type DatesHoursModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  shouldTriggerSearch?: boolean
+  filterBehaviour: FilterBehaviourEnum
 }
 
 export const DATE_TYPES: Array<{
@@ -78,7 +78,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   accessibilityLabel,
   isVisible,
   hideModal,
-  shouldTriggerSearch,
+  filterBehaviour,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
@@ -155,14 +155,14 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      if (shouldTriggerSearch) {
+      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       }
       hideModal()
     },
-    [hideModal, navigate, searchState, shouldTriggerSearch, dispatch]
+    [hideModal, navigate, searchState, dispatch, filterBehaviour]
   )
 
   const onSubmit = handleSubmit(search)
@@ -246,7 +246,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
-          willTriggerSearch={shouldTriggerSearch}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <FormWrapper>

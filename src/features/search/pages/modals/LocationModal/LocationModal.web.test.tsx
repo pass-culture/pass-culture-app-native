@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
+import { FilterBehaviourEnum } from 'features/search/enums'
+import {
+  LocationModal,
+  LocationModalProps,
+} from 'features/search/pages/modals/LocationModal/LocationModal'
 import { GeoCoordinates } from 'libs/geolocation'
 import { act, checkAccessibilityFor, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 
@@ -11,12 +15,12 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-const hideLocationModal = jest.fn()
+const hideModal = jest.fn()
 
 describe('<LocationModal/>', () => {
   describe('modal header', () => {
     it('should have header when viewport width is mobile', async () => {
-      const renderAPI = renderLocationModal({ hideLocationModal })
+      const renderAPI = renderLocationModal({ hideModal })
 
       const header = renderAPI.queryByTestId('pageHeader')
 
@@ -27,12 +31,7 @@ describe('<LocationModal/>', () => {
 
     it('should not have header when viewport width is desktop', async () => {
       const isDesktopViewport = true
-      const renderAPI = renderLocationModal(
-        {
-          hideLocationModal,
-        },
-        isDesktopViewport
-      )
+      const renderAPI = renderLocationModal({ hideModal }, isDesktopViewport)
 
       const header = renderAPI.queryByTestId('pageHeader')
       await act(async () => {
@@ -43,26 +42,19 @@ describe('<LocationModal/>', () => {
 
   it('should close the modal when clicking close button', async () => {
     const isDesktopViewport = true
-    const { getByTestId } = renderLocationModal(
-      {
-        hideLocationModal,
-      },
-      isDesktopViewport
-    )
+    const { getByTestId } = renderLocationModal({ hideModal }, isDesktopViewport)
 
     await superFlushWithAct()
 
     const closeButton = getByTestId('Ne pas filtrer sur la localisation et retourner aux résultats')
     fireEvent.click(closeButton)
 
-    expect(hideLocationModal).toHaveBeenCalledTimes(1)
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { container } = renderLocationModal({})
       await act(async () => {
         const results = await checkAccessibilityFor(container)
         expect(results).toHaveNoViolations()
@@ -71,17 +63,20 @@ describe('<LocationModal/>', () => {
   })
 })
 
-type Props = {
-  hideLocationModal: () => void
-}
-
-function renderLocationModal({ hideLocationModal }: Props, isDesktopViewport?: boolean) {
+function renderLocationModal(
+  {
+    hideModal = () => {},
+    filterBehaviour = FilterBehaviourEnum.SEARCH,
+  }: Partial<LocationModalProps>,
+  isDesktopViewport?: boolean
+) {
   return render(
     <LocationModal
       title="Localisation"
       accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
       isVisible
-      hideModal={hideLocationModal}
+      hideModal={hideModal}
+      filterBehaviour={filterBehaviour}
     />,
     { theme: { isDesktopViewport } }
   )

@@ -10,7 +10,7 @@ import { FilterPageButtons } from 'features/search/components/FilterPageButtons/
 import Section from 'features/search/components/sections'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
+import { FilterBehaviourEnum, LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -129,7 +129,7 @@ export const SearchFilter: React.FC = () => {
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
         isModal={false}
-        willTriggerSearch
+        filterBehaviour={FilterBehaviourEnum.SEARCH}
       />
       <Spacer.BottomScreen />
     </Container>

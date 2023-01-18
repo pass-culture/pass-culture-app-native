@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView } from 'features/search/enums'
+import { CategoriesModalView, FilterBehaviourEnum } from 'features/search/enums'
 import {
   buildSearchPayloadValues,
   categoryAllValue,
@@ -37,7 +37,7 @@ export interface CategoriesModalProps {
   accessibilityLabel: string
   isVisible?: boolean
   hideModal: VoidFunction
-  shouldTriggerSearch?: boolean
+  filterBehaviour: FilterBehaviourEnum
 }
 
 const titleId = uuidv4()
@@ -46,7 +46,7 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   accessibilityLabel,
-  shouldTriggerSearch,
+  filterBehaviour,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -171,14 +171,14 @@ export const CategoriesModal = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      if (shouldTriggerSearch) {
+      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       }
       hideModal()
     },
-    [data, setValue, searchState, shouldTriggerSearch, hideModal, navigate, dispatch]
+    [data, setValue, searchState, filterBehaviour, hideModal, navigate, dispatch]
   )
 
   const onSubmit = handleSubmit(handleSearch)
@@ -264,7 +264,7 @@ export const CategoriesModal = ({
           onResetPress={handleReset}
           onSearchPress={onSubmit}
           isSearchDisabled={isSubmitting}
-          willTriggerSearch={shouldTriggerSearch}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <Form.MaxWidth>

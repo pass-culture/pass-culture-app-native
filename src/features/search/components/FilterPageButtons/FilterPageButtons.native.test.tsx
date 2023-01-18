@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
+import { FilterBehaviourEnum } from 'features/search/enums'
 import { fireEvent, render } from 'tests/utils'
 
 const onResetPress = jest.fn()
@@ -9,12 +10,16 @@ const onSearchPress = jest.fn()
 describe('FilterPageButtons', () => {
   it('should call button action when pressing reset button', () => {
     const { getByText } = render(
-      <FilterPageButtons onSearchPress={onSearchPress} onResetPress={onResetPress} />
+      <FilterPageButtons
+        onSearchPress={onSearchPress}
+        onResetPress={onResetPress}
+        filterBehaviour={FilterBehaviourEnum.SEARCH}
+      />
     )
     const resetButton = getByText('Réinitialiser')
     fireEvent.press(resetButton)
 
-    expect(onResetPress).toHaveBeenCalledWith()
+    expect(onResetPress).toHaveBeenCalledTimes(1)
   })
 
   it('should call button action when pressing search button', () => {
@@ -22,20 +27,27 @@ describe('FilterPageButtons', () => {
       <FilterPageButtons
         onSearchPress={onSearchPress}
         onResetPress={onResetPress}
-        willTriggerSearch
+        filterBehaviour={FilterBehaviourEnum.SEARCH}
       />
     )
     const searchButton = getByText('Rechercher')
     fireEvent.press(searchButton)
 
-    expect(onSearchPress).toHaveBeenCalledWith()
+    expect(onSearchPress).toHaveBeenCalledTimes(1)
   })
 
-  it('should show alternative button label when we apply filters without trigger search', () => {
+  it('should call button action when pressing apply filter button', () => {
     const { getByText } = render(
-      <FilterPageButtons onSearchPress={onSearchPress} onResetPress={onResetPress} />
+      <FilterPageButtons
+        onSearchPress={onSearchPress}
+        onResetPress={onResetPress}
+        filterBehaviour={FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING}
+      />
     )
 
-    expect(getByText('Appliquer le filtre')).toBeTruthy()
+    const searchButton = getByText('Appliquer le filtre')
+    fireEvent.press(searchButton)
+
+    expect(onSearchPress).toHaveBeenCalledTimes(1)
   })
 })

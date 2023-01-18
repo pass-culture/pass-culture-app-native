@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
+import { FilterBehaviourEnum } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -823,7 +824,9 @@ describe('<PriceModal/>', () => {
 
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
-      const { getByText } = renderSearchPrice({ shouldTriggerSearch: false })
+      const { getByText } = renderSearchPrice({
+        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+      })
 
       await waitFor(() => {
         expect(getByText('Appliquer le filtre')).toBeTruthy()
@@ -831,7 +834,9 @@ describe('<PriceModal/>', () => {
     })
 
     it('should update search state when pressing submit button', async () => {
-      const { getByText, getByPlaceholderText } = renderSearchPrice({ shouldTriggerSearch: false })
+      const { getByText, getByPlaceholderText } = renderSearchPrice({
+        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+      })
 
       await superFlushWithAct()
 
@@ -861,7 +866,7 @@ describe('<PriceModal/>', () => {
 })
 
 function renderSearchPrice({
-  shouldTriggerSearch = true,
+  filterBehaviour = FilterBehaviourEnum.SEARCH,
   ...props
 }: Partial<PriceModalProps> = {}) {
   return render(
@@ -870,7 +875,7 @@ function renderSearchPrice({
       accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
-      shouldTriggerSearch={shouldTriggerSearch}
+      filterBehaviour={filterBehaviour}
       {...props}
     />
   )
