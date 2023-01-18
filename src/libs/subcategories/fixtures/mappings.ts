@@ -685,7 +685,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'LIVRES_NUMERIQUE_ET_AUDIO',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'PLATEFORMES_EN_LIGNE',
+    searchGroupName: 'LIVRES',
   },
   TELECHARGEMENT_MUSIQUE: {
     appLabel: 'Téléchargement de musique',
@@ -749,7 +749,6 @@ export const useSearchGroupLabelMappingSnap = {
   MEDIA_PRESSE: 'Médias & presse',
   MUSEES_VISITES_CULTURELLES: 'Musées & visites culturelles',
   NONE: 'Toutes les catégories',
-  PLATEFORMES_EN_LIGNE: 'Plateformes en ligne',
   SPECTACLES: 'Spectacles',
 }
 

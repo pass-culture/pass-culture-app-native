@@ -42,7 +42,6 @@ describe('Search reducer', () => {
         SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
         SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
-        SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE,
         SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
         SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
         SearchGroupNameEnumv2.INSTRUMENTS,

@@ -9,7 +9,7 @@ describe('CategoriesButtons', () => {
   it('should display categories', () => {
     const { queryAllByRole } = render(<CategoriesButtons onPressCategory={jest.fn()} />)
 
-    expect(queryAllByRole('button').length).toEqual(15)
+    expect(queryAllByRole('button').length).toEqual(14)
   })
 
   it('should call given callBack on press', () => {

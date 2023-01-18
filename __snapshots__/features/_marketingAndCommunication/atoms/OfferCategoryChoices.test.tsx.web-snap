@@ -641,54 +641,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     >
       <div
         aria-checked={false}
-        aria-label="Plateformes en ligne"
-        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
-        data-testid="Plateformes en ligne"
-        dir={null}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        role="checkbox"
-        style={
-          Object {
-            "transitionDuration": "0s",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-175oi2r r-width-19wmn03"
-          dir={null}
-        />
-        <div
-          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
-          dir="ltr"
-        >
-          Plateformes en ligne
-        </div>
-        <div
-          className="css-view-175oi2r r-width-19wmn03"
-          dir={null}
-        />
-        <input
-          aria-label="Plateformes en ligne"
-          checked={false}
-          hidden={true}
-          name="Plateformes en ligne"
-          readOnly={true}
-          type="checkbox"
-        />
-      </div>
-    </li>
-    <li
-      className="css-view-175oi2r r-display-ixj5dj"
-      dir={null}
-      role="listitem"
-    >
-      <div
-        aria-checked={false}
         aria-label="Spectacles"
         className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
         data-testid="Spectacles"
