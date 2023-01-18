@@ -4,8 +4,6 @@ import { VenueResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { useVenue } from 'features/venue/api/useVenue'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
-import { useFunctionOnce } from 'libs/hooks'
 import { share, ShareContent } from 'libs/share'
 
 export function getVenueUrl(id: number) {
@@ -43,13 +41,8 @@ export const useShareVenue = (
 ): { share: () => Promise<void>; shareContent?: ShareContent } => {
   const { data: venue } = useVenue(venueId)
 
-  const logShareVenue = useFunctionOnce(() => {
-    analytics.logShareVenue(venueId)
-  })
-
   return {
     share: async () => {
-      logShareVenue()
       if (typeof venue === 'undefined') return
       await shareVenue(venue)
     },
