@@ -5,8 +5,6 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { useOffer } from 'features/offer/api/useOffer'
 import { getLocationName } from 'features/offer/helpers/getLocationName'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
-import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { share, ShareContent } from 'libs/share'
 
 export function getOfferUrl(id: number): string {
@@ -43,13 +41,8 @@ export const useShareOffer = (
 ): { share: () => Promise<void>; shareContent?: ShareContent } => {
   const { data: offer } = useOffer({ offerId })
 
-  const logShareOffer = useFunctionOnce(() => {
-    analytics.logShareOffer(offerId)
-  })
-
   return {
     share: async () => {
-      logShareOffer()
       if (typeof offer === 'undefined') return
       await shareOffer(offer)
     },
