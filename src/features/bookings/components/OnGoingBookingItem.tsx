@@ -39,8 +39,8 @@ export const OnGoingBookingItem = ({
   })
 
   const isBookingValid = isBookingInList(booking, digitalBookingWithoutExpirationDate)
-  const canDisplayMessage = !!isBookingValid && daysLeft >= 0
-  const correctMessages = displayExpirationMessage(daysLeft)
+  const canDisplayExpirationMessage = !!isBookingValid && daysLeft >= 0
+  const correctExpirationMessages = displayExpirationMessage(daysLeft)
 
   return (
     <Container
@@ -69,11 +69,11 @@ export const OnGoingBookingItem = ({
             )}
           </React.Fragment>
         )}
-        {!!canDisplayMessage && (
+        {!!canDisplayExpirationMessage && (
           <ExpirationBookingContainer>
             <Clock />
             <Spacer.Row numberOfSpaces={1} />
-            <ExpirationBookingLabel>{correctMessages}</ExpirationBookingLabel>
+            <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>
           </ExpirationBookingContainer>
         )}
       </AttributesView>
