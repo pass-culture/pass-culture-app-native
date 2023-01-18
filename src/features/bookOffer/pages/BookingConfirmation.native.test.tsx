@@ -98,6 +98,21 @@ describe('<BookingConfirmation />', () => {
       expect(share).toBeCalledTimes(1)
     })
 
+    it('should log analytics when press share button', async () => {
+      const { getByText } = render(<BookingConfirmation />)
+
+      await act(async () => {
+        const shareButton = getByText('Partager l’offre')
+        fireEvent.press(shareButton)
+      })
+
+      expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+        type: 'Offer',
+        from: 'bookingconfirmation',
+        id: mockOfferId,
+      })
+    })
+
     it('should go to Bookings and log analytics event', async () => {
       const renderAPI = render(<BookingConfirmation />)
       fireEvent.press(renderAPI.getByText('Voir ma réservation'))
