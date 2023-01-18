@@ -155,6 +155,7 @@ export type RootStackParamList = {
     moduleName?: string
     moduleId?: string
     fromOfferId?: number
+    openModalOnNavigation?: boolean
   }
   OfferDescription: { id: number }
   SuspensionScreen: undefined

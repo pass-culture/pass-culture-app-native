@@ -6,6 +6,7 @@ import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
+import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
@@ -315,6 +316,30 @@ describe('<Login/>', () => {
       })
     })
   })
+
+  describe('Login from offer booking modal', () => {
+    const OFFER_ID = favoriteOfferResponseSnap.id
+
+    beforeEach(() => {
+      useRoute
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.BOOKING } }) // first render
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.BOOKING } }) // email input rerender
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.BOOKING } }) // password input rerender
+    })
+
+    it('should redirect to the previous offer page and ask to open the booking modal', async () => {
+      const renderAPI = renderLogin()
+      fillInputs(renderAPI)
+      fireEvent.press(renderAPI.getByText('Se connecter'))
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
+          id: OFFER_ID,
+          openModalOnNavigation: true,
+        })
+      })
+    })
+  })
 })
 
 const fillInputs = (renderAPI: ReturnType<typeof render>) => {
@@ -439,9 +464,12 @@ function simulateSigninNetworkFailure() {
 
 function simulateAddToFavorites() {
   server.use(
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
-      mockPostFavorite()
-      return res(ctx.status(200), ctx.json(favoriteResponseSnap))
-    })
+    rest.post<EmptyResponse>(
+      `${env.API_BASE_URL}/native/v1/me/favorites`,
+      (_req, response, ctx) => {
+        mockPostFavorite()
+        return response.once(ctx.status(200), ctx.json(favoriteResponseSnap))
+      }
+    )
   )
 }

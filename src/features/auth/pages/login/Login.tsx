@@ -14,6 +14,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
@@ -115,8 +116,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         } else if (shouldShowCulturalSurvey(user)) {
           navigate('CulturalSurveyIntro')
         } else if (offerId) {
-          addFavorite({ offerId })
-          navigate('Offer', { id: offerId })
+          switch (params.from) {
+            case From.BOOKING:
+              navigate('Offer', { id: offerId, openModalOnNavigation: true })
+              return
+
+            case From.FAVORITE:
+              addFavorite({ offerId })
+              navigate('Offer', { id: offerId })
+              return
+          }
         } else {
           navigateToHome()
         }
@@ -130,6 +139,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       props.doNotNavigateOnSigninSuccess,
       setErrorMessage,
       setIsLoading,
+      params?.from,
       addFavorite,
     ]
   )
