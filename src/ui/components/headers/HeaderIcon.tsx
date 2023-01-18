@@ -6,9 +6,9 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { BicolorShare } from 'ui/svg/icons/BicolorShare'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -31,7 +31,7 @@ interface HeaderIconProps {
 
 const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
-  if (iconName === 'share') return Share
+  if (iconName === 'share') return BicolorShare
   if (iconName === 'favorite-filled') return FavoriteFilled
   return Favorite
 }

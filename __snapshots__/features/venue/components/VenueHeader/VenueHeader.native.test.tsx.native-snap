@@ -267,7 +267,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
             testID="initial-icon-container"
           >
             <View
-              fill="#161617"
               height={24}
               testID="icon-share"
               width={24}
@@ -288,7 +287,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
             testID="final-icon-container"
           >
             <View
-              fill="#ffffff"
               height={24}
               testID="final-icon-share"
               width={24}
