@@ -109,9 +109,9 @@ describe('OnGoingBookingItem', () => {
           },
         },
       }
-      const { queryByText } = renderOnGoingBookingItem(booking, bookings)
+      const { queryByTestId } = renderOnGoingBookingItem(booking, bookings)
 
-      expect(queryByText('')).toBeFalsy()
+      expect(queryByTestId('expiration-booking-container')).toBeTruthy()
     })
   })
 })

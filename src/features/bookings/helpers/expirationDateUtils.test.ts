@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import {
-  countdownDays,
+  daysCountdown,
   displayExpirationMessage,
   getDigitalBookingWithoutExpirationDate,
   isBookingInList,
@@ -56,19 +56,19 @@ describe('expirationDateUtils', () => {
   })
 
   describe('displayExpirationMessage', () => {
-    it("should display expiration messages : Ta réservation s'archivera dans ${daysLeft} jours  ", () => {
+    it("should display expiration message : Ta réservation s'archivera dans ${daysLeft} jours  ", () => {
       const daysLeft = 20
 
       expect(displayExpirationMessage(daysLeft)).toBe("Ta réservation s'archivera dans 20 jours")
     })
 
-    it("should display expiration messages : Ta reservation s'archivera demain, when it is one day prior the date", () => {
+    it("should display expiration message : Ta reservation s'archivera demain, when the offer archives the next day", () => {
       const daysLeft = 1
 
       expect(displayExpirationMessage(daysLeft)).toBe("Ta reservation s'archivera demain")
     })
 
-    it("should display expiration messages : Ta réservation s'archive aujourd'hui, when it is the last day", () => {
+    it("should display expiration message : Ta réservation s'archive aujourd'hui, when it is the last day when the offer archives today", () => {
       const daysLeft = 0
 
       expect(displayExpirationMessage(daysLeft)).toBe("Ta réservation s'archive aujourd'hui")
@@ -81,21 +81,21 @@ describe('expirationDateUtils', () => {
     })
   })
 
-  describe('countdownDays', () => {
-    it('should return the count down days between the startDate and the enDate', () => {
+  describe('daysCountdown', () => {
+    it('should return the days countdown between two dates', () => {
       mockdate.set(new Date('2023-01-29T10:00:00Z'))
       const dateCreated = '2023-01-19T14:38:45Z'
       const daysLeftUntilExpiration = 20
 
-      expect(countdownDays(dateCreated)).toEqual(daysLeftUntilExpiration)
+      expect(daysCountdown(dateCreated)).toEqual(daysLeftUntilExpiration)
     })
 
-    it('should return the endedCountdown  ', () => {
+    it('should return -1 when the countdown ended  ', () => {
       mockdate.set(new Date('2023-02-10T10:00:00Z'))
       const dateCreated = '2023-01-07T14:38:45.121155Z'
       const endedCountdown = -1
 
-      expect(countdownDays(dateCreated)).toEqual(endedCountdown)
+      expect(daysCountdown(dateCreated)).toEqual(endedCountdown)
     })
   })
 })

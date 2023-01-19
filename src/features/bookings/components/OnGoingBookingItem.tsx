@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { WithdrawalTypeEnum } from 'api/gen'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import {
-  countdownDays,
+  daysCountdown,
   displayExpirationMessage,
   isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
@@ -24,7 +24,7 @@ export const OnGoingBookingItem = ({
   booking,
   digitalBookingWithoutExpirationDate,
 }: BookingItemProps) => {
-  const daysLeft = countdownDays(booking.dateCreated)
+  const daysLeft = daysCountdown(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
@@ -70,7 +70,7 @@ export const OnGoingBookingItem = ({
           </React.Fragment>
         )}
         {!!canDisplayExpirationMessage && (
-          <ExpirationBookingContainer>
+          <ExpirationBookingContainer testID="expiration-booking-container">
             <Clock />
             <Spacer.Row numberOfSpaces={1} />
             <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>

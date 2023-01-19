@@ -36,7 +36,7 @@ export const displayExpirationMessage = (daysLeft: number) => {
   return expirationMessage
 }
 
-export const countdownDays = (dateCreated: string) => {
+export const daysCountdown = (dateCreated: string) => {
   const startDate = new Date()
   const endDate = addDays(new Date(dateCreated), 30)
   const endedCountdown = -1
