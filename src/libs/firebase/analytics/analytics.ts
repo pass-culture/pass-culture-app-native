@@ -65,7 +65,7 @@ const logEventAnalytics = {
     moduleID: string
     moduleListID: string
     toEntryId: string
-  }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, { params }),
+  }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, params),
   logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, {
       type: params.type,

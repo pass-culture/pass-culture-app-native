@@ -6,7 +6,7 @@ import {
   OffersModule,
   VenuesModule,
 } from 'features/home/components'
-import { CategoryListModule as CategoryListComponent } from 'features/home/components/modules/categories/CategoryListModule'
+import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import {
@@ -83,7 +83,8 @@ const UnmemoizedModule = ({
 
   if (isThematicHighlightModule(item)) return <ThematicHighlightModule {...item} />
 
-  if (isCategoryListModule(item)) return <CategoryListComponent {...item} />
+  if (isCategoryListModule(item))
+    return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
 
   return <React.Fragment></React.Fragment>
 }
