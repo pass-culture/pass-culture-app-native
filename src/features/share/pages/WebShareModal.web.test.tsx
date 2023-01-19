@@ -3,7 +3,7 @@ import React from 'react'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { render, fireEvent } from 'tests/utils/web'
 
-import { WebShareModal } from '../WebShareModal'
+import { WebShareModal } from './WebShareModal'
 
 const mockClipboardWriteText = jest.fn()
 // @ts-ignore navigator.clipboard doesn't exist in the tests otherwise

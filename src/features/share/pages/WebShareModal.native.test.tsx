@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { WebShareModal } from 'libs/share/WebShareModal'
 import { render } from 'tests/utils'
+
+import { WebShareModal } from './WebShareModal'
 
 const defaultProps = {
   visible: true,
