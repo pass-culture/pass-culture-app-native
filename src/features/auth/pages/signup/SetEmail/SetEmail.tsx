@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import {
   Controller,
@@ -11,6 +12,7 @@ import {
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupStepProps } from 'features/auth/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -40,6 +42,7 @@ const NewsletterCheckboxControlled = ({
 )
 
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+  const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: '',
@@ -89,7 +92,12 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={watch('email').trim() === ''}
       />
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton type="login" onAdditionalPress={onLogAnalytics} preventCancellation />
+      <AuthenticationButton
+        type="login"
+        onAdditionalPress={onLogAnalytics}
+        params={{ offerId: params?.offerId }}
+        preventCancellation
+      />
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
@@ -141,5 +142,21 @@ describe('<SetEmail />', () => {
     fireEvent.press(suggestionButton)
 
     expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
+  })
+
+  it('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
+    const OFFER_ID = 1
+    useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
+    const { getByText } = render(<SetEmail {...props} />)
+
+    await act(async () => {
+      const loginButton = getByText('Se connecter')
+      fireEvent.press(loginButton)
+    })
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+      preventCancellation: true,
+      offerId: OFFER_ID,
+    })
   })
 })
