@@ -1,8 +1,8 @@
-import { NavigationCulturalSurvey } from 'features/cheatcodes/pages/NavigationCulturalSurvey/NavigationCulturalSurvey'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
+import { NavigationCulturalSurvey } from 'features/internal/cheatcodes/pages/NavigationCulturalSurvey/NavigationCulturalSurvey'
 import {
   CulturalSurveyRootStackParamList,
   GenericRoute,
