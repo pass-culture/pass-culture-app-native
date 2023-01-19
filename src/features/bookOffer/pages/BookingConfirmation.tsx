@@ -60,9 +60,10 @@ export function BookingConfirmation() {
   } = useModal(false)
 
   const pressShareOffer = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', id: params.offerId })
     shareOffer()
     showShareOfferModal()
-  }, [shareOffer, showShareOfferModal])
+  }, [params.offerId, shareOffer, showShareOfferModal])
 
   useShowReview()
 

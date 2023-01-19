@@ -208,17 +208,16 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  describe('<OfferHeader /> - Analytics', () => {
-    it('should log ShareOffer once when clicking on the Share button', () => {
-      const { getByTestId } = renderOfferHeader()
+  it('should log analytics when clicking on the share button', () => {
+    const { getByLabelText } = renderOfferHeader()
 
-      fireEvent.press(getByTestId('animated-icon-share'))
-      expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
-      expect(analytics.logShareOffer).toHaveBeenCalledWith(offerId)
+    const shareButton = getByLabelText('Partager')
+    fireEvent.press(shareButton)
 
-      fireEvent.press(getByTestId('animated-icon-share'))
-      fireEvent.press(getByTestId('animated-icon-share'))
-      expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'offer',
+      id: offerId,
     })
   })
 })

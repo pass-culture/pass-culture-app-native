@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useShareVenue } from 'features/venue/helpers/useShareVenue'
+import { analytics } from 'libs/firebase/analytics'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
@@ -34,7 +35,9 @@ export const VenueHeader: React.FC<Props> = (props) => {
     showModal: showShareVenueModal,
     hideModal: hideShareVenueModal,
   } = useModal(false)
+
   const onSharePress = () => {
+    analytics.logShare({ type: 'Venue', from: 'venue', id: venueId })
     shareVenue()
     showShareVenueModal()
   }

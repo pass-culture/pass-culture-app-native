@@ -119,9 +119,10 @@ export const Favorite: React.FC<Props> = (props) => {
   const { share: shareOffer, shareContent } = useShareOffer(offer.id)
 
   const pressShareOffer = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })
     shareOffer()
     showShareOfferModal()
-  }, [shareOffer, showShareOfferModal])
+  }, [offer.id, shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>
