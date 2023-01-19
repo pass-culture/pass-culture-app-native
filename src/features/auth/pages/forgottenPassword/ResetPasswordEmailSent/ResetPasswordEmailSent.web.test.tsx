@@ -19,14 +19,14 @@ describe('<ResetPasswordEmailSent/>', () => {
   })
 })
 
-const navigationProps = { route: { params: { email: 'john.doe@gmail.com' } } }
+const navigationProps = {
+  route: { params: { email: 'john.doe@gmail.com' } },
+} as StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 function renderResetPasswordEmailSent() {
   return render(
     <SafeAreaProvider>
-      <ResetPasswordEmailSent
-        {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>)}
-      />
+      <ResetPasswordEmailSent {...navigationProps} />
     </SafeAreaProvider>
   )
 }

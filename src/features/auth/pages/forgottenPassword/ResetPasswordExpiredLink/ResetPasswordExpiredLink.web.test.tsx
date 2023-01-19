@@ -8,16 +8,14 @@ import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
 jest.mock('react-query')
 
-const navigationProps = { route: { params: { email: 'test@email.com' } } }
+const navigationProps = {
+  route: { params: { email: 'test@email.com' } },
+} as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 describe('<ResetPasswordExpiredLink/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(
-        <ResetPasswordExpiredLink
-          {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
-        />
-      )
+      const { container } = render(<ResetPasswordExpiredLink {...navigationProps} />)
 
       const results = await checkAccessibilityFor(container)
 
