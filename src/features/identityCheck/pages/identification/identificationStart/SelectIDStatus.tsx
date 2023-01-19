@@ -14,6 +14,16 @@ import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+enum IDStatus {
+  'ID_OK' = 'id_ok',
+  'NO_ID' = 'no_id',
+  'EXPIRED_OR_LOST' = 'expired_or_lost',
+}
+
+const logEventSelectIdStatusClicked = (type: IDStatus) => {
+  amplitude.logEvent('select_id_status_clicked', { type })
+}
+
 export const SelectIDStatus: FunctionComponent = () => {
   useEffect(() => {
     amplitude.logEvent('screen_view_select_id_status')
@@ -27,6 +37,7 @@ const MainOptionButton = (
     Subtitle={<Typo.Caption>Les copies ne sont pas acceptées</Typo.Caption>}
     icon={BicolorIdCard}
     navigateTo={{ screen: 'UbbleWebview' }}
+    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
   />
 )
 
@@ -35,6 +46,7 @@ const FirstOtherOption = (
     label="Je n’ai pas ma pièce d’identité originale avec moi"
     leftIcon={BicolorNoId}
     navigateTo={{ screen: 'ComeBackLater' }}
+    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.NO_ID)}
   />
 )
 
@@ -43,6 +55,7 @@ const SecondOtherOption = (
     label="Ma pièce d’identité est expirée ou perdue"
     leftIcon={BicolorLostId}
     navigateTo={{ screen: 'ExpiredOrLostID' }}
+    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.EXPIRED_OR_LOST)}
   />
 )
 
