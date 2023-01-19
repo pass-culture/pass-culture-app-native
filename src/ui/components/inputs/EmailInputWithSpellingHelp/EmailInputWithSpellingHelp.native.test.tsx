@@ -5,10 +5,12 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
 
+const mockOnSpellingHelpPress = jest.fn()
 const props: ComponentProps<typeof EmailInputWithSpellingHelp> = {
   email: '',
   label: 'Adresse email',
   onEmailChange: jest.fn(),
+  onSpellingHelpPress: mockOnSpellingHelpPress,
 }
 
 jest.useFakeTimers()
@@ -51,5 +53,22 @@ describe('<EmailInputWithSpellingHelp />', () => {
     fireEvent.press(suggestionButton)
 
     expect(props.onEmailChange).toHaveBeenNthCalledWith(1, 'firstname.lastname@gmail.com')
+  })
+
+  it('should call onSpellingHelpPress when user select the suggestion', async () => {
+    const { getByText, rerender } = render(<EmailInputWithSpellingHelp {...props} />)
+
+    await act(async () => {
+      rerender(<EmailInputWithSpellingHelp {...props} email="firstname.lastname@gmal.com" />)
+    })
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    const suggestionButton = getByText('Appliquer la modification')
+    fireEvent.press(suggestionButton)
+
+    expect(mockOnSpellingHelpPress).toHaveBeenCalledTimes(1)
   })
 })

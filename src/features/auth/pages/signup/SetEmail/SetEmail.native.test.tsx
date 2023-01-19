@@ -2,6 +2,7 @@ import React from 'react'
 
 import { analytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render } from 'tests/utils'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { SetEmail } from './SetEmail'
 
@@ -9,6 +10,8 @@ const props = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
 }
+
+jest.useFakeTimers()
 
 describe('<SetEmail />', () => {
   it('should display disabled validate button when email input is not filled', () => {
@@ -120,5 +123,23 @@ describe('<SetEmail />', () => {
     })
 
     expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
+  })
+
+  it('should log analytics when user select the suggested email', async () => {
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmal.com')
+    })
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    const suggestionButton = getByText('Appliquer la modification')
+    fireEvent.press(suggestionButton)
+
+    expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
   })
 })

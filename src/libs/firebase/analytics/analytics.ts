@@ -181,6 +181,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason }),
   logHasClickedMissingCode: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_CLICKED_MISSING_CODE),
+  logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_CORRECTED_EMAIL, { from }),
   logHasDismissedAppSharingModal: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>

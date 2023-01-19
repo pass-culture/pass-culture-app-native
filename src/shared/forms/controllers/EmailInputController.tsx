@@ -12,6 +12,7 @@ interface Props<TFieldValues extends FieldValues, TName>
   name: TName
   control: Control<TFieldValues>
   withSpellingHelp?: boolean
+  onSpellingHelpPress?: () => void
 }
 
 export const EmailInputController = <
@@ -21,6 +22,7 @@ export const EmailInputController = <
   name,
   control,
   withSpellingHelp,
+  onSpellingHelpPress,
   ...otherEmailInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   const Input = withSpellingHelp ? EmailInputWithSpellingHelp : EmailInput
@@ -36,6 +38,7 @@ export const EmailInputController = <
             onEmailChange={onChange}
             onBlur={onBlur}
             accessibilityDescribedBy={emailInputErrorId}
+            onSpellingHelpPress={onSpellingHelpPress}
             {...otherEmailInputProps}
           />
           <InputError
