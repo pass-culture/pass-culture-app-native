@@ -14,6 +14,7 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
+import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
@@ -67,6 +68,7 @@ import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
+import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
@@ -558,6 +560,12 @@ export const AppComponents: FunctionComponent = () => {
               }
               navigateTo={navigateToHomeConfig}
               icon={BicolorSmartphone}
+            />
+            <Spacer.Column numberOfSpaces={1} />
+            <SecondButtonList
+              label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger. "
+              navigateTo={{ screen: 'DMSIntroduction' }}
+              leftIcon={BicolorEarth}
             />
           </View>
           <Spacer.Column numberOfSpaces={1} />

@@ -389,6 +389,211 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 }
               />
               <View
+                accessibilityRole="link"
+                accessible={false}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="HeroButtonList"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "borderColor": "#90949D",
+                        "borderRadius": 7,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "padding": 16,
+                        "width": "100%",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignContent": "center",
+                          "marginRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "justifyContent": "center",
+                            "minHeight": 58,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        J’ai ma pièce d’identité en cours de validité
+                      </Text>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "marginTop": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          Les copies ne sont pas acceptées
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View>
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={7}
+                style={
+                  Array [
+                    Object {
+                      "height": 28,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "paddingHorizontal": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#90949D",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginHorizontal": 10,
+                      },
+                    ]
+                  }
+                >
+                  ou
+                </Text>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#90949D",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 1,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <View
+                numberOfSpaces={7}
+                style={
+                  Array [
+                    Object {
+                      "height": 28,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityRole="list"
                 style={
                   Array [
@@ -411,8 +616,14 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Je n’ai pas ma pièce d’identité originale avec moi"
                     accessibilityRole="link"
-                    accessible={false}
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -428,154 +639,93 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="HeroButtonList"
+                    testID="Je n’ai pas ma pièce d’identité originale avec moi"
                   >
                     <View
                       style={
                         Array [
                           Object {
                             "alignItems": "center",
-                            "borderColor": "#90949D",
-                            "borderRadius": 7,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
                             "flexDirection": "row",
-                            "padding": 16,
-                            "width": "100%",
+                            "justifyContent": "space-between",
                           },
                           undefined,
                         ]
                       }
                     >
                       <View
+                        fill="url(#gradienttestUuid)"
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
                         style={
                           Array [
                             Object {
-                              "alignContent": "center",
-                              "marginRight": 16,
+                              "width": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "textAlign": "left",
                             },
                           ]
                         }
                       >
-                        <View
-                          height={32}
-                          width={32}
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
                         >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
+                          Je n’ai pas ma pièce d’identité originale avec moi
+                        </Text>
                       </View>
                       <View
                         style={
                           Array [
                             Object {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
+                              "alignItems": "flex-end",
                             },
                           ]
                         }
                       >
                         <View
-                          style={
-                            Array [
-                              Object {
-                                "justifyContent": "center",
-                                "minHeight": 58,
-                              },
-                            ]
-                          }
+                          height={20}
+                          testID="section-row-navigable-icon"
+                          width={20}
                         >
                           <Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              J’ai ma pièce d’identité 
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              en cours de validité avec moi
-                            </Text>
-                          </Text>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "marginTop": 4,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                accessibilityHidden={true}
-                                accessibilityRole="image"
-                                style={
-                                  Array [
-                                    Object {
-                                      "fontFamily": "Montserrat-SemiBold",
-                                    },
-                                  ]
-                                }
-                              >
-                                ⚠️
-                                 
-                              </Text>
-                              Les copies ne sont pas acceptées
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
+                            section-row-navigable-icon-SVG-Mock
                           </Text>
                         </View>
                       </View>
                     </View>
                   </View>
                   <View
-                    numberOfSpaces={6}
+                    numberOfSpaces={9}
                     style={
                       Array [
                         Object {
-                          "height": 24,
+                          "height": 36,
                         },
                       ]
                     }
@@ -592,8 +742,14 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Ma pièce d’identité est expirée ou perdue"
                     accessibilityRole="link"
-                    accessible={false}
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -609,263 +765,81 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="HeroButtonList"
+                    testID="Ma pièce d’identité est expirée ou perdue"
                   >
                     <View
                       style={
                         Array [
                           Object {
                             "alignItems": "center",
-                            "borderColor": "#90949D",
-                            "borderRadius": 7,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
                             "flexDirection": "row",
-                            "padding": 16,
-                            "width": "100%",
+                            "justifyContent": "space-between",
                           },
                           undefined,
                         ]
                       }
                     >
                       <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
                         style={
                           Array [
                             Object {
-                              "alignContent": "center",
-                              "marginRight": 16,
+                              "width": 8,
                             },
                           ]
                         }
-                      >
-                        <View
-                          fill="url(#gradienttestUuid)"
-                          height={32}
-                          width={32}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
+                      />
                       <View
                         style={
                           Array [
                             Object {
+                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
+                              "textAlign": "left",
                             },
                           ]
                         }
                       >
-                        <View
+                        <Text
                           style={
                             Array [
                               Object {
-                                "justifyContent": "center",
-                                "minHeight": 58,
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
                               },
                             ]
                           }
                         >
-                          <Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Je n’ai pas 
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              ma pièce d’identité originale 
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              avec moi
-                            </Text>
-                          </Text>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    numberOfSpaces={6}
-                    style={
-                      Array [
-                        Object {
-                          "height": 24,
-                        },
-                      ]
-                    }
-                  />
-                </View>
-                <View
-                  accessibilityRole="none"
-                  style={
-                    Array [
-                      Object {
-                        "display": "flex",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityRole="link"
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="HeroButtonList"
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "borderColor": "#90949D",
-                            "borderRadius": 7,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "padding": 16,
-                            "width": "100%",
-                          },
-                          undefined,
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignContent": "center",
-                              "marginRight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={32}
-                          width={32}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
+                          Ma pièce d’identité est expirée ou perdue
+                        </Text>
                       </View>
                       <View
                         style={
                           Array [
                             Object {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
+                              "alignItems": "flex-end",
                             },
                           ]
                         }
                       >
                         <View
-                          style={
-                            Array [
-                              Object {
-                                "justifyContent": "center",
-                                "minHeight": 58,
-                              },
-                            ]
-                          }
+                          height={20}
+                          testID="section-row-navigable-icon"
+                          width={20}
                         >
                           <Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Ma pièce d’identité est 
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              expirée ou perdue
-                            </Text>
-                          </Text>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
+                            section-row-navigable-icon-SVG-Mock
                           </Text>
                         </View>
                       </View>

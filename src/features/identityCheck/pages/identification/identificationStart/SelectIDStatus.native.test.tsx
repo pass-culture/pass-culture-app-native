@@ -11,10 +11,10 @@ describe('SelectIDStatus', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité" button', () => {
+  it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité en cours de validité" button', () => {
     const { getByText } = render(<SelectIDStatus />)
 
-    const button = getByText('J’ai ma pièce d’identité')
+    const button = getByText('J’ai ma pièce d’identité en cours de validité')
     fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('UbbleWebview', undefined)
@@ -23,7 +23,7 @@ describe('SelectIDStatus', () => {
   it('should navigate to ComeBackLater when pressing "Je n’ai pas ma pièce d’identité originale" button', () => {
     const { getByText } = render(<SelectIDStatus />)
 
-    const button = getByText('Je n’ai pas')
+    const button = getByText('Je n’ai pas ma pièce d’identité originale avec moi')
     fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
@@ -32,7 +32,7 @@ describe('SelectIDStatus', () => {
   it("should navigate to ExpiredOrLostID when pressing 'Ma pièce d'identité est expirée ou perdue' button", () => {
     const { getByText } = render(<SelectIDStatus />)
 
-    const button = getByText('Ma pièce d’identité est')
+    const button = getByText('Ma pièce d’identité est expirée ou perdue')
     fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
