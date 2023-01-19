@@ -15,7 +15,8 @@
       "namespace": "android_app",
       "package_name": "app.passculture.staging",
       "sha256_cert_fingerprints": [
-        "DD:63:BD:54:53:52:DD:68:6D:DF:0A:FC:74:EE:B0:EB:82:29:31:69:C4:55:01:81:79:CF:CE:BF:77:A0:3A:AE"
+        "DD:63:BD:54:53:52:DD:68:6D:DF:0A:FC:74:EE:B0:EB:82:29:31:69:C4:55:01:81:79:CF:CE:BF:77:A0:3A:AE",
+        "86:06:73:05:E8:04:75:B8:36:8A:11:B1:3E:7D:22:74:51:1D:AF:9E:A7:EE:E7:EB:26:E0:05:58:32:87:65:DA"
       ]
     }
   }

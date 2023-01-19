@@ -245,17 +245,58 @@ and this allow to write less verbose selector for our cross platforms cases.
 ### ~ Selector
 
 The selector used to access component is the `accessibility id` :
+
 - For Android: the `accessibility id` corresponds to the `accessibilityLabel`
 - For iOS: the `accessibility id` corresponds to the `testID`.
 
-> You don't always want to set an `accessibilityLabel` as screen readers will read it.
-> This is why we have created `useE2eTestId` hook that will set both `testID` and `accessibilityLabel` but `accessibilityLabel` will be set only during e2e execution.
+**We only want to use accessibility id selector, as this is the only way to have cross plateforme selectors.**
 
-The following component have been refactored to easily set a cross-platform selector :
+If this is not possible, you will have to write platform specific selectors within your e2e tests (for example, for our SetBirthDate, we use 4 different date pickers)
+
+**How to add cross platforms markers in the source code ?**
+
+We have two utilities that can be used:
+
+1. `accessibilityAndTestId`: utilities
+2. `useE2eTestId`: react hook
+
+
+(1) `accessibilityAndTestId` can be used as follows:
+
+```tsx
+function ExampleComponent() {
+  return <MyComponent {...accessibilityAndTestId('Un texte unique')} />
+}
+```
+
+Use `accessibilityAndTestId` only if you want `accessibilityLabel` to be set outside e2e execution, **it will then be read by screen readers**.
+
+
+(2) `useE2eTestId` can be used as follows:
+
+```tsx
+function ExampleComponent() {
+  const e2eTestId = useE2eTestId('Un texte unique')
+  return <MyComponent {...e2eTestId} />
+}
+```
+
+Use `useE2eTestId` hook only if you don't want `accessibilityLabel` to be set outside e2e execution, **it will never read by screen readers**.
+
+
+**Some components already implement a cross-platform selector:**
+
 - `AppButton`, `ButtonInsideText`, `ButtonWithLinearGradient`: The `accessibilityLabel` and `testID` are automatically set to the `wording` prop, or to `accessibilityLabel` prop if given. This means that `accessibility id` is the `wording` or `accessibilityLabel`, which allow us to have a cross-platform selector.
 - `TouchableOpacity`, `Touchable`, `InternalTouchableLink`, `ExternalTouchableLink`:  The `testID` is automatically set to the `accessibilityLabel` prop. This means that this element needs to have an `accessibilityLabel` if we  want to have a cross-platform selector.
 
 For more information on selectors, please check [this notion page](https://www.notion.so/passcultureapp/Documentation-E2E-S-lecteurs-42cd859559454454a3a4a37ef1e86f41).
+
+**react-native-web**
+
+All UI components imported from react-native, will have a `data-testid` attributes set if a `testID` is set, this is because `react-native-web` do it under the hood.
+
+If you have a web only component, you will have to manually set the `data-testid` to it, or use the `accessibilityAndTestId` utils.
+
 
 ### Demo
 

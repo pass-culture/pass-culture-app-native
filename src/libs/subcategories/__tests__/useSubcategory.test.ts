@@ -71,7 +71,6 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.SPECTACLE_VENTE_DISTANCE}       | ${false} | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
     ${SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM}          | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
     ${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE}       | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
-    ${SubcategoryIdEnum.TELECHARGEMENT_LIVRE_AUDIO}     | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE}
     ${SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE}         | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
     ${SubcategoryIdEnum.VISITE}                         | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.VISITE_GUIDEE}                  | ${true}  | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}

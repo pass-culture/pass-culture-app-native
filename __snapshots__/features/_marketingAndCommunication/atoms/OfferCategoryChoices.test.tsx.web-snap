@@ -1,0 +1,687 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
+<div
+  className="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-marginBottom-bvlit7 r-marginRight-1liyp63"
+  dir={null}
+>
+  <ul
+    className="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+    dir={null}
+    role="list"
+  >
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Arts & loisirs créatifs"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Arts & loisirs créatifs"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Arts & loisirs créatifs
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Arts & loisirs créatifs"
+          checked={false}
+          hidden={true}
+          name="Arts & loisirs créatifs"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Bibliothèques, Médiathèques"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Bibliothèques, Médiathèques"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Bibliothèques, Médiathèques
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Bibliothèques, Médiathèques"
+          checked={false}
+          hidden={true}
+          name="Bibliothèques, Médiathèques"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Cartes jeunes"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Cartes jeunes"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Cartes jeunes
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Cartes jeunes"
+          checked={false}
+          hidden={true}
+          name="Cartes jeunes"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="CD, vinyles, musique en ligne"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="CD, vinyles, musique en ligne"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          CD, vinyles, musique en ligne
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="CD, vinyles, musique en ligne"
+          checked={false}
+          hidden={true}
+          name="CD, vinyles, musique en ligne"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Concerts & festivals"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Concerts & festivals"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Concerts & festivals
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Concerts & festivals"
+          checked={false}
+          hidden={true}
+          name="Concerts & festivals"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Conférences & rencontres"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Conférences & rencontres"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Conférences & rencontres
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Conférences & rencontres"
+          checked={false}
+          hidden={true}
+          name="Conférences & rencontres"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Évènements en ligne"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Évènements en ligne"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Évènements en ligne
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Évènements en ligne"
+          checked={false}
+          hidden={true}
+          name="Évènements en ligne"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Films, séries, cinéma"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Films, séries, cinéma"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Films, séries, cinéma
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Films, séries, cinéma"
+          checked={false}
+          hidden={true}
+          name="Films, séries, cinéma"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Instruments de musique"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Instruments de musique"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Instruments de musique
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Instruments de musique"
+          checked={false}
+          hidden={true}
+          name="Instruments de musique"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Jeux & jeux vidéos"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Jeux & jeux vidéos"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Jeux & jeux vidéos
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Jeux & jeux vidéos"
+          checked={false}
+          hidden={true}
+          name="Jeux & jeux vidéos"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Livres"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Livres"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Livres
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Livres"
+          checked={false}
+          hidden={true}
+          name="Livres"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Médias & presse"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Médias & presse"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Médias & presse
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Médias & presse"
+          checked={false}
+          hidden={true}
+          name="Médias & presse"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Musées & visites culturelles"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Musées & visites culturelles"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Musées & visites culturelles
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Musées & visites culturelles"
+          checked={false}
+          hidden={true}
+          name="Musées & visites culturelles"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+    <li
+      className="css-view-175oi2r r-display-ixj5dj"
+      dir={null}
+      role="listitem"
+    >
+      <div
+        aria-checked={false}
+        aria-label="Spectacles"
+        className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-6t2glc r-borderWidth-d045u9 r-flexDirection-18u37iz r-marginBottom-6gpygo r-marginRight-1b7u577 r-maxWidth-1ik5qf4"
+        data-testid="Spectacles"
+        dir={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        role="checkbox"
+        style={
+          Object {
+            "transitionDuration": "0s",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <div
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginVertical-zg41ew"
+          dir="ltr"
+        >
+          Spectacles
+        </div>
+        <div
+          className="css-view-175oi2r r-width-19wmn03"
+          dir={null}
+        />
+        <input
+          aria-label="Spectacles"
+          checked={false}
+          hidden={true}
+          name="Spectacles"
+          readOnly={true}
+          type="checkbox"
+        />
+      </div>
+    </li>
+  </ul>
+</div>
+`;

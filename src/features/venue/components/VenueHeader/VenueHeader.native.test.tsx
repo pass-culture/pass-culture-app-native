@@ -1,6 +1,5 @@
 import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
@@ -13,50 +12,41 @@ import { act, fireEvent, render } from 'tests/utils'
 jest.mock('features/venue/api/useVenue')
 
 describe('<VenueHeader />', () => {
-  beforeAll(() => {
-    jest.useFakeTimers()
-  })
-  afterAll(() => {
-    jest.useRealTimers()
+  beforeAll(() => jest.useFakeTimers())
+  afterAll(() => jest.useRealTimers())
+
+  it('should render all icons', () => {
+    const venueHeader = renderVenueHeader()
+    expect(venueHeader.queryByTestId('animated-icon-back')).toBeTruthy()
+    expect(venueHeader.queryByTestId('animated-icon-share')).toBeTruthy()
   })
 
-  it('should render correctly', async () => {
-    const { toJSON } = await renderVenueHeader()
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should render all icons', async () => {
-    const venueHeader = await renderVenueHeader()
-    expect(venueHeader.queryByTestId('icon-back')).toBeTruthy()
-    expect(venueHeader.queryByTestId('icon-share')).toBeTruthy()
-  })
-
-  it('should goBack when we press on the back button', async () => {
-    const { getByTestId } = await renderVenueHeader()
-    fireEvent.press(getByTestId('icon-back'))
+  it('should goBack when we press on the back button', () => {
+    const { getByTestId } = renderVenueHeader()
+    fireEvent.press(getByTestId('animated-icon-back'))
     expect(mockGoBack).toBeCalledTimes(1)
   })
 
-  it('should fully display the title at the end of the animation', async () => {
-    const { animatedValue, getByTestId } = await renderVenueHeader()
+  it('should fully display the title at the end of the animation', () => {
+    const { animatedValue, getByTestId } = renderVenueHeader()
     expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeTruthy()
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(0)
+
     act(() => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
       jest.advanceTimersByTime(100)
     })
-    await waitForExpect(() =>
-      expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()
-    )
-    await waitForExpect(() => expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1))
+
+    expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()
+    expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1)
   })
 
-  it('should call Share with the right arguments on IOS', async () => {
+  it('should call Share with the right arguments on IOS', () => {
     Platform.OS = 'ios'
     const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderVenueHeader()
+    const { getByTestId } = renderVenueHeader()
 
-    fireEvent.press(getByTestId('icon-share'))
+    fireEvent.press(getByTestId('animated-icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
     const url = getVenueUrl(5543)
@@ -68,12 +58,12 @@ describe('<VenueHeader />', () => {
     )
   })
 
-  it('should call Share with the right arguments on Android', async () => {
+  it('should call Share with the right arguments on Android', () => {
     Platform.OS = 'android'
     const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = await renderVenueHeader()
+    const { getByTestId } = renderVenueHeader()
 
-    fireEvent.press(getByTestId('icon-share'))
+    fireEvent.press(getByTestId('animated-icon-share'))
 
     expect(share).toHaveBeenCalledTimes(1)
     const url = getVenueUrl(5543)
@@ -87,21 +77,21 @@ describe('<VenueHeader />', () => {
   })
 
   describe('<VenueHeader /> - Analytics', () => {
-    it('should log ShareVenue once when clicking on the Share button', async () => {
-      const { getByTestId } = await renderVenueHeader()
+    it('should log ShareVenue once when clicking on the Share button', () => {
+      const { getByTestId } = renderVenueHeader()
 
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
       expect(analytics.logShareVenue).toHaveBeenCalledWith(venueResponseSnap.id)
 
-      fireEvent.press(getByTestId('icon-share'))
-      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
+      fireEvent.press(getByTestId('animated-icon-share'))
       expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
     })
   })
 })
 
-async function renderVenueHeader() {
+function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc

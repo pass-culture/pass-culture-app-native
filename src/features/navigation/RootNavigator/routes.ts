@@ -22,7 +22,6 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
-import { GetDynamicSocials } from 'features/cheatcodes/pages/GetDynamicSocials/GetDynamicSocials'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
@@ -35,6 +34,7 @@ import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
@@ -409,9 +409,13 @@ export const routes: Route[] = [
     path: 'cheat-thematic-home-header',
   },
   {
-    // debug route: in navigation component
-    name: 'GetDynamicSocials',
-    component: GetDynamicSocials,
-    path: 'get-dynamic-socials',
+    name: 'ThematicHome',
+    component: ThematicHome,
+    pathConfig: {
+      path: 'accueil-thematique',
+      deeplinkPaths: ['thematic-home'],
+      parse: screenParamsParser['ThematicHome'],
+    },
+    options: { title: 'Page d’accueil thématique' },
   },
 ]

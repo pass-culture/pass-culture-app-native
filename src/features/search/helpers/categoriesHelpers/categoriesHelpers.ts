@@ -3,6 +3,7 @@ import {
   GenreTypeContentModel,
   NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
+  OnlineOfflinePlatformChoicesEnumv2,
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
   SubcategoriesResponseModelv2,
@@ -268,4 +269,33 @@ export function getDataByAlphabeticalSorting(
   data: SearchGroupResponseModelv2[] | NativeCategoryResponseModelv2[]
 ) {
   return data.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
+}
+
+export function isOnlyOnline(
+  data: SubcategoriesResponseModelv2,
+  categoryId?: SearchGroupNameEnumv2,
+  nativeCategoryId?: NativeCategoryIdEnumv2
+) {
+  if (!categoryId && !nativeCategoryId) {
+    return false
+  }
+
+  const platforms: OnlineOfflinePlatformChoicesEnumv2[] = [
+    ...new Set(
+      data.subcategories
+        .filter((subcategory) =>
+          nativeCategoryId
+            ? subcategory.nativeCategoryId === nativeCategoryId
+            : subcategory.searchGroupName === categoryId
+        )
+        .map((subcategory) => subcategory.onlineOfflinePlatform)
+    ),
+  ]
+
+  const isOnlyOnline =
+    platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE) &&
+    !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE) &&
+    !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.OFFLINE)
+
+  return isOnlyOnline
 }

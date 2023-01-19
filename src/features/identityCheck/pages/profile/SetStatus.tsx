@@ -63,6 +63,7 @@ export const SetStatus = () => {
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
       dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
+      amplitude.logEvent('set_status_clicked')
       navigateToNextScreen()
     },
     [dispatch, navigateToNextScreen]

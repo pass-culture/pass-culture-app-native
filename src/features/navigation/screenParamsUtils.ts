@@ -14,6 +14,7 @@ type ScreensRequiringParsing = Extract<
   | 'Venue'
   | 'Search'
   | 'LocationFilter'
+  | 'ThematicHome'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -76,6 +77,7 @@ export const screenParamsParser: ParamsParsers = {
     endingDatetime: parseDataWithISODates,
     hitsPerPage: JSON.parse,
     isAutocomplete: JSON.parse,
+    isOnline: JSON.parse,
     locationFilter: JSON.parse,
     maxPossiblePrice: JSON.parse,
     maxPrice: JSON.parse,
@@ -100,6 +102,9 @@ export const screenParamsParser: ParamsParsers = {
   LocationFilter: {
     selectedVenue: JSON.parse,
     selectedPlace: JSON.parse,
+  },
+  ThematicHome: {
+    homeId: identityFn,
   },
 }
 
@@ -147,6 +152,7 @@ export const screenParamsStringifier: ParamsStringifiers = {
     endingDatetime: JSON.stringify,
     hitsPerPage: JSON.stringify,
     isAutocomplete: JSON.stringify,
+    isOnline: JSON.stringify,
     locationFilter: JSON.stringify,
     maxPossiblePrice: JSON.stringify,
     maxPrice: JSON.stringify,

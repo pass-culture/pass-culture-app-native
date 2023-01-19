@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
-import { useForm, Controller, FieldPath } from 'react-hook-form'
+import { useForm, Controller, FieldPath, ControllerRenderProps } from 'react-hook-form'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -82,19 +82,7 @@ export const ForgottenPassword = () => {
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
         <Form.MaxWidth>
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { value, onChange } }) => (
-              <EmailInput
-                label="Adresse e-mail"
-                email={value}
-                onEmailChange={onChange}
-                autoFocus
-                accessibilityDescribedBy={emailErrorMessageId}
-              />
-            )}
-          />
+          <Controller control={control} name="email" render={EmailInputController} />
 
           <InputError
             visible={hasError}
@@ -114,6 +102,20 @@ export const ForgottenPassword = () => {
     </BottomContentPage>
   )
 }
+
+const EmailInputController = ({
+  field: { value, onChange },
+}: {
+  field: ControllerRenderProps<FormValues, 'email'>
+}) => (
+  <EmailInput
+    label="Adresse e-mail"
+    email={value}
+    onEmailChange={onChange}
+    autoFocus
+    accessibilityDescribedBy={emailErrorMessageId}
+  />
+)
 
 const useForgottenPasswordForm = () => {
   const { navigate } = useNavigation<UseNavigationType>()

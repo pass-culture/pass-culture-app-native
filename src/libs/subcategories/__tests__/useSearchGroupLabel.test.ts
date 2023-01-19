@@ -17,7 +17,6 @@ describe('useCategoryId', () => {
     ${SearchGroupNameEnumv2.LIVRES}                     | ${'Livres'}
     ${SearchGroupNameEnumv2.MEDIA_PRESSE}               | ${'Médias & presse'}
     ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES} | ${'Musées & visites culturelles'}
-    ${SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE}       | ${'Plateformes en ligne'}
     ${SearchGroupNameEnumv2.SPECTACLES}                 | ${'Spectacles'}
     ${SearchGroupNameEnumv2.NONE}                       | ${'Toutes les catégories'}
   `(

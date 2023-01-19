@@ -15,7 +15,8 @@
       "namespace": "android_app",
       "package_name": "app.passculture.testing",
       "sha256_cert_fingerprints": [
-        "F2:59:8C:3F:07:B3:8E:6D:D0:20:A8:1B:A1:02:7B:82:41:53:88:D8:84:0E:CB:22:87:CC:CD:12:F0:8E:32:7F"
+        "F2:59:8C:3F:07:B3:8E:6D:D0:20:A8:1B:A1:02:7B:82:41:53:88:D8:84:0E:CB:22:87:CC:CD:12:F0:8E:32:7F",
+        "9F:44:A7:34:C6:98:F8:E9:15:D8:7F:55:6E:1A:BB:05:03:A4:95:7A:5A:E7:B6:CA:65:83:03:37:42:71:5A:7A"
       ]
     }
   }

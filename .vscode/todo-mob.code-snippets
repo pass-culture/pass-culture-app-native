@@ -1,0 +1,26 @@
+{
+  "Markdown": {
+    "prefix": "todo-mob",
+    "body": [
+      "# TODO",
+      "",
+      "## Links",
+      "",
+      "- [PC-${1:TicketNumber}](https://passculture.atlassian.net/browse/PC-${1:TicketNumber})",
+      "- [MobTime](https://mobtime.hadrienmp.fr/mob/Pass-culture)",
+      "",
+      "---",
+      "",
+      "## Tasks",
+      "",
+      "- [ ] ${0:Task}",
+      "",
+      "---",
+      "",
+      "## Tasks for another US",
+      "",
+      "- [ ] "
+    ],
+    "description": "Create a TODO.md for mob"
+  }
+}

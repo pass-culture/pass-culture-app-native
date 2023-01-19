@@ -37,6 +37,7 @@ export const SetSchoolType = () => {
   const onPressContinue = async () => {
     if (!selectedSchoolTypeId) return
     await dispatch({ type: 'SET_SCHOOL_TYPE', payload: selectedSchoolTypeId })
+    amplitude.logEvent('set_school_type_clicked')
     navigateToNextScreen()
   }
 

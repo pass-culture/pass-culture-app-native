@@ -162,5 +162,6 @@ export const adaptedHomepage: Homepage = {
     formattedRecommendedOffersModule,
     formattedVenuesModule,
     formattedCategoryListModule,
+    formattedThematicHighlightModule,
   ],
 }

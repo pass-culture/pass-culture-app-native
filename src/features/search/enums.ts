@@ -87,10 +87,6 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: categoriesIcons.Museum,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
   },
-  [SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE]: {
-    icon: categoriesIcons.Numeric,
-    facetFilter: SearchGroupNameEnumv2.PLATEFORMES_EN_LIGNE,
-  },
   [SearchGroupNameEnumv2.SPECTACLES]: {
     icon: categoriesIcons.Show,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,

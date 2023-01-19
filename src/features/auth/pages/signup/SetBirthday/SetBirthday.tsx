@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
@@ -36,11 +36,12 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   const birthdate = date ? formatDateToISOStringWithoutTime(date) : undefined
   const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)
 
-  function goToNextStep() {
+  const goToNextStep = useCallback(() => {
     if (birthdate) {
       props.goToNextStep({ birthdate })
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [birthdate, props.goToNextStep])
 
   return (
     <Form.MaxWidth>

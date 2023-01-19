@@ -63,6 +63,7 @@ export interface SearchState {
   searchId?: string
   maxPossiblePrice?: string
   isAutocomplete?: boolean
+  isOnline?: boolean
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']

@@ -190,6 +190,19 @@ describe('SetPhoneNumber', () => {
 
       await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1))
     })
+
+    it('should log amplitude event phone_number_clicked when pressing "Continuer" button', async () => {
+      const { getByTestId, getByText } = renderSetPhoneNumber()
+
+      const input = getByTestId('Entrée pour le numéro de téléphone')
+      fireEvent.changeText(input, '612345678')
+      fireEvent.press(getByText('Continuer'))
+
+      await waitFor(() =>
+        // first call will be the event screen_view_set_phone_number on mount
+        expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'phone_number_clicked')
+      )
+    })
   })
 })
 

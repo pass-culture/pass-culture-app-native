@@ -20,6 +20,7 @@ import {
   getIcon,
   getNativeCategories,
   getSearchGroupsByAlphabeticalSorting,
+  isOnlyOnline,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModalFormProps, SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -145,17 +146,30 @@ export const CategoriesModal = ({
 
   const handleSearch = useCallback(
     (form: CategoriesModalFormProps) => {
+      if (!data) {
+        return
+      }
       setValue('currentView', CategoriesModalView.CATEGORIES)
 
       const payload = buildSearchPayloadValues(form)
-      const additionalSearchState: SearchState = { ...searchState, ...payload }
+      let additionalSearchState: SearchState = { ...searchState, ...payload }
+      let isOnline = false
+      if (payload.offerNativeCategories.length > 0) {
+        isOnline = isOnlyOnline(data, undefined, payload.offerNativeCategories[0])
+      } else if (payload.offerCategories.length > 0) {
+        isOnline = isOnlyOnline(data, payload.offerCategories[0])
+      }
+      additionalSearchState = {
+        ...additionalSearchState,
+        isOnline: isOnline || undefined,
+      }
 
       analytics.logPerformSearch(additionalSearchState)
       navigate(...getTabNavConfig('Search', additionalSearchState))
 
       hideModal()
     },
-    [hideModal, navigate, searchState, setValue]
+    [data, hideModal, navigate, searchState, setValue]
   )
 
   const onSubmit = handleSubmit(handleSearch)

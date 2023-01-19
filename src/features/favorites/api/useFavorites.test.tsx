@@ -5,10 +5,8 @@ import { View } from 'react-native'
 import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import {
-  addFavoriteJsonResponseSnap,
-  paginatedFavoritesResponseSnap,
-} from 'features/favorites/fixtures/favoritesResponse'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -51,7 +49,7 @@ function simulateBackend(options: Options = defaultOptions) {
     ),
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
       !hasAddFavoriteError
-        ? res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+        ? res(ctx.status(200), ctx.json(favoriteResponseSnap))
         : res(ctx.status(422), ctx.json({}))
     ),
     rest.delete<EmptyResponse>(

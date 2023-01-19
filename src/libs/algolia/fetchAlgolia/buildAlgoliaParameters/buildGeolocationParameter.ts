@@ -6,7 +6,8 @@ import { RADIUS_FILTERS } from '../../enums'
 
 export const buildGeolocationParameter = (
   locationFilter: SearchState['locationFilter'],
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  isOnline?: SearchState['isOnline']
 ): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   if (locationFilter.locationType === LocationType.VENUE) return
 
@@ -22,6 +23,7 @@ export const buildGeolocationParameter = (
   }
 
   if (!userLocation) return
+  if (isOnline && locationFilter.locationType === LocationType.AROUND_ME) return
   if (locationFilter.locationType === LocationType.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,

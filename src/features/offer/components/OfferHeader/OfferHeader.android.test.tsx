@@ -21,7 +21,7 @@ describe('<OfferHeader />', () => {
 
     await superFlushWithAct()
 
-    fireEvent.press(getByTestId('icon-share'))
+    fireEvent.press(getByTestId('animated-icon-share'))
 
     expect(share).toHaveBeenNthCalledWith(
       1,

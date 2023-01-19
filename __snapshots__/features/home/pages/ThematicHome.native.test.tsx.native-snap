@@ -1,0 +1,293 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThematicHome should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
+  <View
+    hide={false}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
+      ListHeaderComponent={
+        <Header
+          thematicHeader={
+            Object {
+              "subtitle": "HeaderSubtitle",
+              "title": "HeaderTitle",
+            }
+          }
+        />
+      }
+      bounces={true}
+      data={
+        Array [
+          Object {
+            "displayParameters": Object {
+              "layout": "one-item-medium",
+              "minOffers": 1,
+              "subtitle": "Ceci n'est pas une playlist de lieux",
+              "title": "Exemple de playlist de lieux",
+            },
+            "id": "105MMz59tftcxXJICXt7ja",
+            "type": "VenuesModule",
+            "venuesParameters": Array [
+              Object {
+                "hitsPerPage": 15,
+                "isGeolocated": false,
+                "title": "Exemple de playlist de lieux",
+                "venueTypes": Array [
+                  "Bibliothèque ou médiathèque",
+                  "Arts visuels, arts plastiques et galeries",
+                  "Centre culturel",
+                  "Cinéma - Salle de projections",
+                  "Cours et pratique artistiques",
+                  "Culture scientifique",
+                  "Festival",
+                  "Jeux / Jeux vidéos",
+                  "Librairie",
+                  "Magasin arts créatifs",
+                  "Musique - Disquaire",
+                  "Musique - Magasin d’instruments",
+                  "Musique - Salle de concerts",
+                  "Musée",
+                  "Offre numérique",
+                  "Patrimoine et tourisme",
+                  "Spectacle vivant",
+                  "Cinéma itinérant",
+                  "Autre type de lieu",
+                ],
+              },
+            ],
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={1000}
+      stickyHeaderIndices={Array []}
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginBottom": 8,
+                    "marginHorizontal": 24,
+                    "marginTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                customHeight={16}
+                enable={true}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Revenir en arrière"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Revenir en arrière"
+              >
+                <View
+                  height={24}
+                  testID="icon-back"
+                  width={24}
+                >
+                  <Text>
+                    icon-back-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "display": "none",
+                      },
+                    ]
+                  }
+                >
+                  Retour
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "maxHeight": 96,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Black",
+                        "fontSize": 26,
+                        "lineHeight": 34,
+                      },
+                    ]
+                  }
+                >
+                  HeaderTitle
+                </Text>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  numberOfLines={2}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  HeaderSubtitle
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              Array [
+                Object {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;

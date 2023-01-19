@@ -163,6 +163,21 @@ describe('SetPhoneValidationCode', () => {
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_phone_validation_code')
     )
   })
+
+  it('should log an amplitude event phone_validation_code_clicked on press continue', async () => {
+    const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
+
+    const continueButton = getByTestId('Continuer')
+    const input = getByPlaceholderText('012345')
+    fireEvent.changeText(input, '000000')
+
+    fireEvent.press(continueButton)
+
+    await waitFor(() => {
+      // first call will be the event screen_view_set_phone_validation_code on mount
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'phone_validation_code_clicked')
+    })
+  })
 })
 
 function renderSetPhoneValidationCode() {

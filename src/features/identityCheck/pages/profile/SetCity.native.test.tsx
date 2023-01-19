@@ -102,6 +102,27 @@ describe('<SetCity/>', () => {
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_city')
     )
   })
+
+  it('should send an amplitude event set_postal_code_clicked on press Continuer', async () => {
+    const city = mockedSuggestedCities[0]
+    mockCitiesApiCall(mockedSuggestedCities)
+
+    const { getByText, getByPlaceholderText, findByText } = renderSetCity()
+
+    const input = getByPlaceholderText('Ex\u00a0: 75017')
+    fireEvent.changeText(input, POSTAL_CODE)
+
+    const CityNameButton = await findByText(city.nom)
+    fireEvent.press(CityNameButton)
+
+    const ContinueButton = getByText('Continuer')
+    fireEvent.press(ContinueButton)
+
+    await waitForExpect(() =>
+      // first call will be the event screen_view_set_city on mount
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_postal_code_clicked')
+    )
+  })
 })
 
 function renderSetCity() {

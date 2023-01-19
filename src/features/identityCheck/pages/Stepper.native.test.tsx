@@ -2,12 +2,16 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { SubscriptionStep, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
+import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
+import { IdentityCheckStep } from 'features/identityCheck/types'
+import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
+import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
@@ -36,19 +40,43 @@ let mockUserProfileData: Partial<UserProfileResponse> = {
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
-}))
-jest.mock('features/identityCheck/useSubscriptionSteps', () => ({
-  useSubscriptionSteps: jest.fn(() => [
-    {
-      name: 'IdentityCheckStep.IDENTIFICATION',
-      label: 'Identification',
-      icon: 'Icon',
-      screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],
-    },
-  ]),
-}))
+jest.mock('features/identityCheck/context/SubscriptionContextProvider')
+const mockedUseSubscriptionContext = useSubscriptionContext as jest.Mock
+mockedUseSubscriptionContext.mockReturnValue({
+  dispatch: mockIdentityCheckDispatch,
+  step: null,
+  identification: { method: null },
+})
+
+jest.mock('features/identityCheck/useSubscriptionSteps')
+const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
+mockUseSubscriptionSteps.mockReturnValue([
+  {
+    name: IdentityCheckStep.PHONE_VALIDATION,
+    label: 'Numéro de téléphone',
+    icon: 'Icon',
+    screens: [''],
+  },
+  {
+    name: IdentityCheckStep.IDENTIFICATION,
+    label: 'Identification',
+    icon: 'Icon',
+    screens: [''],
+  },
+  {
+    name: IdentityCheckStep.PROFILE,
+    label: 'Profil',
+    icon: 'Icon',
+    screens: [''],
+  },
+  {
+    name: IdentityCheckStep.CONFIRMATION,
+    label: 'Confirmation',
+    icon: 'Icon',
+    screens: [''],
+  },
+])
+
 jest.mock('react-query')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
@@ -97,4 +125,41 @@ describe('Stepper navigation', () => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
+  it.each`
+    subscriptionStep                      | stepperLabel             | eventName            | eventParam
+    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${'stepper_clicked'} | ${{ step: 'identification' }}
+    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: 'phone_validation' }}
+    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${'stepper_clicked'} | ${{ step: 'confirmation' }}
+    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${'stepper_clicked'} | ${{ step: 'profile' }}
+  `(
+    'should trigger $eventName amplitude event with the $eventParam parameter',
+    ({
+      subscriptionStep,
+      stepperLabel,
+      eventName,
+      eventParam,
+    }: {
+      subscriptionStep: SubscriptionStep
+      stepperLabel: string
+      eventName: string
+      eventParam: { step: string }
+    }) => {
+      mockNextSubscriptionStep = {
+        ...mockStep,
+        nextSubscriptionStep: subscriptionStep,
+      }
+      mockedUseSubscriptionContext.mockReturnValue({
+        dispatch: mockIdentityCheckDispatch,
+        step: subscriptionStep,
+        identification: { method: null },
+      })
+
+      const stepper = render(<IdentityCheckStepper />)
+      const stepButton = stepper.getByText(stepperLabel)
+      fireEvent.press(stepButton)
+
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, eventName, eventParam)
+      mockUseSubscriptionSteps.mockClear()
+    }
+  )
 })

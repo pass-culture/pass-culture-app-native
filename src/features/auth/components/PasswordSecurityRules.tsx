@@ -29,7 +29,7 @@ export function isPasswordCorrect(password: string) {
   )
 }
 
-export function isLongEnough(password: string): boolean {
+function isLongEnough(password: string): boolean {
   return password.length >= PASSWORD_MIN_LENGTH
 }
 

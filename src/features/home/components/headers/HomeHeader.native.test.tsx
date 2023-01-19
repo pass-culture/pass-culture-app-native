@@ -12,6 +12,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBen
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { Credit, useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
@@ -144,6 +145,18 @@ describe('HomeHeader', () => {
       expect(queryByText(' à dépenser sur l’application')).toBeTruthy()
     }
   )
+
+  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
+    const { getByText } = renderHomeHeader()
+    expect(getByText('CheatMenu')).toBeTruthy()
+  })
+
+  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
+    const { queryByText } = renderHomeHeader()
+    expect(queryByText('CheatMenu')).toBeNull()
+  })
 })
 
 function renderHomeHeader() {

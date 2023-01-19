@@ -48,6 +48,7 @@ describe('<SetStatus/>', () => {
     const renderAPI = render(<SetStatus />)
     expect(renderAPI).toMatchSnapshot()
   })
+
   // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration
   it('should render with no Collégien status if user is over 18', () => {
     mockUseIsUserUnderage.mockReturnValueOnce(false)
@@ -64,6 +65,7 @@ describe('<SetStatus/>', () => {
       expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
     })
   })
+
   it('should not check if activityHasSchoolTypes if user is over 18', () => {
     mockUseIsUserUnderage.mockReturnValueOnce(false)
     const { getByText } = render(<SetStatus />)
@@ -71,6 +73,7 @@ describe('<SetStatus/>', () => {
     fireEvent.press(getByText(SchoolTypesSnap.activities[1].label))
     expect(activityHasSchoolTypes).not.toHaveBeenCalled()
   })
+
   it('should check if activityHasSchoolTypes if user is underage', () => {
     mockUseIsUserUnderage.mockReturnValueOnce(true)
     mockUseIsUserUnderage.mockReturnValueOnce(true)
@@ -94,5 +97,18 @@ describe('<SetStatus/>', () => {
     await waitFor(() =>
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_status')
     )
+  })
+
+  it('should send a amplitude event set_status_clicked on press Continuer', async () => {
+    mockIsSavingCheckpoint = false
+    const { getByText } = render(<SetStatus />)
+
+    fireEvent.press(getByText(SchoolTypesSnap.activities[1].label))
+    fireEvent.press(getByText('Continuer'))
+
+    await waitForExpect(() => {
+      // first call will be the event screen_view_set_status on mount
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_status_clicked')
+    })
   })
 })

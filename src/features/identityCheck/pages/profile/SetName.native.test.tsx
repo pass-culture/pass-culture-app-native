@@ -70,4 +70,21 @@ describe('<SetName/>', () => {
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_name')
     )
   })
+
+  it('should send a amplitude event set_name_clicked on press Continuer', async () => {
+    const { getByPlaceholderText, findByText } = render(<SetName />)
+
+    const firstNameInput = getByPlaceholderText('Ton prénom')
+    const lastNameInput = getByPlaceholderText('Ton nom')
+    fireEvent.changeText(firstNameInput, firstName)
+    fireEvent.changeText(lastNameInput, lastName)
+
+    const continueButton = await findByText('Continuer')
+    fireEvent.press(continueButton)
+
+    await waitForExpect(() => {
+      // first call will be the event screen_view_set_name on mount
+      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_name_clicked')
+    })
+  })
 })
