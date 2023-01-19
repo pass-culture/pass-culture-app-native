@@ -1,3 +1,5 @@
+import { addDays, intervalToDuration } from 'date-fns'
+
 import { Booking } from 'features/bookings/types'
 
 export function getDigitalBookingWithoutExpirationDate(bookings: Booking[]) {
@@ -32,4 +34,22 @@ export const displayExpirationMessage = (daysLeft: number) => {
   }
 
   return expirationMessage
+}
+
+export const countdownDays = (dateCreated: string) => {
+  const startDate = new Date()
+  const endDate = addDays(new Date(dateCreated), 30)
+  const endedCountdown = -1
+
+  if (startDate > endDate) {
+    return endedCountdown
+  }
+
+  const daysLeftUntilExpiration =
+    intervalToDuration({
+      start: startDate,
+      end: endDate,
+    }).days ?? endedCountdown
+
+  return daysLeftUntilExpiration
 }

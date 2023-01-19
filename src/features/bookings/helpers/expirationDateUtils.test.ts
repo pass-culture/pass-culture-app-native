@@ -1,5 +1,8 @@
+import mockdate from 'mockdate'
+
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import {
+  countdownDays,
   displayExpirationMessage,
   getDigitalBookingWithoutExpirationDate,
   isBookingInList,
@@ -75,6 +78,24 @@ describe('expirationDateUtils', () => {
       const daysLeft = -1
 
       expect(displayExpirationMessage(daysLeft)).toBe('')
+    })
+  })
+
+  describe('countdownDays', () => {
+    it('should return the count down days between the startDate and the enDate', () => {
+      mockdate.set(new Date('2023-01-29T10:00:00Z'))
+      const dateCreated = '2023-01-19T14:38:45Z'
+      const daysLeftUntilExpiration = 20
+
+      expect(countdownDays(dateCreated)).toEqual(daysLeftUntilExpiration)
+    })
+
+    it('should return the endedCountdown  ', () => {
+      mockdate.set(new Date('2023-02-10T10:00:00Z'))
+      const dateCreated = '2023-01-07T14:38:45.121155Z'
+      const endedCountdown = -1
+
+      expect(countdownDays(dateCreated)).toEqual(endedCountdown)
     })
   })
 })
