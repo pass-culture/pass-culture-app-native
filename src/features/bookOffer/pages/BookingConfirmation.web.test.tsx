@@ -6,7 +6,7 @@ import { BookingConfirmation } from './BookingConfirmation'
 
 jest.mock('react-query')
 
-jest.mock('features/user/helpers/useAvailableCredit', () => ({
+jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 

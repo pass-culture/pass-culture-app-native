@@ -9,9 +9,9 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage, HomepageTag } from 'features/home/types'
-import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import { renderHook, waitFor } from 'tests/utils'
 
 const masterTag: HomepageTag = 'master'
@@ -109,7 +109,7 @@ mockUseBookings.mockReturnValue({
   isFetching: false,
 } as UseQueryResult<BookingsResponse, unknown>)
 
-jest.mock('features/user/helpers/useAvailableCredit')
+jest.mock('shared/user/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
 
 const defaultRemoteConfig: CustomRemoteConfig = {

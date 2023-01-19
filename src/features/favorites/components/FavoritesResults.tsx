@@ -17,9 +17,9 @@ import {
   sortByIdDesc,
 } from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
