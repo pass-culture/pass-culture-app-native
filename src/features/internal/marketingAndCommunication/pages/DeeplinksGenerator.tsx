@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import {
   DeeplinksGeneratorForm,
   GeneratedDeeplink,
-} from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { DeeplinksHistory } from 'features/_marketingAndCommunication/components/DeeplinksHistory'
-import { DeeplinksResult } from 'features/_marketingAndCommunication/components/DeeplinksResult'
+} from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
+import { DeeplinksHistory } from 'features/internal/marketingAndCommunication/components/DeeplinksHistory'
+import { DeeplinksResult } from 'features/internal/marketingAndCommunication/components/DeeplinksResult'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { OfferNativeCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferNativeCategoryChoices'
+import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferNativeCategoryChoices'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render, fireEvent } from 'tests/utils'
 

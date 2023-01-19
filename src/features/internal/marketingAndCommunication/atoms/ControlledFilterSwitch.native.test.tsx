@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
+import { ControlledFilterSwitch } from 'features/internal/marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { render, fireEvent } from 'tests/utils'
 
 const onChange = jest.fn()

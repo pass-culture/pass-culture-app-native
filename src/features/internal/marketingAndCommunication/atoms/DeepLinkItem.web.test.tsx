@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { DeeplinkItem } from 'features/_marketingAndCommunication/atoms/DeeplinkItem'
-import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
+import { DeeplinkItem } from 'features/internal/marketingAndCommunication/atoms/DeeplinkItem'
+import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { fireEvent, render } from 'tests/utils/web'
 import {
   hideSnackBar,

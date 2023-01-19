@@ -2,11 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import flushPromises from 'flush-promises'
 import React from 'react'
 
-import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
+import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import {
   DeeplinksHistory,
   DeeplinksHistoryProps,
-} from 'features/_marketingAndCommunication/components/DeeplinksHistory'
+} from 'features/internal/marketingAndCommunication/components/DeeplinksHistory'
 import { render, waitFor } from 'tests/utils'
 
 describe('<DeeplinksHistory />', () => {

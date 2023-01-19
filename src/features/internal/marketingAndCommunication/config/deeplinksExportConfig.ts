@@ -1,7 +1,7 @@
 import { api } from 'api/api'
 import { AllNavParamList, ScreenNames } from 'features/navigation/RootNavigator/types'
 
-import { build } from '../../../../package.json'
+import { build } from '../../../../../package.json'
 
 export type ScreensUsedByMarketing = Extract<
   ScreenNames,

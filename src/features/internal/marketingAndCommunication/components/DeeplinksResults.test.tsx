@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { DeeplinksResult } from 'features/_marketingAndCommunication/components/DeeplinksResult'
+import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
+import { DeeplinksResult } from 'features/internal/marketingAndCommunication/components/DeeplinksResult'
 import { render } from 'tests/utils'
 
 describe('<DeeplinksResult />', () => {

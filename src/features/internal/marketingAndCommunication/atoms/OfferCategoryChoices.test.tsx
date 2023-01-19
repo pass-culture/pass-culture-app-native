@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
+import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
 import { render, fireEvent } from 'tests/utils'
 
 describe('<OfferCategoryChoices />', () => {

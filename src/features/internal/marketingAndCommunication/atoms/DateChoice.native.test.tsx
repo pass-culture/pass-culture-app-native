@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { DateChoice } from 'features/internal/marketingAndCommunication/atoms/DateChoice'
 import { fireEvent, render } from 'tests/utils'
 
 const onChange = jest.fn()

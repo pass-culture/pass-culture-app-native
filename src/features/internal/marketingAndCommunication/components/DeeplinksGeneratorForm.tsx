@@ -3,19 +3,19 @@ import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
-import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
-import { LocationFilterChoice } from 'features/_marketingAndCommunication/atoms/LocationFilterChoice'
-import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
-import { OfferNativeCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferNativeCategoryChoices'
+import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
+import { ControlledFilterSwitch } from 'features/internal/marketingAndCommunication/atoms/ControlledFilterSwitch'
+import { DateChoice } from 'features/internal/marketingAndCommunication/atoms/DateChoice'
+import { LocationFilterChoice } from 'features/internal/marketingAndCommunication/atoms/LocationFilterChoice'
+import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
+import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferNativeCategoryChoices'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
   ParamConfig,
-} from 'features/_marketingAndCommunication/config/deeplinksExportConfig'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
+} from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'

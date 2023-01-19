@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { DeeplinksGeneratorForm } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
+import { DeeplinksGeneratorForm } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render, fireEvent } from 'tests/utils'
 
