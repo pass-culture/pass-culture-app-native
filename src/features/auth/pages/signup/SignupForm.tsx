@@ -78,7 +78,7 @@ type Props = StackScreenProps<RootStackParamList, 'SignupForm'>
 export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   const signUpApiCall = useSignUp()
 
-  const [stepIndex, setStepIndex] = useState(0)
+  const [stepIndex, setStepIndex] = React.useState(0)
   const [signupData, setSignupData] = useState<SignupData>({
     email: '',
     marketingEmailSubscription: false,

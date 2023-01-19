@@ -61,16 +61,14 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 })
 
-const navigationProps = { route: { params: { email: 'test@email.com' } } }
+const navigationProps = {
+  route: { params: { email: 'test@email.com' } },
+} as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 function renderResetPasswordExpiredLink() {
   const renderAPI = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(
-      <ResetPasswordExpiredLink
-        {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
-      />
-    )
+    reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />)
   )
   return renderAPI
 }
