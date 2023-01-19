@@ -198,26 +198,55 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
-  it('should show the generic error message if the API call returns an attempts limit error', async () => {
-    simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
+  describe('When user has reached attempts limit', () => {
+    beforeEach(() => simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT))
 
-    const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
-    await act(async () => {
-      fillInputs(getByPlaceholderText, {})
+    it('should not navigate', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(navigate).not.toBeCalled()
     })
 
-    await act(async () => {
-      submitForm(getByLabelText)
+    it('should show the generic error message', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(mockShowErrorSnackBar).toBeCalledWith({
+        message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
+        timeout: 5000,
+      })
     })
 
-    expect(navigate).not.toBeCalled()
-    expect(mockShowErrorSnackBar).toBeCalledWith({
-      message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
-      timeout: 5000,
+    it('should log analytics', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+        CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
+      )
     })
-    expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
-      CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
-    )
   })
 })
 
