@@ -83,7 +83,8 @@ const UnmemoizedModule = ({
 
   if (isThematicHighlightModule(item)) return <ThematicHighlightModule {...item} />
 
-  if (isCategoryListModule(item)) return <CategoryListComponent {...item} />
+  if (isCategoryListModule(item))
+    return <CategoryListComponent {...item} homeEntryId={homeEntryId} index={index} />
 
   return <React.Fragment></React.Fragment>
 }

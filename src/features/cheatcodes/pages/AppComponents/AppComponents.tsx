@@ -784,6 +784,8 @@ export const AppComponents: FunctionComponent = () => {
             id="123"
             title={'En ce moment sur le pass'}
             categoryBlockList={categoryBlockList}
+            homeEntryId="homeEntryId"
+            index={1}
           />
         </AccordionItem>
         <Spacer.Column numberOfSpaces={5} />

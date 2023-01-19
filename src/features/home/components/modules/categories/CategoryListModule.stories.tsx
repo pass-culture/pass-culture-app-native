@@ -23,6 +23,8 @@ export const CategoryListWithThreeBlocks: ComponentStory<typeof CategoryListModu
     id="123"
     title={'En ce moment sur le pass'}
     categoryBlockList={categoryBlockList.slice(1)}
+    homeEntryId="homeEntryId"
+    index={1}
   />
 )
 CategoryListWithThreeBlocks.storyName = 'CategoryListWithThreeBlocks'
@@ -32,6 +34,8 @@ export const CategoryListWithFourBlocks: ComponentStory<typeof CategoryListModul
     id="123"
     title={'En ce moment sur le pass'}
     categoryBlockList={categoryBlockList}
+    homeEntryId="homeEntryId"
+    index={1}
   />
 )
 CategoryListWithFourBlocks.storyName = 'CategoryListWithFourBlocks'
