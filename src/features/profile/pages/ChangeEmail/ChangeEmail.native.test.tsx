@@ -149,24 +149,53 @@ describe('<ChangeEmail/>', () => {
     expect(errorMessage).toBeTruthy()
   })
 
-  it('should show error message if the user gave a wrong password', async () => {
-    simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD)
+  describe('When user gives wrong password', () => {
+    beforeEach(() => simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD))
 
-    const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
-    await act(async () => {
-      fillInputs(getByPlaceholderText, {})
+    it('should not navigate', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(navigate).not.toBeCalled()
     })
 
-    await act(async () => {
-      submitForm(getByLabelText)
+    it('should show error message', async () => {
+      const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      const errorMessage = queryByText('Mot de passe incorrect')
+      expect(errorMessage).toBeTruthy()
     })
 
-    expect(navigate).not.toBeCalled()
-    const errorMessage = queryByText('Mot de passe incorrect')
-    expect(errorMessage).toBeTruthy()
-    expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
-      CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
-    )
+    it('should log analytics', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
+        CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
+      )
+    })
   })
 
   it('should show the generic error message if the API call returns an attempts limit error', async () => {
