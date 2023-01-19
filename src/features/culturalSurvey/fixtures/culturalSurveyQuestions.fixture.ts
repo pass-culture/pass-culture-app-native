@@ -1,6 +1,6 @@
 import { CulturalSurveyQuestionsResponse } from 'api/gen/api'
 
-export const mockedCulturalSurveyQuestions = {
+export const culturalSurveyQuestionsFixture = {
   questions: [
     {
       id: 'SORTIES',
