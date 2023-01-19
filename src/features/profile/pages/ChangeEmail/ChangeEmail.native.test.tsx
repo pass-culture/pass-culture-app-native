@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
@@ -59,12 +60,7 @@ describe('<ChangeEmail/>', () => {
       expect(submitButton).toBeDisabled()
 
       await act(async () => {
-        const passwordInput = getByPlaceholderText('Ton mot de passe')
-        fireEvent.changeText(passwordInput, password)
-      })
-      await act(async () => {
-        const emailInput = getByPlaceholderText('tonadresse@email.com')
-        fireEvent.changeText(emailInput, email)
+        fillInputs(getByPlaceholderText, { email, password })
       })
       expect(submitButton)[isDisabled ? 'toBeDisabled' : 'toBeEnabled']()
     }
@@ -76,12 +72,7 @@ describe('<ChangeEmail/>', () => {
     expect(submitButton).toBeDisabled()
 
     await act(async () => {
-      const passwordInput = getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(passwordInput, 'password>=12')
-    })
-    await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
+      fillInputs(getByPlaceholderText, { email: 'EMAIL@domain.ext' })
     })
     expect(submitButton).toBeDisabled()
 
@@ -94,18 +85,12 @@ describe('<ChangeEmail/>', () => {
 
   it('should navigate to Profile and log event if the API call is ok', async () => {
     const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
-    const submitButton = getByLabelText('Enregistrer les modifications')
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'tonadresse@email.com')
-    })
-    await act(async () => {
-      const passwordInput = getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(passwordInput, 'password>=12')
+      fillInputs(getByPlaceholderText, {})
     })
 
     await act(async () => {
-      fireEvent.press(submitButton)
+      submitForm(getByLabelText)
     })
 
     expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
@@ -122,18 +107,11 @@ describe('<ChangeEmail/>', () => {
 
     const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'tonadresse@email.com')
+      fillInputs(getByPlaceholderText, {})
     })
 
     await act(async () => {
-      const passwordInput = getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(passwordInput, 'password>=12')
-    })
-
-    await act(async () => {
-      const submitButton = getByLabelText('Enregistrer les modifications')
-      fireEvent.press(submitButton)
+      submitForm(getByLabelText)
     })
 
     expect(navigate).not.toBeCalled()
@@ -148,18 +126,12 @@ describe('<ChangeEmail/>', () => {
     simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT)
 
     const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
-    const submitButton = getByLabelText('Enregistrer les modifications')
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'tonadresse@email.com')
-    })
-    await act(async () => {
-      const passwordInput = getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(passwordInput, 'password>=12')
+      fillInputs(getByPlaceholderText, {})
     })
 
     await act(async () => {
-      fireEvent.press(submitButton)
+      submitForm(getByLabelText)
     })
 
     expect(navigate).not.toBeCalled()
@@ -175,6 +147,22 @@ describe('<ChangeEmail/>', () => {
 
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
+
+const fillInputs = (
+  getByPlaceholderText: (predicate: string) => ReactTestInstance,
+  { email, password }: { email?: string; password?: string }
+) => {
+  const passwordInput = getByPlaceholderText('Ton mot de passe')
+  fireEvent.changeText(passwordInput, password ?? 'password>=12')
+
+  const emailInput = getByPlaceholderText('tonadresse@email.com')
+  fireEvent.changeText(emailInput, email ?? 'tonadresse@email.com')
+}
+
+const submitForm = (getByLabelText: (predicate: string) => ReactTestInstance) => {
+  const submitButton = getByLabelText('Enregistrer les modifications')
+  fireEvent.press(submitButton)
+}
 
 function simulateUpdateEmailSuccess() {
   server.use(
