@@ -29,8 +29,8 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 }))
 
 const mockShowAppModal = jest.fn()
-jest.mock('features/shareApp/context/ShareAppWrapper', () => ({
-  ...jest.requireActual('features/shareApp/context/ShareAppWrapper'),
+jest.mock('features/share/context/ShareAppWrapper', () => ({
+  ...jest.requireActual('features/share/context/ShareAppWrapper'),
   useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
 }))
 
