@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { WithdrawalTypeEnum } from 'api/gen'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import {
+  countdownDays,
   displayExpirationMessage,
   isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
@@ -12,7 +13,6 @@ import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { useCountdownDays } from 'ui/hooks/useCountDownDays'
 import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -24,7 +24,7 @@ export const OnGoingBookingItem = ({
   booking,
   digitalBookingWithoutExpirationDate,
 }: BookingItemProps) => {
-  const daysLeft = useCountdownDays(booking.dateCreated)
+  const daysLeft = countdownDays(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
