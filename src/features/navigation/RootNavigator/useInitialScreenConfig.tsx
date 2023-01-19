@@ -3,13 +3,11 @@ import { Platform } from 'react-native'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  shouldShowCulturalSurvey,
-  useCulturalSurveyRoute,
-} from 'features/culturalSurvey/helpers/utils'
 import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
+import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 
 import { homeNavConfig } from '../TabBar/helpers'
 
