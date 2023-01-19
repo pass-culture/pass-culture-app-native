@@ -18,7 +18,7 @@ export function isBookingInList(
 
 const expirationMessages = {
   lastDay: "Ta réservation s'archive aujourd'hui",
-  oneDayLeft: 'Billet à retirer sur place dès demain',
+  oneDayLeft: "Ta reservation s'archivera demain",
   manyDaysLeft: (daysLeft: number) => `Ta réservation s'archivera dans ${daysLeft} jours`,
 }
 

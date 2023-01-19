@@ -62,10 +62,10 @@ describe('expirationDateUtils', () => {
       expect(displayExpirationMessage(daysLeft)).toBe("Ta réservation s'archivera dans 20 jours")
     })
 
-    it('should display expiration messages : Billet à retirer sur place dès demain, when it is one day prior the date  ', () => {
+    it("should display expiration messages : Ta reservation s'archivera demain, when it is one day prior the date", () => {
       const daysLeft = 1
 
-      expect(displayExpirationMessage(daysLeft)).toBe('Billet à retirer sur place dès demain')
+      expect(displayExpirationMessage(daysLeft)).toBe("Ta reservation s'archivera demain")
     })
 
     it("should display expiration messages : Ta réservation s'archive aujourd'hui, when it is the last day", () => {
