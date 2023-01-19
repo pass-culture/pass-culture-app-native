@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { ShareAppModal } from 'features/shareApp/components/ShareAppModal'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { render } from 'tests/utils/web'
+
+import { ShareAppModal } from './ShareAppModal'
 
 describe('ShareAppModal', () => {
   it.each([

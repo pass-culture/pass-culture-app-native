@@ -1,7 +1,7 @@
 import {
   shareAppModalInformations,
   ShareAppModalType,
-} from 'features/shareApp/helpers/shareAppModalInformations'
+} from 'features/share/helpers/shareAppModalInformations'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 describe('shareAppModalInformations', () => {
