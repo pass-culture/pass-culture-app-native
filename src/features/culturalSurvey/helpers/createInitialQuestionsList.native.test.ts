@@ -1,6 +1,6 @@
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { mockedCulturalSurveyQuestions } from 'features/culturalSurvey/fixtures/mockedCulturalSurveyQuestions'
-import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/utils'
+import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/createInitialQuestionsList'
 
 describe('createInitialQuestionsList', () => {
   it('should return list of questions id', () => {

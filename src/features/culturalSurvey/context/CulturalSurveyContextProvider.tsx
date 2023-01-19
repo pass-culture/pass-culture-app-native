@@ -7,7 +7,7 @@ import {
   initialCulturalSurveyState,
 } from 'features/culturalSurvey/context/reducer'
 import { Action, CulturalSurveyState } from 'features/culturalSurvey/context/types'
-import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/utils'
+import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/createInitialQuestionsList'
 
 export interface ICulturalSurveyContext extends CulturalSurveyState {
   dispatch: React.Dispatch<Action>

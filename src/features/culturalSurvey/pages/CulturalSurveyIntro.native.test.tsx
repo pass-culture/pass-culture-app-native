@@ -7,7 +7,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
-jest.mock('features/culturalSurvey/useGetNextQuestion')
+jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 describe('CulturalSurveyIntro page', () => {

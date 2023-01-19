@@ -1,5 +1,5 @@
 import { CulturalSurveyQuestionEnum } from 'api/gen'
-import { useGetNextQuestion } from 'features/culturalSurvey/useGetNextQuestion'
+import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
 
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 describe('useGetNextQuestion', () => {

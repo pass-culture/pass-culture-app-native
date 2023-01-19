@@ -36,7 +36,7 @@ let mockUseGetNextQuestionReturnValue = {
   isCurrentQuestionLastQuestion: false,
   nextQuestion: CulturalSurveyQuestionEnum.ACTIVITES,
 }
-jest.mock('features/culturalSurvey/useGetNextQuestion', () => ({
+jest.mock('features/culturalSurvey/helpers/useGetNextQuestion', () => ({
   useGetNextQuestion: jest.fn(() => mockUseGetNextQuestionReturnValue),
 }))
 
