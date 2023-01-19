@@ -34,15 +34,22 @@ describe('<ChangeEmail/>', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should render and log correctly when an email change is already in progress', async () => {
-    simulateCurrentEmailChange()
-    const renderAPI = renderChangeEmail()
-    await superFlushWithAct()
+  describe('email change already in progress', () => {
+    it('should render correctly', async () => {
+      simulateCurrentEmailChange()
+      const renderAPI = renderChangeEmail()
 
-    expect(renderAPI).toMatchSnapshot()
+      await superFlushWithAct()
+      expect(renderAPI).toMatchSnapshot()
+    })
 
-    await waitFor(() => {
-      expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
+    it('should log analytics', async () => {
+      simulateCurrentEmailChange()
+      renderChangeEmail()
+
+      await waitFor(() => {
+        expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
+      })
     })
   })
 
