@@ -85,6 +85,54 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
+  describe('When email change succeeds', () => {
+    it('should navigate to Profile ', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    })
+
+    it('should show success snackbar', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(mockShowSuccessSnackBar).toBeCalledWith({
+        message:
+          'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
+        timeout: 5000,
+      })
+    })
+
+    it('should log analytics', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+
+      await act(async () => {
+        fillInputs(getByPlaceholderText, {})
+      })
+
+      await act(async () => {
+        submitForm(getByLabelText)
+      })
+
+      expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
+    })
+  })
+
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
     const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
     const submitButton = getByLabelText('Enregistrer les modifications')
@@ -99,25 +147,6 @@ describe('<ChangeEmail/>', () => {
     })
     const errorMessage = queryByText('L’e-mail saisi est identique à ton e-mail actuel')
     expect(errorMessage).toBeTruthy()
-  })
-
-  it('should navigate to Profile and log event if the API call is ok', async () => {
-    const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
-    await act(async () => {
-      fillInputs(getByPlaceholderText, {})
-    })
-
-    await act(async () => {
-      submitForm(getByLabelText)
-    })
-
-    expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
-    expect(mockShowSuccessSnackBar).toBeCalledWith({
-      message:
-        'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
-      timeout: 5000,
-    })
-    expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
   })
 
   it('should show error message if the user gave a wrong password', async () => {
