@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
 
-import { ShareAppModal } from 'features/shareApp/components/ShareAppModal'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModal } from 'features/share/pages/ShareAppModal'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface ShareAppContextValue {

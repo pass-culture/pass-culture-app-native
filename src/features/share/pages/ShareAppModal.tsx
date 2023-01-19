@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { SHARE_APP_IMAGE_SOURCE } from 'features/shareApp/components/shareAppImage'
-import { shareApp } from 'features/shareApp/helpers/shareApp'
+import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
+import { shareApp } from 'features/share/helpers/shareApp'
 import {
   shareAppModalInformations,
   ShareAppModalType,
-} from 'features/shareApp/helpers/shareAppModalInformations'
+} from 'features/share/helpers/shareAppModalInformations'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'

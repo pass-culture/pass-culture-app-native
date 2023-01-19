@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
-import { ShareAppWrapper } from 'features/shareApp/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render } from 'tests/utils'
 
@@ -18,8 +18,8 @@ jest.mock('features/profile/helpers/isUserUnderageBeneficiary', () => {
 })
 
 const mockShowAppModal = jest.fn()
-jest.mock('features/shareApp/context/ShareAppWrapper', () => ({
-  ...jest.requireActual('features/shareApp/context/ShareAppWrapper'),
+jest.mock('features/share/context/ShareAppWrapper', () => ({
+  ...jest.requireActual('features/share/context/ShareAppWrapper'),
   useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
 }))
 

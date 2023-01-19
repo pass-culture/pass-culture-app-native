@@ -1,4 +1,4 @@
-import { ShareContent } from './share'
+import { ShareContent } from 'libs/share/share'
 
 export interface WebShareModalProps {
   visible: boolean

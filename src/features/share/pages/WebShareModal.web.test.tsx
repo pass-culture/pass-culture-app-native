@@ -1,9 +1,9 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { render, fireEvent } from 'tests/utils/web'
+import { render, fireEvent, checkAccessibilityFor } from 'tests/utils/web'
 
-import { WebShareModal } from '../WebShareModal'
+import { WebShareModal } from './WebShareModal'
 
 const mockClipboardWriteText = jest.fn()
 // @ts-ignore navigator.clipboard doesn't exist in the tests otherwise
@@ -20,6 +20,16 @@ const defaultProps = {
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<WebShareModal/>', () => {
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<WebShareModal {...defaultProps} />)
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+  })
+
   it('should render correctly when shown', () => {
     const renderWebShareModal = render(<WebShareModal {...defaultProps} />)
     expect(renderWebShareModal).toMatchSnapshot()

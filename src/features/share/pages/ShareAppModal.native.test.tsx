@@ -1,11 +1,12 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { ShareAppModal } from 'features/shareApp/components/ShareAppModal'
-import * as Share from 'features/shareApp/helpers/shareApp'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import * as Share from 'features/share/helpers/shareApp'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render } from 'tests/utils'
+
+import { ShareAppModal } from './ShareAppModal'
 
 const visible = true
 const hideModal = jest.fn()

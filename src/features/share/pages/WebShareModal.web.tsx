@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { WebShareModalProps } from 'features/share/types'
 // We are in a .web file, with a specific behavior depending on the device
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -9,7 +10,6 @@ import {
   isMacOsDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
-import { WebShareModalProps } from 'libs/share/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
@@ -75,14 +75,14 @@ export const WebShareModal = ({
     },
   ]
 
-  const onCopyPress = () => {
+  const onCopyPress = useCallback(() => {
     navigator.clipboard.writeText(url)
     showSuccessSnackBar({
       message: 'Le lien a été copié dans le presse-papier\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
     dismissModal()
-  }
+  }, [dismissModal, showSuccessSnackBar, url])
 
   const chooseContact = 'Veuillez choisir un contact'
 

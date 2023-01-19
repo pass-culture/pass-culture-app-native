@@ -3,8 +3,8 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Row } from 'features/cheatcodes/components/Row'
-import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 

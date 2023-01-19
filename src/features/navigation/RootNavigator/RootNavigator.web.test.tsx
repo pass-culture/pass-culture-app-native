@@ -14,7 +14,7 @@ const mockUseSplashScreenContext = mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
 const mockUseCurrentRoute = mocked(useCurrentRoute)
 
-jest.mock('features/offer/helpers/useShareOffer')
+jest.mock('features/share/helpers/useShareOffer')
 jest.mock('features/cookies/helpers/useIsCookiesListUpToDate')
 jest.mock('features/forceUpdate/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
