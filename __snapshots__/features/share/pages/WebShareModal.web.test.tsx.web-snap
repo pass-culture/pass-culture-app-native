@@ -266,7 +266,9 @@ Object {
   background-color: transparent;
 }
 
-<body>
+<body
+    tabindex="-1"
+  >
     <div />
     <div>
       <div
