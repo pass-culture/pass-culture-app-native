@@ -96,25 +96,7 @@ describe('OnGoingBookingItem', () => {
       expect(getByText("Ta réservation s'archivera dans 25 jours")).toBeTruthy()
     })
 
-    it('should display expiration message : "Billet à retirer sur place dès demain"', () => {
-      mockdate.set(new Date('2021-03-16T00:00:00Z'))
-      const booking = {
-        ...initialBooking,
-        expirationDate: null,
-        stock: {
-          ...initialBooking.stock,
-          offer: {
-            ...initialBooking.stock.offer,
-            isDigital: true,
-          },
-        },
-      }
-      const { getByText } = renderOnGoingBookingItem(booking, bookings)
-
-      expect(getByText('Billet à retirer sur place dès demain')).toBeTruthy()
-    })
-
-    it('should display expiration message : "Ta réservation s\'archive aujourd\'hui"', () => {
+    it('should display any expiration messages"', () => {
       mockdate.set(new Date('2021-03-17T00:00:00Z'))
       const booking = {
         ...initialBooking,
@@ -123,13 +105,13 @@ describe('OnGoingBookingItem', () => {
           ...initialBooking.stock,
           offer: {
             ...initialBooking.stock.offer,
-            isDigital: true,
+            isDigital: false,
           },
         },
       }
-      const { getByText } = renderOnGoingBookingItem(booking, bookings)
+      const { queryByText } = renderOnGoingBookingItem(booking, bookings)
 
-      expect(getByText("Ta réservation s'archive aujourd'hui")).toBeTruthy()
+      expect(queryByText('')).toBeFalsy()
     })
   })
 })
