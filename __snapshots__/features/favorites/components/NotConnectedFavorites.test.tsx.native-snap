@@ -108,6 +108,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
+            "paddingBottom": 40,
           },
         ]
       }
@@ -310,16 +311,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       </View>
     </View>
   </View>
-  <View
-    numberOfSpaces={12}
-    style={
-      Array [
-        Object {
-          "height": 48,
-        },
-      ]
-    }
-  />
   <View
     customHeight={8}
     enable={true}

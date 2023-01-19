@@ -121,7 +121,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     dir={null}
   >
     <div
-      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-paddingBottom-1uwte3a"
       dir={null}
     >
       <button
@@ -201,10 +201,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       </div>
     </div>
   </div>
-  <div
-    className="css-view-175oi2r r-height-h3s6tt"
-    dir={null}
-  />
   <div
     className="css-view-175oi2r r-height-3da1kt"
     dir={null}
