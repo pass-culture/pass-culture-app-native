@@ -46,30 +46,41 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
-  it.each`
-    password          | email                | isDisabled
-    ${'password>=12'} | ${'valid@email.com'} | ${false}
-    ${'password>=12'} | ${'invalid@email'}   | ${true}
-    ${'password<12'}  | ${'valid@email.com'} | ${true}
-    ${'password>=12'} | ${''}                | ${true}
-  `(
-    'CTA "Enregistrer les modifications" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
-    async ({ password, email, isDisabled }) => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+  describe('submit button', () => {
+    it('should be disabled by default', () => {
+      const { getByLabelText } = renderChangeEmail()
+
       const submitButton = getByLabelText('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()
+    })
 
-      await act(async () => {
-        fillInputs(getByPlaceholderText, { email, password })
-      })
-      expect(submitButton)[isDisabled ? 'toBeDisabled' : 'toBeEnabled']()
-    }
-  )
+    it('should be enabled when form is valid', async () => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      const submitButton = getByLabelText('Enregistrer les modifications')
+
+      fillInputs(getByPlaceholderText, { email: 'valid@email.com', password: 'password>=12' })
+
+      expect(submitButton).toBeEnabled()
+    })
+
+    it.each`
+      password          | email
+      ${'password>=12'} | ${'invalid@email'}
+      ${'password<12'}  | ${'valid@email.com'}
+      ${'password>=12'} | ${''}
+    `('should be disabled when form is invalid', async ({ password, email }) => {
+      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      const submitButton = getByLabelText('Enregistrer les modifications')
+
+      fillInputs(getByPlaceholderText, { email, password })
+
+      expect(submitButton).toBeDisabled()
+    })
+  })
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
     const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
     const submitButton = getByLabelText('Enregistrer les modifications')
-    expect(submitButton).toBeDisabled()
 
     await act(async () => {
       fillInputs(getByPlaceholderText, { email: 'EMAIL@domain.ext' })
