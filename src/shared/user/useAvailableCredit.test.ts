@@ -1,8 +1,9 @@
 import mockdate from 'mockdate'
 
 import { UserProfileResponse } from 'api/gen'
-import { hasOngoingCredit } from 'features/user/helpers/useAvailableCredit'
 import { nonBeneficiaryUser } from 'fixtures/user'
+
+import { hasOngoingCredit } from './useAvailableCredit'
 
 describe('useAvailableCredit', () => {
   mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
