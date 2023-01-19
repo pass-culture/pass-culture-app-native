@@ -61,6 +61,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.colors.secondary,
+  preventCancellation: true,
 }))``
 
 const StyledButtonContainer = styled.View({

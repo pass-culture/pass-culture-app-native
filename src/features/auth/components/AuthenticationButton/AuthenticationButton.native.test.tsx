@@ -11,8 +11,9 @@ describe('<AuthenticationButton />', () => {
     const connectButton = getByRole('link')
     await fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('Login', undefined)
   })
+
   it('should navigate to the signup page when is type signup', async () => {
     const { getByRole } = render(<AuthenticationButton type="signup" />)
 
@@ -20,5 +21,23 @@ describe('<AuthenticationButton />', () => {
     await fireEvent.press(connectButton)
 
     expect(navigate).toBeCalledWith('SignupForm', undefined)
+  })
+
+  it('should prevent cancellation when asked for login', async () => {
+    const { getByRole } = render(<AuthenticationButton type="login" preventCancellation />)
+
+    const connectButton = getByRole('link')
+    await fireEvent.press(connectButton)
+
+    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
+  })
+
+  it('should prevent cancellation when asked for signup', async () => {
+    const { getByRole } = render(<AuthenticationButton type="signup" preventCancellation />)
+
+    const connectButton = getByRole('link')
+    await fireEvent.press(connectButton)
+
+    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
   })
 })
