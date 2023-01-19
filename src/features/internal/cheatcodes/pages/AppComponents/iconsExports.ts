@@ -86,13 +86,25 @@ import { Quote } from 'ui/svg/icons/Quote'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
+import { DiscordRound } from 'ui/svg/icons/socialNetwork/DiscordRound'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
+import { IMessageRound } from 'ui/svg/icons/socialNetwork/IMessage'
 import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
+import { InstagramRound } from 'ui/svg/icons/socialNetwork/InstagramRound'
+import { MessengerRound } from 'ui/svg/icons/socialNetwork/MessengerRound'
+import { SignalRound } from 'ui/svg/icons/socialNetwork/SignalRound'
+import { SkypeRound } from 'ui/svg/icons/socialNetwork/SkypeRound'
 import { Snapchat } from 'ui/svg/icons/socialNetwork/Snapchat'
+import { SnapchatRound } from 'ui/svg/icons/socialNetwork/SnapchatRound'
 import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
+import { TiktokRound } from 'ui/svg/icons/socialNetwork/TiktokRound'
+import { TwitchRound } from 'ui/svg/icons/socialNetwork/TwitchRound'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
+import { TwitterRound } from 'ui/svg/icons/socialNetwork/TwitterRound'
+import { ViberRound } from 'ui/svg/icons/socialNetwork/ViberRound'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
+import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
 import { Sun } from 'ui/svg/icons/Sun'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -102,12 +114,24 @@ import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { Wrong } from 'ui/svg/icons/Wrong'
 
 export const SocialNetworkIcons = {
+  DiscordRound,
   Facebook,
+  IMessageRound,
   Instagram,
+  InstagramRound,
+  MessengerRound,
+  SignalRound,
+  SkypeRound,
   Snapchat,
-  Twitter,
-  WhatsApp,
+  SnapchatRound,
   TikTok,
+  TiktokRound,
+  TwitchRound,
+  Twitter,
+  TwitterRound,
+  ViberRound,
+  WhatsApp,
+  WhatsAppRound,
   Telegram,
 }
 
