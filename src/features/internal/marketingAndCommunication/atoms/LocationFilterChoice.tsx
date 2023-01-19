@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { LocationType } from 'features/search/enums'
@@ -12,13 +12,13 @@ interface Props {
   onChange: (locationFilter: LocationFilter) => void
 }
 
-export const LocationFilterChoice = (props: Props) => {
+export const LocationFilterChoice = ({ onChange }: Props) => {
   const [selected, setSelected] = useState<LocationType>(LocationType.EVERYWHERE)
 
-  const onPressEverywhere = () => {
+  const onPressEverywhere = useCallback(() => {
     setSelected(LocationType.EVERYWHERE)
-    props.onChange({ locationType: LocationType.EVERYWHERE })
-  }
+    onChange({ locationType: LocationType.EVERYWHERE })
+  }, [onChange])
 
   return (
     <VerticalUl>

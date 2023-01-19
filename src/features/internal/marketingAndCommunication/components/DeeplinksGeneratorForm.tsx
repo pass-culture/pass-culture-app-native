@@ -52,24 +52,26 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const renderScreenItem = (screenName: ScreensUsedByMarketing) => {
+    const onSelectScreenName = () => {
+      setSelectedScreen(screenName)
+      setScreenParams(
+        screenName !== 'Search'
+          ? {}
+          : {
+              view: SearchView.Results,
+              locationFilter: { locationType: LocationType.EVERYWHERE },
+              noFocus: true,
+            }
+      )
+    }
+
     return (
       <React.Fragment key={screenName}>
         <Spacer.Column numberOfSpaces={2} />
         <RadioButton
           label={screenName}
           isSelected={selectedScreen === screenName}
-          onSelect={() => {
-            setSelectedScreen(screenName)
-            setScreenParams(
-              screenName !== 'Search'
-                ? {}
-                : {
-                    view: SearchView.Results,
-                    locationFilter: { locationType: LocationType.EVERYWHERE },
-                    noFocus: true,
-                  }
-            )
-          }}
+          onSelect={onSelectScreenName}
         />
         <Spacer.Column numberOfSpaces={2} />
         <Separator />

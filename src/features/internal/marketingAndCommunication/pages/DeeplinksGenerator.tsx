@@ -47,6 +47,10 @@ export const DeeplinksGenerator = () => {
     [keepHistory]
   )
 
+  const rehydratedHistory = useCallback((history: GeneratedDeeplink[]) => {
+    setLinks(history)
+  }, [])
+
   return (
     <React.Fragment>
       <PageHeaderSecondary title="Envie de tout envie de lien&nbsp;?" />
@@ -62,7 +66,7 @@ export const DeeplinksGenerator = () => {
             history={links}
             keepHistory={keepHistory}
             setKeepHistory={setKeepHistory}
-            rehydrateHistory={(history) => setLinks(history)}
+            rehydrateHistory={rehydratedHistory}
           />
         </Right>
       </Row>

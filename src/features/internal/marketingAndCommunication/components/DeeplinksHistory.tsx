@@ -27,11 +27,6 @@ export const DeeplinksHistory = ({
 }: DeeplinksHistoryProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const renderItem = ({ item, index }: { item: GeneratedDeeplink; index: number }) => {
-    const indice = `#${index}`
-    return <DeeplinkItem before={<Typo.Caption>{indice}</Typo.Caption>} deeplink={item} />
-  }
-
   const onToggleKeepHistory = useCallback(() => {
     async function toggle() {
       const newKeepHistory = !keepHistory
@@ -105,6 +100,11 @@ export const DeeplinksHistory = ({
       </BottomContainer>
     </Container>
   )
+}
+
+const renderItem = ({ item, index }: { item: GeneratedDeeplink; index: number }) => {
+  const indice = `#${index}`
+  return <DeeplinkItem before={<Typo.Caption>{indice}</Typo.Caption>} deeplink={item} />
 }
 
 const flatListStyle = { marginVertical: getSpacing(4) }

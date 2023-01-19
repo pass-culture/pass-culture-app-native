@@ -35,6 +35,14 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
     [deeplink]
   )
 
+  const copyToClipboardUniversalLink = useCallback(() => {
+    copyToClipboard(deeplink.universalLink)
+  }, [copyToClipboard, deeplink.universalLink])
+
+  const copyToClipboardFirebaseLink = useCallback(() => {
+    copyToClipboard(deeplink.firebaseLink)
+  }, [copyToClipboard, deeplink.firebaseLink])
+
   return (
     <React.Fragment>
       {before ? (
@@ -54,7 +62,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
         <Spacer.Flex flex={0.15}>
           <TouchableOpacity
             style={iconContainerStyle}
-            onPress={() => copyToClipboard(deeplink.universalLink)}
+            onPress={copyToClipboardUniversalLink}
             accessibilityLabel="Copier">
             <Share />
           </TouchableOpacity>
@@ -72,7 +80,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
         <Spacer.Flex flex={0.15}>
           <TouchableOpacity
             style={iconContainerStyle}
-            onPress={() => copyToClipboard(deeplink.firebaseLink)}
+            onPress={copyToClipboardFirebaseLink}
             accessibilityLabel="Copier dans le presse-papier">
             <Share />
           </TouchableOpacity>
