@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useUbbleETAMessage } from 'libs/firebase/firestore/ubbleETAMessage'
@@ -36,12 +37,15 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
   const onPressEduConnect = () => {
     analytics.logChooseEduConnectMethod()
+    amplitude.logEvent('choose_method_educonnect')
     hideModal()
     dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.educonnect })
   }
 
   const onPressManualIdentification = () => {
     analytics.logChooseUbbleMethod()
+    amplitude.logEvent('choose_method_ubble')
+
     hideModal()
     dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.ubble })
   }
