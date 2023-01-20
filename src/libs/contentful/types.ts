@@ -18,17 +18,17 @@ export enum ContentTypes {
 
 export type Layout = 'two-items' | 'one-item-medium'
 
-export interface Entry<T, ContentType> {
+export interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>
   fields: T
   update(): Promise<Entry<T, ContentType>>
 }
 
-interface EntryCollectionInclusions<T, ContentType> {
+interface EntryCollectionInclusions<T, ContentType extends ContentTypes> {
   string: Array<Asset<ContentType> | Entry<T, ContentType>>
 }
 
-export interface EntryCollection<T, ContentType>
+export interface EntryCollection<T, ContentType extends ContentTypes>
   extends ContentfulCollection<Entry<T, ContentType>> {
   errors?: Array<EntryCollectionError>
   includes?: EntryCollectionInclusions<T, ContentType>
@@ -41,7 +41,7 @@ interface ContentfulCollection<T> {
   items: Array<T>
 }
 
-interface Asset<ContentType> {
+interface Asset<ContentType extends ContentTypes> {
   sys: Sys<ContentType>
   fields: {
     title: string
@@ -61,7 +61,7 @@ interface Asset<ContentType> {
   }
 }
 
-interface Sys<ContentType> {
+interface Sys<ContentType extends ContentTypes> {
   type: string
   id: string
   createdAt: string
@@ -325,21 +325,24 @@ export type HomepageNatifModule =
   | VenuesContentModel
   | CategoryListContentModel
 
-export type AlgoliaContentModel = { sys: Sys<'algolia'>; fields: AlgoliaFields }
+export type AlgoliaContentModel = { sys: Sys<ContentTypes.ALGOLIA>; fields: AlgoliaFields }
 
-export type BusinessContentModel = { sys: Sys<'business'>; fields: BusinessFields }
+export type BusinessContentModel = { sys: Sys<ContentTypes.BUSINESS>; fields: BusinessFields }
 
-export type ExclusivityContentModel = { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
+export type ExclusivityContentModel = {
+  sys: Sys<ContentTypes.EXCLUSIVITY>
+  fields: ExclusivityFields
+}
 
 export type RecommendationContentModel = {
-  sys: Sys<'recommendation'>
+  sys: Sys<ContentTypes.RECOMMENDATION>
   fields: RecommendationFields
 }
 export type ThematicHighlightContentModel = {
-  sys: Sys<'thematicHighlight'>
+  sys: Sys<ContentTypes.THEMATIC_HIGHLIGHT>
   fields: ThematicHighlightFields
 }
-export type VenuesContentModel = { sys: Sys<'venuesPlaylist'>; fields: VenuesFields }
+export type VenuesContentModel = { sys: Sys<ContentTypes.VENUES_PLAYLIST>; fields: VenuesFields }
 
 export type CategoryListContentModel = {
   sys: Sys<typeof ContentTypes.CATEGORY_LIST>

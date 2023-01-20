@@ -1,4 +1,4 @@
-import { BusinessContentModel } from 'libs/contentful/types'
+import { BusinessContentModel, ContentTypes } from 'libs/contentful/types'
 
 export const businessNatifModuleFixture: BusinessContentModel = {
   sys: {
@@ -25,7 +25,7 @@ export const businessNatifModuleFixture: BusinessContentModel = {
       sys: {
         type: 'Link',
         linkType: 'ContentType',
-        id: 'business',
+        id: ContentTypes.BUSINESS,
       },
     },
     locale: 'en-US',
