@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
@@ -8,7 +7,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -62,10 +61,10 @@ describe('<ChangeEmail/>', () => {
     })
 
     it('should be enabled when form is valid', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      const { getByLabelText } = renderChangeEmail()
       const submitButton = getByLabelText('Enregistrer les modifications')
 
-      await fillInputs(getByPlaceholderText, { email: 'valid@email.com', password: 'password>=12' })
+      await fillInputs({ email: 'valid@email.com', password: 'password>=12' })
 
       expect(submitButton).toBeEnabled()
     })
@@ -76,10 +75,10 @@ describe('<ChangeEmail/>', () => {
       ${'password<12'}  | ${'valid@email.com'}
       ${'password>=12'} | ${''}
     `('should be disabled when form is invalid', async ({ password, email }) => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      const { getByLabelText } = renderChangeEmail()
       const submitButton = getByLabelText('Enregistrer les modifications')
 
-      await fillInputs(getByPlaceholderText, { email, password })
+      await fillInputs({ email, password })
 
       expect(submitButton).toBeDisabled()
     })
@@ -87,21 +86,21 @@ describe('<ChangeEmail/>', () => {
 
   describe('When email change succeeds', () => {
     it('should navigate to Profile ', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
     })
 
     it('should show success snackbar', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(mockShowSuccessSnackBar).toBeCalledWith({
         message:
@@ -111,21 +110,21 @@ describe('<ChangeEmail/>', () => {
     })
 
     it('should log analytics', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
     })
   })
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
-    const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
+    const { getByLabelText, queryByText } = renderChangeEmail()
     const submitButton = getByLabelText('Enregistrer les modifications')
 
-    await fillInputs(getByPlaceholderText, { email: 'EMAIL@domain.ext' })
+    await fillInputs({ email: 'EMAIL@domain.ext' })
 
     expect(submitButton).toBeDisabled()
 
@@ -141,32 +140,32 @@ describe('<ChangeEmail/>', () => {
     beforeEach(() => simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD))
 
     it('should not navigate', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(navigate).not.toBeCalled()
     })
 
     it('should show error message', async () => {
-      const { getByPlaceholderText, getByLabelText, queryByText } = renderChangeEmail()
+      const { queryByText } = renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       const errorMessage = queryByText('Mot de passe incorrect')
       expect(errorMessage).toBeTruthy()
     })
 
     it('should log analytics', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
         CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD
@@ -178,21 +177,21 @@ describe('<ChangeEmail/>', () => {
     beforeEach(() => simulateUpdateEmailError(CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT))
 
     it('should not navigate', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(navigate).not.toBeCalled()
     })
 
     it('should show the generic error message', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
@@ -201,11 +200,11 @@ describe('<ChangeEmail/>', () => {
     })
 
     it('should log analytics', async () => {
-      const { getByPlaceholderText, getByLabelText } = renderChangeEmail()
+      renderChangeEmail()
 
-      await fillInputs(getByPlaceholderText, {})
+      await fillInputs({})
 
-      await submitForm(getByLabelText)
+      await submitForm()
 
       expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
         CHANGE_EMAIL_ERROR_CODE.EMAIL_UPDATE_ATTEMPTS_LIMIT
@@ -217,22 +216,19 @@ describe('<ChangeEmail/>', () => {
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
 
-const fillInputs = async (
-  getByPlaceholderText: (predicate: string) => ReactTestInstance,
-  { email, password }: { email?: string; password?: string }
-) => {
-  const passwordInput = getByPlaceholderText('Ton mot de passe')
+const fillInputs = async ({ email, password }: { email?: string; password?: string }) => {
+  const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
   fireEvent.changeText(passwordInput, password ?? 'password>=12')
 
-  const emailInput = getByPlaceholderText('tonadresse@email.com')
+  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
   fireEvent.changeText(emailInput, email ?? 'tonadresse@email.com')
 
   // To avoid CI flakiness
   await superFlushWithAct()
 }
 
-const submitForm = async (getByLabelText: (predicate: string) => ReactTestInstance) => {
-  const submitButton = getByLabelText('Enregistrer les modifications')
+const submitForm = async () => {
+  const submitButton = screen.getByLabelText('Enregistrer les modifications')
   fireEvent.press(submitButton)
 
   // To avoid CI flakiness
