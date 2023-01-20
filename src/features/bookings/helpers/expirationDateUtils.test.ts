@@ -68,7 +68,7 @@ describe('expirationDateUtils', () => {
       expect(displayExpirationMessage(daysLeft)).toBe("Ta reservation s'archivera demain")
     })
 
-    it("should display expiration message : Ta réservation s'archive aujourd'hui, when it is the last day when the offer archives today", () => {
+    it("should display expiration message : Ta réservation s'archive aujourd'hui, when the offer archives today", () => {
       const daysLeft = 0
 
       expect(displayExpirationMessage(daysLeft)).toBe("Ta réservation s'archive aujourd'hui")

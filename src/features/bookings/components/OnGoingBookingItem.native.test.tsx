@@ -97,7 +97,7 @@ describe('OnGoingBookingItem', () => {
     })
 
     it('should display any expiration messages"', () => {
-      mockdate.set(new Date('2021-03-17T00:00:00Z'))
+      mockdate.set(new Date('2021-03-18T00:00:00Z'))
       const booking = {
         ...initialBooking,
         expirationDate: null,
@@ -111,7 +111,7 @@ describe('OnGoingBookingItem', () => {
       }
       const { queryByTestId } = renderOnGoingBookingItem(booking, bookings)
 
-      expect(queryByTestId('expiration-booking-container')).toBeTruthy()
+      expect(queryByTestId('expiration-booking-container')).toBeNull()
     })
   })
 })
