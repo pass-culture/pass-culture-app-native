@@ -9,10 +9,11 @@ import { Spacer } from 'ui/theme'
 
 type Props = {
   suggestedEmail?: MailSuggestion
+  onSpellingHelpPress?: () => void
   onEmailChange: (email: string) => void
 }
 
-export const SpellingHelp = ({ suggestedEmail, onEmailChange }: Props) => {
+export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPress }: Props) => {
   const [showBanner, setShowBanner] = useState(false)
 
   useEffect(() => {
@@ -22,8 +23,9 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange }: Props) => {
 
   const replaceEmail = useCallback(() => {
     setShowBanner(false)
+    onSpellingHelpPress?.()
     if (suggestedEmail) onEmailChange(suggestedEmail.full)
-  }, [onEmailChange, suggestedEmail])
+  }, [onEmailChange, onSpellingHelpPress, suggestedEmail])
 
   if (!showBanner) return <React.Fragment />
 

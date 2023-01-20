@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -10,10 +10,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
-import { useShareOffer } from 'features/offer/helpers/useShareOffer'
+import { useShareOffer } from 'features/share/helpers/useShareOffer'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/firebase/analytics'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
-import { WebShareModal } from 'libs/share/WebShareModal'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -88,10 +88,11 @@ export const OfferHeader: React.FC<Props> = (props) => {
     }
   }
 
-  const pressShareOffer = () => {
+  const pressShareOffer = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'offer', id: offerId })
     shareOffer()
     showShareOfferModal()
-  }
+  }, [offerId, shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>

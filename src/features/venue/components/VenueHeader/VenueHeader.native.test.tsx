@@ -2,9 +2,9 @@ import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { getVenueUrl } from 'features/share/helpers/useShareVenue'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { getVenueUrl } from 'features/venue/helpers/useShareVenue'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
@@ -76,17 +76,16 @@ describe('<VenueHeader />', () => {
     )
   })
 
-  describe('<VenueHeader /> - Analytics', () => {
-    it('should log ShareVenue once when clicking on the Share button', () => {
-      const { getByTestId } = renderVenueHeader()
+  it('should log analytics when clicking on the share button', () => {
+    const { getByLabelText } = renderVenueHeader()
 
-      fireEvent.press(getByTestId('animated-icon-share'))
-      expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
-      expect(analytics.logShareVenue).toHaveBeenCalledWith(venueResponseSnap.id)
+    const shareButton = getByLabelText('Partager')
+    fireEvent.press(shareButton)
 
-      fireEvent.press(getByTestId('animated-icon-share'))
-      fireEvent.press(getByTestId('animated-icon-share'))
-      expect(analytics.logShareVenue).toHaveBeenCalledTimes(1)
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Venue',
+      from: 'venue',
+      id: venueResponseSnap.id,
     })
   })
 })

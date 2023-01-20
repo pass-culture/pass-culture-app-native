@@ -1,7 +1,3 @@
-import { NavigationErrors } from 'features/cheatcodes/pages/NavigationErrors/NavigationErrors'
-import { NavigationSignUp } from 'features/cheatcodes/pages/NavigationSignUp'
-import { NavigationIdentityCheck } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
-import { NewIdentificationFlow } from 'features/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck/NewIdentificationFlow/NewIdentificationFlow'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
@@ -34,6 +30,10 @@ import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
+import { NavigationErrors } from 'features/internal/cheatcodes/pages/NavigationErrors/NavigationErrors'
+import { NavigationSignUp } from 'features/internal/cheatcodes/pages/NavigationSignUp'
+import { NavigationIdentityCheck } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
+import { NewIdentificationFlow } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck/NewIdentificationFlow/NewIdentificationFlow'
 import {
   GenericRoute,
   SubscriptionRootStackParamList,

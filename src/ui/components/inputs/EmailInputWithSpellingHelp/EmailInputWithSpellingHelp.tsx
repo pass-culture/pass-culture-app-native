@@ -5,10 +5,15 @@ import { useEmailSpellingHelp } from 'ui/components/inputs/EmailInputWithSpellin
 
 import { SpellingHelp } from './SpellingHelp'
 
+interface EmailInputWithSpellingHelpProps extends ComponentProps<typeof EmailInput> {
+  onSpellingHelpPress?: () => void
+}
+
 export const EmailInputWithSpellingHelp = ({
   onEmailChange,
+  onSpellingHelpPress,
   ...props
-}: ComponentProps<typeof EmailInput>) => {
+}: EmailInputWithSpellingHelpProps) => {
   const { suggestedEmail } = useEmailSpellingHelp({
     email: props.email,
   })
@@ -16,7 +21,11 @@ export const EmailInputWithSpellingHelp = ({
   return (
     <React.Fragment>
       <EmailInput {...props} onEmailChange={onEmailChange} />
-      <SpellingHelp suggestedEmail={suggestedEmail} onEmailChange={onEmailChange} />
+      <SpellingHelp
+        suggestedEmail={suggestedEmail}
+        onEmailChange={onEmailChange}
+        onSpellingHelpPress={onSpellingHelpPress}
+      />
     </React.Fragment>
   )
 }

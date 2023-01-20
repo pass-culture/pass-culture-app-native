@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
-import { AccountState } from 'api/gen'
+import { AccountState, FavoriteResponse } from 'api/gen'
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -13,6 +13,7 @@ import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
+import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -65,6 +66,16 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
 
+  const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
+    if (data?.offer?.id) {
+      analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
+    }
+  }, [])
+
+  const { mutate: addFavorite } = useAddFavorite({
+    onSuccess: onAddFavoriteSuccess,
+  })
+
   useEffect(() => {
     if (params?.displayForcedLoginHelpMessage) {
       showInfoSnackBar({
@@ -85,6 +96,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     [emailErrorMessage, setEmailErrorMessage, setIsLoading]
   )
 
+  const offerId = params?.offerId
   const handleSigninSuccess = useCallback(
     async (accountState: AccountState) => {
       try {
@@ -106,6 +118,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           navigate('EighteenBirthday')
         } else if (shouldShowCulturalSurvey(user)) {
           navigate(culturalSurveyRoute)
+        } else if (offerId) {
+          addFavorite({ offerId })
+          navigate('Offer', { id: offerId })
         } else {
           navigateToHome()
         }
@@ -114,11 +129,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       }
     },
     [
+      offerId,
       culturalSurveyRoute,
       navigate,
       props.doNotNavigateOnSigninSuccess,
       setErrorMessage,
       setIsLoading,
+      addFavorite,
     ]
   )
 

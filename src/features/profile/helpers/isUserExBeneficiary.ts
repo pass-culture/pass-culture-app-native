@@ -1,5 +1,5 @@
 import { UserProfileResponse } from 'api/gen/api'
-import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
+import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 import { isUserUnderageBeneficiary } from './isUserUnderageBeneficiary'
 

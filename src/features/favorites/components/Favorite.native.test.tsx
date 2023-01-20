@@ -7,9 +7,10 @@ import { api } from 'api/api'
 import { ExpenseDomain, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { Credit } from 'features/user/helpers/useAvailableCredit'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
+import { analytics } from 'libs/firebase/analytics'
+import { Credit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, cleanup, waitFor } from 'tests/utils'
@@ -123,6 +124,19 @@ describe('<Favorite /> component', () => {
     fireEvent.press(shareButton)
 
     expect(share).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when press share icon', () => {
+    const { getByLabelText } = renderFavorite()
+
+    const shareButton = getByLabelText(`Partager l’offre ${favorite.offer.name}`)
+    fireEvent.press(shareButton)
+
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'favorites',
+      id: favorite.offer.id,
+    })
   })
 })
 

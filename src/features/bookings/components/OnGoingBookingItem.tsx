@@ -3,6 +3,11 @@ import styled from 'styled-components/native'
 
 import { WithdrawalTypeEnum } from 'api/gen'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
+import {
+  daysCountdown,
+  displayExpirationMessage,
+  isBookingInList,
+} from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -15,7 +20,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BookingItemTitle } from './BookingItemTitle'
 
-export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
+export const OnGoingBookingItem = ({
+  booking,
+  digitalBookingWithoutExpirationDate,
+}: BookingItemProps) => {
+  const daysLeft = daysCountdown(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
@@ -28,6 +37,10 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
     properties: bookingProperties,
     date: dateLabel,
   })
+
+  const isBookingValid = isBookingInList(booking, digitalBookingWithoutExpirationDate)
+  const canDisplayExpirationMessage = !!isBookingValid && daysLeft >= 0
+  const correctExpirationMessages = displayExpirationMessage(daysLeft)
 
   return (
     <Container
@@ -55,6 +68,13 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
               </WithdrawContainer>
             )}
           </React.Fragment>
+        )}
+        {!!canDisplayExpirationMessage && (
+          <ExpirationBookingContainer testID="expiration-booking-container">
+            <Clock />
+            <Spacer.Row numberOfSpaces={1} />
+            <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>
+          </ExpirationBookingContainer>
         )}
       </AttributesView>
     </Container>
@@ -100,3 +120,14 @@ const OfferEvent = styled(DefaultOfferEvent).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.extraSmall,
 }))``
+
+const ExpirationBookingContainer = styled.View(({ theme }) => ({
+  flex: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+  color: theme.colors.primary,
+}))
+
+const ExpirationBookingLabel = styled(Typo.CaptionPrimary)({
+  marginRight: getSpacing(4),
+})

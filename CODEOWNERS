@@ -17,7 +17,7 @@ src/features/onboarding/                     @pass-culture/jeunes-acquisition
 src/features/profile/                        @pass-culture/jeunes-acquisition
 src/features/recreditBirthdayNotification/   @pass-culture/jeunes-activation
 src/features/search/                         @pass-culture/jeunes-retention
-src/features/shareApp/                       @pass-culture/jeunes-acquisition
+src/features/share/                          @pass-culture/jeunes-acquisition
 src/features/venue/                          @pass-culture/jeunes-retention
 
 src/features/firstLogin/CulturalSurvey.*     @pass-culture/jeunes-activation

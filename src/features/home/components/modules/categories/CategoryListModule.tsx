@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -8,6 +8,7 @@ import {
   getMobileColorFilter,
 } from 'features/home/components/modules/categories/helpers/getColorFilter'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
+import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -15,6 +16,8 @@ type CategoryListProps = {
   id: string
   title: string
   categoryBlockList: CategoryBlockData[]
+  index: number
+  homeEntryId: string | undefined
 }
 
 const DESKTOP_COLUMNS = 4
@@ -33,7 +36,17 @@ const keyExtractor = (_item: CategoryBlockData, index: number) => `category_bloc
 
 const ListFooterComponent = () => <Footer />
 
-export const CategoryListModule = ({ id, title, categoryBlockList }: CategoryListProps) => {
+export const CategoryListModule = ({
+  id,
+  title,
+  categoryBlockList,
+  index,
+  homeEntryId,
+}: CategoryListProps) => {
+  useEffect(() => {
+    analytics.logModuleDisplayedOnHomepage(id, ContentTypes.CATEGORY_LIST, index, homeEntryId)
+  }, [id, homeEntryId, index])
+
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 

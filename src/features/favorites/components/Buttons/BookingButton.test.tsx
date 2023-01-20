@@ -9,14 +9,14 @@ import {
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
-import { Credit, getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
+import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { BookingButton } from './BookingButton'
 
+jest.mock('shared/user/useAvailableCredit')
 jest.mock('features/navigation/helpers/openUrl')
-jest.mock('features/user/helpers/useAvailableCredit')
 jest.mock('features/profile/helpers/isUserExBeneficiary')
 jest.mock('features/profile/helpers/isUserBeneficiary')
 

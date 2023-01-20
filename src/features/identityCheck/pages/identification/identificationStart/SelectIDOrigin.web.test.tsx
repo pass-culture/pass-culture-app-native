@@ -6,9 +6,9 @@ import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
 
 describe('selectIDOrigin', () => {
   it('should navigate to SelectPhoneStatus on press "J’ai une carte d’identité ou un passeport" HeroButtonList', () => {
-    const { getAllByTestId } = render(<SelectIDOrigin />)
+    const { getByTestId } = render(<SelectIDOrigin />)
 
-    const HeroButtonList = getAllByTestId('HeroButtonList')[0]
+    const HeroButtonList = getByTestId('J’ai une carte d’identité ou un passeport français')
     fireEvent.click(HeroButtonList)
 
     expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus', undefined)

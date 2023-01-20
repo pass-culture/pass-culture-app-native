@@ -7,8 +7,8 @@ import {
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { useShareAppContext } from 'features/shareApp/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'

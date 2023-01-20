@@ -1,10 +1,10 @@
 import { UserProfileResponse } from 'api/gen'
-import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
+import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 import { isUserExBeneficiary } from './isUserExBeneficiary'
 
-jest.mock('features/user/helpers/useAvailableCredit')
+jest.mock('shared/user/useAvailableCredit')
 
 describe('isUserExBeneficiary', () => {
   it.each`

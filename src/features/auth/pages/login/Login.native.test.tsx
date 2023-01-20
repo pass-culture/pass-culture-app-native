@@ -1,21 +1,23 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, render, act, waitFor } from 'tests/utils'
 
 import { Login } from './Login'
 
-jest.mock('react-query')
 jest.mock('features/navigation/helpers')
 const mockSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
@@ -38,6 +40,8 @@ jest.mock('features/auth/context/SettingsContext', () => ({
   })),
 }))
 
+const mockPostFavorite = jest.fn()
+
 describe('<Login/>', () => {
   beforeEach(() => {
     simulateSignin200()
@@ -54,11 +58,8 @@ describe('<Login/>', () => {
 
   it('should redirect to home WHEN signin is successful', async () => {
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -76,11 +77,8 @@ describe('<Login/>', () => {
       showEligibleCard: false,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -96,11 +94,8 @@ describe('<Login/>', () => {
       showEligibleCard: false,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -116,11 +111,8 @@ describe('<Login/>', () => {
       showEligibleCard: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -134,11 +126,8 @@ describe('<Login/>', () => {
       showEligibleCard: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -153,11 +142,8 @@ describe('<Login/>', () => {
       recreditAmountToShow: 3000,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -172,11 +158,8 @@ describe('<Login/>', () => {
       recreditAmountToShow: null,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -187,11 +170,8 @@ describe('<Login/>', () => {
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {
     simulateSigninEmailNotValidated()
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -205,11 +185,8 @@ describe('<Login/>', () => {
     simulateSignin200(AccountState.INACTIVE)
     mockSuspensionStatusApiCall(AccountState.SUSPENDED)
     const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
 
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -242,12 +219,7 @@ describe('<Login/>', () => {
     simulateSigninWrongCredentials()
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -260,12 +232,7 @@ describe('<Login/>', () => {
     simulateSigninNetworkFailure()
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -280,12 +247,7 @@ describe('<Login/>', () => {
     simulateSigninRateLimitExceeded()
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
+    fillInputs(renderAPI)
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
@@ -299,10 +261,7 @@ describe('<Login/>', () => {
   it('should enable login button when both text inputs are filled', async () => {
     const renderAPI = renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
+    fillInputs(renderAPI)
 
     await waitFor(() => {
       const connectedButton = renderAPI.getByText('Se connecter')
@@ -320,19 +279,91 @@ describe('<Login/>', () => {
 
     expect(analytics.logSignUp).toHaveBeenNthCalledWith(1, { from: 'Login' })
   })
+
+  describe('Login comes from an offer', () => {
+    const OFFER_ID = favoriteResponseSnap.offer.id
+    beforeEach(() => {
+      useRoute
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // first render
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // email input rerender
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // password input rerender
+    })
+
+    it('should redirect to the previous offer page when signin is successful', async () => {
+      const renderAPI = renderLogin()
+      fillInputs(renderAPI)
+      fireEvent.press(renderAPI.getByText('Se connecter'))
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
+          id: OFFER_ID,
+        })
+      })
+    })
+
+    it('should add the previous offer to favorites when signin is successful', async () => {
+      simulateAddToFavorites()
+
+      const renderAPI = renderLogin()
+      fillInputs(renderAPI)
+      fireEvent.press(renderAPI.getByText('Se connecter'))
+
+      await waitFor(() => {
+        expect(mockPostFavorite).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should log analytics when adding the previous offer to favorites', async () => {
+      simulateAddToFavorites()
+      const renderAPI = renderLogin()
+      fillInputs(renderAPI)
+      fireEvent.press(renderAPI.getByText('Se connecter'))
+
+      await waitFor(() => {
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+          from: 'login',
+          offerId: OFFER_ID,
+        })
+      })
+    })
+
+    it('should redirect to CulturalSurveyIntro instead of Offer when user needs to fill it', async () => {
+      mockMeApiCall({
+        needsToFillCulturalSurvey: true,
+        showEligibleCard: false,
+      } as UserProfileResponse)
+      const renderAPI = renderLogin()
+      fillInputs(renderAPI)
+      fireEvent.press(renderAPI.getByText('Se connecter'))
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
+      })
+    })
+  })
 })
+
+const fillInputs = (renderAPI: ReturnType<typeof render>) => {
+  const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+  const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+  fireEvent.changeText(emailInput, 'email@gmail.com')
+  fireEvent.changeText(passwordInput, 'mypassword')
+}
 
 function renderLogin() {
   return render(
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: true,
-        setIsLoggedIn: jest.fn(),
-        isUserLoading: false,
-        refetchUser: jest.fn(),
-      }}>
-      <Login />
-    </AuthContext.Provider>
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+        }}>
+        <Login />
+      </AuthContext.Provider>
+    )
   )
 }
 
@@ -429,5 +460,14 @@ function simulateSigninNetworkFailure() {
       env.API_BASE_URL + '/native/v1/signin',
       async (req, res) => res.networkError('Network request failed')
     )
+  )
+}
+
+function simulateAddToFavorites() {
+  server.use(
+    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
+      mockPostFavorite()
+      return res(ctx.status(200), ctx.json(favoriteResponseSnap))
+    })
   )
 }

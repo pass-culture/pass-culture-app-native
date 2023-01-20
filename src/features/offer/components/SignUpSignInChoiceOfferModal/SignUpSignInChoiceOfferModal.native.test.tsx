@@ -7,9 +7,9 @@ import { cleanup, fireEvent, render } from 'tests/utils'
 import { SignUpSignInChoiceOfferModal } from './SignUpSignInChoiceOfferModal'
 
 const OFFER_ID = 123
-describe('SignUpSignInChoiceOfferModal', () => {
-  const dismissModal = jest.fn()
+const dismissModal = jest.fn()
 
+describe('SignUpSignInChoiceOfferModal', () => {
   afterEach(cleanup)
 
   it('should match previous snapshot', () => {
@@ -19,7 +19,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     expect(modal).toMatchSnapshot()
   })
 
-  it('go to login on click button and log analytics', async () => {
+  it('go to login with offerId in params on button click and log analytics', async () => {
     const { getByText } = render(
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
@@ -27,11 +27,11 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = getByText('Se connecter')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('Login', { preventCancellation: true, offerId: OFFER_ID })
     expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
-  it('go to signup on click button and log analytics', async () => {
+  it('go to signup with offerId in params on click button and log analytics', async () => {
     const { getByText } = render(
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
     )
@@ -39,7 +39,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = getByText('Créer un compte')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true, offerId: OFFER_ID })
     expect(analytics.logSignUpFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 

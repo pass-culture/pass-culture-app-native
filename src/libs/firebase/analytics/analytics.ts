@@ -6,7 +6,7 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { SearchState } from 'features/search/types'
-import { ShareAppModalType } from 'features/shareApp/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { ContentTypes } from 'libs/contentful'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { analyticsProvider } from 'libs/firebase/analytics/provider'
@@ -65,7 +65,7 @@ const logEventAnalytics = {
     moduleID: string
     moduleListID: string
     toEntryId: string
-  }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, { params }),
+  }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, params),
   logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CHANGE_SEARCH_LOCATION, {
       type: params.type,
@@ -181,6 +181,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason }),
   logHasClickedMissingCode: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_CLICKED_MISSING_CODE),
+  logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.HAS_CORRECTED_EMAIL, { from }),
   logHasDismissedAppSharingModal: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
@@ -282,12 +284,10 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SELECT_AGE, { age }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
+  logShare: (params: { type: 'App' | 'Offer' | 'Venue'; from: Referrals; id: number }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SHARE, { params }),
   logShareApp: (type: ShareAppModalType) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { type }),
-  logShareOffer: (offerId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId }),
-  logShareVenue: (venueId: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SHARE_VENUE, { venueId }),
   logSignInFromAuthenticationModal: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),

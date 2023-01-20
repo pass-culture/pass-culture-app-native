@@ -9,8 +9,8 @@ import { Homepage } from 'features/home/types'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import { getAvailableCredit } from 'features/user/helpers/useAvailableCredit'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (
   homepage: Homepage,

@@ -13,24 +13,27 @@ import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   type: 'login' | 'signup'
   linkColor?: ColorsEnum
+  params?: RootNavigateParams[1]
   onAdditionalPress?: () => void
   children?: never
+  preventCancellation?: boolean
 }
 
 export const AuthenticationButton: FunctionComponent<Props> = ({
   type,
   linkColor,
+  params = {},
   onAdditionalPress: onPress,
+  preventCancellation,
 }) => {
   const isLogin = type === 'login'
+  const defaultParams = preventCancellation ? { preventCancellation } : {}
   const nextNavigation: {
     screen: RootNavigateParams[0]
-    params?: {
-      preventCancellation: boolean
-    }
+    params: RootNavigateParams[1]
   } = isLogin
-    ? { screen: 'Login', params: { preventCancellation: true } }
-    : { screen: 'SignupForm' }
+    ? { screen: 'Login', params: { ...defaultParams, ...params } }
+    : { screen: 'SignupForm', params: { ...defaultParams, ...params } }
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const buttonWording = isLogin ? 'Se connecter' : 'Créer un compte'

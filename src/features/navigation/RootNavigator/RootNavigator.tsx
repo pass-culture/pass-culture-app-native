@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
+import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'

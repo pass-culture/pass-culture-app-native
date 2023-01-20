@@ -4,13 +4,13 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useShareOffer } from 'features/offer/helpers/useShareOffer'
-import { useAvailableCredit } from 'features/user/helpers/useAvailableCredit'
+import { useShareOffer } from 'features/share/helpers/useShareOffer'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/firebase/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { WebShareModal } from 'libs/share/WebShareModal'
+import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
@@ -60,9 +60,10 @@ export function BookingConfirmation() {
   } = useModal(false)
 
   const pressShareOffer = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', id: params.offerId })
     shareOffer()
     showShareOfferModal()
-  }, [shareOffer, showShareOfferModal])
+  }, [params.offerId, shareOffer, showShareOfferModal])
 
   useShowReview()
 

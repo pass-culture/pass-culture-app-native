@@ -14,6 +14,7 @@ export type Referrals =
   | 'exclusivity'
   | 'bookingimpossible'
   | 'similar_offer'
+  | 'setemail'
 
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
@@ -104,7 +105,7 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  SignupForm: { preventCancellation?: boolean } | undefined
+  SignupForm: { preventCancellation?: boolean; offerId?: number } | undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined
@@ -135,6 +136,7 @@ export type RootStackParamList = {
   Login?: {
     preventCancellation?: boolean
     displayForcedLoginHelpMessage?: boolean
+    offerId?: number
   }
   Navigation: undefined
   NavigationAccountSuspension: undefined

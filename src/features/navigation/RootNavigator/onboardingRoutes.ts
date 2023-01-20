@@ -1,4 +1,4 @@
-import { NavigationOnboarding } from 'features/cheatcodes/pages/NavigationOnboarding/NavigationOnboarding'
+import { NavigationOnboarding } from 'features/internal/cheatcodes/pages/NavigationOnboarding/NavigationOnboarding'
 import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'

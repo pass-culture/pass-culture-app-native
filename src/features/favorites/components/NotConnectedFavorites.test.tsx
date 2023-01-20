@@ -15,7 +15,7 @@ describe('NotConnectedFavorites component', () => {
 
   it('should navigate to SignupForm on button click and log analytics', async () => {
     const renderAPI = render(<NotConnectedFavorites />)
-    fireEvent.press(renderAPI.getByText(`S’inscrire`))
+    fireEvent.press(renderAPI.getByText(`Créer un compte`))
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('SignupForm', undefined)
@@ -28,7 +28,7 @@ describe('NotConnectedFavorites component', () => {
     fireEvent.press(renderAPI.getByText(`Se connecter`))
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Login', undefined)
+      expect(navigate).toBeCalledWith('Login', {})
       expect(analytics.logSignInFromFavorite).toBeCalledTimes(1)
     })
   })

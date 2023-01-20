@@ -9,11 +9,11 @@ import { BookingButton } from 'features/favorites/components/Buttons/BookingButt
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
-import { useShareOffer } from 'features/offer/helpers/useShareOffer'
+import { useShareOffer } from 'features/share/helpers/useShareOffer'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
-import { WebShareModal } from 'libs/share/WebShareModal'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -119,9 +119,10 @@ export const Favorite: React.FC<Props> = (props) => {
   const { share: shareOffer, shareContent } = useShareOffer(offer.id)
 
   const pressShareOffer = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })
     shareOffer()
     showShareOfferModal()
-  }, [shareOffer, showShareOfferModal])
+  }, [offer.id, shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>
