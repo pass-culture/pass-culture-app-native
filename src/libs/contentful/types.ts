@@ -9,6 +9,7 @@ export enum ContentTypes {
   BUSINESS = 'business',
   RECOMMENDATION = 'recommendation',
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
+  SUBCATEGORIES = 'subcategories',
   THEMATIC_HIGHLIGHT = 'thematicHighlight',
   VENUES_PLAYLIST = 'venuesPlaylist',
   VENUES_PARAMETERS = 'venuesParameters',
@@ -124,6 +125,11 @@ export interface RecommendationParameters {
   fields: RecommendationParametersFields
 }
 
+export interface Subcategories {
+  sys: Sys<typeof ContentTypes.SUBCATEGORIES>
+  fields: SubcategoriesFields
+}
+
 export interface ThematicHighlightParameters {
   sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT>
   fields: ThematicHighlightFields
@@ -169,7 +175,7 @@ export interface SearchParametersFields {
   isGeolocated?: boolean
   aroundRadius?: number
   categories?: string[]
-  subcategories?: string[]
+  algoliaSubcategories?: Subcategories
   tags?: string[]
   isDigital?: boolean
   isThing?: boolean
@@ -249,6 +255,10 @@ export interface RecommendationParametersFields {
   isDuo?: boolean
   isRecoShuffled?: boolean
   modelEndpoint?: string
+}
+
+type SubcategoriesFields = {
+  subcategories: string[]
 }
 
 export type ThematicHighlightFields = {

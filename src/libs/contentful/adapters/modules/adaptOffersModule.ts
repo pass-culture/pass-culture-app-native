@@ -2,15 +2,30 @@ import isEmpty from 'lodash/isEmpty'
 
 import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
-import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
+import {
+  AlgoliaContentModel,
+  AlgoliaParameters,
+  SearchParametersFields,
+} from 'libs/contentful/types'
+
+const mapOffersParametersWithSubcategories = ({
+  algoliaSubcategories,
+  ...otherParams
+}: SearchParametersFields) => ({
+  subcategories: algoliaSubcategories?.fields?.subcategories,
+  ...otherParams,
+})
 
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
-): OffersModule['offersModuleParameters'] =>
-  [firstParams, ...additionalParams]
+): OffersModule['offersModuleParameters'] => {
+  const offersParameterFields = [firstParams, ...additionalParams]
     .filter((params) => params.fields && !isEmpty(params.fields))
     .map(({ fields }) => fields)
+
+  return offersParameterFields.map(mapOffersParametersWithSubcategories)
+}
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
   const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
