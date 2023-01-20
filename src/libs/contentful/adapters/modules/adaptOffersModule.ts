@@ -12,25 +12,22 @@ const buildOffersParams = (
     .filter((params) => params.fields && !isEmpty(params.fields))
     .map(({ fields }) => fields)
 
-export const adaptOffersModule = (modules: AlgoliaContentModel): OffersModule | null => {
-  const additionalAlgoliaParameters = modules.fields.additionalAlgoliaParameters ?? []
+export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
+  const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
 
-  const offersList = buildOffersParams(
-    modules.fields.algoliaParameters,
-    additionalAlgoliaParameters
-  )
+  const offersList = buildOffersParams(module.fields.algoliaParameters, additionalAlgoliaParameters)
 
   if (offersList.length === 0) return null
 
-  const coverUrl = modules.fields.cover
-    ? buildImageUrl(modules.fields.cover.fields.image?.fields.file.url)
+  const coverUrl = module.fields.cover
+    ? buildImageUrl(module.fields.cover.fields.image?.fields.file.url)
     : undefined
 
   return {
     type: HomepageModuleType.OffersModule,
-    id: modules.sys.id,
-    title: modules.fields.title,
-    displayParameters: modules.fields.displayParameters.fields,
+    id: module.sys.id,
+    title: module.fields.title,
+    displayParameters: module.fields.displayParameters.fields,
     offersModuleParameters: offersList,
     cover: coverUrl,
   }
