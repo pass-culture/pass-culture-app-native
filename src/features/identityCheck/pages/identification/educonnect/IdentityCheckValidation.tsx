@@ -23,6 +23,10 @@ export function IdentityCheckValidation() {
     navigateToNextScreen()
   }
 
+  const onValidateInformation = async () => {
+    await navigateToNextEduConnectStep()
+  }
+
   return (
     <PageWithHeader
       title="Mon identité"
@@ -48,7 +52,7 @@ export function IdentityCheckValidation() {
         <ButtonPrimary
           type="submit"
           wording="Valider mes informations"
-          onPress={navigateToNextEduConnectStep}
+          onPress={onValidateInformation}
         />
       }
     />
