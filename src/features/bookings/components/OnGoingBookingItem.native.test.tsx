@@ -1,4 +1,5 @@
 import { addDays, formatISO } from 'date-fns'
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -10,6 +11,7 @@ import { fireEvent, render } from 'tests/utils'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
 describe('OnGoingBookingItem', () => {
+  const bookings = bookingsSnap.ongoing_bookings
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
 
   it('should navigate to the booking details page', () => {
@@ -71,8 +73,57 @@ describe('OnGoingBookingItem', () => {
       expect(getByTestId('withdraw-container')).toBeTruthy()
     })
   })
+
+  describe('should display expiration messages', () => {
+    afterAll(() => {
+      mockdate.set(new Date())
+    })
+    it('should display expiration message : "Ta réservation s\'archivera dans XX jours"', () => {
+      mockdate.set(new Date('2021-02-20T00:00:00Z'))
+      const booking = {
+        ...initialBooking,
+        expirationDate: null,
+        stock: {
+          ...initialBooking.stock,
+          offer: {
+            ...initialBooking.stock.offer,
+            isDigital: true,
+          },
+        },
+      }
+      const { getByText } = renderOnGoingBookingItem(booking, bookings)
+
+      expect(getByText("Ta réservation s'archivera dans 25 jours")).toBeTruthy()
+    })
+
+    it('should display any expiration messages"', () => {
+      mockdate.set(new Date('2021-03-18T00:00:00Z'))
+      const booking = {
+        ...initialBooking,
+        expirationDate: null,
+        stock: {
+          ...initialBooking.stock,
+          offer: {
+            ...initialBooking.stock.offer,
+            isDigital: false,
+          },
+        },
+      }
+      const { queryByTestId } = renderOnGoingBookingItem(booking, bookings)
+
+      expect(queryByTestId('expiration-booking-container')).toBeNull()
+    })
+  })
 })
 
-function renderOnGoingBookingItem(booking: Booking) {
-  return render(<OnGoingBookingItem booking={booking} />)
+function renderOnGoingBookingItem(
+  booking: Booking,
+  digitalBookingWithoutExpirationDate?: Booking[]
+) {
+  return render(
+    <OnGoingBookingItem
+      booking={booking}
+      digitalBookingWithoutExpirationDate={digitalBookingWithoutExpirationDate}
+    />
+  )
 }
