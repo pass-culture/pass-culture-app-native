@@ -107,6 +107,11 @@ const OnlineProfile: React.FC = () => {
     }
   }
 
+  const onShareBannerPress = useCallback(() => {
+    analytics.logShareApp({ from: 'profile' })
+    shareApp()
+  }, [])
+
   return (
     <ScrollView
       bounces={false}
@@ -216,7 +221,7 @@ const OnlineProfile: React.FC = () => {
             <Spacer.Column numberOfSpaces={4} />
             <BannerWithBackground
               backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-              onPress={shareApp}>
+              onPress={onShareBannerPress}>
               <ShareAppContainer>
                 <StyledButtonText>Partage le pass Culture</StyledButtonText>
                 <Spacer.Column numberOfSpaces={1} />

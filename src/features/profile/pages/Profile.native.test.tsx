@@ -302,6 +302,15 @@ describe('Profile component', () => {
       await act(async () => await fireEvent.scroll(scrollContainer, bottomScrollEvent))
       expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(1)
     })
+
+    it('should log event ShareApp on share banner press', async () => {
+      const { getByText } = await renderProfile()
+      const banner = getByText('Partage le pass Culture')
+
+      fireEvent.press(banner)
+
+      expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { from: 'profile' })
+    })
   })
 })
 
