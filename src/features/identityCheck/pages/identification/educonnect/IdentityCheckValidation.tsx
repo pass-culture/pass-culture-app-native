@@ -7,6 +7,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -24,6 +25,7 @@ export function IdentityCheckValidation() {
   }
 
   const onValidateInformation = async () => {
+    amplitude.logEvent('check_Educonnect_data_clicked')
     await navigateToNextEduConnectStep()
   }
 

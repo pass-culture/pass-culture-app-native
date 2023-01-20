@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { amplitude } from 'libs/amplitude'
 import { fireEvent, render } from 'tests/utils'
 
 import { IdentityCheckValidation } from './IdentityCheckValidation'
@@ -60,5 +61,14 @@ describe('<IdentityCheckValidation />', () => {
     expect(getByText('John')).toBeTruthy()
     expect(getByText('Doe')).toBeTruthy()
     expect(getByText('28/01/1993')).toBeTruthy()
+  })
+  it("should trigger an amplitude tracker when the 'Valider mes informations' button is pressed", () => {
+    const { getByText } = render(<IdentityCheckValidation />)
+
+    const button = getByText('Valider mes informations')
+
+    fireEvent.press(button)
+
+    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'check_Educonnect_data_clicked')
   })
 })
