@@ -9,6 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from './ChangeEmail'
@@ -23,7 +24,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
-  SNACK_BAR_TIME_OUT: 5000,
 }))
 
 describe('<ChangeEmail/>', () => {
@@ -106,7 +106,7 @@ describe('<ChangeEmail/>', () => {
       expect(mockShowSuccessSnackBar).toBeCalledWith({
         message:
           'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
-        timeout: 5000,
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
 
@@ -196,7 +196,7 @@ describe('<ChangeEmail/>', () => {
 
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
-        timeout: 5000,
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
 
