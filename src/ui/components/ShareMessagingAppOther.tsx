@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { IconWithCaption } from 'ui/components/IconWithCaption'
 import { BicolorShare } from 'ui/svg/icons/BicolorShare'
-import { TALL_BUTTON_HEIGHT, LINE_BREAK } from 'ui/theme/constants'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 export const ShareMessagingAppOther: React.FC = () => {
   return (
@@ -24,9 +24,9 @@ const Icon = () => (
 const IconWrapper = styled.View(({ theme }) => ({
   borderColor: theme.colors.greyMedium,
   borderWidth: 1,
-  borderRadius: TALL_BUTTON_HEIGHT / 2,
-  width: TALL_BUTTON_HEIGHT,
-  height: TALL_BUTTON_HEIGHT,
+  borderRadius: theme.buttons.buttonHeights.tall / 2,
+  width: theme.buttons.buttonHeights.tall,
+  height: theme.buttons.buttonHeights.tall,
   justifyContent: 'center',
   alignItems: 'center',
 }))

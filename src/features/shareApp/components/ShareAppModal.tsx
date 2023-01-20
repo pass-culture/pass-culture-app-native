@@ -11,7 +11,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { MarketingModal } from 'ui/components/modals/MarketingModal'
-import { BicolorShare } from 'ui/svg/icons/BicolorShare'
+import { Share } from 'ui/svg/icons/BicolorShare'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -46,7 +46,7 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
       <ButtonContainer>
         <ButtonWithLinearGradient
           wording="Partager l’appli"
-          icon={BicolorShare}
+          icon={Share}
           onPress={openShareAppModal}
         />
         <Spacer.Column numberOfSpaces={4} />

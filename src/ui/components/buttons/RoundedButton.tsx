@@ -7,7 +7,7 @@ import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { BicolorShare } from 'ui/svg/icons/BicolorShare'
+import { Share } from 'ui/svg/icons/BicolorShare'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -32,7 +32,7 @@ interface Props {
 
 const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
-  if (iconName === 'share') return BicolorShare
+  if (iconName === 'share') return Share
   if (iconName === 'favorite-filled') return FavoriteFilled
   return Favorite
 }

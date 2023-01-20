@@ -24,6 +24,7 @@ import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorShare } from 'ui/svg/icons/BicolorShare'
+import { Share } from 'ui/svg/icons/BicolorShare'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
@@ -172,6 +173,7 @@ export const SecondaryAndBiggerIcons = {
   ProfileDeletion,
   Quote,
   ScrollToTop,
+  Share,
   SignOut,
   Sun,
   ThumbUp,

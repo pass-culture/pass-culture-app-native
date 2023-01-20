@@ -5,7 +5,7 @@ import { GeneratedDeeplink } from 'features/_marketingAndCommunication/component
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BicolorShare as DefaultShare } from 'ui/svg/icons/BicolorShare'
+import { Share as DefaultShare } from 'ui/svg/icons/BicolorShare'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -97,7 +97,4 @@ const Container = styled.View({
   overflow: 'hidden',
 })
 
-const Share = styled(DefaultShare).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  color: theme.colors.black,
-}))``
+const Share = styled(DefaultShare).attrs(({ theme }) => ({ size: theme.icons.sizes.small }))``
