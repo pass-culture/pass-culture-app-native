@@ -2,11 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  shouldShowCulturalSurvey,
-  useCulturalSurveyRoute,
-} from 'features/culturalSurvey/helpers/utils'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'

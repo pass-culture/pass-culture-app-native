@@ -1,6 +1,6 @@
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
+import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCulturalSurveyProgress'
 import { renderHook } from 'tests/utils'
 
 import { ICulturalSurveyContext } from '../context/CulturalSurveyContextProvider'

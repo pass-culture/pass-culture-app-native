@@ -1,10 +1,10 @@
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
-import { mockedCulturalSurveyQuestions } from 'features/culturalSurvey/fixtures/mockedCulturalSurveyQuestions'
-import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/utils'
+import { culturalSurveyQuestionsFixture } from 'features/culturalSurvey/fixtures/culturalSurveyQuestions.fixture'
+import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/createInitialQuestionsList'
 
 describe('createInitialQuestionsList', () => {
   it('should return list of questions id', () => {
-    const ids = createInitialQuestionsList(mockedCulturalSurveyQuestions)
+    const ids = createInitialQuestionsList(culturalSurveyQuestionsFixture)
     expect(ids).toEqual([CulturalSurveyQuestionEnum.SORTIES, CulturalSurveyQuestionEnum.ACTIVITES])
   })
 

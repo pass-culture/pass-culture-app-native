@@ -2,15 +2,13 @@ import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  shouldShowCulturalSurvey,
-  useCulturalSurveyRoute,
-} from 'features/culturalSurvey/helpers/utils'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'

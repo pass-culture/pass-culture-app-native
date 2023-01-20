@@ -2,10 +2,6 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  shouldShowCulturalSurvey,
-  useCulturalSurveyRoute,
-} from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -13,6 +9,8 @@ import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

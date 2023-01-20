@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
 
+import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-
-import { CulturalSurveyQuestionEnum } from '../../api/gen/api'
 
 export function useCulturalSurveyProgress(step: CulturalSurveyQuestionEnum) {
   const { questionsToDisplay } = useCulturalSurveyContext()

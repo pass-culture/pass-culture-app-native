@@ -14,15 +14,15 @@ import {
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
 import { useCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
-import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
+import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
+import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/mapQuestionIdToPageTitle'
 import {
   addSubQuestionToQuestionsToDisplay,
-  mapQuestionIdToPageTitle,
   removeSubQuestionsToDisplay,
-} from 'features/culturalSurvey/helpers/utils'
-import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
-import { useGetNextQuestion } from 'features/culturalSurvey/useGetNextQuestion'
+} from 'features/culturalSurvey/helpers/questionsToDisplay'
+import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCulturalSurveyProgress'
+import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
 import { navigateToHome } from 'features/navigation/helpers'
 import {
   CulturalSurveyRootStackParamList,

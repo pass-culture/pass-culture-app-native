@@ -4,9 +4,9 @@ import { api } from 'api/api'
 import { CulturalSurveyQuestionsResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { shouldShowCulturalSurvey } from 'features/culturalSurvey/helpers/utils'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 
 const STALE_TIME_CULTURAL_SURVEY_QUESTIONS = 5 * 60 * 1000
 
