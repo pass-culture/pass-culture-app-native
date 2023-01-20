@@ -9,6 +9,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
@@ -29,6 +30,7 @@ export const IdentityCheckEduConnect = () => {
 
   const onSubmit = () => {
     navigateToNextScreen()
+    amplitude.logEvent('connect_with_Educonnect_clicked')
     if (Platform.OS === 'web') {
       openEduConnectTab()
     }

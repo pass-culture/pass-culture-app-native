@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckMethod } from 'api/gen'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render } from 'tests/utils'
 
@@ -82,5 +83,25 @@ describe('<IdentityCheckEnd/>', () => {
     await fireEvent.press(getByText('Identification manuelle'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SelectIDOrigin', undefined)
+  })
+  it("should trigger an amplitude tracker when the 'Identification avec ÉduConnect' button is pressed", async () => {
+    const { getByText } = render(
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
+    )
+
+    const button = getByText('Identification avec ÉduConnect')
+    fireEvent.press(button)
+
+    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'choose_method_educonnect')
+  })
+  it("should trigger an amplitude tracker when the 'Identification manuelle' button is pressed", async () => {
+    const { getByText } = render(
+      <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
+    )
+
+    const button = getByText('Identification manuelle')
+    fireEvent.press(button)
+
+    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'choose_method_ubble')
   })
 })

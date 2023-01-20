@@ -7,6 +7,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
+import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -21,6 +22,11 @@ export function IdentityCheckValidation() {
   const navigateToNextEduConnectStep = async () => {
     dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
     navigateToNextScreen()
+  }
+
+  const onValidateInformation = async () => {
+    amplitude.logEvent('check_Educonnect_data_clicked')
+    await navigateToNextEduConnectStep()
   }
 
   return (
@@ -48,7 +54,7 @@ export function IdentityCheckValidation() {
         <ButtonPrimary
           type="submit"
           wording="Valider mes informations"
-          onPress={navigateToNextEduConnectStep}
+          onPress={onValidateInformation}
         />
       }
     />
