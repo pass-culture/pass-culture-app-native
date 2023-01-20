@@ -36,6 +36,7 @@ export const ComeBackLater: FunctionComponent = () => {
           as={ButtonPrimary}
           wording="M’identifier plus tard"
           navigateTo={navigateToHomeConfig}
+          onBeforeNavigate={() => amplitude.logEvent('come_back_later_clicked')}
         />
       </View>
     </GenericInfoPageWhite>
