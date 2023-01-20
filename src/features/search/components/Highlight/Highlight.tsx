@@ -1,7 +1,4 @@
-// We import getHighlightedParts and getPropertyByPath from instantsearch.js
-// until this is resolved https://github.com/algolia/instantsearch.js/discussions/5116
-import getHighlightedParts from 'instantsearch.js/es/lib/utils/getHighlightedParts'
-import getPropertyByPath from 'instantsearch.js/es/lib/utils/getPropertyByPath'
+import { getHighlightedParts, getPropertyByPath } from 'instantsearch.js/es/lib/utils'
 import React, { FunctionComponent } from 'react'
 
 import { AlgoliaSuggestionHit } from 'libs/algolia'
