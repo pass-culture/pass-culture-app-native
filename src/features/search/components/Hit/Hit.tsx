@@ -3,6 +3,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
+import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -11,6 +12,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -27,9 +29,12 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   const { subcategoryId, dates, prices } = offer
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
-  const { categoryId, searchGroupName } = useSubcategory(subcategoryId)
+  const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
+
+  const { data } = useSubcategories()
+  const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
@@ -89,7 +94,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
         </Row>
         <Spacer.Column numberOfSpaces={1} />
         <Body ellipsizeMode="tail" numberOfLines={1}>
-          {searchGroupLabel}
+          {nativeCategory?.value}
         </Body>
         {!!formattedDate && <Body>{formattedDate}</Body>}
         <Spacer.Column numberOfSpaces={1} />
