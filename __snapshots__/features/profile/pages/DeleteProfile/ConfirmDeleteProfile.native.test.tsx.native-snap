@@ -204,7 +204,82 @@ Array [
                 ]
               }
             >
-              tes réservations seront annulées et supprimées
+              tes réservations sont annulées sauf pour certains cas précisés dans les 
+              
+
+              <View>
+                <View
+                  accessibilityLabel="conditions générales d’utilisation"
+                  accessibilityRole="link"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                      "top": 3,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="conditions générales d’utilisation"
+                >
+                  <View
+                    paddingForIcon={0}
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "row",
+                          "top": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={20}
+                      testID="button-icon"
+                      width={20}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      color="#161617"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                      typography="ButtonText"
+                    >
+                      conditions générales d’utilisation
+                    </Text>
+                  </View>
+                </View>
+              </View>
             </Text>
           </View>
         </View>

@@ -9,6 +9,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { BulletListItem } from 'ui/components/BulletListItem'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -18,6 +19,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function ConfirmDeleteProfile() {
@@ -54,7 +56,15 @@ export function ConfirmDeleteProfile() {
       <Content>
         <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>
         <VerticalUl>
-          <BulletListItem text="tes réservations seront annulées et supprimées" />
+          <BulletListItem text="tes réservations sont annulées sauf pour certains cas précisés dans les ">
+            {LINE_BREAK}
+            <ExternalTouchableLink
+              as={StyledButtonInsideText}
+              wording="conditions générales d’utilisation"
+              icon={ExternalSiteFilled}
+              externalNav={{ url: env.CGU_LINK }}
+            />
+          </BulletListItem>
           <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau" />
           <BulletListItem text="tu n’auras plus accès au catalogue" />
         </VerticalUl>
@@ -97,3 +107,7 @@ const Content = styled.View({
 const ButtonContainer = styled.View({
   marginTop: getSpacing(3),
 })
+
+const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
+  buttonColor: theme.colors.black,
+}))``

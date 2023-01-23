@@ -97,4 +97,11 @@ describe('ConfirmDeleteProfile component', () => {
     fireEvent.press(renderAPI.getByTestId('Revenir en arrière'))
     expect(mockGoBack).toBeCalledTimes(1)
   })
+
+  it('should open CGU when clicking on "conditions générales d’utilisation"', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByLabelText } = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
+    fireEvent.press(getByLabelText('conditions générales d’utilisation'))
+    expect(openUrl).toHaveBeenNthCalledWith(1, env.CGU_LINK, undefined, true)
+  })
 })
