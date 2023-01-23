@@ -6,6 +6,7 @@ import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogi
 import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
+import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -41,14 +42,10 @@ export const IdentityCheckEduConnectForm = () => {
 
             <Spacer.Column numberOfSpaces={4} />
 
-            <HavingTroubleContainer>
-              <Info />
-              <Spacer.Row numberOfSpaces={2} />
-              <Typo.CaptionNeutralInfo>
-                Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à
-                accepter les pop-ups de ton navigateur.
-              </Typo.CaptionNeutralInfo>
-            </HavingTroubleContainer>
+            <Banner
+              icon={Info}
+              message="Un souci pour accéder à la page&nbsp;? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
+            />
 
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>
@@ -85,12 +82,4 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
-}))
-
-const HavingTroubleContainer = styled.View(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  backgroundColor: theme.colors.greyLight,
-  padding: getSpacing(4),
-  borderRadius: theme.borderRadius.checkbox,
 }))
