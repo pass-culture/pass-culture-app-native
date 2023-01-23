@@ -12,7 +12,7 @@ import { NonEligible } from 'features/onboarding/types'
 import { env } from 'libs/environment/env'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
@@ -67,11 +67,12 @@ export const AgeSelectionOther: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <ExternalTouchableLink
         key={1}
-        as={ButtonTertiaryBlack}
+        as={ButtonTertiarySecondary}
         wording="Je suis un parent"
         icon={InfoPlain}
         onBeforeNavigate={logGoToParentsFAQ}
         externalNav={externalUrl}
+        justifyContent="flex-start"
       />
     </OnboardingPage>
   )

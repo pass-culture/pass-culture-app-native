@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -65,11 +65,12 @@ export const AgeSelection: FunctionComponent = () => {
   AgeSelectionButtons.push(
     <ExternalTouchableLink
       key={AgeSelectionButtons.length}
-      as={ButtonTertiaryBlack}
+      as={ButtonTertiarySecondary}
       wording="Je suis un parent"
       icon={InfoPlain}
       onBeforeNavigate={logGoToParentsFAQ}
       externalNav={{ url: env.FAQ_LINK_LEGAL_GUARDIAN }}
+      justifyContent="flex-start"
     />
   )
 
