@@ -8,24 +8,20 @@ import {
   SearchParametersFields,
 } from 'libs/contentful/types'
 
-const mapOffersParametersWithSubcategories = ({
-  algoliaSubcategories,
-  ...otherParams
-}: SearchParametersFields) => ({
-  subcategories: algoliaSubcategories?.fields?.subcategories,
-  ...otherParams,
-})
+const mapOffersSubcategories = (
+  algoliaSubcategories: SearchParametersFields['algoliaSubcategories']
+) => algoliaSubcategories?.fields?.subcategories
 
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
-): OffersModule['offersModuleParameters'] => {
-  const offersParameterFields = [firstParams, ...additionalParams]
+): OffersModule['offersModuleParameters'] =>
+  [firstParams, ...additionalParams]
     .filter((params) => params.fields && !isEmpty(params.fields))
-    .map(({ fields }) => fields)
-
-  return offersParameterFields.map(mapOffersParametersWithSubcategories)
-}
+    .map(({ fields: { algoliaSubcategories, ...otherFields } }) => ({
+      subcategories: mapOffersSubcategories(algoliaSubcategories),
+      ...otherFields,
+    }))
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
   const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
