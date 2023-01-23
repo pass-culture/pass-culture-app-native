@@ -1,16 +1,10 @@
 import { Platform } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
-import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { useOffer } from 'features/offer/api/useOffer'
 import { getLocationName } from 'features/offer/helpers/getLocationName'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { share, ShareContent } from 'libs/share'
-
-export function getOfferUrl(id: number): string {
-  const path = getScreenPath('Offer', { id })
-  return `${WEBAPP_V2_URL}${path}`
-}
 
 function getShareContentFromOffer(offer: OfferResponse) {
   const locationName = getLocationName(offer.venue, offer.isDigital)

@@ -3,7 +3,7 @@ import { Animated, Platform, Share } from 'react-native'
 
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { getOfferUrl } from 'features/share/helpers/useShareOffer'
+import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, superFlushWithAct } from 'tests/utils'
 
