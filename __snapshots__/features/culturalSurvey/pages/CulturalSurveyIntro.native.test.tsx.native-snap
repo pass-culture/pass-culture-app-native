@@ -113,14 +113,86 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
-          "marginBottom": 20,
           "textAlign": "center",
         },
       ]
     }
   >
-    Tes réponses nous aideront à te proposer des offres qui pourraient te plaire !
+    En continuant, tu acceptes que nous utilisions les réponses au questionnaire qui va suivre pour améliorer l’application.
   </Text>
+  <View>
+    <View
+      accessibilityLabel="En savoir plus sur ce qu’on fait de tes données"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="En savoir plus sur ce qu’on fait de tes données"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        En savoir plus
+      </Text>
+    </View>
+  </View>
   <View
     flex={1}
     style={
@@ -185,16 +257,16 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
         Débuter le questionnaire
       </Text>
     </View>
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "marginTop": 12,
-        },
-      ]
-    }
-  >
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "height": 12,
+          },
+        ]
+      }
+    />
     <View
       accessibilityLabel="Plus tard"
       accessible={true}
