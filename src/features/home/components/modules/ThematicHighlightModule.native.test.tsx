@@ -18,7 +18,7 @@ describe('ThematicHighlightModule', () => {
         endingDate={CURRENT_DATE}
       />
     )
-    expect(screen.queryAllByText(formattedThematicHighlightModule.title)).toBeTruthy()
+    expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeTruthy()
   })
 
   it('should not render if the ending date is passed', () => {

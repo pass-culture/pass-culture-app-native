@@ -32,10 +32,8 @@ export const thematicHighlightModuleFixture: ThematicHighlightContentModel = {
   },
   fields: {
     title: 'Temps fort Hugo',
-    displayedTitle:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    displayedSubtitle:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    displayedTitle: 'Temps très fort',
+    displayedSubtitle: 'Avec son sous-titre',
     image: {
       sys: {
         space: {
