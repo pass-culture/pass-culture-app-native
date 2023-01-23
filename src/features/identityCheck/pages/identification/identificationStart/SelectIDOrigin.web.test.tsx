@@ -2,16 +2,18 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
-import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, waitFor } from 'tests/utils/web'
 
 describe('selectIDOrigin', () => {
-  it('should navigate to SelectPhoneStatus on press "J’ai une carte d’identité ou un passeport" HeroButtonList', () => {
+  it('should navigate to SelectPhoneStatus on press "J’ai une carte d’identité ou un passeport" HeroButtonList', async () => {
     const { getByTestId } = render(<SelectIDOrigin />)
 
     const HeroButtonList = getByTestId('J’ai une carte d’identité ou un passeport français')
     fireEvent.click(HeroButtonList)
 
-    expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus', undefined)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('SelectPhoneStatus', undefined)
+    })
   })
 
   describe('Accessibility', () => {

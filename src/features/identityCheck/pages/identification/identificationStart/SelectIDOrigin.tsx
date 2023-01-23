@@ -13,6 +13,11 @@ import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWith
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+enum IDOrigin {
+  'FRANCE' = 'France',
+  'FOREIGN' = 'Foreign',
+}
+
 export const SelectIDOrigin: FunctionComponent = () => {
   useEffect(() => {
     amplitude.logEvent('screen_view_select_id_origin')
@@ -42,6 +47,9 @@ const SelectIDOriginContent: FunctionComponent = () => {
         navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
+        onBeforeNavigate={() =>
+          amplitude.logEvent('set_id_origin_clicked', { type: IDOrigin.FRANCE })
+        }
       />
       <Spacer.Column numberOfSpaces={7} />
       <SeparatorWithText label="ou" />
@@ -50,6 +58,9 @@ const SelectIDOriginContent: FunctionComponent = () => {
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
         leftIcon={BicolorEarth}
         navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
+        onBeforeNavigate={() =>
+          amplitude.logEvent('set_id_origin_clicked', { type: IDOrigin.FOREIGN })
+        }
       />
     </Container>
   )

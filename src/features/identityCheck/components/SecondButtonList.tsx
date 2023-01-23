@@ -9,11 +9,13 @@ interface SecondButtonListProps {
   leftIcon: FunctionComponent<IconInterface>
   label: string
   navigateTo: InternalNavigationProps['navigateTo']
+  onBeforeNavigate?: () => void
 }
 export const SecondButtonList: FunctionComponent<SecondButtonListProps> = ({
   label,
   leftIcon,
   navigateTo,
+  onBeforeNavigate,
 }) => {
   const renderTitle = (title: string) => <Typo.Caption>{title}</Typo.Caption>
 
@@ -26,6 +28,7 @@ export const SecondButtonList: FunctionComponent<SecondButtonListProps> = ({
       icon={leftIcon}
       iconSize={24}
       accessibilityLabel={label}
+      onPress={onBeforeNavigate}
     />
   )
 }

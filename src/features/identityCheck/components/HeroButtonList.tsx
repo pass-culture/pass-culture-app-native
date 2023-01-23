@@ -13,7 +13,9 @@ type HeroButtonListProps = {
   icon: FunctionComponent<IconInterface>
   navigateTo: InternalNavigationProps['navigateTo']
   accessibilityLabel?: string
+  onBeforeNavigate?: () => void
 }
+
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
     color: theme.colors.primary,
@@ -25,7 +27,8 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
     <InternalTouchableLink
       navigateTo={props.navigateTo}
       testID={`HeroButtonList`}
-      accessibilityLabel={props.accessibilityLabel}>
+      accessibilityLabel={props.accessibilityLabel}
+      onBeforeNavigate={props.onBeforeNavigate}>
       <GenericBanner LeftIcon={Icon}>
         <TextWrapper>
           {props.Title}
