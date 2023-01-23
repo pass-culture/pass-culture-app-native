@@ -2,12 +2,12 @@ import { Platform } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { useOffer } from 'features/offer/api/useOffer'
-import { getLocationName } from 'features/offer/helpers/getLocationName'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { share, ShareContent } from 'libs/share'
+import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
 
 function getShareContentFromOffer(offer: OfferResponse) {
-  const locationName = getLocationName(offer.venue, offer.isDigital)
+  const locationName = getOfferLocationName(offer.venue, offer.isDigital)
   const message = `Retrouve "${offer.name}" chez "${locationName}" sur le pass Culture`
   const url = getOfferUrl(offer.id)
 
