@@ -3,7 +3,8 @@ import React from 'react'
 
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
-import { render, screen } from 'tests/utils'
+import { analytics } from 'libs/firebase/analytics'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 const PASSED_DATE = new Date('2020-11-30T00:00:00.000Z')
@@ -30,5 +31,14 @@ describe('ThematicHighlightModule', () => {
       />
     )
     expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeNull()
+  })
+
+  it('should log HighlightBlockClicked event when pressing', () => {
+    render(<ThematicHighlightModule {...formattedThematicHighlightModule} />)
+    const thematicHighlightModule = screen.getByText(formattedThematicHighlightModule.title)
+
+    fireEvent.press(thematicHighlightModule)
+
+    expect(analytics.logHighlightBlockClicked).toHaveBeenCalledTimes(1)
   })
 })
