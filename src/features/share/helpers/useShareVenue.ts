@@ -7,13 +7,13 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 import { share } from 'libs/share'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
-export function getVenueUrl(id: number) {
-  const path = getScreenPath('Venue', { id })
-  return `${WEBAPP_V2_URL}${path}`
+const doNothingFn = () => {
+  // do nothing when we don't have a venue
 }
 
-const doNothingFn = () => {
-  // do nothing when we don't have an offer
+function getVenueUrl(id: number) {
+  const path = getScreenPath('Venue', { id })
+  return `${WEBAPP_V2_URL}${path}`
 }
 
 export const useShareVenue = (venueId: number): ShareOutput => {
