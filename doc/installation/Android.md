@@ -34,5 +34,14 @@ This will also start the metro server. If not, run `yarn start` in another tab.
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
 
 </details>
+<br/>
+<details>
+  <summary>[M1 processor] Error while building the app on android : `Android Studio-- Cause: error=86, Bad CPU type in executable`</summary>
+
+If you get this error on M1 Mac, installing Rosetta 2 should solve the issue. You can install it with this command : `softwareupdate --install-rosetta`.
+
+Rosetta will allow applications requiring Intel processor to run on M1 Mac.
+
+</details>
 
 [1]: ./setup.md
