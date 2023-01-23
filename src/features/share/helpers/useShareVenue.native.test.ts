@@ -1,47 +1,44 @@
 import { Platform, Share } from 'react-native'
 
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { act, renderHook } from 'tests/utils'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
-import { useShareOffer } from './useShareOffer'
+import { useShareVenue } from './useShareVenue'
 
 jest.mock('react-query')
-jest.mock('features/offer/api/useOffer')
+jest.mock('features/venue/api/useVenue')
 
 const mockShare = jest
   .spyOn(Share, 'share')
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
-const shareTitle = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
+const shareTitle = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
 const shareOptions = {
   subject: shareTitle,
   dialogTitle: shareTitle,
 }
 
 const shareContentIos = {
-  message: 'Retrouve "Je ne sais pas ce que je dis" chez "Cinéma de la fin" sur le pass Culture',
-  url: `${WEBAPP_V2_URL}/offre/146112`,
+  message: shareTitle,
+  url: `${WEBAPP_V2_URL}/lieu/5543`,
   title: shareTitle,
 }
 
 const shareContentAndroid = {
-  message:
-    'Retrouve "Je ne sais pas ce que je dis" chez "Cinéma de la fin" sur le pass Culture' +
-    DOUBLE_LINE_BREAK +
-    `${WEBAPP_V2_URL}/offre/146112`,
-  url: `${WEBAPP_V2_URL}/offre/146112`,
+  message: shareTitle + DOUBLE_LINE_BREAK + `${WEBAPP_V2_URL}/lieu/5543`,
+  url: `${WEBAPP_V2_URL}/lieu/5543`,
   title: shareTitle,
 }
 
-describe('useShareOffer', () => {
-  describe('should display share modal with data from offer', () => {
-    const offer = mockOffer
+describe('useShareVenue', () => {
+  describe('should display share modal with data from venue', () => {
+    const venue = venueResponseSnap
 
     it('for ios', async () => {
       Platform.OS = 'ios'
-      const { result } = renderHook(() => useShareOffer(offer.id))
+      const { result } = renderHook(() => useShareVenue(venue.id))
 
       const { share } = result.current
       await act(async () => share())
@@ -51,7 +48,7 @@ describe('useShareOffer', () => {
 
     it('for android', async () => {
       Platform.OS = 'android'
-      const { result } = renderHook(() => useShareOffer(offer.id))
+      const { result } = renderHook(() => useShareVenue(venue.id))
 
       const { share } = result.current
       await act(async () => share())

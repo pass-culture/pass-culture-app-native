@@ -2,14 +2,10 @@ import { Platform } from 'react-native'
 
 import { useOffer } from 'features/offer/api/useOffer'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
-import { share, ShareContent } from 'libs/share'
+import { ShareOutput } from 'features/share/types'
+import { share } from 'libs/share'
 import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
-
-type ShareOfferOutput = {
-  shareOffer: () => void
-  shareContent?: ShareContent
-}
 
 const doNothingFn = () => {
   // do nothing when we don't have an offer
@@ -21,12 +17,12 @@ const shareOptions = {
   dialogTitle: shareTitle, // android only
 }
 
-export const useShareOffer = (offerId: number): ShareOfferOutput => {
+export const useShareOffer = (offerId: number): ShareOutput => {
   const { data: offer } = useOffer({ offerId })
 
   if (!offer)
     return {
-      shareOffer: doNothingFn,
+      share: doNothingFn,
       shareContent: undefined,
     }
 
@@ -43,7 +39,7 @@ export const useShareOffer = (offerId: number): ShareOfferOutput => {
   }
 
   return {
-    shareOffer: () => share(shareContent, shareOptions),
+    share: () => share(shareContent, shareOptions),
     shareContent,
   }
 }
