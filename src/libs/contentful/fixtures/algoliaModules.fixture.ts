@@ -35,6 +35,7 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
         isGeolocated: false,
         categories: ['Livres'],
         hitsPerPage: 10,
+        minBookingsThreshold: 2,
         algoliaSubcategories: subcategoriesFixture,
       },
     },

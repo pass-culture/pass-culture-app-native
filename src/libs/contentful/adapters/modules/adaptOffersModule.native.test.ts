@@ -43,6 +43,7 @@ describe('adaptOffersModule', () => {
           categories: ['Livres'],
           hitsPerPage: 10,
           subcategories: ['Livre', 'Livre numérique, e-book'],
+          minBookingsThreshold: 2,
         },
         { title: 'Livre', isGeolocated: false, categories: ['Livres'], hitsPerPage: 10 },
         { title: 'Ciné', categories: ['Cinéma'], hitsPerPage: 2 },

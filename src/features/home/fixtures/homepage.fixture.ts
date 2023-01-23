@@ -124,6 +124,7 @@ export const formattedOffersModule: OffersModule = {
       isGeolocated: false,
       categories: ['Livres'],
       hitsPerPage: 10,
+      minBookingsThreshold: 2,
       subcategories: ['Livre', 'Livre numérique, e-book'],
     },
   ],
