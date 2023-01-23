@@ -27,26 +27,30 @@ export default {
 
 const Template: ComponentStory<typeof SectionRow> = (props) => <SectionRow {...props} />
 
-export const Navigable = Template.bind({})
+// TODO(PC-17931): Fix this story
+const Navigable = Template.bind({})
 Navigable.args = {
   title: 'Section row navigable',
   type: 'navigable',
 }
 
-export const NavigableWithIcon = Template.bind({})
+// TODO(PC-17931): Fix this story
+const NavigableWithIcon = Template.bind({})
 NavigableWithIcon.args = {
   title: 'Section row navigable',
   type: 'navigable',
   icon: Email,
 }
 
-export const Clickable = Template.bind({})
+// TODO(PC-17931): Fix this story
+const Clickable = Template.bind({})
 Clickable.args = {
   title: 'Section row clickable',
   type: 'clickable',
 }
 
-export const ClickableWithIcon = Template.bind({})
+// TODO(PC-17931): Fix this story
+const ClickableWithIcon = Template.bind({})
 ClickableWithIcon.args = {
   title: 'Section row clickable',
   type: 'clickable',
