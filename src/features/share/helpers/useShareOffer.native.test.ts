@@ -20,17 +20,17 @@ const shareOptions = {
   dialogTitle: shareTitle,
 }
 
+const shareMessage =
+  'Retrouve "Je ne sais pas ce que je dis" chez "Cinéma de la fin" sur le pass Culture'
+
 const shareContentIos = {
-  message: 'Retrouve "Je ne sais pas ce que je dis" chez "Cinéma de la fin" sur le pass Culture',
+  message: shareMessage,
   url: `${WEBAPP_V2_URL}/offre/146112`,
   title: shareTitle,
 }
 
 const shareContentAndroid = {
-  message:
-    'Retrouve "Je ne sais pas ce que je dis" chez "Cinéma de la fin" sur le pass Culture' +
-    DOUBLE_LINE_BREAK +
-    `${WEBAPP_V2_URL}/offre/146112`,
+  message: shareMessage + DOUBLE_LINE_BREAK + `${WEBAPP_V2_URL}/offre/146112`,
   url: `${WEBAPP_V2_URL}/offre/146112`,
   title: shareTitle,
 }
