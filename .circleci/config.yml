@@ -758,7 +758,7 @@ jobs:
           command: |
             mkdir -p android/keystores
             echo $ANDROID_KEYSTORE_PRODUCTION | base64 -di > android/keystores/production.keystore
-            echo "keyAlias=android-app" >> android/keystores/production.keystore.properties
+            echo "keyAlias=android-app-configured-for-upload-key-play-store" >> android/keystores/production.keystore.properties
             echo "storeFile=production.keystore" >> android/keystores/production.keystore.properties
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_PRODUCTION" >> android/keystores/production.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_PRODUCTION" >>  android/keystores/production.keystore.properties
