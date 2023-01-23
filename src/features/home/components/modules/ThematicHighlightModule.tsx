@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
 import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
+import { analytics } from 'libs/firebase/analytics'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -36,7 +37,9 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   return (
-    <StyledInternalTouchableLink navigateTo={navigateTo}>
+    <StyledInternalTouchableLink
+      navigateTo={navigateTo}
+      onBeforeNavigate={analytics.logHighlightBlockClicked}>
       <ImageBackground source={{ uri: imageUrl }}>
         <DateRangeCaptionContainer>
           <DateRangeCaption>{dateRange}</DateRangeCaption>
