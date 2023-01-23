@@ -1,4 +1,4 @@
-import { addDays, intervalToDuration } from 'date-fns'
+import { addDays, format, intervalToDuration } from 'date-fns'
 
 import { Booking } from 'features/bookings/types'
 
@@ -52,4 +52,11 @@ export const daysCountdown = (dateCreated: string) => {
     }).days ?? endedCountdown
 
   return daysLeftUntilExpiration
+}
+
+export const formattedExpirationDate = (dateCreated: string) => {
+  const bookingDateCreated = new Date(dateCreated)
+  const expirationDate = addDays(bookingDateCreated, 30)
+  const formattedExpirationDate = format(expirationDate, 'dd/MM/yyyy')
+  return formattedExpirationDate
 }

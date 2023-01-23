@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getBookingProperties } from 'features/bookings/helpers'
+import { formattedExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
@@ -24,6 +25,8 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const properties = getBookingProperties(booking, isEvent)
   const { user } = useAuthContext()
   const isExBeneficiary = user && isUserExBeneficiary(user)
+  const expirationDate = formattedExpirationDate(booking.dateCreated)
+  const isBookingIsDigital = booking.stock.offer.isDigital === true && !booking.expirationDate
 
   if (properties.hasActivationCode) {
     return (
@@ -38,6 +41,17 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
       fullWidth={props.fullWidth}
     />
   )
+
+  if (!booking.confirmationDate && isBookingIsDigital) {
+    const expirationDateMessage = `Ta réservation expirera le ${expirationDate}`
+    return (
+      <React.Fragment>
+        {renderButton}
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledCaption>{expirationDateMessage}</StyledCaption>
+      </React.Fragment>
+    )
+  }
 
   if (booking.confirmationDate) {
     const isStillCancellable = new Date(booking.confirmationDate) > new Date()
@@ -60,12 +74,14 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
         LINE_BREAK +
         `Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le ${formattedConfirmationDate}`
       return <StyledCaption>{isExBeneficiaryText}</StyledCaption>
+    } else if (!isStillCancellable && isBookingIsDigital) {
+      const expirationDateMessage = `Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le ${expirationDate}`
+      return <StyledCaption>{expirationDateMessage}</StyledCaption>
     } else {
       const otherBookingStatusTexte = `Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a0${formattedConfirmationDate}`
       return <StyledCaption>{otherBookingStatusTexte}</StyledCaption>
     }
   }
-
   return renderButton
 }
 
