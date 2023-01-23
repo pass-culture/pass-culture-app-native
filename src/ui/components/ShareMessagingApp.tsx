@@ -29,39 +29,37 @@ export const ShareMessagingApp: React.FC<ShareMessagingAppProps> = ({
     size: theme.buttons.buttonHeights.tall,
   }))``
 
-  const networkDisplayName = network.charAt(0).toUpperCase() + network.slice(1)
-  return (
-    <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + networkDisplayName} />
-  )
+  return <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + network} />
+}
+
+export enum Network {
+  discord = 'Discord',
+  imessage = 'iMessage',
+  instagram = 'Instagram',
+  messenger = 'Messenger',
+  signal = 'Signal',
+  skype = 'Skype',
+  snapchat = 'Snapchat',
+  telegram = 'Telegram',
+  tiktok = 'TikTok',
+  twitch = 'Twitch',
+  twitter = 'Twitter',
+  viber = 'Viber',
+  whatsapp = 'WhatsApp',
 }
 
 const mapNetworkToRoundIcon: Record<Network, React.FC<AccessibleIcon>> = {
-  instagram: InstagramRound,
-  messenger: MessengerRound,
-  snapchat: SnapchatRound,
-  tiktok: TiktokRound,
-  whatsapp: WhatsAppRound,
-  signal: SignalRound,
-  skype: SkypeRound,
-  discord: DiscordRound,
-  telegram: Telegram,
-  twitch: TwitchRound,
-  twitter: TwitterRound,
-  viber: ViberRound,
-  imessage: IMessageRound,
+  [Network.instagram]: InstagramRound,
+  [Network.messenger]: MessengerRound,
+  [Network.snapchat]: SnapchatRound,
+  [Network.tiktok]: TiktokRound,
+  [Network.whatsapp]: WhatsAppRound,
+  [Network.signal]: SignalRound,
+  [Network.skype]: SkypeRound,
+  [Network.discord]: DiscordRound,
+  [Network.telegram]: Telegram,
+  [Network.twitch]: TwitchRound,
+  [Network.twitter]: TwitterRound,
+  [Network.viber]: ViberRound,
+  [Network.imessage]: IMessageRound,
 }
-
-type Network =
-  | 'instagram'
-  | 'messenger'
-  | 'snapchat'
-  | 'tiktok'
-  | 'whatsapp'
-  | 'signal'
-  | 'skype'
-  | 'discord'
-  | 'telegram'
-  | 'twitch'
-  | 'twitter'
-  | 'viber'
-  | 'imessage'

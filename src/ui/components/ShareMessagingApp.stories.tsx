@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 export default {
   title: 'ui/ShareMessagingApp',
@@ -12,5 +13,5 @@ const Template: ComponentStory<typeof ShareMessagingApp> = (args) => <ShareMessa
 
 export const Default = Template.bind({})
 Default.args = {
-  network: 'instagram',
+  network: Network.instagram,
 }
