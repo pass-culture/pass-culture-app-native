@@ -83,6 +83,7 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should block user if cancellation date is over', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
+    booking.stock.offer.isDigital = false
     const { queryByText } = renderBookingDetailsCancelButton(booking)
     expect(
       queryByText(
@@ -101,6 +102,29 @@ describe('<BookingDetailsCancelButton />', () => {
         'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1 novembre 2020'
       )
     ).toBeTruthy()
+  })
+
+  it('should display button if confirmationDate is null and an expiration date message if isBookingIsDigital', () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = null
+    booking.stock.offer.isDigital = true
+
+    const { queryByTestId, queryByText } = renderBookingDetailsCancelButton(booking)
+    const expirationDateMessage = 'Ta réservation expirera le 17/03/2021'
+
+    expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
+    expect(queryByText(expirationDateMessage)).toBeTruthy()
+  })
+
+  it('should display only an expiration date message if is not still cancellable and if the booking is digital', () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = '2020-11-01T00:00:00Z'
+
+    const { queryByText } = renderBookingDetailsCancelButton(booking)
+    const expirationDateMessage =
+      'Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021'
+
+    expect(queryByText(expirationDateMessage)).toBeTruthy()
   })
 })
 
