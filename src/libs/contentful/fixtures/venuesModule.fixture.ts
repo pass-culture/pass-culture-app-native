@@ -10,7 +10,9 @@ export const venuesNatifModuleFixture: VenuesContentModel = {
     updatedAt: '2022-11-28T15:18:57.290Z',
     environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
     revision: 9,
-    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'venuesPlaylist' } },
+    contentType: {
+      sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.VENUES_PLAYLIST },
+    },
     locale: 'en-US',
   },
   fields: {

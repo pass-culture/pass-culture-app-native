@@ -1,4 +1,4 @@
-import { SearchParametersFields } from 'libs/contentful'
+import { OffersModuleParameters } from 'features/home/types'
 import { useParseSearchParameters } from 'libs/search'
 import * as parseSearchParametersAPI from 'libs/search/parseSearchParameters'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
@@ -19,7 +19,7 @@ describe('useParseSearchParameters', () => {
   const parseSearchParametersSpy = jest.spyOn(parseSearchParametersAPI, 'parseSearchParameters')
 
   it('should set price max parameter when not provided', () => {
-    const parameters = {} as SearchParametersFields
+    const parameters = {} as OffersModuleParameters
     const { result } = renderHook(() => useParseSearchParameters())
 
     result.current(parameters)
@@ -33,7 +33,7 @@ describe('useParseSearchParameters', () => {
 
   it('should use price max parameter when provided', () => {
     const priceMax = 12
-    const parameters = {} as SearchParametersFields
+    const parameters = {} as OffersModuleParameters
     const { result } = renderHook(() => useParseSearchParameters())
 
     result.current({ ...parameters, priceMax })

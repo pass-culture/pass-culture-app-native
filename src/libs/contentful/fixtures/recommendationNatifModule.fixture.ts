@@ -25,7 +25,7 @@ export const recommendationNatifModuleFixture: RecommendationContentModel = {
       sys: {
         type: 'Link',
         linkType: 'ContentType',
-        id: 'recommendation',
+        id: ContentTypes.RECOMMENDATION,
       },
     },
     locale: 'en-US',

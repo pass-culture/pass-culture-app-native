@@ -1,4 +1,4 @@
-import { ThematicHighlightContentModel } from 'libs/contentful/types'
+import { ContentTypes, ThematicHighlightContentModel } from 'libs/contentful/types'
 
 export const thematicHighlightModuleFixture: ThematicHighlightContentModel = {
   sys: {
@@ -25,7 +25,7 @@ export const thematicHighlightModuleFixture: ThematicHighlightContentModel = {
       sys: {
         type: 'Link',
         linkType: 'ContentType',
-        id: 'thematicHighlight',
+        id: ContentTypes.THEMATIC_HIGHLIGHT,
       },
     },
     locale: 'en-US',

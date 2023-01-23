@@ -6,7 +6,7 @@ import { adaptHomepageNatifEntries } from 'libs/contentful/adapters/adaptHomepag
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 
-const DEPTH_LEVEL = 2
+const DEPTH_LEVEL = 3
 
 const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`

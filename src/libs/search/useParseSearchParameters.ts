@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 
+import { OffersModuleParameters } from 'features/home/types'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
-import { SearchParametersFields } from 'libs/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { parseSearchParameters } from 'libs/search/parseSearchParameters'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
@@ -13,7 +13,7 @@ export const useParseSearchParameters = () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   return useCallback(
-    (parameters: SearchParametersFields): Partial<SearchState> | undefined =>
+    (parameters: OffersModuleParameters): Partial<SearchState> | undefined =>
       parseSearchParameters(
         { ...parameters, priceMin: 0, priceMax: parameters.priceMax ?? defaultPriceMax },
         position,

@@ -119,7 +119,13 @@ export const formattedOffersModule: OffersModule = {
     minOffers: 1,
   },
   offersModuleParameters: [
-    { title: 'Livre', isGeolocated: false, categories: ['Livres'], hitsPerPage: 10 },
+    {
+      title: 'Livre',
+      isGeolocated: false,
+      categories: ['Livres'],
+      hitsPerPage: 10,
+      subcategories: ['Livre', 'Livre numérique, e-book'],
+    },
   ],
   cover: undefined,
 }

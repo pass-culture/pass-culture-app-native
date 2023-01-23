@@ -2,12 +2,9 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
+import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import {
-  SearchParametersFields,
-  DisplayParametersFields,
-  ContentTypes,
-} from 'libs/contentful/types'
+import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
@@ -17,7 +14,7 @@ import { OffersModule } from './OffersModule'
 mockdate.set(new Date(2020, 10, 16))
 
 const props = {
-  search: [{} as SearchParametersFields],
+  search: [{} as OffersModuleParameters],
   display: {
     minOffers: 0,
     title: 'Module title',
@@ -84,7 +81,7 @@ describe('OffersModule component - Analytics', () => {
     render(
       <OffersModule
         {...props}
-        search={[{ title: 'Search title' } as SearchParametersFields]}
+        search={[{ title: 'Search title' } as OffersModuleParameters]}
         display={{ ...props.display, minOffers: mockNbHits + 1 }}
         index={1}
       />
