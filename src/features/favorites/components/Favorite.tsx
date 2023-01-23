@@ -116,7 +116,7 @@ export const Favorite: React.FC<Props> = (props) => {
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const { share: shareOffer, shareContent } = useShareOffer(offer.id)
+  const { shareOffer, shareContent } = useShareOffer(offer.id)
 
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })

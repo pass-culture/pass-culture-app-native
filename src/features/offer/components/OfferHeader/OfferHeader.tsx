@@ -47,7 +47,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { share: shareOffer, shareContent } = useShareOffer(offerId)
+  const { shareOffer, shareContent } = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
