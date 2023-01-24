@@ -1413,7 +1413,7 @@ exports[`Profile component should render correctly 1`] = `
                       style={
                         Array [
                           Object {
-                            "borderRadius": 8,
+                            "borderRadius": 7,
                             "overflow": "hidden",
                           },
                         ]
