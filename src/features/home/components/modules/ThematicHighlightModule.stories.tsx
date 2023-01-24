@@ -26,6 +26,7 @@ const Template: ComponentStory<typeof ThematicHighlightModule> = (props) => (
 )
 
 const defaultArgs = {
+  id: 'toto',
   title: 'Lorem ipsum',
   subtitle: 'Dolor sit amet',
   imageUrl:
@@ -33,6 +34,7 @@ const defaultArgs = {
   beginningDate: new Date('2022-12-21'),
   endingDate: new Date('2023-01-01'),
   thematicHomeEntryId: '351351',
+  index: 0,
 }
 
 export const Default = Template.bind({})

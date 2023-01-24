@@ -14,6 +14,7 @@ describe('ThematicHighlightModule', () => {
   it('should render if the ending date is not passed', () => {
     render(
       <ThematicHighlightModule
+        index={0}
         {...formattedThematicHighlightModule}
         beginningDate={CURRENT_DATE}
         endingDate={CURRENT_DATE}
@@ -25,6 +26,7 @@ describe('ThematicHighlightModule', () => {
   it('should not render if the ending date is passed', () => {
     render(
       <ThematicHighlightModule
+        index={0}
         {...formattedThematicHighlightModule}
         beginningDate={PASSED_DATE}
         endingDate={PASSED_DATE}
@@ -33,8 +35,33 @@ describe('ThematicHighlightModule', () => {
     expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeNull()
   })
 
+  it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
+    render(<ThematicHighlightModule index={0} {...formattedThematicHighlightModule} />)
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
+      1,
+      '5Z1FGtRGbE3d1Q5oqHMfe9',
+      'thematicHighlight',
+      0,
+      '6DCThxvbPFKAo04SVRZtwY'
+    )
+  })
+
+  it('should not log ModuleDisplayedOnHomePage event when the module is passed (so not displayed)', () => {
+    render(
+      <ThematicHighlightModule
+        index={0}
+        {...formattedThematicHighlightModule}
+        beginningDate={PASSED_DATE}
+        endingDate={PASSED_DATE}
+      />
+    )
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledTimes(0)
+  })
+
   it('should log HighlightBlockClicked event when pressing', () => {
-    render(<ThematicHighlightModule {...formattedThematicHighlightModule} />)
+    render(<ThematicHighlightModule index={0} {...formattedThematicHighlightModule} />)
     const thematicHighlightModule = screen.getByText(formattedThematicHighlightModule.title)
 
     fireEvent.press(thematicHighlightModule)
