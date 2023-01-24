@@ -28,7 +28,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { user } = useAuthContext()
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const remainingDays = formattedExpirationDate(booking.dateCreated)
-  const isBookingIsDigital = booking.stock.offer.isDigital === true && !booking.expirationDate
+  const isDigitalBooking = booking.stock.offer.isDigital === true && !booking.expirationDate
 
   const renderButton = () => {
     if (properties.hasActivationCode) {
@@ -37,15 +37,16 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
     return <CancelBookingButton onCancel={props.onCancel} fullWidth={props.fullWidth} />
   }
 
-  if (!booking.confirmationDate && isBookingIsDigital) {
+  if (!booking.confirmationDate && isDigitalBooking) {
     return <BookingExpiration expirationDate={remainingDays}>{renderButton()}</BookingExpiration>
   }
 
-  const isStillCancellable = new Date(booking.confirmationDate as string) > new Date()
-  const formattedConfirmationDate = formatToCompleteFrenchDate(
-    new Date(booking.confirmationDate as string),
-    false
-  )
+  const isStillCancellable =
+    booking.confirmationDate && new Date(booking.confirmationDate) > new Date()
+
+  const formattedConfirmationDate = booking.confirmationDate
+    ? formatToCompleteFrenchDate(new Date(booking.confirmationDate), false)
+    : ''
 
   const stillCancellableMessage = `La réservation est annulable jusqu'au\u00a0${formattedConfirmationDate}`
   const isExBeneficiaryMessage =
@@ -63,7 +64,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
     button = renderButton()
   } else if (isExBeneficiary) {
     cancelAnnulationMessage = isExBeneficiaryMessage
-  } else if (isBookingIsDigital) {
+  } else if (isDigitalBooking) {
     cancelAnnulationMessage = expirationDateMessage
   } else {
     cancelAnnulationMessage = otherBookingStatusMessage

@@ -9,6 +9,9 @@ export interface BookingExpirationProps {
 }
 
 export const BookingExpiration = ({ children, expirationDate }: BookingExpirationProps) => {
+  if (!expirationDate) {
+    return null
+  }
   const expirationDateMessage = `Ta réservation expirera le ${expirationDate}`
   return (
     <React.Fragment>
