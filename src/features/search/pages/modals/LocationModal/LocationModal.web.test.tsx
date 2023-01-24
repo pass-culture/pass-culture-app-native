@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import {
   LocationModal,
   LocationModalProps,
@@ -64,10 +64,7 @@ describe('<LocationModal/>', () => {
 })
 
 function renderLocationModal(
-  {
-    hideModal = () => {},
-    filterBehaviour = FilterBehaviourEnum.SEARCH,
-  }: Partial<LocationModalProps>,
+  { hideModal = () => {}, filterBehaviour = FilterBehaviour.SEARCH }: Partial<LocationModalProps>,
   isDesktopViewport?: boolean
 ) {
   return render(

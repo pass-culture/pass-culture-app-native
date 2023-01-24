@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView, FilterBehaviourEnum } from 'features/search/enums'
+import { CategoriesModalView, FilterBehaviour } from 'features/search/enums'
 import {
   buildSearchPayloadValues,
   categoryAllValue,
@@ -37,7 +37,7 @@ export interface CategoriesModalProps {
   accessibilityLabel: string
   isVisible?: boolean
   hideModal: VoidFunction
-  filterBehaviour: FilterBehaviourEnum
+  filterBehaviour: FilterBehaviour
 }
 
 const titleId = uuidv4()
@@ -171,7 +171,7 @@ export const CategoriesModal = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
+      if (filterBehaviour === FilterBehaviour.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })

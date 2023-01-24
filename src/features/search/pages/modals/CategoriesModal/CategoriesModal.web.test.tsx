@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -19,7 +19,7 @@ describe('<CategoriesModal/>', () => {
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible
         hideModal={jest.fn()}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
     )
 
@@ -35,7 +35,7 @@ describe('<CategoriesModal/>', () => {
           accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
           isVisible
           hideModal={jest.fn()}
-          filterBehaviour={FilterBehaviourEnum.SEARCH}
+          filterBehaviour={FilterBehaviour.SEARCH}
         />
       )
       const results = await checkAccessibilityFor(container)
@@ -49,7 +49,7 @@ describe('<CategoriesModal/>', () => {
           accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
           isVisible
           hideModal={jest.fn()}
-          filterBehaviour={FilterBehaviourEnum.SEARCH}
+          filterBehaviour={FilterBehaviour.SEARCH}
         />,
         { theme: { isDesktopViewport: true } }
       )

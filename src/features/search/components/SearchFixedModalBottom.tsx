@@ -3,14 +3,14 @@ import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 
 type Props = {
   onResetPress: () => void
   onSearchPress: () => void
   isSearchDisabled?: boolean
-  filterBehaviour: FilterBehaviourEnum
+  filterBehaviour: FilterBehaviour
 }
 
 export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({

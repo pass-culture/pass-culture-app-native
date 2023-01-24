@@ -187,7 +187,7 @@ export enum RadioButtonLocation {
   NO_LOCATION = 'Aucune localisation',
 }
 
-export enum FilterBehaviourEnum {
+export enum FilterBehaviour {
   SEARCH = 'Search',
   APPLY_WITHOUT_SEARCHING = 'ApplyWithoutSearching',
 }

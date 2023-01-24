@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
 import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
@@ -37,7 +37,7 @@ export const Price: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
         isVisible={searchPriceModalVisible}
         hideModal={hideSearchPriceModal}
-        filterBehaviour={FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
       />
     </React.Fragment>
   )

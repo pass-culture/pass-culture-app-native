@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -825,7 +825,7 @@ describe('<PriceModal/>', () => {
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
       const { getByText } = renderSearchPrice({
-        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
@@ -835,7 +835,7 @@ describe('<PriceModal/>', () => {
 
     it('should update search state when pressing submit button', async () => {
       const { getByText, getByPlaceholderText } = renderSearchPrice({
-        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await superFlushWithAct()
@@ -866,7 +866,7 @@ describe('<PriceModal/>', () => {
 })
 
 function renderSearchPrice({
-  filterBehaviour = FilterBehaviourEnum.SEARCH,
+  filterBehaviour = FilterBehaviour.SEARCH,
   ...props
 }: Partial<PriceModalProps> = {}) {
   return render(

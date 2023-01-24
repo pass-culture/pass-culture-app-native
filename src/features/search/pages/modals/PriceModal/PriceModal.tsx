@@ -13,7 +13,7 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState, SearchView } from 'features/search/types'
@@ -43,7 +43,7 @@ export type PriceModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  filterBehaviour: FilterBehaviourEnum
+  filterBehaviour: FilterBehaviour
 }
 
 const titleId = uuidv4()
@@ -114,7 +114,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     }
 
     analytics.logPerformSearch(additionalSearchState)
-    if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
+    if (filterBehaviour === FilterBehaviour.SEARCH) {
       navigate(...getTabNavConfig('Search', additionalSearchState))
     } else {
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })

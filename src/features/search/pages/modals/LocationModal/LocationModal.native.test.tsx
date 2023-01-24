@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { FilterBehaviourEnum, LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -708,7 +708,7 @@ describe('<LocationModal/>', () => {
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
       const { getByText } = renderLocationModal({
-        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
@@ -718,7 +718,7 @@ describe('<LocationModal/>', () => {
 
     it('should update search state when pressing submit button', async () => {
       const { getByText } = renderLocationModal({
-        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await superFlushWithAct()
@@ -747,7 +747,7 @@ describe('<LocationModal/>', () => {
 
 function renderLocationModal({
   hideModal = () => {},
-  filterBehaviour = FilterBehaviourEnum.SEARCH,
+  filterBehaviour = FilterBehaviour.SEARCH,
 }: Partial<LocationModalProps>) {
   return render(
     <LocationModal

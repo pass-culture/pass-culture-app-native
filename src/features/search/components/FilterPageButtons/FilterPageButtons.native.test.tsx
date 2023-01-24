@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { fireEvent, render } from 'tests/utils'
 
 const onResetPress = jest.fn()
@@ -13,7 +13,7 @@ describe('FilterPageButtons', () => {
       <FilterPageButtons
         onSearchPress={onSearchPress}
         onResetPress={onResetPress}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
     )
     const resetButton = getByText('Réinitialiser')
@@ -27,7 +27,7 @@ describe('FilterPageButtons', () => {
       <FilterPageButtons
         onSearchPress={onSearchPress}
         onResetPress={onResetPress}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
     )
     const searchButton = getByText('Rechercher')
@@ -41,7 +41,7 @@ describe('FilterPageButtons', () => {
       <FilterPageButtons
         onSearchPress={onSearchPress}
         onResetPress={onResetPress}
-        filterBehaviour={FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
       />
     )
 

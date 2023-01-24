@@ -11,7 +11,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { Form } from 'ui/components/Form'
@@ -28,7 +28,7 @@ export type OfferDuoModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  filterBehaviour: FilterBehaviourEnum
+  filterBehaviour: FilterBehaviour
 }
 
 const titleId = uuidv4()
@@ -109,7 +109,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
         view: SearchView.Results,
       }
       analytics.logPerformSearch(additionalSearchState)
-      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
+      if (filterBehaviour === FilterBehaviour.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })

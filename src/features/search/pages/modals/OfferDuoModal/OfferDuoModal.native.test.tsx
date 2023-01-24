@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import {
   OfferDuoModal,
   OfferDuoModalProps,
@@ -223,7 +223,7 @@ describe('<OfferDuoModal/>', () => {
     it('should display alternative button title', async () => {
       const { getByText } = renderOfferDuoModal({
         isVisible: true,
-        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
@@ -234,7 +234,7 @@ describe('<OfferDuoModal/>', () => {
     it('should update search state when pressing submit button', async () => {
       const { getByText, getByTestId } = renderOfferDuoModal({
         isVisible: true,
-        filterBehaviour: FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING,
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       const toggle = getByTestId('Interrupteur-limitDuoOfferSearch')
@@ -265,7 +265,7 @@ function renderOfferDuoModal(
   {
     isVisible = false,
     hideModal = () => {},
-    filterBehaviour = FilterBehaviourEnum.SEARCH,
+    filterBehaviour = FilterBehaviour.SEARCH,
   }: Partial<OfferDuoModalProps>,
   isDesktopViewport?: boolean
 ) {

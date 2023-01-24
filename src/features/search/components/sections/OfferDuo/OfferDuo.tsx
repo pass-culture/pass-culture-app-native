@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { OtherOffer } from 'ui/svg/icons/OtherOffer'
@@ -31,7 +31,7 @@ export function OfferDuo() {
         accessibilityLabel="Ne pas filtrer les offres duo et retourner aux filtres de recherche"
         isVisible={offerDuoModalVisible}
         hideModal={hideOfferDuoModal}
-        filterBehaviour={FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
       />
     </React.Fragment>
   )

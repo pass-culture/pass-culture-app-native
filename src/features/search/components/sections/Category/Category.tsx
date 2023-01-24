@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import {
   categoryAllValue,
   getDescription,
@@ -47,7 +47,7 @@ export const Category: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
-        filterBehaviour={FilterBehaviourEnum.APPLY_WITHOUT_SEARCHING}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
       />
     </React.Fragment>
   )

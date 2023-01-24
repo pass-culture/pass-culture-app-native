@@ -12,7 +12,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum, LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
@@ -54,7 +54,7 @@ export type LocationModalProps = {
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
-  filterBehaviour: FilterBehaviourEnum
+  filterBehaviour: FilterBehaviour
 }
 
 const LOCATION_TYPES = [
@@ -226,7 +226,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      if (filterBehaviour === FilterBehaviourEnum.SEARCH) {
+      if (filterBehaviour === FilterBehaviour.SEARCH) {
         navigate(...getTabNavConfig('Search', additionalSearchState))
       } else {
         dispatch({ type: 'SET_STATE', payload: additionalSearchState })

@@ -15,7 +15,7 @@ import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSea
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviourEnum } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import {
   FILTER_TYPES,
   useAppliedFilters,
@@ -355,35 +355,35 @@ export const SearchResults: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
       <PriceModal
         title="Prix"
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
         isVisible={searchPriceModalVisible}
         hideModal={hideSearchPriceModal}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
       <OfferDuoModal
         title="Duo"
         accessibilityLabel="Ne pas filtrer sur les offres duo et retourner aux résultats"
         isVisible={offerDuoModalVisible}
         hideModal={hideOfferDuoModal}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
       <LocationModal
         title="Localisation"
         accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
         isVisible={locationModalVisible}
         hideModal={hideLocationModal}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
       <DatesHoursModal
         title="Dates & heures"
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
         isVisible={datesHoursModalVisible}
         hideModal={hideDatesHoursModal}
-        filterBehaviour={FilterBehaviourEnum.SEARCH}
+        filterBehaviour={FilterBehaviour.SEARCH}
       />
     </React.Fragment>
   )
