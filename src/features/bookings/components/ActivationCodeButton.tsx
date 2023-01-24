@@ -7,6 +7,9 @@ export interface ActivationCodeButtonProps {
   fullWidth?: boolean
 }
 
-export const ActivationCodeButton = ({ onTerminate, fullWidth }: ActivationCodeButtonProps) => {
+export const ActivationCodeButton = ({
+  onTerminate,
+  fullWidth = false,
+}: ActivationCodeButtonProps) => {
   return <ButtonSecondary wording="Terminer" onPress={onTerminate} fullWidth={fullWidth} />
 }

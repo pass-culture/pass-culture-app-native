@@ -38,7 +38,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   }
 
   if (!booking.confirmationDate && isBookingIsDigital) {
-    return <BookingExpiration renderButton={renderButton} expirationDate={remainingDays} />
+    return <BookingExpiration expirationDate={remainingDays}>{renderButton()}</BookingExpiration>
   }
 
   const isStillCancellable = new Date(booking.confirmationDate as string) > new Date()

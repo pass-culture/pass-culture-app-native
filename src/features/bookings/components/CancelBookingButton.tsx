@@ -7,7 +7,7 @@ export interface CancelButtonProps {
   fullWidth?: boolean
 }
 
-export const CancelBookingButton = ({ onCancel, fullWidth }: CancelButtonProps) => {
+export const CancelBookingButton = ({ onCancel, fullWidth = false }: CancelButtonProps) => {
   return (
     <ButtonSecondary wording="Annuler ma réservation" onPress={onCancel} fullWidth={fullWidth} />
   )

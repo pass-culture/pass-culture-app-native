@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { Spacer, Typo } from 'ui/theme'
 
 export interface BookingExpirationProps {
-  renderButton: () => JSX.Element
+  children: ReactNode
   expirationDate: string
 }
 
-export const BookingExpiration = ({ renderButton, expirationDate }: BookingExpirationProps) => {
+export const BookingExpiration = ({ children, expirationDate }: BookingExpirationProps) => {
   const expirationDateMessage = `Ta réservation expirera le ${expirationDate}`
   return (
     <React.Fragment>
-      {renderButton()}
+      {children}
       <Spacer.Column numberOfSpaces={4} />
       <StyledCaption>{expirationDateMessage}</StyledCaption>
     </React.Fragment>
