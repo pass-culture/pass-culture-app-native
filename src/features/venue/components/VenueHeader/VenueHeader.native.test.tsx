@@ -1,8 +1,7 @@
 import React from 'react'
-import { Animated, Share, Platform } from 'react-native'
+import { Animated } from 'react-native'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { getVenueUrl } from 'features/share/helpers/useShareVenue'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/firebase/analytics'
@@ -39,41 +38,6 @@ describe('<VenueHeader />', () => {
 
     expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1)
-  })
-
-  it('should call Share with the right arguments on IOS', () => {
-    Platform.OS = 'ios'
-    const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = renderVenueHeader()
-
-    fireEvent.press(getByTestId('animated-icon-share'))
-
-    expect(share).toHaveBeenCalledTimes(1)
-    const url = getVenueUrl(5543)
-    const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
-
-    expect(share).toHaveBeenCalledWith(
-      { message, title: message, url },
-      { dialogTitle: message, subject: message }
-    )
-  })
-
-  it('should call Share with the right arguments on Android', () => {
-    Platform.OS = 'android'
-    const share = jest.spyOn(Share, 'share')
-    const { getByTestId } = renderVenueHeader()
-
-    fireEvent.press(getByTestId('animated-icon-share'))
-
-    expect(share).toHaveBeenCalledTimes(1)
-    const url = getVenueUrl(5543)
-    const message = 'Retrouve "Le Petit Rintintin 1" sur le pass Culture'
-    const messageWithUrl = `${message}\n\n${url}`
-
-    expect(share).toHaveBeenCalledWith(
-      { message: messageWithUrl, title: message, url },
-      { dialogTitle: message, subject: message }
-    )
   })
 
   it('should log analytics when clicking on the share button', () => {

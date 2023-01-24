@@ -6,3 +6,8 @@ export interface WebShareModalProps {
   shareContent: ShareContent
   dismissModal: () => void
 }
+
+export type ShareOutput = {
+  share: () => void
+  shareContent?: ShareContent
+}
