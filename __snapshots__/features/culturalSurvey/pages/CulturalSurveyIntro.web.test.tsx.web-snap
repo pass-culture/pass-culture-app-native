@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CulturalSurveyIntro page should render the page with correct layout 1`] = `
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c4:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #F1F1F4;
+}
+
+.c1 {
+  background-color: transparent;
+}
+
+<div
+  className="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk"
+  dir={null}
+>
+  <div
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    dir={null}
+  />
+  <div
+    className="css-view-175oi2r r-alignItems-1awozwy r-flexGrow-16y2uox r-height-o29g2o r-justifyContent-1777fci"
+    dir={null}
+  >
+    <div
+      className="css-view-175oi2r"
+      dir={null}
+    >
+      <div
+        className="css-text-1rynq56"
+        dir="ltr"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
+    dir={null}
+  />
+  <h3
+    aria-level={3}
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-textAlign-q4m81j"
+    dir="ltr"
+    role="heading"
+  >
+    Prends 1 minute
+  </h3>
+  <h4
+    aria-level={4}
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+    dir="ltr"
+    role="heading"
+  >
+    pour nous parler de tes activités culturelles préférées
+  </h4>
+  <div
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
+    dir={null}
+  />
+  <div
+    className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+    dir="ltr"
+  >
+    En continuant, tu acceptes que nous utilisions les réponses au questionnaire qui va suivre pour améliorer l’application.
+  </div>
+  <div
+    className="css-view-175oi2r"
+    dir={null}
+  >
+    <a
+      aria-label="En savoir plus sur ce qu’on fait de tes données"
+      className="c0 c1"
+      data-testid="En savoir plus sur ce qu’on fait de tes données"
+      href="https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs"
+      onClick={[Function]}
+      onDoubleClick={[Function]}
+      tabIndex={0}
+      target="_blank"
+    >
+      <div
+        className="css-view-175oi2r r-flexShrink-1q142lx"
+        dir={null}
+      >
+        <div
+          className="css-view-175oi2r"
+          data-testid="button-icon"
+          dir={null}
+        >
+          <div
+            className="css-text-1rynq56"
+            dir="ltr"
+          >
+            button-icon-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+        dir="ltr"
+      >
+        En savoir plus
+      </div>
+    </a>
+  </div>
+  <div
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    dir={null}
+  />
+  <div
+    className="css-view-175oi2r"
+    dir={null}
+  >
+    <button
+      aria-label="Débuter le questionnaire"
+      className="c2 c3"
+      data-testid="Débuter le questionnaire"
+      onClick={[Function]}
+      onDoubleClick={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <div
+        className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+        dir="ltr"
+      >
+        Débuter le questionnaire
+      </div>
+    </button>
+    <div
+      className="css-view-175oi2r r-height-tbmifm"
+      dir={null}
+    />
+    <button
+      aria-label="Plus tard"
+      className="c4 c1"
+      data-testid="Plus tard"
+      onClick={[Function]}
+      onDoubleClick={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <div
+        className="css-view-175oi2r r-flexShrink-1q142lx"
+        dir={null}
+      >
+        <div
+          className="css-view-175oi2r"
+          data-testid="button-icon"
+          dir={null}
+        >
+          <div
+            className="css-text-1rynq56"
+            dir="ltr"
+          >
+            button-icon-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+        dir="ltr"
+      >
+        Plus tard
+      </div>
+    </button>
+  </div>
+  <div
+    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16xksha r-flexShrink-1wbh5a2"
+    dir={null}
+  />
+</div>
+`;

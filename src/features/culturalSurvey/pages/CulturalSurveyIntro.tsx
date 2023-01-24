@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
@@ -9,12 +9,23 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
+
+export const FAQ_URL =
+  'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs'
+
+const FAQTouchableLinkProps = {
+  as: ButtonTertiaryBlack,
+  wording: 'En savoir plus',
+  icon: InfoPlain,
+  accessibilityLabel: 'En savoir plus sur ce qu’on fait de tes données',
+}
 
 export const CulturalSurveyIntro = (): JSX.Element => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -31,15 +42,21 @@ export const CulturalSurveyIntro = (): JSX.Element => {
         pour améliorer l’application.
       </StyledBody>
       <View>
-        <InternalTouchableLink
-          as={ButtonTertiaryBlack}
-          wording="En savoir plus"
-          icon={InfoPlain}
-          accessibilityLabel={'En savoir plus sur ce qu’on fait de tes données'}
-          navigateTo={{
-            screen: '', // TODO(anoukhello) add FAQWebview redirection in next commit
-          }}
-        />
+        {Platform.OS === 'web' ? (
+          <ExternalTouchableLink
+            externalNav={{
+              url: FAQ_URL,
+            }}
+            {...FAQTouchableLinkProps}
+          />
+        ) : (
+          <InternalTouchableLink
+            navigateTo={{
+              screen: 'FAQWebview',
+            }}
+            {...FAQTouchableLinkProps}
+          />
+        )}
       </View>
       <Spacer.Flex flex={1} />
       <View>

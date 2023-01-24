@@ -45,4 +45,11 @@ describe('CulturalSurveyIntro page', () => {
     fireEvent.press(LaterButton)
     expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalledTimes(1)
   })
+
+  it('should navigate to FAQWebview when pressing En savoir plus', () => {
+    const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
+    const FAQButton = CulturalSurveyIntroPage.getByText('En savoir plus')
+    fireEvent.press(FAQButton)
+    expect(navigate).toHaveBeenCalledWith('FAQWebview', undefined)
+  })
 })
