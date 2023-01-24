@@ -19,6 +19,7 @@ export const buildNumericFilters = ({
   minPrice,
   maxPrice,
   maxPossiblePrice,
+  minBookingsThreshold,
 }: Pick<
   SearchParametersQuery,
   | 'beginningDatetime'
@@ -31,6 +32,7 @@ export const buildNumericFilters = ({
   | 'minPrice'
   | 'maxPrice'
   | 'maxPossiblePrice'
+  | 'minBookingsThreshold'
 >): null | {
   numericFilters: FiltersArray
 } => {
@@ -44,14 +46,23 @@ export const buildNumericFilters = ({
   const datePredicate = buildDatePredicate({ date, timeRange })
   const newestOffersPredicate = buildNewestOffersPredicate(offerIsNew)
   const homepageDatePredicate = buildHomepageDatePredicate({ beginningDatetime, endingDatetime })
+  const last30DaysBookingsPredicate = buildOfferLast30DaysBookings(minBookingsThreshold)
   const numericFilters: FiltersArray = []
 
   if (priceRangePredicate) numericFilters.push(priceRangePredicate)
   if (datePredicate) numericFilters.push(datePredicate)
   if (newestOffersPredicate) numericFilters.push(newestOffersPredicate)
   if (homepageDatePredicate) numericFilters.push(homepageDatePredicate)
+  if (last30DaysBookingsPredicate) numericFilters.push(last30DaysBookingsPredicate)
 
   return numericFilters.length > 0 ? { numericFilters } : null
+}
+
+const buildOfferLast30DaysBookings = (
+  minBookingsThreshold: number | undefined
+): FiltersArray[0] | undefined => {
+  if (!minBookingsThreshold) return undefined
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_LAST_30_DAYS_BOOKINGS} >= ${minBookingsThreshold}`]
 }
 
 const buildOfferPriceRangePredicate = ({

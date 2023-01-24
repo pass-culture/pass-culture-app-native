@@ -33,6 +33,7 @@ export const buildOfferSearchParameters = (
     excludedObjectIds = [],
     maxPossiblePrice = '',
     isOnline = undefined,
+    minBookingsThreshold = 0,
   }: SearchState & { objectIds?: string[]; excludedObjectIds?: string[] },
   userLocation: GeoCoordinates | null,
   isUserUnderage: boolean
@@ -60,6 +61,7 @@ export const buildOfferSearchParameters = (
     minPrice,
     maxPrice,
     maxPossiblePrice,
+    minBookingsThreshold,
   }),
   ...buildGeolocationParameter(locationFilter, userLocation, isOnline),
   ...buildFilters({ excludedObjectIds }),
