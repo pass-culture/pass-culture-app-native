@@ -14,6 +14,7 @@ describe('ThematicHighlightModule', () => {
   it('should render if the ending date is not passed', () => {
     render(
       <ThematicHighlightModule
+        index={0}
         {...formattedThematicHighlightModule}
         beginningDate={CURRENT_DATE}
         endingDate={CURRENT_DATE}
@@ -25,6 +26,7 @@ describe('ThematicHighlightModule', () => {
   it('should not render if the ending date is passed', () => {
     render(
       <ThematicHighlightModule
+        index={0}
         {...formattedThematicHighlightModule}
         beginningDate={PASSED_DATE}
         endingDate={PASSED_DATE}
@@ -34,7 +36,7 @@ describe('ThematicHighlightModule', () => {
   })
 
   it('should log HighlightBlockClicked event when pressing', () => {
-    render(<ThematicHighlightModule {...formattedThematicHighlightModule} />)
+    render(<ThematicHighlightModule index={0} {...formattedThematicHighlightModule} />)
     const thematicHighlightModule = screen.getByText(formattedThematicHighlightModule.title)
 
     fireEvent.press(thematicHighlightModule)
