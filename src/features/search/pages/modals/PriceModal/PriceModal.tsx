@@ -114,10 +114,15 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     }
 
     analytics.logPerformSearch(additionalSearchState)
-    if (filterBehaviour === FilterBehaviour.SEARCH) {
-      navigate(...getTabNavConfig('Search', additionalSearchState))
-    } else {
-      dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+    switch (filterBehaviour) {
+      case FilterBehaviour.SEARCH: {
+        navigate(...getTabNavConfig('Search', additionalSearchState))
+        break
+      }
+      case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+        break
+      }
     }
     hideModal()
   }

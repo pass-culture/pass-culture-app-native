@@ -24,8 +24,17 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   isSearchDisabled,
   filterBehaviour,
 }) => {
-  const searchButtonText =
-    filterBehaviour === FilterBehaviour.SEARCH ? 'Rechercher' : 'Appliquer le filtre'
+  let searchButtonText = ''
+  switch (filterBehaviour) {
+    case FilterBehaviour.SEARCH: {
+      searchButtonText = 'Rechercher'
+      break
+    }
+    case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+      searchButtonText = 'Appliquer le filtre'
+      break
+    }
+  }
 
   return (
     <Container isModal={isModal}>
