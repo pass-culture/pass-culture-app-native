@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { Maintenance } from 'features/maintenance/Maintenance'
-import { useMaintenance } from 'features/maintenance/useMaintenance'
+import { useMaintenance } from 'features/maintenance/helpers/useMaintenance'
+import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
 
 type Props = {
