@@ -31,7 +31,8 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   thematicHomeEntryId,
 }) => {
   const isAlreadyEnded = isBefore(endingDate, new Date())
-  if (isAlreadyEnded) return null
+  const shouldHideModule = isAlreadyEnded
+  if (shouldHideModule) return null
 
   const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
