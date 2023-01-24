@@ -30,6 +30,7 @@ export type CulturalSurveyRootStackParamList = {
   CulturalSurveyIntro: undefined
   CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined
+  FAQWebview: undefined
 }
 
 export type OnboardingRootStackParamList = {
