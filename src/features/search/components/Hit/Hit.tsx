@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
-import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -34,7 +34,6 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   const { logClickOnOffer } = useLogClickOnOffer()
 
   const { data } = useSubcategories()
-  const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
@@ -93,9 +92,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
-        <Body ellipsizeMode="tail" numberOfLines={1}>
-          {nativeCategory?.value}
-        </Body>
+        <NativeCategoryValue nativeCategoryId={nativeCategoryId} data={data} />
         {!!formattedDate && <Body>{formattedDate}</Body>}
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{formattedPrice}</Typo.Caption>
