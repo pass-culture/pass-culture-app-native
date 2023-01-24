@@ -20,4 +20,10 @@ describe('<Profile/>', () => {
       expect(results).toHaveNoViolations()
     })
   })
+
+  it('should not display app share banner', () => {
+    const { queryByText } = render(<Profile />)
+
+    expect(queryByText('Partage le pass Culture')).toBeNull()
+  })
 })

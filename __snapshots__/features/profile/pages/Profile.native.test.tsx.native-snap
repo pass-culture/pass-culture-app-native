@@ -1358,6 +1358,227 @@ exports[`Profile component should render correctly 1`] = `
                       ]
                     }
                   >
+                    Partager le pass Culture
+                  </Text>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+                        Object {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#F1F1F4",
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "borderRadius": 7,
+                            "overflow": "hidden",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityIgnoresInvertColors={true}
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "#eb0055",
+                              "justifyContent": "center",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        <Image
+                          source={
+                            Object {
+                              "testUri": "../../../public/images/ShareAppBannerImage.png",
+                            }
+                          }
+                          style={
+                            Array [
+                              Object {
+                                "bottom": 0,
+                                "left": 0,
+                                "position": "absolute",
+                                "right": 0,
+                                "top": 0,
+                              },
+                              Object {
+                                "height": undefined,
+                                "width": "100%",
+                              },
+                              undefined,
+                            ]
+                          }
+                          testID="module-background"
+                        />
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "borderColor": "#90949D",
+                                "borderRadius": 7,
+                                "borderStyle": "solid",
+                                "borderWidth": 1,
+                                "flexDirection": "row",
+                                "padding": 16,
+                                "width": "100%",
+                              },
+                              undefined,
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginRight": 16,
+                                  "textAlign": "start",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "paddingRight": 32,
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#ffffff",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Partage le pass Culture
+                              </Text>
+                              <View
+                                numberOfSpaces={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 4,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#ffffff",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Parle du bon plan à tes amis !
+                              </Text>
+                            </View>
+                          </View>
+                          <View>
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "paddingTop": 8,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
                     Suivre pass Culture
                   </Text>
                   <View

@@ -1,7 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, ScrollView } from 'react-native'
+import { NativeScrollEvent, Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -12,6 +12,8 @@ import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/
 import { ProfileContainer } from 'features/profile/components/PageProfileSection/ProfileContainer'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
+import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
+import { shareApp } from 'features/share/helpers/shareApp'
 import { env } from 'libs/environment'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
@@ -20,6 +22,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
+import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { VerticalUl } from 'ui/components/Ul'
@@ -103,6 +106,11 @@ const OnlineProfile: React.FC = () => {
       logProfilScrolledToBottom()
     }
   }
+
+  const onShareBannerPress = useCallback(() => {
+    analytics.logShareApp({ from: 'profile' })
+    shareApp()
+  }, [])
 
   return (
     <ScrollView
@@ -208,6 +216,21 @@ const OnlineProfile: React.FC = () => {
             </Li>
           </VerticalUl>
         </Section>
+        {Platform.OS !== 'web' && (
+          <Section title="Partager le pass Culture">
+            <Spacer.Column numberOfSpaces={4} />
+            <BannerWithBackground
+              backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
+              onPress={onShareBannerPress}>
+              <ShareAppContainer>
+                <StyledButtonText>Partage le pass Culture</StyledButtonText>
+                <Spacer.Column numberOfSpaces={1} />
+                <StyledBody>Parle du bon plan à tes amis&nbsp;!</StyledBody>
+              </ShareAppContainer>
+            </BannerWithBackground>
+            <Spacer.Column numberOfSpaces={4} />
+          </Section>
+        )}
         <Section title="Suivre pass Culture">
           <SocialNetwork />
         </Section>
@@ -251,6 +274,18 @@ const paddingVertical = getSpacing(4)
 const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   paddingVertical,
 })
+
+const ShareAppContainer = styled.View(({ theme }) => ({
+  paddingRight: theme.isSmallScreen ? 0 : getSpacing(8),
+}))
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),

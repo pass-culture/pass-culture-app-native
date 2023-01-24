@@ -36,12 +36,13 @@ const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
+export const BANNER_BORDER_WIDTH = getSpacing(0.25)
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     borderStyle: 'solid',
-    borderWidth: getSpacing(0.25),
+    borderWidth: BANNER_BORDER_WIDTH,
     borderRadius: getSpacing(1.8),
     borderColor: theme.colors.greySemiDark,
     padding: getSpacing(4),
