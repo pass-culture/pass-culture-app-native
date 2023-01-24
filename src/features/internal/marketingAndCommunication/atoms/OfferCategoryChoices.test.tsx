@@ -1,7 +1,15 @@
 import React from 'react'
 
 import { OfferCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferCategoryChoices'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, fireEvent } from 'tests/utils'
+
+const mockData = placeholderData
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 describe('<OfferCategoryChoices />', () => {
   it('should match snapshot', () => {

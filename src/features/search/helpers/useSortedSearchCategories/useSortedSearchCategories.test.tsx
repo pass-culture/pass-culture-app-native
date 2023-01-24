@@ -1,7 +1,15 @@
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 import { useSortedSearchCategories } from './useSortedSearchCategories'
+
+const mockData = placeholderData
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 describe('useSortedSearchCategories', () => {
   const options = { initialProps: jest.fn() }
