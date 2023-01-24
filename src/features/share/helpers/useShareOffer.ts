@@ -30,6 +30,7 @@ export const useShareOffer = (offerId: number): ShareOutput => {
   const locationName = getOfferLocationName(offer.venue, offer.isDigital)
   const message = `Retrouve "${offer.name}" chez "${locationName}" sur le pass Culture`
   const shareAndroidMessage = message + DOUBLE_LINE_BREAK + shareUrl
+  // url share content param is only for iOS, so we add url in message for android
   const shareMessage = Platform.OS === 'android' ? shareAndroidMessage : message
 
   const shareContent = {
