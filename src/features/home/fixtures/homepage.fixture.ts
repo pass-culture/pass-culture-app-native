@@ -78,7 +78,7 @@ export const formattedRecommendedOffersModule: RecommendedOffersModule = {
     isEvent: true,
     priceMin: 0.99,
     priceMax: 99.99,
-    subcategories: ['Livre'],
+    subcategories: ['Livre', 'Livre numérique, e-book'],
     isDuo: false,
     isRecoShuffled: false,
   },
