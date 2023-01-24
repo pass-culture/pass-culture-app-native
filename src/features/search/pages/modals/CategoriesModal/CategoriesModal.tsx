@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView, FilterBehaviour } from 'features/search/enums'
+import { CategoriesModalView, CATEGORY_CRITERIA, FilterBehaviour } from 'features/search/enums'
 import {
   buildSearchPayloadValues,
   categoryAllValue,
@@ -70,10 +70,18 @@ export const CategoriesModal = ({
 
   const { nativeCategory, category, genreType, currentView } = watch()
 
-  const categories = useMemo(
-    () => (data?.searchGroups ? getSearchGroupsByAlphabeticalSorting(data.searchGroups) : []),
-    [data?.searchGroups]
-  )
+  const categories = useMemo(() => {
+    const availableCategories =
+      data?.searchGroups.filter((category) =>
+        Object.keys(CATEGORY_CRITERIA).includes(category.name)
+      ) || []
+    if (availableCategories.length > 0) {
+      return getSearchGroupsByAlphabeticalSorting(availableCategories)
+    }
+
+    return availableCategories
+  }, [data?.searchGroups])
+
   const nativeCategories = useMemo(
     () => getNativeCategories(data, category.name),
     [category.name, data]
