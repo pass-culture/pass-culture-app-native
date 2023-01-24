@@ -55,6 +55,9 @@ export const daysCountdown = (dateCreated: string) => {
 }
 
 export const formattedExpirationDate = (dateCreated: string) => {
+  if (!dateCreated) {
+    return ''
+  }
   const bookingDateCreated = new Date(dateCreated)
   const expirationDate = addDays(bookingDateCreated, 30)
   const formattedExpirationDate = format(expirationDate, 'dd/MM/yyyy')

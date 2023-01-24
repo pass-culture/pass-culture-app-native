@@ -103,9 +103,15 @@ describe('expirationDateUtils', () => {
   describe('formattedExpirationDate', () => {
     it('should formatted expiration date from the created date', () => {
       const dateCreated = '2023-01-19T14:38:45Z'
-      const formattedExpirationDateExpected = '18/02/2023'
+      const expectedformattedExpirationDate = '18/02/2023'
 
-      expect(formattedExpirationDate(dateCreated)).toEqual(formattedExpirationDateExpected)
+      expect(formattedExpirationDate(dateCreated)).toEqual(expectedformattedExpirationDate)
+    })
+
+    it('should return undefined if dateCreated is an empty string', () => {
+      const dateCreated = ''
+
+      expect(formattedExpirationDate(dateCreated)).toEqual('')
     })
   })
 })

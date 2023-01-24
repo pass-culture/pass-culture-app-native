@@ -104,7 +104,7 @@ describe('<BookingDetailsCancelButton />', () => {
     ).toBeTruthy()
   })
 
-  it('should display button if confirmationDate is null and an expiration date message if isBookingIsDigital', () => {
+  it("should display cancel button and expiration date message when confirmation date is null and that's it a digital booking", () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
     booking.stock.offer.isDigital = true
@@ -116,7 +116,7 @@ describe('<BookingDetailsCancelButton />', () => {
     expect(queryByText(expirationDateMessage)).toBeTruthy()
   })
 
-  it('should display only an expiration date message if is not still cancellable and if the booking is digital', () => {
+  it('should display only an expiration date message when the booking is digital and is not still cancellable', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
 
