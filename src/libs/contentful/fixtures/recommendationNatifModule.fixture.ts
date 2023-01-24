@@ -1,3 +1,4 @@
+import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
 import { ContentTypes, RecommendationContentModel } from 'libs/contentful/types'
 
 export const recommendationNatifModuleFixture: RecommendationContentModel = {
@@ -109,9 +110,9 @@ export const recommendationNatifModuleFixture: RecommendationContentModel = {
         priceMin: 0.99,
         priceMax: 99.99,
         categories: ['Livres'],
+        recommendationSubcategories: subcategoriesFixture,
         newestOnly: false,
         isDuo: false,
-        subcategories: ['Livre'],
         isRecoShuffled: false,
       },
     },

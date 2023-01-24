@@ -242,6 +242,7 @@ export interface ExclusivityFields {
 export interface RecommendationParametersFields {
   title: string
   categories?: string[]
+  recommendationSubcategories?: Subcategories
   beginningDatetime?: string
   endingDatetime?: string
   upcomingWeekendEvent?: boolean
@@ -251,7 +252,6 @@ export interface RecommendationParametersFields {
   isEvent?: boolean
   priceMin?: number
   priceMax?: number
-  subcategories?: string[]
   isDuo?: boolean
   isRecoShuffled?: boolean
   modelEndpoint?: string

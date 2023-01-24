@@ -6,6 +6,7 @@ import {
   getRecommendationParameters,
   useHomeRecommendedHits,
 } from 'features/home/api/useHomeRecommendedHits'
+import { RecommendedOffersModule } from 'features/home/types'
 import { RecommendationParametersFields } from 'libs/contentful'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsMutation'
@@ -61,8 +62,7 @@ describe('getRecommendationParameters', () => {
   })
 
   it('should return parameters with mapped categories when parameters are provided', () => {
-    const parameters: RecommendationParametersFields = {
-      title: 'some parameters',
+    const parameters: RecommendedOffersModule['recommendationParameters'] = {
       categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
       isEvent: true,
       isDuo: true,
