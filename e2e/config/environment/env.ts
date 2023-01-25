@@ -1,6 +1,5 @@
 import { parseBooleanVariables } from './parseBooleanVariables'
 import { parseNumberVariables } from './parseNumberVariables'
-import { demo } from '../wdio-demo.conf'
 import { Environment } from './types'
 
 const ignoredNonNumericEnvs = ['ANDROID_PLATFORM_VERSION', 'IOS_PLATFORM_VERSION']
@@ -15,8 +14,7 @@ const systemEnv = parseBooleanVariables(
 export const env: Environment = {
   CI: systemEnv.CI || false,
   ENVIRONMENT: systemEnv.ENVIRONMENT || 'staging',
-  WDIO_DEMO: systemEnv.WDIO_DEMO || false,
-  WDIO_BASE_URL: systemEnv.WDIO_DEMO ? demo.wdio.baseUrl : systemEnv.WDIO_BASE_URL,
+  WDIO_BASE_URL: systemEnv.WDIO_BASE_URL,
   ANDROID_DEVICE_NAME: systemEnv.ANDROID_DEVICE_NAME || 'pixel_xl',
   ANDROID_PLATFORM_VERSION: systemEnv.ANDROID_PLATFORM_VERSION
     ? String(systemEnv.ANDROID_PLATFORM_VERSION)

@@ -6,11 +6,6 @@ on:
 
   workflow_dispatch:
     inputs:
-      wdio-demo:
-        type: boolean
-        description: WebdriverIO demo - All other params will be ignored
-        required: true
-        default: false
       environment:
         type: environment
         description: Select the environment
@@ -38,7 +33,6 @@ jobs:
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
       # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
-      WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
       BUILD_LOCAL: ${{ inputs.build-local || 'true' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
@@ -71,12 +65,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Download WebdriverIO demo
-        if: ${{ env.WDIO_DEMO == 'true' }}
-        run: ./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
-
       - name: Sets WDIO_BASE_URL for local or distributed Web app
-        if: ${{ env.WDIO_DEMO == 'false' }}
         run: |
           if [[ "${{ env.BUILD_LOCAL }}" = "true" ]]; then
             echo "WDIO_BASE_URL=http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}" >> $GITHUB_ENV
@@ -87,7 +76,7 @@ jobs:
           fi
 
       - name: Start Local dev server
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
+        if: ${{ env.BUILD_LOCAL == 'true' }}
         env:
           NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
         run: |
@@ -98,7 +87,7 @@ jobs:
           popd
 
       - name: Wait for local dev server
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'true') }}
+        if: ${{ env.BUILD_LOCAL == 'true' }}
         timeout-minutes: 15
         run: |
           until curl --output /dev/null --silent --head --fail http://${{ env.LOCAL_IP }}:3000; do
@@ -107,7 +96,7 @@ jobs:
           done
 
       - name: Slack failure notification
-        if: ${{ env.WDIO_DEMO == 'false' && failure() }}
+        if: ${{ failure() }}
         env:
           BRANCH_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_REF_NAME }}
           COMMIT_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_SHA_SHORT }}
@@ -132,14 +121,14 @@ jobs:
         run: cat logs/wdio-safaridriver.log
 
       - name: Save dev server output
-        if: ${{ (always()) && (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'local') }}
+        if: ${{ (always()) && (env.BUILD_LOCAL == 'local') }}
         uses: actions/upload-artifact@master
         with:
           name: webpack-dev-server-safari
           path: webpack-dev-server.log
 
       - name: Show dev server output
-        if: ${{ (always()) && (env.WDIO_DEMO == 'false') && (env.BUILD_LOCAL == 'local') }}
+        if: ${{ (always()) && (env.BUILD_LOCAL == 'local') }}
         run: cat webpack-dev-server.log
 
       - uses: actions/upload-artifact@v3
