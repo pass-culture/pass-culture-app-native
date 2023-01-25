@@ -13,6 +13,7 @@ type ScreensRequiringParsing = Extract<
   | 'ResetPasswordExpiredLink'
   | 'Venue'
   | 'Search'
+  | 'SearchFilter'
   | 'LocationFilter'
   | 'ThematicHome'
 >
@@ -25,6 +26,35 @@ type ParamsParsers = {
       value: string
     ) => RouteParams<ParamsList, Screen>[Param]
   }
+}
+
+const searchParamsParser = {
+  beginningDatetime: parseDataWithISODates,
+  date: parseDataWithISODates,
+  endingDatetime: parseDataWithISODates,
+  hitsPerPage: JSON.parse,
+  isAutocomplete: JSON.parse,
+  isOnline: JSON.parse,
+  locationFilter: JSON.parse,
+  maxPossiblePrice: JSON.parse,
+  maxPrice: JSON.parse,
+  minPrice: JSON.parse,
+  noFocus: JSON.parse,
+  offerCategories: JSON.parse,
+  offerIsDuo: JSON.parse,
+  offerIsFree: JSON.parse,
+  offerIsNew: JSON.parse,
+  offerGenreTypes: JSON.parse,
+  offerNativeCategories: JSON.parse,
+  offerSubcategories: JSON.parse,
+  offerTypes: JSON.parse,
+  previousView: JSON.parse,
+  priceRange: JSON.parse,
+  query: JSON.parse,
+  searchId: JSON.parse,
+  tags: JSON.parse,
+  timeRange: JSON.parse,
+  view: JSON.parse,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -72,34 +102,8 @@ export const screenParamsParser: ParamsParsers = {
   Venue: {
     id: (value) => (value ? Number(value) : 0),
   },
-  Search: {
-    beginningDatetime: parseDataWithISODates,
-    date: parseDataWithISODates,
-    endingDatetime: parseDataWithISODates,
-    hitsPerPage: JSON.parse,
-    isAutocomplete: JSON.parse,
-    isOnline: JSON.parse,
-    locationFilter: JSON.parse,
-    maxPossiblePrice: JSON.parse,
-    maxPrice: JSON.parse,
-    minPrice: JSON.parse,
-    noFocus: JSON.parse,
-    offerCategories: JSON.parse,
-    offerIsDuo: JSON.parse,
-    offerIsFree: JSON.parse,
-    offerIsNew: JSON.parse,
-    offerGenreTypes: JSON.parse,
-    offerNativeCategories: JSON.parse,
-    offerSubcategories: JSON.parse,
-    offerTypes: JSON.parse,
-    previousView: JSON.parse,
-    priceRange: JSON.parse,
-    query: JSON.parse,
-    searchId: JSON.parse,
-    tags: JSON.parse,
-    timeRange: JSON.parse,
-    view: JSON.parse,
-  },
+  Search: searchParamsParser,
+  SearchFilter: searchParamsParser,
   LocationFilter: {
     selectedVenue: JSON.parse,
     selectedPlace: JSON.parse,
@@ -137,7 +141,10 @@ function parseDataWithISODates(data: any) {
   return JSON.parse(typeof data === 'string' ? data : JSON.stringify(data), reviver)
 }
 
-type ScreensRequiringStringifying = Extract<ScreenNames, 'Search' | 'LocationFilter'>
+type ScreensRequiringStringifying = Extract<
+  ScreenNames,
+  'Search' | 'SearchFilter' | 'LocationFilter'
+>
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
     [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
@@ -146,35 +153,38 @@ type ParamsStringifiers = {
   }
 }
 
+const searchParamsStringifier = {
+  beginningDatetime: JSON.stringify,
+  date: JSON.stringify,
+  endingDatetime: JSON.stringify,
+  hitsPerPage: JSON.stringify,
+  isAutocomplete: JSON.stringify,
+  isOnline: JSON.stringify,
+  locationFilter: JSON.stringify,
+  maxPossiblePrice: JSON.stringify,
+  maxPrice: JSON.stringify,
+  minPrice: JSON.stringify,
+  noFocus: JSON.stringify,
+  offerCategories: JSON.stringify,
+  offerGenreTypes: JSON.stringify,
+  offerIsDuo: JSON.stringify,
+  offerIsFree: JSON.stringify,
+  offerIsNew: JSON.stringify,
+  offerNativeCategories: JSON.stringify,
+  offerSubcategories: JSON.stringify,
+  offerTypes: JSON.stringify,
+  previousView: JSON.stringify,
+  priceRange: JSON.stringify,
+  query: JSON.stringify,
+  searchId: JSON.stringify,
+  tags: JSON.stringify,
+  timeRange: JSON.stringify,
+  view: JSON.stringify,
+}
+
 export const screenParamsStringifier: ParamsStringifiers = {
-  Search: {
-    beginningDatetime: JSON.stringify,
-    date: JSON.stringify,
-    endingDatetime: JSON.stringify,
-    hitsPerPage: JSON.stringify,
-    isAutocomplete: JSON.stringify,
-    isOnline: JSON.stringify,
-    locationFilter: JSON.stringify,
-    maxPossiblePrice: JSON.stringify,
-    maxPrice: JSON.stringify,
-    minPrice: JSON.stringify,
-    noFocus: JSON.stringify,
-    offerCategories: JSON.stringify,
-    offerGenreTypes: JSON.stringify,
-    offerIsDuo: JSON.stringify,
-    offerIsFree: JSON.stringify,
-    offerIsNew: JSON.stringify,
-    offerNativeCategories: JSON.stringify,
-    offerSubcategories: JSON.stringify,
-    offerTypes: JSON.stringify,
-    previousView: JSON.stringify,
-    priceRange: JSON.stringify,
-    query: JSON.stringify,
-    searchId: JSON.stringify,
-    tags: JSON.stringify,
-    timeRange: JSON.stringify,
-    view: JSON.stringify,
-  },
+  Search: searchParamsStringifier,
+  SearchFilter: searchParamsStringifier,
   LocationFilter: {
     selectedVenue: JSON.stringify,
     selectedPlace: JSON.stringify,

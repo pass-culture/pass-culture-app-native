@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { useForm, Controller, ControllerRenderProps } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,6 +11,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { FilterBehaviour } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { Form } from 'ui/components/Form'
@@ -22,24 +23,26 @@ type SearchTypeFormData = {
   offerIsDuo: boolean
 }
 
-type Props = {
+export type OfferDuoModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  filterBehaviour: FilterBehaviour
 }
 
 const titleId = uuidv4()
 
 const DEFAULT_HEIGHT_MODAL = 500
 
-export const OfferDuoModal: FunctionComponent<Props> = ({
+export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,
   hideModal,
+  filterBehaviour,
 }) => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -56,6 +59,10 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
       offerIsDuo: searchState.offerIsDuo,
     },
   })
+
+  useEffect(() => {
+    reset({ offerIsDuo: searchState.offerIsDuo })
+  }, [reset, searchState])
 
   const toggleLimitDuoOfferSearch = useCallback(() => {
     const toggleLimitDuoOffer = !getValues('offerIsDuo')
@@ -101,11 +108,20 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
 
         view: SearchView.Results,
       }
-      navigate(...getTabNavConfig('Search', additionalSearchState))
       analytics.logPerformSearch(additionalSearchState)
+      switch (filterBehaviour) {
+        case FilterBehaviour.SEARCH: {
+          navigate(...getTabNavConfig('Search', additionalSearchState))
+          break
+        }
+        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+          break
+        }
+      }
       hideModal()
     },
-    [hideModal, navigate, searchState]
+    [searchState, filterBehaviour, hideModal, navigate, dispatch]
   )
 
   const onSubmit = handleSubmit(search)
@@ -131,6 +147,7 @@ export const OfferDuoModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={isSubmitting}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />

@@ -1,16 +1,16 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
+import { FilterBehaviour, LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -29,8 +29,22 @@ export const SearchFilter: React.FC = () => {
   })
   const { position } = useGeolocation()
   const { user } = useAuthContext()
+  const { params } = useRoute<UseRouteType<'SearchFilter'>>()
+
+  useEffect(() => {
+    dispatch({ type: 'SET_STATE', payload: params || { view: SearchView.Landing } })
+  }, [dispatch, params])
 
   const onGoBack = useCallback(() => {
+    navigate(
+      ...getTabNavConfig('Search', {
+        ...params,
+        view: SearchView.Results,
+      })
+    )
+  }, [navigate, params])
+
+  const onSearchPress = useCallback(() => {
     navigate(
       ...getTabNavConfig('Search', {
         ...searchState,
@@ -68,7 +82,7 @@ export const SearchFilter: React.FC = () => {
     <Container>
       <PageHeaderSecondary title="Filtrer" onGoBack={onGoBack} />
       <React.Fragment>
-        <StyledScrollView scrollEnabled>
+        <StyledScrollView scrollEnabled keyboardShouldPersistTaps="always">
           {/* Localisation */}
           <VerticalUl>
             <StyledLi>
@@ -111,7 +125,12 @@ export const SearchFilter: React.FC = () => {
         </StyledScrollView>
       </React.Fragment>
 
-      <FilterPageButtons onResetPress={onResetPress} onSearchPress={onGoBack} isModal={false} />
+      <FilterPageButtons
+        onResetPress={onResetPress}
+        onSearchPress={onSearchPress}
+        isModal={false}
+        filterBehaviour={FilterBehaviour.SEARCH}
+      />
       <Spacer.BottomScreen />
     </Container>
   )

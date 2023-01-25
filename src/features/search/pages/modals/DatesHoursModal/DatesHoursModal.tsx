@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -14,7 +14,7 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { SearchState, SearchView } from 'features/search/types'
@@ -46,11 +46,12 @@ type DatesHoursModalFormData = {
   selectedHours?: Range<number>
 }
 
-type Props = {
+export type DatesHoursModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  filterBehaviour: FilterBehaviour
 }
 
 export const DATE_TYPES: Array<{
@@ -72,15 +73,16 @@ const formatHour = (hour: number) => `${hour}h`
 const titleId = uuidv4()
 const hoursLabelId = uuidv4()
 
-export const DatesHoursModal: FunctionComponent<Props> = ({
+export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,
   hideModal,
+  filterBehaviour,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const [showCalendarPicker, setShowCalendarPicker] = useState<boolean>(false)
   const { sliderLength } = useGetFullscreenModalSliderLength()
 
@@ -112,6 +114,10 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
     defaultValues,
   })
   const { hasSelectedDate, selectedDate, hasSelectedHours } = watch()
+
+  useEffect(() => {
+    reset(defaultValues)
+  }, [defaultValues, reset])
 
   const close = useCallback(() => {
     reset(defaultValues)
@@ -149,10 +155,19 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(...getTabNavConfig('Search', additionalSearchState))
+      switch (filterBehaviour) {
+        case FilterBehaviour.SEARCH: {
+          navigate(...getTabNavConfig('Search', additionalSearchState))
+          break
+        }
+        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+          break
+        }
+      }
       hideModal()
     },
-    [hideModal, navigate, searchState]
+    [hideModal, navigate, searchState, dispatch, filterBehaviour]
   )
 
   const onSubmit = handleSubmit(search)
@@ -236,6 +251,7 @@ export const DatesHoursModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <FormWrapper>

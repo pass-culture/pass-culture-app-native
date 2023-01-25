@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView } from 'features/search/enums'
+import { CategoriesModalView, FilterBehaviour } from 'features/search/enums'
 import {
   buildSearchPayloadValues,
   categoryAllValue,
@@ -37,6 +37,7 @@ export interface CategoriesModalProps {
   accessibilityLabel: string
   isVisible?: boolean
   hideModal: VoidFunction
+  filterBehaviour: FilterBehaviour
 }
 
 const titleId = uuidv4()
@@ -45,10 +46,11 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   accessibilityLabel,
+  filterBehaviour,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
 
   const {
@@ -61,6 +63,10 @@ export const CategoriesModal = ({
   } = useForm<CategoriesModalFormProps>({
     defaultValues: getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES),
   })
+
+  useEffect(() => {
+    reset(getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES))
+  }, [data, reset, searchState])
 
   const { nativeCategory, category, genreType, currentView } = watch()
 
@@ -165,11 +171,19 @@ export const CategoriesModal = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(...getTabNavConfig('Search', additionalSearchState))
-
+      switch (filterBehaviour) {
+        case FilterBehaviour.SEARCH: {
+          navigate(...getTabNavConfig('Search', additionalSearchState))
+          break
+        }
+        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+          break
+        }
+      }
       hideModal()
     },
-    [data, hideModal, navigate, searchState, setValue]
+    [data, setValue, searchState, filterBehaviour, hideModal, navigate, dispatch]
   )
 
   const onSubmit = handleSubmit(handleSearch)
@@ -255,6 +269,7 @@ export const CategoriesModal = ({
           onResetPress={handleReset}
           onSearchPress={onSubmit}
           isSearchDisabled={isSubmitting}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <Form.MaxWidth>

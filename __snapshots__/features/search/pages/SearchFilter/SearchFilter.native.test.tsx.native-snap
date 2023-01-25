@@ -180,6 +180,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     </View>
   </View>
   <RCTScrollView
+    keyboardShouldPersistTaps="always"
     scrollEnabled={true}
     style={
       Array [

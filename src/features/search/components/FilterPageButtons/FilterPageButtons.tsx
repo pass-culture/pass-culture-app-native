@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { FilterBehaviour } from 'features/search/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -13,6 +14,7 @@ type Props = {
   onSearchPress: () => void
   isSearchDisabled?: boolean
   children?: never
+  filterBehaviour: FilterBehaviour
 }
 
 export const FilterPageButtons: FunctionComponent<Props> = ({
@@ -20,12 +22,29 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   onResetPress,
   onSearchPress,
   isSearchDisabled,
+  filterBehaviour,
 }) => {
+  let searchButtonText = ''
+  switch (filterBehaviour) {
+    case FilterBehaviour.SEARCH: {
+      searchButtonText = 'Rechercher'
+      break
+    }
+    case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+      searchButtonText = 'Appliquer le filtre'
+      break
+    }
+  }
+
   return (
     <Container isModal={isModal}>
       <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
       <Spacer.Column numberOfSpaces={4} />
-      <SearchButton wording="Rechercher" onPress={onSearchPress} disabled={isSearchDisabled} />
+      <SearchButton
+        wording={searchButtonText}
+        onPress={onSearchPress}
+        disabled={isSearchDisabled}
+      />
     </Container>
   )
 }

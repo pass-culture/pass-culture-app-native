@@ -40,7 +40,7 @@ import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibi
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { onboardingRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
-import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -325,7 +325,11 @@ export const routes: Route[] = [
   {
     name: 'SearchFilter',
     component: SearchFilter,
-    path: 'recherche/filtres',
+    pathConfig: {
+      path: 'recherche/filtres',
+      parse: screenParamsParser['SearchFilter'],
+      stringify: screenParamsStringifier['SearchFilter'],
+    },
     options: { title: 'Filtres de recherche' },
   },
   {

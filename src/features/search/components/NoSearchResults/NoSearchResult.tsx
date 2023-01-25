@@ -23,8 +23,8 @@ export const NoSearchResult: React.FC = () => {
   }, [params?.searchId, query])
 
   const onPressUpdateFilters = useCallback(() => {
-    navigate('SearchFilter')
-  }, [navigate])
+    navigate('SearchFilter', params ?? {})
+  }, [navigate, params])
 
   const mainTitle = 'Pas de résultat'
   const mainTitleComplement = `pour "${query}"`

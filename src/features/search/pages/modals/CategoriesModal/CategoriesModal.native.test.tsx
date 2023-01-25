@@ -4,21 +4,23 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
+import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-import { CategoriesModal } from './CategoriesModal'
+import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
+const mockDispatch = jest.fn()
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -374,14 +376,56 @@ describe('<CategoriesModal/>', () => {
       })
     })
   })
+
+  describe('with "Appliquer le filtre" button', () => {
+    it('should display alternative button title', async () => {
+      const { getByText } = renderCategories({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByText('Appliquer le filtre')).toBeTruthy()
+      })
+    })
+
+    it('should update search state when pressing submit button', async () => {
+      const { getByText } = renderCategories({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      fireEvent.press(getByText('Jeux & jeux vidéos'))
+
+      const searchButton = getByText('Appliquer le filtre')
+      fireEvent.press(searchButton)
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
+        })
+      })
+    })
+  })
 })
 
-function renderCategories() {
+function renderCategories({
+  filterBehaviour = FilterBehaviour.SEARCH,
+  ...props
+}: Partial<CategoriesModalProps> = {}) {
   return render(
     <CategoriesModal
       accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
+      filterBehaviour={filterBehaviour}
+      {...props}
     />
   )
 }

@@ -164,7 +164,7 @@ describe('<Search/>', () => {
       fireEvent.press(searchFilterButton)
 
       const screen = 'SearchFilter'
-      const params = undefined
+      const params = { query: 'la fnac', view: SearchView.Results }
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith(screen, params)
@@ -179,8 +179,8 @@ describe('<Search/>', () => {
 
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE_FROM_DEFAULT',
-          payload: mockSearchState,
+          type: 'SET_STATE',
+          payload: { query: 'la fnac', view: SearchView.Results },
         })
       })
     })
