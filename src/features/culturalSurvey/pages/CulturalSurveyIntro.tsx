@@ -3,6 +3,7 @@ import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -16,9 +17,6 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
-
-export const FAQ_URL =
-  'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs'
 
 const FAQTouchableLinkProps = {
   as: ButtonTertiaryBlack,
@@ -45,7 +43,7 @@ export const CulturalSurveyIntro = (): JSX.Element => {
         {Platform.OS === 'web' ? (
           <ExternalTouchableLink
             externalNav={{
-              url: FAQ_URL,
+              url: FAQ_LINK_USER_DATA,
             }}
             {...FAQTouchableLinkProps}
           />

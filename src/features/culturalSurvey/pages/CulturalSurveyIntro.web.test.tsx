@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { openUrl } from 'features/navigation/helpers'
 import { render, fireEvent } from 'tests/utils'
@@ -17,11 +18,6 @@ describe('CulturalSurveyIntro page', () => {
     const CulturalSurveyIntroPage = render(<CulturalSurveyIntro />)
     const FAQButton = CulturalSurveyIntroPage.getByText('En savoir plus')
     fireEvent.press(FAQButton)
-    expect(openUrl).toHaveBeenCalledWith(
-      // move this url in env in next commit
-      'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs',
-      undefined,
-      true
-    )
+    expect(openUrl).toHaveBeenCalledWith(FAQ_LINK_USER_DATA, undefined, true)
   })
 })
