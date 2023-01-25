@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { BackButton } from 'ui/components/headers/BackButton'
+import { CloseButton } from 'ui/components/headers/CloseButton'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -16,11 +17,22 @@ interface Props {
   titleID?: string
   onGoBack?: () => void
   testID?: string
+  shouldDisplayBackButton?: boolean
+  shouldDisplayCloseButton?: boolean
+  onClose?: () => void
 }
 
 const HEIGHT_CONTAINER = getSpacing(12)
 
-export const PageHeaderSecondary: React.FC<Props> = ({ title, titleID, onGoBack, testID }) => {
+export const PageHeaderSecondary: React.FC<Props> = ({
+  title,
+  titleID,
+  onGoBack,
+  testID,
+  shouldDisplayBackButton = true,
+  shouldDisplayCloseButton,
+  onClose,
+}) => {
   useWhiteStatusBar()
 
   const { top } = useCustomSafeInsets()
@@ -33,10 +45,16 @@ export const PageHeaderSecondary: React.FC<Props> = ({ title, titleID, onGoBack,
         <Container>
           <Row>
             <ButtonContainer positionInHeader="left">
-              <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
+              {!!shouldDisplayBackButton && (
+                <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
+              )}
             </ButtonContainer>
             <Title nativeID={titleID}>{title}</Title>
-            <ButtonContainer positionInHeader="right" />
+            <ButtonContainer positionInHeader="right">
+              {!!shouldDisplayCloseButton && (
+                <CloseButton onClose={onClose} color={ColorsEnum.WHITE} />
+              )}
+            </ButtonContainer>
           </Row>
         </Container>
       </ColorContainer>

@@ -25,3 +25,9 @@ const Default = Template.bind({})
 Default.args = {
   title: 'Page header secondary',
 }
+
+const WithCloseIcon = Template.bind({})
+WithCloseIcon.args = {
+  title: 'Page header secondary',
+  shouldDisplayCloseButton: true,
+}
