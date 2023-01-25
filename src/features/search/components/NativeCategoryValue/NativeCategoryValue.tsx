@@ -2,20 +2,20 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
-import { getNativeCategoryValue } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { Typo } from 'ui/theme'
 
 interface NativeCategoryValueProps {
   nativeCategoryId: NativeCategoryIdEnumv2
-  data: SubcategoriesResponseModelv2 | undefined
+  data?: SubcategoriesResponseModelv2
 }
 
 export const NativeCategoryValue = ({ nativeCategoryId, data }: NativeCategoryValueProps) => {
-  const nativeCategoryValue = getNativeCategoryValue(data, nativeCategoryId)
+  const { value } = getNativeCategoryFromEnum(data, nativeCategoryId) || {}
 
-  return (nativeCategoryValue?.length ?? 0) > 0 ? (
+  return value ? (
     <Body ellipsizeMode="tail" numberOfLines={1} testID="native-category-value">
-      {nativeCategoryValue}
+      {value}
     </Body>
   ) : null
 }

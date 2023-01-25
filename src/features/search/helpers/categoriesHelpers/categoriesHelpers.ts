@@ -63,16 +63,6 @@ export function getSearchGroupsFromEnumArray(
 }
 
 /**
- * Returns a `NativeCategoryResponseModelv2` value from a `NativeCategoryIdEnumv2`.
- */
-export function getNativeCategoryValue(
-  data: SubcategoriesResponseModelv2 | undefined,
-  enumValue: NativeCategoryIdEnumv2
-) {
-  return data?.nativeCategories.find((nativeCategory) => nativeCategory.name === enumValue)?.value
-}
-
-/**
  * Returns a `NativeCategoryResponseModelv2` from a `NativeCategoryIdEnumv2`.
  */
 export function getNativeCategoryFromEnum(
