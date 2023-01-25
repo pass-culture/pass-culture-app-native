@@ -56,7 +56,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={7} />
       <SecondButtonList
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
-        leftIcon={BicolorEarth}
+        leftIcon={StyledBicolorEarth}
         navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
         onBeforeNavigate={() =>
           amplitude.logEvent('set_id_origin_clicked', { type: IDOrigin.FOREIGN })
@@ -65,6 +65,11 @@ const SelectIDOriginContent: FunctionComponent = () => {
     </Container>
   )
 }
+
+const StyledBicolorEarth = styled(BicolorEarth).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  color2: theme.colors.black,
+}))``
 
 const Container = styled.View({
   marginHorizontal: getSpacing(1),
