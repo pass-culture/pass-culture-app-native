@@ -108,7 +108,7 @@ describe('expirationDateUtils', () => {
       expect(formattedExpirationDate(dateCreated)).toEqual(expectedformattedExpirationDate)
     })
 
-    it('should return undefined if dateCreated is an empty string', () => {
+    it('should return an empty string when dateCreated is an empty string', () => {
       const dateCreated = ''
 
       expect(formattedExpirationDate(dateCreated)).toEqual('')
