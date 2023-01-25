@@ -10,7 +10,7 @@ import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatC
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
+import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'

@@ -3,10 +3,11 @@ import { Linking } from 'react-native'
 import * as Permissions from 'react-native-permissions'
 import waitForExpect from 'wait-for-expect'
 
-import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
 import { analytics } from 'libs/firebase/analytics'
 import { BatchPush } from 'libs/react-native-batch'
 import { fireEvent, render } from 'tests/utils'
+
+import { AskNotificiationsModal } from './AskNotificationsModal'
 
 const mockOpenSettings = jest.spyOn(Linking, 'openSettings')
 const mockCheckNotifications = jest.spyOn(Permissions, 'checkNotifications')

@@ -2,7 +2,7 @@ import React, { memo, useCallback, useContext, useMemo } from 'react'
 import { Platform } from 'react-native'
 import { checkNotifications, RESULTS } from 'react-native-permissions'
 
-import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
+import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
 
