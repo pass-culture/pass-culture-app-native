@@ -1,11 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { useForm, Controller, FieldPath, ControllerRenderProps } from 'react-hook-form'
+import { UseQueryResult } from 'react-query'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
+import { SettingsResponse } from 'api/gen'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -51,7 +53,7 @@ export const ForgottenPassword = () => {
     openReCaptchaChallenge,
     requestPasswordReset,
     shouldDisableValidateButton,
-  } = useForgottenPasswordForm()
+  } = useForgottenPasswordForm(settings)
 
   return (
     <BottomContentPage>
@@ -117,7 +119,7 @@ const EmailInputController = ({
   />
 )
 
-const useForgottenPasswordForm = () => {
+const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unknown>['data']) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
     control,
@@ -163,7 +165,10 @@ const useForgottenPasswordForm = () => {
       clearErrors()
       try {
         setValue('isFetching', true)
-        await api.postnativev1requestPasswordReset({ email, token })
+        await api.postnativev1requestPasswordReset({
+          email,
+          token: settings?.isRecaptchaEnabled ? token : undefined,
+        })
         replace('ResetPasswordEmailSent', { email })
       } catch (error) {
         setCustomError(
@@ -177,7 +182,7 @@ const useForgottenPasswordForm = () => {
         setValue('isFetching', false)
       }
     },
-    [clearErrors, email, replace, setCustomError, setValue]
+    [clearErrors, email, replace, setCustomError, setValue, settings]
   )
 
   const openReCaptchaChallenge = useCallback(
