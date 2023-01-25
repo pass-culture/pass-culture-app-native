@@ -27,6 +27,7 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
+import { GetDynamicSocials } from 'features/internal/cheatcodes/pages/GetDynamicSocials/GetDynamicSocials'
 import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/NavigationAccountSuspension'
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
@@ -407,6 +408,12 @@ export const routes: Route[] = [
     component: ThematicHomeHeaderCheatcode,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-thematic-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'GetDynamicSocials',
+    component: GetDynamicSocials,
+    path: 'get-dynamic-socials',
   },
   {
     name: 'ThematicHome',

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { G, Path, Defs, RadialGradient, Stop, Circle, ClipPath } from 'react-native-svg'
+import { G, Path, Defs, RadialGradient, Stop, Circle, ClipPath, Rect } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -38,12 +38,12 @@ const InstagramRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: 
           r="1"
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-8.04025 3.45784) rotate(78.6806) scale(21.2647 87.6539)">
-          <stop stopColor="#3771C8" />
-          <stop offset="0.128" stopColor="#3771C8" />
-          <stop offset="1" stopColor="#6600FF" stopOpacity="0" />
+          <Stop stopColor="#3771C8" />
+          <Stop offset="0.128" stopColor="#3771C8" />
+          <Stop offset="1" stopColor="#6600FF" stopOpacity="0" />
         </RadialGradient>
         <ClipPath id="clip0_1591_23183">
-          <rect width="48" height="48" fill="white" />
+          <Rect width="48" height="48" fill="white" />
         </ClipPath>
       </Defs>
       <G clip-path="url(#clip0_1591_23183)">

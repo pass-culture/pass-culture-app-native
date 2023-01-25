@@ -48,6 +48,7 @@ export type SubscriptionRootStackParamList = {
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
   ThematicHomeHeaderCheatcode: undefined
+  GetDynamicSocials: undefined
   // Stepper
   IdentityCheckStepper: undefined
   // PhoneValidation
