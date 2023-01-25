@@ -36,6 +36,10 @@ export const OfferCategoryChoices = (props: Props) => {
     [onChange]
   )
 
+  if (availableCategories.length === 0) {
+    return null
+  }
+
   return (
     <BodyContainer>
       <StyledUl>
