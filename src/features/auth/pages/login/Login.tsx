@@ -19,7 +19,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
-import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -57,7 +56,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
-  const culturalSurveyRoute = useCulturalSurveyRoute()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const { params } = useRoute<UseRouteType<'Login'>>()
@@ -115,7 +113,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         } else if (!hasSeenEligibleCard && user.showEligibleCard) {
           navigate('EighteenBirthday')
         } else if (shouldShowCulturalSurvey(user)) {
-          navigate(culturalSurveyRoute)
+          navigate('CulturalSurveyIntro')
         } else if (offerId) {
           addFavorite({ offerId })
           navigate('Offer', { id: offerId })
@@ -128,7 +126,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     },
     [
       offerId,
-      culturalSurveyRoute,
       navigate,
       props.doNotNavigateOnSigninSuccess,
       setErrorMessage,

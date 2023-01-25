@@ -10,7 +10,6 @@ import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformati
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
-import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,7 +25,6 @@ export function BeneficiaryAccountCreated() {
   const { uniqueColors } = useTheme()
   const { user } = useAuthContext()
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const culturalSurveyRoute = useCulturalSurveyRoute()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
 
@@ -64,7 +62,9 @@ export function BeneficiaryAccountCreated() {
           as={ButtonPrimary}
           wording="C’est parti&nbsp;!"
           navigateTo={
-            shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
+            shouldNavigateToCulturalSurvey
+              ? { screen: 'CulturalSurveyIntro' }
+              : navigateToHomeConfig
           }
           onBeforeNavigate={onBeforeNavigate}
         />

@@ -8,7 +8,6 @@ import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformati
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
-import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -17,7 +16,6 @@ import { Typo } from 'ui/theme'
 
 export function AccountCreated() {
   const { user } = useAuthContext()
-  const culturalSurveyRoute = useCulturalSurveyRoute()
   const { showShareAppModal } = useShareAppContext()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
@@ -42,7 +40,9 @@ export function AccountCreated() {
           as={ButtonPrimaryWhite}
           wording="On y va&nbsp;!"
           navigateTo={
-            shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
+            shouldNavigateToCulturalSurvey
+              ? { screen: 'CulturalSurveyIntro' }
+              : navigateToHomeConfig
           }
           onBeforeNavigate={onBeforeNavigate}
         />,
