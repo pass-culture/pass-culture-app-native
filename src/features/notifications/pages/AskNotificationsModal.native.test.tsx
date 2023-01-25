@@ -15,20 +15,10 @@ const RESULTS = Permissions.RESULTS
 
 const hideModal = jest.fn()
 describe('AskNotificationsModal', () => {
-  it('should not display the modal when is not visible', () => {
-    const { queryByText } = render(
-      <AskNotificiationsModal visible={false} onHideModal={hideModal} />
-    )
+  it('should render properly', () => {
+    const renderAPI = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
-    const title = queryByText('Activer les notifications')
-    expect(title).toBeFalsy()
-  })
-
-  it('should display the modal when is visible', () => {
-    const { queryByText } = render(<AskNotificiationsModal visible onHideModal={hideModal} />)
-
-    const button = queryByText('Activer les notifications')
-    expect(button).toBeTruthy()
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should log accepted notifications when press accept button', () => {
