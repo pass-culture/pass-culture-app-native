@@ -21,7 +21,6 @@ import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthd
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
@@ -168,13 +167,6 @@ export const routes: Route[] = [
     component: ConsentSettings,
     path: 'profil/confidentialite',
     options: { title: 'Paramètres de confidentialité' },
-  },
-  {
-    name: 'CulturalSurvey',
-    component: CulturalSurvey,
-    path: 'questionnaire-culturel',
-    options: { title: 'Questionnaire culturel' },
-    secure: true,
   },
   {
     name: 'EndedBookings',
