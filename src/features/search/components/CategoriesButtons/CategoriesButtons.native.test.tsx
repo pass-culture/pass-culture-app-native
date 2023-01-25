@@ -1,9 +1,17 @@
 import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
+
+const mockData = placeholderData
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 describe('CategoriesButtons', () => {
   it('should display categories', () => {

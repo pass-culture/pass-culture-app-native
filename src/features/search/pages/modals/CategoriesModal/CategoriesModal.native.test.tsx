@@ -7,7 +7,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
-import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
@@ -24,6 +24,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+let mockData = placeholderData
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,
@@ -33,6 +34,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 const mockHideModal = jest.fn()
 
 describe('<CategoriesModal/>', () => {
+  afterEach(() => {
+    mockData = placeholderData
+  })
   describe('With categories view', () => {
     it('should render correctly', () => {
       const { toJSON } = renderCategories()
@@ -51,6 +55,29 @@ describe('<CategoriesModal/>', () => {
       expect(getByText('Films, séries, cinéma')).toBeTruthy()
       expect(getByText('Musées & visites culturelles')).toBeTruthy()
       expect(getByText('Jeux & jeux vidéos')).toBeTruthy()
+    })
+
+    it('should not show categories when the backend returns no category', () => {
+      mockData = { ...mockData, searchGroups: [] }
+      const { getByText, queryByText } = renderCategories()
+      expect(getByText('Toutes les catégories')).toBeTruthy()
+      expect(queryByText('Films, séries, cinéma')).toBeFalsy()
+      expect(queryByText('Musées & visites culturelles')).toBeFalsy()
+      expect(queryByText('Jeux & jeux vidéos')).toBeFalsy()
+    })
+
+    it('should show only categories exisiting in categories return from backend', () => {
+      mockData = {
+        ...mockData,
+        searchGroups: [
+          { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Films, séries, cinéma' },
+        ],
+      }
+      const { getByText, queryByText } = renderCategories()
+      expect(getByText('Toutes les catégories')).toBeTruthy()
+      expect(queryByText('Films, séries, cinéma')).toBeTruthy()
+      expect(queryByText('Musées & visites culturelles')).toBeFalsy()
+      expect(queryByText('Jeux & jeux vidéos')).toBeFalsy()
     })
 
     it('should set the selected category filter on navigate when one is set', async () => {
