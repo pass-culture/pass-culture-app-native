@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -19,7 +19,7 @@ type Props = {
   onClose?: VoidFunction
 }
 
-export const Category: FunctionComponent<Props> = ({ onClose }) => {
+export const Category = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { offerCategories, offerNativeCategories, offerGenreTypes } = searchState
   const { data } = useSubcategories()

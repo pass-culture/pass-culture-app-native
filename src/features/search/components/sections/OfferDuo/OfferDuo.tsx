@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -11,7 +11,7 @@ type Props = {
   onClose?: VoidFunction
 }
 
-export const OfferDuo: FunctionComponent<Props> = ({ onClose }) => {
+export const OfferDuo = ({ onClose }: Props) => {
   const {
     visible: offerDuoModalVisible,
     showModal: showOfferDuoModal,

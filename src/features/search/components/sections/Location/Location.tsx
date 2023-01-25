@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -13,7 +13,7 @@ type Props = {
   onClose?: VoidFunction
 }
 
-export const Location: FunctionComponent<Props> = ({ onClose }) => {
+export const Location = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { section } = useLocationType(searchState)
   const { label } = useLocationChoice(section)

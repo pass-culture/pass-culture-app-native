@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -26,7 +26,7 @@ type Props = {
   onClose?: VoidFunction
 }
 
-export const DateHour: FunctionComponent<Props> = ({ onClose }) => {
+export const DateHour = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { date, timeRange } = searchState
   const { visible, showModal, hideModal } = useModal(false)

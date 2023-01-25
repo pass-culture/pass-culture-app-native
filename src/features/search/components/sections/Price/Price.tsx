@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { useCallback } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -13,7 +13,7 @@ type Props = {
   onClose?: VoidFunction
 }
 
-export const Price: FunctionComponent<Props> = ({ onClose }) => {
+export const Price = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const {
     visible: searchPriceModalVisible,
