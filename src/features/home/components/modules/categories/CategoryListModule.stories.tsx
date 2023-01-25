@@ -18,24 +18,26 @@ export default {
   ],
 } as ComponentMeta<typeof CategoryListModule>
 
-export const CategoryListWithThreeBlocks: ComponentStory<typeof CategoryListModule> = () => (
-  <CategoryListModule
-    id="123"
-    title={'En ce moment sur le pass'}
-    categoryBlockList={categoryBlockList.slice(1)}
-    homeEntryId="homeEntryId"
-    index={1}
-  />
+const Template: ComponentStory<typeof CategoryListModule> = (props) => (
+  <CategoryListModule {...props} />
 )
-CategoryListWithThreeBlocks.storyName = 'CategoryListWithThreeBlocks'
 
-export const CategoryListWithFourBlocks: ComponentStory<typeof CategoryListModule> = () => (
-  <CategoryListModule
-    id="123"
-    title={'En ce moment sur le pass'}
-    categoryBlockList={categoryBlockList}
-    homeEntryId="homeEntryId"
-    index={1}
-  />
-)
-CategoryListWithFourBlocks.storyName = 'CategoryListWithFourBlocks'
+// TODO(PC-20094): Fix this story
+const CategoryListWithThreeBlocks = Template.bind({})
+CategoryListWithThreeBlocks.args = {
+  id: '123',
+  title: 'En ce moment sur le pass',
+  categoryBlockList: categoryBlockList.slice(1),
+  homeEntryId: 'homeEntryId',
+  index: 1,
+}
+
+// TODO(PC-20094): Fix this story
+const CategoryListWithFourBlocks = Template.bind({})
+CategoryListWithFourBlocks.args = {
+  id: '123',
+  title: 'En ce moment sur le pass',
+  categoryBlockList: categoryBlockList,
+  homeEntryId: 'homeEntryId',
+  index: 1,
+}
