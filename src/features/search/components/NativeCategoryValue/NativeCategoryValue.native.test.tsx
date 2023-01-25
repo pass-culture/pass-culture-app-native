@@ -1,46 +1,28 @@
 import React from 'react'
 
-import { NativeCategoryIdEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2 } from 'api/gen'
 import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render } from 'tests/utils'
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 describe('<NativeCategoryValue />', () => {
   it('should render the native category value when data and nativeCategoryId are passed', () => {
-    const data = {
-      nativeCategories: [
-        { genreType: 'MUSIC', name: 'CD_VINYLES', value: 'CD, vinyles' },
-        { genreType: 'MUSIC', name: 'MUSIQUE_EN_LIGNE', value: 'Musique en ligne' },
-      ],
-    } as SubcategoriesResponseModelv2
     const nativeCategoryId = NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE
 
-    const { getByText } = render(
-      <NativeCategoryValue data={data} nativeCategoryId={nativeCategoryId} />
-    )
+    const { getByText } = render(<NativeCategoryValue nativeCategoryId={nativeCategoryId} />)
 
     expect(getByText('Musique en ligne')).toBeTruthy()
   })
 
-  it('should render anything when no data are passed', () => {
-    const nativeCategoryId = NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE
-    const { queryByTestId } = render(
-      <NativeCategoryValue data={undefined} nativeCategoryId={nativeCategoryId} />
-    )
-
-    expect(queryByTestId('native-category-value')).toBeNull()
-  })
-
   it('should render anything when UNKNOW nativeCategoryId are passed', () => {
-    const data = {
-      nativeCategories: [
-        { genreType: 'MUSIC', name: 'CD_VINYLES', value: 'CD, vinyles' },
-        { genreType: 'MUSIC', name: 'MUSIQUE_EN_LIGNE', value: 'Musique en ligne' },
-      ],
-    } as SubcategoriesResponseModelv2
     const nativeCategoryId = 'UNKNOWN' as NativeCategoryIdEnumv2
-    const { queryByTestId } = render(
-      <NativeCategoryValue data={data} nativeCategoryId={nativeCategoryId} />
-    )
+    const { queryByTestId } = render(<NativeCategoryValue nativeCategoryId={nativeCategoryId} />)
 
     expect(queryByTestId('native-category-value')).toBeNull()
   })

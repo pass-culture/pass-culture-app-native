@@ -12,7 +12,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -32,8 +31,6 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
-
-  const { data } = useSubcategories()
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
@@ -92,7 +89,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
-        <NativeCategoryValue nativeCategoryId={nativeCategoryId} data={data} />
+        <NativeCategoryValue nativeCategoryId={nativeCategoryId} />
         {!!formattedDate && <Body>{formattedDate}</Body>}
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{formattedPrice}</Typo.Caption>

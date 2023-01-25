@@ -1,16 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { NativeCategoryIdEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2 } from 'api/gen'
 import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Typo } from 'ui/theme'
 
 interface NativeCategoryValueProps {
   nativeCategoryId: NativeCategoryIdEnumv2
-  data?: SubcategoriesResponseModelv2
 }
 
-export const NativeCategoryValue = ({ nativeCategoryId, data }: NativeCategoryValueProps) => {
+export const NativeCategoryValue = ({ nativeCategoryId }: NativeCategoryValueProps) => {
+  const { data } = useSubcategories()
   const { value } = getNativeCategoryFromEnum(data, nativeCategoryId) || {}
 
   return value ? (
