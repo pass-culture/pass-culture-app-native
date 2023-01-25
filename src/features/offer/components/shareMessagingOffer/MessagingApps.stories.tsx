@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { MessagingApps } from 'ui/components/MessagingApps'
+import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 export default {
-  title: 'ui/MessagingApps',
+  title: 'features/offer/MessagingApps',
   component: MessagingApps,
 } as ComponentMeta<typeof MessagingApps>
 
@@ -13,6 +13,8 @@ const Template: ComponentStory<typeof MessagingApps> = (args) => <MessagingApps 
 
 export const Default = Template.bind({})
 Default.args = {
-  media: [Network.instagram],
+  socialMedia1: Network.instagram,
+  socialMedia2: Network.snapchat,
+  socialMedia3: Network.tiktok,
   offerType: 'isDigital',
 }
