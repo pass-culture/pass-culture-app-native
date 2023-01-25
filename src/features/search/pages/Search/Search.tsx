@@ -3,7 +3,6 @@ import { SearchClient } from 'algoliasearch'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React, { memo, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-hooks'
-import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -87,17 +86,14 @@ export function Search() {
   }
 
   return (
-    <React.Fragment>
-      <StatusBar barStyle="dark-content" />
-      <Form.Flex>
-        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
-          <Configure hitsPerPage={5} clickAnalytics />
-          <InsightsMiddleware />
-          <SearchHeader searchInputID={searchInputID} />
-          <BodySearch view={params?.view} />
-        </InstantSearch>
-      </Form.Flex>
-    </React.Fragment>
+    <Form.Flex>
+      <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+        <Configure hitsPerPage={5} clickAnalytics />
+        <InsightsMiddleware />
+        <SearchHeader searchInputID={searchInputID} />
+        <BodySearch view={params?.view} />
+      </InstantSearch>
+    </Form.Flex>
   )
 }
 

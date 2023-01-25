@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo, FunctionComponent } from 'react'
+import { StatusBar } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
@@ -34,8 +34,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
-  useWhiteStatusBarWithoutReactNavigation()
-
   const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   const StyledIcon =
@@ -56,6 +54,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
 
   return (
     <Wrapper>
+      <StatusBar barStyle="light-content" animated />
       {!!noIndex && (
         <Helmet>
           <meta name="robots" content="noindex" />

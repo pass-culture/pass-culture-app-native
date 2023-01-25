@@ -1,6 +1,5 @@
-import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
-import { ScrollView, StatusBar } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
@@ -8,13 +7,6 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationOnboarding(): JSX.Element {
-  useFocusEffect(
-    React.useCallback(() => {
-      StatusBar.setBarStyle('dark-content', true)
-      return () => StatusBar.setBarStyle('dark-content', true)
-    }, [])
-  )
-
   return (
     <ScrollView>
       <PageHeaderSecondary title="Onboarding 🛶" />

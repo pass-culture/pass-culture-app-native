@@ -1,7 +1,7 @@
 import React, { ReactNode, FunctionComponent } from 'react'
+import { StatusBar } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -30,8 +30,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttons,
   noBackground,
 }) => {
-  useWhiteStatusBarWithoutReactNavigation(noBackground)
-
   const { isTouch } = useTheme()
   const Icon =
     !!icon &&
@@ -42,6 +40,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
 
   return (
     <Container>
+      <StatusBar barStyle="light-content" animated />
       {!!noIndex && (
         <Helmet>
           <meta name="robots" content="noindex" />

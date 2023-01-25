@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
-import { Animated, Platform } from 'react-native'
+import { Animated, Platform, StatusBar } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -15,7 +15,6 @@ import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSi
 import { useShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/firebase/analytics'
-import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -33,7 +32,6 @@ interface Props {
  * @param props.headerTransition should be between animated between 0 and 1
  */
 export const OfferHeader: React.FC<Props> = (props) => {
-  useWhiteStatusBar()
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
   const theme = useTheme()
@@ -109,6 +107,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
+      <StatusBar barStyle="light-content" animated />
       <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={2} />

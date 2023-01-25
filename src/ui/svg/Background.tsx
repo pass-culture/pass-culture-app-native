@@ -1,8 +1,8 @@
 import React, { FunctionComponent, memo } from 'react'
+import { StatusBar } from 'react-native'
 import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
@@ -21,8 +21,12 @@ const NotMemoizedBackground: FunctionComponent<Props> = ({ width = '100%', heigh
 export const BackgroundWithDefaultStatusBar = memo(NotMemoizedBackground)
 
 const NotMemoizedBackgroundWithWhiteStatusBar: FunctionComponent<Props> = (props) => {
-  useWhiteStatusBar()
-  return <BackgroundWithDefaultStatusBar {...props} />
+  return (
+    <React.Fragment>
+      <StatusBar barStyle="light-content" animated />
+      <BackgroundWithDefaultStatusBar {...props} />
+    </React.Fragment>
+  )
 }
 
 export const BackgroundWithWhiteStatusBar = memo(NotMemoizedBackgroundWithWhiteStatusBar)

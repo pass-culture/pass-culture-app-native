@@ -1,15 +1,12 @@
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
-import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
-import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
+import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { Typo } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
-  useWhiteStatusBarWithoutReactNavigation()
-
   return (
     <Container>
       {/**
@@ -18,7 +15,7 @@ const UnmemoizedLoadingPage: FunctionComponent = () => {
        *
        * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
        */}
-      <BackgroundWithDefaultStatusBar />
+      <BackgroundWithWhiteStatusBar />
       <StyledLottieView testID="Loading-Animation" source={LoadingAnimation} autoPlay loop />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>

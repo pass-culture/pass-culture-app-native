@@ -53,7 +53,6 @@ LogBox.ignoreLogs([
 
 const App: FunctionComponent = function () {
   useEffect(() => {
-    StatusBar.setBarStyle('dark-content')
     if (Platform.OS === 'android') {
       StatusBar.setTranslucent(true)
       StatusBar.setBackgroundColor('transparent', false)
@@ -75,6 +74,7 @@ const App: FunctionComponent = function () {
   return (
     <RemoteConfigProvider>
       <ThemeProvider theme={theme}>
+        <StatusBar barStyle="dark-content" animated />
         <SafeAreaProvider>
           <ReactQueryClientProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>

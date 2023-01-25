@@ -1,9 +1,8 @@
 import React from 'react'
-import { View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -33,12 +32,11 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   shouldDisplayCloseButton,
   onClose,
 }) => {
-  useWhiteStatusBar()
-
   const { top } = useCustomSafeInsets()
 
   return (
     <Header>
+      <StatusBar barStyle="light-content" animated />
       <View style={{ height: HEIGHT_CONTAINER + top }} />
       <ColorContainer testID={testID}>
         <Spacer.TopScreen />
