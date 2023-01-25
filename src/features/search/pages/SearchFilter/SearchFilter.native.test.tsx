@@ -66,7 +66,7 @@ describe('<SearchFilter/>', () => {
       useRoute.mockReturnValueOnce({ params: initialSearchState })
       const { getByTestId } = renderSearchFilter()
 
-      fireEvent.press(getByTestId('Revenir en arrière'))
+      fireEvent.press(getByTestId('Fermer'))
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -140,6 +140,22 @@ describe('<SearchFilter/>', () => {
 
     await waitFor(() => {
       expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
+    })
+  })
+
+  it('should display close button on header', async () => {
+    const { getByTestId } = renderSearchFilter()
+
+    await waitFor(() => {
+      expect(getByTestId('Fermer')).toBeTruthy()
+    })
+  })
+
+  it('should not display back button on header', async () => {
+    const { queryByTestId } = renderSearchFilter()
+
+    await waitFor(() => {
+      expect(queryByTestId('Revenir en arrière')).toBeFalsy()
     })
   })
 })

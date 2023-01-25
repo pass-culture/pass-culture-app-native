@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -7,7 +7,11 @@ import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferD
 import { useModal } from 'ui/components/modals/useModal'
 import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 
-export function OfferDuo() {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const OfferDuo: FunctionComponent<Props> = ({ onClose }) => {
   const {
     visible: offerDuoModalVisible,
     showModal: showOfferDuoModal,
@@ -32,6 +36,7 @@ export function OfferDuo() {
         isVisible={offerDuoModalVisible}
         hideModal={hideOfferDuoModal}
         filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )

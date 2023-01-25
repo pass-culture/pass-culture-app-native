@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -22,7 +22,11 @@ const buildDateString = (date: SearchState['date']) => {
   }
 }
 
-export const DateHour = () => {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const DateHour: FunctionComponent<Props> = ({ onClose }) => {
   const { searchState } = useSearch()
   const { date, timeRange } = searchState
   const { visible, showModal, hideModal } = useModal(false)
@@ -47,6 +51,7 @@ export const DateHour = () => {
         isVisible={visible}
         hideModal={hideModal}
         filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )

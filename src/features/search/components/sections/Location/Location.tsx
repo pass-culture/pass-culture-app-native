@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -9,7 +9,11 @@ import { LocationModal } from 'features/search/pages/modals/LocationModal/Locati
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 
-export function Location() {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const Location: FunctionComponent<Props> = ({ onClose }) => {
   const { searchState } = useSearch()
   const { section } = useLocationType(searchState)
   const { label } = useLocationChoice(section)
@@ -34,6 +38,7 @@ export function Location() {
         isVisible={locationModalVisible}
         hideModal={hideLocationModal}
         filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )
