@@ -16,7 +16,8 @@ export const NotConnectedFavorites = () => (
     titleComponent={StyledTitle4}
     subtitleComponent={CenteredText}
     icon={BicolorUserFavorite}
-    separateIconFromTitle={false}>
+    separateIconFromTitle={false}
+    mobileBottomFlex={2}>
     <Row>
       <ButtonContainer>
         <InternalTouchableLink

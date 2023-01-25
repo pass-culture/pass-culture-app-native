@@ -323,12 +323,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     }
   />
   <View
-    flex={1.5}
+    flex={2}
     style={
       Array [
         Object {
           "flexBasis": 0,
-          "flexGrow": 1.5,
+          "flexGrow": 2,
           "flexShrink": 1,
         },
       ]
