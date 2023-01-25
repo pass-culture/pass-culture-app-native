@@ -20,16 +20,20 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 interface ShareMessagingAppProps {
   network: Network
+  visible: boolean
 }
 
 export const ShareMessagingApp: React.FC<ShareMessagingAppProps> = ({
   network,
+  visible,
 }: ShareMessagingAppProps) => {
   const StyledIcon = styled(mapNetworkToRoundIcon[network]).attrs(({ theme }) => ({
     size: theme.buttons.buttonHeights.tall,
   }))``
 
-  return <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + network} />
+  return visible ? (
+    <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + network} />
+  ) : null
 }
 
 export enum Network {

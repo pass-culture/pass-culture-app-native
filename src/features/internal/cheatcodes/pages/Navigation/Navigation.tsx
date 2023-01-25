@@ -185,6 +185,12 @@ export function Navigation(): JSX.Element {
               onPress={() => navigate('RecreditBirthdayNotification')}
             />
           </Row>
+          <Row half>
+            <ButtonPrimary
+              wording="🦔 Spike réseaux sociaux dynamiques"
+              onPress={() => navigate('GetDynamicSocials')}
+            />
+          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>
