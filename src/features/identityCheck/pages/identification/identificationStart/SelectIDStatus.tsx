@@ -88,9 +88,6 @@ const SelectIDStatusContent: FunctionComponent = () => {
 }
 
 const Container = styled.View({
-  flexDirection: 'column',
-  height: '100%',
-  alignItems: 'center',
   marginHorizontal: getSpacing(1),
   marginVertical: getSpacing(8),
 })
