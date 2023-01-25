@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
 
-import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
+import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { render, flushAllPromisesWithAct } from 'tests/utils'
 
@@ -11,7 +11,7 @@ import { RootNavigator } from './RootNavigator'
 const mockUseSplashScreenContext = mocked(useSplashScreenContext)
 const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
 
-jest.mock('features/forceUpdate/useMustUpdateApp')
+jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/context/AuthContext')
 jest.mock('react-error-boundary', () => ({
