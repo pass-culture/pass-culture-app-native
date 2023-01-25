@@ -1529,7 +1529,7 @@ exports[`Profile component should render correctly 1`] = `
                                   ]
                                 }
                               >
-                                Parle du bon plan à tes amis !
+                                Recommande le bon plan à tes amis !
                               </Text>
                             </View>
                           </View>
@@ -1579,7 +1579,7 @@ exports[`Profile component should render correctly 1`] = `
                       ]
                     }
                   >
-                    Suivre pass Culture
+                    Suivre le pass Culture
                   </Text>
                   <View
                     numberOfSpaces={2}
