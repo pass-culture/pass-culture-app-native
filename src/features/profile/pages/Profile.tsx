@@ -225,13 +225,13 @@ const OnlineProfile: React.FC = () => {
               <ShareAppContainer>
                 <StyledButtonText>Partage le pass Culture</StyledButtonText>
                 <Spacer.Column numberOfSpaces={1} />
-                <StyledBody>Parle du bon plan à tes amis&nbsp;!</StyledBody>
+                <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
               </ShareAppContainer>
             </BannerWithBackground>
             <Spacer.Column numberOfSpaces={4} />
           </Section>
         )}
-        <Section title="Suivre pass Culture">
+        <Section title="Suivre le pass Culture">
           <SocialNetwork />
         </Section>
         {!!isLoggedIn && (
