@@ -55,6 +55,7 @@ export type LocationModalProps = {
   isVisible: boolean
   hideModal: () => void
   filterBehaviour: FilterBehaviour
+  onClose?: VoidFunction
 }
 
 const LOCATION_TYPES = [
@@ -99,6 +100,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   isVisible,
   hideModal,
   filterBehaviour,
+  onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -241,11 +243,18 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     [searchState, filterBehaviour, hideModal, getValues, navigate, dispatch]
   )
 
-  const close = useCallback(() => {
+  const closeModal = useCallback(() => {
     reset(defaultValues)
     hideModal()
     setIsSearchInputFocused(false)
   }, [defaultValues, hideModal, reset])
+
+  const close = useCallback(() => {
+    closeModal()
+    if (onClose) {
+      onClose()
+    }
+  }, [closeModal, onClose])
 
   const onResetPress = useCallback(() => {
     reset({
@@ -341,12 +350,21 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     [isVisible, setValue]
   )
 
+  const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+
   return (
     <AppModal
       visible={isVisible}
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={close} />
+          <SearchCustomModalHeader
+            titleId={titleId}
+            title={title}
+            onGoBack={closeModal}
+            onClose={close}
+            shouldDisplayBackButton={shouldDisplayBackButton}
+            shouldDisplayCloseButton
+          />
         )
       }
       title={title}
@@ -355,7 +373,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
-      onRightIconPress={close}
+      onRightIconPress={closeModal}
       fixedModalBottom={
         <SearchFixedModalBottom
           onSearchPress={onSubmit}

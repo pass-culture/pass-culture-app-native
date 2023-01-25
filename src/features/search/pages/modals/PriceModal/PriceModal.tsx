@@ -44,6 +44,7 @@ export type PriceModalProps = {
   isVisible: boolean
   hideModal: () => void
   filterBehaviour: FilterBehaviour
+  onClose?: VoidFunction
 }
 
 const titleId = uuidv4()
@@ -56,6 +57,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   isVisible,
   hideModal,
   filterBehaviour,
+  onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -194,7 +196,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     trigger(['minPrice', 'maxPrice'])
   }, [setValue, getValues, trigger, formatAvailableCredit, searchState?.maxPrice])
 
-  const close = useCallback(() => {
+  const closeModal = useCallback(() => {
     reset({
       minPrice: searchState?.minPrice || '',
       maxPrice: searchState?.maxPrice || '',
@@ -211,6 +213,13 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     searchState?.minPrice,
   ])
 
+  const close = useCallback(() => {
+    closeModal()
+    if (onClose) {
+      onClose()
+    }
+  }, [closeModal, onClose])
+
   const onResetPress = useCallback(() => {
     reset(
       {
@@ -226,13 +235,21 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const disabled = !isValid || (!isValidating && isSubmitting)
 
   const isKeyboardOpen = keyboardHeight > 0
+  const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
     <AppModal
       visible={isVisible}
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={close} />
+          <SearchCustomModalHeader
+            titleId={titleId}
+            title={title}
+            onGoBack={closeModal}
+            onClose={close}
+            shouldDisplayBackButton={shouldDisplayBackButton}
+            shouldDisplayCloseButton
+          />
         )
       }
       title={title}
@@ -241,7 +258,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
-      onRightIconPress={close}
+      onRightIconPress={closeModal}
       fixedModalBottom={
         <SearchFixedModalBottom
           onSearchPress={onSubmit}
