@@ -1,7 +1,10 @@
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import {
   getNativeCategories,
+  getNativeCategoryFromEnum,
   getSearchGroupsByAlphabeticalSorting,
+  getSearchGroupsEnumArrayFromNativeCategoryEnum,
+  isAssociatedNativeCategoryToCategory,
   isOnlyOnline,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
@@ -154,6 +157,73 @@ describe('categoriesHelpers', () => {
         const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
         expect(value).toEqual(false)
       })
+    })
+  })
+
+  describe('getNativeCategoryFromEnum', () => {
+    it('should return undefined when subcategories API return undefined data', () => {
+      const value = getNativeCategoryFromEnum(undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
+      expect(value).toEqual(undefined)
+    })
+
+    it('should return undefined when native category id is undefined', () => {
+      const value = getNativeCategoryFromEnum(mockData, undefined)
+      expect(value).toEqual(undefined)
+    })
+
+    it('should return the native category from native category id', () => {
+      const value = getNativeCategoryFromEnum(mockData, NativeCategoryIdEnumv2.ARTS_VISUELS)
+      expect(value).toEqual({ genreType: null, name: 'ARTS_VISUELS', value: 'Arts visuels' })
+    })
+  })
+
+  describe('getSearchGroupsEnumArrayFromNativeCategoryEnum', () => {
+    describe('should return an empty array', () => {
+      it('when no data from backend', () => {
+        const value = getSearchGroupsEnumArrayFromNativeCategoryEnum()
+        expect(value).toEqual([])
+      })
+
+      it('without native category in parameter', () => {
+        const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(mockData)
+        expect(value).toEqual([])
+      })
+    })
+
+    it('should return an array of categories id', () => {
+      const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(
+        mockData,
+        NativeCategoryIdEnumv2.ARTS_VISUELS
+      )
+      expect(value).toEqual([
+        SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+        SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+      ])
+    })
+  })
+
+  describe('isAssociatedNativeCategoryToCategory', () => {
+    it('should return false when no data from backend', () => {
+      const value = isAssociatedNativeCategoryToCategory()
+      expect(value).toEqual(false)
+    })
+
+    it('should return false when native category not associated to category', () => {
+      const value = isAssociatedNativeCategoryToCategory(
+        mockData,
+        SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+        NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
+      )
+      expect(value).toEqual(false)
+    })
+
+    it('should return true when native category associated to category', () => {
+      const value = isAssociatedNativeCategoryToCategory(
+        mockData,
+        SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+        NativeCategoryIdEnumv2.ARTS_VISUELS
+      )
+      expect(value).toEqual(true)
     })
   })
 })

@@ -66,10 +66,13 @@ export function getSearchGroupsFromEnumArray(
  * Returns a `NativeCategoryResponseModelv2` from a `NativeCategoryIdEnumv2`.
  */
 export function getNativeCategoryFromEnum(
-  data: SubcategoriesResponseModelv2 | undefined,
-  enumValue: NativeCategoryIdEnumv2
+  data?: SubcategoriesResponseModelv2,
+  enumValue?: NativeCategoryIdEnumv2
 ) {
-  return data?.nativeCategories.find((nativeCategory) => nativeCategory.name === enumValue)
+  if (!data) return undefined
+  if (!enumValue) return undefined
+
+  return data.nativeCategories.find((nativeCategory) => nativeCategory.name === enumValue)
 }
 
 /**
@@ -298,4 +301,37 @@ export function isOnlyOnline(
     !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.OFFLINE)
 
   return isOnlyOnline
+}
+
+export function getSearchGroupsEnumArrayFromNativeCategoryEnum(
+  data?: SubcategoriesResponseModelv2,
+  nativeCategoryId?: NativeCategoryIdEnumv2
+) {
+  if (!data) return []
+
+  const categories = data.subcategories
+    .filter((subcategory) => subcategory.nativeCategoryId === nativeCategoryId)
+    .map((subcategory) => subcategory.searchGroupName)
+
+  return [...new Set(categories)]
+}
+
+export function isAssociatedNativeCategoryToCategory(
+  data?: SubcategoriesResponseModelv2,
+  categoryId?: SearchGroupNameEnumv2,
+  nativeCategoryId?: NativeCategoryIdEnumv2
+) {
+  if (!data) return false
+
+  const associatedNativeCategory = data.subcategories.filter(
+    (subcategory) =>
+      subcategory.searchGroupName === categoryId &&
+      subcategory.nativeCategoryId === nativeCategoryId
+  )
+
+  if (associatedNativeCategory.length > 0) {
+    return true
+  } else {
+    return false
+  }
 }
