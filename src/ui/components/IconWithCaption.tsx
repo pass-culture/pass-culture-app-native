@@ -19,8 +19,8 @@ export const IconWithCaption = ({
   testID,
   isDisabled = false,
 }: IconWithCaptionProps) => {
-  const StyledIcon = styled(Icon).attrs(({ theme, size }) => ({
-    size: size ?? theme.icons.sizes.standard,
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.standard,
     color: theme.colors.greyDark,
   }))``
 
