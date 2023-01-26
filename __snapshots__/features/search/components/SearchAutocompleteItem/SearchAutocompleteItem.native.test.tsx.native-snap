@@ -92,7 +92,7 @@ exports[`SearchAutocompleteItem component should render SearchAutocompleteItem 1
         ]
       }
     >
-      Films, séries, cinéma
+      Séances de cinéma
     </Text>
   </Text>
 </View>
