@@ -1,22 +1,12 @@
 import { env } from 'libs/environment'
 
-import {
-  FIREBASE_DYNAMIC_LINK_URL,
-  getLongDynamicLinkURI,
-  generateLongFirebaseDynamicLink,
-} from './utils'
+import { generateLongFirebaseDynamicLink } from './utils'
 
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 
-  describe('getLongDynamicLinkURI', () => {
-    it('should create the right URI for Firebase Dynamic Links', () => {
-      const params = new URLSearchParams(getLongDynamicLinkURI())
-      expect(params.get('apn')).toEqual(env.ANDROID_APP_ID)
-      expect(params.get('isi')).toEqual(String(env.IOS_APP_STORE_ID))
-      expect(params.get('ibi')).toEqual(env.IOS_APP_ID)
-    })
-  })
+  const longDynamicLinkURI = 'apn=app.android&isi=1557887412&ibi=app.ios&efr=1'
+  const FIREBASE_DYNAMIC_LINK_URL = 'https://passcultureapptesting.page.link'
 
   describe('generateLongFirebaseDynamicLink', () => {
     it('should return a format long firebase dynamic link', () => {
@@ -24,7 +14,7 @@ describe('Formatting deeplink url', () => {
       const encodedFullWebAppUrlWithParams = 'https%3A%2F%2Fweb.example.com%2Foffre%2F1'
       const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
       expect(dynamicLink).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${getLongDynamicLinkURI()}`
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${longDynamicLinkURI}`
       )
     })
   })
@@ -41,7 +31,7 @@ describe('Formatting deeplink url', () => {
       }
       const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams, extraParams)
       expect(dynamicLink).toEqual(
-        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${getLongDynamicLinkURI()}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
+        `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${longDynamicLinkURI}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
       )
     })
   })
