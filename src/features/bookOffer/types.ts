@@ -7,8 +7,3 @@ export interface IBookingContext {
   dismissModal: () => void
   dispatch: React.Dispatch<Action>
 }
-
-export interface BookingWrapperProps {
-  children: JSX.Element
-  dismissModal: () => void
-}
