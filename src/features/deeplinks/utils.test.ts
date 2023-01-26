@@ -4,8 +4,6 @@ import {
   FIREBASE_DYNAMIC_LINK_URL,
   getLongDynamicLinkURI,
   generateLongFirebaseDynamicLink,
-  isFirebaseDynamicLink,
-  isFirebaseLongDynamicLink,
 } from './utils'
 
 describe('Formatting deeplink url', () => {
@@ -45,36 +43,6 @@ describe('Formatting deeplink url', () => {
       expect(dynamicLink).toEqual(
         `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${getLongDynamicLinkURI()}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
       )
-    })
-  })
-
-  describe('isFirebaseDynamicLink', () => {
-    it('should return true when the link starts like a firebase dynamic link', () => {
-      const isDynamicLink = isFirebaseDynamicLink(FIREBASE_DYNAMIC_LINK_URL + '/home')
-      expect(isDynamicLink).toBe(true)
-    })
-    it('should return false when the link doesnt start like a firebase dynamic link', () => {
-      const isDynamicLink = isFirebaseDynamicLink('https://www.not-google.fr/home')
-      expect(isDynamicLink).toBe(false)
-    })
-  })
-
-  describe('isFirebaseLongDynamicLink', () => {
-    it('should return true when the given firebase link has a "link" uri param', () => {
-      const isLongDynamicLink = isFirebaseLongDynamicLink(
-        FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
-      )
-      expect(isLongDynamicLink).toBe(true)
-    })
-    it('should return false when the given firebase link has not a "link" uri param', () => {
-      const isLongDynamicLink = isFirebaseLongDynamicLink(
-        FIREBASE_DYNAMIC_LINK_URL + '/?not-link=https://a.link'
-      )
-      expect(isLongDynamicLink).toBe(false)
-    })
-    it('should return false when the given link is not a firebase dynamic link', () => {
-      const isLongDynamicLink = isFirebaseLongDynamicLink('https://www.not-google.fr/home')
-      expect(isLongDynamicLink).toBe(false)
     })
   })
 })

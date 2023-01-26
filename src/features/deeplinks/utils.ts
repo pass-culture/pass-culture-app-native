@@ -28,7 +28,3 @@ export function generateLongFirebaseDynamicLink(
     deepLink
   )}&${getLongDynamicLinkURI()}${params}`
 }
-
-export const isFirebaseDynamicLink = (url: string) => url.startsWith(FIREBASE_DYNAMIC_LINK_URL)
-export const isFirebaseLongDynamicLink = (url: string) =>
-  isFirebaseDynamicLink(url) && url.includes('?link=')
