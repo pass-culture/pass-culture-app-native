@@ -12,17 +12,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type MessagingAppsProps = {
   offerType: OfferTypes
-  socialMedia1: Network
-  socialMedia2: Network
-  socialMedia3: Network
+  socialMedias: Network[]
 }
 
-export const MessagingApps: React.FC<MessagingAppsProps> = ({
-  offerType,
-  socialMedia1,
-  socialMedia2,
-  socialMedia3,
-}) => {
+export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) => {
   const title =
     offerType === 'isEvent' ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
   return (
@@ -30,15 +23,11 @@ export const MessagingApps: React.FC<MessagingAppsProps> = ({
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
-          <StyledLi>
-            <ShareMessagingApp network={socialMedia1} />
-          </StyledLi>
-          <StyledLi>
-            <ShareMessagingApp network={socialMedia2} />
-          </StyledLi>
-          <StyledLi>
-            <ShareMessagingApp network={socialMedia3} />
-          </StyledLi>
+          {socialMedias.map((socialMedia, index) => (
+            <StyledLi key={index}>
+              <ShareMessagingApp network={socialMedia} />
+            </StyledLi>
+          ))}
           <StyledLi>
             <ShareMessagingAppOther />
           </StyledLi>
@@ -51,7 +40,6 @@ export const MessagingApps: React.FC<MessagingAppsProps> = ({
 const IconsWrapper = styled.View(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
-  margin: theme.isDesktopViewport ? undefined : 'auto',
   maxWidth: theme.contentPage.maxWidth,
 }))
 

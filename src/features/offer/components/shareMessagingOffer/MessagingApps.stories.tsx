@@ -13,8 +13,6 @@ const Template: ComponentStory<typeof MessagingApps> = (args) => <MessagingApps 
 
 export const Default = Template.bind({})
 Default.args = {
-  socialMedia1: Network.instagram,
-  socialMedia2: Network.snapchat,
-  socialMedia3: Network.tiktok,
   offerType: 'isDigital',
+  socialMedias: [Network.instagram, Network.snapchat, Network.tiktok],
 }
