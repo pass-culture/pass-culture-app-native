@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'

@@ -1,12 +1,8 @@
 import groupBy from 'lodash/groupBy'
 
 import { OfferStockResponse } from 'api/gen'
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
-import {
-  formatToKeyDate,
-  getStatusFromStocks,
-  OfferStatus,
-} from 'features/bookOffer/services/utils'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { formatToKeyDate, getStatusFromStocks, OfferStatus } from 'features/bookOffer/helpers/utils'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 
 export interface Marking {

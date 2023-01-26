@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { formatDate } from 'features/bookOffer/components/CancellationDetails'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
@@ -11,10 +15,6 @@ import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
-
-import { formatDate } from './CancellationDetails'
 
 const ExpirationDate: React.FC<{
   expirationDate: string | undefined | null

@@ -5,14 +5,14 @@ import { CategoryIdEnum } from 'api/gen'
 import { AlreadyBooked } from 'features/bookOffer/components/AlreadyBooked'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
+import { BookingImpossible } from 'features/bookOffer/components/BookingImpossible'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { Step } from 'features/bookOffer/pages/reducer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-
-import { BookingImpossible } from '../components/BookingImpossible'
-import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
-import { Step } from '../pages/reducer'
 
 type ModalContent = {
   children: JSX.Element

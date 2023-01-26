@@ -2,11 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DuoChoice } from 'features/bookOffer/components/DuoChoice'
-import {
-  useBooking,
-  useBookingOffer,
-  useBookingStock,
-} from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'

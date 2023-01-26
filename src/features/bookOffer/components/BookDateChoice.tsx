@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'

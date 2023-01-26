@@ -4,11 +4,10 @@ import { View } from 'react-native'
 import { DateData } from 'react-native-calendars/src/types'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { getSpacing, Typo } from 'ui/theme'
-
-import { OfferStatus } from '../../services/utils'
 
 import { DiagonalStripe } from './DiagonalStripe'
 

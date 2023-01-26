@@ -3,13 +3,11 @@ import React, { useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
-import {
-  useBooking,
-  useBookingOffer,
-  useBookingStock,
-} from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { Step } from 'features/bookOffer/pages/reducer'
-import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'

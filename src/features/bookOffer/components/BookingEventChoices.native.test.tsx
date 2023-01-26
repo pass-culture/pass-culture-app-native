@@ -1,7 +1,8 @@
 import * as React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { render, fireEvent } from 'tests/utils'
 

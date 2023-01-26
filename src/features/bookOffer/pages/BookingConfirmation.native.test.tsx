@@ -3,7 +3,7 @@ import { Share } from 'react-native'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
-import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
+import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { analytics } from 'libs/firebase/analytics'
 import { BatchUser } from 'libs/react-native-batch'
 import { act, fireEvent, render, waitFor } from 'tests/utils'

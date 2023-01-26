@@ -1,4 +1,4 @@
-import { OfferStatus } from 'features/bookOffer/services/utils'
+import { OfferStatus } from 'features/bookOffer/helpers/utils'
 
 import { getMinAvailableDate } from './Calendar'
 import { Marking } from './useMarkedDates'
