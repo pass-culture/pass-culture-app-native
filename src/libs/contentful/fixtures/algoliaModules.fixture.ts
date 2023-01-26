@@ -1,3 +1,4 @@
+import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
 import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
 
 // This fixture reflects the contentful data after the resolveResponse formatting
@@ -10,7 +11,7 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
     updatedAt: '2022-06-03T14:10:23.827Z',
     environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
     revision: 17,
-    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'algolia' } },
+    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.ALGOLIA } },
     locale: 'en-US',
   },
   fields: {
@@ -29,7 +30,13 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
         },
         locale: 'en-US',
       },
-      fields: { title: 'Livre', isGeolocated: false, categories: ['Livres'], hitsPerPage: 10 },
+      fields: {
+        title: 'Livre',
+        isGeolocated: false,
+        categories: ['Livres'],
+        hitsPerPage: 10,
+        algoliaSubcategories: subcategoriesFixture,
+      },
     },
     displayParameters: {
       sys: {

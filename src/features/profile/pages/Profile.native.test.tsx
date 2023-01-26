@@ -7,6 +7,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
+import * as Share from 'features/share/helpers/shareApp'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -88,6 +89,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+
+const shareApp = jest.spyOn(Share, 'shareApp')
 
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -230,6 +233,23 @@ describe('Profile component', () => {
     })
   })
 
+  describe('share app section', () => {
+    it('should display banner in native', async () => {
+      const { queryByText } = await renderProfile()
+      const banner = queryByText('Partage le pass Culture')
+      expect(banner).toBeTruthy()
+    })
+
+    it('should share app on banner press', async () => {
+      const { getByText } = await renderProfile()
+      const banner = getByText('Partage le pass Culture')
+
+      fireEvent.press(banner)
+
+      expect(shareApp).toHaveBeenCalledTimes(1)
+    })
+  })
+
   describe('signout section', () => {
     it('should display signout row if the user is connected', async () => {
       const { getByText } = await renderProfile()
@@ -281,6 +301,15 @@ describe('Profile component', () => {
       expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(0)
       await act(async () => await fireEvent.scroll(scrollContainer, bottomScrollEvent))
       expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(1)
+    })
+
+    it('should log event ShareApp on share banner press', async () => {
+      const { getByText } = await renderProfile()
+      const banner = getByText('Partage le pass Culture')
+
+      fireEvent.press(banner)
+
+      expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { from: 'profile' })
     })
   })
 })

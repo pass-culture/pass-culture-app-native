@@ -5,27 +5,31 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import {
   DatesHoursModal,
+  DatesHoursModalProps,
   DATE_TYPES,
   RadioButtonDate,
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
+const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
+    dispatch: mockDispatch,
   }),
 }))
 
-const hideDatesHoursModal = jest.fn()
+const mockHideModal = jest.fn()
+const mockOnClose = jest.fn()
 
 const TODAY = new Date(2022, 9, 28)
 const TOMORROW = new Date(2022, 9, 29)
@@ -38,7 +42,7 @@ describe('<DatesHoursModal/>', () => {
 
   it('should render modal correctly after animation and with enabled submit', async () => {
     jest.useFakeTimers()
-    const renderAPI = renderDatesHoursModal({ hideDatesHoursModal })
+    const renderAPI = renderDatesHoursModal()
     await superFlushWithAct()
     expect(renderAPI).toMatchSnapshot()
   })
@@ -49,7 +53,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
       }
-      const { getByText, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByText, toJSON } = renderDatesHoursModal()
 
       let component = toJSON()
       if (Array.isArray(component)) {
@@ -72,7 +76,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TOMORROW.toISOString() },
       }
-      const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByText } = renderDatesHoursModal()
       await act(async () => {
         expect(getByText('Samedi 29 octobre 2022')).toBeTruthy()
       })
@@ -83,7 +87,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         timeRange: [18, 22],
       }
-      const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByText } = renderDatesHoursModal()
 
       await act(async () => {
         expect(getByText(`18\u00a0h et 22\u00a0h`)).toBeTruthy()
@@ -96,7 +100,7 @@ describe('<DatesHoursModal/>', () => {
       ...searchState,
       date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TODAY.toISOString() },
     }
-    const { getByTestId, toJSON } = renderDatesHoursModal({ hideDatesHoursModal })
+    const { getByTestId, toJSON } = renderDatesHoursModal()
 
     const radioButton = getByTestId(
       `${RadioButtonDate.PRECISE_DATE} ${formatToCompleteFrenchDate(TODAY)}`
@@ -129,7 +133,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         view: SearchView.Results,
       }
-      const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByText } = renderDatesHoursModal()
 
       await superFlushWithAct()
 
@@ -153,7 +157,7 @@ describe('<DatesHoursModal/>', () => {
         mockSearchState = {
           ...searchState,
         }
-        const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+        const { getByTestId, getByText } = renderDatesHoursModal()
 
         const toggleDate = getByTestId('Interrupteur-date')
         await act(async () => {
@@ -185,7 +189,7 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId, getByText } = renderDatesHoursModal()
 
       const toggleHour = getByTestId('Interrupteur-hour')
       await act(async () => {
@@ -218,7 +222,7 @@ describe('<DatesHoursModal/>', () => {
         beginningDatetime: TODAY.toISOString(),
         endingDatetime: TOMORROW.toISOString(),
       }
-      const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByText } = renderDatesHoursModal()
 
       await superFlushWithAct()
 
@@ -244,7 +248,7 @@ describe('<DatesHoursModal/>', () => {
       ...searchState,
       view: SearchView.Results,
     }
-    const { getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+    const { getByText } = renderDatesHoursModal()
 
     await superFlushWithAct()
 
@@ -261,7 +265,7 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId, getByText } = renderDatesHoursModal()
 
       const toggleDate = getByTestId('Interrupteur-date')
       await act(async () => {
@@ -280,7 +284,7 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId, getByText } = renderDatesHoursModal()
 
       const toggleHour = getByTestId('Interrupteur-hour')
       await act(async () => {
@@ -303,7 +307,7 @@ describe('<DatesHoursModal/>', () => {
         mockSearchState = {
           ...searchState,
         }
-        const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+        const { getByTestId, getByText } = renderDatesHoursModal()
 
         const toggleDate = getByTestId('Interrupteur-date')
         await act(async () => {
@@ -332,7 +336,7 @@ describe('<DatesHoursModal/>', () => {
         mockSearchState = {
           ...searchState,
         }
-        const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+        const { getByTestId } = renderDatesHoursModal()
 
         const toggleDate = getByTestId('Interrupteur-date')
         await act(async () => {
@@ -358,7 +362,7 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId, getByText } = renderDatesHoursModal()
 
       const toggleHour = getByTestId('Interrupteur-hour')
       await act(async () => {
@@ -384,7 +388,7 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId, getByText } = renderDatesHoursModal()
 
       const toggleHour = getByTestId('Interrupteur-hour')
       await act(async () => {
@@ -406,14 +410,14 @@ describe('<DatesHoursModal/>', () => {
   })
 
   it('should close the modal when pressing previous button', async () => {
-    const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+    const { getByTestId } = renderDatesHoursModal()
 
     await superFlushWithAct()
 
-    const previousButton = getByTestId('Revenir en arrière')
+    const previousButton = getByTestId('Fermer')
     fireEvent.press(previousButton)
 
-    expect(hideDatesHoursModal).toHaveBeenCalledTimes(1)
+    expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
   describe('should activate by default', () => {
@@ -422,7 +426,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId } = renderDatesHoursModal()
 
       const toggleDate = getByTestId('Interrupteur-date')
 
@@ -436,7 +440,7 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
-      const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+      const { getByTestId } = renderDatesHoursModal()
 
       const toggleHour = getByTestId('Interrupteur-date')
 
@@ -454,7 +458,7 @@ describe('<DatesHoursModal/>', () => {
           ...searchState,
           date: { selectedDate: TODAY.toISOString(), option: type },
         }
-        const { getByTestId } = renderDatesHoursModal({ hideDatesHoursModal })
+        const { getByTestId } = renderDatesHoursModal()
 
         const radioButton = getByTestId(label, { exact: false })
         await act(async () => {
@@ -463,19 +467,107 @@ describe('<DatesHoursModal/>', () => {
       }
     )
   })
+
+  describe('with "Appliquer le filtre" button', () => {
+    it('should display alternative button title', async () => {
+      const { getByText } = renderDatesHoursModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByText('Appliquer le filtre')).toBeTruthy()
+      })
+    })
+
+    it('should update search state when pressing submit button', async () => {
+      mockSearchState = {
+        ...searchState,
+      }
+      const { getByText, getByTestId } = renderDatesHoursModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      const toggleDate = getByTestId('Interrupteur-date')
+      await act(async () => {
+        fireEvent.press(toggleDate)
+      })
+
+      const radioButton = getByText(RadioButtonDate.WEEK)
+      await act(async () => {
+        fireEvent.press(radioButton)
+      })
+
+      const searchButton = getByText('Appliquer le filtre')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        date: {
+          option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
+          selectedDate: '2022-10-28T00:00:00.000Z',
+        },
+        view: SearchView.Results,
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
+      })
+    })
+  })
+
+  describe('Modal header buttons', () => {
+    it('should display back button on header when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderDatesHoursModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByTestId('Revenir en arrière')).toBeTruthy()
+      })
+    })
+
+    it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderDatesHoursModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+        onClose: mockOnClose,
+      })
+
+      await superFlushWithAct()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).toHaveBeenCalledTimes(1)
+    })
+
+    it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
+      const { getByTestId } = renderDatesHoursModal()
+
+      await superFlushWithAct()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).not.toHaveBeenCalled()
+    })
+  })
 })
 
-type Props = {
-  hideDatesHoursModal: () => void
-}
-
-function renderDatesHoursModal({ hideDatesHoursModal }: Props) {
+function renderDatesHoursModal({
+  filterBehaviour = FilterBehaviour.SEARCH,
+  onClose,
+}: Partial<DatesHoursModalProps> = {}) {
   return render(
     <DatesHoursModal
       title="Dates & heures"
       accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
       isVisible
-      hideModal={hideDatesHoursModal}
+      hideModal={mockHideModal}
+      filterBehaviour={filterBehaviour}
+      onClose={onClose}
     />
   )
 }

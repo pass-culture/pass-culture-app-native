@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
@@ -22,7 +22,11 @@ const buildDateString = (date: SearchState['date']) => {
   }
 }
 
-export const DateHour = () => {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const DateHour = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { date, timeRange } = searchState
   const { visible, showModal, hideModal } = useModal(false)
@@ -46,6 +50,8 @@ export const DateHour = () => {
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
         isVisible={visible}
         hideModal={hideModal}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )

@@ -32,7 +32,7 @@ export const HomeHeader: FunctionComponent = function () {
   const { data: subscription } = useNextSubscriptionStep()
 
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
-  const shouldDisplaySubscritpionBloc =
+  const shouldDisplaySubscriptionBloc =
     subscription?.nextSubscriptionStep && !!nextBeneficiaryValidationStepNavConfig
 
   const welcomeTitle =
@@ -59,7 +59,7 @@ export const HomeHeader: FunctionComponent = function () {
   const credit = useGetDepositAmountsByAge(user?.birthDate)
 
   const SystemBloc = useMemo(() => {
-    if (shouldDisplaySubscritpionBloc) {
+    if (shouldDisplaySubscriptionBloc) {
       return (
         <React.Fragment>
           <BannerWithBackground
@@ -83,7 +83,7 @@ export const HomeHeader: FunctionComponent = function () {
 
     return null
   }, [
-    shouldDisplaySubscritpionBloc,
+    shouldDisplaySubscriptionBloc,
     nextBeneficiaryValidationStepNavConfig,
     shouldDisplayGeolocationBloc,
     credit,

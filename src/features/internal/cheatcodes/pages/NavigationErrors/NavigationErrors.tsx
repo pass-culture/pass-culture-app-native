@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { NoContentError } from 'features/home/components/NoContentError'
 import { Row } from 'features/internal/cheatcodes/components/Row'
-import { Maintenance } from 'features/maintenance/Maintenance'
+import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AsyncError, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'

@@ -90,7 +90,7 @@ describe('ShareAppModal', () => {
     const shareButton = getByTestId('Partager l’appli')
     fireEvent.press(shareButton)
 
-    expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, modalType)
+    expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { type: modalType })
   })
 
   it.each([

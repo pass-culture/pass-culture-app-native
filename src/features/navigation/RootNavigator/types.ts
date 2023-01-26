@@ -3,6 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 
@@ -159,7 +160,7 @@ export type RootStackParamList = {
   LocationFilter?: { selectedVenue?: SuggestedVenue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   PersonalData: undefined
-  SearchFilter: undefined
+  SearchFilter: Partial<SearchState>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SuspendedAccount: undefined

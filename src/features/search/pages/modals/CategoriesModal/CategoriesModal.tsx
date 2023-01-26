@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -10,7 +10,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView } from 'features/search/enums'
+import { CategoriesModalView, CATEGORY_CRITERIA, FilterBehaviour } from 'features/search/enums'
 import {
   buildSearchPayloadValues,
   categoryAllValue,
@@ -37,6 +37,8 @@ export interface CategoriesModalProps {
   accessibilityLabel: string
   isVisible?: boolean
   hideModal: VoidFunction
+  filterBehaviour: FilterBehaviour
+  onClose?: VoidFunction
 }
 
 const titleId = uuidv4()
@@ -45,10 +47,12 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   accessibilityLabel,
+  filterBehaviour,
+  onClose,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
 
   const {
@@ -62,12 +66,24 @@ export const CategoriesModal = ({
     defaultValues: getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES),
   })
 
+  useEffect(() => {
+    reset(getDefaultFormValues(data, searchState, CategoriesModalView.CATEGORIES))
+  }, [data, reset, searchState])
+
   const { nativeCategory, category, genreType, currentView } = watch()
 
-  const categories = useMemo(
-    () => (data?.searchGroups ? getSearchGroupsByAlphabeticalSorting(data.searchGroups) : []),
-    [data?.searchGroups]
-  )
+  const categories = useMemo(() => {
+    const availableCategories =
+      data?.searchGroups.filter((category) =>
+        Object.keys(CATEGORY_CRITERIA).includes(category.name)
+      ) || []
+    if (availableCategories.length > 0) {
+      return getSearchGroupsByAlphabeticalSorting(availableCategories)
+    }
+
+    return availableCategories
+  }, [data?.searchGroups])
+
   const nativeCategories = useMemo(
     () => getNativeCategories(data, category.name),
     [category.name, data]
@@ -78,6 +94,13 @@ export const CategoriesModal = ({
     reset()
     hideModal()
   }, [hideModal, reset])
+
+  const handleClose = useCallback(() => {
+    handleModalClose()
+    if (onClose) {
+      onClose()
+    }
+  }, [handleModalClose, onClose])
 
   const modalTitle = useMemo(() => {
     return getCategoriesModalTitle(currentView, category, nativeCategory)
@@ -165,11 +188,19 @@ export const CategoriesModal = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(...getTabNavConfig('Search', additionalSearchState))
-
+      switch (filterBehaviour) {
+        case FilterBehaviour.SEARCH: {
+          navigate(...getTabNavConfig('Search', additionalSearchState))
+          break
+        }
+        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+          break
+        }
+      }
       hideModal()
     },
-    [data, hideModal, navigate, searchState, setValue]
+    [data, setValue, searchState, filterBehaviour, hideModal, navigate, dispatch]
   )
 
   const onSubmit = handleSubmit(handleSearch)
@@ -232,11 +263,26 @@ export const CategoriesModal = ({
     [descriptionContext, genreTypes]
   )
 
+  const shouldDisplayBackButton = useMemo(
+    () =>
+      currentView !== CategoriesModalView.CATEGORIES ||
+      (currentView === CategoriesModalView.CATEGORIES &&
+        filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING),
+    [currentView, filterBehaviour]
+  )
+
   return (
     <AppModal
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={modalTitle} onGoBack={handleGoBack} />
+          <SearchCustomModalHeader
+            titleId={titleId}
+            title={modalTitle}
+            onGoBack={handleGoBack}
+            onClose={handleClose}
+            shouldDisplayBackButton={shouldDisplayBackButton}
+            shouldDisplayCloseButton
+          />
         )
       }
       title={modalTitle}
@@ -255,6 +301,7 @@ export const CategoriesModal = ({
           onResetPress={handleReset}
           onSearchPress={onSubmit}
           isSearchDisabled={isSubmitting}
+          filterBehaviour={filterBehaviour}
         />
       }>
       <Form.MaxWidth>

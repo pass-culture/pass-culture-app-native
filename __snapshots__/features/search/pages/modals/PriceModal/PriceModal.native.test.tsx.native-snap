@@ -227,55 +227,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       },
                     ]
                   }
-                >
-                  <View
-                    accessibilityLabel="Revenir en arrière"
-                    accessibilityRole="button"
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "flexGrow": 1,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 40,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="Revenir en arrière"
-                  >
-                    <View
-                      height={24}
-                      testID="icon-back"
-                      width={24}
-                    >
-                      <Text>
-                        icon-back-SVG-Mock
-                      </Text>
-                    </View>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "display": "none",
-                          },
-                        ]
-                      }
-                    >
-                      Retour
-                    </Text>
-                  </View>
-                </View>
+                />
                 <Text
                   nativeID="testUuidV4"
                   numberOfLines={1}
@@ -309,7 +261,55 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       },
                     ]
                   }
-                />
+                >
+                  <View
+                    accessibilityLabel="Fermer"
+                    accessibilityRole="button"
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "flexGrow": 1,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "maxWidth": 40,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Fermer"
+                  >
+                    <View
+                      height={24}
+                      testID="icon-close"
+                      width={24}
+                    >
+                      <Text>
+                        icon-close-SVG-Mock
+                      </Text>
+                    </View>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "display": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Retour
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>

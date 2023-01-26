@@ -2,13 +2,18 @@ import React, { useCallback } from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { FilterBehaviour } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
 import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 
-export const Price: React.FC = () => {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const Price = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const {
     visible: searchPriceModalVisible,
@@ -36,6 +41,8 @@ export const Price: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
         isVisible={searchPriceModalVisible}
         hideModal={hideSearchPriceModal}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )

@@ -4,6 +4,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import {
   daysCountdown,
   displayExpirationMessage,
+  formattedExpirationDate,
   getDigitalBookingWithoutExpirationDate,
   isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
@@ -96,6 +97,21 @@ describe('expirationDateUtils', () => {
       const endedCountdown = -1
 
       expect(daysCountdown(dateCreated)).toEqual(endedCountdown)
+    })
+  })
+
+  describe('formattedExpirationDate', () => {
+    it('should formatted expiration date from the created date', () => {
+      const dateCreated = '2023-01-19T14:38:45Z'
+      const expectedformattedExpirationDate = '18/02/2023'
+
+      expect(formattedExpirationDate(dateCreated)).toEqual(expectedformattedExpirationDate)
+    })
+
+    it('should return an empty string when dateCreated is an empty string', () => {
+      const dateCreated = ''
+
+      expect(formattedExpirationDate(dateCreated)).toEqual('')
     })
   })
 })

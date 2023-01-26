@@ -204,6 +204,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_STARTED_CULTURAL_SURVEY),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT),
+  logHighlightBlockClicked: () =>
+    analyticsProvider.logEvent(AnalyticsEvent.HIGHLIGHT_BLOCK_CLICKED),
   logIdentityCheckAbort: (params: {
     method: IdentityCheckMethod
     reason: string | null
@@ -286,8 +288,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
   logShare: (params: { type: 'App' | 'Offer' | 'Venue'; from: Referrals; id: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE, { params }),
-  logShareApp: (type: ShareAppModalType) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { type }),
+  logShareApp: ({ from, type }: { from?: Referrals; type?: ShareAppModalType }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { from, type }),
   logSignInFromAuthenticationModal: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL, { offerId }),
   logSignInFromFavorite: () => analyticsProvider.logEvent(AnalyticsEvent.SIGN_IN_FROM_FAVORITE),

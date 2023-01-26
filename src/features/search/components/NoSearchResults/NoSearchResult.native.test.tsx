@@ -44,7 +44,20 @@ describe('NoSearchResult component', () => {
 
     await fireEvent.press(button)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', {})
+  })
+
+  it('should redirect to the general filters page when pressing "Modifier mes filtres" button with url params', async () => {
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: 'vinyle' } })
+    const { getByText } = render(<NoSearchResult />)
+    const button = getByText('Modifier mes filtres')
+
+    await fireEvent.press(button)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', {
+      view: SearchView.Landing,
+      query: 'vinyle',
+    })
   })
 
   it('should log NoSearchResult with the query', () => {

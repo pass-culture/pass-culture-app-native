@@ -1014,7 +1014,7 @@ exports[`BookingDetails should render correctly 1`] = `
             ]
           }
         >
-          Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 15 mars 2021
+          Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
         </Text>
       </View>
       <View

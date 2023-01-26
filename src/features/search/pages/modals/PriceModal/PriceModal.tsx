@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -13,6 +13,7 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState, SearchView } from 'features/search/types'
@@ -37,24 +38,28 @@ type PriceModalFormData = {
   isOnlyFreeOffersSearch: boolean
 }
 
-type Props = {
+export type PriceModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  filterBehaviour: FilterBehaviour
+  onClose?: VoidFunction
 }
 
 const titleId = uuidv4()
 const minPriceInputId = uuidv4()
 const maxPriceInputId = uuidv4()
 
-export const PriceModal: FunctionComponent<Props> = ({
+export const PriceModal: FunctionComponent<PriceModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,
   hideModal,
+  filterBehaviour,
+  onClose,
 }) => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn, user } = useAuthContext()
   const availableCredit = useAvailableCredit()
@@ -111,9 +116,32 @@ export const PriceModal: FunctionComponent<Props> = ({
     }
 
     analytics.logPerformSearch(additionalSearchState)
-    navigate(...getTabNavConfig('Search', additionalSearchState))
+    switch (filterBehaviour) {
+      case FilterBehaviour.SEARCH: {
+        navigate(...getTabNavConfig('Search', additionalSearchState))
+        break
+      }
+      case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+        break
+      }
+    }
     hideModal()
   }
+
+  const initialFormValues = useMemo(() => {
+    return {
+      minPrice: searchState?.minPrice || '',
+      maxPrice: searchState?.maxPrice || '',
+      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
+      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
+    }
+  }, [
+    isLimitCreditSearchDefaultValue,
+    isOnlyFreeOffersSearchDefaultValue,
+    searchState?.maxPrice,
+    searchState?.minPrice,
+  ])
 
   const {
     handleSubmit,
@@ -125,14 +153,13 @@ export const PriceModal: FunctionComponent<Props> = ({
     formState: { isSubmitting, isValid, isValidating },
   } = useForm<PriceModalFormData>({
     mode: 'onChange',
-    defaultValues: {
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
-      isLimitCreditSearch: isLimitCreditSearchDefaultValue,
-      isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
-    },
+    defaultValues: initialFormValues,
     resolver: yupResolver(searchPriceSchema),
   })
+
+  useEffect(() => {
+    reset(initialFormValues)
+  }, [initialFormValues, reset])
 
   const onSubmit = handleSubmit(search)
 
@@ -169,7 +196,7 @@ export const PriceModal: FunctionComponent<Props> = ({
     trigger(['minPrice', 'maxPrice'])
   }, [setValue, getValues, trigger, formatAvailableCredit, searchState?.maxPrice])
 
-  const close = useCallback(() => {
+  const closeModal = useCallback(() => {
     reset({
       minPrice: searchState?.minPrice || '',
       maxPrice: searchState?.maxPrice || '',
@@ -186,6 +213,13 @@ export const PriceModal: FunctionComponent<Props> = ({
     searchState?.minPrice,
   ])
 
+  const close = useCallback(() => {
+    closeModal()
+    if (onClose) {
+      onClose()
+    }
+  }, [closeModal, onClose])
+
   const onResetPress = useCallback(() => {
     reset(
       {
@@ -201,13 +235,21 @@ export const PriceModal: FunctionComponent<Props> = ({
   const disabled = !isValid || (!isValidating && isSubmitting)
 
   const isKeyboardOpen = keyboardHeight > 0
+  const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
     <AppModal
       visible={isVisible}
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={close} />
+          <SearchCustomModalHeader
+            titleId={titleId}
+            title={title}
+            onGoBack={closeModal}
+            onClose={close}
+            shouldDisplayBackButton={shouldDisplayBackButton}
+            shouldDisplayCloseButton
+          />
         )
       }
       title={title}
@@ -216,12 +258,13 @@ export const PriceModal: FunctionComponent<Props> = ({
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
-      onRightIconPress={close}
+      onRightIconPress={closeModal}
       fixedModalBottom={
         <SearchFixedModalBottom
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
+          filterBehaviour={filterBehaviour}
         />
       }
       shouldScrollToEnd>

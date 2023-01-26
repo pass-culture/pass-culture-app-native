@@ -1,8 +1,8 @@
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
+import { OffersModuleParameters } from 'features/home/types'
 import { LocationType } from 'features/search/enums'
 import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
-import { SearchParametersFields } from 'libs/contentful'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
@@ -23,7 +23,7 @@ export const parseGeolocationParameters = (
 }
 
 export const parseSearchParameters = (
-  parameters: SearchParametersFields,
+  parameters: OffersModuleParameters,
   geolocation: GeoCoordinates | null,
   subcategoryLabelMapping: SubcategoryLabelMapping
 ): SearchState | undefined => {

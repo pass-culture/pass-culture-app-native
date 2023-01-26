@@ -76,6 +76,7 @@ export enum AnalyticsEvent {
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   HAS_STARTED_CULTURAL_SURVEY = 'hasStartedCulturalSurvey',
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
+  HIGHLIGHT_BLOCK_CLICKED = 'HighlightBlockClicked',
   IDENTITY_CHECK_ABORT = 'IdentityCheckAbort',
   IDENTITY_CHECK_STEP = 'IdentityCheckStep',
   IDENTITY_CHECK_SUCCESS = 'IdentityCheckSuccess',

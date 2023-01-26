@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
 import {
@@ -19,16 +19,18 @@ import {
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 
-import { LocationModal } from './LocationModal'
+import { LocationModal, LocationModalProps } from './LocationModal'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
+const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -55,7 +57,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-const hideLocationModal = jest.fn()
+const mockHideModal = jest.fn()
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -84,6 +86,7 @@ jest.mock('libs/place', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: mockIsLoading }),
   useVenues: () => ({ data: mockVenues, isLoading: mockIsLoading }),
 }))
+const mockOnClose = jest.fn()
 
 describe('<LocationModal/>', () => {
   afterEach(() => {
@@ -94,7 +97,7 @@ describe('<LocationModal/>', () => {
 
   it('should render modal correctly after animation and with enabled submit', async () => {
     jest.useFakeTimers()
-    const renderAPI = renderLocationModal({ hideLocationModal })
+    const renderAPI = renderLocationModal()
     await superFlushWithAct()
     jest.advanceTimersByTime(2000)
     expect(renderAPI).toMatchSnapshot()
@@ -107,7 +110,7 @@ describe('<LocationModal/>', () => {
         ...searchState,
         view: SearchView.Results,
       }
-      const { getByText } = renderLocationModal({ hideLocationModal })
+      const { getByText } = renderLocationModal()
 
       await superFlushWithAct()
 
@@ -131,7 +134,7 @@ describe('<LocationModal/>', () => {
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
         view: SearchView.Results,
       }
-      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+      const { getByTestId, getByText } = renderLocationModal()
 
       await act(async () => {
         const slider = getByTestId('slider').children[0] as ReactTestInstance
@@ -157,7 +160,7 @@ describe('<LocationModal/>', () => {
   describe('should navigate on landing page when location filter modal opened from search box', () => {
     it('with the initial state', async () => {
       mockSearchState = searchState
-      const { getByText } = renderLocationModal({ hideLocationModal })
+      const { getByText } = renderLocationModal()
 
       await superFlushWithAct()
 
@@ -177,9 +180,7 @@ describe('<LocationModal/>', () => {
 
     it('with a new location', async () => {
       mockSearchState = searchState
-      const { getByText, getByTestId } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByText, getByTestId } = renderLocationModal()
 
       await superFlushWithAct()
 
@@ -209,7 +210,7 @@ describe('<LocationModal/>', () => {
       ...searchState,
       view: SearchView.Results,
     }
-    const { getByText } = renderLocationModal({ hideLocationModal })
+    const { getByText } = renderLocationModal()
 
     await superFlushWithAct()
 
@@ -237,7 +238,7 @@ describe('<LocationModal/>', () => {
       label: RadioButtonLocation
     }) => {
       mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId } = renderLocationModal({ hideLocationModal })
+      const { getByTestId } = renderLocationModal()
 
       await superFlushWithAct()
 
@@ -263,9 +264,7 @@ describe('<LocationModal/>', () => {
       eventType: ChangeSearchLocationParam
     }) => {
       mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByTestId, getByText } = renderLocationModal()
 
       const radioButton = getByTestId(label)
       await act(async () => {
@@ -305,9 +304,7 @@ describe('<LocationModal/>', () => {
       eventType: ChangeSearchLocationParam
     }) => {
       mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText, getByPlaceholderText } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByTestId, getByText, getByPlaceholderText } = renderLocationModal()
 
       const radioButton = getByTestId(label)
       await act(async () => {
@@ -350,7 +347,7 @@ describe('<LocationModal/>', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const { getByTestId, queryByText } = renderLocationModal({ hideLocationModal })
+    const { getByTestId, queryByText } = renderLocationModal()
 
     const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
@@ -362,7 +359,7 @@ describe('<LocationModal/>', () => {
 
   it('should display the selected radius when select Autour de moi radio button', async () => {
     mockSearchState = searchState
-    const { getByTestId, queryByText } = renderLocationModal({ hideLocationModal })
+    const { getByTestId, queryByText } = renderLocationModal()
 
     await act(async () => {
       expect(queryByText('Dans un rayon de\u00a0:')).toBeFalsy()
@@ -376,7 +373,7 @@ describe('<LocationModal/>', () => {
   })
 
   it('should display the slider when select Autour de moi radio button', async () => {
-    const { queryByTestId, getByTestId } = renderLocationModal({ hideLocationModal })
+    const { queryByTestId, getByTestId } = renderLocationModal()
 
     await act(async () => {
       expect(queryByTestId('slider')).toBeFalsy()
@@ -391,7 +388,7 @@ describe('<LocationModal/>', () => {
 
   it('should display Aucune localisation in RadioButtonLocation.EVERYWHERE when position is null', async () => {
     mockPosition = null
-    const { queryByText } = renderLocationModal({ hideLocationModal })
+    const { queryByText } = renderLocationModal()
 
     await act(async () => {
       expect(queryByText('Aucune localisation')).toBeTruthy()
@@ -399,7 +396,7 @@ describe('<LocationModal/>', () => {
   })
 
   it('should display Partout in RadioButtonLocation.EVERYWHERE when position is not null', async () => {
-    const { queryByText } = renderLocationModal({ hideLocationModal })
+    const { queryByText } = renderLocationModal()
 
     await act(async () => {
       expect(queryByText('Partout')).toBeTruthy()
@@ -411,7 +408,7 @@ describe('<LocationModal/>', () => {
       'Retrouve toutes les offres autour de chez toi en activant les données de localisation.'
     mockPosition = null
     mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
-    const { queryByText, getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+    const { queryByText, getByTestId, getByText } = renderLocationModal()
     expect(queryByText(geolocationModalText)).toBeFalsy()
 
     const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
@@ -431,7 +428,7 @@ describe('<LocationModal/>', () => {
 
   it('should not change location filter on Autour de moi radio button press when position is null', async () => {
     mockPosition = null
-    const { getByTestId } = renderLocationModal({ hideLocationModal })
+    const { getByTestId } = renderLocationModal()
 
     const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
@@ -448,7 +445,7 @@ describe('<LocationModal/>', () => {
   ])(
     'should select %s radio button when pressing it and position is not null',
     async (locationRadioButton) => {
-      const { getByTestId } = renderLocationModal({ hideLocationModal })
+      const { getByTestId } = renderLocationModal()
 
       const radioButton = getByTestId(locationRadioButton)
       await act(async () => {
@@ -463,7 +460,7 @@ describe('<LocationModal/>', () => {
     it('the location radio group at "Partout" when pressing reset button and position is null', async () => {
       mockPosition = null
       mockSearchState = searchState
-      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+      const { getByTestId, getByText } = renderLocationModal()
 
       const defaultRadioButton = getByTestId(RadioButtonLocation.NO_LOCATION)
       const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
@@ -489,7 +486,7 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
       }
-      const { getByTestId, getByText } = renderLocationModal({ hideLocationModal })
+      const { getByTestId, getByText } = renderLocationModal()
 
       const defaultRadioButton = getByTestId(RadioButtonLocation.AROUND_ME)
       const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
@@ -518,7 +515,7 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
       }
-      const { getByText, getByTestId, getAllByText } = renderLocationModal({ hideLocationModal })
+      const { getByText, getByTestId, getAllByText } = renderLocationModal()
       await act(async () => {
         expect(getByText('50\u00a0km')).toBeTruthy()
       })
@@ -540,9 +537,7 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: 10 },
       }
-      const { getByPlaceholderText, getByText, getByTestId } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByPlaceholderText, getByText, getByTestId } = renderLocationModal()
 
       const resetButton = getByText('Réinitialiser')
       await act(async () => {
@@ -571,9 +566,7 @@ describe('<LocationModal/>', () => {
         ...mockSearchState,
         locationFilter,
       }
-      const { getByTestId, getByPlaceholderText } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByTestId, getByPlaceholderText } = renderLocationModal()
 
       const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
       await act(async () => {
@@ -613,16 +606,14 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter,
       }
-      const { getByPlaceholderText, getByTestId } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByPlaceholderText, getByTestId } = renderLocationModal()
 
       const searchInput = getByPlaceholderText('Adresse, cinéma, musée...')
       await act(async () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       await act(async () => {
         fireEvent.press(previousButton)
       })
@@ -639,16 +630,14 @@ describe('<LocationModal/>', () => {
         ...mockSearchState,
         locationFilter,
       }
-      const { getByPlaceholderText, getByTestId } = renderLocationModal({
-        hideLocationModal,
-      })
+      const { getByPlaceholderText, getByTestId } = renderLocationModal()
 
       const searchInput = getByPlaceholderText('Adresse, cinéma, musée...')
       await act(async () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       await act(async () => {
         fireEvent.press(previousButton)
       })
@@ -659,7 +648,7 @@ describe('<LocationModal/>', () => {
 
   describe('should close the modal', () => {
     it('when pressing search button and not pristine', async () => {
-      const { getByTestId } = renderLocationModal({ hideLocationModal })
+      const { getByTestId } = renderLocationModal()
 
       await superFlushWithAct()
 
@@ -673,25 +662,25 @@ describe('<LocationModal/>', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(hideLocationModal).toHaveBeenCalledTimes(1)
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
     it('when pressing previous button', async () => {
-      const { getByTestId } = renderLocationModal({ hideLocationModal })
+      const { getByTestId } = renderLocationModal()
 
       await superFlushWithAct()
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
-      expect(hideLocationModal).toHaveBeenCalledTimes(1)
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
   })
 
   it('should open the request geolocation permission when position is null and permission state is denied when pressing Autour de moi radio button', async () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED
-    const { getByTestId } = renderLocationModal({ hideLocationModal })
+    const { getByTestId } = renderLocationModal()
 
     await superFlushWithAct()
 
@@ -702,19 +691,96 @@ describe('<LocationModal/>', () => {
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
+
+  describe('with "Appliquer le filtre" button', () => {
+    it('should display alternative button title', async () => {
+      const { getByText } = renderLocationModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByText('Appliquer le filtre')).toBeTruthy()
+      })
+    })
+
+    it('should update search state when pressing submit button', async () => {
+      const { getByText } = renderLocationModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await superFlushWithAct()
+
+      await act(async () => {
+        fireEvent.press(getByText('Autour de moi'))
+      })
+
+      const searchButton = getByText('Appliquer le filtre')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
+      })
+    })
+  })
+
+  describe('Modal header buttons', () => {
+    it('should display back button on header when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderLocationModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByTestId('Revenir en arrière')).toBeTruthy()
+      })
+    })
+
+    it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderLocationModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+        onClose: mockOnClose,
+      })
+
+      await superFlushWithAct()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).toHaveBeenCalledTimes(1)
+    })
+
+    it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
+      const { getByTestId } = renderLocationModal()
+
+      await superFlushWithAct()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).not.toHaveBeenCalled()
+    })
+  })
 })
 
-type Props = {
-  hideLocationModal: () => void
-}
-
-function renderLocationModal({ hideLocationModal }: Props) {
+function renderLocationModal({
+  filterBehaviour = FilterBehaviour.SEARCH,
+  onClose,
+}: Partial<LocationModalProps> = {}) {
   return render(
     <LocationModal
       title="Localisation"
       accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
       isVisible
-      hideModal={hideLocationModal}
+      hideModal={mockHideModal}
+      filterBehaviour={filterBehaviour}
+      onClose={onClose}
     />
   )
 }

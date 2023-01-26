@@ -3,18 +3,21 @@ import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
+import { FilterBehaviour } from 'features/search/enums'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 
 type Props = {
   onResetPress: () => void
   onSearchPress: () => void
   isSearchDisabled?: boolean
+  filterBehaviour: FilterBehaviour
 }
 
 export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   onResetPress,
   onSearchPress,
   isSearchDisabled,
+  filterBehaviour,
 }: Props) {
   const { modal } = useTheme()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -29,6 +32,7 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
         onSearchPress={onSearchPress}
         isModal
         isSearchDisabled={isSearchDisabled}
+        filterBehaviour={filterBehaviour}
       />
     </FilterPageButtonsContainer>
   )

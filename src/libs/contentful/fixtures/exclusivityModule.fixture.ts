@@ -1,4 +1,4 @@
-import { ExclusivityContentModel } from 'libs/contentful/types'
+import { ContentTypes, ExclusivityContentModel } from 'libs/contentful/types'
 
 export const exclusivityNatifModuleFixture: ExclusivityContentModel = {
   sys: {
@@ -9,7 +9,7 @@ export const exclusivityNatifModuleFixture: ExclusivityContentModel = {
     updatedAt: '2022-11-21T09:43:22.352Z',
     environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
     revision: 1,
-    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
+    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.EXCLUSIVITY } },
     locale: 'en-US',
   },
   fields: {
