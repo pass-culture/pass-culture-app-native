@@ -32,6 +32,7 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should display button if confirmationDate is null', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
+    booking.stock.offer.isDigital = false
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
     expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
   })
@@ -41,6 +42,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const date = new Date()
     date.setDate(date.getDate() + 1)
     booking.confirmationDate = date.toISOString()
+    booking.stock.offer.isDigital = false
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
     expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
   })
@@ -49,6 +51,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.stock.offer.isPermanent = false
     booking.confirmationDate = '2020-03-15T23:01:37.925926'
+    booking.stock.offer.isDigital = false
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
     expect(queryByTestId('Annuler ma réservation')).toBeNull()
   })
@@ -58,6 +61,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const date = new Date()
     date.setDate(date.getDate() + 1)
     booking.confirmationDate = date.toISOString()
+    booking.stock.offer.isDigital = false
     const onCancel = jest.fn()
     const { getByTestId } = renderBookingDetailsCancelButton(booking, {
       onCancel,
@@ -70,6 +74,7 @@ describe('<BookingDetailsCancelButton />', () => {
 
   it('should call onTerminate', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0], activationCode: { code: 'someCode' } }
+    booking.stock.offer.isDigital = false
     const onTerminate = jest.fn()
     const { getByTestId } = renderBookingDetailsCancelButton(booking, {
       onTerminate,
@@ -95,6 +100,7 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should block user if cancellation date is over and user is ex beneficiary ', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
+    booking.stock.offer.isDigital = false
     mockedisUserExBeneficiary.mockReturnValueOnce(true)
     const { queryByText } = renderBookingDetailsCancelButton(booking)
     expect(
@@ -125,6 +131,14 @@ describe('<BookingDetailsCancelButton />', () => {
       'Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021'
 
     expect(queryByText(expirationDateMessage)).toBeTruthy()
+  })
+
+  it('should not display any message if there is no confirmation date', () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = null
+
+    const { queryByTestId } = renderBookingDetailsCancelButton(booking)
+    expect(queryByTestId('cancel-annulation-message')).toBeNull()
   })
 })
 
