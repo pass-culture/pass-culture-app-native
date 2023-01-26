@@ -11,8 +11,8 @@ import { analytics } from 'libs/firebase/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { MarketingModal } from 'ui/components/modals/MarketingModal'
-import { Share } from 'ui/svg/icons/BicolorShare'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Share } from 'ui/svg/icons/Share'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {

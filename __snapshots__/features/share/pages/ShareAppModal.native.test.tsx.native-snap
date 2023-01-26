@@ -293,6 +293,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
                 }
               >
                 <View
+                  fill="#ffffff"
                   height={24}
                   width={24}
                 >
@@ -717,6 +718,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
                 }
               >
                 <View
+                  fill="#ffffff"
                   height={24}
                   width={24}
                 >
@@ -1143,6 +1145,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
                 }
               >
                 <View
+                  fill="#ffffff"
                   height={24}
                   width={24}
                 >

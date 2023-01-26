@@ -5,7 +5,7 @@ import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/c
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Share as DefaultShare } from 'ui/svg/icons/BicolorShare'
+import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
