@@ -12,7 +12,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
@@ -49,11 +49,12 @@ type LocationModalFormData = {
   searchPlaceOrVenue: string
 }
 
-type Props = {
+export type LocationModalProps = {
   title: string
   accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
+  filterBehaviour: FilterBehaviour
 }
 
 const LOCATION_TYPES = [
@@ -92,13 +93,14 @@ const getPlaceOrVenueLabel = (searchState: SearchState) => {
   return placeOrVenue?.label ?? ''
 }
 
-export const LocationModal: FunctionComponent<Props> = ({
+export const LocationModal: FunctionComponent<LocationModalProps> = ({
   title,
   accessibilityLabel,
   isVisible,
   hideModal,
+  filterBehaviour,
 }) => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
   const {
@@ -150,6 +152,10 @@ export const LocationModal: FunctionComponent<Props> = ({
     resolver: yupResolver(locationSchema),
     defaultValues,
   })
+
+  useEffect(() => {
+    reset(defaultValues)
+  }, [defaultValues, reset])
 
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
   const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
@@ -220,14 +226,19 @@ export const LocationModal: FunctionComponent<Props> = ({
       }
 
       analytics.logPerformSearch(additionalSearchState)
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...additionalSearchState,
-        })
-      )
+      switch (filterBehaviour) {
+        case FilterBehaviour.SEARCH: {
+          navigate(...getTabNavConfig('Search', additionalSearchState))
+          break
+        }
+        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+          break
+        }
+      }
       hideModal()
     },
-    [searchState, navigate, hideModal, getValues]
+    [searchState, filterBehaviour, hideModal, getValues, navigate, dispatch]
   )
 
   const close = useCallback(() => {
@@ -350,6 +361,7 @@ export const LocationModal: FunctionComponent<Props> = ({
           onSearchPress={onSubmit}
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
+          filterBehaviour={filterBehaviour}
         />
       }
       keyboardShouldPersistTaps="handled">

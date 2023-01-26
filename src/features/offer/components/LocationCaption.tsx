@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
-import { getLocationName } from 'features/offer/helpers/getLocationName'
+import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
 import { Digital as DefaultDigital } from 'ui/svg/icons/Digital'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: Props) => {
-  const locationName = getLocationName(venue, isDigital)
+  const locationName = getOfferLocationName(venue, isDigital)
   const where = isDigital ? 'en ligne' : venue.city
 
   return (

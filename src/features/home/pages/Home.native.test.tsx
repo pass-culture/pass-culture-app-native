@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { Home } from './Home'
 
@@ -32,13 +32,29 @@ describe('Home page', () => {
       modules: [formattedVenuesModule],
       id: 'fakeEntryId',
     })
-    const home = renderHome()
-    expect(home).toMatchSnapshot()
+    renderHome()
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  // TODO(PC-20066): remove test for transitional home header split
+  it('should render a thematic home header if available', () => {
+    useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
+    mockUseHomepageData.mockReturnValueOnce({
+      modules: [formattedVenuesModule],
+      id: 'fakeEntryId',
+      thematicHeader: {
+        title: 'title',
+      },
+    })
+    renderHome()
+
+    expect(screen.queryByText('title')).toBeTruthy()
   })
 })
 
 function renderHome() {
-  return render(<Home />, {
+  render(<Home />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

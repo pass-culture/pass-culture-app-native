@@ -10,6 +10,7 @@ import * as useShowResultsForCategory from 'features/search/helpers/useShowResul
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent, waitFor } from 'tests/utils'
@@ -82,6 +83,13 @@ jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
 jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
   InsightsMiddleware: () => null,
+}))
+
+const mockSubcategoriesData = placeholderData
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockSubcategoriesData,
+  }),
 }))
 
 describe('<Search/>', () => {
@@ -164,7 +172,7 @@ describe('<Search/>', () => {
       fireEvent.press(searchFilterButton)
 
       const screen = 'SearchFilter'
-      const params = undefined
+      const params = { query: 'la fnac', view: SearchView.Results }
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith(screen, params)
@@ -179,8 +187,8 @@ describe('<Search/>', () => {
 
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE_FROM_DEFAULT',
-          payload: mockSearchState,
+          type: 'SET_STATE',
+          payload: { query: 'la fnac', view: SearchView.Results },
         })
       })
     })

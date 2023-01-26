@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from 'tests/utils'
 
-import { Maintenance } from '../Maintenance'
+import { Maintenance } from './Maintenance'
 
 describe('<Maintenance />', () => {
   it('should match snapshot with default message', async () => {

@@ -3,6 +3,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
+import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -27,7 +28,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   const { subcategoryId, dates, prices } = offer
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
-  const { categoryId, searchGroupName } = useSubcategory(subcategoryId)
+  const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const { logClickOnOffer } = useLogClickOnOffer()
 
@@ -88,9 +89,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
-        <Body ellipsizeMode="tail" numberOfLines={1}>
-          {searchGroupLabel}
-        </Body>
+        <NativeCategoryValue nativeCategoryId={nativeCategoryId} />
         {!!formattedDate && <Body>{formattedDate}</Body>}
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{formattedPrice}</Typo.Caption>

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { FilterBehaviour } from 'features/search/enums'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
@@ -32,6 +33,7 @@ export function Location() {
         accessibilityLabel="Ne pas filtrer par localisation et retourner aux filtres de recherche"
         isVisible={locationModalVisible}
         hideModal={hideLocationModal}
+        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
       />
     </React.Fragment>
   )

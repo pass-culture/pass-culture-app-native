@@ -232,26 +232,31 @@ Object {
                     class="css-view-175oi2r r-height-10ptun7"
                   />
                   <div
-                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-z2wwpe r-display-6koalj r-flexDirection-18u37iz r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                   >
                     <div
-                      class="css-view-175oi2r"
+                      class="css-view-175oi2r r-paddingRight-i023vh"
                     >
                       <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
+                        class="css-view-175oi2r"
                       >
-                        undefined-SVG-Mock
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
                       </div>
                     </div>
                     <div
-                      class="css-view-175oi2r r-width-1jg9483"
-                    />
-                    <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                      dir="ltr"
+                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     >
-                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                        dir="ltr"
+                      >
+                        Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                      </div>
                     </div>
                   </div>
                   <div
@@ -530,26 +535,31 @@ Object {
                   class="css-view-175oi2r r-height-10ptun7"
                 />
                 <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-z2wwpe r-display-6koalj r-flexDirection-18u37iz r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
                 >
                   <div
-                    class="css-view-175oi2r"
+                    class="css-view-175oi2r r-paddingRight-i023vh"
                   >
                     <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
+                      class="css-view-175oi2r"
                     >
-                      undefined-SVG-Mock
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
                     </div>
                   </div>
                   <div
-                    class="css-view-175oi2r r-width-1jg9483"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   >
-                    Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                    <div
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      dir="ltr"
+                    >
+                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                    </div>
                   </div>
                 </div>
                 <div

@@ -1,11 +1,13 @@
 import colorAlpha from 'color-alpha'
 import { isBefore } from 'date-fns'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
 import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
+import { ContentTypes } from 'libs/contentful'
+import { analytics } from 'libs/firebase/analytics'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -13,30 +15,50 @@ const TILE_HEIGHT = 244
 const TEXT_BACKGROUND_OPACITY = 0.67
 
 type Props = {
+  id: string
   title: string
   subtitle?: string
   imageUrl: string
   beginningDate: Date
   endingDate: Date
   thematicHomeEntryId: string
+  index: number
 }
 
 export const ThematicHighlightModule: FunctionComponent<Props> = ({
+  id,
   title,
   subtitle,
   imageUrl,
   beginningDate,
   endingDate,
   thematicHomeEntryId,
+  index,
 }) => {
   const isAlreadyEnded = isBefore(endingDate, new Date())
-  if (isAlreadyEnded) return null
+  const shouldHideModule = isAlreadyEnded
+
+  useEffect(() => {
+    !shouldHideModule &&
+      analytics.logModuleDisplayedOnHomepage(
+        id,
+        ContentTypes.THEMATIC_HIGHLIGHT,
+        index,
+        thematicHomeEntryId
+      )
+    // should send analytics event only once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  if (shouldHideModule) return null
 
   const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   return (
-    <StyledInternalTouchableLink navigateTo={navigateTo}>
+    <StyledInternalTouchableLink
+      navigateTo={navigateTo}
+      onBeforeNavigate={analytics.logHighlightBlockClicked}>
       <ImageBackground source={{ uri: imageUrl }}>
         <DateRangeCaptionContainer>
           <DateRangeCaption>{dateRange}</DateRangeCaption>
