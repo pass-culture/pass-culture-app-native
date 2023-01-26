@@ -41,7 +41,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             <Typo.Body>
               L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams&nbsp;!
             </Typo.Body>
-            <Typo.Body>Si l’e-mail n’arrive pas, tu peux&nbsp;:</Typo.Body>
+            <Typo.Body>&nbsp;Si l’e-mail n’arrive pas, tu peux&nbsp;:</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <ExternalTouchableLink
