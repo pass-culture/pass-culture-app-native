@@ -7,7 +7,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
-import { useCulturalSurveyRoute } from 'shared/culturalSurvey/useCulturalSurveyRoute'
 
 import { homeNavConfig } from '../TabBar/helpers'
 
@@ -15,12 +14,11 @@ import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn } = useAuthContext()
-  const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    getInitialScreen({ isLoggedIn, culturalSurveyRoute })
+    getInitialScreen({ isLoggedIn })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -29,18 +27,12 @@ export function useInitialScreen(): RootScreenNames | undefined {
         setInitialScreen('TabNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, culturalSurveyRoute])
+  }, [isLoggedIn])
 
   return initialScreen
 }
 
-async function getInitialScreen({
-  isLoggedIn,
-  culturalSurveyRoute,
-}: {
-  isLoggedIn: boolean
-  culturalSurveyRoute: 'CulturalSurveyIntro' | 'CulturalSurvey'
-}): Promise<RootScreenNames> {
+async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promise<RootScreenNames> {
   if (isLoggedIn) {
     try {
       const user = await api.getnativev1me()
@@ -54,7 +46,7 @@ async function getInitialScreen({
         return 'EighteenBirthday'
       }
       if (shouldShowCulturalSurvey(user)) {
-        return culturalSurveyRoute
+        return 'CulturalSurveyIntro'
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage

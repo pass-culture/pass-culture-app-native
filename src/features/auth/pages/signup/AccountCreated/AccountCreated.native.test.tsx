@@ -18,16 +18,6 @@ jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-const mockSettings = {
-  enableNativeCulturalSurvey: false,
-}
-
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
-
 const mockShowAppModal = jest.fn()
 jest.mock('features/share/context/ShareAppWrapper', () => ({
   ...jest.requireActual('features/share/context/ShareAppWrapper'),
@@ -40,20 +30,7 @@ describe('<AccountCreated />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should redirect to cultural survey page WHEN "On y va !" button is clicked', async () => {
-    const renderAPI = renderAccountCreated()
-
-    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
-
-    await waitForExpect(() => {
-      expect(navigateFromRef).not.toBeCalledTimes(1)
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
-    })
-  })
-
-  it('should redirect to native cultural survey page WHEN "On y va !" button is clicked when native feature flag is activated', async () => {
-    mockSettings.enableNativeCulturalSurvey = true
+  it('should redirect to native cultural survey page WHEN "On y va !" button is clicked', async () => {
     const renderAPI = renderAccountCreated()
 
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))

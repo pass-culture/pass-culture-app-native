@@ -30,16 +30,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
-const mockSettings = {
-  enableNativeCulturalSurvey: false,
-}
-
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
-
 const mockPostFavorite = jest.fn()
 
 describe('<Login/>', () => {
@@ -71,24 +61,7 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should redirect to Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
-    mockMeApiCall({
-      needsToFillCulturalSurvey: true,
-      showEligibleCard: false,
-    } as UserProfileResponse)
-    const renderAPI = renderLogin()
-
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('CulturalSurvey')
-    })
-  })
-
-  it('should redirect to NATIVE Cultural Survey WHEN signin is successful, user needs to fill cultural survey when feature flag is activated', async () => {
-    mockSettings.enableNativeCulturalSurvey = true
+  it('should redirect to NATIVE Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: false,
