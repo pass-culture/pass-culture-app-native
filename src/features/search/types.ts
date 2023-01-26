@@ -64,6 +64,9 @@ export interface SearchState {
   maxPossiblePrice?: string
   isAutocomplete?: boolean
   isOnline?: boolean
+  // TODO(EveJulliard): re typer la fonction parseSearchParameters
+  // pour supprimer minBookingsThreshold du type SearchState
+  minBookingsThreshold?: number
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']

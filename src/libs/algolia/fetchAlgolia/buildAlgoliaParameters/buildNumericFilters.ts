@@ -1,7 +1,7 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
 import { clampPrice, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { FACETS_ENUM } from 'libs/algolia/enums'
+import { NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
@@ -19,6 +19,7 @@ export const buildNumericFilters = ({
   minPrice,
   maxPrice,
   maxPossiblePrice,
+  minBookingsThreshold,
 }: Pick<
   SearchParametersQuery,
   | 'beginningDatetime'
@@ -31,6 +32,7 @@ export const buildNumericFilters = ({
   | 'minPrice'
   | 'maxPrice'
   | 'maxPossiblePrice'
+  | 'minBookingsThreshold'
 >): null | {
   numericFilters: FiltersArray
 } => {
@@ -44,14 +46,23 @@ export const buildNumericFilters = ({
   const datePredicate = buildDatePredicate({ date, timeRange })
   const newestOffersPredicate = buildNewestOffersPredicate(offerIsNew)
   const homepageDatePredicate = buildHomepageDatePredicate({ beginningDatetime, endingDatetime })
+  const last30DaysBookingsPredicate = buildOfferLast30DaysBookings(minBookingsThreshold)
   const numericFilters: FiltersArray = []
 
   if (priceRangePredicate) numericFilters.push(priceRangePredicate)
   if (datePredicate) numericFilters.push(datePredicate)
   if (newestOffersPredicate) numericFilters.push(newestOffersPredicate)
   if (homepageDatePredicate) numericFilters.push(homepageDatePredicate)
+  if (last30DaysBookingsPredicate) numericFilters.push(last30DaysBookingsPredicate)
 
   return numericFilters.length > 0 ? { numericFilters } : null
+}
+
+const buildOfferLast30DaysBookings = (
+  minBookingsThreshold: number | undefined
+): FiltersArray[0] | undefined => {
+  if (!minBookingsThreshold) return undefined
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_LAST_30_DAYS_BOOKINGS} >= ${minBookingsThreshold}`]
 }
 
 const buildOfferPriceRangePredicate = ({
@@ -64,16 +75,16 @@ const buildOfferPriceRangePredicate = ({
   SearchParametersQuery,
   'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice' | 'maxPossiblePrice'
 >): FiltersArray[0] | undefined => {
-  if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICES} = 0`]
+  if (offerIsFree) return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES} = 0`]
 
   const formatMinPrice = getPriceAsNumber(minPrice) || 0
   const formatMaxPrice =
     getPriceAsNumber(maxPrice) || getPriceAsNumber(maxPossiblePrice) || MAX_PRICE
   const formatPriceRange: Range<number> = priceRange || [formatMinPrice, formatMaxPrice]
   if (formatPriceRange)
-    return [`${FACETS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
+    return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
 
-  return [`${FACETS_ENUM.OFFER_PRICES}: 0 TO 300`]
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: 0 TO 300`]
 }
 
 const buildDatePredicate = ({
@@ -98,12 +109,12 @@ const buildHomepageDatePredicate = ({
 
   if (formattedBeginningDatetime && !formattedEndingDatetime) {
     const beginningTimestamp = TIMESTAMP.getFromDate(formattedBeginningDatetime)
-    return [`${FACETS_ENUM.OFFER_DATES} >= ${beginningTimestamp}`]
+    return [`${NUMERIC_FILTERS_ENUM.OFFER_DATES} >= ${beginningTimestamp}`]
   }
 
   if (!formattedBeginningDatetime && formattedEndingDatetime) {
     const endingTimestamp = TIMESTAMP.getFromDate(formattedEndingDatetime)
-    return [`${FACETS_ENUM.OFFER_DATES} <= ${endingTimestamp}`]
+    return [`${NUMERIC_FILTERS_ENUM.OFFER_DATES} <= ${endingTimestamp}`]
   }
 
   if (formattedBeginningDatetime && formattedEndingDatetime) {
@@ -117,7 +128,7 @@ const buildHomepageDatePredicate = ({
 
 const buildTimeOnlyPredicate = (timeRange: Range<number>): FiltersArray[0] => {
   const timeRangeInSeconds = computeTimeRangeFromHoursToSeconds(timeRange)
-  return [`${FACETS_ENUM.OFFER_TIMES}: ${timeRangeInSeconds.join(' TO ')}`]
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_TIMES}: ${timeRangeInSeconds.join(' TO ')}`]
 }
 
 const buildDateAndTimePredicate = ({
@@ -180,8 +191,8 @@ const buildNewestOffersPredicate = (
   const beginningDate = TIMESTAMP.getFromDate(new Date(fifteenDaysBeforeNow))
   const endingDate = TIMESTAMP.getFromDate(now)
 
-  return [`${FACETS_ENUM.OFFER_STOCKS_DATE_CREATED}: ${beginningDate} TO ${endingDate}`]
+  return [`${NUMERIC_FILTERS_ENUM.OFFER_STOCKS_DATE_CREATED}: ${beginningDate} TO ${endingDate}`]
 }
 
 const getDatePredicate = (lowerDate: number, higherDate: number): string =>
-  `${FACETS_ENUM.OFFER_DATES}: ${lowerDate} TO ${higherDate}`
+  `${NUMERIC_FILTERS_ENUM.OFFER_DATES}: ${lowerDate} TO ${higherDate}`

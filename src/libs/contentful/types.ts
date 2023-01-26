@@ -190,6 +190,7 @@ export interface SearchParametersFields {
   isDuo?: boolean
   newestOnly?: boolean
   hitsPerPage: number
+  minBookingsThreshold?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields

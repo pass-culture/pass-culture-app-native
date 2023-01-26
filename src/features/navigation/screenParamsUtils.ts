@@ -55,6 +55,7 @@ const searchParamsParser = {
   tags: JSON.parse,
   timeRange: JSON.parse,
   view: JSON.parse,
+  minBookingsThreshold: JSON.parse,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -180,6 +181,7 @@ const searchParamsStringifier = {
   tags: JSON.stringify,
   timeRange: JSON.stringify,
   view: JSON.stringify,
+  minBookingsThreshold: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {

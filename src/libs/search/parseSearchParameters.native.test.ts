@@ -20,6 +20,7 @@ const defaultSearchParameters = omit(
     ...initialSearchState,
     hitsPerPage: null,
     priceRange: [0, 300],
+    minBookingsThreshold: 0,
   },
   'offerIsFree'
 )

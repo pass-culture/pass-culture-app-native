@@ -69,6 +69,7 @@ export const parseSearchParameters = (
     timeRange: null,
     query: '',
     view: SearchView.Landing,
+    minBookingsThreshold: parameters.minBookingsThreshold || 0,
   }
 }
 

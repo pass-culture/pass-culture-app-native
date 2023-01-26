@@ -65,6 +65,7 @@ export type OffersModuleParameters = {
   isDuo?: boolean
   newestOnly?: boolean
   hitsPerPage: number
+  minBookingsThreshold?: number
 }
 
 export type BusinessModule = {

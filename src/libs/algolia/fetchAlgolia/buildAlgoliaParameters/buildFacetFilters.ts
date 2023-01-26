@@ -6,11 +6,11 @@ import {
 } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { OfferGenreType } from 'features/search/types'
-import { FACETS_ENUM } from 'libs/algolia/enums'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
-const underageFilter = [[`${FACETS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
-const defaultFilter = [[`${FACETS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
+const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
+const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 
 export const buildFacetFilters = ({
   isUserUnderage,
@@ -80,26 +80,30 @@ export const buildFacetFilters = ({
     locationFilter.locationType === LocationType.VENUE &&
     typeof locationFilter.venue.venueId === 'number'
   )
-    facetFilters.push([`${FACETS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])
+    facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])
 
   const atLeastOneFacetFilter = facetFilters.length > 0
   return atLeastOneFacetFilter ? { facetFilters } : null
 }
 
 const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>
-  searchGroups.map((searchGroup) => `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
+  searchGroups.map((searchGroup) => `${FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
 
 const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnumv2[]): string[] =>
-  subcategoryIds.map((subcategoryId) => `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${subcategoryId}`)
+  subcategoryIds.map(
+    (subcategoryId) => `${FACETS_FILTERS_ENUM.OFFER_SUB_CATEGORY}:${subcategoryId}`
+  )
 
 const buildOfferNativeCategoriesPredicate = (nativeCategories: NativeCategoryIdEnumv2[]) =>
-  nativeCategories.map((nativeCategory) => `${FACETS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`)
+  nativeCategories.map(
+    (nativeCategory) => `${FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`
+  )
 
 const offerGenreTypesPredicate = {
-  [GenreType.MOVIE]: FACETS_ENUM.OFFER_MOVIE_GENRES,
-  [GenreType.BOOK]: FACETS_ENUM.OFFER_BOOK_TYPE,
-  [GenreType.MUSIC]: FACETS_ENUM.OFFER_MUSIC_TYPE,
-  [GenreType.SHOW]: FACETS_ENUM.OFFER_SHOW_TYPE,
+  [GenreType.MOVIE]: FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES,
+  [GenreType.BOOK]: FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE,
+  [GenreType.MUSIC]: FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE,
+  [GenreType.SHOW]: FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE,
 }
 
 const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) =>
@@ -110,18 +114,18 @@ const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) =>
   )
 
 const buildObjectIdsPredicate = (objectIds: string[]): string[] =>
-  objectIds.map((objectId) => `${FACETS_ENUM.OBJECT_ID}:${objectId}`)
+  objectIds.map((objectId) => `${FACETS_FILTERS_ENUM.OBJECT_ID}:${objectId}`)
 
 const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
-  offerIsDuo ? [`${FACETS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
+  offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
 
 const buildOfferTypesPredicate = (
   offerTypes: SearchParametersQuery['offerTypes']
 ): FiltersArray | undefined => {
   const { isDigital, isEvent, isThing } = offerTypes
-  const DIGITAL = `${FACETS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`
-  const EVENT = `${FACETS_ENUM.OFFER_IS_EVENT}:${isEvent}`
-  const THING = `${FACETS_ENUM.OFFER_IS_THING}:${isThing}`
+  const DIGITAL = `${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`
+  const EVENT = `${FACETS_FILTERS_ENUM.OFFER_IS_EVENT}:${isEvent}`
+  const THING = `${FACETS_FILTERS_ENUM.OFFER_IS_THING}:${isThing}`
 
   if (isDigital) {
     if (!isEvent && !isThing) return [[DIGITAL]]
@@ -136,6 +140,6 @@ const buildOfferTypesPredicate = (
 }
 
 const buildTagsPredicate = (tags: SearchParametersQuery['tags']): FiltersArray[0] | undefined => {
-  if (tags.length > 0) return tags.map((tag: string) => `${FACETS_ENUM.OFFER_TAGS}:${tag}`)
+  if (tags.length > 0) return tags.map((tag: string) => `${FACETS_FILTERS_ENUM.OFFER_TAGS}:${tag}`)
   return undefined
 }
