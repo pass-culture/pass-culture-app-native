@@ -1,5 +1,5 @@
 import React from 'react'
-import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import { ClipPath, Defs, G, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -12,6 +12,7 @@ const TelegramSvg: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => {
+  const { id: clipPathId, fill: clipPathFill } = svgIdentifier()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
@@ -21,27 +22,32 @@ const TelegramSvg: React.FunctionComponent<AccessibleIcon> = ({
       viewBox="0 0 48 48"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <Path
-        d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z"
-        fill={gradientFill}
-      />
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M10.8509 23.7402C17.8451 20.7027 22.5012 18.6844 24.8393 17.7052C31.4937 14.9276 32.8926 14.448 33.7918 14.428C33.9916 14.428 34.4313 14.4679 34.731 14.7077C34.9708 14.9076 35.0308 15.1674 35.0707 15.3672C35.1107 15.567 35.1507 15.9867 35.1107 16.3064C34.751 20.1032 33.1923 29.3156 32.393 33.552C32.0533 35.3505 31.3938 35.95 30.7543 36.01C29.3555 36.1299 28.2964 35.0908 26.9575 34.2115C24.8393 32.8326 23.6603 31.9734 21.602 30.6145C19.224 29.0558 20.7627 28.1965 22.1215 26.7977C22.4812 26.438 28.6161 20.8426 28.736 20.343C28.756 20.2831 28.756 20.0433 28.6161 19.9234C28.4762 19.8035 28.2764 19.8435 28.1165 19.8834C27.8967 19.9234 24.5395 22.1615 18.005 26.5779C17.0458 27.2373 16.1865 27.557 15.4071 27.5371C14.5478 27.5171 12.9092 27.0574 11.6702 26.6578C10.1715 26.1782 8.9725 25.9184 9.07241 25.0791C9.13236 24.6395 9.73186 24.1998 10.8509 23.7402Z"
-        fill="white"
-      />
+      <G clipPath={clipPathFill}>
+        <Path
+          d="M24 48c13.255 0 24-10.745 24-24S37.255 0 24 0 0 10.745 0 24s10.745 24 24 24Z"
+          fill={gradientFill}
+        />
+        <Path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M9.917 23.064c7.515-3.283 12.517-5.464 15.03-6.522 7.15-3.002 8.652-3.52 9.618-3.542.215 0 .687.043 1.01.302.257.216.321.497.364.713.043.216.086.67.043 1.015-.386 4.103-2.06 14.059-2.92 18.637-.365 1.943-1.073 2.591-1.76 2.656-1.503.13-2.641-.993-4.08-1.944-2.276-1.49-3.542-2.418-5.754-3.887-2.555-1.684-.901-2.613.558-4.124.387-.39 6.978-6.436 7.107-6.976.022-.064.022-.324-.129-.453-.15-.13-.365-.087-.536-.043-.237.043-3.844 2.461-10.864 7.234-1.031.713-1.954 1.058-2.792 1.037-.923-.022-2.683-.519-4.015-.95-1.61-.519-2.898-.8-2.79-1.707.064-.475.708-.95 1.91-1.447Z"
+          fill="#fff"
+        />
+      </G>
       <Defs>
         <LinearGradient
           id={gradientId}
-          x1="23.98"
-          y1="0"
-          x2="23.98"
-          y2="47.6203"
+          x1={23.98}
+          y1={0}
+          x2={23.98}
+          y2={47.62}
           gradientUnits="userSpaceOnUse">
-          <Stop offset="0%" stopColor="#2AABEE" />
-          <Stop offset="100%" stopColor="#229ED9" />
+          <Stop stopColor="#2AABEE" />
+          <Stop offset={1} stopColor="#229ED9" />
         </LinearGradient>
+        <ClipPath id={clipPathId}>
+          <Path fill="#fff" d="M0 0h48v48H0z" />
+        </ClipPath>
       </Defs>
     </AccessibleSvg>
   )
