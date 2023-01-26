@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { HourChoice } from 'features/bookOffer/atoms/HourChoice'
+import { HourChoice } from 'features/bookOffer/components/HourChoice'
 import {
   useBooking,
   useBookingOffer,

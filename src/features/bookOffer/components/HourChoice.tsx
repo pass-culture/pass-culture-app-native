@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ChoiceBloc, getTextColor } from 'features/bookOffer/components/ChoiceBloc'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { getSpacing, Typo } from 'ui/theme'
-
-import { ChoiceBloc, getTextColor } from './ChoiceBloc'
 
 const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
   if (!enoughCredit) return 'crédit insuffisant'

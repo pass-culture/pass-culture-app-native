@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { DuoChoice } from 'features/bookOffer/atoms/DuoChoice'
+import { DuoChoice } from 'features/bookOffer/components/DuoChoice'
 import {
   useBooking,
   useBookingOffer,
