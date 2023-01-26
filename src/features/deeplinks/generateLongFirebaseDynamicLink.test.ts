@@ -1,6 +1,6 @@
 import { env } from 'libs/environment'
 
-import { generateLongFirebaseDynamicLink } from './utils'
+import { generateLongFirebaseDynamicLink } from './generateLongFirebaseDynamicLink'
 
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
