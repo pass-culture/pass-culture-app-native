@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { generateLongFirebaseDynamicLink } from 'features/deeplinks/generateLongFirebaseDynamicLink'
+import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
 import { ControlledFilterSwitch } from 'features/internal/marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/internal/marketingAndCommunication/atoms/DateChoice'
 import { LocationFilterChoice } from 'features/internal/marketingAndCommunication/atoms/LocationFilterChoice'
