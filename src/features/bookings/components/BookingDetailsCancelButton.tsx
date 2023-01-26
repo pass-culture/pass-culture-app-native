@@ -62,12 +62,14 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   if (isStillCancellable) {
     cancelAnnulationMessage = stillCancellableMessage
     button = renderButton()
-  } else if (isExBeneficiary && booking.confirmationDate) {
-    cancelAnnulationMessage = isExBeneficiaryMessage
-  } else if (isDigitalBooking && booking.confirmationDate) {
-    cancelAnnulationMessage = expirationDateMessage
   } else if (booking.confirmationDate) {
-    cancelAnnulationMessage = otherBookingStatusMessage
+    if (isExBeneficiary) {
+      cancelAnnulationMessage = isExBeneficiaryMessage
+    } else if (isDigitalBooking) {
+      cancelAnnulationMessage = expirationDateMessage
+    } else {
+      cancelAnnulationMessage = otherBookingStatusMessage
+    }
   } else {
     button = renderButton()
   }
@@ -75,7 +77,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   return (
     <React.Fragment>
       {button}
-      {cancelAnnulationMessage !== '' && (
+      {!!cancelAnnulationMessage && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <StyledCaption testID="cancel-annulation-message">
