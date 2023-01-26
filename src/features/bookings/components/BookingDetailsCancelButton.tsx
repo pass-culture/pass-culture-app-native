@@ -75,8 +75,14 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   return (
     <React.Fragment>
       {button}
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledCaption testID="cancel-annulation-message">{cancelAnnulationMessage}</StyledCaption>
+      {cancelAnnulationMessage !== '' && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledCaption testID="cancel-annulation-message">
+            {cancelAnnulationMessage}
+          </StyledCaption>
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }
