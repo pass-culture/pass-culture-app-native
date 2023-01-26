@@ -1001,6 +1001,16 @@ exports[`BookingDetails should render correctly 1`] = `
             ]
           }
         />
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
         <Text
           style={
             Array [
@@ -1013,6 +1023,7 @@ exports[`BookingDetails should render correctly 1`] = `
               },
             ]
           }
+          testID="cancel-annulation-message"
         >
           Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
         </Text>

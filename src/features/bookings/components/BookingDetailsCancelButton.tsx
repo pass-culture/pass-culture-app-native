@@ -11,7 +11,7 @@ import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export interface BookingDetailsCancelButtonProps {
@@ -62,18 +62,29 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   if (isStillCancellable) {
     cancelAnnulationMessage = stillCancellableMessage
     button = renderButton()
-  } else if (isExBeneficiary) {
-    cancelAnnulationMessage = isExBeneficiaryMessage
-  } else if (isDigitalBooking) {
-    cancelAnnulationMessage = expirationDateMessage
+  } else if (booking.confirmationDate) {
+    if (isExBeneficiary) {
+      cancelAnnulationMessage = isExBeneficiaryMessage
+    } else if (isDigitalBooking) {
+      cancelAnnulationMessage = expirationDateMessage
+    } else {
+      cancelAnnulationMessage = otherBookingStatusMessage
+    }
   } else {
-    cancelAnnulationMessage = otherBookingStatusMessage
+    button = renderButton()
   }
 
   return (
     <React.Fragment>
       {button}
-      <StyledCaption>{cancelAnnulationMessage}</StyledCaption>
+      {!!cancelAnnulationMessage && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledCaption testID="cancel-annulation-message">
+            {cancelAnnulationMessage}
+          </StyledCaption>
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }
