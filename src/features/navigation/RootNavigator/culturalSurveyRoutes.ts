@@ -1,6 +1,7 @@
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
+import { FAQWebview } from 'features/culturalSurvey/pages/FAQWebview'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { NavigationCulturalSurvey } from 'features/internal/cheatcodes/pages/NavigationCulturalSurvey/NavigationCulturalSurvey'
 import {
@@ -34,5 +35,10 @@ export const culturalSurveyRoutes: GenericRoute<CulturalSurveyRootStackParamList
     component: CulturalSurveyThanks,
     path: 'questionnaire-pratiques-initiales/merci',
     secure: true,
+  },
+  {
+    name: 'FAQWebview',
+    component: FAQWebview,
+    path: 'questionnaire-pratiques-initiales/foire-aux-questions',
   },
 ]
