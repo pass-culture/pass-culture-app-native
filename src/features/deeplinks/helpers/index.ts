@@ -1,0 +1,1 @@
+export { getScreenFromDeeplink } from './getScreenFromDeeplink'

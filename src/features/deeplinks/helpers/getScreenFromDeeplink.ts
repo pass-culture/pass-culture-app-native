@@ -1,7 +1,7 @@
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { NavigationResultState } from 'features/navigation/RootNavigator/types'
 
-import { DeeplinkParts } from './types'
+import { DeeplinkParts } from '../types'
 
 export function getScreenFromDeeplink(url: string): DeeplinkParts {
   let pathWithQueryString = url

@@ -1,9 +1,8 @@
+import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment'
-
-import { getScreenFromDeeplink } from './getScreenFromDeeplink'
 
 // To see the linking config used in the tests, check the file :
 // features/navigation/RootNavigator/__mocks__/routes.ts

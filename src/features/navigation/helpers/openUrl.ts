@@ -1,6 +1,6 @@
 import { Alert, Linking } from 'react-native'
 
-import { getScreenFromDeeplink } from 'features/deeplinks/getScreenFromDeeplink'
+import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/firebase/analytics'
 import { OfferAnalyticsData } from 'libs/firebase/analytics/types'
