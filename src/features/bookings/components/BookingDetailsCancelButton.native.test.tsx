@@ -32,6 +32,7 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should display button if confirmationDate is null', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
+    booking.stock.offer.isDigital = false
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
     expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
   })
@@ -125,6 +126,14 @@ describe('<BookingDetailsCancelButton />', () => {
       'Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021'
 
     expect(queryByText(expirationDateMessage)).toBeTruthy()
+  })
+
+  it('should not display any message if there is no confirmation date', () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = null
+
+    const { queryByTestId } = renderBookingDetailsCancelButton(booking)
+    expect(queryByTestId('cancel-annulation-message')).toBeNull()
   })
 })
 
