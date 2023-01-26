@@ -3,8 +3,7 @@ import styled from 'styled-components/native'
 
 import { OfferTypes } from 'features/search/types'
 import { Li } from 'ui/components/Li'
-import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
-import { Network } from 'ui/components/ShareMessagingApp'
+import { ShareMessagingApp, Network } from 'ui/components/ShareMessagingApp'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
@@ -23,8 +22,8 @@ export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) =
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
-          {socialMedias.map((socialMedia, index) => (
-            <StyledLi key={index}>
+          {socialMedias.map((socialMedia) => (
+            <StyledLi key={socialMedia}>
               <ShareMessagingApp network={socialMedia} />
             </StyledLi>
           ))}
