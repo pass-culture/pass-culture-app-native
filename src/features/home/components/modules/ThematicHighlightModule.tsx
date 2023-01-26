@@ -109,7 +109,7 @@ const DateRangeCaption = styled(Typo.Hint)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const TextContainer = styled.View({ position: 'absolute', bottom: 0 })
+const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
