@@ -1,7 +1,7 @@
 import { Alert, Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers'
+import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScreenFromDeeplink'
 import { DeeplinkParts } from 'features/deeplinks/types'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
