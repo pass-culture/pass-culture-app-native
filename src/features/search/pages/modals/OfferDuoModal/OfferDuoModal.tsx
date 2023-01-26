@@ -29,6 +29,7 @@ export type OfferDuoModalProps = {
   isVisible: boolean
   hideModal: () => void
   filterBehaviour: FilterBehaviour
+  onClose?: VoidFunction
 }
 
 const titleId = uuidv4()
@@ -41,6 +42,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   isVisible,
   hideModal,
   filterBehaviour,
+  onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
   const { isDesktopViewport, modal } = useTheme()
@@ -93,12 +95,19 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
     })
   }, [reset])
 
-  const close = useCallback(() => {
+  const closeModal = useCallback(() => {
     reset({
       offerIsDuo: searchState.offerIsDuo,
     })
     hideModal()
-  }, [hideModal, reset, searchState?.offerIsDuo])
+  }, [hideModal, reset, searchState.offerIsDuo])
+
+  const close = useCallback(() => {
+    closeModal()
+    if (onClose) {
+      onClose()
+    }
+  }, [closeModal, onClose])
 
   const search = useCallback(
     (values: SearchTypeFormData) => {
@@ -125,13 +134,21 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   )
 
   const onSubmit = handleSubmit(search)
+  const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
     <AppModal
       visible={isVisible}
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={title} onGoBack={close} />
+          <SearchCustomModalHeader
+            titleId={titleId}
+            title={title}
+            onGoBack={closeModal}
+            onClose={close}
+            shouldDisplayBackButton={shouldDisplayBackButton}
+            shouldDisplayCloseButton
+          />
         )
       }
       title={title}
@@ -140,7 +157,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
-      onRightIconPress={close}
+      onRightIconPress={closeModal}
       maxHeight={isDesktopViewport ? DEFAULT_HEIGHT_MODAL : undefined}
       fixedModalBottom={
         <SearchFixedModalBottom

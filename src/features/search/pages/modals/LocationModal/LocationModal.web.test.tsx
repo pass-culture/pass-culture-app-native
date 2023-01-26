@@ -6,7 +6,7 @@ import {
   LocationModalProps,
 } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { GeoCoordinates } from 'libs/geolocation'
-import { act, checkAccessibilityFor, fireEvent, render, superFlushWithAct } from 'tests/utils/web'
+import { act, checkAccessibilityFor, fireEvent, render, waitFor } from 'tests/utils/web'
 
 const mockPosition: GeoCoordinates | null = { latitude: 2, longitude: 40 }
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
@@ -24,7 +24,7 @@ describe('<LocationModal/>', () => {
 
       const header = renderAPI.queryByTestId('pageHeader')
 
-      await act(async () => {
+      await waitFor(() => {
         expect(header).toBeTruthy()
       })
     })
@@ -34,7 +34,7 @@ describe('<LocationModal/>', () => {
       const renderAPI = renderLocationModal({ hideModal }, isDesktopViewport)
 
       const header = renderAPI.queryByTestId('pageHeader')
-      await act(async () => {
+      await waitFor(() => {
         expect(header).toBeFalsy()
       })
     })
@@ -44,12 +44,12 @@ describe('<LocationModal/>', () => {
     const isDesktopViewport = true
     const { getByTestId } = renderLocationModal({ hideModal }, isDesktopViewport)
 
-    await superFlushWithAct()
-
     const closeButton = getByTestId('Ne pas filtrer sur la localisation et retourner aux résultats')
     fireEvent.click(closeButton)
 
-    expect(hideModal).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(hideModal).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('Accessibility', () => {

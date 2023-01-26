@@ -12,7 +12,7 @@ import {
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -38,19 +38,23 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
 })
 
-const hideModal = jest.fn()
+const mockHideModal = jest.fn()
+const mockOnClose = jest.fn()
 
 describe('<OfferDuoModal/>', () => {
+  it('should render modal correctly after animation and with enabled submit', async () => {
+    jest.useFakeTimers()
+    const renderAPI = renderOfferDuoModal()
+    await superFlushWithAct()
+    jest.advanceTimersByTime(2000)
+    expect(renderAPI).toMatchSnapshot()
+    jest.useRealTimers()
+  })
+
   describe('modal header', () => {
     it('should have header when viewport width is mobile', () => {
       const isDesktopViewport = false
-      const renderAPI = renderOfferDuoModal(
-        {
-          hideModal,
-          isVisible: true,
-        },
-        isDesktopViewport
-      )
+      const renderAPI = renderOfferDuoModal({}, isDesktopViewport)
 
       const header = renderAPI.queryByTestId('pageHeader')
       expect(header).toBeTruthy()
@@ -58,16 +62,43 @@ describe('<OfferDuoModal/>', () => {
 
     it('should not have header when viewport width is desktop', () => {
       const isDesktopViewport = true
-      const renderAPI = renderOfferDuoModal(
-        {
-          hideModal,
-          isVisible: true,
-        },
-        isDesktopViewport
-      )
+      const renderAPI = renderOfferDuoModal({}, isDesktopViewport)
 
       const header = renderAPI.queryByTestId('pageHeader')
       expect(header).toBeFalsy()
+    })
+
+    describe('Buttons', () => {
+      it('should display back button on header when the modal is opening from general filter page', async () => {
+        const { getByTestId } = renderOfferDuoModal({
+          filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+        })
+
+        await waitFor(() => {
+          expect(getByTestId('Revenir en arrière')).toBeTruthy()
+        })
+      })
+
+      it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
+        const { getByTestId } = renderOfferDuoModal({
+          filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+          onClose: mockOnClose,
+        })
+
+        const closeButton = getByTestId('Fermer')
+        fireEvent.press(closeButton)
+
+        expect(mockOnClose).toHaveBeenCalledTimes(1)
+      })
+
+      it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
+        const { getByTestId } = renderOfferDuoModal()
+
+        const closeButton = getByTestId('Fermer')
+        fireEvent.press(closeButton)
+
+        expect(mockOnClose).not.toHaveBeenCalled()
+      })
     })
   })
 
@@ -83,10 +114,7 @@ describe('<OfferDuoModal/>', () => {
     })
 
     it('should toggle offerIsDuo', () => {
-      const renderAPI = renderOfferDuoModal({
-        hideModal,
-        isVisible: true,
-      })
+      const renderAPI = renderOfferDuoModal()
 
       const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
 
@@ -106,10 +134,7 @@ describe('<OfferDuoModal/>', () => {
 
   describe('click reset button', () => {
     it('should disable duo offer when click on reset button', () => {
-      const renderAPI = renderOfferDuoModal({
-        hideModal,
-        isVisible: true,
-      })
+      const renderAPI = renderOfferDuoModal()
 
       const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
 
@@ -128,24 +153,18 @@ describe('<OfferDuoModal/>', () => {
 
   describe('should close the modal ', () => {
     it('should close modal on submit', async () => {
-      const { getByText } = renderOfferDuoModal({
-        hideModal,
-        isVisible: true,
-      })
+      const { getByText } = renderOfferDuoModal()
       const button = getByText('Rechercher')
 
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(hideModal).toHaveBeenCalledTimes(1)
+        expect(mockHideModal).toHaveBeenCalledTimes(1)
       })
     })
 
     it('should navigate to Search results when selecting DUO offer and submit form', async () => {
-      const { getByText, getByTestId } = renderOfferDuoModal({
-        hideModal,
-        isVisible: true,
-      })
+      const { getByText, getByTestId } = renderOfferDuoModal()
       const toggle = getByTestId('Interrupteur-limitDuoOfferSearch')
       const button = getByText('Rechercher')
 
@@ -166,10 +185,7 @@ describe('<OfferDuoModal/>', () => {
     })
 
     it('should use default filters when submitting without change', async () => {
-      const { getByText } = renderOfferDuoModal({
-        hideModal,
-        isVisible: true,
-      })
+      const { getByText } = renderOfferDuoModal()
 
       const button = getByText('Rechercher')
 
@@ -188,23 +204,17 @@ describe('<OfferDuoModal/>', () => {
     })
 
     it('when pressing previous button', () => {
-      const { getByTestId } = renderOfferDuoModal({
-        hideModal,
-        isVisible: true,
-      })
+      const { getByTestId } = renderOfferDuoModal()
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
-      expect(hideModal).toHaveBeenCalledTimes(1)
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
   })
 
   it('should log PerformSearch when pressing search button', async () => {
-    const { getByText } = renderOfferDuoModal({
-      hideModal,
-      isVisible: true,
-    })
+    const { getByText } = renderOfferDuoModal()
 
     const button = getByText('Rechercher')
 
@@ -222,7 +232,6 @@ describe('<OfferDuoModal/>', () => {
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
       const { getByText } = renderOfferDuoModal({
-        isVisible: true,
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
@@ -233,7 +242,6 @@ describe('<OfferDuoModal/>', () => {
 
     it('should update search state when pressing submit button', async () => {
       const { getByText, getByTestId } = renderOfferDuoModal({
-        isVisible: true,
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
@@ -262,20 +270,17 @@ describe('<OfferDuoModal/>', () => {
 })
 
 function renderOfferDuoModal(
-  {
-    isVisible = false,
-    hideModal = () => {},
-    filterBehaviour = FilterBehaviour.SEARCH,
-  }: Partial<OfferDuoModalProps>,
+  { filterBehaviour = FilterBehaviour.SEARCH, onClose }: Partial<OfferDuoModalProps> = {},
   isDesktopViewport?: boolean
 ) {
   return render(
     <OfferDuoModal
       title="Type d'offre"
       accessibilityLabel="Ne pas filtrer sur les type d'offre et retourner aux résultats"
-      isVisible={isVisible}
-      hideModal={hideModal}
+      isVisible
+      hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
+      onClose={onClose}
     />,
     { theme: { isDesktopViewport } }
   )

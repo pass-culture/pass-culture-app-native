@@ -36,6 +36,7 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
 jest.mock('react-query')
 
 const mockHideModal = jest.fn()
+const mockOnClose = jest.fn()
 
 describe('<PriceModal/>', () => {
   beforeAll(() => {
@@ -286,7 +287,7 @@ describe('<PriceModal/>', () => {
 
       const minPriceInput = getByPlaceholderText('0')
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
       await waitFor(() => {
@@ -314,7 +315,7 @@ describe('<PriceModal/>', () => {
 
       const maxPriceInput = getByPlaceholderText('80')
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
       await waitFor(() => {
@@ -339,7 +340,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, maxPrice: '70' }
       const { getByTestId } = renderSearchPrice()
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
       const toggleLimitCreditSearch = getByTestId('Interrupteur-limitCreditSearch')
@@ -365,7 +366,7 @@ describe('<PriceModal/>', () => {
       mockSearchState = { ...searchState, offerIsFree: true }
       const { getByTestId } = renderSearchPrice()
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
       const toggleOnlyFreeOffersSearch = getByTestId('Interrupteur-onlyFreeOffers')
@@ -664,7 +665,7 @@ describe('<PriceModal/>', () => {
 
       await superFlushWithAct()
 
-      const previousButton = getByTestId('Revenir en arrière')
+      const previousButton = getByTestId('Fermer')
       fireEvent.press(previousButton)
 
       expect(mockHideModal).toHaveBeenCalledTimes(1)
@@ -863,11 +864,48 @@ describe('<PriceModal/>', () => {
       })
     })
   })
+
+  describe('Modal header buttons', () => {
+    it('should display back button on header when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderSearchPrice({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByTestId('Revenir en arrière')).toBeTruthy()
+      })
+    })
+
+    it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderSearchPrice({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+        onClose: mockOnClose,
+      })
+
+      await superFlushWithAct()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).toHaveBeenCalledTimes(1)
+    })
+
+    it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
+      const { getByTestId } = renderSearchPrice()
+
+      await superFlushWithAct()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).not.toHaveBeenCalled()
+    })
+  })
 })
 
 function renderSearchPrice({
   filterBehaviour = FilterBehaviour.SEARCH,
-  ...props
+  onClose,
 }: Partial<PriceModalProps> = {}) {
   return render(
     <PriceModal
@@ -876,7 +914,7 @@ function renderSearchPrice({
       isVisible
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
-      {...props}
+      onClose={onClose}
     />
   )
 }

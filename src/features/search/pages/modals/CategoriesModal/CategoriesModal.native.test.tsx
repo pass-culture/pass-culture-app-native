@@ -16,6 +16,7 @@ const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
 const mockDispatch = jest.fn()
+const mockOnClose = jest.fn()
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -154,7 +155,7 @@ describe('<CategoriesModal/>', () => {
       it('when pressing previous button', async () => {
         const { getByTestId } = renderCategories()
 
-        const previousButton = getByTestId('Revenir en arrière')
+        const previousButton = getByTestId('Fermer')
         fireEvent.press(previousButton)
 
         await waitFor(() => {
@@ -209,7 +210,9 @@ describe('<CategoriesModal/>', () => {
     })
 
     it('should go back to categories view', () => {
-      const { getByTestId, getByText } = renderCategories()
+      const { getByTestId, getByText } = renderCategories({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
       const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(getByText('Livres'))
 
@@ -298,7 +301,9 @@ describe('<CategoriesModal/>', () => {
     })
 
     it('should go back to native categories view', () => {
-      const { getByTestId, getByText } = renderCategories()
+      const { getByTestId, getByText } = renderCategories({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
       const previousButton = getByTestId('Revenir en arrière')
       fireEvent.press(getByText('Livres'))
       fireEvent.press(getByText('Livres papier'))
@@ -440,10 +445,46 @@ describe('<CategoriesModal/>', () => {
       })
     })
   })
+
+  describe('Modal header buttons', () => {
+    it('should display back button on header when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderCategories({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(getByTestId('Revenir en arrière')).toBeTruthy()
+      })
+    })
+
+    it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
+      const { getByTestId } = renderCategories({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+        onClose: mockOnClose,
+      })
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      await waitFor(() => {
+        expect(mockOnClose).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
+      const { getByTestId } = renderCategories()
+
+      const closeButton = getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(mockOnClose).not.toHaveBeenCalled()
+    })
+  })
 })
 
 function renderCategories({
   filterBehaviour = FilterBehaviour.SEARCH,
+  onClose,
   ...props
 }: Partial<CategoriesModalProps> = {}) {
   return render(
@@ -452,6 +493,7 @@ function renderCategories({
       isVisible
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
+      onClose={onClose}
       {...props}
     />
   )

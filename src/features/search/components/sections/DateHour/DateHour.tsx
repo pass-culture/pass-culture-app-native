@@ -22,7 +22,11 @@ const buildDateString = (date: SearchState['date']) => {
   }
 }
 
-export const DateHour = () => {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const DateHour = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { date, timeRange } = searchState
   const { visible, showModal, hideModal } = useModal(false)
@@ -47,6 +51,7 @@ export const DateHour = () => {
         isVisible={visible}
         hideModal={hideModal}
         filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )

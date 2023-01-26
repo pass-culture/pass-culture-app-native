@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PriceModal/> should render modal correctly after animation and with enabled submit 1`] = `
+exports[`<OfferDuoModal/> should render modal correctly after animation and with enabled submit 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
@@ -243,7 +243,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     ]
                   }
                 >
-                  Prix
+                  Type d'offre
                 </Text>
                 <View
                   positionInHeader="right"
@@ -351,83 +351,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             }
           >
             <View
-              testID="creditBanner"
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#f3ecff",
-                      "borderRadius": 8,
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingRight": 16,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={24}
-                    width={24}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                    withLightColorMessage={false}
-                  >
-                    Il te reste 70 € sur ton pass Culture.
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  Array [
-                    Object {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <View
               inverseLayout={false}
               style={
                 Array [
@@ -463,7 +386,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     ]
                   }
                 >
-                  Uniquement les offres gratuites
+                  Uniquement les offres duo
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -475,6 +398,21 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     ]
                   }
                 />
+                <Text
+                  nativeID="testUuidV4"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Seules les sorties seront affichées
+                </Text>
               </View>
               <View
                 numberOfSpaces={2}
@@ -542,7 +480,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-onlyFreeOffers"
+                    testID="Interrupteur-limitDuoOfferSearch"
                   >
                     <View
                       active={false}
@@ -596,473 +534,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 ]
               }
             />
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              inverseLayout={false}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  accessibilityDescribedBy="testUuidV4"
-                  htmlFor="testUuidV4"
-                  id="testUuidV4"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Limiter la recherche à mon crédit
-                </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    Array [
-                      Object {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      Array [
-                        Object {
-                          "display": "none",
-                        },
-                      ]
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
-                  <View
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      Object {
-                        "checked": false,
-                        "disabled": false,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="Interrupteur-limitCreditSearch"
-                  >
-                    <View
-                      active={false}
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#90949D",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        collapsable={false}
-                        disabled={false}
-                        style={
-                          Object {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "backgroundColor": "#ffffff",
-                            "borderRadius": 28,
-                            "height": 28,
-                            "justifyContent": "center",
-                            "marginLeft": 2,
-                            "shadowColor": "#161617",
-                            "shadowOffset": Object {
-                              "height": 2,
-                              "width": 0,
-                            },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 2.5,
-                            "width": 28,
-                          }
-                        }
-                      />
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "flex-end",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Prix minimum (en €)
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
-                    },
-                  ]
-                }
-                testID="styled-input-container"
-              >
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  autoCapitalize="none"
-                  autoComplete="off"
-                  disabled={false}
-                  editable={true}
-                  isEmpty={true}
-                  keyboardType="numeric"
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="0"
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="next"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Italic",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  testID="Entrée pour le prix minimum"
-                  textContentType="none"
-                  value=""
-                />
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "flex-end",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Prix maximum (en €)
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    max : 80 €
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
-                    },
-                  ]
-                }
-                testID="styled-input-container"
-              >
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  autoCapitalize="none"
-                  autoComplete="off"
-                  disabled={false}
-                  editable={true}
-                  isEmpty={true}
-                  keyboardType="numeric"
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="80"
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="next"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#696A6F",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Italic",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  testID="Entrée pour le prix maximum"
-                  textContentType="none"
-                  value=""
-                />
-              </View>
-            </View>
           </View>
         </View>
       </RCTScrollView>

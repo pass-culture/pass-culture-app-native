@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -30,6 +31,7 @@ export const SearchFilter: React.FC = () => {
   const { position } = useGeolocation()
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
+  const { isDesktopViewport, isMobileViewport } = useTheme()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params || { view: SearchView.Landing } })
@@ -78,16 +80,25 @@ export const SearchFilter: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
+  const shouldDisplayBackButton = isDesktopViewport
+  const shouldDisplayCloseButton = isMobileViewport
+
   return (
     <Container>
-      <PageHeaderSecondary title="Filtrer" onGoBack={onGoBack} />
+      <PageHeaderSecondary
+        title="Filtrer"
+        onGoBack={onGoBack}
+        onClose={onGoBack}
+        shouldDisplayBackButton={shouldDisplayBackButton}
+        shouldDisplayCloseButton={shouldDisplayCloseButton}
+      />
       <React.Fragment>
         <StyledScrollView scrollEnabled keyboardShouldPersistTaps="always">
           {/* Localisation */}
           <VerticalUl>
             <StyledLi>
               <Spacer.Column numberOfSpaces={4} />
-              <Section.Location />
+              <Section.Location onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
             </StyledLi>
@@ -95,7 +106,7 @@ export const SearchFilter: React.FC = () => {
             {/* Catégories */}
             <StyledLi>
               <Spacer.Column numberOfSpaces={4} />
-              <Section.Category />
+              <Section.Category onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
             </StyledLi>
@@ -104,7 +115,7 @@ export const SearchFilter: React.FC = () => {
             {!!hasDuoOfferToggle && (
               <StyledLi>
                 <Spacer.Column numberOfSpaces={4} />
-                <Section.OfferDuo />
+                <Section.OfferDuo onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
                 <Spacer.Column numberOfSpaces={4} />
                 <Separator />
               </StyledLi>
@@ -113,13 +124,13 @@ export const SearchFilter: React.FC = () => {
             {/* Prix */}
             <StyledLi>
               <Spacer.Column numberOfSpaces={4} />
-              <Section.Price />
+              <Section.Price onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
               <Separator marginVertical={getSpacing(4)} />
             </StyledLi>
 
             {/* Date & Heure */}
             <StyledLi>
-              <Section.DateHour />
+              <Section.DateHour onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
             </StyledLi>
           </VerticalUl>
         </StyledScrollView>

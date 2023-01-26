@@ -6,14 +6,28 @@ type Props = {
   titleId: string
   title: string
   onGoBack: () => void
+  shouldDisplayBackButton?: boolean
+  shouldDisplayCloseButton?: boolean
+  onClose?: () => void
 }
 
 export const SearchCustomModalHeader = memo(function SearchCustomModalHeader({
   titleId,
   title,
   onGoBack,
+  onClose,
+  shouldDisplayBackButton,
+  shouldDisplayCloseButton,
 }: Props) {
   return (
-    <PageHeaderSecondary titleID={titleId} title={title} onGoBack={onGoBack} testID="pageHeader" />
+    <PageHeaderSecondary
+      titleID={titleId}
+      title={title}
+      onGoBack={onGoBack}
+      testID="pageHeader"
+      shouldDisplayBackButton={shouldDisplayBackButton}
+      shouldDisplayCloseButton={shouldDisplayCloseButton}
+      onClose={onClose}
+    />
   )
 })

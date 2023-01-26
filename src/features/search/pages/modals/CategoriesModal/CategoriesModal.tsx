@@ -38,6 +38,7 @@ export interface CategoriesModalProps {
   isVisible?: boolean
   hideModal: VoidFunction
   filterBehaviour: FilterBehaviour
+  onClose?: VoidFunction
 }
 
 const titleId = uuidv4()
@@ -47,6 +48,7 @@ export const CategoriesModal = ({
   hideModal,
   accessibilityLabel,
   filterBehaviour,
+  onClose,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -92,6 +94,13 @@ export const CategoriesModal = ({
     reset()
     hideModal()
   }, [hideModal, reset])
+
+  const handleClose = useCallback(() => {
+    handleModalClose()
+    if (onClose) {
+      onClose()
+    }
+  }, [handleModalClose, onClose])
 
   const modalTitle = useMemo(() => {
     return getCategoriesModalTitle(currentView, category, nativeCategory)
@@ -254,11 +263,26 @@ export const CategoriesModal = ({
     [descriptionContext, genreTypes]
   )
 
+  const shouldDisplayBackButton = useMemo(
+    () =>
+      currentView !== CategoriesModalView.CATEGORIES ||
+      (currentView === CategoriesModalView.CATEGORIES &&
+        filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING),
+    [currentView, filterBehaviour]
+  )
+
   return (
     <AppModal
       customModalHeader={
         isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader titleId={titleId} title={modalTitle} onGoBack={handleGoBack} />
+          <SearchCustomModalHeader
+            titleId={titleId}
+            title={modalTitle}
+            onGoBack={handleGoBack}
+            onClose={handleClose}
+            shouldDisplayBackButton={shouldDisplayBackButton}
+            shouldDisplayCloseButton
+          />
         )
       }
       title={modalTitle}

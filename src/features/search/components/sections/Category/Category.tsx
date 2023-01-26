@@ -15,7 +15,11 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useModal } from 'ui/components/modals/useModal'
 import { All } from 'ui/svg/icons/bicolor/All'
 
-export const Category: React.FC = () => {
+type Props = {
+  onClose?: VoidFunction
+}
+
+export const Category = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { offerCategories, offerNativeCategories, offerGenreTypes } = searchState
   const { data } = useSubcategories()
@@ -48,6 +52,7 @@ export const Category: React.FC = () => {
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
         filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
+        onClose={onClose}
       />
     </React.Fragment>
   )
