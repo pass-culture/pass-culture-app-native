@@ -254,9 +254,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "column",
-                    "height": "100%",
                     "marginHorizontal": 4,
                     "marginVertical": 32,
                   },
