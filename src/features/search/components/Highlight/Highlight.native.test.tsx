@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { Highlight, HighlightPart } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 describe('Highlight component', () => {
   const hit = {
@@ -31,6 +31,14 @@ describe('Highlight component', () => {
               count: 10,
             },
           ],
+          ['offer.nativeCategoryId']: [
+            {
+              attribute: '',
+              operator: '',
+              value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+              count: 10,
+            },
+          ],
         },
       },
     },
@@ -45,16 +53,14 @@ describe('HighlightPart component', () => {
   const children = 'guerre et'
 
   it('should use body typo when the part of the hit is highlighted', () => {
-    const { queryByTestId } = render(<HighlightPart isHighlighted>{children}</HighlightPart>)
+    render(<HighlightPart isHighlighted>{children}</HighlightPart>)
 
-    expect(queryByTestId('highlightedText')).toBeTruthy()
+    expect(screen.queryByTestId('highlightedText')).toBeTruthy()
   })
 
   it('should use button text typo when the part of the hit is not highlighted', () => {
-    const { queryByTestId } = render(
-      <HighlightPart isHighlighted={false}>{children}</HighlightPart>
-    )
+    render(<HighlightPart isHighlighted={false}>{children}</HighlightPart>)
 
-    expect(queryByTestId('nonHighlightedText')).toBeTruthy()
+    expect(screen.queryByTestId('nonHighlightedText')).toBeTruthy()
   })
 })

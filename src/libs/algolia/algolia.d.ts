@@ -1,6 +1,6 @@
 import { Hit } from 'instantsearch.js'
 
-import { SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
 
 interface Offer {
   dates?: number[]
@@ -25,15 +25,23 @@ export interface AlgoliaHit {
   objectID: string
 }
 
-export interface AlgoliaFacetsAnalyticsCategory {
+export interface AlgoliaFacetsAnalyticsKey {
   attribute: string
   operator: string
-  value: SearchGroupNameEnumv2
   count: number
 }
 
+export interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnalyticsKey {
+  value: NativeCategoryIdEnumv2
+}
+
+export interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
+  value: SearchGroupNameEnumv2
+}
+
 export interface AlgoliaFacetsAnalytics {
-  [key: string]: AlgoliaFacetsAnalyticsCategory[]
+  ['offer.nativeCategoryId']: AlgoliaFacetsAnalyticsNativeCategory[]
+  ['offer.searchGroupNamev2']: AlgoliaFacetsAnalyticsCategory[]
 }
 
 export interface AlgoliaFacets {

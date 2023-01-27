@@ -25,6 +25,14 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
           "exact_nb_hits": 2,
           "facets": Object {
             "analytics": Object {
+              "offer.nativeCategoryId": Array [
+                Object {
+                  "attribute": "",
+                  "count": 10,
+                  "operator": "",
+                  "value": "SEANCES_DE_CINEMA",
+                },
+              ],
               "offer.searchGroupNamev2": Array [
                 Object {
                   "attribute": "",
@@ -54,6 +62,14 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
           "exact_nb_hits": 2,
           "facets": Object {
             "analytics": Object {
+              "offer.nativeCategoryId": Array [
+                Object {
+                  "attribute": "",
+                  "count": 10,
+                  "operator": "",
+                  "value": "SEANCES_DE_CINEMA",
+                },
+              ],
               "offer.searchGroupNamev2": Array [
                 Object {
                   "attribute": "",
@@ -187,7 +203,7 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
               ]
             }
           >
-            Films, séries, cinéma
+            Séances de cinéma
           </Text>
         </Text>
       </View>
@@ -302,7 +318,7 @@ exports[`SearchAutocomplete component should render SearchAutocomplete 1`] = `
               ]
             }
           >
-            Films, séries, cinéma
+            Séances de cinéma
           </Text>
         </Text>
       </View>

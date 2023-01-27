@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchAutocomplete } from 'features/search/components/SearchAutocomplete/SearchAutocomplete'
 import { Hit } from 'features/search/pages/Search/Search'
 import { env } from 'libs/environment'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render } from 'tests/utils'
 
 const mockHits = [
@@ -27,6 +28,14 @@ const mockHits = [
               attribute: '',
               operator: '',
               value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              count: 10,
+            },
+          ],
+          ['offer.nativeCategoryId']: [
+            {
+              attribute: '',
+              operator: '',
+              value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
               count: 10,
             },
           ],
@@ -57,6 +66,14 @@ const mockHits = [
               count: 10,
             },
           ],
+          ['offer.nativeCategoryId']: [
+            {
+              attribute: '',
+              operator: '',
+              value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+              count: 10,
+            },
+          ],
         },
       },
     },
@@ -66,6 +83,12 @@ const mockHits = [
 jest.mock('react-instantsearch-hooks', () => ({
   useInfiniteHits: () => ({
     hits: mockHits,
+  }),
+}))
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 

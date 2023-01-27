@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -10,11 +10,17 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import {
+  getSearchGroupsEnumArrayFromNativeCategoryEnum,
+  getNativeCategoryFromEnum,
+  isAssociatedNativeCategoryToCategory,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { useSearchGroupLabel } from 'libs/subcategories'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -26,13 +32,45 @@ type Props = {
 
 export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, shouldShowCategory }) => {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
-  const { ['offer.searchGroupNamev2']: categories } = indexInfos.facets.analytics
+  // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
+  const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
+    indexInfos.facets.analytics
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data } = useSubcategories()
   const searchGroupLabel = useSearchGroupLabel(
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
   )
+  const mostPopularNativeCategoryId = nativeCategories[0]?.value
+  const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
+    data,
+    mostPopularNativeCategoryId
+  )?.value
+  const hasMostPopularHitNativeCategory = nativeCategories.length > 0
   const hasMostPopularHitCategory = categories.length > 0
+  const categoriesFromNativeCategory = useMemo(
+    () => getSearchGroupsEnumArrayFromNativeCategoryEnum(data, mostPopularNativeCategoryId),
+    [data, mostPopularNativeCategoryId]
+  )
+  const hasSeveralCategoriesFromNativeCategory = categoriesFromNativeCategory.length > 1
+  const isAssociatedMostPopularNativeCategoryToMostPopularCategory = useMemo(
+    () =>
+      isAssociatedNativeCategoryToCategory(data, categories[0]?.value, mostPopularNativeCategoryId),
+    [categories, data, mostPopularNativeCategoryId]
+  )
+
+  const mostPopularCategory = useMemo(() => {
+    if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
+      return categories.length > 0 ? [categories[0].value] : []
+    } else {
+      return [categoriesFromNativeCategory[0]]
+    }
+  }, [
+    categories,
+    categoriesFromNativeCategory,
+    hasMostPopularHitNativeCategory,
+    hasSeveralCategoriesFromNativeCategory,
+  ])
 
   const onPress = () => {
     sendEvent('click', hit, 'Suggestion clicked')
@@ -42,7 +80,12 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
     // We also want to commit the price filter, as beneficiary users may have access to different offer
     // price range depending on their available credit.
     const searchId = uuidv4()
-    const shouldFilteredOnCategory = shouldShowCategory && hasMostPopularHitCategory
+    const shouldFilteredOnNativeCategory =
+      shouldShowCategory &&
+      hasMostPopularHitNativeCategory &&
+      ((hasSeveralCategoriesFromNativeCategory &&
+        isAssociatedMostPopularNativeCategoryToMostPopularCategory) ||
+        !hasSeveralCategoriesFromNativeCategory)
     const newSearchState: SearchState = {
       ...searchState,
       query,
@@ -50,14 +93,24 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
       searchId,
       isAutocomplete: true,
       offerGenreTypes: undefined,
-      offerNativeCategories: undefined,
-      ...(!!shouldFilteredOnCategory && { offerCategories: [categories[0].value] }),
+      offerNativeCategories: shouldFilteredOnNativeCategory
+        ? [nativeCategories[0].value]
+        : undefined,
+      offerCategories: shouldShowCategory ? mostPopularCategory : [],
     }
 
     analytics.logPerformSearch(newSearchState)
 
     navigate(...getTabNavConfig('Search', newSearchState))
   }
+
+  const shouldDisplayNativeCategory =
+    (!hasSeveralCategoriesFromNativeCategory ||
+      isAssociatedMostPopularNativeCategoryToMostPopularCategory) &&
+    hasMostPopularHitNativeCategory
+
+  const shouldDisplaySuggestion =
+    shouldShowCategory && (hasMostPopularHitNativeCategory || hasMostPopularHitCategory)
 
   return (
     <AutocompleteItemTouchable testID="autocompleteItem" onPress={onPress}>
@@ -66,10 +119,12 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Highlight hit={hit} attribute="query" />
-        {!!(shouldShowCategory && hasMostPopularHitCategory) && (
+        {!!shouldDisplaySuggestion && (
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
-            <Typo.ButtonTextPrimary>{searchGroupLabel}</Typo.ButtonTextPrimary>
+            <Typo.ButtonTextPrimary>
+              {shouldDisplayNativeCategory ? mostPopularNativeCategoryValue : searchGroupLabel}
+            </Typo.ButtonTextPrimary>
           </React.Fragment>
         )}
       </StyledText>
