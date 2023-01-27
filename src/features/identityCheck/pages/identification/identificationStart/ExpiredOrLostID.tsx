@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -13,6 +14,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ExpiredOrLostID = (): JSX.Element => {
   useEffect(() => {
+    BatchUser.trackEvent(BatchEvent.screenViewExpiredOrLostId)
     amplitude.logEvent('screen_view_expired_or_lost_id')
   }, [])
 

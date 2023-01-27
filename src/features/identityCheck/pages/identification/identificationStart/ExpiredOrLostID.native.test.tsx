@@ -4,6 +4,7 @@ import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ide
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
@@ -28,6 +29,13 @@ describe('ExpiredOrLostID', () => {
 
     await waitFor(() =>
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_expired_or_lost_id')
+    )
+  })
+  it('should send a batch event when the screen is mounted', async () => {
+    render(<ExpiredOrLostID />)
+
+    await waitFor(() =>
+      expect(BatchUser.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewExpiredOrLostId)
     )
   })
 })
