@@ -8,7 +8,7 @@ import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/Set
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -57,8 +57,9 @@ describe('SetPhoneNumber', () => {
     })
     const SetPhoneNumberPage = renderSetPhoneNumber()
 
-    await flushAllPromisesWithAct()
-    expect(SetPhoneNumberPage).toMatchSnapshot()
+    await waitFor(() => {
+      expect(SetPhoneNumberPage).toMatchSnapshot()
+    })
   })
 
   it('should show modal on first render', async () => {
@@ -80,7 +81,7 @@ describe('SetPhoneNumber', () => {
 
     const SetPhoneNumberPage = renderSetPhoneNumber()
     const remainingAttemptsText = SetPhoneNumberPage.getByText('1 demande')
-    await act(async () => {
+    await waitFor(() => {
       expect(remainingAttemptsText.props.style[0].color).toEqual(theme.colors.error)
     })
   })

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { render, checkAccessibilityFor, waitFor } from 'tests/utils/web'
 
 import { SetPhoneNumber } from './SetPhoneNumber'
 
@@ -38,7 +38,7 @@ describe('<SetPhoneNumber/>', () => {
     it('should not have basic accessibility issues', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<SetPhoneNumber />))
-      await act(async () => {
+      await waitFor(async () => {
         const results = await checkAccessibilityFor(container)
         expect(results).toHaveNoViolations()
       })
