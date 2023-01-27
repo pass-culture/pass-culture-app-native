@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -13,7 +13,6 @@ interface Props {
   description?: string
   captionId?: string
   onPress: VoidFunction
-  shouldHideArrowOnWeb?: boolean
   shouldColorIcon?: boolean
 }
 
@@ -23,10 +22,8 @@ export const FilterRow = ({
   description,
   captionId,
   onPress,
-  shouldHideArrowOnWeb,
   shouldColorIcon,
 }: Props) => {
-  const { isDesktopViewport } = useTheme()
   const StyledIcon = Icon
     ? styled(Icon).attrs(({ theme }) => ({
         color: shouldColorIcon ? theme.colors.primary : theme.colors.black,
@@ -34,8 +31,6 @@ export const FilterRow = ({
         size: theme.icons.sizes.small,
       }))``
     : undefined
-
-  const shouldHideArrow = isDesktopViewport && shouldHideArrowOnWeb
 
   return (
     <LocationContentContainer
@@ -54,7 +49,7 @@ export const FilterRow = ({
       </TextContainer>
       <Spacer.Flex />
 
-      {!shouldHideArrow && <ArrowNext accessibilityLabel="Affiner la recherche" />}
+      <ArrowNext accessibilityLabel="Affiner la recherche" />
     </LocationContentContainer>
   )
 }
