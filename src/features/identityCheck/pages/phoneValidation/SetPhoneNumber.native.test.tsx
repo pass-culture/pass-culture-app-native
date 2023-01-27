@@ -8,7 +8,8 @@ import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/Set
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
+import { act, fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
+import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('features/identityCheck/api/api', () => {
@@ -76,10 +77,12 @@ describe('SetPhoneNumber', () => {
       counterResetDatetime: 'time',
       isLastAttempt: true,
     })
-    const SetPhoneNumberPage = renderSetPhoneNumber()
 
-    await flushAllPromisesWithAct()
-    expect(SetPhoneNumberPage).toMatchSnapshot()
+    const SetPhoneNumberPage = renderSetPhoneNumber()
+    const remainingAttemptsText = SetPhoneNumberPage.getByText('1 demande')
+    await act(async () => {
+      expect(remainingAttemptsText.props.style[0].color).toEqual(theme.colors.error)
+    })
   })
 
   it('should send a amplitude event when the screen is mounted', async () => {
