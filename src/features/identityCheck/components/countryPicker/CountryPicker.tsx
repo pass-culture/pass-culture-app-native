@@ -4,7 +4,6 @@ import ReactNativeCountryPicker, {
   Country,
   CountryList,
   getAllCountries,
-  Flag,
 } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
@@ -80,7 +79,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
         onBlur={onBlur}
         onPress={onPress}>
         <CountryContainer ref={containerRef}>
-          <Flag countryCode={item.cca2} withEmoji flagSize={25} />
           <Typo.Body>{itemTitle}</Typo.Body>
           {!!selected && (
             <IconContainer>
@@ -109,7 +107,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
         onPress={showModal}
         hoverUnderlineColor={null}
         accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique">
-        <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
         <ArrowDown />
         <Spacer.Row numberOfSpaces={2} />

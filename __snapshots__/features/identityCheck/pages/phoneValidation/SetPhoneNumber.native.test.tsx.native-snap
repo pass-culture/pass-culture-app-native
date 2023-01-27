@@ -449,40 +449,6 @@ exports[`SetPhoneNumber should have a different color if 1 attempt is remaining 
                         }
                         testID="Ouvrir la modale de choix de l’indicatif téléphonique"
                       >
-                        <View
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "justifyContent": "center",
-                              "marginRight": 10,
-                              "width": 30,
-                            }
-                          }
-                        >
-                          <Text
-                            allowFontScaling={false}
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "center",
-                                  "backgroundColor": "transparent",
-                                  "borderColor": "transparent",
-                                  "borderWidth": 0.5,
-                                  "justifyContent": "center",
-                                },
-                                Object {
-                                  "fontSize": 25,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              allowFontScaling={false}
-                            >
-                              🇫🇷
-                            </Text>
-                          </Text>
-                        </View>
                         <Text
                           style={
                             Array [
@@ -1268,40 +1234,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         }
                         testID="Ouvrir la modale de choix de l’indicatif téléphonique"
                       >
-                        <View
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "justifyContent": "center",
-                              "marginRight": 10,
-                              "width": 30,
-                            }
-                          }
-                        >
-                          <Text
-                            allowFontScaling={false}
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "center",
-                                  "backgroundColor": "transparent",
-                                  "borderColor": "transparent",
-                                  "borderWidth": 0.5,
-                                  "justifyContent": "center",
-                                },
-                                Object {
-                                  "fontSize": 25,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              allowFontScaling={false}
-                            >
-                              🇫🇷
-                            </Text>
-                          </Text>
-                        </View>
                         <Text
                           style={
                             Array [

@@ -26,40 +26,6 @@ Array [
     }
     testID="Ouvrir la modale de choix de l’indicatif téléphonique"
   >
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "marginRight": 10,
-          "width": 30,
-        }
-      }
-    >
-      <Text
-        allowFontScaling={false}
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderColor": "transparent",
-              "borderWidth": 0.5,
-              "justifyContent": "center",
-            },
-            Object {
-              "fontSize": 25,
-            },
-          ]
-        }
-      >
-        <Text
-          allowFontScaling={false}
-        >
-          🇫🇷
-        </Text>
-      </Text>
-    </View>
     <Text
       style={
         Array [
