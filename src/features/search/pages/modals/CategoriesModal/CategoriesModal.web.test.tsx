@@ -42,19 +42,5 @@ describe('<CategoriesModal/>', () => {
 
       expect(results).toHaveNoViolations()
     })
-
-    it('should not have any arrow next', () => {
-      const { queryAllByLabelText } = render(
-        <CategoriesModal
-          accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
-          isVisible
-          hideModal={jest.fn()}
-          filterBehaviour={FilterBehaviour.SEARCH}
-        />,
-        { theme: { isDesktopViewport: true } }
-      )
-
-      expect(queryAllByLabelText('Affiner la recherche')).toHaveLength(0)
-    })
   })
 })

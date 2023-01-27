@@ -127,7 +127,6 @@ export function CategoriesSection<T extends CategoriesViewData>({
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onPress={handleValueSelect(item)}
                 captionId={item.name}
-                shouldHideArrowOnWeb
               />
             )}
             <Spacer.Column numberOfSpaces={3} />
