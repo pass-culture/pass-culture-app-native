@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { AskNotificiationsModal } from 'features/notifications/askNotificationsModal/components/AskNotificationsModal'
 import { render } from 'tests/utils'
+
+import { AskNotificiationsModal } from './AskNotificationsModal'
 
 describe('AskNotificationsModal', () => {
   it('should render null in web', () => {

@@ -5,7 +5,7 @@ import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { PushNotificationsModal } from 'features/notifications/batchNotifications/components/PushNotificationsModal'
+import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'

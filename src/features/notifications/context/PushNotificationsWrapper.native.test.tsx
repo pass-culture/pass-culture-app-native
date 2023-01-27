@@ -1,16 +1,14 @@
 import { Platform } from 'react-native'
 import * as Permissions from 'react-native-permissions'
 
-import {
-  PushNotificationsWrapper,
-  usePushNotificationsContext,
-} from 'features/notifications/askNotificationsModal/helpers/PushNotificationsWrapper'
 import { storage } from 'libs/storage'
 import { renderHook, act } from 'tests/utils'
 
+import { PushNotificationsWrapper, usePushNotificationsContext } from './PushNotificationsWrapper'
+
 const PUSH_NOTIFICATIONS_STORAGE_KEY = 'has_seen_push_notifications_modal_once'
 
-jest.mock('features/notifications/askNotificationsModal/components/AskNotificationsModal', () => ({
+jest.mock('features/notifications/pages/AskNotificationsModal', () => ({
   AskNotificiationsModal: () => null,
 }))
 
