@@ -12,19 +12,38 @@ interface Props {
 
 export const GetDynamicSocials: FunctionComponent<Props> = () => {
   const [hasNetwork, setHasNetwork] = useState({
-    instagram: false,
-    snapchat: false,
-    tiktok: false,
-    whatsapp: false,
+    [Network.discord]: false,
+    // [Network.imessage]: false,
+    [Network.instagram]: false,
+    [Network.messenger]: false,
+    [Network.signal]: false,
+    [Network.instagram]: false,
+    [Network.skype]: false,
+    [Network.snapchat]: false,
+    [Network.telegram]: false,
+    [Network.tiktok]: false,
+    [Network.twitch]: false,
+    [Network.twitch]: false,
+    [Network.viber]: false,
+    [Network.whatsapp]: false,
   })
 
   useEffect(() => {
     const getApps = async () => {
       const network = {
-        instagram: await Linking.canOpenURL('instagram://'),
-        snapchat: await Linking.canOpenURL('snapchat://'),
-        tiktok: await Linking.canOpenURL('tiktok://'),
-        whatsapp: await Linking.canOpenURL('whatsapp://send/'),
+        [Network.discord]: await Linking.canOpenURL('discord://'),
+        // [Network.imessage]: await Linking.canOpenURL('imessage://'), Pas de imessage sur Android... remplacer par SMS ?
+        [Network.instagram]: await Linking.canOpenURL('instagram://'),
+        [Network.messenger]: await Linking.canOpenURL('fb-messenger://'),
+        [Network.signal]: await Linking.canOpenURL('sgnl://'),
+        [Network.skype]: await Linking.canOpenURL('skype://'),
+        [Network.snapchat]: await Linking.canOpenURL('snapchat://'),
+        [Network.telegram]: await Linking.canOpenURL('tg://'),
+        [Network.tiktok]: await Linking.canOpenURL('tiktok://'),
+        [Network.twitch]: await Linking.canOpenURL('twitch://'),
+        [Network.twitter]: await Linking.canOpenURL('twitter://'),
+        [Network.viber]: await Linking.canOpenURL('viber://'),
+        [Network.whatsapp]: await Linking.canOpenURL('whatsapp://send/'),
       }
       return network
     }
@@ -40,10 +59,9 @@ export const GetDynamicSocials: FunctionComponent<Props> = () => {
     <React.Fragment>
       <PageHeaderSecondary title="Spike réseaux sociaux dynamiques" />
       <Container>
-        <ShareMessagingApp network={Network.instagram} visible={hasNetwork.instagram} />
-        <ShareMessagingApp network={Network.snapchat} visible={hasNetwork.snapchat} />
-        <ShareMessagingApp network={Network.tiktok} visible={hasNetwork.tiktok} />
-        <ShareMessagingApp network={Network.whatsapp} visible={hasNetwork.whatsapp} />
+        {Object.entries(hasNetwork).map(([network, isInstalled]) => (
+          <ShareMessagingApp key={network} network={network as Network} visible={isInstalled} />
+        ))}
       </Container>
     </React.Fragment>
   )

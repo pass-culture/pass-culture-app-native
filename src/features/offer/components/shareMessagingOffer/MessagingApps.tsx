@@ -24,7 +24,7 @@ export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) =
         <StyledUl>
           {socialMedias.map((socialMedia) => (
             <StyledLi key={socialMedia}>
-              <ShareMessagingApp network={socialMedia} />
+              <ShareMessagingApp network={socialMedia} visible />
             </StyledLi>
           ))}
           <StyledLi>

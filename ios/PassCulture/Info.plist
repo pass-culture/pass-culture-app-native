@@ -66,10 +66,18 @@
 		<string>taxis99</string>
 		<string>iosamap</string>
 		<string>fb</string>
+		<string>discord</string>
 		<string>instagram</string>
-		<string>tiktok</string>
-		<string>whatsapp</string>
+		<string>fb-messenger</string>
+		<string>sgnl</string>
+		<string>skype</string>
 		<string>snapchat</string>
+		<string>tg</string>
+		<string>tiktok</string>
+		<string>twitch</string>
+		<string>twitter</string>
+		<string>viber</string>
+		<string>whatsapp</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
