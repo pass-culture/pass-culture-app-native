@@ -31,17 +31,17 @@ export const GetDynamicSocials: FunctionComponent<Props> = () => {
   useEffect(() => {
     const getApps = async () => {
       const network = {
-        [Network.discord]: await Linking.canOpenURL('discord://'),
+        [Network.discord]: await Linking.canOpenURL('discord://channels/'), //todo
         // [Network.imessage]: await Linking.canOpenURL('imessage://'), Pas de imessage sur Android... remplacer par SMS ?
-        [Network.instagram]: await Linking.canOpenURL('instagram://'),
+        [Network.instagram]: await Linking.canOpenURL('instagram://user/'),
         [Network.messenger]: await Linking.canOpenURL('fb-messenger://'),
-        [Network.signal]: await Linking.canOpenURL('sgnl://'),
+        [Network.signal]: await Linking.canOpenURL('sgnl://'), //todo
         [Network.skype]: await Linking.canOpenURL('skype://'),
         [Network.snapchat]: await Linking.canOpenURL('snapchat://'),
         [Network.telegram]: await Linking.canOpenURL('tg://'),
         [Network.tiktok]: await Linking.canOpenURL('tiktok://'),
-        [Network.twitch]: await Linking.canOpenURL('twitch://'),
-        [Network.twitter]: await Linking.canOpenURL('twitter://'),
+        [Network.twitch]: await Linking.canOpenURL('twitch://open/'),
+        [Network.twitter]: await Linking.canOpenURL('twitter://post/'), //todo
         [Network.viber]: await Linking.canOpenURL('viber://'),
         [Network.whatsapp]: await Linking.canOpenURL('whatsapp://send/'),
       }
