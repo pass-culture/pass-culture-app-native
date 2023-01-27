@@ -4,6 +4,7 @@ import { ComeBackLater } from 'features/identityCheck/pages/identification/ident
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { amplitude } from 'libs/amplitude'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
@@ -34,6 +35,13 @@ describe('ComeBackLater', () => {
 
     await waitFor(() =>
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_come_back_later')
+    )
+  })
+  it('should send a batch event when the screen is mounted', async () => {
+    render(<ComeBackLater />)
+
+    await waitFor(() =>
+      expect(BatchUser.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewComeBackLater)
     )
   })
   it("should send a amplitude event when the 'M'identifier plus tard' button is pressed", async () => {
