@@ -41,8 +41,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
   const searchGroupLabel = useSearchGroupLabel(
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
   )
-  const mostPopularNativeCategoryId =
-    nativeCategories.length > 0 ? nativeCategories[0].value : undefined
+  const mostPopularNativeCategoryId = nativeCategories[0]?.value
   const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
     data,
     mostPopularNativeCategoryId

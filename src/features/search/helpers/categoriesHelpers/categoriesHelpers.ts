@@ -323,15 +323,9 @@ export function isAssociatedNativeCategoryToCategory(
 ) {
   if (!data) return false
 
-  const associatedNativeCategory = data.subcategories.filter(
+  return data.subcategories.some(
     (subcategory) =>
       subcategory.searchGroupName === categoryId &&
       subcategory.nativeCategoryId === nativeCategoryId
   )
-
-  if (associatedNativeCategory.length > 0) {
-    return true
-  } else {
-    return false
-  }
 }
