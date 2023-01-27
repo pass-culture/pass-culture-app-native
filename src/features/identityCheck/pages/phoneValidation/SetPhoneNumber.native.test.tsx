@@ -9,6 +9,7 @@ import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
+import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('features/identityCheck/api/api', () => {
@@ -76,10 +77,11 @@ describe('SetPhoneNumber', () => {
       counterResetDatetime: 'time',
       isLastAttempt: true,
     })
-    const SetPhoneNumberPage = renderSetPhoneNumber()
 
+    const SetPhoneNumberPage = renderSetPhoneNumber()
+    const remainingAttemptsText = SetPhoneNumberPage.getByText('1 demande')
     await act(async () => {
-      expect(SetPhoneNumberPage).toMatchSnapshot()
+      expect(remainingAttemptsText.props.style[0].color).toEqual(theme.colors.error)
     })
   })
 
