@@ -126,6 +126,21 @@ describe('<SetEmail />', () => {
     expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
   })
 
+  it('should display suggestion with a corrected email when the email is mistyped', async () => {
+    const { getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
+
+    await act(async () => {
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmal.com')
+    })
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    expect(queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeTruthy()
+  })
+
   it('should log analytics when user select the suggested email', async () => {
     const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
