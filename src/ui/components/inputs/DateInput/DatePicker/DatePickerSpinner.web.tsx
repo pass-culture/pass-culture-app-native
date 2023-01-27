@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import Picker from 'react-mobile-picker'
+import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -15,6 +16,12 @@ import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types
 import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing, Spacer } from 'ui/theme'
 
+const birthdateInputErrorId = uuidv4()
+
+// This is the normal iso string formatted date length
+// Try with `new Date().toISOString().length`
+const CORRECT_DATE_LENGTH = 24
+
 export function DatePickerSpinner(props: DatePickerProps) {
   const DEFAULT_DATE = {
     day: props.defaultSelectedDate.getDate(),
@@ -22,6 +29,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
     year: props.defaultSelectedDate.getFullYear(),
   }
   const [date, setDate] = useState(DEFAULT_DATE)
+  const [hiddenValue, setHiddenValue] = useState(props.defaultSelectedDate.toISOString())
 
   const optionGroups = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
@@ -46,11 +54,31 @@ export function DatePickerSpinner(props: DatePickerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
-  const birthdateInputErrorId = uuidv4()
+  /**
+   * During e2e, we set the value thanks to the hidden input.
+   * So when a value is typed in the hidden input, the state changes and here we set the date once
+   * the value is a correct date.
+   */
+  useEffect(() => {
+    if (hiddenValue.length === CORRECT_DATE_LENGTH) {
+      const nextDate = new Date(hiddenValue)
+
+      setDate({
+        day: nextDate.getDate(),
+        month: monthNamesShort[nextDate.getMonth()],
+        year: nextDate.getFullYear(),
+      })
+    }
+  }, [hiddenValue])
 
   return (
     <React.Fragment>
       <DateInputDisplay date={birthdate} isError={!!props.errorMessage} />
+      <HiddenInput
+        testID="hidden-input-birthdate"
+        value={hiddenValue}
+        onChangeText={setHiddenValue}
+      />
       <InputError
         visible={!!props.errorMessage}
         messageId={props.errorMessage}
@@ -84,3 +112,8 @@ const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.forms.maxWidth,
 }))
+
+const HiddenInput = styled(TextInput)({
+  width: 1,
+  height: 1,
+})

@@ -3089,6 +3089,17 @@ Object {
               </div>
             </div>
           </div>
+          <input
+            autocapitalize="sentences"
+            autocomplete="on"
+            autocorrect="on"
+            class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-height-109y4c4 r-width-92ng3h"
+            data-testid="hidden-input-birthdate"
+            dir="ltr"
+            spellcheck="true"
+            type="text"
+            value="2006-12-01T00:00:00.000Z"
+          />
           <div
             id="testUuidV4"
             role="alert"
@@ -4199,6 +4210,17 @@ Object {
             </div>
           </div>
         </div>
+        <input
+          autocapitalize="sentences"
+          autocomplete="on"
+          autocorrect="on"
+          class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-height-109y4c4 r-width-92ng3h"
+          data-testid="hidden-input-birthdate"
+          dir="ltr"
+          spellcheck="true"
+          type="text"
+          value="2006-12-01T00:00:00.000Z"
+        />
         <div
           id="testUuidV4"
           role="alert"
