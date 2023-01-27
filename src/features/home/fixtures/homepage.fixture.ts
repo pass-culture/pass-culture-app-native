@@ -126,6 +126,7 @@ export const formattedOffersModule: OffersModule = {
       hitsPerPage: 10,
       minBookingsThreshold: 2,
       subcategories: ['Livre', 'Livre numérique, e-book'],
+      movieGenres: undefined,
     },
   ],
   cover: undefined,

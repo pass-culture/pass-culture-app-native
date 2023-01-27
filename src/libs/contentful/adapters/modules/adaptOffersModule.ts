@@ -12,14 +12,18 @@ const mapOffersSubcategories = (
   algoliaSubcategories: SearchParametersFields['algoliaSubcategories']
 ) => algoliaSubcategories?.fields?.subcategories
 
+const mapOffersMovieGenres = (movieGenres: SearchParametersFields['movieGenres']) =>
+  movieGenres?.fields?.movieGenres
+
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
 ): OffersModule['offersModuleParameters'] =>
   [firstParams, ...additionalParams]
     .filter((params) => params.fields && !isEmpty(params.fields))
-    .map(({ fields: { algoliaSubcategories, ...otherFields } }) => ({
+    .map(({ fields: { algoliaSubcategories, movieGenres, ...otherFields } }) => ({
       subcategories: mapOffersSubcategories(algoliaSubcategories),
+      movieGenres: mapOffersMovieGenres(movieGenres),
       ...otherFields,
     }))
 

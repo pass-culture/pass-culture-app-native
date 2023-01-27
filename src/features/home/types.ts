@@ -66,6 +66,7 @@ export type OffersModuleParameters = {
   newestOnly?: boolean
   hitsPerPage: number
   minBookingsThreshold?: number
+  movieGenres?: string[]
 }
 
 export type BusinessModule = {
