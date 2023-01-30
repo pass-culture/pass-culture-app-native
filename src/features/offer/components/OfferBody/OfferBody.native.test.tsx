@@ -53,29 +53,28 @@ describe('<OfferBody />', () => {
   const offerId = 1
 
   it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
-    const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    const reportOfferButton = await OfferBodyComponent.findByTestId('Signaler l’offre')
+    const reportOfferButton = await screen.findByTestId('Signaler l’offre')
 
     fireEvent.press(reportOfferButton)
-    expect(OfferBodyComponent).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
-    const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    const venueBannerComponent = await OfferBodyComponent.findByTestId(
-      `Lieu ${mockOffer.venue.name}`
-    )
+    const venueBannerComponent = await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)
 
     fireEvent.press(venueBannerComponent)
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
   })
 
-  it('should not display similar offers list when offer has not it', async () => {
-    const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+  it('should not display similar offers lists when offer has not it', async () => {
+    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    expect(queryByTestId('offersModuleList')).toBeFalsy()
+    expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
+    expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
   })
 
   describe('with similar offers', () => {
@@ -84,42 +83,74 @@ describe('<OfferBody />', () => {
     })
 
     it('should display similar offers list when offer has some', async () => {
-      const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      expect(queryByTestId('offersModuleList')).toBeTruthy()
+      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeTruthy()
+      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeTruthy()
     })
 
     it('should pass offer venue position to `useSimilarOffers`', () => {
       const spy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementationOnce(jest.fn())
       render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates)
+      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates, undefined)
+      expect(spy).toHaveBeenNthCalledWith(2, offerId, mockOffer.venue.coordinates, undefined)
     })
 
-    it('should navigate to a similar offer when pressing on it', async () => {
-      const { getByText } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    describe('Same category similar offers', () => {
+      it('should navigate to an offer when pressing on it', async () => {
+        render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      await fireEvent.press(getByText('La nuit des temps'))
-      expect(push).toHaveBeenCalledWith('Offer', {
-        from: 'offer',
-        fromOfferId: 1,
-        id: 102280,
+        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+        expect(push).toHaveBeenCalledWith('Offer', {
+          from: 'offer',
+          fromOfferId: 1,
+          id: 102280,
+        })
+      })
+
+      it('should log analytics event logSimilarOfferPlaylistHorizontalScroll when scrolling on it', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 296 },
+          contentOffset: { x: 50 }, // how far did we scroll
+          contentSize: { height: 296 },
+        }
+        render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+        const scrollView = screen.queryAllByTestId('offersModuleList')[0]
+
+        await waitFor(() => {
+          scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(2)
       })
     })
 
-    it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
-      const nativeEventMiddle = {
-        layoutMeasurement: { height: 296 },
-        contentOffset: { x: 50 }, // how far did we scroll
-        contentSize: { height: 296 },
-      }
-      const { getByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
-      const scrollView = getByTestId('offersModuleList')
+    describe('Other categories differents from that of the offer', () => {
+      it('should navigate to an offer when pressing on it', async () => {
+        render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      await waitFor(() => {
-        scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        await fireEvent.press(screen.queryAllByText('La nuit des temps')[1])
+        expect(push).toHaveBeenCalledWith('Offer', {
+          from: 'offer',
+          fromOfferId: 1,
+          id: 102280,
+        })
       })
-      expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+
+      it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 296, width: 296 },
+          contentOffset: { x: 50 }, // how far did we scroll
+          contentSize: { height: 296, width: 296 },
+        }
+        render(<OfferBody offerId={offerId} onScroll={jest.fn()} />)
+        const scrollView = screen.queryAllByTestId('offersModuleList')[1]
+
+        await waitFor(() => {
+          scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(2)
+      })
     })
   })
 

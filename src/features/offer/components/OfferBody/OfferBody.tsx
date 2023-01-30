@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ReportedOffer } from 'api/gen'
+import { ReportedOffer, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
@@ -15,6 +15,7 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
+import { getSearchGroupIdFromSubcategoryId } from 'features/offer/helpers/getSearchGroupIdFromSubcategoryId/getSearchGroupIdFromSubcategoryId'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -35,6 +36,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -80,8 +82,34 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { position } = useGeolocation()
-  const similarOffers = useSimilarOffers(offerId, offer?.venue.coordinates)
-  const hasSimilarOffers = similarOffers && similarOffers.length > 0
+  const { data } = useSubcategories()
+  const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
+  const otherSearchGroups = subcategorySearchGroupId?.[0]
+    ? data?.searchGroups
+        .filter(
+          (searchGroup) =>
+            searchGroup.name !== subcategorySearchGroupId[0] &&
+            searchGroup.name !== SearchGroupNameEnumv2.NONE
+        )
+        .map((searchGroup) => searchGroup.name)
+    : undefined
+
+  const sameCategorySimilarOffers = useSimilarOffers(
+    offerId,
+    offer?.venue.coordinates,
+    subcategorySearchGroupId
+  )
+  const hasSameCategorySimilarOffers =
+    sameCategorySimilarOffers && sameCategorySimilarOffers.length > 0
+
+  const otherCategoriesSimilarOffers = useSimilarOffers(
+    offerId,
+    offer?.venue.coordinates,
+    otherSearchGroups
+  )
+  const hasOtherCategoriesSimilarOffers =
+    otherCategoriesSimilarOffers && otherCategoriesSimilarOffers.length > 0
+
   const fromOfferId = route.params?.fromOfferId
 
   const trackingOnHorizontalScroll = useCallback(() => {
@@ -246,11 +274,26 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         offerId={offerId}
       />
 
-      {!!hasSimilarOffers && (
-        <SectionWithDivider visible>
+      {!!hasSameCategorySimilarOffers && (
+        <SectionWithDivider testID="sameCategorySimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist
-            data={similarOffers}
+            data={sameCategorySimilarOffers}
+            itemWidth={itemWidth}
+            itemHeight={itemHeight}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            title="Ça peut aussi te plaire"
+            onEndReached={trackingOnHorizontalScroll}
+          />
+        </SectionWithDivider>
+      )}
+
+      {!!hasOtherCategoriesSimilarOffers && (
+        <SectionWithDivider testID="otherCategoriesSimilarOffers" visible>
+          <Spacer.Column numberOfSpaces={6} />
+          <PassPlaylist
+            data={otherCategoriesSimilarOffers}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
             renderItem={renderItem}
