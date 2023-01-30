@@ -1,2 +1,5 @@
-// This is the default for appium server, so far only used by ios simulator
-export const APPIUM_ADDRESS = 'http://localhost:4723'
+// this map to host address within android emulator
+export const E2E_LOCALHOST_ADDRESS_ANDROID = '10.0.2.2'
+export const APPIUM_ADDRESS_ANDROID = `http://${E2E_LOCALHOST_ADDRESS_ANDROID}:4723`
+export const E2E_LOCALHOST_ADDRESS = 'localhost'
+export const APPIUM_ADDRESS = `http://${E2E_LOCALHOST_ADDRESS}:4723`
