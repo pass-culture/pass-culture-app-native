@@ -30,7 +30,7 @@ type CategoryCriteria = {
   }
 }
 
-export const CATEGORY_CRITERIA: CategoryCriteria = {
+export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
     facetFilter: SearchGroupNameEnumv2.NONE,
