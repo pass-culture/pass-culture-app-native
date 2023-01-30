@@ -13,4 +13,6 @@ export interface Environment {
   APPIUM_APP_PACKAGE: string
   APPIUM_APP_ACTIVITY: string
   SPECS: string
+  API_BASE_URL: string
+  END_TO_END_TESTS_EMAIL_ADDRESS: string
 }

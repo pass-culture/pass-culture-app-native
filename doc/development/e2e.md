@@ -68,7 +68,7 @@ We use environment variable to customize the configuration:
 | `APPIUM_APP_WAIT_ACTIVITY`       | `string`  |          |                         | The android apk main activity to start (default: auto)  |
 | `APPIUM_APP_PACKAGE`             | `string`  |          |                         | Android bundle id (if app is already installed)         | 
 | `APPIUM_APP_ACTIVITY`            | `string`  |          |                         | Android package activity (if app is already installed)  |
-| `API_BASE_URL`                   | `string`  |          | `http://localhost:5001` | API base URL                                            |
+| `API_BASE_URL`                   | `string`  |          | `http://localhost:6001` | API base URL needed when e2e toggle features            |
 | `END_TO_END_TESTS_EMAIL_ADDRESS` | `string`  | yes      |                         | End to end whitelisted email address                    |
 
 For instance, if you wish to run test for a different android emulator:
@@ -98,6 +98,15 @@ On your desktop, you must install browser's driver that match your version in or
 - `geckodriver` for Firefox
 
 Refer to google to get installation instruction for your system.
+
+**Gmail Client**
+
+In order to login to the e2e mailbox, you must have in the root of the repository:
+
+- `credentials.json`: OAuth2 client (require interactive login)
+- `token.json`: OAuth2 Gmail API JWT (can be generated if you have `credentials.json`) 
+
+Only one of the two is required.
 
 ### Testing on Android
 
