@@ -41,7 +41,7 @@ describe('CategoryListModule', () => {
     fireEvent.press(bloc)
 
     expect(analytics.logCategoryBlockClicked).toHaveBeenCalledWith({
-      moduleID: '2',
+      moduleId: '2',
       moduleListID: '123',
       toEntryId: '6DCThxvbPFKAo04SVRZtwY',
     })
