@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty'
 
-import { HomepageModuleType, OffersModule } from 'features/home/types'
+import { HomepageModuleType, OffersModule, OffersModuleParameters } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
   AlgoliaContentModel,
@@ -15,17 +15,24 @@ const mapOffersSubcategories = (
 const mapOffersMovieGenres = (movieGenres: SearchParametersFields['movieGenres']) =>
   movieGenres?.fields?.movieGenres
 
+const mapCategoriesCategories = (
+  algoliaCategories: SearchParametersFields['algoliaCategories']
+): OffersModuleParameters['categories'] => algoliaCategories?.fields?.categories
+
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
 ): OffersModule['offersModuleParameters'] =>
   [firstParams, ...additionalParams]
     .filter((params) => params.fields && !isEmpty(params.fields))
-    .map(({ fields: { algoliaSubcategories, movieGenres, ...otherFields } }) => ({
-      subcategories: mapOffersSubcategories(algoliaSubcategories),
-      movieGenres: mapOffersMovieGenres(movieGenres),
-      ...otherFields,
-    }))
+    .map(
+      ({ fields: { algoliaSubcategories, algoliaCategories, movieGenres, ...otherFields } }) => ({
+        subcategories: mapOffersSubcategories(algoliaSubcategories),
+        movieGenres: mapOffersMovieGenres(movieGenres),
+        categories: mapCategoriesCategories(algoliaCategories),
+        ...otherFields,
+      })
+    )
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
   const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []

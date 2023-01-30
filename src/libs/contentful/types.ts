@@ -185,8 +185,8 @@ export interface SearchParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
-  categories?: string[]
   algoliaSubcategories?: Subcategories
+  algoliaCategories?: Categories
   tags?: string[]
   isDigital?: boolean
   isThing?: boolean
