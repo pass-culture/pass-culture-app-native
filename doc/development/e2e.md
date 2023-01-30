@@ -96,17 +96,6 @@ yarn e2e:android.browser
 
 You can view all available options in [`e2e/config/environment/env.ts`](../../e2e/config/environment/env.ts).
 
-You can add directly the principal variables in your global environment file :
-
-```bash
-export APPCENTER_USER_API_TOKEN="token generated in app center"
-export WDIO_BASE_URL="Your principal URL (Ex: http://localhost:3000)"
-export ANDROID_PLATFORM_VERSION="Android version in your emulator"
-export ANDROID_DEVICE_NAME="Emulator name with adb devices command"
-export IOS_PLATFORM_VERSION="16.0" (Maybe it will be necessary to update directly conf files because the variable in output is 16)
-export IOS_DEVICE_NAME="iPhone emulator Name"
-```
-
 **Drivers**
 
 On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
