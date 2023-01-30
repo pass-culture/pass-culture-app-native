@@ -5,6 +5,8 @@ module.exports = {
     return blacklist(platform, [
       /build\/.*/,
       /server\/.*/,
+      /logs\/.*/,
+      /e2e\/.*/,
     ]);
   },
   getTransformModulePath() {
