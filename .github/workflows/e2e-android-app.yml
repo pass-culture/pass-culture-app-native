@@ -6,11 +6,6 @@ on:
 
   workflow_dispatch:
     inputs:
-      wdio-demo:
-        type: boolean
-        description: WebdriverIO demo - All other params will be ignored
-        required: true
-        default: false
       environment:
         type: environment
         description: Select the environment
@@ -60,7 +55,6 @@ jobs:
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
       _FORCE_LOGS: 1
       # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
-      WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
       BUILD_TYPE: ${{ inputs.build-type || 'local' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       DIST_VERSION: ${{ inputs.dist-version }}
@@ -90,10 +84,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Download WebdriverIO demo
-        if: ${{ env.WDIO_DEMO == 'true' }}
-        run: ./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
-
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -102,7 +92,7 @@ jobs:
       ## Distribution build
 
       - name: Download distribution package from appcenter
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_TYPE == 'distribution') }}
+        if: ${{ env.BUILD_TYPE == 'distribution' }}
         run: |
           echo "It will download Appcenter $BUILD_TYPE build $DIST_VERSION"
           APPCENTER_USER_API_TOKEN=${{ env.APPCENTER_RO_API_TOKEN }} \
@@ -116,7 +106,7 @@ jobs:
       ## Local build
 
       - name: Setup sentry credentials
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_TYPE == 'local') }}
+        if: ${{ env.BUILD_TYPE == 'local' }}
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
@@ -130,7 +120,7 @@ jobs:
           EOT
 
       - name: Setup android keystore for ${{ env.ENVIRONMENT }} environment
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_TYPE == 'local') }}
+        if: ${{ env.BUILD_TYPE == 'local' }}
         env:
           ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
           ANDROID_KEYSTORE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_STORE_PASSWORD }}
@@ -146,13 +136,13 @@ jobs:
           EOT
 
       - name: Setup android Google services config
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_TYPE == 'local') }}
+        if: ${{ env.BUILD_TYPE == 'local' }}
         env:
           ANDROID_GOOGLE_SERVICES_JSON: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON }}
         run: echo ${ANDROID_GOOGLE_SERVICES_JSON} > android/app/google-services.json
 
       - name: Build Android app for ${{ env.ENVIRONMENT }} environment
-        if: ${{ (env.WDIO_DEMO == 'false') && (env.BUILD_TYPE == 'local') }}
+        if: ${{ env.BUILD_TYPE == 'local' }}
         run: |
           if [[ "${{ env.ENVIRONMENT }}" = "testing" ]]; then
             ANDROID_GRADLE_TASK=assembleApptestingRelease
@@ -163,7 +153,6 @@ jobs:
           ./android/gradlew ${ANDROID_GRADLE_TASK} -p android
 
       - name: Sets apk location for local or distributed build
-        if: ${{ env.WDIO_DEMO == 'false' }}
         run: |
           if [[ "${{ env.BUILD_TYPE }}" = "distribution" ]]; then
             echo "ANDROID_APK_PATH=app-${{ env.ENVIRONMENT }}-android.apk" >> $GITHUB_ENV
@@ -199,7 +188,7 @@ jobs:
         name: Capture logcat
 
       - name: Slack failure notification
-        if: ${{ env.WDIO_DEMO == 'false' && failure() }}
+        if: ${{ failure() }}
         env:
           BRANCH_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_REF_NAME }}
           COMMIT_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_SHA_SHORT }}

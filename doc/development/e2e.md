@@ -52,23 +52,24 @@ appium-doctor
 
 We use environment variable to customize the configuration:
 
-| Environment variable       | Type      | Required | Default     | Description                                             |
-|----------------------------|-----------|----------|-------------|---------------------------------------------------------|
-| `CI`                       | `boolean` |          | `false`     | Define if in a CI environment                           |
-| `ENVIRONMENT`              | `string`  | yes      | `staging`   | Define the application environment                      |
-| `SPECS`                    | `string`  |          |             | Define specs for test execution. You can either specify a glob pattern to match multiple files at once or wrap a glob or set of paths into an array using "," delimiter to run them within a single worker process. [Default: run all tests] |
-| `WDIO_DEMO`                | `boolean` |          | `false`     | Run the demo code (must have wdio-demo installed first) |
-| `WDIO_BASE_URL`            | `string`  | yes      |             | URL of the Website to test                              |
-| `ANDROID_DEVICE_NAME`      | `string`  |          | `pixel_xl`  | Android device name                                     |
-| `ANDROID_PLATFORM_VERSION` | `string`  |          | `10.0`      | Android platform version                                |
-| `IOS_DEVICE_NAME`          | `string`  |          | `iPhone 13` | iOS Device Name                                         |
-| `IOS_PLATFORM_VERSION`     | `string`  |          | `15.2`      | iOS platform version                                    |
-| `APPIUM_TEST_SERVER_PORT`  | `number`  |          | `4723`      | Appium service port (if you don't use the default)      |
-| `APPIUM_TEST_SERVER_HOST`  | `string`  |          | `127.0.0.1` | Appium listening interface                              |
-| `APPIUM_APP`               | `string`  | yes      |             | ipa or apk application to install before running test. Or iOS bundle id if already installed  |
-| `APPIUM_APP_WAIT_ACTIVITY` | `string`  |          |             | The android apk main activity to start (default: auto)  |
-| `APPIUM_APP_PACKAGE`       | `string`  |          |             | Android bundle id (if app is already installed)         | 
-| `APPIUM_APP_ACTIVITY`      | `string`  |          |             | Android package activity (if app is already installed)  |
+| Environment variable             | Type      | Required | Default                 | Description                                             |
+|----------------------------------|-----------|----------|-------------------------|---------------------------------------------------------|
+| `CI`                             | `boolean` |          | `false`                 | Define if in a CI environment                           |
+| `ENVIRONMENT`                    | `string`  | yes      | `staging`               | Define the application environment                      |
+| `SPECS`                          | `string`  |          |                         | Define specs for test execution. You can either specify a glob pattern to match multiple files at once or wrap a glob or set of paths into an array using "," delimiter to run them within a single worker process. [Default: run all tests] |
+| `WDIO_BASE_URL`                  | `string`  | yes      |                         | URL of the Website to test                              |
+| `ANDROID_DEVICE_NAME`            | `string`  |          | `pixel_xl`              | Android device name                                     |
+| `ANDROID_PLATFORM_VERSION`       | `string`  |          | `10.0`                  | Android platform version                                |
+| `IOS_DEVICE_NAME`                | `string`  |          | `iPhone 13`             | iOS Device Name                                         |
+| `IOS_PLATFORM_VERSION`           | `string`  |          | `15.2`                  | iOS platform version                                    |
+| `APPIUM_TEST_SERVER_PORT`        | `number`  |          | `4723`                  | Appium service port (if you don't use the default)      |
+| `APPIUM_TEST_SERVER_HOST`        | `string`  |          | `127.0.0.1`             | Appium listening interface                              |
+| `APPIUM_APP`                     | `string`  | yes      |                         | ipa or apk application to install before running test. Or iOS bundle id if already installed  |
+| `APPIUM_APP_WAIT_ACTIVITY`       | `string`  |          |                         | The android apk main activity to start (default: auto)  |
+| `APPIUM_APP_PACKAGE`             | `string`  |          |                         | Android bundle id (if app is already installed)         | 
+| `APPIUM_APP_ACTIVITY`            | `string`  |          |                         | Android package activity (if app is already installed)  |
+| `API_BASE_URL`                   | `string`  |          | `http://localhost:5001` | API base URL                                            |
+| `END_TO_END_TESTS_EMAIL_ADDRESS` | `string`  | yes      |                         | End to end whitelisted email address                    |
 
 For instance, if you wish to run test for a different android emulator:
 
@@ -296,27 +297,6 @@ For more information on selectors, please check [this notion page](https://www.n
 All UI components imported from react-native, will have a `data-testid` attributes set if a `testID` is set, this is because `react-native-web` do it under the hood.
 
 If you have a web only component, you will have to manually set the `data-testid` to it, or use the `accessibilityAndTestId` utils.
-
-
-### Demo
-
-As of now, we do not have written any tests for ou app, this is why we have a demo mode.
-
-To install the demo, run: 
-
-```bash
-./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
-```
-
-To run the demo, just prefix an e2e test command (visible in `package.json`), ex:
-
-```bash
-WDIO_DEMO=true yarn e2e:browser.chrome
- ```
-
-> iOS and Android app demo will fail some tests in CI, this is known issue.
-> 
-> See https://github.com/webdriverio/appium-boilerplate/issues/139 and https://github.com/webdriverio/appium-boilerplate/issues/140
 
 ### Troubleshooting
 

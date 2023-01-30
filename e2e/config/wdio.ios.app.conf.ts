@@ -1,16 +1,13 @@
 import config from './wdio.shared.local.appium.conf'
 import { env } from './environment/env'
-import { demo } from './wdio-demo.conf'
 
 const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/*.spec.ts']
 
 // ============
 // Specs
 // ============
-config.specs = env.WDIO_DEMO ? [demo.app.specs] : specs
-config.exclude = env.WDIO_DEMO
-  ? []
-  : [demo.app.specs, demo.browser.specs, './e2e/tests/**/specs/**/*.browser.spec.ts']
+config.specs = specs
+config.exclude = ['./e2e/tests/**/specs/**/*.browser.spec.ts']
 
 // ============
 // Capabilities
@@ -27,7 +24,7 @@ config.capabilities = [
     'appium:platformVersion': env.IOS_PLATFORM_VERSION,
     'appium:orientation': 'PORTRAIT',
     'appium:automationName': 'XCUITest',
-    'appium:app': env.WDIO_DEMO ? demo.ios.capabilities['appium:app'] : env.APPIUM_APP,
+    'appium:app': env.APPIUM_APP,
     'appium:newCommandTimeout': 240,
     'appium:wdaLaunchTimeout': 600000,
     'appium:wdaStartupRetries': 3,

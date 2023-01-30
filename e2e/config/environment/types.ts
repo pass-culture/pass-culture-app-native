@@ -1,7 +1,6 @@
 export interface Environment {
   CI: boolean
   ENVIRONMENT: string
-  WDIO_DEMO: boolean
   WDIO_BASE_URL: string
   ANDROID_DEVICE_NAME: string
   ANDROID_PLATFORM_VERSION: string

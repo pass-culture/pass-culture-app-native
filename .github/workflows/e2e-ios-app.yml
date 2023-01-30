@@ -6,11 +6,6 @@ on:
 
   workflow_dispatch:
     inputs:
-      wdio-demo:
-        type: boolean
-        description: WebdriverIO demo - All other params will be ignored
-        required: true
-        default: false
       environment:
         type: environment
         description: Select the environment
@@ -28,7 +23,6 @@ on:
 jobs:
   build-simu-ios-zip:
     name: Build iOS simulator zip
-    if: ${{ ! inputs.wdio-demo }}
     uses: ./.github/workflows/reusable-e2e-buildsimuioszip.yml
     secrets: inherit
     with:
@@ -51,7 +45,6 @@ jobs:
       APPIUM_STARTUP_TIMEOUT_SEC: 30
       _FORCE_LOGS: 1
       # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
-      WDIO_DEMO: ${{ inputs.wdio-demo || 'false' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
       SPECS: ${{ inputs.specs }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
@@ -79,18 +72,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Download WebdriverIO demo
-        if: ${{ env.WDIO_DEMO == 'true' }}
-        run: ./scripts/install-e2e-wdio-demo.sh e2e/tests/wdio-demo
-
       - name: Download artifact build simulator iOS
-        if: ${{ env.WDIO_DEMO == 'false' }}
         uses: actions/download-artifact@v3
         with:
           name: build-simu-ios-zip
 
       - name: Add IOS_IPA_PATH to Environment variable
-        if: ${{ env.WDIO_DEMO == 'false' }}
         run: echo "IOS_IPA_PATH=./PassCulture.zip" >> $GITHUB_ENV
 
       - name: Install extraneous dev dependencies
@@ -125,7 +112,7 @@ jobs:
           done
 
       - name: Slack failure notification
-        if: ${{ env.WDIO_DEMO == 'false' && failure() }}
+        if: ${{ failure() }}
         env:
           BRANCH_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_REF_NAME }}
           COMMIT_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_SHA_SHORT }}
