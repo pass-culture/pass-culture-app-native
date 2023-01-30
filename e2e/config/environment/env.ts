@@ -7,7 +7,7 @@ const ignoredNonNumericEnvs = ['ANDROID_PLATFORM_VERSION', 'IOS_PLATFORM_VERSION
 const systemEnv = parseBooleanVariables(
   parseNumberVariables(
     process.env as Record<string, string | boolean | number>,
-    ignoredNonNumericEnvs,
+    ignoredNonNumericEnvs
   ) as unknown as Record<string, string | boolean | number>
 )
 
@@ -30,4 +30,6 @@ export const env: Environment = {
   APPIUM_APP_PACKAGE: systemEnv.APPIUM_APP_PACKAGE || '',
   APPIUM_APP_ACTIVITY: systemEnv.APPIUM_APP_ACTIVITY || '',
   SPECS: systemEnv.SPECS || '',
+  API_BASE_URL: systemEnv.API_BASE_URL || 'http://localhost:6001',
+  END_TO_END_TESTS_EMAIL_ADDRESS: systemEnv.END_TO_END_TESTS_EMAIL_ADDRESS || '',
 }

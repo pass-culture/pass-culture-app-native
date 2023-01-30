@@ -123,6 +123,6 @@ appium.log
 .tsbuild
 
 # e2e
-./e2e/tests/wdio-demo
 e2e/output
-
+/credentials.json
+/token.json
