@@ -1,16 +1,10 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse } from 'api/gen'
-import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
-import { superFlushWithAct, render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import {
   OfferDescription,
@@ -19,30 +13,32 @@ import {
   getContentFromOffer,
 } from './OfferDescription'
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
+let mockedOffer: Partial<OfferResponse> | undefined = offerResponseSnap
+jest.mock('features/offer/api/useOffer', () => ({
+  useOffer: () => ({
+    data: mockedOffer,
+  }),
+}))
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {
-    const { toJSON, queryByText, getByText } = await renderOfferDescription()
-    expect(toJSON()).toMatchSnapshot()
+    await render(<OfferDescription />)
+    expect(screen.toJSON()).toMatchSnapshot()
 
     await waitForExpect(() => {
-      expect(getByText('En détails')).toBeTruthy()
-      expect(queryByText('Durée')).toBeNull()
+      expect(screen.getByText('En détails')).toBeTruthy()
+      expect(screen.queryByText('Durée')).toBeNull()
     })
   })
 
   it('should render without description', async () => {
-    const { queryByText, getByText } = await renderOfferDescription({
-      extraData: { durationMinutes: 20 },
-      description: '',
-    })
+    mockedOffer = { ...offerResponseSnap, extraData: { durationMinutes: 20 }, description: '' }
+    await render(<OfferDescription />)
 
     await waitForExpect(() => {
-      expect(getByText('Durée')).toBeTruthy()
-      expect(getByText('Author: photo credit author')).toBeTruthy()
-      expect(queryByText('En détails')).toBeNull()
+      expect(screen.getByText('Durée')).toBeTruthy()
+      expect(screen.getByText('Author: photo credit author')).toBeTruthy()
+      expect(screen.queryByText('En détails')).toBeNull()
     })
   })
 })
@@ -87,35 +83,3 @@ describe('formatValue()', () => {
     expect(formatValue(key, value)).toBe(expected)
   })
 })
-
-async function renderOfferDescription(
-  extraOffer?: Pick<OfferResponse, 'extraData' | 'description'>
-) {
-  const offerId = 116656
-
-  server.use(
-    rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
-      res.once(ctx.status(200), ctx.json({ ...offerResponseSnap, ...extraOffer }))
-    )
-  )
-
-  const wrapper = render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen
-            name="OfferDescription"
-            component={OfferDescription}
-            initialParams={{ id: offerId }}
-          />
-        </RootStack.Navigator>
-      </NavigationContainer>
-    )
-  )
-  await superFlushWithAct()
-  await waitForExpect(() => {
-    expect(wrapper.queryByTestId('offer-description-list')).toBeTruthy()
-  })
-  return wrapper
-}
