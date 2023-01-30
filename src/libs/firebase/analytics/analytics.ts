@@ -62,7 +62,7 @@ const logEventAnalytics = {
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
   logCategoryBlockClicked: (params: {
-    moduleID: string
+    moduleId: string
     moduleListID: string
     toEntryId: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, params),
