@@ -59,7 +59,7 @@ export const CategoryListModule = ({
         }
         onBeforePress={() => {
           analytics.logCategoryBlockClicked({
-            moduleID: item.id,
+            moduleId: item.id,
             moduleListID: id,
             toEntryId: item.homeEntryId,
           })
