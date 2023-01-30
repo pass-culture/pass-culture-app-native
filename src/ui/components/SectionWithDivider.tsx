@@ -8,6 +8,7 @@ interface SectionProps {
   children: JSX.Element | JSX.Element[]
   margin?: boolean
   onLayout?: (event: LayoutChangeEvent) => void
+  testID?: string
 }
 
 export const SectionWithDivider = ({
@@ -15,11 +16,12 @@ export const SectionWithDivider = ({
   children,
   margin = false,
   onLayout,
+  testID,
 }: SectionProps) => {
   if (!visible) return <React.Fragment></React.Fragment>
 
   return (
-    <View onLayout={onLayout}>
+    <View onLayout={onLayout} testID={testID}>
       <Divider />
       {margin ? <MarginContainer>{children}</MarginContainer> : children}
     </View>
