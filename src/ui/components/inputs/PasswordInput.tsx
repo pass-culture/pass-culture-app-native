@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
+import { useE2eTestId } from 'libs/e2e/useE2eTestId'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -16,6 +17,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> =
   { label, placeholder, ...inputProps },
   forwardedRef
 ) => {
+  const e2eTestId = useE2eTestId(label ?? 'Mot de passe')
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
 
   function togglePasswordDisplay() {
@@ -29,7 +31,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, Props> =
       placeholder={placeholder ?? 'Ton mot de passe'}
       textContentType="password"
       secureTextEntry={shouldHidePassword}
-      testID="Mot de passe"
+      {...e2eTestId}
       {...inputProps}
       ref={forwardedRef}
       rightButton={{
