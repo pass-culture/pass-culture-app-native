@@ -1,9 +1,7 @@
-import { flags } from './platform'
+const fgCyan = '\x1b[36m'
+const bright = '\x1b[1m'
+const reset = '\x1b[0m'
 
 export const logEvent = (vendor: string, event: string) => {
-  if (flags.isAndroid || flags.isIOS) {
-    driver.logEvent(vendor, event)
-  } else {
-    console.log(new Date().toISOString(), 'INFO', vendor, event)
-  }
+  console.log(new Date().toISOString(), `${fgCyan}INFO`, `${bright}${vendor}`, `${reset}${event}`)
 }
