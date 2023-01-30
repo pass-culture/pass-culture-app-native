@@ -1016,6 +1016,33 @@ export interface FavoritesCountResponse {
   count: number
 }
 /**
+ * @export
+ * @interface FeatureToggle
+ */
+export interface FeatureToggle {
+  /**
+   * @type {boolean}
+   * @memberof FeatureToggle
+   */
+  isActive: boolean
+  /**
+   * @type {string}
+   * @memberof FeatureToggle
+   */
+  name: string
+}
+/**
+ * @export
+ * @interface FeaturesToggleRequest
+ */
+export interface FeaturesToggleRequest {
+  /**
+   * @type {Array<FeatureToggle>}
+   * @memberof FeaturesToggleRequest
+   */
+  features: Array<FeatureToggle>
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1965,6 +1992,7 @@ export enum SearchGroupNameEnumv2 {
   'MEDIA_PRESSE' = 'MEDIA_PRESSE',
   'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
   'NONE' = 'NONE',
+  'PLATEFORMES_EN_LIGNE' = 'PLATEFORMES_EN_LIGNE',
   'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
   'SPECTACLES' = 'SPECTACLES',
 }
@@ -2960,8 +2988,8 @@ export enum VenueTypeCodeKey {
  * @enum {string}
  */
 export enum WithdrawalTypeEnum {
-  'no_ticket' = 'no_ticket',
   'by_email' = 'by_email',
+  'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }
 /**
@@ -3374,6 +3402,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary set_feature <PATCH>
+     * @param {FeaturesToggleRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchnativev1features(body?: FeaturesToggleRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/features`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FeaturesToggleRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -4277,6 +4325,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary set_feature <PATCH>
+     * @param {FeaturesToggleRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchnativev1features(basePath: string, body?: FeaturesToggleRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchnativev1features(body, options)
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary create_account <POST>
      * @param {AccountRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4844,6 +4904,17 @@ export class DefaultApi extends BaseAPI {
     */
   public async getnativev1venuevenueId(venue_id: number, options?: any) {
     return DefaultApiFp(this, this.configuration).getnativev1venuevenueId(this.basePath, venue_id, options)
+  }
+  /**
+    * 
+    * @summary set_feature <PATCH>
+    * @param {FeaturesToggleRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async patchnativev1features(body?: FeaturesToggleRequest, options?: any) {
+    return DefaultApiFp(this, this.configuration).patchnativev1features(this.basePath, body, options)
   }
   /**
     * 
