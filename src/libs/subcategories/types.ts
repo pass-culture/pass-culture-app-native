@@ -1,5 +1,7 @@
 import {
   CategoryIdEnum,
+  GenreType,
+  GenreTypeContentModel,
   HomepageLabelNameEnumv2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
@@ -13,3 +15,4 @@ export type HomeLabelMapping = Record<HomepageLabelNameEnumv2, string | null>
 export type CategoryHomeLabelMapping = Record<SubcategoryIdEnumv2, string | null>
 export type SearchGroupLabelMapping = Record<SearchGroupNameEnumv2, string>
 export type SubcategoryLabelMapping = Record<string, SubcategoryIdEnumv2>
+export type GenreTypeMapping = Record<GenreType, Array<GenreTypeContentModel>>

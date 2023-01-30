@@ -2,11 +2,13 @@ import {
   categoryIdMappingSnap,
   subcategoriesMappingSnap,
   useCategoryHomeLabelMappingSnap,
+  useGenreTypeMappingFixture,
   useSearchGroupLabelMappingSnap,
 } from 'libs/subcategories/fixtures/mappings'
 import {
   useCategoryHomeLabelMapping,
   useCategoryIdMapping,
+  useGenreTypeMapping,
   useSearchGroupLabelMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories/mappings'
@@ -14,9 +16,10 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const mockSubcategories = placeholderData.subcategories
+const mockGenreTypes = placeholderData.genreTypes
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
-    data: { subcategories: mockSubcategories },
+    data: { subcategories: mockSubcategories, genreTypes: mockGenreTypes },
   }),
 }))
 
@@ -45,5 +48,12 @@ describe('useCategoryHomeLabelMapping', () => {
   it('should match category Home label mapping', () => {
     const { result } = renderHook(useCategoryHomeLabelMapping)
     expect(result.current).toEqual(useCategoryHomeLabelMappingSnap)
+  })
+})
+
+describe('useGenreTypeMapping', () => {
+  it('should match category Home label mapping', () => {
+    const { result } = renderHook(useGenreTypeMapping)
+    expect(result.current).toEqual(useGenreTypeMappingFixture)
   })
 })
