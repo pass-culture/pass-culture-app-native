@@ -7,7 +7,7 @@ import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { useParseSearchParameters } from 'libs/search'
-import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
 import { parseSearchParameters } from './parseSearchParameters'
@@ -21,18 +21,25 @@ const defaultSearchParameters = omit(
     hitsPerPage: null,
     priceRange: [0, 300],
     minBookingsThreshold: 0,
+    offerGenreTypes: undefined,
   },
   'offerIsFree'
 )
 
 describe('parseSearchParameters', () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
+  const genreTypeMapping = useGenreTypeMapping()
 
   it('should return default parameters when no parameters are provided', () => {
     const parameters = {} as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual(defaultSearchParameters)
   })
 
@@ -78,7 +85,12 @@ describe('parseSearchParameters', () => {
       currentWeekEvent: true,
     } as OffersModuleParameters
     const geolocation = null
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
@@ -106,7 +118,7 @@ describe('parseSearchParameters', () => {
       computeBeginningAndEndingDatetimes,
       'computeBeginningAndEndingDatetimes'
     )
-    parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    parseSearchParameters(parameters, geolocation, subcategoryLabelMapping, genreTypeMapping)
     expect(mockedComputer).toHaveBeenCalledWith({
       beginningDatetime: undefined,
       endingDatetime: undefined,
@@ -120,7 +132,12 @@ describe('parseSearchParameters', () => {
     const parameters = { isDigital: true } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: true, isEvent: false, isThing: false },
@@ -131,7 +148,12 @@ describe('parseSearchParameters', () => {
     const parameters = { isEvent: true } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: false, isEvent: true, isThing: false },
@@ -142,7 +164,12 @@ describe('parseSearchParameters', () => {
     const parameters = { isThing: true } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: false, isEvent: false, isThing: true },
@@ -153,7 +180,12 @@ describe('parseSearchParameters', () => {
     const parameters = { priceMin: 50 } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 300] })
   })
 
@@ -161,7 +193,12 @@ describe('parseSearchParameters', () => {
     const parameters = { priceMax: 200 } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [0, 200] })
   })
 
@@ -169,7 +206,12 @@ describe('parseSearchParameters', () => {
     const parameters = { priceMin: 50, priceMax: 200 } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+    const result = parseSearchParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 200] })
   })
 
@@ -179,7 +221,12 @@ describe('parseSearchParameters', () => {
     it('should return algolia parameters with geolocation with no distance limit when isGeolocated is provided', () => {
       const parameters = { isGeolocated: true } as OffersModuleParameters
 
-      const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+      const result = parseSearchParameters(
+        parameters,
+        geolocation,
+        subcategoryLabelMapping,
+        genreTypeMapping
+      )
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         locationType: LocationType.AROUND_ME,
@@ -190,7 +237,12 @@ describe('parseSearchParameters', () => {
     it('should return algolia parameters with geolocation with distance limit when isGeolocated is provided and radius as well', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
 
-      const result = parseSearchParameters(parameters, geolocation, subcategoryLabelMapping)
+      const result = parseSearchParameters(
+        parameters,
+        geolocation,
+        subcategoryLabelMapping,
+        genreTypeMapping
+      )
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         aroundRadius: 10,
@@ -201,15 +253,40 @@ describe('parseSearchParameters', () => {
     it('should return null when isGeolocated is true & around radius is provided but geolocation is null', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
 
-      const result = parseSearchParameters(parameters, null, subcategoryLabelMapping)
+      const result = parseSearchParameters(
+        parameters,
+        null,
+        subcategoryLabelMapping,
+        genreTypeMapping
+      )
       expect(result).toBeUndefined()
     })
 
     it('should return null when isGeolocated is false & around radius is provided', () => {
       const parameters = { aroundRadius: 10, isGeolocated: false } as OffersModuleParameters
 
-      const result = parseSearchParameters(parameters, null, subcategoryLabelMapping)
+      const result = parseSearchParameters(
+        parameters,
+        null,
+        subcategoryLabelMapping,
+        genreTypeMapping
+      )
       expect(result).toBeUndefined()
+    })
+
+    it('should return algolia parameters when a movieGenres list is provided', () => {
+      const parameters = { movieGenres: ['BOLLYWOOD'] } as OffersModuleParameters
+
+      const result = parseSearchParameters(
+        parameters,
+        null,
+        subcategoryLabelMapping,
+        genreTypeMapping
+      )
+      expect(result).toStrictEqual({
+        ...defaultSearchParameters,
+        offerGenreTypes: [{ key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' }],
+      })
     })
   })
 })

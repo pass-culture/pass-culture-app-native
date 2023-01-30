@@ -1,3 +1,4 @@
+import { GenreType } from 'api/gen'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
 import { LocationType } from 'features/search/enums'
@@ -5,7 +6,8 @@ import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
-import { SubcategoryLabelMapping } from 'libs/subcategories/types'
+import { buildOfferGenreTypes } from 'libs/search/utils/buildOfferGenreTypes'
+import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const parseGeolocationParameters = (
   geolocation: GeoCoordinates | null,
@@ -25,7 +27,8 @@ export const parseGeolocationParameters = (
 export const parseSearchParameters = (
   parameters: OffersModuleParameters,
   geolocation: GeoCoordinates | null,
-  subcategoryLabelMapping: SubcategoryLabelMapping
+  subcategoryLabelMapping: SubcategoryLabelMapping,
+  genreTypeMapping: GenreTypeMapping
 ): SearchState | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
@@ -49,6 +52,10 @@ export const parseSearchParameters = (
     (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
   )
 
+  const movieGenreTypes = parameters.movieGenres
+    ? buildOfferGenreTypes(GenreType.MOVIE, parameters.movieGenres, genreTypeMapping)
+    : undefined
+
   return {
     beginningDatetime,
     endingDatetime,
@@ -70,6 +77,7 @@ export const parseSearchParameters = (
     query: '',
     view: SearchView.Landing,
     minBookingsThreshold: parameters.minBookingsThreshold || 0,
+    offerGenreTypes: movieGenreTypes,
   }
 }
 
