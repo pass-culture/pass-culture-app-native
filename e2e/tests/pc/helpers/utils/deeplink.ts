@@ -12,17 +12,16 @@ export async function openDeepLinkUrl(deeplinkUrl: string) {
       ? decodeURIComponent(canBeFirebaseDynamicLink.search.replace(/^\?link=/, ''))
       : canBeFirebaseDynamicLink.href
   )
+
   const forcedHostUrl = new URL(
-    url.host.startsWith('localhost') ||
-    url.host.startsWith('192.168') ||
-    url.host.startsWith('10.0')
+    !url.host.startsWith(`https://app.${env.ENVIRONMENT}.passculture.team`)
       ? url.href.replace(url.origin, `https://app.${env.ENVIRONMENT}.passculture.team`)
       : url.href
   )
 
   if (flags.isWeb) {
-    // On the web, open as it is
-    return await Browser.url(url.href)
+    // On the web, just open path
+    return await Browser.url(forcedHostUrl.href.replace(forcedHostUrl.origin, ''))
   }
 
   if (driver.isAndroid) {
