@@ -27,10 +27,10 @@ const buildOffersParams = (
     .filter((params) => params.fields && !isEmpty(params.fields))
     .map(
       ({ fields: { algoliaSubcategories, algoliaCategories, movieGenres, ...otherFields } }) => ({
+        ...otherFields,
         subcategories: mapOffersSubcategories(algoliaSubcategories),
         movieGenres: mapOffersMovieGenres(movieGenres),
         categories: mapCategoriesCategories(algoliaCategories),
-        ...otherFields,
       })
     )
 

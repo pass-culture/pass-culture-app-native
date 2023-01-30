@@ -124,6 +124,44 @@ export const homepageEntriesAPIResponse = {
         },
       },
       {
+        metadata: {
+          tags: [],
+        },
+        sys: {
+          space: {
+            sys: {
+              type: 'Link',
+              linkType: 'Space',
+              id: '2bg01iqy0isv',
+            },
+          },
+          id: '6LLWQtNaFQLoFSy8FLYRMB',
+          type: 'Entry',
+          createdAt: '2023-02-02T15:15:12.133Z',
+          updatedAt: '2023-02-02T17:06:46.116Z',
+          environment: {
+            sys: {
+              id: 'testing',
+              type: 'Link',
+              linkType: 'Environment',
+            },
+          },
+          revision: 4,
+          contentType: {
+            sys: {
+              type: 'Link',
+              linkType: 'ContentType',
+              id: 'categories',
+            },
+          },
+          locale: 'en-US',
+        },
+        fields: {
+          title: 'Test Eve Catégories',
+          categories: ['Instruments de musique', 'Musique'],
+        },
+      },
+      {
         sys: {
           space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
           id: '1JprSqCDtqiIST2Y6k40W2',
@@ -548,7 +586,13 @@ export const homepageEntriesAPIResponse = {
         },
         fields: {
           title: 'Musique',
-          categories: ['Instruments de musique', 'Musique'],
+          algoliaCategories: {
+            sys: {
+              type: 'Link',
+              linkType: 'Entry',
+              id: '6LLWQtNaFQLoFSy8FLYRMB',
+            },
+          },
           hitsPerPage: 6,
         },
       },
