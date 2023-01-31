@@ -72,10 +72,11 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(analytics.logUseLandingCategory).toHaveBeenCalledWith(
-      SearchGroupNameEnumv2.SPECTACLES,
-      searchId
-    )
+    expect(analytics.logPerformSearch).toHaveBeenCalledWith({
+      ...mockSearchState,
+      searchId,
+      view: SearchView.Landing,
+    })
   })
 
   it('should navigate with isOnline param when category selected is only online platform', () => {
