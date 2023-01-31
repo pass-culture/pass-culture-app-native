@@ -21,5 +21,9 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
 
 export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnumv2 => {
   const searchGroup = categoryLabel in CONTENTFUL_LABELS ? CONTENTFUL_LABELS[categoryLabel] : null
-  return searchGroup ? CATEGORY_CRITERIA[searchGroup].facetFilter : SearchGroupNameEnumv2.NONE
+  if (!searchGroup) {
+    return SearchGroupNameEnumv2.NONE
+  }
+  const categoryCriteriaSearchGroup = CATEGORY_CRITERIA[searchGroup]?.facetFilter
+  return categoryCriteriaSearchGroup ? categoryCriteriaSearchGroup : SearchGroupNameEnumv2.NONE
 }

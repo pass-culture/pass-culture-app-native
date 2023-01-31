@@ -142,7 +142,7 @@ export function getGenreTypes(
  * Returns correct icon for a category.
  */
 export function getIcon<T extends SearchGroupNameEnumv2>(item: T) {
-  return CATEGORY_CRITERIA[item].icon
+  return CATEGORY_CRITERIA[item]?.icon
 }
 
 /**
