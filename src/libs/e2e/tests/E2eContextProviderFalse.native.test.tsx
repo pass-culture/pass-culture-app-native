@@ -5,17 +5,17 @@ import { render, waitFor, screen } from 'tests/utils'
 
 import { E2eContextProvider, useIsE2e } from '../E2eContextProvider'
 
-describe('<E2eContextProvider />', () => {
-  it('should render with children and with value true when getIsE2e return true', async () => {
+describe('<E2eContextProvider /> False', () => {
+  it('should render with children and with value false when getIsE2e return false', async () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-      ok: true,
+      ok: false,
     } as Response)
     renderE2eContextProvider()
     await waitFor(async () => {
-      await expect(screen.queryByTestId('true-test')).toBeTruthy()
+      await expect(screen.queryByTestId('false-test')).toBeTruthy()
     })
-    await expect(screen.queryByTestId('false-test')).toBeFalsy()
-    await expect(screen.getByTestId('true-test').children.join('')).toBe('hello true world')
+    await expect(screen.queryByTestId('true-test')).toBeFalsy()
+    await expect(screen.getByTestId('false-test').children.join('')).toBe('hello false world')
   })
 })
 
