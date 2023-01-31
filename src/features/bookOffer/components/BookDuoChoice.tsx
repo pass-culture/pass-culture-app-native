@@ -2,13 +2,13 @@ import React from 'react'
 
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BookDuoChoice: React.FC = () => {
-  const { bookingState, dispatch } = useBooking()
+  const { bookingState, dispatch } = useBookingContext()
 
   const updateBookingStepToDuo = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })

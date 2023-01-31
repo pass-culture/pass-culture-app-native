@@ -3,8 +3,8 @@ import { mocked } from 'ts-jest/utils'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { initialBookingState } from 'features/bookOffer/context/reducer'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { render } from 'tests/utils'
@@ -13,12 +13,12 @@ import { BookingInformations } from './BookingInformations'
 
 jest.mock('react-query')
 
-jest.mock('features/bookOffer/helpers/useBooking')
+jest.mock('features/bookOffer/context/useBookingContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 jest.mock('features/bookOffer/helpers/useBookingOffer')
 
 jest.mock('libs/address/useFormatFullAddress')
-const mockedUseBooking = mocked(useBooking)
+const mockedUseBooking = mocked(useBookingContext)
 const mockedUseBookingOffer = mocked(useBookingOffer)
 const mockedUseBookingStock = mocked(useBookingStock)
 

@@ -6,7 +6,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { DiagonalStripe } from 'features/bookOffer/components/Calendar/DiagonalStripe'
 import { Step } from 'features/bookOffer/context/reducer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -19,7 +19,7 @@ interface Props {
 type VoidFn = () => void
 
 export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
-  const { dispatch } = useBooking()
+  const { dispatch } = useBookingContext()
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
   const selectDate = (date: DateData) => () => {

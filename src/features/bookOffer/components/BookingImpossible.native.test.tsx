@@ -14,8 +14,8 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 const mockDismissModal = jest.fn()
-jest.mock('features/bookOffer/helpers/useBooking', () => ({
-  useBooking: jest.fn(() => ({
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({
     bookingState: {
       offerId: 20,
       stockId: undefined,

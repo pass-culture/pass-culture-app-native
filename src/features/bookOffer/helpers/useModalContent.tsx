@@ -7,7 +7,7 @@ import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { BookingImpossible } from 'features/bookOffer/components/BookingImpossible'
 import { Step } from 'features/bookOffer/context/reducer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -20,7 +20,7 @@ type ModalContent = {
 } & ModalLeftIconProps
 
 export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
-  const { bookingState, dispatch } = useBooking()
+  const { bookingState, dispatch } = useBookingContext()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
 

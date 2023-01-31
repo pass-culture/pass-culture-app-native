@@ -1,9 +1,8 @@
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useOffer } from 'features/offer/api/useOffer'
 
-import { useBooking } from './useBooking'
-
 export const useBookingOffer = () => {
-  const { bookingState } = useBooking()
+  const { bookingState } = useBookingContext()
   const { data: offer } = useOffer({ offerId: bookingState.offerId as number })
   return offer
 }

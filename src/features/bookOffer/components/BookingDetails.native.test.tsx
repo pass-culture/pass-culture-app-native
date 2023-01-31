@@ -38,8 +38,8 @@ let mockBookingStock = {
   beginningDatetime: '2021-03-02T20:00:00',
 } as ReturnType<typeof useBookingStock>
 
-jest.mock('features/bookOffer/helpers/useBooking', () => ({
-  useBooking: jest.fn(() => mockBookingState),
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => mockBookingState),
 }))
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),

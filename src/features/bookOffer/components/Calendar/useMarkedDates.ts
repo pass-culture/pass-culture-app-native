@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy'
 
 import { OfferStockResponse } from 'api/gen'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { formatToKeyDate, getStatusFromStocks, OfferStatus } from 'features/bookOffer/helpers/utils'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 
@@ -25,7 +25,7 @@ export const useMarkedDates = (
   stocks: OfferStockResponse[],
   userRemainingCredit: number
 ): MarkedDates => {
-  const { bookingState } = useBooking()
+  const { bookingState } = useBookingContext()
   const markedDates: MarkedDates = {}
 
   const groupedByDates = groupBy(

@@ -13,8 +13,8 @@ const mockBookingState: BookingState = {
   date: new Date(2021, 0, 1),
 }
 
-jest.mock('features/bookOffer/helpers/useBooking', () => ({
-  useBooking: jest.fn(() => ({ bookingState: mockBookingState })),
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({ bookingState: mockBookingState })),
 }))
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))

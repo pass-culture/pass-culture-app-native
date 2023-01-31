@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DuoChoice } from 'features/bookOffer/components/DuoChoice'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
@@ -12,7 +12,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 export const DuoChoiceSelector: React.FC = () => {
-  const { bookingState, dispatch } = useBooking()
+  const { bookingState, dispatch } = useBookingContext()
   const { isDuo } = useBookingOffer() || {}
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)

@@ -3,7 +3,7 @@ import React from 'react'
 import { OfferStockResponse } from 'api/gen'
 import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { Step } from 'features/bookOffer/context/reducer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
-  const { bookingState, dispatch } = useBooking()
+  const { bookingState, dispatch } = useBookingContext()
 
   const showCalendar = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })

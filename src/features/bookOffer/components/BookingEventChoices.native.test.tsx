@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Step } from 'features/bookOffer/context/reducer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { render, fireEvent } from 'tests/utils'
 
@@ -11,13 +11,13 @@ import { BookingEventChoices } from './BookingEventChoices'
 jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 
-const mockUseBooking = useBooking as jest.Mock
+const mockUseBooking = useBookingContext as jest.Mock
 const mockUseBookingOffer = useBookingOffer as jest.Mock
 
 const mockDispatch = jest.fn()
 
-jest.mock('features/bookOffer/helpers/useBooking', () => ({
-  useBooking: jest.fn(() => ({
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({
     bookingState: {
       offerId: undefined,
       stockId: undefined,

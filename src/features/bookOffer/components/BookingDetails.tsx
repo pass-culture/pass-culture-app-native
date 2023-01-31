@@ -9,7 +9,7 @@ import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutatio
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -38,7 +38,7 @@ const errorCodeToMessage: Record<string, string> = {
 
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { bookingState, dismissModal, dispatch } = useBooking()
+  const { bookingState, dismissModal, dispatch } = useBookingContext()
   const selectedStock = useBookingStock()
   const offer = useBookingOffer()
   const { showErrorSnackBar } = useSnackBarContext()

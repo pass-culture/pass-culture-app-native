@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useNotifyWebappLinkSent } from 'features/bookOffer/api/useNotifyWebappLinkSent'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useAddFavorite, useFavorite } from 'features/favorites/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -13,7 +13,7 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const BookingImpossible: React.FC = () => {
-  const { bookingState, dismissModal } = useBooking()
+  const { bookingState, dismissModal } = useBookingContext()
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()

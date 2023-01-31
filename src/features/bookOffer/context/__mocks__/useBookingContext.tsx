@@ -1,4 +1,4 @@
-export const useBooking = jest.fn().mockReturnValue({
+export const useBookingContext = jest.fn().mockReturnValue({
   bookingState: {
     offerId: undefined,
     stockId: undefined,

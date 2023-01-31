@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { formatDate } from 'features/bookOffer/components/CancellationDetails'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
@@ -27,7 +27,7 @@ const ExpirationDate: React.FC<{
 }
 
 export const BookingInformations: React.FC = () => {
-  const { bookingState } = useBooking()
+  const { bookingState } = useBookingContext()
   const offer = useBookingOffer()
   const stock = useBookingStock()
   const mapping = useSubcategoriesMapping()

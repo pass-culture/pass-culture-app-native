@@ -8,7 +8,7 @@ import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { Step } from 'features/bookOffer/context/reducer'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
-  const { bookingState, dispatch } = useBooking()
+  const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
   const creditForOffer = useCreditForOffer(bookingState.offerId)
   const { step, quantity, stockId } = bookingState

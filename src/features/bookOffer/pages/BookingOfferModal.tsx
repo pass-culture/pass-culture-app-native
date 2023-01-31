@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
-import { useBooking } from 'features/bookOffer/helpers/useBooking'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { analytics } from 'libs/firebase/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -19,7 +19,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   offerId,
   isEndedUsedBooking,
 }) => {
-  const { dismissModal, dispatch } = useBooking()
+  const { dismissModal, dispatch } = useBookingContext()
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
     useModalContent(isEndedUsedBooking)
 
