@@ -16,7 +16,7 @@ import { BookingImpossible } from './BookingImpossible'
 // if you need to add new tests for the BookingImpossible component, add them to the new test file
 
 const mockDismissModal = jest.fn()
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
+jest.mock('features/bookOffer/helpers/useBooking', () => ({
   useBooking: jest.fn(() => ({
     bookingState: {
       offerId: 20,

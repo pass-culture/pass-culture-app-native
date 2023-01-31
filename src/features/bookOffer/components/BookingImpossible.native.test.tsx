@@ -14,7 +14,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 const mockDismissModal = jest.fn()
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
+jest.mock('features/bookOffer/helpers/useBooking', () => ({
   useBooking: jest.fn(() => ({
     bookingState: {
       offerId: 20,

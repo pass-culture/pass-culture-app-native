@@ -28,9 +28,12 @@ describe('formatDate()', () => {
 })
 
 let mockStock: OfferStockResponse | undefined = undefined
-let mockOffer = { id: 1, isDuo: true } as unknown as OfferResponse
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
+jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockStock),
+}))
+
+let mockOffer = { id: 1, isDuo: true } as unknown as OfferResponse
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 

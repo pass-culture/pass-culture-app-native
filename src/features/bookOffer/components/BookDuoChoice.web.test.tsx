@@ -12,7 +12,7 @@ const mockStep = Step.DUO
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
+jest.mock('features/bookOffer/helpers/useBooking', () => ({
   useBooking: jest.fn(() => ({
     dispatch: mockDispatch,
     bookingState: {
@@ -22,11 +22,17 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
     } as BookingState,
     dismissModal: mockDismissModal,
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => ({
     price: 2000,
     id: '148409',
     beginningDatetime: new Date('2021-03-02T20:00:00'),
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 

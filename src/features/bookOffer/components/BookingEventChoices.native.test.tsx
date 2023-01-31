@@ -16,7 +16,7 @@ const mockUseBookingOffer = useBookingOffer as jest.Mock
 
 const mockDispatch = jest.fn()
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
+jest.mock('features/bookOffer/helpers/useBooking', () => ({
   useBooking: jest.fn(() => ({
     bookingState: {
       offerId: undefined,
@@ -27,10 +27,16 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
     },
     dispatch: jest.fn(),
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => ({
     id: 1,
     isDuo: true,
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => ({
     price: '12€',
   })),

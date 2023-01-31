@@ -17,7 +17,7 @@ jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 
-jest.mock('features/bookOffer/services/useReviewInAppInformation', () => ({
+jest.mock('features/bookOffer/helpers/useReviewInAppInformation', () => ({
   useReviewInAppInformation: jest.fn(() => ({
     shouldReviewBeRequested: true,
     updateInformationWhenReviewHasBeenRequested: jest.fn(),

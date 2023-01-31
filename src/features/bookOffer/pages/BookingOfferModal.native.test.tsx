@@ -13,12 +13,16 @@ const mockDispatch = jest.fn()
 
 const mockStep = Step.DATE
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
+jest.mock('features/bookOffer/helpers/useBooking', () => ({
   useBooking: jest.fn(() => ({
     dispatch: mockDispatch,
     bookingState: { quantity: 1, step: mockStep },
     dismissModal: mockDismissModal,
   })),
+  useBookingOffer: jest.fn(() => mockOffer),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
