@@ -2,11 +2,11 @@ import * as React from 'react'
 import { mocked } from 'ts-jest/utils'
 
 import { SubcategoryIdEnum } from 'api/gen'
+import { initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { initialBookingState } from 'features/bookOffer/pages/reducer'
 import { render } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'

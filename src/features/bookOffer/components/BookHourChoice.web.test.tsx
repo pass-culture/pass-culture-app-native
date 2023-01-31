@@ -1,8 +1,8 @@
 import React from 'react'
 
+import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
-import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils/web'
 

@@ -1,12 +1,12 @@
 import React from 'react'
 
+import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
-import { Step } from './reducer'
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()

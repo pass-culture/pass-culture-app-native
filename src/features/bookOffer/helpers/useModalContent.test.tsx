@@ -2,8 +2,8 @@
 import { Platform } from 'react-native'
 
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
-import { Step } from 'features/bookOffer/pages/reducer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { renderHook } from 'tests/utils'
 

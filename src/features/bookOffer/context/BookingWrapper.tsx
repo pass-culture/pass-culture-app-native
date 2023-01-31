@@ -1,7 +1,7 @@
 import React, { useMemo, useReducer } from 'react'
 
+import { initialBookingState, bookOfferReducer } from 'features/bookOffer/context/reducer'
 import { BookingContext } from 'features/bookOffer/pages/BookingContext'
-import { initialBookingState, bookOfferReducer } from 'features/bookOffer/pages/reducer'
 
 interface BookingWrapperProps {
   children: JSX.Element

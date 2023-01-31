@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Action, BookingState } from 'features/bookOffer/pages/reducer'
+import { Action, BookingState } from 'features/bookOffer/context/reducer'
 
 export interface IBookingContext {
   bookingState: BookingState

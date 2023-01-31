@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { useMarkedDates } from 'features/bookOffer/components/Calendar/useMarkedDates'
-import { BookingState, Step } from 'features/bookOffer/pages/reducer'
+import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { renderHook } from 'tests/utils'
 

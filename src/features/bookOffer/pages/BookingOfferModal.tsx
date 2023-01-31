@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 
+import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
-import { BookingWrapper } from 'features/bookOffer/pages/BookingWrapper'
 import { analytics } from 'libs/firebase/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'

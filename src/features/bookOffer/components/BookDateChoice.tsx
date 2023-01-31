@@ -1,15 +1,13 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
+import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-import { Step } from '../pages/reducer'
-
-import { Calendar } from './Calendar/Calendar'
 
 interface Props {
   stocks: OfferStockResponse[]

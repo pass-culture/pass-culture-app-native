@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
-import { Step } from 'features/bookOffer/pages/reducer'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'

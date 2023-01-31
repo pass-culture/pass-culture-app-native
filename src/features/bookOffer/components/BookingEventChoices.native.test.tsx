@@ -1,9 +1,9 @@
 import * as React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
-import { Step } from 'features/bookOffer/pages/reducer'
 import { render, fireEvent } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'

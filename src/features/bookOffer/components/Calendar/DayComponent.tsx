@@ -4,12 +4,11 @@ import { View } from 'react-native'
 import { DateData } from 'react-native-calendars/src/types'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { DiagonalStripe } from 'features/bookOffer/components/Calendar/DiagonalStripe'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBooking } from 'features/bookOffer/helpers/useBooking'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
-import { Step } from 'features/bookOffer/pages/reducer'
 import { getSpacing, Typo } from 'ui/theme'
-
-import { DiagonalStripe } from './DiagonalStripe'
 
 interface Props {
   status: OfferStatus
