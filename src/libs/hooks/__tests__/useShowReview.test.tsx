@@ -13,7 +13,7 @@ jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
 const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
 
-jest.mock('features/bookOffer/services/useReviewInAppInformation')
+jest.mock('features/bookOffer/helpers/useReviewInAppInformation')
 const mockUseReviewInAppInformation = useReviewInAppInformation as jest.Mock
 
 const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()
