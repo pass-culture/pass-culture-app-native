@@ -9,12 +9,32 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
-import {
-  CategoriesViewData,
-  DescriptionContext,
-  CategoriesModalFormProps,
-  SearchState,
-} from 'features/search/types'
+import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
+import { DescriptionContext, SearchState } from 'features/search/types'
+
+type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
+
+export function buildSearchPayloadValues(
+  data: SubcategoriesResponseModelv2,
+  form: CategoriesModalFormProps
+) {
+  const buildGenreType = (genreTypeId: typeof form.genreType) => {
+    if (genreTypeId === null) return []
+    const genreType = getGenreTypeFromEnum(data, genreTypeId) as GenreTypeContentModel
+
+    const genreTypeKey = data.genreTypes.find((genreType) =>
+      genreType.values.map((v) => v.name).includes(genreTypeId)
+    )?.name as GenreType
+
+    return [{ name: genreTypeId, value: genreType.value, key: genreTypeKey }]
+  }
+
+  return {
+    offerCategories: form.category === SearchGroupNameEnumv2.NONE ? [] : [form.category],
+    offerNativeCategories: form.nativeCategory ? [form.nativeCategory] : [],
+    offerGenreTypes: buildGenreType(form.genreType),
+  }
+}
 
 /**
  * Returns unique objects in array distinct by object key
@@ -23,119 +43,27 @@ function getUniqueBy<T>(arr: T[], key: keyof T) {
   return [...new Map(arr.map((item) => [item[key], item])).values()]
 }
 
-/**
- * Default `All` value for categories
- */
-export const categoryAllValue: SearchGroupResponseModelv2 = {
-  value: null,
-  name: SearchGroupNameEnumv2.NONE,
-}
-
-export function getSearchGroupsByAlphabeticalSorting(data: SearchGroupResponseModelv2[]) {
-  return getDataByAlphabeticalSorting(
-    data.filter((searchGroup) => searchGroup.name !== SearchGroupNameEnumv2.NONE)
-  )
-}
-
-/**
- * Returns a `SearchGroupResponseModelv2` from a `SearchGroupEnumv2`.
- */
-export function getSearchGroupFromEnum(
+export function getCategoryFromEnum(data: undefined, enumValue: undefined): undefined
+export function getCategoryFromEnum(data: undefined, enumValue: SearchGroupNameEnumv2): undefined
+export function getCategoryFromEnum(
+  data: SubcategoriesResponseModelv2,
+  enumValue: undefined
+): undefined
+export function getCategoryFromEnum(
   data: SubcategoriesResponseModelv2,
   enumValue: SearchGroupNameEnumv2
-) {
-  return data.searchGroups.find((searchGroup) => searchGroup.name === enumValue)
-}
-
-/**
- * Returns an array of `SearchGroupResponseModelv2` from an array of `SearchGroupEnumv2`.
- *
- * This is used to map searchState `offerCategories` to correct data.
- */
-export function getSearchGroupsFromEnumArray(
+): SearchGroupResponseModelv2
+export function getCategoryFromEnum(
   data: SubcategoriesResponseModelv2 | undefined,
-  enumValues: SearchGroupNameEnumv2[]
+  enumValue?: SearchGroupNameEnumv2 | undefined
 ) {
-  if (!data) return [categoryAllValue]
-  return enumValues
-    .map((enumValue) => getSearchGroupFromEnum(data, enumValue))
-    .filter(Boolean) as SearchGroupResponseModelv2[]
-}
+  if (data && enumValue) {
+    return data.searchGroups.find(
+      (category) => category.name === enumValue
+    ) as SearchGroupResponseModelv2
+  }
 
-/**
- * Returns a `NativeCategoryResponseModelv2` from a `NativeCategoryIdEnumv2`.
- */
-export function getNativeCategoryFromEnum(
-  data?: SubcategoriesResponseModelv2,
-  enumValue?: NativeCategoryIdEnumv2
-) {
-  if (!data) return undefined
-  if (!enumValue) return undefined
-
-  return data.nativeCategories.find((nativeCategory) => nativeCategory.name === enumValue)
-}
-
-/**
- * Returns an array of `NativeCategoryResponseModelv2` from an array of `NativeCategoryIdEnumv2`.
- *
- * This is used to map searchState `offerNativeCategories` to correct data.
- */
-export function getNativeCategoriesFromEnumArray(
-  data: SubcategoriesResponseModelv2 | undefined,
-  enumValues: NativeCategoryIdEnumv2[] | undefined
-) {
-  if (!data || !enumValues) return null
-  return enumValues
-    .map((enumValue) => getNativeCategoryFromEnum(data, enumValue))
-    .filter(Boolean) as NativeCategoryResponseModelv2[]
-}
-
-/**
- * Return `nativeCategory` array for a `SearchGroupResponseModelv2` category.
- */
-export function getNativeCategories(
-  data: SubcategoriesResponseModelv2 | undefined,
-  categoryEnum: SearchGroupNameEnumv2 | undefined
-) {
-  if (!data) return []
-  if (!categoryEnum) return []
-  if (categoryEnum === SearchGroupNameEnumv2.NONE) return []
-
-  const nativeCategories = data.subcategories
-    .filter((subcategory) => subcategory.searchGroupName === categoryEnum)
-    .map((subcategory) =>
-      data.nativeCategories.find(
-        (nativeCategory) => nativeCategory.name === subcategory.nativeCategoryId
-      )
-    )
-    // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
-    .filter(Boolean) as NativeCategoryResponseModelv2[]
-
-  return getDataByAlphabeticalSorting(getUniqueBy(nativeCategories, 'name'))
-}
-
-export function getGenreTypes(
-  data: SubcategoriesResponseModelv2 | undefined,
-  nativeCategory: NativeCategoryResponseModelv2 | null
-) {
-  if (!data) return []
-  if (!nativeCategory) return []
-  if (!nativeCategory.genreType) return []
-
-  const eligibleGenreTypes = data.genreTypes.filter(
-    (genreType) => genreType.name === nativeCategory.genreType
-  )
-
-  const genreTypesArray = eligibleGenreTypes.map((genreType) => ({ key: genreType.name }))
-  return genreTypesArray.reduce<(GenreTypeContentModel & { key: GenreType })[]>((all, curr) => {
-    const genreType = eligibleGenreTypes.find((g) => g.name === curr.key)
-    if (!genreType) return all
-    for (const item of genreType.values) {
-      all.push({ key: curr.key, ...item })
-    }
-
-    return all
-  }, [])
+  return undefined
 }
 
 /**
@@ -145,135 +73,65 @@ export function getIcon<T extends SearchGroupNameEnumv2>(item: T) {
   return CATEGORY_CRITERIA[item]?.icon
 }
 
-/**
- * Check if a `CategoriesViewData` is a category.
- */
-export function isCategory<T extends CategoriesViewData>(item: T) {
-  const values = Object.values(SearchGroupNameEnumv2)
-  return values.includes(item.name as SearchGroupNameEnumv2)
-}
-
-/**
- * Check if a `CategoriesViewData` is a native category.
- */
-function isNativeCategory<T extends CategoriesViewData>(item: T) {
-  const values = Object.values(NativeCategoryIdEnumv2)
-  return values.includes(item.name as NativeCategoryIdEnumv2)
-}
-
-/**
- * Get description from root filters.
- */
-function getCategoryFilterDescription(ctx: DescriptionContext) {
-  const { selectedCategory, selectedNativeCategory, selectedGenreType } = ctx
-
-  if (selectedGenreType && selectedNativeCategory)
-    return `${selectedNativeCategory.value} - ${selectedGenreType.value}`
-  if (selectedNativeCategory) return `${selectedNativeCategory.value}`
-  if (selectedCategory) return selectedCategory.value ?? undefined
-  return undefined
-}
-
-/**
- * When iterating on categories view items, get correct description.
- */
-function getCategoryDescription(ctx: DescriptionContext, item: SearchGroupResponseModelv2) {
-  const { selectedCategory, selectedNativeCategory, selectedGenreType } = ctx
-
-  if (item.name === SearchGroupNameEnumv2.NONE) return undefined
-  if (item.name !== selectedCategory?.name) return undefined
-  if (!selectedNativeCategory) return 'Tout'
-  if (!selectedNativeCategory.value) return undefined
-
-  if (!selectedGenreType) return selectedNativeCategory.value
-  return `${selectedNativeCategory.value} - ${selectedGenreType.value}`
-}
-
-/**
- * When iterating on native categories view items, get correct description.
- */
-function getNativeCategoryDescription(
-  ctx: DescriptionContext,
-  item: NativeCategoryResponseModelv2
-) {
-  const { selectedNativeCategory, selectedGenreType } = ctx
-  if (!selectedNativeCategory) return undefined
-  if (selectedNativeCategory.name !== item.name) return undefined
-  if (!selectedGenreType) return 'Tout'
-  return selectedGenreType.value
-}
-
-/**
- * Get string description from given context.
- *
- * Used in list to show selected children.
- */
-export function getDescription(ctx: DescriptionContext, item?: CategoriesViewData) {
-  const { selectedCategory } = ctx
-  if (!selectedCategory) return undefined
-
-  if (!item) {
-    return getCategoryFilterDescription(ctx)
-  }
-
-  if (isCategory(item)) {
-    return getCategoryDescription(ctx, item as SearchGroupResponseModelv2)
-  }
-
-  if (isNativeCategory(item)) {
-    return getNativeCategoryDescription(ctx, item as NativeCategoryResponseModelv2)
-  }
-
-  return undefined
-}
-
-export function getDefaultFormValues(
-  data: SubcategoriesResponseModelv2 | undefined,
-  searchState: SearchState,
-  defaultView: CategoriesModalView
-): CategoriesModalFormProps {
-  return {
-    category:
-      getSearchGroupsFromEnumArray(data, searchState.offerCategories)[0] || categoryAllValue,
-    nativeCategory:
-      getNativeCategoriesFromEnumArray(data, searchState.offerNativeCategories)?.[0] || null,
-    // genreType: getGenreTypesFromOfferGenreTypeArray(data, searchState.offerGenreTypes)?.[0] || null,
-    genreType: searchState.offerGenreTypes?.[0] || null,
-    currentView: defaultView,
-  }
-}
-
 export function getCategoriesModalTitle(
+  data: SubcategoriesResponseModelv2 | undefined,
   currentView: CategoriesModalView,
-  category: SearchGroupResponseModelv2,
-  nativeCategory: NativeCategoryResponseModelv2 | null
+  categoryId: SearchGroupNameEnumv2,
+  nativeCategoryId: NativeCategoryIdEnumv2 | null
 ) {
+  if (!data) return 'Catégories'
   switch (currentView) {
     case CategoriesModalView.CATEGORIES:
       return 'Catégories'
-    case CategoriesModalView.NATIVE_CATEGORIES:
+    case CategoriesModalView.NATIVE_CATEGORIES: {
+      const category = getCategoryFromEnum(data, categoryId)
       return category?.value ?? 'Sous-catégories'
-    case CategoriesModalView.GENRES:
+    }
+    case CategoriesModalView.GENRES: {
+      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId ?? undefined)
       return nativeCategory?.value ?? 'Genres'
+    }
     default:
       return 'Catégories'
   }
 }
 
-export function buildSearchPayloadValues(form: CategoriesModalFormProps) {
-  return {
-    offerCategories: form.category?.name === SearchGroupNameEnumv2.NONE ? [] : [form.category.name],
-    offerNativeCategories: form.nativeCategory ? [form.nativeCategory.name] : [],
-    offerGenreTypes: form.genreType ? [form.genreType] : [],
-  }
-}
-
-export function getDataByAlphabeticalSorting(
-  data: SearchGroupResponseModelv2[] | NativeCategoryResponseModelv2[]
+/**
+ * Returns a `NativeCategoryResponseModelv2` from a `NativeCategoryIdEnumv2`.
+ */
+export function getNativeCategoryFromEnum(
+  data: SubcategoriesResponseModelv2 | undefined,
+  enumValue: NativeCategoryIdEnumv2 | undefined
 ) {
-  return data.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
+  if (data && enumValue) {
+    return data.nativeCategories.find(
+      (nativeCategory) => nativeCategory.name === enumValue
+    ) as NativeCategoryResponseModelv2
+  }
+
+  return undefined
 }
 
+export function getGenreTypeFromEnum(
+  data: SubcategoriesResponseModelv2 | undefined,
+  genreType?: string | undefined
+) {
+  if (data && genreType) {
+    return data.genreTypes
+      .map((gt) => gt.values)
+      .flat()
+      .find((genreTypeValue) => genreTypeValue.name === genreType) as GenreTypeContentModel
+  }
+
+  return undefined
+}
+
+/**
+ * Returns whether the category or native category is only online or not.
+ * @param data
+ * @param categoryId
+ * @param nativeCategoryId
+ */
 export function isOnlyOnline(
   data: SubcategoriesResponseModelv2,
   categoryId?: SearchGroupNameEnumv2,
@@ -303,11 +161,40 @@ export function isOnlyOnline(
   return isOnlyOnline
 }
 
+/**
+ * Sort comparator for `SearchGroupResponseModelv2` and `NativeCategoryResponseModelv2` objects.
+ */
+export function searchGroupOrNativeCategorySortComparator<
+  T extends SearchGroupResponseModelv2 | NativeCategoryResponseModelv2
+>(a: T, b: T) {
+  return (a?.value || '').localeCompare(b?.value || '')
+}
+
+/**
+ * Check whether a native category is a subcategory of a category.
+ */
+export function isNativeCategoryOfCategory(
+  data?: SubcategoriesResponseModelv2,
+  category?: SearchGroupNameEnumv2,
+  nativeCategory?: NativeCategoryIdEnumv2
+) {
+  if (!data) return false
+
+  return data.subcategories.some(
+    (subcategory) =>
+      subcategory.searchGroupName === category && subcategory.nativeCategoryId === nativeCategory
+  )
+}
+
+/**
+ * Returns `SearchGroupResponseModelv2` array for a `NativeCategoryIdEnumv2` enum.
+ */
 export function getSearchGroupsEnumArrayFromNativeCategoryEnum(
   data?: SubcategoriesResponseModelv2,
   nativeCategoryId?: NativeCategoryIdEnumv2
 ) {
   if (!data) return []
+  if (!nativeCategoryId) return []
 
   const categories = data.subcategories
     .filter((subcategory) => subcategory.nativeCategoryId === nativeCategoryId)
@@ -316,16 +203,110 @@ export function getSearchGroupsEnumArrayFromNativeCategoryEnum(
   return [...new Set(categories)]
 }
 
-export function isAssociatedNativeCategoryToCategory(
-  data?: SubcategoriesResponseModelv2,
-  categoryId?: SearchGroupNameEnumv2,
-  nativeCategoryId?: NativeCategoryIdEnumv2
+/**
+ * Return `nativeCategory` array for a `SearchGroupResponseModelv2` category.
+ */
+export function getNativeCategories(
+  data: SubcategoriesResponseModelv2 | undefined,
+  categoryEnum: SearchGroupNameEnumv2 | undefined
 ) {
-  if (!data) return false
+  if (!data) return []
+  if (!categoryEnum) return []
+  if (categoryEnum === SearchGroupNameEnumv2.NONE) return []
 
-  return data.subcategories.some(
-    (subcategory) =>
-      subcategory.searchGroupName === categoryId &&
-      subcategory.nativeCategoryId === nativeCategoryId
-  )
+  const nativeCategories = data.subcategories
+    .filter((subcategory) => subcategory.searchGroupName === categoryEnum)
+    .map((subcategory) =>
+      data.nativeCategories.find(
+        (nativeCategory) => nativeCategory.name === subcategory.nativeCategoryId
+      )
+    )
+    // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
+    .filter(Boolean) as NativeCategoryResponseModelv2[]
+
+  return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
+}
+
+export function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {
+  return Object.values(SearchGroupNameEnumv2).includes(item as SearchGroupNameEnumv2)
+}
+
+export function getIsNativeCategory(item: Item): item is NativeCategoryIdEnumv2 {
+  return Object.values(NativeCategoryIdEnumv2).includes(item as NativeCategoryIdEnumv2)
+}
+
+export function getDescription(
+  data: SubcategoriesResponseModelv2 | undefined,
+  ctx: DescriptionContext,
+  item?: Item
+) {
+  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+  if (!categoryId) return undefined
+  if (!data) return undefined
+
+  if (!item) {
+    if (genreTypeId && nativeCategoryId) {
+      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
+      const genreType = getGenreTypeFromEnum(data, genreTypeId) as GenreTypeContentModel
+      if (!nativeCategory) return undefined
+      return `${nativeCategory.value} - ${genreType.value}`
+    }
+    if (nativeCategoryId) {
+      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
+      if (!nativeCategory) return undefined
+      return `${nativeCategory.value}`
+    }
+    if (categoryId) {
+      const category = getCategoryFromEnum(data, categoryId)
+      return category.value ?? undefined
+    }
+    return undefined
+  }
+
+  if (getIsCategory(item)) {
+    if (item === SearchGroupNameEnumv2.NONE) return undefined
+    if (item !== categoryId) return undefined
+    if (!nativeCategoryId) return 'Tout'
+
+    const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
+    if (!nativeCategory) return undefined
+    if (!nativeCategory.value) return undefined
+
+    if (!genreTypeId) return nativeCategory.value
+    const genreType = getGenreTypeFromEnum(data, genreTypeId)
+
+    if (!genreType) return nativeCategory.value
+    return `${nativeCategory.value} - ${genreType.value}`
+  }
+
+  if (getIsNativeCategory(item)) {
+    if (!nativeCategoryId) return undefined
+    if (nativeCategoryId !== item) return undefined
+    if (!genreTypeId) return 'Tout'
+
+    const genreType = getGenreTypeFromEnum(data, genreTypeId)
+    return genreType?.value
+  }
+
+  return undefined
+}
+
+export function getDefaultFormValues(
+  data: SubcategoriesResponseModelv2 | undefined,
+  searchState: SearchState
+): CategoriesModalFormProps {
+  if (!data)
+    return {
+      category: SearchGroupNameEnumv2.NONE,
+      nativeCategory: null,
+      genreType: null,
+      currentView: CategoriesModalView.CATEGORIES,
+    }
+
+  return {
+    category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
+    nativeCategory: searchState.offerNativeCategories?.[0] || null,
+    genreType: searchState.offerGenreTypes?.[0]?.name || null,
+    currentView: CategoriesModalView.CATEGORIES,
+  }
 }

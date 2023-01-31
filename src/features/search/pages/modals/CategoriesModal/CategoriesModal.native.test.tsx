@@ -182,13 +182,6 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Livres papier')).toBeTruthy()
     })
 
-    it('should handle "CARTES JEUNES" special case correctly', () => {
-      renderCategories()
-      fireEvent.press(screen.getByText('Cartes jeunes'))
-
-      expect(screen.queryAllByText('Cartes jeunes')).toHaveLength(2)
-    })
-
     it('should go back to categories view', () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,

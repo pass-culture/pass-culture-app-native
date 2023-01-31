@@ -11,9 +11,9 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import {
-  getSearchGroupsEnumArrayFromNativeCategoryEnum,
   getNativeCategoryFromEnum,
-  isAssociatedNativeCategoryToCategory,
+  getSearchGroupsEnumArrayFromNativeCategoryEnum,
+  isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
@@ -54,8 +54,7 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
   )
   const hasSeveralCategoriesFromNativeCategory = categoriesFromNativeCategory.length > 1
   const isAssociatedMostPopularNativeCategoryToMostPopularCategory = useMemo(
-    () =>
-      isAssociatedNativeCategoryToCategory(data, categories[0]?.value, mostPopularNativeCategoryId),
+    () => isNativeCategoryOfCategory(data, categories[0]?.value, mostPopularNativeCategoryId),
     [categories, data, mostPopularNativeCategoryId]
   )
 
