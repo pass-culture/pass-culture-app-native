@@ -51,7 +51,7 @@ export interface CategoriesSectionProps<
   allValue: N
   allLabel: string
   getIcon?: T extends SearchGroupResponseModelv2
-    ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface>
+    ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface> | undefined
     : undefined
 }
 
