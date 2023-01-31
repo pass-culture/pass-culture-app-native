@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 
+import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { analytics } from 'libs/firebase/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'
-
-import { useModalContent } from '../services/useModalContent'
-
-import { BookingWrapper, useBooking } from './BookingOfferWrapper'
 
 interface Props {
   visible: boolean
@@ -20,7 +19,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   offerId,
   isEndedUsedBooking,
 }) => {
-  const { dismissModal, dispatch } = useBooking()
+  const { dismissModal, dispatch } = useBookingContext()
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
     useModalContent(isEndedUsedBooking)
 

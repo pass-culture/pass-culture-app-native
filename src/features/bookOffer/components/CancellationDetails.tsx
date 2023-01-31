@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatToFrenchDate, formatToHour } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'

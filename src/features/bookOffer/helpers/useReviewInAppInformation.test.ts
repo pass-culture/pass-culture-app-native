@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
+import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { storage } from 'libs/storage'
 import { waitFor, renderHook } from 'tests/utils'
 

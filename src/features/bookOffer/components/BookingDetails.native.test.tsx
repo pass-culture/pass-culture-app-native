@@ -4,9 +4,10 @@ import { mocked } from 'ts-jest/utils'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
+import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
-import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
@@ -37,9 +38,13 @@ let mockBookingStock = {
   beginningDatetime: '2021-03-02T20:00:00',
 } as ReturnType<typeof useBookingStock>
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => mockBookingState),
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => mockBookingState),
+}))
+jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),
+}))
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(),
 }))
 const mockUseBookingOffer = mocked(useBookingOffer)

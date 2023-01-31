@@ -5,7 +5,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
 import { OfferStockResponse } from 'api/gen'
+import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
+import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
+import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
@@ -18,12 +24,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
-import { useBookOfferMutation } from '../services/useBookOfferMutation'
-
-import { BookingInformations } from './BookingInformations'
-import { CancellationDetails } from './CancellationDetails'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -38,7 +38,7 @@ const errorCodeToMessage: Record<string, string> = {
 
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { bookingState, dismissModal, dispatch } = useBooking()
+  const { bookingState, dismissModal, dispatch } = useBookingContext()
   const selectedStock = useBookingStock()
   const offer = useBookingOffer()
   const { showErrorSnackBar } = useSnackBarContext()

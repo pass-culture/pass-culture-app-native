@@ -5,7 +5,7 @@ import { DateData, Theme } from 'react-native-calendars/src/types'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
-import { OfferStatus } from 'features/bookOffer/services/utils'
+import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'

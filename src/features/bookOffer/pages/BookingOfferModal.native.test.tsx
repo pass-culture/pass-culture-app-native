@@ -1,24 +1,28 @@
 import React from 'react'
 
+import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
-import { Step } from './reducer'
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
 const mockStep = Step.DATE
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({
     dispatch: mockDispatch,
     bookingState: { quantity: 1, step: mockStep },
     dismissModal: mockDismissModal,
   })),
+  useBookingOffer: jest.fn(() => mockOffer),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 

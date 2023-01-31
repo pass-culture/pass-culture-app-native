@@ -1,8 +1,8 @@
 import React from 'react'
 
+import { BookingState, Step } from 'features/bookOffer/context/reducer'
+import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
 
@@ -14,9 +14,9 @@ const mockDuoStep = Step.DUO
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-const mockUseBooking = useBooking as jest.Mock
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({
+const mockUseBooking = useBookingContext as jest.Mock
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({
     dispatch: mockDispatch,
     bookingState: {
       quantity: 1,
@@ -25,11 +25,17 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
     } as BookingState,
     dismissModal: mockDismissModal,
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => ({
     price: 2000,
     id: '148409',
     beginningDatetime: new Date('2021-03-02T20:00:00'),
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 

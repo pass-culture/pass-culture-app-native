@@ -2,12 +2,12 @@
 import { Platform } from 'react-native'
 
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
-import { Step } from 'features/bookOffer/pages/reducer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { renderHook } from 'tests/utils'
 
-import { useModalContent } from '../useModalContent'
+import { useModalContent } from './useModalContent'
 
 let mockOffer: OfferResponse | undefined = baseOffer
 
@@ -15,12 +15,15 @@ const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 let mockStep = Step.DATE
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({
     dispatch: mockDispatch,
     bookingState: { quantity: 1, step: mockStep },
     dismissModal: mockDismissModal,
   })),
+}))
+
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 

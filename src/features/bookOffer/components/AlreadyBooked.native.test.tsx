@@ -6,10 +6,8 @@ import { fireEvent, render } from 'tests/utils'
 import { AlreadyBooked } from './AlreadyBooked'
 
 const mockDismissModal = jest.fn()
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: () => ({
-    dismissModal: mockDismissModal,
-  }),
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: () => ({ dismissModal: mockDismissModal }),
 }))
 
 describe('<AlreadyBooked />', () => {

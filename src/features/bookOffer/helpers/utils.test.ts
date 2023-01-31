@@ -5,7 +5,7 @@ import {
   formatToKeyDate,
   getStatusFromStocks,
   OfferStatus,
-} from 'features/bookOffer/services/utils'
+} from 'features/bookOffer/helpers/utils'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))

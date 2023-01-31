@@ -2,7 +2,7 @@ import React from 'react'
 import InAppReview from 'react-native-in-app-review'
 import waitForExpect from 'wait-for-expect'
 
-import { useReviewInAppInformation } from 'features/bookOffer/services/useReviewInAppInformation'
+import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render } from 'tests/utils'
@@ -13,7 +13,7 @@ jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
 const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
 
-jest.mock('features/bookOffer/services/useReviewInAppInformation')
+jest.mock('features/bookOffer/helpers/useReviewInAppInformation')
 const mockUseReviewInAppInformation = useReviewInAppInformation as jest.Mock
 
 const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()

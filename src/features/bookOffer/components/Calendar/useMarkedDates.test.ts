@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { useMarkedDates } from 'features/bookOffer/components/Calendar/useMarkedDates'
-import { BookingState, Step } from 'features/bookOffer/pages/reducer'
+import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { renderHook } from 'tests/utils'
 
@@ -13,8 +13,8 @@ const mockBookingState: BookingState = {
   date: new Date(2021, 0, 1),
 }
 
-jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({ bookingState: mockBookingState })),
+jest.mock('features/bookOffer/context/useBookingContext', () => ({
+  useBookingContext: jest.fn(() => ({ bookingState: mockBookingState })),
 }))
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
