@@ -127,7 +127,6 @@ export enum AnalyticsEvent {
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
   USE_FILTER = 'UseFilter',
-  USE_LANDING_CATEGORY = 'UseLandingCategory',
   VENUE_CONTACT = 'VenueContact',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
