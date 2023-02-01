@@ -15,7 +15,7 @@ import {
 import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -53,18 +53,18 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
       }
-      const { getByText, toJSON } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      let component = toJSON()
+      let component = screen.toJSON()
       if (Array.isArray(component)) {
         expect(component).not.toContain('CalendarPicker')
         expect(component).toContain('NoCalendar')
       }
 
       await act(async () => {
-        fireEvent.press(getByText('Date précise'))
+        fireEvent.press(screen.getByText('Date précise'))
       })
-      component = toJSON()
+      component = screen.toJSON()
       if (Array.isArray(component)) {
         expect(component).toContain('CalendarPicker')
         expect(component).not.toContain('NoCalendar')
@@ -76,9 +76,9 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TOMORROW.toISOString() },
       }
-      const { getByText } = renderDatesHoursModal()
+      renderDatesHoursModal()
       await act(async () => {
-        expect(getByText('Samedi 29 octobre 2022')).toBeTruthy()
+        expect(screen.getByText('Samedi 29 octobre 2022')).toBeTruthy()
       })
     })
 
@@ -87,10 +87,10 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         timeRange: [18, 22],
       }
-      const { getByText } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
       await act(async () => {
-        expect(getByText(`18\u00a0h et 22\u00a0h`)).toBeTruthy()
+        expect(screen.getByText(`18\u00a0h et 22\u00a0h`)).toBeTruthy()
       })
     })
   })
@@ -100,9 +100,9 @@ describe('<DatesHoursModal/>', () => {
       ...searchState,
       date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TODAY.toISOString() },
     }
-    const { getByTestId, toJSON } = renderDatesHoursModal()
+    renderDatesHoursModal()
 
-    const radioButton = getByTestId(
+    const radioButton = screen.getByTestId(
       `${RadioButtonDate.PRECISE_DATE} ${formatToCompleteFrenchDate(TODAY)}`
     )
 
@@ -110,7 +110,7 @@ describe('<DatesHoursModal/>', () => {
       fireEvent.press(radioButton)
     })
 
-    const withCalendar = toJSON()
+    const withCalendar = screen.toJSON()
     if (Array.isArray(withCalendar)) {
       expect(withCalendar).toContain('CalendarPicker')
       expect(withCalendar).not.toContain('NoCalendar')
@@ -120,144 +120,11 @@ describe('<DatesHoursModal/>', () => {
       fireEvent.press(radioButton)
     })
 
-    const withoutCalendar = toJSON()
+    const withoutCalendar = screen.toJSON()
     if (Array.isArray(withoutCalendar)) {
       expect(withoutCalendar).toContain('CalendarPicker')
       expect(withoutCalendar).not.toContain('NoCalendar')
     }
-  })
-
-  describe('should navigate on search results', () => {
-    it('with actual state without change when pressing search button', async () => {
-      mockSearchState = {
-        ...searchState,
-        view: SearchView.Results,
-      }
-      const { getByText } = renderDatesHoursModal()
-
-      await superFlushWithAct()
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          view: SearchView.Results,
-        },
-        screen: 'Search',
-      })
-    })
-
-    it.each(DATE_TYPES)(
-      'with %s date filter when toggle date activated and pressing search button',
-      async ({ label, type }) => {
-        mockSearchState = {
-          ...searchState,
-        }
-        const { getByTestId, getByText } = renderDatesHoursModal()
-
-        const toggleDate = getByTestId('Interrupteur-date')
-        await act(async () => {
-          fireEvent.press(toggleDate)
-        })
-
-        const radioButton = getByTestId(label)
-        await act(async () => {
-          fireEvent.press(radioButton)
-        })
-
-        const searchButton = getByText('Rechercher')
-        await act(async () => {
-          fireEvent.press(searchButton)
-        })
-
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
-            ...mockSearchState,
-            date: { selectedDate: TODAY.toISOString(), option: type },
-            view: SearchView.Results,
-          },
-          screen: 'Search',
-        })
-      }
-    )
-
-    it('with a time range filter when toggle hour activated and pressing search button', async () => {
-      mockSearchState = {
-        ...searchState,
-      }
-      const { getByTestId, getByText } = renderDatesHoursModal()
-
-      const toggleHour = getByTestId('Interrupteur-hour')
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
-
-      await act(async () => {
-        const slider = getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChangeFinish([18, 23])
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          timeRange: [18, 23],
-          view: SearchView.Results,
-        },
-        screen: 'Search',
-      })
-    })
-
-    it('without beginning & ending date when pressing search button', async () => {
-      mockSearchState = {
-        ...searchState,
-        beginningDatetime: TODAY.toISOString(),
-        endingDatetime: TOMORROW.toISOString(),
-      }
-      const { getByText } = renderDatesHoursModal()
-
-      await superFlushWithAct()
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          beginningDatetime: UNDEFINED_DATE,
-          endingDatetime: UNDEFINED_DATE,
-          view: SearchView.Results,
-        },
-        screen: 'Search',
-      })
-    })
-  })
-
-  it('should log PerformSearch when pressing search button', async () => {
-    mockSearchState = {
-      ...searchState,
-      view: SearchView.Results,
-    }
-    const { getByText } = renderDatesHoursModal()
-
-    await superFlushWithAct()
-
-    const searchButton = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(searchButton)
-    })
-
-    expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
   })
 
   describe('should desactivate', () => {
@@ -265,15 +132,15 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      const toggleDate = getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur-date')
       await act(async () => {
         fireEvent.press(toggleDate)
       })
       expect(toggleDate.props.accessibilityState.checked).toEqual(true)
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
@@ -284,15 +151,15 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      const toggleHour = getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur-hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
@@ -307,20 +174,20 @@ describe('<DatesHoursModal/>', () => {
         mockSearchState = {
           ...searchState,
         }
-        const { getByTestId, getByText } = renderDatesHoursModal()
+        renderDatesHoursModal()
 
-        const toggleDate = getByTestId('Interrupteur-date')
+        const toggleDate = screen.getByTestId('Interrupteur-date')
         await act(async () => {
           fireEvent.press(toggleDate)
         })
 
-        const radioButton = getByTestId(option)
+        const radioButton = screen.getByTestId(option)
         await act(async () => {
           fireEvent.press(radioButton)
         })
         expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
-        const resetButton = getByText('Réinitialiser')
+        const resetButton = screen.getByText('Réinitialiser')
         await act(async () => {
           fireEvent.press(resetButton)
           fireEvent.press(toggleDate)
@@ -336,14 +203,14 @@ describe('<DatesHoursModal/>', () => {
         mockSearchState = {
           ...searchState,
         }
-        const { getByTestId } = renderDatesHoursModal()
+        renderDatesHoursModal()
 
-        const toggleDate = getByTestId('Interrupteur-date')
+        const toggleDate = screen.getByTestId('Interrupteur-date')
         await act(async () => {
           fireEvent.press(toggleDate)
         })
 
-        const radioButton = getByTestId(option)
+        const radioButton = screen.getByTestId(option)
         await act(async () => {
           fireEvent.press(radioButton)
         })
@@ -362,59 +229,59 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      const toggleHour = getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur-hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
 
       await act(async () => {
-        const slider = getByTestId('slider').children[0] as ReactTestInstance
+        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChangeFinish([18, 23])
       })
-      expect(getByText(`18\u00a0h et 23\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeTruthy()
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
         fireEvent.press(toggleHour)
       })
-      expect(getByText(`8\u00a0h et 22\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeTruthy()
     })
 
     it('time range selected when desactivating hour toggle', async () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByTestId, getByText } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      const toggleHour = getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur-hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
 
       await act(async () => {
-        const slider = getByTestId('slider').children[0] as ReactTestInstance
+        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChangeFinish([18, 23])
       })
-      expect(getByText(`18\u00a0h et 23\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeTruthy()
 
       await act(async () => {
         fireEvent.press(toggleHour)
         fireEvent.press(toggleHour)
       })
-      expect(getByText(`8\u00a0h et 22\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeTruthy()
     })
   })
 
   it('should close the modal when pressing previous button', async () => {
-    const { getByTestId } = renderDatesHoursModal()
+    renderDatesHoursModal()
 
     await superFlushWithAct()
 
-    const previousButton = getByTestId('Fermer')
+    const previousButton = screen.getByTestId('Fermer')
     fireEvent.press(previousButton)
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
@@ -426,9 +293,9 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
-      const { getByTestId } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      const toggleDate = getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur-date')
 
       await act(async () => {
         expect(toggleDate.props.accessibilityState.checked).toEqual(true)
@@ -440,9 +307,9 @@ describe('<DatesHoursModal/>', () => {
         ...searchState,
         date: { selectedDate: TODAY.toISOString(), option: DATE_FILTER_OPTIONS.TODAY },
       }
-      const { getByTestId } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
-      const toggleHour = getByTestId('Interrupteur-date')
+      const toggleHour = screen.getByTestId('Interrupteur-date')
 
       await act(async () => {
         expect(toggleHour.props.accessibilityState.checked).toEqual(true)
@@ -458,9 +325,9 @@ describe('<DatesHoursModal/>', () => {
           ...searchState,
           date: { selectedDate: TODAY.toISOString(), option: type },
         }
-        const { getByTestId } = renderDatesHoursModal()
+        renderDatesHoursModal()
 
-        const radioButton = getByTestId(label, { exact: false })
+        const radioButton = screen.getByTestId(label, { exact: false })
         await act(async () => {
           expect(radioButton.props.accessibilityState).toEqual({ checked: true })
         })
@@ -470,12 +337,12 @@ describe('<DatesHoursModal/>', () => {
 
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
-      const { getByText } = renderDatesHoursModal({
+      renderDatesHoursModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
-        expect(getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
       })
     })
 
@@ -483,21 +350,21 @@ describe('<DatesHoursModal/>', () => {
       mockSearchState = {
         ...searchState,
       }
-      const { getByText, getByTestId } = renderDatesHoursModal({
+      renderDatesHoursModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggleDate = getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur-date')
       await act(async () => {
         fireEvent.press(toggleDate)
       })
 
-      const radioButton = getByText(RadioButtonDate.WEEK)
+      const radioButton = screen.getByText(RadioButtonDate.WEEK)
       await act(async () => {
         fireEvent.press(radioButton)
       })
 
-      const searchButton = getByText('Appliquer le filtre')
+      const searchButton = screen.getByText('Appliquer le filtre')
       await act(async () => {
         fireEvent.press(searchButton)
       })
@@ -516,39 +383,193 @@ describe('<DatesHoursModal/>', () => {
         payload: expectedSearchParams,
       })
     })
+
+    it('should not log PerformSearch when pressing button', async () => {
+      mockSearchState = {
+        ...searchState,
+        view: SearchView.Results,
+      }
+      renderDatesHoursModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await superFlushWithAct()
+
+      const searchButton = screen.getByText('Appliquer le filtre')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
+    })
+  })
+
+  describe('with "Recherche" button', () => {
+    describe('should navigate on search results', () => {
+      it('with actual state without change when pressing button', async () => {
+        mockSearchState = {
+          ...searchState,
+          view: SearchView.Results,
+        }
+        renderDatesHoursModal()
+
+        await superFlushWithAct()
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            view: SearchView.Results,
+          },
+          screen: 'Search',
+        })
+      })
+
+      it.each(DATE_TYPES)(
+        'with %s date filter when toggle date activated and pressing button',
+        async ({ label, type }) => {
+          mockSearchState = {
+            ...searchState,
+          }
+          renderDatesHoursModal()
+
+          const toggleDate = screen.getByTestId('Interrupteur-date')
+          await act(async () => {
+            fireEvent.press(toggleDate)
+          })
+
+          const radioButton = screen.getByTestId(label)
+          await act(async () => {
+            fireEvent.press(radioButton)
+          })
+
+          const searchButton = screen.getByText('Rechercher')
+          await act(async () => {
+            fireEvent.press(searchButton)
+          })
+
+          expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+            params: {
+              ...mockSearchState,
+              date: { selectedDate: TODAY.toISOString(), option: type },
+              view: SearchView.Results,
+            },
+            screen: 'Search',
+          })
+        }
+      )
+
+      it('with a time range filter when toggle hour activated and pressing button', async () => {
+        mockSearchState = {
+          ...searchState,
+        }
+        renderDatesHoursModal()
+
+        const toggleHour = screen.getByTestId('Interrupteur-hour')
+        await act(async () => {
+          fireEvent.press(toggleHour)
+        })
+
+        await act(async () => {
+          const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+          slider.props.onValuesChangeFinish([18, 23])
+        })
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            timeRange: [18, 23],
+            view: SearchView.Results,
+          },
+          screen: 'Search',
+        })
+      })
+
+      it('without beginning & ending date when pressing button', async () => {
+        mockSearchState = {
+          ...searchState,
+          beginningDatetime: TODAY.toISOString(),
+          endingDatetime: TOMORROW.toISOString(),
+        }
+        renderDatesHoursModal()
+
+        await superFlushWithAct()
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            beginningDatetime: UNDEFINED_DATE,
+            endingDatetime: UNDEFINED_DATE,
+            view: SearchView.Results,
+          },
+          screen: 'Search',
+        })
+      })
+    })
+
+    it('should log PerformSearch when pressing button', async () => {
+      mockSearchState = {
+        ...searchState,
+        view: SearchView.Results,
+      }
+      renderDatesHoursModal()
+
+      await superFlushWithAct()
+
+      const searchButton = screen.getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
+    })
   })
 
   describe('Modal header buttons', () => {
     it('should display back button on header when the modal is opening from general filter page', async () => {
-      const { getByTestId } = renderDatesHoursModal({
+      renderDatesHoursModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
-        expect(getByTestId('Revenir en arrière')).toBeTruthy()
+        expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
       })
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
-      const { getByTestId } = renderDatesHoursModal({
+      renderDatesHoursModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
         onClose: mockOnClose,
       })
 
       await superFlushWithAct()
 
-      const closeButton = getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
 
       expect(mockOnClose).toHaveBeenCalledTimes(1)
     })
 
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
-      const { getByTestId } = renderDatesHoursModal()
+      renderDatesHoursModal()
 
       await superFlushWithAct()
 
-      const closeButton = getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
 
       expect(mockOnClose).not.toHaveBeenCalled()

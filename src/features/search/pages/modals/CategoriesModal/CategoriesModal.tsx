@@ -187,9 +187,9 @@ export const CategoriesModal = ({
         isOnline: isOnline || undefined,
       }
 
-      analytics.logPerformSearch(additionalSearchState)
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
+          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }

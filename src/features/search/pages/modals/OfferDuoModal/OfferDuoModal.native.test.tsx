@@ -12,7 +12,7 @@ import {
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -70,31 +70,31 @@ describe('<OfferDuoModal/>', () => {
 
     describe('Buttons', () => {
       it('should display back button on header when the modal is opening from general filter page', async () => {
-        const { getByTestId } = renderOfferDuoModal({
+        renderOfferDuoModal({
           filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
         })
 
         await waitFor(() => {
-          expect(getByTestId('Revenir en arrière')).toBeTruthy()
+          expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
         })
       })
 
       it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
-        const { getByTestId } = renderOfferDuoModal({
+        renderOfferDuoModal({
           filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
           onClose: mockOnClose,
         })
 
-        const closeButton = getByTestId('Fermer')
+        const closeButton = screen.getByTestId('Fermer')
         fireEvent.press(closeButton)
 
         expect(mockOnClose).toHaveBeenCalledTimes(1)
       })
 
       it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
-        const { getByTestId } = renderOfferDuoModal()
+        renderOfferDuoModal()
 
-        const closeButton = getByTestId('Fermer')
+        const closeButton = screen.getByTestId('Fermer')
         fireEvent.press(closeButton)
 
         expect(mockOnClose).not.toHaveBeenCalled()
@@ -153,8 +153,8 @@ describe('<OfferDuoModal/>', () => {
 
   describe('should close the modal ', () => {
     it('should close modal on submit', async () => {
-      const { getByText } = renderOfferDuoModal()
-      const button = getByText('Rechercher')
+      renderOfferDuoModal()
+      const button = screen.getByText('Rechercher')
 
       fireEvent.press(button)
 
@@ -163,10 +163,74 @@ describe('<OfferDuoModal/>', () => {
       })
     })
 
-    it('should navigate to Search results when selecting DUO offer and submit form', async () => {
-      const { getByText, getByTestId } = renderOfferDuoModal()
-      const toggle = getByTestId('Interrupteur-limitDuoOfferSearch')
-      const button = getByText('Rechercher')
+    it('when pressing previous button', () => {
+      renderOfferDuoModal()
+
+      const previousButton = screen.getByTestId('Fermer')
+      fireEvent.press(previousButton)
+
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('with "Appliquer le filtre" button', () => {
+    it('should display alternative button title', async () => {
+      renderOfferDuoModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await waitFor(() => {
+        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+      })
+    })
+
+    it('should update search state when pressing submit button', async () => {
+      renderOfferDuoModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      const toggle = screen.getByTestId('Interrupteur-limitDuoOfferSearch')
+
+      fireEvent.press(toggle)
+
+      const searchButton = screen.getByText('Appliquer le filtre')
+
+      fireEvent.press(searchButton)
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerIsDuo: true,
+        view: SearchView.Results,
+      }
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
+        })
+      })
+    })
+
+    it('should not log PerformSearch when pressing button', async () => {
+      renderOfferDuoModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      const button = screen.getByText('Appliquer le filtre')
+
+      fireEvent.press(button)
+
+      await waitFor(() => {
+        expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
+      })
+    })
+  })
+
+  describe('with "Rechercher" button', () => {
+    it('should navigate to Search results when selecting DUO offer and pressing button', async () => {
+      renderOfferDuoModal()
+      const toggle = screen.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const button = screen.getByText('Rechercher')
 
       fireEvent.press(toggle)
 
@@ -184,10 +248,10 @@ describe('<OfferDuoModal/>', () => {
       })
     })
 
-    it('should use default filters when submitting without change', async () => {
-      const { getByText } = renderOfferDuoModal()
+    it('should use default filters without change when pressing button', async () => {
+      renderOfferDuoModal()
 
-      const button = getByText('Rechercher')
+      const button = screen.getByText('Rechercher')
 
       fireEvent.press(button)
 
@@ -203,66 +267,18 @@ describe('<OfferDuoModal/>', () => {
       })
     })
 
-    it('when pressing previous button', () => {
-      const { getByTestId } = renderOfferDuoModal()
+    it('should log PerformSearch when pressing button', async () => {
+      renderOfferDuoModal()
 
-      const previousButton = getByTestId('Fermer')
-      fireEvent.press(previousButton)
+      const button = screen.getByText('Rechercher')
 
-      expect(mockHideModal).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  it('should log PerformSearch when pressing search button', async () => {
-    const { getByText } = renderOfferDuoModal()
-
-    const button = getByText('Rechercher')
-
-    fireEvent.press(button)
-
-    await waitFor(() => {
-      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-        ...mockSearchState,
-        view: SearchView.Results,
-        offerIsDuo: false,
-      })
-    })
-  })
-
-  describe('with "Appliquer le filtre" button', () => {
-    it('should display alternative button title', async () => {
-      const { getByText } = renderOfferDuoModal({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
+      fireEvent.press(button)
 
       await waitFor(() => {
-        expect(getByText('Appliquer le filtre')).toBeTruthy()
-      })
-    })
-
-    it('should update search state when pressing submit button', async () => {
-      const { getByText, getByTestId } = renderOfferDuoModal({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-
-      const toggle = getByTestId('Interrupteur-limitDuoOfferSearch')
-
-      fireEvent.press(toggle)
-
-      const searchButton = getByText('Appliquer le filtre')
-
-      fireEvent.press(searchButton)
-
-      const expectedSearchParams: SearchState = {
-        ...searchState,
-        offerIsDuo: true,
-        view: SearchView.Results,
-      }
-
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
+        expect(analytics.logPerformSearch).toHaveBeenCalledWith({
+          ...mockSearchState,
+          view: SearchView.Results,
+          offerIsDuo: false,
         })
       })
     })

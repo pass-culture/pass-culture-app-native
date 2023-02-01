@@ -9,7 +9,7 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
@@ -64,9 +64,9 @@ describe('<SearchFilter/>', () => {
   describe('should navigate on search results with the current search state', () => {
     it('when pressing go back', async () => {
       useRoute.mockReturnValueOnce({ params: initialSearchState })
-      const { getByTestId } = renderSearchFilter()
+      renderSearchFilter()
 
-      fireEvent.press(getByTestId('Fermer'))
+      fireEvent.press(screen.getByTestId('Fermer'))
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -77,9 +77,9 @@ describe('<SearchFilter/>', () => {
     })
 
     it('when pressing Rechercher', async () => {
-      const { getByText } = renderSearchFilter()
+      renderSearchFilter()
 
-      fireEvent.press(getByText('Rechercher'))
+      fireEvent.press(screen.getByText('Rechercher'))
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -90,11 +90,24 @@ describe('<SearchFilter/>', () => {
     })
   })
 
+  it('should log perform search when pressing Rechercher', async () => {
+    renderSearchFilter()
+
+    fireEvent.press(screen.getByText('Rechercher'))
+
+    await waitFor(() => {
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
+        ...mockSearchState,
+        view: SearchView.Results,
+      })
+    })
+  })
+
   describe('should update the state when pressing the reset button', () => {
     it('and position is not null', async () => {
-      const { getByText } = renderSearchFilter()
+      renderSearchFilter()
 
-      fireEvent.press(getByText('Réinitialiser'))
+      fireEvent.press(screen.getByText('Réinitialiser'))
 
       await waitFor(() => {
         expect(mockStateDispatch).toHaveBeenCalledWith({
@@ -113,9 +126,9 @@ describe('<SearchFilter/>', () => {
 
     it('and position is null', async () => {
       mockPosition = null
-      const { getByText } = renderSearchFilter()
+      renderSearchFilter()
 
-      fireEvent.press(getByText('Réinitialiser'))
+      fireEvent.press(screen.getByText('Réinitialiser'))
 
       await waitFor(() => {
         expect(mockStateDispatch).toHaveBeenCalledWith({
@@ -134,9 +147,9 @@ describe('<SearchFilter/>', () => {
   })
 
   it('should log analytics when clicking on the reset button', async () => {
-    const { getByText } = renderSearchFilter()
+    renderSearchFilter()
 
-    fireEvent.press(getByText('Réinitialiser'))
+    fireEvent.press(screen.getByText('Réinitialiser'))
 
     await waitFor(() => {
       expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
@@ -144,18 +157,18 @@ describe('<SearchFilter/>', () => {
   })
 
   it('should display close button on header', async () => {
-    const { getByTestId } = renderSearchFilter()
+    renderSearchFilter()
 
     await waitFor(() => {
-      expect(getByTestId('Fermer')).toBeTruthy()
+      expect(screen.getByTestId('Fermer')).toBeTruthy()
     })
   })
 
   it('should not display back button on header', async () => {
-    const { queryByTestId } = renderSearchFilter()
+    renderSearchFilter()
 
     await waitFor(() => {
-      expect(queryByTestId('Revenir en arrière')).toBeFalsy()
+      expect(screen.queryByTestId('Revenir en arrière')).toBeFalsy()
     })
   })
 })
