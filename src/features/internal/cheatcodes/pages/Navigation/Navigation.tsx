@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
-import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
+import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatCodesButton/CheatCodesButton'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'

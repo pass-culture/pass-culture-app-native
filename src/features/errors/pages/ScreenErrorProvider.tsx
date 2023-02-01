@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
-import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
+import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
+import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
