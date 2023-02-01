@@ -131,9 +131,8 @@ export const CategoriesModal = ({
   )
 
   const handleModalClose = useCallback(() => {
-    reset()
     hideModal()
-  }, [hideModal, reset])
+  }, [hideModal])
 
   const handleClose = useCallback(() => {
     handleModalClose()
@@ -163,7 +162,6 @@ export const CategoriesModal = ({
       if (!data) {
         return
       }
-      setValue('currentView', CategoriesModalView.CATEGORIES)
 
       const payload = buildSearchPayloadValues(data, form)
       if (!payload) return
@@ -193,7 +191,7 @@ export const CategoriesModal = ({
       }
       hideModal()
     },
-    [data, dispatch, filterBehaviour, hideModal, navigate, searchState, setValue]
+    [data, dispatch, filterBehaviour, hideModal, navigate, searchState]
   )
 
   const handleReset = useCallback(() => {
@@ -288,6 +286,7 @@ export const CategoriesModal = ({
             allLabel="Tout"
             value={genreType}
             descriptionContext={descriptionContext}
+            onSubmit={handleSubmit(handleSearchPress)}
           />
         )}
       </Form.MaxWidth>
