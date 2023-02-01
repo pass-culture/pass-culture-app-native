@@ -7,8 +7,7 @@ const defaultFocus = {
   outlineOffset: 0,
 }
 const firefoxFocus = {
-  outlineStyle: 'solid',
-  outlineOffset: '-1px',
+  outlineOffset: '-2px',
 }
 const safariFocus = {
   outlineOffset: '-3px',
