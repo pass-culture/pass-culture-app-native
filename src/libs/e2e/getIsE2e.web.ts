@@ -3,7 +3,7 @@ import { env } from 'libs/environment'
 let isE2e: boolean | undefined = undefined
 
 export async function getIsE2e() {
-  if (env.ENV === 'production') {
+  if (env.ENV === 'production' || process.env.NODE_ENV === 'test') {
     isE2e = false
   }
   if (isE2e === true || isE2e === false) {

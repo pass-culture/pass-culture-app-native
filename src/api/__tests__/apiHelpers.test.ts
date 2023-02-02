@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import * as NavigationRef from 'features/navigation/navigationRef'
+import { env } from 'libs/environment'
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -13,9 +14,12 @@ import {
   RefreshTokenExpiredResponse,
   safeFetch,
 } from '../apiHelpers'
-import { DefaultApi } from '../gen'
+import { Configuration, DefaultApi } from '../gen'
 
-const api = new DefaultApi({})
+const configuration: Configuration = {
+  basePath: env.API_BASE_URL,
+}
+const api = new DefaultApi(configuration)
 
 const respondWith = async (
   body: unknown,
@@ -150,7 +154,7 @@ describe('[api] helpers', () => {
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(mockFetch).nthCalledWith(1, '/native/v1/refresh_access_token', {
+      expect(mockFetch).nthCalledWith(1, env.API_BASE_URL + '/native/v1/refresh_access_token', {
         headers: {
           Authorization: `Bearer ${password}`,
           'app-version': '1.10.5',
@@ -160,7 +164,7 @@ describe('[api] helpers', () => {
         credentials: 'omit',
         method: 'POST',
       })
-      expect(mockFetch).nthCalledWith(2, '/native/v1/refresh_access_token', {
+      expect(mockFetch).nthCalledWith(2, env.API_BASE_URL + '/native/v1/refresh_access_token', {
         headers: {
           Authorization: `Bearer ${password}`,
           'app-version': '1.10.5',
