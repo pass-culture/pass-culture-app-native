@@ -315,6 +315,7 @@ module.exports = function (webpackEnv) {
         'react-native-permissions': path.join(paths.appSrc, 'libs/react-native-permissions'),
         'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
         'react-native-appsflyer': path.join(paths.appSrc, 'libs/react-native-appsflyer'),
+        'react-native-share': path.join(paths.appSrc, 'libs/react-native-share'),
 
         //// Those package use bad default import from package.json (for ex: using package.json browser field instead of module)
         //// See https://github.com/webpack/webpack/issues/4674 for details
