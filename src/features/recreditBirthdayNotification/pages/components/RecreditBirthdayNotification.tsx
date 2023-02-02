@@ -64,8 +64,8 @@ export const RecreditBirthdayNotification = () => {
   const recreditMessage = `Pour tes ${age} ans, l’État vient d'ajouter ${creditedAmount} à ton crédit. Tu disposes maintenant de\u00a0:`
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title={'Bonne nouvelle\u00a0!'}>
-      <StyledSubtitle testID={'recreditMessage'}>{recreditMessage}</StyledSubtitle>
+    <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
+      <StyledSubtitle testID="recreditMessage">{recreditMessage}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
