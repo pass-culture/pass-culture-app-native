@@ -4,6 +4,7 @@ import { Share as NativeShare } from 'react-native'
 import Share from 'react-native-share'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -11,7 +12,10 @@ import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessag
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { SearchHit } from 'libs/algolia'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import {
+  mockedAlgoliaResponse,
+  moreHitsForSimilarOffersPlaylist,
+} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, cleanup, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -30,10 +34,12 @@ jest.mock('features/offer/api/useSimilarOffers', () => ({
 }))
 
 const mockSubcategories = placeholderData.subcategories
+const mockSearchGroups = placeholderData.searchGroups
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {
       subcategories: mockSubcategories,
+      searchGroups: mockSearchGroups,
     },
   }),
 }))
@@ -79,7 +85,7 @@ describe('<OfferBody />', () => {
 
   describe('with similar offers', () => {
     beforeAll(() => {
-      mockSearchHits = mockedAlgoliaResponse.hits
+      mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
     })
 
     it('should display similar offers list when offer has some', async () => {
@@ -93,8 +99,24 @@ describe('<OfferBody />', () => {
       const spy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementationOnce(jest.fn())
       render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates, undefined)
-      expect(spy).toHaveBeenNthCalledWith(2, offerId, mockOffer.venue.coordinates, undefined)
+      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates, [
+        SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+      ])
+      expect(spy).toHaveBeenNthCalledWith(2, offerId, mockOffer.venue.coordinates, [
+        SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+        SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+        SearchGroupNameEnumv2.CARTES_JEUNES,
+        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+        SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+        SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+        SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.INSTRUMENTS,
+        SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+        SearchGroupNameEnumv2.LIVRES,
+        SearchGroupNameEnumv2.MEDIA_PRESSE,
+        SearchGroupNameEnumv2.SPECTACLES,
+      ])
     })
 
     describe('Same category similar offers', () => {
@@ -112,7 +134,7 @@ describe('<OfferBody />', () => {
       it('should log analytics event logSimilarOfferPlaylistHorizontalScroll when scrolling on it', async () => {
         const nativeEventMiddle = {
           layoutMeasurement: { height: 296 },
-          contentOffset: { x: 50 }, // how far did we scroll
+          contentOffset: { x: 200 }, // how far did we scroll
           contentSize: { height: 296 },
         }
         render(<OfferBody offerId={offerId} onScroll={onScroll} />)
@@ -121,7 +143,7 @@ describe('<OfferBody />', () => {
         await waitFor(() => {
           scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
         })
-        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(2)
+        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -140,7 +162,7 @@ describe('<OfferBody />', () => {
       it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
         const nativeEventMiddle = {
           layoutMeasurement: { height: 296, width: 296 },
-          contentOffset: { x: 50 }, // how far did we scroll
+          contentOffset: { x: 200 }, // how far did we scroll
           contentSize: { height: 296, width: 296 },
         }
         render(<OfferBody offerId={offerId} onScroll={jest.fn()} />)
@@ -149,7 +171,7 @@ describe('<OfferBody />', () => {
         await waitFor(() => {
           scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
         })
-        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(2)
+        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
       })
     })
   })
