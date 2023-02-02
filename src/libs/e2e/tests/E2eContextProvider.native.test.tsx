@@ -7,6 +7,7 @@ import { E2eContextProvider, useIsE2e } from '../E2eContextProvider'
 
 describe('<E2eContextProvider />', () => {
   it('should render with children and with value true when getIsE2e return true', async () => {
+    process.env.NODE_ENV = 'development'
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       ok: true,
     } as Response)
@@ -16,6 +17,7 @@ describe('<E2eContextProvider />', () => {
     })
     await expect(screen.queryByTestId('false-test')).toBeFalsy()
     await expect(screen.getByTestId('true-test').children.join('')).toBe('hello true world')
+    process.env.NODE_ENV = 'test'
   })
 })
 
