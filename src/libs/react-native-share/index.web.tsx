@@ -4,4 +4,6 @@ const Share = {
   openSingle: () => null,
 }
 
+export enum Social {}
+
 export default Share
