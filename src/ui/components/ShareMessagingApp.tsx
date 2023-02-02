@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IconWithCaption } from 'ui/components/IconWithCaption'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { DiscordRound } from 'ui/svg/icons/socialNetwork/DiscordRound'
 import { IMessageRound } from 'ui/svg/icons/socialNetwork/IMessage'
 import { InstagramRound } from 'ui/svg/icons/socialNetwork/InstagramRound'
@@ -20,16 +21,22 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 interface ShareMessagingAppProps {
   network: Network
+  onPress: () => Promise<void>
 }
 
 export const ShareMessagingApp: React.FC<ShareMessagingAppProps> = ({
   network,
+  onPress,
 }: ShareMessagingAppProps) => {
   const StyledIcon = styled(mapNetworkToRoundIcon[network]).attrs(({ theme }) => ({
     size: theme.buttons.buttonHeights.tall,
   }))``
 
-  return <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + network} />
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + network} />
+    </TouchableOpacity>
+  )
 }
 
 export enum Network {

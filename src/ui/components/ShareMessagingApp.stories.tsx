@@ -14,4 +14,7 @@ const Template: ComponentStory<typeof ShareMessagingApp> = (args) => <ShareMessa
 export const Default = Template.bind({})
 Default.args = {
   network: Network.instagram,
+  onPress: async () => {
+    return
+  },
 }
