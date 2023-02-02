@@ -5,6 +5,8 @@ import styled from 'styled-components/native'
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { Booking } from 'features/bookings/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { plural } from 'libs/plural'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Separator } from 'ui/components/Separator'
@@ -16,6 +18,7 @@ const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
 export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings()
+  const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   const endedBookingsCount = bookings?.ended_bookings?.length || 0
   const endedBookingsLabel = plural(endedBookingsCount, {
@@ -36,7 +39,7 @@ export const EndedBookings: React.FC = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="Réservations terminées" />
+      <PageHeaderSecondary onGoBack={goBack} title="Réservations terminées" />
       <FlatList
         listAs="ul"
         itemAs="li"
