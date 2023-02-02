@@ -1,4 +1,4 @@
-import { addDays, format, intervalToDuration } from 'date-fns'
+import { addDays, format, differenceInDays } from 'date-fns'
 
 import { Booking } from 'features/bookings/types'
 
@@ -45,11 +45,7 @@ export const daysCountdown = (dateCreated: string) => {
     return endedCountdown
   }
 
-  const daysLeftUntilExpiration =
-    intervalToDuration({
-      start: startDate,
-      end: endDate,
-    }).days ?? endedCountdown
+  const daysLeftUntilExpiration = differenceInDays(endDate, startDate) ?? endedCountdown
 
   return daysLeftUntilExpiration
 }
