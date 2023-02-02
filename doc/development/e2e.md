@@ -167,7 +167,7 @@ ANDROID=true \
 Example using the `staging` pcapi version:
 
 ```bash
-PCAPI_DOCKER_TAG=$(curl -sS http://backend.staging.passculture.team/health/api) 
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) 
 docker-compose -f e2e/docker-compose-e2e.yml up
 ```
 
@@ -176,14 +176,14 @@ docker-compose -f e2e/docker-compose-e2e.yml up
 **To stop all the containers**
 
 ```bash
-PCAPI_DOCKER_TAG=$(curl -sS http://backend.staging.passculture.team/health/api) 
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) 
 docker-compose -f e2e/docker-compose-e2e.yml stop
 ```
 
 **To remove all the containers**
 
 ```bash
-PCAPI_DOCKER_TAG=$(curl -sS http://backend.staging.passculture.team/health/api) 
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) 
 docker-compose -f e2e/docker-compose-e2e.yml stop
 docker-compose -f e2e/docker-compose-e2e.yml rm -fv
 ```
