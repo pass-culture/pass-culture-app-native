@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
+import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Connect } from 'ui/svg/icons/Connect'
@@ -10,14 +10,22 @@ import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-interface Props {
-  type: 'login' | 'signup'
+type LoginProps = {
+  type: 'login'
+  params?: RootStackParamList['Login']
+}
+
+type SignupProps = {
+  type: 'signup'
+  params?: RootStackParamList['SignupForm']
+}
+
+type Props = {
   linkColor?: ColorsEnum
-  params?: RootNavigateParams[1]
   onAdditionalPress?: () => void
   children?: never
   preventCancellation?: boolean
-}
+} & (LoginProps | SignupProps)
 
 export const AuthenticationButton: FunctionComponent<Props> = ({
   type,
@@ -30,7 +38,7 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   const defaultParams = preventCancellation ? { preventCancellation } : {}
   const nextNavigation: {
     screen: RootNavigateParams[0]
-    params: RootNavigateParams[1]
+    params: RootStackParamList['SignupForm'] | RootStackParamList['Login']
   } = isLogin
     ? { screen: 'Login', params: { ...defaultParams, ...params } }
     : { screen: 'SignupForm', params: { ...defaultParams, ...params } }
