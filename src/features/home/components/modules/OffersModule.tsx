@@ -127,7 +127,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     <PassPlaylist
       testID="offersModuleList"
       title={display.title}
-      subtitle={index === 0 ? undefined : display.subtitle}
+      subtitle={display.subtitle}
       data={hits}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
