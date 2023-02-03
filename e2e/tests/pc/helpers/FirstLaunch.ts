@@ -12,25 +12,34 @@ class FirstLaunch {
   retries = 2
   nativeModalPassed = 0
 
+  async allowIOSAlert() {
+    // This while loop will take care of the DoNotTrack and Notification Alert
+    // It may or may not be displayed, so we try max twice.
+    while (this.retries-- && this.nativeModalPassed !== 2) {
+      try {
+        await NativeAlert.waitForIsShown(true)
+        await NativeAlert.topOnButtonWithText('Allow')
+        await NativeAlert.waitForIsShown(false)
+        this.nativeModalPassed += 1
+      } catch (err) {
+        // ignore err
+      }
+    }
+  }
+
   async init(tabBar: TabBar) {
     if (flags.isWeb) {
       await Browser.url('/')
     }
     if (!flags.isWeb && flags.isIOS) {
-      // This while loop will take care of the DoNotTrack and Notification Alert
-      // They may or may not be displayed, so we try max twice.
-      while (this.retries-- && this.nativeModalPassed !== 2) {
-        try {
-          await NativeAlert.waitForIsShown(true)
-          await NativeAlert.topOnButtonWithText('Allow')
-          await NativeAlert.waitForIsShown(false)
-          this.nativeModalPassed += 1
-        } catch (err) {
-          // ignore err
-        }
-      }
+      // Notification Alert
+      await this.allowIOSAlert()
     }
     await CookiesConsent.randomChoice()
+    if (!flags.isWeb && flags.isIOS) {
+      // ATT Alert
+      await this.allowIOSAlert()
+    }
     if (!flags.isWeb) {
       await OnboardingWelcome.proceed()
       await OnboardingGeolocation.proceed()
