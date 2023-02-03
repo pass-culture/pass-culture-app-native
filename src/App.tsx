@@ -24,7 +24,6 @@ import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
 import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
@@ -61,7 +60,6 @@ const App: FunctionComponent = function () {
     }
   }, [])
 
-  campaignTracker.useInit()
   analytics.useInit()
 
   useEffect(() => {
