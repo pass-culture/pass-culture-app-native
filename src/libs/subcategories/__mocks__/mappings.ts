@@ -6,9 +6,10 @@ import {
   SubcategoriesMapping,
   HomeLabelMapping,
   SubcategoryLabelMapping,
+  GenreTypeMapping,
 } from 'libs/subcategories/types'
 
-const { subcategories, searchGroups, homepageLabels } = placeholderData
+const { subcategories, searchGroups, homepageLabels, genreTypes } = placeholderData
 
 export const useSubcategoriesMapping = () => {
   const mapping = {} as SubcategoriesMapping
@@ -56,6 +57,14 @@ export const useSearchGroupLabelMapping = () => {
   const mapping = {} as SearchGroupLabelMapping
   searchGroups.forEach((curr) => {
     mapping[curr.name] = curr.value || `Toutes les catégories`
+  })
+  return mapping
+}
+
+export const useGenreTypeMapping = () => {
+  const mapping = {} as GenreTypeMapping
+  genreTypes.forEach((curr) => {
+    mapping[curr.name] = curr.values
   })
   return mapping
 }

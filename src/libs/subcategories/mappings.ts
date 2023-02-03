@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
+  GenreTypeMapping,
   HomeLabelMapping,
   SearchGroupLabelMapping,
   SubcategoriesMapping,
@@ -94,4 +95,16 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
     return mapping
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchGroups.length])
+}
+
+export const useGenreTypeMapping = (): GenreTypeMapping => {
+  const { data } = useSubcategories()
+  const { genreTypes = [] } = data || {}
+
+  return useMemo(() => {
+    const mapping = {} as GenreTypeMapping
+    genreTypes.forEach((genreType) => (mapping[genreType.name] = genreType.values))
+    return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [genreTypes.length])
 }

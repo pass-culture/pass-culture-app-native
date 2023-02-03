@@ -1,7 +1,7 @@
 import { OffersModuleParameters } from 'features/home/types'
 import { useParseSearchParameters } from 'libs/search'
 import * as parseSearchParametersAPI from 'libs/search/parseSearchParameters'
-import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
 
 const mockMaxPrice = 172
@@ -16,6 +16,7 @@ jest.mock('libs/geolocation', () => ({
 
 describe('useParseSearchParameters', () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
+  const genreTypeMapping = useGenreTypeMapping()
   const parseSearchParametersSpy = jest.spyOn(parseSearchParametersAPI, 'parseSearchParameters')
 
   it('should set price max parameter when not provided', () => {
@@ -27,7 +28,8 @@ describe('useParseSearchParameters', () => {
     expect(parseSearchParametersSpy).toHaveBeenCalledWith(
       { priceMax: mockMaxPrice, priceMin: 0 },
       mockPosition,
-      subcategoryLabelMapping
+      subcategoryLabelMapping,
+      genreTypeMapping
     )
   })
 
@@ -41,7 +43,8 @@ describe('useParseSearchParameters', () => {
     expect(parseSearchParametersSpy).toHaveBeenCalledWith(
       { priceMax, priceMin: 0 },
       mockPosition,
-      subcategoryLabelMapping
+      subcategoryLabelMapping,
+      genreTypeMapping
     )
   })
 })
