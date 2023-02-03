@@ -355,7 +355,7 @@ function renderLogin() {
     reactQueryProviderHOC(
       <AuthContext.Provider
         value={{
-          isLoggedIn: true,
+          isLoggedIn: false,
           setIsLoggedIn: jest.fn(),
           isUserLoading: false,
           refetchUser: jest.fn(),
