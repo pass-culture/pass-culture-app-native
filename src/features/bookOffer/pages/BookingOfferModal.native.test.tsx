@@ -19,7 +19,6 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
     bookingState: { quantity: 1, step: mockStep },
     dismissModal: mockDismissModal,
   })),
-  useBookingOffer: jest.fn(() => mockOffer),
 }))
 
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
