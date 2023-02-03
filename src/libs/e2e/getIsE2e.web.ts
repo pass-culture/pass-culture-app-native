@@ -1,5 +1,5 @@
-import { env } from 'libs/environment'
 import { APPIUM_ADDRESS } from 'libs/e2e/constants'
+import { env } from 'libs/environment'
 
 let isE2e: boolean | undefined = undefined
 
