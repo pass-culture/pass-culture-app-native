@@ -40,7 +40,7 @@ npm install --chromedriver_version="$CHROMEDRIVER_VERSION"
 For running mobile (iOS or Android) tests, you can start appium server manually (otherwise, use a gui tools listed below):
 
 ```bash
-appium --relaxed-security
+appium --relaxed-security --allow-cors
 ```
 
 In case of problem, there is a useful tool called `appium-doctor`, you can install and run it as follow:
