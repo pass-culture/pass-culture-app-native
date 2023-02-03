@@ -1,10 +1,9 @@
-import { useEffect } from 'react'
 import appsFlyer from 'react-native-appsflyer'
 
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
-import { useTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 import { CampaignEvents } from './events'
 import { CampaignTracker } from './types'
@@ -15,30 +14,31 @@ import { CampaignTracker } from './types'
 // https://support.appsflyer.com/hc/en-us/articles/207032066-iOS-SDK-V6-X-integration-guide-for-developers#integration-33-configuring-app-tracking-transparency-att-support
 const TIME_TO_WAIT_FOR_ATT_CONSENT = 60 // in seconds
 
-function useInit() {
+function useInit(hasAcceptedMarketingCookie: boolean) {
+  // We do not init appsflyer or display ATT if user refuses marketing cookies
+  if (!hasAcceptedMarketingCookie) return
+
   // First we ask for the user's consent to access their IDFA information
-  useTrackingConsent()
+  requestIDFATrackingConsent()
 
-  useEffect(() => {
-    if (__DEV__) return
+  if (__DEV__) return
 
-    // Second we initialize the SDK.
-    appsFlyer.initSdk(
-      {
-        devKey: env.APPS_FLYER_DEV_KEY,
-        isDebug: env.ENV === 'testing',
-        appId: env.IOS_APP_STORE_ID,
-        onInstallConversionDataListener: false,
-        timeToWaitForATTUserAuthorization: TIME_TO_WAIT_FOR_ATT_CONSENT,
-      },
-      () => {
-        analytics.logCampaignTrackerEnabled()
-      },
-      (error) => {
-        console.error(error)
-      }
-    )
-  }, [])
+  // Second we initialize the SDK.
+  appsFlyer.initSdk(
+    {
+      devKey: env.APPS_FLYER_DEV_KEY,
+      isDebug: env.ENV === 'testing',
+      appId: env.IOS_APP_STORE_ID,
+      onInstallConversionDataListener: false,
+      timeToWaitForATTUserAuthorization: TIME_TO_WAIT_FOR_ATT_CONSENT,
+    },
+    () => {
+      analytics.logCampaignTrackerEnabled()
+    },
+    (error) => {
+      console.error(error)
+    }
+  )
 }
 
 async function logEvent(event: CampaignEvents, params: Record<string, unknown>): Promise<void> {

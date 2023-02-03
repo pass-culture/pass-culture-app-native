@@ -7,7 +7,6 @@ import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -24,9 +23,6 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
   useFocusEffect: jest.fn(),
 }))
-
-jest.mock('libs/trackingConsent/useTrackingConsent')
-const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(Tracking, 'startTrackingAcceptedCookies')
 
@@ -64,17 +60,6 @@ describe('<ConsentSettings/>', () => {
     }
     await waitFor(async () => {
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-    })
-  })
-
-  it('should request tracking transparency when user saves cookies choice', async () => {
-    const { getByText } = renderConsentSettings()
-
-    const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
     })
   })
 
