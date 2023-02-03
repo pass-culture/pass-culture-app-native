@@ -9,9 +9,7 @@ import { startTracking } from 'features/cookies/helpers/startTracking'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
-import { campaignTracker } from 'libs/campaign'
 import { analytics } from 'libs/firebase/analytics'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 interface Props {
   visible: boolean
@@ -27,16 +25,14 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   })
   const { setCookiesConsent } = useCookies()
 
-  const acceptAll = useCallback(() => {
+  const acceptAll = useCallback(async () => {
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
       accepted: ALL_OPTIONAL_COOKIES,
       refused: [],
     })
     startTracking(true)
-    campaignTracker.startAppsFlyer(true)
     analytics.logHasAcceptedAllCookies()
-    requestIDFATrackingConsent()
     hideModal()
   }, [hideModal, setCookiesConsent])
 
@@ -47,12 +43,10 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       refused: ALL_OPTIONAL_COOKIES,
     })
     startTracking(false)
-    campaignTracker.startAppsFlyer(false)
-    requestIDFATrackingConsent()
     hideModal()
   }, [hideModal, setCookiesConsent])
 
-  const customChoice = useCallback(() => {
+  const customChoice = useCallback(async () => {
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
@@ -64,7 +58,6 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       from: 'Modal',
       type: settingsCookiesChoice,
     })
-    requestIDFATrackingConsent()
     hideModal()
   }, [settingsCookiesChoice, hideModal, setCookiesConsent])
 
