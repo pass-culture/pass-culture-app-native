@@ -1,4 +1,5 @@
 import { env } from 'libs/environment'
+import { APPIUM_ADDRESS } from 'libs/e2e/constants'
 
 let isE2e: boolean | undefined = undefined
 
@@ -14,9 +15,18 @@ export async function getIsE2e() {
     isE2e = globalThis.navigator.webdriver
   } else {
     // This alternative is specific for iOS browser as safaridriver ios have a bug and do not set navigator.webdriver property during automation
-    // Also, we will wait a bit more, because we inject window.webdriver and it can take time, this is not a problem as we already wait 5sec before starting a suite.
-    await new Promise((resolve) => setTimeout(resolve, 6000))
-    isE2e = !!globalThis.window.webdriver
+    try {
+      const url = `${APPIUM_ADDRESS}/status`
+      const response = await fetch(url, {
+        mode: 'cors',
+        headers: new Headers({
+          accept: 'application/json',
+        }),
+      })
+      isE2e = response.ok
+    } catch {
+      isE2e = false
+    }
   }
   return isE2e
 }
