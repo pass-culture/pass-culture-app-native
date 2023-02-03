@@ -19,6 +19,7 @@ describe('startTracking', () => {
 
     expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
     expect(analytics.enableCollection).toHaveBeenCalledTimes(1)
+    expect(campaignTracker.useInit).toHaveBeenCalledWith(true)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })

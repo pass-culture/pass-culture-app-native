@@ -6,9 +6,9 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import * as Tracking from 'features/cookies/helpers/startTracking'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import { campaignTracker } from 'libs/campaign/__mocks__'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, superFlushWithAct, act, flushAllPromisesWithAct } from 'tests/utils'
 
@@ -23,9 +23,6 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({ navigate: jest.fn(), push: jest.fn() }),
   useFocusEffect: jest.fn(),
 }))
-
-jest.mock('libs/trackingConsent/useTrackingConsent')
-const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
 const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
 const mockStartTrackingAcceptedCookies = jest.spyOn(
@@ -88,7 +85,7 @@ describe('<CookiesConsent/>', () => {
       expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalledTimes(1)
     })
 
-    it('should request tracking transparency', async () => {
+    it('should init AppsFlyer', async () => {
       const { getByText } = await renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
@@ -97,7 +94,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
+      expect(campaignTracker.useInit).toHaveBeenNthCalledWith(1, true)
     })
 
     it('should hide modal', async () => {
@@ -148,7 +145,7 @@ describe('<CookiesConsent/>', () => {
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
-    it('should request tracking transparency', async () => {
+    it('should not init AppsFlyer', async () => {
       const { getByText } = await renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
@@ -157,7 +154,7 @@ describe('<CookiesConsent/>', () => {
       })
       await superFlushWithAct()
 
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
+      expect(campaignTracker.useInit).not.toHaveBeenCalled()
     })
 
     it('should hide modal', async () => {
@@ -246,19 +243,6 @@ describe('<CookiesConsent/>', () => {
         from: 'Modal',
         type: { performance: true, customization: false, marketing: false },
       })
-    })
-
-    it('should request tracking transparency', async () => {
-      const { getByText } = await renderCookiesConsent()
-
-      const chooseCookies = getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
-
-      const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await superFlushWithAct()
-
-      expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
     })
 
     it('should hide modale when user saves cookies choice', async () => {

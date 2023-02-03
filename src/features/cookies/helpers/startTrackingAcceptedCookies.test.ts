@@ -45,6 +45,13 @@ describe('startTrackingAcceptedCookies', () => {
     expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
   })
 
+  it('should init AppsFlyers when marketing cookies are accepted', () => {
+    const appsFlyersAccepted = COOKIES_BY_CATEGORY.marketing
+    startTrackingAcceptedCookies(appsFlyersAccepted)
+
+    expect(campaignTracker.useInit).toHaveBeenCalledWith(true)
+  })
+
   it('should enable AppsFlyers when marketing cookies are accepted', () => {
     const appsFlyersAccepted = COOKIES_BY_CATEGORY.marketing
     startTrackingAcceptedCookies(appsFlyersAccepted)
@@ -67,6 +74,26 @@ describe('startTrackingAcceptedCookies', () => {
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
     expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
     expect(analytics.disableCollection).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not init AppsFlyers when marketing cookies are refused', () => {
+    const marketingRefused = [
+      ...COOKIES_BY_CATEGORY.performance,
+      ...COOKIES_BY_CATEGORY.customization,
+    ]
+    startTrackingAcceptedCookies(marketingRefused)
+
+    expect(campaignTracker.useInit).toHaveBeenCalledWith(false)
+  })
+
+  it('should disable AppsFlyers when marketing cookies are refused', () => {
+    const marketingRefused = [
+      ...COOKIES_BY_CATEGORY.performance,
+      ...COOKIES_BY_CATEGORY.customization,
+    ]
+    startTrackingAcceptedCookies(marketingRefused)
+
+    expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
   })
 
   it('should remove generate algolia key from localStorage when refused algolia tracking (performance)', () => {
