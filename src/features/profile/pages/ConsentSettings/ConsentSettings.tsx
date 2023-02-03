@@ -12,7 +12,6 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -43,7 +42,6 @@ export const ConsentSettings = () => {
       from: 'ConsentSettings',
       type: settingsCookiesChoice,
     })
-    requestIDFATrackingConsent()
     showSuccessSnackBar({
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,

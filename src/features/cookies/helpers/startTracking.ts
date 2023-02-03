@@ -7,6 +7,7 @@ export const startTracking = (enabled: boolean) => {
   if (enabled) {
     amplitude.enableCollection()
     analytics.enableCollection()
+    campaignTracker.useInit(true)
     campaignTracker.startAppsFlyer(true)
     Batch.optIn()
   } else {

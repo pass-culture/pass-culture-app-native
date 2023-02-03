@@ -24,6 +24,7 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   acceptedGoogleAnalytics ? analytics.enableCollection() : analytics.disableCollection()
 
   const acceptedAppsFlyers = acceptedCookies.includes(CookieNameEnum.APPSFLYER)
+  campaignTracker.useInit(acceptedAppsFlyers)
   campaignTracker.startAppsFlyer(acceptedAppsFlyers)
 
   const acceptedAmplitude = acceptedCookies.includes(CookieNameEnum.AMPLITUDE)
