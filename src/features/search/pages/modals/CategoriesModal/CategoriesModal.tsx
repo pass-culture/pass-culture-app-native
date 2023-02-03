@@ -49,13 +49,13 @@ export type CategoriesModalFormProps = {
   genreType: string | null
 }
 
-export function CategoriesModal({
+export const CategoriesModal = ({
   accessibilityLabel,
   filterBehaviour,
   isVisible = false,
   hideModal,
   onClose,
-}: CategoriesModalProps) {
+}: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
@@ -166,6 +166,8 @@ export function CategoriesModal({
       setValue('currentView', CategoriesModalView.CATEGORIES)
 
       const payload = buildSearchPayloadValues(data, form)
+      if (!payload) return
+
       let additionalSearchState: SearchState = { ...searchState, ...payload }
       let isOnline = false
       if (payload.offerNativeCategories.length > 0) {
@@ -280,7 +282,7 @@ export function CategoriesModal({
         )}
         {currentView === CategoriesModalView.GENRES && (
           <CategoriesSection
-            data={genreTypes as MappedGenreTypes}
+            data={genreTypes}
             onSelect={handleGenreTypeSelect}
             allValue={null}
             allLabel="Tout"

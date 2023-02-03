@@ -1,6 +1,4 @@
 import {
-  GenreType,
-  GenreTypeContentModel,
   NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
   OnlineOfflinePlatformChoicesEnumv2,
@@ -20,14 +18,20 @@ export function buildSearchPayloadValues(
 ) {
   const buildGenreType = (genreTypeId: typeof form.genreType) => {
     if (genreTypeId === null) return []
-    const genreType = getGenreTypeFromEnum(data, genreTypeId) as GenreTypeContentModel
+    const genreType = getGenreTypeFromEnum(data, genreTypeId)
+    if (!genreType) return undefined
 
     const genreTypeKey = data.genreTypes.find((genreType) =>
       genreType.values.map((v) => v.name).includes(genreTypeId)
-    )?.name as GenreType
+    )?.name
+    if (!genreTypeKey) return undefined
 
     return [{ name: genreTypeId, value: genreType.value, key: genreTypeKey }]
   }
+
+  const genreType = buildGenreType(form.genreType)
+
+  if (!genreType) return undefined
 
   return {
     offerCategories: form.category === SearchGroupNameEnumv2.NONE ? [] : [form.category],
@@ -58,9 +62,7 @@ export function getCategoryFromEnum(
   enumValue?: SearchGroupNameEnumv2 | undefined
 ) {
   if (data && enumValue) {
-    return data.searchGroups.find(
-      (category) => category.name === enumValue
-    ) as SearchGroupResponseModelv2
+    return data.searchGroups.find((category) => category.name === enumValue)
   }
 
   return undefined
@@ -104,9 +106,7 @@ export function getNativeCategoryFromEnum(
   enumValue: NativeCategoryIdEnumv2 | undefined
 ) {
   if (data && enumValue) {
-    return data.nativeCategories.find(
-      (nativeCategory) => nativeCategory.name === enumValue
-    ) as NativeCategoryResponseModelv2
+    return data.nativeCategories.find((nativeCategory) => nativeCategory.name === enumValue)
   }
 
   return undefined
@@ -120,7 +120,7 @@ export function getGenreTypeFromEnum(
     return data.genreTypes
       .map((gt) => gt.values)
       .flat()
-      .find((genreTypeValue) => genreTypeValue.name === genreType) as GenreTypeContentModel
+      .find((genreTypeValue) => genreTypeValue.name === genreType)
   }
 
   return undefined
@@ -247,8 +247,9 @@ export function getDescription(
   if (!item) {
     if (genreTypeId && nativeCategoryId) {
       const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-      const genreType = getGenreTypeFromEnum(data, genreTypeId) as GenreTypeContentModel
+      const genreType = getGenreTypeFromEnum(data, genreTypeId)
       if (!nativeCategory) return undefined
+      if (!genreType) return undefined
       return `${nativeCategory.value} - ${genreType.value}`
     }
     if (nativeCategoryId) {

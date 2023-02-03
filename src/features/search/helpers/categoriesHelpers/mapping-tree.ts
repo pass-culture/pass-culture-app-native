@@ -79,19 +79,17 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2) {
         (nativeCategory) => nativeCategory.name !== NativeCategoryIdEnumv2.CARTES_JEUNES
       )
 
-      const mappedNativeCategories = nativeCategories.length
-        ? nativeCategories.reduce<MappedNativeCategories>(
-            (nativeCategoriesResult, nativeCategory) => {
-              nativeCategoriesResult[nativeCategory.name] = {
-                label: nativeCategory.value ?? 'Tout',
-                ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
-              }
+      const mappedNativeCategories = nativeCategories.reduce<MappedNativeCategories>(
+        (nativeCategoriesResult, nativeCategory) => {
+          nativeCategoriesResult[nativeCategory.name] = {
+            label: nativeCategory.value ?? 'Tout',
+            ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
+          }
 
-              return nativeCategoriesResult
-            },
-            {} as MappedNativeCategories
-          )
-        : undefined
+          return nativeCategoriesResult
+        },
+        {} as MappedNativeCategories
+      )
 
       result[searchGroup.name] = {
         label: searchGroup.value || 'Toutes les catégories',
