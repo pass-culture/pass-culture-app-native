@@ -44,3 +44,12 @@ export interface CookiesChoiceSettings {
   settingsCookiesChoice: CookiesChoiceByCategory
   setSettingsCookiesChoice: React.Dispatch<React.SetStateAction<CookiesChoiceByCategory>>
 }
+
+export type UTMParams = {
+  params?: {
+    utm_campaign: string
+    utm_medium: string
+    utm_source: string
+    campaign_date: string
+  }
+}

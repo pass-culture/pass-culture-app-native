@@ -4,6 +4,8 @@ import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, flushAllPromisesWithAct, checkAccessibilityFor } from 'tests/utils/web'
 
+jest.mock('features/navigation/navigationRef')
+
 describe('<CookiesConsent/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

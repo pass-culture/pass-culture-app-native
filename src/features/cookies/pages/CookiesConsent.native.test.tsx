@@ -3,9 +3,11 @@ import React from 'react'
 
 import Package from '__mocks__/package.json'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
+import * as SetMarketingParams from 'features/cookies/helpers/setMarketingParams'
 import * as Tracking from 'features/cookies/helpers/startTracking'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { campaignTracker } from 'libs/campaign/__mocks__'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
@@ -24,11 +26,27 @@ jest.mock('@react-navigation/native', () => ({
   useFocusEffect: jest.fn(),
 }))
 
+jest.mock('features/navigation/navigationRef')
+
 const mockStartTracking = jest.spyOn(Tracking, 'startTracking')
 const mockStartTrackingAcceptedCookies = jest.spyOn(
   TrackingAcceptedCookies,
   'startTrackingAcceptedCookies'
 )
+
+const UTM_PARAMS = {
+  utm_campaign: 'test',
+  utm_medium: 'test',
+  utm_source: 'test',
+}
+
+jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
+  params: UTM_PARAMS,
+  key: 'UTMParams',
+  name: 'UTMParams',
+})
+
+const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')
 
 describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
@@ -97,6 +115,18 @@ describe('<CookiesConsent/>', () => {
       expect(campaignTracker.useInit).toHaveBeenNthCalledWith(1, true)
     })
 
+    it('should save UTM params', async () => {
+      const { getByText } = await renderCookiesConsent()
+      const acceptAllButton = getByText('Tout accepter')
+
+      act(() => {
+        fireEvent.press(acceptAllButton)
+      })
+      await superFlushWithAct()
+
+      expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, ALL_OPTIONAL_COOKIES)
+    })
+
     it('should hide modal', async () => {
       const { getByText } = await renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
@@ -155,6 +185,18 @@ describe('<CookiesConsent/>', () => {
       await superFlushWithAct()
 
       expect(campaignTracker.useInit).not.toHaveBeenCalled()
+    })
+
+    it('should not set marketing params', async () => {
+      const { getByText } = await renderCookiesConsent()
+      const declineAllButton = getByText('Tout refuser')
+
+      act(() => {
+        fireEvent.press(declineAllButton)
+      })
+      await superFlushWithAct()
+
+      expect(setMarketingParamsSpy).not.toHaveBeenCalled()
     })
 
     it('should hide modal', async () => {
@@ -243,6 +285,39 @@ describe('<CookiesConsent/>', () => {
         from: 'Modal',
         type: { performance: true, customization: false, marketing: false },
       })
+    })
+
+    it('should call setMarketingParams with empty array when all cookies are refused', async () => {
+      const { getByText } = await renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await superFlushWithAct()
+
+      expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, [])
+    })
+
+    it('should call setMarketingParams with customization cookies when they are accepted', async () => {
+      const { getByTestId, getByText } = await renderCookiesConsent()
+
+      const chooseCookies = getByText('Choisir les cookies')
+      fireEvent.press(chooseCookies)
+
+      const customizationSwitch = getByTestId('Interrupteur-customization')
+      fireEvent.press(customizationSwitch)
+
+      const saveChoice = getByText('Enregistrer mes choix')
+      fireEvent.press(saveChoice)
+      await superFlushWithAct()
+
+      expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(
+        1,
+        UTM_PARAMS,
+        COOKIES_BY_CATEGORY.customization
+      )
     })
 
     it('should hide modale when user saves cookies choice', async () => {
