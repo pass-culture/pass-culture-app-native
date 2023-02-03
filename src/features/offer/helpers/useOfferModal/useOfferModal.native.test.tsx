@@ -22,16 +22,8 @@ jest.mock('ui/components/modals/useModal.ts', () => ({
   }),
 }))
 
-const TestOfferModal: FunctionComponent<OfferModalProps> = ({
-  modalToDisplay,
-  offerId,
-  isEndedUsedBooking,
-}) => {
-  const { OfferModal } = useOfferModal({
-    offerId,
-    isEndedUsedBooking,
-    modalToDisplay,
-  })
+const TestOfferModal: FunctionComponent<OfferModalProps> = (props) => {
+  const { OfferModal } = useOfferModal(props)
   return OfferModal
 }
 
