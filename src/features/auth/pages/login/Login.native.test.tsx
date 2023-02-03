@@ -8,6 +8,7 @@ import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
+import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
@@ -257,9 +258,9 @@ describe('<Login/>', () => {
     const OFFER_ID = favoriteResponseSnap.offer.id
     beforeEach(() => {
       useRoute
-        .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // first render
-        .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // email input rerender
-        .mockReturnValueOnce({ params: { offerId: OFFER_ID } }) // password input rerender
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // first render
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // email input rerender
+        .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // password input rerender
     })
 
     it('should redirect to Offer page when signin is successful and user comes from offer', async () => {
