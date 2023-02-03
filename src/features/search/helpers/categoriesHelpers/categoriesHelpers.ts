@@ -252,6 +252,7 @@ function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: Descri
   }
   if (categoryId) {
     const category = getCategoryFromEnum(data, categoryId)
+    if (!category) return undefined
     return category.value ?? undefined
   }
   return undefined
