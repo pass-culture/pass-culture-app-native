@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { ApplicationProcessingModal } from 'features/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
+import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'features/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 import { OfferModal } from 'features/offer/enums'
@@ -39,7 +40,12 @@ export const useOfferModal = ({
     case OfferModal.AUTHENTICATION:
       return {
         OfferModal: (
-          <AuthenticationModal visible={visible} hideModal={hideModal} offerId={offerId} />
+          <AuthenticationModal
+            visible={visible}
+            hideModal={hideModal}
+            offerId={offerId}
+            from={From.BOOKING}
+          />
         ),
         showModal,
       }

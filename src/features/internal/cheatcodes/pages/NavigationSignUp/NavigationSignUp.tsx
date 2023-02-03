@@ -9,6 +9,7 @@ import { useSomeOfferId } from 'features/internal/cheatcodes/hooks/useSomeOfferI
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'features/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
+import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'features/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -112,6 +113,7 @@ export function NavigationSignUp(): JSX.Element {
             visible={authenticationModalVisible}
             hideModal={hideAuthenticationModal}
             offerId={offerId}
+            from={From.FAVORITE}
           />
         </Row>
         <Row half>
