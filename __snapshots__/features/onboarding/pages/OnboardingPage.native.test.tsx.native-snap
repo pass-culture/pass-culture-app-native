@@ -170,14 +170,20 @@ Array [
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
+    forwardedRef={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      Object {
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": Array [
+          Object {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
