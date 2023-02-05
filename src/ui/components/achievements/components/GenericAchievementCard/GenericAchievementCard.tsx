@@ -1,6 +1,5 @@
 import React, { FunctionComponent, RefObject, useCallback, useEffect, useMemo } from 'react'
 import { View } from 'react-native'
-import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -8,6 +7,7 @@ import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
+import { AnimatedView } from 'libs/react-native-animatable'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -50,7 +50,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   const { isSmallScreen } = useTheme()
   const grid = useGrid()
   const animationRef = React.useRef<LottieView>(null)
-  const animatedButtonRef = React.useRef<Animatable.View & View>(null)
+  const animatedButtonRef = React.useRef<AnimatedView & View>(null)
 
   const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
   const lottieStyle = useMemo(
@@ -139,7 +139,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
         paddingBottom={getSpacing(
           props.ignoreBottomPadding ? grid({ default: 10, sm: 2, md: 5 }, 'height') : 10
         )}>
-        <Animatable.View ref={animatedButtonRef}>
+        <AnimatedView ref={animatedButtonRef}>
           {props.activeIndex === props.index ? (
             <ButtonPrimary
               wording={props.buttonText}
@@ -149,7 +149,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
           ) : (
             <InvisibleButtonHeight testID="invisible-button-height" />
           )}
-        </Animatable.View>
+        </AnimatedView>
         {!props.lastIndex && (
           <FlexContainer marginTop={getSpacing(grid({ default: 4, sm: 2 }, 'height'))}>
             <ButtonPrimaryWhite wording="Passer" onPress={props.skip} />

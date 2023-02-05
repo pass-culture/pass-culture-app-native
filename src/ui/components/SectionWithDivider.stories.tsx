@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
-import { View } from 'react-native-animatable'
+import { View } from 'react-native'
 
 import { Typo } from 'ui/theme'
 
