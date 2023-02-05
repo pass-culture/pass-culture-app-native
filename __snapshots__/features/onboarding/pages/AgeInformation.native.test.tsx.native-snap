@@ -178,7 +178,9 @@ Array [
           <View>
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              forwardedRef={[Function]}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -189,24 +191,27 @@ Array [
               roundedBorders="top"
               status="cette année"
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 2,
+                  "borderTopLeftRadius": 8,
+                  "borderTopRightRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "marginHorizontal": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": Array [
+                    Object {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
               }
             >
               <View
@@ -218,8 +223,22 @@ Array [
                   ]
                 }
               >
-                <View>
-                  undefined-Lottie-Mock
+                <View
+                  collapsable={false}
+                  forwardedRef={[Function]}
+                  style={
+                    Object {
+                      "transform": Array [
+                        Object {
+                          "scale": 0.875,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <View>
+                    undefined-Lottie-Mock
+                  </View>
                 </View>
               </View>
               <View>
@@ -848,14 +867,20 @@ Array [
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
+    forwardedRef={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      Object {
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": Array [
+          Object {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
@@ -1354,7 +1379,9 @@ Array [
             />
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              forwardedRef={[Function]}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1364,22 +1391,25 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="cette année"
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 2,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "marginHorizontal": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": Array [
+                    Object {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
               }
             >
               <View
@@ -1391,8 +1421,22 @@ Array [
                   ]
                 }
               >
-                <View>
-                  undefined-Lottie-Mock
+                <View
+                  collapsable={false}
+                  forwardedRef={[Function]}
+                  style={
+                    Object {
+                      "transform": Array [
+                        Object {
+                          "scale": 0.875,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <View>
+                    undefined-Lottie-Mock
+                  </View>
                 </View>
               </View>
               <View>
@@ -1876,14 +1920,20 @@ Array [
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
+    forwardedRef={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      Object {
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": Array [
+          Object {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
@@ -2525,7 +2575,9 @@ Array [
             />
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              forwardedRef={[Function]}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2536,24 +2588,27 @@ Array [
               roundedBorders="bottom"
               status="cette année"
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderBottomLeftRadius": 8,
+                  "borderBottomRightRadius": 8,
+                  "borderColor": "#90949D",
+                  "borderRadius": 2,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "marginHorizontal": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": Array [
+                    Object {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
               }
             >
               <View
@@ -2565,8 +2620,22 @@ Array [
                   ]
                 }
               >
-                <View>
-                  undefined-Lottie-Mock
+                <View
+                  collapsable={false}
+                  forwardedRef={[Function]}
+                  style={
+                    Object {
+                      "transform": Array [
+                        Object {
+                          "scale": 0.875,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <View>
+                    undefined-Lottie-Mock
+                  </View>
                 </View>
               </View>
               <View>
@@ -2904,14 +2973,20 @@ Array [
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
+    forwardedRef={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      Object {
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": Array [
+          Object {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
@@ -3776,7 +3851,9 @@ Array [
             </View>
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
+              forwardedRef={[Function]}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3786,22 +3863,25 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="cette année"
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 2,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 2,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "marginHorizontal": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": Array [
+                    Object {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
               }
             >
               <View
@@ -3813,8 +3893,22 @@ Array [
                   ]
                 }
               >
-                <View>
-                  undefined-Lottie-Mock
+                <View
+                  collapsable={false}
+                  forwardedRef={[Function]}
+                  style={
+                    Object {
+                      "transform": Array [
+                        Object {
+                          "scale": 0.875,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <View>
+                    undefined-Lottie-Mock
+                  </View>
                 </View>
               </View>
               <View>
@@ -3932,14 +4026,20 @@ Array [
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
+    forwardedRef={[Function]}
     style={
-      Array [
-        Object {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
-      ]
+      Object {
+        "backgroundColor": "#ffffff",
+        "marginHorizontal": 24,
+        "opacity": 0,
+        "paddingVertical": 24,
+        "transform": Array [
+          Object {
+            "scale": 0.95,
+          },
+        ],
+      }
     }
   >
     <View
