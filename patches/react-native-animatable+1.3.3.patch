@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-animatable/typings/react-native-animatable.d.ts b/node_modules/react-native-animatable/typings/react-native-animatable.d.ts
+index 32a057c..59daa61 100644
+--- a/node_modules/react-native-animatable/typings/react-native-animatable.d.ts
++++ b/node_modules/react-native-animatable/typings/react-native-animatable.d.ts
+@@ -117,7 +117,7 @@ export type Direction =
+     'alternate-reverse';
+ 
+ interface AnimatableProperties<S extends {}> {
+-    animation?: Animation | string | CustomAnimation;
++    animation?: Animation | CustomAnimation;
+     duration?: number;
+     delay?: number;
+     direction?: Direction;
