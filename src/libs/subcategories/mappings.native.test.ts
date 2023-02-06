@@ -17,9 +17,16 @@ import { renderHook } from 'tests/utils'
 
 const mockSubcategories = placeholderData.subcategories
 const mockGenreTypes = placeholderData.genreTypes
+const mockSearchGroups = placeholderData.searchGroups
+const mockHomepageLabels = placeholderData.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
-    data: { subcategories: mockSubcategories, genreTypes: mockGenreTypes },
+    data: {
+      subcategories: mockSubcategories,
+      genreTypes: mockGenreTypes,
+      searchGroups: mockSearchGroups,
+      homepageLabels: mockHomepageLabels,
+    },
   }),
 }))
 

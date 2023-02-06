@@ -11,6 +11,7 @@ import {
   venueWithNoAddressResponseSnap,
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -20,6 +21,17 @@ jest.mock('react-query')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')
 const mockedUseVenue = mocked(useVenue)
+
+const mockSubcategories = placeholderData.subcategories
+const mockHomepageLabels = placeholderData.homepageLabels
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+      homepageLabels: mockHomepageLabels,
+    },
+  }),
+}))
 
 const venueId = venueResponseSnap.id
 

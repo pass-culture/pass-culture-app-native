@@ -8,9 +8,21 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { useParseSearchParameters } from 'libs/search'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { parseSearchParameters } from './parseSearchParameters'
+
+const mockSubcategories = placeholderData.subcategories
+const mockGenreTypes = placeholderData.genreTypes
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+      genreTypes: mockGenreTypes,
+    },
+  }),
+}))
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 mockdate.set(new Date('2020-10-01T00:00+00:00'))
@@ -27,8 +39,12 @@ const defaultSearchParameters = omit(
 )
 
 describe('parseSearchParameters', () => {
-  const subcategoryLabelMapping = useSubcategoryLabelMapping()
-  const genreTypeMapping = useGenreTypeMapping()
+  const {
+    result: { current: subcategoryLabelMapping },
+  } = renderHook(useSubcategoryLabelMapping)
+  const {
+    result: { current: genreTypeMapping },
+  } = renderHook(useGenreTypeMapping)
 
   it('should return default parameters when no parameters are provided', () => {
     const parameters = {} as OffersModuleParameters

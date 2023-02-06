@@ -11,6 +11,7 @@ import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResp
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
@@ -22,6 +23,17 @@ jest.mock('react-query')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = mocked(useVenueOffers)
+
+const mockSubcategories = placeholderData.subcategories
+const mockHomepageLabels = placeholderData.homepageLabels
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+      homepageLabels: mockHomepageLabels,
+    },
+  }),
+}))
 
 const defaultParams = {
   beginningDatetime: undefined,

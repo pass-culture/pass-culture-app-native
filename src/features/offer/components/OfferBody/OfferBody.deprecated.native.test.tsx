@@ -5,6 +5,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, cleanup, fireEvent } from 'tests/utils'
 
 jest.mock('api/api')
@@ -33,6 +34,15 @@ jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting'
       },
     },
   })),
+}))
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))

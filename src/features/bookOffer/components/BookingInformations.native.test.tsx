@@ -7,6 +7,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
@@ -21,6 +22,15 @@ jest.mock('libs/address/useFormatFullAddress')
 const mockedUseBooking = mocked(useBookingContext)
 const mockedUseBookingOffer = mocked(useBookingOffer)
 const mockedUseBookingStock = mocked(useBookingStock)
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
+}))
 
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {

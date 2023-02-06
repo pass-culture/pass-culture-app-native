@@ -5,6 +5,7 @@ import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { useModalContent } from './useModalContent'
@@ -25,6 +26,15 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
+}))
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
 }))
 
 describe('useModalContent', () => {

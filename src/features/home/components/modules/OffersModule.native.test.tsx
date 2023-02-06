@@ -7,6 +7,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit, transformHit } from 'libs/search'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 
 import { OffersModule } from './OffersModule'
@@ -40,6 +41,17 @@ jest.mock('features/home/api/useOfferModule', () => ({
 }))
 jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
+
+const mockSubcategories = placeholderData.subcategories
+const mockHomepageLabels = placeholderData.homepageLabels
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+      homepageLabels: mockHomepageLabels,
+    },
+  }),
+}))
 
 describe('OffersModule component', () => {
   it('should render correctly', () => {
