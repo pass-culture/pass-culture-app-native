@@ -52,7 +52,7 @@ describe('<DatePickerSpinner />', () => {
     expect(props.onChange).toHaveBeenCalledWith(new Date('1985-05-10T00:00:00.000Z'))
   })
 
-  it('should not trigger hidden value change when value is valid iso date string', () => {
+  it('should not trigger hidden value change when value is invalid string', () => {
     // FIXME(LucasBeneston): This warning comes from react-native-date-picker
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
