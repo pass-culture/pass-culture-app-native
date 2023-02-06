@@ -931,7 +931,7 @@ Array [
                 ]
               }
             >
-              81 % des critères RGAA version 4.1 sont respectés.
+              85 % des critères RGAA version 4.1 sont respectés.
             </Text>
           </View>
         </View>
@@ -993,7 +993,7 @@ Array [
                 ]
               }
             >
-              Le taux moyen de conformité du service en ligne s’élève à 91 %.
+              Le taux moyen de conformité du service en ligne s’élève à 93 %.
             </Text>
           </View>
         </View>
@@ -1411,130 +1411,6 @@ Array [
                   }
                 >
                   Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.
-                </Text>
-              </View>
-            </View>
-            <View
-              accessibilityRole="none"
-              style={
-                Array [
-                  Object {
-                    "display": "flex",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "height": 20,
-                        "justifyContent": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    borderColor="#161617"
-                    fillColor="transparent"
-                    height={3}
-                    width={3}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 12,
-                      },
-                    ]
-                  }
-                >
-                  L’intitulé des boutons « réinitialiser », « rechercher » et « me localiser » sont tronqués lorsqu’on redéfinie les propriétés d’espacement du texte.
-                </Text>
-              </View>
-            </View>
-            <View
-              accessibilityRole="none"
-              style={
-                Array [
-                  Object {
-                    "display": "flex",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                      "marginLeft": 28,
-                      "marginTop": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "height": 20,
-                        "justifyContent": "center",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    borderColor="#161617"
-                    fillColor="transparent"
-                    height={3}
-                    width={3}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 12,
-                      },
-                    ]
-                  }
-                >
-                  Certains champs ne sont pas correctement reliés à leur intitulé.
                 </Text>
               </View>
             </View>
@@ -2128,7 +2004,7 @@ Array [
           ]
         }
       >
-        Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 4 janvier 2023.
+        Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février 2023.
       </Text>
       <View
         numberOfSpaces={6}
