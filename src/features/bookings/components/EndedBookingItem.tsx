@@ -47,11 +47,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
   })
 
-  const isDigitalBookingWithoutExpirationDate = useMemo(
-    () => booking.stock.offer.isDigital && !booking.expirationDate,
-    [booking.expirationDate, booking.stock.offer.isDigital]
-  )
-
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
@@ -121,7 +116,8 @@ const EndedReasonAndDate = styled.View({
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
-  dateUsed?: string | null
+  dateUsed?: string | null,
+  isDigitalBookingWithoutExpirationDate?: boolean
 ) {
   if (dateUsed) {
     return <StyledInputRule title="Réservation utilisée" icon={Valid} isValid noFullWidth />
@@ -129,6 +125,10 @@ function getEndedBookingReason(
 
   if (cancellationReason === BookingCancellationReasons.OFFERER) {
     return <StyledInputRule title="Annulée" icon={Wrong} isValid={false} noFullWidth />
+  }
+
+  if (isDigitalBookingWithoutExpirationDate && !cancellationReason) {
+    return <StyledInputRule title="Réservation archivée" icon={Valid} isValid noFullWidth />
   }
 
   return <StyledInputRule title="Réservation annulée" icon={Wrong} isValid={false} noFullWidth />

@@ -35,7 +35,7 @@ describe('EndedBookingItem', () => {
     expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
   })
 
-  it('should display "Réservation annulée" and cancellationDate labels if booking was cancelled by beneficiary', () => {
+  it('should display "Réservation annulée" and cancellationDate labels if booking was cancelled by beneficiary and offer is not digital without expiration date', () => {
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.BENEFICIARY,
@@ -44,13 +44,22 @@ describe('EndedBookingItem', () => {
     expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
   })
 
-  it('should display "Réservation annulée" and cancellationDate labels if booking was expired', () => {
+  it('should display "Réservation annulée" and cancellationDate labels if booking was expired and offer is not digital without expiration date', () => {
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.EXPIRED,
     })
     expect(screen.queryByText('Réservation annulée')).toBeTruthy()
     expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
+  })
+
+  it('should display "Réservation archivée" when offer is digital without expiration date and not cancelled', () => {
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      cancellationDate: null,
+      cancellationReason: null,
+    })
+    expect(screen.queryByText('Réservation archivée')).toBeTruthy()
   })
 
   it('should navigate to offer page when offer is not digital without expiration date', async () => {
@@ -62,7 +71,7 @@ describe('EndedBookingItem', () => {
       },
     })
 
-    const item = screen.getByTestId(/Réservation annulée/)
+    const item = screen.getByText('Réservation annulée')
     await fireEvent.press(item)
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -75,10 +84,14 @@ describe('EndedBookingItem', () => {
     })
   })
 
-  it('should navigate to the booking details page when offer is digital without expiration date', async () => {
-    renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+  it('should navigate to the booking details page when offer is digital without expiration date and not cancelled', async () => {
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      cancellationDate: null,
+      cancellationReason: null,
+    })
 
-    const item = screen.getByTestId(/Réservation annulée/)
+    const item = screen.getByText('Réservation archivée')
     await fireEvent.press(item)
 
     expect(navigate).toHaveBeenCalledWith('BookingDetails', {
