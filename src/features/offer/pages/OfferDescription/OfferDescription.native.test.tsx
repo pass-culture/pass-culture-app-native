@@ -1,10 +1,9 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
-import { render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import {
   OfferDescription,
@@ -22,10 +21,10 @@ jest.mock('features/offer/api/useOffer', () => ({
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {
-    await render(<OfferDescription />)
-    expect(screen.toJSON()).toMatchSnapshot()
+    render(<OfferDescription />)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
+      expect(screen.toJSON()).toMatchSnapshot()
       expect(screen.getByText('En détails')).toBeTruthy()
       expect(screen.queryByText('Durée')).toBeNull()
     })
@@ -33,12 +32,59 @@ describe('<OfferDescription />', () => {
 
   it('should render without description', async () => {
     mockedOffer = { ...offerResponseSnap, extraData: { durationMinutes: 20 }, description: '' }
-    await render(<OfferDescription />)
-
-    await waitForExpect(() => {
+    render(<OfferDescription />)
+    await waitFor(() => {
       expect(screen.getByText('Durée')).toBeTruthy()
       expect(screen.getByText('Author: photo credit author')).toBeTruthy()
       expect(screen.queryByText('En détails')).toBeNull()
+    })
+  })
+
+  it('should render when extraData defined', async () => {
+    mockedOffer = {
+      ...offerResponseSnap,
+      extraData: {
+        author: 'Dupont',
+        isbn: '2-7654-1005-4',
+        performer: 'Lomepal',
+        speaker: 'Patrick',
+        stageDirector: 'Thierry',
+        visa: 'Tout public',
+      },
+    }
+    render(<OfferDescription />)
+
+    await waitFor(() => {
+      expect(screen.getByText('Auteur')).toBeTruthy()
+      expect(screen.getByText('Metteur en scène')).toBeTruthy()
+      expect(screen.getByText('Interprète')).toBeTruthy()
+      expect(screen.getByText('Intervenant')).toBeTruthy()
+      expect(screen.getByText('ISBN')).toBeTruthy()
+      expect(screen.getByText('VISA')).toBeTruthy()
+    })
+  })
+
+  it('should not render when extraData not defined', async () => {
+    mockedOffer = {
+      ...offerResponseSnap,
+      extraData: {
+        author: '',
+        isbn: '',
+        performer: '',
+        speaker: '',
+        stageDirector: '',
+        visa: '',
+      },
+    }
+    render(<OfferDescription />)
+
+    await waitFor(() => {
+      expect(screen.queryByText('Auteur')).toBeNull()
+      expect(screen.queryByText('Metteur en scène')).toBeNull()
+      expect(screen.queryByText('Interprète')).toBeNull()
+      expect(screen.queryByText('Intervenant')).toBeNull()
+      expect(screen.queryByText('ISBN')).toBeNull()
+      expect(screen.queryByText('VISA')).toBeNull()
     })
   })
 })
