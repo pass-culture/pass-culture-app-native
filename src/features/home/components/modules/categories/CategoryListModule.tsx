@@ -78,6 +78,7 @@ export const CategoryListModule = ({
       </HeaderContainer>
       <FlatListContainer>
         <FlatList
+          key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported
           ListFooterComponent={ListFooterComponent}
           data={categoryBlockList}
           numColumns={numColumns}
