@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
+import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatCodesButton/CheatCodesButton'
 import { Row } from 'features/internal/cheatcodes/components/Row'
@@ -39,6 +40,12 @@ export function Navigation(): JSX.Element {
     visible: notificationsConsentModalVisible,
     showModal: showNotificationsConsentModal,
     hideModal: hideNotificationsConsentModal,
+  } = useModal(false)
+
+  const {
+    visible: fakeDoorListFavoritesVisible,
+    showModal: showFakeDoorListFavoritesVisible,
+    hideModal: hideFakeDoorListFavoritesVisible,
   } = useModal(false)
 
   if (screenError) {
@@ -82,6 +89,16 @@ export function Navigation(): JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary wording="Errors 👾" onPress={() => navigate('NavigationErrors')} />
+          </Row>
+          <Row half>
+            <ButtonPrimary
+              wording="Modal Fake Door Liste de Favoris"
+              onPress={showFakeDoorListFavoritesVisible}
+            />
+            <FavoriteListSurveyModal
+              visible={fakeDoorListFavoritesVisible}
+              hideModal={hideFakeDoorListFavoritesVisible}
+            />
           </Row>
           <Row half>
             <ButtonPrimary wording="Cookies consent 🍪" onPress={() => showCookiesConsentModal()} />
