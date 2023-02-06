@@ -37,7 +37,7 @@ describe('<DatePickerSpinner />', () => {
     expect(props.onChange).toHaveBeenNthCalledWith(5, new Date('2004-07-02T00:00:00.000Z'))
   })
 
-  it('should trigger hidden value change', () => {
+  it('should trigger hidden value change when value is valid iso date string', () => {
     // FIXME(LucasBeneston): This warning comes from react-native-date-picker
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
@@ -50,5 +50,20 @@ describe('<DatePickerSpinner />', () => {
     })
 
     expect(props.onChange).toHaveBeenCalledWith(new Date('1985-05-10T00:00:00.000Z'))
+  })
+
+  it('should not trigger hidden value change when value is valid iso date string', () => {
+    // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+    jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+
+    const { getByTestId } = render(<DatePickerSpinner {...props} />)
+
+    const hiddenInput = getByTestId('hidden-input-birthdate')
+
+    act(() => {
+      fireEvent.change(hiddenInput, { target: { value: '1985-05-1008:12:46.241Z' } })
+    })
+
+    expect(props.onChange).not.toHaveBeenCalledWith(new Date('1985-05-10T00:00:00.000Z'))
   })
 })
