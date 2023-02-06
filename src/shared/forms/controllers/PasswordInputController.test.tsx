@@ -9,7 +9,7 @@ type PasswordForm = {
 }
 
 describe('<PasswordInputController />', () => {
-  it('should not show error when form is invalid and password is empty', async () => {
+  it('should not show error when password is invalid but not given', async () => {
     renderPasswordInputController({
       error: { type: 'custom', message: 'error' },
     })
