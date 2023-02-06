@@ -20,7 +20,7 @@ describe('<EmailInputController />', () => {
     expect(screen.getByText('Email has an incorrect format')).toBeTruthy()
   })
 
-  it('should not show error when form input is invalid', () => {
+  it('should not show error when form input is valid', () => {
     renderEmailInputController({})
 
     expect(screen.queryByText('error')).toBeFalsy()
