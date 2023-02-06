@@ -27,13 +27,18 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 describe('useParseSearchParameters', () => {
-  const subcategoryLabelMapping = useSubcategoryLabelMapping()
-  const genreTypeMapping = useGenreTypeMapping()
+  const {
+    result: { current: subcategoryLabelMapping },
+  } = renderHook(useSubcategoryLabelMapping)
+  const {
+    result: { current: genreTypeMapping },
+  } = renderHook(useGenreTypeMapping)
+
   const parseSearchParametersSpy = jest.spyOn(parseSearchParametersAPI, 'parseSearchParameters')
 
   it('should set price max parameter when not provided', () => {
     const parameters = {} as OffersModuleParameters
-    const { result } = renderHook(() => useParseSearchParameters())
+    const { result } = renderHook(useParseSearchParameters)
 
     result.current(parameters)
 
@@ -48,7 +53,7 @@ describe('useParseSearchParameters', () => {
   it('should use price max parameter when provided', () => {
     const priceMax = 12
     const parameters = {} as OffersModuleParameters
-    const { result } = renderHook(() => useParseSearchParameters())
+    const { result } = renderHook(useParseSearchParameters)
 
     result.current({ ...parameters, priceMax })
 

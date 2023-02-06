@@ -2,6 +2,7 @@ import { GenreType } from 'api/gen'
 import { buildOfferGenreTypes } from 'libs/search/utils/buildOfferGenreTypes'
 import { useGenreTypeMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { renderHook } from 'tests/utils'
 
 const mockGenreTypes = placeholderData.genreTypes
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -11,7 +12,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 describe('buildOfferGenreTypes', () => {
-  const genreTypeMapping = useGenreTypeMapping()
+  const {
+    result: { current: genreTypeMapping },
+  } = renderHook(useGenreTypeMapping)
 
   it('should return correct offerGenreType list with known subtypes', () => {
     const offerGenreTypes = buildOfferGenreTypes(

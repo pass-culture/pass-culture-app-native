@@ -1,6 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { renderHook } from 'tests/utils'
 
 const mockSearchGroups = placeholderData.searchGroups
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -32,7 +33,8 @@ describe('useCategoryId', () => {
   `(
     'useSearchGroupLabel($SearchGroupName) = $SearchGroupLabel',
     ({ SearchGroupName, SearchGroupLabel }) => {
-      expect(useSearchGroupLabel(SearchGroupName)).toBe(SearchGroupLabel)
+      const { result: searchGroupLabel } = renderHook(() => useSearchGroupLabel(SearchGroupName))
+      expect(searchGroupLabel.current).toBe(SearchGroupLabel)
     }
   )
 })

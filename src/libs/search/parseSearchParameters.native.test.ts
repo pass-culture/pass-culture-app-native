@@ -39,8 +39,12 @@ const defaultSearchParameters = omit(
 )
 
 describe('parseSearchParameters', () => {
-  const subcategoryLabelMapping = useSubcategoryLabelMapping()
-  const genreTypeMapping = useGenreTypeMapping()
+  const {
+    result: { current: subcategoryLabelMapping },
+  } = renderHook(useSubcategoryLabelMapping)
+  const {
+    result: { current: genreTypeMapping },
+  } = renderHook(useGenreTypeMapping)
 
   it('should return default parameters when no parameters are provided', () => {
     const parameters = {} as OffersModuleParameters

@@ -65,7 +65,10 @@ describe('useHomeRecommendedHits', () => {
 })
 
 describe('getRecommendationParameters', () => {
-  const subcategoryLabelMapping = useSubcategoryLabelMapping()
+  const {
+    result: { current: subcategoryLabelMapping },
+  } = renderHook(useSubcategoryLabelMapping)
+
   it('should return empty parameters when no parameters are provided', () => {
     const result = getRecommendationParameters(undefined, subcategoryLabelMapping)
     expect(result).toEqual({})
