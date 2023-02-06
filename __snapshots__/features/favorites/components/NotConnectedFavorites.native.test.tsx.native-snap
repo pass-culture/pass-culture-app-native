@@ -12,6 +12,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         "maxWidth": 500,
         "overflow": "scroll",
         "paddingHorizontal": 24,
+        "width": "100%",
       },
     ]
   }

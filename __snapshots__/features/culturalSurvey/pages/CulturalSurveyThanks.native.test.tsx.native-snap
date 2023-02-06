@@ -2,7 +2,6 @@
 
 exports[`CulturalSurveyThanksPage page should render the page with correct layout 1`] = `
 <View
-  fullWidth={true}
   style={
     Array [
       Object {

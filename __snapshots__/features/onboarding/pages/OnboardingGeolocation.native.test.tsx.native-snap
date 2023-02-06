@@ -68,7 +68,6 @@ Array [
     </View>
   </View>,
   <View
-    fullWidth={true}
     style={
       Array [
         Object {
