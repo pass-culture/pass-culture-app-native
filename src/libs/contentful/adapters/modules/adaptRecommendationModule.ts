@@ -9,7 +9,10 @@ const mapRecommendationSubcategories = (
   recoSubcategories: RecommendationParametersFields['recommendationSubcategories']
 ) => recoSubcategories?.fields?.subcategories
 
-const buildRecommendationParams = (recommendationParams: RecommendationParameters) => {
+
+const buildRecommendationParams = (
+  recommendationParams: RecommendationParameters
+): RecommendedOffersModule['recommendationParameters'] => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { recommendationSubcategories, title, ...otherFields } = recommendationParams.fields
   return {
