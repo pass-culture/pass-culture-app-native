@@ -27,7 +27,6 @@ export const OnboardingGeolocation = () => {
 
   return (
     <GenericInfoPageWhite
-      fullWidth
       mobileBottomFlex={0.1}
       animation={GeolocationAnimation}
       titleComponent={Typo.Title1}

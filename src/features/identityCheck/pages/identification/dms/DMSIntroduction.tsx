@@ -65,7 +65,6 @@ export const DMSIntroduction = (): JSX.Element => {
       title="Identifie-toi sur le site demarches-simplifiees.fr"
       separateIconFromTitle={false}
       headerGoBack
-      fullWidth
       mobileBottomFlex={0.5}>
       <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
       <VerticalUl>

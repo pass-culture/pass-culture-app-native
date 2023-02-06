@@ -36,7 +36,6 @@ type Props = {
   subtitle?: string
   activeIndex?: number
   mobileBottomFlex?: number
-  fullWidth?: true
   separateIconFromTitle?: boolean
   onSkip?: () => void
 } & (PropsWithAnimation | PropsWithIcon)
@@ -109,7 +108,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
           />
         </SkipButtonContainer>
       )}
-      <ContentContainer fullWidth={props.fullWidth as boolean}>
+      <ContentContainer>
         <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
         <StyledLottieContainer hasHeight={separateIconFromTitle}>
           {animation ? (
@@ -141,13 +140,13 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   )
 }
 
-const ContentContainer = styled.View<{ fullWidth: boolean }>(({ fullWidth, theme }) => ({
+const ContentContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   flex: 1,
   paddingHorizontal: getSpacing(6),
   maxWidth: theme.contentPage.maxWidth,
   overflow: 'scroll',
-  width: fullWidth ? '100%' : undefined,
+  width: '100%',
 }))
 
 const StyledLottieContainer = styled.View<{ hasHeight?: boolean }>(({ hasHeight }) => ({
