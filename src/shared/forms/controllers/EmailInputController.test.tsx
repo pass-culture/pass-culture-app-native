@@ -14,10 +14,10 @@ jest.useFakeTimers()
 describe('<EmailInputController />', () => {
   it('should show error when form input is invalid', () => {
     renderEmailInputController({
-      error: { type: 'custom', message: 'error' },
+      error: { type: 'custom', message: 'Email has an incorrect format' },
     })
 
-    expect(screen.getByText('error')).toBeTruthy()
+    expect(screen.getByText('Email has an incorrect format')).toBeTruthy()
   })
 
   it('should not show error when form input is invalid', () => {
@@ -83,7 +83,7 @@ const renderEmailInputController = ({
       defaultValues: { email: '' },
     })
 
-    error && setError('email', error)
+    if (error) setError('email', error)
     return (
       <EmailInputController
         control={control}
