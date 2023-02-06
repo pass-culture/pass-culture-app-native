@@ -14,6 +14,7 @@ describe('adaptOffersModule', () => {
     const rawAlgoliaNatifModule = algoliaNatifModuleFixture
 
     expect(isAlgoliaContentModel(rawAlgoliaNatifModule)).toBeTruthy()
+
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
   })
 
@@ -40,14 +41,24 @@ describe('adaptOffersModule', () => {
         {
           title: 'Livre',
           isGeolocated: false,
-          categories: ['Livres'],
+          categories: ['Cartes jeunes', 'Spectacles'],
           hitsPerPage: 10,
           subcategories: ['Livre', 'Livre numérique, e-book'],
           minBookingsThreshold: 2,
         },
-        { title: 'Livre', isGeolocated: false, categories: ['Livres'], hitsPerPage: 10 },
-        { title: 'Ciné', categories: ['Cinéma'], hitsPerPage: 2 },
-        { title: 'Musique', isGeolocated: false, categories: ['Musique'], hitsPerPage: 2 },
+        {
+          title: 'Livre',
+          isGeolocated: false,
+          categories: ['Cartes jeunes', 'Spectacles'],
+          hitsPerPage: 10,
+        },
+        { title: 'Ciné', categories: ['Cartes jeunes', 'Spectacles'], hitsPerPage: 2 },
+        {
+          title: 'Musique',
+          isGeolocated: false,
+          categories: ['Cartes jeunes', 'Spectacles'],
+          hitsPerPage: 2,
+        },
       ],
     }
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)

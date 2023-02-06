@@ -1,3 +1,4 @@
+import { categoriesFixture } from 'libs/contentful/fixtures/categoriesFixture'
 import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
 import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
 
@@ -33,7 +34,7 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
       fields: {
         title: 'Livre',
         isGeolocated: false,
-        categories: ['Livres'],
+        algoliaCategories: categoriesFixture,
         hitsPerPage: 10,
         minBookingsThreshold: 2,
         algoliaSubcategories: subcategoriesFixture,
@@ -82,7 +83,12 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
       },
       locale: 'en-US',
     },
-    fields: { title: 'Livre', isGeolocated: false, categories: ['Livres'], hitsPerPage: 10 },
+    fields: {
+      title: 'Livre',
+      isGeolocated: false,
+      algoliaCategories: categoriesFixture,
+      hitsPerPage: 10,
+    },
   },
   {
     sys: {
@@ -98,7 +104,7 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
       },
       locale: 'en-US',
     },
-    fields: { title: 'Ciné', categories: ['Cinéma'], hitsPerPage: 2 },
+    fields: { title: 'Ciné', algoliaCategories: categoriesFixture, hitsPerPage: 2 },
   },
   {
     sys: {
@@ -114,7 +120,12 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
       },
       locale: 'en-US',
     },
-    fields: { title: 'Musique', isGeolocated: false, categories: ['Musique'], hitsPerPage: 2 },
+    fields: {
+      title: 'Musique',
+      isGeolocated: false,
+      algoliaCategories: categoriesFixture,
+      hitsPerPage: 2,
+    },
   },
 ]
 

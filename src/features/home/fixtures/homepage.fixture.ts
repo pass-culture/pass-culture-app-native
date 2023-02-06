@@ -122,7 +122,7 @@ export const formattedOffersModule: OffersModule = {
     {
       title: 'Livre',
       isGeolocated: false,
-      categories: ['Livres'],
+      categories: ['Cartes jeunes', 'Spectacles'],
       hitsPerPage: 10,
       minBookingsThreshold: 2,
       subcategories: ['Livre', 'Livre numérique, e-book'],

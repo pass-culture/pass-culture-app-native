@@ -10,6 +10,7 @@ export enum ContentTypes {
   RECOMMENDATION = 'recommendation',
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
   SUBCATEGORIES = 'subcategories',
+  CATEGORIES = 'categories',
   THEMATIC_HIGHLIGHT = 'thematicHighlight',
   VENUES_PLAYLIST = 'venuesPlaylist',
   VENUES_PARAMETERS = 'venuesParameters',
@@ -130,6 +131,10 @@ export interface Subcategories {
   sys: Sys<typeof ContentTypes.SUBCATEGORIES>
   fields: SubcategoriesFields
 }
+export interface Categories {
+  sys: Sys<typeof ContentTypes.CATEGORIES>
+  fields: CategoriesFields
+}
 
 export interface MovieGenres {
   sys: Sys<typeof ContentTypes.MOVIE_GENRES>
@@ -180,8 +185,8 @@ export interface SearchParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
-  categories?: string[]
   algoliaSubcategories?: Subcategories
+  algoliaCategories?: Categories
   tags?: string[]
   isDigital?: boolean
   isThing?: boolean
@@ -267,6 +272,9 @@ export interface RecommendationParametersFields {
 
 type SubcategoriesFields = {
   subcategories: string[]
+}
+type CategoriesFields = {
+  categories: string[]
 }
 
 type MovieGenresFields = {
