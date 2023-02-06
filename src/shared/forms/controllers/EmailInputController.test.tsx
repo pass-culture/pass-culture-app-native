@@ -9,6 +9,8 @@ type EmailForm = {
   email: string
 }
 
+jest.useFakeTimers()
+
 describe('<EmailInputController />', () => {
   it('should show error when form input is invalid', () => {
     renderEmailInputController({
@@ -25,7 +27,6 @@ describe('<EmailInputController />', () => {
   })
 
   it('should show spelling help when asked', async () => {
-    jest.useFakeTimers()
     renderEmailInputController({ withSpellingHelp: true })
 
     const input = screen.getByPlaceholderText('tonadresse@email.com')
@@ -38,7 +39,6 @@ describe('<EmailInputController />', () => {
   })
 
   it('should not show spelling help when asked but no spelling help found', async () => {
-    jest.useFakeTimers()
     renderEmailInputController({ withSpellingHelp: true })
 
     const input = screen.getByPlaceholderText('tonadresse@email.com')
