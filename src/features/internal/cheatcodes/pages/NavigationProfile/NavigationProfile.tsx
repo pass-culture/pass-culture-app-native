@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
@@ -36,6 +37,12 @@ export function NavigationProfile(): JSX.Element {
     visible: exhaustedCreditModalVisible,
     showModal: showExhaustedCreditModal,
     hideModal: hideExhaustedCreditModal,
+  } = useModal(false)
+
+  const {
+    visible: fakeDoorListFavoritesVisible,
+    showModal: showFakeDoorListFavoritesVisible,
+    hideModal: hideFakeDoorListFavoritesVisible,
   } = useModal(false)
 
   return (
@@ -74,6 +81,16 @@ export function NavigationProfile(): JSX.Element {
           <ExhaustedCreditModal
             visible={exhaustedCreditModalVisible}
             hideModal={hideExhaustedCreditModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
+            wording="Modal Fake Door Liste de Favoris"
+            onPress={showFakeDoorListFavoritesVisible}
+          />
+          <FavoriteListSurveyModal
+            visible={fakeDoorListFavoritesVisible}
+            hideModal={hideFakeDoorListFavoritesVisible}
           />
         </Row>
       </StyledContainer>
