@@ -17,4 +17,5 @@ export enum RemoteStoreDocuments {
 
 export enum RemoteStoreFeatureFlags {
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
+  WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
 }
