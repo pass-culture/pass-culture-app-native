@@ -254,7 +254,7 @@ export interface ExclusivityFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendationSearchParameters/fields
 export interface RecommendationParametersFields {
   title: string
-  categories?: string[]
+  recommendationCategories?: Categories
   recommendationSubcategories?: Subcategories
   beginningDatetime?: string
   endingDatetime?: string
