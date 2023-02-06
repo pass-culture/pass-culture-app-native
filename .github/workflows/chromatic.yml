@@ -1,6 +1,13 @@
 name: 'Chromatic'
 
-on: push
+on:
+  push:
+    paths:
+      - ".storybook/**"
+      - "ios/**"
+      - "android/**"
+      - "src/**"
+      - "package.json"
 
 env:
   BUILD_DIR: /tmp/${{ github.sha }}
