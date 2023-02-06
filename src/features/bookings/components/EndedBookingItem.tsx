@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -28,7 +28,17 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
+  const isDigitalBookingWithoutExpirationDate = useMemo(
+    () => booking.stock.offer.isDigital && !booking.expirationDate,
+    [booking.expirationDate, booking.stock.offer.isDigital]
+  )
+  const shouldRedirectToBooking = isDigitalBookingWithoutExpirationDate && !cancellationReason
+
+  const endedBookingReason = getEndedBookingReason(
+    cancellationReason,
+    dateUsed,
+    isDigitalBookingWithoutExpirationDate
+  )
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
@@ -37,9 +47,15 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
   })
 
+  const isDigitalBookingWithoutExpirationDate = useMemo(
+    () => booking.stock.offer.isDigital && !booking.expirationDate,
+    [booking.expirationDate, booking.stock.offer.isDigital]
+  )
+
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
+    if (isDigitalBookingWithoutExpirationDate) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       queryClient.setQueryData(
@@ -65,7 +81,11 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <InternalTouchableLink
       enableNavigate={!!netInfo.isConnected}
-      navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
+      navigateTo={
+        shouldRedirectToBooking
+          ? { screen: 'BookingDetails', params: { id: booking.id } }
+          : { screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }
+      }
       onBeforeNavigate={handlePressOffer}
       accessibilityLabel={accessibilityLabel}>
       <ItemContainer>
