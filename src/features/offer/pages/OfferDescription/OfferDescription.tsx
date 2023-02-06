@@ -73,7 +73,12 @@ export const getContentFromOffer = (
 ): Item[] => {
   const hits: Item[] = Object.entries(extraData || {})
     .map(([key, value]) => {
-      if (key && isExtraDataKey(key) && (typeof value === 'string' || typeof value === 'number')) {
+      const shouldDisplayExtraData =
+        key &&
+        value &&
+        isExtraDataKey(key) &&
+        (typeof value === 'string' || typeof value === 'number')
+      if (shouldDisplayExtraData) {
         return { key, value: formatValue(key, value) }
       }
       return undefined
