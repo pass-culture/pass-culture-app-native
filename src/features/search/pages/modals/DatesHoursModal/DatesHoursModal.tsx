@@ -163,9 +163,9 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
         view: SearchView.Results,
       }
 
-      analytics.logPerformSearch(additionalSearchState)
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
+          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }

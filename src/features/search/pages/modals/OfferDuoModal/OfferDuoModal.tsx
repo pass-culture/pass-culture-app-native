@@ -117,9 +117,10 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
 
         view: SearchView.Results,
       }
-      analytics.logPerformSearch(additionalSearchState)
+
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
+          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }

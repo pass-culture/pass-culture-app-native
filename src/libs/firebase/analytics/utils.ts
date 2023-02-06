@@ -35,6 +35,7 @@ export const buildPerformSearchState = (searchState: SearchState) => {
   const state: PerformSearchState = {
     searchLocationFilter: JSON.stringify(searchState.locationFilter),
     searchId: searchState.searchId,
+    searchView: searchState.view,
   }
 
   if (searchState.date !== null) {

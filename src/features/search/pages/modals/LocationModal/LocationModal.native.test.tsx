@@ -19,7 +19,7 @@ import {
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 
 import { LocationModal, LocationModalProps } from './LocationModal'
 
@@ -104,67 +104,14 @@ describe('<LocationModal/>', () => {
     jest.useRealTimers()
   })
 
-  describe('should navigate on search results', () => {
-    it('with actual state with no change when pressing search button', async () => {
-      mockSearchState = {
-        ...searchState,
-        view: SearchView.Results,
-      }
-      const { getByText } = renderLocationModal()
-
-      await superFlushWithAct()
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          view: SearchView.Results,
-        },
-        screen: 'Search',
-      })
-    })
-
-    it('with a new radius when changing it with the slider and pressing search button', async () => {
-      mockSearchState = {
-        ...searchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
-        view: SearchView.Results,
-      }
-      const { getByTestId, getByText } = renderLocationModal()
-
-      await act(async () => {
-        const slider = getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChange([50])
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
-          view: SearchView.Results,
-        },
-        screen: 'Search',
-      })
-    })
-  })
-
   describe('should navigate on landing page when location filter modal opened from search box', () => {
     it('with the initial state', async () => {
       mockSearchState = searchState
-      const { getByText } = renderLocationModal()
+      renderLocationModal()
 
       await superFlushWithAct()
 
-      const searchButton = getByText('Rechercher')
+      const searchButton = screen.getByText('Rechercher')
       await act(async () => {
         fireEvent.press(searchButton)
       })
@@ -180,16 +127,16 @@ describe('<LocationModal/>', () => {
 
     it('with a new location', async () => {
       mockSearchState = searchState
-      const { getByText, getByTestId } = renderLocationModal()
+      renderLocationModal()
 
       await superFlushWithAct()
 
-      const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
       await act(async () => {
         fireEvent.press(radioButton)
       })
 
-      const searchButton = getByText('Rechercher')
+      const searchButton = screen.getByText('Rechercher')
       await act(async () => {
         fireEvent.press(searchButton)
       })
@@ -203,23 +150,6 @@ describe('<LocationModal/>', () => {
         screen: 'Search',
       })
     })
-  })
-
-  it('should log PerformSearch when pressing search button', async () => {
-    mockSearchState = {
-      ...searchState,
-      view: SearchView.Results,
-    }
-    const { getByText } = renderLocationModal()
-
-    await superFlushWithAct()
-
-    const searchButton = getByText('Rechercher')
-    await act(async () => {
-      fireEvent.press(searchButton)
-    })
-
-    expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
   })
 
   it.each`
@@ -238,106 +168,13 @@ describe('<LocationModal/>', () => {
       label: RadioButtonLocation
     }) => {
       mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId } = renderLocationModal()
+      renderLocationModal()
 
       await superFlushWithAct()
 
-      const radioButton = getByTestId(label)
+      const radioButton = screen.getByTestId(label)
 
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
-    }
-  )
-
-  it.each`
-    locationFilter                                                        | label                             | locationType               | eventType
-    ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE} | ${{ type: 'everywhere' }}
-    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}  | ${{ type: 'aroundMe' }}
-  `(
-    'should log ChangeSearchLocation event and navigate with $locationType location type when selecting $label radio button and pressing search button',
-    async ({
-      locationFilter,
-      label,
-      eventType,
-    }: {
-      locationFilter: LocationFilter
-      label: RadioButtonLocation
-      eventType: ChangeSearchLocationParam
-    }) => {
-      mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText } = renderLocationModal()
-
-      const radioButton = getByTestId(label)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          locationFilter,
-        },
-        screen: 'Search',
-      })
-    }
-  )
-
-  it.each`
-    locationFilter                                                                          | label                                        | locationType          | eventType
-    ${{ locationType: LocationType.VENUE, venue: mockVenues[0] }}                           | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.VENUE} | ${{ type: 'venue', venueId: mockVenues[0].venueId }}
-    ${{ locationType: LocationType.PLACE, place: mockPlaces[0], aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE} | ${{ type: 'place' }}
-  `(
-    'should log ChangeSearchLocation event and navigate with $locationType location type when selecting $label radio button, location/venue and pressing search button',
-    async ({
-      locationFilter,
-      label,
-      eventType,
-    }: {
-      locationFilter: LocationFilter
-      label: RadioButtonLocation
-      eventType: ChangeSearchLocationParam
-    }) => {
-      mockSearchState = { ...mockSearchState, locationFilter }
-      const { getByTestId, getByText, getByPlaceholderText } = renderLocationModal()
-
-      const radioButton = getByTestId(label)
-      await act(async () => {
-        fireEvent.press(radioButton)
-      })
-
-      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
-      await act(async () => {
-        fireEvent(searchInput, 'onFocus')
-        fireEvent.changeText(searchInput, 'Paris')
-      })
-
-      const venueOrPlace =
-        locationFilter.locationType === LocationType.VENUE ? mockVenues[0] : mockPlaces[0]
-
-      await act(async () => {
-        fireEvent.press(getByTestId(`${venueOrPlace.label} ${venueOrPlace.info}`))
-      })
-
-      const searchButton = getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...mockSearchState,
-          locationFilter,
-        },
-        screen: 'Search',
-      })
     }
   )
 
@@ -347,59 +184,59 @@ describe('<LocationModal/>', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const { getByTestId, queryByText } = renderLocationModal()
+    renderLocationModal()
 
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
 
-    expect(queryByText(mockPositionError.message)).toBeTruthy()
+    expect(screen.queryByText(mockPositionError.message)).toBeTruthy()
   })
 
   it('should display the selected radius when select Autour de moi radio button', async () => {
     mockSearchState = searchState
-    const { getByTestId, queryByText } = renderLocationModal()
+    renderLocationModal()
 
     await act(async () => {
-      expect(queryByText('Dans un rayon de\u00a0:')).toBeFalsy()
+      expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeFalsy()
     })
 
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
-    expect(queryByText('Dans un rayon de\u00a0:')).toBeTruthy()
+    expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeTruthy()
   })
 
   it('should display the slider when select Autour de moi radio button', async () => {
-    const { queryByTestId, getByTestId } = renderLocationModal()
+    renderLocationModal()
 
     await act(async () => {
-      expect(queryByTestId('slider')).toBeFalsy()
+      expect(screen.queryByTestId('slider')).toBeFalsy()
     })
 
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
-    expect(queryByTestId('slider')).toBeTruthy()
+    expect(screen.queryByTestId('slider')).toBeTruthy()
   })
 
   it('should display Aucune localisation in RadioButtonLocation.EVERYWHERE when position is null', async () => {
     mockPosition = null
-    const { queryByText } = renderLocationModal()
+    renderLocationModal()
 
     await act(async () => {
-      expect(queryByText('Aucune localisation')).toBeTruthy()
+      expect(screen.queryByText('Aucune localisation')).toBeTruthy()
     })
   })
 
   it('should display Partout in RadioButtonLocation.EVERYWHERE when position is not null', async () => {
-    const { queryByText } = renderLocationModal()
+    renderLocationModal()
 
     await act(async () => {
-      expect(queryByText('Partout')).toBeTruthy()
+      expect(screen.queryByText('Partout')).toBeTruthy()
     })
   })
 
@@ -408,29 +245,29 @@ describe('<LocationModal/>', () => {
       'Retrouve toutes les offres autour de chez toi en activant les données de localisation.'
     mockPosition = null
     mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
-    const { queryByText, getByTestId, getByText } = renderLocationModal()
-    expect(queryByText(geolocationModalText)).toBeFalsy()
+    renderLocationModal()
+    expect(screen.queryByText(geolocationModalText)).toBeFalsy()
 
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
 
-    expect(queryByText(geolocationModalText)).toBeTruthy()
+    expect(screen.queryByText(geolocationModalText)).toBeTruthy()
 
-    const openSettingsButton = getByText('Activer la géolocalisation')
+    const openSettingsButton = screen.getByText('Activer la géolocalisation')
     await act(async () => {
       fireEvent.press(openSettingsButton)
     })
 
-    expect(queryByText(geolocationModalText)).toBeFalsy()
+    expect(screen.queryByText(geolocationModalText)).toBeFalsy()
   })
 
   it('should not change location filter on Autour de moi radio button press when position is null', async () => {
     mockPosition = null
-    const { getByTestId } = renderLocationModal()
+    renderLocationModal()
 
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
@@ -445,9 +282,9 @@ describe('<LocationModal/>', () => {
   ])(
     'should select %s radio button when pressing it and position is not null',
     async (locationRadioButton) => {
-      const { getByTestId } = renderLocationModal()
+      renderLocationModal()
 
-      const radioButton = getByTestId(locationRadioButton)
+      const radioButton = screen.getByTestId(locationRadioButton)
       await act(async () => {
         fireEvent.press(radioButton)
       })
@@ -460,10 +297,10 @@ describe('<LocationModal/>', () => {
     it('the location radio group at "Partout" when pressing reset button and position is null', async () => {
       mockPosition = null
       mockSearchState = searchState
-      const { getByTestId, getByText } = renderLocationModal()
+      renderLocationModal()
 
-      const defaultRadioButton = getByTestId(RadioButtonLocation.NO_LOCATION)
-      const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+      const defaultRadioButton = screen.getByTestId(RadioButtonLocation.NO_LOCATION)
+      const radioButton = screen.getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
 
@@ -473,7 +310,7 @@ describe('<LocationModal/>', () => {
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
@@ -486,10 +323,10 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
       }
-      const { getByTestId, getByText } = renderLocationModal()
+      renderLocationModal()
 
-      const defaultRadioButton = getByTestId(RadioButtonLocation.AROUND_ME)
-      const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+      const defaultRadioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
+      const radioButton = screen.getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
 
@@ -499,7 +336,7 @@ describe('<LocationModal/>', () => {
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
@@ -515,21 +352,21 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
       }
-      const { getByText, getByTestId, getAllByText } = renderLocationModal()
+      renderLocationModal()
       await act(async () => {
-        expect(getByText('50\u00a0km')).toBeTruthy()
+        expect(screen.getByText('50\u00a0km')).toBeTruthy()
       })
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
 
-      const aroundMeRadioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+      const aroundMeRadioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
       await act(async () => {
         fireEvent.press(aroundMeRadioButton)
       })
-      expect(getAllByText(`${MAX_RADIUS}\u00a0km`).length).toEqual(2)
+      expect(screen.getAllByText(`${MAX_RADIUS}\u00a0km`).length).toEqual(2)
     })
 
     it('should reset search input place or venue when pressing reset button', async () => {
@@ -537,20 +374,22 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: 10 },
       }
-      const { getByPlaceholderText, getByText, getByTestId } = renderLocationModal()
+      renderLocationModal()
 
-      const resetButton = getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
 
-      const choosePlaceOrVenueRadioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+      const choosePlaceOrVenueRadioButton = screen.getByTestId(
+        RadioButtonLocation.CHOOSE_PLACE_OR_VENUE
+      )
       await act(async () => {
         fireEvent.press(choosePlaceOrVenueRadioButton)
       })
 
       await act(async () => {
-        const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
+        const searchInput = screen.getByPlaceholderText(`Adresse, cinéma, musée...`)
         expect(searchInput.props.value).toEqual('')
       })
     })
@@ -566,14 +405,14 @@ describe('<LocationModal/>', () => {
         ...mockSearchState,
         locationFilter,
       }
-      const { getByTestId, getByPlaceholderText } = renderLocationModal()
+      renderLocationModal()
 
-      const radioButton = getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+      const radioButton = screen.getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
       await act(async () => {
         fireEvent.press(radioButton)
       })
 
-      const searchInput = getByPlaceholderText(`Adresse, cinéma, musée...`)
+      const searchInput = screen.getByPlaceholderText(`Adresse, cinéma, musée...`)
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
         fireEvent.changeText(searchInput, 'Paris')
@@ -584,11 +423,11 @@ describe('<LocationModal/>', () => {
       const venue = mockVenues[0]
 
       await act(async () => {
-        fireEvent.press(getByTestId(`${venue.label} ${venue.info}`))
+        fireEvent.press(screen.getByTestId(`${venue.label} ${venue.info}`))
       })
 
       await act(async () => {
-        fireEvent.press(getByTestId('Réinitialiser la recherche'))
+        fireEvent.press(screen.getByTestId('Réinitialiser la recherche'))
       })
 
       expect(searchInput.props.value).toEqual('')
@@ -606,14 +445,14 @@ describe('<LocationModal/>', () => {
         ...searchState,
         locationFilter,
       }
-      const { getByPlaceholderText, getByTestId } = renderLocationModal()
+      renderLocationModal()
 
-      const searchInput = getByPlaceholderText('Adresse, cinéma, musée...')
+      const searchInput = screen.getByPlaceholderText('Adresse, cinéma, musée...')
       await act(async () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
 
-      const previousButton = getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer')
       await act(async () => {
         fireEvent.press(previousButton)
       })
@@ -630,14 +469,14 @@ describe('<LocationModal/>', () => {
         ...mockSearchState,
         locationFilter,
       }
-      const { getByPlaceholderText, getByTestId } = renderLocationModal()
+      renderLocationModal()
 
-      const searchInput = getByPlaceholderText('Adresse, cinéma, musée...')
+      const searchInput = screen.getByPlaceholderText('Adresse, cinéma, musée...')
       await act(async () => {
         fireEvent(searchInput, 'onChangeText', 'test')
       })
 
-      const previousButton = getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer')
       await act(async () => {
         fireEvent.press(previousButton)
       })
@@ -648,15 +487,15 @@ describe('<LocationModal/>', () => {
 
   describe('should close the modal', () => {
     it('when pressing search button and not pristine', async () => {
-      const { getByTestId } = renderLocationModal()
+      renderLocationModal()
 
       await superFlushWithAct()
 
       await act(async () => {
-        fireEvent.press(getByTestId(RadioButtonLocation.AROUND_ME))
+        fireEvent.press(screen.getByTestId(RadioButtonLocation.AROUND_ME))
       })
 
-      const searchButton = getByTestId('Rechercher')
+      const searchButton = screen.getByTestId('Rechercher')
 
       await act(async () => {
         fireEvent.press(searchButton)
@@ -666,11 +505,11 @@ describe('<LocationModal/>', () => {
     })
 
     it('when pressing previous button', async () => {
-      const { getByTestId } = renderLocationModal()
+      renderLocationModal()
 
       await superFlushWithAct()
 
-      const previousButton = getByTestId('Fermer')
+      const previousButton = screen.getByTestId('Fermer')
       fireEvent.press(previousButton)
 
       expect(mockHideModal).toHaveBeenCalledTimes(1)
@@ -680,11 +519,11 @@ describe('<LocationModal/>', () => {
   it('should open the request geolocation permission when position is null and permission state is denied when pressing Autour de moi radio button', async () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED
-    const { getByTestId } = renderLocationModal()
+    renderLocationModal()
 
     await superFlushWithAct()
 
-    const radioButton = getByTestId(RadioButtonLocation.AROUND_ME)
+    const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
@@ -694,27 +533,27 @@ describe('<LocationModal/>', () => {
 
   describe('with "Appliquer le filtre" button', () => {
     it('should display alternative button title', async () => {
-      const { getByText } = renderLocationModal({
+      renderLocationModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
-        expect(getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
       })
     })
 
     it('should update search state when pressing submit button', async () => {
-      const { getByText } = renderLocationModal({
+      renderLocationModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await superFlushWithAct()
 
       await act(async () => {
-        fireEvent.press(getByText('Autour de moi'))
+        fireEvent.press(screen.getByText('Autour de moi'))
       })
 
-      const searchButton = getByText('Appliquer le filtre')
+      const searchButton = screen.getByText('Appliquer le filtre')
       await act(async () => {
         fireEvent.press(searchButton)
       })
@@ -729,39 +568,223 @@ describe('<LocationModal/>', () => {
         payload: expectedSearchParams,
       })
     })
+
+    it('should not log PerformSearch when pressing button', async () => {
+      mockSearchState = {
+        ...searchState,
+        view: SearchView.Results,
+      }
+      renderLocationModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await superFlushWithAct()
+
+      const searchButton = screen.getByText('Appliquer le filtre')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
+    })
+  })
+
+  describe('with "Rechercher" button', () => {
+    describe('should navigate on search results', () => {
+      it('with actual state with no change when pressing button', async () => {
+        mockSearchState = {
+          ...searchState,
+          view: SearchView.Results,
+        }
+        renderLocationModal()
+
+        await superFlushWithAct()
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            view: SearchView.Results,
+          },
+          screen: 'Search',
+        })
+      })
+
+      it('with a new radius when changing it with the slider and pressing button', async () => {
+        mockSearchState = {
+          ...searchState,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+          view: SearchView.Results,
+        }
+        renderLocationModal()
+
+        await act(async () => {
+          const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+          slider.props.onValuesChange([50])
+        })
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+            view: SearchView.Results,
+          },
+          screen: 'Search',
+        })
+      })
+    })
+
+    it.each`
+      locationFilter                                                        | label                             | locationType               | eventType
+      ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE} | ${{ type: 'everywhere' }}
+      ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}  | ${{ type: 'aroundMe' }}
+    `(
+      'should log ChangeSearchLocation event and navigate with $locationType location type when selecting $label radio button and pressing button',
+      async ({
+        locationFilter,
+        label,
+        eventType,
+      }: {
+        locationFilter: LocationFilter
+        label: RadioButtonLocation
+        eventType: ChangeSearchLocationParam
+      }) => {
+        mockSearchState = { ...mockSearchState, locationFilter }
+        renderLocationModal()
+
+        const radioButton = screen.getByTestId(label)
+        await act(async () => {
+          fireEvent.press(radioButton)
+        })
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            locationFilter,
+          },
+          screen: 'Search',
+        })
+      }
+    )
+
+    it.each`
+      locationFilter                                                                          | label                                        | locationType          | eventType
+      ${{ locationType: LocationType.VENUE, venue: mockVenues[0] }}                           | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.VENUE} | ${{ type: 'venue', venueId: mockVenues[0].venueId }}
+      ${{ locationType: LocationType.PLACE, place: mockPlaces[0], aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE} | ${{ type: 'place' }}
+    `(
+      'should log ChangeSearchLocation event and navigate with $locationType location type when selecting $label radio button, location/venue and pressing button',
+      async ({
+        locationFilter,
+        label,
+        eventType,
+      }: {
+        locationFilter: LocationFilter
+        label: RadioButtonLocation
+        eventType: ChangeSearchLocationParam
+      }) => {
+        mockSearchState = { ...mockSearchState, locationFilter }
+        renderLocationModal()
+
+        const radioButton = screen.getByTestId(label)
+        await act(async () => {
+          fireEvent.press(radioButton)
+        })
+
+        const searchInput = screen.getByPlaceholderText(`Adresse, cinéma, musée...`)
+        await act(async () => {
+          fireEvent(searchInput, 'onFocus')
+          fireEvent.changeText(searchInput, 'Paris')
+        })
+
+        const venueOrPlace =
+          locationFilter.locationType === LocationType.VENUE ? mockVenues[0] : mockPlaces[0]
+
+        await act(async () => {
+          fireEvent.press(screen.getByTestId(`${venueOrPlace.label} ${venueOrPlace.info}`))
+        })
+
+        const searchButton = screen.getByText('Rechercher')
+        await act(async () => {
+          fireEvent.press(searchButton)
+        })
+
+        expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
+
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+          params: {
+            ...mockSearchState,
+            locationFilter,
+          },
+          screen: 'Search',
+        })
+      }
+    )
+
+    it('should log PerformSearch when pressing search button', async () => {
+      mockSearchState = {
+        ...searchState,
+        view: SearchView.Results,
+      }
+      renderLocationModal()
+
+      await superFlushWithAct()
+
+      const searchButton = screen.getByText('Rechercher')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
+    })
   })
 
   describe('Modal header buttons', () => {
     it('should display back button on header when the modal is opening from general filter page', async () => {
-      const { getByTestId } = renderLocationModal({
+      renderLocationModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       await waitFor(() => {
-        expect(getByTestId('Revenir en arrière')).toBeTruthy()
+        expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
       })
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
-      const { getByTestId } = renderLocationModal({
+      renderLocationModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
         onClose: mockOnClose,
       })
 
       await superFlushWithAct()
 
-      const closeButton = getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
 
       expect(mockOnClose).toHaveBeenCalledTimes(1)
     })
 
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
-      const { getByTestId } = renderLocationModal()
+      renderLocationModal()
 
       await superFlushWithAct()
 
-      const closeButton = getByTestId('Fermer')
+      const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
 
       expect(mockOnClose).not.toHaveBeenCalled()

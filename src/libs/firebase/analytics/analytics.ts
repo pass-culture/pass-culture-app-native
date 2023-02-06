@@ -315,8 +315,6 @@ const logEventAnalytics = {
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.TRY_SELECT_DEPOSIT, { age }),
-  logUseLandingCategory: (categoryName: string, searchId: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.USE_LANDING_CATEGORY, { categoryName, searchId }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_CONTACT, params),
   logVenueSeeAllOffersClicked: (venueId: number) =>

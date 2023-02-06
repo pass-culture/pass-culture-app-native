@@ -47,12 +47,12 @@ export const SearchFilter: React.FC = () => {
   }, [navigate, params])
 
   const onSearchPress = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...searchState,
-        view: SearchView.Results,
-      })
-    )
+    const additionalSearchState = {
+      ...searchState,
+      view: SearchView.Results,
+    }
+    analytics.logPerformSearch(additionalSearchState)
+    navigate(...getTabNavConfig('Search', additionalSearchState))
   }, [navigate, searchState])
 
   const onResetPress = useCallback(() => {

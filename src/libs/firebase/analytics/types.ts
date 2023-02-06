@@ -20,6 +20,7 @@ export type OfferAnalyticsData = {
 
 export type PerformSearchState = {
   searchLocationFilter: string
+  searchView: string
   searchId?: string
   searchDate?: string
   searchIsAutocomplete?: boolean

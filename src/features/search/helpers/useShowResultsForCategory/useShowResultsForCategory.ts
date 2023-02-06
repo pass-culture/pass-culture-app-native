@@ -20,19 +20,18 @@ export const useShowResultsForCategory = (): OnPressCategory => {
     (pressedCategory) => {
       if (!data) return
       const searchId = uuidv4()
-      analytics.logUseLandingCategory(pressedCategory, searchId)
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...searchState,
-          offerCategories: [pressedCategory],
-          offerSubcategories: [],
-          offerNativeCategories: undefined,
-          offerGenreTypes: undefined,
-          view: SearchView.Results,
-          searchId,
-          isOnline: isOnlyOnline(data, pressedCategory) || undefined,
-        })
-      )
+      const newSearchState = {
+        ...searchState,
+        offerCategories: [pressedCategory],
+        offerSubcategories: [],
+        offerNativeCategories: undefined,
+        offerGenreTypes: undefined,
+        view: SearchView.Results,
+        searchId,
+        isOnline: isOnlyOnline(data, pressedCategory) || undefined,
+      }
+      analytics.logPerformSearch({ ...newSearchState, view: SearchView.Landing })
+      navigate(...getTabNavConfig('Search', newSearchState))
     },
     [data, navigate, searchState]
   )
