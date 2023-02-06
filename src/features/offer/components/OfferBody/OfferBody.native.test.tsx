@@ -8,6 +8,7 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
@@ -20,6 +21,15 @@ jest.mock('libs/address/useFormatFullAddress')
 let mockSearchHits: SearchHit[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
+}))
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
 }))
 
 describe('<OfferBody />', () => {

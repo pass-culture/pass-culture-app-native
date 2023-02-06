@@ -11,6 +11,7 @@ import { RecommendationParametersFields } from 'libs/contentful'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const mockUserId = 1234
@@ -20,6 +21,15 @@ const position = {
 }
 const mockModuleId = 'abcd'
 mockdate.set(new Date('2022-11-25T00:00+00:00'))
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
+}))
 
 describe('useHomeRecommendedHits', () => {
   const mutate = jest.fn()
