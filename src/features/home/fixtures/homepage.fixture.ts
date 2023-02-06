@@ -68,7 +68,7 @@ export const formattedRecommendedOffersModule: RecommendedOffersModule = {
   id: '2TD5BEKL2zUGLhfzhkWhwL',
   displayParameters: { title: 'Tes évènements en ligne', layout: 'two-items', minOffers: 1 },
   recommendationParameters: {
-    categories: ['Livres'],
+    categories: ['Cartes jeunes', 'Spectacles'],
     beginningDatetime: '2021-01-01T00:00+00:00',
     endingDatetime: '2024-01-01T00:00+00:00',
     upcomingWeekendEvent: true,

@@ -15,7 +15,7 @@ const mapOffersSubcategories = (
 const mapOffersMovieGenres = (movieGenres: SearchParametersFields['movieGenres']) =>
   movieGenres?.fields?.movieGenres
 
-const mapCategoriesCategories = (
+const mapOffersCategories = (
   algoliaCategories: SearchParametersFields['algoliaCategories']
 ): OffersModuleParameters['categories'] => algoliaCategories?.fields?.categories
 
@@ -30,7 +30,7 @@ const buildOffersParams = (
         ...otherFields,
         subcategories: mapOffersSubcategories(algoliaSubcategories),
         movieGenres: mapOffersMovieGenres(movieGenres),
-        categories: mapCategoriesCategories(algoliaCategories),
+        categories: mapOffersCategories(algoliaCategories),
       })
     )
 
