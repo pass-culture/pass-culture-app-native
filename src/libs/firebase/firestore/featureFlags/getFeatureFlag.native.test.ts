@@ -8,7 +8,10 @@ jest.mock('@react-native-firebase/firestore')
 const { collection } = firestore()
 
 describe('getFeatureFlag', () => {
-  it.each([RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW])(
+  it.each([
+    RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
+    RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
+  ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {
       renderHook(() => getFeatureFlag(featureFlag))

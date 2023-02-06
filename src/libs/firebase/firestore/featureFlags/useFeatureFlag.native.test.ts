@@ -13,7 +13,7 @@ const mockGet = jest.fn()
 
 describe.each([
   RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
-  RemoteStoreFeatureFlags.WIP_ENABLE_SUBCATEGORY_FILTER_PAGE,
+  RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
 ])('useFeatureFlag %s', (featureFlag: RemoteStoreFeatureFlags) => {
   beforeAll(() =>
     collection(featureFlag)
