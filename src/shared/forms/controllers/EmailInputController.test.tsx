@@ -26,6 +26,19 @@ describe('<EmailInputController />', () => {
     expect(screen.queryByText('error')).toBeFalsy()
   })
 
+  it('should not show spelling help when not asked', async () => {
+    renderEmailInputController({})
+
+    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(input, 'firstname.lastname@gmal.com')
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    expect(screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeFalsy()
+  })
+
   it('should show spelling help when asked', async () => {
     renderEmailInputController({ withSpellingHelp: true })
 
@@ -36,19 +49,6 @@ describe('<EmailInputController />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
     expect(screen.getByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeTruthy()
-  })
-
-  it('should not show spelling help when asked but no spelling help found', async () => {
-    renderEmailInputController({ withSpellingHelp: true })
-
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(input, 'firstname.lastname@gmail.com')
-
-    await act(async () => {
-      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
-    })
-
-    expect(screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeFalsy()
   })
 
   it('should perform action on spelling help press when given', async () => {
