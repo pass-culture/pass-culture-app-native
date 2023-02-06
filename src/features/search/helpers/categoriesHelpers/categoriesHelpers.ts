@@ -235,58 +235,84 @@ export function getIsNativeCategory(item: Item): item is NativeCategoryIdEnumv2 
   return Object.values(NativeCategoryIdEnumv2).includes(item as NativeCategoryIdEnumv2)
 }
 
+function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
+  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+
+  if (genreTypeId && nativeCategoryId) {
+    const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
+    const genreType = getGenreTypeFromEnum(data, genreTypeId)
+    if (!nativeCategory) return undefined
+    if (!genreType) return undefined
+    return `${nativeCategory.value} - ${genreType.value}`
+  }
+  if (nativeCategoryId) {
+    const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
+    if (!nativeCategory) return undefined
+    return `${nativeCategory.value}`
+  }
+  if (categoryId) {
+    const category = getCategoryFromEnum(data, categoryId)
+    return category.value ?? undefined
+  }
+  return undefined
+}
+
+function getCategoryDescription(
+  data: SubcategoriesResponseModelv2,
+  ctx: DescriptionContext,
+  item: SearchGroupNameEnumv2
+) {
+  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+
+  if (item === SearchGroupNameEnumv2.NONE) return undefined
+  if (item !== categoryId) return undefined
+  if (!nativeCategoryId) return 'Tout'
+
+  const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
+  if (!nativeCategory) return undefined
+  if (!nativeCategory.value) return undefined
+
+  if (!genreTypeId) return nativeCategory.value
+  const genreType = getGenreTypeFromEnum(data, genreTypeId)
+
+  if (!genreType) return nativeCategory.value
+  return `${nativeCategory.value} - ${genreType.value}`
+}
+
+function getNativeCategoryDescription(
+  data: SubcategoriesResponseModelv2,
+  ctx: DescriptionContext,
+  item: NativeCategoryIdEnumv2
+) {
+  const { nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+
+  if (!nativeCategoryId) return undefined
+  if (nativeCategoryId !== item) return undefined
+  if (!genreTypeId) return 'Tout'
+
+  const genreType = getGenreTypeFromEnum(data, genreTypeId)
+  return genreType?.value
+}
+
 export function getDescription(
   data: SubcategoriesResponseModelv2 | undefined,
   ctx: DescriptionContext,
   item?: Item
 ) {
-  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+  const { category: categoryId } = ctx
   if (!categoryId) return undefined
   if (!data) return undefined
 
   if (!item) {
-    if (genreTypeId && nativeCategoryId) {
-      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-      const genreType = getGenreTypeFromEnum(data, genreTypeId)
-      if (!nativeCategory) return undefined
-      if (!genreType) return undefined
-      return `${nativeCategory.value} - ${genreType.value}`
-    }
-    if (nativeCategoryId) {
-      const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-      if (!nativeCategory) return undefined
-      return `${nativeCategory.value}`
-    }
-    if (categoryId) {
-      const category = getCategoryFromEnum(data, categoryId)
-      return category.value ?? undefined
-    }
-    return undefined
+    return getFilterRowDescription(data, ctx)
   }
 
   if (getIsCategory(item)) {
-    if (item === SearchGroupNameEnumv2.NONE) return undefined
-    if (item !== categoryId) return undefined
-    if (!nativeCategoryId) return 'Tout'
-
-    const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
-    if (!nativeCategory) return undefined
-    if (!nativeCategory.value) return undefined
-
-    if (!genreTypeId) return nativeCategory.value
-    const genreType = getGenreTypeFromEnum(data, genreTypeId)
-
-    if (!genreType) return nativeCategory.value
-    return `${nativeCategory.value} - ${genreType.value}`
+    return getCategoryDescription(data, ctx, item)
   }
 
   if (getIsNativeCategory(item)) {
-    if (!nativeCategoryId) return undefined
-    if (nativeCategoryId !== item) return undefined
-    if (!genreTypeId) return 'Tout'
-
-    const genreType = getGenreTypeFromEnum(data, genreTypeId)
-    return genreType?.value
+    return getNativeCategoryDescription(data, ctx, item)
   }
 
   return undefined
