@@ -10,7 +10,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const AccountReactivationSuccess = () => (
   <GenericInfoPageWhite
-    fullWidth
     mobileBottomFlex={0.1}
     animation={QpiThanks}
     titleComponent={Typo.Title1}

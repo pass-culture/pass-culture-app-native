@@ -13,6 +13,7 @@ Array [
           "maxWidth": 500,
           "overflow": "scroll",
           "paddingHorizontal": 24,
+          "width": "100%",
         },
       ]
     }
@@ -351,6 +352,7 @@ Array [
           "maxWidth": 500,
           "overflow": "scroll",
           "paddingHorizontal": 24,
+          "width": "100%",
         },
       ]
     }

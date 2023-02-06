@@ -12,6 +12,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         "maxWidth": 500,
         "overflow": "scroll",
         "paddingHorizontal": 24,
+        "width": "100%",
       },
     ]
   }

@@ -158,7 +158,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
 }
 
 <div
-  className="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk"
+  className="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk r-width-13qz1uu"
   dir={null}
 >
   <div
