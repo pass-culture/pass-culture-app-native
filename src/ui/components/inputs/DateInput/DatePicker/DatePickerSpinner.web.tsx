@@ -18,9 +18,8 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const birthdateInputErrorId = uuidv4()
 
-// This is the normal iso string formatted date length
-// Try with `new Date().toISOString().length`
-const CORRECT_DATE_LENGTH = 24
+const ISO8601_DATE_STRING_RE =
+  /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/gi
 
 export function DatePickerSpinner(props: DatePickerProps) {
   const DEFAULT_DATE = {
@@ -60,7 +59,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
    * the value is a correct date.
    */
   useEffect(() => {
-    if (hiddenValue.length === CORRECT_DATE_LENGTH) {
+    if (ISO8601_DATE_STRING_RE.test(hiddenValue)) {
       const nextDate = new Date(hiddenValue)
 
       setDate({
