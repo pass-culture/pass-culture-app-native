@@ -28,6 +28,8 @@ const mockUseIsCookiesListUpToDate = jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
   .mockReturnValue(true)
 
+jest.mock('features/navigation/navigationRef')
+
 describe('<PrivacyPolicy />', () => {
   it('should not show cookies modal when fetching cookies is loading', async () => {
     mockUseCookies.mockReturnValueOnce({

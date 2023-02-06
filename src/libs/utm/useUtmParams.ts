@@ -7,6 +7,9 @@ interface ExtendedUtmParams extends UtmParams {
   campaignDate?: Date | null
 }
 
+export const getCampaignDate = (time: string | null) =>
+  time && !isNaN(new Date(parseInt(time)).getTime()) ? new Date(parseInt(time)) : null
+
 export const useUtmParams = (): ExtendedUtmParams => {
   const [utmParams, setUtmParams] = useState<ExtendedUtmParams | null>(null)
 
@@ -14,8 +17,7 @@ export const useUtmParams = (): ExtendedUtmParams => {
     storage
       .readMultiString(['traffic_campaign', 'traffic_source', 'traffic_medium', 'campaign_date'])
       .then(([[, campaign], [, source], [, medium], [, time]]) => {
-        const campaignDate =
-          time && !isNaN(new Date(parseInt(time)).getTime()) ? new Date(parseInt(time)) : null
+        const campaignDate = getCampaignDate(time)
         setUtmParams({ campaign, source, medium, campaignDate })
       })
   }, [])

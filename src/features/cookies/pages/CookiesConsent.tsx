@@ -5,10 +5,12 @@ import { useCookiesModalContent } from 'features/cookies/components/useCookiesMo
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesSteps } from 'features/cookies/enums'
 import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
+import { setMarketingParams } from 'features/cookies/helpers/setMarketingParams'
 import { startTracking } from 'features/cookies/helpers/startTracking'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
-import { CookiesChoiceByCategory } from 'features/cookies/types'
+import { CookiesChoiceByCategory, UTMParams } from 'features/cookies/types'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/firebase/analytics'
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
 }
 
 export const CookiesConsent = ({ visible, hideModal }: Props) => {
+  const route = navigationRef.getCurrentRoute() as UTMParams
   const [cookiesStep, setCookiesStep] = useState(CookiesSteps.COOKIES_CONSENT)
   const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
     customization: false,
@@ -25,6 +28,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
   })
   const { setCookiesConsent } = useCookies()
 
+  const params = route?.params
   const acceptAll = useCallback(async () => {
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
@@ -33,8 +37,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     })
     startTracking(true)
     analytics.logHasAcceptedAllCookies()
+    await setMarketingParams(params, ALL_OPTIONAL_COOKIES)
     hideModal()
-  }, [hideModal, setCookiesConsent])
+  }, [params, hideModal, setCookiesConsent])
 
   const declineAll = useCallback(() => {
     setCookiesConsent({
@@ -58,8 +63,9 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       from: 'Modal',
       type: settingsCookiesChoice,
     })
+    await setMarketingParams(params, accepted)
     hideModal()
-  }, [settingsCookiesChoice, hideModal, setCookiesConsent])
+  }, [params, settingsCookiesChoice, hideModal, setCookiesConsent])
 
   const { childrenProps } = useCookiesModalContent({
     cookiesStep,

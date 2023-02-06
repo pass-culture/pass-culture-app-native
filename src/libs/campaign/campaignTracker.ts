@@ -1,5 +1,6 @@
 import appsFlyer from 'react-native-appsflyer'
 
+import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
@@ -43,7 +44,11 @@ function useInit(hasAcceptedMarketingCookie: boolean) {
 
 async function logEvent(event: CampaignEvents, params: Record<string, unknown>): Promise<void> {
   if (__DEV__) return
-  await appsFlyer.logEvent(event, params)
+
+  const canLogEvent = await isAppsFlyerTrackingEnabled()
+  if (canLogEvent) {
+    await appsFlyer.logEvent(event, params)
+  }
 }
 
 async function getUserId(): Promise<string | undefined> {
