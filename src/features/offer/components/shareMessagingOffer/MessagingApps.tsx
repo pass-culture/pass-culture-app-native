@@ -22,9 +22,15 @@ export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) =
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
+          {/* TODO(PC-19359): use InstalledMessagingApps here */}
           {socialMedias.map((socialMedia) => (
             <StyledLi key={socialMedia}>
-              <ShareMessagingApp network={socialMedia} />
+              <ShareMessagingApp
+                network={socialMedia}
+                onPress={async () => {
+                  return
+                }}
+              />
             </StyledLi>
           ))}
           <StyledLi>
