@@ -255,7 +255,7 @@ describe('<Login/>', () => {
     expect(analytics.logSignUp).toHaveBeenNthCalledWith(1, { from: 'Login' })
   })
 
-  describe('Login comes from an offer', () => {
+  describe('Login comes from adding an offer to favorite', () => {
     const OFFER_ID = favoriteResponseSnap.offer.id
     beforeEach(() => {
       useRoute
@@ -264,7 +264,7 @@ describe('<Login/>', () => {
         .mockReturnValueOnce({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // password input rerender
     })
 
-    it('should redirect to Offer page when signin is successful and user comes from offer', async () => {
+    it('should redirect to Offer page when signin is successful', async () => {
       const renderAPI = renderLogin()
       fillInputs(renderAPI)
       fireEvent.press(renderAPI.getByText('Se connecter'))
