@@ -108,7 +108,7 @@ jobs:
 
       - id: openid-auth
         name: "OpenID Connect Authentication"
-        uses: 'google-github-actions/auth@v0'
+        uses: 'google-github-actions/auth@v1'
         with:
           create_credentials_file: false
           token_format: 'access_token'
@@ -221,7 +221,7 @@ jobs:
         run: |
           npm config set legacy-peer-deps true
           npm install -g appium@next
-          npm install --chromedriver_version="${{ matrix.chromedriverVersion }}"
+          npm install --chromedriver_version="${{ matrix.chromedriverVersion }}
           npm install --no-save mjpeg-consumer
           appium driver install uiautomator2
 
