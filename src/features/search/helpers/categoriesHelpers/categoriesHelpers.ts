@@ -59,7 +59,7 @@ export function getCategoryFromEnum(
 ): SearchGroupResponseModelv2
 export function getCategoryFromEnum(
   data: SubcategoriesResponseModelv2 | undefined,
-  enumValue?: SearchGroupNameEnumv2 | undefined
+  enumValue?: SearchGroupNameEnumv2
 ) {
   if (data && enumValue) {
     return data.searchGroups.find((category) => category.name === enumValue)
@@ -114,7 +114,7 @@ export function getNativeCategoryFromEnum(
 
 export function getGenreTypeFromEnum(
   data: SubcategoriesResponseModelv2 | undefined,
-  genreType?: string | undefined
+  genreType?: string
 ) {
   if (data && genreType) {
     return data.genreTypes
