@@ -5,6 +5,7 @@ import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
 import { BicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
+import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
@@ -35,6 +36,7 @@ export const BicolorIllustrations = {
   BicolorBookingHold,
   BicolorBrokenConnection,
   BicolorCircledCheck,
+  BicolorCircledClock,
   BicolorEmailSent,
   BicolorError,
   BicolorIdCardError,
