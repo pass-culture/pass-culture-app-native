@@ -283,7 +283,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             itemHeight={itemHeight}
             renderItem={renderItem}
             keyExtractor={keyExtractor}
-            title="Ça peut aussi te plaire"
+            title="Dans la même catégorie"
             onEndReached={trackingOnHorizontalScroll}
           />
         </SectionWithDivider>
