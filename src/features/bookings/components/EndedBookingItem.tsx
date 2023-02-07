@@ -3,6 +3,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
+import { isDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -28,7 +29,15 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
+  const isDigitalBookingWithoutExpirationDateValue = isDigitalBookingWithoutExpirationDate(booking)
+
+  const shouldRedirectToBooking = isDigitalBookingWithoutExpirationDateValue && !cancellationReason
+
+  const endedBookingReason = getEndedBookingReason(
+    cancellationReason,
+    dateUsed,
+    isDigitalBookingWithoutExpirationDateValue
+  )
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
@@ -40,6 +49,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
+    if (isDigitalBookingWithoutExpirationDateValue) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       queryClient.setQueryData(
@@ -65,7 +75,11 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <InternalTouchableLink
       enableNavigate={!!netInfo.isConnected}
-      navigateTo={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
+      navigateTo={
+        shouldRedirectToBooking
+          ? { screen: 'BookingDetails', params: { id: booking.id } }
+          : { screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }
+      }
       onBeforeNavigate={handlePressOffer}
       accessibilityLabel={accessibilityLabel}>
       <ItemContainer>
@@ -101,7 +115,8 @@ const EndedReasonAndDate = styled.View({
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
-  dateUsed?: string | null
+  dateUsed?: string | null,
+  isDigitalBookingWithoutExpirationDate?: boolean
 ) {
   if (dateUsed) {
     return <StyledInputRule title="Réservation utilisée" icon={Valid} isValid noFullWidth />
@@ -109,6 +124,10 @@ function getEndedBookingReason(
 
   if (cancellationReason === BookingCancellationReasons.OFFERER) {
     return <StyledInputRule title="Annulée" icon={Wrong} isValid={false} noFullWidth />
+  }
+
+  if (isDigitalBookingWithoutExpirationDate && !cancellationReason) {
+    return <StyledInputRule title="Réservation archivée" icon={Valid} isValid noFullWidth />
   }
 
   return <StyledInputRule title="Réservation annulée" icon={Wrong} isValid={false} noFullWidth />
