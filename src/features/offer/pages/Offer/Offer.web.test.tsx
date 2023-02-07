@@ -3,6 +3,7 @@ import React from 'react'
 import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('react-query')
@@ -18,6 +19,15 @@ const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
   v1: jest.fn(),
   v4: jest.fn(mockV4),
+}))
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
 }))
 
 describe('Accessibility', () => {
