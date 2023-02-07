@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
@@ -9,6 +10,15 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
+
+const mockSubcategories = placeholderData.subcategories
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      subcategories: mockSubcategories,
+    },
+  }),
+}))
 
 let mockStep: Step | undefined = undefined
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
