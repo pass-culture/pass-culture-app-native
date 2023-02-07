@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@adobe/css-tools@^4.0.1":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.1.0.tgz#417fef4a143f4396ad0b3b4351fee21323f15aa8"
+  integrity sha512-mMVJ/j/GbZ/De4ZHWbQAQO1J6iVnjtZLc9WEdkUQb8S/Bu2cAF2bETXUgMAdvMG3/ngtKmcNBe+Zms9bg6jnQQ==
+
 "@algolia/cache-browser-local-storage@4.14.3":
   version "4.14.3"
   resolved "https://registry.yarnpkg.com/@algolia/cache-browser-local-storage/-/cache-browser-local-storage-4.14.3.tgz#b9e0da012b2f124f785134a4d468ee0841b2399d"
@@ -6195,6 +6200,21 @@
     aria-query "^5.0.0"
     chalk "^3.0.0"
     css "^3.0.0"
+    css.escape "^1.5.1"
+    dom-accessibility-api "^0.5.6"
+    lodash "^4.17.15"
+    redent "^3.0.0"
+
+"@testing-library/jest-dom@^5.16.5":
+  version "5.16.5"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz#3912846af19a29b2dbf32a6ae9c31ef52580074e"
+  integrity sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==
+  dependencies:
+    "@adobe/css-tools" "^4.0.1"
+    "@babel/runtime" "^7.9.2"
+    "@types/testing-library__jest-dom" "^5.9.1"
+    aria-query "^5.0.0"
+    chalk "^3.0.0"
     css.escape "^1.5.1"
     dom-accessibility-api "^0.5.6"
     lodash "^4.17.15"
