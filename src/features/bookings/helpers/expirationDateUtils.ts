@@ -1,5 +1,6 @@
 import { addDays, format, differenceInDays } from 'date-fns'
 
+import { BookingReponse } from 'api/gen'
 import { Booking } from 'features/bookings/types'
 
 export function getDigitalBookingWithoutExpirationDate(bookings: Booking[]) {
@@ -59,3 +60,6 @@ export const formattedExpirationDate = (dateCreated: string) => {
   const formattedExpirationDate = format(expirationDate, 'dd/MM/yyyy')
   return formattedExpirationDate
 }
+
+export const isDigitalBookingWithoutExpirationDate = (booking: BookingReponse) =>
+  booking.stock.offer.isDigital && !booking.expirationDate

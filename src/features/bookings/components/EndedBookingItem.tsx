@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
+import { isDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -28,16 +29,14 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const isDigitalBookingWithoutExpirationDate = useMemo(
-    () => booking.stock.offer.isDigital && !booking.expirationDate,
-    [booking.expirationDate, booking.stock.offer.isDigital]
-  )
-  const shouldRedirectToBooking = isDigitalBookingWithoutExpirationDate && !cancellationReason
+  const isDigitalBookingWithoutExpirationDateValue = isDigitalBookingWithoutExpirationDate(booking)
+
+  const shouldRedirectToBooking = isDigitalBookingWithoutExpirationDateValue && !cancellationReason
 
   const endedBookingReason = getEndedBookingReason(
     cancellationReason,
     dateUsed,
-    isDigitalBookingWithoutExpirationDate
+    isDigitalBookingWithoutExpirationDateValue
   )
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
@@ -50,7 +49,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
-    if (isDigitalBookingWithoutExpirationDate) return
+    if (isDigitalBookingWithoutExpirationDateValue) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       queryClient.setQueryData(

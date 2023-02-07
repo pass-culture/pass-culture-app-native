@@ -7,6 +7,7 @@ import {
   formattedExpirationDate,
   getDigitalBookingWithoutExpirationDate,
   isBookingInList,
+  isDigitalBookingWithoutExpirationDate,
 } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
 
@@ -112,6 +113,44 @@ describe('expirationDateUtils', () => {
       const dateCreated = ''
 
       expect(formattedExpirationDate(dateCreated)).toEqual('')
+    })
+  })
+
+  describe('isDigitalBookingWithoutExpirationDate', () => {
+    it('should return true when booking is digital without expiration date', () => {
+      const value = isDigitalBookingWithoutExpirationDate(bookingsSnap.ended_bookings[0])
+      expect(value).toEqual(true)
+    })
+
+    describe('should return false', () => {
+      it('when booking is digital with expiration date', () => {
+        const value = isDigitalBookingWithoutExpirationDate({
+          ...bookingsSnap.ended_bookings[0],
+          expirationDate: '2021-03-15T23:01:37.925926',
+        })
+        expect(value).toEqual(false)
+      })
+      it('when booking is not digital without expiration date', () => {
+        const value = isDigitalBookingWithoutExpirationDate({
+          ...bookingsSnap.ended_bookings[0],
+          stock: {
+            ...bookingsSnap.ended_bookings[0].stock,
+            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+          },
+        })
+        expect(value).toEqual(false)
+      })
+      it('when booking is not digital with expiration date', () => {
+        const value = isDigitalBookingWithoutExpirationDate({
+          ...bookingsSnap.ended_bookings[0],
+          expirationDate: '2021-03-15T23:01:37.925926',
+          stock: {
+            ...bookingsSnap.ended_bookings[0].stock,
+            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
+          },
+        })
+        expect(value).toEqual(false)
+      })
     })
   })
 })
