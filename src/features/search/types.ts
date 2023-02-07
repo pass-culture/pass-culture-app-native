@@ -8,6 +8,11 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
+import {
+  MappedGenreTypes,
+  MappedNativeCategories,
+  MappingTree,
+} from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { SuggestedVenue } from 'libs/venue'
@@ -83,11 +88,13 @@ export type CategoriesModalFormProps = {
 }
 
 export type DescriptionContext = {
-  selectedCategory: SearchGroupResponseModelv2
-  selectedNativeCategory: NativeCategoryResponseModelv2 | null
-  selectedGenreType: OfferGenreType | null
+  category: SearchGroupNameEnumv2
+  nativeCategory: NativeCategoryIdEnumv2 | null
+  genreType: string | null
 }
 export type CategoriesViewData =
   | NativeCategoryResponseModelv2
   | SearchGroupResponseModelv2
   | OfferGenreType
+
+export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes

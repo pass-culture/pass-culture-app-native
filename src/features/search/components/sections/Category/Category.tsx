@@ -1,14 +1,10 @@
 import React, { useCallback, useMemo } from 'react'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import {
-  categoryAllValue,
-  getDescription,
-  getNativeCategoriesFromEnumArray,
-  getSearchGroupsFromEnumArray,
-} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getDescription } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DescriptionContext } from 'features/search/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -21,7 +17,6 @@ type Props = {
 
 export const Category = ({ onClose }: Props) => {
   const { searchState } = useSearch()
-  const { offerCategories, offerNativeCategories, offerGenreTypes } = searchState
   const { data } = useSubcategories()
   const {
     visible: categoriesModalVisible,
@@ -35,18 +30,20 @@ export const Category = ({ onClose }: Props) => {
 
   const descriptionContext: DescriptionContext = useMemo(() => {
     return {
-      selectedCategory: getSearchGroupsFromEnumArray(data, offerCategories)[0] || categoryAllValue,
-      selectedNativeCategory:
-        getNativeCategoriesFromEnumArray(data, offerNativeCategories)?.[0] || null,
-      selectedGenreType: offerGenreTypes?.[0] || null,
+      category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
+      nativeCategory: searchState.offerNativeCategories?.[0] || null,
+      genreType: searchState.offerGenreTypes?.[0]?.name || null,
     }
-  }, [data, offerCategories, offerGenreTypes, offerNativeCategories])
+  }, [searchState.offerCategories, searchState.offerGenreTypes, searchState.offerNativeCategories])
 
-  const description = useMemo(() => getDescription(descriptionContext), [descriptionContext])
+  const description = useMemo(
+    () => getDescription(data, descriptionContext),
+    [data, descriptionContext]
+  )
 
   return (
     <React.Fragment>
-      <FilterRow icon={All} title="Catégorie" description={description} onPress={onPress} />
+      <FilterRow icon={All} title="Catégorie" onPress={onPress} description={description} />
       <CategoriesModal
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}

@@ -2,16 +2,18 @@ import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import {
   getNativeCategories,
   getNativeCategoryFromEnum,
-  getSearchGroupsByAlphabeticalSorting,
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
-  isAssociatedNativeCategoryToCategory,
+  isNativeCategoryOfCategory,
   isOnlyOnline,
+  searchGroupOrNativeCategorySortComparator,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
-    const categories = getSearchGroupsByAlphabeticalSorting(mockData.searchGroups)
+    const categories = mockData.searchGroups
+      .filter((category) => category.name !== SearchGroupNameEnumv2.NONE)
+      .sort(searchGroupOrNativeCategorySortComparator)
     expect(categories).toEqual([
       {
         name: 'ARTS_LOISIRS_CREATIFS',
@@ -202,14 +204,14 @@ describe('categoriesHelpers', () => {
     })
   })
 
-  describe('isAssociatedNativeCategoryToCategory', () => {
+  describe('isNativeCategoryOfCategory', () => {
     it('should return false when no data from backend', () => {
-      const value = isAssociatedNativeCategoryToCategory()
+      const value = isNativeCategoryOfCategory()
       expect(value).toEqual(false)
     })
 
     it('should return false when native category not associated to category', () => {
-      const value = isAssociatedNativeCategoryToCategory(
+      const value = isNativeCategoryOfCategory(
         mockData,
         SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
         NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
@@ -218,7 +220,7 @@ describe('categoriesHelpers', () => {
     })
 
     it('should return true when native category associated to category', () => {
-      const value = isAssociatedNativeCategoryToCategory(
+      const value = isNativeCategoryOfCategory(
         mockData,
         SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
         NativeCategoryIdEnumv2.ARTS_VISUELS
