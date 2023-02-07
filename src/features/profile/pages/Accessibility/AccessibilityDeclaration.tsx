@@ -110,8 +110,8 @@ export function AccessibilityDeclaration() {
       </Typo.ButtonText>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
-        <BulletListItem text="81&nbsp;% des critères RGAA version 4.1 sont respectés." />
-        <BulletListItem text="Le taux moyen de conformité du service en ligne s’élève à 91&nbsp;%." />
+        <BulletListItem text="85&nbsp;% des critères RGAA version 4.1 sont respectés." />
+        <BulletListItem text="Le taux moyen de conformité du service en ligne s’élève à 93&nbsp;%." />
       </VerticalUl>
       <StyledSeparator />
       <TitleText>Contenus non accessibles</TitleText>
@@ -130,8 +130,6 @@ export function AccessibilityDeclaration() {
           text="Sur les pages de la recherche (recherche, résultats et filtres)&nbsp;:"
           nestedListTexts={[
             'Les sliders présents sont affichés uniquement via les feuilles de styles. Ils n’apparaissent donc plus sur la page lorsqu’on désactive le CSS.',
-            'L’intitulé des boutons «\u00a0réinitialiser\u00a0», «\u00a0rechercher\u00a0» et «\u00a0me localiser\u00a0» sont tronqués lorsqu’on redéfinie les propriétés d’espacement du texte.',
-            'Certains champs ne sont pas correctement reliés à leur intitulé.',
           ]}
         />
         <BulletListItem
@@ -160,7 +158,7 @@ export function AccessibilityDeclaration() {
       <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
       <Spacer.Column numberOfSpaces={6} />
       <StyledBody>
-        Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 4 janvier
+        Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février
         2023.
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
