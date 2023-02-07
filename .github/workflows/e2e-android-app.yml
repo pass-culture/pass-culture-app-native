@@ -240,18 +240,6 @@ jobs:
       - run: nohup adb logcat > logcat.log &
         name: Capture logcat
 
-      - name: Slack failure notification
-        if: ${{ failure() }}
-        env:
-          BRANCH_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_REF_NAME }}
-          COMMIT_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_SHA_SHORT }}
-          ACTION_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/actions/runs/${{ env.GITHUB_RUN_ID }}
-          SLACK_WEBHOOK: ${{ env.GITHUB_EVENT_NAME == 'schedule' && env.SLACK_WEB_HOOK_URL || env.SLACK_WEB_HOOK_URL_MANUAL }}
-          EVENT_NAME: ${{ env.GITHUB_EVENT_NAME == 'schedule' && 'Scheduled' || 'Manually' }}
-        run: |
-          slackMessageTitle="<${BRANCH_URL}|${{ env.GITHUB_REF_NAME }}>/<${COMMIT_URL}|${{ env.GITHUB_SHA_SHORT }}> ${{ env.ENVIRONMENT }} - wdio ${{ env.GITHUB_REPOSITORY_NAME_PART }} \`e2e:android.app\` <${ACTION_URL}|action> (${EVENT_NAME})"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\":x: *CI NOK: ${slackMessageTitle}* :x:\"}"  "$SLACK_WEBHOOK"
-
       - uses: reactivecircus/android-emulator-runner@v2
         name: Run end-to-end tests apiLevel-${{ matrix.apiLevel }}
         env:
@@ -289,3 +277,29 @@ jobs:
           name: fail-screenshots-videos-${{ matrix.apiLevel }}
           path: e2e/output
           if-no-files-found: ignore
+
+      - name: Post report to Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        if: ${{ always() }}
+        with:
+          channel-id:  ${{ fromJSON('["C04EU7U4JTE", "C04D6R9MQKS"]')[inputs.environment != ''] }}
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[job.status != 'success'] }}",
+                  "author_name": "${{github.actor}}",
+                  "author_link": "https://github.com/${{github.actor}}",
+                  "author_icon": "https://github.com/${{github.actor}}.png",
+                  "title": "e2e android.app",
+                  "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                  "text": "Les tests `e2e:android.app` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_E2E_TOKEN }}
