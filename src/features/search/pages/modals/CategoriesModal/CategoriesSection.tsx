@@ -69,6 +69,7 @@ export function CategoriesSection<
       </ListItem>
 
       {Object.entries(data).map(([k, item]) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const shouldHideArrow = !(item as any).children
         const key = k as N
 
