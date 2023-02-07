@@ -68,6 +68,7 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
 }))``
 
 const Container = styled.View(({ theme }) => ({
+  marginTop: getSpacing(6),
   flex: 1,
   minHeight: 250,
   height: '100%',
