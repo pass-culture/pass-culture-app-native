@@ -69,6 +69,15 @@ module.exports = {
             message: 'use ui/components/TouchableOpacity instead',
           },
           {
+            name: 'react-native-animatable',
+            message: 'use libs/react-native-animatable instead',
+          },
+          {
+            name: 'libs/react-native-animatable',
+            importNames: ['View', 'Text'],
+            message: 'use AnimatedView or AnimatedText instead',
+          },
+          {
             name: 'react-native-svg',
             importNames: ['default'],
             message: 'use ui/svg/AccessibleSvg instead',
