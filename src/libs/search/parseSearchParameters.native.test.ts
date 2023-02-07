@@ -33,7 +33,7 @@ const defaultSearchParameters = omit(
     hitsPerPage: null,
     priceRange: [0, 300],
     minBookingsThreshold: 0,
-    offerGenreTypes: undefined,
+    offerGenreTypes: [],
   },
   'offerIsFree'
 )
@@ -290,8 +290,11 @@ describe('parseSearchParameters', () => {
       expect(result).toBeUndefined()
     })
 
-    it('should return algolia parameters when a movieGenres list is provided', () => {
-      const parameters = { movieGenres: ['BOLLYWOOD'] } as OffersModuleParameters
+    it('should return algolia parameters when a movieGenres and a musicTypes lists are provided', () => {
+      const parameters = {
+        movieGenres: ['BOLLYWOOD'],
+        musicTypes: ['Gospel'],
+      } as OffersModuleParameters
 
       const result = parseSearchParameters(
         parameters,
@@ -301,7 +304,28 @@ describe('parseSearchParameters', () => {
       )
       expect(result).toStrictEqual({
         ...defaultSearchParameters,
-        offerGenreTypes: [{ key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' }],
+        offerGenreTypes: [
+          { key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' },
+          { key: 'MUSIC', name: 'Gospel', value: 'Gospel' },
+        ],
+      })
+    })
+
+    it('should return algolia parameters when a musicTypes list but no movieGenres are provided', () => {
+      const parameters = {
+        movieGenres: undefined,
+        musicTypes: ['Gospel'],
+      } as OffersModuleParameters
+
+      const result = parseSearchParameters(
+        parameters,
+        null,
+        subcategoryLabelMapping,
+        genreTypeMapping
+      )
+      expect(result).toStrictEqual({
+        ...defaultSearchParameters,
+        offerGenreTypes: [{ key: 'MUSIC', name: 'Gospel', value: 'Gospel' }],
       })
     })
   })

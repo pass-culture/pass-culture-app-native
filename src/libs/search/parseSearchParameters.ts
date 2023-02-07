@@ -54,7 +54,13 @@ export const parseSearchParameters = (
 
   const movieGenreTypes = parameters.movieGenres
     ? buildOfferGenreTypes(GenreType.MOVIE, parameters.movieGenres, genreTypeMapping)
-    : undefined
+    : []
+
+  const musicGenreTypes = parameters.musicTypes
+    ? buildOfferGenreTypes(GenreType.MUSIC, parameters.musicTypes, genreTypeMapping)
+    : []
+
+  const offerGenreTypes = movieGenreTypes?.concat(musicGenreTypes ?? [])
 
   return {
     beginningDatetime,
@@ -77,7 +83,7 @@ export const parseSearchParameters = (
     query: '',
     view: SearchView.Landing,
     minBookingsThreshold: parameters.minBookingsThreshold || 0,
-    offerGenreTypes: movieGenreTypes,
+    offerGenreTypes: offerGenreTypes,
   }
 }
 
