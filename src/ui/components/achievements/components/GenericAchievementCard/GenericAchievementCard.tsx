@@ -1,5 +1,4 @@
 import React, { FunctionComponent, RefObject, useCallback, useEffect, useMemo } from 'react'
-import { View } from 'react-native'
 import Swiper from 'react-native-web-swiper'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -7,7 +6,7 @@ import { useAppStateChange } from 'libs/appState'
 import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
-import { AnimatedView } from 'libs/react-native-animatable'
+import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -50,7 +49,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   const { isSmallScreen } = useTheme()
   const grid = useGrid()
   const animationRef = React.useRef<LottieView>(null)
-  const animatedButtonRef = React.useRef<AnimatedView & View>(null)
+  const animatedButtonRef = React.useRef<AnimatedViewRefType>(null)
 
   const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
   const lottieStyle = useMemo(

@@ -1,8 +1,7 @@
 import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AnimatedView } from 'libs/react-native-animatable'
+import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -22,7 +21,7 @@ const AnimatedProgressBarComponent: React.FC<ProgressBarProps> = ({
   icon: Icon,
   isAnimated = false,
 }) => {
-  const barRef = useRef<AnimatedView & View>(null)
+  const barRef = useRef<AnimatedViewRefType>(null)
   const [barWidth, setBarWidth] = useState(0)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({

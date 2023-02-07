@@ -1,5 +1,7 @@
 /* eslint-disable no-restricted-imports */
 export * from 'react-native-animatable'
+import { View } from 'react-native'
+import { View as AnimatedView } from 'react-native-animatable'
 
 // To differentiate from RN View and Text
 export { Text as AnimatedText, View as AnimatedView } from 'react-native-animatable'
@@ -9,3 +11,5 @@ export const NAV_DELAY_IN_MS = 200 // Standard delay to wait before triggering a
 export const pxToPercent = ({ startSize, endSize }: { startSize: number; endSize: number }) => {
   return startSize / endSize
 }
+
+export type AnimatedViewRefType = AnimatedView & View
