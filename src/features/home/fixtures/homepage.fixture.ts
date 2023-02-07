@@ -127,6 +127,7 @@ export const formattedOffersModule: OffersModule = {
       minBookingsThreshold: 2,
       subcategories: ['Livre', 'Livre numérique, e-book'],
       movieGenres: undefined,
+      musicTypes: ['Pop', 'Gospel'],
     },
   ],
   cover: undefined,

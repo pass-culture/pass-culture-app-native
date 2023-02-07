@@ -45,6 +45,7 @@ describe('adaptOffersModule', () => {
           hitsPerPage: 10,
           subcategories: ['Livre', 'Livre numérique, e-book'],
           minBookingsThreshold: 2,
+          musicTypes: ['Pop', 'Gospel'],
         },
         {
           title: 'Livre',

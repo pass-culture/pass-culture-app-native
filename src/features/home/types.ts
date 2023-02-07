@@ -67,6 +67,7 @@ export type OffersModuleParameters = {
   hitsPerPage: number
   minBookingsThreshold?: number
   movieGenres?: string[]
+  musicTypes?: string[]
 }
 
 export type BusinessModule = {

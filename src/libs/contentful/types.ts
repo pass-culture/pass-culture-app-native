@@ -17,6 +17,7 @@ export enum ContentTypes {
   CATEGORY_BLOCK = 'categoryBlock',
   CATEGORY_LIST = 'categoryList',
   MOVIE_GENRES = 'movieGenres',
+  MUSIC_TYPES = 'musicTypes',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -140,6 +141,10 @@ export interface MovieGenres {
   sys: Sys<typeof ContentTypes.MOVIE_GENRES>
   fields: MovieGenresFields
 }
+export interface MusicTypes {
+  sys: Sys<typeof ContentTypes.MUSIC_TYPES>
+  fields: MusicTypesFields
+}
 
 export interface ThematicHighlightParameters {
   sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT>
@@ -203,6 +208,7 @@ export interface SearchParametersFields {
   hitsPerPage: number
   minBookingsThreshold?: number
   movieGenres?: MovieGenres
+  musicTypes?: MusicTypes
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
@@ -279,6 +285,10 @@ type CategoriesFields = {
 
 type MovieGenresFields = {
   movieGenres: string[]
+}
+
+type MusicTypesFields = {
+  musicTypes: string[]
 }
 
 export type ThematicHighlightFields = {

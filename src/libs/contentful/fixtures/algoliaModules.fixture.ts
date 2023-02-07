@@ -1,4 +1,5 @@
 import { categoriesFixture } from 'libs/contentful/fixtures/categoriesFixture'
+import { musicTypesFixture } from 'libs/contentful/fixtures/musicTypes.fixture'
 import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
 import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
 
@@ -38,6 +39,7 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
         hitsPerPage: 10,
         minBookingsThreshold: 2,
         algoliaSubcategories: subcategoriesFixture,
+        musicTypes: musicTypesFixture,
       },
     },
     displayParameters: {
