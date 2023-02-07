@@ -46,6 +46,7 @@ describe('adaptOffersModule', () => {
           subcategories: ['Livre', 'Livre numérique, e-book'],
           minBookingsThreshold: 2,
           musicTypes: ['Pop', 'Gospel'],
+          movieGenres: ['ACTION', 'BOLLYWOOD'],
         },
         {
           title: 'Livre',
