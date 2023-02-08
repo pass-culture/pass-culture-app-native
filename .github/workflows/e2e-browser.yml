@@ -183,4 +183,4 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_E2E_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

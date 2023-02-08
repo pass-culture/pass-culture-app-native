@@ -220,7 +220,7 @@ jobs:
         run: |
           npm config set legacy-peer-deps true
           npm install -g appium@next
-          npm install --chromedriver_version="${{ matrix.chromedriverVersion }}
+          npm install --chromedriver_version="${{ matrix.chromedriverVersion }}"
           npm install --no-save mjpeg-consumer
           appium driver install uiautomator2
 
@@ -302,4 +302,4 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_E2E_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
