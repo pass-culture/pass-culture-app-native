@@ -1,6 +1,6 @@
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 

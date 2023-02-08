@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { fireEvent, render } from 'tests/utils'
 

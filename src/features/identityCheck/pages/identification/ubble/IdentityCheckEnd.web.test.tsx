@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { IdentityCheckEnd } from './IdentityCheckEnd'
