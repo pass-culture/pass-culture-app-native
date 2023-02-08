@@ -48,7 +48,7 @@ services:
       retries: 5
       timeout: 5s
       interval: 10s
-      test: "curl http://localhost:6001"
+      test: "python -c 'import urllib.request;print(urllib.request.urlopen(\"http://localhost:6001/health/api\").getcode())'"
     depends_on:
       - postgres
       - redis
