@@ -3,7 +3,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
@@ -12,10 +12,8 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
-jest.mock('features/identityCheck/api/api', () => {
-  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
   return {
-    ...ActualIdentityCheckAPI,
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
       remainingAttempts: 5,
       counterResetDatetime: 'time',

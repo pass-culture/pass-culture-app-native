@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { useState } from 'react'
 import { useQueryClient } from 'react-query'
 
-import { usePatchProfile } from 'features/identityCheck/api/api'
+import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SubscriptionScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'

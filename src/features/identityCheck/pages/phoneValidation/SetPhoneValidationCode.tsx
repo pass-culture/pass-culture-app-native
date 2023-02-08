@@ -7,10 +7,8 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import {
-  usePhoneValidationRemainingAttempts,
-  useValidatePhoneNumberMutation,
-} from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useValidatePhoneNumberMutation'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'

@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum } from 'api/gen'
-import { useProfileOptions } from 'features/identityCheck/api/api'
+import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'

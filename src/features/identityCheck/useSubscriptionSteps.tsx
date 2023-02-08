@@ -2,7 +2,7 @@ import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'

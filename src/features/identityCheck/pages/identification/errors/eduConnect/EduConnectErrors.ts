@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 
-import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/api'
+import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/logoutFromEduConnectIfAllowed'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'

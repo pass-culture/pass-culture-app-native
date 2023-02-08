@@ -6,10 +6,8 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import {
-  usePhoneValidationRemainingAttempts,
-  useSendPhoneValidationMutation,
-} from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'

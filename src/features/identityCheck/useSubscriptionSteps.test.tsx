@@ -1,5 +1,5 @@
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -18,7 +18,7 @@ jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   })),
 }))
 
-jest.mock('features/identityCheck/api/api')
+jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts')
 
 const mockUsePhoneValidationRemainingAttempts = (
   usePhoneValidationRemainingAttempts as jest.Mock

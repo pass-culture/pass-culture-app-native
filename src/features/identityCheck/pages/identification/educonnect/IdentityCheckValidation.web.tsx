@@ -3,7 +3,7 @@ import { parse, format } from 'date-fns'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/api'
+import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/logoutFromEduConnectIfAllowed'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'

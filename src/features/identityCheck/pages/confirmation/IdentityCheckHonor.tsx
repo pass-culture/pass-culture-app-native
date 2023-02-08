@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { usePostHonorStatement } from 'features/identityCheck/api/api'
+import { usePostHonorStatement } from 'features/identityCheck/api/usePostHonorStatement'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'

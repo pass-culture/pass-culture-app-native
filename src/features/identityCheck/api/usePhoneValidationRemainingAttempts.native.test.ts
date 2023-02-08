@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 import { PhoneValidationRemainingAttemptsRequest } from 'api/gen'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
