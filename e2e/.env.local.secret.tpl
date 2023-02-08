@@ -6,6 +6,7 @@ PORT=6001
 DATABASE_URL_TEST=postgresql://postgres:passq@pc-postgres-e2e/pass_culture
 REDIS_URL=redis://pc-redis-e2e
 EMAIL_BACKEND=pcapi.core.mails.backends.sendinblue.ToDevSendinblueBackend
+IS_E2E_TESTS=true
 RUN_ENV=tests
 CORS_ALLOWED_ORIGINS_NATIVE=*
 
