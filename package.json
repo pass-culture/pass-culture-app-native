@@ -326,7 +326,6 @@
     "wdio-chromedriver-service": "8.0.0",
     "wdio-geckodriver-service": "4.0.0",
     "wdio-safaridriver-service": "2.0.0",
-    "wdio-slack-service": "2.0.9",
     "wdio-video-reporter": "^3.3.0",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.5.0",

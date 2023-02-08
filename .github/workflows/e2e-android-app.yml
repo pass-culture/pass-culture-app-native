@@ -34,6 +34,17 @@ on:
           paths into an array using "," delimiter to run them within a single worker process.
           [Default: run all tests]
         required: false
+      pcapi-docker-tag:
+        type: string
+        description: pcapi docker tag
+        required: false
+
+env:
+  PROJECT_ID: passculture-infra-prod
+  REGION: europe-west1
+  REPOSITORY: pass-culture-artifact-registry
+  PCAPI_DOCKER_IMAGE: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-artifact-registry/pcapi
+  PCAPI_BASE_URL: http://127.0.0.1:6001
 
 jobs:
   e2e-android-app:
@@ -47,7 +58,6 @@ jobs:
             emuTag: google_apis
             arch: x86
             profile: pixel_xl
-
     env:
       CI: true
       ANDROID_DEVICE_NAME: pixel_xl
@@ -60,6 +70,7 @@ jobs:
       DIST_VERSION: ${{ inputs.dist-version }}
       APPCENTER_RO_API_TOKEN: ${{ secrets.APPCENTER_RO_API_TOKEN }}
       SPECS: ${{ inputs.specs }}
+      PC_API_DOCKER_TAG: ${{ inputs.pcapi-docker-tag }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
       SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
       SLACK_WEB_HOOK_URL_MANUAL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL_MANUAL }}
@@ -70,12 +81,56 @@ jobs:
     # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
     runs-on: macos-latest
     environment: ${{ inputs.environment || 'staging' }}
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
 
-      # Common init
+      - name: Set PCAPI_DOCKER_TAGS environments variables
+        run: echo PCAPI_DOCKER_TAG=${PC_API_DOCKER_TAG:-$(curl -sS https://backend.staging.passculture.team/health/api)} >> $GITHUB_ENV
+
       - uses: actions/checkout@v3
+
+      - name: Decode Gmail token
+        env:
+          END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN }}
+        run: echo $END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN | base64 -d > token.json
+
+      - name: "Install and start Docker engine"
+        run: |
+          brew install colima
+          brew install docker docker-compose
+          mkdir -p ~/.docker/cli-plugins
+          ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+          colima start
+
+      - id: openid-auth
+        name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
+        with:
+          create_credentials_file: false
+          token_format: 'access_token'
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
+
+      - id: docker-login
+        uses: 'docker/login-action@v1'
+        name: 'Docker login'
+        with:
+          registry: '${{ env.REGION }}-docker.pkg.dev'
+          username: 'oauth2accesstoken'
+          password: '${{ steps.openid-auth.outputs.access_token }}'
+
+      - name: "Start pcapi backend"
+        env:
+          SENDINBLUE_API_KEY: ${{ secrets.EHP_SENDINBLUE_API_KEY }}
+          END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
+          ANDROID: true
+        run: |
+          ./e2e/generate-env.sh
+          docker-compose -f e2e/docker-compose-e2e.yml up -d
 
       - uses: actions/setup-node@v3
         with:
@@ -101,7 +156,6 @@ jobs:
           INSTALL=false \
           UNINSTALL=false \
           yarn appcenter:install ${{ env.ENVIRONMENT }} android ${{ env.DIST_VERSION }}
-
 
       ## Local build
 
@@ -162,8 +216,6 @@ jobs:
             echo "ANDROID_APK_PATH=./android/app/build/outputs/apk/staging/release/app-staging-release.apk" >> $GITHUB_ENV
           fi
 
-      ## Common
-
       - name: Install extraneous dev dependencies
         run: |
           npm config set legacy-peer-deps true
@@ -188,22 +240,17 @@ jobs:
       - run: nohup adb logcat > logcat.log &
         name: Capture logcat
 
-      - name: Slack failure notification
-        if: ${{ failure() }}
-        env:
-          BRANCH_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_REF_NAME }}
-          COMMIT_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/tree/${{ env.GITHUB_SHA_SHORT }}
-          ACTION_URL: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}/actions/runs/${{ env.GITHUB_RUN_ID }}
-          SLACK_WEBHOOK: ${{ env.GITHUB_EVENT_NAME == 'schedule' && env.SLACK_WEB_HOOK_URL || env.SLACK_WEB_HOOK_URL_MANUAL }}
-          EVENT_NAME: ${{ env.GITHUB_EVENT_NAME == 'schedule' && 'Scheduled' || 'Manually' }}
-        run: |
-          slackMessageTitle="<${BRANCH_URL}|${{ env.GITHUB_REF_NAME }}>/<${COMMIT_URL}|${{ env.GITHUB_SHA_SHORT }}> ${{ env.ENVIRONMENT }} - wdio ${{ env.GITHUB_REPOSITORY_NAME_PART }} \`e2e:android.app\` <${ACTION_URL}|action> (${EVENT_NAME})"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\":x: *CI NOK: ${slackMessageTitle}* :x:\"}"  "$SLACK_WEBHOOK"
-
       - uses: reactivecircus/android-emulator-runner@v2
-        name: e2e_api${{ matrix.apiLevel }}
+        name: Run end-to-end tests apiLevel-${{ matrix.apiLevel }}
+        env:
+          END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
+          API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
+          ENVIRONMENT: ${{ env.ENVIRONMENT }}
+          ANDROID_DEVICE_NAME: "${{ env.ANDROID_DEVICE_NAME }}"
+          ANDROID_PLATFORM_VERSION: "${{ matrix.platformVersion }}"
+          APPIUM_APP: ${{ env.ANDROID_APK_PATH }}
         with:
-          script: ENVIRONMENT="${{ env.ENVIRONMENT }}" ANDROID_DEVICE_NAME="${{ env.ANDROID_DEVICE_NAME }}" ANDROID_PLATFORM_VERSION="${{ matrix.platformVersion }}" APPIUM_APP=${{ env.ANDROID_APK_PATH }} yarn e2e:android.app
+          script: yarn e2e:android.app
           avd-name: ${{ env.ANDROID_DEVICE_NAME }}
           sdcard-path-or-size: 1500M
           api-level: ${{ matrix.apiLevel }}
@@ -212,23 +259,17 @@ jobs:
           arch: ${{ matrix.arch }}
           profile: ${{ matrix.profile }}
 
-      - name: Save logcat output
+      - name: Show logcat server output
         if: ${{ always() }}
-        uses: actions/upload-artifact@master
-        with:
-          name: logcat-api${{ matrix.apiLevel }}
-          path: logcat.log
-
-      - name: Save server output
-        if: ${{ always() }}
-        uses: actions/upload-artifact@master
-        with:
-          name: appium-api${{ matrix.apiLevel }}
-          path: appium.log
+        run: cat logcat.log
 
       - name: Show appium server output
         if: ${{ always() }}
         run: cat appium.log
+
+      - name: Show pcapi server output
+        if: ${{ always() }}
+        run: docker logs pc-api-e2e
 
       - uses: actions/upload-artifact@v3
         if: ${{ always() }}
@@ -236,3 +277,29 @@ jobs:
           name: fail-screenshots-videos-${{ matrix.apiLevel }}
           path: e2e/output
           if-no-files-found: ignore
+
+      - name: Post report to Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        if: ${{ always() }}
+        with:
+          channel-id:  ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[job.status != 'success'] }}",
+                  "author_name": "${{github.actor}}",
+                  "author_link": "https://github.com/${{github.actor}}",
+                  "author_icon": "https://github.com/${{github.actor}}.png",
+                  "title": "e2e android.app",
+                  "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                  "text": "Les tests `e2e:android.app` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

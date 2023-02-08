@@ -1,8 +1,6 @@
 import AppScreen from '../../screenobjects/AppScreen'
 import { getRandomInt } from '../../helpers/utils/number'
-import { timeout } from '../../helpers/utils/time'
 import { $$$ } from '../../helpers/utils/selector'
-import { env } from '../../../../config/environment/env'
 
 class CookiesConsent extends AppScreen {
   constructor() {
@@ -23,8 +21,6 @@ class CookiesConsent extends AppScreen {
 
   async randomChoice() {
     await this.waitForIsShown(true)
-    // For testing env due to codepush, but also in CI we wait a bit more
-    await timeout(env.CI || env.ENVIRONMENT !== 'staging' ? 12000 : 5000)
     const dice = getRandomInt(0, 1)
     if (dice === 0) {
       await this.accept.click()

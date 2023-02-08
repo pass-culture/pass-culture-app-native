@@ -75,28 +75,35 @@ We use environment variable to customize the configuration:
 | `APPIUM_APP_WAIT_ACTIVITY`       | `string`  |          |                         | The android apk main activity to start (default: auto)  |
 | `APPIUM_APP_PACKAGE`             | `string`  |          |                         | Android bundle id (if app is already installed)         | 
 | `APPIUM_APP_ACTIVITY`            | `string`  |          |                         | Android package activity (if app is already installed)  |
-| `API_BASE_URL`                   | `string`  |          | `http://localhost:6001` | API base URL needed when e2e toggle features            |
+| `API_BASE_URL`                   | `string`  |          | `http://127.0.0.1:6001` | API base URL needed when e2e toggle features            |
 | `END_TO_END_TESTS_EMAIL_ADDRESS` | `string`  | yes      |                         | End to end whitelisted email address                    |
 
 For instance, if you wish to run test for a different android emulator:
 
 ```bash
+API_BASE_URL=${API_BASE_URL} \
 ANDROID_DEVICE_NAME=emulatorxyz \
 ANDROID_PLATFORM_VERSION=10 \
 yarn e2e:android.app
 ```
 
-Or if you wish to test http://localhost:3000:
+Or if you wish to test http://127.0.0.1:3000:
 
 
 ```bash
-WDIO_BASE_URL=http://localhost:3000 \
+API_BASE_URL=${API_BASE_URL} \
+WDIO_BASE_URL=http://10.0.2.2:3000 \
 yarn e2e:android.browser
 ```
 
+**Android emulator vs iOS simulator network**
+
+Android `127.0.0.1` map to its own interface, while `10.0.2.2` target your `127.0.0.1`.
+iOS simulator use the same interface as your host, it is fine to use `127.0.0.1`.
+
 You can view all available options in [`e2e/config/environment/env.ts`](../../e2e/config/environment/env.ts).
 
-**Drivers**
+## Peer dependencies
 
 On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
 
@@ -115,6 +122,72 @@ In order to login to the e2e mailbox, you must have in the root of the repositor
 
 Only one of the two is required.
 
+**Each of them must be in your `PATH` system**
+
+### Services dependencies
+
+We use an isolated backend service that doesn't depend on any environment, for this reason you must run 3 services:
+
+- redis
+- postgres
+- pcapi (must use port `6001`)
+
+We use `docker-compose` to start those service.
+
+**Why fixed Port?**
+
+App Native e2e tests expect you to use `.env.staging` or `.env.testing` environment/conf.
+During e2e tests, the app native api client will automatically switch to use the e2e backend.
+
+**Generate env file for configuring the pc-api service**
+
+First, you need to generate pc-api configuration using `./e2e/generate-env.sh` script.
+
+```bash
+SENDINBLUE_API_KEY=${SENDINBLUE_API_KEY} \
+END_TO_END_TESTS_EMAIL_ADDRESS=${END_TO_END_TESTS_EMAIL_ADDRESS} \
+./e2e/generate-env.sh
+```
+
+> `SENDINBLUE_API_KEY` and `END_TO_END_TESTS_EMAIL_ADDRESS` are secrets available in 1password.
+
+For Android emulator, since `127.0.0.1` is mapped to its own interface, we must use `10.0.2.2` address to reach pcapi running on our localhost.
+
+If you want to test with an **Android emulator**, you will need to set `ANDROID=true` and generate a new env file, ex:
+
+```bash
+SENDINBLUE_API_KEY=${SENDINBLUE_API_KEY} \
+END_TO_END_TESTS_EMAIL_ADDRESS=${END_TO_END_TESTS_EMAIL_ADDRESS} \
+ANDROID=true \
+./e2e/generate-env.sh
+```
+
+**To start all the containers**
+
+Example using the `staging` pcapi version:
+
+```bash
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) 
+docker-compose -f e2e/docker-compose-e2e.yml up
+```
+
+> Set `PCAPI_DOCKER_TAG` to any valid tag. Each commit of main correspond to tag, prior their merge (so not the hash from `master` but from the PR)
+
+**To stop all the containers**
+
+```bash
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) 
+docker-compose -f e2e/docker-compose-e2e.yml stop
+```
+
+**To remove all the containers**
+
+```bash
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) 
+docker-compose -f e2e/docker-compose-e2e.yml stop
+docker-compose -f e2e/docker-compose-e2e.yml rm -fv
+```
+
 ### Testing on Android
 
 Two options, either the application is already installed, or you have to provide an apk
@@ -125,7 +198,7 @@ You can use an apk, either from appcenter, either one created by building locall
 
 - To download an `apk` from appcenter, you can do use `yarn appcenter:install`
 - Set environment variable `ANDROID_PLATFORM_VERSION` to match your Android platform version of your device.
-- You must have a running emulator or physical device available when running `adb devices` 
+- You must have a running emulator or physical device available when running `adb devices`
 
 To build application:
 
@@ -135,7 +208,10 @@ ANDROID_GRADLE_TASK=assembleStagingRelease
 ./android/gradlew ${ANDROID_GRADLE_TASK} -p android
 
 # you can now run tests
-APPIUM_APP=./android/app/build/outputs/apk/staging/release/app-staging-release.apk yarn e2e:android.app
+APPIUM_APP=./android/app/build/outputs/apk/staging/release/app-staging-release.apk \
+API_BASE_URL=${API_BASE_URL} \
+END_TO_END_TESTS_EMAIL_ADDRESS=${END_TO_END_TESTS_EMAIL_ADDRESS} \
+yarn e2e:android.app
 ```
 
 #### Using already installed application
@@ -143,6 +219,8 @@ APPIUM_APP=./android/app/build/outputs/apk/staging/release/app-staging-release.a
 If the application is already installed, you can test it without providing an apk to install, for instance, for staging app you will do:
 
 ```bash
+API_BASE_URL=${API_BASE_URL} \
+END_TO_END_TESTS_EMAIL_ADDRESS=${END_TO_END_TESTS_EMAIL_ADDRESS} \
 APPIUM_APP_PACKAGE="app.passculture.staging" \
 APPIUM_APP_ACTIVITY="com.passculture.MainActivity" \
 yarn e2e:android.app
@@ -220,13 +298,13 @@ describe('TabBar', () => {
 You can try those:
 
 - GUI inspector for mobile apps: https://github.com/appium/appium-inspector/releases
-- Server with GUI in replacement: https://github.com/appium/appium-desktop/releases 
+- Server with GUI in replacement: https://github.com/appium/appium-desktop/releases
 - Alternative GUI inspector for mobile apps: https://digital.ai/products/continuous-testing/appium-studio/
 
 #### Convention
 
-We usually write cross platforms tests (for both `app` and `browser`), 
-but we also support `app` or `browser` specific tests. 
+We usually write cross platforms tests (for both `app` and `browser`),
+but we also support `app` or `browser` specific tests.
 
 Use the following file name convention:
 
@@ -256,7 +334,7 @@ and `browser`:
 $('[data-testid="Accueil"]')
 ```
 
-We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `$$$` 
+We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `$$$`
 and this allow to write less verbose selector for our cross platforms cases.
 
 ### ~ Selector
@@ -324,7 +402,7 @@ You might have this error when running `yarn e2e:browser.safari`:
 ERROR webdriver: Request failed with status 500 due to session not created: Could not create a session: You must enable the ‘Allow Remote Automation’ option in Safari’s Develop menu to control Safari via WebDriver.
 ```
 
-This can be solved by opening Safari, Develop Menu, then check `Allow Remote Automation` 
+This can be solved by opening Safari, Develop Menu, then check `Allow Remote Automation`
 
 ### Useful ressources
 
@@ -335,9 +413,10 @@ This can be solved by opening Safari, Develop Menu, then check `Allow Remote Aut
 
 ### Community
 
-If you wish to learn how to write tests, beside GitHub and StackOverflow, 
-we have found an active community on Gitter.im: 
+If you wish to learn how to write tests, beside GitHub and StackOverflow,
+we have found an active community on Gitter.im:
 
 - https://gitter.im/webdriverio/webdriverio
 - https://gitter.im/appium/appium
+
 

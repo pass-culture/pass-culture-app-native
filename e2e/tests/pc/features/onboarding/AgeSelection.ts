@@ -1,7 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
 import { $$$ } from '../../helpers/utils/selector'
-import { timeout } from '../../helpers/utils/time'
-import { env } from '../../../../config/environment/env'
 import { getRandomInt } from '../../helpers/utils/number'
 
 class AgeSelection extends AppScreen {
@@ -31,8 +29,6 @@ class AgeSelection extends AppScreen {
 
   async randomChoiceAge() {
     await this.waitForIsShown(true)
-    // For testing env due to codepush, but also in CI we wait a bit more
-    await timeout(env.CI || env.ENVIRONMENT !== 'staging' ? 12000 : 5000)
     const dice = getRandomInt(0, 3)
     if (dice === 0) {
       await this.fifteenYO.click()

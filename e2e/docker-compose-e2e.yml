@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  redis:
+    container_name: pc-redis-e2e
+    image: redis:7-alpine
+    ports:
+      - "7579:6379"
+    restart: unless-stopped
+    healthcheck:
+      retries: 5
+      timeout: 5s
+      interval: 10s
+      test: "redis-cli ping"
+    networks:
+      - e2e_nw
+  postgres:
+    container_name: pc-postgres-e2e
+    image: cimg/postgres:12.9-postgis
+    ports:
+      - "6432:5432"
+    restart: unless-stopped
+    user: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passq
+      POSTGRES_DB: pass_culture
+    healthcheck:
+      retries: 5
+      timeout: 5s
+      interval: 10s
+      test: "pg_isready"
+    networks:
+      - e2e_nw
+  pcapi:
+    container_name: pc-api-e2e
+    image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-artifact-registry/pcapi:${PCAPI_DOCKER_TAG}
+    entrypoint: /entrypoint.sh
+    command: src/pcapi/app.py
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    ports:
+      - "6001:6001"
+    restart: unless-stopped
+    env_file:
+      - ./.env.local.secret
+    healthcheck:
+      retries: 5
+      timeout: 5s
+      interval: 10s
+      test: "python -c 'import urllib.request;print(urllib.request.urlopen(\"http://localhost:6001/health/api\").getcode())'"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - e2e_nw
+    stdin_open: true
+    tty: true
+
+networks:
+  e2e_nw:
+    driver: bridge
+

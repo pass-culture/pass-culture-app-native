@@ -11,10 +11,6 @@ on:
         description: Select the environment
         required: true
         default: staging
-      build-local:
-        type: boolean
-        description: if true it will run the webapp locally
-        default: false
       specs:
         type: string
         description: |
@@ -23,3 +19,168 @@ on:
           paths into an array using "," delimiter to run them within a single worker process.
           [Default: run all tests]
         required: false
+      pcapi-docker-tag:
+        type: string
+        description: pcapi docker tag
+        required: false
+
+env:
+  PROJECT_ID: passculture-infra-prod
+  REGION: europe-west1
+  REPOSITORY: pass-culture-artifact-registry
+  PCAPI_DOCKER_IMAGE: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-artifact-registry/pcapi
+  PCAPI_BASE_URL: http://127.0.0.1:6001
+
+jobs:
+  e2e-browser:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - browserName: "chrome"
+          - browserName: "firefox"
+          - browserName: "safari"
+    env:
+      CI: true
+      DEV_TEST_SERVER_HOST: 127.0.0.1
+      DEV_TEST_SERVER_PORT: 3000
+      DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
+      _FORCE_LOGS: 1
+      # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
+      ENVIRONMENT: ${{ inputs.environment || 'staging' }}
+      SPECS: ${{ inputs.specs }}
+      PC_API_DOCKER_TAG: ${{ inputs.pcapi-docker-tag }}
+      GITHUB_EVENT_NAME: ${{ github.event_name }}
+      SLACK_WEB_HOOK_URL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL }}
+      SLACK_WEB_HOOK_URL_MANUAL: ${{ secrets.E2E_SLACK_WEB_HOOK_URL_MANUAL }}
+      # useful for Slack reports
+      GITHUB_SERVER_URL: ${{ github.server_url }}
+      GITHUB_RUN_ID: ${{ github.run_id }}
+    runs-on: macos-latest
+    environment: ${{ inputs.environment || 'staging' }}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: Set PCAPI_DOCKER_TAGS environments variables
+        run: echo PCAPI_DOCKER_TAG=${PC_API_DOCKER_TAG:-$(curl -sS https://backend.staging.passculture.team/health/api)} >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Decode Gmail token
+        env:
+          END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN }}
+        run: echo $END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN | base64 -d > token.json
+
+      - name: "Install and start Docker engine"
+        run: |
+          brew install colima
+          brew install docker docker-compose
+          mkdir -p ~/.docker/cli-plugins
+          ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+          colima start
+
+      - id: openid-auth
+        name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
+        with:
+          create_credentials_file: false
+          token_format: 'access_token'
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
+
+      - id: docker-login
+        uses: 'docker/login-action@v1'
+        name: 'Docker login'
+        with:
+          registry: '${{ env.REGION }}-docker.pkg.dev'
+          username: 'oauth2accesstoken'
+          password: '${{ steps.openid-auth.outputs.access_token }}'
+
+      - name: "Start pcapi backend"
+        env:
+          SENDINBLUE_API_KEY: ${{ secrets.EHP_SENDINBLUE_API_KEY }}
+          END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
+        run: |
+          ./e2e/generate-env.sh
+          docker-compose -f e2e/docker-compose-e2e.yml up -d
+
+      - uses: browser-actions/setup-chrome@latest
+        if: ${{ matrix.browserName == 'chrome' }}
+
+      - uses: browser-actions/setup-firefox@latest
+        if: ${{ matrix.browserName == 'firefox' }}
+
+      - name: Start local dev server
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
+        run: |
+          cwd=$(pwd)
+          pushd "$cwd"
+          nohup yarn start:web:${{ env.ENVIRONMENT }} \
+            2>&1 > "$cwd/webpack-dev-server.log" &
+          popd
+
+      - name: Wait for local dev server
+        timeout-minutes: 15
+        run: |
+          until curl --output /dev/null --silent --head --fail http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}; do
+            printf '.'
+            sleep 5
+          done
+
+      - name: Run end-to-end ${{ matrix.browserName }} tests
+        env:
+          WDIO_BASE_URL: "http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}"
+          END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
+          API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
+          ENVIRONMENT: ${{ env.ENVIRONMENT }}
+        run: yarn e2e:browser.${{ matrix.browserName }}
+
+      - name: Show pcapi server output
+        if: ${{ always() }}
+        run: docker logs pc-api-e2e
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: fail-screenshots-videos-${{ matrix.browserName }}
+          path: e2e/output
+          if-no-files-found: ignore
+
+      - name: Post report to Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        if: ${{ always() }}
+        with:
+          channel-id:  ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
+          payload: |
+            {
+              "attachments": [
+                {
+                  "mrkdwn_in": ["text"],
+                  "color": "${{ fromJSON('["#36a64f", "#A30002"]')[job.status != 'success'] }}",
+                  "author_name": "${{github.actor}}",
+                  "author_link": "https://github.com/${{github.actor}}",
+                  "author_icon": "https://github.com/${{github.actor}}.png",
+                  "title": "e2e browser.${{matrix.browserName}}",
+                  "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                  "text": "Les tests `e2e:browser.${{matrix.browserName}}` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
+                }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

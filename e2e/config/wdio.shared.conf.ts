@@ -1,41 +1,13 @@
 import { mkdirSync } from 'fs'
 import { resolve, join } from 'path'
 // @ts-ignore no typing for this package so we ignore it for now
-import slack from 'wdio-slack-service'
-// @ts-ignore no typing for this package so we ignore it for now
 import video from 'wdio-video-reporter'
 import { env } from './environment/env'
-import { ServiceEntry } from '@wdio/types/build/Services'
-
-const {
-  /** Required e2e test env */
-  ENVIRONMENT, // if not set, default to staging
-  /** Required CI env only */
-  CI,
-  SLACK_WEB_HOOK_URL,
-  SLACK_WEB_HOOK_URL_MANUAL,
-  GITHUB_REF_NAME,
-  GITHUB_EVENT_NAME,
-  GITHUB_SERVER_URL,
-  GITHUB_REPOSITORY_OWNER_PART,
-  GITHUB_REPOSITORY_NAME_PART,
-  GITHUB_SHA_SHORT,
-  GITHUB_RUN_ID,
-  npm_lifecycle_event: NPM_LIFECYCLE_EVENT,
-} = process.env
+import FeatureClient from '../tests/pc/helpers/FeatureClient'
 
 /** Videos and screenshots (currently not working in android emulator within github runner context) */
 const screenshotsPath = join(process.cwd(), 'e2e/output/screenshots')
 const videosPath = join(process.cwd(), 'e2e/output/videos')
-
-/** Slack reporting */
-const useSlackService = !!(CI && SLACK_WEB_HOOK_URL)
-const eventName = GITHUB_EVENT_NAME === 'schedule' ? 'Scheduled' : 'Manually'
-const branchUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/tree/${GITHUB_REF_NAME}`
-const commitUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/tree/${GITHUB_SHA_SHORT}`
-const actionUrl = `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY_OWNER_PART}/${GITHUB_REPOSITORY_NAME_PART}/actions/runs/${GITHUB_RUN_ID}`
-const slackMessageTitle = `<${branchUrl}|${GITHUB_REF_NAME}>/<${commitUrl}|${GITHUB_SHA_SHORT}> ${ENVIRONMENT} - wdio ${GITHUB_REPOSITORY_NAME_PART} \`${NPM_LIFECYCLE_EVENT}\` <${actionUrl}|tests report> (${eventName})`
-const webHookUrl = eventName === 'Scheduled' ? SLACK_WEB_HOOK_URL : SLACK_WEB_HOOK_URL_MANUAL
 
 /**
  * All not needed configurations, for this boilerplate, are removed.
@@ -137,16 +109,7 @@ export const config: WebdriverIO.Config = {
   // - wdio.shared.local.appium.conf.ts
   // - wdio.shared.sauce.conf.ts
   // configuration files
-  services: [
-    useSlackService && [
-      slack,
-      {
-        webHookUrl,
-        notifyOnlyOnFailure: false,
-        messageTitle: slackMessageTitle,
-      },
-    ],
-  ].filter(Boolean) as ServiceEntry[],
+  services: [],
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
@@ -184,7 +147,7 @@ export const config: WebdriverIO.Config = {
      * NOTE: This has been increased for more stable Appium Native app
      * tests because they can take a bit longer.
      */
-    timeout: 5 * 60 * 1000, // 5min
+    timeout: 10 * 60 * 1000, // 10min
   },
   //
   // =====
@@ -201,6 +164,7 @@ export const config: WebdriverIO.Config = {
   onPrepare: async function () {
     mkdirSync(screenshotsPath, { recursive: true })
     mkdirSync(videosPath, { recursive: true })
+    await FeatureClient.setEnableNativeAppRecaptcha(false)
   },
   afterTest: async function (test, context, { passed }) {
     if (!passed) {
