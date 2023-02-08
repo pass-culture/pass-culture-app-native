@@ -6,6 +6,7 @@ on:
       - ".storybook/**"
       - "src/**"
       - "package.json"
+      - "yarn.lock"
 
 env:
   BUILD_DIR: /tmp/${{ github.sha }}
