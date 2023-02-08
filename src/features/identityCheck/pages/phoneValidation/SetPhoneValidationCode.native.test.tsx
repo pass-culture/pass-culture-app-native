@@ -33,7 +33,7 @@ jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () =
 })
 
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
   useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),

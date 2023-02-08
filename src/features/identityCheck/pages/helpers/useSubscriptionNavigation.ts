@@ -4,8 +4,8 @@ import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { SubscriptionScreen, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import {
   SubscriptionRootStackParamList,

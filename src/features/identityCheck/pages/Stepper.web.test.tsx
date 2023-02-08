@@ -14,7 +14,7 @@ mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
 jest.mock('features/auth/api/useNextSubscriptionStep')
 
-jest.mock('features/identityCheck/useSetCurrentSubscriptionStep', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
     subscription: jest.fn(),
   })),
@@ -27,7 +27,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 const icon: React.FC<IconInterface> = () => (
   <BicolorProfile opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
 )
-jest.mock('features/identityCheck/useSubscriptionSteps', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps', () => ({
   useSubscriptionSteps: jest.fn(() => [
     {
       name: 'IdentityCheckStep.IDENTIFICATION',

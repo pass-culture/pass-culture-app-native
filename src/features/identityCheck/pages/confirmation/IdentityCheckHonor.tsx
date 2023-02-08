@@ -9,7 +9,7 @@ import { usePostHonorStatement } from 'features/identityCheck/api/usePostHonorSt
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { Declaration } from 'features/identityCheck/atoms/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
+import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { QueryKeys } from 'libs/queryKeys'

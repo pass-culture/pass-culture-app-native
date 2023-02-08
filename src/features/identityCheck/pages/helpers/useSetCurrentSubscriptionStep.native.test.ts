@@ -1,6 +1,6 @@
 import { SubscriptionStep } from 'api/gen'
+import { getIdentityCheckStep } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { getIdentityCheckStep } from 'features/identityCheck/useSetCurrentSubscriptionStep'
 
 describe('getIdentityCheckStep', () => {
   it.each([

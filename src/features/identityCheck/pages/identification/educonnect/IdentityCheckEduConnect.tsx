@@ -6,7 +6,7 @@ import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogi
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
+import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'

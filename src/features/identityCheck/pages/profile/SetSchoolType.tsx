@@ -7,11 +7,11 @@ import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/utils'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

@@ -19,7 +19,7 @@ jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
   useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
