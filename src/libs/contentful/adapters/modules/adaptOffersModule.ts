@@ -19,6 +19,10 @@ const mapOffersCategories = (
   algoliaCategories: SearchParametersFields['algoliaCategories']
 ): OffersModuleParameters['categories'] => algoliaCategories?.fields?.categories
 
+const mapMusicTypes = (
+  musicTypes: SearchParametersFields['musicTypes']
+): OffersModuleParameters['musicTypes'] => musicTypes?.fields?.musicTypes
+
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
@@ -26,11 +30,20 @@ const buildOffersParams = (
   [firstParams, ...additionalParams]
     .filter((params) => params.fields && !isEmpty(params.fields))
     .map(
-      ({ fields: { algoliaSubcategories, algoliaCategories, movieGenres, ...otherFields } }) => ({
+      ({
+        fields: {
+          algoliaSubcategories,
+          algoliaCategories,
+          movieGenres,
+          musicTypes,
+          ...otherFields
+        },
+      }) => ({
         ...otherFields,
         subcategories: mapOffersSubcategories(algoliaSubcategories),
         movieGenres: mapOffersMovieGenres(movieGenres),
         categories: mapOffersCategories(algoliaCategories),
+        musicTypes: mapMusicTypes(musicTypes),
       })
     )
 
