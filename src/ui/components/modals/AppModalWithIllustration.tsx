@@ -11,6 +11,7 @@ type Props = {
   title: string
   Illustration: React.FC<AccessibleIcon>
   hideModal: () => void
+  onModalHide?: () => void
 }
 
 export const AppModalWithIllustration: FunctionComponent<Props> = ({
@@ -18,6 +19,7 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
   title,
   Illustration,
   hideModal,
+  onModalHide,
   children,
 }) => {
   return (
@@ -26,7 +28,8 @@ export const AppModalWithIllustration: FunctionComponent<Props> = ({
       title={title}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
-      onRightIconPress={hideModal}>
+      onRightIconPress={hideModal}
+      onModalHide={onModalHide}>
       <Container>
         <Illustration />
         <Spacer.Column numberOfSpaces={6} />
