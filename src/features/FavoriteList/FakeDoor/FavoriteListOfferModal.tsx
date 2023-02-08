@@ -31,7 +31,7 @@ export const FavoriteListOfferModal: React.FC<Props> = ({ visible, hideModal }) 
   return (
     <React.Fragment>
       <AppModalWithIllustration
-        Illustration={BicolorTables}
+        Illustration={StyledBicolorTables}
         title="Crée une liste de favoris&nbsp;!"
         hideModal={hideModal}
         visible={visible}>
@@ -61,3 +61,7 @@ export const FavoriteListOfferModal: React.FC<Props> = ({ visible, hideModal }) 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const StyledBicolorTables = styled(BicolorTables).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``

@@ -288,8 +288,8 @@ exports[`<FavoriteListOfferModal /> should render correctly 1`] = `
             >
               <View
                 fill="none"
-                height={109.2}
-                width={140}
+                height={156}
+                width={200}
               >
                 <Text>
                   undefined-SVG-Mock
