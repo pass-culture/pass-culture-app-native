@@ -47,6 +47,7 @@ describe('adaptOffersModule', () => {
           minBookingsThreshold: 2,
           musicTypes: ['Pop', 'Gospel'],
           movieGenres: ['ACTION', 'BOLLYWOOD'],
+          showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
         },
         {
           title: 'Livre',
