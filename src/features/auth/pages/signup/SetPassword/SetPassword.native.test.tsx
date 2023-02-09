@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
@@ -14,19 +14,19 @@ describe('SetPassword Page', () => {
     expect(screen.getByText('12 Caractères')).toBeTruthy()
   })
 
-  it('should enable the submit button when password is correct', async () => {
-    const { getByPlaceholderText, getByTestId } = render(<SetPassword {...props} />)
+  it('should disable the submit button when password is incorrect', () => {
+    render(<SetPassword {...props} />)
 
-    const continueButton = getByTestId('Continuer')
-    expect(continueButton).toBeDisabled()
+    expect(screen.getByTestId('Continuer')).toBeDisabled()
+  })
 
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+  it('should enable the submit button when password is correct', () => {
+    render(<SetPassword {...props} />)
 
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
 
-    await waitFor(() => {
-      expect(continueButton).toBeEnabled()
-    })
+    expect(screen.getByTestId('Continuer')).toBeEnabled()
   })
 
   it('should call goToNextStep() when submitting password', async () => {
