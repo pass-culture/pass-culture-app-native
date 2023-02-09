@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
+import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/modals/SomeAdviceBeforeIdentityCheckModal'
 import { fireEvent, render } from 'tests/utils'
 
 const hideModalMock = jest.fn()

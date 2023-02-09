@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { DMSModal } from 'features/identityCheck/components/DMSModal'
+import { DMSModal } from 'features/identityCheck/components/modals/DMSModal'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'

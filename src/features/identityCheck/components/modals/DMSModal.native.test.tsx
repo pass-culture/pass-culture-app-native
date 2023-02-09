@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DMSModal } from 'features/identityCheck/components/DMSModal'
+import { DMSModal } from 'features/identityCheck/components/modals/DMSModal'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
