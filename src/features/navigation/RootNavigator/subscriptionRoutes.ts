@@ -18,10 +18,8 @@ import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identific
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
 import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/UbbleWebview'
-import {
-  PhoneValidationTooManyAttempts,
-  PhoneValidationTooManySMSSent,
-} from 'features/identityCheck/pages/phoneValidation/errors'
+import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
+import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
