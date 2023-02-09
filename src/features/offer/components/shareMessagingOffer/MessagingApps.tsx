@@ -66,4 +66,5 @@ const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
 
 const StyledLi = styled(Li)({
   width: getSpacing(19),
+  height: getSpacing(24),
 })
