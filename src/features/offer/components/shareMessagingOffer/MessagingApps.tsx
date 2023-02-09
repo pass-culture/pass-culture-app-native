@@ -34,7 +34,11 @@ export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) =
             </StyledLi>
           ))}
           <StyledLi>
-            <ShareMessagingAppOther />
+            <ShareMessagingAppOther
+              onPress={async () => {
+                return
+              }}
+            />
           </StyledLi>
         </StyledUl>
       </IconsWrapper>
