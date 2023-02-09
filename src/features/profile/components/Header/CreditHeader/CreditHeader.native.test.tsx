@@ -19,7 +19,7 @@ const mockUseIsUserUnderageBeneficiary = jest
   .mockReturnValue(false)
 
 const dateInPast = '2022-08-01T18:00:00'
-const dateInFuture = '2023-02-09T11:17:14.786670'
+const dateInFuture = '2100-02-09T11:17:14.786670'
 
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
