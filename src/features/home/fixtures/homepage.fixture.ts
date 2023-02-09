@@ -128,6 +128,7 @@ export const formattedOffersModule: OffersModule = {
       subcategories: ['Livre', 'Livre numérique, e-book'],
       movieGenres: ['ACTION', 'BOLLYWOOD'],
       musicTypes: ['Pop', 'Gospel'],
+      showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
     },
   ],
   cover: undefined,
