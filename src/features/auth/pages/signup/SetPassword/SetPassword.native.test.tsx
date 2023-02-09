@@ -1,13 +1,19 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 describe('SetPassword Page', () => {
+  it('should display security rules', () => {
+    render(<SetPassword {...props} />)
+
+    expect(screen.getByText('12 Caractères')).toBeTruthy()
+  })
+
   it('should enable the submit button when password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SetPassword {...props} />)
 
