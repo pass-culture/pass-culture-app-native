@@ -83,7 +83,6 @@ import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
-import { ScreenPlay } from 'ui/svg/icons/ScreenPlay'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
@@ -217,7 +216,6 @@ export const TertiaryAndSmallerIcons = {
   Plus,
   Profile,
   Question,
-  ScreenPlay,
   SMSFilled,
   Validate,
   ValidateOff,
