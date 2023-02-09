@@ -34,6 +34,7 @@ module.exports = {
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],
     'local-rules/nbsp-in-text': ['error'],
+    'local-rules/apostrophe-in-text': ['error'],
     'local-rules/todo-format': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       'error',
@@ -338,6 +339,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
+        'local-rules/apostrophe-in-text': 'off',
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'warn',
         'jest/no-disabled-tests': 'warn',
