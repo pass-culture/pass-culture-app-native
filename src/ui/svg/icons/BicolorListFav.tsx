@@ -46,11 +46,3 @@ export const BicolorListFav = React.memo(
     size: size ?? theme.icons.sizes.standard,
   }))``
 )
-
-export const Clock = React.memo(
-  styled(NotMemoizedBicolorListFav).attrs(({ color, size, theme }) => ({
-    color: color ?? theme.colors.black,
-    color2: color ?? theme.colors.black,
-    size: size ?? theme.icons.sizes.standard,
-  }))``
-)
