@@ -59,11 +59,10 @@ export function CategoriesSection<
   }
 
   const handleSelect = (key: N) => {
+    onSelect(key)
     if (onSubmit) {
-      onSelect(key)
       onSubmit()
     }
-    onSelect(key)
   }
 
   return (

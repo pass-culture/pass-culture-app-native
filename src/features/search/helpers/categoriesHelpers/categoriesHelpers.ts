@@ -319,7 +319,7 @@ export function getDescription(
   return undefined
 }
 
-function getAppropriateView(searchState: SearchState) {
+export function getDefaultFormView(searchState: SearchState) {
   const { offerGenreTypes, offerCategories, offerNativeCategories } = searchState
 
   if (!offerCategories || !offerNativeCategories) return CategoriesModalView.CATEGORIES
@@ -343,6 +343,6 @@ export function getDefaultFormValues(
     category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
     nativeCategory: searchState.offerNativeCategories?.[0] || null,
     genreType: searchState.offerGenreTypes?.[0]?.name || null,
-    currentView: getAppropriateView(searchState),
+    currentView: getDefaultFormView(searchState),
   }
 }
