@@ -60,10 +60,14 @@ export const parseSearchParameters = (
   const musicGenreTypes = parameters.musicTypes
     ? buildOfferGenreTypes(GenreType.MUSIC, parameters.musicTypes, genreTypeMapping)
     : []
+  const musicShowTypes = parameters.showTypes
+    ? buildOfferGenreTypes(GenreType.SHOW, parameters.showTypes, genreTypeMapping)
+    : []
 
   const offerGenreTypes = buildOfferGenreTypesValues({
     movieGenres: movieGenreTypes,
     musicTypes: musicGenreTypes,
+    showTypes: musicShowTypes,
   })
 
   return {
