@@ -1,4 +1,4 @@
-import { StepButtonState } from 'features/identityCheck/atoms/StepButton'
+import { StepButtonState } from 'features/identityCheck/components/StepButton'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 
 export const getStepState = (

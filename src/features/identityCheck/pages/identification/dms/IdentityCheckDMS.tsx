@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
+import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'

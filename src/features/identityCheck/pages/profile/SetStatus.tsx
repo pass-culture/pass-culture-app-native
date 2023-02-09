@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum } from 'api/gen'
 import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
-import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
+import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'

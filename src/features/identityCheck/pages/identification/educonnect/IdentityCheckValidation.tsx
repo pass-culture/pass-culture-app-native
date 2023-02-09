@@ -2,7 +2,7 @@ import { parse, format } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
+import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'

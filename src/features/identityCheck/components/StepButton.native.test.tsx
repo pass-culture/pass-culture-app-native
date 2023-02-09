@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StepButton } from 'features/identityCheck/atoms/StepButton'
+import { StepButton } from 'features/identityCheck/components/StepButton'
 import { StepConfig } from 'features/identityCheck/types'
 import { render } from 'tests/utils'
 import { theme } from 'theme'

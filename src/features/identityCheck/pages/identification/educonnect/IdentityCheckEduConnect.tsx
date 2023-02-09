@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
-import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
+import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
