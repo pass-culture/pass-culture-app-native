@@ -9,6 +9,8 @@ import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -19,12 +21,13 @@ export const BookHourChoice: React.FC = () => {
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
+  const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
     if (isDuo) {
-      if (bookingState.quantity) {
+      if (bookingState.quantity && !enablePricesByCategories) {
         debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
       } else {
         debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.DUO })

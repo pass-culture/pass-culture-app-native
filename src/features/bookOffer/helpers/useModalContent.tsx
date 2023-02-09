@@ -10,6 +10,8 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -23,6 +25,8 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   const { bookingState, dispatch } = useBookingContext()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
+  const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
+  const bookingStep = bookingState.step ?? Step.DATE
 
   if (!offer) {
     return {
@@ -46,8 +50,8 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   const { isDigital, stocks } = offer
   const subcategory = mapping[offer.subcategoryId]
 
-  const goToPreviousStep = () => {
-    dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
+  const goToPreviousStep = (step?: Step) => {
+    dispatch({ type: 'CHANGE_STEP', payload: step ?? Step.PRE_VALIDATION })
   }
 
   if (!subcategory.isEvent) {
@@ -76,6 +80,26 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   }
 
   if (bookingState.step !== Step.CONFIRMATION) {
+    if (enablePricesByCategories) {
+      const modalLeftIconProps =
+        bookingStep === Step.DATE
+          ? {
+              leftIconAccessibilityLabel: undefined,
+              leftIcon: undefined,
+              onLeftIconPress: undefined,
+            }
+          : {
+              leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
+              leftIcon: ArrowPrevious,
+              onLeftIconPress: () => goToPreviousStep(bookingStep - 1),
+            }
+      return {
+        title: 'Mes options',
+        ...modalLeftIconProps,
+        children: <BookingEventChoices stocks={stocks} />,
+      }
+    }
+
     return {
       title: 'Mes options',
       leftIconAccessibilityLabel: undefined,
@@ -85,11 +109,15 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
     }
   }
 
+  const previousBookingState =
+    !offer.isDuo && bookingStep === Step.CONFIRMATION ? Step.HOUR : Step.DUO
+
   return {
     title: 'Détails de la réservation',
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,
-    onLeftIconPress: goToPreviousStep,
+    onLeftIconPress: () =>
+      goToPreviousStep(enablePricesByCategories ? previousBookingState : Step.PRE_VALIDATION),
     children: <BookingDetails stocks={stocks} />,
   }
 }

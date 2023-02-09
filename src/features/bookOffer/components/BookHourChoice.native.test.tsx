@@ -3,8 +3,7 @@ import React from 'react'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
 
@@ -44,8 +43,10 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 
+jest.mock('react-query')
+
 describe('BookHourChoice when hour is already selected', () => {
-  it('should change step to Hour', async () => {
+  it('should change step to Hour', () => {
     mockUseBooking.mockImplementationOnce(() => ({
       dispatch: mockDispatch,
       bookingState: {
@@ -55,14 +56,14 @@ describe('BookHourChoice when hour is already selected', () => {
       } as BookingState,
       dismissModal: mockDismissModal,
     }))
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
-    expect(page).toMatchSnapshot()
+    render(<BookHourChoice />)
 
-    const selectedHour = page.getByText('20:00')
+    expect(screen).toMatchSnapshot()
 
-    act(() => fireEvent.press(selectedHour))
+    const selectedHour = screen.getByText('20:00')
+
+    fireEvent.press(selectedHour)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
   })
@@ -70,32 +71,30 @@ describe('BookHourChoice when hour is already selected', () => {
 
 describe('BookHourChoice', () => {
   it('should display filtered stocks for selected Date', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookHourChoice />))
+    render(<BookHourChoice />)
 
     // firstStock corresponds to 2021-03-02 stock 20h
-    const firstStock = page.queryAllByTestId('HourChoice148409-hour')
+    const firstStock = screen.queryAllByTestId('HourChoice148409-hour')
     // secondStock corresponds to 2021-03-17 stock
-    const secondStock = page.queryAllByTestId('HourChoice148410-hour')
+    const secondStock = screen.queryAllByTestId('HourChoice148410-hour')
     // thirdStock corresponds to 2021-03-02 stock 10h
-    const thirdStock = page.queryAllByTestId('HourChoice148411-hour')
+    const thirdStock = screen.queryAllByTestId('HourChoice148411-hour')
 
     expect(firstStock.length).toBe(1)
     expect(secondStock.length).toBe(0)
     expect(thirdStock.length).toBe(1)
 
-    expect(page).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should select an item when pressed', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookHourChoice />))
+  it('should select an item when pressed', () => {
+    render(<BookHourChoice />)
 
     // firstStock correspond to 2021-03-02 stock
-    const firstStock = page.queryByTestId('HourChoice148409-hour')
+    const firstStock = screen.queryByTestId('HourChoice148409-hour')
 
     if (firstStock) {
-      act(() => fireEvent.press(firstStock))
+      fireEvent.press(firstStock)
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148409 })
     } else {
@@ -104,17 +103,16 @@ describe('BookHourChoice', () => {
   })
 
   it('should pass formatted hour and price props', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookHourChoice />))
+    render(<BookHourChoice />)
 
-    const firstHour = page.getByTestId('HourChoice148409-hour')
-    const firstPrice = page.getByTestId('HourChoice148409-price')
+    const firstHour = screen.getByTestId('HourChoice148409-hour')
+    const firstPrice = screen.getByTestId('HourChoice148409-price')
 
     expect(firstHour.props.children).toBe('20h00')
     expect(firstPrice.props.children).toBe('24\u00a0€')
 
-    const secondHour = page.getByTestId('HourChoice148411-hour')
-    const secondPrice = page.getByTestId('HourChoice148411-price')
+    const secondHour = screen.getByTestId('HourChoice148411-hour')
+    const secondPrice = screen.getByTestId('HourChoice148411-price')
 
     expect(secondHour.props.children).toBe('10h00')
     expect(secondPrice.props.children).toBe('épuisé')
@@ -122,8 +120,7 @@ describe('BookHourChoice', () => {
 
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookHourChoice />))
-    expect(page.getByTestId('HourChoice148409-price').props.children).toBe('crédit insuffisant')
+    render(<BookHourChoice />)
+    expect(screen.getByTestId('HourChoice148409-price').props.children).toBe('crédit insuffisant')
   })
 })
