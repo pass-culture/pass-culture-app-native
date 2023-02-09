@@ -7,6 +7,7 @@ import { SearchState, SearchView } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
 import { buildOfferGenreTypes } from 'libs/search/utils/buildOfferGenreTypes'
+import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const parseGeolocationParameters = (
@@ -59,8 +60,15 @@ export const parseSearchParameters = (
   const musicGenreTypes = parameters.musicTypes
     ? buildOfferGenreTypes(GenreType.MUSIC, parameters.musicTypes, genreTypeMapping)
     : []
+  const musicShowTypes = parameters.showTypes
+    ? buildOfferGenreTypes(GenreType.SHOW, parameters.showTypes, genreTypeMapping)
+    : []
 
-  const offerGenreTypes = movieGenreTypes?.concat(musicGenreTypes ?? [])
+  const offerGenreTypes = buildOfferGenreTypesValues({
+    movieGenres: movieGenreTypes,
+    musicTypes: musicGenreTypes,
+    showTypes: musicShowTypes,
+  })
 
   return {
     beginningDatetime,

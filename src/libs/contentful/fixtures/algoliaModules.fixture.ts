@@ -1,6 +1,7 @@
 import { categoriesFixture } from 'libs/contentful/fixtures/categoriesFixture'
 import { movieGenresFixture } from 'libs/contentful/fixtures/movieGenres.fixture'
 import { musicTypesFixture } from 'libs/contentful/fixtures/musicTypes.fixture'
+import { ShowTypesFixture } from 'libs/contentful/fixtures/showTypes.fixture'
 import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
 import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
 
@@ -42,6 +43,7 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
         algoliaSubcategories: subcategoriesFixture,
         musicTypes: musicTypesFixture,
         movieGenres: movieGenresFixture,
+        showTypes: ShowTypesFixture,
       },
     },
     displayParameters: {

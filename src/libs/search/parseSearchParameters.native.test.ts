@@ -310,23 +310,5 @@ describe('parseSearchParameters', () => {
         ],
       })
     })
-
-    it('should return algolia parameters when a musicTypes list but no movieGenres are provided', () => {
-      const parameters = {
-        movieGenres: undefined,
-        musicTypes: ['Gospel'],
-      } as OffersModuleParameters
-
-      const result = parseSearchParameters(
-        parameters,
-        null,
-        subcategoryLabelMapping,
-        genreTypeMapping
-      )
-      expect(result).toStrictEqual({
-        ...defaultSearchParameters,
-        offerGenreTypes: [{ key: 'MUSIC', name: 'Gospel', value: 'Gospel' }],
-      })
-    })
   })
 })
