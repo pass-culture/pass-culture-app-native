@@ -54,6 +54,7 @@ interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
   offerId: number | undefined
+  enablePricesByCategories?: boolean
 }
 
 export const getMinAvailableDate = (markedDates: MarkedDates): string | undefined => {
@@ -76,7 +77,12 @@ const RNCalendarTheme = {
   marginHorizontal: getSpacing(-2),
 }
 
-export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
+export const Calendar: React.FC<Props> = ({
+  stocks,
+  userRemainingCredit,
+  offerId,
+  enablePricesByCategories,
+}) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
   const minDate = getMinAvailableDate(markedDates) || format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
@@ -102,11 +108,16 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
             analytics.logBookingOfferConfirmDates(offerId)
           }
 
-          const onPress = selectDay({ date, selected, status })
+          const onPress = selectDay({ date, selected, status, enablePricesByCategories })
 
           return (
             <Container onPress={onPress} disabled={!onPress}>
-              <DayComponent status={status} selected={selected} date={date} />
+              <DayComponent
+                status={status}
+                selected={selected}
+                date={date}
+                enablePricesByCategories={enablePricesByCategories}
+              />
               {typeof price === 'number' ? (
                 <Caption status={status}>{formatToFrenchDecimal(price).replace(' ', '')}</Caption>
               ) : (

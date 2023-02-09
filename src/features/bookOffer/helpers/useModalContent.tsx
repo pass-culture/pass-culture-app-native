@@ -94,14 +94,14 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
               onLeftIconPress: () => goToPreviousStep(bookingStep - 1),
             }
       return {
-        title: 'Mes options',
+        title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
         ...modalLeftIconProps,
         children: <BookingEventChoices stocks={stocks} />,
       }
     }
 
     return {
-      title: 'Mes options',
+      title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
       leftIconAccessibilityLabel: undefined,
       leftIcon: undefined,
       onLeftIconPress: undefined,

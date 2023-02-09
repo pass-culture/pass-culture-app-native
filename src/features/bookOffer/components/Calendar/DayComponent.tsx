@@ -14,6 +14,7 @@ interface Props {
   status: OfferStatus
   selected: boolean
   date: DateData
+  enablePricesByCategories?: boolean
 }
 
 type VoidFn = () => void
@@ -22,14 +23,15 @@ export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
   const { dispatch } = useBookingContext()
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
-  const selectDate = (date: DateData) => () => {
+  const selectDate = (date: DateData, enablePricesByCategories?: boolean) => () => {
     dispatch({ type: 'SELECT_DATE', payload: new Date(date.year, date.month - 1, date.day) })
+    if (enablePricesByCategories) return
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
-  return useCallback(({ date, selected, status }: Props) => {
-    if (selected) return selectDate(date)
-    if (status === OfferStatus.BOOKABLE) return selectDate(date)
+  return useCallback(({ date, selected, status, enablePricesByCategories }: Props) => {
+    if (selected) return selectDate(date, enablePricesByCategories)
+    if (status === OfferStatus.BOOKABLE) return selectDate(date, enablePricesByCategories)
     return undefined
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

@@ -185,7 +185,7 @@ describe('useModalContent', () => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
       expect(result.current.onLeftIconPress).not.toBeUndefined()
-      expect(result.current.title).toBe('Mes options')
+      expect(result.current.title).toBe('Choix des options')
     })
   })
 
