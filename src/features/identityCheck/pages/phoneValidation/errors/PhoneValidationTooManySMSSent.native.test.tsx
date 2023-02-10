@@ -3,7 +3,7 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -12,7 +12,7 @@ import { fireEvent, render } from 'tests/utils'
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 
-jest.mock('features/identityCheck/api/api', () => {
+jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
   return {
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
       remainingAttempts: 0,

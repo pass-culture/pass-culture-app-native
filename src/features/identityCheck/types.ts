@@ -17,3 +17,5 @@ export interface StepConfig {
   icon: React.FC<IconInterface>
   screens: SubscriptionScreen[]
 }
+
+export type NextScreenOrStep = { screen: SubscriptionScreen } | { step: IdentityCheckStep } | null

@@ -22,10 +22,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-jest.mock('features/identityCheck/api/api', () => {
-  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
   return {
-    ...ActualIdentityCheckAPI,
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
       remainingAttempts: 5,
       counterResetDatetime: 'time',
@@ -35,7 +33,7 @@ jest.mock('features/identityCheck/api/api', () => {
 })
 
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
   useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),

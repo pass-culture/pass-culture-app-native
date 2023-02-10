@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
-import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
+import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { Banner } from 'ui/components/Banner'

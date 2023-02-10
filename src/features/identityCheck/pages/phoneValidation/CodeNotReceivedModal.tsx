@@ -3,12 +3,10 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
-import {
-  usePhoneValidationRemainingAttempts,
-  useSendPhoneValidationMutation,
-} from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/utils'
+import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { plural } from 'libs/plural'

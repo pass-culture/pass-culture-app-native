@@ -6,13 +6,13 @@ import WebView, { WebViewNavigation } from 'react-native-webview'
 import { WebViewSource } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 
-import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
+import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
 import { eduConnectClient } from 'libs/eduConnectClient'
 
 export const IdentityCheckEduConnectForm = () => {

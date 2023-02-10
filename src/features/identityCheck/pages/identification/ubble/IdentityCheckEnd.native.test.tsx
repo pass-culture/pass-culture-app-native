@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
 import { amplitude } from 'libs/amplitude'
@@ -10,7 +10,7 @@ import { render, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
   useSubscriptionNavigation: () => ({
     navigateToNextScreen: mockNavigateToNextScreen,
   }),

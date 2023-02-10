@@ -4,11 +4,11 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStep, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/__mocks__/nextSubscriptionStepFixture'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { useSubscriptionSteps } from 'features/identityCheck/useSubscriptionSteps'
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -24,7 +24,7 @@ jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   })),
 }))
 
-jest.mock('features/identityCheck/useSetCurrentSubscriptionStep', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
     subscription: mockNextSubscriptionStep,
   })),
@@ -48,7 +48,7 @@ mockedUseSubscriptionContext.mockReturnValue({
   identification: { method: null },
 })
 
-jest.mock('features/identityCheck/useSubscriptionSteps')
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps')
 const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
 mockUseSubscriptionSteps.mockReturnValue([
   {

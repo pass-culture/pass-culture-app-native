@@ -16,7 +16,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 let mockIsSavingCheckpoint = false
-jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
   useSubscriptionNavigation: () => ({
     isSavingCheckpoint: mockIsSavingCheckpoint,
   }),
@@ -24,10 +24,8 @@ jest.mock('features/identityCheck/useSubscriptionNavigation', () => ({
 
 const mockSchoolTypes = SchoolTypesSnap.school_types
 const mockActivities = SchoolTypesSnap.activities
-jest.mock('features/identityCheck/api/api', () => {
-  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+jest.mock('features/identityCheck/api/useProfileOptions', () => {
   return {
-    ...ActualIdentityCheckAPI,
     useProfileOptions: jest.fn(() => {
       return {
         schoolTypes: mockSchoolTypes,

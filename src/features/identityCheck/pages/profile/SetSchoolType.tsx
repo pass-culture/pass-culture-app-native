@@ -3,15 +3,15 @@ import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
-import { useProfileOptions } from 'features/identityCheck/api/api'
-import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
+import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
+import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
-} from 'features/identityCheck/pages/profile/utils'
-import { useSubscriptionNavigation } from 'features/identityCheck/useSubscriptionNavigation'
+} from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

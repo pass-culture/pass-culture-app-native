@@ -6,7 +6,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { IdentityCheckHonor } from './IdentityCheckHonor'
 
-jest.mock('features/identityCheck/useSubscriptionNavigation')
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({

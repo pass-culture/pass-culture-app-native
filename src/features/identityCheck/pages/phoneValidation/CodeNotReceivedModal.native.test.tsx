@@ -3,7 +3,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/api'
+import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import {
   CodeNotReceivedModal,
   CodeNotReceivedModalProps,
@@ -21,10 +21,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-jest.mock('features/identityCheck/api/api', () => {
-  const ActualIdentityCheckAPI = jest.requireActual('features/identityCheck/api/api')
+jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
   return {
-    ...ActualIdentityCheckAPI,
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
       remainingAttempts: 5,
       counterResetDatetime: 'time',
