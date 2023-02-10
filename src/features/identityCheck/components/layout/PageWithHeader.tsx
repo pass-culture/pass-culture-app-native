@@ -3,7 +3,7 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
-import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
+import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/helpers/useShouldEnableScrollView'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer } from 'ui/theme'
 

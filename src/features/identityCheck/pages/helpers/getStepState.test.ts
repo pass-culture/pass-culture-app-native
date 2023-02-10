@@ -1,5 +1,5 @@
+import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { getStepState } from 'features/identityCheck/utils/getStepState'
 
 const steps = [
   { name: IdentityCheckStep.PROFILE },

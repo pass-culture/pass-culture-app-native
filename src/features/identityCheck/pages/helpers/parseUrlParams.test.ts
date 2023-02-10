@@ -1,4 +1,4 @@
-import { parseUrlParams } from 'features/identityCheck/utils/parseUrlParams'
+import { parseUrlParams } from 'features/identityCheck/pages/helpers/parseUrlParams'
 
 describe('parseUrlParams', () => {
   it('should parse url params', () => {
