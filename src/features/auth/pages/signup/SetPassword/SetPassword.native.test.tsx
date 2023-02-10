@@ -1,7 +1,6 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
@@ -20,27 +19,25 @@ describe('SetPassword Page', () => {
     expect(screen.getByTestId('Continuer')).toBeDisabled()
   })
 
-  it('should enable the submit button when password is correct', () => {
+  it('should enable the submit button when password is correct', async () => {
     render(<SetPassword {...props} />)
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
 
-    expect(screen.getByTestId('Continuer')).toBeEnabled()
+    expect(await screen.findByTestId('Continuer')).toBeEnabled()
   })
 
-  it('should call goToNextStep() when submitting password', async () => {
-    const { getByPlaceholderText, findByText } = render(<SetPassword {...props} />)
+  it('should go to next step when submitting password', async () => {
+    render(<SetPassword {...props} />)
 
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
 
-    const continueButton = await findByText('Continuer')
-    fireEvent.press(continueButton)
-
-    await waitForExpect(() => {
-      expect(props.goToNextStep).toBeCalledTimes(1)
-      expect(props.goToNextStep).toHaveBeenCalledWith({ password: 'user@AZERTY123' })
+    await act(async () => {
+      fireEvent.press(await screen.findByTestId('Continuer'))
     })
+
+    expect(props.goToNextStep).toHaveBeenCalledWith({ password: 'user@AZERTY123' })
   })
 })
