@@ -32,6 +32,7 @@ type Props = {
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
+  onModalHide?: () => void
   customModalHeader?: JSX.Element
   fixedModalBottom?: JSX.Element
   isFullscreen?: boolean
@@ -61,6 +62,7 @@ export const AppModal: FunctionComponent<Props> = ({
   titleNumberOfLines,
   shouldDisplayOverlay = true,
   onBackdropPress,
+  onModalHide,
   scrollEnabled = true,
   isFullscreen,
   noPadding,
@@ -165,7 +167,8 @@ export const AppModal: FunctionComponent<Props> = ({
       deviceWidth={windowWidth}
       accessibilityLabelledBy={titleId}
       accessibilityRole={AccessibilityRole.DIALOG}
-      accessibilityModal>
+      accessibilityModal
+      onModalHide={onModalHide}>
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"

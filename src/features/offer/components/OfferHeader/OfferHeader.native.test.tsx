@@ -14,7 +14,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,
@@ -133,6 +133,15 @@ describe('<OfferHeader />', () => {
         },
       })
     })
+  })
+
+  it('should show favorite list modal when pressing favorite icon', async () => {
+    const favoriteOfferId = 146193
+    renderOfferHeader({ id: favoriteOfferId })
+
+    await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
+
+    expect(screen.getByText('Crée une liste de favoris !')).toBeTruthy()
   })
 
   it('should remove favorite when pressing filled favorite icon - logged in users', async () => {

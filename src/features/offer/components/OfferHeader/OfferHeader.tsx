@@ -5,6 +5,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { FavoriteListOfferModal } from 'features/FavoriteList/FakeDoor/FavoriteListOfferModal'
+import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
 import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -45,6 +47,16 @@ export const OfferHeader: React.FC<Props> = (props) => {
     showModal: showShareOfferModal,
     hideModal: hideShareOfferModal,
   } = useModal(false)
+  const {
+    visible: FavoriteListOfferModalVisible,
+    showModal: showFavoriteListOfferModal,
+    hideModal: hideFavoriteListOfferModal,
+  } = useModal(false)
+  const {
+    visible: isFavoriteListSurveyModalVisible,
+    showModal: showFavoriteListSurveyModal,
+    hideModal: hideFavoriteListSurveyModal,
+  } = useModal()
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
   const { share: shareOffer, shareContent } = useShareOffer(offerId)
@@ -83,6 +95,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     } else if (!favorite) {
       animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId })
+      showFavoriteListOfferModal()
     } else if (favorite) {
       removeFavorite(favorite.id)
     }
@@ -150,6 +163,15 @@ export const OfferHeader: React.FC<Props> = (props) => {
         visible={signInModalVisible}
         offerId={offerId}
         dismissModal={hideSignInModal}
+      />
+      <FavoriteListOfferModal
+        visible={FavoriteListOfferModalVisible}
+        hideModal={hideFavoriteListOfferModal}
+        showSurveyModal={showFavoriteListSurveyModal}
+      />
+      <FavoriteListSurveyModal
+        visible={isFavoriteListSurveyModalVisible}
+        hideModal={hideFavoriteListSurveyModal}
       />
     </React.Fragment>
   )
