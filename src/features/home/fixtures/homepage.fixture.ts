@@ -129,6 +129,7 @@ export const formattedOffersModule: OffersModule = {
       movieGenres: ['ACTION', 'BOLLYWOOD'],
       musicTypes: ['Pop', 'Gospel'],
       showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
+      bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
     },
   ],
   cover: undefined,

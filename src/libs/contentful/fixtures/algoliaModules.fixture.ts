@@ -1,3 +1,4 @@
+import { bookTypesFixture } from 'libs/contentful/fixtures/bookTypes.fixture'
 import { categoriesFixture } from 'libs/contentful/fixtures/categoriesFixture'
 import { movieGenresFixture } from 'libs/contentful/fixtures/movieGenres.fixture'
 import { musicTypesFixture } from 'libs/contentful/fixtures/musicTypes.fixture'
@@ -44,6 +45,7 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
         musicTypes: musicTypesFixture,
         movieGenres: movieGenresFixture,
         showTypes: ShowTypesFixture,
+        bookTypes: bookTypesFixture,
       },
     },
     displayParameters: {
