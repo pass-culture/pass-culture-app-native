@@ -41,14 +41,34 @@ describe('<PasswordInputController />', () => {
     '1 Chiffre',
     '1 Caractère spécial (!@#$%^&*...)',
   ])('should show password validation rules when asked', (rules) => {
-    renderPasswordInputController({ withSecurityRules: true })
+    renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
 
     expect(screen.getByText(rules)).toBeTruthy()
   })
 
   it('should not show password validation rules by default', () => {
-    renderPasswordInputController({})
+    renderPasswordInputController({ withSecurityRules: true })
 
+    expect(screen.queryByText('12 Caractères')).toBeFalsy()
+  })
+
+  it.each([
+    '12 Caractères',
+    '1 Majuscule',
+    '1 Minuscule',
+    '1 Chiffre',
+    '1 Caractère spécial (!@#$%^&*...)',
+  ])('should show password validation rules only when at least one character is typed', (rules) => {
+    renderPasswordInputController({ withSecurityRules: true })
+    const input = screen.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(input, 'a')
+    expect(screen.getByText(rules)).toBeTruthy()
+  })
+
+  it('should not show password validation at all', () => {
+    renderPasswordInputController({})
+    const input = screen.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(input, 'user@AZERTY123')
     expect(screen.queryByText('12 Caractères')).toBeFalsy()
   })
 })
@@ -56,9 +76,11 @@ describe('<PasswordInputController />', () => {
 const renderPasswordInputController = ({
   withSecurityRules,
   error,
+  securityRulesAlwaysVisible,
 }: {
   withSecurityRules?: boolean
   error?: ErrorOption
+  securityRulesAlwaysVisible?: boolean
 }) => {
   const PasswordForm = () => {
     const { control, setError } = useForm<PasswordForm>({
@@ -71,6 +93,7 @@ const renderPasswordInputController = ({
         control={control}
         name="password"
         withSecurityRules={withSecurityRules}
+        securityRulesAlwaysVisible={securityRulesAlwaysVisible}
       />
     )
   }
