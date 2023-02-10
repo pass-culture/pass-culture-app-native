@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
+import { FavoriteListBanner } from 'features/FavoriteList/FakeDoor/FavoriteListBanner'
 import { useFavorites } from 'features/favorites/api'
 import { Sort } from 'features/favorites/components/Buttons/Sort'
 import { Favorite } from 'features/favorites/components/Favorite'
@@ -101,7 +102,12 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   )
 
   const ListHeaderComponent = useMemo(
-    () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
+    () => (
+      <React.Fragment>
+        <FavoriteListBanner />
+        <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />
+      </React.Fragment>
+    ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [sortedFavorites?.length]
   )

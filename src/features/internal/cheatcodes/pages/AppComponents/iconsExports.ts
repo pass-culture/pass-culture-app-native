@@ -14,6 +14,7 @@ import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { BicolorListFav } from 'ui/svg/icons/BicolorListFav'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -139,6 +140,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorFavorite,
   BicolorFrance,
   BicolorIdCard,
+  BicolorListFav,
   BicolorLocationBuilding,
   BicolorLocationPointer,
   BicolorLock,
