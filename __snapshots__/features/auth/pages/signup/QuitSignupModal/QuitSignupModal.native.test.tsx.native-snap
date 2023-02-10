@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
+exports[`QuitSignupModal should render correctly 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
-  testID="modal-quit-identity-check-stepper"
+  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -137,7 +137,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           ]
         }
       >
-        Veux-tu abandonner la vérification d’identité ?
+        Veux-tu abandonner l’inscription ?
       </Text>
       <View
         numberOfSpaces={5}
@@ -164,6 +164,16 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
       >
         Les informations que tu as renseignées ne seront pas enregistrées.
       </Text>
+      <View
+        numberOfSpaces={8}
+        style={
+          Array [
+            Object {
+              "height": 32,
+            },
+          ]
+        }
+      />
       <View
         numberOfSpaces={30}
         style={
@@ -201,7 +211,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Continuer la vérification"
+          accessibilityLabel="Continuer l’inscription"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -230,7 +240,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               "width": "100%",
             }
           }
-          testID="Continuer la vérification"
+          testID="Continuer l’inscription"
         >
           <Text
             adjustsFontSizeToFit={false}
@@ -248,7 +258,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               ]
             }
           >
-            Continuer la vérification
+            Continuer l’inscription
           </Text>
         </View>
         <View
@@ -262,7 +272,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           }
         />
         <View
-          accessibilityLabel="Abandonner la vérification"
+          accessibilityLabel="Abandonner l’inscription"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -291,7 +301,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               "width": "100%",
             }
           }
-          testID="Abandonner la vérification"
+          testID="Abandonner l’inscription"
         >
           <View
             style={
@@ -329,7 +339,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               ]
             }
           >
-            Abandonner la vérification
+            Abandonner l’inscription
           </Text>
         </View>
       </View>
