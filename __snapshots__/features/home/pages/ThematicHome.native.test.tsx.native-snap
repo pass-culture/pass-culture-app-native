@@ -46,7 +46,7 @@ exports[`ThematicHome should render correctly 1`] = `
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,
-              "subtitle": "Ceci n'est pas une playlist de lieux",
+              "subtitle": "Ceci n’est pas une playlist de lieux",
               "title": "Exemple de playlist de lieux",
             },
             "id": "105MMz59tftcxXJICXt7ja",

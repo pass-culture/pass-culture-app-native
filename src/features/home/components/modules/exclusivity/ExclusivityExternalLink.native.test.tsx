@@ -35,7 +35,7 @@ describe('ExclusivityExternalLink component', () => {
   it('should open url when clicking on the component', () => {
     const { getByTestId } = render(<ExclusivityExternalLink {...props} />)
 
-    fireEvent.press(getByTestId("Image d'Adèle"))
+    fireEvent.press(getByTestId('Image d’Adèle'))
 
     expect(openUrl).toHaveBeenCalledWith(props.url, undefined, false)
   })

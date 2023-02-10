@@ -255,7 +255,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     }
                   >
                     Le pass Culture
-c'est...
+c’est...
                   </Text>
                   <View
                     numberOfSpaces={4}
@@ -320,7 +320,7 @@ c'est...
                     }
                   >
                     <View
-                      accessibilityLabel="Continuer vers l'étape 2 sur 4"
+                      accessibilityLabel="Continuer vers l’étape 2 sur 4"
                       accessible={true}
                       collapsable={false}
                       focusable={true}
@@ -349,7 +349,7 @@ c'est...
                           "width": "100%",
                         }
                       }
-                      testID="Continuer vers l'étape 2 sur 4"
+                      testID="Continuer vers l’étape 2 sur 4"
                     >
                       <Text
                         adjustsFontSizeToFit={false}

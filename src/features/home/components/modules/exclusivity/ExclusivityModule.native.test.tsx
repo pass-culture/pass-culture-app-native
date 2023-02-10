@@ -41,14 +41,14 @@ jest.mock('libs/geolocation', () => ({ useGeolocation: () => ({ position: mockPo
 describe('ExclusivityModule component', () => {
   it('should render ExclusivityOffer component when an offer id is provided', () => {
     const { getByTestId } = render(<ExclusivityModule {...props} />)
-    expect(getByTestId("Image d'Adèle")).toBeTruthy()
+    expect(getByTestId('Image d’Adèle')).toBeTruthy()
   })
 
   it('should render ExclusivityExternalLink component when url is provided', () => {
     const { getByTestId } = render(
       <ExclusivityModule {...props} offerId={undefined} url={'http://toto.com'} />
     )
-    expect(getByTestId("Image d'Adèle")).toBeTruthy()
+    expect(getByTestId('Image d’Adèle')).toBeTruthy()
   })
 
   it('should render ExclusivityBanner component when no offer id nor url is provided', () => {

@@ -540,7 +540,7 @@ et si tu as...
       }
     >
       <View
-        accessibilityLabel="Continuer vers l'étape 2 sur 4"
+        accessibilityLabel="Continuer vers l’étape 2 sur 4"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -569,7 +569,7 @@ et si tu as...
             "width": "100%",
           }
         }
-        testID="Continuer vers l'étape 2 sur 4"
+        testID="Continuer vers l’étape 2 sur 4"
       >
         <Text
           adjustsFontSizeToFit={false}

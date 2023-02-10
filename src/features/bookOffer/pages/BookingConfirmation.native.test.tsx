@@ -140,7 +140,7 @@ describe('<BookingConfirmation />', () => {
       })
     })
 
-    it.each(['Voir ma réservation', "Retourner à l'accueil"])(
+    it.each(['Voir ma réservation', 'Retourner à l’accueil'])(
       'should track Batch event when button is clicked',
       async (buttonWording) => {
         const { getByText } = render(<BookingConfirmation />)

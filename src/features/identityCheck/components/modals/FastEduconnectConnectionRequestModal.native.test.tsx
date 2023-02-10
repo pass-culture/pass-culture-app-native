@@ -45,7 +45,7 @@ describe('<IdentityCheckEnd/>', () => {
       <FastEduconnectConnectionRequestModal visible hideModal={hideModalMock} />
     )
     const rightIcon = getByTestId(
-      "Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
+      'Fermer la modale de propositions d’identifications avec ÉduConnect ou Démarches Simplifiées'
     )
     fireEvent.press(rightIcon)
     expect(hideModalMock).toHaveBeenCalledTimes(1)

@@ -5,13 +5,13 @@ export const TEST_HTML = `<!doctype html>
     <title>pass Culture</title>
     <meta name="title" content="pass Culture"/>
     <meta name="description"
-          content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture."/>
+          content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture."/>
     <meta name="author" content="pass Culture"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://app.testing.passculture.team"/>
     <meta property="og:title" content="pass Culture"/>
     <meta property="og:description"
-          content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture."/>
+          content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture."/>
     <meta property="og:image" content="https://app.testing.passculture.team/images/app-icon-512px.png"/>
     <meta property="og:image:alt" content="pass Culture"/>
     <meta property="og:locale" content="fr_FR"/>
@@ -20,7 +20,7 @@ export const TEST_HTML = `<!doctype html>
     <meta name="twitter:url" content="https://app.testing.passculture.team"/>
     <meta name="twitter:title" content="pass Culture"/>
     <meta name="twitter:description"
-          content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture."/>
+          content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture."/>
     <meta name="twitter:image" content="https://app.testing.passculture.team/images/app-icon-512px.png"/>
     <meta name="twitter:image:alt" content="pass Culture"/>
     <meta name="twitter:site" content="@pass_Culture"/>

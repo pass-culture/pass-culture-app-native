@@ -192,7 +192,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            C'est pour bientôt !
+            C’est pour bientôt !
           </Text>
         </View>
         <View

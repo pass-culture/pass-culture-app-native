@@ -327,7 +327,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   ]
                 }
               >
-                Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.
+                Je déclare que l’ensemble des informations que j’ai renseignées sont correctes.
               </Text>
               <View
                 reversed={true}

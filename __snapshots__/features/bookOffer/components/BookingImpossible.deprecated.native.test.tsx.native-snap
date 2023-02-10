@@ -145,7 +145,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     }
   />
   <View
-    accessibilityLabel="Retourner à l'offre"
+    accessibilityLabel="Retourner à l’offre"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -174,7 +174,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "width": "100%",
       }
     }
-    testID="Retourner à l'offre"
+    testID="Retourner à l’offre"
   >
     <Text
       adjustsFontSizeToFit={false}
@@ -192,7 +192,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         ]
       }
     >
-      Retourner à l'offre
+      Retourner à l’offre
     </Text>
   </View>
   <View

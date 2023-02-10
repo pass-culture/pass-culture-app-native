@@ -248,7 +248,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       }
     >
       <Text
-        accessibilityLabel="Nom de l'offre : Je ne sais pas ce que je dis"
+        accessibilityLabel="Nom de l’offre : Je ne sais pas ce que je dis"
         accessible={true}
         adjustsFontSizeToFit={true}
         allowFontScaling={false}
@@ -264,7 +264,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             },
           ]
         }
-        testID="Nom de l'offre : Je ne sais pas ce que je dis"
+        testID="Nom de l’offre : Je ne sais pas ce que je dis"
       >
         Je ne sais pas ce que je dis
       </Text>
@@ -1563,7 +1563,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     }
                   />
                   <View
-                    accessibilityLabel="Signaler l'offre"
+                    accessibilityLabel="Signaler l’offre"
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -1592,7 +1592,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                         "width": "100%",
                       }
                     }
-                    testID="Signaler l'offre"
+                    testID="Signaler l’offre"
                   >
                     <Text
                       adjustsFontSizeToFit={false}
@@ -1610,7 +1610,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                         ]
                       }
                     >
-                      Signaler l'offre
+                      Signaler l’offre
                     </Text>
                   </View>
                 </View>

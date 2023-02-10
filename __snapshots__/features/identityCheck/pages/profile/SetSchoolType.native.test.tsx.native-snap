@@ -776,7 +776,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                     }
                   >
                     <View
-                      accessibilityLabel="Centre de formation d'apprentis"
+                      accessibilityLabel="Centre de formation d’apprentis"
                       accessibilityRole="radio"
                       accessibilityState={
                         Object {
@@ -807,7 +807,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "width": "100%",
                         }
                       }
-                      testID="Centre de formation d'apprentis"
+                      testID="Centre de formation d’apprentis"
                     >
                       <View
                         style={
@@ -834,7 +834,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                             ]
                           }
                         >
-                          Centre de formation d'apprentis
+                          Centre de formation d’apprentis
                         </Text>
                       </View>
                     </View>

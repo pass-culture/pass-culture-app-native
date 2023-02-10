@@ -450,7 +450,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Assure-toi d'indiquer ton numéro de téléphone personnel
+                  Assure-toi d’indiquer ton numéro de téléphone personnel
                 </Text>
                 <Text
                   style={
@@ -482,7 +482,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               }
             />
             <View
-              accessibilityLabel="J'ai compris"
+              accessibilityLabel="J’ai compris"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -511,7 +511,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   "width": "100%",
                 }
               }
-              testID="J'ai compris"
+              testID="J’ai compris"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -529,7 +529,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   ]
                 }
               >
-                J'ai compris
+                J’ai compris
               </Text>
             </View>
           </View>

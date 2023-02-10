@@ -1391,7 +1391,7 @@ exports[`<AppModal /> with left icon render 1`] = `
           }
         >
           <View
-            accessibilityLabel="Revenir à l'étape précédente"
+            accessibilityLabel="Revenir à l’étape précédente"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
@@ -1413,7 +1413,7 @@ exports[`<AppModal /> with left icon render 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Revenir à l'étape précédente"
+            testID="Revenir à l’étape précédente"
           >
             <View
               height={20}

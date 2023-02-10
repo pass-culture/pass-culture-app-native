@@ -41,7 +41,7 @@ exports[`GenericHome should render modules when useShowSkeleton is false 1`] = `
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,
-              "subtitle": "Ceci n'est pas une playlist de lieux",
+              "subtitle": "Ceci n’est pas une playlist de lieux",
               "title": "Exemple de playlist de lieux",
             },
             "id": "105MMz59tftcxXJICXt7ja",
@@ -4874,7 +4874,7 @@ exports[`GenericHome should render skeleton when useShowSkeleton is true 1`] = `
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,
-              "subtitle": "Ceci n'est pas une playlist de lieux",
+              "subtitle": "Ceci n’est pas une playlist de lieux",
               "title": "Exemple de playlist de lieux",
             },
             "id": "105MMz59tftcxXJICXt7ja",
