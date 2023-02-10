@@ -22,7 +22,6 @@ import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
-import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -97,7 +96,6 @@ export const IdentityCheckStepper = () => {
   return (
     <React.Fragment>
       <CenteredContainer>
-        <BackgroundWithWhiteStatusBar />
         <Container>
           <Spacer.TopScreen />
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
