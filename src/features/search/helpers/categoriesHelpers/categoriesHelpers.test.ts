@@ -1,5 +1,8 @@
-import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { initialSearchState } from 'features/search/context/reducer'
+import { CategoriesModalView } from 'features/search/enums'
 import {
+  getDefaultFormView,
   getNativeCategories,
   getNativeCategoryFromEnum,
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
@@ -7,7 +10,12 @@ import {
   isOnlyOnline,
   searchGroupOrNativeCategorySortComparator,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { SearchState } from 'features/search/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+
+let mockSearchState: SearchState = {
+  ...initialSearchState,
+}
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
@@ -226,6 +234,59 @@ describe('categoriesHelpers', () => {
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
       expect(value).toEqual(true)
+    })
+  })
+
+  describe('getDefaultFormView', () => {
+    it('should render categories view by default even no category selected', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [],
+      }
+
+      expect(getDefaultFormView(mockSearchState)).toEqual(CategoriesModalView.CATEGORIES)
+    })
+
+    it('should render categories view when a category selected', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      }
+
+      expect(getDefaultFormView(mockSearchState)).toEqual(CategoriesModalView.CATEGORIES)
+    })
+
+    it('should render native categories view when no native category selected because the view includes "Tout" choice', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [],
+      }
+
+      expect(getDefaultFormView(mockSearchState)).toEqual(CategoriesModalView.NATIVE_CATEGORIES)
+    })
+
+    it('should render native categories view when a category and a native category selected', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+      }
+
+      expect(getDefaultFormView(mockSearchState)).toEqual(CategoriesModalView.NATIVE_CATEGORIES)
+    })
+
+    it('should render genre type categories view when a category, a native category selected, a genre type categories selected', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+        offerGenreTypes: [
+          { key: GenreType.BOOK, name: 'Bandes dessinées', value: 'Bandes dessinées' },
+        ],
+      }
+
+      expect(getDefaultFormView(mockSearchState)).toEqual(CategoriesModalView.GENRES)
     })
   })
 })

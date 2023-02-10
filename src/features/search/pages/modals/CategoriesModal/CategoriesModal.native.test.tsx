@@ -177,7 +177,6 @@ describe('<CategoriesModal/>', () => {
 
     it('should render native categories', () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
 
       expect(screen.getByText('Livres papier')).toBeTruthy()
     })
@@ -187,15 +186,12 @@ describe('<CategoriesModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
       const previousButton = screen.getByTestId('Revenir en arrière')
-      fireEvent.press(screen.getByText('Livres'))
-
       fireEvent.press(previousButton)
       expect(screen.getByText('Catégories')).toBeTruthy()
     })
 
     it('should navigate with correct search parameters when search button is pressed', async () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
 
       const someCategoryFilterCheckbox = screen.getByText('Livres papier')
       fireEvent.press(someCategoryFilterCheckbox)
@@ -220,7 +216,6 @@ describe('<CategoriesModal/>', () => {
 
     it('should remove offerNativeCategories filter when none is set', async () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
 
       const someCategoryFilterCheckbox = screen.getByText('Tout')
       fireEvent.press(someCategoryFilterCheckbox)
@@ -244,7 +239,6 @@ describe('<CategoriesModal/>', () => {
 
     it('should reset filters and come back on categories view', async () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
 
       const button = screen.getByText('Réinitialiser')
       fireEvent.press(button)
@@ -267,9 +261,8 @@ describe('<CategoriesModal/>', () => {
 
     it('should render genre types', () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
-      fireEvent.press(screen.getByText('Livres papier'))
 
+      fireEvent.press(screen.getByText('Livres papier'))
       expect(screen.getByText('Bandes dessinées')).toBeTruthy()
     })
 
@@ -278,8 +271,6 @@ describe('<CategoriesModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
       const previousButton = screen.getByTestId('Revenir en arrière')
-      fireEvent.press(screen.getByText('Livres'))
-      fireEvent.press(screen.getByText('Livres papier'))
 
       fireEvent.press(previousButton)
       expect(screen.getByText('Livres')).toBeTruthy()
@@ -287,9 +278,8 @@ describe('<CategoriesModal/>', () => {
 
     it('should navigate with correct search parameters when search button is pressed', async () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
-      fireEvent.press(screen.getByText('Livres papier'))
 
+      fireEvent.press(screen.getByText('Livres papier'))
       const someCategoryFilterCheckbox = screen.getByText('Bandes dessinées')
       fireEvent.press(someCategoryFilterCheckbox)
 
@@ -315,9 +305,8 @@ describe('<CategoriesModal/>', () => {
 
     it('should remove offerGenreTypes filter when none is set', async () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
-      fireEvent.press(screen.getByText('Livres papier'))
 
+      fireEvent.press(screen.getByText('Livres papier'))
       const someCategoryFilterCheckbox = screen.getByText('Tout')
       fireEvent.press(someCategoryFilterCheckbox)
 
@@ -340,7 +329,7 @@ describe('<CategoriesModal/>', () => {
 
     it('should reset filters and come back on categories view', async () => {
       renderCategories()
-      fireEvent.press(screen.getByText('Livres'))
+
       fireEvent.press(screen.getByText('Livres papier'))
       fireEvent.press(screen.getByText('Bandes dessinées'))
 
@@ -362,6 +351,7 @@ describe('<CategoriesModal/>', () => {
         },
       })
       renderCategories()
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
 
       const button = screen.getByText('Rechercher')
@@ -397,7 +387,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
-
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
 
       const searchButton = screen.getByText('Appliquer le filtre')
@@ -422,7 +412,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
-
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
       fireEvent.press(someCategoryFilterCheckbox)
 
@@ -438,7 +428,7 @@ describe('<CategoriesModal/>', () => {
   describe('With "Rechercher" button', () => {
     it('should log PerformSearch event when pressing button', async () => {
       renderCategories()
-
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
       fireEvent.press(someCategoryFilterCheckbox)
 

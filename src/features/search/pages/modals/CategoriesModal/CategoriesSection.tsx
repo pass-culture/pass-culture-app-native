@@ -31,6 +31,7 @@ interface CategoriesSectionProps<
     ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface> | undefined
     : undefined
   onSelect: (item: N) => void
+  onSubmit?: () => void
   value: N
 }
 
@@ -44,6 +45,7 @@ export function CategoriesSection<
   descriptionContext,
   getIcon,
   onSelect,
+  onSubmit,
   value,
 }: CategoriesSectionProps<T, N>) {
   const { data: subcategoriesData } = useSubcategories()
@@ -54,6 +56,13 @@ export function CategoriesSection<
     }
 
     return undefined
+  }
+
+  const handleSelect = (key: N) => {
+    onSelect(key)
+    if (onSubmit) {
+      onSubmit()
+    }
   }
 
   return (
@@ -81,7 +90,7 @@ export function CategoriesSection<
               <RadioButton
                 label={item.label}
                 isSelected={key === value}
-                onSelect={() => onSelect(key)}
+                onSelect={() => handleSelect(key)}
                 icon={handleGetIcon(k as SearchGroupNameEnumv2)}
               />
             ) : (
@@ -90,7 +99,7 @@ export function CategoriesSection<
                 shouldColorIcon
                 title={item.label}
                 description={getDescription(subcategoriesData, descriptionContext, k)}
-                onPress={() => onSelect(key)}
+                onPress={() => handleSelect(key)}
                 captionId={k}
               />
             )}
