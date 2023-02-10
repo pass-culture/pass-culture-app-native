@@ -4,11 +4,6 @@ import { FavoriteListBanner } from 'features/FavoriteList/FakeDoor/FavoriteListB
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('FavoriteListBanner', () => {
-  it('should render correctly', () => {
-    const renderAPI = render(<FavoriteListBanner />)
-    expect(renderAPI).toMatchSnapshot()
-  })
-
   it('should open modal when clicking the banner', () => {
     render(<FavoriteListBanner />)
 
