@@ -3,7 +3,7 @@ import { CountryCode } from 'libphonenumber-js'
 import {
   formatPhoneNumberForDisplay,
   formatPhoneNumberWithPrefix,
-} from 'features/identityCheck/pages/phoneValidation/utils'
+} from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 
 describe('formatPhoneNumberWithPrefix', () => {
   it.each`
