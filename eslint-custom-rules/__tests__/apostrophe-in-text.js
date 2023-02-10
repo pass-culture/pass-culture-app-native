@@ -7,8 +7,8 @@ const ruleTester = new RuleTester()
 
 const tests = {
     valid: [
-        { code: "const str = 'I‘m working'" },
-        { code: "<Text>I‘m working</Text>" },
+        { code: "const str = 'I’m working'" },
+        { code: "<Text>I’m working</Text>" },
     ],
     invalid: [
         { code: `const str = "I'm failing"` },

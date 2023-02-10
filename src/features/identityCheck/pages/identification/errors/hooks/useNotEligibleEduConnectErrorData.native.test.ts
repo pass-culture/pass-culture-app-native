@@ -17,7 +17,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     Illustration: UserErrorWhite,
     title: 'As-tu déja un compte\u00a0?',
     description:
-      "Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n'as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d'informations.",
+      'Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n’as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d’informations.',
     descriptionAlignment: 'center',
     primaryButton: {
       text: 'Contacter le support',

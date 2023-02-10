@@ -58,7 +58,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
     const { queryByText } = render(<BookingDetailsTicketContent booking={booking} />)
-    expect(queryByText("Accéder à l'offre")).toBeNull()
+    expect(queryByText('Accéder à l’offre')).toBeNull()
   })
 
   it('should display the access button offer when offer is digital and booking has no activation code', () => {

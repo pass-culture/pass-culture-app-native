@@ -15,7 +15,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
   const currentStep = (props.activeIndex || 0) + 1
   const totalSteps = (props.lastIndex || 3) + 1
   const helmetTitle = `Étape ${currentStep} sur ${totalSteps} | Tutorial "Comment ça marche" | pass Culture`
-  const buttonAccessibilityLabel = `Continuer vers l'étape ${currentStep + 1} sur ${totalSteps}`
+  const buttonAccessibilityLabel = `Continuer vers l’étape ${currentStep + 1} sur ${totalSteps}`
 
   return (
     <React.Fragment>
@@ -27,7 +27,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
         buttonAccessibilityLabel={buttonAccessibilityLabel}
         pauseAnimationOnRenderAtFrame={62}
         title="Le pass Culture"
-        subTitle="c'est..."
+        subTitle="c’est..."
         text="une initiative de l’État financée par le ministère de la Culture."
         swiperRef={props.swiperRef}
         name={props.name}

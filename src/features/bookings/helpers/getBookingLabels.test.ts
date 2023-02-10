@@ -42,7 +42,7 @@ describe('getBookingLabels', () => {
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 20h00',
       locationLabel: 'Maison de la Brique, Drancy',
-      withdrawLabel: "Aujourd'hui",
+      withdrawLabel: 'Aujourd’hui',
     })
   })
 

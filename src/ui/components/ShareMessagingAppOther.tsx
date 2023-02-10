@@ -17,7 +17,7 @@ export const ShareMessagingAppOther: React.FC<ShareMessagingAppOtherProps> = ({ 
       <IconWithCaption
         Icon={Icon}
         caption={'Plus' + LINE_BREAK + 'd’options'}
-        accessibilityLabel="Plus d'options de partage"
+        accessibilityLabel="Plus d’options de partage"
       />
     </TouchableOpacity>
   )

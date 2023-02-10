@@ -41,7 +41,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
       hideModal={hideModal}
       visible={visible}
       Illustration={BicolorBookingHold}
-      title="C'est pour bientôt&nbsp;!">
+      title="C’est pour bientôt&nbsp;!">
       <StyledBody>
         Nous avons reçu ton dossier et son analyse est en cours. Tu pourras réserver cette offre dès
         que tu auras obtenu ton crédit.

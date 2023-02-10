@@ -61,10 +61,10 @@ function getWithoutWithdrawaDelayLabel(properties: GetEventOnSiteWithdrawLabelPr
   }
 
   if (isSameDay(properties.now, properties.eventDateMinus1Day))
-    return "Billet à retirer sur place d'ici demain"
+    return 'Billet à retirer sur place d’ici demain'
 
   if (isSameDay(properties.now, properties.eventDate))
-    return "Billet à retirer sur place aujourd'hui"
+    return 'Billet à retirer sur place aujourd’hui'
 
   return ''
 }
@@ -102,10 +102,10 @@ function getWithOneDayWithdrawaDelayLabel(
     return 'Billet à retirer sur place dès demain'
 
   if (isSameDay(properties.now, properties.eventDateMinus1Day))
-    return "Billet à retirer sur place dès aujourd'hui"
+    return 'Billet à retirer sur place dès aujourd’hui'
 
   if (isSameDay(properties.now, properties.eventDate)) {
-    return "Billet à retirer sur place aujourd'hui"
+    return 'Billet à retirer sur place aujourd’hui'
   }
 
   return ''
@@ -121,10 +121,10 @@ function getWithTwoDaysWithdrawaDelayLabel(
     isSameDay(properties.now, properties.eventDateMinus2Days) ||
     isSameDay(properties.now, properties.eventDateMinus1Day)
   )
-    return "Billet à retirer sur place dès aujourd'hui"
+    return 'Billet à retirer sur place dès aujourd’hui'
 
   if (isSameDay(properties.now, properties.eventDate)) {
-    return "Billet à retirer sur place aujourd'hui"
+    return 'Billet à retirer sur place aujourd’hui'
   }
 
   return ''

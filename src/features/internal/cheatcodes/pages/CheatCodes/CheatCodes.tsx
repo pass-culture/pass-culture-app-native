@@ -82,7 +82,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
           <NavigateHomeButton />
           <Spacer.Flex />
           <Button title="Utiliser un ancien token" onPress={setOldToken} />
-          <Button title="Invalider l'access token" onPress={setOldToken} />
+          <Button title="Invalider l’access token" onPress={setOldToken} />
           <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
           <Button title="/ME" onPress={fetchMe} />
           <Text>{userEmail}</Text>

@@ -13,7 +13,7 @@ describe('computePrimaryButtonToDisplay', () => {
     <InternalTouchableLink
       key={1}
       as={ButtonPrimaryWhite}
-      wording="Retourner à l'accueil"
+      wording="Retourner à l’accueil"
       navigateTo={navigateToHomeConfig}
     />
   )

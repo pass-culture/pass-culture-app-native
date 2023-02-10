@@ -56,7 +56,7 @@ export function LayoutExpiredLink({
       {!!urlFAQ && (
         <ExternalTouchableLink
           as={ButtonTertiaryWhite}
-          wording="Consulter l’article d'aide"
+          wording="Consulter l’article d’aide"
           externalNav={{ url: urlFAQ }}
           icon={ExternalSite}
         />

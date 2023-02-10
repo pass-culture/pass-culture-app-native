@@ -76,7 +76,7 @@ describe('<BookingImpossible />', () => {
   it("should dismiss modal when clicking on 'Retourner à l'offre'", () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />))
-    fireEvent.press(getByText("Retourner à l'offre"))
+    fireEvent.press(getByText('Retourner à l’offre'))
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 

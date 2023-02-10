@@ -45,7 +45,7 @@ describe('useOfferModal', () => {
     const { getByText } = render(
       <TestOfferModal modalToDisplay={OfferModal.APPLICATION_PROCESSING} offerId={1000} />
     )
-    expect(getByText("C'est pour bientôt\u00a0!")).toBeTruthy()
+    expect(getByText('C’est pour bientôt\u00a0!')).toBeTruthy()
   })
 
   it('should return authentication modal when asked', () => {

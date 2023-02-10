@@ -35,7 +35,7 @@ export const DeeplinksGenerator = () => {
           } catch (error) {
             if (error instanceof Error)
               showErrorSnackBar({
-                message: `Le lien ${generatedDeeplink.universalLink} n'a pas été ajouté à l'historique: ${error.message}`,
+                message: `Le lien ${generatedDeeplink.universalLink} n’a pas été ajouté à l’historique: ${error.message}`,
                 timeout: SNACK_BAR_TIME_OUT,
               })
           }

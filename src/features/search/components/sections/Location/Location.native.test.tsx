@@ -30,7 +30,7 @@ describe('Location component', () => {
     mockPosition = DEFAULT_POSITION
   })
 
-  it(`should have EVERYWHERE description's by default`, async () => {
+  it("should have EVERYWHERE description's by default", async () => {
     const { getByText, queryByText } = render(<Location />)
 
     await waitFor(() => {
@@ -40,7 +40,7 @@ describe('Location component', () => {
     })
   })
 
-  it(`should not have description when EVERYWHERE selected and position is null`, async () => {
+  it('should not have description when EVERYWHERE selected and position is null', async () => {
     mockPosition = null
     const { queryByText } = render(<Location />)
 
@@ -51,7 +51,7 @@ describe('Location component', () => {
     })
   })
 
-  it(`should have AROUND_ME description's when selected`, async () => {
+  it("should have AROUND_ME description's when selected", async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
@@ -66,7 +66,7 @@ describe('Location component', () => {
     })
   })
 
-  it(`should have VENUE description's when selected`, async () => {
+  it("should have VENUE description's when selected", async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         locationFilter: { locationType: LocationType.VENUE },
@@ -81,7 +81,7 @@ describe('Location component', () => {
     })
   })
 
-  it(`should have PLACE description's when selected`, async () => {
+  it("should have PLACE description's when selected", async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         locationFilter: { locationType: LocationType.PLACE },

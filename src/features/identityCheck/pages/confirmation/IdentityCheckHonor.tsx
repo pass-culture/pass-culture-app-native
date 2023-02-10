@@ -73,7 +73,7 @@ export const IdentityCheckHonor = () => {
           <CenteredTitle title="Les informations que tu as renseignées sont-elles correctes&nbsp;?" />
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={10} />}
           <Declaration
-            text="Je déclare que l'ensemble des informations que j’ai renseignées sont correctes."
+            text="Je déclare que l’ensemble des informations que j’ai renseignées sont correctes."
             description="Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées."
           />
           {theme.isMobileViewport ? (

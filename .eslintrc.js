@@ -339,7 +339,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
-        'local-rules/apostrophe-in-text': 'off',
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'warn',
         'jest/no-disabled-tests': 'warn',

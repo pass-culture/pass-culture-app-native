@@ -25,5 +25,5 @@ WithQRCode.args = {
 
 export const WithButton = Template.bind({})
 WithButton.args = {
-  children: <ButtonPrimary wording="Accéder à l'offre" />,
+  children: <ButtonPrimary wording="Accéder à l’offre" />,
 }

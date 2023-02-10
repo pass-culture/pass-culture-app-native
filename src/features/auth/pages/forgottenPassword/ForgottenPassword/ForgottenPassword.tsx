@@ -71,7 +71,7 @@ export const ForgottenPassword = () => {
         leftIconAccessibilityLabel="Revenir en arrière"
         leftIcon={ArrowPrevious}
         onLeftIconPress={onBackNavigation}
-        rightIconAccessibilityLabel="Revenir à l'accueil"
+        rightIconAccessibilityLabel="Revenir à l’accueil"
         rightIcon={Close}
         onRightIconPress={navigateToHome}
       />

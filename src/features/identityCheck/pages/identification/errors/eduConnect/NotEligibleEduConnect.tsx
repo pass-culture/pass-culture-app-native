@@ -57,7 +57,7 @@ export const NotEligibleEduConnect = ({
       key={2}
       as={ButtonTertiaryWhite}
       icon={PlainArrowPrevious}
-      wording="Retourner à l'accueil"
+      wording="Retourner à l’accueil"
       navigateTo={navigateToHomeConfig}
       onAfterNavigate={onAbandon}
     />

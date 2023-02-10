@@ -348,7 +348,7 @@ export const AppComponents: FunctionComponent = () => {
             leftIconAccessibilityLabel="Revenir en arrière"
             leftIcon={ArrowPrevious}
             onLeftIconPress={() => null}
-            rightIconAccessibilityLabel="Revenir à l'accueil"
+            rightIconAccessibilityLabel="Revenir à l’accueil"
             rightIcon={Close}
             onRightIconPress={() => null}
           />
@@ -654,7 +654,7 @@ export const AppComponents: FunctionComponent = () => {
                   callToActionLink,
                 },
                 popOverIcon: popOverIconString as PopOverIcon,
-                userMessage: `Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`,
+                userMessage: `Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu’on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`,
                 updatedAt: `2021-10-25T13:24Z`,
               }}
             />

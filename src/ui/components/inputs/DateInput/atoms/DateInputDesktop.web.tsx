@@ -99,7 +99,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           options={optionGroups.years.map(String)}
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
-          accessibilityLabel="Entrée pour l'année de la date de naissance"
+          accessibilityLabel="Entrée pour l’année de la date de naissance"
           isError={!!props.errorMessage}
         />
       </DropDownContainer>

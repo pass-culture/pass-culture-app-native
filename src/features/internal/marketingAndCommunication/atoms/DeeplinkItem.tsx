@@ -26,7 +26,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       } catch (error) {
         if (error instanceof Error)
           showErrorSnackBar({
-            message: `${url} n'a pas été copié dans ton press-papier\u00a0: ${error.message}`,
+            message: `${url} n’a pas été copié dans ton press-papier\u00a0: ${error.message}`,
             timeout: SNACK_BAR_TIME_OUT,
           })
       }

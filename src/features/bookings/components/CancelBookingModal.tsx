@@ -65,7 +65,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     } else {
       dismissModal()
       showErrorSnackBar({
-        message: "Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.",
+        message: 'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
@@ -75,7 +75,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     <AppModal
       animationOutTiming={1}
       visible={visible}
-      title="Tu es sur le point d'annuler"
+      title="Tu es sur le point d’annuler"
       rightIconAccessibilityLabel="Ne pas annuler"
       rightIcon={Close}
       onRightIconPress={dismissModal}>

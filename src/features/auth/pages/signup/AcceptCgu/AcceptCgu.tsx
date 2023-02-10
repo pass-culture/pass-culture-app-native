@@ -131,7 +131,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = ({ signUp }) => {
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           wording="Accepter et s’inscrire"
-          accessibilityLabel="Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+          accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
           // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
           // Cf. backend logic for token validation
           onPress={onSubmit}

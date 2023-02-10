@@ -18,13 +18,13 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   const NotYetUnderageEligibilityText = `Reviens à partir du ${formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture.`
   return (
     <GenericInfoPage
-      title="C'est pour bientôt&nbsp;!"
+      title="C’est pour bientôt&nbsp;!"
       icon={CalendarIllustration}
       buttons={[
         <InternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording="Retourner à l'accueil"
+          wording="Retourner à l’accueil"
           navigateTo={navigateToHomeConfig}
         />,
       ]}>

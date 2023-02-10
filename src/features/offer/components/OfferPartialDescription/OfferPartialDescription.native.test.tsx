@@ -71,15 +71,15 @@ describe('OfferPartialDescription', () => {
     describe('should be rendered', () => {
       it('when the description is ellipsed', () => {
         const lines = [
-          { text: "Ce n'est pas le besoin d'argent où les " },
+          { text: 'Ce n’est pas le besoin d’argent où les ' },
           { text: 'vieillards peuvent appréhender de tomber ' },
           { text: 'un jour qui les rend avares, car il y en a de ' },
-          { text: "tels qui ont de si grands fonds, qu'ils ne " },
+          { text: 'tels qui ont de si grands fonds, qu’ils ne ' },
           { text: 'peuvent guère avoir cette inquiétude : et ' },
-          { text: "d'ailleurs comment pourraient-ils craindre " },
+          { text: 'd’ailleurs comment pourraient-ils craindre ' },
           { text: 'de manquer dans leur caducité des ' },
           {
-            text: "commodités de la vie, puisqu'ils s'en privent eux-mêmes volontairement pour satisfaire à leur avarice ?",
+            text: 'commodités de la vie, puisqu’ils s’en privent eux-mêmes volontairement pour satisfaire à leur avarice ?',
           },
         ]
         const description = lines.map(({ text }) => text).join(' ')

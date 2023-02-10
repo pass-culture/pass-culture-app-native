@@ -73,7 +73,7 @@ export const BookingImpossible: React.FC = () => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary wording="Mettre en favoris" onPress={addToFavourite} />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryPrimary wording="Retourner à l'offre" onPress={dismissModal} />
+          <ButtonTertiaryPrimary wording="Retourner à l’offre" onPress={dismissModal} />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />

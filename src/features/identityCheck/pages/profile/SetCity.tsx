@@ -150,7 +150,7 @@ export const SetCity = () => {
           type="submit"
           onPress={submitCity}
           wording="Continuer"
-          accessibilityLabel="Continuer vers l'étape suivante"
+          accessibilityLabel="Continuer vers l’étape suivante"
           disabled={disabled}
         />
       }

@@ -36,7 +36,7 @@ const reasonsMock = {
     title: 'Autre',
   },
   PRICE_TOO_HIGH: {
-    description: "comparé à l'offre public",
+    description: 'comparé à l’offre public',
     title: 'Le tarif est trop élevé',
   },
 }
@@ -102,7 +102,7 @@ describe('<ReportOfferReason />', () => {
       // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
       const response = {
-        content: { code: 'ERROR', message: "Une erreur s'est produite" },
+        content: { code: 'ERROR', message: 'Une erreur s’est produite' },
         name: 'ApiError',
       }
 

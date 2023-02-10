@@ -31,12 +31,12 @@ export const accessibilityRoutes: GenericRoute<AccessibilityRootStackParamList>[
     name: 'AccessibilityDeclaration',
     component: AccessibilityDeclaration,
     path: 'accessibilite/declaration',
-    options: { title: "Déclaration d'accessibilité" },
+    options: { title: 'Déclaration d’accessibilité' },
   },
   {
     name: 'AccessibilityActionPlan',
     component: AccessibilityActionPlan,
     path: 'accessibilite/plan-d-actions',
-    options: { title: "Plan d'actions" },
+    options: { title: 'Plan d’actions' },
   },
 ]

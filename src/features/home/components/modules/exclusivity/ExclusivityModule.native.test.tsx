@@ -21,8 +21,8 @@ excluOfferAPISpy.mockImplementation(() => {
 })
 
 const props: ExclusivityModuleProps = {
-  title: "Image d'Adèle",
-  alt: "Image d'Adèle",
+  title: 'Image d’Adèle',
+  alt: 'Image d’Adèle',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   offerId: mockOffer.id,
   moduleId: 'module-id',

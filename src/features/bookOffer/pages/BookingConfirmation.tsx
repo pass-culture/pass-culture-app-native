@@ -92,7 +92,7 @@ export function BookingConfirmation() {
           <InternalTouchableLink
             key={2}
             as={ButtonTertiaryPrimary}
-            wording="Retourner à l'accueil"
+            wording="Retourner à l’accueil"
             navigateTo={navigateToHomeConfig}
             onBeforeNavigate={trackBooking}
             icon={PlainArrowPrevious}

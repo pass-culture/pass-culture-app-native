@@ -64,14 +64,14 @@ export const SchoolTypesSnap: ProfileOptionsResponse = {
     },
     {
       associatedSchoolTypesIds: [],
-      description: "En recherche d'emploi",
+      description: 'En recherche d’emploi',
       id: ActivityIdEnum.UNEMPLOYED,
       label: 'Chômeur',
     },
   ],
   school_types: [
     { id: SchoolTypesIdEnum.AGRICULTURAL_HIGH_SCHOOL, label: 'Lycée agricole', description: null },
-    { id: SchoolTypesIdEnum.APPRENTICE_FORMATION_CENTER, label: "Centre de formation d'apprentis" },
+    { id: SchoolTypesIdEnum.APPRENTICE_FORMATION_CENTER, label: 'Centre de formation d’apprentis' },
     { id: SchoolTypesIdEnum.PRIVATE_SECONDARY_SCHOOL, label: 'Collège privé' },
     { id: SchoolTypesIdEnum.PUBLIC_SECONDARY_SCHOOL, label: 'Collège public' },
     {

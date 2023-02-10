@@ -144,7 +144,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.ACTIVATION_EVENT,
       categoryId: CategoryIdEnum.TECHNIQUE,
-      appLabel: "Catégorie technique d'évènement d'activation",
+      appLabel: 'Catégorie technique d’évènement d’activation',
       searchGroupName: SearchGroupNameEnumv2.NONE,
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: true,
@@ -154,7 +154,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.ACTIVATION_THING,
       categoryId: CategoryIdEnum.TECHNIQUE,
-      appLabel: "Catégorie technique de thing d'activation",
+      appLabel: 'Catégorie technique de thing d’activation',
       searchGroupName: SearchGroupNameEnumv2.NONE,
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: false,
@@ -194,7 +194,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.BON_ACHAT_INSTRUMENT,
       categoryId: CategoryIdEnum.INSTRUMENT,
-      appLabel: "Bon d'achat instrument",
+      appLabel: 'Bon d’achat instrument',
       searchGroupName: SearchGroupNameEnumv2.INSTRUMENTS,
       homepageLabelName: HomepageLabelNameEnumv2.INSTRUMENT,
       isEvent: false,
@@ -344,7 +344,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.EVENEMENT_MUSIQUE,
       categoryId: CategoryIdEnum.MUSIQUE_LIVE,
-      appLabel: "Autre type d'évènement musical",
+      appLabel: 'Autre type d’évènement musical',
       searchGroupName: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
       homepageLabelName: HomepageLabelNameEnumv2.CONCERT,
       isEvent: true,
@@ -364,7 +364,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.FESTIVAL_ART_VISUEL,
       categoryId: CategoryIdEnum.MUSEE,
-      appLabel: "Festival d'arts visuels / arts numériques",
+      appLabel: 'Festival d’arts visuels / arts numériques',
       searchGroupName: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
       homepageLabelName: HomepageLabelNameEnumv2.FESTIVAL,
       isEvent: true,
@@ -434,7 +434,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.LIVESTREAM_EVENEMENT,
       categoryId: CategoryIdEnum.SPECTACLE,
-      appLabel: "Live stream d'évènement",
+      appLabel: 'Live stream d’évènement',
       searchGroupName: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
       homepageLabelName: HomepageLabelNameEnumv2.SPECTACLES,
       isEvent: true,
@@ -524,7 +524,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.OEUVRE_ART,
       categoryId: CategoryIdEnum.TECHNIQUE,
-      appLabel: "Catégorie technique d'oeuvre d'art",
+      appLabel: 'Catégorie technique d’oeuvre d’art',
       searchGroupName: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       homepageLabelName: HomepageLabelNameEnumv2.NONE,
       isEvent: false,
@@ -624,7 +624,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.SEANCE_ESSAI_PRATIQUE_ART,
       categoryId: CategoryIdEnum.PRATIQUE_ART,
-      appLabel: "Séance d'essai",
+      appLabel: 'Séance d’essai',
       searchGroupName: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
       isEvent: true,
@@ -1205,7 +1205,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT,
-      value: "Achat & location d'instrument",
+      value: 'Achat & location d’instrument',
       genreType: null,
     },
     {

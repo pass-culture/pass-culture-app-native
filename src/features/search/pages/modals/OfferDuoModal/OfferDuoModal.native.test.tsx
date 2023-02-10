@@ -291,8 +291,8 @@ function renderOfferDuoModal(
 ) {
   return render(
     <OfferDuoModal
-      title="Type d'offre"
-      accessibilityLabel="Ne pas filtrer sur les type d'offre et retourner aux résultats"
+      title="Type d’offre"
+      accessibilityLabel="Ne pas filtrer sur les type d’offre et retourner aux résultats"
       isVisible
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}

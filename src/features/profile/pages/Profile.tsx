@@ -180,7 +180,7 @@ const OnlineProfile: React.FC = () => {
             </Li>
             <Li>
               <Row
-                title="Centre d'aide"
+                title="Centre d’aide"
                 type="clickable"
                 externalNav={{ url: env.FAQ_LINK }}
                 icon={ExternalSite}

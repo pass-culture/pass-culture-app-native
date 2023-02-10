@@ -106,7 +106,7 @@ describe('BookingDetails', () => {
     it('should not display offer link button if no url', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       const { queryByText } = renderBookingDetails(booking)
-      expect(queryByText("Accéder à l'offre")).toBeNull()
+      expect(queryByText('Accéder à l’offre')).toBeNull()
     })
 
     it('should display booking qr code if offer is physical', async () => {

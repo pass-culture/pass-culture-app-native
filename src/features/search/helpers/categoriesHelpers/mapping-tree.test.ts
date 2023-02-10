@@ -422,7 +422,7 @@ describe('MappingTree', () => {
         label: 'Instruments de musique',
         children: {
           [NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT]: {
-            label: "Achat & location d'instrument",
+            label: 'Achat & location d’instrument',
           },
           [NativeCategoryIdEnumv2.PARTITIONS_DE_MUSIQUE]: {
             label: 'Partitions de musique',
