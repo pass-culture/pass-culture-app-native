@@ -267,7 +267,7 @@ exports[`FavoriteListSurveyModal should render correctly 1`] = `
           }
         >
           <View
-            fill="#ffffff"
+            accessibilityLabel="Nouvelle fenêtre"
             height={24}
             testID="button-icon"
             width={24}

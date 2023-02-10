@@ -5,7 +5,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
-import { ScreenPlay } from 'ui/svg/icons/ScreenPlay'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -28,7 +28,7 @@ export const FavoriteListSurveyModal = ({ visible, hideModal }: Props) => {
       </CenteredText>
       <ExternalTouchableLink
         as={ButtonPrimary}
-        icon={ScreenPlay}
+        icon={ExternalSite}
         wording="Répondre au questionnaire"
         externalNav={{
           url: 'https://passculture.qualtrics.com/jfe/form/SV_0qAg2IoZijISBsG',
