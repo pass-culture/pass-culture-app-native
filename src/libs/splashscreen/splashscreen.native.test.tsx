@@ -7,7 +7,7 @@ const MIN_SPLASHSCREEN_DURATION_IN_MS = 2000
 
 const TODAY = new Date('2022-10-14')
 
-jest.useFakeTimers()
+jest.useFakeTimers('legacy')
 
 describe('useSplashScreenContext()', () => {
   beforeEach(() => {

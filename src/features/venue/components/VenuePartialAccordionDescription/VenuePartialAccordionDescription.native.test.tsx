@@ -19,7 +19,7 @@ jest.mock('ui/hooks/useElementHeight', () => ({
 }))
 
 describe('VenuePartialAccordionDescription', () => {
-  beforeEach(() => jest.useFakeTimers())
+  beforeEach(() => jest.useFakeTimers('legacy'))
 
   it("is closed by default and we don't see all the long description", () => {
     const { getByTestId } = render(<VenuePartialAccordionDescription description={description} />)

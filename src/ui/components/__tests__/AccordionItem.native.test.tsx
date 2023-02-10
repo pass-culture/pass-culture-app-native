@@ -10,7 +10,7 @@ const Children = () => <View testID="accordion-child-view" />
 const accordionTitle = 'accordion title'
 
 describe('AccordionItem', () => {
-  beforeAll(() => jest.useFakeTimers())
+  beforeAll(() => jest.useFakeTimers('legacy'))
 
   it("is closed by default - we don't see the children", () => {
     const accordion = renderAccordion()

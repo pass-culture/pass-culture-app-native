@@ -96,7 +96,7 @@ describe('<LocationModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = renderLocationModal()
     await superFlushWithAct()
     jest.advanceTimersByTime(2000)

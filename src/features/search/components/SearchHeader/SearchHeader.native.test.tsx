@@ -41,7 +41,7 @@ describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchHeader', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = render(<SearchHeader searchInputID={searchInputID} />)
 
     await waitFor(() => {

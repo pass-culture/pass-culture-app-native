@@ -11,7 +11,7 @@ import { act, fireEvent, render } from 'tests/utils'
 jest.mock('features/venue/api/useVenue')
 
 describe('<VenueHeader />', () => {
-  beforeAll(() => jest.useFakeTimers())
+  beforeAll(() => jest.useFakeTimers('legacy'))
   afterAll(() => jest.useRealTimers())
 
   it('should render all icons', () => {

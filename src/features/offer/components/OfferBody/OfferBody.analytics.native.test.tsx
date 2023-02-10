@@ -27,7 +27,7 @@ server.use(
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   const trigger = (component: ReactTestInstance) => {

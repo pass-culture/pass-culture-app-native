@@ -19,9 +19,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<EighteenBirthdayCard />', () => {
-  it('should render eighteen birthday card', () => {
-    jest.useFakeTimers()
-    const firstTutorial = renderEighteenBirthdayCard()
+  it('should render eighteen birthday card', async () => {
+    jest.useFakeTimers('legacy')
+    const firstTutorial = await renderEighteenBirthdayCard()
 
     act(() => {
       jest.advanceTimersByTime(2000)

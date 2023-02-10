@@ -13,7 +13,7 @@ const props: ComponentProps<typeof EmailInputWithSpellingHelp> = {
   onSpellingHelpPress: mockOnSpellingHelpPress,
 }
 
-jest.useFakeTimers()
+jest.useFakeTimers('legacy')
 
 describe('<EmailInputWithSpellingHelp />', () => {
   it('should not display suggestion for empty email', () => {

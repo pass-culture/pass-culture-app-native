@@ -43,7 +43,7 @@ const mockOnClose = jest.fn()
 
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = renderOfferDuoModal()
     await superFlushWithAct()
     jest.advanceTimersByTime(2000)

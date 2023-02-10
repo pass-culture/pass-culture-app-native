@@ -51,7 +51,7 @@ describe('<PriceModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = renderSearchPrice()
     await superFlushWithAct()
     jest.advanceTimersByTime(2000)

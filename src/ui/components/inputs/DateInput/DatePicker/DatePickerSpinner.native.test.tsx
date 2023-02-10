@@ -22,7 +22,7 @@ const props = {
 describe('<DatePickerSpinner />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   describe('- navigation -', () => {

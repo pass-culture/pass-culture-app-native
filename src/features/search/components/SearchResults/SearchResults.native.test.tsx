@@ -101,7 +101,7 @@ describe('SearchResults component', () => {
   })
 
   it('should render correctly', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     jest.advanceTimersByTime(2000)
 
     await waitFor(() => {

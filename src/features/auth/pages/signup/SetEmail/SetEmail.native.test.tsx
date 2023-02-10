@@ -16,7 +16,7 @@ const props = {
   signUp: jest.fn(),
 }
 
-jest.useFakeTimers()
+jest.useFakeTimers('legacy')
 
 describe('<SetEmail />', () => {
   it('should display disabled validate button when email input is not filled', () => {
