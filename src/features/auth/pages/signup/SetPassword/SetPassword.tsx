@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form'
 
 import { setPasswordSchema } from 'features/auth/pages/signup/SetPassword/schema/setPasswordSchema'
 import { PreValidationSignupStepProps } from 'features/auth/types'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
 
 type FormValues = {
@@ -35,16 +35,15 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
 
   return (
     <Form.MaxWidth>
-      <PasswordInput
-        autoFocus
-        nativeAutoFocus
-        accessibilityDescribedBy={passwordDescribedBy}
-        value={password}
-        onChangeText={setPassword}
-        onSubmitEditing={submitPassword}
-        ref={passwordInput}
+      <PasswordInputController
+        control={control}
+        name={'password'}
+        label="Mot de passe"
+        placeholder="Ton mot de passe"
+        isRequiredField
+        withSecurityRules
+        securityRulesAlwaysVisible
       />
-      <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Continuer"
