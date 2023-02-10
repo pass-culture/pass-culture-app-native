@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { contactSupport } from 'features/auth/helpers/__mocks__/contactSupport'
-import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/computePrimaryButtonToDisplay'
+import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/helpers/computePrimaryButtonToDisplay'
 import { navigateToHomeConfig } from 'features/navigation/helpers/__mocks__'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

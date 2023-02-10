@@ -3,15 +3,15 @@ import waitForExpect from 'wait-for-expect'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
+import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
-import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('features/profile/helpers/useIsUserUnderage')
-jest.mock('features/identityCheck/pages/profile/utils')
+jest.mock('features/identityCheck/pages/profile/helpers/schoolTypes')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn(), ...mockState })),
 }))

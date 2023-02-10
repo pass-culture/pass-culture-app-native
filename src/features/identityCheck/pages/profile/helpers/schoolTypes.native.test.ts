@@ -4,7 +4,7 @@ import {
   activityHasSchoolTypes,
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
-} from 'features/identityCheck/pages/profile/utils'
+} from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 
 const schoolTypes = SchoolTypesSnap.school_types
 const activities = SchoolTypesSnap.activities

@@ -13,7 +13,7 @@ import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
-import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/utils'
+import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import {
   SubscriptionRootStackParamList,
   UseNavigationType,

@@ -11,7 +11,7 @@ import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/
 import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
-} from 'features/identityCheck/pages/profile/utils'
+} from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
