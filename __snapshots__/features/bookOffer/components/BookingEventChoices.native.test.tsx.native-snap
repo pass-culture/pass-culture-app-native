@@ -132,7 +132,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
     testID="HourStep"
   >
-    Heure
+    Horaire
   </Text>
   <View
     numberOfSpaces={2}

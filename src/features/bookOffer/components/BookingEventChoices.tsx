@@ -37,6 +37,9 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       if (step === Step.HOUR && offerIsDuo) {
         dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
       }
+      if (step === Step.HOUR && !offerIsDuo) {
+        dispatch({ type: 'VALIDATE_OPTIONS' })
+      }
       return
     }
     dispatch({ type: 'VALIDATE_OPTIONS' })
@@ -51,6 +54,9 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       switch (step) {
         case Step.DATE: {
           return date !== undefined
+        }
+        case Step.HOUR: {
+          return stockId !== undefined
         }
       }
     }
@@ -82,22 +88,26 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
     return 'Choisir les options'
   }
 
+  const shouldDisplayDateSelection =
+    (step === Step.DATE && enablePricesByCategories) || !enablePricesByCategories
   return (
     <Container>
-      <Separator />
-      <BookDateChoice
-        stocks={stocks}
-        userRemainingCredit={creditForOffer}
-        enablePricesByCategories={enablePricesByCategories}
-      />
+      {!enablePricesByCategories && <Separator />}
+      {!!shouldDisplayDateSelection && (
+        <BookDateChoice
+          stocks={stocks}
+          userRemainingCredit={creditForOffer}
+          enablePricesByCategories={enablePricesByCategories}
+        />
+      )}
 
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={enablePricesByCategories ? 1 : 6} />
+
       {!!(step && step >= Step.HOUR) && (
         <React.Fragment>
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-
-          <BookHourChoice />
+          {!enablePricesByCategories && <Separator />}
+          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
+          <BookHourChoice enablePricesByCategories={enablePricesByCategories} />
 
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>

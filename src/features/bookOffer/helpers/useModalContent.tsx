@@ -96,7 +96,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       return {
         title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
         ...modalLeftIconProps,
-        children: <BookingEventChoices stocks={stocks} />,
+        children: <BookingEventChoices stocks={stocks} offerIsDuo={offer?.isDuo} />,
       }
     }
 

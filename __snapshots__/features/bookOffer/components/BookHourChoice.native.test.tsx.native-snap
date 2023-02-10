@@ -15,7 +15,7 @@ Array [
     }
     testID="HourStep"
   >
-    Heure
+    Horaire
   </Text>,
   <View
     numberOfSpaces={2}
@@ -292,7 +292,7 @@ Array [
     }
     testID="HourStep"
   >
-    Heure
+    Horaire
   </Text>,
   <View
     numberOfSpaces={2}
