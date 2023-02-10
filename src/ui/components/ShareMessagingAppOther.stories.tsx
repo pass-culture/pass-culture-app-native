@@ -8,6 +8,13 @@ export default {
   component: ShareMessagingAppOther,
 } as ComponentMeta<typeof ShareMessagingAppOther>
 
-const Template: ComponentStory<typeof ShareMessagingAppOther> = () => <ShareMessagingAppOther />
+const Template: ComponentStory<typeof ShareMessagingAppOther> = (args) => (
+  <ShareMessagingAppOther {...args} />
+)
 
 export const Default = Template.bind({})
+Default.args = {
+  onPress: async () => {
+    return
+  },
+}
