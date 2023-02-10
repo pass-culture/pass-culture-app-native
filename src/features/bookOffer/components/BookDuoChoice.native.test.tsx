@@ -2,8 +2,7 @@ import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookDuoChoice } from './BookDuoChoice'
 
@@ -11,6 +10,8 @@ const mockStep = Step.DUO
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
+
+jest.mock('react-query')
 
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: jest.fn(() => ({
@@ -43,34 +44,31 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
 
 describe('BookDuoChoice', () => {
   it('should display two blocs if offer is duo', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookDuoChoice />))
+    render(<BookDuoChoice />)
 
-    const soloChoice = page.queryByTestId('DuoChoice1-price')
+    const soloChoice = screen.queryByTestId('DuoChoice1-price')
 
-    const duoChoice = page.queryByTestId('DuoChoice2-price')
+    const duoChoice = screen.queryByTestId('DuoChoice2-price')
 
     expect(soloChoice).toBeTruthy()
     expect(duoChoice).toBeTruthy()
 
-    expect(page).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should select an item when pressed', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookDuoChoice />))
+  it('should select an item when pressed', () => {
+    render(<BookDuoChoice />)
 
-    const soloChoice = page.getByTestId('DuoChoice1-price')
+    const soloChoice = screen.getByTestId('DuoChoice1-price')
 
-    act(() => fireEvent.press(soloChoice))
+    fireEvent.press(soloChoice)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
   })
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const page = render(reactQueryProviderHOC(<BookDuoChoice />))
+    render(<BookDuoChoice />)
 
-    expect(page.getByTestId('DuoChoice1-price').props.children).toBe('crédit insuffisant')
+    expect(screen.getByTestId('DuoChoice1-price').props.children).toBe('crédit insuffisant')
   })
 })

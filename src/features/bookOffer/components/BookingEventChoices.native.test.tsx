@@ -278,13 +278,13 @@ describe('<BookingEventChoices />', () => {
 
       it('should display "Valider la date"', () => {
         render(<BookingEventChoices stocks={[]} />)
-        expect(screen.getByText(`Valider l'horaire`)).toBeTruthy()
+        expect(screen.getByText('Valider lʼhoraire')).toBeTruthy()
       })
 
       describe('when stock not selected', () => {
         it('should not change step when the button is disabled', () => {
           render(<BookingEventChoices stocks={[]} />)
-          fireEvent.press(screen.getByText(`Valider l'horaire`))
+          fireEvent.press(screen.getByText('Valider lʼhoraire'))
           expect(mockDispatch).toHaveBeenCalledTimes(0)
         })
       })
@@ -305,13 +305,62 @@ describe('<BookingEventChoices />', () => {
 
         it('should change step to duo selection when the button is enabled and offer is duo', () => {
           render(<BookingEventChoices stocks={[]} offerIsDuo />)
-          fireEvent.press(screen.getByText(`Valider l'horaire`))
+          fireEvent.press(screen.getByText('Valider lʼhoraire'))
           expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.DUO })
         })
 
         it('should change step to confirmation screen when the button is enabled and offer is not duo', () => {
           render(<BookingEventChoices stocks={[]} />)
-          fireEvent.press(screen.getByText(`Valider l'horaire`))
+          fireEvent.press(screen.getByText('Valider lʼhoraire'))
+          expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
+        })
+      })
+    })
+
+    describe('when step is quantity selection', () => {
+      beforeEach(() => {
+        mockUseBooking.mockReturnValue({
+          bookingState: {
+            offerId: 1,
+            stockId: 1,
+            step: Step.DUO,
+            quantity: undefined,
+            date: new Date('01/02/2021'),
+          },
+          dispatch: mockDispatch,
+        })
+      })
+
+      it('should display "Finaliser ma réservation"', () => {
+        render(<BookingEventChoices stocks={[]} offerIsDuo />)
+        expect(screen.getByText('Finaliser ma réservation')).toBeTruthy()
+      })
+
+      describe('when quantity not selected', () => {
+        it('should not change step when the button is disabled', () => {
+          render(<BookingEventChoices stocks={[]} offerIsDuo />)
+          fireEvent.press(screen.getByText('Finaliser ma réservation'))
+          expect(mockDispatch).toHaveBeenCalledTimes(0)
+        })
+      })
+
+      describe('when quantity selected', () => {
+        beforeEach(() => {
+          mockUseBooking.mockReturnValue({
+            bookingState: {
+              offerId: 1,
+              stockId: 1,
+              step: Step.DUO,
+              quantity: 1,
+              date: new Date('01/02/2021'),
+            },
+            dispatch: mockDispatch,
+          })
+        })
+
+        it('should change step to confirmation screen when the button is enabled and offer is duo', () => {
+          render(<BookingEventChoices stocks={[]} offerIsDuo />)
+          fireEvent.press(screen.getByText('Finaliser ma réservation'))
           expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
         })
       })

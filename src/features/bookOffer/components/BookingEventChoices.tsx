@@ -37,7 +37,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       if (step === Step.HOUR && offerIsDuo) {
         dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
       }
-      if (step === Step.HOUR && !offerIsDuo) {
+      if ((step === Step.HOUR && !offerIsDuo) || step === Step.DUO) {
         dispatch({ type: 'VALIDATE_OPTIONS' })
       }
       return
@@ -58,6 +58,9 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
         case Step.HOUR: {
           return stockId !== undefined
         }
+        case Step.DUO: {
+          return quantity !== undefined
+        }
       }
     }
     return typeof stockId === 'number' && typeof quantity === 'number'
@@ -73,7 +76,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
           return 'Valider la date'
         }
         case Step.HOUR: {
-          return `Valider l'horaire`
+          return 'Valider lʼhoraire'
         }
         case Step.DUO: {
           return 'Finaliser ma réservation'
@@ -90,6 +93,8 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
 
   const shouldDisplayDateSelection =
     (step === Step.DATE && enablePricesByCategories) || !enablePricesByCategories
+  const shouldDisplayHourSelection =
+    (step === Step.HOUR && enablePricesByCategories) || !enablePricesByCategories
   return (
     <Container>
       {!enablePricesByCategories && <Separator />}
@@ -101,23 +106,28 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
         />
       )}
 
-      <Spacer.Column numberOfSpaces={enablePricesByCategories ? 1 : 6} />
+      {!enablePricesByCategories && <Spacer.Column numberOfSpaces={6} />}
 
       {!!(step && step >= Step.HOUR) && (
         <React.Fragment>
           {!enablePricesByCategories && <Separator />}
-          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
-          <BookHourChoice enablePricesByCategories={enablePricesByCategories} />
 
-          <Spacer.Column numberOfSpaces={6} />
+          {!!shouldDisplayHourSelection && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
+              <BookHourChoice enablePricesByCategories={enablePricesByCategories} />
+
+              <Spacer.Column numberOfSpaces={6} />
+            </React.Fragment>
+          )}
         </React.Fragment>
       )}
       {!!(step && step >= Step.DUO) && (
         <React.Fragment>
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
+          {!enablePricesByCategories && <Separator />}
+          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
 
-          <BookDuoChoice />
+          <BookDuoChoice enablePricesByCategories={enablePricesByCategories} />
 
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
