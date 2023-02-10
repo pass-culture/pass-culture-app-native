@@ -1,34 +1,16 @@
 import isEmpty from 'lodash/isEmpty'
 
-import { HomepageModuleType, OffersModule, OffersModuleParameters } from 'features/home/types'
+import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
-  AlgoliaContentModel,
-  AlgoliaParameters,
-  SearchParametersFields,
-} from 'libs/contentful/types'
-
-const mapOffersSubcategories = (
-  algoliaSubcategories: SearchParametersFields['algoliaSubcategories']
-) => algoliaSubcategories?.fields?.subcategories
-
-const mapOffersMovieGenres = (movieGenres: SearchParametersFields['movieGenres']) =>
-  movieGenres?.fields?.movieGenres
-
-const mapOffersShowTypes = (showTypes: SearchParametersFields['showTypes']) =>
-  showTypes?.fields?.showTypes
-
-const mapOffersCategories = (
-  algoliaCategories: SearchParametersFields['algoliaCategories']
-): OffersModuleParameters['categories'] => algoliaCategories?.fields?.categories
-
-const mapMusicTypes = (
-  musicTypes: SearchParametersFields['musicTypes']
-): OffersModuleParameters['musicTypes'] => musicTypes?.fields?.musicTypes
-
-const mapBookTypes = (
-  bookTypes: SearchParametersFields['bookTypes']
-): OffersModuleParameters['bookTypes'] => bookTypes?.fields?.bookTypes
+  mapOffersSubcategories,
+  mapOffersMovieGenres,
+  mapOffersCategories,
+  mapOffersShowTypes,
+  mapMusicTypes,
+  mapBookTypes,
+} from 'libs/contentful/adapters/modules/helpers/offersModuleMappers'
+import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
 
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
