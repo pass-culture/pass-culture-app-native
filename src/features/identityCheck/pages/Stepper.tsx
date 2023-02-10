@@ -17,6 +17,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
+import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
@@ -36,7 +37,8 @@ export const IdentityCheckStepper = () => {
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { refetchUser } = useAuthContext()
+  const { refetchUser, user } = useAuthContext()
+  const credit = useGetDepositAmountsByAge(user?.birthDate)
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -98,11 +100,17 @@ export const IdentityCheckStepper = () => {
       <CenteredContainer>
         <Container>
           <Spacer.TopScreen />
-          {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
+          {theme.isDesktopViewport ? (
+            <Spacer.Column numberOfSpaces={2} />
+          ) : (
+            <Spacer.Column numberOfSpaces={4} />
+          )}
 
-          <StyledTitle3>C’est très rapide&nbsp;!</StyledTitle3>
+          <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
           <Spacer.Column numberOfSpaces={2} />
-          <StyledBody>Voici les {steps.length} étapes que tu vas devoir suivre</StyledBody>
+          <Typo.Body>
+            Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
+          </Typo.Body>
 
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
@@ -153,15 +161,7 @@ export const IdentityCheckStepper = () => {
   )
 }
 
-const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.colors.white,
-}))
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.colors.white,
-}))
+const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
 const CenteredContainer = styled.View({
   flex: 1,
