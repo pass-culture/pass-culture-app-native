@@ -9,7 +9,7 @@ describe('<FavoriteListOfferModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should hide modal on click on "Non merci"', () => {
+  it('should hide modal when "Non merci" button is pressed', () => {
     const hideModalMock = jest.fn()
     render(<FavoriteListOfferModal visible hideModal={hideModalMock} showSurveyModal={jest.fn()} />)
 
@@ -18,7 +18,7 @@ describe('<FavoriteListOfferModal />', () => {
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should close on click on "Créer une liste de favoris"', () => {
+  it('should close when "Créer une liste de favoris" button is pressed', () => {
     const hideModalMock = jest.fn()
     render(<FavoriteListOfferModal visible hideModal={hideModalMock} showSurveyModal={jest.fn()} />)
 
