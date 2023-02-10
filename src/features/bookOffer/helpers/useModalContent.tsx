@@ -50,8 +50,8 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   const { isDigital, stocks } = offer
   const subcategory = mapping[offer.subcategoryId]
 
-  const goToPreviousStep = (step?: Step) => {
-    dispatch({ type: 'CHANGE_STEP', payload: step ?? Step.PRE_VALIDATION })
+  const goToPreviousStep = (step: Step) => {
+    dispatch({ type: 'CHANGE_STEP', payload: step })
   }
 
   if (!subcategory.isEvent) {
@@ -80,32 +80,23 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   }
 
   if (bookingState.step !== Step.CONFIRMATION) {
-    if (enablePricesByCategories) {
-      const modalLeftIconProps =
-        bookingStep === Step.DATE
-          ? {
-              leftIconAccessibilityLabel: undefined,
-              leftIcon: undefined,
-              onLeftIconPress: undefined,
-            }
-          : {
-              leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
-              leftIcon: ArrowPrevious,
-              onLeftIconPress: () => goToPreviousStep(bookingStep - 1),
-            }
-      return {
-        title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
-        ...modalLeftIconProps,
-        children: <BookingEventChoices stocks={stocks} offerIsDuo={offer?.isDuo} />,
-      }
-    }
+    const shouldDisplayBackButton = bookingStep !== Step.DATE && enablePricesByCategories
+    const modalLeftIconProps = shouldDisplayBackButton
+      ? {
+          leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
+          leftIcon: ArrowPrevious,
+          onLeftIconPress: () => goToPreviousStep(bookingStep - 1),
+        }
+      : {
+          leftIconAccessibilityLabel: undefined,
+          leftIcon: undefined,
+          onLeftIconPress: undefined,
+        }
 
     return {
       title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
-      leftIconAccessibilityLabel: undefined,
-      leftIcon: undefined,
-      onLeftIconPress: undefined,
-      children: <BookingEventChoices stocks={stocks} />,
+      ...modalLeftIconProps,
+      children: <BookingEventChoices stocks={stocks} offerIsDuo={offer?.isDuo} />,
     }
   }
 
