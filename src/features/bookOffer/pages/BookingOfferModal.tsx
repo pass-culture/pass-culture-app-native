@@ -44,8 +44,8 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
     }
   }, [visible, offerId])
 
-  const shouldRemoveSpacerBetweenHeaderAndContent =
-    enablePricesByCategories && step && step < Step.CONFIRMATION
+  const shouldAddSpacerBetweenHeaderAndContent =
+    !enablePricesByCategories || (enablePricesByCategories && step && step === Step.CONFIRMATION)
 
   return (
     <AppModal
@@ -59,7 +59,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
         dismissModal()
         dispatch({ type: 'RESET' })
       }}
-      shouldRemoveSpacerBetweenHeaderAndContent={shouldRemoveSpacerBetweenHeaderAndContent}>
+      shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
       {children}
     </AppModal>
   )

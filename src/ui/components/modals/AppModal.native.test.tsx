@@ -313,7 +313,7 @@ describe('<AppModal />', () => {
     it('should not display it', () => {
       const modalProps: AppModalProps = {
         ...defaultProps,
-        shouldRemoveSpacerBetweenHeaderAndContent: true,
+        shouldAddSpacerBetweenHeaderAndContent: false,
       }
       render(<AppModal {...modalProps} />)
       expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).toBeNull()
