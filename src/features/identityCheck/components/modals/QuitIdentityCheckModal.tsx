@@ -9,6 +9,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
+import { Clear } from 'ui/svg/icons/Clear'
 import { Typo } from 'ui/theme'
 
 interface Props {
@@ -54,6 +55,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
             key={2}
             wording="Abandonner la vérification"
             onPress={quitIdentityCheck}
+            icon={Clear}
           />,
         ]}>
         <StyledBody>Les informations que tu as renseignées ne seront pas enregistrées.</StyledBody>

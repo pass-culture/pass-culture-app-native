@@ -17,6 +17,11 @@ describe('QuitSignupModal', () => {
     analytics.logCancelSignup.mockClear()
   })
 
+  it('should render correctly', () => {
+    const renderAPI = renderQuitSignupModal(true)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitSignupModal(false)
 

@@ -10,6 +10,7 @@ import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
+import { Clear } from 'ui/svg/icons/Clear'
 import { Typo } from 'ui/theme'
 
 interface Props {
@@ -47,7 +48,12 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
         flex={false}
         buttons={[
           <ButtonPrimaryWhite key={1} wording="Continuer l’inscription" onPress={continueSignup} />,
-          <ButtonTertiaryWhite key={2} wording="Abandonner l’inscription" onPress={quitSignup} />,
+          <ButtonTertiaryWhite
+            key={2}
+            wording="Abandonner l’inscription"
+            onPress={quitSignup}
+            icon={Clear}
+          />,
         ]}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
