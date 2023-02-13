@@ -45,7 +45,15 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
 })
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
 let mockHits: SearchHit[] = []
 let mockNbHits = 0
 let mockHasNextPage = true
@@ -100,6 +108,11 @@ describe('SearchResults component', () => {
     mockNbHits = 0
   })
 
+  afterEach(() => {
+    mockHits = []
+    mockNbHits = 0
+  })
+
   it('should render correctly', async () => {
     jest.useFakeTimers()
     jest.advanceTimersByTime(2000)
@@ -113,10 +126,18 @@ describe('SearchResults component', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
     })
+    mockHits = mockedAlgoliaResponse.hits
+    mockNbHits = mockedAlgoliaResponse.nbHits
+
     const { getByTestId } = render(<SearchResults />)
+
     const flatlist = getByTestId('searchResultsFlatlist')
 
-    mockData.pages.push({ hits: [], page: 1, nbHits: 0 })
+    mockData.pages.push({
+      hits: [],
+      page: 1,
+      nbHits: 0,
+    })
     await act(async () => {
       flatlist.props.onEndReached()
     })

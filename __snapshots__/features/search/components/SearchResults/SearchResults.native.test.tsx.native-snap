@@ -410,262 +410,457 @@ Array [
     }
     testID="searchResults"
   >
-    <RCTScrollView
-      ItemSeparatorComponent={
+    <View
+      style={
         Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              [Function],
-            ],
-          },
-          "render": [Function],
-          "shouldForwardProp": undefined,
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
+          "flex": 1,
         }
       }
-      ListEmptyComponent={<NoSearchResult />}
-      ListFooterComponent={
-        <React.Fragment>
-          <Styled(View) />
-        </React.Fragment>
-      }
-      ListHeaderComponent={
-        <React.Fragment>
-          <NumberOfResults
+    >
+      <RCTScrollView
+        ItemSeparatorComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                [Function],
+              ],
+            },
+            "render": [Function],
+            "shouldForwardProp": undefined,
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        ListEmptyComponent={<NoSearchResult />}
+        ListHeaderComponent={
+          <ListHeaderComponent
             nbHits={0}
           />
-        </React.Fragment>
-      }
-      contentContainerStyle={
-        Object {
-          "flexGrow": 1,
         }
-      }
-      data={Array []}
-      getItem={[Function]}
-      getItemCount={[Function]}
-      itemAs="li"
-      keyExtractor={[Function]}
-      keyboardDismissMode="on-drag"
-      keyboardShouldPersistTaps="handled"
-      listAs="ul"
-      onContentSizeChange={[Function]}
-      onEndReached={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      refreshing={false}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEnabled={false}
-      scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
-      testID="searchResultsFlatlist"
-      viewabilityConfigCallbackPairs={Array []}
-    >
-      <View>
-        <View
-          onLayout={[Function]}
-        />
-        <View
-          accessibilityRole="none"
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "height": "100%",
-                "justifyContent": "center",
-                "marginHorizontal": 24,
-                "minHeight": 250,
-              },
-            ]
+        applyWindowCorrection={[Function]}
+        canChangeSize={true}
+        contentContainerStyle={
+          Object {
+            "backgroundColor": undefined,
+            "minHeight": 1,
+            "minWidth": 1,
           }
-        >
+        }
+        contentHeight={0}
+        contentWidth={0}
+        data={Array []}
+        dataProvider={
+          DataProvider {
+            "_data": Array [],
+            "_firstIndexToProcess": 0,
+            "_hasStableIds": true,
+            "_requiresDataChangeHandling": false,
+            "_size": 0,
+            "getStableId": [Function],
+            "rowHasChanged": [Function],
+          }
+        }
+        disableRecycling={false}
+        estimatedItemSize={130}
+        extendedState={Object {}}
+        externalScrollView={[Function]}
+        finalRenderAheadOffset={250}
+        forceNonDeterministicRendering={true}
+        horizontal={false}
+        initialOffset={0}
+        initialRenderIndex={0}
+        isHorizontal={false}
+        keyExtractor={[Function]}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="handled"
+        layoutProvider={
+          GridLayoutProviderWithProps {
+            "_acceptableRelayoutDelta": 1,
+            "_getHeightOrWidth": [Function],
+            "_getLayoutTypeForIndex": [Function],
+            "_getSpan": [Function],
+            "_isHorizontal": false,
+            "_lastLayoutManager": GridLayoutManager {
+              "_acceptableRelayoutDelta": 1,
+              "_getSpan": [Function],
+              "_isGridHorizontal": false,
+              "_isHorizontal": false,
+              "_layoutProvider": [Circular],
+              "_layouts": Array [],
+              "_maxSpan": 1,
+              "_renderWindowSize": Object {
+                "height": 250,
+                "width": 800,
+              },
+              "_totalHeight": 0,
+              "_totalWidth": 800,
+              "_window": Object {
+                "height": 250,
+                "width": 800,
+              },
+            },
+            "_maxSpan": 1,
+            "_renderWindowSize": Object {
+              "height": 250,
+              "width": 800,
+            },
+            "_setLayoutForType": [Function],
+            "_tempDim": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "averageWindow": AverageWindow {
+              "currentAverage": 130,
+              "currentCount": 1,
+              "inputValues": Array [
+                130,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+              "nextIndex": 1,
+            },
+            "defaultEstimatedItemSize": 100,
+            "layoutObject": Object {
+              "size": undefined,
+              "span": undefined,
+            },
+            "props": Object {
+              "ItemSeparatorComponent": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    [Function],
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              },
+              "ListEmptyComponent": <NoSearchResult />,
+              "ListHeaderComponent": <ListHeaderComponent
+                nbHits={0}
+              />,
+              "data": Array [],
+              "estimatedItemSize": 130,
+              "keyExtractor": [Function],
+              "keyboardDismissMode": "on-drag",
+              "keyboardShouldPersistTaps": "handled",
+              "numColumns": 1,
+              "onEndReached": [Function],
+              "onRefresh": undefined,
+              "onScroll": [Function],
+              "refreshing": false,
+              "renderItem": [Function],
+              "scrollEnabled": false,
+              "testID": "searchResultsFlatlist",
+            },
+            "shouldRefreshWithAnchoring": true,
+          }
+        }
+        maxRenderAhead={750}
+        numColumns={1}
+        onEndReached={[Function]}
+        onEndReachedThreshold={0}
+        onEndReachedThresholdRelative={0}
+        onItemLayout={[Function]}
+        onLayout={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onSizeChanged={[Function]}
+        onVisibleIndicesChanged={[Function]}
+        refreshing={false}
+        removeClippedSubviews={false}
+        renderAheadOffset={0}
+        renderAheadStep={250}
+        renderContentContainer={[Function]}
+        renderItem={[Function]}
+        renderItemContainer={[Function]}
+        rowRenderer={[Function]}
+        scrollEnabled={false}
+        scrollEventThrottle={16}
+        scrollThrottle={16}
+        scrollViewProps={
+          Object {
+            "contentContainerStyle": Object {
+              "backgroundColor": undefined,
+              "minHeight": 1,
+              "minWidth": 1,
+            },
+            "onLayout": [Function],
+            "onScrollBeginDrag": [Function],
+            "refreshControl": undefined,
+            "style": Object {
+              "minHeight": 1,
+              "minWidth": 1,
+            },
+          }
+        }
+        style={
+          Object {
+            "minHeight": 1,
+            "minWidth": 1,
+          }
+        }
+        suppressBoundedSizeException={true}
+        testID="searchResultsFlatlist"
+        windowCorrectionConfig={
+          Object {
+            "applyToInitialOffset": true,
+            "applyToItemScroll": true,
+            "value": Object {
+              "endCorrection": 0,
+              "startCorrection": 0,
+              "windowShift": -1,
+            },
+          }
+        }
+      >
+        <View>
           <View
             style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "flexShrink": 0,
-                },
-              ]
+              Object {
+                "flexDirection": "column",
+              }
             }
           >
             <View
-              height={109.2}
-              width={140}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <View
-            style={
-              Array [
+              style={
                 Object {
-                  "alignItems": "center",
-                },
-              ]
-            }
-          >
-            <Text
+                  "paddingLeft": undefined,
+                  "paddingTop": 0,
+                }
+              }
+            />
+            <View
               style={
                 Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                    "marginTop": 16,
-                  },
+                  undefined,
+                  undefined,
                 ]
               }
-            >
-              Pas de résultat
-            </Text>
-            <Text
+            />
+            <AutoLayoutView
+              enableInstrumentation={false}
+              horizontal={false}
+              onBlankAreaEvent={[Function]}
+              onLayout={[Function]}
+              renderAheadOffset={0}
+              scrollOffset={0}
+              style={
+                Object {
+                  "height": 0,
+                  "width": 0,
+                }
+              }
+              windowSize={0}
+            />
+            <View
+              accessibilityRole="none"
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "marginHorizontal": 24,
                     "marginTop": 24,
-                    "textAlign": "center",
+                    "minHeight": 250,
                   },
                 ]
               }
             >
-              <Text
-                accessibilityLiveRegion="assertive"
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexShrink": 0,
                     },
                   ]
                 }
               >
-                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-              </Text>
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View>
+                <View
+                  height={109.2}
+                  width={140}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 18,
+                        "lineHeight": 22,
+                        "marginTop": 16,
+                      },
+                    ]
+                  }
+                >
+                  Pas de résultat
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginTop": 24,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityLiveRegion="assertive"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+                  </Text>
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  Array [
+                    Object {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View>
+                <View
+                  accessibilityLabel="Modifier mes filtres"
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "opacity": 1,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
+                  }
+                  testID="Modifier mes filtres"
+                >
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Modifier mes filtres
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <CellContainer
+              index={-1}
+              style={
+                Array [
+                  undefined,
+                  undefined,
+                ]
+              }
+            />
             <View
-              accessibilityLabel="Modifier mes filtres"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
+                  "paddingBottom": 0,
+                  "paddingRight": undefined,
                 }
               }
-              testID="Modifier mes filtres"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Modifier mes filtres
-              </Text>
-            </View>
+            />
           </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          />
         </View>
-        <View
-          onLayout={[Function]}
-        >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "height": 104,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </RCTScrollView>
+      </RCTScrollView>
+    </View>
   </View>,
   <Modal
     accessibilityLabelledBy="testUuidV4"

@@ -205,10 +205,17 @@ Object {
 <body>
     <div>
       <div
-        class="c0"
+        className="css-view-175oi2r"
+        dir={null}
       >
         <div
-          class="c1"
+          className="css-view-175oi2r"
+          dir={null}
+        />
+        <div
+          className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-marginTop-11c0sde r-minHeight-g8fybc"
+          dir={null}
+          role="status"
         >
           <div
             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
