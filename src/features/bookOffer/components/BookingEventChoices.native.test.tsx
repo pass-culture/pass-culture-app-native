@@ -156,6 +156,16 @@ describe('<BookingEventChoices />', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1 })
   })
 
+  it('should not display "Étape 1 sur 3" when offer is duo', () => {
+    render(<BookingEventChoices stocks={[]} offerIsDuo />)
+    expect(screen.queryByText('Étape 1 sur 3')).toBeNull()
+  })
+
+  it('should not display "Étape 1 sur 2" when offer is not duo', () => {
+    render(<BookingEventChoices stocks={[]} />)
+    expect(screen.queryByText('Étape 1 sur 2')).toBeNull()
+  })
+
   describe('when stock id and quantity not selected', () => {
     beforeEach(() => {
       mockUseBooking.mockReturnValue({
@@ -232,6 +242,16 @@ describe('<BookingEventChoices />', () => {
         expect(screen.getByText('Valider la date')).toBeTruthy()
       })
 
+      it('should display "Étape 1 sur 3" when offer is duo', () => {
+        render(<BookingEventChoices stocks={[]} offerIsDuo />)
+        expect(screen.getByText('Étape 1 sur 3')).toBeTruthy()
+      })
+
+      it('should display "Étape 1 sur 2" when offer is not duo', () => {
+        render(<BookingEventChoices stocks={[]} />)
+        expect(screen.getByText('Étape 1 sur 2')).toBeTruthy()
+      })
+
       describe('when date not selected', () => {
         it('should not change step when the button is disabled', () => {
           render(<BookingEventChoices stocks={[]} />)
@@ -279,6 +299,16 @@ describe('<BookingEventChoices />', () => {
       it('should display "Valider la date"', () => {
         render(<BookingEventChoices stocks={[]} />)
         expect(screen.getByText('Valider lʼhoraire')).toBeTruthy()
+      })
+
+      it('should display "Étape 2 sur 3" when offer is duo', () => {
+        render(<BookingEventChoices stocks={[]} offerIsDuo />)
+        expect(screen.getByText('Étape 2 sur 3')).toBeTruthy()
+      })
+
+      it('should display "Étape 2 sur 2" when offer is not duo', () => {
+        render(<BookingEventChoices stocks={[]} />)
+        expect(screen.getByText('Étape 2 sur 2')).toBeTruthy()
       })
 
       describe('when stock not selected', () => {
@@ -334,6 +364,11 @@ describe('<BookingEventChoices />', () => {
       it('should display "Finaliser ma réservation"', () => {
         render(<BookingEventChoices stocks={[]} offerIsDuo />)
         expect(screen.getByText('Finaliser ma réservation')).toBeTruthy()
+      })
+
+      it('should display "Étape 3 sur 3" when offer is duo', () => {
+        render(<BookingEventChoices stocks={[]} offerIsDuo />)
+        expect(screen.getByText('Étape 3 sur 3')).toBeTruthy()
       })
 
       describe('when quantity not selected', () => {
