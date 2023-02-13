@@ -5,6 +5,7 @@ import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
@@ -36,6 +37,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('useModalContent', () => {
   it('show default modal if no information yet', () => {
@@ -148,6 +150,43 @@ describe('useModalContent', () => {
     expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
     expect(result.current.onLeftIconPress).not.toBeUndefined()
     expect(result.current.title).toBe('Détails de la réservation')
+  })
+
+  it('should not show arrow back on date selection step when offer is an event', () => {
+    mockOffer = baseOffer
+    mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
+    mockStep = Step.DATE
+
+    const { result } = renderHook(useModalContent)
+
+    expect((result.current.children as any).type.name).toBe('BookingEventChoices')
+    expect(result.current.leftIcon).toBeUndefined()
+    expect(result.current.onLeftIconPress).toBeUndefined()
+    expect(result.current.title).toBe('Mes options')
+  })
+
+  describe('When prices by categories feature flag activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    it.each`
+      step                        | idStep
+      ${'hour selection'}         | ${Step.HOUR}
+      ${'number place selection'} | ${Step.DUO}
+    `('should show arrow back on $step when offer is an event', ({ idStep }) => {
+      mockOffer = baseOffer
+      mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
+      mockStep = idStep
+
+      const { result } = renderHook(useModalContent)
+
+      expect((result.current.children as any).type.name).toBe('BookingEventChoices')
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
+      expect(result.current.onLeftIconPress).not.toBeUndefined()
+      expect(result.current.title).toBe('Choix des options')
+    })
   })
 
   it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {

@@ -10,61 +10,129 @@ import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   stocks: OfferStockResponse[]
+  offerIsDuo?: boolean
 }
 
-export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
+export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => {
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
   const creditForOffer = useCreditForOffer(bookingState.offerId)
-  const { step, quantity, stockId } = bookingState
+  const { step, quantity, stockId, date } = bookingState
+  const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
 
   if (!user) return <React.Fragment />
 
-  const validateOptions = () => dispatch({ type: 'VALIDATE_OPTIONS' })
+  const validateOptions = () => {
+    if (enablePricesByCategories) {
+      if (step === Step.DATE) {
+        dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
+      }
+      if (step === Step.HOUR && offerIsDuo) {
+        dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+      }
+      if ((step === Step.HOUR && !offerIsDuo) || step === Step.DUO) {
+        dispatch({ type: 'VALIDATE_OPTIONS' })
+      }
+      return
+    }
+    dispatch({ type: 'VALIDATE_OPTIONS' })
+  }
 
   if (bookingState.step === Step.CONFIRMATION) {
     return <BookingDetails stocks={stocks} />
   }
 
-  // We only need those 2 informations to book an offer (and thus proceed to the next page)
-  const enabled = typeof stockId === 'number' && typeof quantity === 'number'
+  const getButtonState = () => {
+    if (enablePricesByCategories) {
+      switch (step) {
+        case Step.DATE: {
+          return date !== undefined
+        }
+        case Step.HOUR: {
+          return stockId !== undefined
+        }
+        case Step.DUO: {
+          return quantity !== undefined
+        }
+      }
+    }
+    return typeof stockId === 'number' && typeof quantity === 'number'
+  }
 
+  // We only need those 2 informations to book an offer (and thus proceed to the next page)
+  const enabled = getButtonState()
+
+  const wordingButton = () => {
+    if (enablePricesByCategories) {
+      switch (step) {
+        case Step.DATE: {
+          return 'Valider la date'
+        }
+        case Step.HOUR: {
+          return 'Valider lʼhoraire'
+        }
+        case Step.DUO: {
+          return 'Finaliser ma réservation'
+        }
+      }
+    }
+
+    if (enabled) {
+      return 'Valider ces options'
+    }
+
+    return 'Choisir les options'
+  }
+
+  const shouldDisplayDateSelection =
+    (step === Step.DATE && enablePricesByCategories) || !enablePricesByCategories
+  const shouldDisplayHourSelection =
+    (step === Step.HOUR && enablePricesByCategories) || !enablePricesByCategories
   return (
     <Container>
-      <Separator />
-      <BookDateChoice stocks={stocks} userRemainingCredit={creditForOffer} />
+      {!enablePricesByCategories && <Separator />}
+      {!!shouldDisplayDateSelection && (
+        <BookDateChoice
+          stocks={stocks}
+          userRemainingCredit={creditForOffer}
+          enablePricesByCategories={enablePricesByCategories}
+        />
+      )}
 
-      <Spacer.Column numberOfSpaces={6} />
+      {!enablePricesByCategories && <Spacer.Column numberOfSpaces={6} />}
+
       {!!(step && step >= Step.HOUR) && (
         <React.Fragment>
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
+          {!enablePricesByCategories && <Separator />}
 
-          <BookHourChoice />
+          {!!shouldDisplayHourSelection && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
+              <BookHourChoice enablePricesByCategories={enablePricesByCategories} />
 
-          <Spacer.Column numberOfSpaces={6} />
+              <Spacer.Column numberOfSpaces={6} />
+            </React.Fragment>
+          )}
         </React.Fragment>
       )}
       {!!(step && step >= Step.DUO) && (
         <React.Fragment>
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
+          {!enablePricesByCategories && <Separator />}
+          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
 
-          <BookDuoChoice />
+          <BookDuoChoice enablePricesByCategories={enablePricesByCategories} />
 
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       )}
-      <ButtonPrimary
-        wording={enabled ? 'Valider ces options' : 'Choisir les options'}
-        onPress={validateOptions}
-        disabled={!enabled}
-      />
+      <ButtonPrimary wording={wordingButton()} onPress={validateOptions} disabled={!enabled} />
     </Container>
   )
 }

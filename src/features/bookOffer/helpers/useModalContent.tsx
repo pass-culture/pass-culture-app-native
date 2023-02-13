@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { CategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, OfferResponse, OfferStockResponse } from 'api/gen'
 import { AlreadyBooked } from 'features/bookOffer/components/AlreadyBooked'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
@@ -10,6 +10,8 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -19,35 +21,90 @@ type ModalContent = {
   title: string
 } & ModalLeftIconProps
 
+const getDefaultModalContent = (): ModalContent => {
+  return {
+    children: <React.Fragment />,
+    title: '',
+    leftIconAccessibilityLabel: undefined,
+    leftIcon: undefined,
+    onLeftIconPress: undefined,
+  }
+}
+
+const getEndedUseBookingModalContent = (offer: OfferResponse): ModalContent => {
+  return {
+    children: <AlreadyBooked offer={offer} />,
+    title: 'Réservation impossible',
+    leftIconAccessibilityLabel: undefined,
+    leftIcon: undefined,
+    onLeftIconPress: undefined,
+  }
+}
+
+const getBookingImpossibleModalContent = (): ModalContent => {
+  return {
+    title: 'Tu y es presque',
+    leftIconAccessibilityLabel: undefined,
+    leftIcon: undefined,
+    onLeftIconPress: undefined,
+    children: <BookingImpossible />,
+  }
+}
+
+const getNonEventModalContent = (stocks: OfferStockResponse[]): ModalContent => {
+  return {
+    title: 'Détails de la réservation',
+    leftIconAccessibilityLabel: undefined,
+    leftIcon: undefined,
+    onLeftIconPress: undefined,
+    children: <BookingDetails stocks={stocks} />,
+  }
+}
+
+const getBookingStepModalContent = (
+  enablePricesByCategories: boolean,
+  modalLeftIconProps: ModalLeftIconProps,
+  stocks: OfferStockResponse[],
+  isDuo: boolean
+): ModalContent => {
+  return {
+    title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
+    ...modalLeftIconProps,
+    children: <BookingEventChoices stocks={stocks} offerIsDuo={isDuo} />,
+  }
+}
+
+const getBookingDetailsModalContent = (
+  stocks: OfferStockResponse[],
+  modalLeftIconProps: ModalLeftIconProps
+): ModalContent => {
+  return {
+    title: 'Détails de la réservation',
+    ...modalLeftIconProps,
+    children: <BookingDetails stocks={stocks} />,
+  }
+}
+
 export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
   const { bookingState, dispatch } = useBookingContext()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
+  const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
+  const bookingStep = bookingState.step ?? Step.DATE
 
   if (!offer) {
-    return {
-      children: <React.Fragment />,
-      title: '',
-      leftIconAccessibilityLabel: undefined,
-      leftIcon: undefined,
-      onLeftIconPress: undefined,
-    }
+    return getDefaultModalContent()
   }
 
   if (isEndedUsedBooking) {
-    return {
-      children: <AlreadyBooked offer={offer} />,
-      title: 'Réservation impossible',
-      leftIconAccessibilityLabel: undefined,
-      leftIcon: undefined,
-      onLeftIconPress: undefined,
-    }
+    return getEndedUseBookingModalContent(offer)
   }
+
   const { isDigital, stocks } = offer
   const subcategory = mapping[offer.subcategoryId]
 
-  const goToPreviousStep = () => {
-    dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
+  const goToPreviousStep = (step: Step) => {
+    dispatch({ type: 'CHANGE_STEP', payload: step })
   }
 
   if (!subcategory.isEvent) {
@@ -57,39 +114,41 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       Platform.OS === 'ios' &&
       getOfferPrice(stocks) > 0
     ) {
-      return {
-        title: 'Tu y es presque',
-        leftIconAccessibilityLabel: undefined,
-        leftIcon: undefined,
-        onLeftIconPress: undefined,
-        children: <BookingImpossible />,
-      }
+      return getBookingImpossibleModalContent()
     }
 
-    return {
-      title: 'Détails de la réservation',
-      leftIconAccessibilityLabel: undefined,
-      leftIcon: undefined,
-      onLeftIconPress: undefined,
-      children: <BookingDetails stocks={stocks} />,
-    }
+    return getNonEventModalContent(stocks)
   }
 
   if (bookingState.step !== Step.CONFIRMATION) {
-    return {
-      title: 'Mes options',
-      leftIconAccessibilityLabel: undefined,
-      leftIcon: undefined,
-      onLeftIconPress: undefined,
-      children: <BookingEventChoices stocks={stocks} />,
-    }
+    const shouldDisplayBackButton = bookingStep !== Step.DATE && enablePricesByCategories
+    const bookingStepModalLeftIconProps: ModalLeftIconProps = shouldDisplayBackButton
+      ? {
+          leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
+          leftIcon: ArrowPrevious,
+          onLeftIconPress: () => goToPreviousStep(bookingStep - 1),
+        }
+      : {
+          leftIconAccessibilityLabel: undefined,
+          leftIcon: undefined,
+          onLeftIconPress: undefined,
+        }
+    return getBookingStepModalContent(
+      enablePricesByCategories,
+      bookingStepModalLeftIconProps,
+      stocks,
+      offer.isDuo
+    )
   }
 
-  return {
-    title: 'Détails de la réservation',
+  const previousBookingState =
+    !offer.isDuo && bookingStep === Step.CONFIRMATION ? Step.HOUR : Step.DUO
+  const bookingDetailsModalLeftIconProps: ModalLeftIconProps = {
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,
-    onLeftIconPress: goToPreviousStep,
-    children: <BookingDetails stocks={stocks} />,
+    onLeftIconPress: () =>
+      goToPreviousStep(enablePricesByCategories ? previousBookingState : Step.PRE_VALIDATION),
   }
+
+  return getBookingDetailsModalContent(stocks, bookingDetailsModalLeftIconProps)
 }

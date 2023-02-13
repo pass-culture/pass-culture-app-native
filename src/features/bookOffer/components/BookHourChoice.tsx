@@ -13,7 +13,11 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const BookHourChoice: React.FC = () => {
+interface Props {
+  enablePricesByCategories?: boolean
+}
+
+export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const { isDuo, stocks = [] } = useBookingOffer() || {}
   const bookingStock = useBookingStock()
@@ -23,14 +27,15 @@ export const BookHourChoice: React.FC = () => {
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
-    if (isDuo) {
-      if (bookingState.quantity) {
-        debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
-      } else {
-        debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
-      }
-    } else {
+    if (!isDuo) {
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+    }
+    if (enablePricesByCategories) return
+
+    if (bookingState.quantity) {
+      debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
+    } else {
+      debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
     }
   }
 
@@ -73,9 +78,16 @@ export const BookHourChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">
-        Heure
-      </Typo.Title4>
+      {enablePricesByCategories ? (
+        <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
+          Horaire
+        </Typo.Title3>
+      ) : (
+        <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">
+          Horaire
+        </Typo.Title4>
+      )}
+
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>

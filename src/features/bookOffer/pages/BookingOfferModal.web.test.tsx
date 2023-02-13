@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
@@ -37,8 +38,14 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(false)
+    })
+
     it('should not have basic accessibility issues for step "date"', async () => {
       mockStep = Step.DATE
       const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)

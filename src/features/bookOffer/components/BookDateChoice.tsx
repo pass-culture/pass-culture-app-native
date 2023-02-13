@@ -12,9 +12,14 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
+  enablePricesByCategories?: boolean
 }
 
-export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
+export const BookDateChoice = ({
+  stocks,
+  userRemainingCredit,
+  enablePricesByCategories,
+}: Props) => {
   const { bookingState, dispatch } = useBookingContext()
 
   const showCalendar = () => {
@@ -28,14 +33,22 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 {...getHeadingAttrs(2)} testID="DateStep">
-        Date
-      </Typo.Title4>
+      {enablePricesByCategories ? (
+        <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
+          Date
+        </Typo.Title3>
+      ) : (
+        <Typo.Title4 {...getHeadingAttrs(2)} testID="DateStep">
+          Date
+        </Typo.Title4>
+      )}
+
       {bookingState.step === Step.DATE ? (
         <Calendar
           stocks={stocks}
           userRemainingCredit={userRemainingCredit}
           offerId={bookingState.offerId}
+          enablePricesByCategories={enablePricesByCategories}
         />
       ) : (
         <TouchableOpacity onPress={showCalendar}>
