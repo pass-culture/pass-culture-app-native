@@ -254,6 +254,7 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

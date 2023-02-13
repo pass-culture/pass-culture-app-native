@@ -356,6 +356,7 @@ Object {
                   </div>
                   <div
                     class="css-view-175oi2r r-height-z80fyv"
+                    data-testid="spacerBetweenHeaderAndContent"
                   />
                   <div
                     class="css-view-175oi2r r-maxHeight-pm9dpa r-maxWidth-iz080l r-paddingBottom-xd6kpl r-width-13qz1uu"

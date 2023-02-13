@@ -254,6 +254,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

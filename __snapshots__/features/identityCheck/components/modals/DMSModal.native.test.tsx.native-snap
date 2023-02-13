@@ -254,6 +254,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

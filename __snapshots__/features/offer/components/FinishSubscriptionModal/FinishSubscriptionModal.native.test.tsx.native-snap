@@ -255,6 +255,7 @@ pour réserver cette offre
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -648,6 +649,7 @@ pour réserver cette offre
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

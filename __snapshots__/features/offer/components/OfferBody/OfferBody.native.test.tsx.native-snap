@@ -1394,6 +1394,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 },
               ]
             }
+            testID="spacerBetweenHeaderAndContent"
           />
           <View
             backdropColor="#00000080"

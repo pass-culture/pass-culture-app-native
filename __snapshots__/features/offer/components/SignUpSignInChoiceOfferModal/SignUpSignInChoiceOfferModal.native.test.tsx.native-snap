@@ -255,6 +255,7 @@ retrouver tes favoris
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
