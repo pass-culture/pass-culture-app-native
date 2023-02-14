@@ -16,7 +16,7 @@ describe('<PhoneValidationTipsModal />', () => {
     const { getByText } = render(
       <PhoneValidationTipsModal isVisible dismissModal={dismissModalMock} onGoBack={jest.fn()} />
     )
-    const gotItButton = getByText("J'ai compris")
+    const gotItButton = getByText('J’ai compris')
 
     fireEvent.press(gotItButton)
     expect(dismissModalMock).toHaveBeenCalledTimes(1)

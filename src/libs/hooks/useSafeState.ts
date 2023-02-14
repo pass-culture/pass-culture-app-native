@@ -16,6 +16,7 @@ export default function useSafeState<State>(
       } else {
         // eslint-disable-next-line no-console
         console.log(
+          // eslint-disable-next-line local-rules/apostrophe-in-text
           `Warning: Can't call setState on an unmounted component. 
           This is a no-op, but it indicates a memory leak in your application. 
           To fix, cancel all subscriptions and asynchronous tasks in 

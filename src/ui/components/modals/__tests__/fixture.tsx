@@ -25,7 +25,7 @@ export const defaultProps: AppModalProps = {
 
 export const leftIconCallbackMock = jest.fn()
 export const leftIconProps = {
-  leftIconAccessibilityLabel: "Revenir à l'étape précédente",
+  leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
   leftIcon: ArrowPrevious,
   onLeftIconPress: leftIconCallbackMock,
 }

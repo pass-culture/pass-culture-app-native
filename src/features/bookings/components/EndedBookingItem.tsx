@@ -66,7 +66,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     } else {
       showErrorSnackBar({
         message:
-          "Impossible d'afficher le détail de l'offre. Connecte-toi à internet avant de réessayer.",
+          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }

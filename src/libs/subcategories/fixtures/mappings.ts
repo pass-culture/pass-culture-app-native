@@ -195,7 +195,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'INSTRUMENTS',
   },
   ACTIVATION_EVENT: {
-    appLabel: "Catégorie technique d'évènement d'activation",
+    appLabel: 'Catégorie technique d’évènement d’activation',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
     isEvent: true,
@@ -204,7 +204,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'NONE',
   },
   ACTIVATION_THING: {
-    appLabel: "Catégorie technique de thing d'activation",
+    appLabel: 'Catégorie technique de thing d’activation',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
     isEvent: false,
@@ -240,7 +240,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'FILMS_SERIES_CINEMA',
   },
   BON_ACHAT_INSTRUMENT: {
-    appLabel: "Bon d'achat instrument",
+    appLabel: 'Bon d’achat instrument',
     categoryId: 'INSTRUMENT',
     homepageLabelName: 'INSTRUMENT',
     isEvent: false,
@@ -375,7 +375,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'JEUX_JEUX_VIDEOS',
   },
   EVENEMENT_MUSIQUE: {
-    appLabel: "Autre type d'évènement musical",
+    appLabel: 'Autre type d’évènement musical',
     categoryId: 'MUSIQUE_LIVE',
     homepageLabelName: 'CONCERT',
     isEvent: true,
@@ -393,7 +393,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   FESTIVAL_ART_VISUEL: {
-    appLabel: "Festival d'arts visuels / arts numériques",
+    appLabel: 'Festival d’arts visuels / arts numériques',
     categoryId: 'MUSEE',
     homepageLabelName: 'FESTIVAL',
     isEvent: true,
@@ -456,7 +456,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'NONE',
   },
   LIVESTREAM_EVENEMENT: {
-    appLabel: "Live stream d'évènement",
+    appLabel: 'Live stream d’évènement',
     categoryId: 'SPECTACLE',
     homepageLabelName: 'SPECTACLES',
     isEvent: true,
@@ -537,7 +537,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'MUSEES_VISITES_CULTURELLES',
   },
   OEUVRE_ART: {
-    appLabel: "Catégorie technique d'oeuvre d'art",
+    appLabel: 'Catégorie technique d’oeuvre d’art',
     categoryId: 'TECHNIQUE',
     homepageLabelName: 'NONE',
     isEvent: false,
@@ -627,7 +627,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'FILMS_SERIES_CINEMA',
   },
   SEANCE_ESSAI_PRATIQUE_ART: {
-    appLabel: "Séance d'essai",
+    appLabel: 'Séance d’essai',
     categoryId: 'PRATIQUE_ART',
     homepageLabelName: 'BEAUX_ARTS',
     isEvent: true,

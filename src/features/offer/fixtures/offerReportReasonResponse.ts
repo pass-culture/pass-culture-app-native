@@ -15,7 +15,7 @@ export const offerReportReasonResponseSnap: OfferReportReasons = {
       title: 'Autre',
     },
     PRICE_TOO_HIGH: {
-      description: "comparé à l'offre public",
+      description: 'comparé à l’offre public',
       title: 'Le tarif est trop élevé',
     },
   },

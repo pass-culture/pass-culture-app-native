@@ -40,7 +40,7 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
           ]
         }
       >
-        Oups ! Nous ne pouvons afficher correctement l'application car ton navigateur (none vNaN) n'est pas à jour
+        Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (none vNaN) n’est pas à jour
       </Text>
       <View
         numberOfSpaces={5}
@@ -427,7 +427,7 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="J'accède au pass Culture sans mettre à jour mon navigateur"
+        accessibilityLabel="J’accède au pass Culture sans mettre à jour mon navigateur"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -457,7 +457,7 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
             "width": "100%",
           }
         }
-        testID="J'accède au pass Culture sans mettre à jour mon navigateur"
+        testID="J’accède au pass Culture sans mettre à jour mon navigateur"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -475,7 +475,7 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
             ]
           }
         >
-          J'accède au pass Culture sans mettre à jour mon navigateur
+          J’accède au pass Culture sans mettre à jour mon navigateur
         </Text>
       </View>
     </View>

@@ -65,7 +65,7 @@ describe('<SetAddress/>', () => {
 
     const { getByText, getByPlaceholderText } = renderSetAddress()
 
-    const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
+    const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
@@ -86,7 +86,7 @@ describe('<SetAddress/>', () => {
 
     const { getByText, getByPlaceholderText } = renderSetAddress()
 
-    const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
+    const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => getByText(mockedSuggestedPlaces.features[1].properties.label))
@@ -115,7 +115,7 @@ describe('<SetAddress/>', () => {
 
     const { getByText, getByPlaceholderText } = renderSetAddress()
 
-    const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
+    const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     fireEvent.press(getByText('Continuer'))

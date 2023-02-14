@@ -31,7 +31,7 @@ describe('<SomeAdviceBeforeIdentityCheckModal/>', () => {
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
-  it(`should call onPressContinue when cliking on "J'ai compris" button`, () => {
+  it('should call onPressContinue when cliking on "J’ai compris" button', () => {
     const { getByText } = render(
       <SomeAdviceBeforeIdentityCheckModal
         visible

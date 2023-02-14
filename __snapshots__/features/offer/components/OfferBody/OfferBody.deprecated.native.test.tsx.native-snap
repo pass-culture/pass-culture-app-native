@@ -571,7 +571,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             }
                           >
                             <Text
-                              accessibilityLabel="Nom de l'offre : Sous les étoiles de Paris - VF"
+                              accessibilityLabel="Nom de l’offre : Sous les étoiles de Paris - VF"
                               accessible={true}
                               adjustsFontSizeToFit={true}
                               allowFontScaling={false}
@@ -587,7 +587,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   },
                                 ]
                               }
-                              testID="Nom de l'offre : Sous les étoiles de Paris - VF"
+                              testID="Nom de l’offre : Sous les étoiles de Paris - VF"
                             >
                               Sous les étoiles de Paris - VF
                             </Text>
@@ -2683,7 +2683,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             }
                           >
                             <Text
-                              accessibilityLabel="Nom de l'offre : Sous les étoiles de Paris - VF"
+                              accessibilityLabel="Nom de l’offre : Sous les étoiles de Paris - VF"
                               accessible={true}
                               adjustsFontSizeToFit={true}
                               allowFontScaling={false}
@@ -2699,7 +2699,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   },
                                 ]
                               }
-                              testID="Nom de l'offre : Sous les étoiles de Paris - VF"
+                              testID="Nom de l’offre : Sous les étoiles de Paris - VF"
                             >
                               Sous les étoiles de Paris - VF
                             </Text>

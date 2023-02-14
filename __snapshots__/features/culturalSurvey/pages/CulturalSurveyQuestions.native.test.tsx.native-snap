@@ -284,7 +284,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
           ]
         }
       >
-        Au cours de l'année précédente, tu as/es au moins une fois ...
+        Au cours de l’année précédente, tu as/es au moins une fois ...
       </Text>
       <View
         style={

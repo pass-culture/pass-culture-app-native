@@ -58,22 +58,22 @@ describe('expirationDateUtils', () => {
   })
 
   describe('displayExpirationMessage', () => {
-    it("should display expiration message : Ta réservation s'archivera dans ${daysLeft} jours  ", () => {
+    it('should display expiration message : Ta réservation s’archivera dans ${daysLeft} jours  ', () => {
       const daysLeft = 20
 
-      expect(displayExpirationMessage(daysLeft)).toBe("Ta réservation s'archivera dans 20 jours")
+      expect(displayExpirationMessage(daysLeft)).toBe('Ta réservation s’archivera dans 20 jours')
     })
 
-    it("should display expiration message : Ta reservation s'archivera demain, when the offer archives the next day", () => {
+    it('should display expiration message : Ta reservation s’archivera demain, when the offer archives the next day', () => {
       const daysLeft = 1
 
-      expect(displayExpirationMessage(daysLeft)).toBe("Ta reservation s'archivera demain")
+      expect(displayExpirationMessage(daysLeft)).toBe('Ta reservation s’archivera demain')
     })
 
-    it("should display expiration message : Ta réservation s'archive aujourd'hui, when the offer archives today", () => {
+    it('should display expiration message : Ta réservation s’archive aujourd’hui, when the offer archives today', () => {
       const daysLeft = 0
 
-      expect(displayExpirationMessage(daysLeft)).toBe("Ta réservation s'archive aujourd'hui")
+      expect(displayExpirationMessage(daysLeft)).toBe('Ta réservation s’archive aujourd’hui')
     })
 
     it('should display nothing when daysLeft < 0', () => {

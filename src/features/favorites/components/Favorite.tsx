@@ -51,7 +51,7 @@ export const Favorite: React.FC<Props> = (props) => {
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
       showErrorSnackBar({
-        message: "L'offre n'a pas été retirée de tes favoris",
+        message: 'L’offre n’a pas été retirée de tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -171,7 +171,7 @@ export const Favorite: React.FC<Props> = (props) => {
           <ButtonContainer>
             <ButtonSecondary
               wording="Supprimer"
-              accessibilityLabel={`Supprimer l'offre ${offer.name} de mes favoris`}
+              accessibilityLabel={`Supprimer l’offre ${offer.name} de mes favoris`}
               onPress={onRemove}
               buttonHeight="tall"
               disabled={isLoading}
@@ -187,7 +187,7 @@ export const Favorite: React.FC<Props> = (props) => {
       {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
-          headerTitle="Partager l'offre"
+          headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />

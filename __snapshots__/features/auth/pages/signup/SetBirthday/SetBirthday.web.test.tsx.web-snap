@@ -641,7 +641,7 @@ Object {
                   class="c2"
                 >
                   <select
-                    aria-label="Entrée pour l'année de la date de naissance"
+                    aria-label="Entrée pour l’année de la date de naissance"
                     class="c7"
                     data-testid="select-Année"
                     id="testUuidV4"
@@ -2088,7 +2088,7 @@ Object {
                 class="c2"
               >
                 <select
-                  aria-label="Entrée pour l'année de la date de naissance"
+                  aria-label="Entrée pour l’année de la date de naissance"
                   class="c7"
                   data-testid="select-Année"
                   id="testUuidV4"

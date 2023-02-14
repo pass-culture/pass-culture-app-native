@@ -71,7 +71,7 @@ describe('<ReportOfferOtherReason />', () => {
       // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
       const response = {
-        content: { code: 'ERROR', message: "Une erreur s'est produite" },
+        content: { code: 'ERROR', message: 'Une erreur s’est produite' },
         name: 'ApiError',
       }
 

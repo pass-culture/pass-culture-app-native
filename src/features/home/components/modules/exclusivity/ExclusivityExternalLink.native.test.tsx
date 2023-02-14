@@ -9,8 +9,8 @@ import { fireEvent, render } from 'tests/utils'
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const props = {
-  title: "Image d'Adèle",
-  alt: "Image d'Adèle",
+  title: 'Image d’Adèle',
+  alt: 'Image d’Adèle',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   moduleId: 'module-id',
   display: { isGeolocated: false, aroundRadius: undefined, title: '' },
@@ -35,7 +35,7 @@ describe('ExclusivityExternalLink component', () => {
   it('should open url when clicking on the component', () => {
     const { getByTestId } = render(<ExclusivityExternalLink {...props} />)
 
-    fireEvent.press(getByTestId("Image d'Adèle"))
+    fireEvent.press(getByTestId('Image d’Adèle'))
 
     expect(openUrl).toHaveBeenCalledWith(props.url, undefined, false)
   })

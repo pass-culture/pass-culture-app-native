@@ -46,6 +46,6 @@ async function makeExternalRequest<ResponseBody>(
 
 class NotAuthenticatedError extends Error {
   constructor() {
-    super(`Erreur d'authentification`)
+    super("Erreur d'authentification")
   }
 }

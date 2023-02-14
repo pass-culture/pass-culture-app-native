@@ -54,7 +54,7 @@ function getPhysicalWithdrawLabel(expiration: string | null | undefined): string
 
 function getEventWithdrawLabel(stock: BookingStockResponse): string {
   if (!stock.beginningDatetime) return ''
-  if (isToday(new Date(stock.beginningDatetime))) return "Aujourd'hui"
+  if (isToday(new Date(stock.beginningDatetime))) return 'Aujourd’hui'
   if (isTomorrow(new Date(stock.beginningDatetime))) return 'Demain'
   return ''
 }

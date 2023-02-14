@@ -81,7 +81,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
       animation={TutorialOffers}
       buttonCallback={onButtonPress}
       buttonText="Continuer"
-      buttonAccessibilityLabel={`Continuer vers l'étape ${nextStep} sur ${totalSteps}`}
+      buttonAccessibilityLabel={`Continuer vers l’étape ${nextStep} sur ${totalSteps}`}
       pauseAnimationOnRenderAtFrame={62}
       title="Des offres pour tous"
       subTitle="et si tu as..."

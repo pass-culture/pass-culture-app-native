@@ -39,7 +39,7 @@ export function AccessibilityActionPlan() {
       </Typo.ButtonText>
       <Spacer.Column numberOfSpaces={5} />
       <VerticalUl>
-        <BulletListItem text="s'informer ;" />
+        <BulletListItem text="s’informer ;" />
         <BulletListItem text="communiquer ;" />
         <BulletListItem text="accomplir des démarches administratives ;" />
         <BulletListItem text="mener une activité professionnelle…" />

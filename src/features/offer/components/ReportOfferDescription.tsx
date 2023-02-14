@@ -29,7 +29,7 @@ export const ReportOfferDescription: FunctionComponent<Props> = ({ onPressReport
         text="Ton identité restera anonyme auprès des acteurs culturels."
       />
       <Spacer.Column numberOfSpaces={13} />
-      <ButtonPrimary wording="Signaler l'offre" onPress={onPressReportOffer} />
+      <ButtonPrimary wording="Signaler l’offre" onPress={onPressReportOffer} />
     </React.Fragment>
   )
 }

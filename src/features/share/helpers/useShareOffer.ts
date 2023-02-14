@@ -11,7 +11,7 @@ const doNothingFn = () => {
   // do nothing when we don't have an offer
 }
 
-const shareTitle = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
+const shareTitle = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
 const shareOptions = {
   subject: shareTitle, // iOS only
   dialogTitle: shareTitle, // android only

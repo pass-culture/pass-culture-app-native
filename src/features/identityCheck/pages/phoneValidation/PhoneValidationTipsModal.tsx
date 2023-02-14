@@ -36,11 +36,11 @@ export const PhoneValidationTipsModal: FunctionComponent<Props> = (props) => {
         <Spacer.Column numberOfSpaces={8} />
         <InformationWithIcon
           Icon={BicolorSmartphone}
-          text="Assure-toi d'indiquer ton numéro de téléphone personnel"
+          text="Assure-toi d’indiquer ton numéro de téléphone personnel"
           subtitle="Il ne peut être associé qu’à un seul compte"
         />
         <Spacer.Column numberOfSpaces={13} />
-        <ButtonPrimary wording="J'ai compris" onPress={props.dismissModal} />
+        <ButtonPrimary wording="J’ai compris" onPress={props.dismissModal} />
       </React.Fragment>
     </AppModal>
   )

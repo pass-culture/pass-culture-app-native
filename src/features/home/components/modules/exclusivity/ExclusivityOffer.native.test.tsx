@@ -15,8 +15,8 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
 }))
 
 const props = {
-  title: "Image d'Adèle",
-  alt: "Image d'Adèle",
+  title: 'Image d’Adèle',
+  alt: 'Image d’Adèle',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   offerId: mockOffer.id,
   moduleId: 'module-id',
@@ -45,7 +45,7 @@ describe('ExclusivityModule component', () => {
 
   it('should navigate to the offer when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityOffer {...props} />)
-    fireEvent.press(getByTestId("Image d'Adèle"))
+    fireEvent.press(getByTestId('Image d’Adèle'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: mockOffer.id,
       from: 'home',
@@ -54,7 +54,7 @@ describe('ExclusivityModule component', () => {
 
   it('should log a click event when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityOffer {...props} />)
-    fireEvent.press(getByTestId("Image d'Adèle"))
+    fireEvent.press(getByTestId('Image d’Adèle'))
     expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,
       moduleId: props.moduleId,

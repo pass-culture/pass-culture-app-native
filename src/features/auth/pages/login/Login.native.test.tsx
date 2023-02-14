@@ -420,7 +420,7 @@ function simulateSigninEmailNotValidated() {
           // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             code: 'EMAIL_NOT_VALIDATED',
-            general: ["L'email n'a pas été validé."],
+            general: ['L’email n’a pas été validé.'],
           })
         )
     )

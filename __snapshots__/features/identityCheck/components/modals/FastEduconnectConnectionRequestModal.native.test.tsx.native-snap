@@ -244,7 +244,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           }
         >
           <View
-            accessibilityLabel="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
+            accessibilityLabel="Fermer la modale de propositions d’identifications avec ÉduConnect ou Démarches Simplifiées"
             accessibilityRole="button"
             accessible={true}
             collapsable={false}
@@ -266,7 +266,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
+            testID="Fermer la modale de propositions d’identifications avec ÉduConnect ou Démarches Simplifiées"
           >
             <View
               height={20}

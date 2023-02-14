@@ -14,7 +14,7 @@ const mockShare = jest
   .spyOn(Share, 'share')
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
-const shareTitle = "Je t'invite à découvrir une super offre sur le pass Culture\u00a0!"
+const shareTitle = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
 const shareOptions = {
   subject: shareTitle,
   dialogTitle: shareTitle,

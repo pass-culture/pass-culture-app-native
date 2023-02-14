@@ -198,7 +198,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <View
-      accessibilityLabel="Consulter l’article d'aide"
+      accessibilityLabel="Consulter l’article d’aide"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -227,7 +227,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           "width": "100%",
         }
       }
-      testID="Consulter l’article d'aide"
+      testID="Consulter l’article d’aide"
     >
       <View
         style={
@@ -265,7 +265,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           ]
         }
       >
-        Consulter l’article d'aide
+        Consulter l’article d’aide
       </Text>
     </View>
     <View
@@ -375,7 +375,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Renvoyer l'email"
+        accessibilityLabel="Renvoyer l’email"
         accessibilityState={
           Object {
             "disabled": false,
@@ -409,7 +409,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             "width": "100%",
           }
         }
-        testID="Renvoyer l'email"
+        testID="Renvoyer l’email"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -427,7 +427,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             ]
           }
         >
-          Renvoyer l'email
+          Renvoyer l’email
         </Text>
       </View>
       <View

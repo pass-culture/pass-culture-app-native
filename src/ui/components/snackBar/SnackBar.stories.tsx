@@ -36,14 +36,14 @@ export const Info = Template.bind({})
 Info.args = {
   ...mapSnackBarTypeToStyle(theme, SnackBarType.INFO),
   visible: true,
-  message: "Une petite snackbar d'info",
+  message: 'Une petite snackbar d’info',
 }
 
 export const InError = Template.bind({})
 InError.args = {
   ...mapSnackBarTypeToStyle(theme, SnackBarType.ERROR),
   visible: true,
-  message: "Une petite snackbar d'erreur",
+  message: 'Une petite snackbar d’erreur',
 }
 
 const SnackBarButton: FunctionComponent<SnackBarProps> = (props) => {

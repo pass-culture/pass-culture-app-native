@@ -165,7 +165,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           numberOfLines={3}
           adjustsFontSizeToFit
           allowFontScaling={false}
-          {...accessibilityAndTestId(`Nom de l'offre\u00a0: ${offer.name}`)}>
+          {...accessibilityAndTestId(`Nom de l’offre\u00a0: ${offer.name}`)}>
           {offer.name}
         </OfferTitle>
       </MarginContainer>

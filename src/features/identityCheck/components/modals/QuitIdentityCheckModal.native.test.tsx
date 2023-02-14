@@ -23,7 +23,7 @@ describe('<QuitIdentityCheckModal/>', () => {
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitIdentityCheckModal(false)
 
-    const title = queryByText("Veux-tu abandonner la vérification d'identité\u00a0?")
+    const title = queryByText('Veux-tu abandonner la vérification d’identité\u00a0?')
     expect(title).toBeFalsy()
   })
 

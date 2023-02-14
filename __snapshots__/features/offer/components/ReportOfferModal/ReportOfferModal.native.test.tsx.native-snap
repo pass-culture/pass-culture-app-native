@@ -423,7 +423,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 }
               />
               <View
-                accessibilityLabel="Signaler l'offre"
+                accessibilityLabel="Signaler l’offre"
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -452,7 +452,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                     "width": "100%",
                   }
                 }
-                testID="Signaler l'offre"
+                testID="Signaler l’offre"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -470,7 +470,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                     ]
                   }
                 >
-                  Signaler l'offre
+                  Signaler l’offre
                 </Text>
               </View>
             </View>

@@ -36,7 +36,7 @@ export const homepageEntriesAPIResponse = {
           { sys: { type: 'Link', linkType: 'Entry', id: '7c7xq3ulzqO2yDRJLDmths' } },
           { sys: { type: 'Link', linkType: 'Entry', id: '6lk6vCol5Qza2mfdtsTzW' } },
         ],
-        title: "Page d'accueil de la webappp",
+        title: 'Page d’accueil de la webappp',
       },
     },
     {

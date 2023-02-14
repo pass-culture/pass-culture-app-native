@@ -120,7 +120,7 @@ export function Navigation(): JSX.Element {
                 const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
                 eventMonitoring.captureException(new Error(message))
                 showInfoSnackBar({
-                  message: `L'erreur ${message} a été envoyé sur Sentry`,
+                  message: `L’erreur ${message} a été envoyé sur Sentry`,
                   timeout: SNACK_BAR_TIME_OUT,
                 })
               }}

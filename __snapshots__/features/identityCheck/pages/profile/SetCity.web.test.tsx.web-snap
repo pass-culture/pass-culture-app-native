@@ -299,9 +299,9 @@ Object {
                 class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
               >
                 <button
-                  aria-label="Continuer vers l'étape suivante"
+                  aria-label="Continuer vers l’étape suivante"
                   class="c5 c6"
-                  data-testid="Continuer vers l'étape suivante"
+                  data-testid="Continuer vers l’étape suivante"
                   disabled=""
                   type="submit"
                 >
@@ -617,9 +617,9 @@ Object {
               class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
             >
               <button
-                aria-label="Continuer vers l'étape suivante"
+                aria-label="Continuer vers l’étape suivante"
                 class="c5 c6"
-                data-testid="Continuer vers l'étape suivante"
+                data-testid="Continuer vers l’étape suivante"
                 disabled=""
                 type="submit"
               >

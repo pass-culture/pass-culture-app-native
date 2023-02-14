@@ -19,7 +19,7 @@ describe('SelectPhoneStatus', () => {
     expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
   })
 
-  it(`should navigate to DMSIntroduction FR when pressing "Je n'ai pas de smartphone" button`, () => {
+  it('should navigate to DMSIntroduction FR when pressing "Je n’ai pas de smartphone" button', () => {
     const { getAllByTestId } = render(<SelectPhoneStatus />)
 
     const HeroButtonList = getAllByTestId('HeroButtonList')[1]

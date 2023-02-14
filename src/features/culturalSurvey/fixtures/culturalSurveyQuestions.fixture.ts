@@ -4,7 +4,7 @@ export const culturalSurveyQuestionsFixture = {
   questions: [
     {
       id: 'SORTIES',
-      title: "Au cours de l'année précédente, tu as/es au moins une fois ...",
+      title: 'Au cours de l’année précédente, tu as/es au moins une fois ...',
       answers: [
         {
           id: 'FESTIVAL',
@@ -116,7 +116,7 @@ export const culturalSurveyQuestionsFixture = {
       answers: [
         {
           id: 'SPECTACLE_HUMOUR',
-          title: "Spectacle d'humour",
+          title: 'Spectacle d’humour',
           subtitle: 'ou café-théâtre',
           sub_question: null,
         },
@@ -160,11 +160,11 @@ export const culturalSurveyQuestionsFixture = {
     },
     {
       id: 'ACTIVITES',
-      title: "Au cours de l'année précédente, tu as au moins une fois ...",
+      title: 'Au cours de l’année précédente, tu as au moins une fois ...',
       answers: [
         {
           id: 'MATERIEL_ART_CREATIF',
-          title: "Utilisé du matériel d'art",
+          title: 'Utilisé du matériel d’art',
           subtitle: 'pour peindre, dessiner...',
           sub_question: null,
         },
@@ -182,7 +182,7 @@ export const culturalSurveyQuestionsFixture = {
         },
         {
           id: 'JOUE_INSTRUMENT',
-          title: "Joué d'un instrument de musique ",
+          title: 'Joué d’un instrument de musique ',
           subtitle: null,
           sub_question: null,
         },

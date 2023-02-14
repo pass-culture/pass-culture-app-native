@@ -57,7 +57,7 @@ export const formattedVenuesModule: VenuesModule = {
   ],
   displayParameters: {
     title: 'Exemple de playlist de lieux',
-    subtitle: "Ceci n'est pas une playlist de lieux",
+    subtitle: 'Ceci n’est pas une playlist de lieux',
     layout: 'one-item-medium',
     minOffers: 1,
   },

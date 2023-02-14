@@ -113,7 +113,7 @@ export const OfferDescription = () => {
   const { description = '', extraData = {}, image, name = '' } = offerResponse || {}
   const photoCredit = image?.credit
 
-  const helmetTitle = `Détails de l'offre ${name} | pass Culture`
+  const helmetTitle = `Détails de l’offre ${name} | pass Culture`
   return (
     <Container>
       <Helmet title={helmetTitle} />

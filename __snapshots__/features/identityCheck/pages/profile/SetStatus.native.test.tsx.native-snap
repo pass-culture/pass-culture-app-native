@@ -1026,7 +1026,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             ]
                           }
                         >
-                          En recherche d'emploi
+                          En recherche d’emploi
                         </Text>
                       </View>
                     </View>

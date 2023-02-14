@@ -10,7 +10,7 @@ jest.mock('features/navigation/helpers')
 describe('NavigateHomeButton', () => {
   it('calls navigate to Home when pressed', () => {
     const { getByText } = render(<NavigateHomeButton />)
-    fireEvent.press(getByText("Naviguer vers la page d'accueil"))
+    fireEvent.press(getByText('Naviguer vers la page d’accueil'))
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })

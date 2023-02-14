@@ -26,7 +26,7 @@ describe('<NotYetUnderageEligibility />', () => {
   it('should redirect to home page WHEN go back to home button is clicked', () => {
     const { getByText } = render(<NotYetUnderageEligibility {...navigationProps} />)
 
-    const button = getByText("Retourner à l'accueil")
+    const button = getByText('Retourner à l’accueil')
     fireEvent.press(button)
 
     expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)

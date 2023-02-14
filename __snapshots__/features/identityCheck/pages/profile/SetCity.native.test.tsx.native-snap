@@ -480,7 +480,7 @@ exports[`<SetCity/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Continuer vers l'étape suivante"
+            accessibilityLabel="Continuer vers l’étape suivante"
             accessibilityState={
               Object {
                 "disabled": true,
@@ -514,7 +514,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 "width": "100%",
               }
             }
-            testID="Continuer vers l'étape suivante"
+            testID="Continuer vers l’étape suivante"
           >
             <Text
               adjustsFontSizeToFit={false}

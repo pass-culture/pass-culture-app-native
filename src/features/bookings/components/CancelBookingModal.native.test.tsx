@@ -83,7 +83,7 @@ describe('<CancelBookingModal />', () => {
     fireEvent.press(getByText('Annuler ma réservation'))
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message: `Impossible d'annuler la réservation. Connecte-toi à internet avant de réessayer.`,
+      message: 'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.',
       timeout: SNACK_BAR_TIME_OUT,
     })
   })

@@ -39,7 +39,7 @@ describe('<RecreditBirthdayNotification />', () => {
     await flushAllPromisesWithAct()
 
     const recreditText = getByText(
-      "Pour tes 15 ans, l’État vient d'ajouter 50\u00a0€ à ton crédit. Tu disposes maintenant de :"
+      'Pour tes 15 ans, l’État vient d’ajouter 50\u00a0€ à ton crédit. Tu disposes maintenant de :'
     )
 
     expect(recreditText).toBeTruthy()

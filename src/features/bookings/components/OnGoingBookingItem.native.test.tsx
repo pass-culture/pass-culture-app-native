@@ -93,7 +93,7 @@ describe('OnGoingBookingItem', () => {
       }
       const { getByText } = renderOnGoingBookingItem(booking, bookings)
 
-      expect(getByText("Ta réservation s'archivera dans 25 jours")).toBeTruthy()
+      expect(getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
     })
 
     it('should display any expiration messages"', () => {

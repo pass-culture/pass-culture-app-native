@@ -48,7 +48,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
     ? formatToCompleteFrenchDate(new Date(booking.confirmationDate), false)
     : ''
 
-  const stillCancellableMessage = `La réservation est annulable jusqu'au\u00a0${formattedConfirmationDate}`
+  const stillCancellableMessage = `La réservation est annulable jusqu’au\u00a0${formattedConfirmationDate}`
   const isExBeneficiaryMessage =
     'Ton crédit est expiré.' +
     LINE_BREAK +

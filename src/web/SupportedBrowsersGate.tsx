@@ -55,7 +55,7 @@ function isBrowserSupported() {
 }
 
 export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onPress }) => {
-  const title = `Oups\u00a0! Nous ne pouvons afficher correctement l'application car ton navigateur (${DeviceDetect.browserName} v${browserVersion}) n'est pas à jour`
+  const title = `Oups\u00a0! Nous ne pouvons afficher correctement l’application car ton navigateur (${DeviceDetect.browserName} v${browserVersion}) n’est pas à jour`
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
       <Container>
@@ -86,7 +86,7 @@ export const BrowserNotSupportedPage: React.FC<{ onPress: () => void }> = ({ onP
         <Typo.Caption>Mets vite à jour ton navigateur en allant dans les paramètres</Typo.Caption>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
-          wording="J'accède au pass Culture sans mettre à jour mon navigateur"
+          wording="J’accède au pass Culture sans mettre à jour mon navigateur"
           onPress={onPress}
           buttonHeight="tall"
           numberOfLines={2}

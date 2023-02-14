@@ -826,7 +826,7 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     >
                       <View
-                        accessibilityLabel="Nouvelle fenêtre : Centre d'aide"
+                        accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
                         accessibilityRole="link"
                         accessibilityState={
                           Object {
@@ -849,7 +849,7 @@ exports[`Profile component should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="Nouvelle fenêtre : Centre d'aide"
+                        testID="Nouvelle fenêtre : Centre d’aide"
                       >
                         <View
                           style={
@@ -911,7 +911,7 @@ exports[`Profile component should render correctly 1`] = `
                                 ]
                               }
                             >
-                              Centre d'aide
+                              Centre d’aide
                             </Text>
                           </View>
                         </View>

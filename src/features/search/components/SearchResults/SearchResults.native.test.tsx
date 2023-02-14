@@ -485,7 +485,7 @@ describe('SearchResults component', () => {
     })
 
     it('when position is null and query is not an offer not present', async () => {
-      mockUserData = [{ message: "n'est pas disponible sur le pass Culture." }]
+      mockUserData = [{ message: 'n’est pas disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
       const { queryByText } = render(<SearchResults />)
 
