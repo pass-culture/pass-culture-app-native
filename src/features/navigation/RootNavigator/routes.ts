@@ -33,6 +33,7 @@ import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/Na
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
 import { ThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeHeaderCheatcode'
+import { TrustedDevice } from 'features/internal/cheatcodes/pages/TrustedDevice/TrustedDevice'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
@@ -420,5 +421,10 @@ export const routes: Route[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
+  },
+  {
+    name: 'TrustedDevice',
+    component: TrustedDevice,
+    path: 'trusted-device',
   },
 ]
