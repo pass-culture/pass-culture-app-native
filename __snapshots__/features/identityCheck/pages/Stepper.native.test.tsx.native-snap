@@ -1,0 +1,676 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper navigation should render correctly 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "paddingBottom": 20,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 20,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        C’est très rapide !
+      </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Pour débloquer tes 
+        300 €
+         tu dois suivre les étapes suivantes :
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityRole="list"
+        style={
+          Array [
+            Object {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Numéro de téléphone Complété"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#CBCDD2",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 88,
+                  "marginTop": 8,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": "98%",
+                }
+              }
+              testID="Numéro de téléphone Complété"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
+                }
+              >
+                <Icon />
+              </View>
+              <Text
+                state="completed"
+                style={
+                  Array [
+                    Object {
+                      "color": "#90949D",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Numéro de téléphone
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Complété"
+                  height={20}
+                  testID="Complété"
+                  width={20}
+                >
+                  <Text>
+                    Complété-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Identification Non complété"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 92,
+                  "marginTop": 8,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Identification Non complété"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
+                }
+              >
+                <Icon />
+              </View>
+              <Text
+                state="current"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Identification
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Non complété"
+                  height={20}
+                  testID="Non complété"
+                  width={20}
+                >
+                  <Text>
+                    Non complété-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Profil Non complété"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#CBCDD2",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 88,
+                  "marginTop": 8,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": "98%",
+                }
+              }
+              testID="Profil Non complété"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
+                }
+              >
+                <Icon />
+              </View>
+              <Text
+                state="disabled"
+                style={
+                  Array [
+                    Object {
+                      "color": "#90949D",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Profil
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Non complété"
+                  height={20}
+                  testID="Non complété"
+                  width={20}
+                >
+                  <Text>
+                    Non complété-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Confirmation Non complété"
+              accessibilityRole="link"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#CBCDD2",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "height": 88,
+                  "marginTop": 8,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": "98%",
+                }
+              }
+              testID="Confirmation Non complété"
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
+                }
+              >
+                <Icon />
+              </View>
+              <Text
+                state="disabled"
+                style={
+                  Array [
+                    Object {
+                      "color": "#90949D",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Confirmation
+              </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "paddingHorizontal": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Non complété"
+                  height={20}
+                  testID="Non complété"
+                  width={20}
+                >
+                  <Text>
+                    Non complété-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        flex={2}
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 2,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Abandonner"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Abandonner"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
+        >
+          <View
+            fill="#161617"
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Abandonner
+        </Text>
+      </View>
+    </View>
+  </View>,
+  <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
+    accessibilityRole="none"
+    animationType="none"
+    deviceHeight={1334}
+    deviceWidth={750}
+    hardwareAccelerated={false}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[Function]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    onRequestClose={[Function]}
+    panResponderThreshold={4}
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    supportedOrientations={
+      Array [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+    testID="modal"
+    transparent={true}
+    visible={false}
+  />,
+]
+`;

@@ -11,7 +11,7 @@ import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
@@ -82,6 +82,18 @@ jest.mock('react-query')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('Stepper navigation', () => {
+  it('should render correctly', () => {
+    // the stepper will have the following steps :
+    // profile = completed, identification = current, phone_validation = disabled, confirmation = disabled
+    mockedUseSubscriptionContext.mockReturnValueOnce({
+      dispatch: mockIdentityCheckDispatch,
+      step: IdentityCheckStep.IDENTIFICATION,
+      identification: { method: null },
+    })
+    render(<IdentityCheckStepper />)
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should stay on stepper when next_step is null and initialCredit is not between 0 and 300 euros', async () => {
     mockNextSubscriptionStep = {
       ...mockStep,
@@ -148,7 +160,7 @@ describe('Stepper navigation', () => {
         ...mockStep,
         nextSubscriptionStep: subscriptionStep,
       }
-      mockedUseSubscriptionContext.mockReturnValue({
+      mockedUseSubscriptionContext.mockReturnValueOnce({
         dispatch: mockIdentityCheckDispatch,
         step: subscriptionStep,
         identification: { method: null },

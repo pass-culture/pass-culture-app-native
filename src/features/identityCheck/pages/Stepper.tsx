@@ -117,20 +117,22 @@ export const IdentityCheckStepper = () => {
           <VerticalUl>
             {steps.map((step) => (
               <Li key={step.name}>
-                <StepButton
-                  step={step}
-                  state={getStepState(steps, step.name, currentStep)}
-                  navigateTo={
-                    step.name === IdentityCheckStep.IDENTIFICATION &&
-                    context.identification.method === null
-                      ? undefined
-                      : { screen: step.screens[0] }
-                  }
-                  onPress={() => {
-                    amplitude.logEvent('stepper_clicked', { step: step.name })
-                    return navigateToStep(step)
-                  }}
-                />
+                <StepButtonContainer>
+                  <StepButton
+                    step={step}
+                    state={getStepState(steps, step.name, currentStep)}
+                    navigateTo={
+                      step.name === IdentityCheckStep.IDENTIFICATION &&
+                      context.identification.method === null
+                        ? undefined
+                        : { screen: step.screens[0] }
+                    }
+                    onPress={() => {
+                      amplitude.logEvent('stepper_clicked', { step: step.name })
+                      return navigateToStep(step)
+                    }}
+                  />
+                </StepButtonContainer>
               </Li>
             ))}
           </VerticalUl>
@@ -175,3 +177,7 @@ const Container = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,
 }))
+
+const StepButtonContainer = styled.View({
+  alignItems: 'center',
+})
