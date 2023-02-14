@@ -6,15 +6,15 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-function ProfileSvg({
+const NotMemoizedBicolorProfile: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
   accessibilityLabel,
-  testID,
+  testID = 'BicolorProfile',
   opacity,
-}: AccessibleIcon): JSX.Element {
-  const { id, fill } = svgIdentifier()
+}) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
     <AccessibleSvg
@@ -23,9 +23,9 @@ function ProfileSvg({
       accessibilityLabel={accessibilityLabel}
       testID={testID}
       viewBox="0 0 48 48"
-      fill={fill}>
+      fill={gradientFill}>
       <Defs>
-        <LinearGradient id={id} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
+        <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />
           <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
@@ -38,11 +38,11 @@ function ProfileSvg({
   )
 }
 
-export const BicolorProfile = styled(ProfileSvg).attrs(
-  ({ color, color2, size, opacity, theme }) => ({
+export const BicolorProfile = React.memo(
+  styled(NotMemoizedBicolorProfile).attrs(({ color, color2, size, theme, opacity }) => ({
     color: color ?? theme.colors.primary,
-    color2: color2 ?? color ?? theme.colors.secondary,
+    color2: color2 ?? theme.colors.secondary,
     size: size ?? theme.icons.sizes.standard,
     opacity: opacity ?? 1,
-  })
-)``
+  }))``
+)
