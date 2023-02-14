@@ -18,7 +18,7 @@ import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -141,7 +141,7 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite
+          <ButtonTertiaryBlack
             icon={Invalidate}
             wording="Abandonner"
             onPress={showQuitIdentityCheckModal}
