@@ -17,6 +17,14 @@ export const TrustedDevice = () => {
   const [deviceId, setDeviceId] = useState('')
   const [deviceOs, setDeviceOs] = useState('')
   const [deviceName, setDeviceName] = useState('')
+  const [ipAddress, setIPAddress] = useState('')
+
+  const getDeviceIpAddress = () => {
+    fetch('https://api.ipify.org?format=json')
+      .then((response) => response.json())
+      .then((data) => setIPAddress(data.ip))
+      .catch((error) => console.error(error))
+  }
 
   useEffect(() => {
     setDeviceModel(DeviceInfo.getModel())
@@ -27,6 +35,7 @@ export const TrustedDevice = () => {
     getUniqueId().then((deviceId) => setDeviceId(deviceId))
     DeviceInfo.getBaseOs().then((baseOs) => setDeviceOs(baseOs))
     DeviceInfo.getDeviceName().then((deviceName) => setDeviceName(deviceName))
+    getDeviceIpAddress()
   }, [])
 
   return (
@@ -44,6 +53,10 @@ export const TrustedDevice = () => {
         <Data title="Device ID" data={deviceId} ios android web />
         <Data title="Device OS" data={deviceOs} android web />
         <Data title="Device Name" data={deviceName} ios android />
+        <Spacer.Column numberOfSpaces={6} />
+        <Typo.Title3>External API</Typo.Title3>
+        <Spacer.Column numberOfSpaces={2} />
+        <Data title="Device IP Address" data={ipAddress} ios android web />
       </Container>
     </React.Fragment>
   )
