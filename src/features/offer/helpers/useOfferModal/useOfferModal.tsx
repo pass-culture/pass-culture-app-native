@@ -17,7 +17,7 @@ export type OfferModalProps = {
 
 type Output = {
   OfferModal: ReactElement | null
-  showModal?: () => void
+  showModal: () => void
 }
 
 export const useOfferModal = ({
@@ -79,6 +79,6 @@ export const useOfferModal = ({
       }
 
     default:
-      return { OfferModal: null }
+      return { OfferModal: null, showModal }
   }
 }

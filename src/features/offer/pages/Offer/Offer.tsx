@@ -81,14 +81,14 @@ export const Offer: FunctionComponent = () => {
     useCallback(() => {
       trackEventHasSeenOffer()
       if (route.params.openModalOnNavigation) {
-        showOfferModal?.()
+        showOfferModal()
       }
     }, [trackEventHasSeenOffer, route.params.openModalOnNavigation, showOfferModal])
   )
 
   const onPress = () => {
     onPressCTA && onPressCTA()
-    showOfferModal && showOfferModal()
+    showOfferModal()
   }
 
   if (!offerResponse) return null
