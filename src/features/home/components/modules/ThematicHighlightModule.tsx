@@ -55,10 +55,11 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
+  const sendAnalyticsOnPress = () =>
+    analytics.logHighlightBlockClicked({ moduleId: id, toEntryId: thematicHomeEntryId })
+
   return (
-    <StyledInternalTouchableLink
-      navigateTo={navigateTo}
-      onBeforeNavigate={analytics.logHighlightBlockClicked}>
+    <StyledInternalTouchableLink navigateTo={navigateTo} onBeforeNavigate={sendAnalyticsOnPress}>
       <ImageBackground source={{ uri: imageUrl }}>
         <DateRangeCaptionContainer>
           <DateRangeCaption>{dateRange}</DateRangeCaption>
