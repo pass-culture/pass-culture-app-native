@@ -17,24 +17,24 @@ export const buildOfferGenreTypesValues = (
   },
   genreTypeMapping: GenreTypeMapping
 ): OfferGenreType[] => {
-  let finalOfferGenreType: OfferGenreType[] = []
+  let mappedGenreTypesList: OfferGenreType[] = []
 
   if (bookTypes) {
     const mappedBookTypes = buildOfferGenreTypes(GenreType.BOOK, bookTypes, genreTypeMapping)
-    finalOfferGenreType = finalOfferGenreType?.concat(mappedBookTypes ?? [])
+    mappedGenreTypesList = mappedGenreTypesList?.concat(mappedBookTypes ?? [])
   }
   if (movieGenres) {
     const mappedMovieGenres = buildOfferGenreTypes(GenreType.MOVIE, movieGenres, genreTypeMapping)
-    finalOfferGenreType = finalOfferGenreType?.concat(mappedMovieGenres ?? [])
+    mappedGenreTypesList = mappedGenreTypesList?.concat(mappedMovieGenres ?? [])
   }
   if (musicTypes) {
     const mappedMusicTypes = buildOfferGenreTypes(GenreType.MUSIC, musicTypes, genreTypeMapping)
-    finalOfferGenreType = finalOfferGenreType?.concat(mappedMusicTypes ?? [])
+    mappedGenreTypesList = mappedGenreTypesList?.concat(mappedMusicTypes ?? [])
   }
   if (showTypes) {
     const mappedShowTypes = buildOfferGenreTypes(GenreType.SHOW, showTypes, genreTypeMapping)
-    finalOfferGenreType = finalOfferGenreType?.concat(mappedShowTypes ?? [])
+    mappedGenreTypesList = mappedGenreTypesList?.concat(mappedShowTypes ?? [])
   }
 
-  return finalOfferGenreType
+  return mappedGenreTypesList
 }
