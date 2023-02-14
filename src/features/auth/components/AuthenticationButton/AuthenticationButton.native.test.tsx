@@ -25,20 +25,20 @@ describe('<AuthenticationButton />', () => {
     expect(navigate).toBeCalledWith('SignupForm', {})
   })
 
-  it('should navigate with additionnal params when defined for login', async () => {
+  it('should navigate with additionnal params when defined for login', () => {
     const { getByRole } = render(<AuthenticationButton type="login" params={NAV_PARAMS} />)
 
     const connectButton = getByRole('link')
-    await fireEvent.press(connectButton)
+    fireEvent.press(connectButton)
 
     expect(navigate).toBeCalledWith('Login', { ...NAV_PARAMS })
   })
 
-  it('should navigate with additionnal params when defined for signup', async () => {
+  it('should navigate with additionnal params when defined for signup', () => {
     const { getByRole } = render(<AuthenticationButton type="signup" params={NAV_PARAMS} />)
 
     const connectButton = getByRole('link')
-    await fireEvent.press(connectButton)
+    fireEvent.press(connectButton)
 
     expect(navigate).toBeCalledWith('SignupForm', { ...NAV_PARAMS })
   })
