@@ -20,6 +20,7 @@ import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrima
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -90,7 +91,11 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary wording="Annuler ma réservation" onPress={confirmCancelBooking} />
         <Spacer.Column numberOfSpaces={5} />
-        <ButtonTertiaryPrimary wording={'Retourner à ma réservation'} onPress={dismissModal} />
+        <ButtonTertiaryPrimary
+          wording="Retourner à ma réservation"
+          onPress={dismissModal}
+          icon={PlainArrowPrevious}
+        />
         <Spacer.Column numberOfSpaces={1} />
       </ModalContent>
     </AppModal>

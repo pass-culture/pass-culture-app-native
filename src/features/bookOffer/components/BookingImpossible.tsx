@@ -9,6 +9,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -73,7 +74,11 @@ export const BookingImpossible: React.FC = () => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary wording="Mettre en favoris" onPress={addToFavourite} />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryPrimary wording="Retourner à l’offre" onPress={dismissModal} />
+          <ButtonTertiaryPrimary
+            wording="Retourner à l’offre"
+            onPress={dismissModal}
+            icon={PlainArrowPrevious}
+          />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />
