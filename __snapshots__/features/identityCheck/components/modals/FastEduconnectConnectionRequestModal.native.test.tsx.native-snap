@@ -288,6 +288,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

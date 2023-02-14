@@ -41,6 +41,7 @@ type Props = {
   maxHeight?: number
   shouldScrollToEnd?: boolean
   keyboardShouldPersistTaps?: ScrollViewProps['keyboardShouldPersistTaps']
+  shouldAddSpacerBetweenHeaderAndContent?: boolean
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values
@@ -72,6 +73,7 @@ export const AppModal: FunctionComponent<Props> = ({
   maxHeight,
   shouldScrollToEnd,
   keyboardShouldPersistTaps,
+  shouldAddSpacerBetweenHeaderAndContent = true,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -201,7 +203,9 @@ export const AppModal: FunctionComponent<Props> = ({
           </StyledScrollView>
         ) : (
           <React.Fragment>
-            <SpacerBetweenHeaderAndContent />
+            {!!shouldAddSpacerBetweenHeaderAndContent && (
+              <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
+            )}
             <ScrollViewContainer
               paddingBottom={scrollViewPaddingBottom}
               modalSpacing={modalSpacing}>

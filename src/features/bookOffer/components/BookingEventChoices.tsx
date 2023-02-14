@@ -12,8 +12,10 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { theme } from 'theme'
+import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -26,6 +28,12 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
   const creditForOffer = useCreditForOffer(bookingState.offerId)
   const { step, quantity, stockId, date } = bookingState
   const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
+  const totalSteps = offerIsDuo ? 3 : 2
+
+  let progressBarValue = 1
+  if (step) {
+    progressBarValue = (1 / totalSteps) * step
+  }
 
   if (!user) return <React.Fragment />
 
@@ -97,6 +105,17 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
     (step === Step.HOUR && enablePricesByCategories) || !enablePricesByCategories
   return (
     <Container>
+      {!!enablePricesByCategories && (
+        <React.Fragment>
+          <ProgressContainer>
+            <Spacer.Column numberOfSpaces={4} />
+            <Typo.Hint>
+              Étape {step} sur {totalSteps}
+            </Typo.Hint>
+          </ProgressContainer>
+          <ProgressBar progress={progressBarValue} colors={[theme.colors.primary]} />
+        </React.Fragment>
+      )}
       {!enablePricesByCategories && <Separator />}
       {!!shouldDisplayDateSelection && (
         <BookDateChoice
@@ -114,7 +133,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
 
           {!!shouldDisplayHourSelection && (
             <React.Fragment>
-              <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
+              <Spacer.Column numberOfSpaces={enablePricesByCategories ? 2 : 6} />
               <BookHourChoice enablePricesByCategories={enablePricesByCategories} />
 
               <Spacer.Column numberOfSpaces={6} />
@@ -125,7 +144,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       {!!(step && step >= Step.DUO) && (
         <React.Fragment>
           {!enablePricesByCategories && <Separator />}
-          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 4 : 6} />
+          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 2 : 6} />
 
           <BookDuoChoice enablePricesByCategories={enablePricesByCategories} />
 
@@ -142,3 +161,4 @@ const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
 }))
+const ProgressContainer = styled.View({ width: '100%', alignItems: 'center' })

@@ -2,7 +2,7 @@ import React from 'react'
 import { DeviceEventEmitter } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import {
   AppModalProps,
@@ -15,30 +15,28 @@ import {
 import { AppModal } from './AppModal'
 
 describe('<AppModal />', () => {
-  test('with minimal props', () => {
-    const renderAPI = render(<AppModal {...defaultProps} />)
-    expect(renderAPI).toMatchSnapshot()
+  it('with minimal props', () => {
+    render(<AppModal {...defaultProps} />)
+    expect(screen).toMatchSnapshot()
   })
 
-  test('should hide the modal when set to hidden', () => {
-    const { getByTestId } = render(<AppModal {...defaultProps} visible={false} />)
-    const modal = getByTestId('modal')
-
-    expect(modal).toHaveProp('visible', false)
+  it('should hide the modal when set to hidden', () => {
+    render(<AppModal {...defaultProps} visible={false} />)
+    expect(screen.getByTestId('modal')).toHaveProp('visible', false)
   })
 
-  test('without children', () => {
+  it('without children', () => {
     const props: AppModalProps = {
       ...defaultProps,
       children: undefined,
     }
-    const renderAPI = render(<AppModal {...props} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<AppModal {...props} />)
+    expect(screen).toMatchSnapshot()
   })
 
-  test('without title', () => {
-    const { getByTestId } = render(<AppModal {...defaultProps} title="" />)
-    const modal = getByTestId('modalHeaderTitle')
+  it('without title', () => {
+    render(<AppModal {...defaultProps} title="" />)
+    const modal = screen.getByTestId('modalHeaderTitle')
 
     expect(modal.children).toEqual([''])
   })
@@ -46,64 +44,62 @@ describe('<AppModal />', () => {
   describe('with long title', () => {
     const longTitle = 'This is a very very very very very very very very long title'
 
-    test('on 2 lines by default', () => {
-      const { getByText } = render(<AppModal {...defaultProps} title={longTitle} />)
+    it('on 2 lines by default', () => {
+      render(<AppModal {...defaultProps} title={longTitle} />)
 
-      const title = getByText('This is a very very very very very very very very long title')
+      const title = screen.getByText('This is a very very very very very very very very long title')
 
       expect(title).toHaveProp('numberOfLines', 2)
     })
 
-    test('on 1 line', () => {
-      const { getByText } = render(
-        <AppModal {...defaultProps} title={longTitle} titleNumberOfLines={1} />
-      )
+    it('on 1 line', () => {
+      render(<AppModal {...defaultProps} title={longTitle} titleNumberOfLines={1} />)
 
-      const title = getByText('This is a very very very very very very very very long title')
+      const title = screen.getByText('This is a very very very very very very very very long title')
 
       expect(title).toHaveProp('numberOfLines', 1)
     })
   })
 
   describe('with scroll', () => {
-    test('enabled by default', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} />)
+    it('enabled by default', () => {
+      render(<AppModal {...defaultProps} />)
 
-      const scrollView = getByTestId('modalScrollView')
-
-      expect(scrollView).toHaveProp('scrollEnabled', true)
-    })
-
-    test('explicitly enabled', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} scrollEnabled />)
-      const scrollView = getByTestId('modalScrollView')
+      const scrollView = screen.getByTestId('modalScrollView')
 
       expect(scrollView).toHaveProp('scrollEnabled', true)
     })
 
-    test('disabled', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} scrollEnabled={false} />)
+    it('explicitly enabled', () => {
+      render(<AppModal {...defaultProps} scrollEnabled />)
+      const scrollView = screen.getByTestId('modalScrollView')
 
-      const scrollView = getByTestId('modalScrollView')
+      expect(scrollView).toHaveProp('scrollEnabled', true)
+    })
+
+    it('disabled', () => {
+      render(<AppModal {...defaultProps} scrollEnabled={false} />)
+
+      const scrollView = screen.getByTestId('modalScrollView')
 
       expect(scrollView).toHaveProp('scrollEnabled', false)
     })
   })
 
   describe('with backdrop', () => {
-    test('enabled by default', () => {
-      const renderAPI = render(<AppModal {...defaultProps} />)
-      expect(renderAPI).toMatchSnapshot()
+    it('enabled by default', () => {
+      render(<AppModal {...defaultProps} />)
+      expect(screen).toMatchSnapshot()
     })
 
-    test('explicitly enabled', () => {
-      const renderAPI = render(<AppModal {...defaultProps} shouldDisplayOverlay />)
-      expect(renderAPI).toMatchSnapshot()
+    it('explicitly enabled', () => {
+      render(<AppModal {...defaultProps} shouldDisplayOverlay />)
+      expect(screen).toMatchSnapshot()
     })
 
-    test('disabled', () => {
-      const renderAPI = render(<AppModal {...defaultProps} shouldDisplayOverlay={false} />)
-      expect(renderAPI).toMatchSnapshot()
+    it('disabled', () => {
+      render(<AppModal {...defaultProps} shouldDisplayOverlay={false} />)
+      expect(screen).toMatchSnapshot()
     })
   })
 
@@ -113,14 +109,14 @@ describe('<AppModal />', () => {
       ...leftIconProps,
     }
 
-    test('render', () => {
-      const renderAPI = render(<AppModal {...props} />)
-      expect(renderAPI).toMatchSnapshot()
+    it('render', () => {
+      render(<AppModal {...props} />)
+      expect(screen).toMatchSnapshot()
     })
 
     it('should call the callback when clicking on left icon', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} {...leftIconProps} />)
-      const leftIcon = getByTestId(leftIconProps.leftIconAccessibilityLabel)
+      render(<AppModal {...defaultProps} {...leftIconProps} />)
+      const leftIcon = screen.getByTestId(leftIconProps.leftIconAccessibilityLabel)
 
       fireEvent.press(leftIcon)
 
@@ -134,14 +130,14 @@ describe('<AppModal />', () => {
       ...rightIconProps,
     }
 
-    test('render', () => {
-      const renderAPI = render(<AppModal {...props} />)
-      expect(renderAPI).toMatchSnapshot()
+    it('render', () => {
+      render(<AppModal {...props} />)
+      expect(screen).toMatchSnapshot()
     })
 
     it('should call the callback when clicking on right icon', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} {...rightIconProps} />)
-      const rightIcon = getByTestId(rightIconProps.rightIconAccessibilityLabel)
+      render(<AppModal {...defaultProps} {...rightIconProps} />)
+      const rightIcon = screen.getByTestId(rightIconProps.rightIconAccessibilityLabel)
 
       fireEvent.press(rightIcon)
 
@@ -149,25 +145,25 @@ describe('<AppModal />', () => {
     })
   })
 
-  test('on big screen', () => {
-    const renderAPI = render(<AppModal {...defaultProps} />, {
+  it('on big screen', () => {
+    render(<AppModal {...defaultProps} />, {
       theme: { isDesktopViewport: true },
     })
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
-  test('on small screen', () => {
-    const renderAPI = render(<AppModal {...defaultProps} />, {
+  it('on small screen', () => {
+    render(<AppModal {...defaultProps} />, {
       theme: { isDesktopViewport: false, appContentWidth: 400 },
     })
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display fullscreen modal scroll view if isFullscreen = true', () => {
     const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true }
-    const { getByTestId } = render(<AppModal {...modalProps} />)
+    render(<AppModal {...modalProps} />)
 
-    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+    const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
     expect(fullscreenModalScrollView).toBeTruthy()
   })
@@ -180,9 +176,9 @@ describe('<AppModal />', () => {
         ...rightIconProps,
         onBackdropPress: jest.fn(),
       }
-      const { getByTestId } = render(<AppModal {...props} />)
+      render(<AppModal {...props} />)
 
-      const modal = getByTestId('modal')
+      const modal = screen.getByTestId('modal')
 
       expect(modal.props.onBackdropPress).toBe(props.onBackdropPress)
     })
@@ -193,9 +189,9 @@ describe('<AppModal />', () => {
         ...leftIconProps,
         ...rightIconProps,
       }
-      const { getByTestId } = render(<AppModal {...props} />)
+      render(<AppModal {...props} />)
 
-      const modal = getByTestId('modal')
+      const modal = screen.getByTestId('modal')
 
       expect(modal.props.onBackdropPress).toBe(leftIconCallbackMock)
     })
@@ -205,17 +201,17 @@ describe('<AppModal />', () => {
         ...defaultProps,
         ...rightIconProps,
       }
-      const { getByTestId } = render(<AppModal {...props} />)
+      render(<AppModal {...props} />)
 
-      const modal = getByTestId('modal')
+      const modal = screen.getByTestId('modal')
 
       expect(modal.props.onBackdropPress).toBe(rightIconCallbackMock)
     })
 
     it('should do nothing when no given backdrop press nor left nor right icon callback', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} />)
+      render(<AppModal {...defaultProps} />)
 
-      const modal = getByTestId('modal')
+      const modal = screen.getByTestId('modal')
 
       expect(modal.props.onBackdropPress).toBe(ReactNativeModal.defaultProps.onBackdropPress)
     })
@@ -223,17 +219,17 @@ describe('<AppModal />', () => {
 
   describe("adapt modal's height", () => {
     it('should have a default height', () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} />)
+      render(<AppModal {...defaultProps} />)
 
-      const modalContainer = getByTestId('modalContainer')
+      const modalContainer = screen.getByTestId('modalContainer')
 
       expect(modalContainer.props.height).toEqual(428)
     })
 
     it("should adapt to the content's height", () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} />)
-      const modalContainer = getByTestId('modalContainer')
-      const modalScrollView = getByTestId('modalScrollView')
+      render(<AppModal {...defaultProps} />)
+      const modalContainer = screen.getByTestId('modalContainer')
+      const modalScrollView = screen.getByTestId('modalScrollView')
 
       act(() => {
         const scrollViewContentWidth = 100
@@ -253,8 +249,8 @@ describe('<AppModal />', () => {
       }
 
       it('displayed', () => {
-        const { getByTestId } = render(<AppModal {...defaultProps} />)
-        const modalContainer = getByTestId('modalContainer')
+        render(<AppModal {...defaultProps} />)
+        const modalContainer = screen.getByTestId('modalContainer')
 
         act(() => {
           DeviceEventEmitter.emit('keyboardWillShow', keyboardEvent)
@@ -265,8 +261,8 @@ describe('<AppModal />', () => {
       })
 
       it('hidden', () => {
-        const { getByTestId } = render(<AppModal {...defaultProps} />)
-        const modalContainer = getByTestId('modalContainer')
+        render(<AppModal {...defaultProps} />)
+        const modalContainer = screen.getByTestId('modalContainer')
 
         act(() => {
           DeviceEventEmitter.emit('keyboardWillShow', keyboardEvent)
@@ -280,9 +276,9 @@ describe('<AppModal />', () => {
     })
 
     it("should adapt to the header's height", () => {
-      const { getByTestId } = render(<AppModal {...defaultProps} />)
-      const modalContainer = getByTestId('modalContainer')
-      const modalHeader = getByTestId('modalHeader')
+      render(<AppModal {...defaultProps} />)
+      const modalContainer = screen.getByTestId('modalContainer')
+      const modalHeader = screen.getByTestId('modalHeader')
 
       act(() => {
         modalHeader.props.onLayout({ nativeEvent: { layout: { height: 40 } } })
@@ -293,18 +289,34 @@ describe('<AppModal />', () => {
 
     it('should display a custom modal header if specified', () => {
       const modalProps: AppModalProps = { ...defaultProps, customModalHeader: <React.Fragment /> }
-      const { getByTestId } = render(<AppModal {...modalProps} />)
-      const customModalHeader = getByTestId('customModalHeader')
+      render(<AppModal {...modalProps} />)
+      const customModalHeader = screen.getByTestId('customModalHeader')
 
       expect(customModalHeader).toBeTruthy()
     })
 
     it('should display a fixed modal bottom if specified', () => {
       const modalProps: AppModalProps = { ...defaultProps, fixedModalBottom: <React.Fragment /> }
-      const { getByTestId } = render(<AppModal {...modalProps} />)
-      const fixedModalBottom = getByTestId('fixedModalBottom')
+      render(<AppModal {...modalProps} />)
+      const fixedModalBottom = screen.getByTestId('fixedModalBottom')
 
       expect(fixedModalBottom).toBeTruthy()
+    })
+  })
+
+  describe('Spacer between header and content', () => {
+    it('should display it', () => {
+      render(<AppModal {...defaultProps} />)
+      expect(screen.getByTestId('spacerBetweenHeaderAndContent')).toBeTruthy()
+    })
+
+    it('should not display it', () => {
+      const modalProps: AppModalProps = {
+        ...defaultProps,
+        shouldAddSpacerBetweenHeaderAndContent: false,
+      }
+      render(<AppModal {...modalProps} />)
+      expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).toBeNull()
     })
   })
 })

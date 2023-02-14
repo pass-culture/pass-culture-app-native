@@ -217,6 +217,7 @@ exports[`<AppModal /> on big screen 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -468,6 +469,7 @@ exports[`<AppModal /> on small screen 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -693,6 +695,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -944,6 +947,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -1195,6 +1199,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -1492,6 +1497,7 @@ exports[`<AppModal /> with left icon render 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -1743,6 +1749,7 @@ exports[`<AppModal /> with minimal props 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -2030,6 +2037,7 @@ exports[`<AppModal /> with right icon render 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
@@ -2281,6 +2289,7 @@ exports[`<AppModal /> without children 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

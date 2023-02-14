@@ -255,6 +255,7 @@ pour réserver l’offre
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"

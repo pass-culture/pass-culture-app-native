@@ -264,6 +264,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             },
           ]
         }
+        testID="spacerBetweenHeaderAndContent"
       />
       <View
         backdropColor="#00000080"
