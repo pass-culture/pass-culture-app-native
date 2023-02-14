@@ -176,6 +176,25 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     }
     testID="Retourner à l’offre"
   >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={20}
+        testID="button-icon"
+        width={20}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+    </View>
     <Text
       adjustsFontSizeToFit={false}
       numberOfLines={1}
@@ -186,7 +205,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
-            "marginLeft": 0,
+            "marginLeft": 8,
             "maxWidth": "100%",
           },
         ]

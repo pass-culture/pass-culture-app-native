@@ -10,6 +10,7 @@ import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrima
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface ArchiveBookingModalProps {
@@ -62,7 +63,11 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
           disabled={isLoading}
         />
         <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiaryPrimary wording="Retourner à ma réservation" onPress={props.onDismiss} />
+        <ButtonTertiaryPrimary
+          wording="Retourner à ma réservation"
+          onPress={props.onDismiss}
+          icon={PlainArrowPrevious}
+        />
       </ModalContent>
     </AppModal>
   )
