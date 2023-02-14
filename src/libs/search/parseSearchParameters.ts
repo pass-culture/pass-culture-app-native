@@ -1,4 +1,3 @@
-import { GenreType } from 'api/gen'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
 import { LocationType } from 'features/search/enums'
@@ -6,7 +5,6 @@ import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
-import { buildOfferGenreTypes } from 'libs/search/utils/buildOfferGenreTypes'
 import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
@@ -53,26 +51,15 @@ export const parseSearchParameters = (
     (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
   )
 
-  const movieGenreTypes = parameters.movieGenres
-    ? buildOfferGenreTypes(GenreType.MOVIE, parameters.movieGenres, genreTypeMapping)
-    : []
-
-  const musicGenreTypes = parameters.musicTypes
-    ? buildOfferGenreTypes(GenreType.MUSIC, parameters.musicTypes, genreTypeMapping)
-    : []
-  const musicShowTypes = parameters.showTypes
-    ? buildOfferGenreTypes(GenreType.SHOW, parameters.showTypes, genreTypeMapping)
-    : []
-  const bookGenreTypes = parameters.bookTypes
-    ? buildOfferGenreTypes(GenreType.BOOK, parameters.bookTypes, genreTypeMapping)
-    : []
-
-  const offerGenreTypes = buildOfferGenreTypesValues({
-    bookTypes: bookGenreTypes,
-    movieGenres: movieGenreTypes,
-    musicTypes: musicGenreTypes,
-    showTypes: musicShowTypes,
-  })
+  const offerGenreTypes = buildOfferGenreTypesValues(
+    {
+      bookTypes: parameters.bookTypes,
+      movieGenres: parameters.movieGenres,
+      musicTypes: parameters.musicTypes,
+      showTypes: parameters.showTypes,
+    },
+    genreTypeMapping
+  )
 
   return {
     beginningDatetime,

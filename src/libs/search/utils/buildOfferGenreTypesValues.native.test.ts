@@ -1,22 +1,24 @@
-import { GenreType } from 'api/gen'
-import { OfferGenreType } from 'features/search/types'
 import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
+import { GenreTypeMapping } from 'libs/subcategories/types'
+
+const mockGenreTypeMapping: GenreTypeMapping = {
+  BOOK: [{ name: 'Informatique', value: 'Informatique' }],
+  MOVIE: [{ name: 'BOLLYWOOD', value: 'Bollywood' }],
+  MUSIC: [{ name: 'Gospel', value: 'Gospel' }],
+  SHOW: [{ name: 'Opéra', value: 'Opéra' }],
+}
 
 describe('buildOfferGenreTypesValues', () => {
   it('should return a list of OfferGenreTypes', () => {
-    const bookTypes = [{ key: GenreType.BOOK, name: 'Informatique', value: 'Informatique' }]
-    const movieGenres: OfferGenreType[] = [
-      { key: GenreType.MOVIE, name: 'BOLLYWOOD', value: 'Bollywood' },
-    ]
-    const musicTypes: OfferGenreType[] = [{ key: GenreType.MUSIC, name: 'Gospel', value: 'Gospel' }]
-    const showTypes: OfferGenreType[] = [{ key: GenreType.SHOW, name: 'Opéra', value: 'Opéra' }]
-
-    const result = buildOfferGenreTypesValues({
-      bookTypes,
-      movieGenres: movieGenres,
-      musicTypes: musicTypes,
-      showTypes: showTypes,
-    })
+    const result = buildOfferGenreTypesValues(
+      {
+        bookTypes: ['Informatique'],
+        movieGenres: ['BOLLYWOOD'],
+        musicTypes: ['Gospel'],
+        showTypes: ['Opéra'],
+      },
+      mockGenreTypeMapping
+    )
 
     expect(result).toEqual([
       { key: 'BOOK', name: 'Informatique', value: 'Informatique' },
@@ -26,15 +28,15 @@ describe('buildOfferGenreTypesValues', () => {
     ])
   })
   it('should return a list of OfferGenreTypes event if one field is undefined', () => {
-    const movieGenres: OfferGenreType[] | undefined = undefined
-    const musicTypes: OfferGenreType[] = [{ key: GenreType.MUSIC, name: 'Gospel', value: 'Gospel' }]
-
-    const result = buildOfferGenreTypesValues({
-      bookTypes: undefined,
-      movieGenres: movieGenres,
-      musicTypes: musicTypes,
-      showTypes: undefined,
-    })
+    const result = buildOfferGenreTypesValues(
+      {
+        bookTypes: undefined,
+        movieGenres: undefined,
+        musicTypes: ['Gospel'],
+        showTypes: undefined,
+      },
+      mockGenreTypeMapping
+    )
 
     expect(result).toEqual([{ key: 'MUSIC', name: 'Gospel', value: 'Gospel' }])
   })
