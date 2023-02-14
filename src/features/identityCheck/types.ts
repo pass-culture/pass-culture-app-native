@@ -19,3 +19,9 @@ export interface StepConfig {
 }
 
 export type NextScreenOrStep = { screen: SubscriptionScreen } | { step: IdentityCheckStep } | null
+
+export enum StepButtonState {
+  'COMPLETED' = 'completed',
+  'CURRENT' = 'current',
+  'DISABLED' = 'disabled',
+}

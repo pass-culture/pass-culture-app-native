@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { StepConfig } from 'features/identityCheck/types'
+import { StepButtonState, StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
-
-export type StepButtonState = 'completed' | 'current' | 'disabled'
 
 interface Props {
   step: StepConfig
@@ -25,7 +23,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
     opacity: state === 'disabled' ? 0.5 : 1,
   })
 
-  const iconLabel = state === 'completed' ? 'Complété' : 'Non complété'
+  const iconLabel = state === StepButtonState.COMPLETED ? 'Complété' : 'Non complété'
   const accessibilityLabel = `${label} ${iconLabel}`
 
   return (
@@ -39,7 +37,10 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       </IconContainer>
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
-        <Validate isCompleted={state === 'completed'} {...accessibilityAndTestId(iconLabel)} />
+        <Validate
+          isCompleted={state === StepButtonState.COMPLETED}
+          {...accessibilityAndTestId(iconLabel)}
+        />
       </CompletionContainer>
     </StyledTouchableLink>
   )
