@@ -1,4 +1,6 @@
+// import geoip from 'geoip-lite'
 import React, { useState, useEffect } from 'react'
+import { ScrollView } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 import styled from 'styled-components/native'
 
@@ -7,6 +9,9 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const geoip = require('geoip-lite')
 
 export const TrustedDevice = () => {
   const [deviceModel, setDeviceModel] = useState('')
@@ -18,6 +23,10 @@ export const TrustedDevice = () => {
   const [deviceOs, setDeviceOs] = useState('')
   const [deviceName, setDeviceName] = useState('')
   const [ipAddress, setIPAddress] = useState('')
+
+  const geo = geoip.lookup(ipAddress)
+  // eslint-disable-next-line no-console
+  console.log({ geo })
 
   const getDeviceIpAddress = () => {
     fetch('https://api.ipify.org?format=json')
@@ -41,29 +50,41 @@ export const TrustedDevice = () => {
   return (
     <React.Fragment>
       <PageHeaderSecondary title="Spike appareil de confiance" />
-      <Spacer.Column numberOfSpaces={6} />
-      <Container>
-        <Typo.Title3>react-native-device-info</Typo.Title3>
-        <Spacer.Column numberOfSpaces={2} />
-        <Data title="Device Model" data={deviceModel} ios android />
-        <Data title="Device Version" data={deviceVersion} ios android />
-        <Data title="Device Brand" data={deviceBrand} ios android />
-        <Data title="Device System Name" data={deviceSystemName} ios android />
-        <Data title="Device System Version" data={deviceSystemVersion} ios android />
-        <Data title="Device ID" data={deviceId} ios android web />
-        <Data title="Device OS" data={deviceOs} android web />
-        <Data title="Device Name" data={deviceName} ios android />
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title3>External API</Typo.Title3>
-        <Spacer.Column numberOfSpaces={2} />
-        <Data title="Device IP Address" data={ipAddress} ios android web />
-      </Container>
+      <ScrollView>
+        <Container>
+          <Typo.Title3>react-native-device-info</Typo.Title3>
+          <Spacer.Column numberOfSpaces={2} />
+          <Data title="Device Model" data={deviceModel} ios android />
+          <Data title="Device Version" data={deviceVersion} ios android />
+          <Data title="Device Brand" data={deviceBrand} ios android />
+          <Data title="Device System Name" data={deviceSystemName} ios android />
+          <Data title="Device System Version" data={deviceSystemVersion} ios android />
+          <Data title="Device ID" data={deviceId} ios android web />
+          <Data title="Device OS" data={deviceOs} android web />
+          <Data title="Device Name" data={deviceName} ios android />
+          <Spacer.Column numberOfSpaces={6} />
+          <Typo.Title3>External API</Typo.Title3>
+          <Spacer.Column numberOfSpaces={2} />
+          <Data title="Device IP Address" data={ipAddress} ios android web />
+          <Spacer.Column numberOfSpaces={2} />
+          <Typo.ButtonText>Device IP Address Informations</Typo.ButtonText>
+          {/* {!!ipData && (
+            <React.Fragment>
+              <Typo.Body>IP: {ipData.ip}</Typo.Body>
+              <Typo.Body>City: {ipData.city}</Typo.Body>
+              <Typo.Body>Region: {ipData.region}</Typo.Body>
+              <Typo.Body>Country: {ipData.country}</Typo.Body>
+              <Typo.Body>Latitude/Longitude: {ipData.loc}</Typo.Body>
+            </React.Fragment>
+          )} */}
+        </Container>
+      </ScrollView>
     </React.Fragment>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.contentPage.marginHorizontal,
+  padding: theme.contentPage.marginHorizontal,
 }))
 
 type DataProps = {
