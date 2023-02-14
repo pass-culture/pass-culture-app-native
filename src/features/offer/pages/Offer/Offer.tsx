@@ -24,8 +24,8 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
-  const trackEventHasSeenOffer = useFunctionOnce(() =>
-    BatchUser.trackEvent(BatchEvent.hasSeenOffer)
+  const trackEventHasSeenOffer = useFunctionOnce(
+    useCallback(() => BatchUser.trackEvent(BatchEvent.hasSeenOffer), [])
   )
   const offerId = route.params && route.params.id
 
