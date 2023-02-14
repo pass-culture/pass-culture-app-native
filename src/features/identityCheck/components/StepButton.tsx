@@ -16,7 +16,8 @@ interface Props {
 }
 
 export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
-  const { icon: Icon, label } = step
+  const label = step.label
+  const Icon = step.icon[state]
 
   const iconLabel = state === StepButtonState.COMPLETED ? 'Complété' : 'Non complété'
   const accessibilityLabel = `${label} ${iconLabel}`

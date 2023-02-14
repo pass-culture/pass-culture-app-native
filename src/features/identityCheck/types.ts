@@ -14,7 +14,7 @@ export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 export interface StepConfig {
   name: IdentityCheckStep
   label: string
-  icon: React.FC<IconInterface>
+  icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
 }
 
