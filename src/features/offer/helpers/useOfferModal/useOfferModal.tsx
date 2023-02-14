@@ -18,7 +18,6 @@ export type OfferModalProps = {
 type Output = {
   OfferModal: ReactElement | null
   showModal?: () => void
-  dismissBookingOfferModal?: () => void
 }
 
 export const useOfferModal = ({
@@ -61,7 +60,6 @@ export const useOfferModal = ({
           />
         ),
         showModal,
-        dismissBookingOfferModal: hideModal,
       }
 
     case OfferModal.ERROR_APPLICATION:

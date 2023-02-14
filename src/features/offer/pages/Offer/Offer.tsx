@@ -71,11 +71,7 @@ export const Offer: FunctionComponent = () => {
     isDisabled,
   } = useCtaWordingAndAction({ offerId }) || {}
 
-  const {
-    OfferModal: CTAOfferModal,
-    showModal: showOfferModal,
-    dismissBookingOfferModal,
-  } = useOfferModal({
+  const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useOfferModal({
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
@@ -84,16 +80,10 @@ export const Offer: FunctionComponent = () => {
   useFocusEffect(
     useCallback(() => {
       trackEventHasSeenOffer()
-      dismissBookingOfferModal && dismissBookingOfferModal()
       if (route.params.openModalOnNavigation) {
         showOfferModal?.()
       }
-    }, [
-      dismissBookingOfferModal,
-      trackEventHasSeenOffer,
-      route.params.openModalOnNavigation,
-      showOfferModal,
-    ])
+    }, [trackEventHasSeenOffer, route.params.openModalOnNavigation, showOfferModal])
   )
 
   const onPress = () => {
