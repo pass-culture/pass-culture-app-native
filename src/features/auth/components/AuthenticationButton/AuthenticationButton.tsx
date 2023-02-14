@@ -32,16 +32,12 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   linkColor,
   params = {},
   onAdditionalPress: onPress,
-  preventCancellation,
 }) => {
   const isLogin = type === 'login'
-  const defaultParams = preventCancellation ? { preventCancellation } : {}
   const nextNavigation: {
     screen: RootNavigateParams[0]
     params: RootStackParamList['SignupForm'] | RootStackParamList['Login']
-  } = isLogin
-    ? { screen: 'Login', params: { ...defaultParams, ...params } }
-    : { screen: 'SignupForm', params: { ...defaultParams, ...params } }
+  } = { screen: isLogin ? 'Login' : 'SignupForm', params }
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
   const buttonWording = isLogin ? 'Se connecter' : 'Créer un compte'

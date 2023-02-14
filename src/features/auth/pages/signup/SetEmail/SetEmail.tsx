@@ -95,8 +95,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
       <AuthenticationButton
         type="login"
         onAdditionalPress={onLogAnalytics}
-        params={{ offerId: params?.offerId }}
-        preventCancellation
+        params={{ offerId: params?.offerId, preventCancellation: true }}
       />
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>

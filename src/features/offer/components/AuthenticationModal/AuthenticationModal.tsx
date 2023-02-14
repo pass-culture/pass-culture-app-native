@@ -70,8 +70,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       <StyledAuthenticationButton
         type="login"
         onAdditionalPress={signIn}
-        params={{ offerId, from }}
-        preventCancellation
+        params={{ offerId, from, preventCancellation: true }}
       />
     </AppModalWithIllustration>
   )

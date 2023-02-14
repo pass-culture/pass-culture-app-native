@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { fireEvent, render } from 'tests/utils'
 
-const NAV_PARAMS = { offerId: 1 }
+const NAV_PARAMS = { offerId: 1, preventCancellation: true }
 
 describe('<AuthenticationButton />', () => {
   it('should navigate to the login page when is type login', async () => {
@@ -25,59 +25,21 @@ describe('<AuthenticationButton />', () => {
     expect(navigate).toBeCalledWith('SignupForm', {})
   })
 
-  it.each([true, false])(
-    'should navigate with additionnal params when defined for login',
-    async (preventCancellation) => {
-      const defaultParams = preventCancellation ? { preventCancellation } : {}
-      const { getByRole } = render(
-        <AuthenticationButton
-          type="login"
-          params={NAV_PARAMS}
-          preventCancellation={preventCancellation}
-        />
-      )
-
-      const connectButton = getByRole('link')
-      await fireEvent.press(connectButton)
-
-      expect(navigate).toBeCalledWith('Login', { ...defaultParams, ...NAV_PARAMS })
-    }
-  )
-
-  it.each([true, false])(
-    'should navigate with additionnal params when defined for signup',
-    async (preventCancellation) => {
-      const defaultParams = preventCancellation ? { preventCancellation } : {}
-      const { getByRole } = render(
-        <AuthenticationButton
-          type="signup"
-          params={NAV_PARAMS}
-          preventCancellation={preventCancellation}
-        />
-      )
-
-      const connectButton = getByRole('link')
-      await fireEvent.press(connectButton)
-
-      expect(navigate).toBeCalledWith('SignupForm', { ...defaultParams, ...NAV_PARAMS })
-    }
-  )
-
-  it('should prevent cancellation when asked for login', async () => {
-    const { getByRole } = render(<AuthenticationButton type="login" preventCancellation />)
+  it('should navigate with additionnal params when defined for login', async () => {
+    const { getByRole } = render(<AuthenticationButton type="login" params={NAV_PARAMS} />)
 
     const connectButton = getByRole('link')
     await fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('Login', { ...NAV_PARAMS })
   })
 
-  it('should prevent cancellation when asked for signup', async () => {
-    const { getByRole } = render(<AuthenticationButton type="signup" preventCancellation />)
+  it('should navigate with additionnal params when defined for signup', async () => {
+    const { getByRole } = render(<AuthenticationButton type="signup" params={NAV_PARAMS} />)
 
     const connectButton = getByRole('link')
     await fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('SignupForm', { ...NAV_PARAMS })
   })
 })
