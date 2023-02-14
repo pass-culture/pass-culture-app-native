@@ -74,7 +74,7 @@ export async function renderOfferBodyPage(
   return wrapper
 }
 
-export async function renderOfferPage(
+export function renderOfferPage(
   fromOfferId?: number,
   extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
   openModalOnNavigation?: boolean
@@ -94,12 +94,6 @@ export async function renderOfferPage(
       </NavigationContainer>
     )
   )
-
-  await superFlushWithAct(25)
-
-  await waitForExpect(() => {
-    expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
-  })
 
   return wrapper
 }

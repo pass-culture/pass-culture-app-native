@@ -31,7 +31,7 @@ describe('<Offer />', () => {
   afterEach(() => jest.useRealTimers())
 
   it('animates on scroll', async () => {
-    const { getByTestId } = await renderOfferPage()
+    const { getByTestId } = renderOfferPage()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
     const scrollContainer = getByTestId('offer-container')
     await act(async () => await fireEvent.scroll(scrollContainer, scrollEvent))
@@ -47,7 +47,7 @@ describe('<Offer />', () => {
       user: undefined,
     })
 
-    const { getByText } = await renderOfferPage()
+    const { getByText } = renderOfferPage()
 
     const bookingOfferButton = getByText('Réserver l’offre')
     fireEvent.press(bookingOfferButton)
@@ -63,7 +63,7 @@ describe('<Offer />', () => {
       isUserLoading: false,
     }))
 
-    const { getByText } = await renderOfferPage()
+    const { getByText } = renderOfferPage()
 
     const bookingOfferButton = getByText('Réserver l’offre')
     fireEvent.press(bookingOfferButton)
@@ -77,7 +77,7 @@ describe('<Offer />', () => {
     })
 
     it('should log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
-      const { getByTestId } = await renderOfferPage()
+      const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
@@ -86,7 +86,7 @@ describe('<Offer />', () => {
     })
 
     it('should not log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and not reaching the bottom', async () => {
-      const { getByTestId } = await renderOfferPage()
+      const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventTop)
@@ -96,7 +96,7 @@ describe('<Offer />', () => {
 
     it('should log logSimilarOfferPlaylistVerticalScroll with the event param fromOfferId', async () => {
       const fromOfferId = 1
-      const { getByTestId } = await renderOfferPage(fromOfferId)
+      const { getByTestId } = renderOfferPage(fromOfferId)
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
@@ -117,7 +117,7 @@ describe('<Offer />', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue(newLocal)
     const fromOfferId = 1
-    const { queryByText } = await renderOfferPage(fromOfferId, undefined, true)
+    const { queryByText } = renderOfferPage(fromOfferId, undefined, true)
 
     await waitForExpect(async () => {
       expect(queryByText('Mes options')).toBeTruthy()
