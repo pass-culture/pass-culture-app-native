@@ -1,6 +1,7 @@
 export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
+  BOOK_TYPES = 'bookTypes',
   DISPLAY_PARAMETERS = 'displayParameters',
   EXCLUSIVITY = 'exclusivity',
   EXCLUSIVITY_DISPLAY_PARAMETERS = 'exclusivityDisplayParameters',
@@ -152,6 +153,11 @@ export interface ShowTypes {
   fields: ShowTypesFields
 }
 
+export interface BookTypes {
+  sys: Sys<typeof ContentTypes.BOOK_TYPES>
+  fields: BookTypesFields
+}
+
 export interface ThematicHighlightParameters {
   sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT>
   fields: ThematicHighlightFields
@@ -216,6 +222,7 @@ export interface SearchParametersFields {
   movieGenres?: MovieGenres
   musicTypes?: MusicTypes
   showTypes?: ShowTypes
+  bookTypes?: BookTypes
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
@@ -299,6 +306,10 @@ type ShowTypesFields = {
 
 type MusicTypesFields = {
   musicTypes: string[]
+}
+
+type BookTypesFields = {
+  bookTypes: string[]
 }
 
 export type ThematicHighlightFields = {

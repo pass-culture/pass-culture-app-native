@@ -69,6 +69,7 @@ export type OffersModuleParameters = {
   movieGenres?: string[]
   musicTypes?: string[]
   showTypes?: string[]
+  bookTypes?: string[]
 }
 
 export type BusinessModule = {

@@ -48,6 +48,7 @@ describe('adaptOffersModule', () => {
           musicTypes: ['Pop', 'Gospel'],
           movieGenres: ['ACTION', 'BOLLYWOOD'],
           showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
+          bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
         },
         {
           title: 'Livre',
