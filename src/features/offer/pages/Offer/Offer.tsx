@@ -22,11 +22,11 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
 
+const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
+
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
-  const trackEventHasSeenOffer = useFunctionOnce(
-    useCallback(() => BatchUser.trackEvent(BatchEvent.hasSeenOffer), [])
-  )
+  const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const offerId = route.params && route.params.id
 
   const { data: offerResponse } = useOffer({ offerId })
@@ -79,11 +79,11 @@ export const Offer: FunctionComponent = () => {
 
   useFocusEffect(
     useCallback(() => {
-      trackEventHasSeenOffer()
+      trackEventHasSeenOfferOnce()
       if (route.params.openModalOnNavigation) {
         showOfferModal()
       }
-    }, [trackEventHasSeenOffer, route.params.openModalOnNavigation, showOfferModal])
+    }, [trackEventHasSeenOfferOnce, route.params.openModalOnNavigation, showOfferModal])
   )
 
   const onPress = () => {
