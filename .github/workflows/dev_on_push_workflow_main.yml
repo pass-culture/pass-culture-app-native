@@ -1,0 +1,32 @@
+name: Validate dev branch
+
+on:
+  push:
+
+jobs:
+  yarn-install:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install --immutable
+        if: steps.yarn-modules-cache.outputs.cache-hit != 'true'
+  yarn-linter:
+    needs: yarn-install
+    uses:  ./.github/workflows/dev_on_workflow_linter_ts.yml
+  yarn-tester:
+    needs: yarn-install
+    uses: ./.github/workflows/dev_on_workflow_tester.yml
