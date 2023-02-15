@@ -46,10 +46,16 @@ describe('<PasswordInputController />', () => {
     expect(screen.getByText(rules)).toBeTruthy()
   })
 
-  it('should not show password validation rules by default', () => {
+  it.each([
+    '12 Caractères',
+    '1 Majuscule',
+    '1 Minuscule',
+    '1 Chiffre',
+    '1 Caractère spécial (!@#$%^&*...)',
+  ])('should not show password validation rules by default', (rule) => {
     renderPasswordInputController({ withSecurityRules: true })
 
-    expect(screen.queryByText('12 Caractères')).toBeFalsy()
+    expect(screen.queryByText(rule)).toBeFalsy()
   })
 
   it.each([
