@@ -11,45 +11,45 @@ import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { RadioButtonSelected } from 'ui/svg/RadioButtonSelected'
 import { getSpacing, Typo } from 'ui/theme'
 
-export enum RadioSelecteurType {
+export enum RadioSelectorType {
   DEFAULT = 'default',
   ACTIVE = 'active',
   DISABLED = 'disabled',
 }
 
 interface ValidateOffIconProps extends AccessibleIcon {
-  type?: RadioSelecteurType
+  type?: RadioSelectorType
 }
 
-interface RadioSelecteurProps {
+interface RadioSelectorProps {
   label: string
-  onPress: (label: string, type: RadioSelecteurType) => void
+  onPress: (label: string, type: RadioSelectorType) => void
   description?: string
   price?: string
-  type?: RadioSelecteurType
+  type?: RadioSelectorType
 }
 
-export const RadioSelecteur: React.FC<RadioSelecteurProps> = ({
+export const RadioSelector: React.FC<RadioSelectorProps> = ({
   label,
   onPress,
   description,
   price,
-  type = RadioSelecteurType.DEFAULT,
-}: RadioSelecteurProps) => {
+  type = RadioSelectorType.DEFAULT,
+}: RadioSelectorProps) => {
   const containerRef = useRef(null)
   const { onFocus, onBlur, isFocus } = useHandleFocus()
 
   const handlePress = () => {
-    if (type === RadioSelecteurType.DISABLED) {
+    if (type === RadioSelectorType.DISABLED) {
       return
     }
-    onPress(label, RadioSelecteurType.ACTIVE)
+    onPress(label, RadioSelectorType.ACTIVE)
   }
 
   useArrowNavigationForRadioButton(containerRef)
   useSpaceBarAction(isFocus ? handlePress : undefined)
   return (
-    <RadioSelecteurContainer
+    <RadioSelectorContainer
       type={type}
       {...accessibleRadioProps({
         label,
@@ -63,25 +63,25 @@ export const RadioSelecteur: React.FC<RadioSelecteurProps> = ({
       </TextContainer>
       <IconPriceContainer>
         {!!price && <PriceText type={type}>{price}€</PriceText>}
-        {type === RadioSelecteurType.ACTIVE ? (
+        {type === RadioSelectorType.ACTIVE ? (
           <RadioButtonSelectedPrimary />
         ) : (
           <ValidateOffIcon type={type} />
         )}
       </IconPriceContainer>
-    </RadioSelecteurContainer>
+    </RadioSelectorContainer>
   )
 }
 
-const RadioSelecteurContainer = styled(TouchableOpacity)<{ type: RadioSelecteurType }>(
-  ({ theme, type = RadioSelecteurType.DEFAULT }) => ({
+const RadioSelectorContainer = styled(TouchableOpacity)<{ type: RadioSelectorType }>(
+  ({ theme, type = RadioSelectorType.DEFAULT }) => ({
     flexDirection: 'row',
     borderColor: theme.colors.greyDark,
     borderRadius: theme.borderRadius.radius,
     borderWidth:
-      type === RadioSelecteurType.ACTIVE ? 2 : type === RadioSelecteurType.DISABLED ? 0 : 1,
+      type === RadioSelectorType.ACTIVE ? 2 : type === RadioSelectorType.DISABLED ? 0 : 1,
     padding: getSpacing(4),
-    backgroundColor: type === RadioSelecteurType.DISABLED ? theme.colors.greyLight : undefined,
+    backgroundColor: type === RadioSelectorType.DISABLED ? theme.colors.greyLight : undefined,
   })
 )
 
@@ -89,8 +89,8 @@ const TextContainer = styled.View(() => ({
   flex: 1,
 }))
 
-const ButtonText = styled(Typo.ButtonText)<{ type: RadioSelecteurType }>(({ theme, type }) => ({
-  color: type === RadioSelecteurType.DISABLED ? theme.colors.greyDark : theme.colors.black,
+const ButtonText = styled(Typo.ButtonText)<{ type: RadioSelectorType }>(({ theme, type }) => ({
+  color: type === RadioSelectorType.DISABLED ? theme.colors.greyDark : theme.colors.black,
 }))
 
 const IconPriceContainer = styled.View({
@@ -100,8 +100,8 @@ const IconPriceContainer = styled.View({
 })
 
 const ValidateOffIcon = styled(ValidateOff).attrs(
-  ({ theme, type }: { theme: DefaultTheme; type: RadioSelecteurType }) => ({
-    color: type === RadioSelecteurType.DISABLED ? theme.colors.greyMedium : theme.colors.black,
+  ({ theme, type }: { theme: DefaultTheme; type: RadioSelectorType }) => ({
+    color: type === RadioSelectorType.DISABLED ? theme.colors.greyMedium : theme.colors.black,
   })
 )<ValidateOffIconProps>``
 
@@ -110,7 +110,7 @@ const RadioButtonSelectedPrimary = styled(RadioButtonSelected).attrs(({ theme })
   size: theme.icons.sizes.smaller,
 }))``
 
-const PriceText = styled(Typo.Caption)<{ type: RadioSelecteurType }>(({ theme, type }) => ({
-  color: type === RadioSelecteurType.DISABLED ? theme.colors.greyDark : theme.colors.black,
+const PriceText = styled(Typo.Caption)<{ type: RadioSelectorType }>(({ theme, type }) => ({
+  color: type === RadioSelectorType.DISABLED ? theme.colors.greyDark : theme.colors.black,
   marginRight: getSpacing(2),
 }))
