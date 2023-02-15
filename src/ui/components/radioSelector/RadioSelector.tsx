@@ -29,7 +29,7 @@ interface RadioSelectorProps {
   type?: RadioSelectorType
 }
 
-export const RadioSelector: React.FC<RadioSelectorProps> = ({
+export const RadioSelector = ({
   label,
   onPress,
   description,
@@ -53,6 +53,7 @@ export const RadioSelector: React.FC<RadioSelectorProps> = ({
       type={type}
       {...accessibleRadioProps({
         label,
+        checked: type === RadioSelectorType.ACTIVE,
       })}
       onPress={handlePress}
       onFocus={onFocus}
@@ -74,15 +75,26 @@ export const RadioSelector: React.FC<RadioSelectorProps> = ({
 }
 
 const RadioSelectorContainer = styled(TouchableOpacity)<{ type: RadioSelectorType }>(
-  ({ theme, type = RadioSelectorType.DEFAULT }) => ({
-    flexDirection: 'row',
-    borderColor: theme.colors.greyDark,
-    borderRadius: theme.borderRadius.radius,
-    borderWidth:
-      type === RadioSelectorType.ACTIVE ? 2 : type === RadioSelectorType.DISABLED ? 0 : 1,
-    padding: getSpacing(4),
-    backgroundColor: type === RadioSelectorType.DISABLED ? theme.colors.greyLight : undefined,
-  })
+  ({ theme, type = RadioSelectorType.DEFAULT }) => {
+    let borderWidth = 1
+    let backgroundColor
+
+    if (type === RadioSelectorType.ACTIVE) {
+      borderWidth = 2
+    } else if (type === RadioSelectorType.DISABLED) {
+      borderWidth = 0
+      backgroundColor = theme.colors.greyLight
+    }
+
+    return {
+      flexDirection: 'row',
+      borderColor: theme.colors.greyDark,
+      borderRadius: theme.borderRadius.radius,
+      borderWidth,
+      padding: getSpacing(4),
+      backgroundColor,
+    }
+  }
 )
 
 const TextContainer = styled.View(() => ({
