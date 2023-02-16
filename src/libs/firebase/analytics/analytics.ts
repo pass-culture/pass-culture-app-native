@@ -158,6 +158,10 @@ const logEventAnalytics = {
     moduleId: string
     homeEntryId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, params),
+  logFavoriteListButtonClicked: (from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.FAVORITE_LIST_BUTTON_CLICKED, { from }),
+  logFavoriteListDisplayed: (from: Referrals) =>
+    analyticsProvider.logEvent(AnalyticsEvent.FAVORITE_LIST_DISPLAYED, { from }),
   logGoToParentsFAQ: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.GO_TO_PARENTS_FAQ, { from }),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>

@@ -95,6 +95,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     } else if (!favorite) {
       animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId })
+      analytics.logFavoriteListDisplayed('offer')
       showFavoriteListOfferModal()
     } else if (favorite) {
       removeFavorite(favorite.id)

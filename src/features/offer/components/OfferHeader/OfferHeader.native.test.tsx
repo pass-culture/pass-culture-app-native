@@ -144,6 +144,15 @@ describe('<OfferHeader />', () => {
     expect(screen.getByText('Crée une liste de favoris !')).toBeTruthy()
   })
 
+  it('should track the user has seen favorite list modal when pressing favorite icon', async () => {
+    const favoriteOfferId = 146193
+    renderOfferHeader({ id: favoriteOfferId })
+
+    await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
+
+    expect(analytics.logFavoriteListDisplayed).toHaveBeenNthCalledWith(1, 'offer')
+  })
+
   it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
     const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })

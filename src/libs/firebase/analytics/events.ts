@@ -57,6 +57,8 @@ export enum AnalyticsEvent {
   DISMISS_SHARE_APP = 'DismissShareApp',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  FAVORITE_LIST_BUTTON_CLICKED = 'FavoriteListButtonClicked',
+  FAVORITE_LIST_DISPLAYED = 'FavoriteListDisplayed',
   GO_TO_PARENTS_FAQ = 'GoToParentsFAQ',
   GO_TO_PROFIL = 'GoToProfil',
   HAS_ACCEPTED_ALL_COOKIES = 'HasAcceptedAllCookies',

@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
+import { analytics } from 'libs/firebase/analytics'
 import { useModal } from 'ui/components/modals/useModal'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -15,9 +16,18 @@ export const FavoriteListBanner: FunctionComponent = () => {
     hideModal: hideFakeDoorListFavoritesVisible,
   } = useModal(false)
 
+  useEffect(() => {
+    analytics.logFavoriteListDisplayed('favorites')
+  }, [])
+
+  const onBannerPress = () => {
+    analytics.logFavoriteListButtonClicked('favorites')
+    showFakeDoorListFavoritesVisible()
+  }
+
   return (
     <React.Fragment>
-      <StyledTouchableWrapper onPress={showFakeDoorListFavoritesVisible}>
+      <StyledTouchableWrapper onPress={onBannerPress}>
         <StyledBanner dense LeftIcon={BicolorListFav}>
           <Typo.ButtonText>Crée une liste de favoris</Typo.ButtonText>
           <Typo.Body>Trie tes favoris à ta façon et partage-les&nbsp;!</Typo.Body>
