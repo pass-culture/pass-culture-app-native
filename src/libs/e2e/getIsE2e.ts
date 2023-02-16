@@ -1,6 +1,7 @@
 import { Platform } from 'react-native'
 
 import { APPIUM_ADDRESS, APPIUM_ADDRESS_ANDROID } from 'libs/e2e/constants'
+import { fetchWithTimeout } from 'libs/e2e/fetchWithTimeout'
 import { env } from 'libs/environment'
 
 // iOS/Android e2e test run on Emulator/Simulator with an Appium server
@@ -15,7 +16,7 @@ export async function getIsE2e() {
   }
   try {
     const url = `${Platform.OS === 'android' ? APPIUM_ADDRESS_ANDROID : APPIUM_ADDRESS}/status`
-    const response = await fetch(url, {
+    const response = await fetchWithTimeout(url, {
       mode: 'cors',
       headers: new Headers({
         accept: 'application/json',

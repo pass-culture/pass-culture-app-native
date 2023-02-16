@@ -1,4 +1,5 @@
 import { APPIUM_ADDRESS } from 'libs/e2e/constants'
+import { fetchWithTimeout } from 'libs/e2e/fetchWithTimeout'
 import { env } from 'libs/environment'
 
 let isE2e: boolean | undefined = undefined
@@ -17,7 +18,7 @@ export async function getIsE2e() {
     // This alternative is specific for iOS browser as safaridriver ios have a bug and do not set navigator.webdriver property during automation
     try {
       const url = `${APPIUM_ADDRESS}/status`
-      const response = await fetch(url, {
+      const response = await fetchWithTimeout(url, {
         mode: 'cors',
         headers: new Headers({
           accept: 'application/json',
