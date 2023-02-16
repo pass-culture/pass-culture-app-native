@@ -3,6 +3,7 @@ import { Linking } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
+import { Li } from 'ui/components/Li'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 const MAX_NB_OF_SOCIALS_TO_SHOW = 3
@@ -46,7 +47,11 @@ export const InstalledMessagingApps = () => {
           }
         }
 
-        return <ShareMessagingApp key={network} network={network} onPress={onPress} />
+        return (
+          <Li key={network}>
+            <ShareMessagingApp network={network} onPress={onPress} />
+          </Li>
+        )
       })}
     </React.Fragment>
   )

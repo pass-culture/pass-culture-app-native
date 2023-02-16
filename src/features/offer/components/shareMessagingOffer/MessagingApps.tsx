@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { InstalledMessagingApps } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
 import { OfferTypes } from 'features/search/types'
 import { Li } from 'ui/components/Li'
-import { ShareMessagingApp, Network } from 'ui/components/ShareMessagingApp'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
@@ -11,10 +11,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type MessagingAppsProps = {
   offerType: OfferTypes
-  socialMedias: Network[]
 }
 
-export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) => {
+export const MessagingApps = ({ offerType }: MessagingAppsProps) => {
   const title =
     offerType === 'isEvent' ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
   return (
@@ -22,17 +21,7 @@ export const MessagingApps = ({ offerType, socialMedias }: MessagingAppsProps) =
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
-          {/* TODO(PC-19359): use InstalledMessagingApps here */}
-          {socialMedias.map((socialMedia) => (
-            <StyledLi key={socialMedia}>
-              <ShareMessagingApp
-                network={socialMedia}
-                onPress={async () => {
-                  return
-                }}
-              />
-            </StyledLi>
-          ))}
+          <InstalledMessagingApps />
           <StyledLi>
             <ShareMessagingAppOther
               onPress={async () => {
