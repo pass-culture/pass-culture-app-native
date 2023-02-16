@@ -6,7 +6,7 @@ import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/ch
 import { Li } from 'ui/components/Li'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
-const MAX_NB_OF_SOCIALS_TO_SHOW = 3
+export const MAX_NB_OF_SOCIALS_TO_SHOW = 3
 const SHARE_URL = 'https://app.testing.passculture.team/'
 const SHARE_MESSAGE = `Retrouvez ... chez ... sur le pass Culture`
 

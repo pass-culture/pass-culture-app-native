@@ -14,6 +14,7 @@ import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/O
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
+import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -194,6 +195,10 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           locationCoordinates={venue.coordinates}
           showVenueBanner={showVenueBanner}
         />
+      </SectionWithDivider>
+
+      <SectionWithDivider visible margin>
+        <MessagingApps isEvent={isEvent} />
       </SectionWithDivider>
 
       <SectionWithDivider

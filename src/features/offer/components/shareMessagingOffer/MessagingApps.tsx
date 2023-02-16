@@ -5,7 +5,7 @@ import { InstalledMessagingApps } from 'features/offer/components/shareMessaging
 import { Li } from 'ui/components/Li'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type MessagingAppsProps = {
@@ -29,6 +29,7 @@ export const MessagingApps = ({ isEvent }: MessagingAppsProps) => {
           </StyledLi>
         </StyledUl>
       </IconsWrapper>
+      <Spacer.Column numberOfSpaces={9} />
     </React.Fragment>
   )
 }

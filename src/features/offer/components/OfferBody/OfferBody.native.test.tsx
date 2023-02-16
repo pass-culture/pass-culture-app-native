@@ -1,15 +1,19 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import Share from 'react-native-share'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
+import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
+import { act, cleanup, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 jest.mock('react-query')
 jest.mock('shared/user/useAvailableCredit')
@@ -31,6 +35,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
+
+const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
+const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -110,6 +117,73 @@ describe('<OfferBody />', () => {
         scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
       })
       expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('share on social media', () => {
+    it('should hide social medium when not installed', async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.snapchat]: false,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await waitFor(() => {
+        expect(screen.queryByText(`Envoyer sur ${[Network.snapchat]}`)).toBeFalsy()
+      })
+    })
+
+    it('should display social medium when installed', async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.snapchat]: true,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await waitFor(() => {
+        expect(screen.queryByText(`Envoyer sur ${[Network.snapchat]}`)).toBeTruthy()
+      })
+    })
+
+    it(`should not display more than ${MAX_NB_OF_SOCIALS_TO_SHOW} social media apps`, async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.instagram]: true,
+        [Network.snapchat]: true,
+        [Network.whatsapp]: true,
+        [Network.telegram]: true,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await waitFor(() => {
+        expect(screen.queryAllByText(/Envoyer sur/)).toHaveLength(MAX_NB_OF_SOCIALS_TO_SHOW)
+      })
+    })
+
+    it.each([true, false])(`should always display "Plus d’options" button`, async (hasSocial) => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.snapchat]: hasSocial,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await waitFor(() => {
+        expect(screen.queryByText('Plus d’options')).toBeTruthy()
+      })
+    })
+
+    it('should open social medium on share button press', async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.snapchat]: true,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await act(async () => {
+        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.snapchat]}`)
+        fireEvent.press(socialMediumButton)
+      })
+
+      expect(mockShareSingle).toHaveBeenCalledWith({
+        social: Network.snapchat,
+        message: 'Retrouvez ... chez ... sur le pass Culture',
+        url: 'https://app.testing.passculture.team/',
+      })
     })
   })
 })
