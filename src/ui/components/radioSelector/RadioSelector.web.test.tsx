@@ -13,6 +13,6 @@ describe('<RadioSelector />', () => {
     fireEvent.focus(Press)
     fireEvent.keyDown(Press, { key: 'Spacebar' })
 
-    expect(onPress).toBeCalledTimes(1)
+    expect(onPress).toHaveBeenNthCalledWith(1)
   })
 })
