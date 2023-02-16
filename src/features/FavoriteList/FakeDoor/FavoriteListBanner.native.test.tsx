@@ -18,5 +18,13 @@ describe('FavoriteListBanner', () => {
 
     expect(analytics.logFavoriteListDisplayed).toHaveBeenNthCalledWith(1, 'favorites')
   })
+
+  it('should log when the user presses favorite list banner', () => {
+    render(<FavoriteListBanner />)
+
+    const banner = screen.getByText('Crée une liste de favoris')
+    fireEvent.press(banner)
+
+    expect(analytics.logFavoriteListButtonClicked).toHaveBeenNthCalledWith(1, 'favorites')
   })
 })
