@@ -1,7 +1,7 @@
 name: Tester yaml
 
 on:
-  push:
+  pull-request:
 env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 jobs:
