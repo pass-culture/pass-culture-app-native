@@ -42,9 +42,9 @@ export const Offer: FunctionComponent = () => {
   const hasSimilarOffers = similarOffers && similarOffers.length > 0
   const fromOfferId = route.params?.fromOfferId
 
-  const logSimilarOfferPlaylistVerticalScroll = useFunctionOnce(() => {
+  const logPlaylistVerticalScroll = useFunctionOnce(() => {
     if (hasSimilarOffers) {
-      return analytics.logSimilarOfferPlaylistVerticalScroll(fromOfferId)
+      return analytics.logPlaylistVerticalScroll(fromOfferId, offerId)
     }
   })
 
@@ -55,7 +55,7 @@ export const Offer: FunctionComponent = () => {
       }
       // The log event is triggered when the similar offer playlist is visible
       if (isCloseToBottom({ ...nativeEvent, padding: 300 })) {
-        logSimilarOfferPlaylistVerticalScroll()
+        logPlaylistVerticalScroll()
       }
     },
   })
