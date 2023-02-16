@@ -5,7 +5,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
-import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction.web'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { RadioButtonSelected } from 'ui/svg/RadioButtonSelected'
@@ -23,7 +23,7 @@ interface ValidateOffIconProps extends AccessibleIcon {
 
 interface RadioSelectorProps {
   label: string
-  onPress: (label: string, type: RadioSelectorType) => void
+  onPress: () => void
   description?: string
   price?: string
   type?: RadioSelectorType
@@ -43,7 +43,7 @@ export const RadioSelector = ({
     if (type === RadioSelectorType.DISABLED) {
       return
     }
-    onPress(label, RadioSelectorType.ACTIVE)
+    onPress()
   }
 
   useArrowNavigationForRadioButton(containerRef)
@@ -65,41 +65,45 @@ export const RadioSelector = ({
       <IconPriceContainer>
         {!!price && <PriceText type={type}>{price}€</PriceText>}
         {type === RadioSelectorType.ACTIVE ? (
-          <RadioButtonSelectedPrimary />
+          <RadioButtonSelectedPrimary testID="radio-button-selected-primary" />
         ) : (
-          <ValidateOffIcon type={type} />
+          <ValidateOffIcon type={type} testID="validate-off-icon" />
         )}
       </IconPriceContainer>
     </RadioSelectorContainer>
   )
 }
 
-const RadioSelectorContainer = styled(TouchableOpacity)<{ type: RadioSelectorType }>(
-  ({ theme, type = RadioSelectorType.DEFAULT }) => {
-    let borderWidth = 1
-    let backgroundColor
-
-    if (type === RadioSelectorType.ACTIVE) {
-      borderWidth = 2
-    } else if (type === RadioSelectorType.DISABLED) {
-      borderWidth = 0
-      backgroundColor = theme.colors.greyLight
-    }
-
-    return {
-      flexDirection: 'row',
-      borderColor: theme.colors.greyDark,
-      borderRadius: theme.borderRadius.radius,
-      borderWidth,
-      padding: getSpacing(4),
-      backgroundColor,
-    }
-  }
-)
-
-const TextContainer = styled.View(() => ({
-  flex: 1,
+const DefaultRadio = styled(TouchableOpacity)(({ theme }) => ({
+  flexDirection: 'row',
+  borderWidth: 1,
+  borderColor: theme.colors.greyDark,
+  borderRadius: theme.borderRadius.radius,
+  padding: getSpacing(4),
+  backgroundColor: 'transparent',
+  minHeight: 92,
+  maxHeight: 92,
+  alignItems: 'center',
 }))
+
+const ActiveRadio = styled(DefaultRadio)({
+  borderWidth: 2,
+})
+
+const DisabledRadio = styled(DefaultRadio)(({ theme }) => ({
+  borderWidth: 0,
+  backgroundColor: theme.colors.greyLight,
+}))
+
+const RadioSelectorContainer = ({ type = RadioSelectorType.DEFAULT, ...rest }) => {
+  if (type === RadioSelectorType.DISABLED) return <DisabledRadio {...rest} />
+  if (type === RadioSelectorType.ACTIVE) return <ActiveRadio {...rest} />
+  return <DefaultRadio {...rest} />
+}
+
+const TextContainer = styled.View({
+  flex: 1,
+})
 
 const ButtonText = styled(Typo.ButtonText)<{ type: RadioSelectorType }>(({ theme, type }) => ({
   color: type === RadioSelectorType.DISABLED ? theme.colors.greyDark : theme.colors.black,
