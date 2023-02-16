@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
+import { analytics } from 'libs/firebase/analytics'
 import { useModal } from 'ui/components/modals/useModal'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -14,6 +15,10 @@ export const FavoriteListBanner: FunctionComponent = () => {
     showModal: showFakeDoorListFavoritesVisible,
     hideModal: hideFakeDoorListFavoritesVisible,
   } = useModal(false)
+
+  useEffect(() => {
+    analytics.logFavoriteListDisplayed('favorites')
+  }, [])
 
   return (
     <React.Fragment>
