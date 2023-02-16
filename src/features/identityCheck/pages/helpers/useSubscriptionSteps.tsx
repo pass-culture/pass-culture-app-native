@@ -3,9 +3,7 @@ import React from 'react'
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { IdCardStepDone } from 'features/identityCheck/components/IdCardStepDone'
-import { PhoneStepDone } from 'features/identityCheck/components/PhoneStepDone'
-import { ProfileStepDone } from 'features/identityCheck/components/ProfileStepDone'
+import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -37,7 +35,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
       icon: {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
-        completed: ProfileStepDone,
+        completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
       },
       label: 'Profil',
       screens: hasSchoolTypes
@@ -55,7 +53,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
       icon: {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
-        completed: IdCardStepDone,
+        completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
       },
       label: 'Identification',
       screens:
@@ -66,7 +64,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
       icon: {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
-        completed: BicolorLegal,
+        completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
       },
       label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
@@ -80,7 +78,9 @@ export const useSubscriptionSteps = (): StepConfig[] => {
         icon: {
           disabled: DisabledSmartphoneIcon,
           current: BicolorSmartphone,
-          completed: PhoneStepDone,
+          completed: () => (
+            <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+          ),
         },
         label: 'Numéro de téléphone',
         screens:
