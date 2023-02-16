@@ -198,7 +198,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
-        <MessagingApps isEvent={isEvent} />
+        <MessagingApps offerId={offerId} isEvent={isEvent} />
       </SectionWithDivider>
 
       <SectionWithDivider

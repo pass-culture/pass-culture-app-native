@@ -10,16 +10,17 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type MessagingAppsProps = {
   isEvent: boolean
+  offerId: number
 }
 
-export const MessagingApps = ({ isEvent }: MessagingAppsProps) => {
+export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
   return (
     <React.Fragment>
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
-          <InstalledMessagingApps />
+          <InstalledMessagingApps offerId={offerId} />
           <StyledLi>
             <ShareMessagingAppOther
               onPress={async () => {

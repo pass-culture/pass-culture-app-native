@@ -8,6 +8,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
+import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
@@ -181,8 +182,8 @@ describe('<OfferBody />', () => {
 
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Network.snapchat,
-        message: 'Retrouvez ... chez ... sur le pass Culture',
-        url: 'https://app.testing.passculture.team/',
+        message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
+        url: getOfferUrl(offerId),
       })
     })
   })

@@ -3,15 +3,17 @@ import { Linking } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
+import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
+import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
 import { Li } from 'ui/components/Li'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 export const MAX_NB_OF_SOCIALS_TO_SHOW = 3
-const SHARE_URL = 'https://app.testing.passculture.team/'
-const SHARE_MESSAGE = `Retrouvez ... chez ... sur le pass Culture`
 
-export const InstalledMessagingApps = () => {
+export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
   const [installedApps, setInstalledApps] = useState<Network[]>([])
+  const shareMessage = useShareOfferMessage(offerId)
+  const shareUrl = getOfferUrl(offerId)
 
   useEffect(() => {
     checkInstalledApps()
@@ -24,6 +26,8 @@ export const InstalledMessagingApps = () => {
       })
   }, [])
 
+  if (!shareMessage) return null
+
   return (
     <React.Fragment>
       {installedApps.map((network) => {
@@ -34,14 +38,14 @@ export const InstalledMessagingApps = () => {
           ...options
         } = mapNetworkToSocial[network]
         // Message has to be concatenated with url if url option is not supported
-        const message = supportsURL ? SHARE_MESSAGE : SHARE_MESSAGE + '\n' + SHARE_URL
+        const message = supportsURL ? shareMessage : shareMessage + '\n' + shareUrl
 
         const onPress = async () => {
           if (isNative && options.url) await Linking.openURL(options.url + message)
           else {
             await Share.shareSingle({
               message: shouldEncodeURI ? encodeURI(message) : message,
-              url: supportsURL ? SHARE_URL : undefined,
+              url: supportsURL ? shareUrl : undefined,
               ...options,
             })
           }
