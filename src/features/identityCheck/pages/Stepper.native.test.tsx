@@ -8,10 +8,11 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
@@ -50,32 +51,49 @@ mockedUseSubscriptionContext.mockReturnValue({
 
 jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps')
 const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
-mockUseSubscriptionSteps.mockReturnValue([
+const mockStepConfig: Partial<StepConfig[]> = [
   {
     name: IdentityCheckStep.PHONE_VALIDATION,
     label: 'Numéro de téléphone',
-    icon: 'Icon',
-    screens: [''],
+    icon: {
+      disabled: BicolorProfile,
+      current: BicolorProfile,
+      completed: BicolorProfile,
+    },
+    screens: [],
   },
   {
     name: IdentityCheckStep.IDENTIFICATION,
     label: 'Identification',
-    icon: 'Icon',
-    screens: [''],
+    icon: {
+      disabled: BicolorProfile,
+      current: BicolorProfile,
+      completed: BicolorProfile,
+    },
+    screens: [],
   },
   {
     name: IdentityCheckStep.PROFILE,
     label: 'Profil',
-    icon: 'Icon',
-    screens: [''],
+    icon: {
+      disabled: BicolorProfile,
+      current: BicolorProfile,
+      completed: BicolorProfile,
+    },
+    screens: [],
   },
   {
     name: IdentityCheckStep.CONFIRMATION,
     label: 'Confirmation',
-    icon: 'Icon',
-    screens: [''],
+    icon: {
+      disabled: BicolorProfile,
+      current: BicolorProfile,
+      completed: BicolorProfile,
+    },
+    screens: [],
   },
-])
+]
+mockUseSubscriptionSteps.mockReturnValue(mockStepConfig)
 
 jest.mock('react-query')
 

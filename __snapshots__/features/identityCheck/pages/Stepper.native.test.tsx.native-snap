@@ -181,7 +181,16 @@ Array [
                   ]
                 }
               >
-                <Icon />
+                <View
+                  fill="url(#gradienttestUuid)"
+                  height={32}
+                  testID="BicolorProfile"
+                  width={32}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 state="completed"
@@ -198,30 +207,6 @@ Array [
               >
                 Numéro de téléphone
               </Text>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-end",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingHorizontal": 8,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Complété"
-                  height={20}
-                  testID="Complété"
-                  width={20}
-                >
-                  <Text>
-                    Complété-SVG-Mock
-                  </Text>
-                </View>
-              </View>
             </View>
           </View>
         </View>
@@ -291,7 +276,16 @@ Array [
                   ]
                 }
               >
-                <Icon />
+                <View
+                  fill="url(#gradienttestUuid)"
+                  height={32}
+                  testID="BicolorProfile"
+                  width={32}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 state="current"
@@ -308,30 +302,6 @@ Array [
               >
                 Identification
               </Text>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-end",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingHorizontal": 8,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Non complété"
-                  height={20}
-                  testID="Non complété"
-                  width={20}
-                >
-                  <Text>
-                    Non complété-SVG-Mock
-                  </Text>
-                </View>
-              </View>
             </View>
           </View>
         </View>
@@ -401,7 +371,16 @@ Array [
                   ]
                 }
               >
-                <Icon />
+                <View
+                  fill="url(#gradienttestUuid)"
+                  height={32}
+                  testID="BicolorProfile"
+                  width={32}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 state="disabled"
@@ -418,30 +397,6 @@ Array [
               >
                 Profil
               </Text>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-end",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingHorizontal": 8,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Non complété"
-                  height={20}
-                  testID="Non complété"
-                  width={20}
-                >
-                  <Text>
-                    Non complété-SVG-Mock
-                  </Text>
-                </View>
-              </View>
             </View>
           </View>
         </View>
@@ -511,7 +466,16 @@ Array [
                   ]
                 }
               >
-                <Icon />
+                <View
+                  fill="url(#gradienttestUuid)"
+                  height={32}
+                  testID="BicolorProfile"
+                  width={32}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
               </View>
               <Text
                 state="disabled"
@@ -528,30 +492,6 @@ Array [
               >
                 Confirmation
               </Text>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "flex-end",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingHorizontal": 8,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Non complété"
-                  height={20}
-                  testID="Non complété"
-                  width={20}
-                >
-                  <Text>
-                    Non complété-SVG-Mock
-                  </Text>
-                </View>
-              </View>
             </View>
           </View>
         </View>

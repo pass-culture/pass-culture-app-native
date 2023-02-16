@@ -8,10 +8,34 @@ import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { IconInterface } from 'ui/svg/icons/types'
 
 const label = 'Profil'
-const icon: React.FC<IconInterface> = () => (
-  <BicolorProfile opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+const DisabledIcon: React.FC<IconInterface> = () => (
+  <BicolorProfile
+    testID="disabled-icon"
+    opacity={0.5}
+    color={theme.colors.black}
+    color2={theme.colors.black}
+  />
 )
-const step = { label, icon } as StepConfig
+const CurrentIcon: React.FC<IconInterface> = () => (
+  <BicolorProfile
+    testID="current-icon"
+    opacity={0.5}
+    color={theme.colors.black}
+    color2={theme.colors.black}
+  />
+)
+const CompletedIcon: React.FC<IconInterface> = () => (
+  <BicolorProfile
+    testID="completed-icon"
+    opacity={0.5}
+    color={theme.colors.black}
+    color2={theme.colors.black}
+  />
+)
+const step = {
+  label,
+  icon: { disabled: DisabledIcon, current: CurrentIcon, completed: CompletedIcon },
+} as StepConfig
 
 describe('StepButton', () => {
   describe('button is enabled/disabled', () => {
@@ -35,22 +59,25 @@ describe('StepButton', () => {
     it('icon check is displaying when step is completed', () => {
       const { queryByTestId } = render(<StepButton step={step} state={StepButtonState.COMPLETED} />)
 
-      expect(queryByTestId('Complété')).toBeTruthy()
-      expect(queryByTestId('Non complété')).toBeFalsy()
+      expect(queryByTestId('completed-icon')).toBeTruthy()
+      expect(queryByTestId('current-icon')).toBeFalsy()
+      expect(queryByTestId('disabled-icon')).toBeFalsy()
     })
 
     it('icon check is not displaying when step is disabled', () => {
       const { queryByTestId } = render(<StepButton step={step} state={StepButtonState.DISABLED} />)
 
-      expect(queryByTestId('Complété')).toBeFalsy()
-      expect(queryByTestId('Non complété')).toBeTruthy()
+      expect(queryByTestId('disabled-icon')).toBeTruthy()
+      expect(queryByTestId('completed-icon')).toBeFalsy()
+      expect(queryByTestId('current-icon')).toBeFalsy()
     })
 
     it('icon check is not displaying when step is current', () => {
       const { queryByTestId } = render(<StepButton step={step} state={StepButtonState.CURRENT} />)
 
-      expect(queryByTestId('Complété')).toBeFalsy()
-      expect(queryByTestId('Non complété')).toBeTruthy()
+      expect(queryByTestId('current-icon')).toBeTruthy()
+      expect(queryByTestId('completed-icon')).toBeFalsy()
+      expect(queryByTestId('disabled-icon')).toBeFalsy()
     })
   })
 })

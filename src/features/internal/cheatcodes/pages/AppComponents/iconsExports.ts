@@ -53,6 +53,7 @@ import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Flag } from 'ui/svg/icons/Flag'
 import { Flash } from 'ui/svg/icons/Flash'
+import { GreenCheck } from 'ui/svg/icons/GreenCheck'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
@@ -126,6 +127,7 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
+  GreenCheck,
   ArrowNext,
   ArrowPrevious,
   Bell,

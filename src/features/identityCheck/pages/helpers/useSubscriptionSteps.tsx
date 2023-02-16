@@ -3,15 +3,16 @@ import React from 'react'
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
-import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
 export const useSubscriptionSteps = (): StepConfig[] => {
@@ -31,7 +32,11 @@ export const useSubscriptionSteps = (): StepConfig[] => {
   const steps: StepConfig[] = [
     {
       name: IdentityCheckStep.PROFILE,
-      icon: ProfileIcon,
+      icon: {
+        disabled: DisabledProfileIcon,
+        current: BicolorProfile,
+        completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
+      },
       label: 'Profil',
       screens: hasSchoolTypes
         ? [
@@ -45,14 +50,22 @@ export const useSubscriptionSteps = (): StepConfig[] => {
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,
-      icon: IdCardIcon,
+      icon: {
+        disabled: DisabledIdCardIcon,
+        current: BicolorIdCard,
+        completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+      },
       label: 'Identification',
       screens:
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
-      icon: ConfirmationIcon,
+      icon: {
+        disabled: DisabledConfirmationIcon,
+        current: BicolorLegal,
+        completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
+      },
       label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
@@ -62,7 +75,13 @@ export const useSubscriptionSteps = (): StepConfig[] => {
     return [
       {
         name: IdentityCheckStep.PHONE_VALIDATION,
-        icon: SmartphoneIcon,
+        icon: {
+          disabled: DisabledSmartphoneIcon,
+          current: BicolorSmartphone,
+          completed: () => (
+            <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+          ),
+        },
         label: 'Numéro de téléphone',
         screens:
           remainingAttempts === 0
@@ -75,15 +94,35 @@ export const useSubscriptionSteps = (): StepConfig[] => {
   return steps
 }
 
-const SmartphoneIcon: React.FC<IconInterface> = () => (
-  <BicolorSmartphone opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (
+  <BicolorSmartphone
+    size={24}
+    color={theme.colors.greyMedium}
+    color2={theme.colors.greyMedium}
+    testID="DisabledSmartphoneIcon"
+  />
 )
-const ProfileIcon: React.FC<IconInterface> = () => (
-  <BicolorProfile opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+const DisabledProfileIcon: React.FC<AccessibleIcon> = () => (
+  <BicolorProfile
+    size={24}
+    color={theme.colors.greyMedium}
+    color2={theme.colors.greyMedium}
+    testID="DisabledProfileIcon"
+  />
 )
-const IdCardIcon: React.FC<IconInterface> = () => (
-  <BicolorIdCard opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
+  <BicolorIdCard
+    size={24}
+    color={theme.colors.greyMedium}
+    color2={theme.colors.greyMedium}
+    testID="DisabledIdCardIcon"
+  />
 )
-const ConfirmationIcon: React.FC<IconInterface> = () => (
-  <BicolorConfirmation opacity={0.5} color={theme.colors.black} color2={theme.colors.black} />
+const DisabledConfirmationIcon: React.FC<AccessibleIcon> = () => (
+  <BicolorLegal
+    size={24}
+    color={theme.colors.greyMedium}
+    color2={theme.colors.greyMedium}
+    testID="DisabledConfirmationIcon"
+  />
 )

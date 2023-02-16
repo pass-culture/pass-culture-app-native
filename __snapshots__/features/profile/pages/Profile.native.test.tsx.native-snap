@@ -248,10 +248,11 @@ exports[`Profile component should render correctly 1`] = `
                           <View
                             fill="url(#gradienttestUuid)"
                             height={24}
+                            testID="BicolorProfile"
                             width={24}
                           >
                             <Text>
-                              undefined-SVG-Mock
+                              BicolorProfile-SVG-Mock
                             </Text>
                           </View>
                           <View
