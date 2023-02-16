@@ -7,6 +7,7 @@ import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionSt
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
+import { SignupBanner } from 'features/home/components/SignupBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { env } from 'libs/environment'
@@ -59,6 +60,10 @@ export const HomeHeader: FunctionComponent = function () {
   const credit = useGetDepositAmountsByAge(user?.birthDate)
 
   const SystemBloc = useMemo(() => {
+    if (!isLoggedIn) {
+      return <SignupBanner />
+    }
+
     if (shouldDisplaySubscriptionBloc) {
       return (
         <React.Fragment>
