@@ -61,6 +61,8 @@ export const analytics: typeof actualAnalytics = {
   logDismissShareApp: jest.fn(),
   logErrorSavingNewEmail: jest.fn(),
   logExclusivityBlockClicked: jest.fn(),
+  logFavoriteListDisplayed: jest.fn(),
+  logFavoriteListButtonClicked: jest.fn(),
   logGoToParentsFAQ: jest.fn(),
   logGoToProfil: jest.fn(),
   logHasAcceptedAllCookies: jest.fn(),
