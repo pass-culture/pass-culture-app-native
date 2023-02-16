@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { StepConfig } from 'features/identityCheck/types'
+import { StepButtonState, StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
-
-export type StepButtonState = 'completed' | 'current' | 'disabled'
 
 interface Props {
   step: StepConfig
@@ -20,16 +18,14 @@ interface Props {
 export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   const { icon: Icon, label } = step
 
-  // we need to update opacity inside component definition since it does not update properly in BaseTouchableLink
-  const StyledTouchableLink = styled(BaseTouchableLink)({
-    opacity: state === 'disabled' ? 0.5 : 1,
-  })
-
-  const iconLabel = state === 'completed' ? 'Complété' : 'Non complété'
+  const iconLabel = state === StepButtonState.COMPLETED ? 'Complété' : 'Non complété'
   const accessibilityLabel = `${label} ${iconLabel}`
 
+  const TouchableComponent =
+    state === StepButtonState.CURRENT ? EnabledTouchableLink : DisabledTouchableLink
+
   return (
-    <StyledTouchableLink
+    <TouchableComponent
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={state !== 'current'}
@@ -37,22 +33,36 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       <IconContainer>
         <Icon />
       </IconContainer>
-      <Typo.ButtonText>{label}</Typo.ButtonText>
+      <StyledButtonText state={state}>{label}</StyledButtonText>
       <CompletionContainer>
-        <Validate isCompleted={state === 'completed'} {...accessibilityAndTestId(iconLabel)} />
+        <Validate
+          isCompleted={state === StepButtonState.COMPLETED}
+          {...accessibilityAndTestId(iconLabel)}
+        />
       </CompletionContainer>
-    </StyledTouchableLink>
+    </TouchableComponent>
   )
 }
 
 const BaseTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
-  height: getSpacing(24),
   marginTop: getSpacing(2),
-  width: '100%',
   backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,
   flexDirection: 'row',
   alignItems: 'center',
+  borderWidth: '1px',
+}))
+
+const EnabledTouchableLink = styled(BaseTouchableLink)(({ theme }) => ({
+  height: getSpacing(23),
+  width: '100%',
+  borderColor: theme.colors.greySemiDark,
+}))
+
+const DisabledTouchableLink = styled(BaseTouchableLink)(({ theme }) => ({
+  height: getSpacing(22),
+  width: '98%',
+  borderColor: theme.colors.greyMedium,
 }))
 
 const IconContainer = styled.View({ padding: getSpacing(4) })
@@ -68,3 +78,9 @@ const Validate = styled(DefaultValidate).attrs<{ isCompleted: boolean }>(
     color: isCompleted ? theme.colors.greenValid : theme.colors.transparent,
   })
 )<{ isCompleted: boolean }>``
+
+const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
+  ({ state, theme }) => ({
+    color: state === StepButtonState.CURRENT ? theme.colors.black : theme.colors.greySemiDark,
+  })
+)

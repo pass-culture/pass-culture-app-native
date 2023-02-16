@@ -17,12 +17,12 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
-import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -37,7 +37,8 @@ export const IdentityCheckStepper = () => {
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { refetchUser } = useAuthContext()
+  const { refetchUser, user } = useAuthContext()
+  const credit = useGetDepositAmountsByAge(user?.birthDate)
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -97,34 +98,41 @@ export const IdentityCheckStepper = () => {
   return (
     <React.Fragment>
       <CenteredContainer>
-        <BackgroundWithWhiteStatusBar />
         <Container>
           <Spacer.TopScreen />
-          {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
+          {theme.isDesktopViewport ? (
+            <Spacer.Column numberOfSpaces={2} />
+          ) : (
+            <Spacer.Column numberOfSpaces={4} />
+          )}
 
-          <StyledTitle3>C’est très rapide&nbsp;!</StyledTitle3>
+          <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
           <Spacer.Column numberOfSpaces={2} />
-          <StyledBody>Voici les {steps.length} étapes que tu vas devoir suivre</StyledBody>
+          <Typo.Body>
+            Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
+          </Typo.Body>
 
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
           <VerticalUl>
             {steps.map((step) => (
               <Li key={step.name}>
-                <StepButton
-                  step={step}
-                  state={getStepState(steps, step.name, currentStep)}
-                  navigateTo={
-                    step.name === IdentityCheckStep.IDENTIFICATION &&
-                    context.identification.method === null
-                      ? undefined
-                      : { screen: step.screens[0] }
-                  }
-                  onPress={() => {
-                    amplitude.logEvent('stepper_clicked', { step: step.name })
-                    return navigateToStep(step)
-                  }}
-                />
+                <StepButtonContainer>
+                  <StepButton
+                    step={step}
+                    state={getStepState(steps, step.name, currentStep)}
+                    navigateTo={
+                      step.name === IdentityCheckStep.IDENTIFICATION &&
+                      context.identification.method === null
+                        ? undefined
+                        : { screen: step.screens[0] }
+                    }
+                    onPress={() => {
+                      amplitude.logEvent('stepper_clicked', { step: step.name })
+                      return navigateToStep(step)
+                    }}
+                  />
+                </StepButtonContainer>
               </Li>
             ))}
           </VerticalUl>
@@ -135,7 +143,7 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite
+          <ButtonTertiaryBlack
             icon={Invalidate}
             wording="Abandonner"
             onPress={showQuitIdentityCheckModal}
@@ -155,15 +163,7 @@ export const IdentityCheckStepper = () => {
   )
 }
 
-const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.colors.white,
-}))
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.colors.white,
-}))
+const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
 const CenteredContainer = styled.View({
   flex: 1,
@@ -177,3 +177,7 @@ const Container = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,
 }))
+
+const StepButtonContainer = styled.View({
+  alignItems: 'center',
+})
