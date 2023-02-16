@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { Share as NativeShare } from 'react-native'
 import Share from 'react-native-share'
 
 import { push } from '__mocks__/@react-navigation/native'
@@ -39,6 +40,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
+const mockNativeShare = jest.spyOn(NativeShare, 'share')
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -185,6 +187,20 @@ describe('<OfferBody />', () => {
         message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
         url: getOfferUrl(offerId),
       })
+    })
+
+    it('should open native share modal on "Plus d’options" press', async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.snapchat]: true,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await act(async () => {
+        const otherButton = screen.getByText('Plus d’options')
+        fireEvent.press(otherButton)
+      })
+
+      expect(mockNativeShare).toHaveBeenCalledTimes(1)
     })
   })
 })

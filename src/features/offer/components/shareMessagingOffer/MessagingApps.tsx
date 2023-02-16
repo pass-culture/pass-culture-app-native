@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { InstalledMessagingApps } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
+import { useShareOffer } from 'features/share/helpers/useShareOffer'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { Li } from 'ui/components/Li'
+import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -15,6 +18,18 @@ type MessagingAppsProps = {
 
 export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
+  const { share, shareContent } = useShareOffer(offerId)
+  const {
+    visible: shareOfferModalVisible,
+    showModal: showShareOfferModal,
+    hideModal: hideShareOfferModal,
+  } = useModal()
+
+  const onOtherPress = useCallback(() => {
+    share()
+    showShareOfferModal()
+  }, [share, showShareOfferModal])
+
   return (
     <React.Fragment>
       <StyledTitle4>{title}</StyledTitle4>
@@ -22,15 +37,19 @@ export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
         <StyledUl>
           <InstalledMessagingApps offerId={offerId} />
           <StyledLi>
-            <ShareMessagingAppOther
-              onPress={async () => {
-                return
-              }}
-            />
+            <ShareMessagingAppOther onPress={onOtherPress} />
           </StyledLi>
         </StyledUl>
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={9} />
+      {shareContent ? (
+        <WebShareModal
+          visible={shareOfferModalVisible}
+          headerTitle="Partager l’offre"
+          shareContent={shareContent}
+          dismissModal={hideShareOfferModal}
+        />
+      ) : null}
     </React.Fragment>
   )
 }

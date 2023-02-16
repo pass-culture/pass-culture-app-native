@@ -8,7 +8,7 @@ import { getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface ShareMessagingAppOtherProps {
-  onPress: () => Promise<void>
+  onPress: () => void
 }
 
 export const ShareMessagingAppOther: React.FC<ShareMessagingAppOtherProps> = ({ onPress }) => {
