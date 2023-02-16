@@ -1,0 +1,97 @@
+name: Tester yaml
+
+on:
+  push:
+env:
+  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+jobs:
+  yarn_tester_web:
+    runs-on: [self-hosted, linux, X64]
+    #    strategy:
+    # matrix:
+    #   shard: [1/6, 2/6, 3/6, 4/6, 5/5]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@v3
+        id: yarn-test-web-cache
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-web-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-web-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn test:unit:web:ci
+        continue-on-error: true
+
+  yarn_test_native:
+    runs-on: [self-hosted, linux, X64]
+    strategy:
+      matrix:
+        shard: [1/3, 2/3, 3/3]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@v3
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}-${{ matrix.testGroup }}
+          restore-keys: |
+            v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}-${{ matrix.testGroup }}
+      - run: yarn test:unit:ci
+        continue-on-error: true
+
+  yarn_test_proxy:
+    runs-on: [self-hosted, linux, X64]
+    #    strategy:
+    # matrix:
+    #   shard: [1/3, 2/3, 3/3]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        id: yarn-test-native-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run:  yarn install --immutable --cwd server
+      - uses: actions/cache@v3
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}-${{ matrix.testGroup }}
+          restore-keys: |
+            v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}-${{ matrix.testGroup }}
+      - run: yarn test:unit:ci
+
+
