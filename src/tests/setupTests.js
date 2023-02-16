@@ -33,6 +33,12 @@ global.afterEach(async () => {
   await flushAllPromises()
 })
 
+// AbortController needs to be mocked because it is not supported in our current version of Jest
+global.AbortController = jest.fn(() => ({
+  signal: {},
+  abort: jest.fn(),
+}))
+
 // WEB MOCKS
 // To replicate the browser behaviour in our node test environement (jsdom), we have to make the following mocks :
 global.GeolocationPositionError = {
