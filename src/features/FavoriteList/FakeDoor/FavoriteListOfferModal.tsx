@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -22,6 +23,7 @@ export const FavoriteListOfferModal: React.FC<Props> = ({
 }) => {
   const [shouldSeeSurvey, setShouldSeeSurvey] = useState(false)
   const onCreateFavListPress = () => {
+    analytics.logFavoriteListButtonClicked('offer')
     setShouldSeeSurvey(true)
     hideModal()
   }
