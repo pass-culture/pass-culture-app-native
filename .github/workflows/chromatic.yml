@@ -1,12 +1,13 @@
 name: 'Chromatic'
 
 on:
-  push:
-    paths:
-      - ".storybook/**"
-      - "src/**"
-      - "package.json"
-      - "yarn.lock"
+  workflow_call:
+  # push:
+  #   paths:
+  #     - '.storybook/**'
+  #     - 'src/**'
+  #     - 'package.json'
+  #     - 'yarn.lock'
 
 env:
   BUILD_DIR: /tmp/${{ github.sha }}
