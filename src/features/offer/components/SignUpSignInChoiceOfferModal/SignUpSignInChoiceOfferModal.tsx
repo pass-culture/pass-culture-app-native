@@ -50,7 +50,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
-        params={{ offerId }}
+        params={{ offerId, preventCancellation: true }}
         onAdditionalPress={() => {
           analytics.logSignInFromOffer(offerId)
           dismissModal()
@@ -62,7 +62,6 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.colors.secondary,
-  preventCancellation: true,
 }))``
 
 const StyledButtonContainer = styled.View({

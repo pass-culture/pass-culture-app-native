@@ -3,6 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
@@ -141,6 +142,7 @@ export type RootStackParamList = {
     preventCancellation?: boolean
     displayForcedLoginHelpMessage?: boolean
     offerId?: number
+    from?: From
   }
   Navigation: undefined
   NavigationAccountSuspension: undefined
@@ -153,6 +155,7 @@ export type RootStackParamList = {
     moduleName?: string
     moduleId?: string
     fromOfferId?: number
+    openModalOnNavigation?: boolean
   }
   OfferDescription: { id: number }
   SuspensionScreen: undefined

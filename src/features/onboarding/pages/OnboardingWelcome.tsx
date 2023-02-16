@@ -80,5 +80,5 @@ const StyledBody = styled(Typo.Body)({
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.colors.secondary,
-  preventCancellation: true,
+  params: { preventCancellation: true },
 }))``

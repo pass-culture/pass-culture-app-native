@@ -26,7 +26,11 @@ export function LoggedOutHeader() {
 
         {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
 
-        <AuthenticationButton type="login" linkColor={colors.secondary} preventCancellation />
+        <AuthenticationButton
+          type="login"
+          linkColor={colors.secondary}
+          params={{ preventCancellation: true }}
+        />
       </Container>
     </HeaderWithGreyContainer>
   )

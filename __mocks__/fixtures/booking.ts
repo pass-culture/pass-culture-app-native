@@ -1,4 +1,4 @@
-import { BookingOfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { BookingOfferResponse, BookingReponse, BookingsResponse, SubcategoryIdEnum } from 'api/gen'
 
 export const mockedBookingOfferResponse: BookingOfferResponse = {
   id: 32871,
@@ -9,15 +9,17 @@ export const mockedBookingOfferResponse: BookingOfferResponse = {
   subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
 }
 
-export const mockedBookingApi = {
+export const mockedBookingApi: BookingReponse = {
   id: 123,
   quantity: 3,
   totalAmount: 4,
   stock: { id: 431, offer: mockedBookingOfferResponse },
   token: 'bookingToken',
+  dateCreated: '',
 }
 
-export const mockedBookingsResponse = {
+export const mockedBookingsResponse: BookingsResponse = {
   ongoing_bookings: [mockedBookingApi],
   ended_bookings: [{ ...mockedBookingApi, id: 321 }],
+  hasBookingsAfter18: false,
 }

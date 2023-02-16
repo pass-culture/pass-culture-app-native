@@ -81,6 +81,7 @@ export const screenParamsParser: ParamsParsers = {
     preventCancellation: parseObject,
     displayForcedLoginHelpMessage: parseObject,
     offerId: identityFn,
+    from: identityFn,
   },
   Offer: {
     id: Number,
@@ -88,6 +89,7 @@ export const screenParamsParser: ParamsParsers = {
     moduleName: identityFn,
     moduleId: identityFn,
     fromOfferId: identityFn,
+    openModalOnNavigation: identityFn,
   },
   Home: {
     entryId: identityFn,

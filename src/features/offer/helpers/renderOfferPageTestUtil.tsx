@@ -15,11 +15,9 @@ import { superFlushWithAct, render } from 'tests/utils'
 
 jest.mock('libs/geolocation')
 
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual<Record<string, unknown>>('@react-navigation/native'),
-  useFocusEffect: jest.fn(),
-}))
-jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
+jest.unmock('@react-navigation/native')
+
+jest.unmock('@react-navigation/stack')
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -76,9 +74,10 @@ export async function renderOfferBodyPage(
   return wrapper
 }
 
-export async function renderOfferPage(
+export function renderOfferPage(
   fromOfferId?: number,
-  extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+  extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
+  openModalOnNavigation?: boolean
 ) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
   const wrapper = render(
@@ -89,18 +88,12 @@ export async function renderOfferPage(
           <RootStack.Screen
             name="Offer"
             component={Offer}
-            initialParams={{ id: offerId, fromOfferId }}
+            initialParams={{ id: offerId, fromOfferId, openModalOnNavigation }}
           />
         </RootStack.Navigator>
       </NavigationContainer>
     )
   )
-
-  await superFlushWithAct(25)
-
-  await waitForExpect(() => {
-    expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
-  })
 
   return wrapper
 }

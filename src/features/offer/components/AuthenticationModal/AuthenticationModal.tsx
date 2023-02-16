@@ -11,14 +11,22 @@ import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
+import { From } from './fromEnum'
+
 type Props = {
   visible: boolean
   hideModal: () => void
   offerId: number
+  from: From
   children?: never
 }
 
-export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideModal, offerId }) => {
+export const AuthenticationModal: FunctionComponent<Props> = ({
+  visible,
+  hideModal,
+  offerId,
+  from,
+}) => {
   const closeModal = useCallback(() => {
     analytics.logQuitAuthenticationModal(offerId)
     hideModal()
@@ -50,13 +58,20 @@ export const AuthenticationModal: FunctionComponent<Props> = ({ visible, hideMod
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+          navigateTo={{
+            screen: 'SignupForm',
+            params: { preventCancellation: true, offerId, from },
+          }}
           onBeforeNavigate={signUp}
           fitContentWidth={theme.isDesktopViewport}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" onAdditionalPress={signIn} />
+      <StyledAuthenticationButton
+        type="login"
+        onAdditionalPress={signIn}
+        params={{ offerId, from, preventCancellation: true }}
+      />
     </AppModalWithIllustration>
   )
 }

@@ -22,11 +22,11 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
 
+const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
+
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
-  const trackEventHasSeenOffer = useFunctionOnce(() =>
-    BatchUser.trackEvent(BatchEvent.hasSeenOffer)
-  )
+  const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const offerId = route.params && route.params.id
 
   const { data: offerResponse } = useOffer({ offerId })
@@ -71,11 +71,7 @@ export const Offer: FunctionComponent = () => {
     isDisabled,
   } = useCtaWordingAndAction({ offerId }) || {}
 
-  const {
-    OfferModal: CTAOfferModal,
-    showModal: showOfferModal,
-    dismissBookingOfferModal,
-  } = useOfferModal({
+  const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useOfferModal({
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
@@ -83,15 +79,16 @@ export const Offer: FunctionComponent = () => {
 
   useFocusEffect(
     useCallback(() => {
-      trackEventHasSeenOffer()
-      dismissBookingOfferModal && dismissBookingOfferModal()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dismissBookingOfferModal])
+      trackEventHasSeenOfferOnce()
+      if (route.params.openModalOnNavigation) {
+        showOfferModal()
+      }
+    }, [trackEventHasSeenOfferOnce, route.params.openModalOnNavigation, showOfferModal])
   )
 
   const onPress = () => {
     onPressCTA && onPressCTA()
-    showOfferModal && showOfferModal()
+    showOfferModal()
   }
 
   if (!offerResponse) return null
