@@ -12,5 +12,10 @@ const Template: ComponentStory<typeof MessagingApps> = (args) => <MessagingApps 
 
 export const Default = Template.bind({})
 Default.args = {
-  offerType: 'isDigital',
+  isEvent: false,
+}
+
+export const Event = Template.bind({})
+Default.args = {
+  isEvent: true,
 }
