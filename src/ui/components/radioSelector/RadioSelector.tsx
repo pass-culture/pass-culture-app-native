@@ -95,10 +95,10 @@ const DisabledRadio = styled(DefaultRadio)(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const RadioSelectorContainer = ({ type = RadioSelectorType.DEFAULT, ...rest }) => {
-  if (type === RadioSelectorType.DISABLED) return <DisabledRadio {...rest} />
-  if (type === RadioSelectorType.ACTIVE) return <ActiveRadio {...rest} />
-  return <DefaultRadio {...rest} />
+const RadioSelectorContainer = ({ type = RadioSelectorType.DEFAULT, ...props }) => {
+  if (type === RadioSelectorType.DISABLED) return <DisabledRadio {...props} />
+  if (type === RadioSelectorType.ACTIVE) return <ActiveRadio {...props} />
+  return <DefaultRadio {...props} />
 }
 
 const TextContainer = styled.View({
