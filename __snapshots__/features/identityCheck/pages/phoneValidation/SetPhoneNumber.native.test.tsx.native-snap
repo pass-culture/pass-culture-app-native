@@ -264,7 +264,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 ]
               }
             >
-              Ton numéro de téléphone
+              Quel est ton numéro de téléphone ?
             </Text>
           </View>
           <View

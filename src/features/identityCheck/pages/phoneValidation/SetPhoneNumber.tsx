@@ -119,7 +119,7 @@ export const SetPhoneNumber = () => {
       title="Numéro de téléphone"
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle titleID={titleID} title="Ton numéro de téléphone" />
+          <CenteredTitle titleID={titleID} title="Quel est ton numéro de téléphone&nbsp;?" />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       }
