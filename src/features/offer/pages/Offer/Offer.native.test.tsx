@@ -1,5 +1,4 @@
 import { rest } from 'msw'
-import waitForExpect from 'wait-for-expect'
 
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
 import { BookingsResponse } from 'api/gen'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { SearchHit } from 'libs/search'
 import { server } from 'tests/server'
-import { act, fireEvent, screen } from 'tests/utils'
+import { act, fireEvent, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -127,8 +126,8 @@ describe('<Offer />', () => {
     const fromOfferId = 1
     const { queryByText } = renderOfferPage(fromOfferId, undefined, true)
 
-    await waitForExpect(async () => {
-      expect(queryByText('Mes options')).toBeTruthy()
+    await waitFor(() => {
+      expect(queryByText('Valider la date')).toBeTruthy()
     })
   })
 
