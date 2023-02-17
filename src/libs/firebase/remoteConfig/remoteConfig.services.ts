@@ -26,6 +26,7 @@ export const remoteConfig = {
       homeEntryIdWithoutBooking_15_17: parameters.homeEntryIdWithoutBooking_15_17.asString(),
       homeEntryId_18: parameters.homeEntryId_18.asString(),
       homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
+      shouldUseAlgoliaRecommend: parameters.shouldUseAlgoliaRecommend.asBoolean(),
     }
   },
 }

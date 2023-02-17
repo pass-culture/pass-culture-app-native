@@ -27,6 +27,7 @@ import {
 import { SearchHit } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod, formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
@@ -83,6 +84,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const labelMapping = useCategoryHomeLabelMapping()
   const { position } = useGeolocation()
   const { data } = useSubcategories()
+  const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
   const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
   const otherSearchGroups = subcategorySearchGroupId?.[0]
     ? data?.searchGroups
