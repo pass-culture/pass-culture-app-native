@@ -12,6 +12,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -48,6 +49,9 @@ mockedUseSnackBarContext.mockReturnValue({
   showSuccessSnackBar,
   showErrorSnackBar,
 })
+
+jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<OfferHeader />', () => {
   beforeAll(() => {
@@ -142,6 +146,16 @@ describe('<OfferHeader />', () => {
     await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
 
     expect(screen.getByText('Crée une liste de favoris !')).toBeTruthy()
+  })
+
+  it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    const favoriteOfferId = 146193
+    renderOfferHeader({ id: favoriteOfferId })
+
+    await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
+
+    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
   })
 
   it('should track the user has seen favorite list modal when pressing favorite icon', async () => {

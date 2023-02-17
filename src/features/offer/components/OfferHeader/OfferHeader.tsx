@@ -15,6 +15,8 @@ import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSi
 import { useShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
@@ -64,6 +66,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
   const { top } = useSafeAreaInsets()
+  const isFavListFakeDoorEnabled = useFeatureFlag(RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR)
 
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
@@ -95,8 +98,10 @@ export const OfferHeader: React.FC<Props> = (props) => {
     } else if (!favorite) {
       animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId })
-      analytics.logFavoriteListDisplayed('offer')
-      showFavoriteListOfferModal()
+      if (isFavListFakeDoorEnabled) {
+        analytics.logFavoriteListDisplayed('offer')
+        showFavoriteListOfferModal()
+      }
     } else if (favorite) {
       removeFavorite(favorite.id)
     }

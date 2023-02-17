@@ -21,6 +21,8 @@ jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
 }))
 
+jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+
 describe('<Offer />', () => {
   // fake timers are needed to avoid warning (because we use useTrackOfferSeenDuration)
   // See https://github.com/facebook/jest/issues/6434
