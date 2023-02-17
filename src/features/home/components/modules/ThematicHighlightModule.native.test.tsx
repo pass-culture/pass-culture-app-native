@@ -66,6 +66,9 @@ describe('ThematicHighlightModule', () => {
 
     fireEvent.press(thematicHighlightModule)
 
-    expect(analytics.logHighlightBlockClicked).toHaveBeenCalledTimes(1)
+    expect(analytics.logHighlightBlockClicked).toHaveBeenNthCalledWith(1, {
+      moduleId: '5Z1FGtRGbE3d1Q5oqHMfe9',
+      toEntryId: '6DCThxvbPFKAo04SVRZtwY',
+    })
   })
 })
