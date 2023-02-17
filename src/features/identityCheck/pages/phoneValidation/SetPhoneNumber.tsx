@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { Country, CountryCode } from 'react-native-country-picker-modal'
+import { Country } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -15,6 +15,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
+import { isPhoneNumberValid } from 'features/identityCheck/pages/phoneValidation/helpers/isPhoneNumberValid'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -187,15 +188,6 @@ export const SetPhoneNumber = () => {
       }
     />
   )
-}
-
-function isPhoneNumberValid(number: string, countryCode: CountryCode) {
-  if (countryCode === 'NC') {
-    // 6 digits that can be separated by whitespace, "." or "-".
-    return number.match(/^\d{3}(?:[\s.-]*)\d{3}$/)
-  }
-  // 9 digits, 10 if the first is a "0" that can be separated by whitespace, "." or "-".
-  return number.match(/^(?:0)?\s*[1-9](?:[\s.-]*\d{2}){4}$/)
 }
 
 const RemainingAttemptsContainer = styled.View({
