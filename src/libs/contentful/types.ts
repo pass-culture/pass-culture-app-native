@@ -13,6 +13,7 @@ export enum ContentTypes {
   SUBCATEGORIES = 'subcategories',
   CATEGORIES = 'categories',
   THEMATIC_HIGHLIGHT = 'thematicHighlight',
+  THEMATIC_HIGHLIGHT_INFO = 'thematic_highlight_info',
   VENUES_PLAYLIST = 'venuesPlaylist',
   VENUES_PARAMETERS = 'venuesParameters',
   CATEGORY_BLOCK = 'categoryBlock',
@@ -156,6 +157,11 @@ export interface ShowTypes {
 export interface BookTypes {
   sys: Sys<typeof ContentTypes.BOOK_TYPES>
   fields: BookTypesFields
+}
+
+export interface ThematicHighlightInfo {
+  sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT_INFO>
+  fields: ThematicHighlightInfoFields
 }
 
 export interface ThematicHighlightParameters {
@@ -314,13 +320,19 @@ type BookTypesFields = {
 
 export type ThematicHighlightFields = {
   title: string
+  thematicHighlightInfo: ThematicHighlightInfo
+  thematicHomeEntryId: string
+}
+
+export type ThematicHighlightInfoFields = {
+  title: string
   displayedTitle: string
   displayedSubtitle?: string
   image: Image
   beginningDatetime: string
   endingDatetime: string
-  thematicHomeEntryId: string
 }
+
 export interface CategoryListFields {
   title: string
   categoryBlockList: CategoryBlockContentModel[]

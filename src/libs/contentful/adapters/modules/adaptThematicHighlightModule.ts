@@ -5,15 +5,17 @@ import { ThematicHighlightContentModel } from 'libs/contentful/types'
 export const adaptThematicHighlightModule = (
   module: ThematicHighlightContentModel
 ): ThematicHighlightModule => {
-  const imageUrl = buildImageUrl(module.fields.image?.fields.file.url)
+  const thematicHighlightInfo = module.fields.thematicHighlightInfo.fields
+  const imageUrl = buildImageUrl(thematicHighlightInfo.image?.fields.file.url)
+
   return {
     id: module.sys.id,
     type: HomepageModuleType.ThematicHighlightModule,
-    title: module.fields.displayedTitle,
-    subtitle: module.fields.displayedSubtitle,
+    title: thematicHighlightInfo.displayedTitle,
+    subtitle: thematicHighlightInfo.displayedSubtitle,
     imageUrl,
-    beginningDate: new Date(module.fields.beginningDatetime),
-    endingDate: new Date(module.fields.endingDatetime),
+    beginningDate: new Date(thematicHighlightInfo.beginningDatetime),
+    endingDate: new Date(thematicHighlightInfo.endingDatetime),
     thematicHomeEntryId: module.fields.thematicHomeEntryId,
   }
 }
