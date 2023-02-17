@@ -17,7 +17,7 @@ describe('<Offer /> - Analytics', () => {
   afterEach(cleanup)
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
-    const offerPage = await renderOfferPage()
+    const offerPage = renderOfferPage()
     const scrollView = offerPage.getByTestId('offer-container')
 
     await act(async () => {
@@ -33,7 +33,7 @@ describe('<Offer /> - Analytics', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" only once', async () => {
-    const offerPage = await renderOfferPage()
+    const offerPage = renderOfferPage()
     const scrollView = offerPage.getByTestId('offer-container')
     await act(async () => {
       // 1st scroll to bottom => trigger
