@@ -9,7 +9,7 @@ export async function fetchWithTimeout(
   const timeoutId = globalThis.setTimeout(() => {
     controller.abort()
   }, timeout)
-  const response = await fetch(url, { ...options })
+  const response = await fetch(url, { ...options, signal: controller.signal })
   globalThis.clearTimeout(timeoutId)
   return response
 }
