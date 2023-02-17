@@ -354,15 +354,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Lycée agricole"
@@ -371,7 +375,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -380,7 +383,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -391,11 +393,44 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         >
                           Lycée agricole
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -427,15 +462,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                     >
@@ -443,7 +482,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -452,7 +490,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -463,9 +500,42 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         />
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -497,15 +567,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                     >
@@ -513,7 +587,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -522,7 +595,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -533,9 +605,42 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         />
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -567,15 +672,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                     >
@@ -583,7 +692,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -592,7 +700,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -603,9 +710,42 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         />
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -637,15 +777,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                     >
@@ -653,7 +797,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -662,7 +805,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -673,9 +815,42 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         />
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -708,15 +883,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Accompagnement spécialisé"
@@ -725,7 +904,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -734,7 +912,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -745,6 +922,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         >
                           Accompagnement spécialisé
                         </Text>
@@ -763,7 +941,39 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           À domicile, CNED, institut de santé, etc.
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -796,15 +1006,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Centre de formation d’apprentis"
@@ -813,7 +1027,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -822,7 +1035,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -833,11 +1045,44 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                               },
                             ]
                           }
+                          type="default"
                         >
                           Centre de formation d’apprentis
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -1289,15 +1534,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Collège privé"
@@ -1306,7 +1555,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1315,7 +1563,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -1326,11 +1573,44 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                               },
                             ]
                           }
+                          type="default"
                         >
                           Collège privé
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -1363,15 +1643,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Collège public"
@@ -1380,7 +1664,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1389,7 +1672,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -1400,11 +1682,44 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                               },
                             ]
                           }
+                          type="default"
                         >
                           Collège public
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -1437,15 +1752,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Accompagnement spécialisé"
@@ -1454,7 +1773,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1463,7 +1781,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -1474,6 +1791,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                               },
                             ]
                           }
+                          type="default"
                         >
                           Accompagnement spécialisé
                         </Text>
@@ -1492,7 +1810,39 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           À domicile, CNED, institut de santé, etc.
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
