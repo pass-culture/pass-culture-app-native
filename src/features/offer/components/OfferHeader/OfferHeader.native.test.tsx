@@ -66,15 +66,15 @@ describe('<OfferHeader />', () => {
   })
 
   it('should goBack when we press on the back button', () => {
-    const { getByTestId } = renderOfferHeader()
-    fireEvent.press(getByTestId('animated-icon-back'))
+    renderOfferHeader()
+    fireEvent.press(screen.getByTestId('animated-icon-back'))
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should fully display the title at the end of the animation', async () => {
-    const { animatedValue, getByTestId } = renderOfferHeader()
-    expect(getByTestId('offerHeaderName').props.accessibilityHidden).toBeTruthy()
-    expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
+    const { animatedValue } = renderOfferHeader()
+    expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeTruthy()
+    expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
     act(() => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
@@ -82,8 +82,8 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(() => {
-      expect(getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
-      expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
+      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
+      expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
     })
   })
 
@@ -94,29 +94,31 @@ describe('<OfferHeader />', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-    const { getByTestId, getByText } = renderOfferHeader()
-    fireEvent.press(getByTestId('animated-icon-favorite'))
-    expect(getByText('Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris')).toBeTruthy()
+    renderOfferHeader()
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
+    expect(
+      screen.getByText('Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris')
+    ).toBeTruthy()
   })
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
     const favoriteOfferId = 146193
-    const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
+    renderOfferHeader({ id: favoriteOfferId })
 
     await waitFor(() => {
-      expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
+      expect(screen.getByTestId('animated-icon-favorite-filled')).toBeTruthy()
     })
   })
 
   it('should add favorite when adding an offer in favorite - logged in users', async () => {
-    const { getByTestId } = renderOfferHeader({
+    renderOfferHeader({
       id: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByTestId('animated-icon-favorite'))
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
-      expect(getByTestId('animated-icon-favorite-filled')).toBeTruthy()
+      expect(screen.getByTestId('animated-icon-favorite-filled')).toBeTruthy()
 
       const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
       expect(
@@ -169,26 +171,26 @@ describe('<OfferHeader />', () => {
 
   it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
-    const { getByTestId } = renderOfferHeader({ id: favoriteOfferId })
+    renderOfferHeader({ id: favoriteOfferId })
 
     await waitFor(async () => {
-      fireEvent.press(getByTestId('animated-icon-favorite-filled'))
+      fireEvent.press(screen.getByTestId('animated-icon-favorite-filled'))
 
       await waitFor(() => {
-        expect(getByTestId('animated-icon-favorite')).toBeTruthy()
+        expect(screen.getByTestId('animated-icon-favorite')).toBeTruthy()
       })
     })
   })
 
   it('should show error snackbar when remove favorite fails - logged in users', async () => {
     const favoriteOfferId = 146193
-    const { getByTestId } = renderOfferHeader({
+    renderOfferHeader({
       id: favoriteOfferId,
       hasRemoveFavoriteError: true,
     })
 
     await waitFor(async () => {
-      fireEvent.press(getByTestId('animated-icon-favorite-filled'))
+      fireEvent.press(screen.getByTestId('animated-icon-favorite-filled'))
 
       await waitFor(() => {
         expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -200,12 +202,12 @@ describe('<OfferHeader />', () => {
   })
 
   it('should show error when adding an offer in favorite fails because user as too many favorites - logged in users', async () => {
-    const { getByTestId } = renderOfferHeader({
+    renderOfferHeader({
       hasTooManyFavorites: true,
       id: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByTestId('animated-icon-favorite'))
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(showErrorSnackBar).toHaveBeenCalledWith({
@@ -225,11 +227,11 @@ describe('<OfferHeader />', () => {
         moduleName,
       },
     }))
-    const { getByTestId } = renderOfferHeader({
+    renderOfferHeader({
       id: offerId,
     })
 
-    fireEvent.press(getByTestId('animated-icon-favorite'))
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
@@ -241,9 +243,9 @@ describe('<OfferHeader />', () => {
   })
 
   it('should log analytics when clicking on the share button', () => {
-    const { getByLabelText } = renderOfferHeader()
+    renderOfferHeader()
 
-    const shareButton = getByLabelText('Partager')
+    const shareButton = screen.getByLabelText('Partager')
     fireEvent.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
