@@ -5,6 +5,7 @@ import {
   AccountState,
   BookingsResponse,
   CulturalSurveyRequest,
+  FavoriteResponse,
   NextSubscriptionStepResponse,
   OfferResponse,
   RequestPasswordResetRequest,
@@ -20,6 +21,7 @@ import {
 } from 'api/gen'
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
@@ -100,6 +102,10 @@ export const server = setupServer(
           nextSubscriptionStep: null,
         })
       )
+  ),
+  rest.get<Array<FavoriteResponse>>(
+    `${env.API_BASE_URL}/native/v1/me/favorites`,
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
   )
 )
 

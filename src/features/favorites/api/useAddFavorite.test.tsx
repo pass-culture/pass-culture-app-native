@@ -68,10 +68,6 @@ function simulateBackend(options: Options = defaultOptions) {
     rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
       res(ctx.status(200), ctx.json(offerResponseSnap))
     ),
-    rest.get<Array<FavoriteResponse>>(
-      `${env.API_BASE_URL}/native/v1/me/favorites`,
-      (req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
-    ),
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) => {
       if (hasTooManyFavorites) {
         return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))

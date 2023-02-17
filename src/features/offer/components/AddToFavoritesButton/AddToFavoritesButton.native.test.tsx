@@ -1,10 +1,8 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -65,10 +63,6 @@ const renderButton = (options?: Options) => {
   }
 
   server.use(
-    rest.get<Array<FavoriteResponse>>(
-      `${env.API_BASE_URL}/native/v1/me/favorites`,
-      (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
-    ),
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
       if (hasAddFavoriteError) {
         return res(ctx.status(415), ctx.json({}))
