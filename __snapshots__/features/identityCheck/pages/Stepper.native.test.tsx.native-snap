@@ -156,9 +156,9 @@ Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#CBCDD2",
+                  "borderColor": "#F1F1F4",
                   "borderRadius": 8,
-                  "borderWidth": 1,
+                  "borderWidth": 2,
                   "flexDirection": "row",
                   "height": 88,
                   "marginTop": 8,

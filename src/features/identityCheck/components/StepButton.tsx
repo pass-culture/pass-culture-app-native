@@ -20,8 +20,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   const iconLabel = state === StepButtonState.COMPLETED ? 'Complété' : 'Non complété'
   const accessibilityLabel = `${label} ${iconLabel}`
 
-  const TouchableComponent =
-    state === StepButtonState.CURRENT ? EnabledTouchableLink : DisabledTouchableLink
+  const TouchableComponent = touchableComponent[state]
 
   return (
     <TouchableComponent
@@ -46,7 +45,7 @@ const BaseTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   borderWidth: '1px',
 }))
 
-const EnabledTouchableLink = styled(BaseTouchableLink)(({ theme }) => ({
+const CurrentTouchableLink = styled(BaseTouchableLink)(({ theme }) => ({
   height: getSpacing(23),
   width: '100%',
   borderColor: theme.colors.greySemiDark,
@@ -57,6 +56,17 @@ const DisabledTouchableLink = styled(BaseTouchableLink)(({ theme }) => ({
   width: '98%',
   borderColor: theme.colors.greyMedium,
 }))
+
+const CompletedTouchableLink = styled(DisabledTouchableLink)(({ theme }) => ({
+  borderColor: theme.colors.greyLight,
+  borderWidth: '2px',
+}))
+
+const touchableComponent = {
+  [StepButtonState.COMPLETED]: CompletedTouchableLink,
+  [StepButtonState.CURRENT]: CurrentTouchableLink,
+  [StepButtonState.DISABLED]: DisabledTouchableLink,
+}
 
 const IconContainer = styled.View({ padding: getSpacing(4) })
 
