@@ -5,6 +5,7 @@ import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { VenuesParametersFields } from 'libs/contentful'
@@ -13,7 +14,6 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
 import { parseGeolocationParameters } from 'libs/search/parseSearchParameters'
-import { getVenueTypeFacetFilters } from 'libs/search/utils/getVenueTypeFacetFilters'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
