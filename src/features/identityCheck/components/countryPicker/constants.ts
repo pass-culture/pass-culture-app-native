@@ -23,6 +23,4 @@ export const ALLOWED_COUNTRY_CODES: CountryCode[] = [
   'BL',
   'MF',
   'WF',
-  'PF',
-  'NC',
 ]
