@@ -1,27 +1,12 @@
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
-import { LocationType } from 'features/search/enums'
 import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
+import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
 import { GeoCoordinates } from 'libs/geolocation'
 import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
-
-export const adaptGeolocationParameters = (
-  geolocation: GeoCoordinates | null,
-  isGeolocated?: boolean,
-  aroundRadius?: number
-): SearchState['locationFilter'] | undefined => {
-  const notGeolocatedButRadiusIsProvided = !isGeolocated && aroundRadius
-  const geolocatedButGeolocationIsInvalid = isGeolocated && !geolocation
-
-  if (notGeolocatedButRadiusIsProvided || geolocatedButGeolocationIsInvalid) return
-
-  return isGeolocated && geolocation
-    ? { locationType: LocationType.AROUND_ME, aroundRadius: aroundRadius || null }
-    : { locationType: LocationType.EVERYWHERE }
-}
 
 export const adaptOffersPlaylistParameters = (
   parameters: OffersModuleParameters,
