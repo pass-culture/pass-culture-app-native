@@ -2,9 +2,9 @@ import { rest } from 'msw'
 import * as React from 'react'
 import { QueryClient } from 'react-query'
 
+import { FavoriteResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -33,9 +33,18 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+const offerId = 20
+
 server.use(
-  rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
+  rest.post<FavoriteResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) =>
     res(ctx.status(200), ctx.json(favoriteResponseSnap))
+  ),
+  rest.post(`${env.API_BASE_URL}/native/v1/send_offer_link_by_push/${offerId}`, (_req, res, ctx) =>
+    res(ctx.status(200), ctx.json({}))
+  ),
+  rest.post(
+    `${env.API_BASE_URL}/native/v1/send_offer_webapp_link_by_email/${offerId}`,
+    (_req, res, ctx) => res(ctx.status(200), ctx.json({}))
   )
 )
 
@@ -49,7 +58,7 @@ describe('<BookingImpossible />', () => {
   it('should render without CTAs when offer is favorite', async () => {
     const setup = (queryClient: QueryClient) => {
       queryClient.setQueryData('favorites', {
-        favorites: [{ offer: { id: 20 } }],
+        favorites: [{ offer: { id: offerId } }],
       })
     }
 
@@ -62,7 +71,7 @@ describe('<BookingImpossible />', () => {
   it('should have the correct wording when offer is favorite', async () => {
     const setup = (queryClient: QueryClient) => {
       queryClient.setQueryData('favorites', {
-        favorites: [{ offer: { id: 20 } }],
+        favorites: [{ offer: { id: offerId } }],
       })
     }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -96,7 +105,7 @@ describe('<BookingImpossible />', () => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
         from: 'bookingimpossible',
-        offerId: 20,
+        offerId: offerId,
       })
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
