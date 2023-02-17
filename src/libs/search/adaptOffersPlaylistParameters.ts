@@ -8,7 +8,7 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
-export const parseGeolocationParameters = (
+export const adaptGeolocationParameters = (
   geolocation: GeoCoordinates | null,
   isGeolocated?: boolean,
   aroundRadius?: number
@@ -31,7 +31,7 @@ export const adaptOffersPlaylistParameters = (
 ): SearchState | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
-  const locationFilter = parseGeolocationParameters(geolocation, isGeolocated, aroundRadius)
+  const locationFilter = adaptGeolocationParameters(geolocation, isGeolocated, aroundRadius)
   if (!locationFilter) return
 
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({

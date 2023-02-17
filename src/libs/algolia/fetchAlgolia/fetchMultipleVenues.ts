@@ -13,7 +13,7 @@ import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
-import { parseGeolocationParameters } from 'libs/search/adaptOffersPlaylistParameters'
+import { adaptGeolocationParameters } from 'libs/search/adaptOffersPlaylistParameters'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
@@ -48,7 +48,7 @@ export const buildVenuesQueryOptions = (
 ) => {
   const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
 
-  const locationFilter = parseGeolocationParameters(userLocation, isGeolocated, aroundRadius) || {
+  const locationFilter = adaptGeolocationParameters(userLocation, isGeolocated, aroundRadius) || {
     locationType: LocationType.EVERYWHERE,
   }
 
