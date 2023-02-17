@@ -9,6 +9,7 @@ const { collection } = firestore()
 
 describe('getFeatureFlag', () => {
   it.each([
+    RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR,
     RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
     RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
   ])(
