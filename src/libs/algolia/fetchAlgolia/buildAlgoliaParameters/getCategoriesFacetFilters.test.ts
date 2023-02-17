@@ -1,5 +1,5 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { getCategoriesFacetFilters } from 'libs/search/utils/getCategoriesFacetFilters'
+import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 
 describe('getCategoriesFacetFilters', () => {
   it('should return none search group when category label is not in Contentful labels', () => {
