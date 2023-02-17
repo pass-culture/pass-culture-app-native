@@ -312,9 +312,10 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL, {
       fromOfferId,
     }),
-  logSimilarOfferPlaylistVerticalScroll: (fromOfferId?: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SIMILAR_OFFER_PLAYLIST_VERTICAL_SCROLL, {
+  logPlaylistVerticalScroll: (fromOfferId?: number, offerId?: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL, {
       fromOfferId,
+      offerId,
     }),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>

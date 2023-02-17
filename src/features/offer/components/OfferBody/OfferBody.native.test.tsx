@@ -97,7 +97,7 @@ describe('<OfferBody />', () => {
       })
     })
 
-    it('should log analytics event logSimilarOfferPlaylistHorizontalScroll when scrolling on it', async () => {
+    it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
       const nativeEventMiddle = {
         layoutMeasurement: { height: 296 },
         contentOffset: { x: 50 }, // how far did we scroll

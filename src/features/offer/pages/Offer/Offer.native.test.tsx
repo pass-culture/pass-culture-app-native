@@ -81,32 +81,33 @@ describe('<Offer />', () => {
       mockSearchHits = mockedAlgoliaResponse.hits
     })
 
-    it('should log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
-      const { getByTestId } = renderOfferPage()
+    it('should log analytics event logPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
+      const { getByTestId } = await renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
 
-      expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
     })
 
-    it('should not log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and not reaching the bottom', async () => {
-      const { getByTestId } = renderOfferPage()
+    it('should not log analytics event logPlaylistVerticalScroll when scrolling vertical and not reaching the bottom', async () => {
+      const { getByTestId } = await renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventTop)
 
-      expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledTimes(0)
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(0)
     })
 
-    it('should log logSimilarOfferPlaylistVerticalScroll with the event param fromOfferId', async () => {
+    it('should log logPlaylistVerticalScroll with the event param fromOfferId & offerId', async () => {
       const fromOfferId = 1
-      const { getByTestId } = renderOfferPage(fromOfferId)
+      const offerId = 116656
+      const { getByTestId } = await renderOfferPage(fromOfferId)
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
 
-      expect(analytics.logSimilarOfferPlaylistVerticalScroll).toHaveBeenCalledWith(1)
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledWith(fromOfferId, offerId)
     })
   })
 
