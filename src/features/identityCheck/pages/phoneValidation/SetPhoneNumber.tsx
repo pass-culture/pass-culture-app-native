@@ -47,7 +47,7 @@ export const SetPhoneNumber = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const { navigateToNextScreen } = useSubscriptionNavigation()
-  const isContinueButtonEnabled = Boolean(isPhoneNumberValid(phoneNumber, country.cca2))
+  const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber)
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
 
