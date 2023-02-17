@@ -3,9 +3,9 @@ import { OffersModuleParameters } from 'features/home/types'
 import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
+import { buildOfferGenreTypesValues } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/buildOfferGenreTypesValues'
 import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
 import { GeoCoordinates } from 'libs/geolocation'
-import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const adaptOffersPlaylistParameters = (
