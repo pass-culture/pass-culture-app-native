@@ -1,4 +1,4 @@
-import { Range } from '../../typesUtils/typeHelpers'
+import { Range } from '../../../libs/typesUtils/typeHelpers'
 
 export const DAYS_IN_A_WEEK = 7
 export const SATURDAY_INDEX_IN_A_WEEK = 6

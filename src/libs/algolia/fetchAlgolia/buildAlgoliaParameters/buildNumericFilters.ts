@@ -3,8 +3,8 @@ import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPr
 import { clampPrice, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums'
 import { SearchParametersQuery } from 'libs/algolia/types'
-import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
+import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'shared/helpers/datetime/time'
 
 import { FiltersArray } from '../../types'
 

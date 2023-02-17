@@ -1,4 +1,4 @@
-import { Range } from '../../typesUtils/typeHelpers'
+import { Range } from '../../../libs/typesUtils/typeHelpers'
 
 import { DATE, DAYS_IN_A_WEEK, SATURDAY_INDEX_IN_A_WEEK, SUNDAY_INDEX_IN_A_WEEK } from './date'
 

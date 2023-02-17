@@ -1,4 +1,4 @@
-import { Range } from '../../../typesUtils/typeHelpers'
+import { Range } from '../../../../libs/typesUtils/typeHelpers'
 import { DATE } from '../date'
 
 describe('getDatesFromTimeRangeAndDate', () => {
