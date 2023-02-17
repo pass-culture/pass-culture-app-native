@@ -31,11 +31,12 @@ export const useOfferModule = ({
 }: UseOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
   const { position } = useGeolocation()
   const transformHits = useTransformOfferHits()
-  const parseSearchParameters = useAdaptOffersPlaylistParameters()
+
+  const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const isUserUnderage = useIsUserUnderage()
   const { user } = useAuthContext()
   const netInfo = useNetInfoContext()
-  const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
+  const parsedParameters = search.map(adaptedPlaylistParameters).filter(isSearchState)
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],

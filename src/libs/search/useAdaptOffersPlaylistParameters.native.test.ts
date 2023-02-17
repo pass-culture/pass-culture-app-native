@@ -34,7 +34,7 @@ describe('useAdaptOffersPlaylistParameters', () => {
     result: { current: genreTypeMapping },
   } = renderHook(useGenreTypeMapping)
 
-  const parseSearchParametersSpy = jest.spyOn(
+  const adaptOffersPlaylistParametersSpy = jest.spyOn(
     parseSearchParametersAPI,
     'adaptOffersPlaylistParameters'
   )
@@ -45,7 +45,7 @@ describe('useAdaptOffersPlaylistParameters', () => {
 
     result.current(parameters)
 
-    expect(parseSearchParametersSpy).toHaveBeenCalledWith(
+    expect(adaptOffersPlaylistParametersSpy).toHaveBeenCalledWith(
       { priceMax: mockMaxPrice, priceMin: 0 },
       mockPosition,
       subcategoryLabelMapping,
@@ -60,7 +60,7 @@ describe('useAdaptOffersPlaylistParameters', () => {
 
     result.current({ ...parameters, priceMax })
 
-    expect(parseSearchParametersSpy).toHaveBeenCalledWith(
+    expect(adaptOffersPlaylistParametersSpy).toHaveBeenCalledWith(
       { priceMax, priceMin: 0 },
       mockPosition,
       subcategoryLabelMapping,

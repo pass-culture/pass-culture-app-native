@@ -34,7 +34,8 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { cover, display, search, index, moduleId, homeEntryId } = props
   const data = useOfferModule({ search, moduleId })
   const { position } = useGeolocation()
-  const parseSearchParameters = useParseSearchParameters()
+
+  const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
@@ -46,7 +47,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const searchParams = {
-    ...parseSearchParameters(parameters),
+    ...adaptedPlaylistParameters(parameters),
     hitsPerPage: 20,
     view: SearchView.Results,
   }
