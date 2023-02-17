@@ -7,13 +7,13 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/adaptOffersPlaylistParameters'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { VenuesParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
-import { adaptGeolocationParameters } from 'libs/search/adaptOffersPlaylistParameters'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 

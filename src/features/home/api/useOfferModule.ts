@@ -11,11 +11,11 @@ import {
   filterOfferHit,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia'
+import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/useAdaptOffersPlaylistParameters'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
-import { useAdaptOffersPlaylistParameters } from 'libs/search/useAdaptOffersPlaylistParameters'
 
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null

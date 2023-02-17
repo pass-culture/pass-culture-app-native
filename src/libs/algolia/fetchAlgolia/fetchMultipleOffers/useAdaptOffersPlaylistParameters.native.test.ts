@@ -1,6 +1,6 @@
 import { OffersModuleParameters } from 'features/home/types'
-import * as parseSearchParametersAPI from 'libs/search/adaptOffersPlaylistParameters'
-import { useAdaptOffersPlaylistParameters } from 'libs/search/useAdaptOffersPlaylistParameters'
+import * as parseSearchParametersAPI from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/adaptOffersPlaylistParameters'
+import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
