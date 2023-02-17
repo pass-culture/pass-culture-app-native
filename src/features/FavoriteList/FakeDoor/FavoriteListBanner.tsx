@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 
 import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
 import { analytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -10,6 +12,7 @@ import { BicolorListFav } from 'ui/svg/icons/BicolorListFav'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const FavoriteListBanner: FunctionComponent = () => {
+  const isFavListFakeDoorEnabled = useFeatureFlag(RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR)
   const {
     visible: fakeDoorListFavoritesVisible,
     showModal: showFakeDoorListFavoritesVisible,
@@ -24,6 +27,8 @@ export const FavoriteListBanner: FunctionComponent = () => {
     analytics.logFavoriteListButtonClicked('favorites')
     showFakeDoorListFavoritesVisible()
   }
+
+  if (!isFavListFakeDoorEnabled) return null
 
   return (
     <React.Fragment>
