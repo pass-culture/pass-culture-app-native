@@ -88,9 +88,10 @@ export const HomeHeader: FunctionComponent = function () {
 
     return null
   }, [
+    isLoggedIn,
     shouldDisplaySubscriptionBloc,
-    nextBeneficiaryValidationStepNavConfig,
     shouldDisplayGeolocationBloc,
+    nextBeneficiaryValidationStepNavConfig,
     credit,
   ])
 
