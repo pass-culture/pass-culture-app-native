@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-share/android/src/main/java/cl/json/social/SnapChatShare.java b/node_modules/react-native-share/android/src/main/java/cl/json/social/SnapChatShare.java
+index a68217d..718a3d8 100644
+--- a/node_modules/react-native-share/android/src/main/java/cl/json/social/SnapChatShare.java
++++ b/node_modules/react-native-share/android/src/main/java/cl/json/social/SnapChatShare.java
+@@ -15,7 +15,7 @@ import com.facebook.react.bridge.ReadableMap;
+ public class SnapChatShare extends SingleShareIntent {
+ 
+     private static final String PACKAGE = "com.snapchat.android";
+-    private static final String CLASS = "com.snapchat.android.LandingPageActivity";
++    private static final String CLASS = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU ? "com.snap.mushroom.MainActivity" : "com.snapchat.android.LandingPageActivity";
+     private static final String PLAY_STORE_LINK = "market://details?id=com.snapchat.android";
+     
+     public SnapChatShare(ReactApplicationContext reactContext) {
