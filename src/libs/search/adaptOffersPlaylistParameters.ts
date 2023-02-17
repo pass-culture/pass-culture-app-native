@@ -23,7 +23,7 @@ export const parseGeolocationParameters = (
     : { locationType: LocationType.EVERYWHERE }
 }
 
-export const parseSearchParameters = (
+export const adaptOffersPlaylistParameters = (
   parameters: OffersModuleParameters,
   geolocation: GeoCoordinates | null,
   subcategoryLabelMapping: SubcategoryLabelMapping,

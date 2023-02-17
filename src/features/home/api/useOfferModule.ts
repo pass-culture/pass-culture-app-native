@@ -14,7 +14,8 @@ import {
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, useParseSearchParameters } from 'libs/search'
+import { SearchHit } from 'libs/search'
+import { useAdaptOffersPlaylistParameters } from 'libs/search/useAdaptOffersPlaylistParameters'
 
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
@@ -30,7 +31,7 @@ export const useOfferModule = ({
 }: UseOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
   const { position } = useGeolocation()
   const transformHits = useTransformOfferHits()
-  const parseSearchParameters = useParseSearchParameters()
+  const parseSearchParameters = useAdaptOffersPlaylistParameters()
   const isUserUnderage = useIsUserUnderage()
   const { user } = useAuthContext()
   const netInfo = useNetInfoContext()

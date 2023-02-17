@@ -4,10 +4,10 @@ import { OffersModuleParameters } from 'features/home/types'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
-import { parseSearchParameters } from 'libs/search/parseSearchParameters'
+import { adaptOffersPlaylistParameters } from 'libs/search/adaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
-export const useParseSearchParameters = () => {
+export const useAdaptOffersPlaylistParameters = () => {
   const { position } = useGeolocation()
   const defaultPriceMax = useMaxPrice()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
@@ -15,7 +15,7 @@ export const useParseSearchParameters = () => {
 
   return useCallback(
     (parameters: OffersModuleParameters): Partial<SearchState> | undefined =>
-      parseSearchParameters(
+      adaptOffersPlaylistParameters(
         { ...parameters, priceMin: 0, priceMax: parameters.priceMax ?? defaultPriceMax },
         position,
         subcategoryLabelMapping,

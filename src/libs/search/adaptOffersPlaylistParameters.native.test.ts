@@ -6,12 +6,12 @@ import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/c
 import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
-import { useParseSearchParameters } from 'libs/search'
+import { useAdaptOffersPlaylistParameters } from 'libs/search/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-import { parseSearchParameters } from './parseSearchParameters'
+import { adaptOffersPlaylistParameters } from './adaptOffersPlaylistParameters'
 
 const mockSubcategories = placeholderData.subcategories
 const mockGenreTypes = placeholderData.genreTypes
@@ -38,7 +38,7 @@ const defaultSearchParameters = omit(
   'offerIsFree'
 )
 
-describe('parseSearchParameters', () => {
+describe('adaptOffersPlaylistParameters', () => {
   const {
     result: { current: subcategoryLabelMapping },
   } = renderHook(useSubcategoryLabelMapping)
@@ -50,7 +50,7 @@ describe('parseSearchParameters', () => {
     const parameters = {} as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -64,7 +64,7 @@ describe('parseSearchParameters', () => {
       categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
     } as OffersModuleParameters
 
-    const { result } = renderHook(() => useParseSearchParameters())
+    const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
     const parsedParameters = result.current(parameters)
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
@@ -77,7 +77,7 @@ describe('parseSearchParameters', () => {
       subcategories: ['Cinéma plein air', 'Escape game', 'Festival et salon du livre'],
     } as OffersModuleParameters
 
-    const { result } = renderHook(() => useParseSearchParameters())
+    const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
     const parsedParameters = result.current(parameters)
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
@@ -101,7 +101,7 @@ describe('parseSearchParameters', () => {
       currentWeekEvent: true,
     } as OffersModuleParameters
     const geolocation = null
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -134,7 +134,12 @@ describe('parseSearchParameters', () => {
       computeBeginningAndEndingDatetimes,
       'computeBeginningAndEndingDatetimes'
     )
-    parseSearchParameters(parameters, geolocation, subcategoryLabelMapping, genreTypeMapping)
+    adaptOffersPlaylistParameters(
+      parameters,
+      geolocation,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
     expect(mockedComputer).toHaveBeenCalledWith({
       beginningDatetime: undefined,
       endingDatetime: undefined,
@@ -148,7 +153,7 @@ describe('parseSearchParameters', () => {
     const parameters = { isDigital: true } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -164,7 +169,7 @@ describe('parseSearchParameters', () => {
     const parameters = { isEvent: true } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -180,7 +185,7 @@ describe('parseSearchParameters', () => {
     const parameters = { isThing: true } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -196,7 +201,7 @@ describe('parseSearchParameters', () => {
     const parameters = { priceMin: 50 } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -209,7 +214,7 @@ describe('parseSearchParameters', () => {
     const parameters = { priceMax: 200 } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -222,7 +227,7 @@ describe('parseSearchParameters', () => {
     const parameters = { priceMin: 50, priceMax: 200 } as OffersModuleParameters
     const geolocation = null
 
-    const result = parseSearchParameters(
+    const result = adaptOffersPlaylistParameters(
       parameters,
       geolocation,
       subcategoryLabelMapping,
@@ -237,7 +242,7 @@ describe('parseSearchParameters', () => {
     it('should return algolia parameters with geolocation with no distance limit when isGeolocated is provided', () => {
       const parameters = { isGeolocated: true } as OffersModuleParameters
 
-      const result = parseSearchParameters(
+      const result = adaptOffersPlaylistParameters(
         parameters,
         geolocation,
         subcategoryLabelMapping,
@@ -253,7 +258,7 @@ describe('parseSearchParameters', () => {
     it('should return algolia parameters with geolocation with distance limit when isGeolocated is provided and radius as well', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
 
-      const result = parseSearchParameters(
+      const result = adaptOffersPlaylistParameters(
         parameters,
         geolocation,
         subcategoryLabelMapping,
@@ -269,7 +274,7 @@ describe('parseSearchParameters', () => {
     it('should return null when isGeolocated is true & around radius is provided but geolocation is null', () => {
       const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
 
-      const result = parseSearchParameters(
+      const result = adaptOffersPlaylistParameters(
         parameters,
         null,
         subcategoryLabelMapping,
@@ -281,7 +286,7 @@ describe('parseSearchParameters', () => {
     it('should return null when isGeolocated is false & around radius is provided', () => {
       const parameters = { aroundRadius: 10, isGeolocated: false } as OffersModuleParameters
 
-      const result = parseSearchParameters(
+      const result = adaptOffersPlaylistParameters(
         parameters,
         null,
         subcategoryLabelMapping,
@@ -296,7 +301,7 @@ describe('parseSearchParameters', () => {
         musicTypes: ['Gospel'],
       } as OffersModuleParameters
 
-      const result = parseSearchParameters(
+      const result = adaptOffersPlaylistParameters(
         parameters,
         null,
         subcategoryLabelMapping,

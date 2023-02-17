@@ -13,7 +13,7 @@ import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
-import { parseGeolocationParameters } from 'libs/search/parseSearchParameters'
+import { parseGeolocationParameters } from 'libs/search/adaptOffersPlaylistParameters'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 

@@ -3,8 +3,8 @@ import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia'
 import { VenueTypeCode } from 'libs/parsers'
-export { parseSearchParameters } from './parseSearchParameters'
-export { useParseSearchParameters } from './useParseSearchParameters'
+export { adaptOffersPlaylistParameters } from './adaptOffersPlaylistParameters'
+export { useAdaptOffersPlaylistParameters } from './useAdaptOffersPlaylistParameters'
 
 export const transformHit = transformOfferHit
 

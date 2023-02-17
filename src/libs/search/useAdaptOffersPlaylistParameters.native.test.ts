@@ -1,6 +1,6 @@
 import { OffersModuleParameters } from 'features/home/types'
-import { useParseSearchParameters } from 'libs/search'
-import * as parseSearchParametersAPI from 'libs/search/parseSearchParameters'
+import * as parseSearchParametersAPI from 'libs/search/adaptOffersPlaylistParameters'
+import { useAdaptOffersPlaylistParameters } from 'libs/search/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
@@ -26,7 +26,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-describe('useParseSearchParameters', () => {
+describe('useAdaptOffersPlaylistParameters', () => {
   const {
     result: { current: subcategoryLabelMapping },
   } = renderHook(useSubcategoryLabelMapping)
@@ -34,11 +34,14 @@ describe('useParseSearchParameters', () => {
     result: { current: genreTypeMapping },
   } = renderHook(useGenreTypeMapping)
 
-  const parseSearchParametersSpy = jest.spyOn(parseSearchParametersAPI, 'parseSearchParameters')
+  const parseSearchParametersSpy = jest.spyOn(
+    parseSearchParametersAPI,
+    'adaptOffersPlaylistParameters'
+  )
 
   it('should set price max parameter when not provided', () => {
     const parameters = {} as OffersModuleParameters
-    const { result } = renderHook(useParseSearchParameters)
+    const { result } = renderHook(useAdaptOffersPlaylistParameters)
 
     result.current(parameters)
 
@@ -53,7 +56,7 @@ describe('useParseSearchParameters', () => {
   it('should use price max parameter when provided', () => {
     const priceMax = 12
     const parameters = {} as OffersModuleParameters
-    const { result } = renderHook(useParseSearchParameters)
+    const { result } = renderHook(useAdaptOffersPlaylistParameters)
 
     result.current({ ...parameters, priceMax })
 
