@@ -1,6 +1,24 @@
+import { rest } from 'msw'
+
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
+import { server } from 'tests/server'
 import { act, cleanup } from 'tests/utils'
+
+server.use(
+  rest.get(
+    `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          hits: [],
+        })
+      )
+    }
+  )
+)
 
 describe('<Offer /> - Analytics', () => {
   const nativeEventMiddle = {

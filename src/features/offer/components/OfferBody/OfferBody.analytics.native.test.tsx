@@ -1,13 +1,30 @@
+import { rest } from 'msw'
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
+import { server } from 'tests/server'
 import { act, fireEvent, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
+
+server.use(
+  rest.get(
+    `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          hits: [],
+        })
+      )
+    }
+  )
+)
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {

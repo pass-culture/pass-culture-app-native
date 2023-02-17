@@ -1,12 +1,25 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
+import { rest } from 'msw'
 import * as reactQueryAPI from 'react-query'
 
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
+
+server.use(
+  rest.post('http://passculture.reco', (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        playlist_recommended_offers: [1234, 5678],
+      })
+    )
+  })
+)
 
 describe('useHomeRecommendedIdsMutation', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
