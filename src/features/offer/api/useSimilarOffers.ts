@@ -124,6 +124,7 @@ export const useSimilarOffers = ({
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
 
   const fetchAlgolia = useCallback(async () => {
+    if (!offerId) return
     const { queryParameters, fallbackParameters } = getAlgoliaRecommendParams(position, categories)
     setSimilarOffersIds(
       categoryIncluded

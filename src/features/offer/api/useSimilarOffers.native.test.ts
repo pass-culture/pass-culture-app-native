@@ -1,3 +1,6 @@
+import * as getFrequentlyBoughtTogether from '@algolia/recommend-core'
+import * as getRelatedProducts from '@algolia/recommend-core'
+
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getSimilarOffersEndpoint, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -27,8 +30,15 @@ describe('useSimilarOffers', () => {
   const algoliaSpy = jest
     .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')
     .mockImplementation()
+  const getFrequentlyBoughtTogetherSpy = jest
+    .spyOn(getFrequentlyBoughtTogether, 'getFrequentlyBoughtTogether')
+    .mockImplementation()
+  const getRelatedProductsSpy = jest
+    .spyOn(getRelatedProducts, 'getRelatedProducts')
+    .mockImplementation()
+  const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
-  it('should call algolia hook', () => {
+  it('should call Algolia hook', () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
@@ -46,6 +56,117 @@ describe('useSimilarOffers', () => {
       })
     )
     expect(algoliaSpy).toHaveBeenCalledTimes(2)
+  })
+
+  it('should not call Algolia hook when no offer id provided', () => {
+    renderHook(() =>
+      useSimilarOffers({
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        categoryExcluded: undefined,
+      })
+    )
+    expect(algoliaSpy).toHaveBeenCalledWith([])
+  })
+
+  describe('when Algolia Recommend AB Testing desactivated', () => {
+    it('should not call similar offers API when no offer provided', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryExcluded: undefined,
+          shouldUseAlgoliaRecommend: false,
+        })
+      )
+      expect(fetchApiRecoSpy).not.toHaveBeenCalled()
+    })
+
+    it('should call similar offers API when offer id provided', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryExcluded: undefined,
+          shouldUseAlgoliaRecommend: false,
+        })
+      )
+      expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('when Algolia Recommend AB Testing activated', () => {
+    describe('should not call related products API', () => {
+      it('when no offer provided', () => {
+        renderHook(() =>
+          useSimilarOffers({
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryExcluded: undefined,
+            shouldUseAlgoliaRecommend: true,
+          })
+        )
+        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+      })
+
+      it('when offer and category excluded provided', () => {
+        renderHook(() =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            categoryIncluded: undefined,
+            categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            shouldUseAlgoliaRecommend: true,
+          })
+        )
+        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('should not call frequently bought together API', () => {
+      it(' when no offer provided', () => {
+        renderHook(() =>
+          useSimilarOffers({
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryExcluded: undefined,
+            shouldUseAlgoliaRecommend: true,
+          })
+        )
+        expect(getFrequentlyBoughtTogetherSpy).not.toHaveBeenCalled()
+      })
+
+      it('when offer and category included provided', () => {
+        renderHook(() =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            categoryExcluded: undefined,
+            shouldUseAlgoliaRecommend: true,
+          })
+        )
+        expect(getFrequentlyBoughtTogetherSpy).not.toHaveBeenCalled()
+      })
+    })
+
+    it('should call related products API when offer and category included provided', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryExcluded: undefined,
+          shouldUseAlgoliaRecommend: true,
+        })
+      )
+      expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should call frequently bought together API when offer and category excluded provided', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: undefined,
+          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          shouldUseAlgoliaRecommend: true,
+        })
+      )
+      expect(getFrequentlyBoughtTogetherSpy).toHaveBeenCalledTimes(1)
+    })
   })
 })
 
@@ -86,11 +207,16 @@ describe('getSimilarOffersEndpoint', () => {
   })
 
   describe('should not return endpoint', () => {
-    it('with user id, latitude, longitude and categories query params when they are not provided', () => {
+    it('with offer id, user id, latitude, longitude and categories query params when they are not provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, undefined)
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`
       )
+    })
+
+    it('when offer id not passed in parameter', () => {
+      const endpoint = getSimilarOffersEndpoint(undefined, undefined, undefined, undefined)
+      expect(endpoint).toEqual(undefined)
     })
   })
 })
