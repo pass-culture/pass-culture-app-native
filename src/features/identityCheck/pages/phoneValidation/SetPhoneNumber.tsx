@@ -117,54 +117,53 @@ export const SetPhoneNumber = () => {
   return (
     <PageWithHeader
       title="Numéro de téléphone"
-      fixedTopChildren={
-        <React.Fragment>
-          <CenteredTitle titleID={titleID} title="Ton numéro de téléphone" />
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
-      }
       scrollChildren={
-        <Form.MaxWidth>
-          <View accessibilityLabelledBy={titleID}>
-            <StyledBody>
-              Tu vas recevoir un code de validation pour confirmer ton numéro.
-            </StyledBody>
-            <Spacer.Column numberOfSpaces={6} />
-            <InputContainer>
-              <TextInput
-                autoComplete="off" // disable autofill on android
-                autoCapitalize="none"
-                isError={false}
-                keyboardType="number-pad"
-                label="Numéro de téléphone"
-                value={phoneNumber}
-                onChangeText={onChangeText}
-                textContentType="none" // disable autofill on iOS
-                onSubmitEditing={requestSendPhoneValidationCode}
-                accessibilityDescribedBy={phoneNumberInputErrorId}
-                leftComponent={LeftCountryPicker}
-                testID="Entrée pour le numéro de téléphone"
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={5} />
+          <CenteredTitle titleID={titleID} title="Quel est ton numéro de téléphone&nbsp;?" />
+          <Spacer.Column numberOfSpaces={6} />
+          <Form.MaxWidth>
+            <View accessibilityLabelledBy={titleID}>
+              <StyledBody>
+                Tu vas recevoir un code de validation pour confirmer ton numéro.
+              </StyledBody>
+              <Spacer.Column numberOfSpaces={6} />
+              <InputContainer>
+                <TextInput
+                  autoComplete="off" // disable autofill on android
+                  autoCapitalize="none"
+                  isError={false}
+                  keyboardType="number-pad"
+                  label="Numéro de téléphone"
+                  value={phoneNumber}
+                  onChangeText={onChangeText}
+                  textContentType="none" // disable autofill on iOS
+                  onSubmitEditing={requestSendPhoneValidationCode}
+                  accessibilityDescribedBy={phoneNumberInputErrorId}
+                  leftComponent={LeftCountryPicker}
+                  testID="Entrée pour le numéro de téléphone"
+                />
+              </InputContainer>
+              <InputError
+                relatedInputId={phoneNumberInputErrorId}
+                visible={!!invalidPhoneNumberMessage}
+                messageId={invalidPhoneNumberMessage}
+                numberOfSpacesTop={3}
               />
-            </InputContainer>
-            <InputError
-              relatedInputId={phoneNumberInputErrorId}
-              visible={!!invalidPhoneNumberMessage}
-              messageId={invalidPhoneNumberMessage}
-              numberOfSpacesTop={3}
-            />
-            {invalidPhoneNumberMessage ? (
-              <Spacer.Column numberOfSpaces={5} />
-            ) : (
-              <Spacer.Column numberOfSpaces={8} />
-            )}
+              {invalidPhoneNumberMessage ? (
+                <Spacer.Column numberOfSpaces={5} />
+              ) : (
+                <Spacer.Column numberOfSpaces={8} />
+              )}
 
-            <PhoneValidationTipsModal
-              isVisible={isTipsModalVisible}
-              dismissModal={hideTipsModal}
-              onGoBack={goBack}
-            />
-          </View>
-        </Form.MaxWidth>
+              <PhoneValidationTipsModal
+                isVisible={isTipsModalVisible}
+                dismissModal={hideTipsModal}
+                onGoBack={goBack}
+              />
+            </View>
+          </Form.MaxWidth>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <BottomContentContainer>

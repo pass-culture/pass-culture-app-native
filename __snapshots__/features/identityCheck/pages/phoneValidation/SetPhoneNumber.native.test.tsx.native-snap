@@ -230,54 +230,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "paddingHorizontal": 20,
-                "paddingTop": 20,
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <Text
-              nativeID="testUuidV4"
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Ton numéro de téléphone
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-        </View>
         <RCTScrollView
           bottomChildrenViewHeight={0}
           contentContainerStyle={
@@ -298,6 +250,53 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           }
         >
           <View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                nativeID="testUuidV4"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Quel est ton numéro de téléphone ?
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <View
               style={
                 Array [
