@@ -2,6 +2,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getSimilarOffersEndpoint, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const mockUserId = 1234
@@ -13,15 +14,37 @@ const position = {
 
 jest.mock('features/auth/context/AuthContext')
 
+const mockSearchGroups = placeholderData.searchGroups
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: {
+      searchGroups: mockSearchGroups,
+    },
+  }),
+}))
+
 describe('useSimilarOffers', () => {
   const algoliaSpy = jest
     .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')
     .mockImplementation()
 
   it('should call algolia hook', () => {
-    renderHook(() => useSimilarOffers(mockOfferId))
+    renderHook(() =>
+      useSimilarOffers({
+        offerId: mockOfferId,
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        categoryExcluded: undefined,
+      })
+    )
     expect(algoliaSpy).toHaveBeenCalledTimes(1)
-    renderHook(() => useSimilarOffers(mockOfferId, position))
+    renderHook(() =>
+      useSimilarOffers({
+        offerId: mockOfferId,
+        position,
+        categoryIncluded: undefined,
+        categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      })
+    )
     expect(algoliaSpy).toHaveBeenCalledTimes(2)
   })
 })

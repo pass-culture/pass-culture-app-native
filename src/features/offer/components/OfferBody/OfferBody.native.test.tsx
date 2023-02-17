@@ -99,24 +99,18 @@ describe('<OfferBody />', () => {
       const spy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementationOnce(jest.fn())
       render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates, [
-        SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
-      ])
-      expect(spy).toHaveBeenNthCalledWith(2, offerId, mockOffer.venue.coordinates, [
-        SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-        SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
-        SearchGroupNameEnumv2.CARTES_JEUNES,
-        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-        SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-        SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
-        SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.INSTRUMENTS,
-        SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
-        SearchGroupNameEnumv2.LIVRES,
-        SearchGroupNameEnumv2.MEDIA_PRESSE,
-        SearchGroupNameEnumv2.SPECTACLES,
-      ])
+      expect(spy).toHaveBeenNthCalledWith(1, {
+        categoryIncluded: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+        offerId,
+        position: mockOffer.venue.coordinates,
+        shouldUseAlgoliaRecommend: false,
+      })
+      expect(spy).toHaveBeenNthCalledWith(2, {
+        categoryExcluded: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+        offerId,
+        position: mockOffer.venue.coordinates,
+        shouldUseAlgoliaRecommend: false,
+      })
     })
 
     describe('Same category similar offers', () => {

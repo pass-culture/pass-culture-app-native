@@ -86,29 +86,22 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const { data } = useSubcategories()
   const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
   const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
-  const otherSearchGroups = subcategorySearchGroupId?.[0]
-    ? data?.searchGroups
-        .filter(
-          (searchGroup) =>
-            searchGroup.name !== subcategorySearchGroupId[0] &&
-            searchGroup.name !== SearchGroupNameEnumv2.NONE
-        )
-        .map((searchGroup) => searchGroup.name)
-    : undefined
 
-  const sameCategorySimilarOffers = useSimilarOffers(
+  const sameCategorySimilarOffers = useSimilarOffers({
     offerId,
-    offer?.venue.coordinates,
-    subcategorySearchGroupId
-  )
+    position: offer?.venue.coordinates,
+    shouldUseAlgoliaRecommend,
+    categoryIncluded: subcategorySearchGroupId?.[0] || SearchGroupNameEnumv2.NONE,
+  })
   const hasSameCategorySimilarOffers =
     sameCategorySimilarOffers && sameCategorySimilarOffers.length > 0
 
-  const otherCategoriesSimilarOffers = useSimilarOffers(
+  const otherCategoriesSimilarOffers = useSimilarOffers({
     offerId,
-    offer?.venue.coordinates,
-    otherSearchGroups
-  )
+    position: offer?.venue.coordinates,
+    shouldUseAlgoliaRecommend,
+    categoryExcluded: subcategorySearchGroupId?.[0] || SearchGroupNameEnumv2.NONE,
+  })
   const hasOtherCategoriesSimilarOffers =
     otherCategoriesSimilarOffers && otherCategoriesSimilarOffers.length > 0
 
