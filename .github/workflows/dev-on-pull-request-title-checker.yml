@@ -15,6 +15,6 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: Slashgear/action-check-pr-title@v3.0.0
+      - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
           regexp: '^(\((PC-[0-9]+|BSR)\) )?(build|lint|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+'
