@@ -5,7 +5,7 @@ import React from 'react'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 
 export default {
-  title: 'Features/Search/FilterSwitchWithLabel',
+  title: 'Features/search/FilterSwitchWithLabel',
   component: FilterSwitchWithLabel,
   decorators: [
     (Story) => (
