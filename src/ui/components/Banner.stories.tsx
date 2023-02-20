@@ -10,7 +10,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Banner } from './Banner'
 
 export default {
-  title: 'ui/Banner',
+  title: 'ui/banners/Banner',
   component: Banner,
   argTypes: {
     icon: selectArgTypeFromObject({
