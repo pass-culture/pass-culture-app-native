@@ -7,7 +7,7 @@ import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchParametersQuery } from 'libs/algolia/types'
 
 import { Range } from '../../typesUtils/typeHelpers'
-import { fetchOffer, offerAttributesToRetrieve, fetchOfferHits } from '../fetchAlgolia'
+import { fetchOffer, offerAttributesToRetrieve } from '../fetchAlgolia'
 
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()
@@ -1705,42 +1705,6 @@ describe('fetchOffer', () => {
         numericFilters: [['offer.prices: 0 TO 300']],
         clickAnalytics: true,
       })
-    })
-  })
-})
-
-describe('fetchOfferHits', () => {
-  it('should fetch with default search params', () => {
-    const queryIds = ['id1', 'id2']
-
-    fetchOfferHits({ objectIds: queryIds, isUserUnderage: false })
-
-    expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
-    expect(search).toHaveBeenCalledWith('', {
-      facetFilters: [['offer.isEducational:false'], ['objectID:id1', 'objectID:id2']],
-      numericFilters: [['offer.prices: 0 TO 300']],
-      attributesToRetrieve: offerAttributesToRetrieve,
-      attributesToHighlight: [],
-      page: 0,
-      hitsPerPage: 2,
-    })
-  })
-
-  it('should fetch with underage search params', () => {
-    const queryIds = ['id1', 'id2']
-    fetchOfferHits({ objectIds: queryIds, isUserUnderage: true })
-
-    expect(search).toHaveBeenCalledWith('', {
-      facetFilters: [
-        ['offer.isEducational:false'],
-        ['offer.isForbiddenToUnderage:false'],
-        ['objectID:id1', 'objectID:id2'],
-      ],
-      numericFilters: [['offer.prices: 0 TO 300']],
-      attributesToRetrieve: offerAttributesToRetrieve,
-      attributesToHighlight: [],
-      page: 0,
-      hitsPerPage: 2,
     })
   })
 })
