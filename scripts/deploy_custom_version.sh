@@ -11,9 +11,7 @@ update_app_version() {
 
     git commit -m "v${VERSION}"
     ./scripts/create_and_push_tag_from_package_json_version.sh "$1"
-
 }
 
 ## $1 : Numéro de version
-echo "$0" "$1"
 update_app_version "fake/v" "$1"

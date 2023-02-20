@@ -9,11 +9,6 @@
 
 ## Tasks
 
-- [x] Créer un nouveau script `trigger:testing:deploy:custom` avec en arg la version de build custom
-  - [x] Mettre un echo pour tester + vérifier que l'on recup le num de version passé en option (`deploy_new_version.sh`)
-- [ ] faire un script qui modifie la `"version"` dans le `package.json`
-- [ ] voir s'il faut désactiver des jobs dans la CI
-
 1. [x] màj la version du package.json
    - avec `fake-X.Y.Z`
 2. [x] commit

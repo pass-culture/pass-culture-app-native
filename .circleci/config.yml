@@ -36,7 +36,7 @@ executors:
 
 commands:
   gcp-oidc-authenticate:
-    description: "Authenticate with GCP using a CircleCI OIDC token."
+    description: 'Authenticate with GCP using a CircleCI OIDC token.'
     parameters:
       project_id:
         type: env_var_name
@@ -942,6 +942,11 @@ jobs:
 workflows:
   version: 2.1
   commit:
+    when:
+      not:
+        matches:
+          pattern: '^fake/v.*'
+          value: << pipeline.git.tag >>
     jobs:
       - checkout-and-install-deps:
           filters:
@@ -1236,3 +1241,16 @@ workflows:
           type: approval
           requires:
             - test-proxy
+  deploy-custom-testing-hard:
+    when:
+      matches:
+        pattern: '^fake/v.*'
+        value: << pipeline.git.tag >>
+    jobs:
+      - checkout-and-install-deps
+      - deploy-android-testing-hard:
+          requires:
+            - checkout-and-install-deps
+      - deploy-ios-testing-hard:
+          requires:
+            - checkout-and-install-deps
