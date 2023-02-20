@@ -24,7 +24,7 @@ interface ValidateOffIconProps extends AccessibleIcon {
 interface RadioSelectorProps {
   label: string
   onPress: () => void
-  description?: string
+  description?: string | null
   price?: string
   type?: RadioSelectorType
 }
@@ -81,8 +81,8 @@ const DefaultRadio = styled(TouchableOpacity)(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   padding: getSpacing(4),
   backgroundColor: 'transparent',
-  minHeight: 92,
-  maxHeight: 92,
+  minHeight: 80,
+  maxHeight: 80,
   alignItems: 'center',
 }))
 

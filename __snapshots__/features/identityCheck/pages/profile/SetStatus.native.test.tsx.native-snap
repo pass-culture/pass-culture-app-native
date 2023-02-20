@@ -354,15 +354,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Collégien"
@@ -371,7 +375,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -380,7 +383,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -391,11 +393,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Collégien
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -428,15 +463,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Lycéen"
@@ -445,7 +484,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -454,7 +492,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -465,11 +502,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Lycéen
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -502,15 +572,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Étudiant"
@@ -519,7 +593,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -528,7 +601,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -539,11 +611,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Étudiant
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -576,15 +681,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Employé"
@@ -593,7 +702,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -602,7 +710,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -613,11 +720,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Employé
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -650,15 +790,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Apprenti"
@@ -667,7 +811,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -676,7 +819,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -687,11 +829,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Apprenti
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -724,15 +899,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Alternant"
@@ -741,7 +920,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -750,7 +928,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -761,11 +938,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Alternant
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -798,15 +1008,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Volontaire"
@@ -815,7 +1029,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -824,7 +1037,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -835,6 +1047,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Volontaire
                         </Text>
@@ -853,7 +1066,39 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           En service civique
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -886,15 +1131,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Inactif"
@@ -903,7 +1152,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -912,7 +1160,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -923,6 +1170,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Inactif
                         </Text>
@@ -941,7 +1189,39 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           En incapacité de travailler
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
                     accessibilityRole="none"
@@ -974,15 +1254,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       style={
                         Object {
                           "alignItems": "center",
+                          "backgroundColor": "transparent",
                           "borderColor": "#696A6F",
-                          "borderRadius": 24,
+                          "borderRadius": 8,
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "height": 48,
-                          "marginBottom": 16,
+                          "maxHeight": 80,
+                          "minHeight": 80,
                           "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
                           "userSelect": "auto",
-                          "width": "100%",
                         }
                       }
                       testID="Chômeur"
@@ -991,7 +1275,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1000,7 +1283,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       >
                         <Text
-                          selected={false}
                           style={
                             Array [
                               Object {
@@ -1011,6 +1293,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                               },
                             ]
                           }
+                          type="default"
                         >
                           Chômeur
                         </Text>
@@ -1029,7 +1312,39 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           En recherche d’emploi
                         </Text>
                       </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>

@@ -17,7 +17,7 @@ import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
-import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
+import { RadioSelector, RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
 
@@ -70,12 +70,17 @@ export const SetSchoolType = () => {
                   )
                   return (
                     <Li key={schoolTypeId}>
-                      <RadioButtonWithBorder
-                        selected={schoolTypeId === selectedSchoolTypeId}
+                      <RadioSelector
+                        type={
+                          schoolTypeId === selectedSchoolTypeId
+                            ? RadioSelectorType.ACTIVE
+                            : RadioSelectorType.DEFAULT
+                        }
                         label={label as string}
                         description={description}
                         onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
                       />
+                      <Spacer.Column numberOfSpaces={3} />
                     </Li>
                   )
                 })}
