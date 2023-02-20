@@ -5,7 +5,7 @@ import React from 'react'
 import { AuthenticationButton } from './AuthenticationButton'
 
 export default {
-  title: 'Features/Auth/LogInButton',
+  title: 'Features/auth/LogInButton',
   component: AuthenticationButton,
   decorators: [
     (Story) => (

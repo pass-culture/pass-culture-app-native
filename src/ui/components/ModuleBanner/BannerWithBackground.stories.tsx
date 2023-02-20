@@ -11,7 +11,7 @@ import { Typo } from 'ui/theme'
 import { BannerWithBackground } from './BannerWithBackground'
 
 export default {
-  title: 'ui/BannerWithBackground',
+  title: 'ui/banners/BannerWithBackground',
   component: BannerWithBackground,
   argTypes: {
     leftIcon: selectArgTypeFromObject({

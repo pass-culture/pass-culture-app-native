@@ -9,7 +9,7 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Typo } from 'ui/theme'
 
 export default {
-  title: 'Features/HeroButtonList',
+  title: 'Features/identityCheck/HeroButtonList',
   component: HeroButtonList,
   decorators: [
     (Story) => (

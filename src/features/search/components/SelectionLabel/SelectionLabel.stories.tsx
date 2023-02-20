@@ -4,7 +4,7 @@ import React from 'react'
 import { SelectionLabel } from './SelectionLabel'
 
 export default {
-  title: 'Features/Search/SelectionLabel',
+  title: 'Features/search/SelectionLabel',
   component: SelectionLabel,
 } as ComponentMeta<typeof SelectionLabel>
 

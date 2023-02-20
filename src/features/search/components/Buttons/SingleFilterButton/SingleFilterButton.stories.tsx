@@ -4,7 +4,7 @@ import React from 'react'
 import { SingleFilterButton } from './SingleFilterButton'
 
 export default {
-  title: 'Features/Search/SingleFilterButton',
+  title: 'Features/search/SingleFilterButton',
   component: SingleFilterButton,
 } as ComponentMeta<typeof SingleFilterButton>
 
