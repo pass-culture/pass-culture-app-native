@@ -945,7 +945,7 @@ workflows:
     when:
       not:
         matches:
-          pattern: '^fake/v.*'
+          pattern: "^fake\/v.*"
           value: << pipeline.git.tag >>
     jobs:
       - checkout-and-install-deps:
@@ -1244,7 +1244,7 @@ workflows:
   deploy-custom-testing-hard:
     when:
       matches:
-        pattern: '^fake/v.*'
+        pattern: "^fake\/v.*"
         value: << pipeline.git.tag >>
     jobs:
       - checkout-and-install-deps
