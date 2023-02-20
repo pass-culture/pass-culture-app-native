@@ -4,8 +4,7 @@ import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
-
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 jest.mock('react-query')
 
 const mockedOffer: Partial<OfferResponse> | undefined = offerResponseSnap
@@ -33,8 +32,12 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 describe('Accessibility', () => {
   it('should not have basic accessibility issues', async () => {
     mockV4.mockReturnValueOnce('offerId')
-    const { container } = await render(<Offer />)
-    const results = await checkAccessibilityFor(container)
+    const { container } = render(<Offer />)
+
+    let results: Awaited<ReturnType<typeof checkAccessibilityFor>> | undefined
+    await act(async () => {
+      results = await checkAccessibilityFor(container)
+    })
 
     expect(results).toHaveNoViolations()
   })

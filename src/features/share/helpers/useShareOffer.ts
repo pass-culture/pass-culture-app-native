@@ -1,10 +1,9 @@
 import { Platform } from 'react-native'
 
-import { useOffer } from 'features/offer/api/useOffer'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
+import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
 import { ShareOutput } from 'features/share/types'
 import { share } from 'libs/share'
-import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 const doNothingFn = () => {
@@ -18,17 +17,15 @@ const shareOptions = {
 }
 
 export const useShareOffer = (offerId: number): ShareOutput => {
-  const { data: offer } = useOffer({ offerId })
+  const message = useShareOfferMessage(offerId)
 
-  if (!offer)
+  if (!message)
     return {
       share: doNothingFn,
       shareContent: undefined,
     }
 
-  const shareUrl = getOfferUrl(offer.id)
-  const locationName = getOfferLocationName(offer.venue, offer.isDigital)
-  const message = `Retrouve "${offer.name}" chez "${locationName}" sur le pass Culture`
+  const shareUrl = getOfferUrl(offerId)
   const shareAndroidMessage = message + DOUBLE_LINE_BREAK + shareUrl
   // url share content param is only for iOS, so we add url in message for android
   const shareMessage = Platform.OS === 'android' ? shareAndroidMessage : message
