@@ -34,7 +34,7 @@ export const BookDateChoice = ({
     <React.Fragment>
       {enablePricesByCategories ? (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
+          <Spacer.Column numberOfSpaces={6} />
           <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
             Date
           </Typo.Title3>
