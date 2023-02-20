@@ -1,6 +1,6 @@
 import { GenreType } from 'api/gen'
 import { OfferGenreType } from 'features/search/types'
-import { buildOfferGenreTypes } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/buildOfferGenreTypes'
+import { buildOfferGenreTypes } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypes'
 import { GenreTypeMapping } from 'libs/subcategories/types'
 
 export const buildOfferGenreTypesValues = (

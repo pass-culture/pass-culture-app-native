@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { OffersModuleParameters } from 'features/home/types'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
-import { adaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/adaptOffersPlaylistParameters'
+import { adaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistParameters'
 import { useGeolocation } from 'libs/geolocation'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 

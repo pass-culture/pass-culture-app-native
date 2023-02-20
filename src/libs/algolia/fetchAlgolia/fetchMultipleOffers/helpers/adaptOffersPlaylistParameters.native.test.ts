@@ -6,7 +6,7 @@ import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/c
 import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
-import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/useAdaptOffersPlaylistParameters'
+import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
