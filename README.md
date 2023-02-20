@@ -24,6 +24,7 @@ To be able to install and run the iOS and Android mobile apps, you first need to
 - Install `yarn`
 - Configure Sentry through [this tutorial](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/standards/sentry.md#-configure-sentry-cli)
 - Run `yarn install` to install all the dependencies
+
 #### 📱 Mobile
 
 To run the mobile app on Android or iOS, you will need to follow the installation steps:
@@ -37,7 +38,7 @@ To run the web app on your browser, follow the steps [here](./doc/installation/w
 
 #### 💄 Storybook
 
-Access to the [storybook](https://master--61fd537ecf081f003a135235.chromatic.com/).
+Access to the [storybook](https://pass-culture.github.io/pass-culture-app-native).
 
 To run the storybook on your browser, follow the steps [here](./doc/storybook.md)
 
