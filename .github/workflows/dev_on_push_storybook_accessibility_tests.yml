@@ -1,0 +1,23 @@
+name: Run axe storybook accessibility tests
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  build-and-test-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: yarn install
+      - name: Build Storybook 🔧
+        run: yarn build-storybook
+      - name: Run axe storybook accessibility tests 🧪
+        run: yarn axe-storybook
