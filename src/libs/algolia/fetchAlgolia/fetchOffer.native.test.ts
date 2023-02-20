@@ -4,10 +4,10 @@ import { GenreType } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import { fetchOffer } from 'libs/algolia/fetchAlgolia/fetchOffer'
 import { SearchParametersQuery } from 'libs/algolia/types'
-
-import { Range } from '../../typesUtils/typeHelpers'
-import { fetchOffer, offerAttributesToRetrieve } from '../fetchAlgolia'
+import { Range } from 'libs/typesUtils/typeHelpers'
 
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()

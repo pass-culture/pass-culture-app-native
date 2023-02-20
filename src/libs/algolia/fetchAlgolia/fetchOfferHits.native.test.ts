@@ -1,8 +1,8 @@
 import algoliasearch from 'algoliasearch'
 
-import { Range } from '../../typesUtils/typeHelpers'
-import { offerAttributesToRetrieve, fetchOfferHits } from '../fetchAlgolia'
-
+import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
+import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { Range } from 'libs/typesUtils/typeHelpers'
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()
 const mockGetFirstOfDate = jest.fn()
