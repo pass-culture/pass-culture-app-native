@@ -942,6 +942,11 @@ jobs:
 workflows:
   version: 2.1
   commit:
+    when:
+      not:
+        matches:
+          pattern: '^fake/v.*'
+          value: << pipeline.git.tag >>
     jobs:
       - checkout-and-install-deps:
           filters:
@@ -1236,3 +1241,25 @@ workflows:
           type: approval
           requires:
             - test-proxy
+  deploy-custom-testing-hard:
+    when:
+      matches:
+        pattern: '^fake/v.*'
+        value: << pipeline.git.tag >>
+    jobs:
+      - checkout-and-install-deps:
+          filters:
+            tags:
+              only: /^fake\/v.*/
+      - deploy-android-testing-hard:
+          filters:
+            tags:
+              only: /^fake\/v.*/
+          requires:
+            - checkout-and-install-deps
+      - deploy-ios-testing-hard:
+          filters:
+            tags:
+              only: /^fake\/v.*/
+          requires:
+            - checkout-and-install-deps
