@@ -17,6 +17,7 @@ export type StorageKey =
   | 'traffic_medium'
   | 'traffic_source'
   | 'user_age'
+  | 'has_seen_fav_list_fake_door'
 
 export const storage = {
   clear,
