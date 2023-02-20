@@ -6,7 +6,7 @@ export const adaptThematicHighlightModule = (
   module: ThematicHighlightContentModel
 ): ThematicHighlightModule => {
   const thematicHighlightInfo = module.fields.thematicHighlightInfo.fields
-  const imageUrl = buildImageUrl(thematicHighlightInfo.image?.fields.file.url)
+  const imageUrl = buildImageUrl(thematicHighlightInfo.image.fields.file.url)
 
   return {
     id: module.sys.id,
