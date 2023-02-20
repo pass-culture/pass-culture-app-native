@@ -7,7 +7,7 @@ import { theme } from 'theme'
 import { SectionWithSwitch } from './SectionWithSwitch'
 
 export default {
-  title: 'ui/SectionWithSwitch',
+  title: 'ui/sections/SectionWithSwitch',
   component: SectionWithSwitch,
   parameters: {
     chromatic: { viewports: [theme.breakpoints.sm, theme.breakpoints.md, theme.breakpoints.lg] },
