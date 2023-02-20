@@ -9,6 +9,7 @@ import { InstagramRound } from 'ui/svg/icons/socialNetwork/InstagramRound'
 import { MessengerRound } from 'ui/svg/icons/socialNetwork/MessengerRound'
 import { SnapchatRound } from 'ui/svg/icons/socialNetwork/SnapchatRound'
 import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
+import { TwitterRound } from 'ui/svg/icons/socialNetwork/TwitterRound'
 import { ViberRound } from 'ui/svg/icons/socialNetwork/ViberRound'
 import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -43,6 +44,7 @@ export enum Network {
   telegram = 'Telegram',
   viber = 'Viber',
   whatsapp = 'WhatsApp',
+  twitter = 'Twitter',
 }
 
 const mapNetworkToRoundIcon: Record<Network, React.FC<AccessibleIcon>> = {
@@ -53,6 +55,7 @@ const mapNetworkToRoundIcon: Record<Network, React.FC<AccessibleIcon>> = {
   [Network.telegram]: Telegram,
   [Network.viber]: ViberRound,
   [Network.imessage]: IMessageRound,
+  [Network.twitter]: TwitterRound,
 }
 
 const MESSAGING_BUTTON_HEIGHT = getSpacing(24)

@@ -82,4 +82,7 @@ const mapNetworkToSocial: Record<
     supportsURL: false,
     url: 'sms://&body=',
   },
+  [Network.twitter]: {
+    social: Social.Twitter,
+  },
 }
