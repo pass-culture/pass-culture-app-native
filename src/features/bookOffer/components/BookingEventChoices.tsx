@@ -109,11 +109,12 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
         <React.Fragment>
           <ProgressContainer>
             <Spacer.Column numberOfSpaces={4} />
-            <Typo.Hint>
+            <Typo.Caption>
               Étape {step} sur {totalSteps}
-            </Typo.Hint>
+            </Typo.Caption>
           </ProgressContainer>
-          <ProgressBar progress={progressBarValue} colors={[theme.colors.primary]} />
+          <Spacer.Column numberOfSpaces={2} />
+          <ProgressBar progress={progressBarValue} colors={[theme.colors.primary]} height={0} />
         </React.Fragment>
       )}
       {!enablePricesByCategories && <Separator />}
@@ -133,7 +134,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
 
           {!!shouldDisplayHourSelection && (
             <React.Fragment>
-              <Spacer.Column numberOfSpaces={enablePricesByCategories ? 2 : 6} />
+              <Spacer.Column numberOfSpaces={6} />
               <BookHourChoice enablePricesByCategories={enablePricesByCategories} />
 
               <Spacer.Column numberOfSpaces={6} />
@@ -144,7 +145,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       {!!(step && step >= Step.DUO) && (
         <React.Fragment>
           {!enablePricesByCategories && <Separator />}
-          <Spacer.Column numberOfSpaces={enablePricesByCategories ? 2 : 6} />
+          <Spacer.Column numberOfSpaces={6} />
 
           <BookDuoChoice enablePricesByCategories={enablePricesByCategories} />
 

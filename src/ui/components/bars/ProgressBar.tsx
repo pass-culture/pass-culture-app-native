@@ -9,9 +9,10 @@ import { UniqueColors, ColorsEnum } from 'ui/theme/colors'
 interface ProgressBarProps {
   progress: number
   colors: Array<ColorsEnum | UniqueColors>
+  height?: number
 }
 
-const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress }) => {
+const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, height = 40 }) => {
   const LinearColors = colors.length === 1 ? [colors[0], colors[0]] : colors
 
   const LinearGradientBar = styled(LinearGradient).attrs({
@@ -21,7 +22,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress }) 
   })({ flex: progress, borderRadius: getSpacing(12) })
 
   return (
-    <Container>
+    <Container height={height}>
       <ProgressBarContainer>
         <LinearGradientBar testID="progress-bar" />
       </ProgressBarContainer>
@@ -31,12 +32,12 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress }) 
 
 export const ProgressBar = memo(ProgressBarComponent)
 
-const Container = styled.View({
+const Container = styled.View<{ height: number }>(({ height }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  height: 40,
+  height,
   maxHeight: 40,
-})
+}))
 
 const ProgressBarContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
