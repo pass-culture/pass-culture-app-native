@@ -14,11 +14,11 @@ export const getSimilarOffersEndpoint = (
 ): string | undefined => {
   const endpoint = `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerId}?`
   const urlParams = new URLSearchParams()
-  urlParams.set('token', env.RECOMMENDATION_TOKEN)
-  if (userId) urlParams.set('userId', String(userId))
+  urlParams.append('token', env.RECOMMENDATION_TOKEN)
+  if (userId) urlParams.append('userId', String(userId))
   if (position) {
-    urlParams.set('longitude', String(position.longitude))
-    urlParams.set('latitude', String(position.latitude))
+    urlParams.append('longitude', String(position.longitude))
+    urlParams.append('latitude', String(position.latitude))
   }
   if (categories) categories.forEach((category) => urlParams.append('categories', category))
   return endpoint + urlParams.toString()
