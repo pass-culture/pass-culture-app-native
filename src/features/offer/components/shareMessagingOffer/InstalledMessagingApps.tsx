@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Linking } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
+import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
 import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
-import { Li } from 'ui/components/Li'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 export const MAX_NB_OF_SOCIALS_TO_SHOW = 3
@@ -52,9 +52,9 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
         }
 
         return (
-          <Li key={network}>
+          <MessagingAppContainer key={network}>
             <ShareMessagingApp network={network} onPress={onPress} />
-          </Li>
+          </MessagingAppContainer>
         )
       })}
     </React.Fragment>

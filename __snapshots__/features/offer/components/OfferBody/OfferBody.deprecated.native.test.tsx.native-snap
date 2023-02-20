@@ -1080,7 +1080,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "flexGrow": 1,
                                         "flexShrink": 1,
                                         "flexWrap": "wrap",
-                                        "justifyContent": "center",
+                                        "justifyContent": "flex-start",
                                         "paddingLeft": 0,
                                       },
                                     ]
@@ -1091,12 +1091,14 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -1192,12 +1194,14 @@ Instagram
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -1293,12 +1297,14 @@ WhatsApp
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -1394,12 +1400,14 @@ iMessage
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -4141,7 +4149,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "flexGrow": 1,
                                         "flexShrink": 1,
                                         "flexWrap": "wrap",
-                                        "justifyContent": "center",
+                                        "justifyContent": "flex-start",
                                         "paddingLeft": 0,
                                       },
                                     ]
@@ -4152,12 +4160,14 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -4253,12 +4263,14 @@ Instagram
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -4354,12 +4366,14 @@ WhatsApp
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }
@@ -4455,12 +4469,14 @@ iMessage
                                     style={
                                       Array [
                                         Object {
+                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexBasis": "8.333333333333334%",
                                           "flexGrow": 1,
                                           "flexShrink": 0,
-                                          "paddingBottom": 20,
-                                          "paddingRight": 4,
+                                          "marginBottom": 20,
+                                          "marginHorizontal": 4,
+                                          "maxWidth": 76,
                                         },
                                       ]
                                     }

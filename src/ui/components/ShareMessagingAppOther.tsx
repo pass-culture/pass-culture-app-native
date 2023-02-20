@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { IconWithCaption } from 'ui/components/IconWithCaption'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { MessagingAppButtonContainer } from 'ui/components/ShareMessagingApp'
 import { BicolorShare } from 'ui/svg/icons/BicolorShare'
 import { getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -13,13 +13,13 @@ interface ShareMessagingAppOtherProps {
 
 export const ShareMessagingAppOther: React.FC<ShareMessagingAppOtherProps> = ({ onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <MessagingAppButtonContainer onPress={onPress}>
       <IconWithCaption
         Icon={Icon}
         caption={'Plus' + LINE_BREAK + 'd’options'}
         accessibilityLabel="Plus d’options de partage"
       />
-    </TouchableOpacity>
+    </MessagingAppButtonContainer>
   )
 }
 

@@ -1089,8 +1089,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "flexWrap": "wrap",
-                  "gap": 8,
-                  "justifyContent": "space-between",
+                  "justifyContent": "flex-start",
                   "paddingLeft": 0,
                 },
               ]
@@ -1101,12 +1100,20 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "display": "flex",
+                    "flexBasis": "8.333333333333334%",
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "marginBottom": 20,
+                    "marginHorizontal": 4,
+                    "maxWidth": 76,
                   },
                 ]
               }
             >
               <View
+                accessibilityRole="button"
                 accessible={false}
                 collapsable={false}
                 focusable={true}
@@ -1119,8 +1126,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "height": 96,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 76,
                   }
                 }
               >
@@ -1193,12 +1203,20 @@ Instagram
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "display": "flex",
+                    "flexBasis": "8.333333333333334%",
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "marginBottom": 20,
+                    "marginHorizontal": 4,
+                    "maxWidth": 76,
                   },
                 ]
               }
             >
               <View
+                accessibilityRole="button"
                 accessible={false}
                 collapsable={false}
                 focusable={true}
@@ -1211,8 +1229,11 @@ Instagram
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "height": 96,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 76,
                   }
                 }
               >
@@ -1285,12 +1306,20 @@ WhatsApp
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "display": "flex",
+                    "flexBasis": "8.333333333333334%",
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "marginBottom": 20,
+                    "marginHorizontal": 4,
+                    "maxWidth": 76,
                   },
                 ]
               }
             >
               <View
+                accessibilityRole="button"
                 accessible={false}
                 collapsable={false}
                 focusable={true}
@@ -1303,8 +1332,11 @@ WhatsApp
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "height": 96,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 76,
                   }
                 }
               >
@@ -1377,14 +1409,20 @@ iMessage
               style={
                 Array [
                   Object {
+                    "alignItems": "center",
                     "display": "flex",
-                    "height": 96,
-                    "width": 76,
+                    "flexBasis": "8.333333333333334%",
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "marginBottom": 20,
+                    "marginHorizontal": 4,
+                    "maxWidth": 76,
                   },
                 ]
               }
             >
               <View
+                accessibilityRole="button"
                 accessible={false}
                 collapsable={false}
                 focusable={true}
@@ -1397,8 +1435,11 @@ iMessage
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "height": 96,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 76,
                   }
                 }
               >
@@ -1485,11 +1526,11 @@ d’options
           </View>
         </View>
         <View
-          numberOfSpaces={9}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "height": 36,
+                "height": 16,
               },
             ]
           }
