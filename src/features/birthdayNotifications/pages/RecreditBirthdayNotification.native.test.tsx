@@ -4,7 +4,7 @@ import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { flushAllPromisesWithAct, render } from 'tests/utils'
 
-import { RecreditBirthdayNotification } from '../RecreditBirthdayNotification'
+import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
 jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
