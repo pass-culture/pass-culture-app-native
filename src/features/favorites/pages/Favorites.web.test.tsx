@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, cleanup, render } from 'tests/utils/web'
+import { checkAccessibilityFor, cleanup, render, act } from 'tests/utils/web'
 
 import { Favorites } from './Favorites'
 
@@ -25,20 +25,21 @@ describe('<Favorites/>', () => {
   describe('Accessibility', () => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-    afterEach(async () => {
-      await cleanup()
+    afterEach(() => {
+      cleanup()
     })
 
     it('should not have basic accessibility issues when user is logged in', async () => {
-      const { container } = await renderFavorites({ isLoggedIn: true })
+      const { container } = renderFavorites({ isLoggedIn: true })
 
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
 
     it('should not have basic accessibility issues when user is not logged in', async () => {
-      const { container } = await renderFavorites({ isLoggedIn: false })
+      const { container } = renderFavorites({ isLoggedIn: false })
 
       const results = await checkAccessibilityFor(container)
 
@@ -47,7 +48,7 @@ describe('<Favorites/>', () => {
 
     it('should not have basic accessibility issues when user is logged in but offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = await renderFavorites({ isLoggedIn: true })
+      const { container } = renderFavorites({ isLoggedIn: true })
 
       const results = await checkAccessibilityFor(container)
 
