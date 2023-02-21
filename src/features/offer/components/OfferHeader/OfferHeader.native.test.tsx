@@ -13,6 +13,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -253,6 +254,16 @@ describe('<OfferHeader />', () => {
       from: 'offer',
       id: offerId,
     })
+  })
+
+  it('should not show favorite list modal when the user has already seen the fake door', async () => {
+    await storage.saveObject('has_seen_fav_list_fake_door', true)
+    renderOfferHeader()
+
+    const favButton = screen.getByTestId('animated-icon-favorite')
+    await act(async () => fireEvent.press(favButton))
+
+    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
   })
 })
 

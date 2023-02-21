@@ -18,6 +18,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
+import { storage } from 'libs/storage'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -92,20 +93,32 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { animationState, backgroundColor } = getAnimationState(theme, headerTransition)
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
 
-  function pressFavorite() {
+  const pressFavorite = useCallback(async () => {
     if (!isLoggedIn) {
       showSignInModal()
-    } else if (!favorite) {
+    } else if (favorite) {
+      removeFavorite(favorite.id)
+    } else {
       animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId })
       if (isFavListFakeDoorEnabled) {
-        analytics.logFavoriteListDisplayed('offer')
-        showFavoriteListOfferModal()
+        const hasSeenFavListFakeDoor = await storage.readObject('has_seen_fav_list_fake_door')
+        if (!hasSeenFavListFakeDoor) {
+          analytics.logFavoriteListDisplayed('offer')
+          showFavoriteListOfferModal()
+        }
       }
-    } else if (favorite) {
-      removeFavorite(favorite.id)
     }
-  }
+  }, [
+    addFavorite,
+    favorite,
+    isFavListFakeDoorEnabled,
+    isLoggedIn,
+    offerId,
+    removeFavorite,
+    showFavoriteListOfferModal,
+    showSignInModal,
+  ])
 
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'offer', id: offerId })
