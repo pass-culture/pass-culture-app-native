@@ -8,7 +8,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 interface IconStepDoneProps {
   Icon: FunctionComponent<
     AccessibleIcon & {
-      transform?: string | undefined
+      transform?: string
     }
   >
   testID?: string
