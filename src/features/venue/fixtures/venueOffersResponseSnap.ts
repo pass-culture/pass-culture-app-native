@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { SearchHit } from 'libs/search'
+import { SearchHit } from 'libs/algolia'
 
 export const VenueOffersResponseSnap: SearchHit[] = [
   {

@@ -2,6 +2,7 @@ import flatten from 'lodash/flatten'
 
 import { LocationType } from 'features/search/enums'
 import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
+import { VenueHit } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
@@ -13,7 +14,6 @@ import { VenuesParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
-import { VenueHit } from 'libs/search'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
