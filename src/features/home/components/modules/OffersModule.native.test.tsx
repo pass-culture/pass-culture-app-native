@@ -3,10 +3,10 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { OffersModuleParameters } from 'features/home/types'
+import { SearchHit, transformHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
-import { SearchHit, transformHit } from 'libs/search'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 

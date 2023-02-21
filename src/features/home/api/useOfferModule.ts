@@ -6,15 +6,16 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
+import { SearchHit } from 'libs/algolia'
 import {
   fetchMultipleOffers,
   filterOfferHit,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia'
+import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, useParseSearchParameters } from 'libs/search'
 
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
@@ -30,11 +31,12 @@ export const useOfferModule = ({
 }: UseOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
   const { position } = useGeolocation()
   const transformHits = useTransformOfferHits()
-  const parseSearchParameters = useParseSearchParameters()
+
+  const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const isUserUnderage = useIsUserUnderage()
   const { user } = useAuthContext()
   const netInfo = useNetInfoContext()
-  const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
+  const parsedParameters = search.map(adaptedPlaylistParameters).filter(isSearchState)
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],

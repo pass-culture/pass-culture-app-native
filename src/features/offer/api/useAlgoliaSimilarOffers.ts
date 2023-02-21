@@ -2,9 +2,9 @@ import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { IncompleteSearchHit, SearchHit } from 'libs/algolia'
 import { fetchOfferHits, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { QueryKeys } from 'libs/queryKeys'
-import { IncompleteSearchHit, SearchHit } from 'libs/search'
 
 export const useAlgoliaSimilarOffers = (ids: string[]): SearchHit[] | undefined => {
   const isUserUnderage = useIsUserUnderage()

@@ -1,4 +1,4 @@
-import { buildOfferGenreTypesValues } from 'libs/search/utils/buildOfferGenreTypesValues'
+import { buildOfferGenreTypesValues } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypesValues'
 import { GenreTypeMapping } from 'libs/subcategories/types'
 
 const mockGenreTypeMapping: GenreTypeMapping = {

@@ -1,5 +1,5 @@
 export { fetchOffer } from './fetchOffer'
-export { fetchMultipleOffers } from './fetchMultipleOffers'
+export { fetchMultipleOffers } from './fetchMultipleOffers/fetchMultipleOffers'
 export { fetchOfferHits } from './fetchOfferHits'
 export { filterOfferHit, transformOfferHit, useTransformOfferHits } from './transformOfferHit'
 export { offerAttributesToRetrieve } from './buildAlgoliaParameters/offerAttributesToRetrieve'

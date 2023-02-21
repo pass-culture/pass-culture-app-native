@@ -6,13 +6,14 @@ import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
+import { SearchHit } from 'libs/algolia'
+import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { ContentTypes } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
-import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
@@ -33,7 +34,8 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { cover, display, search, index, moduleId, homeEntryId } = props
   const data = useOfferModule({ search, moduleId })
   const { position } = useGeolocation()
-  const parseSearchParameters = useParseSearchParameters()
+
+  const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
@@ -45,7 +47,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const searchParams = {
-    ...parseSearchParameters(parameters),
+    ...adaptedPlaylistParameters(parameters),
     hitsPerPage: 20,
     view: SearchView.Results,
   }

@@ -20,7 +20,7 @@ const mock_WEEKEND_getFirstFromDate = jest.fn()
 
 const mockComputeTimeRangeFromHoursToSeconds = jest.fn()
 
-jest.mock('libs/search/datetime/time', () => ({
+jest.mock('shared/helpers/datetime/time', () => ({
   TIMESTAMP: {
     getLastOfDate: (arg: Date) => mockGetLastOfDate(arg),
     getFromDate: (arg: Date) => mockGetFromDate(arg),

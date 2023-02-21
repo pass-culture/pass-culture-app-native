@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { VenuesModule } from 'features/home/types'
+import { VenueHit } from 'libs/algolia'
 import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
-import { VenueHit } from 'libs/search'
 
 export const useVenueModule = ({
   venuesParameters,

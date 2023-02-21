@@ -23,13 +23,13 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
+import { SearchHit } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod, formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { SearchHit } from 'libs/search'
 import {
   useCategoryHomeLabelMapping,
   useCategoryIdMapping,
