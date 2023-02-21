@@ -1,9 +1,13 @@
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
+import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
-import { act, fireEvent } from 'tests/utils'
+import { act, fireEvent, screen } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
+
+const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
@@ -53,5 +57,36 @@ describe('<OfferBody /> - Analytics', () => {
     trigger(getByText('Modalités de retrait'))
     trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log Share with chosen social medium on social medium button press', async () => {
+    mockCheckInstalledApps.mockResolvedValueOnce({
+      [Network.snapchat]: true,
+    })
+    await renderOfferBodyPage()
+
+    const socialMediumButton = screen.getByText(`Envoyer sur ${[Network.snapchat]}`)
+    fireEvent.press(socialMediumButton)
+
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'offer',
+      id: offerId,
+      social: Network.snapchat,
+    })
+  })
+
+  it('should open native share modal on "Plus d’options" press', async () => {
+    await renderOfferBodyPage()
+
+    const otherButton = screen.getByText('Plus d’options')
+    fireEvent.press(otherButton)
+
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'offer',
+      id: offerId,
+      social: 'Other',
+    })
   })
 })

@@ -5,6 +5,7 @@ import { InstalledMessagingApps } from 'features/offer/components/shareMessaging
 import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
 import { useShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { analytics } from 'libs/firebase/analytics'
 import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
@@ -26,9 +27,10 @@ export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   } = useModal()
 
   const onOtherPress = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'offer', id: offerId, social: 'Other' })
     share()
     showShareOfferModal()
-  }, [share, showShareOfferModal])
+  }, [offerId, share, showShareOfferModal])
 
   return (
     <React.Fragment>
