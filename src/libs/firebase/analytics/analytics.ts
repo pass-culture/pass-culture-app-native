@@ -296,7 +296,7 @@ const logEventAnalytics = {
     from: Referrals
     id: number
     social?: Social | 'Other'
-  }) => analyticsProvider.logEvent(AnalyticsEvent.SHARE, { params }),
+  }) => analyticsProvider.logEvent(AnalyticsEvent.SHARE, params),
   logShareApp: ({ from, type }: { from?: Referrals; type?: ShareAppModalType }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { from, type }),
   logSignInFromAuthenticationModal: (offerId: number) =>
