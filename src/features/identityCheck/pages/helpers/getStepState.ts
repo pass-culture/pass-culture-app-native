@@ -1,5 +1,4 @@
-import { StepButtonState } from 'features/identityCheck/types'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfig, StepButtonState } from 'features/identityCheck/types'
 
 export const getStepState = (
   steps: StepConfig[],
