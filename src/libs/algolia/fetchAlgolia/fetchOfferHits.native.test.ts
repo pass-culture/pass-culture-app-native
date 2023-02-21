@@ -14,7 +14,7 @@ const mock_WEEKEND_getFirstFromDate = jest.fn()
 
 const mockComputeTimeRangeFromHoursToSeconds = jest.fn()
 
-jest.mock('libs/search/datetime/time', () => ({
+jest.mock('libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/datetime/time', () => ({
   TIMESTAMP: {
     getLastOfDate: (arg: Date) => mockGetLastOfDate(arg),
     getFromDate: (arg: Date) => mockGetFromDate(arg),
