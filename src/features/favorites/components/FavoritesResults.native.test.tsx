@@ -99,12 +99,10 @@ describe('FavoritesResults component', () => {
     expect(await screen.findByText('Crée une liste de favoris')).toBeTruthy()
   })
 
-  //FIXME(PC-30378): update RNTL
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not show favorite list banner when the user has already seen the fake door', async () => {
+  it('should not show favorite list banner when the user has already seen the fake door', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
 
-    await storage.saveObject('has_seen_fav_list_fake_door', true)
+    storage.saveObject('has_seen_fav_list_fake_door', true)
     renderFavoritesResults()
 
     await waitFor(() => {
