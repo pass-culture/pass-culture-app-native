@@ -29,10 +29,7 @@ export const OfferNativeCategoryChoices = (props: Props) => {
   const nativeCategories = useMemo(() => {
     let nativeCategories: NativeCategoryResponseModelv2[] = []
     categories.forEach((categoryEnum) => {
-      nativeCategories = [
-        ...nativeCategories,
-        ...(getNativeCategories(data, categoryEnum) as NativeCategoryResponseModelv2[]),
-      ]
+      nativeCategories = [...nativeCategories, ...getNativeCategories(data, categoryEnum)]
     })
     return nativeCategories.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
   }, [data, categories])
