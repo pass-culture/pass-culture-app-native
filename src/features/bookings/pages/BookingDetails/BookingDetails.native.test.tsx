@@ -18,7 +18,6 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, fireEvent, render } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
@@ -37,18 +36,31 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
+const mockShowInfoSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
+  useSnackBarContext: jest.fn(() => ({
+    showInfoSnackBar: mockShowInfoSnackBar,
+    showErrorSnackBar: mockShowErrorSnackBar,
+  })),
   SNACK_BAR_TIME_OUT: mockSnackBarTimeout,
+}))
+
+let mockBookings = { ...bookingsSnap }
+
+jest.mock('features/bookings/api/useBookings', () => ({
+  useBookings: jest.fn(() => ({
+    data: mockBookings,
+  })),
 }))
 
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-  afterEach(jest.restoreAllMocks)
+  afterEach(() => {
+    jest.restoreAllMocks()
+    mockBookings = { ...bookingsSnap }
+  })
 
   beforeAll(() => {
     useRoute.mockImplementation(() => ({
@@ -246,6 +258,101 @@ describe('BookingDetails', () => {
       await fireEvent.press(getAllByTestId('Annuler ma réservation')[0])
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
+    })
+  })
+
+  describe('cancellation message and navigation to ended booking', () => {
+    describe('should display it and navigate', () => {
+      beforeEach(() => {
+        useRoute.mockImplementation(() => ({
+          params: {
+            id: 321,
+          },
+        }))
+      })
+
+      it('when booking is digital with expiration date', () => {
+        const booking = {
+          ...mockBookings.ended_bookings[0],
+          expirationDate: '2021-03-17T23:01:37.925926',
+        }
+
+        mockBookings = {
+          ...mockBookings,
+          ended_bookings: [booking],
+        }
+
+        const nameCanceledBooking = booking.stock.offer.name
+        renderBookingDetails(booking)
+
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+          message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        expect(navigate).toHaveBeenCalledWith('EndedBookings')
+      })
+
+      it('when booking is not digital with expiration date', () => {
+        const mockedBooking = mockBookings.ended_bookings[0]
+
+        const booking = {
+          ...mockedBooking,
+          expirationDate: '2021-03-17T23:01:37.925926',
+          stock: {
+            ...mockedBooking.stock,
+            offer: { ...mockedBooking.stock.offer, isDigital: false },
+          },
+        }
+
+        mockBookings = {
+          ...mockBookings,
+          ended_bookings: [booking],
+        }
+
+        const nameCanceledBooking = booking.stock.offer.name
+        renderBookingDetails(booking)
+
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+          message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        expect(navigate).toHaveBeenCalledWith('EndedBookings')
+      })
+
+      it('when booking is not digital without expiration date', () => {
+        const mockedBooking = mockBookings.ended_bookings[0]
+
+        const booking = {
+          ...mockedBooking,
+          expirationDate: null,
+          stock: {
+            ...mockedBooking.stock.offer,
+            offer: { ...mockedBooking.stock.offer, isDigital: false },
+          },
+        }
+
+        mockBookings = {
+          ...mockBookings,
+          ended_bookings: [booking],
+        }
+
+        const nameCanceledBooking = booking.stock.offer.name
+        renderBookingDetails(booking)
+
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+          message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        expect(navigate).toHaveBeenCalledWith('EndedBookings')
+      })
+    })
+
+    it('should not display it and not navigate when booking is digital without expiration date', () => {
+      const booking = { ...mockBookings.ended_bookings[0] }
+      renderBookingDetails(booking)
+
+      expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+      expect(navigate).not.toHaveBeenCalled()
     })
   })
 
