@@ -1,7 +1,5 @@
 PODS:
-  - Amplitude (8.7.1)
-  - amplitude-react-native (2.7.0):
-    - Amplitude (= 8.7.1)
+  - amplitude-react-native (1.0.1):
     - React-Core
   - AppsFlyerFramework (6.4.4):
     - AppsFlyerFramework/Main (= 6.4.4)
@@ -636,7 +634,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
-  - "amplitude-react-native (from `../node_modules/@amplitude/react-native`)"
+  - "amplitude-react-native (from `../node_modules/@amplitude/analytics-react-native`)"
   - Batch (~> 1.17)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -740,7 +738,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Amplitude
     - AppsFlyerFramework
     - Base64
     - Batch
@@ -784,7 +781,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   amplitude-react-native:
-    :path: "../node_modules/@amplitude/react-native"
+    :path: "../node_modules/@amplitude/analytics-react-native"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   BVLinearGradient:
@@ -937,8 +934,7 @@ CHECKOUT OPTIONS:
     :tag: 8.15.0
 
 SPEC CHECKSUMS:
-  Amplitude: 834c7332dfb9640a751e21c13efb22a07c0c12d4
-  amplitude-react-native: 0ed8cab759aafaa94961b82122bf56297da607ad
+  amplitude-react-native: 77be2d0a6b5a0900f01fa99f4ec198134231255f
   AppsFlyerFramework: 6ea252ecb04cf443550576922cddb95b35c958ed
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 9e55d8217609dfe8f11cd5e78ca88ebffd9e5115
