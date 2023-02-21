@@ -14,7 +14,7 @@ import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount
 import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { SuspensionScreen } from 'features/auth/pages/suspendedAccount/SuspensionScreen/SuspensionScreen'
-import { EighteenBirthday } from 'features/birthdayNotifications/eighteenBirthday/pages/EighteenBirthday'
+import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
