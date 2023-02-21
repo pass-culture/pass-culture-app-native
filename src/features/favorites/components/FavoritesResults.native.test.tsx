@@ -53,9 +53,9 @@ describe('FavoritesResults component', () => {
       isFetching: false,
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
-    const { getByText, queryByText } = renderFavoritesResults()
-    const button = getByText('Découvrir le catalogue')
-    const sortByButton = queryByText('Trier')
+    renderFavoritesResults()
+    const button = screen.getByText('Découvrir le catalogue')
+    const sortByButton = screen.queryByText('Trier')
     expect(button).toBeTruthy()
     expect(sortByButton).toBeFalsy()
   })
@@ -67,8 +67,8 @@ describe('FavoritesResults component', () => {
       isLoading: true,
     } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
-    const { getByTestId } = renderFavoritesResults()
-    const container = getByTestId('FavoritesResultsPlaceHolder')
+    renderFavoritesResults()
+    const container = screen.getByTestId('FavoritesResultsPlaceHolder')
     expect(container).toBeTruthy()
   })
 
@@ -85,10 +85,10 @@ describe('FavoritesResults component', () => {
     mockUseRemoveFavorites.mockReturnValue({
       mutate,
     } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
-    const { getByText } = renderFavoritesResults()
-    const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
+    renderFavoritesResults()
+    const container = screen.getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()
-    const sortByButton = getByText('Trier')
+    const sortByButton = screen.getByText('Trier')
     expect(sortByButton).toBeTruthy()
   })
 

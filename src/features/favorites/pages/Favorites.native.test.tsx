@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, render } from 'tests/utils'
+import { cleanup, render, screen } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
@@ -24,24 +24,24 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-  afterEach(async () => {
-    await cleanup()
+  afterEach(() => {
+    cleanup()
   })
 
   it('should render correctly', () => {
-    const { toJSON } = renderFavorites({ isLoggedIn: true })
-    expect(toJSON()).toMatchSnapshot()
+    renderFavorites({ isLoggedIn: true })
+    expect(screen.toJSON()).toMatchSnapshot()
   })
 
   it('should show non connected page when not logged in', () => {
-    const { getByText } = renderFavorites({ isLoggedIn: false })
-    expect(getByText('Identifie-toi pour retrouver tes favoris')).toBeTruthy()
+    renderFavorites({ isLoggedIn: false })
+    expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeTruthy()
   })
 
   it('should render offline page when not connected', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    const renderAPI = renderFavorites({ isLoggedIn: true })
-    expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+    renderFavorites({ isLoggedIn: true })
+    expect(screen.queryByText('Pas de réseau internet')).toBeTruthy()
   })
 })
 
