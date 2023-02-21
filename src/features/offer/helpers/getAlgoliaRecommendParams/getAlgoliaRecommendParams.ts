@@ -17,7 +17,7 @@ export const getAlgoliaRecommendParams = (
       aroundRadius: 100000,
     }
   }
-  if (categories && categories.length > 0) {
+  if (categories?.length) {
     const categoryFacetFilters = buildOfferCategoriesPredicate(categories)
     queryParameters = {
       ...queryParameters,

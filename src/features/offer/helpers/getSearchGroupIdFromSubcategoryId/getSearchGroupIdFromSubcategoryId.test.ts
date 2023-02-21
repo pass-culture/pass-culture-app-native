@@ -31,6 +31,6 @@ describe('getSearchGroupIdFromSubcategoryId', () => {
 
   it('should return an array with the category id associated to the subcategory', () => {
     const value = getSearchGroupIdFromSubcategoryId(mockData, SubcategoryIdEnum.ABO_JEU_VIDEO)
-    expect(value).toEqual([SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS])
+    expect(value).toEqual(SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS)
   })
 })

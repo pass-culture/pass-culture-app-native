@@ -153,10 +153,8 @@ export const OfferBody: FunctionComponent<Props> = ({
     (value) => value !== undefined && value !== null
   )
 
-  const hasSameCategorySimilarOffers =
-    sameCategorySimilarOffers && sameCategorySimilarOffers.length > 0
-  const hasOtherCategoriesSimilarOffers =
-    otherCategoriesSimilarOffers && otherCategoriesSimilarOffers.length > 0
+  const hasSameCategorySimilarOffers = sameCategorySimilarOffers?.length
+  const hasOtherCategoriesSimilarOffers = otherCategoriesSimilarOffers?.length
 
   return (
     <Container

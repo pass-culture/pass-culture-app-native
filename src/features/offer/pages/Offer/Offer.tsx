@@ -28,6 +28,12 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
 
+const PLAYLIST_HEIGHT = 300
+
+const getPlaylistsHeight = (numberOfPlaylists: number) => {
+  return PLAYLIST_HEIGHT * numberOfPlaylists
+}
+
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
@@ -49,21 +55,17 @@ export const Offer: FunctionComponent = () => {
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
-    categoryIncluded: subcategorySearchGroupId?.[0] || SearchGroupNameEnumv2.NONE,
-    categoryExcluded: undefined,
+    categoryIncluded: subcategorySearchGroupId || SearchGroupNameEnumv2.NONE,
   })
-  const hasSameCategorySimilarOffers =
-    sameCategorySimilarOffers && sameCategorySimilarOffers.length > 0
+  const hasSameCategorySimilarOffers = sameCategorySimilarOffers?.length
 
   const otherCategoriesSimilarOffers = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
-    categoryIncluded: undefined,
-    categoryExcluded: subcategorySearchGroupId?.[0] || SearchGroupNameEnumv2.NONE,
+    categoryExcluded: subcategorySearchGroupId || SearchGroupNameEnumv2.NONE,
   })
-  const hasOtherCategoriesSimilarOffers =
-    otherCategoriesSimilarOffers && otherCategoriesSimilarOffers.length > 0
+  const hasOtherCategoriesSimilarOffers = otherCategoriesSimilarOffers?.length
 
   const fromOfferId = route.params?.fromOfferId
 
@@ -81,7 +83,12 @@ export const Offer: FunctionComponent = () => {
       // The log event is triggered when the similar offer playlist is visible
       const hasTwoSimilarOffersPlaylist =
         hasSameCategorySimilarOffers && hasOtherCategoriesSimilarOffers
-      if (isCloseToBottom({ ...nativeEvent, padding: hasTwoSimilarOffersPlaylist ? 600 : 300 })) {
+      if (
+        isCloseToBottom({
+          ...nativeEvent,
+          padding: hasTwoSimilarOffersPlaylist ? getPlaylistsHeight(2) : getPlaylistsHeight(1),
+        })
+      ) {
         logPlaylistVerticalScroll()
       }
     },

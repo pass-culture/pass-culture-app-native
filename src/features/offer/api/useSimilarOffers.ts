@@ -15,11 +15,11 @@ const indexName = env.ALGOLIA_OFFERS_INDEX_NAME
 
 type WithIncludeCategoryProps = {
   categoryIncluded: SearchGroupNameEnumv2
-  categoryExcluded: undefined
+  categoryExcluded?: undefined
 }
 
 type WithExcludeCategoryProps = {
-  categoryIncluded: undefined
+  categoryIncluded?: undefined
   categoryExcluded: SearchGroupNameEnumv2
 }
 
@@ -62,7 +62,7 @@ const getAlgoliaRelatedProducts = async (
   })
     .then((response) => response.recommendations)
     .then((recommendations) => recommendations.map((recommendation) => recommendation.objectID))
-    .catch((error) => eventMonitoring.captureException(error))
+    .catch(eventMonitoring.captureException)
 
   return typeof relatedProducts === 'string' ? [relatedProducts] : relatedProducts || []
 }
@@ -79,7 +79,7 @@ const getAlgoliaFrequentlyBoughtTogether = async (
   })
     .then((response) => response.recommendations)
     .then((recommendations) => recommendations.map((recommendation) => recommendation.objectID))
-    .catch((error) => eventMonitoring.captureException(error))
+    .catch(eventMonitoring.captureException)
 
   return typeof frequentlyBoughtTogether === 'string'
     ? [frequentlyBoughtTogether]
@@ -90,7 +90,7 @@ const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
   const similarOffers: string[] = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
     .then((data) => data.results)
-    .catch((error) => eventMonitoring.captureException(error))
+    .catch(eventMonitoring.captureException)
 
   return similarOffers
 }
