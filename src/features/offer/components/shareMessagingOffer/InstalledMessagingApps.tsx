@@ -6,6 +6,7 @@ import { MessagingAppContainer } from 'features/offer/components/shareMessagingO
 import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
+import { analytics } from 'libs/firebase/analytics'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 export const MAX_NB_OF_SOCIALS_TO_SHOW = 3
@@ -41,6 +42,7 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
         const message = supportsURL ? shareMessage : shareMessage + '\n' + shareUrl
 
         const onPress = async () => {
+          analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
           if (isNative && options.url) await Linking.openURL(options.url + message)
           else {
             await Share.shareSingle({
