@@ -14,7 +14,9 @@ export const Favorites: React.FC = () => {
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
-  } else if (!isLoggedIn) {
+  }
+
+  if (!isLoggedIn) {
     return <NotConnectedFavorites />
   }
 
