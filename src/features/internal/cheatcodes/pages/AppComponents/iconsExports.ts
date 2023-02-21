@@ -99,6 +99,7 @@ import { SnapchatRound } from 'ui/svg/icons/socialNetwork/SnapchatRound'
 import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
+import { TwitterRound } from 'ui/svg/icons/socialNetwork/TwitterRound'
 import { ViberRound } from 'ui/svg/icons/socialNetwork/ViberRound'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
@@ -120,6 +121,7 @@ export const SocialNetworkIcons = {
   SnapchatRound,
   TikTok,
   Twitter,
+  TwitterRound,
   ViberRound,
   WhatsApp,
   WhatsAppRound,

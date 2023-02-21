@@ -12,6 +12,7 @@ export const checkInstalledApps: () => Promise<Record<Network, boolean>> = async
     [Network.messenger]: await Linking.canOpenURL('fb-messenger://'),
     [Network.telegram]: await Linking.canOpenURL('tg://'),
     [Network.viber]: await Linking.canOpenURL('viber://forward'),
+    [Network.twitter]: false, // Only in web
   }
   return networks
 }

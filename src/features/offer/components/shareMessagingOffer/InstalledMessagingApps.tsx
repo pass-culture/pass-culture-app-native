@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Linking } from 'react-native'
+import { Linking, Platform } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
@@ -9,6 +9,7 @@ import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessag
 import { analytics } from 'libs/firebase/analytics'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
+const isWeb = Platform.OS === 'web'
 export const MAX_NB_OF_SOCIALS_TO_SHOW = 3
 
 export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
@@ -38,12 +39,13 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
           isNative,
           ...options
         } = mapNetworkToSocial[network]
-        // Message has to be concatenated with url if url option is not supported
-        const message = supportsURL ? shareMessage : shareMessage + '\n' + shareUrl
+        // Message has to be concatenated with url if url option is not supported, and in web
+        const message = supportsURL && !isWeb ? shareMessage : shareMessage + '\n' + shareUrl
 
         const onPress = async () => {
           analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
-          if (isNative && options.url) await Linking.openURL(options.url + message)
+          if (isWeb) await Linking.openURL(options.url + encodeURIComponent(message))
+          else if (isNative && options.url) await Linking.openURL(options.url + message)
           else {
             await Share.shareSingle({
               message: shouldEncodeURI ? encodeURI(message) : message,
@@ -70,8 +72,14 @@ const mapNetworkToSocial: Record<
   [Network.instagram]: { social: Social.Instagram, supportsURL: false, shouldEncodeURI: true },
   [Network.messenger]: { social: Social.Messenger },
   [Network.snapchat]: { social: Social.Snapchat },
-  [Network.whatsapp]: { social: Social.Whatsapp },
-  [Network.telegram]: { social: Social.Telegram },
+  [Network.whatsapp]: {
+    social: Social.Whatsapp,
+    url: isWeb ? 'https://api.whatsapp.com/send?text=' : undefined,
+  },
+  [Network.telegram]: {
+    social: Social.Telegram,
+    url: isWeb ? 'https://telegram.me/share/msg?url=' : undefined,
+  },
   [Network.viber]: {
     social: Social.Viber,
     supportsURL: false,
@@ -81,5 +89,9 @@ const mapNetworkToSocial: Record<
     isNative: true,
     supportsURL: false,
     url: 'sms://&body=',
+  },
+  [Network.twitter]: {
+    social: Social.Twitter,
+    url: isWeb ? 'https://twitter.com/intent/tweet?text=' : undefined,
   },
 }
