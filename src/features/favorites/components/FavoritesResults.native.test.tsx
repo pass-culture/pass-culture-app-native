@@ -9,10 +9,15 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
+
+jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
@@ -80,12 +85,31 @@ describe('FavoritesResults component', () => {
     mockUseRemoveFavorites.mockReturnValue({
       mutate,
     } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
+    const { getByText } = renderFavoritesResults()
     const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()
     const sortByButton = getByText('Trier')
     expect(sortByButton).toBeTruthy()
+  })
+
+  it('should show favorite list banner when the user hasnt already seen it', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderFavoritesResults()
+
+    expect(await screen.findByText('Crée une liste de favoris')).toBeTruthy()
+  })
+
+  //FIXME(PC-30378): update RNTL
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should not show favorite list banner when the user has already seen the fake door', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
+    await storage.saveObject('has_seen_fav_list_fake_door', true)
+    renderFavoritesResults()
+
+    await waitFor(() => {
+      expect(screen.queryByText('Crée une liste de favoris')).toBeFalsy()
+    })
   })
 })
 
