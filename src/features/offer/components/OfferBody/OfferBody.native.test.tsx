@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { Share as NativeShare } from 'react-native'
-import Share from 'react-native-share'
+import Share, { Social } from 'react-native-share'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -184,6 +184,24 @@ describe('<OfferBody />', () => {
 
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Network.snapchat,
+        message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
+        url: getOfferUrl(offerId),
+      })
+    })
+
+    it('should open social medium on share button press with offer url even when web url is defined', async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.whatsapp]: true,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await act(async () => {
+        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.whatsapp]}`)
+        fireEvent.press(socialMediumButton)
+      })
+
+      expect(mockShareSingle).toHaveBeenCalledWith({
+        social: Social.Whatsapp,
         message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
         url: getOfferUrl(offerId),
       })
