@@ -37,8 +37,10 @@ describe('<PasswordInputController />', () => {
 
     it('should not show password validation', () => {
       renderPasswordInputController({})
+
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'user@AZERTY123')
+
       expect(screen.queryByText('12 Caractères')).toBeFalsy()
     })
   })
@@ -64,8 +66,10 @@ describe('<PasswordInputController />', () => {
       '1 Caractère spécial (!@#$%^&*...)',
     ])('should show password validation rules when at least one character is typed', (rules) => {
       renderPasswordInputController({ withSecurityRules: true })
+
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'a')
+
       expect(screen.getByText(rules)).toBeTruthy()
     })
   })
@@ -77,7 +81,7 @@ describe('<PasswordInputController />', () => {
       '1 Minuscule',
       '1 Chiffre',
       '1 Caractère spécial (!@#$%^&*...)',
-    ])('should show password validation rules when asked', (rules) => {
+    ])('should show password validation rules', (rules) => {
       renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
 
       expect(screen.getByText(rules)).toBeTruthy()
