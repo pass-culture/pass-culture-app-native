@@ -15,11 +15,11 @@ const indexName = env.ALGOLIA_OFFERS_INDEX_NAME
 
 type WithIncludeCategoryProps = {
   categoryIncluded: SearchGroupNameEnumv2
-  categoryExcluded?: undefined
+  categoryExcluded?: never
 }
 
 type WithExcludeCategoryProps = {
-  categoryIncluded?: undefined
+  categoryIncluded?: never
   categoryExcluded: SearchGroupNameEnumv2
 }
 
