@@ -1,18 +1,40 @@
-import * as getFrequentlyBoughtTogether from '@algolia/recommend-core'
-import * as getRelatedProducts from '@algolia/recommend-core'
+import * as recommendCore from '@algolia/recommend-core'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
-import { getSimilarOffersEndpoint, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
+import {
+  getAlgoliaFrequentlyBoughtTogether,
+  getAlgoliaRelatedProducts,
+  getApiRecoSimilarOffers,
+  getSimilarOffersEndpoint,
+  useSimilarOffers,
+} from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
+import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockUserId = 1234
 const mockOfferId = 1
 const position = {
   latitude: 6,
   longitude: 22,
+}
+
+const respondWith = async (
+  body: unknown,
+  status = 200,
+  statusText?: string,
+  headers?: HeadersInit
+): Promise<Response> => {
+  return new Response(JSON.stringify(body), {
+    headers: {
+      'content-type': 'application/json',
+      ...headers,
+    },
+    status,
+    statusText,
+  })
 }
 
 jest.mock('features/auth/context/AuthContext')
@@ -31,11 +53,9 @@ describe('useSimilarOffers', () => {
     .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')
     .mockImplementation()
   const getFrequentlyBoughtTogetherSpy = jest
-    .spyOn(getFrequentlyBoughtTogether, 'getFrequentlyBoughtTogether')
+    .spyOn(recommendCore, 'getFrequentlyBoughtTogether')
     .mockImplementation()
-  const getRelatedProductsSpy = jest
-    .spyOn(getRelatedProducts, 'getRelatedProducts')
-    .mockImplementation()
+  const getRelatedProductsSpy = jest.spyOn(recommendCore, 'getRelatedProducts').mockImplementation()
   const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
   it('should call Algolia hook', () => {
@@ -43,7 +63,6 @@ describe('useSimilarOffers', () => {
       useSimilarOffers({
         offerId: mockOfferId,
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        categoryExcluded: undefined,
       })
     )
     expect(algoliaSpy).toHaveBeenCalledTimes(1)
@@ -51,7 +70,6 @@ describe('useSimilarOffers', () => {
       useSimilarOffers({
         offerId: mockOfferId,
         position,
-        categoryIncluded: undefined,
         categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
@@ -62,7 +80,6 @@ describe('useSimilarOffers', () => {
     renderHook(() =>
       useSimilarOffers({
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        categoryExcluded: undefined,
       })
     )
     expect(algoliaSpy).toHaveBeenCalledWith([])
@@ -73,7 +90,6 @@ describe('useSimilarOffers', () => {
       renderHook(() =>
         useSimilarOffers({
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          categoryExcluded: undefined,
           shouldUseAlgoliaRecommend: false,
         })
       )
@@ -85,7 +101,6 @@ describe('useSimilarOffers', () => {
         useSimilarOffers({
           offerId: mockOfferId,
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          categoryExcluded: undefined,
           shouldUseAlgoliaRecommend: false,
         })
       )
@@ -99,7 +114,6 @@ describe('useSimilarOffers', () => {
         renderHook(() =>
           useSimilarOffers({
             categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            categoryExcluded: undefined,
             shouldUseAlgoliaRecommend: true,
           })
         )
@@ -110,7 +124,6 @@ describe('useSimilarOffers', () => {
         renderHook(() =>
           useSimilarOffers({
             offerId: mockOfferId,
-            categoryIncluded: undefined,
             categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
             shouldUseAlgoliaRecommend: true,
           })
@@ -124,7 +137,6 @@ describe('useSimilarOffers', () => {
         renderHook(() =>
           useSimilarOffers({
             categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            categoryExcluded: undefined,
             shouldUseAlgoliaRecommend: true,
           })
         )
@@ -136,7 +148,6 @@ describe('useSimilarOffers', () => {
           useSimilarOffers({
             offerId: mockOfferId,
             categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            categoryExcluded: undefined,
             shouldUseAlgoliaRecommend: true,
           })
         )
@@ -149,7 +160,6 @@ describe('useSimilarOffers', () => {
         useSimilarOffers({
           offerId: mockOfferId,
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          categoryExcluded: undefined,
           shouldUseAlgoliaRecommend: true,
         })
       )
@@ -160,12 +170,26 @@ describe('useSimilarOffers', () => {
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
-          categoryIncluded: undefined,
           categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           shouldUseAlgoliaRecommend: true,
         })
       )
       expect(getFrequentlyBoughtTogetherSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log sentry when frequently bought together API called with an error', async () => {
+      const error = new Error('error')
+      getFrequentlyBoughtTogetherSpy.mockImplementationOnce(() => Promise.reject(error))
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryExcluded: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+          shouldUseAlgoliaRecommend: true,
+        })
+      )
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
+      })
     })
   })
 })
@@ -218,5 +242,80 @@ describe('getSimilarOffersEndpoint', () => {
       const endpoint = getSimilarOffersEndpoint(undefined, undefined, undefined, undefined)
       expect(endpoint).toEqual(undefined)
     })
+  })
+})
+
+describe('getAlgoliaRelatedProducts', () => {
+  const getRelatedProductsSpy = jest.spyOn(recommendCore, 'getRelatedProducts').mockImplementation()
+
+  it('should log sentry when related products API called with an error', async () => {
+    const error = new Error('error')
+    getRelatedProductsSpy.mockImplementationOnce(() => Promise.reject(error))
+
+    const relatedProducts = await getAlgoliaRelatedProducts(String(mockOfferId), {}, {})
+
+    expect(relatedProducts).toEqual([])
+  })
+
+  it('should return recommendations when related products API called', async () => {
+    const recommendations = [{ objectID: '102280' }, { objectID: '102281' }]
+    getRelatedProductsSpy.mockReturnValueOnce(Promise.resolve({ recommendations }))
+
+    const relatedProducts = await getAlgoliaRelatedProducts(String(mockOfferId), {}, {})
+
+    expect(relatedProducts).toEqual(['102280', '102281'])
+  })
+})
+
+describe('getAlgoliaFrequentlyBoughtTogether', () => {
+  const getFrequentlyBoughtTogetherSpy = jest
+    .spyOn(recommendCore, 'getFrequentlyBoughtTogether')
+    .mockImplementation()
+
+  it('should log sentry when frequently bought together API called with an error', async () => {
+    const error = new Error('error')
+    getFrequentlyBoughtTogetherSpy.mockImplementationOnce(() => Promise.reject(error))
+
+    const frequentlyBoughtTogether = await getAlgoliaFrequentlyBoughtTogether(
+      String(mockOfferId),
+      {}
+    )
+
+    expect(frequentlyBoughtTogether).toEqual([])
+  })
+
+  it('should return recommendations when frequently bought together API called', async () => {
+    const recommendations = [{ objectID: '102280' }, { objectID: '102281' }]
+    getFrequentlyBoughtTogetherSpy.mockReturnValueOnce(Promise.resolve({ recommendations }))
+
+    const frequentlyBoughtTogether = await getAlgoliaFrequentlyBoughtTogether(
+      String(mockOfferId),
+      {}
+    )
+
+    expect(frequentlyBoughtTogether).toEqual(['102280', '102281'])
+  })
+})
+
+describe('getApiRecoSimilarOffers', () => {
+  const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
+  const endpoint = getSimilarOffersEndpoint(mockOfferId, mockUserId) || ''
+
+  it('should log sentry when reco similar offers API called with an error', async () => {
+    const error = new Error('error')
+    fetchApiRecoSpy.mockImplementationOnce(() => Promise.reject(error))
+
+    const apiReco = await getApiRecoSimilarOffers(endpoint)
+
+    expect(apiReco).toEqual(undefined)
+  })
+
+  it('should return recommendations when reco similar offers API called', async () => {
+    const expectedResponse = respondWith({ results: ['102280', '102281'] })
+    fetchApiRecoSpy.mockReturnValueOnce(Promise.resolve(expectedResponse))
+
+    const apiReco = await getApiRecoSimilarOffers(endpoint)
+
+    expect(apiReco).toEqual(['102280', '102281'])
   })
 })

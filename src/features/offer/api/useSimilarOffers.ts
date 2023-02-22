@@ -48,7 +48,7 @@ export const getSimilarOffersEndpoint = (
   return endpoint + urlParams.toString()
 }
 
-const getAlgoliaRelatedProducts = async (
+export const getAlgoliaRelatedProducts = async (
   offerId: string,
   queryParameters: RecommendSearchOptions,
   fallbackParameters: RecommendSearchOptions
@@ -67,7 +67,7 @@ const getAlgoliaRelatedProducts = async (
   return typeof relatedProducts === 'string' ? [relatedProducts] : relatedProducts || []
 }
 
-const getAlgoliaFrequentlyBoughtTogether = async (
+export const getAlgoliaFrequentlyBoughtTogether = async (
   offerId: string,
   queryParameters: RecommendSearchOptions
 ) => {
@@ -86,7 +86,7 @@ const getAlgoliaFrequentlyBoughtTogether = async (
     : frequentlyBoughtTogether || []
 }
 
-const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
+export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
   const similarOffers: string[] = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
     .then((data) => data.results)
