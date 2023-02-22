@@ -101,7 +101,7 @@ export const IdentityCheckStepper = () => {
         <Container>
           <Spacer.TopScreen />
           {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={2} />
+            <Spacer.Column numberOfSpaces={16} />
           ) : (
             <Spacer.Column numberOfSpaces={4} />
           )}
@@ -112,7 +112,7 @@ export const IdentityCheckStepper = () => {
             Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
           </Typo.Body>
 
-          {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
+          <Spacer.Column numberOfSpaces={10} />
 
           <VerticalUl>
             {steps.map((step) => (
@@ -171,9 +171,9 @@ const CenteredContainer = styled.View({
 })
 
 const Container = styled.View(({ theme }) => ({
-  flex: 1,
   justifyContent: 'center',
-  padding: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
+  paddingBottom: getSpacing(9),
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,
 }))
