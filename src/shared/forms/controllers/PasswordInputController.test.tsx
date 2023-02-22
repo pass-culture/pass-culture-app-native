@@ -9,73 +9,79 @@ type PasswordForm = {
 }
 
 describe('<PasswordInputController />', () => {
-  it('should not show error when password is invalid but not given', async () => {
-    renderPasswordInputController({
-      error: { type: 'custom', message: 'error' },
+  describe('by default', () => {
+    it('should not show error when password is invalid but not given', async () => {
+      renderPasswordInputController({
+        error: { type: 'custom', message: 'error' },
+      })
+
+      expect(screen.queryByText('error')).toBeNull()
     })
 
-    expect(screen.queryByText('error')).toBeNull()
-  })
+    it('should show error when form is invalid and password is not empty', async () => {
+      renderPasswordInputController({
+        error: { type: 'custom', message: 'error' },
+      })
 
-  it('should show error when form is invalid and password is not empty', async () => {
-    renderPasswordInputController({
-      error: { type: 'custom', message: 'error' },
+      const input = screen.getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(input, 'pass')
+
+      expect(screen.getByText('error')).toBeTruthy()
     })
 
-    const input = screen.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(input, 'pass')
+    it('should show that password is mandatory', async () => {
+      renderPasswordInputController({})
 
-    expect(screen.getByText('error')).toBeTruthy()
+      expect(screen.getByText('Obligatoire')).toBeTruthy()
+    })
+
+    it('should not show password validation', () => {
+      renderPasswordInputController({})
+      const input = screen.getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(input, 'user@AZERTY123')
+      expect(screen.queryByText('12 Caractères')).toBeFalsy()
+    })
   })
 
-  it('should show that password is mandatory', async () => {
-    renderPasswordInputController({})
+  describe('With security rules', () => {
+    it.each([
+      '12 Caractères',
+      '1 Majuscule',
+      '1 Minuscule',
+      '1 Chiffre',
+      '1 Caractère spécial (!@#$%^&*...)',
+    ])('should not show password validation rules when empty', (rule) => {
+      renderPasswordInputController({ withSecurityRules: true })
 
-    expect(screen.getByText('Obligatoire')).toBeTruthy()
+      expect(screen.queryByText(rule)).toBeFalsy()
+    })
+
+    it.each([
+      '12 Caractères',
+      '1 Majuscule',
+      '1 Minuscule',
+      '1 Chiffre',
+      '1 Caractère spécial (!@#$%^&*...)',
+    ])('should show password validation rules when at least one character is typed', (rules) => {
+      renderPasswordInputController({ withSecurityRules: true })
+      const input = screen.getByPlaceholderText('Ton mot de passe')
+      fireEvent.changeText(input, 'a')
+      expect(screen.getByText(rules)).toBeTruthy()
+    })
   })
 
-  it.each([
-    '12 Caractères',
-    '1 Majuscule',
-    '1 Minuscule',
-    '1 Chiffre',
-    '1 Caractère spécial (!@#$%^&*...)',
-  ])('should show password validation rules when asked', (rules) => {
-    renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
+  describe('With security rules always displayed', () => {
+    it.each([
+      '12 Caractères',
+      '1 Majuscule',
+      '1 Minuscule',
+      '1 Chiffre',
+      '1 Caractère spécial (!@#$%^&*...)',
+    ])('should show password validation rules when asked', (rules) => {
+      renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
 
-    expect(screen.getByText(rules)).toBeTruthy()
-  })
-
-  it.each([
-    '12 Caractères',
-    '1 Majuscule',
-    '1 Minuscule',
-    '1 Chiffre',
-    '1 Caractère spécial (!@#$%^&*...)',
-  ])('should not show password validation rules by default', (rule) => {
-    renderPasswordInputController({ withSecurityRules: true })
-
-    expect(screen.queryByText(rule)).toBeFalsy()
-  })
-
-  it.each([
-    '12 Caractères',
-    '1 Majuscule',
-    '1 Minuscule',
-    '1 Chiffre',
-    '1 Caractère spécial (!@#$%^&*...)',
-  ])('should show password validation rules only when at least one character is typed', (rules) => {
-    renderPasswordInputController({ withSecurityRules: true })
-    const input = screen.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(input, 'a')
-    expect(screen.getByText(rules)).toBeTruthy()
-  })
-
-  it('should not show password validation at all', () => {
-    renderPasswordInputController({})
-    const input = screen.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(input, 'user@AZERTY123')
-    expect(screen.queryByText('12 Caractères')).toBeFalsy()
+      expect(screen.getByText(rules)).toBeTruthy()
+    })
   })
 })
 
