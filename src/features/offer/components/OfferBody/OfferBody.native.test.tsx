@@ -183,7 +183,7 @@ describe('<OfferBody />', () => {
       })
 
       expect(mockShareSingle).toHaveBeenCalledWith({
-        social: Network.snapchat,
+        social: Social.Snapchat,
         message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
         url: getOfferUrl(offerId),
       })
