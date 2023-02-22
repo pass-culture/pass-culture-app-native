@@ -37,6 +37,7 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
           shouldEncodeURI,
           supportsURL = true,
           isNative,
+          webUrl,
           ...options
         } = mapNetworkToSocial[network]
         // Message has to be concatenated with url if url option is not supported, and in web
@@ -44,7 +45,7 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
 
         const onPress = async () => {
           analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
-          if (isWeb) await Linking.openURL(options.url + encodeURIComponent(message))
+          if (isWeb && webUrl) await Linking.openURL(webUrl + encodeURIComponent(message))
           else if (isNative && options.url) await Linking.openURL(options.url + message)
           else {
             await Share.shareSingle({
@@ -67,18 +68,23 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
 
 const mapNetworkToSocial: Record<
   Network,
-  ShareSingleOptions & { shouldEncodeURI?: boolean; supportsURL?: boolean; isNative?: boolean }
+  ShareSingleOptions & {
+    shouldEncodeURI?: boolean
+    supportsURL?: boolean
+    isNative?: boolean
+    webUrl?: string
+  }
 > = {
   [Network.instagram]: { social: Social.Instagram, supportsURL: false, shouldEncodeURI: true },
   [Network.messenger]: { social: Social.Messenger },
   [Network.snapchat]: { social: Social.Snapchat },
   [Network.whatsapp]: {
     social: Social.Whatsapp,
-    url: isWeb ? 'https://api.whatsapp.com/send?text=' : undefined,
+    webUrl: 'https://api.whatsapp.com/send?text=',
   },
   [Network.telegram]: {
     social: Social.Telegram,
-    url: isWeb ? 'https://telegram.me/share/msg?url=' : undefined,
+    webUrl: 'https://telegram.me/share/msg?url=',
   },
   [Network.viber]: {
     social: Social.Viber,
@@ -92,6 +98,6 @@ const mapNetworkToSocial: Record<
   },
   [Network.twitter]: {
     social: Social.Twitter,
-    url: isWeb ? 'https://twitter.com/intent/tweet?text=' : undefined,
+    webUrl: 'https://twitter.com/intent/tweet?text=',
   },
 }
