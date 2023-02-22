@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
@@ -8,8 +7,8 @@ import { render, flushAllPromisesWithAct } from 'tests/utils'
 
 import { RootNavigator } from './RootNavigator'
 
-const mockUseSplashScreenContext = mocked(useSplashScreenContext)
-const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
+const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
+const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')

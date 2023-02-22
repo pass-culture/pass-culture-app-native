@@ -1,5 +1,3 @@
-import { mocked } from 'ts-jest/utils'
-
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
@@ -25,7 +23,7 @@ const fourFilters = {
 } as SearchState
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
-const mockedUseMaxPrice = mocked(useMaxPrice)
+const mockedUseMaxPrice = jest.mocked(useMaxPrice)
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION

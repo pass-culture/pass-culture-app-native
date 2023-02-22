@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
@@ -48,7 +47,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
-const mockedisUserUnderageBeneficiary = mocked(isUserUnderageBeneficiary, true)
+const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary, true)
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { useMutation } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -24,7 +23,7 @@ jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () =
     navigateToNextScreen: mockNavigateToNextScreen,
   }),
 }))
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
   onError: () => {},

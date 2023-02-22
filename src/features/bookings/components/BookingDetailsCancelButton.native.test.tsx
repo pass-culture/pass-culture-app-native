@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import {
   BookingDetailsCancelButton,
@@ -16,7 +15,7 @@ mockdate.set(new Date('2020-12-01T00:00:00Z'))
 jest.mock('shared/user/useAvailableCredit')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/helpers/isUserExBeneficiary')
-const mockedisUserExBeneficiary = mocked(isUserExBeneficiary, true)
+const mockedisUserExBeneficiary = jest.mocked(isUserExBeneficiary, true)
 
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when booking has activation code', () => {

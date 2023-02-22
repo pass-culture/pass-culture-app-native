@@ -1,5 +1,4 @@
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
@@ -23,7 +22,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 }))
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
-const mockedUseMaxPrice = mocked(useMaxPrice)
+const mockedUseMaxPrice = jest.mocked(useMaxPrice)
 mockedUseMaxPrice.mockReturnValue(300)
 
 const offerId = 116656
