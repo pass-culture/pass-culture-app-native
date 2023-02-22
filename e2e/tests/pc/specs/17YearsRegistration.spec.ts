@@ -3,18 +3,25 @@ import { TabBar } from '../features/navigation/TabBar'
 import { didFirstLaunch } from '../helpers/utils/error'
 import { DefaultTheme, getTheme } from '../helpers/utils/theme'
 import ProfileScreen from '../features/profile/ProfileScreen'
+import ProfileScreenSubscribe from '../features/profile/ProfileScreen'
 import SignupScreens from '../features/auth/SignupScreens'
 import { getRandomInt } from '../helpers/utils/number'
 import GmailClient, { Email } from '../helpers/GmailClient'
 import { openDeepLinkUrl } from '../helpers/utils/deeplink'
 import { flags } from '../helpers/utils/platform'
 import { getBrightness } from 'react-native-device-info'
-import StepperScreens, {
+import { verify } from 'crypto'
+import {
+  address,
+  city,
+  completeProfile,
   firstname,
   name,
   profile,
+  statut,
   verifyId,
 } from '../features/identityCheck/StepperScreens'
+import { processFonts } from 'react-native-screens/lib/typescript/native-stack/views/FontProcessor'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -22,7 +29,7 @@ type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   }
 }
 
-describe('18YearsRegistration', () => {
+describe('17YearsRegistration', () => {
   let ok = false
   let tabBar: TabBar
   let theme: DefaultTheme
@@ -65,15 +72,18 @@ describe('18YearsRegistration', () => {
 
     it('should click on "Créer un compte"', async () => {
       didFirstLaunch(ok)
-      await ProfileScreen.waitForIsShown(true)
       if (flags.isWeb) {
+        await ProfileScreen.waitForIsShown(true)
         // await ProfileScreen.createAccount.click() fail to click with error: element not interactable
         // This is a DOM click workaround:
         await browser.execute('arguments[0].click();', await ProfileScreen.createAccount)
+      } else if (flags.isAndroid) {
+        await ProfileScreenSubscribe.waitForIsShown(true)
+        await ProfileScreenSubscribe.createAccount.click()
       } else {
         await ProfileScreen.createAccount.click()
       }
-      await ProfileScreen.waitForIsShown(false)
+      await ProfileScreenSubscribe.waitForIsShown(false)
     })
 
     it('should set email and randomly accept newsletter checkbox', async () => {
@@ -100,10 +110,10 @@ describe('18YearsRegistration', () => {
       await SignupScreens.passwordScreen.waitForIsShown(false)
     })
 
-    it('should set birthdate to 18 years old', async () => {
+    it('should set birthdate to 17 years old', async () => {
       didFirstLaunch(ok)
       const birthDate = new Date(
-        new Date().getFullYear() - 18, // year (18 year's old)
+        new Date().getFullYear() - 17, // year (17 year's old)
         getRandomInt(0, new Date().getMonth()), // monthIndex
         getRandomInt(1, new Date().getDay()) // day
       )
@@ -144,7 +154,6 @@ describe('18YearsRegistration', () => {
       await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(false)
     })
   })
-  /*
   describe('identity check', () => {
     it('should start identity verification', async () => {
       didFirstLaunch(ok)
@@ -170,6 +179,27 @@ describe('18YearsRegistration', () => {
       await name.submit.click()
       await name.waitForIsShown(false)
     })
+    it('should set city', async () => {
+      const CityPostale = '78000'
+      didFirstLaunch(ok)
+      await city.waitForIsShown(true)
+      await city.city.setValue(CityPostale)
+      await city.CityOption('Versailles').click()
+      // await city.submit.click()
+      // await driver.debug()
+    })
+    it('should set adresse', async () => {
+      const addressPostale = 'test'
+      didFirstLaunch(ok)
+      await address.waitForIsShown(true)
+      await address.address.setValue(addressPostale)
+      await address.submit.click()
+    })
+    it('should set complete statut', async () => {
+      didFirstLaunch(ok)
+      await statut.waitForIsShown(true)
+      await statut.completeProfil.click()
+      //   await driver.debug()
+    })
   })
-   */
 })

@@ -22,7 +22,7 @@ type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   }
 }
 
-describe('18YearsRegistration', () => {
+describe('19YearsRegistration', () => {
   let ok = false
   let tabBar: TabBar
   let theme: DefaultTheme
@@ -100,10 +100,10 @@ describe('18YearsRegistration', () => {
       await SignupScreens.passwordScreen.waitForIsShown(false)
     })
 
-    it('should set birthdate to 18 years old', async () => {
+    it('should set birthdate to 19 years old', async () => {
       didFirstLaunch(ok)
       const birthDate = new Date(
-        new Date().getFullYear() - 18, // year (18 year's old)
+        new Date().getFullYear() - 19, // year (19 year's old)
         getRandomInt(0, new Date().getMonth()), // monthIndex
         getRandomInt(1, new Date().getDay()) // day
       )

@@ -192,14 +192,14 @@ export class RegistrationBirthDate extends AppScreen {
 class RegistrationAcceptCgu extends AppScreen {
   constructor() {
     super(
-      "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire",
+      'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire',
       true
     )
   }
 
   get submit() {
     return $$$(
-      "Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire"
+      'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire'
     )
   }
 }
