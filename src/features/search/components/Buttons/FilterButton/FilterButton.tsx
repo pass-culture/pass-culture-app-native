@@ -8,14 +8,13 @@ import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   activeFilters: number
   children?: never
 }
 
-export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
+export const FilterButton: FunctionComponent<Props> = ({ activeFilters, ...props }) => {
   const accessibilityLabel =
     activeFilters > 0
       ? plural(activeFilters, {
@@ -35,7 +34,8 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
       navigateTo={{ screen: 'SearchFilter', params }}
       onBeforeNavigate={reinitFilters}
       title={accessibilityLabel}
-      accessibilityLabel={accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}
+      {...props}>
       <FilterIconDefault size={24} />
       {activeFilters > 0 && <FloatingBadge value={activeFilters} testID="searchFilterBadge" />}
     </StyledTouchableLink>
@@ -47,13 +47,10 @@ const StyledTouchableLink = styled(InternalTouchableLink)({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  marginLeft: getSpacing(2),
-  width: getSpacing(10),
-  height: getSpacing(10),
 })
 
 const FloatingBadge = styled(Badge)({
   position: 'absolute',
-  right: 0,
-  bottom: 0,
+  right: 12,
+  bottom: 12,
 })

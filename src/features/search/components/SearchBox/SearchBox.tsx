@@ -29,6 +29,7 @@ import { useLocationType } from 'features/search/helpers/useLocationType/useLoca
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,6 +41,13 @@ const SEARCH_DEBOUNCE_MS = 500
 type Props = UseSearchBoxProps & {
   searchInputID: string
   accessibleHiddenTitle?: string
+}
+
+interface SearchInputContainerProps {
+  params?: {
+    view?: SearchView
+  }
+  hasEditableSearchInput?: boolean
 }
 
 const accessibilityDescribedBy = uuidv4()
@@ -213,11 +221,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       {!!accessibleHiddenTitle && (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
       )}
-      <SearchInputContainer {...props}>
+      <SearchInputContainer
+        params={params}
+        hasEditableSearchInput={hasEditableSearchInput}
+        {...props}>
         <SearchInputA11yContainer>
           {!!hasEditableSearchInput && (
             <StyledView>
-              <BackButton onGoBack={onPressArrowBack} />
+              <StyledBackButton onGoBack={onPressArrowBack} />
             </StyledView>
           )}
           <FlexView>
@@ -240,7 +251,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             />
           </FlexView>
         </SearchInputA11yContainer>
-        {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
+        {params?.view === SearchView.Results && (
+          <StyledFilterButton activeFilters={activeFilters} />
+        )}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
@@ -261,12 +274,16 @@ const RowContainer = styled.View({
   flexDirection: 'row',
 })
 
-const SearchInputContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flex: 1,
-})
+const SearchInputContainer = styled.View<SearchInputContainerProps>(
+  ({ params, hasEditableSearchInput }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    paddingRight: params?.view !== SearchView.Results ? getSpacing(6) : undefined,
+    paddingLeft: !hasEditableSearchInput ? getSpacing(6) : undefined,
+  })
+)
 
 const SearchInputA11yContainer = styled.View({
   flex: 1,
@@ -279,12 +296,25 @@ const StyledView = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  width: getSpacing(10),
-  height: getSpacing(10),
-  marginRight: getSpacing(2),
+})
+
+const StyledBackButton = styledButton(BackButton)({
+  paddingLeft: getSpacing(6),
+  paddingRight: getSpacing(4),
+  paddingTop: getSpacing(5),
+  paddingBottom: getSpacing(5),
+  height: getSpacing(16),
+  maxWidth: getSpacing(16),
+})
+
+const StyledFilterButton = styled(FilterButton)({
+  paddingLeft: getSpacing(3),
+  paddingRight: getSpacing(6),
+  paddingVertical: getSpacing(5),
 })
 
 const FlexView = styled.View({
   flex: 1,
   flexDirection: 'row',
+  paddingVertical: getSpacing(2),
 })

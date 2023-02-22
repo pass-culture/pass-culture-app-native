@@ -17,10 +17,11 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
     <React.Fragment>
       <Spacer.TopScreen />
       <SearchBoxContainer>
-        <View {...getHeadingAttrs(1)}>
-          <StyledTitle4 htmlFor={searchInputID}>Recherche une offre</StyledTitle4>
-        </View>
-        <Spacer.Column numberOfSpaces={2} />
+        <TiltleContainer>
+          <StyledTitle4 htmlFor={searchInputID} {...getHeadingAttrs(1)}>
+            Recherche une offre
+          </StyledTitle4>
+        </TiltleContainer>
         <View>
           <SearchBox searchInputID={searchInputID} />
         </View>
@@ -33,7 +34,10 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
 const SearchBoxContainer = styled.View({
   marginTop: getSpacing(6),
   zIndex: 1,
-  paddingHorizontal: getSpacing(6),
+})
+
+const TiltleContainer = styled.View({
+  paddingLeft: getSpacing(6),
 })
 
 const StyledTitle4 = styledInputLabel(InputLabel)(({ theme }) => ({

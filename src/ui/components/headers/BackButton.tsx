@@ -14,12 +14,17 @@ import { ColorsEnum } from 'ui/theme/colors'
 interface HeaderIconProps {
   onGoBack?: () => void
   color?: ColorsEnum
+  height?: string
+  maxWidth?: string
 }
 
-export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
+export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color, ...props }) => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <StyledTouchable onPress={onGoBack || goBack} accessibilityLabel="Revenir en arrière">
+    <StyledTouchable
+      onPress={onGoBack || goBack}
+      accessibilityLabel="Revenir en arrière"
+      {...props}>
       <ArrowPrevious testID="icon-back" color={color} />
       <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>
@@ -28,10 +33,10 @@ export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
 
 const StyledTouchable = styledButton(Touchable)({
   flexGrow: 1,
-  maxWidth: getSpacing(10),
-  height: getSpacing(10),
   justifyContent: 'center',
   alignItems: 'center',
+  height: getSpacing(10),
+  maxWidth: getSpacing(10),
 })
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsEnum }>(
