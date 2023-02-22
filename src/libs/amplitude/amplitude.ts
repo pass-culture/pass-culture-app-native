@@ -25,7 +25,10 @@ export const amplitude: AmplitudeClient = {
     const identifyProperties = new amplitudeRN.Identify()
 
     Object.keys(properties).forEach((key) => {
-      identifyProperties.set(key, properties[key])
+      const value = properties[key]
+      if (value === null) return
+
+      identifyProperties.set(key, value)
     })
 
     amplitudeRN.identify(identifyProperties)
