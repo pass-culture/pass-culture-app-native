@@ -116,7 +116,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
         'isBeneficiary',
         'needsToFillCulturalSurvey',
       ]),
-      age: user.birthDate ? getAge(user.birthDate) : undefined,
+      ...(user.birthDate ? { age: getAge(user.birthDate) } : {}),
       status: user.status?.statusType, // eligible, beneficiaire, suspendu, etc
       appVersion,
     })
