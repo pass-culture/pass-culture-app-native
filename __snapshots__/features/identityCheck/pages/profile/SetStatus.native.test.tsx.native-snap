@@ -397,6 +397,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Collégien
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -506,6 +516,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Lycéen
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -615,6 +635,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Étudiant
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -724,6 +754,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Employé
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -833,6 +873,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Apprenti
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -942,6 +992,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Alternant
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -1051,6 +1111,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Volontaire
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           style={
                             Array [
@@ -1174,6 +1244,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Inactif
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           style={
                             Array [
@@ -1297,6 +1377,16 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         >
                           Chômeur
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           style={
                             Array [
