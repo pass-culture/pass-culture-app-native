@@ -55,6 +55,10 @@ interface Props {
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
+function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
+  return Boolean(data?.length)
+}
+
 export const OfferBody: FunctionComponent<Props> = ({
   offerId,
   onScroll,
@@ -152,9 +156,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
-
-  const hasSameCategorySimilarOffers = sameCategorySimilarOffers?.length
-  const hasOtherCategoriesSimilarOffers = otherCategoriesSimilarOffers?.length
 
   return (
     <Container
@@ -254,7 +255,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         offerId={offerId}
       />
 
-      {!!hasSameCategorySimilarOffers && (
+      {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
         <SectionWithDivider testID="sameCategorySimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist
@@ -269,7 +270,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </SectionWithDivider>
       )}
 
-      {!!hasOtherCategoriesSimilarOffers && (
+      {!!isArrayNotEmpty(otherCategoriesSimilarOffers) && (
         <SectionWithDivider testID="otherCategoriesSimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist

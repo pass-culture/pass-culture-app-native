@@ -57,7 +57,7 @@ export const Offer: FunctionComponent = () => {
     shouldUseAlgoliaRecommend,
     categoryIncluded: subcategorySearchGroupId || SearchGroupNameEnumv2.NONE,
   })
-  const hasSameCategorySimilarOffers = sameCategorySimilarOffers?.length
+  const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
   const otherCategoriesSimilarOffers = useSimilarOffers({
     offerId,
@@ -65,7 +65,7 @@ export const Offer: FunctionComponent = () => {
     shouldUseAlgoliaRecommend,
     categoryExcluded: subcategorySearchGroupId || SearchGroupNameEnumv2.NONE,
   })
-  const hasOtherCategoriesSimilarOffers = otherCategoriesSimilarOffers?.length
+  const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 
   const fromOfferId = route.params?.fromOfferId
 
