@@ -2,31 +2,24 @@
 
 exports[`Stepper navigation should render correctly 1`] = `
 Array [
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "alignSelf": "center",
+        "flex": 1,
+        "maxWidth": 500,
+        "paddingBottom": 36,
+        "paddingHorizontal": 24,
+        "width": "100%",
+      }
+    }
     style={
       Array [
-        Object {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
+        Object {},
       ]
     }
   >
-    <View
-      style={
-        Array [
-          Object {
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "paddingBottom": 36,
-            "paddingHorizontal": 24,
-            "width": "100%",
-          },
-        ]
-      }
-    >
+    <View>
       <View
         customHeight={16}
         enable={true}
@@ -491,12 +484,12 @@ Array [
         </View>
       </View>
       <View
-        flex={2}
+        flex={1}
         style={
           Array [
             Object {
               "flexBasis": 0,
-              "flexGrow": 2,
+              "flexGrow": 1,
               "flexShrink": 1,
             },
           ]
@@ -574,7 +567,7 @@ Array [
         </Text>
       </View>
     </View>
-  </View>,
+  </RCTScrollView>,
   <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
