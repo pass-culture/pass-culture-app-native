@@ -4,6 +4,7 @@ export const env: Environment = {
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_OFFERS_INDEX_NAME: 'algoliaOffersIndexName',
   ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
+  ALGOLIA_VENUE_OFFERS_INDEX_NAME: 'algoliaVenueOffersIndexName',
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_SUGGESTIONS_INDEX_NAME: 'algoliaSuggestionsIndexName',
   AMPLITUDE_API_KEY: 'amplitudeApiKey',
