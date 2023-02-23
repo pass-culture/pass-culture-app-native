@@ -12,7 +12,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
@@ -87,14 +87,6 @@ export const IdentityCheckStepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
-  async function navigateToStep(step: StepConfig) {
-    analytics.logIdentityCheckStep(step.name)
-
-    if (step.name === IdentityCheckStep.IDENTIFICATION && context.identification.method === null) {
-      showEduConnectModal()
-    }
-  }
-
   return (
     <React.Fragment>
       <Container>
@@ -117,20 +109,28 @@ export const IdentityCheckStepper = () => {
           {steps.map((step) => (
             <Li key={step.name}>
               <StepButtonContainer>
-                <StepButton
-                  step={step}
-                  state={getStepState(steps, step.name, currentStep)}
-                  navigateTo={
-                    step.name === IdentityCheckStep.IDENTIFICATION &&
-                    context.identification.method === null
-                      ? undefined
-                      : { screen: step.screens[0] }
-                  }
-                  onPress={() => {
-                    amplitude.logEvent('stepper_clicked', { step: step.name })
-                    return navigateToStep(step)
-                  }}
-                />
+                {step.name === IdentityCheckStep.IDENTIFICATION &&
+                context.identification.method === null ? (
+                  <StepButton
+                    step={step}
+                    state={getStepState(steps, step.name, currentStep)}
+                    onPress={() => {
+                      amplitude.logEvent('stepper_clicked', { step: step.name })
+                      analytics.logIdentityCheckStep(step.name)
+                      showEduConnectModal()
+                    }}
+                  />
+                ) : (
+                  <StepButton
+                    step={step}
+                    state={getStepState(steps, step.name, currentStep)}
+                    navigateTo={{ screen: step.screens[0] }}
+                    onPress={() => {
+                      amplitude.logEvent('stepper_clicked', { step: step.name })
+                      analytics.logIdentityCheckStep(step.name)
+                    }}
+                  />
+                )}
               </StepButtonContainer>
             </Li>
           ))}
