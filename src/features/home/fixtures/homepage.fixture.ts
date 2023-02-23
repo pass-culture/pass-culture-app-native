@@ -8,6 +8,7 @@ import {
   VenuesModule,
   ThematicHighlightModule,
   CategoryListModule,
+  ThematicHeaderType,
 } from 'features/home/types'
 
 export const formattedBusinessModule: BusinessModule = {
@@ -161,6 +162,7 @@ export const adaptedHomepage: Homepage = {
   tags: [],
   id: '6DCThxvbPFKAo04SVRZtwY',
   thematicHeader: {
+    type: ThematicHeaderType.DefaultThematicHeader,
     title: 'Un titre court',
     subtitle: 'Unsoustitretroplongquidépassebeaucoupbeaucoupbeaucoupbeaucoupbeaucoupbeaucoup',
   },

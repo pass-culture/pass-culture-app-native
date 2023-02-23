@@ -1,4 +1,4 @@
-import { Homepage, HomepageModuleType } from 'features/home/types'
+import { Homepage, HomepageModuleType, ThematicHeaderType } from 'features/home/types'
 
 export const homepageList: Homepage[] = [
   {
@@ -157,7 +157,11 @@ export const homepageList: Homepage[] = [
       },
     ],
     tags: [],
-    thematicHeader: { subtitle: undefined, title: undefined },
+    thematicHeader: {
+      subtitle: undefined,
+      title: undefined,
+      type: ThematicHeaderType.DefaultThematicHeader,
+    },
   },
   {
     tags: [],
@@ -175,6 +179,10 @@ export const homepageList: Homepage[] = [
         shouldTargetNotConnectedUsers: true,
       },
     ],
-    thematicHeader: { title: 'cinéma', subtitle: 'Fais le plein de cinéma' },
+    thematicHeader: {
+      title: 'cinéma',
+      subtitle: 'Fais le plein de cinéma',
+      type: ThematicHeaderType.DefaultThematicHeader,
+    },
   },
 ]

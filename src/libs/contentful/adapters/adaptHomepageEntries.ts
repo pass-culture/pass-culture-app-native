@@ -1,4 +1,4 @@
-import { Homepage } from 'features/home/types'
+import { Homepage, ThematicHeaderType } from 'features/home/types'
 import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
 import { HomepageNatifEntry } from 'libs/contentful/types'
 
@@ -8,6 +8,7 @@ export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[])
     id: entry.sys.id,
     modules: adaptHomepageNatifModules(entry.fields.modules),
     thematicHeader: {
+      type: ThematicHeaderType.DefaultThematicHeader,
       title: entry.fields.thematicHeaderTitle,
       subtitle: entry.fields.thematicHeaderSubtitle,
     },
