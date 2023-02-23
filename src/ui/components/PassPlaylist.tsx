@@ -4,11 +4,11 @@ import styled, { useTheme } from 'styled-components/native'
 import { Cover } from 'ui/components/Cover'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+import { SeeMoreWithEye } from './SeeMoreWithEye'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,
@@ -48,20 +48,12 @@ export const PassPlaylist = (props: Props) => {
   )
 
   function renderTitleSeeMore() {
-    return showTitleSeeMore ? (
-      <React.Fragment>
-        <Spacer.Row numberOfSpaces={4} />
-        <TitleSeparator />
-        <Spacer.Row numberOfSpaces={3} />
-        <StyledTouchableLink
-          navigateTo={props.titleSeeMoreLink}
-          onBeforeNavigate={props.onPressSeeMore}
-          accessibilityLabel={`Voir plus d’offres de la sélection ${props.title}`}>
-          <EyeSophisticated />
-          <Spacer.Row numberOfSpaces={2} />
-          <StyledButtonText>En voir plus</StyledButtonText>
-        </StyledTouchableLink>
-      </React.Fragment>
+    return showTitleSeeMore && !!props.titleSeeMoreLink && !!props.onPressSeeMore ? (
+      <SeeMoreWithEye
+        {...props}
+        titleSeeMoreLink={props.titleSeeMoreLink}
+        onPressSeeMore={props.onPressSeeMore}
+      />
     ) : null
   }
   return (
@@ -104,29 +96,6 @@ const Row = styled.View({
   alignItems: 'center',
   marginHorizontal: getSpacing(6),
 })
-
-const TitleSeparator = styled.View(({ theme }) => ({
-  width: 1,
-  height: getSpacing(5),
-  backgroundColor: theme.colors.greyMedium,
-}))
-
-const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
-  hoverUnderlineColor: theme.colors.primary,
-}))({
-  flexDirection: 'row',
-  alignItems: 'center',
-  padding: getSpacing(1),
-})
-
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.primary,
-}))
-
-const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.colors.primary,
-}))``
 
 const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
