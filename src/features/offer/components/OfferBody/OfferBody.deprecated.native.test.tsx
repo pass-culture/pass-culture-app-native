@@ -37,10 +37,12 @@ jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting'
 }))
 
 const mockSubcategories = placeholderData.subcategories
+const mockSearchGroups = placeholderData.searchGroups
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {
       subcategories: mockSubcategories,
+      searchGroups: mockSearchGroups,
     },
   }),
 }))
