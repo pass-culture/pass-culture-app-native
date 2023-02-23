@@ -5,6 +5,8 @@ import {
   requestTrackingPermission,
 } from 'react-native-tracking-transparency'
 
+import { logOpenApp } from 'libs/campaign/logOpenApp'
+
 export const requestIDFATrackingConsent = async (callback?: (status: TrackingStatus) => void) =>
   getTrackingStatus().then((status) => {
     if (status === 'unavailable') {
@@ -12,7 +14,10 @@ export const requestIDFATrackingConsent = async (callback?: (status: TrackingSta
       callback && callback(status)
     } else if (status === 'not-determined') {
       // iOS >= 14
-      requestTrackingPermission().then(callback)
+      requestTrackingPermission().then(async (status) => {
+        callback && callback(status)
+        logOpenApp(status)
+      })
     }
   })
 
