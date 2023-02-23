@@ -5,9 +5,14 @@ on:
 
 jobs:
   yarn_lint:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup yarn
+        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |
@@ -19,9 +24,14 @@ jobs:
       - run: yarn test:lint
 
   yarn_typescript:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup yarn
+        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |
