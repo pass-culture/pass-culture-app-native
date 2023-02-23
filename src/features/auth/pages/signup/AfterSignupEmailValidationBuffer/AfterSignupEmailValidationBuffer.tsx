@@ -7,7 +7,9 @@ import { useValidateEmailMutation } from 'features/auth/api/useValidateEmailMuta
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
+import { analytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -51,6 +53,11 @@ export function AfterSignupEmailValidationBuffer() {
 
     try {
       const user = await api.getnativev1me()
+      const firebasePseudoId = await analytics.getAppInstanceId()
+      await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
+        af_firebase_pseudo_id: firebasePseudoId,
+        af_user_id: user.id,
+      })
 
       if (user.isEligibleForBeneficiaryUpgrade) {
         delayedReplace('VerifyEligibility')
