@@ -3,19 +3,17 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ReportedOffer, SearchGroupNameEnumv2 } from 'api/gen'
+import { ReportedOffer } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
-import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
-import { getSearchGroupIdFromSubcategoryId } from 'features/offer/helpers/getSearchGroupIdFromSubcategoryId/getSearchGroupIdFromSubcategoryId'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -36,7 +34,6 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -52,11 +49,22 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   offerId: number
   onScroll: () => void
+  sameCategorySimilarOffers?: SearchHit[]
+  otherCategoriesSimilarOffers?: SearchHit[]
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
-export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
+function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
+  return Boolean(data?.length)
+}
+
+export const OfferBody: FunctionComponent<Props> = ({
+  offerId,
+  onScroll,
+  sameCategorySimilarOffers,
+  otherCategoriesSimilarOffers,
+}) => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
@@ -82,33 +90,6 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { position } = useGeolocation()
-  const { data } = useSubcategories()
-  const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
-  const otherSearchGroups = subcategorySearchGroupId?.[0]
-    ? data?.searchGroups
-        .filter(
-          (searchGroup) =>
-            searchGroup.name !== subcategorySearchGroupId[0] &&
-            searchGroup.name !== SearchGroupNameEnumv2.NONE
-        )
-        .map((searchGroup) => searchGroup.name)
-    : undefined
-
-  const sameCategorySimilarOffers = useSimilarOffers(
-    offerId,
-    offer?.venue.coordinates,
-    subcategorySearchGroupId
-  )
-  const hasSameCategorySimilarOffers =
-    sameCategorySimilarOffers && sameCategorySimilarOffers.length > 0
-
-  const otherCategoriesSimilarOffers = useSimilarOffers(
-    offerId,
-    offer?.venue.coordinates,
-    otherSearchGroups
-  )
-  const hasOtherCategoriesSimilarOffers =
-    otherCategoriesSimilarOffers && otherCategoriesSimilarOffers.length > 0
 
   const fromOfferId = route.params?.fromOfferId
 
@@ -274,7 +255,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         offerId={offerId}
       />
 
-      {!!hasSameCategorySimilarOffers && (
+      {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
         <SectionWithDivider testID="sameCategorySimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist
@@ -289,7 +270,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         </SectionWithDivider>
       )}
 
-      {!!hasOtherCategoriesSimilarOffers && (
+      {!!isArrayNotEmpty(otherCategoriesSimilarOffers) && (
         <SectionWithDivider testID="otherCategoriesSimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist

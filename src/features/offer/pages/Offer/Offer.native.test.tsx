@@ -1,8 +1,10 @@
 import { rest } from 'msw'
 
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { beneficiaryUser } from 'fixtures/user'
 import { SearchHit } from 'libs/algolia'
@@ -82,9 +84,27 @@ describe('<Offer />', () => {
       mockSearchHits = mockedAlgoliaResponse.hits
     })
 
-    it('should log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
-      renderOfferPage()
-      const scrollView = screen.getByTestId('offer-container')
+    it('should pass offer venue position to `useSimilarOffers`', async () => {
+      const spy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementationOnce(jest.fn())
+      await renderOfferPage()
+
+      expect(spy).toHaveBeenNthCalledWith(1, {
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        offerId: offerResponseSnap.id,
+        position: offerResponseSnap.venue.coordinates,
+        shouldUseAlgoliaRecommend: false,
+      })
+      expect(spy).toHaveBeenNthCalledWith(2, {
+        categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        offerId: offerResponseSnap.id,
+        position: offerResponseSnap.venue.coordinates,
+        shouldUseAlgoliaRecommend: false,
+      })
+    })
+
+    it('should log analytics event logPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
+      const { getByTestId } = await renderOfferPage()
+      const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
 
@@ -176,7 +196,7 @@ const scrollEvent = {
   nativeEvent: {
     contentOffset: { y: 200 },
     layoutMeasurement: { height: 1000 },
-    contentSize: { height: 1600 },
+    contentSize: { height: 1900 },
   },
 }
 
@@ -184,7 +204,7 @@ const nativeEventBottom = {
   nativeEvent: {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 900 },
-    contentSize: { height: 1600 },
+    contentSize: { height: 1900 },
   },
 }
 
@@ -192,6 +212,6 @@ const nativeEventTop = {
   nativeEvent: {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 100 },
-    contentSize: { height: 1600 },
+    contentSize: { height: 1900 },
   },
 }
