@@ -97,59 +97,53 @@ export const IdentityCheckStepper = () => {
 
   return (
     <React.Fragment>
-      <CenteredContainer>
-        <Container>
-          <Spacer.TopScreen />
-          {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={2} />
-          ) : (
-            <Spacer.Column numberOfSpaces={4} />
-          )}
+      <Container>
+        <Spacer.TopScreen />
+        {theme.isDesktopViewport ? (
+          <Spacer.Column numberOfSpaces={16} />
+        ) : (
+          <Spacer.Column numberOfSpaces={4} />
+        )}
 
-          <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>
-            Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
-          </Typo.Body>
+        <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Body>
+          Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
+        </Typo.Body>
 
-          {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
+        <Spacer.Column numberOfSpaces={10} />
 
-          <VerticalUl>
-            {steps.map((step) => (
-              <Li key={step.name}>
-                <StepButtonContainer>
-                  <StepButton
-                    step={step}
-                    state={getStepState(steps, step.name, currentStep)}
-                    navigateTo={
-                      step.name === IdentityCheckStep.IDENTIFICATION &&
-                      context.identification.method === null
-                        ? undefined
-                        : { screen: step.screens[0] }
-                    }
-                    onPress={() => {
-                      amplitude.logEvent('stepper_clicked', { step: step.name })
-                      return navigateToStep(step)
-                    }}
-                  />
-                </StepButtonContainer>
-              </Li>
-            ))}
-          </VerticalUl>
+        <VerticalUl>
+          {steps.map((step) => (
+            <Li key={step.name}>
+              <StepButtonContainer>
+                <StepButton
+                  step={step}
+                  state={getStepState(steps, step.name, currentStep)}
+                  navigateTo={
+                    step.name === IdentityCheckStep.IDENTIFICATION &&
+                    context.identification.method === null
+                      ? undefined
+                      : { screen: step.screens[0] }
+                  }
+                  onPress={() => {
+                    amplitude.logEvent('stepper_clicked', { step: step.name })
+                    return navigateToStep(step)
+                  }}
+                />
+              </StepButtonContainer>
+            </Li>
+          ))}
+        </VerticalUl>
 
-          {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={10} />
-          ) : (
-            <Spacer.Flex flex={2} />
-          )}
+        <Spacer.Flex flex={1} />
 
-          <ButtonTertiaryBlack
-            icon={Invalidate}
-            wording="Abandonner"
-            onPress={showQuitIdentityCheckModal}
-          />
-        </Container>
-      </CenteredContainer>
+        <ButtonTertiaryBlack
+          icon={Invalidate}
+          wording="Abandonner"
+          onPress={showQuitIdentityCheckModal}
+        />
+      </Container>
       <QuitIdentityCheckModal
         visible={visible}
         hideModal={hideModal}
@@ -165,18 +159,16 @@ export const IdentityCheckStepper = () => {
 
 const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
-const CenteredContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  justifyContent: 'center',
-  padding: getSpacing(5),
-  width: '100%',
-  maxWidth: theme.contentPage.maxWidth,
-}))
+const Container = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: getSpacing(6),
+    paddingBottom: getSpacing(9),
+    maxWidth: theme.contentPage.maxWidth,
+    width: '100%',
+    alignSelf: 'center',
+    flex: 1,
+  },
+}))``
 
 const StepButtonContainer = styled.View({
   alignItems: 'center',
