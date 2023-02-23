@@ -35,7 +35,7 @@ module.exports = {
       '|instantsearch.js' +
       '/(?!(lib)))',
   ],
-  testRegex: '(?<!.web).(?:test|spec).(?:tsx?|js)$',
+  testMatch: ['(?<!.web).(?:test|spec).(?:tsx?|js)$'],
   testPathIgnorePatterns: [
     '\\.snap$',
     '\\.native-snap$',
