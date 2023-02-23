@@ -47,7 +47,6 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search client for a smooth transition
-    if (!offerId) return
     queryClient.setQueryData(
       [QueryKeys.OFFER, offerId],
       mergeOfferData({
@@ -66,9 +65,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
 
   return (
     <Container
-      navigateTo={
-        offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
-      }
+      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'search' } }}
       onBeforeNavigate={handlePressOffer}
       accessibilityLabel={accessibilityLabel}>
       <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
@@ -98,7 +95,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   )
 }
 
-const Container = styled(InternalTouchableLink)({
+const Container: typeof InternalTouchableLink = styled(InternalTouchableLink)({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',
