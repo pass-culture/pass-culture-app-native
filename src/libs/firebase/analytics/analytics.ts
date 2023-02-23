@@ -336,6 +336,7 @@ const logEventAnalytics = {
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
   disableCollection: analyticsProvider.disableCollection,
+  getAppInstanceId: analyticsProvider.getAppInstanceId,
   logLogin({ method }: { method: LoginRoutineMethod }) {
     analyticsProvider.logLogin({ method })
   },
