@@ -28,13 +28,20 @@ exports[`<Search/> should render Search 1`] = `
       Array [
         Object {
           "marginTop": 24,
-          "paddingHorizontal": 24,
           "zIndex": 1,
         },
       ]
     }
   >
-    <View>
+    <View
+      style={
+        Array [
+          Object {
+            "paddingLeft": 24,
+          },
+        ]
+      }
+    >
       <Text
         htmlFor="testUuidV4"
         style={
@@ -51,16 +58,6 @@ exports[`<Search/> should render Search 1`] = `
         Recherche une offre
       </Text>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
     <View>
       <View
         style={
@@ -72,6 +69,8 @@ exports[`<Search/> should render Search 1`] = `
         }
       >
         <View
+          hasEditableSearchInput={false}
+          params={Object {}}
           style={
             Array [
               Object {
@@ -81,6 +80,8 @@ exports[`<Search/> should render Search 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "justifyContent": "center",
+                "paddingLeft": 24,
+                "paddingRight": 24,
               },
             ]
           }
@@ -106,6 +107,7 @@ exports[`<Search/> should render Search 1`] = `
                     "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "paddingVertical": 8,
                   },
                 ]
               }

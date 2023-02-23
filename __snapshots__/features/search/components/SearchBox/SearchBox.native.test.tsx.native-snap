@@ -11,6 +11,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
   }
 >
   <View
+    hasEditableSearchInput={false}
+    params={Object {}}
     style={
       Array [
         Object {
@@ -20,6 +22,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
+          "paddingLeft": 24,
+          "paddingRight": 24,
         },
       ]
     }
@@ -45,6 +49,7 @@ exports[`SearchBox component should render SearchBox 1`] = `
               "flexDirection": "row",
               "flexGrow": 1,
               "flexShrink": 1,
+              "paddingVertical": 8,
             },
           ]
         }
