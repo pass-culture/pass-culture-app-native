@@ -65,7 +65,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
 
   return (
     <Container
-      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'search' } }}
+      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'search', searchId } }}
       onBeforeNavigate={handlePressOffer}
       accessibilityLabel={accessibilityLabel}>
       <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />

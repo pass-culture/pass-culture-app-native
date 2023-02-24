@@ -4,8 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { Hit } from './Hit'
 
@@ -16,6 +15,7 @@ let mockDistance: string | null = null
 jest.mock('libs/geolocation/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
+jest.mock('react-query')
 
 const spyLogClickOnOffer = jest.fn()
 const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')
@@ -27,19 +27,18 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 
 describe('Hit component', () => {
   it('should navigate to the offer when clicking on the hit', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByRole } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
-    await fireEvent.press(getByRole('link'))
+    render(<Hit hit={hit} query="" index={0} searchId="539b285e" />)
+    await fireEvent.press(screen.getByRole('link'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'search',
+      searchId: '539b285e',
     })
   })
 
   it('should log analytics event when clicking on the hit', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByRole } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
-    await fireEvent.press(getByRole('link'))
+    render(<Hit hit={hit} query="" index={0} />)
+    await fireEvent.press(screen.getByRole('link'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
@@ -49,10 +48,9 @@ describe('Hit component', () => {
   })
 
   it('should notify Algolia when pressing on an hit', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByRole } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
+    render(<Hit hit={hit} query="" index={0} />)
 
-    const hitComponent = getByRole('link')
+    const hitComponent = screen.getByRole('link')
     await fireEvent.press(hitComponent)
 
     expect(spyLogClickOnOffer).toHaveBeenCalledWith({
@@ -63,8 +61,7 @@ describe('Hit component', () => {
 
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} query="" index={0} />))
-    expect(queryByText('10 km')).toBeTruthy()
+    render(<Hit hit={hit} query="" index={0} />)
+    expect(screen.queryByText('10 km')).toBeTruthy()
   })
 })

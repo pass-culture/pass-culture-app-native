@@ -38,6 +38,7 @@ export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const offerId = route.params && route.params.id
+  const searchId = route.params && route.params.searchId
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -134,6 +135,7 @@ export const Offer: FunctionComponent = () => {
         title={offerResponse.name}
         headerTransition={headerTransition}
         offerId={offerResponse.id}
+        searchId={searchId}
       />
       <OfferBody
         offerId={offerId}
