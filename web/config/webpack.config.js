@@ -59,6 +59,8 @@ const allCssFiles = fs
 const devCssFiles = allCssFiles.filter((fileName) => fileName.match(/^\d{2}-dev-/))
 const prodCssFiles = allCssFiles.filter((fileName) => !fileName.match(/^\d{2}-dev-/))
 
+const chunkProtectionScript = fs.readFileSync(path.join(__dirname, '../js/chunk-protection.js'), 'utf8')
+
 function getCss(files) {
   return files
     .map((fileName) => path.join(paths.appExtraCss, fileName))
@@ -599,6 +601,7 @@ module.exports = function (webpackEnv) {
           env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
         PROD_CSS: getCss(prodCssFiles) || '',
         DEV_CSS: !isEnvProduction ? getCss(devCssFiles) : '',
+        CHUNK_PROTECTION_SCRIPT: chunkProtectionScript,
       }),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
