@@ -17,6 +17,7 @@ type FetchOfferArgs = {
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
+  indexSearch?: string
 }
 
 export const fetchOffer = async ({
@@ -24,9 +25,10 @@ export const fetchOffer = async ({
   userLocation,
   isUserUnderage,
   storeQueryID,
+  indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
 }: FetchOfferArgs): Promise<Response> => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
-  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
+  const index = client.initIndex(indexSearch)
 
   try {
     const response = await index.search<SearchHit>(parameters.query || '', {

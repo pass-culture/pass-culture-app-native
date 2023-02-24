@@ -6,6 +6,7 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 import { SearchHit } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
+import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -25,6 +26,7 @@ export const useVenueOffers = (venueId: number) => {
         userLocation: null,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
+        indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
       }),
     {
       enabled: !!netInfo.isConnected,
