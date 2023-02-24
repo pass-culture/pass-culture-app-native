@@ -60,28 +60,28 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
         Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et
         un caractère spécial
       </HiddenAccessibleText>
-      <RulesContainer
-        isVisible={visible}
-        accessibilityRole={AccessibilityRole.STATUS}
-        accessibilityAtomic={false}>
-        <PasswordRule title="12 Caractères" isValidated={isLongEnough(password)} />
-        <PasswordRule title="1 Majuscule" isValidated={containsCapital(password)} />
-        <PasswordRule title="1 Minuscule" isValidated={containsLowercase(password)} />
-        <PasswordRule title="1 Chiffre" isValidated={containsNumber(password)} />
-        <PasswordRule
-          title="1 Caractère spécial (!@#$%^&*...)"
-          isValidated={containsSpecialCharacter(password)}
-        />
-      </RulesContainer>
+      {!!visible && (
+        <RulesContainer
+          isVisible={visible}
+          accessibilityRole={AccessibilityRole.STATUS}
+          accessibilityAtomic={false}>
+          <PasswordRule title="12 Caractères" isValidated={isLongEnough(password)} />
+          <PasswordRule title="1 Majuscule" isValidated={containsCapital(password)} />
+          <PasswordRule title="1 Minuscule" isValidated={containsLowercase(password)} />
+          <PasswordRule title="1 Chiffre" isValidated={containsNumber(password)} />
+          <PasswordRule
+            title="1 Caractère spécial (!@#$%^&*...)"
+            isValidated={containsSpecialCharacter(password)}
+          />
+        </RulesContainer>
+      )}
     </React.Fragment>
   )
 }
 
-const RulesContainer = styled(View)<{ isVisible?: boolean }>(({ isVisible, theme }) => ({
+const RulesContainer = styled(View)<{ isVisible?: boolean }>(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
-  height: isVisible ? undefined : '0',
-  overflow: isVisible ? undefined : 'hidden',
   maxWidth: theme.forms.maxWidth,
-  paddingTop: isVisible ? getSpacing(2) : 0,
+  paddingTop: getSpacing(2),
 }))

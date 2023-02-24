@@ -1,49 +1,57 @@
-import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
-import { v4 as uuidv4 } from 'uuid'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { FunctionComponent, useCallback } from 'react'
+import { useForm } from 'react-hook-form'
 
-import {
-  isPasswordCorrect,
-  PasswordSecurityRules,
-} from 'features/auth/components/PasswordSecurityRules'
+import { setPasswordSchema } from 'features/auth/pages/signup/SetPassword/schema/setPasswordSchema'
 import { PreValidationSignupStepProps } from 'features/auth/types'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
 
+type FormValues = {
+  password: string
+}
+
 export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const [password, setPassword] = useState('')
-  const disabled = !isPasswordCorrect(password)
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<FormValues>({
+    defaultValues: {
+      password: '',
+    },
+    resolver: yupResolver(setPasswordSchema),
+    mode: 'onChange',
+  })
 
-  const passwordInput = useRef<RNTextInput | null>(null)
-  const passwordDescribedBy = uuidv4()
-
-  const submitPassword = useCallback(() => {
-    if (!disabled) {
+  const goToNextStep = useCallback(
+    ({ password }) => {
       props.goToNextStep({ password })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [disabled, password, props.goToNextStep])
+    },
+    [props]
+  )
 
   return (
     <Form.MaxWidth>
-      <PasswordInput
+      <PasswordInputController
+        control={control}
+        name={'password'}
+        label="Mot de passe"
+        placeholder="Ton mot de passe"
+        isRequiredField
+        withSecurityRules
+        securityRulesAlwaysVisible
         autoFocus
         nativeAutoFocus
-        accessibilityDescribedBy={passwordDescribedBy}
-        value={password}
-        onChangeText={setPassword}
-        onSubmitEditing={submitPassword}
-        ref={passwordInput}
       />
-      <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Continuer"
         accessibilityLabel={props.accessibilityLabelForNextStep}
-        onPress={submitPassword}
-        disabled={disabled}
+        onPress={handleSubmit(goToNextStep)}
+        disabled={!isValid}
       />
       <Spacer.Column numberOfSpaces={5} />
     </Form.MaxWidth>
