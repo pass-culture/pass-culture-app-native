@@ -1,14 +1,18 @@
 import mockdate from 'mockdate'
+import { rest } from 'msw'
 import React from 'react'
 
+import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { amplitude } from 'libs/amplitude'
+import { env } from 'libs/environment'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { storage, StorageKey } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
@@ -19,10 +23,20 @@ jest.unmock('libs/jwt')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
+const mockUserProfileInfo = (user = beneficiaryUser) => {
+  server.use(
+    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+      res(ctx.status(200), ctx.json(user))
+    )
+  )
+}
+
 describe('AuthContext', () => {
   beforeEach(async () => {
     await storage.clear('access_token')
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
+
+    mockUserProfileInfo()
   })
 
   describe('useAuthContext', () => {
@@ -61,7 +75,7 @@ describe('AuthContext', () => {
       })
     })
 
-    it('should set user properties to Amplitude events', async () => {
+    it('should set user properties to Amplitude events when user is beneficiary', async () => {
       storage.saveString('access_token', 'token')
       renderUseAuthContext()
 
@@ -78,7 +92,23 @@ describe('AuthContext', () => {
           status: 'beneficiary',
         })
       })
-    })
+    }),
+      it('should set user properties to Amplitude events when user is not beneficiary', async () => {
+        storage.saveString('access_token', 'token')
+        mockUserProfileInfo(nonBeneficiaryUser)
+
+        renderUseAuthContext()
+
+        await waitFor(() => {
+          expect(amplitude.setUserProperties).toHaveBeenCalledWith({
+            appVersion: '1.10.5',
+            id: 1234,
+            isBeneficiary: false,
+            needsToFillCulturalSurvey: true,
+            status: 'non_eligible',
+          })
+        })
+      })
   })
 })
 
