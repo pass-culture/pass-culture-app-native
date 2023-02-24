@@ -8,11 +8,11 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export interface ThematicHomeHeaderProps {
+export interface DefaultThematicHomeHeaderProps {
   headerTitle?: string
   headerSubtitle?: string
 }
-export const ThematicHomeHeader: FunctionComponent<ThematicHomeHeaderProps> = ({
+export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHeaderProps> = ({
   headerTitle,
   headerSubtitle,
 }) => {
