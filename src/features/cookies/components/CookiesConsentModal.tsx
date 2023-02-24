@@ -15,8 +15,8 @@ export const CookiesConsentModal: typeof AppModal = ({
   ...iconProps
 }) => {
   const { top } = useCustomSafeInsets()
-  const { modal } = useTheme()
   const { height } = useWindowDimensions()
+  const { modal } = useTheme()
 
   const CustomHeader = useMemo(
     () => (
