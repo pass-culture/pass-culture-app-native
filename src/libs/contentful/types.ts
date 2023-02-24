@@ -387,6 +387,7 @@ interface HomepageNatifFields {
   modules: HomepageNatifModule[]
   thematicHeaderTitle?: string
   thematicHeaderSubtitle?: string
+  thematicHeader?: ThematicHighlightInfo
 }
 
 export type HomepageNatifModule =

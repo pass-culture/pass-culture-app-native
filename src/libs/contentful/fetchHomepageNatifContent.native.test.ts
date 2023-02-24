@@ -7,7 +7,7 @@ import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEnt
 import { server } from 'tests/server'
 
 server.use(
-  rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
+  rest.get(`${BASE_URL}/entries/${PARAMS}`, async (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
   })
 )
