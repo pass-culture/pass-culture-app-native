@@ -45,22 +45,19 @@ const ClickableArea: React.FC<{
   onPress: () => void
   accessibilityLabel: string
 }> = ({ activeOpacity, children, onPress, navigateTo, ...props }) => {
-  if (navigateTo)
-    return (
-      <StyledTouchableLink
-        activeOpacity={activeOpacity}
-        navigateTo={navigateTo}
-        onBeforeNavigate={onPress}
-        {...props}>
-        {children}
-      </StyledTouchableLink>
-    )
-  else
-    return (
-      <StyledTouchableOpacity activeOpacity={activeOpacity} onPress={onPress} {...props}>
-        {children}
-      </StyledTouchableOpacity>
-    )
+  return navigateTo ? (
+    <StyledTouchableLink
+      activeOpacity={activeOpacity}
+      navigateTo={navigateTo}
+      onBeforeNavigate={onPress}
+      {...props}>
+      {children}
+    </StyledTouchableLink>
+  ) : (
+    <StyledTouchableOpacity activeOpacity={activeOpacity} onPress={onPress} {...props}>
+      {children}
+    </StyledTouchableOpacity>
+  )
 }
 
 const Row = styled.View({ flexDirection: 'row' })

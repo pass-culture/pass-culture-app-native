@@ -141,17 +141,11 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#F1F1F4",
-                  "borderRadius": 8,
-                  "borderWidth": 2,
                   "flexDirection": "row",
-                  "height": 88,
-                  "marginTop": 8,
+                  "justifyContent": "center",
                   "opacity": 1,
                   "userSelect": "auto",
-                  "width": "98%",
+                  "width": "100%",
                 }
               }
               testID="Numéro de téléphone Complété"
@@ -160,40 +154,58 @@ Array [
                 style={
                   Array [
                     Object {
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#F1F1F4",
+                      "borderRadius": 8,
+                      "borderWidth": 2,
+                      "flexDirection": "row",
+                      "height": 88,
+                      "marginTop": 8,
+                      "width": "98%",
                     },
                   ]
                 }
               >
                 <View
-                  fill="url(#gradienttestUuid)"
-                  height={32}
-                  testID="BicolorProfile"
-                  width={32}
+                  style={
+                    Array [
+                      Object {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    BicolorProfile-SVG-Mock
-                  </Text>
+                  <View
+                    fill="url(#gradienttestUuid)"
+                    height={32}
+                    testID="BicolorProfile"
+                    width={32}
+                  >
+                    <Text>
+                      BicolorProfile-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  state="completed"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#90949D",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Numéro de téléphone
+                </Text>
               </View>
-              <Text
-                state="completed"
-                style={
-                  Array [
-                    Object {
-                      "color": "#90949D",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Numéro de téléphone
-              </Text>
             </View>
           </View>
         </View>
@@ -217,78 +229,89 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Identification Non complété"
-              accessibilityRole="link"
-              accessibilityState={
-                Object {
-                  "disabled": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 92,
-                  "marginTop": 8,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 92,
+                    "marginTop": 8,
+                    "width": "100%",
+                  },
+                ]
               }
-              testID="Identification Non complété"
             >
               <View
-                style={
-                  Array [
-                    Object {
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ]
+                accessibilityLabel="Identification Non complété"
+                accessibilityState={
+                  Object {
+                    "disabled": false,
+                  }
                 }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Identification Non complété"
               >
                 <View
-                  fill="url(#gradienttestUuid)"
-                  height={32}
-                  testID="BicolorProfile"
-                  width={32}
+                  style={
+                    Array [
+                      Object {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    BicolorProfile-SVG-Mock
-                  </Text>
+                  <View
+                    fill="url(#gradienttestUuid)"
+                    height={32}
+                    testID="BicolorProfile"
+                    width={32}
+                  >
+                    <Text>
+                      BicolorProfile-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  state="current"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Identification
+                </Text>
               </View>
-              <Text
-                state="current"
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Identification
-              </Text>
             </View>
           </View>
         </View>
@@ -331,17 +354,11 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#CBCDD2",
-                  "borderRadius": 8,
-                  "borderWidth": 1,
                   "flexDirection": "row",
-                  "height": 88,
-                  "marginTop": 8,
+                  "justifyContent": "center",
                   "opacity": 1,
                   "userSelect": "auto",
-                  "width": "98%",
+                  "width": "100%",
                 }
               }
               testID="Profil Non complété"
@@ -350,40 +367,58 @@ Array [
                 style={
                   Array [
                     Object {
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 88,
+                      "marginTop": 8,
+                      "width": "98%",
                     },
                   ]
                 }
               >
                 <View
-                  fill="url(#gradienttestUuid)"
-                  height={32}
-                  testID="BicolorProfile"
-                  width={32}
+                  style={
+                    Array [
+                      Object {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    BicolorProfile-SVG-Mock
-                  </Text>
+                  <View
+                    fill="url(#gradienttestUuid)"
+                    height={32}
+                    testID="BicolorProfile"
+                    width={32}
+                  >
+                    <Text>
+                      BicolorProfile-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  state="disabled"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#90949D",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Profil
+                </Text>
               </View>
-              <Text
-                state="disabled"
-                style={
-                  Array [
-                    Object {
-                      "color": "#90949D",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Profil
-              </Text>
             </View>
           </View>
         </View>
@@ -426,17 +461,11 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#CBCDD2",
-                  "borderRadius": 8,
-                  "borderWidth": 1,
                   "flexDirection": "row",
-                  "height": 88,
-                  "marginTop": 8,
+                  "justifyContent": "center",
                   "opacity": 1,
                   "userSelect": "auto",
-                  "width": "98%",
+                  "width": "100%",
                 }
               }
               testID="Confirmation Non complété"
@@ -445,40 +474,58 @@ Array [
                 style={
                   Array [
                     Object {
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 88,
+                      "marginTop": 8,
+                      "width": "98%",
                     },
                   ]
                 }
               >
                 <View
-                  fill="url(#gradienttestUuid)"
-                  height={32}
-                  testID="BicolorProfile"
-                  width={32}
+                  style={
+                    Array [
+                      Object {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    BicolorProfile-SVG-Mock
-                  </Text>
+                  <View
+                    fill="url(#gradienttestUuid)"
+                    height={32}
+                    testID="BicolorProfile"
+                    width={32}
+                  >
+                    <Text>
+                      BicolorProfile-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  state="disabled"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#90949D",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Confirmation
+                </Text>
               </View>
-              <Text
-                state="disabled"
-                style={
-                  Array [
-                    Object {
-                      "color": "#90949D",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Confirmation
-              </Text>
             </View>
           </View>
         </View>
