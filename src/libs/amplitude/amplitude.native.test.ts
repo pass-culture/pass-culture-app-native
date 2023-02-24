@@ -4,6 +4,11 @@ import { amplitude } from './amplitude'
 
 jest.unmock('./amplitude')
 
+// '@amplitude/analytics-react-native' provides us already a mock
+// but we don't use it, as we need the actual value of Identify
+// in order to test `setUserProperties`: it instantiates an Identify
+// to pass it to the `identify` method. If Identify is mocked, we cannot
+// check what value is really provided to `identify`.
 jest.mock('@amplitude/analytics-react-native', () => ({
   init: jest.fn(),
   track: jest.fn(),
