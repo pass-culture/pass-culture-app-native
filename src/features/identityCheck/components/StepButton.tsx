@@ -87,10 +87,14 @@ const IconContainer = styled.View({ padding: getSpacing(4) })
 
 const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink)({
   width: '100%',
+  justifyContent: 'center',
+  flexDirection: 'row',
 })
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
   width: '100%',
+  justifyContent: 'center',
+  flexDirection: 'row',
 })
 
 const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(

@@ -141,6 +141,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
                   "opacity": 1,
                   "userSelect": "auto",
                   "width": "100%",
@@ -262,6 +264,8 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
                     "opacity": 1,
                     "userSelect": "auto",
                     "width": "100%",
@@ -350,6 +354,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
                   "opacity": 1,
                   "userSelect": "auto",
                   "width": "100%",
@@ -455,6 +461,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
                   "opacity": 1,
                   "userSelect": "auto",
                   "width": "100%",
