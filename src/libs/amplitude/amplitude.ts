@@ -22,6 +22,8 @@ export const amplitude: AmplitudeClient = {
     amplitudeRN.setOptOut(true)
   },
   setUserProperties: (properties) => {
+    // Amplitude only allow us to set properties one after the other
+    // https://github.com/amplitude/Amplitude-TypeScript/tree/main/packages/analytics-react-native#user-properties
     const identifyProperties = new amplitudeRN.Identify()
 
     Object.keys(properties).forEach((key) => {
