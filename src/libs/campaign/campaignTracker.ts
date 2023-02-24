@@ -1,6 +1,8 @@
 import appsFlyer from 'react-native-appsflyer'
+import { getTrackingStatus } from 'react-native-tracking-transparency'
 
 import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
+import { logOpenApp } from 'libs/campaign/logOpenApp'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
@@ -35,6 +37,7 @@ function useInit(hasAcceptedMarketingCookie: boolean) {
     },
     () => {
       analytics.logCampaignTrackerEnabled()
+      getTrackingStatus().then(logOpenApp)
     },
     (error) => {
       console.error(error)

@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
-import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
@@ -24,11 +23,6 @@ export function AccountCreated() {
     BatchUser.trackEvent(BatchEvent.hasValidatedAccount)
     showShareAppModal(ShareAppModalType.NOT_ELIGIBLE)
   }, [showShareAppModal])
-
-  useEffect(() => {
-    if (user?.id)
-      campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, { af_user_id: user?.id })
-  }, [user?.id])
 
   return (
     <GenericInfoPage

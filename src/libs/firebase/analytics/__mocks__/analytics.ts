@@ -3,6 +3,7 @@ import { analytics as actualAnalytics } from '../analytics'
 export const analytics: typeof actualAnalytics = {
   disableCollection: jest.fn(),
   enableCollection: jest.fn(),
+  getAppInstanceId: jest.fn().mockReturnValue('firebase_pseudo_id'),
   logAcceptNotifications: jest.fn(),
   logAccountDeletion: jest.fn(),
   logAccountReactivation: jest.fn(),

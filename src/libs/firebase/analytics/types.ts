@@ -7,6 +7,7 @@ export type LoginRoutineMethod = 'fromLogin' | 'fromSignup' | 'fromSetEmail'
 export interface AnalyticsProvider {
   disableCollection: () => Promise<void> | void
   enableCollection: () => Promise<void> | void
+  getAppInstanceId: () => Promise<string | null>
   setDefaultEventParameters: (params: Record<string, unknown> | undefined) => Promise<void> | void
   setUserId: (userId: number) => Promise<void> | void
   logScreenView: (screenName: string) => Promise<void> | void
