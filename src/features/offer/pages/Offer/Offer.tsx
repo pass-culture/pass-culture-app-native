@@ -1,5 +1,6 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
+import { NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -10,6 +11,7 @@ import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanne
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
+import { PlaylistType } from 'features/offer/enums'
 import { getSearchGroupIdFromSubcategoryId } from 'features/offer/helpers/getSearchGroupIdFromSubcategoryId/getSearchGroupIdFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
@@ -69,10 +71,20 @@ export const Offer: FunctionComponent = () => {
 
   const fromOfferId = route.params?.fromOfferId
 
-  const logPlaylistVerticalScroll = useFunctionOnce(() => {
-    if (hasSameCategorySimilarOffers || hasOtherCategoriesSimilarOffers) {
-      return analytics.logPlaylistVerticalScroll(fromOfferId, offerId)
-    }
+  const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
+    return analytics.logPlaylistVerticalScroll(
+      fromOfferId,
+      offerId,
+      PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
+    )
+  })
+
+  const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
+    return analytics.logPlaylistVerticalScroll(
+      fromOfferId,
+      offerId,
+      PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
+    )
   })
 
   const { headerTransition, onScroll } = useOpacityTransition({
@@ -80,19 +92,38 @@ export const Offer: FunctionComponent = () => {
       if (isCloseToBottom(nativeEvent)) {
         logConsultWholeOffer()
       }
-      // The log event is triggered when the similar offer playlist is visible
-      const hasTwoSimilarOffersPlaylist =
-        hasSameCategorySimilarOffers && hasOtherCategoriesSimilarOffers
-      if (
-        isCloseToBottom({
-          ...nativeEvent,
-          padding: hasTwoSimilarOffersPlaylist ? getPlaylistsHeight(2) : getPlaylistsHeight(1),
-        })
-      ) {
-        logPlaylistVerticalScroll()
-      }
+      handleLogPlaylistVerticalScroll(nativeEvent)
     },
   })
+
+  const handleLogPlaylistVerticalScroll = (nativeEvent: NativeScrollEvent) => {
+    // The log event is triggered when the similar offer playlist is visible
+    const hasTwoSimilarOffersPlaylist =
+      hasSameCategorySimilarOffers && hasOtherCategoriesSimilarOffers
+
+    if (
+      isCloseToBottom({
+        ...nativeEvent,
+        padding: getPlaylistsHeight(2),
+      }) &&
+      hasTwoSimilarOffersPlaylist
+    ) {
+      logSameCategoryPlaylistVerticalScroll()
+    }
+
+    if (
+      isCloseToBottom({
+        ...nativeEvent,
+        padding: getPlaylistsHeight(1),
+      })
+    ) {
+      if (hasTwoSimilarOffersPlaylist || hasOtherCategoriesSimilarOffers) {
+        logOtherCategoriesPlaylistVerticalScroll()
+      } else if (!hasTwoSimilarOffersPlaylist && hasSameCategorySimilarOffers) {
+        logSameCategoryPlaylistVerticalScroll()
+      }
+    }
+  }
 
   const {
     wording,
