@@ -6,6 +6,7 @@ import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { ContentTypes } from 'libs/contentful'
@@ -318,10 +319,15 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL, {
       fromOfferId,
     }),
-  logPlaylistVerticalScroll: (fromOfferId?: number, offerId?: number) =>
+  logPlaylistVerticalScroll: (
+    fromOfferId?: number,
+    offerId?: number,
+    playlistType?: PlaylistType
+  ) =>
     analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL, {
       fromOfferId,
       offerId,
+      playlistType,
     }),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>
