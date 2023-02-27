@@ -88,6 +88,12 @@ export function Navigation(): JSX.Element {
             />
           </Row>
           <Row half>
+            <ButtonPrimary
+              wording="HighlightThematicHomeHeader"
+              onPress={() => navigate('HighlightThematicHomeHeaderCheatcode')}
+            />
+          </Row>
+          <Row half>
             <ButtonPrimary wording="Profile 👤" onPress={() => navigate('NavigationProfile')} />
           </Row>
           <Row half>

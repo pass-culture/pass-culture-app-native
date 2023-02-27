@@ -34,6 +34,7 @@ import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/Na
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
+import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
 import { TrustedDevice } from 'features/internal/cheatcodes/pages/TrustedDevice/TrustedDevice'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
@@ -405,6 +406,12 @@ export const routes: Route[] = [
     component: DefaultThematicHomeHeaderCheatcode,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-thematic-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'HighlightThematicHomeHeaderCheatcode',
+    component: HighlightThematicHomeHeaderCheatcode,
+    path: 'cheat-highlight-home-header',
   },
   {
     // debug route: in navigation component
