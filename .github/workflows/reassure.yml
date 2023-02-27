@@ -1,0 +1,12 @@
+name: 'Reassure - Performance test'
+
+on:
+  push:
+
+jobs:
+  test-performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run performance testing script
+        run: ./scripts/reassure-test.sh
