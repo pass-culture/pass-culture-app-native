@@ -30,6 +30,7 @@ interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
   offerId: number
+  searchId?: string
 }
 
 /**
@@ -75,8 +76,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
       if (typeof offerId === 'number') {
-        const { from, moduleName, moduleId } = params
-        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId })
+        const { from, moduleName, moduleId, searchId } = params
+        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId, searchId })
       }
     },
   })

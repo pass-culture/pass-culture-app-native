@@ -23,7 +23,7 @@ interface Props {
   searchId?: string
 }
 
-export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
+export const Hit = ({ hit, query, index, searchId }: Props) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
   const queryClient = useQueryClient()
@@ -33,7 +33,8 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   const { logClickOnOffer } = useLogClickOnOffer()
 
   const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
-  const offerId = +objectID
+  const offerId = Number(objectID)
+
   const formattedDate = formatDates(timestampsInMillis)
   const formattedPrice = getDisplayPrice(prices)
 
@@ -46,6 +47,7 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
   })
 
   function handlePressOffer() {
+    if (!offerId) return
     // We pre-populate the query-cache with the data from the search client for a smooth transition
     queryClient.setQueryData(
       [QueryKeys.OFFER, offerId],
@@ -65,9 +67,10 @@ export const Hit: React.FC<Props> = ({ hit, query, index, searchId }) => {
 
   return (
     <Container
-      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'search' } }}
+      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'search', searchId } }}
       onBeforeNavigate={handlePressOffer}
-      accessibilityLabel={accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}
+      enableNavigate={!!offerId}>
       <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
       <Spacer.Row numberOfSpaces={4} />
       <Column>
