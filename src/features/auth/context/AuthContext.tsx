@@ -107,16 +107,17 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   useEffect(() => {
     if (!user) return
 
+    const partialUser = pick(user, [
+      'depositType',
+      'eligibility',
+      'eligibilityEndDatetime',
+      'id',
+      'isBeneficiary',
+      'needsToFillCulturalSurvey',
+    ])
     amplitude.setUserProperties({
-      ...pick(user, [
-        'depositType',
-        'eligibility',
-        'eligibilityEndDatetime',
-        'id',
-        'isBeneficiary',
-        'needsToFillCulturalSurvey',
-      ]),
-      age: user.birthDate ? getAge(user.birthDate) : undefined,
+      ...partialUser,
+      ...(user.birthDate ? { age: getAge(user.birthDate) } : {}),
       status: user.status?.statusType, // eligible, beneficiaire, suspendu, etc
       appVersion,
     })
