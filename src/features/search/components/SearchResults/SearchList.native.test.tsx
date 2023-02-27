@@ -3,8 +3,8 @@ import React from 'react'
 import { SearchList } from 'features/search/components/SearchResults/SearchList'
 import { SearchListProps } from 'features/search/components/SearchResults/type'
 import { UserData } from 'features/search/types'
+import { SearchHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { SearchHit } from 'libs/search'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')

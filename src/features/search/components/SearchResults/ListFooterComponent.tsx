@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchHit } from 'libs/search'
+import { SearchHit } from 'libs/algolia'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'

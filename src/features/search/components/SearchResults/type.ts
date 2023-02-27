@@ -1,4 +1,4 @@
-import { SearchHit } from 'libs/search'
+import { SearchHit } from 'libs/algolia'
 
 export interface SearchListProps {
   nbHits: number
