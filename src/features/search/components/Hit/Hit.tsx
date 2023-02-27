@@ -47,6 +47,7 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
   })
 
   function handlePressOffer() {
+    if (!offerId) return
     // We pre-populate the query-cache with the data from the search client for a smooth transition
     queryClient.setQueryData(
       [QueryKeys.OFFER, offerId],
