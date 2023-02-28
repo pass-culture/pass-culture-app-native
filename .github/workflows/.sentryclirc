@@ -1,0 +1,7 @@
+[defaults]
+url=https://sentry.passculture.team/
+org=sentry
+project=application-native
+
+[auth]
+token={{.token}}
