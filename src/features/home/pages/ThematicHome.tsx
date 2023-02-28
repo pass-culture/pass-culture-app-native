@@ -6,21 +6,12 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
-import {
-  DefaultThematicHeader,
-  HighligthThematicHeader,
-  ThematicHeaderType,
-} from 'features/home/types'
+import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 
-const Header = ({
-  thematicHeader,
-}: {
-  thematicHeader?: DefaultThematicHeader | HighligthThematicHeader
-}) => {
+const Header = ({ thematicHeader }: { thematicHeader?: ThematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
-    const header = thematicHeader as HighligthThematicHeader
-    return <HighlightThematicHomeHeader {...header} />
+    return <HighlightThematicHomeHeader {...thematicHeader} />
   }
 
   return (

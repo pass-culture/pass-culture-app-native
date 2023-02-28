@@ -30,11 +30,13 @@ export type HighligthThematicHeader = {
   endingDate: Date
 }
 
+export type ThematicHeader = DefaultThematicHeader | HighligthThematicHeader
+
 export type Homepage = {
   tags: HomepageTag[]
   id: string
   modules: HomepageModule[]
-  thematicHeader?: DefaultThematicHeader | HighligthThematicHeader
+  thematicHeader?: ThematicHeader
 }
 
 export type HomepageModule =
