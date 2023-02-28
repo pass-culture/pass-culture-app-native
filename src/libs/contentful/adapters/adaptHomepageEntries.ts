@@ -1,4 +1,9 @@
-import { Homepage, ThematicHeaderType } from 'features/home/types'
+import {
+  DefaultThematicHeader,
+  HighligthThematicHeader,
+  Homepage,
+  ThematicHeaderType,
+} from 'features/home/types'
 import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { HomepageNatifEntry } from 'libs/contentful/types'
@@ -14,14 +19,14 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
       imageUrl: buildImageUrl(thematicHighlightInfo.image.fields.file.url),
       beginningDate: new Date(thematicHighlightInfo.beginningDatetime),
       endingDate: new Date(thematicHighlightInfo.endingDatetime),
-    }
+    } as HighligthThematicHeader
   }
 
   return {
     type: ThematicHeaderType.Default,
     title: homepageEntry.fields.thematicHeaderTitle,
     subtitle: homepageEntry.fields.thematicHeaderSubtitle,
-  }
+  } as DefaultThematicHeader
 }
 
 export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {

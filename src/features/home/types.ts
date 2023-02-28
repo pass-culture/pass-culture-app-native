@@ -16,13 +16,13 @@ export enum ThematicHeaderType {
 }
 
 export type DefaultThematicHeader = {
-  type: ThematicHeaderType
+  type: ThematicHeaderType.Default
   title?: string
   subtitle?: string
 }
 
 export type HighligthThematicHeader = {
-  type: ThematicHeaderType
+  type: ThematicHeaderType.Highlight
   title: string
   subtitle?: string
   imageUrl: string
