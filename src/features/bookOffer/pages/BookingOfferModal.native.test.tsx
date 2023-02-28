@@ -121,6 +121,15 @@ describe('<BookingOfferModalComponent />', () => {
     })
   })
 
+  it('should not log booking funnel cancellation event when close modal', () => {
+    render(<BookingOfferModalComponent visible offerId={20} />)
+    const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+    fireEvent.press(dismissModalButton)
+
+    expect(analytics.logCancelBookingFunnel).not.toHaveBeenCalled()
+  })
+
   describe('when prices by category feature flag activated', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValue(true)
@@ -128,6 +137,7 @@ describe('<BookingOfferModalComponent />', () => {
     })
     afterEach(() => {
       cleanup()
+      useFeatureFlagSpy.mockReturnValue(false)
     })
 
     describe('when offer is duo', () => {
@@ -186,6 +196,15 @@ describe('<BookingOfferModalComponent />', () => {
           })
         }
       )
+    })
+
+    it('should log booking funnel cancellation event when close modal', () => {
+      render(<BookingOfferModalComponent visible offerId={20} />)
+      const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+      fireEvent.press(dismissModalButton)
+
+      expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
     })
   })
 })
