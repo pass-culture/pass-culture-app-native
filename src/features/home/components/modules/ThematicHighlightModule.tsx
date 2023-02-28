@@ -1,10 +1,11 @@
 import colorAlpha from 'color-alpha'
 import { isBefore } from 'date-fns'
 import React, { FunctionComponent, useEffect } from 'react'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
+import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
@@ -12,7 +13,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TILE_HEIGHT = 244
-const TEXT_BACKGROUND_OPACITY = 0.67
 
 type Props = {
   id: string
@@ -65,7 +65,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
           <DateRangeCaption>{dateRange}</DateRangeCaption>
         </DateRangeCaptionContainer>
         <TextContainer>
-          <Gradient />
+          <ThematicHighlightGradient />
           <BlackBackground>
             {!!subtitle && (
               <React.Fragment>
@@ -112,17 +112,10 @@ const DateRangeCaption = styled(Typo.Hint)(({ theme }) => ({
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
-const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [
-    colorAlpha(theme.colors.black, 0),
-    colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
-  ],
-}))({ height: getSpacing(8) })
-
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(4),
   paddingBottom: getSpacing(4),
-  backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
+  backgroundColor: colorAlpha(theme.colors.black, HIGHLIGHT_TEXT_BACKGROUND_OPACITY),
 }))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({

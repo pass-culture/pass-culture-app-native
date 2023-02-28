@@ -2,10 +2,11 @@ import { useNavigation } from '@react-navigation/native'
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
+import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { HighligthThematicHeader } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -41,7 +42,7 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
         </DateRangeCaptionContainer>
       </View>
       <TextContainer>
-        <Gradient />
+        <ThematicHighlightGradient />
         <BlackBackground>
           {!!subtitle && (
             <React.Fragment>
@@ -86,17 +87,10 @@ const DateRangeCaption = styled(Typo.Caption)(({ theme }) => ({
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
-const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [
-    colorAlpha(theme.colors.black, 0),
-    colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
-  ],
-}))({ height: getSpacing(8) })
-
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
-  backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
+  backgroundColor: colorAlpha(theme.colors.black, HIGHLIGHT_TEXT_BACKGROUND_OPACITY),
 }))
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
