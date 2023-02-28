@@ -8,7 +8,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (thematicHighlightInfo) {
     return {
-      type: ThematicHeaderType.HighligthThematicHeader,
+      type: ThematicHeaderType.Highlight,
       title: thematicHighlightInfo.displayedTitle,
       subtitle: thematicHighlightInfo.displayedSubtitle,
       imageUrl: buildImageUrl(thematicHighlightInfo.image.fields.file.url),
@@ -18,7 +18,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   }
 
   return {
-    type: ThematicHeaderType.DefaultThematicHeader,
+    type: ThematicHeaderType.Default,
     title: homepageEntry.fields.thematicHeaderTitle,
     subtitle: homepageEntry.fields.thematicHeaderSubtitle,
   }

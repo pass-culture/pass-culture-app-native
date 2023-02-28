@@ -162,7 +162,7 @@ export const adaptedHomepage: Homepage = {
   tags: [],
   id: '6DCThxvbPFKAo04SVRZtwY',
   thematicHeader: {
-    type: ThematicHeaderType.DefaultThematicHeader,
+    type: ThematicHeaderType.Default,
     title: 'Un titre court',
     subtitle: 'Unsoustitretroplongquidépassebeaucoupbeaucoupbeaucoupbeaucoupbeaucoupbeaucoup',
   },

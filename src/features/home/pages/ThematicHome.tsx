@@ -18,7 +18,7 @@ const Header = ({
 }: {
   thematicHeader?: DefaultThematicHeader | HighligthThematicHeader
 }) => {
-  if (thematicHeader?.type === ThematicHeaderType.HighligthThematicHeader) {
+  if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     const header = thematicHeader as HighligthThematicHeader
     return <HighlightThematicHomeHeader {...header} />
   }

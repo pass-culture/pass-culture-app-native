@@ -160,7 +160,7 @@ export const homepageList: Homepage[] = [
     thematicHeader: {
       subtitle: undefined,
       title: undefined,
-      type: ThematicHeaderType.DefaultThematicHeader,
+      type: ThematicHeaderType.Default,
     },
   },
   {
@@ -182,7 +182,7 @@ export const homepageList: Homepage[] = [
     thematicHeader: {
       title: 'cinéma',
       subtitle: 'Fais le plein de cinéma',
-      type: ThematicHeaderType.DefaultThematicHeader,
+      type: ThematicHeaderType.Default,
     },
   },
   {
@@ -196,7 +196,7 @@ export const homepageList: Homepage[] = [
         'https://images.ctfassets.net/2bg01iqy0isv/6kYYW8Uwad2ZlLUmw1k4ax/9e1261e7010f4419506dc821b2d0bea8/be697ba0-3439-42fa-8f54-b917e988db66.jpeg',
       subtitle: 'Avec son sous-titre',
       title: 'Temps très fort',
-      type: ThematicHeaderType.HighligthThematicHeader,
+      type: ThematicHeaderType.Highlight,
     },
   },
 ]

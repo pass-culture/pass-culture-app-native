@@ -11,8 +11,8 @@ export enum HomepageModuleType {
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
 
 export enum ThematicHeaderType {
-  'DefaultThematicHeader' = 'DefaultThematicHeader',
-  'HighligthThematicHeader' = 'HighligthThematicHeader',
+  'Default' = 'Default',
+  'Highlight' = 'Highlight',
 }
 
 export type DefaultThematicHeader = {
