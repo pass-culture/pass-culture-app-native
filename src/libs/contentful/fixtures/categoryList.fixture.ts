@@ -65,7 +65,7 @@ export const categoryListFixture: CategoryListContentModel = {
         },
         fields: {
           title: 'Livres',
-          image: {
+          thematicCategoryInfo: {
             sys: {
               space: {
                 sys: {
@@ -74,10 +74,10 @@ export const categoryListFixture: CategoryListContentModel = {
                   id: '2bg01iqy0isv',
                 },
               },
-              id: '1uTePwMo6qxJo7bMM7VLeX',
-              type: 'Asset',
-              createdAt: '2022-11-10T17:15:29.312Z',
-              updatedAt: '2022-11-10T17:19:54.202Z',
+              id: '2xEmftUxdtnfw2touSs6pr',
+              type: 'Entry',
+              createdAt: '2023-02-27T15:48:23.465Z',
+              updatedAt: '2023-02-27T15:48:23.465Z',
               environment: {
                 sys: {
                   id: 'testing',
@@ -85,23 +85,58 @@ export const categoryListFixture: CategoryListContentModel = {
                   linkType: 'Environment',
                 },
               },
-              revision: 3,
+              revision: 1,
+              contentType: {
+                sys: {
+                  type: 'Link',
+                  linkType: 'ContentType',
+                  id: ContentTypes.THEMATIC_CATEGORY_INFO,
+                },
+              },
               locale: 'en-US',
             },
             fields: {
-              title: 'wefrac',
-              description: '',
-              file: {
-                url: '//images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
-                details: {
-                  size: 100095,
-                  image: {
-                    width: 560,
-                    height: 800,
+              title: 'Livres',
+              displayedTitle: 'Livres',
+              image: {
+                sys: {
+                  space: {
+                    sys: {
+                      type: 'Link',
+                      linkType: 'Space',
+                      id: '2bg01iqy0isv',
+                    },
+                  },
+                  id: '1uTePwMo6qxJo7bMM7VLeX',
+                  type: 'Asset',
+                  createdAt: '2022-11-10T17:15:29.312Z',
+                  updatedAt: '2022-11-10T17:19:54.202Z',
+                  environment: {
+                    sys: {
+                      id: 'testing',
+                      type: 'Link',
+                      linkType: 'Environment',
+                    },
+                  },
+                  revision: 3,
+                  locale: 'en-US',
+                },
+                fields: {
+                  title: 'wefrac',
+                  description: '',
+                  file: {
+                    url: '//images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
+                    details: {
+                      size: 100095,
+                      image: {
+                        width: 560,
+                        height: 800,
+                      },
+                    },
+                    fileName: '17-insta-1080x1350_560x800.jpg',
+                    contentType: 'image/jpeg',
                   },
                 },
-                fileName: '17-insta-1080x1350_560x800.jpg',
-                contentType: 'image/jpeg',
               },
             },
           },
@@ -140,7 +175,7 @@ export const categoryListFixture: CategoryListContentModel = {
         },
         fields: {
           title: 'Cinéma',
-          image: {
+          thematicCategoryInfo: {
             sys: {
               space: {
                 sys: {
@@ -149,10 +184,10 @@ export const categoryListFixture: CategoryListContentModel = {
                   id: '2bg01iqy0isv',
                 },
               },
-              id: '1IujqyX9w3ugcGGbKlolbp',
-              type: 'Asset',
-              createdAt: '2022-05-03T09:58:15.614Z',
-              updatedAt: '2022-10-21T09:51:46.381Z',
+              id: '7rOeUTyjb7O2IFUio8Yn5j',
+              type: 'Entry',
+              createdAt: '2023-02-27T15:47:57.604Z',
+              updatedAt: '2023-02-27T15:47:57.604Z',
               environment: {
                 sys: {
                   id: 'testing',
@@ -160,23 +195,58 @@ export const categoryListFixture: CategoryListContentModel = {
                   linkType: 'Environment',
                 },
               },
-              revision: 7,
+              revision: 1,
+              contentType: {
+                sys: {
+                  type: 'Link',
+                  linkType: 'ContentType',
+                  id: ContentTypes.THEMATIC_CATEGORY_INFO,
+                },
+              },
               locale: 'en-US',
             },
             fields: {
-              title: 'Test Sab',
-              description: 'dqqddsds',
-              file: {
-                url: '//images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
-                details: {
-                  size: 378517,
-                  image: {
-                    width: 1000,
-                    height: 667,
+              title: 'Chasse au trésor - Cinéma',
+              displayedTitle: 'Cinéma',
+              image: {
+                sys: {
+                  space: {
+                    sys: {
+                      type: 'Link',
+                      linkType: 'Space',
+                      id: '2bg01iqy0isv',
+                    },
+                  },
+                  id: '1IujqyX9w3ugcGGbKlolbp',
+                  type: 'Asset',
+                  createdAt: '2022-05-03T09:58:15.614Z',
+                  updatedAt: '2022-10-21T09:51:46.381Z',
+                  environment: {
+                    sys: {
+                      id: 'testing',
+                      type: 'Link',
+                      linkType: 'Environment',
+                    },
+                  },
+                  revision: 7,
+                  locale: 'en-US',
+                },
+                fields: {
+                  title: 'Test Sab',
+                  description: 'dqqddsds',
+                  file: {
+                    url: '//images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
+                    details: {
+                      size: 378517,
+                      image: {
+                        width: 1000,
+                        height: 667,
+                      },
+                    },
+                    fileName: 'i107848-eduquer-un-chaton.jpeg',
+                    contentType: 'image/jpeg',
                   },
                 },
-                fileName: 'i107848-eduquer-un-chaton.jpeg',
-                contentType: 'image/jpeg',
               },
             },
           },
