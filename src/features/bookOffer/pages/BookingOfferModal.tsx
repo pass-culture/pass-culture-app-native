@@ -48,9 +48,9 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
     !enablePricesByCategories || (enablePricesByCategories && step === Step.CONFIRMATION)
 
   function onClose() {
+    dismissModal()
     dispatch({ type: 'RESET' })
     if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
-    dismissModal()
   }
 
   return (

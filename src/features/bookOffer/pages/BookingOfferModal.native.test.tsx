@@ -121,7 +121,7 @@ describe('<BookingOfferModalComponent />', () => {
     })
   })
 
-  it('should not log booking funnel cancellation event when close modal', () => {
+  it('should not log booking funnel cancellation event when closing the modal', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
@@ -198,7 +198,7 @@ describe('<BookingOfferModalComponent />', () => {
       )
     })
 
-    it('should log booking funnel cancellation event when close modal', () => {
+    it('should log booking funnel cancellation event when closing the modal', () => {
       render(<BookingOfferModalComponent visible offerId={20} />)
       const dismissModalButton = screen.getByTestId('Fermer la modale')
 
