@@ -107,9 +107,9 @@ You can view all available options in [`e2e/config/environment/env.ts`](../../e2
 
 On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
 
-- `chromedriver` for Chrome
+- `chromedriver` for Chrome (For Mac users: `brew install cask chromedriver`)
 - `safaridriver` for Safari
-- `geckodriver` for Firefox (For Mac user you can use `brew install geckodriver`)
+- `geckodriver` for Firefox (For Mac users: `brew install geckodriver`)
 
 Refer to google to get installation instruction for your system.
 
@@ -164,7 +164,14 @@ ANDROID=true \
 
 **To start all the containers**
 
-Example using the `staging` pcapi version:
+If you are not already logged in to Google Cloud using command line you need to login using the following commands : 
+```bash
+gcloud auth configure-docker europe-west1-docker.pkg.dev
+gcloud auth login
+```
+This will open a window where you can login using your pass Culture account.
+
+Then, to start all the containers, using the `staging` pcapi version for example:
 
 ```bash
 PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) \
