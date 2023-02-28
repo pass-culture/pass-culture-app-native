@@ -73,19 +73,21 @@ export const Offer: FunctionComponent = () => {
   const fromOfferId = route.params?.fromOfferId
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
-    return analytics.logPlaylistVerticalScroll(
+    return analytics.logPlaylistVerticalScroll({
       fromOfferId,
       offerId,
-      PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-    )
+      playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      shouldUseAlgoliaRecommend,
+    })
   })
 
   const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
-    return analytics.logPlaylistVerticalScroll(
+    return analytics.logPlaylistVerticalScroll({
       fromOfferId,
       offerId,
-      PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-    )
+      playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+      shouldUseAlgoliaRecommend,
+    })
   })
 
   const { headerTransition, onScroll } = useOpacityTransition({

@@ -319,16 +319,12 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL, {
       fromOfferId,
     }),
-  logPlaylistVerticalScroll: (
-    fromOfferId?: number,
-    offerId?: number,
+  logPlaylistVerticalScroll: (params: {
+    fromOfferId?: number
+    offerId?: number
     playlistType?: PlaylistType
-  ) =>
-    analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL, {
-      fromOfferId,
-      offerId,
-      playlistType,
-    }),
+    shouldUseAlgoliaRecommend?: boolean
+  }) => analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL, params),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.TRY_SELECT_DEPOSIT, { age }),
