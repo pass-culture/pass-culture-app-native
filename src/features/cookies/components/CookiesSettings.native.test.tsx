@@ -4,20 +4,25 @@ import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('<CookiesSettings/>', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const renderAPI = renderCookiesSettings()
+
+    await screen.findAllByRole('checkbox')
+
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should disable and check essential cookies switch', () => {
-    const { getByTestId } = renderCookiesSettings()
+  it('should disable and check essential cookies switch', async () => {
+    renderCookiesSettings()
 
-    const essentialToggle = getByTestId('Interrupteur-essential')
+    await screen.findAllByRole('checkbox')
+
+    const essentialToggle = screen.getByTestId('Interrupteur-essential')
 
     expect(essentialToggle.props.accessibilityState).toEqual({
       disabled: true,
@@ -26,10 +31,10 @@ describe('<CookiesSettings/>', () => {
   })
 
   it('should log accordion toggle', async () => {
-    const { getByText } = renderCookiesSettings()
+    renderCookiesSettings()
 
     const cookieCategory = CookieCategoriesEnum.customization
-    const customizationAccordion = getByText(cookiesInfo[cookieCategory].title)
+    const customizationAccordion = screen.getByText(cookiesInfo[cookieCategory].title)
     fireEvent.press(customizationAccordion)
 
     await waitFor(() =>

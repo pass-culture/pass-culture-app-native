@@ -77,6 +77,8 @@ describe('<OfferBody />', () => {
   it('should not display similar offers lists when offer has not it', async () => {
     render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
+    await screen.findByText('Envoyer sur \n Instagram')
+
     expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
     expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
   })
@@ -96,6 +98,8 @@ describe('<OfferBody />', () => {
         />
       )
 
+      await screen.findByText('Envoyer sur \n Instagram')
+
       expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeTruthy()
       expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeTruthy()
     })
@@ -109,6 +113,8 @@ describe('<OfferBody />', () => {
             sameCategorySimilarOffers={mockSearchHits}
           />
         )
+
+        await screen.findByText('Envoyer sur \n Instagram')
 
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
         expect(push).toHaveBeenCalledWith('Offer', {
@@ -149,6 +155,8 @@ describe('<OfferBody />', () => {
             otherCategoriesSimilarOffers={mockSearchHits}
           />
         )
+
+        await screen.findByText('Envoyer sur \n Instagram')
 
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
         expect(push).toHaveBeenCalledWith('Offer', {
