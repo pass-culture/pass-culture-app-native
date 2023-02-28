@@ -1,6 +1,5 @@
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
-import waitForExpect from 'wait-for-expect'
 
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
@@ -42,9 +41,7 @@ describe('<EighteenBirthdayCard />', () => {
 
     fireEvent.press(getByText('Vérifier mon identité'))
 
-    await waitForExpect(() => {
-      expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
-    })
+    expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
   })
 })
 

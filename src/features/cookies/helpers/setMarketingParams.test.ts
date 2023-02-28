@@ -1,5 +1,3 @@
-import waitForExpect from 'wait-for-expect'
-
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { setMarketingParams } from 'features/cookies/helpers/setMarketingParams'
 import * as StateFromPath from 'features/navigation/RootNavigator/linking/getStateFromPath'
@@ -80,9 +78,7 @@ describe('setMarketingParams', () => {
 
       jest.runOnlyPendingTimers()
 
-      await waitForExpect(() => {
-        expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
-      })
+      expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
     })
   })
 })
