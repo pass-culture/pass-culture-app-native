@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useCallback } from 'react'
-import { View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
@@ -32,6 +32,7 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
 
   return (
     <ImageBackground source={{ uri: imageUrl }}>
+      <StatusBar barStyle="light-content" animated />
       <Spacer.TopScreen />
       <View>
         <BackButtonContainer>
