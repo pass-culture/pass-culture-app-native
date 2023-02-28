@@ -36,7 +36,7 @@ class FirstLaunch {
       // Notification Alert
       await this.allowIOSAlert()
     }
-    await timeout(5000)
+    await timeout(flags.isWeb ? 8000 : 4000)
     await CookiesConsent.randomChoice()
     if (!flags.isWeb && flags.isIOS) {
       // ATT Alert
