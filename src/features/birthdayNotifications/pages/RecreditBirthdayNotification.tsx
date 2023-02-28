@@ -9,6 +9,7 @@ import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { storage } from 'libs/storage'
+import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
@@ -23,9 +24,9 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
-  const age = user?.dateOfBirth
-    ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
-    : undefined
+
+  const age = user?.birthDate ? getAge(user.birthDate) : undefined
+
   const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()
   const creditedAmount = formatToFrenchDecimal(user?.recreditAmountToShow ?? 3000)
