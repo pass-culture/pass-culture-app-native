@@ -3,6 +3,10 @@ name: Verify code lint and typescript
 on:
   workflow_call:
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   yarn_lint:
     runs-on: [self-hosted, linux, x64]

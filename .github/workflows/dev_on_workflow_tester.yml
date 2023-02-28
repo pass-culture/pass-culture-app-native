@@ -2,6 +2,14 @@ name: Tester yaml
 
 on:
   workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 jobs:
@@ -53,8 +61,14 @@ jobs:
           key: v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:ci 
-
+      - run: yarn test:unit:ci
+      - name: SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
   yarn_test_proxy:
     runs-on: [self-hosted, linux, X64]
     steps:
@@ -80,4 +94,10 @@ jobs:
           restore-keys: |
             v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
       - run: yarn --cwd server test:unit:ci 
-
+      - name: SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: server
