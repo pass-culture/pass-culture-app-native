@@ -229,49 +229,49 @@ Array [
             }
           >
             <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 8,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 92,
-                    "marginTop": 8,
-                    "width": "100%",
-                  },
-                ]
+              accessibilityLabel="Identification Non complété"
+              accessibilityState={
+                Object {
+                  "disabled": false,
+                }
               }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Identification Non complété"
             >
               <View
-                accessibilityLabel="Identification Non complété"
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 92,
+                      "marginTop": 8,
+                      "width": "100%",
+                    },
+                  ]
                 }
-                testID="Identification Non complété"
               >
                 <View
                   style={

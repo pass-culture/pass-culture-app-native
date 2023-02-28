@@ -37,17 +37,17 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       </StyleContainer>
     </StyledInternalTouchableLink>
   ) : (
-    <StyleContainer>
-      <StyledTouchableOpacity
-        onPress={onPress}
-        disabled={state !== 'current'}
-        accessibilityLabel={accessibilityLabel}>
+    <StyledTouchableOpacity
+      onPress={onPress}
+      disabled={state !== 'current'}
+      accessibilityLabel={accessibilityLabel}>
+      <StyleContainer>
         <IconContainer>
           <Icon />
         </IconContainer>
         <StyledButtonText state={state}>{label}</StyledButtonText>
-      </StyledTouchableOpacity>
-    </StyleContainer>
+      </StyleContainer>
+    </StyledTouchableOpacity>
   )
 }
 
