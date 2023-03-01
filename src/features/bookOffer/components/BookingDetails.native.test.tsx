@@ -131,12 +131,8 @@ describe('<BookingDetails />', () => {
         dispatch: mockDispatch,
       })
     })
+
     it('should render correctly when user has selected options and offer is an event', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       mockBookingStock = {
         price: 2000,
         id: 148409,
@@ -147,11 +143,6 @@ describe('<BookingDetails />', () => {
       expect(page).toMatchSnapshot()
     })
     it('should render disable CTA when user is underage and stock is forbidden to underage', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       mockBookingStock = {
         price: 2000,
         id: 148409,
@@ -164,11 +155,6 @@ describe('<BookingDetails />', () => {
     })
 
     it('should dismiss modal on successfully booking an offer', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       server.use(
         rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
       )
@@ -196,11 +182,6 @@ describe('<BookingDetails />', () => {
     })
 
     it('should log the origin offer when booked an offer from similar offers', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       useRoute.mockReturnValueOnce({
         params: { fromOfferId: 1 },
       })
@@ -221,11 +202,6 @@ describe('<BookingDetails />', () => {
     })
 
     it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       useRoute.mockReturnValueOnce({ params: { from: 'search' } })
 
       server.use(
@@ -243,11 +219,6 @@ describe('<BookingDetails />', () => {
     })
 
     it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       server.use(
         rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
       )
@@ -271,11 +242,6 @@ describe('<BookingDetails />', () => {
     `(
       'should show the error snackbar with message="$message" for errorCode="$code" if booking an offer fails',
       async ({ code, message }: { code: string | undefined; message: string }) => {
-        mockBookingState = {
-          bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-          dismissModal: mockDismissModal,
-          dispatch: mockDispatch,
-        }
         const response = code ? { code } : {}
 
         server.use(
@@ -297,11 +263,6 @@ describe('<BookingDetails />', () => {
     )
 
     it('should log booking error when error is known', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       const response = { code: 'INSUFFICIENT_CREDIT' }
 
       server.use(
@@ -322,11 +283,6 @@ describe('<BookingDetails />', () => {
     })
 
     it('should log booking error when error is unknown', async () => {
-      mockBookingState = {
-        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      }
       const response = {}
 
       server.use(
