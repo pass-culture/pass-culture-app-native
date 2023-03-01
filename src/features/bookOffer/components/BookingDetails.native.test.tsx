@@ -83,38 +83,44 @@ jest
   .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
 describe('<BookingDetails />', () => {
-  it('should initialize correctly state when offer isDigital', async () => {
-    mockBookingState = {
-      bookingState: mockInitialBookingState as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    mockBookingStock = undefined
+  describe('with initial state', () => {
+    beforeEach(() => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: mockInitialBookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      })
+    })
 
-    await renderBookingDetails(mockDigitalStocks)
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
-  })
+    it('should initialize correctly state when offer isDigital', async () => {
+      mockBookingStock = undefined
 
-  it('should initialize the state when offer isDigital only with first bookable stocks', async () => {
-    mockBookingState = {
-      bookingState: mockInitialBookingState as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    mockBookingStock = undefined
+      await renderBookingDetails(mockDigitalStocks)
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
+    })
 
-    await renderBookingDetails([{ ...offerStockResponseSnap, isBookable: false, id: 123456 }])
-    expect(mockDispatch).not.toHaveBeenCalled()
+    it('should initialize the state when offer isDigital only with first bookable stocks', async () => {
+      mockBookingStock = undefined
 
-    await renderBookingDetails([
-      { ...offerStockResponseSnap, isBookable: false, id: 123456 },
-      { ...offerStockResponseSnap, isBookable: true, id: 1234567 },
-      { ...offerStockResponseSnap, isBookable: true, id: 12345678 },
-    ])
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1234567 })
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
-    expect(mockDispatch).not.toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 12345678 })
+      await renderBookingDetails([{ ...offerStockResponseSnap, isBookable: false, id: 123456 }])
+      expect(mockDispatch).not.toHaveBeenCalled()
+
+      await renderBookingDetails([
+        { ...offerStockResponseSnap, isBookable: false, id: 123456 },
+        { ...offerStockResponseSnap, isBookable: true, id: 1234567 },
+        { ...offerStockResponseSnap, isBookable: true, id: 12345678 },
+      ])
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1234567 })
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
+      expect(mockDispatch).not.toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 12345678 })
+    })
+
+    it('should not display the Duo selector when the offer is not duo', () => {
+      const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
+
+      expect(queryByTestId('DuoChoiceSelector')).toBeNull()
+    })
   })
 
   it('should render correctly when user has selected options and offer is an event', async () => {
@@ -329,18 +335,6 @@ describe('<BookingDetails />', () => {
     await waitFor(() => {
       expect(analytics.logBookingError).not.toHaveBeenCalled()
     })
-  })
-
-  it('should not display the Duo selector when the offer is not duo', () => {
-    mockUseBookingContext.mockReturnValueOnce({
-      bookingState: mockInitialBookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    })
-
-    const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
-
-    expect(queryByTestId('DuoChoiceSelector')).toBeNull()
   })
 
   describe('duo selector', () => {
