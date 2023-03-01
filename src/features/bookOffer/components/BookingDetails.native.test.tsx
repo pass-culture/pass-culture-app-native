@@ -325,11 +325,11 @@ describe('<BookingDetails />', () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
       const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
-      mockBookingState = {
+      mockUseBookingContext.mockReturnValueOnce({
         bookingState: duoBookingState,
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
-      }
+      })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
         EVENEMENT_PATRIMOINE: { isEvent: false },
