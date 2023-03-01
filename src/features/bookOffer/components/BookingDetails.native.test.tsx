@@ -123,152 +123,186 @@ describe('<BookingDetails />', () => {
     })
   })
 
-  it('should render correctly when user has selected options and offer is an event', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    mockBookingStock = {
-      price: 2000,
-      id: 148409,
-      beginningDatetime: '2021-03-02T20:00:00',
-    } as ReturnType<typeof useBookingStock>
-
-    const page = await renderBookingDetails(mockStocks)
-    expect(page).toMatchSnapshot()
-  })
-  it('should render disable CTA when user is underage and stock is forbidden to underage', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    mockBookingStock = {
-      price: 2000,
-      id: 148409,
-      beginningDatetime: '2021-03-02T20:00:00',
-      isForbiddenToUnderage: true,
-    } as ReturnType<typeof useBookingStock>
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    const page = await renderBookingDetails(mockStocks)
-    expect(page).toMatchSnapshot()
-  })
-
-  it('should dismiss modal on successfully booking an offer', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    server.use(
-      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-    )
-
-    const { getByText } = renderBookingDetails(mockStocks)
-
-    const ConfirmButton = getByText('Confirmer la réservation')
-    fireEvent.press(ConfirmButton)
-
-    await waitFor(() => {
-      expect(mockDismissModal).toHaveBeenCalledTimes(1)
-      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
-        mockOfferId,
-        undefined,
-        undefined
-      )
-      expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
-        af_offer_id: mockOffer.id,
-        af_booking_id: mockBookingStock?.id,
-        af_price: mockBookingStock?.price,
-        af_category: mockOffer.subcategoryId,
+  describe('when user has selected options', () => {
+    beforeEach(() => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
       })
-      expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
     })
-  })
-
-  it('should log the origin offer when booked an offer from similar offers', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    useRoute.mockReturnValueOnce({
-      params: { fromOfferId: 1 },
-    })
-    server.use(
-      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-    )
-
-    const page = render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<BookingDetails stocks={mockStocks} />)
-    )
-
-    fireEvent.press(page.getByText('Confirmer la réservation'))
-
-    await waitFor(() => {
-      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined, 1)
-    })
-  })
-
-  it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    useRoute.mockReturnValueOnce({ params: { from: 'search' } })
-
-    server.use(
-      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-    )
-
-    const { getByText } = renderBookingDetails(mockStocks)
-
-    const ConfirmButton = getByText('Confirmer la réservation')
-    fireEvent.press(ConfirmButton)
-
-    await waitFor(() => {
-      expect(spyLogOfferConversion).toHaveBeenCalledWith('1337')
-    })
-  })
-
-  it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    server.use(
-      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-    )
-
-    const { getByText } = renderBookingDetails(mockStocks)
-
-    const ConfirmButton = getByText('Confirmer la réservation')
-    fireEvent.press(ConfirmButton)
-
-    await waitFor(() => {
-      expect(spyLogOfferConversion).not.toHaveBeenCalled()
-    })
-  })
-
-  it.each`
-    code                     | message
-    ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
-    ${'INSUFFICIENT_CREDIT'} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
-    ${'ALREADY_BOOKED'}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
-    ${'STOCK_NOT_BOOKABLE'}  | ${'Oups, cette offre n’est plus disponible\u00a0!'}
-  `(
-    'should show the error snackbar with message="$message" for errorCode="$code" if booking an offer fails',
-    async ({ code, message }: { code: string | undefined; message: string }) => {
+    it('should render correctly when user has selected options and offer is an event', async () => {
       mockBookingState = {
         bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       }
-      const response = code ? { code } : {}
+      mockBookingStock = {
+        price: 2000,
+        id: 148409,
+        beginningDatetime: '2021-03-02T20:00:00',
+      } as ReturnType<typeof useBookingStock>
+
+      const page = await renderBookingDetails(mockStocks)
+      expect(page).toMatchSnapshot()
+    })
+    it('should render disable CTA when user is underage and stock is forbidden to underage', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      mockBookingStock = {
+        price: 2000,
+        id: 148409,
+        beginningDatetime: '2021-03-02T20:00:00',
+        isForbiddenToUnderage: true,
+      } as ReturnType<typeof useBookingStock>
+      mockedUseIsUserUnderage.mockReturnValueOnce(true)
+      const page = await renderBookingDetails(mockStocks)
+      expect(page).toMatchSnapshot()
+    })
+
+    it('should dismiss modal on successfully booking an offer', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      server.use(
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+      )
+
+      const { getByText } = renderBookingDetails(mockStocks)
+
+      const ConfirmButton = getByText('Confirmer la réservation')
+      fireEvent.press(ConfirmButton)
+
+      await waitFor(() => {
+        expect(mockDismissModal).toHaveBeenCalledTimes(1)
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
+          mockOfferId,
+          undefined,
+          undefined
+        )
+        expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
+          af_offer_id: mockOffer.id,
+          af_booking_id: mockBookingStock?.id,
+          af_price: mockBookingStock?.price,
+          af_category: mockOffer.subcategoryId,
+        })
+        expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
+      })
+    })
+
+    it('should log the origin offer when booked an offer from similar offers', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      useRoute.mockReturnValueOnce({
+        params: { fromOfferId: 1 },
+      })
+      server.use(
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+      )
+
+      const page = render(
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(<BookingDetails stocks={mockStocks} />)
+      )
+
+      fireEvent.press(page.getByText('Confirmer la réservation'))
+
+      await waitFor(() => {
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined, 1)
+      })
+    })
+
+    it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      useRoute.mockReturnValueOnce({ params: { from: 'search' } })
+
+      server.use(
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+      )
+
+      const { getByText } = renderBookingDetails(mockStocks)
+
+      const ConfirmButton = getByText('Confirmer la réservation')
+      fireEvent.press(ConfirmButton)
+
+      await waitFor(() => {
+        expect(spyLogOfferConversion).toHaveBeenCalledWith('1337')
+      })
+    })
+
+    it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      server.use(
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
+      )
+
+      const { getByText } = renderBookingDetails(mockStocks)
+
+      const ConfirmButton = getByText('Confirmer la réservation')
+      fireEvent.press(ConfirmButton)
+
+      await waitFor(() => {
+        expect(spyLogOfferConversion).not.toHaveBeenCalled()
+      })
+    })
+
+    it.each`
+      code                     | message
+      ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
+      ${'INSUFFICIENT_CREDIT'} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
+      ${'ALREADY_BOOKED'}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
+      ${'STOCK_NOT_BOOKABLE'}  | ${'Oups, cette offre n’est plus disponible\u00a0!'}
+    `(
+      'should show the error snackbar with message="$message" for errorCode="$code" if booking an offer fails',
+      async ({ code, message }: { code: string | undefined; message: string }) => {
+        mockBookingState = {
+          bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+          dismissModal: mockDismissModal,
+          dispatch: mockDispatch,
+        }
+        const response = code ? { code } : {}
+
+        server.use(
+          rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
+            res(ctx.status(400), ctx.json(response))
+          )
+        )
+
+        const { getByText } = renderBookingDetails(mockStocks)
+
+        const ConfirmButton = getByText('Confirmer la réservation')
+        fireEvent.press(ConfirmButton)
+
+        await waitFor(() => {
+          expect(mockShowErrorSnackBar).toHaveBeenCalledTimes(1)
+          expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ timeout: 5000, message })
+        })
+      }
+    )
+
+    it('should log booking error when error is known', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      const response = { code: 'INSUFFICIENT_CREDIT' }
 
       server.use(
         rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
@@ -282,58 +316,33 @@ describe('<BookingDetails />', () => {
       fireEvent.press(ConfirmButton)
 
       await waitFor(() => {
-        expect(mockShowErrorSnackBar).toHaveBeenCalledTimes(1)
-        expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ timeout: 5000, message })
+        expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
+        expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, 'INSUFFICIENT_CREDIT')
       })
-    }
-  )
-
-  it('should log booking error when error is known', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    const response = { code: 'INSUFFICIENT_CREDIT' }
-
-    server.use(
-      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-        res(ctx.status(400), ctx.json(response))
-      )
-    )
-
-    const { getByText } = renderBookingDetails(mockStocks)
-
-    const ConfirmButton = getByText('Confirmer la réservation')
-    fireEvent.press(ConfirmButton)
-
-    await waitFor(() => {
-      expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
-      expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, 'INSUFFICIENT_CREDIT')
     })
-  })
 
-  it('should log booking error when error is unknown', async () => {
-    mockBookingState = {
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
-    const response = {}
+    it('should log booking error when error is unknown', async () => {
+      mockBookingState = {
+        bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+      const response = {}
 
-    server.use(
-      rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-        res(ctx.status(400), ctx.json(response))
+      server.use(
+        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
+          res(ctx.status(400), ctx.json(response))
+        )
       )
-    )
 
-    const { getByText } = renderBookingDetails(mockStocks)
+      const { getByText } = renderBookingDetails(mockStocks)
 
-    const ConfirmButton = getByText('Confirmer la réservation')
-    fireEvent.press(ConfirmButton)
+      const ConfirmButton = getByText('Confirmer la réservation')
+      fireEvent.press(ConfirmButton)
 
-    await waitFor(() => {
-      expect(analytics.logBookingError).not.toHaveBeenCalled()
+      await waitFor(() => {
+        expect(analytics.logBookingError).not.toHaveBeenCalled()
+      })
     })
   })
 

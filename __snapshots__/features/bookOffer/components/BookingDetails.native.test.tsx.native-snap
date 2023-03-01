@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BookingDetails /> should render correctly when user has selected options and offer is an event 1`] = `
+exports[`<BookingDetails /> when user has selected options should render correctly when user has selected options and offer is an event 1`] = `
 <View
   style={
     Array [
@@ -569,7 +569,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
 </View>
 `;
 
-exports[`<BookingDetails /> should render disable CTA when user is underage and stock is forbidden to underage 1`] = `
+exports[`<BookingDetails /> when user has selected options should render disable CTA when user is underage and stock is forbidden to underage 1`] = `
 <View
   style={
     Array [
