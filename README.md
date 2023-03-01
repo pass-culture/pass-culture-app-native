@@ -102,6 +102,7 @@ If the backend changes the api schema, you will need to update it:
 
 - pull the `swagger-codegen-cli-v3` image: `docker pull swaggerapi/swagger-codegen-cli-v3`
 - run: `yarn generate:api:client`
+- or run `yarn generate:api:client:silicon` on Apple Silicon chips
 
 If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locally have the desired version of `swagger-codegen-cli`, otherwise run `docker pull swaggerapi/swagger-codegen-cli-v3:3.0.24`
 
