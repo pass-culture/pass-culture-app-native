@@ -771,6 +771,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   "backgroundColor": undefined,
                   "minHeight": 1,
                   "minWidth": 1,
+                  "paddingBottom": 0,
+                  "paddingTop": 0,
                 }
               }
               contentHeight={250}
@@ -959,6 +961,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   "_getHeightOrWidth": [Function],
                   "_getLayoutTypeForIndex": [Function],
                   "_getSpan": [Function],
+                  "_hasExpired": false,
                   "_isHorizontal": true,
                   "_lastLayoutManager": GridLayoutManager {
                     "_acceptableRelayoutDelta": 1,
@@ -1177,6 +1180,10 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     "showsHorizontalScrollIndicator": false,
                     "testID": "offersModuleList",
                   },
+                  "renderWindowInsets": Object {
+                    "height": 0,
+                    "width": 0,
+                  },
                   "shouldRefreshWithAnchoring": true,
                 }
               }
@@ -1207,6 +1214,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     "backgroundColor": undefined,
                     "minHeight": 1,
                     "minWidth": 1,
+                    "paddingBottom": 0,
+                    "paddingTop": 0,
                   },
                   "onLayout": [Function],
                   "onScrollBeginDrag": [Function],
@@ -1250,7 +1259,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     style={
                       Object {
                         "paddingLeft": 0,
-                        "paddingTop": undefined,
+                        "paddingTop": 0,
                       }
                     }
                   />
@@ -2277,7 +2286,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   <View
                     style={
                       Object {
-                        "paddingBottom": undefined,
+                        "paddingBottom": 0,
                         "paddingRight": 0,
                       }
                     }
