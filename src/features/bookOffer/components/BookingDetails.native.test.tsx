@@ -29,6 +29,7 @@ const mockInitialBookingState = initialBookingState
 
 const mockOfferId = 1337
 let mockBookingState = {
+  // @TODO: supprimer cette variable: mockBookingState
   bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
   dismissModal: mockDismissModal,
   dispatch: mockDispatch,
