@@ -1,4 +1,4 @@
-const TIMEOUT_IN_MS = 300
+const TIMEOUT_IN_MS = 1000
 
 export async function fetchWithTimeout(
   url: string,

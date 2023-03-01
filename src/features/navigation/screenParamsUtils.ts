@@ -90,6 +90,7 @@ export const screenParamsParser: ParamsParsers = {
     moduleId: identityFn,
     fromOfferId: identityFn,
     openModalOnNavigation: identityFn,
+    searchId: identityFn,
   },
   Home: {
     entryId: identityFn,

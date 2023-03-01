@@ -397,110 +397,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         >
                           Lycée agricole
                         </Text>
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
                         <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        Array [
-                          Object {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      Array [
-                        Object {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        Object {
-                          "checked": false,
-                        }
-                      }
-                      accessible={false}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
+                          numberOfSpaces={1}
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "height": 4,
                               },
                             ]
                           }
-                          type="default"
                         />
                       </View>
                       <View
@@ -607,110 +512,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           }
                           type="default"
                         />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
                         <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        Array [
-                          Object {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      Array [
-                        Object {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        Object {
-                          "checked": false,
-                        }
-                      }
-                      accessible={false}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
+                          numberOfSpaces={1}
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "height": 4,
                               },
                             ]
                           }
-                          type="default"
                         />
                       </View>
                       <View
@@ -816,6 +626,246 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                             ]
                           }
                           type="default"
+                        />
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    accessibilityRole="none"
+                    style={
+                      Array [
+                        Object {
+                          "display": "flex",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        Object {
+                          "checked": false,
+                        }
+                      }
+                      accessible={false}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "#696A6F",
+                          "borderRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "maxHeight": 80,
+                          "minHeight": 80,
+                          "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                          "userSelect": "auto",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                          type="default"
+                        />
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Non sélectionné"
+                          height={20}
+                          testID="validate-off-icon"
+                          width={20}
+                        >
+                          <Text>
+                            validate-off-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={3}
+                      style={
+                        Array [
+                          Object {
+                            "height": 12,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    accessibilityRole="none"
+                    style={
+                      Array [
+                        Object {
+                          "display": "flex",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityRole="radio"
+                      accessibilityState={
+                        Object {
+                          "checked": false,
+                        }
+                      }
+                      accessible={false}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "#696A6F",
+                          "borderRadius": 8,
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "maxHeight": 80,
+                          "minHeight": 80,
+                          "opacity": 1,
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                          "userSelect": "auto",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                          type="default"
+                        />
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
                         />
                       </View>
                       <View
@@ -926,6 +976,16 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         >
                           Accompagnement spécialisé
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           style={
                             Array [
@@ -1049,6 +1109,16 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                         >
                           Centre de formation d’apprentis
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -1577,6 +1647,16 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         >
                           Collège privé
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -1686,6 +1766,16 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         >
                           Collège public
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                       </View>
                       <View
                         style={
@@ -1795,6 +1885,16 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                         >
                           Accompagnement spécialisé
                         </Text>
+                        <View
+                          numberOfSpaces={1}
+                          style={
+                            Array [
+                              Object {
+                                "height": 4,
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           style={
                             Array [

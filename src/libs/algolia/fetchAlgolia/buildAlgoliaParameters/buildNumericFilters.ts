@@ -2,8 +2,11 @@ import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPriceAsNumber'
 import { clampPrice, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { NUMERIC_FILTERS_ENUM } from 'libs/algolia/enums'
+import {
+  TIMESTAMP,
+  computeTimeRangeFromHoursToSeconds,
+} from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/datetime/time'
 import { SearchParametersQuery } from 'libs/algolia/types'
-import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
 
 import { FiltersArray } from '../../types'

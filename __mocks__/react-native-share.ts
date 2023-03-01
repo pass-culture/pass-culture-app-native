@@ -4,4 +4,5 @@ export default {
 
 export enum Social {
   Snapchat = 'Snapchat',
+  Whatsapp = 'Whatsapp',
 }

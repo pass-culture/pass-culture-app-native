@@ -2,12 +2,14 @@ import React from 'react'
 import { Text } from 'react-native'
 import { getTrackingStatus, requestTrackingPermission } from 'react-native-tracking-transparency'
 
+import * as TrackOpenApp from 'libs/campaign/logOpenApp'
 import { useTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 import { render } from 'tests/utils'
 
 jest.mock('react-native-tracking-transparency')
 const mockGetTrackingStatus = getTrackingStatus as jest.Mock
 const mockRequestTrackingPermission = requestTrackingPermission as jest.Mock
+const logOpenAppMock = jest.spyOn(TrackOpenApp, 'logOpenApp')
 
 const TestComponent = () => {
   const { consentTracking, consentAsked } = useTrackingConsent()
@@ -29,6 +31,16 @@ describe('useTrackingConsent', () => {
     await findByTestId('consentAsked')
 
     expect(mockRequestTrackingPermission).toHaveBeenCalledWith()
+  })
+
+  it('should call log open app event when user accepts tracking', async () => {
+    mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
+    mockRequestTrackingPermission.mockResolvedValueOnce('authorized')
+
+    const { findByTestId } = render(<TestComponent />)
+    await findByTestId('consentAsked')
+
+    expect(logOpenAppMock).toHaveBeenCalledWith('authorized')
   })
 
   it('should not ask for consent when it has already been asked', async () => {

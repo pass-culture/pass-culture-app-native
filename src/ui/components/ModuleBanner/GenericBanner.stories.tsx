@@ -9,7 +9,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { GenericBanner } from './GenericBanner'
 
 export default {
-  title: 'ui/GenericBanner',
+  title: 'ui/banners/GenericBanner',
   component: GenericBanner,
   argTypes: {
     LeftIcon: selectArgTypeFromObject({

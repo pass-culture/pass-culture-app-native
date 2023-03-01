@@ -246,8 +246,8 @@ jobs:
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
           API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
           ENVIRONMENT: ${{ env.ENVIRONMENT }}
-          ANDROID_DEVICE_NAME: "${{ env.ANDROID_DEVICE_NAME }}"
-          ANDROID_PLATFORM_VERSION: "${{ matrix.platformVersion }}"
+          ANDROID_DEVICE_NAME: ${{ env.ANDROID_DEVICE_NAME }}
+          ANDROID_PLATFORM_VERSION: ${{ matrix.platformVersion }}
           APPIUM_APP: ${{ env.ANDROID_APK_PATH }}
         with:
           script: yarn e2e:android.app

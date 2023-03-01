@@ -12,9 +12,12 @@ export const adaptCategoryListModule = (module: CategoryListContentModel): Categ
 }
 
 const adaptCategoryBlock = (CategoryBlockList: CategoryBlockContentModel[]): CategoryBlock[] =>
-  CategoryBlockList.filter((categoryBlock) => categoryBlock.fields).map((bloc) => ({
-    id: bloc.sys.id,
-    image: bloc.fields.image ? buildImageUrl(bloc.fields.image.fields.file.url) : undefined,
-    homeEntryId: bloc.fields.homeEntryId,
-    title: bloc.fields.title,
-  }))
+  CategoryBlockList.filter((categoryBlock) => categoryBlock.fields).map((bloc) => {
+    const { displayedTitle: title, image } = bloc.fields.thematicCategoryInfo.fields
+    return {
+      id: bloc.sys.id,
+      image: image ? buildImageUrl(image.fields.file.url) : undefined,
+      homeEntryId: bloc.fields.homeEntryId,
+      title: title,
+    }
+  })

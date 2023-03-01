@@ -11,7 +11,7 @@ import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 import { FilterRow } from './FilterRow'
 
 export default {
-  title: 'Features/Search/FilterRow',
+  title: 'Features/search/FilterRow',
   component: FilterRow,
 } as ComponentMeta<typeof FilterRow>
 

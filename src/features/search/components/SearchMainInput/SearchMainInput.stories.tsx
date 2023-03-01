@@ -5,7 +5,7 @@ import React from 'react'
 import { SearchMainInput } from './SearchMainInput'
 
 export default {
-  title: 'Features/Search/SearchMainInput',
+  title: 'Features/search/SearchMainInput',
   component: SearchMainInput,
 } as ComponentMeta<typeof SearchMainInput>
 

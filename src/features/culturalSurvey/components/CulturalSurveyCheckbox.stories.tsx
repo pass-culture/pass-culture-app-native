@@ -5,7 +5,7 @@ import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/Cultu
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 
 export default {
-  title: 'Features/CulturalSurvey',
+  title: 'Features/culturalSurvey/CulturalSurveyCheckbox',
   component: CulturalSurveyCheckbox,
 } as ComponentMeta<typeof CulturalSurveyCheckbox>
 

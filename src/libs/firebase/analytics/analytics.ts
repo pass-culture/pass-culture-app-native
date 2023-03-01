@@ -1,10 +1,12 @@
 import { Platform } from 'react-native'
+import { Social } from 'react-native-share'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { ContentTypes } from 'libs/contentful'
@@ -178,6 +180,7 @@ const logEventAnalytics = {
     from?: Referrals
     moduleName?: string
     moduleId?: string
+    searchId?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
   logHasAppliedFavoritesSorting: ({ sortBy }: { sortBy: FavoriteSortBy }) =>
     analyticsProvider.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy }),
@@ -290,8 +293,12 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.SELECT_AGE, { age }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN, { times: numberOfTimes }),
-  logShare: (params: { type: 'App' | 'Offer' | 'Venue'; from: Referrals; id: number }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SHARE, { params }),
+  logShare: (params: {
+    type: 'App' | 'Offer' | 'Venue'
+    from: Referrals
+    id: number
+    social?: Social | 'Other'
+  }) => analyticsProvider.logEvent(AnalyticsEvent.SHARE, params),
   logShareApp: ({ from, type }: { from?: Referrals; type?: ShareAppModalType }) =>
     analyticsProvider.logEvent(AnalyticsEvent.SHARE_APP, { from, type }),
   logSignInFromAuthenticationModal: (offerId: number) =>
@@ -312,11 +319,12 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL, {
       fromOfferId,
     }),
-  logPlaylistVerticalScroll: (fromOfferId?: number, offerId?: number) =>
-    analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL, {
-      fromOfferId,
-      offerId,
-    }),
+  logPlaylistVerticalScroll: (params: {
+    fromOfferId?: number
+    offerId?: number
+    playlistType?: PlaylistType
+    shouldUseAlgoliaRecommend?: boolean
+  }) => analyticsProvider.logEvent(AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL, params),
   logStartDMSTransmission: () => analyticsProvider.logEvent(AnalyticsEvent.START_DMS_TRANSMISSION),
   logTrySelectDeposit: (age: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.TRY_SELECT_DEPOSIT, { age }),
@@ -331,6 +339,7 @@ const logEventAnalytics = {
 export const analytics = {
   enableCollection: analyticsProvider.enableCollection,
   disableCollection: analyticsProvider.disableCollection,
+  getAppInstanceId: analyticsProvider.getAppInstanceId,
   logLogin({ method }: { method: LoginRoutineMethod }) {
     analyticsProvider.logLogin({ method })
   },

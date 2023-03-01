@@ -50,7 +50,8 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  ThematicHomeHeaderCheatcode: undefined
+  DefaultThematicHomeHeaderCheatcode: undefined
+  HighlightThematicHomeHeaderCheatcode: undefined
   TrustedDevice: undefined
   DynamicSocials: undefined
   // Stepper
@@ -156,6 +157,7 @@ export type RootStackParamList = {
     moduleId?: string
     fromOfferId?: number
     openModalOnNavigation?: boolean
+    searchId?: string
   }
   OfferDescription: { id: number }
   SuspensionScreen: undefined

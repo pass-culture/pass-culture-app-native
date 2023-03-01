@@ -12,6 +12,7 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
+import { isDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -76,7 +77,11 @@ export function BookingDetails() {
 
   // Allows to display a message in case of refresh specifying the cancellation
   // of the reservation being consulted if it is made via Flask Admin
-  const cancellationConsultedBooking = endedBookings.filter((item) => item.id === params.id)
+  // and booking is not archived
+  const cancellationConsultedBooking = endedBookings.filter(
+    (item) => item.id === params.id && !isDigitalBookingWithoutExpirationDate(item)
+  )
+
   if (cancellationConsultedBooking.length > 0) {
     const nameCanceledBooking = cancellationConsultedBooking[0].stock.offer.name
     showInfoSnackBar({

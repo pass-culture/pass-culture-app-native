@@ -369,18 +369,6 @@ commands:
           set +eo pipefail
           gsutil rsync -r ./build gs://<< parameters.bucket_name >>
 
-  invalidate-cache:
-    description: Invalidate Cache asynchronously
-    parameters:
-      url_map_name:
-        type: string
-    steps:
-      - run:
-          name: Invalidate cache
-          command: |
-            gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"  --async
-            echo "An invalidateCache operation has been requested. You can follow its progress on https://console.cloud.google.com/compute/operations"
-
   transition-jira-ticket:
     description: Transition JIRA ticket to "Revue PM"
     steps:
@@ -846,8 +834,6 @@ jobs:
           env: testing
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-testing-decliweb
-      - invalidate-cache:
-          url_map_name: testing-decliweb-url-map
       - run:
           name: Notify failed deploy
           command: |
@@ -870,8 +856,6 @@ jobs:
           env: staging
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-staging-decliweb
-      - invalidate-cache:
-          url_map_name: staging-decliweb-url-map
 
   deploy-web-integration:
     executor: gcp
@@ -886,8 +870,6 @@ jobs:
           env: integration
       - push-to-bucket:
           bucket_name: passculture-metier-ehp-integration-decliweb
-      - invalidate-cache:
-          url_map_name: integration-decliweb-url-map
 
   deploy-web-prod:
     executor: gcp
@@ -904,8 +886,6 @@ jobs:
           env: production
       - push-to-bucket:
           bucket_name: passculture-metier-prod-production-decliweb
-      - invalidate-cache:
-          url_map_name: production-decliweb-url-map
 
   deploy-web-proxy-testing:
     executor: gcp

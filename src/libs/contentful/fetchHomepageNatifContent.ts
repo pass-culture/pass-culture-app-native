@@ -2,7 +2,7 @@ import resolveResponse from 'contentful-resolve-response'
 
 import { Homepage } from 'features/home/types'
 import { ContentTypes, EntryCollection, HomepageNatifEntry } from 'libs/contentful'
-import { adaptHomepageNatifEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
+import { adaptHomepageEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 
@@ -18,5 +18,5 @@ export const fetchHomepageNatifContent = async (): Promise<Homepage[]> => {
     url
   )
   const resolvedHomepageNatifList = resolveResponse(json) as HomepageNatifEntry[]
-  return adaptHomepageNatifEntries(resolvedHomepageNatifList)
+  return adaptHomepageEntries(resolvedHomepageNatifList)
 }

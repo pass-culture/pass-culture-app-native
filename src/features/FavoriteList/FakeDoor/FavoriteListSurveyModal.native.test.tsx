@@ -2,12 +2,18 @@ import React from 'react'
 
 import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { storage } from 'libs/storage'
 import { fireEvent, render } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+const FAV_LIST_FAKE_DOOR_STORAGE_KEY = 'has_seen_fav_list_fake_door'
 describe('FavoriteListSurveyModal', () => {
+  beforeEach(() => {
+    storage.clear(FAV_LIST_FAKE_DOOR_STORAGE_KEY)
+  })
+
   it('should render correctly', () => {
     const renderAPI = render(<FavoriteListSurveyModal visible hideModal={hideModalMock} />)
     expect(renderAPI).toMatchSnapshot()
@@ -33,5 +39,17 @@ describe('FavoriteListSurveyModal', () => {
       undefined,
       true
     )
+  })
+
+  it('should save in storage when the user has seen favorite list offer modal', async () => {
+    render(<FavoriteListSurveyModal visible hideModal={jest.fn()} />)
+
+    expect(await storage.readObject(FAV_LIST_FAKE_DOOR_STORAGE_KEY)).toBeTruthy()
+  })
+
+  it('should not save in storage when the user has not seen favorite list offer modal', async () => {
+    render(<FavoriteListSurveyModal visible={false} hideModal={jest.fn()} />)
+
+    expect(await storage.readObject(FAV_LIST_FAKE_DOOR_STORAGE_KEY)).toBeFalsy()
   })
 })

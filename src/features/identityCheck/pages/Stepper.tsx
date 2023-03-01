@@ -12,7 +12,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
@@ -87,69 +87,63 @@ export const IdentityCheckStepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
-  async function navigateToStep(step: StepConfig) {
-    analytics.logIdentityCheckStep(step.name)
-
-    if (step.name === IdentityCheckStep.IDENTIFICATION && context.identification.method === null) {
-      showEduConnectModal()
-    }
-  }
-
   return (
     <React.Fragment>
-      <CenteredContainer>
-        <Container>
-          <Spacer.TopScreen />
-          {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={2} />
-          ) : (
-            <Spacer.Column numberOfSpaces={4} />
-          )}
+      <Container>
+        <Spacer.TopScreen />
+        {theme.isDesktopViewport ? (
+          <Spacer.Column numberOfSpaces={16} />
+        ) : (
+          <Spacer.Column numberOfSpaces={4} />
+        )}
 
-          <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>
-            Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
-          </Typo.Body>
+        <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Body>
+          Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
+        </Typo.Body>
 
-          {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
+        <Spacer.Column numberOfSpaces={10} />
 
-          <VerticalUl>
-            {steps.map((step) => (
-              <Li key={step.name}>
-                <StepButtonContainer>
+        <VerticalUl>
+          {steps.map((step) => (
+            <Li key={step.name}>
+              <StepButtonContainer>
+                {step.name === IdentityCheckStep.IDENTIFICATION &&
+                context.identification.method === null ? (
                   <StepButton
                     step={step}
                     state={getStepState(steps, step.name, currentStep)}
-                    navigateTo={
-                      step.name === IdentityCheckStep.IDENTIFICATION &&
-                      context.identification.method === null
-                        ? undefined
-                        : { screen: step.screens[0] }
-                    }
                     onPress={() => {
                       amplitude.logEvent('stepper_clicked', { step: step.name })
-                      return navigateToStep(step)
+                      analytics.logIdentityCheckStep(step.name)
+                      showEduConnectModal()
                     }}
                   />
-                </StepButtonContainer>
-              </Li>
-            ))}
-          </VerticalUl>
+                ) : (
+                  <StepButton
+                    step={step}
+                    state={getStepState(steps, step.name, currentStep)}
+                    navigateTo={{ screen: step.screens[0] }}
+                    onPress={() => {
+                      amplitude.logEvent('stepper_clicked', { step: step.name })
+                      analytics.logIdentityCheckStep(step.name)
+                    }}
+                  />
+                )}
+              </StepButtonContainer>
+            </Li>
+          ))}
+        </VerticalUl>
 
-          {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={10} />
-          ) : (
-            <Spacer.Flex flex={2} />
-          )}
+        <Spacer.Flex flex={1} />
 
-          <ButtonTertiaryBlack
-            icon={Invalidate}
-            wording="Abandonner"
-            onPress={showQuitIdentityCheckModal}
-          />
-        </Container>
-      </CenteredContainer>
+        <ButtonTertiaryBlack
+          icon={Invalidate}
+          wording="Abandonner"
+          onPress={showQuitIdentityCheckModal}
+        />
+      </Container>
       <QuitIdentityCheckModal
         visible={visible}
         hideModal={hideModal}
@@ -165,18 +159,16 @@ export const IdentityCheckStepper = () => {
 
 const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
-const CenteredContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  justifyContent: 'center',
-  padding: getSpacing(5),
-  width: '100%',
-  maxWidth: theme.contentPage.maxWidth,
-}))
+const Container = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: getSpacing(6),
+    paddingBottom: getSpacing(9),
+    maxWidth: theme.contentPage.maxWidth,
+    width: '100%',
+    alignSelf: 'center',
+    flex: 1,
+  },
+}))``
 
 const StepButtonContainer = styled.View({
   alignItems: 'center',

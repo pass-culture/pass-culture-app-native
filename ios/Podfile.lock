@@ -1,7 +1,5 @@
 PODS:
-  - Amplitude (8.7.1)
-  - amplitude-react-native (2.7.0):
-    - Amplitude (= 8.7.1)
+  - amplitude-react-native (1.0.1):
     - React-Core
   - AppsFlyerFramework (6.4.4):
     - AppsFlyerFramework/Main (= 6.4.4)
@@ -568,7 +566,7 @@ PODS:
   - RNBatchPush (1.0.0):
     - Batch (~> 1.19.0)
     - React
-  - RNCAsyncStorage (1.17.7):
+  - RNCAsyncStorage (1.17.11):
     - React-Core
   - RNDeviceInfo (10.3.0):
     - React-Core
@@ -636,7 +634,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
-  - "amplitude-react-native (from `../node_modules/@amplitude/react-native`)"
+  - "amplitude-react-native (from `../node_modules/@amplitude/analytics-react-native`)"
   - Batch (~> 1.17)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
@@ -740,7 +738,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Amplitude
     - AppsFlyerFramework
     - Base64
     - Batch
@@ -784,7 +781,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   amplitude-react-native:
-    :path: "../node_modules/@amplitude/react-native"
+    :path: "../node_modules/@amplitude/analytics-react-native"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   BVLinearGradient:
@@ -937,8 +934,7 @@ CHECKOUT OPTIONS:
     :tag: 8.15.0
 
 SPEC CHECKSUMS:
-  Amplitude: 834c7332dfb9640a751e21c13efb22a07c0c12d4
-  amplitude-react-native: 0ed8cab759aafaa94961b82122bf56297da607ad
+  amplitude-react-native: 77be2d0a6b5a0900f01fa99f4ec198134231255f
   AppsFlyerFramework: 6ea252ecb04cf443550576922cddb95b35c958ed
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 9e55d8217609dfe8f11cd5e78ca88ebffd9e5115
@@ -1026,7 +1022,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: b1f1995089b90696dbc2a7ffe0059a80db5c8eb1
   ReactCommon: 149e2c0acab9bac61378da0db5b2880a1b5ff59b
   RNBatchPush: 6f2a3fe76aab9e6fa42cfe058418925ac80fdb84
-  RNCAsyncStorage: d81ee5c3db1060afd49ea7045ad460eff82d2b7d
+  RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNDeviceInfo: 4701f0bf2a06b34654745053db0ce4cb0c53ada7
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFBAnalytics: 774973f4b8aacd5e12a4d59754739af564e6b6ba

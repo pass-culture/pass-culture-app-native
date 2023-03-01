@@ -7,7 +7,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ThreeShapesTicket } from './ThreeShapesTicket'
 
 export default {
-  title: 'Features/Bookings/ThreeShapesTicket',
+  title: 'Features/bookings/ThreeShapesTicket',
   component: ThreeShapesTicket,
 } as ComponentMeta<typeof ThreeShapesTicket>
 

@@ -1,25 +1,30 @@
 import { rest } from 'msw'
 
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
+import { PlaylistType } from 'features/offer/enums'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { SearchHit } from 'libs/search'
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-let mockSearchHits: SearchHit[] = []
-jest.mock('features/offer/api/useSimilarOffers', () => ({
-  useSimilarOffers: jest.fn(() => mockSearchHits),
-}))
+const useSimilarOffersSpy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementation()
 
+let mockShouldUseAlgoliaRecommend = false
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: () => ({
+    shouldUseAlgoliaRecommend: mockShouldUseAlgoliaRecommend,
+  }),
+}))
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 describe('<Offer />', () => {
@@ -58,7 +63,9 @@ describe('<Offer />', () => {
     const bookingOfferButton = screen.getByText('Réserver l’offre')
     fireEvent.press(bookingOfferButton)
 
-    expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
+    await waitFor(() => {
+      expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
+    })
   })
 
   it('should log analaytics when display authentication modal', async () => {
@@ -74,41 +81,235 @@ describe('<Offer />', () => {
     const bookingOfferButton = screen.getByText('Réserver l’offre')
     fireEvent.press(bookingOfferButton)
 
-    expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
+    await waitFor(() => {
+      expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
+    })
   })
 
   describe('with similar offers', () => {
-    beforeAll(() => {
-      mockSearchHits = mockedAlgoliaResponse.hits
+    it('should pass offer venue position to `useSimilarOffers`', async () => {
+      renderOfferPage()
+
+      await waitFor(() => {
+        expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(1, {
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          offerId: offerResponseSnap.id,
+          position: offerResponseSnap.venue.coordinates,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(2, {
+          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          offerId: offerResponseSnap.id,
+          position: offerResponseSnap.venue.coordinates,
+          shouldUseAlgoliaRecommend: false,
+        })
+      })
     })
 
-    it('should log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and reaching the bottom', async () => {
-      renderOfferPage()
-      const scrollView = screen.getByTestId('offer-container')
+    it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+
+      const { getByTestId } = renderOfferPage()
+      const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
 
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+      await waitFor(() => {
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+      })
     })
 
-    it('should not log analytics event logSimilarOfferPlaylistVerticalScroll when scrolling vertical and not reaching the bottom', async () => {
+    it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
+      useSimilarOffersSpy.mockReturnValueOnce([])
+      useSimilarOffersSpy.mockReturnValueOnce([])
+      const { getByTestId } = renderOfferPage()
+      const scrollView = getByTestId('offer-container')
+
+      fireEvent.scroll(scrollView, nativeEventBottom)
+
+      await waitFor(() => {
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+      })
+    })
+
+    describe('When there is only same category similar offers playlist', () => {
+      beforeAll(() => {
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce([])
+      })
+
+      it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
+        const { getByTestId } = renderOfferPage()
+        const scrollView = getByTestId('offer-container')
+
+        fireEvent.scroll(scrollView, nativeEventBottom)
+
+        await waitFor(() => {
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
+        })
+      })
+
+      it('should not log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
+        const { getByTestId } = renderOfferPage()
+        const scrollView = getByTestId('offer-container')
+
+        fireEvent.scroll(scrollView, nativeEventBottom)
+
+        await waitFor(() => {
+          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
+        })
+      })
+    })
+
+    describe('When there is only other categories similar offers playlist', () => {
+      beforeAll(() => {
+        useSimilarOffersSpy.mockReturnValueOnce([])
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      })
+
+      it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
+        const { getByTestId } = renderOfferPage()
+        const scrollView = getByTestId('offer-container')
+
+        fireEvent.scroll(scrollView, nativeEventBottom)
+
+        await waitFor(() => {
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
+        })
+      })
+
+      it('should not log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
+        const { getByTestId } = renderOfferPage()
+        const scrollView = getByTestId('offer-container')
+
+        fireEvent.scroll(scrollView, nativeEventBottom)
+
+        await waitFor(() => {
+          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
+        })
+      })
+    })
+
+    it('should not log logPlaylistVerticalScroll event when scrolling vertical and not reaching the bottom', async () => {
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
       renderOfferPage()
       const scrollView = screen.getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventTop)
 
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(0)
+      await waitFor(() => {
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+      })
     })
 
     it('should log logPlaylistVerticalScroll with the event param fromOfferId & offerId', async () => {
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
       const fromOfferId = 1
       const offerId = 116656
-      const { getByTestId } = await renderOfferPage(fromOfferId)
-      const scrollView = getByTestId('offer-container')
+      renderOfferPage(fromOfferId)
+      const scrollView = screen.getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
 
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledWith(fromOfferId, offerId)
+      await waitFor(() => {
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId,
+          offerId,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+          fromOfferId,
+          offerId,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+      })
+    })
+
+    describe('When A/B Testing activated', () => {
+      beforeEach(() => {
+        mockShouldUseAlgoliaRecommend = true
+      })
+      it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        const { getByTestId } = renderOfferPage()
+        const scrollView = getByTestId('offer-container')
+
+        fireEvent.scroll(scrollView, nativeEventBottom)
+
+        await waitFor(() => {
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: true,
+          })
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: true,
+          })
+        })
+      })
     })
   })
 
@@ -176,7 +377,7 @@ const scrollEvent = {
   nativeEvent: {
     contentOffset: { y: 200 },
     layoutMeasurement: { height: 1000 },
-    contentSize: { height: 1600 },
+    contentSize: { height: 1900 },
   },
 }
 
@@ -184,7 +385,7 @@ const nativeEventBottom = {
   nativeEvent: {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 900 },
-    contentSize: { height: 1600 },
+    contentSize: { height: 1900 },
   },
 }
 
@@ -192,6 +393,6 @@ const nativeEventTop = {
   nativeEvent: {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 100 },
-    contentSize: { height: 1600 },
+    contentSize: { height: 1900 },
   },
 }

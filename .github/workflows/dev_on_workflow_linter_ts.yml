@@ -1,0 +1,47 @@
+name: Verify code lint and typescript 
+
+on:
+  workflow_call:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  yarn_lint:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn test:lint
+
+  yarn_typescript:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn test:types

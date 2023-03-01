@@ -20,6 +20,7 @@ import {
 import { FavoriteSortBy } from 'features/favorites/types'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { storage } from 'libs/storage'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   FavoriteHitPlaceholder,
@@ -97,19 +98,31 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       if (!user || !credit) return <FavoriteHitPlaceholder />
       return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [credit, favoritesState, user, setOfferToBook]
+    [credit, user, setOfferToBook]
   )
+
+  const [hasSeenFavListFakeDoor, setHasSeenFavListFakeDoor] = useState<boolean | undefined>(
+    undefined
+  )
+
+  useEffect(() => {
+    storage.readObject('has_seen_fav_list_fake_door').then((value) => {
+      if (value) {
+        setHasSeenFavListFakeDoor(true)
+      } else {
+        setHasSeenFavListFakeDoor(false)
+      }
+    })
+  }, [])
 
   const ListHeaderComponent = useMemo(
     () => (
       <React.Fragment>
-        <FavoriteListBanner />
+        {hasSeenFavListFakeDoor === false && <FavoriteListBanner />}
         <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />
       </React.Fragment>
     ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [sortedFavorites?.length]
+    [hasSeenFavListFakeDoor, sortedFavorites]
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(

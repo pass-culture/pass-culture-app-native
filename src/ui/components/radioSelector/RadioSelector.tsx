@@ -9,7 +9,7 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { RadioButtonSelected } from 'ui/svg/RadioButtonSelected'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export enum RadioSelectorType {
   DEFAULT = 'default',
@@ -60,6 +60,7 @@ export const RadioSelector = ({
       onBlur={onBlur}>
       <TextContainer>
         <ButtonText type={type}>{label}</ButtonText>
+        <Spacer.Column numberOfSpaces={1} />
         {!!description && <Typo.CaptionNeutralInfo>{description}</Typo.CaptionNeutralInfo>}
       </TextContainer>
       <IconPriceContainer>

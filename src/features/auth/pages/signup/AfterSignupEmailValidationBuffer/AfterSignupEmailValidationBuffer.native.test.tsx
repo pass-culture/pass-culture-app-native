@@ -6,8 +6,11 @@ import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { nonBeneficiaryUser } from 'fixtures/user'
+import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render, waitFor } from 'tests/utils'
@@ -114,6 +117,21 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(() => {
         expect(replace).toHaveBeenCalledWith('AccountCreated')
+      })
+    })
+
+    it('should log event on email validation success', async () => {
+      renderPage()
+
+      await waitFor(async () => {
+        expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
+          1,
+          CampaignEvents.COMPLETE_REGISTRATION,
+          {
+            af_firebase_pseudo_id: await analytics.getAppInstanceId(),
+            af_user_id: nonBeneficiaryUser.id,
+          }
+        )
       })
     })
 

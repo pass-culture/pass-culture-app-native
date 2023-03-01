@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { IncompleteSearchHit } from 'libs/algolia'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
-import { IncompleteSearchHit } from 'libs/search'
 
 import { AlgoliaHit } from '..'
 

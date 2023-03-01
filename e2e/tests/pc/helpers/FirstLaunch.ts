@@ -10,18 +10,18 @@ import Browser from './Browser'
 import {timeout} from "./utils/time";
 
 class FirstLaunch {
-  retries = 2
-  nativeModalPassed = 0
-
   async allowIOSAlert() {
+    let retries = 2
+    let nativeModalPassed = false
     // This while loop will take care of the DoNotTrack and Notification Alert
     // It may or may not be displayed, so we try max twice.
-    while (this.retries-- && this.nativeModalPassed !== 2) {
+    while (retries && !nativeModalPassed) {
       try {
+        retries--
         await NativeAlert.waitForIsShown(true)
         await NativeAlert.topOnButtonWithText('Allow')
         await NativeAlert.waitForIsShown(false)
-        this.nativeModalPassed += 1
+        nativeModalPassed = true
       } catch (err) {
         // ignore err
       }
@@ -36,7 +36,7 @@ class FirstLaunch {
       // Notification Alert
       await this.allowIOSAlert()
     }
-    await timeout(5000)
+    await timeout(flags.isWeb ? 8000 : 4000)
     await CookiesConsent.randomChoice()
     if (!flags.isWeb && flags.isIOS) {
       // ATT Alert
@@ -48,6 +48,7 @@ class FirstLaunch {
       await AgeSelection.randomChoiceAge()
       await AgeInformation.proceed()
     }
+    await timeout(1000)
     await tabBar.waitForIsShown(true)
     return true
   }

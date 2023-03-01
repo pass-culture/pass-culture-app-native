@@ -14,10 +14,11 @@ import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount
 import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { SuspensionScreen } from 'features/auth/pages/suspendedAccount/SuspensionScreen/SuspensionScreen'
+import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
+import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
-import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -32,7 +33,8 @@ import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
-import { ThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeHeaderCheatcode'
+import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
+import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
 import { TrustedDevice } from 'features/internal/cheatcodes/pages/TrustedDevice/TrustedDevice'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
@@ -56,7 +58,6 @@ import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/Delet
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
-import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
@@ -401,10 +402,16 @@ export const routes: Route[] = [
   },
   {
     // debug route: in navigation component
-    name: 'ThematicHomeHeaderCheatcode',
-    component: ThematicHomeHeaderCheatcode,
+    name: 'DefaultThematicHomeHeaderCheatcode',
+    component: DefaultThematicHomeHeaderCheatcode,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-thematic-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'HighlightThematicHomeHeaderCheatcode',
+    component: HighlightThematicHomeHeaderCheatcode,
+    path: 'cheat-highlight-home-header',
   },
   {
     // debug route: in navigation component

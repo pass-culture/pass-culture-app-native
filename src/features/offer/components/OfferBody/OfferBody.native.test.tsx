@@ -1,18 +1,20 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { Share as NativeShare } from 'react-native'
-import Share from 'react-native-share'
+import Share, { Social } from 'react-native-share'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { SearchHit } from 'libs/algolia'
+import {
+  mockedAlgoliaResponse,
+  moreHitsForSimilarOffersPlaylist,
+} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
-import { SearchHit } from 'libs/search'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, cleanup, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
@@ -30,10 +32,12 @@ jest.mock('features/offer/api/useSimilarOffers', () => ({
 }))
 
 const mockSubcategories = placeholderData.subcategories
+const mockSearchGroups = placeholderData.searchGroups
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {
       subcategories: mockSubcategories,
+      searchGroups: mockSearchGroups,
     },
   }),
 }))
@@ -53,73 +57,135 @@ describe('<OfferBody />', () => {
   const offerId = 1
 
   it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
-    const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    const reportOfferButton = await OfferBodyComponent.findByTestId('Signaler l’offre')
+    const reportOfferButton = await screen.findByTestId('Signaler l’offre')
 
     fireEvent.press(reportOfferButton)
-    expect(OfferBodyComponent).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
-    const OfferBodyComponent = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    const venueBannerComponent = await OfferBodyComponent.findByTestId(
-      `Lieu ${mockOffer.venue.name}`
-    )
+    const venueBannerComponent = await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)
 
     fireEvent.press(venueBannerComponent)
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
   })
 
-  it('should not display similar offers list when offer has not it', async () => {
-    const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+  it('should not display similar offers lists when offer has not it', async () => {
+    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
 
-    expect(queryByTestId('offersModuleList')).toBeFalsy()
+    await screen.findByText('Envoyer sur Instagram')
+
+    expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
+    expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
   })
 
   describe('with similar offers', () => {
     beforeAll(() => {
-      mockSearchHits = mockedAlgoliaResponse.hits
+      mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
     })
 
     it('should display similar offers list when offer has some', async () => {
-      const { queryByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      render(
+        <OfferBody
+          offerId={offerId}
+          onScroll={onScroll}
+          sameCategorySimilarOffers={mockSearchHits}
+          otherCategoriesSimilarOffers={mockSearchHits}
+        />
+      )
 
-      expect(queryByTestId('offersModuleList')).toBeTruthy()
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeTruthy()
+      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeTruthy()
     })
 
-    it('should pass offer venue position to `useSimilarOffers`', () => {
-      const spy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementationOnce(jest.fn())
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    describe('Same category similar offers', () => {
+      it('should navigate to an offer when pressing on it', async () => {
+        render(
+          <OfferBody
+            offerId={offerId}
+            onScroll={onScroll}
+            sameCategorySimilarOffers={mockSearchHits}
+          />
+        )
 
-      expect(spy).toHaveBeenNthCalledWith(1, offerId, mockOffer.venue.coordinates)
-    })
+        await screen.findByText('Envoyer sur Instagram')
 
-    it('should navigate to a similar offer when pressing on it', async () => {
-      const { getByText } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+        expect(push).toHaveBeenCalledWith('Offer', {
+          from: 'offer',
+          fromOfferId: 1,
+          id: 102280,
+        })
+      })
 
-      await fireEvent.press(getByText('La nuit des temps'))
-      expect(push).toHaveBeenCalledWith('Offer', {
-        from: 'offer',
-        fromOfferId: 1,
-        id: 102280,
+      it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 296 },
+          contentOffset: { x: 200 }, // how far did we scroll
+          contentSize: { height: 296 },
+        }
+        render(
+          <OfferBody
+            offerId={offerId}
+            onScroll={onScroll}
+            sameCategorySimilarOffers={mockSearchHits}
+          />
+        )
+        const scrollView = screen.queryAllByTestId('offersModuleList')[0]
+
+        await waitFor(() => {
+          scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
       })
     })
 
-    it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
-      const nativeEventMiddle = {
-        layoutMeasurement: { height: 296 },
-        contentOffset: { x: 50 }, // how far did we scroll
-        contentSize: { height: 296 },
-      }
-      const { getByTestId } = render(<OfferBody offerId={offerId} onScroll={onScroll} />)
-      const scrollView = getByTestId('offersModuleList')
+    describe('Other categories differents from that of the offer', () => {
+      it('should navigate to an offer when pressing on it', async () => {
+        render(
+          <OfferBody
+            offerId={offerId}
+            onScroll={onScroll}
+            otherCategoriesSimilarOffers={mockSearchHits}
+          />
+        )
 
-      await waitFor(() => {
-        scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        await screen.findByText('Envoyer sur Instagram')
+
+        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+        expect(push).toHaveBeenCalledWith('Offer', {
+          from: 'offer',
+          fromOfferId: 1,
+          id: 102280,
+        })
       })
-      expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+
+      it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
+        const nativeEventMiddle = {
+          layoutMeasurement: { height: 296, width: 296 },
+          contentOffset: { x: 200 }, // how far did we scroll
+          contentSize: { height: 296, width: 296 },
+        }
+        render(
+          <OfferBody
+            offerId={offerId}
+            onScroll={jest.fn()}
+            otherCategoriesSimilarOffers={mockSearchHits}
+          />
+        )
+        const scrollView = screen.queryAllByTestId('offersModuleList')[0]
+
+        await waitFor(() => {
+          scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        })
+        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+      })
     })
   })
 
@@ -183,7 +249,25 @@ describe('<OfferBody />', () => {
       })
 
       expect(mockShareSingle).toHaveBeenCalledWith({
-        social: Network.snapchat,
+        social: Social.Snapchat,
+        message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
+        url: getOfferUrl(offerId),
+      })
+    })
+
+    it('should open social medium on share button press with offer url even when web url is defined', async () => {
+      mockCheckInstalledApps.mockResolvedValueOnce({
+        [Network.whatsapp]: true,
+      })
+      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+
+      await act(async () => {
+        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.whatsapp]}`)
+        fireEvent.press(socialMediumButton)
+      })
+
+      expect(mockShareSingle).toHaveBeenCalledWith({
+        social: Social.Whatsapp,
         message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
         url: getOfferUrl(offerId),
       })

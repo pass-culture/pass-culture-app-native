@@ -13,6 +13,7 @@ interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputPr
   name: TName
   control: Control<TFieldValues>
   withSecurityRules?: boolean
+  securityRulesAlwaysVisible?: boolean
 }
 
 export const PasswordInputController = <
@@ -22,6 +23,7 @@ export const PasswordInputController = <
   name,
   control,
   withSecurityRules = false,
+  securityRulesAlwaysVisible = false,
   ...otherPasswordInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
   return (
@@ -42,7 +44,7 @@ export const PasswordInputController = <
           {withSecurityRules ? (
             <PasswordSecurityRules
               password={value}
-              visible={value.length > 0}
+              visible={securityRulesAlwaysVisible ? true : value.length > 0}
               nativeID={passwordInputErrorId}
             />
           ) : (

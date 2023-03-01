@@ -7,6 +7,7 @@ import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffer } from 'libs/algolia/fetchAlgolia/fetchOffer'
 import { SearchParametersQuery } from 'libs/algolia/types'
+import { env } from 'libs/environment'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 const mockGetFromDate = jest.fn()
@@ -20,7 +21,7 @@ const mock_WEEKEND_getFirstFromDate = jest.fn()
 
 const mockComputeTimeRangeFromHoursToSeconds = jest.fn()
 
-jest.mock('libs/search/datetime/time', () => ({
+jest.mock('libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/datetime/time', () => ({
   TIMESTAMP: {
     getLastOfDate: (arg: Date) => mockGetLastOfDate(arg),
     getFromDate: (arg: Date) => mockGetFromDate(arg),
@@ -1705,6 +1706,33 @@ describe('fetchOffer', () => {
         numericFilters: [['offer.prices: 0 TO 300']],
         clickAnalytics: true,
       })
+    })
+  })
+
+  describe('Index name param', () => {
+    it('should fetch Algolia offers index when param not provided', () => {
+      const query = 'searched query'
+
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+      })
+
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
+    })
+
+    it('should fetch a specific Algolia index when param provided', () => {
+      const query = 'searched query'
+
+      fetchOffer({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+        indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
+      })
+
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaVenueOffersIndexName')
     })
   })
 })

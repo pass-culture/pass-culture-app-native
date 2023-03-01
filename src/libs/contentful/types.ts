@@ -12,6 +12,7 @@ export enum ContentTypes {
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
   SUBCATEGORIES = 'subcategories',
   CATEGORIES = 'categories',
+  THEMATIC_CATEGORY_INFO = 'thematicCategoryInfo',
   THEMATIC_HIGHLIGHT = 'thematicHighlight',
   THEMATIC_HIGHLIGHT_INFO = 'thematic_highlight_info',
   VENUES_PLAYLIST = 'venuesPlaylist',
@@ -157,6 +158,11 @@ export interface ShowTypes {
 export interface BookTypes {
   sys: Sys<typeof ContentTypes.BOOK_TYPES>
   fields: BookTypesFields
+}
+
+export interface ThematicCategoryInfo {
+  sys: Sys<typeof ContentTypes.THEMATIC_CATEGORY_INFO>
+  fields: ThematicCategoryInfoFields
 }
 
 export interface ThematicHighlightInfo {
@@ -318,6 +324,13 @@ type BookTypesFields = {
   bookTypes: string[]
 }
 
+export type ThematicCategoryInfoFields = {
+  title: string
+  displayedTitle: string
+  displayedSubtitle?: string
+  image: Image
+}
+
 export type ThematicHighlightFields = {
   title: string
   thematicHighlightInfo: ThematicHighlightInfo
@@ -346,7 +359,7 @@ export interface CategoryBlockContentModel {
 export interface CategoryBlockFields {
   title: string
   homeEntryId: string
-  image?: Image
+  thematicCategoryInfo: ThematicCategoryInfo
 }
 
 export interface Image {
@@ -387,6 +400,7 @@ interface HomepageNatifFields {
   modules: HomepageNatifModule[]
   thematicHeaderTitle?: string
   thematicHeaderSubtitle?: string
+  thematicHeader?: ThematicHighlightInfo
 }
 
 export type HomepageNatifModule =

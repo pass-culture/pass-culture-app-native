@@ -1,7 +1,7 @@
 import { BookingProperties } from 'features/bookings/types'
 import { OfferTileProps } from 'features/offer/types'
+import { VenueHit } from 'libs/algolia'
 import { parseTypeHomeLabel } from 'libs/parsers/venueType'
-import { VenueHit } from 'libs/search'
 
 type Offer = Pick<
   OfferTileProps,

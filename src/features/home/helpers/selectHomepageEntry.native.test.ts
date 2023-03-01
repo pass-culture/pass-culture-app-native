@@ -120,6 +120,7 @@ const defaultRemoteConfig: CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
+  shouldUseAlgoliaRecommend: false,
 }
 
 describe('useSelectHomepageEntry', () => {

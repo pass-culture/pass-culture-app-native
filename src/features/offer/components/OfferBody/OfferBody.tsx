@@ -8,7 +8,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
-import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
@@ -23,13 +22,13 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
+import { SearchHit } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDatePeriod, formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { SearchHit } from 'libs/search'
 import {
   useCategoryHomeLabelMapping,
   useCategoryIdMapping,
@@ -50,11 +49,22 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   offerId: number
   onScroll: () => void
+  sameCategorySimilarOffers?: SearchHit[]
+  otherCategoriesSimilarOffers?: SearchHit[]
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
-export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
+function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
+  return Boolean(data?.length)
+}
+
+export const OfferBody: FunctionComponent<Props> = ({
+  offerId,
+  onScroll,
+  sameCategorySimilarOffers,
+  otherCategoriesSimilarOffers,
+}) => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
@@ -80,8 +90,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { position } = useGeolocation()
-  const similarOffers = useSimilarOffers(offerId, offer?.venue.coordinates)
-  const hasSimilarOffers = similarOffers && similarOffers.length > 0
+
   const fromOfferId = route.params?.fromOfferId
 
   const trackingOnHorizontalScroll = useCallback(() => {
@@ -246,11 +255,26 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         offerId={offerId}
       />
 
-      {!!hasSimilarOffers && (
-        <SectionWithDivider visible>
+      {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
+        <SectionWithDivider testID="sameCategorySimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
           <PassPlaylist
-            data={similarOffers}
+            data={sameCategorySimilarOffers}
+            itemWidth={itemWidth}
+            itemHeight={itemHeight}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            title="Dans la même catégorie"
+            onEndReached={trackingOnHorizontalScroll}
+          />
+        </SectionWithDivider>
+      )}
+
+      {!!isArrayNotEmpty(otherCategoriesSimilarOffers) && (
+        <SectionWithDivider testID="otherCategoriesSimilarOffers" visible>
+          <Spacer.Column numberOfSpaces={6} />
+          <PassPlaylist
+            data={otherCategoriesSimilarOffers}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
             renderItem={renderItem}

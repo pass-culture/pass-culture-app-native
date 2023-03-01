@@ -1,0 +1,103 @@
+name: Tester yaml
+
+on:
+  workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+jobs:
+  yarn_tester_web:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@v3
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-web-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-web-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn test:unit:web:ci 
+
+  yarn_test_native:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@v3
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn test:unit:ci
+      - name: SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
+  yarn_test_proxy:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run:  yarn install --immutable --cwd server
+      - uses: actions/cache@v3
+        with:
+          path: .jest/cache
+          key: v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --cwd server test:unit:ci 
+      - name: SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: server

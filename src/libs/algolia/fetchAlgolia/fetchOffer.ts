@@ -1,6 +1,7 @@
 import { Hit } from '@algolia/client-search'
 
 import { Response } from 'features/search/api/useSearchResults/useSearchResults'
+import { SearchHit } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -9,7 +10,6 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
-import { SearchHit } from 'libs/search'
 
 type FetchOfferArgs = {
   parameters: SearchParametersQuery
@@ -17,6 +17,7 @@ type FetchOfferArgs = {
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
+  indexSearch?: string
 }
 
 export const fetchOffer = async ({
@@ -24,9 +25,10 @@ export const fetchOffer = async ({
   userLocation,
   isUserUnderage,
   storeQueryID,
+  indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
 }: FetchOfferArgs): Promise<Response> => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
-  const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
+  const index = client.initIndex(indexSearch)
 
   try {
     const response = await index.search<SearchHit>(parameters.query || '', {

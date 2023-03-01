@@ -13,6 +13,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -217,27 +218,54 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
-    const from = 'favorites'
-    const moduleName = 'testModule'
-    const offerId = favoriteResponseSnap.offer.id
-    useRoute.mockImplementationOnce(() => ({
-      params: {
-        from,
-        moduleName,
-      },
-    }))
-    renderOfferHeader({
-      id: offerId,
+  describe('should add favorite and log analytic event logHasAddedOfferToFavorites - logged in users', () => {
+    it('With "favorites" as argument', async () => {
+      const from = 'favorites'
+      const moduleName = 'testModule'
+      const offerId = favoriteResponseSnap.offer.id
+      useRoute.mockImplementationOnce(() => ({
+        params: {
+          from,
+          moduleName,
+        },
+      }))
+      renderOfferHeader({
+        id: offerId,
+      })
+
+      fireEvent.press(screen.getByTestId('animated-icon-favorite'))
+
+      await waitFor(() => {
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+          from,
+          offerId,
+          moduleName,
+        })
+      })
     })
 
-    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
+    it('With "search" and search id as argument', async () => {
+      const from = 'search'
+      const offerId = favoriteResponseSnap.offer.id
+      const searchId = '539b285e'
+      useRoute.mockImplementationOnce(() => ({
+        params: {
+          from,
+          searchId,
+        },
+      }))
+      renderOfferHeader({
+        id: offerId,
+      })
 
-    await waitFor(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-        from,
-        offerId,
-        moduleName,
+      fireEvent.press(screen.getByTestId('animated-icon-favorite'))
+
+      await waitFor(() => {
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+          from,
+          offerId,
+          searchId,
+        })
       })
     })
   })
@@ -253,6 +281,16 @@ describe('<OfferHeader />', () => {
       from: 'offer',
       id: offerId,
     })
+  })
+
+  it('should not show favorite list modal when the user has already seen the fake door', async () => {
+    await storage.saveObject('has_seen_fav_list_fake_door', true)
+    renderOfferHeader()
+
+    const favButton = screen.getByTestId('animated-icon-favorite')
+    await act(async () => fireEvent.press(favButton))
+
+    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
   })
 })
 
