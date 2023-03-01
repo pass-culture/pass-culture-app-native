@@ -27,21 +27,19 @@ const mockDispatch = jest.fn()
 
 const mockInitialBookingState = initialBookingState
 
-const mockOfferId = 1337
-let mockBookingState = {
-  // @TODO: supprimer cette variable: mockBookingState
-  bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-  dismissModal: mockDismissModal,
-  dispatch: mockDispatch,
-}
 let mockBookingStock = {
   price: 2000,
   id: 148409,
   beginningDatetime: '2021-03-02T20:00:00',
 } as ReturnType<typeof useBookingStock>
 
+const mockOfferId = 1337
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn()
-mockUseBookingContext.mockImplementation(() => mockBookingState)
+mockUseBookingContext.mockReturnValue({
+  bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+  dismissModal: mockDismissModal,
+  dispatch: mockDispatch,
+})
 
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
