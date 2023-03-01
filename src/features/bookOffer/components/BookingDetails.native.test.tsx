@@ -326,13 +326,6 @@ describe('<BookingDetails />', () => {
     it('should display the Duo selector when the offer is duo and not an event', () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
-      const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
-      mockUseBookingContext.mockReturnValueOnce({
-        bookingState: duoBookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
-
       mockUseSubcategoriesMapping.mockReturnValueOnce({
         EVENEMENT_PATRIMOINE: { isEvent: false },
       })
