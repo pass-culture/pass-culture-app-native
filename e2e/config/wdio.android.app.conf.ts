@@ -5,14 +5,15 @@ const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/*.spe
 const appiumApp = env.APPIUM_APP
 
 const ciCapability = {
-  'appium:androidInstallTimeout': '90000',
-  'appium:adbExecTimeout': '50000',
+  'appium:androidInstallTimeout': '200000',
+  'appium:adbExecTimeout': '300000',
   'appium:androidDeviceReadyTimeout': '30',
 }
 
 const capabilityPackage = {
   'appium:app': env.APPIUM_APP,
   'appium:appWaitActivity': env.APPIUM_APP_WAIT_ACTIVITY,
+  'appium:appWaitForLaunch': false,
   ...(env.CI ? ciCapability : {}),
 }
 

@@ -1,7 +1,7 @@
 import { mkdirSync } from 'fs'
 import { resolve, join } from 'path'
 // @ts-ignore no typing for this package so we ignore it for now
-import video from 'wdio-video-reporter'
+// import video from 'wdio-video-reporter'
 import { env } from './environment/env'
 import FeatureClient from '../tests/pc/helpers/FeatureClient'
 
@@ -131,14 +131,15 @@ export const config: WebdriverIO.Config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     'spec',
-    [
-      video,
-      {
-        saveAllVideos: false, // If true, also saves videos for successful test cases
-        videoSlowdownMultiplier: 4, // Higher to get slower videos, lower for faster videos [Value 1-100]
-        outputDir: videosPath,
-      },
-    ],
+    // Video reporter does not work for now (screen recordings are blank)
+    // [
+    //   video,
+    //   {
+    //     saveAllVideos: false, // If true, also saves videos for successful test cases
+    //     videoSlowdownMultiplier: 4, // Higher to get slower videos, lower for faster videos [Value 1-100]
+    //     outputDir: videosPath,
+    //   },
+    // ],
   ],
   // Options to be passed to Mocha.
   mochaOpts: {
