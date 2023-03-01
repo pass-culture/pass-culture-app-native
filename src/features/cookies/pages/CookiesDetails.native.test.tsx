@@ -14,7 +14,7 @@ describe('<CookiesDetails/>', () => {
           performance: false,
           customization: false,
         }}
-        setSettingsCookiesChoice={() => null}
+        setSettingsCookiesChoice={jest.fn()}
       />
     )
     await flushAllPromisesWithAct()

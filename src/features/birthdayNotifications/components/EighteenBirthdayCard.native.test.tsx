@@ -1,10 +1,9 @@
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
-import waitForExpect from 'wait-for-expect'
 
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
@@ -20,35 +19,32 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<EighteenBirthdayCard />', () => {
-  it('should render eighteen birthday card', async () => {
+  it('should render eighteen birthday card', () => {
     jest.useFakeTimers()
-    const firstTutorial = await renderEighteenBirthdayCard()
+    const firstTutorial = renderEighteenBirthdayCard()
 
     act(() => {
       jest.advanceTimersByTime(2000)
     })
 
     expect(firstTutorial).toMatchSnapshot()
-    jest.useRealTimers()
   })
 
-  it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', async () => {
+  it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', () => {
     const setError = jest.fn()
     const {
       navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
     } = useBeneficiaryValidationNavigation(setError)
 
-    const { getByText } = await renderEighteenBirthdayCard()
+    renderEighteenBirthdayCard()
 
-    fireEvent.press(getByText('Vérifier mon identité'))
+    fireEvent.press(screen.getByText('Vérifier mon identité'))
 
-    await waitForExpect(() => {
-      expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
-    })
+    expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
   })
 })
 
-async function renderEighteenBirthdayCard({ isLoggedIn } = { isLoggedIn: true }) {
+function renderEighteenBirthdayCard({ isLoggedIn } = { isLoggedIn: true }) {
   const ref = { current: { goToNext: jest.fn() } }
   const renderAPI = render(
     <AuthContext.Provider

@@ -1,11 +1,10 @@
 import React from 'react'
 import InAppReview from 'react-native-in-app-review'
-import waitForExpect from 'wait-for-expect'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useShowReview } from 'libs/hooks/useShowReview'
-import { render } from 'tests/utils'
+import { render, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
@@ -80,7 +79,7 @@ describe('useShowReview', () => {
 
     jest.advanceTimersByTime(3000)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockUpdateInformationWhenReviewHasBeenRequested).toHaveBeenCalledTimes(1)
     })
   })
@@ -97,9 +96,7 @@ describe('useShowReview', () => {
 
     jest.advanceTimersByTime(3000)
 
-    await waitForExpect(() => {
-      expect(mockUpdateInformationWhenReviewHasBeenRequested).not.toHaveBeenCalled()
-    })
+    expect(mockUpdateInformationWhenReviewHasBeenRequested).not.toHaveBeenCalled()
   })
 
   describe('FF disableStoreReview', () => {
