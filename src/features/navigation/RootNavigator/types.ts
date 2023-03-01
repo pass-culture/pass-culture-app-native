@@ -50,7 +50,8 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  ThematicHomeHeaderCheatcode: undefined
+  DefaultThematicHomeHeaderCheatcode: undefined
+  HighlightThematicHomeHeaderCheatcode: undefined
   TrustedDevice: undefined
   DynamicSocials: undefined
   // Stepper

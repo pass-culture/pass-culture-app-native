@@ -1,11 +1,11 @@
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
-import { adaptHomepageNatifEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
+import { adaptHomepageEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
 import { homepageNatifEntryFixture } from 'libs/contentful/fixtures/homepageNatifEntry.fixture'
 
-describe('adaptHomepageNatifEntries', () => {
+describe('adaptHomepageEntries', () => {
   it('should adapt a list of HomepageNatifEntries', () => {
     const rawHomepageNatifEntries = [homepageNatifEntryFixture]
-    const adaptedHomepageList = adaptHomepageNatifEntries(rawHomepageNatifEntries)
+    const adaptedHomepageList = adaptHomepageEntries(rawHomepageNatifEntries)
 
     expect(adaptedHomepageList).toStrictEqual([adaptedHomepage])
   })

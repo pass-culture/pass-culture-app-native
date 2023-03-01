@@ -3,8 +3,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
+import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
-import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 
@@ -13,7 +13,7 @@ const Header = ({ thematicHeader }: { thematicHeader?: { title?: string; subtitl
     {
       // TODO(PC-20066): remove transitional home header split
       thematicHeader?.title ? (
-        <ThematicHomeHeader
+        <DefaultThematicHomeHeader
           headerTitle={thematicHeader.title}
           headerSubtitle={thematicHeader.subtitle}
         />
