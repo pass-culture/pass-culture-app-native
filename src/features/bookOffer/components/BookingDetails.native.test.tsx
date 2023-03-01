@@ -289,28 +289,30 @@ describe('<BookingDetails />', () => {
     })
   })
 
-  describe('duo selector', () => {
-    it('should not display the Duo selector when the offer is not duo', () => {
-      mockUseBookingContext.mockReturnValueOnce({
-        bookingState: mockInitialBookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
-
-      const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
-
-      expect(queryByTestId('DuoChoiceSelector')).toBeNull()
+  it('should not display the Duo selector when the offer is not duo', () => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: mockInitialBookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
     })
 
-    it('should not display the Duo selector when the offer is duo but is an event', () => {
-      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+    const { queryByTestId } = renderBookingDetails(mockDigitalStocks)
 
+    expect(queryByTestId('DuoChoiceSelector')).toBeNull()
+  })
+
+  describe('duo selector', () => {
+    beforeEach(() => {
       const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: duoBookingState,
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
+    })
+
+    it('should not display the Duo selector when the offer is duo but is an event', () => {
+      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
         EVENEMENT_PATRIMOINE: { isEvent: true },
