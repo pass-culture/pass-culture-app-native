@@ -7,13 +7,13 @@ import styled from 'styled-components/native'
 import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
-import { HighligthThematicHeader } from 'features/home/types'
+import { HighlightThematicHeader } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type HighligthThematicHeaderProps = Omit<HighligthThematicHeader, 'type'>
+type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
 const DESKTOP_HEADER_HEIGHT = getSpacing(100)
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
