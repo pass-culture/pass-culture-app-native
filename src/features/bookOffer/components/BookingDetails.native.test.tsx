@@ -303,7 +303,10 @@ describe('<BookingDetails />', () => {
 
   describe('duo selector', () => {
     beforeEach(() => {
-      const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
+      const duoBookingState: BookingState = {
+        ...mockInitialBookingState,
+        quantity: 2,
+      }
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: duoBookingState,
         dismissModal: mockDismissModal,
