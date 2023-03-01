@@ -28,6 +28,8 @@ export type HighlightThematicHeader = {
   imageUrl: string
   beginningDate: Date
   endingDate: Date
+  introductionTitle?: string
+  introductionParagraph?: string
 }
 
 export type ThematicHeader = DefaultThematicHeader | HighlightThematicHeader

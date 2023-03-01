@@ -19,6 +19,8 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
       imageUrl: buildImageUrl(thematicHighlightInfo.image.fields.file.url),
       beginningDate: new Date(thematicHighlightInfo.beginningDatetime),
       endingDate: new Date(thematicHighlightInfo.endingDatetime),
+      introductionTitle: thematicHighlightInfo.introductionTitle,
+      introductionParagraph: thematicHighlightInfo.introductionParagraph,
     } as HighlightThematicHeader
   }
 
