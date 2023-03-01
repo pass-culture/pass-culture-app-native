@@ -49,15 +49,4 @@ describe('AccessibilityAtom', () => {
     expect(queryByTestId('invalidTestId')).toBeTruthy()
     expect(queryByTestId('validTestId')).toBeNull()
   })
-  it('uses sideSpace to overgrow textContainer', async () => {
-    const { getByTestId } = render(
-      <AccessibilityAtom
-        rightSpacingValue={10}
-        handicap={HandicapCategory.MENTAL}
-        isAccessible={false}
-      />
-    )
-    const container = getByTestId('accessibilityAtomContainer')
-    expect(container.props.style[0].marginRight).toEqual(10)
-  })
 })

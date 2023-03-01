@@ -9,14 +9,9 @@ import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service
 interface Props {
   handicap: HandicapCategory
   isAccessible: boolean
-  rightSpacingValue?: number
 }
 
-export const AccessibilityAtom: React.FC<Props> = ({
-  handicap,
-  isAccessible,
-  rightSpacingValue = 0,
-}) => {
+export const AccessibilityAtom: React.FC<Props> = ({ handicap, isAccessible }) => {
   const { Icon, wording } = getIconAndWording(handicap)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.standard,
@@ -26,7 +21,6 @@ export const AccessibilityAtom: React.FC<Props> = ({
   return (
     <Container
       accessibilityRole={AccessibilityRole.IMAGE}
-      rightSpacingValue={rightSpacingValue}
       testID="accessibilityAtomContainer"
       accessibilityLabel={`${wording}\u00a0: ${isAccessibleLabel}`}>
       <Frame testID="accessibilityFrame">
@@ -49,9 +43,8 @@ export const AccessibilityAtom: React.FC<Props> = ({
   )
 }
 
-const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValue, theme }) => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
-  marginRight: rightSpacingValue,
   alignItems: theme.isMobileViewport && theme.isTouch ? undefined : 'center',
 }))
 

@@ -32,12 +32,8 @@ const renderAccessibilityAtom = (
   addSpacer: boolean
 ) =>
   !!(disability !== null && disability !== undefined) && (
-    <StyledLi>
-      <AccessibilityAtom
-        handicap={handicap}
-        isAccessible={disability}
-        rightSpacingValue={addSpacer ? getSpacing(3) : 0}
-      />
+    <StyledLi rightSpacingValue={addSpacer ? getSpacing(3) : 0}>
+      <AccessibilityAtom handicap={handicap} isAccessible={disability} />
     </StyledLi>
   )
 
@@ -51,6 +47,7 @@ const StyledUl = styled(Ul)({
   overflow: 'visible',
 })
 
-const StyledLi = styled(Li)({
+const StyledLi = styled(Li)<{ rightSpacingValue: number }>(({ rightSpacingValue }) => ({
   flex: 1,
-})
+  marginRight: rightSpacingValue,
+}))
