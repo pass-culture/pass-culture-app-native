@@ -5,7 +5,7 @@ import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
-import { computeDateRangeDisplay } from 'features/home/components/modules/helpers/computeDateRangeDisplay'
+import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { HighligthThematicHeader } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
