@@ -113,7 +113,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: '.tool-versions'
 
       - uses: futureware-tech/simulator-action@v2
         with:

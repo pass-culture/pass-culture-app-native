@@ -40,7 +40,7 @@ jobs:
       - name: Setup Node.JS
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: ".tool-versions"
 
       # Necessary for the latest service worker test script
       - name: Install dependencies

@@ -34,12 +34,11 @@ For Android, you will need to:
 For iOS, you will need to:
 
 - install `node`
-  - with NVM to have the right version
+  - with asdf to have the right version
 
    ```sh
-   brew install nvm
-   nvm install
-   nvm use
+   brew install asdf
+   asdf install
    ```
 
   - **AND**

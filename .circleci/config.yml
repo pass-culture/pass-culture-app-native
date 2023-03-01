@@ -76,19 +76,37 @@ commands:
             # Set default project
             gcloud --quiet config set project ${GCP_PROJECT}
 
-  install_node_version:
-    description: Install Node version with NVM
+  install_tools_versions:
+    description: "Install Node, Ruby and Yarn version with asdf"
     steps:
       - run:
-          name: Install Node version with NVM
+          name: Install asdf
           command: |
-            set +e
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            source $BASH_ENV
-            nvm install --default
-            nvm use
+            git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+            echo ". \"$HOME/.asdf/asdf.sh\"" > $BASH_ENV
+            source "$HOME/.asdf/asdf.sh"
+            cut -d' ' -f1 .tool-versions|xargs -i asdf plugin add  {}
+
+      - restore_cache:
+          name: Restore `asdf` tools
+          keys:
+            - v3-tools-cache-{{ checksum ".tool-versions" }}-{{ arch }}
+      - run:
+          name: Install asdf plugins
+          command: |
+            asdf install
+            asdf reshim
+      - run:
+          name: Debug
+          command: |
+            node --version
+            yarn --version
+            ruby --version
+
+      - save_cache:
+          key: v3-tools-cache-{{ checksum ".tool-versions" }}-{{ arch }}
+          paths:
+            - "~/.asdf/installs"
 
   install_node_modules:
     description: Install Node Dependencies
@@ -115,7 +133,7 @@ commands:
             - node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
-          command: nvm install 16 && nvm use 16 && yarn install --immutable --cwd server
+          command: yarn install --immutable --cwd server
       - save_cache:
           name: Save Node Modules
           key: node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
@@ -129,7 +147,7 @@ commands:
           name: Restore Tests cache
           keys:
             - jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
-      - run: nvm use 16 && yarn --cwd server test:unit:ci
+      - run: yarn --cwd server test:unit:ci
       - save_cache:
           name: Save Tests cache
           key: jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
@@ -229,30 +247,6 @@ commands:
                 key: jest-cache-web-{{ arch }}-{{ epoch }}
                 paths:
                   - .jest
-
-  install_ruby_version:
-    description: Install ruby version with rvm
-    steps:
-      - run:
-          name: Install ruby version with rvm
-          command: |
-            set -e
-            if ! type gpg &>/dev/null
-            then HOMEBREW_NO_AUTO_UPDATE=1 brew install gpg
-            fi
-            for key in \
-              409B6B1796C275462A1703113804BB82D39DC0E3 \
-              7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
-            ; do \
-                gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key" || \
-                gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
-                gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
-            done
-            curl -sSL https://get.rvm.io | bash -s stable
-            source ~/.rvm/scripts/rvm
-            rvm install "ruby-$(cat .ruby-version)"
-            rvm use "ruby-$(cat .ruby-version)"
-            echo . $(rvm $(cat .ruby-version) do rvm env --path) >> $BASH_ENV
 
   install_ruby_modules:
     description: Install Ruby Dependencies
@@ -354,7 +348,7 @@ commands:
       env:
         type: string
     steps:
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
       - run: |
           NODE_OPTIONS='--max-old-space-size=4096 --openssl-legacy-provider' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:<< parameters.env >>
@@ -432,14 +426,14 @@ commands:
         type: string
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules_proxy
       - gcp-oidc-authenticate
       - run:
           name: Deploy web proxy to <<parameters.env>>
           command: |
             if ./scripts/check_server_diff.sh; then
-              nvm use 16 && yarn --cwd server deploy:<<parameters.env>>
+              yarn --cwd server deploy:<<parameters.env>>
             fi
 
   notify-slack:
@@ -472,7 +466,7 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules_proxy
 
   test-proxy:
@@ -480,14 +474,14 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules_proxy
       - run:
           name: Linter
-          command: nvm use 16 && yarn --cwd server test:lint
+          command: yarn --cwd server test:lint
       - run:
           name: Typescript Type Check
-          command: nvm use 16 && yarn --cwd server test:types
+          command: yarn --cwd server test:types
       - unit_test_proxy
       - sonarcloud-scanner:
           directory: server
@@ -571,9 +565,8 @@ jobs:
     steps:
       - checkout
       - skip_testing_soft_deploy_when_new_tag
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
-      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -599,9 +592,8 @@ jobs:
     resource_class: medium+
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
-      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -634,7 +626,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
       - install_ruby_modules
       - install_cocoapods
@@ -664,7 +656,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
       - install_ruby_modules
       - install_cocoapods
@@ -686,9 +678,8 @@ jobs:
     resource_class: medium+
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
-      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -712,9 +703,8 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
-      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -736,9 +726,8 @@ jobs:
     resource_class: medium+
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
-      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
@@ -765,7 +754,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
       - install_ruby_modules
       - install_cocoapods
@@ -785,9 +774,8 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - install_node_version
+      - install_tools_versions
       - install_node_modules
-      - install_ruby_version
       - install_ruby_modules
       - setup_sentry
       - run:
