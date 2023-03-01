@@ -1,6 +1,6 @@
 import { FlashList } from '@shopify/flash-list'
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { ListHeaderComponent } from 'features/search/components/SearchResults/ListHeaderComponent'
@@ -20,27 +20,31 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
     { nbHits, hits, renderItem, autoScrollEnabled, refreshing, onRefresh, onEndReached, onScroll },
     ref
   ) => {
-    return (
-      <React.Fragment>
-        <FlashList
-          estimatedItemSize={HIT_SIZE}
-          ref={ref}
-          testID="searchResultsFlatlist"
-          data={hits}
-          keyExtractor={keyExtractor}
-          ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}
-          ItemSeparatorComponent={Separator}
-          renderItem={renderItem}
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          onEndReached={autoScrollEnabled ? onEndReached : undefined}
-          scrollEnabled={nbHits > 0}
-          ListEmptyComponent={<NoSearchResult />}
-          onScroll={onScroll}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-        />
-      </React.Fragment>
+    const theme = useTheme()
+
+    return nbHits > 0 ? (
+      <FlashList
+        estimatedItemSize={HIT_SIZE}
+        ref={ref}
+        testID="searchResultsFlatlist"
+        data={hits}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}
+        ItemSeparatorComponent={Separator}
+        renderItem={renderItem}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        onEndReached={autoScrollEnabled ? onEndReached : undefined}
+        scrollEnabled={nbHits > 0}
+        onScroll={onScroll}
+        contentContainerStyle={{ paddingBottom: theme.tabBar.height + getSpacing(10) }}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+      />
+    ) : (
+      <NoSearchResultsWrapper>
+        <NoSearchResult />
+      </NoSearchResultsWrapper>
     )
   }
 )
@@ -52,3 +56,8 @@ const Separator = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
 }))
+
+const NoSearchResultsWrapper = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+})

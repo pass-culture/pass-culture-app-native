@@ -11,6 +11,10 @@ import { getSpacing } from 'ui/theme'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
+const contentContainerStyle = {
+  flex: 1,
+}
+
 export const SearchList: React.FC<SearchListProps> = forwardRef<
   FlatList<SearchHit>,
   SearchListProps
@@ -31,37 +35,36 @@ export const SearchList: React.FC<SearchListProps> = forwardRef<
     ref
   ) => {
     return (
-      <React.Fragment>
-        <FlatList
-          listAs="ul"
-          itemAs="li"
-          ref={ref}
-          testID="searchResultsFlatlist"
-          data={hits}
-          keyExtractor={keyExtractor}
-          ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}
-          ItemSeparatorComponent={Separator}
-          ListFooterComponent={
-            <ListFooterComponent
-              isFetchingNextPage={isFetchingNextPage}
-              hits={hits}
-              nbHits={nbHits}
-              autoScrollEnabled={autoScrollEnabled}
-              onPress={onPress}
-              ref={ref}
-            />
-          }
-          renderItem={renderItem}
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          onEndReached={autoScrollEnabled ? onEndReached : undefined}
-          scrollEnabled={nbHits > 0}
-          ListEmptyComponent={<NoSearchResult />}
-          onScroll={onScroll}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-        />
-      </React.Fragment>
+      <FlatList
+        listAs="ul"
+        itemAs="li"
+        ref={ref}
+        testID="searchResultsFlatlist"
+        data={hits}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}
+        ItemSeparatorComponent={Separator}
+        ListFooterComponent={
+          <ListFooterComponent
+            isFetchingNextPage={isFetchingNextPage}
+            hits={hits}
+            nbHits={nbHits}
+            autoScrollEnabled={autoScrollEnabled}
+            onPress={onPress}
+            ref={ref}
+          />
+        }
+        renderItem={renderItem}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        onEndReached={autoScrollEnabled ? onEndReached : undefined}
+        scrollEnabled={nbHits > 0}
+        ListEmptyComponent={<NoSearchResult />}
+        onScroll={onScroll}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        contentContainerStyle={contentContainerStyle}
+      />
     )
   }
 )
