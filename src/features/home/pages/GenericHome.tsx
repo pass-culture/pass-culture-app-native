@@ -103,11 +103,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
   return (
     <Container>
       {showSkeleton ? (
-        <ScrollView
-          testID="homeScrollView"
-          scrollEventThrottle={400}
-          bounces={false}
-          scrollEnabled={false}>
+        <ScrollView testID="homeScrollView" bounces={false} scrollEnabled={false}>
           {Header}
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
