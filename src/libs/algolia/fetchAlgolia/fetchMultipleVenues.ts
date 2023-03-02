@@ -1,8 +1,7 @@
 import flatten from 'lodash/flatten'
 
 import { LocationType } from 'features/search/enums'
-import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
-import { VenueHit } from 'libs/algolia'
+import { AlgoliaVenue, FiltersArray, VenueHit } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
