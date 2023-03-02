@@ -32,6 +32,8 @@ import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/m
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
+import { BASE_URL } from 'libs/contentful/fetchHomepageNatifContent'
+import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -166,7 +168,10 @@ export const server = setupServer(
         })
       )
     }
-  )
+  ),
+  rest.get(`${BASE_URL}/entries`, async (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
+  })
 )
 
 export function requestPasswordResetSuccess() {

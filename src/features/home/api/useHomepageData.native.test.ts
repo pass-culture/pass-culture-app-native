@@ -1,22 +1,13 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
-import { rest } from 'msw'
 
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { Homepage } from 'features/home/types'
-import { BASE_URL, PARAMS } from 'libs/contentful/fetchHomepageNatifContent'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomepageData } from './useHomepageData'
-
-server.use(
-  rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
-  })
-)
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
