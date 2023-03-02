@@ -40,10 +40,10 @@ mockUseBookingContext.mockReturnValue({
   dismissModal: mockDismissModal,
   dispatch: mockDispatch,
 })
-
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
 }))
+
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => mockBookingStock),
 }))
