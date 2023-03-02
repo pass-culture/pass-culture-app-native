@@ -1,3 +1,5 @@
+import { setImmediate } from 'timers'
+
 // eslint-disable-next-line no-restricted-imports
 import { act, render, RenderOptions } from '@testing-library/react'
 import deepmerge from 'deepmerge'

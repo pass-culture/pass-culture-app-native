@@ -1,3 +1,5 @@
+import { setImmediate } from 'timers'
+
 // eslint-disable-next-line no-restricted-imports
 import { render, waitFor as defaultWaitFor } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
