@@ -1,4 +1,4 @@
-name: Validate dev branch
+name: Initiate workflow
 
 on:
   push:
@@ -18,11 +18,24 @@ jobs:
   yarn-storybook:
     needs: yarn-linter
     uses: ./.github/workflows/dev_on_workflow_storybook.yml
-  sentry-on-deploy:
+  soft-deploy-testing:
     needs: yarn-tester
     if: github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_sentry_on_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
     with:
+      TYPE: "soft"
+      ENV: "testing"
+    secrets:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      ANDROID_APPCENTER_API_TOKEN: ${{ secrets.ANDROID_TESTING_APPCENTER_API_TOKEN }}
+      IOS_APPCENTER_API_TOKEN: ${{ secrets.IOS_TESTING_APPCENTER_API_TOKEN }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+  hard-deploy-testing:
+    needs: yarn-tester
+    if: startsWith(github.ref, 'refs/tags/testing')
+    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    with:
+      TYPE: "hard"
       ENV: "testing"
     secrets:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
