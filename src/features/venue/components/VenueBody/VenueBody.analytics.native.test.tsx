@@ -31,7 +31,7 @@ describe('<VenueBody /> - Analytics', () => {
   const trigger = (component: ReactTestInstance) => {
     act(() => {
       fireEvent.press(component)
-      jest.advanceTimersByTime(300)
+      jest.runAllTimers()
     })
   }
 

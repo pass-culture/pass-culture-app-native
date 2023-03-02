@@ -24,10 +24,11 @@ describe('<EighteenBirthdayCard />', () => {
     const firstTutorial = await renderEighteenBirthdayCard()
 
     act(() => {
-      jest.advanceTimersByTime(2000)
+      jest.runAllTimers()
     })
 
     expect(firstTutorial).toMatchSnapshot()
+    jest.useRealTimers()
   })
 
   it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', () => {

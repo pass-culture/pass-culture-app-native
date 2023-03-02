@@ -33,7 +33,7 @@ describe('<VenueHeader />', () => {
 
     act(() => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
-      jest.advanceTimersByTime(100)
+      jest.runAllTimers()
     })
 
     expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()

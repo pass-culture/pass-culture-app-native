@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {
-  ANIMATION_DURATION,
   PARTIAL_DESCRIPTION_HEIGHT,
   VenuePartialAccordionDescription,
 } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
@@ -47,7 +46,7 @@ describe('VenuePartialAccordionDescription', () => {
 
     act(() => {
       fireEvent.press(getByText('voir plus'))
-      jest.advanceTimersByTime(ANIMATION_DURATION)
+      jest.runAllTimers()
     })
 
     getByText('voir moins')
@@ -66,7 +65,7 @@ describe('VenuePartialAccordionDescription', () => {
 
     act(() => {
       fireEvent.press(getByText('voir plus'))
-      jest.advanceTimersByTime(ANIMATION_DURATION)
+      jest.runAllTimers()
     })
 
     expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${(2 * Math.PI) / 2}rad` })
