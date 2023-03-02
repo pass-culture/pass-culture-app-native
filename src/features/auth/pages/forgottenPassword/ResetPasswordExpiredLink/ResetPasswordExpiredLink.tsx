@@ -16,25 +16,25 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 export function ResetPasswordExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const { email } = props.route.params
   const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
     QueryKeys.RESET_PASSWORD_EXPIRED_LINK,
-    resetPasswordExpiredLink,
+    () => {
+      analytics.logResendEmailResetPasswordExpiredLink()
+      return api.postnativev1requestPasswordReset({ email })
+    },
     {
+      onSuccess: () => {
+        navigate('ResetPasswordEmailSent', { email })
+      },
+      onError: () => {
+        throw new AsyncError('NETWORK_REQUEST_FAILED', resetPasswordEmailQuery)
+      },
       cacheTime: 0,
       enabled: false,
     }
   )
-
-  async function resetPasswordExpiredLink() {
-    try {
-      const { email } = props.route.params
-      analytics.logResendEmailResetPasswordExpiredLink()
-      await api.postnativev1requestPasswordReset({ email })
-      navigate('ResetPasswordEmailSent', { email })
-    } catch (_err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', resetPasswordEmailQuery)
-    }
-  }
 
   const renderResendEmailButton = useCallback(
     () => (
