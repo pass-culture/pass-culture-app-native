@@ -16,10 +16,6 @@ export function PersonalData() {
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
-  const onEmailChange = () => {
-    analytics.logModifyMail()
-  }
-
   return (
     <PageProfileSection title="Informations personnelles">
       {!!user?.isBeneficiary && (
@@ -35,12 +31,6 @@ export function PersonalData() {
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
-        <EditButton
-          navigateTo={{ screen: 'ChangeEmail' }}
-          onPress={onEmailChange}
-          wording="Modifier"
-          accessibilityLabel="Modifier e-mail"
-        />
       </EditContainer>
 
       <StyledSeparator />

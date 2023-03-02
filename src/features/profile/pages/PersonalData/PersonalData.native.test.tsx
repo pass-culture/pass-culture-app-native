@@ -62,21 +62,6 @@ describe('PersonalData', () => {
     })
   })
 
-  it('should redirect to ChangeEmail when clicking on modify email button', async () => {
-    const { getByTestId } = await renderPersonalData({
-      isBeneficiary: false,
-      ...mockedIdentity,
-    } as UserProfileResponse)
-
-    const modifyButton = getByTestId('Modifier e-mail')
-    fireEvent.press(modifyButton)
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('ChangeEmail', undefined)
-      expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
-    })
-  })
-
   it('should redirect to ChangePassword when clicking on modify password button', async () => {
     const { getByTestId } = await renderPersonalData({
       isBeneficiary: false,

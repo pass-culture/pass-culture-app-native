@@ -49,7 +49,6 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
 import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer'
-import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
@@ -289,12 +288,6 @@ export const routes: Route[] = [
     component: ChangePassword,
     path: 'profil/modification-mot-de-passe',
     options: { title: 'Modification du mot de passe' },
-  },
-  {
-    name: 'ChangeEmail',
-    component: ChangeEmail,
-    path: 'profil/modification-email',
-    options: { title: 'Modification de l’e-mail' },
   },
   {
     name: 'ReinitializePassword',
