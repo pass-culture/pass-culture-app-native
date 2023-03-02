@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react'
  *
  * @example
  * const [searchInput, setSearchInput] = useState("")
- * const debouncedSearchInput = useDebounce(searchInput, 500)
+ * const debouncedSearchInput = useDebounceValue(searchInput, 500)
  * // `debouncedSearchInput` will change once in 500ms
  */
-export function useDebounce<T>(value: T, delay: number) {
+export function useDebounceValue<T>(value: T, delay: number) {
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState<T>(value)
 
