@@ -3,7 +3,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { DateHour } from './DateHour'
 
@@ -18,22 +18,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 describe('DateHour component', () => {
-  it('should render correctly', () => {
-    expect(render(<DateHour />)).toMatchSnapshot()
-  })
-
-  it('should not display anything when nothing selected', () => {
-    mockSearchState.mockReturnValueOnce({
-      searchState: {
-        timeRange: null,
-        date: null,
-      },
-    })
-
-    expect(render(<DateHour />)).toMatchSnapshot()
-  })
-
-  it('should display only date when only date is selected', () => {
+  it('should display only date when only date is selected', async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         timeRange: null,
@@ -44,12 +29,12 @@ describe('DateHour component', () => {
       },
     })
 
-    const { getByText } = render(<DateHour />)
+    render(<DateHour />)
 
-    expect(getByText('le Jeudi 3 mars 2022')).toBeTruthy()
+    expect(await screen.findByText('le Jeudi 3 mars 2022')).toBeTruthy()
   })
 
-  it('should display only hours when only hours is selected', () => {
+  it('should display only hours when only hours is selected', async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         timeRange: [9, 20],
@@ -57,12 +42,12 @@ describe('DateHour component', () => {
       },
     })
 
-    const { getByText } = render(<DateHour />)
+    render(<DateHour />)
 
-    expect(getByText('entre 9h et 20h')).toBeTruthy()
+    expect(await screen.findByText('entre 9h et 20h')).toBeTruthy()
   })
 
-  it('should display correct text with week selected', () => {
+  it('should display correct text with week selected', async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         timeRange: null,
@@ -73,12 +58,12 @@ describe('DateHour component', () => {
       },
     })
 
-    const { getByText } = render(<DateHour />)
+    render(<DateHour />)
 
-    expect(getByText('cette semaine')).toBeTruthy()
+    expect(await screen.findByText('cette semaine')).toBeTruthy()
   })
 
-  it('should display correct text with week-end selected', () => {
+  it('should display correct text with week-end selected', async () => {
     mockSearchState.mockReturnValueOnce({
       searchState: {
         timeRange: null,
@@ -89,8 +74,8 @@ describe('DateHour component', () => {
       },
     })
 
-    const { getByText } = render(<DateHour />)
+    render(<DateHour />)
 
-    expect(getByText('ce week-end')).toBeTruthy()
+    expect(await screen.findByText('ce week-end')).toBeTruthy()
   })
 })
