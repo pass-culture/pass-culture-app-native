@@ -9,6 +9,8 @@ import {
   FavoriteResponse,
   NextSubscriptionStepResponse,
   OfferResponse,
+  PhoneValidationRemainingAttemptsRequest,
+  ProfileOptionsResponse,
   Reason,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
@@ -26,6 +28,7 @@ import {
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
@@ -139,6 +142,30 @@ export const server = setupServer(
           ],
         })
       )
+  ),
+  rest.get<PhoneValidationRemainingAttemptsRequest>(
+    env.API_BASE_URL + '/native/v1/phone_validation/remaining_attempts',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          remainingAttempts: 5,
+          counterResetDatetime: 'time',
+        })
+      )
+    }
+  ),
+  rest.get<ProfileOptionsResponse>(
+    env.API_BASE_URL + '/native/v1/subscription/profile_options',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          activities: SchoolTypesSnap.activities,
+          school_types: SchoolTypesSnap.school_types,
+        })
+      )
+    }
   )
 )
 
