@@ -31,16 +31,18 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-describe('Accessibility', () => {
-  it('should not have basic accessibility issues', async () => {
-    mockV4.mockReturnValueOnce('offerId')
-    const { container } = render(<Offer />)
+describe('<Offer/>', () => {
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      mockV4.mockReturnValueOnce('offerId')
+      const { container } = render(<Offer />)
 
-    let results: Awaited<ReturnType<typeof checkAccessibilityFor>> | undefined
-    await act(async () => {
-      results = await checkAccessibilityFor(container)
+      let results: Awaited<ReturnType<typeof checkAccessibilityFor>> | undefined
+      await act(async () => {
+        results = await checkAccessibilityFor(container)
+      })
+
+      expect(results).toHaveNoViolations()
     })
-
-    expect(results).toHaveNoViolations()
   })
 })
