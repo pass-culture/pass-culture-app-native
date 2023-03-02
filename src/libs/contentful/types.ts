@@ -344,6 +344,8 @@ export type ThematicHighlightInfoFields = {
   image: Image
   beginningDatetime: string
   endingDatetime: string
+  introductionTitle?: string
+  introductionParagraph?: string
 }
 
 export interface CategoryListFields {

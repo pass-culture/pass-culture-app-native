@@ -21,16 +21,18 @@ export type DefaultThematicHeader = {
   subtitle?: string
 }
 
-export type HighligthThematicHeader = {
+export type HighlightThematicHeader = {
   type: ThematicHeaderType.Highlight
   title: string
   subtitle?: string
   imageUrl: string
   beginningDate: Date
   endingDate: Date
+  introductionTitle?: string
+  introductionParagraph?: string
 }
 
-export type ThematicHeader = DefaultThematicHeader | HighligthThematicHeader
+export type ThematicHeader = DefaultThematicHeader | HighlightThematicHeader
 
 export type Homepage = {
   tags: HomepageTag[]

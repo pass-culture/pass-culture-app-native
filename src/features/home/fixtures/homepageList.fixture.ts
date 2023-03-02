@@ -197,6 +197,9 @@ export const homepageList: Homepage[] = [
       subtitle: 'Avec son sous-titre',
       title: 'Temps très fort',
       type: ThematicHeaderType.Highlight,
+      introductionTitle: 'un super titre pour une super introduction',
+      introductionParagraph:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s...Ipsum has been the industry’s standard dummy text ever since the 1500s...',
     },
   },
 ]

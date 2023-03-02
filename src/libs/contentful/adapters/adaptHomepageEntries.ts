@@ -1,6 +1,6 @@
 import {
   DefaultThematicHeader,
-  HighligthThematicHeader,
+  HighlightThematicHeader,
   Homepage,
   ThematicHeaderType,
 } from 'features/home/types'
@@ -19,7 +19,9 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
       imageUrl: buildImageUrl(thematicHighlightInfo.image.fields.file.url),
       beginningDate: new Date(thematicHighlightInfo.beginningDatetime),
       endingDate: new Date(thematicHighlightInfo.endingDatetime),
-    } as HighligthThematicHeader
+      introductionTitle: thematicHighlightInfo.introductionTitle,
+      introductionParagraph: thematicHighlightInfo.introductionParagraph,
+    } as HighlightThematicHeader
   }
 
   return {
