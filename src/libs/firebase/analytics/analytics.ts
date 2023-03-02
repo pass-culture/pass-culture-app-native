@@ -2,6 +2,7 @@ import { Platform } from 'react-native'
 import { Social } from 'react-native-share'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep } from 'features/identityCheck/types'
@@ -61,6 +62,11 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED),
   logCancelBooking: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId }),
+  logCancelBookingFunnel: (step: Step, offerId: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CANCEL_BOOKING_FUNNEL, {
+      step: STEP_LABEL[step],
+      offerId,
+    }),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
   logCategoryBlockClicked: (params: {
