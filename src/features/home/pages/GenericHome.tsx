@@ -12,6 +12,7 @@ import styled from 'styled-components/native'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { HomepageModule } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -63,7 +64,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
   const scrollRef = useRef<FlatList>(null)
   useScrollToTop(scrollRef)
 
-  const onScroll = useCallback(
+  const scrollListener = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (isCloseToBottom({ ...nativeEvent, padding: theme.minScreenHeight * 2 })) {
         if (Platform.OS !== 'web' && maxIndex < modules.length) {
@@ -79,6 +80,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length, modulesToDisplay.length]
   )
+  const { onScroll } = useOnScroll(scrollListener)
 
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
@@ -115,7 +117,6 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
         <FlatList
           ref={scrollRef}
           testID="homeBodyScrollView"
-          scrollEventThrottle={1000}
           onScroll={onScroll}
           data={modulesToDisplay}
           renderItem={renderItem}
