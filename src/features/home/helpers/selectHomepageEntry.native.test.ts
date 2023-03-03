@@ -9,6 +9,8 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage, HomepageTag } from 'features/home/types'
+import * as OnboardingRoleAPI from 'features/onboarding/helpers/useUserRoleFromOnboarding'
+import { UserOnboardingRole } from 'features/onboarding/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -70,6 +72,21 @@ const homeEntry_15_17: Homepage = {
   id: 'homeEntryId_15_17',
 }
 
+const homeEntryOnboardingGeneral: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdOnboardingGeneral',
+}
+
+const homeEntryOnboardingUnderage: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdOnboardingUnderage',
+}
+
+const homeEntryOnboarding_18: Homepage = {
+  ...adaptedHomepage,
+  id: 'homeEntryIdOnboarding_18',
+}
+
 const homepageEntries = [
   homeEntryUnderageMaster,
   homeEntryUnderage,
@@ -84,6 +101,9 @@ const homepageEntries = [
   homeEntryWithoutBooking_15_17,
   homeEntry_18,
   homeEntry_15_17,
+  homeEntryOnboardingGeneral,
+  homeEntryOnboardingUnderage,
+  homeEntryOnboarding_18,
 ]
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider')
@@ -111,6 +131,8 @@ mockUseBookings.mockReturnValue({
 
 jest.mock('shared/user/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
+
+const mockUseUserRoleFromOnboarding = jest.spyOn(OnboardingRoleAPI, 'useUserRoleFromOnboarding')
 
 const defaultRemoteConfig: CustomRemoteConfig = {
   test_param: 'A',
@@ -143,25 +165,30 @@ describe('useSelectHomepageEntry', () => {
 
   describe('remote config entry', () => {
     it.each`
-      isLoggedIn | user                                         | hasBookings | credit                  | expectedHomepage                 | expectedHomepageName
-      ${false}   | ${undefined}                                 | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
-      ${true}    | ${undefined}                                 | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
-      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}         | ${true}     | ${{ isExpired: false }} | ${homeEntry_18}                  | ${'homeEntry_18'}
-      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}         | ${true}     | ${{ isExpired: true }}  | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
-      ${true}    | ${{ eligibility: EligibilityType.underage }} | ${true}     | ${{ isExpired: false }} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
-      ${true}    | ${{ eligibility: EligibilityType.underage }} | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
-      ${true}    | ${{ eligibility: undefined }}                | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      isLoggedIn | user                                         | onboardingRole                     | hasBookings | credit                  | expectedHomepage                 | expectedHomepageName
+      ${false}   | ${undefined}                                 | ${UserOnboardingRole.UNKNOWN}      | ${false}    | ${undefined}            | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
+      ${false}   | ${undefined}                                 | ${UserOnboardingRole.UNDERAGE}     | ${false}    | ${undefined}            | ${homeEntryOnboardingUnderage}   | ${'homeEntryOnboardingUnderage'}
+      ${false}   | ${undefined}                                 | ${UserOnboardingRole.EIGHTEEN}     | ${false}    | ${undefined}            | ${homeEntryOnboarding_18}        | ${'homeEntryOnboarding_18'}
+      ${false}   | ${undefined}                                 | ${UserOnboardingRole.NON_ELIGIBLE} | ${false}    | ${undefined}            | ${homeEntryOnboardingGeneral}    | ${'homeEntryOnboardingGeneral'}
+      ${true}    | ${undefined}                                 | ${UserOnboardingRole.UNKNOWN}      | ${false}    | ${{ isExpired: false }} | ${homeEntryNotConnected}         | ${'homeEntryNotConnected'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}         | ${UserOnboardingRole.EIGHTEEN}     | ${true}     | ${{ isExpired: false }} | ${homeEntry_18}                  | ${'homeEntry_18'}
+      ${true}    | ${{ roles: [UserRole.BENEFICIARY] }}         | ${UserOnboardingRole.EIGHTEEN}     | ${true}     | ${{ isExpired: true }}  | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
+      ${true}    | ${{ eligibility: EligibilityType.underage }} | ${UserOnboardingRole.UNDERAGE}     | ${true}     | ${{ isExpired: false }} | ${homeEntry_15_17}               | ${'homeEntry_15_17'}
+      ${true}    | ${{ eligibility: EligibilityType.underage }} | ${UserOnboardingRole.UNDERAGE}     | ${false}    | ${{ isExpired: false }} | ${homeEntryWithoutBooking_15_17} | ${'homeEntryWithoutBooking_15_17'}
+      ${true}    | ${{ eligibility: undefined }}                | ${UserOnboardingRole.UNKNOWN}      | ${false}    | ${{ isExpired: false }} | ${homeEntryGeneral}              | ${'homeEntryGeneral'}
     `(
-      `should return remote config $expectedHomepageName when isLoggedIn=$isLoggedIn, user=$user, hasBookings=$hasBookings, credit=$credit`,
+      `should return remote config $expectedHomepageName when isLoggedIn=$isLoggedIn, user=$user, onboardingAge=$onboardingAge, hasBookings=$hasBookings, credit=$credit`,
       async ({
         isLoggedIn,
         user,
+        onboardingRole,
         hasBookings,
         credit,
         expectedHomepage,
       }: {
         isLoggedIn: boolean
         user: UserProfileResponse
+        onboardingRole: UserOnboardingRole
         hasBookings: boolean
         credit: Credit
         expectedHomepage: Homepage
@@ -174,6 +201,7 @@ describe('useSelectHomepageEntry', () => {
           refetchUser: jest.fn(),
           isUserLoading: false,
         })
+        mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
         mockUseUserHasBookings.mockReturnValueOnce(hasBookings)
         mockGetAvailableCredit.mockReturnValueOnce(credit)
 

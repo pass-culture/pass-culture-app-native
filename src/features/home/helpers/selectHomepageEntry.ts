@@ -6,6 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { Homepage } from 'features/home/types'
+import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRoleFromOnboarding'
+import { UserOnboardingRole } from 'features/onboarding/types'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -33,9 +35,13 @@ export const useSelectHomepageEntry = (
   const { isLoggedIn, user } = useAuthContext()
   const userHasBookings = useUserHasBookings()
   const { data: userBookings } = useBookings()
+  const onboardingRole = useUserRoleFromOnboarding()
   const {
     homeEntryIdNotConnected,
     homeEntryIdGeneral,
+    homeEntryIdOnboardingGeneral,
+    homeEntryIdOnboardingUnderage,
+    homeEntryIdOnboarding_18,
     homeEntryIdWithoutBooking_18,
     homeEntryIdWithoutBooking_15_17,
     homeEntryId_18,
@@ -63,6 +69,23 @@ export const useSelectHomepageEntry = (
         : firstHomepageEntry
 
       if (!isLoggedIn || !user) {
+        if (onboardingRole === UserOnboardingRole.EIGHTEEN) {
+          return (
+            homepageList.find(({ id }) => id === homeEntryIdOnboarding_18) || defaultHomepageEntry
+          )
+        }
+        if (onboardingRole === UserOnboardingRole.UNDERAGE) {
+          return (
+            homepageList.find(({ id }) => id === homeEntryIdOnboardingUnderage) ||
+            defaultHomepageEntry
+          )
+        }
+        if (onboardingRole === UserOnboardingRole.NON_ELIGIBLE) {
+          return (
+            homepageList.find(({ id }) => id === homeEntryIdOnboardingGeneral) ||
+            defaultHomepageEntry
+          )
+        }
         return homepageList.find(({ id }) => id === homeEntryIdNotConnected) || defaultHomepageEntry
       }
 
@@ -93,11 +116,15 @@ export const useSelectHomepageEntry = (
       homepageEntryId,
       homeEntryIdNotConnected,
       homeEntryIdGeneral,
+      homeEntryIdOnboardingGeneral,
+      homeEntryIdOnboardingUnderage,
+      homeEntryIdOnboarding_18,
       homeEntryIdWithoutBooking_18,
       homeEntryIdWithoutBooking_15_17,
       homeEntryId_18,
       homeEntryId_15_17,
       isLoggedIn,
+      onboardingRole,
       userHasBookings,
       userBookings,
     ]
