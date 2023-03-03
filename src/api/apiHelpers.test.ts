@@ -87,12 +87,11 @@ describe('[api] helpers', () => {
       server.use(
         rest.post<RefreshResponse>(
           `${env.API_BASE_URL}/native/v1/refresh_access_token`,
-          (req, res, ctx) => res(ctx.status(400), ctx.json({}))
+          (_req, res, ctx) => res(ctx.status(400), ctx.json({}))
         )
       )
 
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
-      mockFetch.mockRejectedValueOnce('some error')
 
       const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
 
