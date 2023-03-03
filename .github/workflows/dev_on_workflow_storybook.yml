@@ -1,12 +1,10 @@
-name: Build and deploy storybook to Github Pages
+name: Build, test and deploy storybook to Github Pages (master)
 
 on:
-  push:
-    branches:
-      - master
+  workflow_call:
 
 jobs:
-  build-and-deploy-storybook:
+  yarn_test_storybook:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,13 +17,12 @@ jobs:
         run: yarn install
       - name: Build Storybook 🔧
         run: yarn build-storybook
+      - name: Run axe storybook accessibility tests 🧪
+        run: yarn axe-storybook
       - name: Deploy to GitHub Pages 🚀
+        if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           publish_branch: gh-pages
-      - name: Get Storybook URL 🔗
-        run: echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-      - name: Run axe storybook accessibility tests 🧪
-        run: yarn axe-storybook
