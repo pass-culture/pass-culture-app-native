@@ -398,12 +398,14 @@ export interface HomepageNatifEntry {
   fields: HomepageNatifFields
 }
 
+export type ThematicHeader = ThematicHighlightInfo | ThematicCategoryInfo
+
 interface HomepageNatifFields {
   title: string
   modules: HomepageNatifModule[]
   thematicHeaderTitle?: string
   thematicHeaderSubtitle?: string
-  thematicHeader?: ThematicHighlightInfo
+  thematicHeader?: ThematicHeader
 }
 
 export type HomepageNatifModule =
@@ -477,4 +479,16 @@ export const isCategoryListContentModel = (
   module: HomepageNatifModule
 ): module is CategoryListContentModel => {
   return module.sys.contentType?.sys.id === ContentTypes.CATEGORY_LIST
+}
+
+export const isThematicHighlightInfo = (
+  thematicHeader?: ThematicHeader
+): thematicHeader is ThematicHighlightInfo => {
+  return thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT_INFO
+}
+
+export const isThematicCategoryInfo = (
+  thematicHeader?: ThematicHeader
+): thematicHeader is ThematicCategoryInfo => {
+  return thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
 }
