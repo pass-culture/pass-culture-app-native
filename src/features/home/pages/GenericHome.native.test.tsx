@@ -7,7 +7,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, waitFor } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton')
@@ -46,43 +46,55 @@ describe('GenericHome', () => {
 })
 
 describe('GenericHome page - Analytics', () => {
-  const nativeEventMiddle = {
-    layoutMeasurement: { height: 1000 },
-    contentOffset: { y: 400 }, // how far did we scroll
-    contentSize: { height: 1600 },
+  const scrollEventMiddle = {
+    nativeEvent: {
+      layoutMeasurement: { height: 1000 },
+      contentOffset: { y: 400 }, // how far did we scroll
+      contentSize: { height: 1600 },
+    },
+    persist: jest.fn(),
   }
-  const nativeEventBottom = {
-    layoutMeasurement: { height: 1000 },
-    contentOffset: { y: 900 },
-    contentSize: { height: 1600 },
+  const scrollEventBottom = {
+    nativeEvent: {
+      layoutMeasurement: { height: 1000 },
+      contentOffset: { y: 900 },
+      contentSize: { height: 1600 },
+    },
+    persist: jest.fn(),
   }
 
-  it('should trigger logEvent "AllModulesSeen" when reaching the end', () => {
+  it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     const { getByTestId } = renderGenericHome()
     const scrollView = getByTestId('homeBodyScrollView')
 
-    scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    scrollView.props.onScroll(scrollEventMiddle)
+
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
     expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
-    scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
-    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
-    expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage')
+    scrollView.props.onScroll(scrollEventBottom)
+
+    await waitFor(() => {
+      expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage')
+    })
   })
 
-  it('should trigger logEvent "AllModulesSeen" only once', () => {
+  it('should trigger logEvent "AllModulesSeen" only once', async () => {
     const { getByTestId } = renderGenericHome()
     const scrollView = getByTestId('homeBodyScrollView')
 
     // 1st scroll to bottom => trigger
-    scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
-    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
+    scrollView.props.onScroll(scrollEventBottom)
+    await waitFor(() => {
+      expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
+    })
 
     jest.clearAllMocks()
 
     // 2nd scroll to bottom => NOT trigger
-    scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
-    scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+    scrollView.props.onScroll(scrollEventMiddle)
+    scrollView.props.onScroll(scrollEventBottom)
 
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
   })
