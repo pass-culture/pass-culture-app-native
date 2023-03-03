@@ -15,9 +15,9 @@ jest.mock('features/offer/api/useOffer', () => ({
 describe('<OfferDescription/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await render(<OfferDescription />)
-      const results = await checkAccessibilityFor(container)
+      const { container } = render(<OfferDescription />)
 
+      const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
     })
   })

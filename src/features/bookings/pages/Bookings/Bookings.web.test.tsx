@@ -16,9 +16,9 @@ describe('Bookings', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await renderBookings(bookingsSnap)
-      const results = await checkAccessibilityFor(container)
+      const { container } = renderBookings(bookingsSnap)
 
+      const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
     })
   })
