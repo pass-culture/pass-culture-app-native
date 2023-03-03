@@ -12,6 +12,7 @@ jest.mock('uuid', () => {
     v4: jest.fn(() => value++),
   }
 })
+
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({
     dispatch: jest.fn(),

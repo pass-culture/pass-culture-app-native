@@ -13,9 +13,9 @@ jest.mock('react-query')
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await renderEndedBookings(bookingsSnap)
-      const results = await checkAccessibilityFor(container)
+      const { container } = renderEndedBookings(bookingsSnap)
 
+      const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
     })
   })
