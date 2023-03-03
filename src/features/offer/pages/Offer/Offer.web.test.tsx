@@ -37,12 +37,10 @@ describe('<Offer/>', () => {
       mockV4.mockReturnValueOnce('offerId')
       const { container } = render(<Offer />)
 
-      let results: Awaited<ReturnType<typeof checkAccessibilityFor>> | undefined
       await act(async () => {
-        results = await checkAccessibilityFor(container)
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
       })
-
-      expect(results).toHaveNoViolations()
     })
   })
 })
