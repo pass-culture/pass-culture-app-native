@@ -20,6 +20,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { theme } from 'theme'
+import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -27,6 +28,7 @@ type GenericHomeProps = {
   Header: JSX.Element
   modules: HomepageModule[]
   homeId?: string
+  shouldDisplayScrollToTop?: boolean
 }
 const keyExtractor = (item: HomepageModule) => item.id
 
@@ -48,7 +50,12 @@ const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   )
 }
 
-export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, modules, homeId }) => {
+export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
+  Header,
+  modules,
+  homeId,
+  shouldDisplayScrollToTop,
+}) => {
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
@@ -80,7 +87,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length, modulesToDisplay.length]
   )
-  const { onScroll } = useOnScroll(scrollListener)
+  const { onScroll, scrollButtonTransition } = useOnScroll(scrollListener)
 
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
@@ -128,6 +135,17 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({ Header, module
           onContentSizeChange={onContentSizeChange}
           bounces
         />
+        {shouldDisplayScrollToTop ? (
+          <ScrollToTopContainer>
+            <ScrollToTopButton
+              transition={scrollButtonTransition}
+              onPress={() => {
+                scrollRef.current?.scrollToOffset({ offset: 0 })
+              }}
+            />
+            <Spacer.BottomScreen />
+          </ScrollToTopContainer>
+        ) : null}
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />
     </Container>
@@ -157,3 +175,10 @@ const FooterContainer = styled.View({
   paddingTop: getSpacing(2),
   paddingBottom: getSpacing(10),
 })
+
+const ScrollToTopContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  right: getSpacing(7),
+  bottom: theme.tabBar.height + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
