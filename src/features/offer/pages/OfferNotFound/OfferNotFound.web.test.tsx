@@ -9,11 +9,11 @@ const error = new Error('error')
 describe('<OfferNotFound/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await render(
+      const { container } = render(
         <OfferNotFound resetErrorBoundary={resetErrorBoundary} error={error} />
       )
-      const results = await checkAccessibilityFor(container)
 
+      const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
     })
   })

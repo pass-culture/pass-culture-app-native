@@ -29,10 +29,9 @@ describe('<Venue />', () => {
         .mockReturnValueOnce('withdrawalTermsAccordionID')
         .mockReturnValueOnce('accessibilityAccordionID')
         .mockReturnValueOnce('contactAccordionID')
-      const { container } = await render(<Venue />)
+      const { container } = render(<Venue />)
 
       const results = await checkAccessibilityFor(container)
-
       expect(results).toHaveNoViolations()
     })
   })
