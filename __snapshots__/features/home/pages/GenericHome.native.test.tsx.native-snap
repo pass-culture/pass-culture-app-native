@@ -90,7 +90,7 @@ exports[`GenericHome should render modules when useShowSkeleton is false 1`] = `
       onScrollEndDrag={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
-      scrollEventThrottle={1000}
+      scrollEventThrottle={50}
       stickyHeaderIndices={Array []}
       testID="homeBodyScrollView"
       viewabilityConfigCallbackPairs={Array []}
@@ -164,7 +164,6 @@ exports[`GenericHome should render skeleton when useShowSkeleton is true 1`] = `
   <RCTScrollView
     bounces={false}
     scrollEnabled={false}
-    scrollEventThrottle={400}
     testID="homeScrollView"
   >
     <View>
@@ -4923,7 +4922,7 @@ exports[`GenericHome should render skeleton when useShowSkeleton is true 1`] = `
       onScrollEndDrag={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
-      scrollEventThrottle={1000}
+      scrollEventThrottle={50}
       stickyHeaderIndices={Array []}
       testID="homeBodyScrollView"
       viewabilityConfigCallbackPairs={Array []}

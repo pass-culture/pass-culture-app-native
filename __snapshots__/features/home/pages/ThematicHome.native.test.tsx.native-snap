@@ -95,7 +95,7 @@ exports[`ThematicHome should render correctly 1`] = `
       onScrollEndDrag={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
-      scrollEventThrottle={1000}
+      scrollEventThrottle={50}
       stickyHeaderIndices={Array []}
       testID="homeBodyScrollView"
       viewabilityConfigCallbackPairs={Array []}
@@ -278,6 +278,111 @@ exports[`ThematicHome should render correctly 1`] = `
         </View>
       </View>
     </RCTScrollView>
+    <View
+      style={
+        Array [
+          Object {
+            "bottom": 88,
+            "position": "absolute",
+            "right": 28,
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        collapsable={false}
+        style={
+          Object {
+            "opacity": 0,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en haut"
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "disabled": true,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "overflow": "hidden",
+              "userSelect": "auto",
+            }
+          }
+          testID="Revenir en haut"
+        >
+          <BVLinearGradient
+            colors={
+              Array [
+                4290717535,
+                4284091776,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 0,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              Object {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "overflow": "hidden",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            <View
+              fill="#ffffff"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </BVLinearGradient>
+        </View>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+    </View>
   </View>
   <View
     numberOfSpaces={6}
