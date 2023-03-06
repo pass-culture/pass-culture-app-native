@@ -8,7 +8,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -34,8 +34,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ConsentSettings/>', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const renderAPI = renderConsentSettings()
+
+    await screen.findAllByRole('checkbox')
     expect(renderAPI).toMatchSnapshot()
   })
 

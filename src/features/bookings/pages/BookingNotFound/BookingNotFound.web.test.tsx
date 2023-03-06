@@ -7,7 +7,7 @@ import { BookingNotFound } from './BookingNotFound'
 describe('<BookingNotFound/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = await render(
+      const { container } = render(
         <BookingNotFound error={new Error('error')} resetErrorBoundary={() => null} />
       )
       const results = await checkAccessibilityFor(container)
