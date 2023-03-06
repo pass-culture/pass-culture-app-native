@@ -22,7 +22,7 @@ Default.args = {
   type: RadioSelectorType.DEFAULT,
   label: 'Lorem ipsum dolor sit amet consectetur ac.',
   description: '1 place restante',
-  price: '35',
+  price: `35\u00a0€`,
 }
 Default.storyName = 'RadioSelector Default Mode'
 
@@ -31,7 +31,7 @@ IsActive.args = {
   type: RadioSelectorType.ACTIVE,
   label: 'Lorem ipsum dolor sit amet consectetur ac.',
   description: '1 place restante',
-  price: '35',
+  price: '35\u00a0€',
 }
 IsActive.storyName = 'RadioSelector Active Mode'
 
@@ -40,7 +40,7 @@ IsDisabled.args = {
   type: RadioSelectorType.DISABLED,
   label: 'Lorem ipsum dolor sit amet consectetur ac.',
   description: '1 place restante',
-  price: '35',
+  price: '35\u00a0€',
 }
 IsDisabled.storyName = 'RadioSelector Disabled Mode'
 
@@ -48,7 +48,7 @@ export const WithoutDescription = Template.bind({})
 WithoutDescription.args = {
   type: RadioSelectorType.DEFAULT,
   label: 'Lorem ipsum dolor sit amet consectetur ac.',
-  price: '35',
+  price: '35\u00a0€',
 }
 WithoutDescription.storyName = 'RadioSelector Default Mode without description'
 
