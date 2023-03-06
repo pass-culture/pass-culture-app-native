@@ -4,7 +4,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
+import { THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { HighlightThematicHeader } from 'features/home/types'
@@ -118,7 +118,7 @@ const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, ri
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
-  backgroundColor: colorAlpha(theme.colors.black, HIGHLIGHT_TEXT_BACKGROUND_OPACITY),
+  backgroundColor: colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
 }))
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({

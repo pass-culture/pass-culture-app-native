@@ -3,7 +3,7 @@ import { isBefore } from 'date-fns'
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { HIGHLIGHT_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
+import { THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
@@ -115,7 +115,7 @@ const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, ri
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(4),
   paddingBottom: getSpacing(4),
-  backgroundColor: colorAlpha(theme.colors.black, HIGHLIGHT_TEXT_BACKGROUND_OPACITY),
+  backgroundColor: colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
 }))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
