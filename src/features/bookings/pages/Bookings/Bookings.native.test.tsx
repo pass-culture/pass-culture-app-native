@@ -6,44 +6,49 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
 describe('Bookings', () => {
   afterEach(jest.restoreAllMocks)
 
-  it('should always execute the query (in cache or in network)', () => {
+  it('should always execute the query (in cache or in network)', async () => {
     const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
     renderBookings(bookingsSnap)
-    expect(useBookings).toBeCalledTimes(1)
+
+    await waitFor(() => {
+      expect(useBookings).toBeCalledTimes(1)
+    })
   })
 
   it('should display the right number of ongoing bookings', async () => {
-    const { queryByText } = renderBookings(bookingsSnap)
+    renderBookings(bookingsSnap)
 
-    expect(queryByText('2 réservations en cours')).toBeTruthy()
+    expect(await screen.findByText('2 réservations en cours')).toBeTruthy()
   })
 
   it('should display the empty bookings dedicated view', async () => {
-    const { queryByText } = await renderBookings(emptyBookingsSnap)
-    expect(queryByText('Découvrir le catalogue')).toBeTruthy()
+    renderBookings(emptyBookingsSnap)
+
+    expect(await screen.findByText('Découvrir le catalogue')).toBeTruthy()
   })
 
   it('should display ended bookings CTA with the right number', async () => {
-    const { queryByText } = renderBookings(bookingsSnap)
+    renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(queryByText('1')).toBeTruthy()
-      expect(queryByText('Réservation terminée')).toBeTruthy()
+      expect(screen.queryByText('1')).toBeTruthy()
+      expect(screen.queryByText('Réservation terminée')).toBeTruthy()
     })
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
-    const { getByText } = renderBookings(bookingsSnap)
+    renderBookings(bookingsSnap)
 
-    const cta = getByText('Réservation terminée')
+    const cta = screen.getByText('Réservation terminée')
     fireEvent.press(cta)
+
     await waitFor(() => {
       expect(navigate).toBeCalledWith('EndedBookings', undefined)
     })
