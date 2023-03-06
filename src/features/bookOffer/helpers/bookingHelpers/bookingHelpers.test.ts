@@ -1,11 +1,14 @@
-import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
+import { stock1, stock2 } from 'features/bookOffer/fixtures/stocks'
 import {
   getButtonState,
   getTotalBookingSteps,
   getButtonWording,
   getHourWording,
+  getRadioSelectorPriceState,
+  getPriceWording,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
 
 describe('bookingHelpers', () => {
   describe('getButtonState', () => {
@@ -126,34 +129,6 @@ describe('bookingHelpers', () => {
   })
 
   describe('getTotalBookingsSteps', () => {
-    const stock1: OfferStockResponse = {
-      activationCode: null,
-      beginningDatetime: '2023-04-01T18:00:00Z',
-      bookingLimitDatetime: '2023-04-01T18:00:00Z',
-      cancellationLimitDatetime: '2023-03-08T11:35:34.283195Z',
-      id: 18758,
-      isBookable: true,
-      isExpired: false,
-      isForbiddenToUnderage: false,
-      isSoldOut: false,
-      price: 21000,
-      priceCategoryLabel: 'Tribune présidentielle',
-      remainingQuantity: 200,
-    }
-    const stock2: OfferStockResponse = {
-      activationCode: null,
-      beginningDatetime: '2023-04-01T18:00:00Z',
-      bookingLimitDatetime: '2023-04-01T18:00:00Z',
-      cancellationLimitDatetime: '2023-03-08T11:35:34.283195Z',
-      id: 18757,
-      isBookable: true,
-      isExpired: false,
-      isForbiddenToUnderage: false,
-      isSoldOut: false,
-      price: 22000,
-      priceCategoryLabel: 'Pelouse or',
-      remainingQuantity: 200,
-    }
     it('should return 2 when only one stock not expired and offer is not duo', () => {
       const stocksExpired = [
         { ...stock1, isExpired: true },
@@ -240,5 +215,53 @@ describe('bookingHelpers', () => {
       const hourWording = getHourWording(2000, false, true, false)
       expect(hourWording).toEqual('épuisé')
     })
+  })
+
+  describe('getRadioSelectorPriceState', () => {
+    it('should return active state when it is the selected stock', () => {
+      const radioSelectorState = getRadioSelectorPriceState(stock1, 25000, 18758)
+      expect(radioSelectorState).toEqual(RadioSelectorType.ACTIVE)
+    })
+
+    it('should return disabled state when stock is sold out', () => {
+      const radioSelectorState = getRadioSelectorPriceState(
+        { ...stock1, isSoldOut: true },
+        25000,
+        1
+      )
+      expect(radioSelectorState).toEqual(RadioSelectorType.DISABLED)
+    })
+
+    it('should return disabled state when offer price > user credit', () => {
+      const radioSelectorState = getRadioSelectorPriceState(stock1, 5000, 1)
+      expect(radioSelectorState).toEqual(RadioSelectorType.DISABLED)
+    })
+
+    it('should return default state when stock is not selected, not sold out and price <= user credit', () => {
+      const radioSelectorState = getRadioSelectorPriceState(stock1, 25000, 1)
+      expect(radioSelectorState).toEqual(RadioSelectorType.DEFAULT)
+    })
+  })
+})
+
+describe('getPriceWording', () => {
+  it('should return "Épuisé" when stock is sold out', () => {
+    const priceWording = getPriceWording({ ...stock1, isSoldOut: true }, 25000)
+    expect(priceWording).toEqual('Épuisé')
+  })
+
+  it('should return "Crédit insuffisant" when offer price > user credit', () => {
+    const priceWording = getPriceWording(stock1, 2500)
+    expect(priceWording).toEqual('Crédit insuffisant')
+  })
+
+  it('should return "1 place restante" when stock is 1', () => {
+    const priceWording = getPriceWording({ ...stock1, remainingQuantity: 1 }, 25000)
+    expect(priceWording).toEqual('1 place restante')
+  })
+
+  it('should return "200 places restantes" when stock is 200', () => {
+    const priceWording = getPriceWording(stock1, 25000)
+    expect(priceWording).toEqual('200 places restantes')
   })
 })
