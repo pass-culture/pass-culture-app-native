@@ -46,7 +46,7 @@ const mockData = {
 } as PaginatedFavoritesResponse
 
 describe('FavoritesResults component', () => {
-  it('should show no result message when list is empty', () => {
+  it('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
       data: mockData,
@@ -54,13 +54,13 @@ describe('FavoritesResults component', () => {
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     renderFavoritesResults()
-    const button = screen.getByText('Découvrir le catalogue')
+    const button = await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
     expect(button).toBeTruthy()
     expect(sortByButton).toBeFalsy()
   })
 
-  it('should show favorite placeholder on init', () => {
+  it('should show favorite placeholder on init', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
       data: undefined,
@@ -68,11 +68,11 @@ describe('FavoritesResults component', () => {
     } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     renderFavoritesResults()
-    const container = screen.getByTestId('FavoritesResultsPlaceHolder')
+    const container = await screen.findByTestId('FavoritesResultsPlaceHolder')
     expect(container).toBeTruthy()
   })
 
-  it('should show number of result and sortBy button', () => {
+  it('should show number of result and sortBy button', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
     // eslint-disable-next-line local-rules/independent-mocks
@@ -86,7 +86,9 @@ describe('FavoritesResults component', () => {
       mutate,
     } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
     renderFavoritesResults()
-    const container = screen.getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
+    const container = await screen.findByText(
+      `${paginatedFavoritesResponseSnap.nbFavorites} favoris`
+    )
     expect(container).toBeTruthy()
     const sortByButton = screen.getByText('Trier')
     expect(sortByButton).toBeTruthy()

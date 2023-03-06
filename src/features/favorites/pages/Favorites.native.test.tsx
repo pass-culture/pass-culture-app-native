@@ -28,8 +28,11 @@ describe('<Favorites/>', () => {
     cleanup()
   })
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     renderFavorites({ isLoggedIn: true })
+
+    await screen.findByText('Mes favoris')
+
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
