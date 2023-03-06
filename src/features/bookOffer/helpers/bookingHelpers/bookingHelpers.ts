@@ -1,5 +1,6 @@
 import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
+import { formatToFrenchDecimal } from 'libs/parsers'
 
 export function getButtonState(enablePricesByCategories: boolean, bookingState: BookingState) {
   const { step, stockId, quantity, date, hour } = bookingState
@@ -63,4 +64,16 @@ export function getButtonWording(enablePricesByCategories: boolean, enabled: boo
   }
 
   return 'Choisir les options'
+}
+
+export function getHourWording(
+  price: number,
+  isBookable: boolean,
+  enoughCredit: boolean,
+  hasSeveralPrices?: boolean
+) {
+  if (!enoughCredit) return 'crédit insuffisant'
+  if (hasSeveralPrices && isBookable) return `dès ${formatToFrenchDecimal(price).replace(' ', '')}`
+  if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
+  return 'épuisé'
 }

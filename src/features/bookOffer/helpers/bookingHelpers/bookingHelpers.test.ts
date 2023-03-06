@@ -4,6 +4,7 @@ import {
   getButtonState,
   getTotalBookingSteps,
   getButtonWording,
+  getHourWording,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 
 describe('bookingHelpers', () => {
@@ -216,6 +217,28 @@ describe('bookingHelpers', () => {
         const wordingButton = getButtonWording(true, false, Step.DUO)
         expect(wordingButton).toEqual('Finaliser ma réservation')
       })
+    })
+  })
+
+  describe('getHourWording', () => {
+    it('should return "crédit insuffisant" when user has not enough credit', () => {
+      const hourWording = getHourWording(2000, true, false, true)
+      expect(hourWording).toEqual('crédit insuffisant')
+    })
+
+    it('should return "dès 20\u00a0€" when offer is bookable, its price is 20 and has several prices', () => {
+      const hourWording = getHourWording(2000, true, true, true)
+      expect(hourWording).toEqual('dès 20\u00a0€')
+    })
+
+    it('should return "20\u00a0€" when offer is bookable, its price is 20 and has not several prices', () => {
+      const hourWording = getHourWording(2000, true, true, false)
+      expect(hourWording).toEqual('20\u00a0€')
+    })
+
+    it('should return "épuisé" when offer is not bookable', () => {
+      const hourWording = getHourWording(2000, false, true, false)
+      expect(hourWording).toEqual('épuisé')
     })
   })
 })

@@ -2,15 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ChoiceBloc, getTextColor } from 'features/bookOffer/components/ChoiceBloc'
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { getSpacing, Typo } from 'ui/theme'
-
-const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
-  if (!enoughCredit) return 'crédit insuffisant'
-  if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
-  return 'épuisé'
-}
-
 interface Props {
   hour: string
   price: number
@@ -19,6 +12,7 @@ interface Props {
   testID: string
   isBookable: boolean
   offerCredit: number
+  hasSeveralPrices?: boolean
 }
 
 export const HourChoice: React.FC<Props> = ({
@@ -29,10 +23,11 @@ export const HourChoice: React.FC<Props> = ({
   testID,
   isBookable,
   offerCredit,
+  hasSeveralPrices,
 }) => {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const wording = getWording(price, isBookable, enoughCredit)
+  const wording = getHourWording(price, isBookable, enoughCredit, hasSeveralPrices)
 
   const accessibilityLabel = `${hour} ${wording}`
   return (
