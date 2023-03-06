@@ -10,13 +10,10 @@ concurrency:
 jobs:
   yarn_lint:
     runs-on: [self-hosted, linux, x64]
+    container:
+      image: node:18
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-      - name: Setup yarn
-        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |
@@ -29,13 +26,13 @@ jobs:
 
   yarn_typescript:
     runs-on: [self-hosted, linux, x64]
+    container:
+      image: node:18
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: Setup yarn
-        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |

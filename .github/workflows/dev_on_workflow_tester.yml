@@ -5,6 +5,8 @@ on:
     secrets:
       SONAR_TOKEN:
         required: true
+      SLACK_BOT_TOKEN:
+        required: true
 
 concurrency:
   group: ${{ github.ref }}
@@ -13,15 +15,12 @@ concurrency:
 env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 jobs:
-  yarn_tester_web:
+  yarn_test_web:
     runs-on: [self-hosted, linux, X64]
+    container:
+      image: node:16
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Setup yarn
-        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |
@@ -40,13 +39,10 @@ jobs:
 
   yarn_test_native:
     runs-on: [self-hosted, linux, X64]
+    container:
+      image: node:16
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Setup yarn
-        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |
@@ -71,13 +67,10 @@ jobs:
           projectBaseDir: .
   yarn_test_proxy:
     runs-on: [self-hosted, linux, X64]
+    container:
+      image: node:16
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Setup yarn
-        run: npm install -g yarn
       - uses: actions/cache@v3
         with:
           path: |
@@ -90,9 +83,9 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: .jest/cache
-          key: v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-test-proxy-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-test-proxy-${{ hashFiles('**/yarn.lock') }}
       - run: yarn --cwd server test:unit:ci 
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -101,3 +94,39 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: server
+  slack_notify:
+    runs-on: [self-hosted, linux, X64]
+    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    needs:
+      - yarn_test_native
+      - yarn_test_proxy
+      - yarn_test_web
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v3
+        if: ${{ always() }}
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: "C0309RP8K42"
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Les tests sur master ont échoué :boom:"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

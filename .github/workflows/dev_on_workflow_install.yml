@@ -1,0 +1,32 @@
+name: Install runtime environment and dependencies
+
+on:
+  workflow_call:
+
+jobs:
+  yarn-install:
+    runs-on: [self-hosted, linux, X64]
+    container:
+      image: node:18
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install --immutable
+        if: steps.yarn-modules-cache.outputs.cache-hit != 'true'
+  bundle-install:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install Gem dependencies
+        run: bundle install --path=vendor/bundle

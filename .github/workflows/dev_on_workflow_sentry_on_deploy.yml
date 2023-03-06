@@ -1,0 +1,86 @@
+name: Install runtime environment and dependencies
+
+on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        required: true
+    secrets:
+      SENTRY_AUTH_TOKEN:
+        required: true
+      ANDROID_APPCENTER_API_TOKEN:
+        required: true
+      IOS_APPCENTER_API_TOKEN:
+        required: true
+      SLACK_BOT_TOKEN:
+        required: true
+
+jobs:
+  sentry_and_deploy:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Setup yarn
+        run: npm install -g yarn
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - name: 'Render Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.6
+        with:
+          template: .sentryclirc
+          vars: |
+            token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          #  - name: Deploy android for ${{ inputs.ENV }}
+          #    run: |
+          #      bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
+          #    env:
+          #      ANDROID_APPCENTER_API_TOKEN: ${{ secrets.ANDROID_APPCENTER_API_TOKEN }}
+          #  - name: Deploy ios App for ${{ inputs.ENV }}
+          #    run: |
+          #      bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
+          #    env:
+          #      IOS_APPCENTER_API_TOKEN: ${{ secrets.IOS_APPCENTER_API_TOKEN }}
+      - uses: technote-space/workflow-conclusion-action@v3
+        if: ${{ always() }}
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: "C0309RP8K42"
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le déploiement sur `${{ inputs.ENV }}` a échoué :boom:"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
