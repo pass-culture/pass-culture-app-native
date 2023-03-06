@@ -1,6 +1,24 @@
+import { rest } from 'msw'
+
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
+import { server } from 'tests/server'
 import { act, cleanup } from 'tests/utils'
+
+server.use(
+  rest.get(
+    `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          hits: [],
+        })
+      )
+    }
+  )
+)
 
 describe('<Offer /> - Analytics', () => {
   const nativeEventMiddle = {
@@ -17,7 +35,7 @@ describe('<Offer /> - Analytics', () => {
   afterEach(cleanup)
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
-    const offerPage = await renderOfferPage()
+    const offerPage = renderOfferPage()
     const scrollView = offerPage.getByTestId('offer-container')
 
     await act(async () => {
@@ -33,7 +51,7 @@ describe('<Offer /> - Analytics', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" only once', async () => {
-    const offerPage = await renderOfferPage()
+    const offerPage = renderOfferPage()
     const scrollView = offerPage.getByTestId('offer-container')
     await act(async () => {
       // 1st scroll to bottom => trigger

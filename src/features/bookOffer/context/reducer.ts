@@ -6,10 +6,18 @@ export enum Step {
   CONFIRMATION = 5,
 }
 
+export const STEP_LABEL: Record<Step, string> = {
+  [Step.DATE]: 'Date',
+  [Step.HOUR]: 'Horaire',
+  [Step.DUO]: 'Nombre de places',
+  [Step.PRE_VALIDATION]: 'Pré-validation',
+  [Step.CONFIRMATION]: 'Confirmation',
+}
+
 export type BookingState = {
   offerId: number | undefined
   stockId: number | undefined
-  step: Step | undefined
+  step: Step
   quantity: 1 | 2 | undefined
   date: Date | undefined
 }

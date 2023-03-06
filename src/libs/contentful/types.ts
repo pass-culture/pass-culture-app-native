@@ -344,6 +344,8 @@ export type ThematicHighlightInfoFields = {
   image: Image
   beginningDatetime: string
   endingDatetime: string
+  introductionTitle?: string
+  introductionParagraph?: string
 }
 
 export interface CategoryListFields {
@@ -400,6 +402,7 @@ interface HomepageNatifFields {
   modules: HomepageNatifModule[]
   thematicHeaderTitle?: string
   thematicHeaderSubtitle?: string
+  thematicHeader?: ThematicHighlightInfo
 }
 
 export type HomepageNatifModule =

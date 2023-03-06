@@ -4,27 +4,39 @@ import { setupServer } from 'msw/node'
 import {
   AccountState,
   BookingsResponse,
+  CookieConsentRequest,
   CulturalSurveyRequest,
+  FavoriteResponse,
   NextSubscriptionStepResponse,
   OfferResponse,
+  PhoneValidationRemainingAttemptsRequest,
+  ProfileOptionsResponse,
+  Reason,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
   SendPhoneValidationRequest,
   SettingsResponse,
   SigninRequest,
   SigninResponse,
+  SubcategoriesResponseModelv2,
   UserProfileResponse,
+  UserReportedOffersResponse,
   ValidateEmailRequest,
   ValidateEmailResponse,
   VenueResponse,
 } from 'api/gen'
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
+import { BASE_URL } from 'libs/contentful/fetchHomepageNatifContent'
+import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
   rest.post<SigninRequest, SigninResponse>(
@@ -100,7 +112,66 @@ export const server = setupServer(
           nextSubscriptionStep: null,
         })
       )
-  )
+  ),
+  rest.get<Array<FavoriteResponse>>(
+    `${env.API_BASE_URL}/native/v1/me/favorites`,
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
+  ),
+  rest.get<SubcategoriesResponseModelv2>(
+    env.API_BASE_URL + '/native/v1/subcategories/v2',
+    (_req, res, ctx) =>
+      res(
+        ctx.status(200),
+        ctx.json({
+          ...placeholderData,
+        })
+      )
+  ),
+  rest.post<CookieConsentRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/cookies_consent',
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}))
+    }
+  ),
+  rest.get<UserReportedOffersResponse>(
+    env.API_BASE_URL + '/native/v1/offers/reports',
+    (_req, res, ctx) =>
+      res(
+        ctx.status(200),
+        ctx.json({
+          reportedOffers: [
+            { offerId: 1234, reason: Reason.INAPPROPRIATE, reportedAt: '123456789' },
+          ],
+        })
+      )
+  ),
+  rest.get<PhoneValidationRemainingAttemptsRequest>(
+    env.API_BASE_URL + '/native/v1/phone_validation/remaining_attempts',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          remainingAttempts: 5,
+          counterResetDatetime: 'time',
+        })
+      )
+    }
+  ),
+  rest.get<ProfileOptionsResponse>(
+    env.API_BASE_URL + '/native/v1/subscription/profile_options',
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          activities: SchoolTypesSnap.activities,
+          school_types: SchoolTypesSnap.school_types,
+        })
+      )
+    }
+  ),
+  rest.get(`${BASE_URL}/entries`, async (_req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
+  })
 )
 
 export function requestPasswordResetSuccess() {

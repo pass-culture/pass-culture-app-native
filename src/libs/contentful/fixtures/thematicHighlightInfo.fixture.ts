@@ -75,5 +75,8 @@ export const thematicHighlightInfoFixture: ThematicHighlightInfo = {
     },
     beginningDatetime: '2022-12-22T00:00+01:00',
     endingDatetime: '2023-01-15T00:00+01:00',
+    introductionTitle: 'un super titre pour une super introduction',
+    introductionParagraph:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s...Ipsum has been the industry’s standard dummy text ever since the 1500s...',
   },
 }

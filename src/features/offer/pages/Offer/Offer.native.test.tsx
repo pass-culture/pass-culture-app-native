@@ -19,6 +19,12 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 const useSimilarOffersSpy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementation()
 
+let mockShouldUseAlgoliaRecommend = false
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: () => ({
+    shouldUseAlgoliaRecommend: mockShouldUseAlgoliaRecommend,
+  }),
+}))
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 describe('<Offer />', () => {
@@ -62,7 +68,7 @@ describe('<Offer />', () => {
     })
   })
 
-  it('should log analaytics when display authentication modal', async () => {
+  it('should log analytics when display authentication modal', async () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
@@ -103,24 +109,25 @@ describe('<Offer />', () => {
     it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
       useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
       useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
       fireEvent.scroll(scrollView, nativeEventBottom)
 
       await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(
-          1,
-          undefined,
-          116656,
-          PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-        )
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(
-          2,
-          undefined,
-          116656,
-          PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-        )
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
       })
     })
 
@@ -133,18 +140,18 @@ describe('<Offer />', () => {
       fireEvent.scroll(scrollView, nativeEventBottom)
 
       await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(
-          1,
-          undefined,
-          116656,
-          PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-        )
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(
-          2,
-          undefined,
-          116656,
-          PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-        )
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
       })
     })
 
@@ -161,12 +168,12 @@ describe('<Offer />', () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
 
         await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(
-            1,
-            undefined,
-            116656,
-            PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-          )
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
         })
       })
 
@@ -177,11 +184,12 @@ describe('<Offer />', () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
 
         await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith(
-            undefined,
-            116656,
-            PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-          )
+          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
         })
       })
     })
@@ -199,12 +207,12 @@ describe('<Offer />', () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
 
         await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(
-            1,
-            undefined,
-            116656,
-            PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-          )
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
         })
       })
 
@@ -215,11 +223,12 @@ describe('<Offer />', () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
 
         await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith(
-            undefined,
-            116656,
-            PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-          )
+          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: false,
+          })
         })
       })
     })
@@ -233,18 +242,18 @@ describe('<Offer />', () => {
       fireEvent.scroll(scrollView, nativeEventTop)
 
       await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(
-          1,
-          undefined,
-          116656,
-          PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-        )
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(
-          2,
-          undefined,
-          116656,
-          PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-        )
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
       })
     })
 
@@ -259,18 +268,47 @@ describe('<Offer />', () => {
       fireEvent.scroll(scrollView, nativeEventBottom)
 
       await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(
-          1,
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
           fromOfferId,
           offerId,
-          PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS
-        )
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(
-          2,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
           fromOfferId,
           offerId,
-          PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
-        )
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
+        })
+      })
+    })
+
+    describe('When A/B Testing activated', () => {
+      beforeEach(() => {
+        mockShouldUseAlgoliaRecommend = true
+      })
+      it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        const { getByTestId } = renderOfferPage()
+        const scrollView = getByTestId('offer-container')
+
+        fireEvent.scroll(scrollView, nativeEventBottom)
+
+        await waitFor(() => {
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: true,
+          })
+          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+            fromOfferId: undefined,
+            offerId: 116656,
+            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+            shouldUseAlgoliaRecommend: true,
+          })
+        })
       })
     })
   })

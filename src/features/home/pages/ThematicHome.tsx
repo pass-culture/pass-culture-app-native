@@ -3,18 +3,26 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
-import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
+import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
+import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
+import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 
-const Header = ({ thematicHeader }: { thematicHeader?: { title?: string; subtitle?: string } }) => (
-  <ListHeaderContainer>
-    <ThematicHomeHeader
-      headerTitle={thematicHeader?.title}
-      headerSubtitle={thematicHeader?.subtitle}
-    />
-  </ListHeaderContainer>
-)
+const Header = ({ thematicHeader }: { thematicHeader?: ThematicHeader }) => {
+  if (thematicHeader?.type === ThematicHeaderType.Highlight) {
+    return <HighlightThematicHomeHeader {...thematicHeader} />
+  }
+
+  return (
+    <ListHeaderContainer>
+      <DefaultThematicHomeHeader
+        headerTitle={thematicHeader?.title}
+        headerSubtitle={thematicHeader?.subtitle}
+      />
+    </ListHeaderContainer>
+  )
+}
 
 export const ThematicHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()

@@ -1,8 +1,12 @@
+import { rest } from 'msw'
 import React from 'react'
 import { QueryClient } from 'react-query'
 
+import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, render } from 'tests/utils'
 
 import { OfferPartialDescription } from './OfferPartialDescription'
@@ -23,6 +27,12 @@ const defaultParams: Params = {
   description: defaultDescription,
   setup: defaultSetup,
 }
+
+server.use(
+  rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${offerId}`, (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(offerResponseSnap))
+  )
+)
 
 describe('OfferPartialDescription', () => {
   it('centers CTA when provided description is empty', () => {

@@ -10,14 +10,35 @@ export enum HomepageModuleType {
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
 
+export enum ThematicHeaderType {
+  'Default' = 'Default',
+  'Highlight' = 'Highlight',
+}
+
+export type DefaultThematicHeader = {
+  type: ThematicHeaderType.Default
+  title?: string
+  subtitle?: string
+}
+
+export type HighlightThematicHeader = {
+  type: ThematicHeaderType.Highlight
+  title: string
+  subtitle?: string
+  imageUrl: string
+  beginningDate: Date
+  endingDate: Date
+  introductionTitle?: string
+  introductionParagraph?: string
+}
+
+export type ThematicHeader = DefaultThematicHeader | HighlightThematicHeader
+
 export type Homepage = {
   tags: HomepageTag[]
   id: string
   modules: HomepageModule[]
-  thematicHeader?: {
-    title?: string
-    subtitle?: string
-  }
+  thematicHeader?: ThematicHeader
 }
 
 export type HomepageModule =

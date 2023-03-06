@@ -10,8 +10,8 @@ describe('<CookiesConsent/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = await renderCookiesConsent()
-      const results = await checkAccessibilityFor(container)
 
+      const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
     })
   })

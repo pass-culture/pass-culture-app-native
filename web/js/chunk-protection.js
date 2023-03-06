@@ -43,36 +43,57 @@ function _errorButton(text) {
 let isFirstChunkError = false
 
 window.onerror = function (error, source) {
-  const hasFailedChunk = error === "Uncaught SyntaxError: Unexpected token '<'"
+  const hasFailedChunk =
+    error.indexOf("Unexpected token '<'") !== -1 ||
+    error.indexOf("expected expression, got '<' string") !== -1
   if (
     !isFirstChunkError &&
     hasFailedChunk &&
     source &&
     source.indexOf('chunk') !== -1 &&
-    source.indexOf('passculture') !== -1
+    (source.indexOf('passculture') !== -1 ||
+      source.indexOf('localhost') !== -1 ||
+      source.indexOf('127.0.0.1') !== -1)
   ) {
     if ('serviceWorker' in navigator) {
       const sessionKey = 'retries_passculture_chunks'
       isFirstChunkError = true
 
-      caches.keys().then(function (cacheNames) {
-        const promises = []
-        cacheNames.forEach(function (cacheName) {
-          promises.push(caches.delete(cacheName))
-        })
-        Promise.all(promises).finally(function () {
-          const count = Number(sessionStorage.getItem(sessionKey) || 0) + 1
-          sessionStorage.setItem(sessionKey, count)
-          if (count <= 3) {
-            setTimeout(() => location.reload(), 3000)
-            document.body.append(_errorTitle('Un problème est survenu, rechargement en cours...'))
-          } else {
+      caches
+        .keys()
+        .then(function (cacheNames) {
+          const promises = []
+          cacheNames.forEach(function (cacheName) {
+            promises.push(caches.delete(cacheName))
+          })
+          if (cacheNames.length === 0) {
             document.body.append(_errorTitle('Un problème est survenu, veuillez réessayer.'))
             document.body.append(_errorButton('Recharger'))
-            sessionStorage.removeItem(sessionKey)
+            console.error(new Error('CacheNamesEmpty: this is infra, not a service worker problem'))
+            return
           }
+          Promise.all(promises)
+            .catch(console.error)
+            .finally(function () {
+              const count = Number(sessionStorage.getItem(sessionKey) || 0) + 1
+              sessionStorage.setItem(sessionKey, count)
+              if (count <= 3) {
+                setTimeout(() => location.reload(), 3000)
+                document.body.append(
+                  _errorTitle('Un problème est survenu, rechargement en cours...')
+                )
+              } else {
+                document.body.append(_errorTitle('Un problème est survenu, veuillez réessayer.'))
+                document.body.append(_errorButton('Recharger'))
+                sessionStorage.removeItem(sessionKey)
+              }
+            })
         })
-      })
+        .catch(function (error) {
+          document.body.append(_errorTitle('Un problème est survenu, veuillez réessayer.'))
+          document.body.append(_errorButton('Recharger'))
+          console.error(error)
+        })
     }
   }
 }

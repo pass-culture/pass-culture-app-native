@@ -9,6 +9,9 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { computedTheme } from './computedTheme'
 
+// TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
+export const WAIT_FOR_TIMEOUT_IN_MS = 10_000
+
 export async function flushAllPromises() {
   await flushPromises()
   return new Promise((resolve) => setImmediate(resolve))
@@ -109,7 +112,7 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
 export function waitFor(cb: () => void, opts = {}): Promise<void> {
   // Default timeout was changed in the new version of @testing-library/react-native,
   // but we need the old value for our tests (especially for navigation)
-  return defaultWaitFor(cb, { ...opts, timeout: 4500 })
+  return defaultWaitFor(cb, { ...opts, timeout: WAIT_FOR_TIMEOUT_IN_MS })
 }
 
 // eslint-disable-next-line no-restricted-imports

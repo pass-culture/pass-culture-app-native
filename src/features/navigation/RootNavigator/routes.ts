@@ -33,7 +33,8 @@ import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
-import { ThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeHeaderCheatcode'
+import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
+import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
 import { TrustedDevice } from 'features/internal/cheatcodes/pages/TrustedDevice/TrustedDevice'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
@@ -48,7 +49,6 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
 import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer'
-import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
@@ -290,12 +290,6 @@ export const routes: Route[] = [
     options: { title: 'Modification du mot de passe' },
   },
   {
-    name: 'ChangeEmail',
-    component: ChangeEmail,
-    path: 'profil/modification-email',
-    options: { title: 'Modification de l’e-mail' },
-  },
-  {
     name: 'ReinitializePassword',
     component: ReinitializePassword,
     pathConfig: {
@@ -401,10 +395,16 @@ export const routes: Route[] = [
   },
   {
     // debug route: in navigation component
-    name: 'ThematicHomeHeaderCheatcode',
-    component: ThematicHomeHeaderCheatcode,
+    name: 'DefaultThematicHomeHeaderCheatcode',
+    component: DefaultThematicHomeHeaderCheatcode,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-thematic-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'HighlightThematicHomeHeaderCheatcode',
+    component: HighlightThematicHomeHeaderCheatcode,
+    path: 'cheat-highlight-home-header',
   },
   {
     // debug route: in navigation component

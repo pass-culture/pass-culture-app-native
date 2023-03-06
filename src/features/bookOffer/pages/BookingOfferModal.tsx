@@ -45,7 +45,13 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   }, [visible, offerId])
 
   const shouldAddSpacerBetweenHeaderAndContent =
-    !enablePricesByCategories || (enablePricesByCategories && step && step === Step.CONFIRMATION)
+    !enablePricesByCategories || (enablePricesByCategories && step === Step.CONFIRMATION)
+
+  function onClose() {
+    dismissModal()
+    dispatch({ type: 'RESET' })
+    if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
+  }
 
   return (
     <AppModal
@@ -55,10 +61,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
       {...modalLeftIconProps}
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
-      onRightIconPress={() => {
-        dismissModal()
-        dispatch({ type: 'RESET' })
-      }}
+      onRightIconPress={onClose}
       shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
       {children}
     </AppModal>

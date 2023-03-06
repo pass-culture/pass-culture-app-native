@@ -1,4 +1,3 @@
-import { FeatureCollection, Point } from 'geojson'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -8,9 +7,6 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { amplitude } from 'libs/amplitude'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
-import { Properties } from 'libs/place'
-import { buildPlaceUrl } from 'libs/place/buildUrl'
-import * as fetchAddresses from 'libs/place/fetchAddresses'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -29,16 +25,7 @@ jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () =
   }),
 }))
 
-const QUERY_CITY_CODE = ''
 const QUERY_ADDRESS = '1 rue Poissonnière'
-const QUERY_POSTAL_CODE = ''
-
-const url = buildPlaceUrl({
-  query: QUERY_ADDRESS,
-  cityCode: QUERY_CITY_CODE,
-  postalCode: QUERY_POSTAL_CODE,
-  limit: 10,
-})
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -51,6 +38,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
+server.use(
+  rest.get('https://api-adresse.data.gouv.fr/search', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(mockedSuggestedPlaces))
+  )
+)
+
 describe('<SetAddress/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
@@ -60,30 +53,19 @@ describe('<SetAddress/>', () => {
   })
 
   it('should display a list of addresses when user add an address', async () => {
-    mockAddressesApiCall(mockedSuggestedPlaces)
-    const mockedGetCitiesSpy = jest.spyOn(fetchAddresses, 'fetchAddresses')
-
     const { getByText, getByPlaceholderText } = renderSetAddress()
 
     const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
-      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, {
-        query: QUERY_ADDRESS,
-        postalCode: QUERY_POSTAL_CODE,
-        limit: 10,
-        cityCode: QUERY_CITY_CODE,
-      })
-      getByText(mockedSuggestedPlaces.features[0].properties.label)
-      getByText(mockedSuggestedPlaces.features[1].properties.label)
-      getByText(mockedSuggestedPlaces.features[2].properties.label)
+      expect(getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeTruthy()
+      expect(getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeTruthy()
+      expect(getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeTruthy()
     })
   })
 
   it('should save address and navigate to next screen when clicking on "Continuer"', async () => {
-    mockAddressesApiCall(mockedSuggestedPlaces)
-
     const { getByText, getByPlaceholderText } = renderSetAddress()
 
     const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
@@ -111,8 +93,6 @@ describe('<SetAddress/>', () => {
   })
 
   it('should send a amplitude event set_address_clicked on press Continuer', async () => {
-    mockAddressesApiCall(mockedSuggestedPlaces)
-
     const { getByText, getByPlaceholderText } = renderSetAddress()
 
     const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
@@ -136,8 +116,4 @@ function renderSetAddress() {
       </SettingsWrapper>
     )
   )
-}
-
-function mockAddressesApiCall(response: FeatureCollection<Point, Properties>) {
-  server.use(rest.get(url, (req, res, ctx) => res(ctx.status(200), ctx.json(response))))
 }
