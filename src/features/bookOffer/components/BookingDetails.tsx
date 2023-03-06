@@ -141,18 +141,24 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
         </React.Fragment>
       )}
 
-      <ButtonPrimary
-        disabled={!isStockBookable}
-        wording="Confirmer la réservation"
-        onPress={onPressBookOffer}
-        accessibilityDescribedBy={accessibilityDescribedBy}
-      />
+      <ButtonContainer>
+        <ButtonPrimary
+          disabled={!isStockBookable}
+          wording="Confirmer la réservation"
+          onPress={onPressBookOffer}
+          accessibilityDescribedBy={accessibilityDescribedBy}
+        />
+      </ButtonContainer>
       {!!formattedPriceWithEuro && (
         <Caption nativeID={accessibilityDescribedBy}>{deductedAmount}</Caption>
       )}
     </Container>
   )
 }
+
+const ButtonContainer = styled.View({
+  alignItems: 'center',
+})
 
 const Container = styled.View({ width: '100%' })
 
