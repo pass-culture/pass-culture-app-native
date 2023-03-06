@@ -68,7 +68,7 @@ describe('<Offer />', () => {
     })
   })
 
-  it('should log analaytics when display authentication modal', async () => {
+  it('should log analytics when display authentication modal', async () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

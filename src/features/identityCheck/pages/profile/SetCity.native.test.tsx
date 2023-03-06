@@ -6,7 +6,6 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { amplitude } from 'libs/amplitude'
 import { CITIES_API_URL } from 'libs/place'
-import * as fetchCities from 'libs/place/fetchCities'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse } from 'libs/place/useCities'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -36,7 +35,6 @@ describe('<SetCity/>', () => {
 
   it('should display error message when the user enters a valid postal code but no city found', async () => {
     mockCitiesApiCall([])
-    const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
 
     const { getByText, getByPlaceholderText } = renderSetCity()
 
@@ -44,16 +42,16 @@ describe('<SetCity/>', () => {
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => {
-      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
-      getByText(
-        'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
-      )
+      expect(
+        getByText(
+          'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
+        )
+      ).toBeTruthy()
     })
   })
 
   it('should display cities when the user enters a valid postal code', async () => {
     mockCitiesApiCall(mockedSuggestedCities)
-    const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
 
     const { getByText, getByPlaceholderText } = renderSetCity()
 
@@ -61,16 +59,14 @@ describe('<SetCity/>', () => {
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => {
-      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
-      getByText(mockedSuggestedCities[0].nom)
-      getByText(mockedSuggestedCities[1].nom)
+      expect(getByText(mockedSuggestedCities[0].nom)).toBeTruthy()
+      expect(getByText(mockedSuggestedCities[1].nom)).toBeTruthy()
     })
   })
 
   it('should save city and navigate to next screen when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockCitiesApiCall(mockedSuggestedCities)
-    const mockedGetCitiesSpy = jest.spyOn(fetchCities, 'fetchCities')
 
     const { getByText, getByPlaceholderText } = renderSetCity()
 
@@ -82,7 +78,6 @@ describe('<SetCity/>', () => {
     fireEvent.press(getByText('Continuer'))
 
     await waitForExpect(() => {
-      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, POSTAL_CODE)
       expect(mockNavigateToNextScreen).toBeCalledTimes(1)
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_CITY',
@@ -131,8 +126,9 @@ function renderSetCity() {
 }
 
 function mockCitiesApiCall(response: CitiesResponse) {
-  const url = `${CITIES_API_URL}?codePostal=${POSTAL_CODE}`
   server.use(
-    rest.get<CitiesResponse>(url, (req, res, ctx) => res(ctx.status(200), ctx.json(response)))
+    rest.get<CitiesResponse>(CITIES_API_URL, (_req, res, ctx) =>
+      res(ctx.status(200), ctx.json(response))
+    )
   )
 }

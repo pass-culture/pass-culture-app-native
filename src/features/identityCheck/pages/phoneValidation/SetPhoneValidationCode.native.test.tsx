@@ -1,15 +1,29 @@
+import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
+import { ValidatePhoneNumberRequest } from 'api/gen'
 import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { amplitude } from 'libs/amplitude'
+import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, waitFor } from 'tests/utils'
+
+server.use(
+  rest.post<ValidatePhoneNumberRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/validate_phone_number',
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}))
+    }
+  )
+)
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

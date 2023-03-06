@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
 
-import { FavoriteResponse, OfferResponse } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -40,10 +40,6 @@ function simulateBackend(options: Options = defaultOptions) {
   server.use(
     rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
       res(ctx.status(200), ctx.json(offerResponseSnap))
-    ),
-    rest.get<Array<FavoriteResponse>>(
-      `${env.API_BASE_URL}/native/v1/me/favorites`,
-      (req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
     ),
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
       !hasAddFavoriteError

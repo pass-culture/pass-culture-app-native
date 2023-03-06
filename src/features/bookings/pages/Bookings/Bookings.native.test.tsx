@@ -1,13 +1,12 @@
 import React from 'react'
 import { QueryObserverResult } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
@@ -34,7 +33,7 @@ describe('Bookings', () => {
   it('should display ended bookings CTA with the right number', async () => {
     const { queryByText } = renderBookings(bookingsSnap)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(queryByText('1')).toBeTruthy()
       expect(queryByText('Réservation terminée')).toBeTruthy()
     })
@@ -45,7 +44,7 @@ describe('Bookings', () => {
 
     const cta = getByText('Réservation terminée')
     fireEvent.press(cta)
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toBeCalledWith('EndedBookings', undefined)
     })
   })

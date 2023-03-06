@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { UpdateEmailTokenExpiration } from 'api/gen'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
@@ -24,6 +25,13 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
 }))
+
+server.use(
+  rest.get<UpdateEmailTokenExpiration>(
+    env.API_BASE_URL + '/native/v1/profile/token_expiration',
+    (_req, res, ctx) => res(ctx.status(200), ctx.json({ expiration: '123456789' }))
+  )
+)
 
 describe('<ChangeEmail/>', () => {
   beforeEach(simulateUpdateEmailSuccess)

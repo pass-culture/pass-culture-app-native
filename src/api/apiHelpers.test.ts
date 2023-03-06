@@ -1,10 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { rest } from 'msw'
 
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
+import { server } from 'tests/server'
 
 import {
   ApiError,
@@ -13,8 +15,8 @@ import {
   refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
-} from '../apiHelpers'
-import { Configuration, DefaultApi } from '../gen'
+} from './apiHelpers'
+import { Configuration, DefaultApi, RefreshResponse } from './gen'
 
 const configuration: Configuration = {
   basePath: env.API_BASE_URL,
@@ -65,6 +67,7 @@ describe('[api] helpers', () => {
       })
       expect(response).toEqual(await respondWith('apiResponse'))
     })
+
     it('should call fetch with populated header when route is in NotAuthenticatedCalls', async () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('valid')
       mockFetch.mockResolvedValueOnce(respondWith('apiResponse'))
@@ -81,8 +84,14 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when refresh token fails', async () => {
+      server.use(
+        rest.post<RefreshResponse>(
+          `${env.API_BASE_URL}/native/v1/refresh_access_token`,
+          (_req, res, ctx) => res(ctx.status(400), ctx.json({}))
+        )
+      )
+
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
-      mockFetch.mockRejectedValueOnce('some error')
 
       const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
 

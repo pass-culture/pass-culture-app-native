@@ -4,10 +4,17 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { AccountState, SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
+import {
+  AccountState,
+  FavoriteRequest,
+  SigninRequest,
+  SigninResponse,
+  UserProfileResponse,
+} from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { env } from 'libs/environment'
@@ -33,6 +40,13 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 const mockPostFavorite = jest.fn()
+
+server.use(
+  rest.post<FavoriteRequest, EmptyResponse>(
+    `${env.API_BASE_URL}/native/v1/me/favorites`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
+  )
+)
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -406,10 +420,9 @@ function simulateSigninWrongCredentials() {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
-      async (req, res, ctx) =>
+      async (_req, res, ctx) =>
         res(
           ctx.status(400),
-          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             general: ['Identifiant ou Mot de passe incorrect'],
           })
@@ -422,10 +435,9 @@ function simulateSigninRateLimitExceeded() {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
-      async (req, res, ctx) =>
+      async (_req, res, ctx) =>
         res(
           ctx.status(429),
-          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             general: [
               'Nombre de tentative de connexion dépassé. Veuillez réessayer dans 1 minute.',
@@ -440,10 +452,9 @@ function simulateSigninEmailNotValidated() {
   server.use(
     rest.post<SigninRequest, SigninResponse>(
       env.API_BASE_URL + '/native/v1/signin',
-      async (req, res, ctx) =>
+      async (_req, res, ctx) =>
         res(
           ctx.status(400),
-          // @ts-expect-error: signin response type does not account for "not success" responses
           ctx.json({
             code: 'EMAIL_NOT_VALIDATED',
             general: ['L’email n’a pas été validé.'],

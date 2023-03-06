@@ -6,7 +6,7 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, fireEvent, render, waitFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, waitFor, screen, act } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
 
@@ -17,8 +17,10 @@ describe('Bookings', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderBookings(bookingsSnap)
 
-      const results = await checkAccessibilityFor(container)
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 

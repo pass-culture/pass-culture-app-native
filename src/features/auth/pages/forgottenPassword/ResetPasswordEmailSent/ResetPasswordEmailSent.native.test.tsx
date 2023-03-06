@@ -3,11 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
-import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { flushAllPromisesWithAct, act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -17,12 +16,12 @@ jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {
   it('should match snapshot', async () => {
-    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
+    const renderAPI = renderInitialPage('ResetPasswordEmailSent')
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
-    const { getByLabelText, queryByText } = await renderInitialPage('PreviousScreen')
+    const { getByLabelText, getByText } = renderInitialPage('PreviousScreen')
 
     await act(async () => {
       navigationRef.navigate('ResetPasswordEmailSent', { email: '' })
@@ -30,40 +29,32 @@ describe('<ResetPasswordEmailSent />', () => {
 
     fireEvent.press(getByLabelText('Revenir en arrière'))
 
-    await waitForExpect(() => {
-      expect(queryByText('PreviousScreenText')).toBeTruthy()
-    })
+    expect(getByText('PreviousScreenText')).toBeTruthy()
   })
 
-  it('should NOT display back button when previous screen is ForgottenPassword', async () => {
-    const { queryByTestId } = await renderInitialPage('ForgottenPassword')
+  it('should NOT display back button when previous screen is ForgottenPassword', () => {
+    const { queryByTestId } = renderInitialPage('ForgottenPassword')
 
     const leftIconButton = queryByTestId('Revenir en arrière')
 
-    await waitForExpect(() => {
-      expect(leftIconButton).toBeFalsy()
-    })
+    expect(leftIconButton).toBeFalsy()
   })
 
-  it('should redirect to Home when clicking on Close icon', async () => {
-    const { getByTestId } = await renderInitialPage('ResetPasswordEmailSent')
+  it('should redirect to Home when clicking on Close icon', () => {
+    const { getByTestId } = renderInitialPage('ResetPasswordEmailSent')
 
     fireEvent.press(getByTestId('Revenir à l’accueil'))
 
-    await waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-    })
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should open mail app when clicking on check email button', async () => {
-    const { getByText } = await renderInitialPage('ResetPasswordEmailSent')
+  it('should open mail app when clicking on check email button', () => {
+    const { getByText } = renderInitialPage('ResetPasswordEmailSent')
 
     const checkEmailsButton = getByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
 
-    await waitForExpect(() => {
-      expect(openInbox).toHaveBeenCalledTimes(1)
-    })
+    expect(openInbox).toHaveBeenCalledTimes(1)
   })
 })
 
@@ -82,7 +73,7 @@ const Home = () => <Text>HomeText</Text>
 const PreviousScreen = () => <Text>PreviousScreenText</Text>
 const ForgottenPassword = () => <Text>ForgottenPasswordScreenText</Text>
 
-async function renderInitialPage(initialScreenName: keyof StackParams) {
+function renderInitialPage(initialScreenName: keyof StackParams) {
   const renderAPI = render(
     <NavigationContainer ref={navigationRef}>
       <TestStack.Navigator initialRouteName={initialScreenName}>
@@ -97,6 +88,5 @@ async function renderInitialPage(initialScreenName: keyof StackParams) {
       </TestStack.Navigator>
     </NavigationContainer>
   )
-  await flushAllPromisesWithAct()
   return renderAPI
 }
