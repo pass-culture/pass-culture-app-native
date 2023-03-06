@@ -300,6 +300,7 @@ export interface RecommendationParametersFields {
   isDuo?: boolean
   isRecoShuffled?: boolean
   modelEndpoint?: string
+  bookTypes?: BookTypes
 }
 
 type SubcategoriesFields = {
