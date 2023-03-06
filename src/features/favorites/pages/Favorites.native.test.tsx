@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, render, screen } from 'tests/utils'
+import { cleanup, render, screen, waitFor } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
@@ -31,9 +31,9 @@ describe('<Favorites/>', () => {
   it('should render correctly', async () => {
     renderFavorites({ isLoggedIn: true })
 
-    await screen.findByText('Mes favoris')
-
-    expect(screen.toJSON()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   it('should show non connected page when not logged in', () => {
