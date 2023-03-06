@@ -82,6 +82,7 @@ export const formattedRecommendedOffersModule: RecommendedOffersModule = {
     subcategories: ['Livre', 'Livre numérique, e-book'],
     isDuo: false,
     isRecoShuffled: false,
+    bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
   },
 }
 

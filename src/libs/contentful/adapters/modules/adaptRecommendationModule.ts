@@ -13,14 +13,22 @@ const mapRecommendationCategories = (
   recoCategories: RecommendationParametersFields['recommendationCategories']
 ) => recoCategories?.fields?.categories
 
+const mapBookTypes = (recoCategories: RecommendationParametersFields['bookTypes']) =>
+  recoCategories?.fields?.bookTypes
+
 const buildRecommendationParams = (
   recommendationParams: RecommendationParameters
 ): RecommendedOffersModule['recommendationParameters'] => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { recommendationSubcategories, recommendationCategories, title, ...otherFields } =
-    recommendationParams.fields
+  const {
+    recommendationSubcategories,
+    recommendationCategories,
+    bookTypes,
+    title: _title,
+    ...otherFields
+  } = recommendationParams.fields
   return {
     ...otherFields,
+    bookTypes: mapBookTypes(bookTypes),
     subcategories: mapRecommendationSubcategories(recommendationSubcategories),
     categories: mapRecommendationCategories(recommendationCategories),
   }

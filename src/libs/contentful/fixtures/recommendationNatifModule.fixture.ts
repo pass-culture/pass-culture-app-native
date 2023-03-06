@@ -1,3 +1,4 @@
+import { bookTypesFixture } from 'libs/contentful/fixtures/bookTypes.fixture'
 import { categoriesFixture } from 'libs/contentful/fixtures/categoriesFixture'
 import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
 import { ContentTypes, RecommendationContentModel } from 'libs/contentful/types'
@@ -115,6 +116,7 @@ export const recommendationNatifModuleFixture: RecommendationContentModel = {
         newestOnly: false,
         isDuo: false,
         isRecoShuffled: false,
+        bookTypes: bookTypesFixture,
       },
     },
   },

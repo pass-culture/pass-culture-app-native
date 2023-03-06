@@ -128,7 +128,7 @@ export type RecommendedOffersModule = {
   recommendationParameters?: RecommendedOffersParameters
 }
 
-type RecommendedOffersParameters = {
+export type RecommendedOffersParameters = {
   categories?: string[]
   beginningDatetime?: string
   endingDatetime?: string
@@ -143,6 +143,7 @@ type RecommendedOffersParameters = {
   isDuo?: boolean
   isRecoShuffled?: boolean
   modelEndpoint?: string
+  bookTypes?: string[]
 }
 
 export type ThematicHighlightModule = {
