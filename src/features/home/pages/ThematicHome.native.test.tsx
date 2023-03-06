@@ -6,7 +6,7 @@ import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
@@ -26,20 +26,21 @@ describe('ThematicHome', () => {
     thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
   })
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const thematicHome = render(reactQueryProviderHOC(<ThematicHome />))
+    await screen.findByText('HeaderTitle')
     expect(thematicHome).toMatchSnapshot()
   })
 
-  it('should render default header when provided', () => {
+  it('should render default header when provided', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByText } = render(reactQueryProviderHOC(<ThematicHome />))
-    expect(getByText('HeaderTitle')).toBeTruthy()
-    expect(getByText('HeaderSubtitle')).toBeTruthy()
+    render(reactQueryProviderHOC(<ThematicHome />))
+    expect(await screen.findByText('HeaderTitle')).toBeTruthy()
+    expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
   })
 
-  it('should show highlight header when provided', () => {
+  it('should show highlight header when provided', async () => {
     mockUseHomepageData.mockReturnValueOnce({
       modules,
       id: 'fakeEntryId',
@@ -55,8 +56,8 @@ describe('ThematicHome', () => {
     })
 
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByText } = render(reactQueryProviderHOC(<ThematicHome />))
-    expect(getByText('Bloc temps fort')).toBeTruthy()
-    expect(getByText('Un sous-titre')).toBeTruthy()
+    render(reactQueryProviderHOC(<ThematicHome />))
+    expect(await screen.findByText('Bloc temps fort')).toBeTruthy()
+    expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
 })
