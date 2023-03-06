@@ -2,6 +2,9 @@ export type CustomRemoteConfig = {
   test_param: string
   homeEntryIdNotConnected: string
   homeEntryIdGeneral: string
+  homeEntryIdOnboardingGeneral: string
+  homeEntryIdOnboardingUnderage: string
+  homeEntryIdOnboarding_18: string
   homeEntryIdWithoutBooking_18: string
   homeEntryIdWithoutBooking_15_17: string
   homeEntryId_18: string

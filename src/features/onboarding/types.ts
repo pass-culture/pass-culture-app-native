@@ -9,6 +9,13 @@ export enum NonEligible {
   OVER_18 = 'over_18',
 }
 
+export enum UserOnboardingRole {
+  UNDERAGE = 'underage',
+  EIGHTEEN = 'eighteen',
+  NON_ELIGIBLE = 'non_eligible',
+  UNKNOWN = 'unknown',
+}
+
 const eligibleAgesList = [15, 16, 17, 18] as const
 type EligibleAgesList = typeof eligibleAgesList
 export type EligibleAges = EligibleAgesList[number]
