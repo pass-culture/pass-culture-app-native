@@ -23,7 +23,7 @@ const modules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
+// jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
