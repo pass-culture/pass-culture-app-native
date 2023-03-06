@@ -11,6 +11,7 @@ const mockBookingState: BookingState = {
   step: Step.DATE,
   quantity: 1,
   date: new Date(2021, 0, 1),
+  hour: undefined,
 }
 
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
