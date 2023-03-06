@@ -29,20 +29,20 @@ describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   useShowSkeletonSpy.mockReturnValue(false)
 
-  it('should render skeleton when useShowSkeleton is true', async () => {
+  it('should display skeleton', async () => {
     useShowSkeletonSpy.mockReturnValueOnce(true)
     const home = renderGenericHome()
     await screen.findByTestId('homeBodyScrollView')
     expect(home).toMatchSnapshot()
   })
 
-  it('should render modules when useShowSkeleton is false', async () => {
+  it('should display real content', async () => {
     const home = renderGenericHome()
     await screen.findByTestId('homeBodyScrollView')
     expect(home).toMatchSnapshot()
   })
 
-  it('should render offline page when not connected', () => {
+  it('should display offline page when not connected', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderGenericHome()
     expect(screen.getByText('Pas de réseau internet')).toBeTruthy()

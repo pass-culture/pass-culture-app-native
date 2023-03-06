@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GenericHome should render modules when useShowSkeleton is false 1`] = `
+exports[`GenericHome should display real content 1`] = `
 <View
   style={
     Array [
@@ -149,7 +149,7 @@ exports[`GenericHome should render modules when useShowSkeleton is false 1`] = `
 </View>
 `;
 
-exports[`GenericHome should render skeleton when useShowSkeleton is true 1`] = `
+exports[`GenericHome should display skeleton 1`] = `
 <View
   style={
     Array [
