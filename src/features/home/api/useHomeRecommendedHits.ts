@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
 import { RecommendedOffersModule } from 'features/home/types'
@@ -25,6 +26,8 @@ export function getRecommendationParameters(
     ...parameters,
     eventDuringNextXDays,
   })
+
+  const offertTypeValue = buildRecommendationOfferTypesList({ bookTypes: parameters.bookTypes })
   return {
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
     end_date: endingDatetime,
@@ -37,6 +40,7 @@ export function getRecommendationParameters(
     ),
     isDuo: parameters.isDuo,
     isRecoShuffled: parameters.isRecoShuffled,
+    offerTypeList: offertTypeValue,
   }
 }
 
