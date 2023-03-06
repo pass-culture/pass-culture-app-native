@@ -33,6 +33,7 @@ export const ThematicHome: FunctionComponent = () => {
       modules={modules}
       homeId={id}
       Header={<Header thematicHeader={thematicHeader} />}
+      shouldDisplayScrollToTop
     />
   )
 }

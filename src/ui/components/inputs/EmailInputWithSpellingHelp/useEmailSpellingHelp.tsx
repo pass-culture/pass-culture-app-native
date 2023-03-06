@@ -1,6 +1,6 @@
 import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 
-import { useDebounce } from 'ui/hooks/useDebounce'
+import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 import { suggestEmail } from './suggestEmail'
 
@@ -15,7 +15,7 @@ type SuggestedEmail = {
 export const SUGGESTION_DELAY_IN_MS = 600
 
 export const useEmailSpellingHelp = ({ email }: Props): SuggestedEmail => {
-  const suggestedEmail = useDebounce(
+  const suggestedEmail = useDebounceValue(
     email ? suggestEmail(email) : undefined,
     SUGGESTION_DELAY_IN_MS
   )

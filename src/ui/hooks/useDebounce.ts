@@ -1,33 +1,28 @@
-import { useEffect, useState } from 'react'
+import debounce from 'lodash/debounce'
+import { useEffect, useMemo, useRef } from 'react'
 
 /**
- * This hook is used to debounce a value, instead of `lodash.debounce` that is used to debounce a method.
+ * This hook is used to debounce, using `lodash.debounce` more safely.
+ * You can use it in a React component, even setting some state (which can be usually tricky).
+ *
+ * Inspired from https://www.developerway.com/posts/debouncing-in-react
  *
  * @example
- * const [searchInput, setSearchInput] = useState("")
- * const debouncedSearchInput = useDebounce(searchInput, 500)
- * // `debouncedSearchInput` will change once in 500ms
+ * const debouncedFunc = useDebounce(func, 500)
+ * debouncedFunc() // debouncedFunc will be called once in 500ms
  */
-export function useDebounce<T>(value: T, delay: number) {
-  // State and setters for debounced value
-  const [debouncedValue, setDebouncedValue] = useState<T>(value)
+export function useDebounce<T, U>(callback: (props: T) => U, delay: number) {
+  const ref = useRef<(props: T) => U>()
 
-  useEffect(
-    () => {
-      // Update debounced value after delay
-      const handler = setTimeout(() => {
-        setDebouncedValue(value)
-      }, delay)
+  useEffect(() => {
+    ref.current = callback
+  }, [callback])
 
-      // Cancel the timeout if value changes (also on delay change or unmount)
-      // This is how we prevent debounced value from updating if value is changed ...
-      // .. within the delay period. Timeout gets cleared and restarted.
-      return () => {
-        clearTimeout(handler)
-      }
-    },
-    [value, delay] // Only re-call effect if value or delay changes
-  )
+  const debouncedCallback = useMemo(() => {
+    const func = (props: T) => ref.current?.(props)
 
-  return debouncedValue
+    return debounce(func, delay)
+  }, [delay])
+
+  return debouncedCallback
 }

@@ -35,7 +35,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
-import { useDebounce } from 'ui/hooks/useDebounce'
+import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -160,7 +160,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   }, [defaultValues, reset])
 
   const watchedSearchPlaceOrVenue = watch('searchPlaceOrVenue')
-  const debouncedSearchPlaceOrVenue = useDebounce(watchedSearchPlaceOrVenue, 500)
+  const debouncedSearchPlaceOrVenue = useDebounceValue(watchedSearchPlaceOrVenue, 500)
   const watchedLocationChoice = watch('locationChoice')
   useSetFocusWithCondition(
     watchedLocationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE,
