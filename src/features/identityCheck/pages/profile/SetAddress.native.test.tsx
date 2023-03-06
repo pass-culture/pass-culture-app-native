@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -10,7 +9,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDispatch = jest.fn()
@@ -47,41 +46,42 @@ server.use(
 describe('<SetAddress/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly', () => {
-    const renderAPI = renderSetAddress()
-    expect(renderAPI).toMatchSnapshot()
+  it('should render correctly', async () => {
+    renderSetAddress()
+
+    await waitFor(() => {
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   it('should display a list of addresses when user add an address', async () => {
-    const { getByText, getByPlaceholderText } = renderSetAddress()
+    renderSetAddress()
 
-    const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
-      expect(getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeTruthy()
-      expect(getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeTruthy()
-      expect(getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeTruthy()
+      expect(screen.getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeTruthy()
+      expect(screen.getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeTruthy()
+      expect(screen.getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeTruthy()
     })
   })
 
   it('should save address and navigate to next screen when clicking on "Continuer"', async () => {
-    const { getByText, getByPlaceholderText } = renderSetAddress()
+    renderSetAddress()
 
-    const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await waitFor(() => getByText(mockedSuggestedPlaces.features[1].properties.label))
-    fireEvent.press(getByText(mockedSuggestedPlaces.features[1].properties.label))
-    fireEvent.press(getByText('Continuer'))
+    await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
+    fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
+    fireEvent.press(screen.getByText('Continuer'))
 
-    await waitForExpect(() => {
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_ADDRESS',
-        payload: mockedSuggestedPlaces.features[1].properties.label,
-      })
-      expect(mockNavigateToNextScreen).toBeCalledTimes(1)
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_ADDRESS',
+      payload: mockedSuggestedPlaces.features[1].properties.label,
     })
+    expect(mockNavigateToNextScreen).toBeCalledTimes(1)
   })
 
   it('should send a amplitude event when the screen is mounted', async () => {
@@ -93,12 +93,12 @@ describe('<SetAddress/>', () => {
   })
 
   it('should send a amplitude event set_address_clicked on press Continuer', async () => {
-    const { getByText, getByPlaceholderText } = renderSetAddress()
+    renderSetAddress()
 
-    const input = getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    fireEvent.press(getByText('Continuer'))
+    fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() =>
       // first call will be the event screen_view_set_address on mount
