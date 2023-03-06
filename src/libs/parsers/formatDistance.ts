@@ -1,5 +1,5 @@
 import { Geoloc } from 'libs/algolia'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 
 const EARTH_RADIUS_KM = 6378.137
 
@@ -39,10 +39,7 @@ export const humanizeDistance = (distance: number) => {
   return `${distanceKm > 900 ? '900+' : distanceKm} km`
 }
 
-export const formatDistance = (
-  coords: Geoloc,
-  position: GeoCoordinates | null
-): string | undefined => {
+export const formatDistance = (coords: Geoloc, position: Position): string | undefined => {
   if (!position) return
 
   return getHumanizeRelativeDistance(coords.lat, coords.lng, position.latitude, position.longitude)

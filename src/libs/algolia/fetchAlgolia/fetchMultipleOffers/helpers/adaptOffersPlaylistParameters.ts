@@ -5,12 +5,12 @@ import { SearchState, SearchView } from 'features/search/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { buildOfferGenreTypesValues } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypesValues'
 import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const adaptOffersPlaylistParameters = (
   parameters: OffersModuleParameters,
-  geolocation: GeoCoordinates | null,
+  geolocation: Position,
   subcategoryLabelMapping: SubcategoryLabelMapping,
   genreTypeMapping: GenreTypeMapping
 ): SearchState | undefined => {

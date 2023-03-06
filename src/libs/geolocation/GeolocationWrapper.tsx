@@ -12,9 +12,9 @@ import { getPosition } from './getPosition'
 import { requestGeolocPermission } from './requestGeolocPermission'
 import {
   GeolocationError,
-  GeoCoordinates,
   IGeolocationContext,
   RequestGeolocPermissionParams,
+  Position,
 } from './types'
 
 const GeolocationContext = React.createContext<IGeolocationContext>({
@@ -34,7 +34,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 }: {
   children: JSX.Element
 }) {
-  const [position, setPosition] = useSafeState<GeoCoordinates | null>(null)
+  const [position, setPosition] = useSafeState<Position>(null)
   const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
     GeolocPermissionState.DENIED

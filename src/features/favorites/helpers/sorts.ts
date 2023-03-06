@@ -1,5 +1,5 @@
 import { FavoriteResponse } from 'api/gen'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 
 function getOfferPrice({ offer }: FavoriteResponse): number | null {
@@ -25,7 +25,7 @@ export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
   return b.id - a.id
 }
 
-export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
+export function sortByDistanceAroundMe(position: Position) {
   return (a: FavoriteResponse, b: FavoriteResponse) => {
     if (position === null) return 0
 

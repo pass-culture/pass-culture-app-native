@@ -10,6 +10,8 @@ export type GeoCoordinates = {
   longitude: number
 }
 
+export type Position = GeoCoordinates | null
+
 export type RequestGeolocPermissionParams = {
   onAcceptance?: () => void
   onRefusal?: () => void
@@ -19,7 +21,7 @@ export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type IGeolocationContext = {
-  position: GeoCoordinates | null
+  position: Position
   positionError: GeolocationError | null
   permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>

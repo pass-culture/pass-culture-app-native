@@ -1,5 +1,5 @@
 import { env } from 'libs/environment'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 
 export const getRecommendationEndpoint = ({
   userId,
@@ -7,7 +7,7 @@ export const getRecommendationEndpoint = ({
   modelEndpoint,
 }: {
   userId: number | undefined
-  position: GeoCoordinates | null
+  position: Position
   modelEndpoint: string | undefined
 }): string | undefined => {
   let queryParams = ''

@@ -1,7 +1,7 @@
 import { SearchState } from 'features/search/types'
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
@@ -35,7 +35,7 @@ export const buildOfferSearchParameters = (
     isOnline = undefined,
     minBookingsThreshold = 0,
   }: SearchState & { objectIds?: string[]; excludedObjectIds?: string[] },
-  userLocation: GeoCoordinates | null,
+  userLocation: Position,
   isUserUnderage: boolean
 ) => ({
   ...buildFacetFilters({

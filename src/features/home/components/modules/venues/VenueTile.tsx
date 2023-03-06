@@ -9,7 +9,7 @@ import { VenueDetails } from 'features/home/components/modules/venues/VenueDetai
 import { VenueTypeLocationIcon } from 'features/home/components/VenueTypeLocationIcon'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { formatDistance, mapVenueTypeToIcon } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
@@ -27,7 +27,7 @@ export interface VenueTileProps {
   homeEntryId?: string
   width: number
   height: number
-  userPosition: GeoCoordinates | null
+  userPosition: Position
 }
 
 const mergeVenueData =

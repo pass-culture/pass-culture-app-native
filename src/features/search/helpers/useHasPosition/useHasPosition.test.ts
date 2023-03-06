@@ -4,12 +4,12 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { LocationFilter } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { GeoCoordinates } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -49,7 +49,7 @@ describe('useLocationChoice', () => {
       hasPositionValue,
     }: {
       locationFilter: LocationFilter
-      position: GeoCoordinates | null
+      position: Position
       hasPositionValue: boolean
     }) => {
       mockSearchState = { ...initialSearchState, locationFilter }

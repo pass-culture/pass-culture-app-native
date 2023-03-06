@@ -7,7 +7,7 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
-import { GeoCoordinates } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -23,7 +23,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockPosition: Position = DEFAULT_POSITION
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     position: mockPosition,
