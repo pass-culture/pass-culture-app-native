@@ -130,7 +130,7 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should render correctly when user has selected options and offer is an event', async () => {
+    it('should render correctly when offer is an event', async () => {
       mockBookingStock = {
         price: 2000,
         id: 148409,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BookingDetails /> when user has selected options should render correctly when user has selected options and offer is an event 1`] = `
+exports[`<BookingDetails /> when user has selected options should render correctly when offer is an event 1`] = `
 <View
   style={
     Array [
