@@ -7,7 +7,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor } from 'tests/utils'
+import { render, waitFor, screen } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton')
@@ -23,25 +23,29 @@ const modules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
+
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   useShowSkeletonSpy.mockReturnValue(false)
 
-  it('should render skeleton when useShowSkeleton is true', () => {
+  it('should display skeleton', async () => {
     useShowSkeletonSpy.mockReturnValueOnce(true)
     const home = renderGenericHome()
+    await screen.findByTestId('homeBodyScrollView')
     expect(home).toMatchSnapshot()
   })
 
-  it('should render modules when useShowSkeleton is false', () => {
+  it('should display real content', async () => {
     const home = renderGenericHome()
+    await screen.findByTestId('homeBodyScrollView')
     expect(home).toMatchSnapshot()
   })
 
-  it('should render offline page when not connected', () => {
+  it('should display offline page when not connected', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    const { getByText } = renderGenericHome()
-    expect(getByText('Pas de réseau internet')).toBeTruthy()
+    renderGenericHome()
+    expect(screen.getByText('Pas de réseau internet')).toBeTruthy()
   })
 })
 
@@ -64,8 +68,8 @@ describe('GenericHome page - Analytics', () => {
   }
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
-    const { getByTestId } = renderGenericHome()
-    const scrollView = getByTestId('homeBodyScrollView')
+    renderGenericHome()
+    const scrollView = await screen.findByTestId('homeBodyScrollView')
 
     scrollView.props.onScroll(scrollEventMiddle)
 
@@ -81,8 +85,8 @@ describe('GenericHome page - Analytics', () => {
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', async () => {
-    const { getByTestId } = renderGenericHome()
-    const scrollView = getByTestId('homeBodyScrollView')
+    renderGenericHome()
+    const scrollView = await screen.findByTestId('homeBodyScrollView')
 
     // 1st scroll to bottom => trigger
     scrollView.props.onScroll(scrollEventBottom)
