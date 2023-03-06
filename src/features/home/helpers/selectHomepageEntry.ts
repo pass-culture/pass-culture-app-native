@@ -6,10 +6,13 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings } from 'features/bookings/api'
 import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { Homepage } from 'features/home/types'
+import { useUserRoleFromOnboarding } from 'features/onboarding/helpers/useUserRoleFromOnboarding'
+import { UserOnboardingRole } from 'features/onboarding/types'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (
@@ -33,13 +36,14 @@ export const useSelectHomepageEntry = (
   const { isLoggedIn, user } = useAuthContext()
   const userHasBookings = useUserHasBookings()
   const { data: userBookings } = useBookings()
+  const onboardingRole = useUserRoleFromOnboarding()
   const {
-    homeEntryIdNotConnected,
     homeEntryIdGeneral,
     homeEntryIdWithoutBooking_18,
     homeEntryIdWithoutBooking_15_17,
     homeEntryId_18,
     homeEntryId_15_17,
+    ...onboardingHomeEntryIds
   } = useRemoteConfigContext()
 
   return useCallback(
@@ -63,7 +67,12 @@ export const useSelectHomepageEntry = (
         : firstHomepageEntry
 
       if (!isLoggedIn || !user) {
-        return homepageList.find(({ id }) => id === homeEntryIdNotConnected) || defaultHomepageEntry
+        const onboardingHomeEntryId = getOnboardingHomepageEntryId(
+          onboardingRole,
+          onboardingHomeEntryIds
+        )
+
+        return homepageList.find(({ id }) => id === onboardingHomeEntryId) || defaultHomepageEntry
       }
 
       if (isUserUnderage(user)) {
@@ -89,17 +98,39 @@ export const useSelectHomepageEntry = (
       return homepageList.find(({ id }) => id === homeEntryIdGeneral) || defaultHomepageEntry
     },
     [
-      user,
       homepageEntryId,
-      homeEntryIdNotConnected,
-      homeEntryIdGeneral,
-      homeEntryIdWithoutBooking_18,
-      homeEntryIdWithoutBooking_15_17,
-      homeEntryId_18,
-      homeEntryId_15_17,
       isLoggedIn,
+      user,
+      onboardingRole,
+      onboardingHomeEntryIds,
       userHasBookings,
-      userBookings,
+      homeEntryId_15_17,
+      homeEntryIdWithoutBooking_15_17,
+      userBookings?.hasBookingsAfter18,
+      homeEntryId_18,
+      homeEntryIdWithoutBooking_18,
+      homeEntryIdGeneral,
     ]
   )
+}
+
+const getOnboardingHomepageEntryId = (
+  onboardingRole: UserOnboardingRole,
+  {
+    homeEntryIdNotConnected,
+    homeEntryIdOnboardingGeneral,
+    homeEntryIdOnboardingUnderage,
+    homeEntryIdOnboarding_18,
+  }: Partial<CustomRemoteConfig>
+) => {
+  switch (onboardingRole) {
+    case UserOnboardingRole.EIGHTEEN:
+      return homeEntryIdOnboarding_18
+    case UserOnboardingRole.UNDERAGE:
+      return homeEntryIdOnboardingUnderage
+    case UserOnboardingRole.NON_ELIGIBLE:
+      return homeEntryIdOnboardingGeneral
+    default:
+      return homeEntryIdNotConnected
+  }
 }
