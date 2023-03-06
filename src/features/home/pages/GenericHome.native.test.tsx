@@ -94,7 +94,7 @@ describe('GenericHome page - Analytics', () => {
       expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
     })
 
-    jest.clearAllMocks()
+    jest.clearAllMocks() // pourquoi on a ce truc au milieu du test o_O
 
     // 2nd scroll to bottom => NOT trigger
     scrollView.props.onScroll(scrollEventMiddle)
