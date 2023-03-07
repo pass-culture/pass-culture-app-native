@@ -145,6 +145,7 @@ export type RecommendedOffersParameters = {
   modelEndpoint?: string
   bookTypes?: string[]
   movieGenres?: string[]
+  musicTypes?: string[]
 }
 
 export type ThematicHighlightModule = {
