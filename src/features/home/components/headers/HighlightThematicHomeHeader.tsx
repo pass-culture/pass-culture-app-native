@@ -4,7 +4,10 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
+import {
+  HEADER_BLACK_BACKGROUND_HEIGHT,
+  THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY,
+} from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { HighlightThematicHeader } from 'features/home/types'
@@ -53,7 +56,7 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
           </DateRangeCaptionContainer>
         </View>
         <TextContainer>
-          <ThematicHighlightGradient />
+          <ThematicHighlightGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
             {!!subtitle && (
               <React.Fragment>

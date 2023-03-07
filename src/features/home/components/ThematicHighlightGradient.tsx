@@ -10,4 +10,4 @@ export const ThematicHighlightGradient = styled(LinearGradient).attrs(({ theme }
     colorAlpha(theme.colors.black, 0),
     colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
   ],
-}))({ height: getSpacing(8) })
+}))<{ height?: number }>(({ height }) => ({ height: height ?? getSpacing(8) }))
