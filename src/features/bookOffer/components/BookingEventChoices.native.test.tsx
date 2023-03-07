@@ -153,16 +153,6 @@ describe('<BookingEventChoices />', () => {
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1 })
   })
 
-  it('should not display "Étape 1 sur 3" when offer is duo', () => {
-    render(<BookingEventChoices stocks={[]} offerIsDuo enablePricesByCategories={false} />)
-    expect(screen.queryByText('Étape 1 sur 3')).toBeNull()
-  })
-
-  it('should not display "Étape 1 sur 2" when offer is not duo', () => {
-    render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
-    expect(screen.queryByText('Étape 1 sur 2')).toBeNull()
-  })
-
   describe('when stock id and quantity not selected', () => {
     beforeEach(() => {
       mockUseBooking.mockReturnValue({
@@ -185,7 +175,7 @@ describe('<BookingEventChoices />', () => {
     it('should not change step when the button is disabled', () => {
       render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
       fireEvent.press(screen.getByText('Choisir les options'))
-      expect(mockDispatch).toHaveBeenCalledTimes(0)
+      expect(mockDispatch).not.toHaveBeenCalled()
     })
   })
 
@@ -215,5 +205,8 @@ describe('<BookingEventChoices />', () => {
     })
   })
 
-  describe('when prices by category feature flag activated', () => {})
+  it('should not display button when prices by categories feature flag disabled', () => {
+    render(<BookingEventChoices stocks={[]} enablePricesByCategories />)
+    expect(screen.queryByTestId('modalButtonWithoutEnabledPricesByCategories')).toBeNull()
+  })
 })

@@ -29,26 +29,13 @@ export const BookingEventChoices: React.FC<Props> = ({
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
   const creditForOffer = useCreditForOffer(bookingState.offerId)
-  const { step, quantity, stockId, date } = bookingState
+  const { step, quantity, stockId } = bookingState
 
   const stocksWithCategory = stocks.filter((stock) => stock.priceCategoryLabel)
 
   if (!user) return <React.Fragment />
 
   const validateOptions = () => {
-    if (enablePricesByCategories) {
-      if (step === Step.DATE) {
-        dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
-        return
-      }
-      if (step === Step.HOUR && offerIsDuo) {
-        dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
-        return
-      }
-
-      dispatch({ type: 'VALIDATE_OPTIONS' })
-      return
-    }
     dispatch({ type: 'VALIDATE_OPTIONS' })
   }
 
@@ -57,19 +44,6 @@ export const BookingEventChoices: React.FC<Props> = ({
   }
 
   const getButtonState = () => {
-    if (enablePricesByCategories) {
-      switch (step) {
-        case Step.DATE: {
-          return date !== undefined
-        }
-        case Step.HOUR: {
-          return stockId !== undefined
-        }
-        case Step.DUO: {
-          return quantity !== undefined
-        }
-      }
-    }
     return typeof stockId === 'number' && typeof quantity === 'number'
   }
 
@@ -136,6 +110,7 @@ export const BookingEventChoices: React.FC<Props> = ({
           wording={getButtonWording(enablePricesByCategories, enabled, step)}
           onPress={validateOptions}
           disabled={!enabled}
+          testID="modalButtonWithoutEnabledPricesByCategories"
         />
       )}
     </Container>
