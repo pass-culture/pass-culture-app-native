@@ -1,13 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useCallback } from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  HEADER_BLACK_BACKGROUND_HEIGHT,
-  THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY,
-} from 'features/home/components/constants'
+import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
+import { BackButtonContainer } from 'features/home/components/headers/BackButtonContainer'
+import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { HighlightThematicHeader } from 'features/home/types'
@@ -15,6 +13,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
@@ -37,6 +36,7 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])
+  const { top } = useCustomSafeInsets()
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
@@ -47,14 +47,12 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
       <ImageBackground source={{ uri: imageUrl }}>
         <StatusBar barStyle="light-content" animated />
         <Spacer.TopScreen />
-        <View>
-          <BackButtonContainer>
-            <BackButton onGoBack={onGoBack} />
-          </BackButtonContainer>
-          <DateRangeCaptionContainer>
-            <DateRangeCaption>{dateRange}</DateRangeCaption>
-          </DateRangeCaptionContainer>
-        </View>
+        <BackButtonContainer statusBarHeight={top}>
+          <BackButton onGoBack={onGoBack} />
+        </BackButtonContainer>
+        <DateRangeCaptionContainer statusBarHeight={top}>
+          <DateRangeCaption>{dateRange}</DateRangeCaption>
+        </DateRangeCaptionContainer>
         <TextContainer>
           <ThematicHighlightGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
@@ -93,37 +91,23 @@ const ImageBackground = styled.ImageBackground(({ theme }) => ({
   marginBottom: getSpacing(6),
 }))
 
-const BackButtonContainer = styled.View(({ theme }) => ({
-  position: 'absolute',
-  borderRadius: theme.borderRadius.button,
-  background: theme.colors.white,
-  width: getSpacing(10),
-  top: getSpacing(4),
-  left: getSpacing(4),
-}))
-
-const DateRangeCaptionContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.black,
-  position: 'absolute',
-  top: getSpacing(6),
-  right: getSpacing(6),
-  borderRadius: getSpacing(2),
-  paddingVertical: getSpacing(1),
-  paddingHorizontal: getSpacing(2),
-}))
+const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
+  ({ theme, statusBarHeight }) => ({
+    backgroundColor: theme.colors.black,
+    position: 'absolute',
+    top: statusBarHeight + getSpacing(6),
+    right: getSpacing(6),
+    borderRadius: getSpacing(2),
+    paddingVertical: getSpacing(1),
+    paddingHorizontal: getSpacing(2),
+  })
+)
 
 const DateRangeCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
-
-const BlackBackground = styled.View(({ theme }) => ({
-  paddingHorizontal: getSpacing(6),
-  paddingBottom: getSpacing(4),
-  paddingTop: getSpacing(2),
-  backgroundColor: colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
-}))
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
