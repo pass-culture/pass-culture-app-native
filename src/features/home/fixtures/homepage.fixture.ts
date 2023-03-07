@@ -85,6 +85,7 @@ export const formattedRecommendedOffersModule: RecommendedOffersModule = {
     bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
     movieGenres: ['ACTION', 'BOLLYWOOD'],
     musicTypes: ['Pop', 'Gospel'],
+    showTypes: ['Humour / Café-théâtre', 'Opéra', 'Danse'],
   },
 }
 
