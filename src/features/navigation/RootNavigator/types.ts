@@ -187,6 +187,7 @@ export type RootStackParamList = {
   // cheatcodes
   DefaultThematicHomeHeaderCheatcode: undefined
   HighlightThematicHomeHeaderCheatcode: undefined
+  CategoryThematicHomeHeaderCheatcode: undefined
   ThematicHeaders: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
