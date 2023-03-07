@@ -25,7 +25,4 @@ export interface RecommendedIdsRequest {
   isRecoShuffled?: boolean
   offerTypeList?: Array<OfferTypeValue>
 }
-type OfferTypeValue =
-  | { key: GenreType.BOOK; value: string }
-  | { key: GenreType.MOVIE; value: string }
-  | { key: GenreType.MUSIC; value: string }
+type OfferTypeValue = { key: GenreType; value: string }
