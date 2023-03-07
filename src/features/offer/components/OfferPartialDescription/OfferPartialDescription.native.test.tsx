@@ -1,31 +1,23 @@
 import { rest } from 'msw'
 import React from 'react'
-import { QueryClient } from 'react-query'
 
 import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { OfferPartialDescription } from './OfferPartialDescription'
 
 const defaultDescription =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua: https://google.com'
 const offerId = 123
-type Setup = (queryClient: QueryClient) => void
-const defaultSetup: Setup = (queryClient) => {
-  queryClient.removeQueries()
-  queryClient.setQueryData(['offer', offerId], offerResponseSnap)
-}
 type Params = {
   description?: string
-  setup: Setup
 }
 const defaultParams: Params = {
   description: defaultDescription,
-  setup: defaultSetup,
 }
 
 server.use(
@@ -35,51 +27,77 @@ server.use(
 )
 
 describe('OfferPartialDescription', () => {
-  it('centers CTA when provided description is empty', () => {
-    const { getByTestId } = renderOfferDescription({
+  it('centers CTA when provided description is empty', async () => {
+    renderOfferDescription({
       ...defaultParams,
       description: '',
     })
-    const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
+    const offerSeeMoreContainer = await screen.findByTestId('offerSeeMoreContainer')
     expect(offerSeeMoreContainer.props.style[0].alignSelf).toBe('center')
   })
-  it('places CTA on flex-end when provided a description', () => {
-    const { getByTestId } = renderOfferDescription(defaultParams)
-    const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
+
+  it('places CTA on flex-end when provided a description', async () => {
+    renderOfferDescription(defaultParams)
+    const offerSeeMoreContainer = await screen.findByTestId('offerSeeMoreContainer')
     expect(offerSeeMoreContainer.props.style[0].alignSelf).toBe('flex-end')
   })
-  it('renders externalLinks if http(s) url are present in the description', () => {
-    const { queryByTestId } = renderOfferDescription(defaultParams)
-    expect(queryByTestId('externalSiteIcon')).toBeTruthy()
+
+  it('renders externalLinks if http(s) url are present in the description', async () => {
+    renderOfferDescription(defaultParams)
+    expect(await screen.findByTestId('externalSiteIcon')).toBeTruthy()
   })
-  it("shouldn't render an empty line and a spacer when description is empty", () => {
-    const { queryByTestId } = renderOfferDescription({
+
+  it("shouldn't render an empty line and a spacer when description is empty", async () => {
+    renderOfferDescription({
       ...defaultParams,
       description: undefined,
     })
-    expect(queryByTestId('offerPartialDescriptionBody')).toBeNull()
+    await screen.findByText('Voir plus d’informations')
+    expect(screen.queryByTestId('offerPartialDescriptionBody')).toBeNull()
   })
+
   describe('SeeMore button', () => {
-    const setupWithNoDataInDescriptionPage: Setup = (queryClient) => {
-      queryClient.setQueryData(['offer', offerId], {
-        ...offerResponseSnap,
-        image: {},
-        extraData: {},
-      })
+    const simulateOfferResponseWithNoDataInDescriptionPage = () => {
+      server.use(
+        rest.get<OfferResponse>(
+          `${env.API_BASE_URL}/native/v1/offer/${offerId}`,
+          (req, res, ctx) => {
+            return res.once(
+              ctx.status(200),
+              ctx.json({
+                ...offerResponseSnap,
+                image: {},
+                extraData: {},
+              })
+            )
+          }
+        )
+      )
     }
-    const setupWithImage = (queryClient: QueryClient): void => {
-      queryClient.setQueryData(['offer', offerId], {
-        image: offerResponseSnap.image,
-        extraData: {},
-      })
+    const simulateOfferResponseWithOnlyImageInDescriptionPage = () => {
+      server.use(
+        rest.get<OfferResponse>(
+          `${env.API_BASE_URL}/native/v1/offer/${offerId}`,
+          (req, res, ctx) => {
+            return res.once(
+              ctx.status(200),
+              ctx.json({
+                ...offerResponseSnap,
+                extraData: {},
+              })
+            )
+          }
+        )
+      )
     }
 
-    it('should be rendered when there is some content on the description page', () => {
-      const { queryByTestId } = renderOfferDescription(defaultParams)
-      expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+    it('should be rendered when there is some content on the description page', async () => {
+      renderOfferDescription(defaultParams)
+      expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
     })
+
     describe('should be rendered', () => {
-      it('when the description is ellipsed', () => {
+      it('when the description is ellipsed', async () => {
         const lines = [
           { text: 'Ce n’est pas le besoin d’argent où les ' },
           { text: 'vieillards peuvent appréhender de tomber ' },
@@ -93,46 +111,55 @@ describe('OfferPartialDescription', () => {
           },
         ]
         const description = lines.map(({ text }) => text).join(' ')
-        const { getByTestId, queryByTestId } = renderOfferDescription({
+        simulateOfferResponseWithNoDataInDescriptionPage()
+        renderOfferDescription({
           ...defaultParams,
           description,
-          setup: (queryClient) => {
-            queryClient.setQueryData(['offer', offerId], {
-              image: {},
-              extraData: {},
-            })
-          },
         })
-        const descriptionComponent = getByTestId('offerPartialDescriptionBody')
+        const descriptionComponent = screen.getByTestId('offerPartialDescriptionBody')
 
         act(() => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
-        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
-      it('when there is image on the description page', () => {
-        const { queryByTestId } = renderOfferDescription({
+
+      it('when there is image on the description page', async () => {
+        simulateOfferResponseWithOnlyImageInDescriptionPage()
+        renderOfferDescription({
           ...defaultParams,
           description: undefined,
-          setup: setupWithImage,
         })
-        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
-      it('when there is extraData on the description page', () => {
-        const { queryByTestId } = renderOfferDescription({
+
+      it('when there is extraData on the description page', async () => {
+        server.use(
+          rest.get<OfferResponse>(
+            `${env.API_BASE_URL}/native/v1/offer/${offerId}`,
+            (req, res, ctx) => {
+              return res.once(
+                ctx.status(200),
+                ctx.json({
+                  ...offerResponseSnap,
+                  image: {},
+                  extraData: { author: 'John Lang' },
+                })
+              )
+            }
+          )
+        )
+        renderOfferDescription({
           ...defaultParams,
           description: undefined,
-          setup: (queryClient) => {
-            queryClient.setQueryData(['offer', offerId], {
-              image: {},
-              extraData: { author: 'John Lang' },
-            })
-          },
         })
-        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
-      it('when the description is small enough to be fully readable and there is image on the description page', () => {
+
+      //TODO(PC-16305) unskip this test when upgrading to jest 27
+      // eslint-disable-next-line jest/no-disabled-tests
+      it.skip('when the description is small enough to be fully readable and there is image on the description page', async () => {
         const lines = [
           { text: 'Combattant sans risque, vous devez agir ' },
           { text: 'sans précaution. En effet, pour vous autres ' },
@@ -142,29 +169,33 @@ describe('OfferPartialDescription', () => {
           { text: 'et votre malheur de ne pas gagner.' },
         ]
         const description = lines.map(({ text }) => text).join(' ')
-        const { getByTestId, queryByTestId } = renderOfferDescription({
+        simulateOfferResponseWithOnlyImageInDescriptionPage()
+        renderOfferDescription({
           ...defaultParams,
           description,
-          setup: setupWithImage,
         })
-        const descriptionComponent = getByTestId('offerPartialDescriptionBody')
+        const descriptionComponent = await screen.findByTestId('offerPartialDescriptionBody')
 
         act(() => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
-        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
     })
     describe("shouldn't be rendered", () => {
       it('when there is no content on the description page', () => {
-        const { queryByTestId } = renderOfferDescription({
+        simulateOfferResponseWithNoDataInDescriptionPage()
+        renderOfferDescription({
+          ...defaultParams,
           description: undefined,
-          setup: setupWithNoDataInDescriptionPage,
         })
-        expect(queryByTestId('offerSeeMoreContainer')).toBeNull()
+
+        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
       })
-      it('when the description is small enough to be fully readable', () => {
+
+      it('when the description is small enough to be fully readable', async () => {
+        simulateOfferResponseWithNoDataInDescriptionPage()
         const lines = [
           { text: 'Combattant sans risque, vous devez agir ' },
           { text: 'sans précaution. En effet, pour vous autres ' },
@@ -174,27 +205,25 @@ describe('OfferPartialDescription', () => {
           { text: 'et votre malheur de ne pas gagner.' },
         ]
         const description = lines.map(({ text }) => text).join(' ')
-        const { getByTestId, queryByTestId } = renderOfferDescription({
+        renderOfferDescription({
           ...defaultParams,
           description,
-          setup: setupWithNoDataInDescriptionPage,
         })
-        const descriptionComponent = getByTestId('offerPartialDescriptionBody')
+        const descriptionComponent = await screen.findByTestId('offerPartialDescriptionBody')
 
         act(() => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
-
-        expect(queryByTestId('offerSeeMoreContainer')).toBeNull()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
       })
     })
   })
 })
 
-const renderOfferDescription = ({ description, setup }: Params) => {
+const renderOfferDescription = ({ description }: Params) => {
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<OfferPartialDescription id={offerId} description={description} />, setup)
+    reactQueryProviderHOC(<OfferPartialDescription id={offerId} description={description} />)
   )
   return wrapper
 }

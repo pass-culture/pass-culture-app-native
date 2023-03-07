@@ -1,7 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -11,7 +9,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { beneficiaryUser } from 'fixtures/user'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render } from 'tests/utils'
+import { render } from 'tests/utils'
 
 jest.mock('libs/geolocation')
 
@@ -35,7 +33,7 @@ jest.mock('features/offer/api/useOffer', () => ({
 
 export const offerId = 116656
 
-export async function renderOfferBodyPage(
+export function renderOfferBodyPage(
   extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
   user?: Partial<UserProfileResponse>,
   { isLoggedIn } = { isLoggedIn: true }
@@ -52,7 +50,7 @@ export async function renderOfferBodyPage(
     refetchUser: jest.fn(),
   }))
 
-  const wrapper = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -64,14 +62,6 @@ export async function renderOfferBodyPage(
       </NavigationContainer>
     )
   )
-
-  await superFlushWithAct(25)
-
-  await waitForExpect(() => {
-    expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
-  })
-
-  return wrapper
 }
 
 export function renderOfferPage(

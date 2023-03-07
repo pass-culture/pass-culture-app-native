@@ -1,4 +1,5 @@
 import * as recommendCore from '@algolia/recommend-core'
+import { rest } from 'msw'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
@@ -12,6 +13,7 @@ import {
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 const mockUserId = 1234
@@ -20,6 +22,17 @@ const position = {
   latitude: 6,
   longitude: 22,
 }
+
+server.use(
+  rest.get(`https://recommmendation-endpoint/similar_offers/${mockOfferId}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        hits: [],
+      })
+    )
+  })
+)
 
 const respondWith = async (
   body: unknown,
