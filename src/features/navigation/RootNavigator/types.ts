@@ -50,8 +50,6 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  DefaultThematicHomeHeaderCheatcode: undefined
-  HighlightThematicHomeHeaderCheatcode: undefined
   TrustedDevice: undefined
   DynamicSocials: undefined
   // Stepper
@@ -186,6 +184,10 @@ export type RootStackParamList = {
   DeeplinksGenerator: undefined
   UTMParameters: undefined
   ThematicHome: { homeId: string }
+  // cheatcodes
+  DefaultThematicHomeHeaderCheatcode: undefined
+  HighlightThematicHomeHeaderCheatcode: undefined
+  ThematicHeaders: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   OnboardingRootStackParamList &

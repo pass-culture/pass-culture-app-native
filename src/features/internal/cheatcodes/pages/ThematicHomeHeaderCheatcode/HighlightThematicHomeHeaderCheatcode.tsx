@@ -12,6 +12,10 @@ export const HighlightThematicHomeHeaderCheatcode: FunctionComponent = () => {
         title={'Bloc temps fort'}
         beginningDate={new Date('2022-12-21T23:00:00.000Z')}
         endingDate={new Date('2023-01-14T23:00:00.000Z')}
+        introductionTitle={'Titre ou phrase inspirante qui initie le temps fort'}
+        introductionParagraph={
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...Ipsum has been the industry's standard dummy text ever since the 1500s..."
+        }
       />
     </Container>
   )
