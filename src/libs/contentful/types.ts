@@ -303,6 +303,7 @@ export interface RecommendationParametersFields {
   bookTypes?: BookTypes
   movieGenres?: MovieGenres
   musicTypes?: MusicTypes
+  showTypes?: ShowTypes
 }
 
 type SubcategoriesFields = {
