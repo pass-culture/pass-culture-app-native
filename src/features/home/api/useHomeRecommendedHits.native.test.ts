@@ -85,6 +85,7 @@ describe('getRecommendationParameters', () => {
       bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
       movieGenres: ['ACTION', 'SPY'],
       musicTypes: ['Pop'],
+      showTypes: ['Danse'],
     }
     const recommendationParameters = getRecommendationParameters(
       parameters,
@@ -105,6 +106,7 @@ describe('getRecommendationParameters', () => {
         { key: 'MOVIE', value: 'ACTION' },
         { key: 'MOVIE', value: 'SPY' },
         { key: 'MUSIC', value: 'Pop' },
+        { key: 'SHOW', value: 'Danse' },
       ],
     })
   })

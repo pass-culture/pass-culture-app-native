@@ -6,10 +6,12 @@ export const buildRecommendationOfferTypesList = ({
   bookTypes,
   movieGenres,
   musicTypes,
+  showTypes,
 }: {
   bookTypes: RecommendedOffersParameters['bookTypes']
   movieGenres: RecommendedOffersParameters['movieGenres']
   musicTypes: RecommendedOffersParameters['musicTypes']
+  showTypes: RecommendedOffersParameters['showTypes']
 }): RecommendedIdsRequest['offerTypeList'] => {
   let offerTypesList: RecommendedIdsRequest['offerTypeList'] = []
 
@@ -29,10 +31,17 @@ export const buildRecommendationOfferTypesList = ({
       value: movieGenre,
     })
   )
+  const formattedShowTypes: RecommendedIdsRequest['offerTypeList'] = showTypes?.map(
+    (movieGenre) => ({
+      key: GenreType.SHOW,
+      value: movieGenre,
+    })
+  )
 
   offerTypesList = offerTypesList?.concat(formattedBookTypes ?? [])
   offerTypesList = offerTypesList?.concat(formattedMovieGenres ?? [])
   offerTypesList = offerTypesList?.concat(formattedMusicTypes ?? [])
+  offerTypesList = offerTypesList?.concat(formattedShowTypes ?? [])
 
   return offerTypesList
 }

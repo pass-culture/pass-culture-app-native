@@ -31,6 +31,7 @@ export function getRecommendationParameters(
     bookTypes: parameters.bookTypes,
     movieGenres: parameters.movieGenres,
     musicTypes: parameters.musicTypes,
+    showTypes: parameters.showTypes,
   })
   return {
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),

@@ -5,8 +5,14 @@ describe('buildOfferTypesList', () => {
     const bookTypes = undefined
     const movieGenres = undefined
     const musicTypes = undefined
+    const showTypes = undefined
 
-    const offerTypeList = buildRecommendationOfferTypesList({ bookTypes, movieGenres, musicTypes })
+    const offerTypeList = buildRecommendationOfferTypesList({
+      bookTypes,
+      movieGenres,
+      musicTypes,
+      showTypes,
+    })
 
     const expectedOffertTypeList: typeof offerTypeList = []
     expect(offerTypeList).toEqual(expectedOffertTypeList)
@@ -15,8 +21,14 @@ describe('buildOfferTypesList', () => {
     const bookTypes = ['art', 'cuisine']
     const movieGenres = ['ACTION', 'ART']
     const musicTypes = ['pop', 'Gospel']
+    const showTypes = ['Danse', 'Cirque']
 
-    const offerTypeList = buildRecommendationOfferTypesList({ bookTypes, movieGenres, musicTypes })
+    const offerTypeList = buildRecommendationOfferTypesList({
+      bookTypes,
+      movieGenres,
+      musicTypes,
+      showTypes,
+    })
 
     const expectedOffertTypeList = [
       { key: 'BOOK', value: 'art' },
@@ -25,6 +37,8 @@ describe('buildOfferTypesList', () => {
       { key: 'MOVIE', value: 'ART' },
       { key: 'MUSIC', value: 'pop' },
       { key: 'MUSIC', value: 'Gospel' },
+      { key: 'SHOW', value: 'Danse' },
+      { key: 'SHOW', value: 'Cirque' },
     ]
     expect(offerTypeList).toEqual(expectedOffertTypeList)
   })
