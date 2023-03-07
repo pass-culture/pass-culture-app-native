@@ -1,9 +1,11 @@
 import React from 'react'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import { Step } from 'features/bookOffer/context/reducer'
+import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
+import { mockStocks } from 'features/bookOffer/fixtures/stocks'
+import { IBookingContext } from 'features/bookOffer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -15,15 +17,23 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-let mockStep = Step.DATE
 const mockOffer: OfferResponse | undefined = baseOffer
 
+const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
+  bookingState: { offerId: mockOffer.id, step: Step.DATE } as BookingState,
+  dismissModal: mockDismissModal,
+  dispatch: mockDispatch,
+}))
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
-  useBookingContext: jest.fn(() => ({
-    dispatch: mockDispatch,
-    bookingState: { quantity: 1, step: mockStep },
-    dismissModal: mockDismissModal,
-  })),
+  useBookingContext: () => mockUseBookingContext(),
+}))
+
+const mockUseOffer = jest.fn()
+mockUseOffer.mockReturnValue({
+  data: mockOffer,
+})
+jest.mock('features/offer/api/useOffer', () => ({
+  useOffer: () => mockUseOffer(),
 }))
 
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
@@ -49,9 +59,6 @@ jest.mock('react-query')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<BookingOfferModalComponent />', () => {
-  beforeEach(() => {
-    mockStep = Step.DATE
-  })
   afterEach(() => {
     cleanup()
   })
@@ -87,8 +94,22 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   describe('when offer is duo', () => {
+    beforeEach(() => {
+      mockUseBookingContext.mockReturnValue({
+        bookingState: {
+          quantity: 1,
+          offerId: mockOffer.id,
+          step: Step.CONFIRMATION,
+        } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      })
+    })
+    afterEach(() => {
+      cleanup()
+    })
+
     it('should show pre-validation screen when pressing arrow back on confirmation screen', () => {
-      mockStep = Step.CONFIRMATION
       render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
 
       fireEvent.press(screen.getByTestId('Revenir à l’étape précédente'))
@@ -102,14 +123,22 @@ describe('<BookingOfferModalComponent />', () => {
 
   describe('when offer is not duo', () => {
     beforeEach(() => {
-      mockOffer.isDuo = false
+      mockUseBookingContext.mockReturnValue({
+        bookingState: {
+          quantity: 1,
+          offerId: mockOffer.id,
+          step: Step.CONFIRMATION,
+        } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      })
     })
     afterEach(() => {
       cleanup()
     })
 
     it('should show pre-validation screen when pressing arrow back on confirmation screen', () => {
-      mockStep = Step.CONFIRMATION
+      mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, isDuo: false } })
       render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
 
       fireEvent.press(screen.getByTestId('Revenir à l’étape précédente'))
@@ -130,72 +159,32 @@ describe('<BookingOfferModalComponent />', () => {
     expect(analytics.logCancelBookingFunnel).not.toHaveBeenCalled()
   })
 
-  describe('when prices by category feature flag activated', () => {
+  it('should display modal without prices by categories', () => {
+    render(<BookingOfferModalComponent visible offerId={20} />)
+    expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeTruthy()
+  })
+
+  it('should not display modal with prices by categories', () => {
+    render(<BookingOfferModalComponent visible offerId={20} />)
+    expect(screen.queryByTestId('modalWithPricesByCategories')).toBeNull()
+  })
+
+  describe('when prices by categories feature flag activated', () => {
     beforeEach(() => {
+      mockUseBookingContext.mockReturnValue({
+        bookingState: {
+          offerId: mockOffer.id,
+          step: Step.DATE,
+        } as BookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      })
       useFeatureFlagSpy.mockReturnValue(true)
-      mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
     })
+
     afterEach(() => {
       cleanup()
       useFeatureFlagSpy.mockReturnValue(false)
-    })
-
-    describe('when offer is duo', () => {
-      beforeEach(() => {
-        mockOffer.isDuo = true
-      })
-      afterEach(() => {
-        cleanup()
-      })
-
-      it.each`
-        idStep               | step                        | idPreviousStep | previousStep
-        ${Step.HOUR}         | ${'hour selection'}         | ${Step.DATE}   | ${'date selection'}
-        ${Step.DUO}          | ${'number place selection'} | ${Step.HOUR}   | ${'hour selection'}
-        ${Step.CONFIRMATION} | ${'confirmation screen'}    | ${Step.DUO}    | ${'number place selection'}
-      `(
-        'should show $previousStep when pressing arrow back on $step',
-        ({ idStep, idPreviousStep }) => {
-          mockStep = idStep
-          render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
-
-          fireEvent.press(screen.getByTestId('Revenir à l’étape précédente'))
-
-          expect(mockDispatch).toHaveBeenCalledWith({
-            type: 'CHANGE_STEP',
-            payload: idPreviousStep,
-          })
-        }
-      )
-    })
-
-    describe('when offer is not duo', () => {
-      beforeEach(() => {
-        mockOffer.isDuo = false
-      })
-      afterEach(() => {
-        cleanup()
-      })
-
-      it.each`
-        idStep               | step                     | idPreviousStep | previousStep
-        ${Step.HOUR}         | ${'hour selection'}      | ${Step.DATE}   | ${'date selection'}
-        ${Step.CONFIRMATION} | ${'confirmation screen'} | ${Step.HOUR}   | ${'hour selection'}
-      `(
-        'should show $previousStep when pressing arrow back on $step',
-        ({ idStep, idPreviousStep }) => {
-          mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
-          mockStep = idStep
-          render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
-
-          fireEvent.press(screen.getByTestId('Revenir à l’étape précédente'))
-
-          expect(mockDispatch).toHaveBeenCalledWith({
-            type: 'CHANGE_STEP',
-            payload: idPreviousStep,
-          })
-        }
-      )
     })
 
     it('should log booking funnel cancellation event when closing the modal', () => {
@@ -205,6 +194,22 @@ describe('<BookingOfferModalComponent />', () => {
       fireEvent.press(dismissModalButton)
 
       expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
+    })
+
+    it('should display modal with prices by categories when stocks with categories >= 1', () => {
+      mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
+      render(<BookingOfferModalComponent visible offerId={20} />)
+      expect(screen.getByTestId('modalWithPricesByCategories')).toBeTruthy()
+    })
+
+    describe('should display modal without prices when has no stocks with categories', () => {
+      render(<BookingOfferModalComponent visible offerId={20} />)
+      expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeTruthy()
+    })
+
+    it('should not display modal with prices by categories when has no stocks with categories', () => {
+      render(<BookingOfferModalComponent visible offerId={20} />)
+      expect(screen.queryByTestId('modalWithPricesByCategories')).toBeNull()
     })
   })
 })

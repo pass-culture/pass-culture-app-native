@@ -1,15 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
+import { useWindowDimensions } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
+import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
+import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOfferModalHeader'
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
+import { useOffer } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { Close } from 'ui/svg/icons/Close'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
   visible: boolean
@@ -28,11 +34,18 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
     useModalContent(isEndedUsedBooking)
   const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
 
-  const modalLeftIconProps = {
-    leftIcon,
-    leftIconAccessibilityLabel,
-    onLeftIconPress,
-  } as ModalLeftIconProps
+  const { height } = useWindowDimensions()
+  const { top } = useCustomSafeInsets()
+  const { modal } = useTheme()
+
+  const { data: offer } = useOffer({ offerId })
+  const stocksWithCategory =
+    offer?.stocks?.filter((stock) => !stock.isExpired && stock.priceCategoryLabel) || []
+  const hasPricesStep = Boolean(stocksWithCategory.length > 1)
+
+  const modalLeftIconProps = useMemo(() => {
+    return { leftIcon, leftIconAccessibilityLabel, onLeftIconPress } as ModalLeftIconProps
+  }, [leftIcon, leftIconAccessibilityLabel, onLeftIconPress])
 
   useEffect(() => {
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })
@@ -47,14 +60,41 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   const shouldAddSpacerBetweenHeaderAndContent =
     !enablePricesByCategories || (enablePricesByCategories && step === Step.CONFIRMATION)
 
-  function onClose() {
+  const onClose = useCallback(() => {
     dismissModal()
     dispatch({ type: 'RESET' })
     if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
-  }
+  }, [dismissModal, dispatch, enablePricesByCategories, offerId, step])
 
-  return (
+  const shouldDisplayModalWithCategories =
+    enablePricesByCategories && stocksWithCategory.length >= 1
+
+  return shouldDisplayModalWithCategories ? (
     <AppModal
+      testID="modalWithPricesByCategories"
+      noPadding
+      visible={visible}
+      title={title}
+      maxHeight={height - top}
+      modalSpacing={modal.spacing.MD}
+      customModalHeader={
+        <BookingOfferModalHeader
+          onClose={onClose}
+          modalLeftIconProps={modalLeftIconProps}
+          stocks={stocksWithCategory}
+          isDuo={offer?.isDuo}
+          isEndedUsedBooking={isEndedUsedBooking}
+        />
+      }
+      fixedModalBottom={
+        <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
+      }
+      shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
+      {children}
+    </AppModal>
+  ) : (
+    <AppModal
+      testID="modalWithoutPricesByCategories"
       animationOutTiming={1}
       visible={visible}
       title={title}
