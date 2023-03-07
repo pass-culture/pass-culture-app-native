@@ -22,110 +22,81 @@ describe('bookingHelpers', () => {
       date: undefined,
       hour: undefined,
     }
-    describe('when prices by categories feature flag desactivated', () => {
-      describe('should return false', () => {
-        it('when stock id & quantity not selected', () => {
-          const buttonState = getButtonState(false, defaultBookingState)
-          expect(buttonState).toEqual(false)
-        })
 
-        it('when stock id selected & quantity not selected', () => {
-          const buttonState = getButtonState(false, { ...defaultBookingState, stockId: 1 })
-          expect(buttonState).toEqual(false)
-        })
-
-        it('when stock id not selected & quantity selected', () => {
-          const buttonState = getButtonState(false, { ...defaultBookingState, quantity: 1 })
-          expect(buttonState).toEqual(false)
-        })
+    describe('should return false', () => {
+      it('when step is date selection & date not selected', () => {
+        const buttonState = getButtonState(defaultBookingState)
+        expect(buttonState).toEqual(false)
       })
 
-      it('should return true when stock id & quantity selected', () => {
-        const buttonState = getButtonState(false, {
-          ...defaultBookingState,
-          stockId: 1,
-          quantity: 1,
-        })
-        expect(buttonState).toEqual(true)
+      it('when step is hour selection & hour & stock not selected', () => {
+        const buttonState = getButtonState({ ...defaultBookingState, step: Step.HOUR })
+        expect(buttonState).toEqual(false)
+      })
+
+      it('when step is price selection & stock not selected', () => {
+        const buttonState = getButtonState({ ...defaultBookingState, step: Step.PRICE })
+        expect(buttonState).toEqual(false)
+      })
+
+      it('when step is quantity selection & quantity not selected', () => {
+        const buttonState = getButtonState({ ...defaultBookingState, step: Step.DUO })
+        expect(buttonState).toEqual(false)
       })
     })
 
-    describe('when prices by categories feature flag activated', () => {
-      describe('should return false', () => {
-        it('when step is date selection & date not selected', () => {
-          const buttonState = getButtonState(true, defaultBookingState)
-          expect(buttonState).toEqual(false)
-        })
-
-        it('when step is hour selection & hour & stock not selected', () => {
-          const buttonState = getButtonState(true, { ...defaultBookingState, step: Step.HOUR })
-          expect(buttonState).toEqual(false)
-        })
-
-        it('when step is price selection & stock not selected', () => {
-          const buttonState = getButtonState(true, { ...defaultBookingState, step: Step.PRICE })
-          expect(buttonState).toEqual(false)
-        })
-
-        it('when step is quantity selection & quantity not selected', () => {
-          const buttonState = getButtonState(true, { ...defaultBookingState, step: Step.DUO })
-          expect(buttonState).toEqual(false)
-        })
+    describe('should return true', () => {
+      it('when step is date selection & date selected', () => {
+        const buttonState = getButtonState({ ...defaultBookingState, date: new Date() })
+        expect(buttonState).toEqual(true)
       })
 
-      describe('should return true', () => {
-        it('when step is date selection & date selected', () => {
-          const buttonState = getButtonState(true, { ...defaultBookingState, date: new Date() })
+      describe('when step is hour selection', () => {
+        it('& hour selected', () => {
+          const buttonState = getButtonState({
+            ...defaultBookingState,
+            step: Step.HOUR,
+            hour: '2023-03-01T20:00:00Z',
+          })
           expect(buttonState).toEqual(true)
         })
 
-        describe('when step is hour selection', () => {
-          it('& hour selected', () => {
-            const buttonState = getButtonState(true, {
-              ...defaultBookingState,
-              step: Step.HOUR,
-              hour: '2023-03-01T20:00:00Z',
-            })
-            expect(buttonState).toEqual(true)
-          })
-
-          it('& stock selected', () => {
-            const buttonState = getButtonState(true, {
-              ...defaultBookingState,
-              step: Step.HOUR,
-              stockId: 1,
-            })
-            expect(buttonState).toEqual(true)
-          })
-
-          it('& hour & stock selected', () => {
-            const buttonState = getButtonState(true, {
-              ...defaultBookingState,
-              step: Step.HOUR,
-              hour: '2023-03-01T20:00:00Z',
-              stockId: 1,
-            })
-            expect(buttonState).toEqual(true)
-          })
-        })
-
-        it('when step is price selection & stock selected', () => {
-          const buttonState = getButtonState(true, {
+        it('& stock selected', () => {
+          const buttonState = getButtonState({
             ...defaultBookingState,
-            step: Step.PRICE,
+            step: Step.HOUR,
             stockId: 1,
           })
           expect(buttonState).toEqual(true)
         })
 
-        it('when step is quantity selection & quantity selected', () => {
-          const buttonState = getButtonState(true, {
+        it('& hour & stock selected', () => {
+          const buttonState = getButtonState({
             ...defaultBookingState,
-            step: Step.DUO,
-            quantity: 1,
+            step: Step.HOUR,
+            hour: '2023-03-01T20:00:00Z',
+            stockId: 1,
           })
           expect(buttonState).toEqual(true)
         })
+      })
+
+      it('when step is price selection & stock selected', () => {
+        const buttonState = getButtonState({
+          ...defaultBookingState,
+          step: Step.PRICE,
+          stockId: 1,
+        })
+        expect(buttonState).toEqual(true)
+      })
+
+      it('when step is quantity selection & quantity selected', () => {
+        const buttonState = getButtonState({
+          ...defaultBookingState,
+          step: Step.DUO,
+          quantity: 1,
+        })
+        expect(buttonState).toEqual(true)
       })
     })
   })

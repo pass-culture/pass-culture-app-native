@@ -3,27 +3,26 @@ import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
 
-export function getButtonState(enablePricesByCategories: boolean, bookingState: BookingState) {
+export function getButtonState(bookingState: BookingState) {
   const { step, stockId, quantity, date, hour } = bookingState
 
-  if (enablePricesByCategories) {
-    switch (step) {
-      case Step.DATE: {
-        return date !== undefined
-      }
-      case Step.HOUR: {
-        return hour !== undefined || stockId !== undefined
-      }
-      case Step.PRICE: {
-        return stockId !== undefined
-      }
-      case Step.DUO: {
-        return quantity !== undefined
-      }
+  switch (step) {
+    case Step.DATE: {
+      return date !== undefined
+    }
+    case Step.HOUR: {
+      return hour !== undefined || stockId !== undefined
+    }
+    case Step.PRICE: {
+      return stockId !== undefined
+    }
+    case Step.DUO: {
+      return quantity !== undefined
+    }
+    default: {
+      return false
     }
   }
-
-  return typeof stockId === 'number' && typeof quantity === 'number'
 }
 
 export function getTotalBookingSteps(stocks: OfferStockResponse[], offerIsDuo?: boolean) {
