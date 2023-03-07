@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -29,12 +28,10 @@ export const HomeHeader: FunctionComponent = function () {
   const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
-  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation()
   const { data: subscription } = useNextSubscriptionStep()
 
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
-  const shouldDisplaySubscriptionBloc =
-    subscription?.nextSubscriptionStep && !!nextBeneficiaryValidationStepNavConfig
+  const shouldDisplaySubscriptionBloc = !!subscription?.nextSubscriptionStep
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -69,7 +66,7 @@ export const HomeHeader: FunctionComponent = function () {
         <React.Fragment>
           <BannerWithBackground
             leftIcon={StyledBicolorUnlock}
-            navigateTo={nextBeneficiaryValidationStepNavConfig}>
+            navigateTo={{ screen: 'IdentityCheckStepper' }}>
             <StyledButtonText>Débloque tes {credit}</StyledButtonText>
             <StyledBodyText>à dépenser sur l’application</StyledBodyText>
           </BannerWithBackground>
@@ -87,13 +84,7 @@ export const HomeHeader: FunctionComponent = function () {
     }
 
     return null
-  }, [
-    isLoggedIn,
-    shouldDisplaySubscriptionBloc,
-    shouldDisplayGeolocationBloc,
-    nextBeneficiaryValidationStepNavConfig,
-    credit,
-  ])
+  }, [isLoggedIn, shouldDisplaySubscriptionBloc, shouldDisplayGeolocationBloc, credit])
 
   return (
     <React.Fragment>
