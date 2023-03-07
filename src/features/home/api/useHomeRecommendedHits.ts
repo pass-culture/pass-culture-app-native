@@ -30,6 +30,7 @@ export function getRecommendationParameters(
   const offertTypeValue = buildRecommendationOfferTypesList({
     bookTypes: parameters.bookTypes,
     movieGenres: parameters.movieGenres,
+    musicTypes: parameters.musicTypes,
   })
   return {
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
