@@ -302,6 +302,7 @@ export interface RecommendationParametersFields {
   modelEndpoint?: string
   bookTypes?: BookTypes
   movieGenres?: MovieGenres
+  musicTypes?: MusicTypes
 }
 
 type SubcategoriesFields = {
