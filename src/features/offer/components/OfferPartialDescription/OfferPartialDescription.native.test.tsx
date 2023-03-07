@@ -180,7 +180,7 @@ describe('OfferPartialDescription', () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
-        expect(screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
     })
     describe("shouldn't be rendered", () => {
