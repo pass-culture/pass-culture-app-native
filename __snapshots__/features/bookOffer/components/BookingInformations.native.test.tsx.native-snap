@@ -135,6 +135,25 @@ Array [
       }
     >
       0,22 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      (
+      0,11 €
+       x 
+      2
+       places)
     </Text>
     <View
       numberOfSpaces={2}
@@ -809,6 +828,25 @@ Array [
       }
     >
       0,22 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      (
+      0,11 €
+       x 
+      2
+       places)
     </Text>
     <View
       numberOfSpaces={2}
@@ -971,7 +1009,7 @@ Array [
         ]
       }
     >
-      1 décembre 2020, 01h00
+      1 décembre 2020, 00h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -1518,6 +1556,7 @@ Array [
       }
     >
       0,11 €
+       
     </Text>
     <View
       numberOfSpaces={2}
@@ -2019,6 +2058,25 @@ Array [
       }
     >
       0,22 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      (
+      0,11 €
+       x 
+      2
+       places)
     </Text>
     <View
       numberOfSpaces={2}
@@ -2042,7 +2100,7 @@ Array [
         ]
       }
     >
-      (0,11 € x 2 places)
+      
     </Text>
   </View>,
 ]
