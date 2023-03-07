@@ -6,7 +6,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -15,43 +15,40 @@ jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation
 jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {
-  it('should match snapshot', async () => {
-    const renderAPI = renderInitialPage('ResetPasswordEmailSent')
-    expect(renderAPI).toMatchSnapshot()
+  it('should match snapshot', () => {
+    renderInitialPage('ResetPasswordEmailSent')
+
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
-    const { getByLabelText, getByText } = renderInitialPage('PreviousScreen')
+  it('should redirect to previous screen when clicking on ArrowPrevious icon', () => {
+    renderInitialPage('PreviousScreen')
+    act(() => navigationRef.navigate('ResetPasswordEmailSent', { email: '' }))
 
-    await act(async () => {
-      navigationRef.navigate('ResetPasswordEmailSent', { email: '' })
-    })
+    fireEvent.press(screen.getByLabelText('Revenir en arrière'))
 
-    fireEvent.press(getByLabelText('Revenir en arrière'))
-
-    expect(getByText('PreviousScreenText')).toBeTruthy()
+    expect(screen.getByText('PreviousScreenText')).toBeTruthy()
   })
 
   it('should NOT display back button when previous screen is ForgottenPassword', () => {
-    const { queryByTestId } = renderInitialPage('ForgottenPassword')
+    renderInitialPage('ForgottenPassword')
 
-    const leftIconButton = queryByTestId('Revenir en arrière')
-
+    const leftIconButton = screen.queryByTestId('Revenir en arrière')
     expect(leftIconButton).toBeFalsy()
   })
 
   it('should redirect to Home when clicking on Close icon', () => {
-    const { getByTestId } = renderInitialPage('ResetPasswordEmailSent')
+    renderInitialPage('ResetPasswordEmailSent')
 
-    fireEvent.press(getByTestId('Revenir à l’accueil'))
+    fireEvent.press(screen.getByTestId('Revenir à l’accueil'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should open mail app when clicking on check email button', () => {
-    const { getByText } = renderInitialPage('ResetPasswordEmailSent')
+    renderInitialPage('ResetPasswordEmailSent')
 
-    const checkEmailsButton = getByText('Consulter mes e-mails')
+    const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
 
     expect(openInbox).toHaveBeenCalledTimes(1)
