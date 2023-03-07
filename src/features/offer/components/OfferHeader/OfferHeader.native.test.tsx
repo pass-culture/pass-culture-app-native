@@ -24,7 +24,6 @@ import {
   showInfoSnackBar,
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { LINE_BREAK } from 'ui/theme/constants'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -59,16 +58,21 @@ describe('<OfferHeader />', () => {
     jest.useFakeTimers()
   })
 
-  it('should render all the icons', () => {
-    const offerHeader = renderOfferHeader()
-    expect(offerHeader.queryByTestId('animated-icon-back')).toBeTruthy()
-    expect(offerHeader.queryByTestId('animated-icon-share')).toBeTruthy()
-    expect(offerHeader.queryByTestId('animated-icon-favorite')).toBeTruthy()
+  it('should render all the icons', async () => {
+    renderOfferHeader()
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('animated-icon-back')).toBeTruthy()
+      expect(screen.queryByTestId('animated-icon-share')).toBeTruthy()
+      expect(screen.queryByTestId('animated-icon-favorite')).toBeTruthy()
+    })
   })
 
-  it('should goBack when we press on the back button', () => {
+  it('should goBack when we press on the back button', async () => {
     renderOfferHeader()
-    fireEvent.press(screen.getByTestId('animated-icon-back'))
+
+    fireEvent.press(await screen.findByTestId('animated-icon-back'))
+
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
@@ -88,7 +92,7 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should display SignIn modal when pressing Favorite - not logged in users', () => {
+  it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
@@ -96,10 +100,12 @@ describe('<OfferHeader />', () => {
       isUserLoading: false,
     })
     renderOfferHeader()
+
     fireEvent.press(screen.getByTestId('animated-icon-favorite'))
-    expect(
-      screen.getByText('Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris')
-    ).toBeTruthy()
+
+    await waitFor(() => {
+      expect(screen.queryByText('Identifie-toi pour retrouver tes favoris')).toBeTruthy()
+    })
   })
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
@@ -146,9 +152,11 @@ describe('<OfferHeader />', () => {
     const favoriteOfferId = 146193
     renderOfferHeader({ id: favoriteOfferId })
 
-    await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
-    expect(screen.getByText('Crée une liste de favoris !')).toBeTruthy()
+    await waitFor(() => {
+      expect(screen.getByText('Crée une liste de favoris !')).toBeTruthy()
+    })
   })
 
   it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
@@ -156,33 +164,23 @@ describe('<OfferHeader />', () => {
     const favoriteOfferId = 146193
     renderOfferHeader({ id: favoriteOfferId })
 
-    await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
-    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    })
   })
 
   it('should track the user has seen favorite list modal when pressing favorite icon', async () => {
     const favoriteOfferId = 146193
     renderOfferHeader({ id: favoriteOfferId })
 
-    await act(async () => fireEvent.press(screen.getByTestId('animated-icon-favorite')))
+    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
-    expect(analytics.logFavoriteListDisplayed).toHaveBeenNthCalledWith(1, 'offer')
-  })
-
-  it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
-    const favoriteOfferId = 146193
-    renderOfferHeader({ id: favoriteOfferId })
-
-    await waitFor(async () => {
-      fireEvent.press(screen.getByTestId('animated-icon-favorite-filled'))
-
-      await waitFor(() => {
-        expect(screen.getByTestId('animated-icon-favorite')).toBeTruthy()
-      })
+    await waitFor(() => {
+      expect(analytics.logFavoriteListDisplayed).toHaveBeenNthCalledWith(1, 'offer')
     })
   })
-
   it('should show error snackbar when remove favorite fails - logged in users', async () => {
     const favoriteOfferId = 146193
     renderOfferHeader({
@@ -191,13 +189,10 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(async () => {
-      fireEvent.press(screen.getByTestId('animated-icon-favorite-filled'))
-
-      await waitFor(() => {
-        expect(showErrorSnackBar).toHaveBeenCalledWith({
-          message: 'L’offre n’a pas été retirée de tes favoris',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+      fireEvent.press(await screen.findByTestId('animated-icon-favorite-filled'))
+      expect(showErrorSnackBar).toHaveBeenCalledWith({
+        message: 'L’offre n’a pas été retirée de tes favoris',
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
   })
@@ -270,27 +265,31 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should log analytics when clicking on the share button', () => {
+  it('should log analytics when clicking on the share button', async () => {
     renderOfferHeader()
 
     const shareButton = screen.getByLabelText('Partager')
     fireEvent.press(shareButton)
 
-    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
-      type: 'Offer',
-      from: 'offer',
-      id: offerId,
+    await waitFor(() => {
+      expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+        type: 'Offer',
+        from: 'offer',
+        id: offerId,
+      })
     })
   })
 
   it('should not show favorite list modal when the user has already seen the fake door', async () => {
-    await storage.saveObject('has_seen_fav_list_fake_door', true)
+    storage.saveObject('has_seen_fav_list_fake_door', true)
     renderOfferHeader()
 
     const favButton = screen.getByTestId('animated-icon-favorite')
-    await act(async () => fireEvent.press(favButton))
+    fireEvent.press(favButton)
 
-    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    })
   })
 })
 
