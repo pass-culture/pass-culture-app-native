@@ -35,7 +35,7 @@ export function PriceLine({ quantity = 1, unitPrice, label }: PriceLineProps) {
         </React.Fragment>
       )}
 
-      {!!label && <Typo.Caption> - {label}</Typo.Caption>}
+      {!!label && <Typo.Caption testID="price-line-label"> - {label}</Typo.Caption>}
     </React.Fragment>
   )
 }

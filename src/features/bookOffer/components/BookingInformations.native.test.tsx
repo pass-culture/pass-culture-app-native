@@ -8,7 +8,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
 
@@ -103,6 +103,29 @@ describe('<BookingInformations />', () => {
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
+  })
+
+  it('should display stock label', () => {
+    // @ts-expect-error mock is not real type
+    mockedUseBookingOffer.mockReturnValueOnce({
+      isDigital: false,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      name: 'mon nom',
+      stocks: [],
+      venue: mockOffer.venue,
+    })
+
+    // @ts-expect-error mock is not real type
+    mockedUseBookingStock.mockReturnValueOnce({
+      beginningDatetime: '2020-12-01T00:00:00Z',
+      price: 1200,
+      priceCategoryLabel: 'A stock label',
+    })
+
+    const myComponent = render(<BookingInformations />)
+    expect(myComponent).toMatchSnapshot()
+
+    expect(screen.getByTestId('price-line-label')).toBeTruthy()
   })
 
   it('should display location when offer is not digital', async () => {
