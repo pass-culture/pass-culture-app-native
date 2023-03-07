@@ -36,7 +36,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
     return dispatch({ type: 'VALIDATE_OPTIONS' })
   }, [dispatch, hasPricesStep, isDuo, step])
 
-  return step < Step.CONFIRMATION ? (
+  return step != Step.CONFIRMATION ? (
     <FooterContainer testID="bookingOfferModalFooter">
       <ButtonPrimary
         wording={getButtonWording(true, enabledButton, bookingState.step)}

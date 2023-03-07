@@ -1,13 +1,15 @@
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
-import { mockStocks, stock1, stock2 } from 'features/bookOffer/fixtures/stocks'
+import { mockStocks, stock1, stock2, stock3 } from 'features/bookOffer/fixtures/stocks'
 import {
   getButtonState,
-  getTotalBookingSteps,
   getButtonWording,
   getHourWording,
   getRadioSelectorPriceState,
   getPriceWording,
   getPreviousStep,
+  getBookingSteps,
+  getSortedHoursFromDatePredicate,
+  getStocksFromHourPredicate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -101,34 +103,32 @@ describe('bookingHelpers', () => {
     })
   })
 
-  describe('getTotalBookingsSteps', () => {
-    it('should return 2 when only one stock not expired and offer is not duo', () => {
+  describe('getBookingSteps', () => {
+    it('should return an array with date and hour steps when only one stock not expired and offer is not duo', () => {
       const stocksExpired = [
         { ...stock1, isExpired: true },
         { ...stock2, isExpired: true },
       ]
-      const totalSteps = getTotalBookingSteps(stocksExpired)
-      expect(totalSteps).toEqual(2)
+      const bookingSteps = getBookingSteps(stocksExpired)
+      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR])
     })
 
-    it('should return 4 when several stocks not expired and offer is duo', () => {
+    it('should return an array with date, hour, price and quantity steps when several stocks not expired and offer is duo', () => {
       const stocks = [stock1, stock2]
-      const totalSteps = getTotalBookingSteps(stocks, true)
-      expect(totalSteps).toEqual(4)
+      const bookingSteps = getBookingSteps(stocks, true)
+      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.PRICE, Step.DUO])
     })
 
-    describe('should return 3', () => {
-      it('when only one stock not expired and offer is duo', () => {
-        const stocks = [{ ...stock1, isExpired: true }, stock2]
-        const totalSteps = getTotalBookingSteps(stocks, true)
-        expect(totalSteps).toEqual(3)
-      })
+    it('should return an array with date, hour and duo steps when only one stock not expired and offer is duo', () => {
+      const stocks = [{ ...stock1, isExpired: true }, stock2]
+      const bookingSteps = getBookingSteps(stocks, true)
+      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.DUO])
+    })
 
-      it('when several stock not expired and offer is not duo', () => {
-        const stocks = [stock1, stock2]
-        const totalSteps = getTotalBookingSteps(stocks, false)
-        expect(totalSteps).toEqual(3)
-      })
+    it('should return an array with date, hour and price steps when several stock not expired and offer is not duo', () => {
+      const stocks = [stock1, stock2]
+      const bookingSteps = getBookingSteps(stocks, false)
+      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.PRICE])
     })
   })
 
@@ -290,5 +290,23 @@ describe('getPreviousStep', () => {
       ...offerResponseSnap,
     })
     expect(previousStep).toEqual(Step.DUO)
+  })
+})
+
+describe('getSortedHoursFromDatePredicate', () => {
+  it('should return an array of sorted hours from date', () => {
+    const sortedHours = getSortedHoursFromDatePredicate(mockStocks, '2023-04-01')
+    expect(sortedHours).toEqual([
+      '2023-04-01T18:00:00Z',
+      '2023-04-01T18:00:00Z',
+      '2023-04-01T20:00:00Z',
+    ])
+  })
+})
+
+describe('getStocksFromHourPredicate', () => {
+  it('should return an array of stocks from hour', () => {
+    const stocks = getStocksFromHourPredicate(mockStocks, '2023-04-01T18:00:00Z')
+    expect(stocks).toEqual([stock2, stock3])
   })
 })

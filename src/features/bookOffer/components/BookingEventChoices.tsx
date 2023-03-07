@@ -17,13 +17,13 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   stocks: OfferStockResponse[]
-  enablePricesByCategories: boolean
+  enablePricesByCategories?: boolean
   offerIsDuo?: boolean
 }
 
 export const BookingEventChoices: React.FC<Props> = ({
   stocks,
-  enablePricesByCategories,
+  enablePricesByCategories = false,
   offerIsDuo,
 }) => {
   const { bookingState, dispatch } = useBookingContext()
@@ -43,12 +43,8 @@ export const BookingEventChoices: React.FC<Props> = ({
     return <BookingDetails stocks={stocks} />
   }
 
-  const getButtonState = () => {
-    return typeof stockId === 'number' && typeof quantity === 'number'
-  }
-
   // We only need those 2 informations to book an offer (and thus proceed to the next page)
-  const enabled = getButtonState()
+  const enabled = typeof stockId === 'number' && typeof quantity === 'number'
 
   const shouldDisplayDateSelection =
     (step === Step.DATE && enablePricesByCategories) || !enablePricesByCategories

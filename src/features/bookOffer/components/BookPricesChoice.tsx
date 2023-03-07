@@ -36,6 +36,15 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
     }
   }
 
+  const filteredStocks = stocks
+    .filter(
+      (stock) =>
+        !stock.isExpired &&
+        stock.beginningDatetime &&
+        formatToKeyDate(stock.beginningDatetime) === selectedDate
+    )
+    .sort((a, b) => b.price - a.price)
+
   return (
     <React.Fragment>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="PricesStep">
@@ -45,28 +54,20 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
       <Spacer.Column numberOfSpaces={4} />
       <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
         <VerticalUl>
-          {stocks
-            .filter(
-              (stock) =>
-                !stock.isExpired &&
-                stock.beginningDatetime &&
-                formatToKeyDate(stock.beginningDatetime) === selectedDate
+          {filteredStocks.map((stock) => {
+            return (
+              <Li key={stock.id}>
+                <RadioSelector
+                  label={stock.priceCategoryLabel || ''}
+                  onPress={() => selectStock(stock.id)}
+                  type={getRadioSelectorPriceState(stock, offerCredit, bookingState.stockId)}
+                  description={getPriceWording(stock, offerCredit)}
+                  price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+                />
+                <Spacer.Column numberOfSpaces={2} />
+              </Li>
             )
-            .sort((a, b) => b.price - a.price)
-            .map((stock) => {
-              return (
-                <Li key={stock.id}>
-                  <RadioSelector
-                    label={stock.priceCategoryLabel || ''}
-                    onPress={() => selectStock(stock.id)}
-                    type={getRadioSelectorPriceState(stock, offerCredit, bookingState.stockId)}
-                    description={getPriceWording(stock, offerCredit)}
-                    price={formatToFrenchDecimal(stock.price).replace(' ', '')}
-                  />
-                  <Spacer.Column numberOfSpaces={2} />
-                </Li>
-              )
-            })}
+          })}
         </VerticalUl>
       </View>
     </React.Fragment>

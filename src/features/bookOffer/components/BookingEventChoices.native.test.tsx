@@ -60,7 +60,7 @@ describe('<BookingEventChoices />', () => {
     })
   })
   it('should display only date step at beginning', () => {
-    render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+    render(<BookingEventChoices stocks={[]} />)
     expect(screen.queryByTestId('DateStep')).toBeTruthy()
     expect(screen.queryByTestId('HourStep')).toBeNull()
     expect(screen.queryByTestId('DuoStep')).toBeNull()
@@ -77,7 +77,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn(),
     }))
-    render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+    render(<BookingEventChoices stocks={[]} />)
     expect(screen.queryByTestId('DateStep')).toBeTruthy()
     expect(screen.queryByTestId('HourStep')).toBeTruthy()
     expect(screen.queryByTestId('DuoStep')).toBeNull()
@@ -94,7 +94,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn(),
     }))
-    render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+    render(<BookingEventChoices stocks={[]} />)
     expect(screen.queryByTestId('DateStep')).toBeTruthy()
     expect(screen.queryByTestId('HourStep')).toBeTruthy()
     expect(screen.queryByTestId('DuoStep')).toBeTruthy()
@@ -112,7 +112,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn(),
     }))
-    render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+    render(<BookingEventChoices stocks={[]} />)
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
@@ -144,7 +144,7 @@ describe('<BookingEventChoices />', () => {
       ],
     }))
 
-    render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+    render(<BookingEventChoices stocks={[]} />)
 
     const hourBloc = screen.getByTestId('HourChoice1-hour')
     fireEvent.press(hourBloc)
@@ -168,12 +168,12 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should display "Choisir les options"', () => {
-      render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+      render(<BookingEventChoices stocks={[]} />)
       expect(screen.getByText('Choisir les options')).toBeTruthy()
     })
 
     it('should not change step when the button is disabled', () => {
-      render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+      render(<BookingEventChoices stocks={[]} />)
       fireEvent.press(screen.getByText('Choisir les options'))
       expect(mockDispatch).not.toHaveBeenCalled()
     })
@@ -194,12 +194,12 @@ describe('<BookingEventChoices />', () => {
     })
 
     it('should display "Valider ces options"', () => {
-      render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+      render(<BookingEventChoices stocks={[]} />)
       expect(screen.getByText('Valider ces options')).toBeTruthy()
     })
 
     it('should change step to confirmation screen when the button is enabled', () => {
-      render(<BookingEventChoices stocks={[]} enablePricesByCategories={false} />)
+      render(<BookingEventChoices stocks={[]} />)
       fireEvent.press(screen.getByText('Valider ces options'))
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })

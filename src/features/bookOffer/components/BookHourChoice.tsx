@@ -5,6 +5,10 @@ import styled from 'styled-components/native'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import {
+  getSortedHoursFromDatePredicate,
+  getStocksFromHourPredicate,
+} from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
@@ -55,38 +59,19 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const filteredStocks = useMemo(
     () => {
       if (hasPricesStep) {
-        const distinctHours: string[] = [
-          ...new Set(
-            stocks
-              .filter(
-                (stock) =>
-                  !stock.isExpired &&
-                  stock.beginningDatetime &&
-                  formatToKeyDate(stock.beginningDatetime) === selectedDate
-              )
-              .map((stock) => stock.beginningDatetime)
-              .sort(
-                (a, b) => new Date(a as string).getTime() - new Date(b as string).getTime()
-              ) as string[]
-          ),
-        ]
-        return distinctHours.map((hour, index) => {
-          const stocksFromHour = stocks.filter(
-            (stock) =>
-              !stock.isExpired &&
-              stock.isBookable &&
-              stock.beginningDatetime &&
-              stock.beginningDatetime === hour
-          )
-          const minPrice = Math.min(...stocksFromHour.map((stock) => stock.price))
+        const sortedHoursFromDate = getSortedHoursFromDatePredicate(stocks, selectedDate)
+        const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
+        return distinctHours.map((hour) => {
+          const filteredAvailableStocksFromHour = getStocksFromHourPredicate(stocks, hour)
+          const minPrice = Math.min(...filteredAvailableStocksFromHour.map((stock) => stock.price))
           return (
             <HourChoice
-              key={index}
+              key={hour}
               price={minPrice}
               hour={formatHour(hour).replace(':', 'h')}
               selected={hour === bookingState.hour}
               onPress={() => selectHour(hour)}
-              testID={`HourChoice${index}`}
+              testID={`HourChoice${hour}`}
               isBookable
               offerCredit={offerCredit}
               hasSeveralPrices

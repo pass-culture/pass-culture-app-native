@@ -72,8 +72,7 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
 }
 
 export const getDayDescription = (price: number, hasSeveralPrices?: boolean) => {
-  let dayDescription = ''
-  if (hasSeveralPrices) dayDescription += 'dès '
+  let dayDescription = hasSeveralPrices ? 'dès ' : ''
   dayDescription += formatToFrenchDecimal(price).replace(' ', '')
 
   return dayDescription

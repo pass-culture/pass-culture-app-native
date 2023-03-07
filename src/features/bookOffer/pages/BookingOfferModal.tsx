@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
@@ -43,9 +43,11 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
     offer?.stocks?.filter((stock) => !stock.isExpired && stock.priceCategoryLabel) || []
   const hasPricesStep = Boolean(stocksWithCategory.length > 1)
 
-  const modalLeftIconProps = useMemo(() => {
-    return { leftIcon, leftIconAccessibilityLabel, onLeftIconPress } as ModalLeftIconProps
-  }, [leftIcon, leftIconAccessibilityLabel, onLeftIconPress])
+  const modalLeftIconProps = {
+    leftIcon,
+    leftIconAccessibilityLabel,
+    onLeftIconPress,
+  } as ModalLeftIconProps
 
   useEffect(() => {
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })

@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferStockResponse } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { getTotalBookingSteps } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { getBookingSteps } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -32,7 +32,7 @@ export const BookingOfferModalHeader = ({
   const { bookingState } = useBookingContext()
   const { step } = bookingState
 
-  const totalSteps = getTotalBookingSteps(stocks, isDuo)
+  const totalSteps = getBookingSteps(stocks, isDuo).length
   let progressBarValue = 1
   if (step) {
     progressBarValue = (1 / totalSteps) * step
