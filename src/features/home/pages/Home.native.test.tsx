@@ -26,7 +26,7 @@ describe('Home page', () => {
     homeEntryId: 'fakeEntryId',
   })
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
     mockUseHomepageData.mockReturnValueOnce({
       modules: [formattedVenuesModule],
@@ -34,11 +34,13 @@ describe('Home page', () => {
     })
     renderHome()
 
+    await screen.findByText('Bienvenue !')
+
     expect(screen).toMatchSnapshot()
   })
 
   // TODO(PC-20066): remove test for transitional home header split
-  it('should render a thematic home header if available', () => {
+  it('should render a thematic home header if available', async () => {
     useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
     mockUseHomepageData.mockReturnValueOnce({
       modules: [formattedVenuesModule],
@@ -49,7 +51,7 @@ describe('Home page', () => {
     })
     renderHome()
 
-    expect(screen.queryByText('title')).toBeTruthy()
+    expect(await screen.findByText('title')).toBeTruthy()
   })
 })
 
