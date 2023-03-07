@@ -83,6 +83,7 @@ describe('getRecommendationParameters', () => {
       beginningDatetime: '2022-09-08T00:00+00:00',
       subcategories: ['Achat instrument'],
       bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
+      movieGenres: ['ACTION', 'SPY'],
     }
     const recommendationParameters = getRecommendationParameters(
       parameters,
@@ -100,6 +101,8 @@ describe('getRecommendationParameters', () => {
         { key: 'BOOK', value: 'Carrière/Concours' },
         { key: 'BOOK', value: 'Scolaire & Parascolaire' },
         { key: 'BOOK', value: 'Gestion/entreprise' },
+        { key: 'MOVIE', value: 'ACTION' },
+        { key: 'MOVIE', value: 'SPY' },
       ],
     })
   })

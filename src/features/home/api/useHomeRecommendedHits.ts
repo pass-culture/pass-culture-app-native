@@ -27,7 +27,10 @@ export function getRecommendationParameters(
     eventDuringNextXDays,
   })
 
-  const offertTypeValue = buildRecommendationOfferTypesList({ bookTypes: parameters.bookTypes })
+  const offertTypeValue = buildRecommendationOfferTypesList({
+    bookTypes: parameters.bookTypes,
+    movieGenres: parameters.movieGenres,
+  })
   return {
     categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
     end_date: endingDatetime,
