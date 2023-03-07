@@ -36,41 +36,46 @@ server.use(
 describe('<ChangeEmail/>', () => {
   beforeEach(simulateUpdateEmailSuccess)
 
-  it('should render correctly', () => {
-    const renderAPI = renderChangeEmail()
-    expect(renderAPI).toMatchSnapshot()
+  it('should render correctly', async () => {
+    renderChangeEmail()
+
+    await waitFor(() => {
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   describe('email change already in progress', () => {
+    const alreadyInProgressText =
+      'Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams.'
+
     it('should render correctly', async () => {
       simulateCurrentEmailChange()
-      const renderAPI = renderChangeEmail()
+      renderChangeEmail()
+      await screen.findByText(alreadyInProgressText)
 
-      await superFlushWithAct()
-      expect(renderAPI).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
     })
 
     it('should log analytics', async () => {
       simulateCurrentEmailChange()
       renderChangeEmail()
+      await screen.findByText(alreadyInProgressText)
 
-      await waitFor(() => {
-        expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
-      })
+      expect(analytics.logConsultDisclaimerValidationMail).toHaveBeenCalledTimes(1)
     })
   })
 
   describe('submit button', () => {
-    it('should be disabled by default', () => {
-      const { getByLabelText } = renderChangeEmail()
-      const submitButton = getByLabelText('Enregistrer les modifications')
+    it('should be disabled by default', async () => {
+      renderChangeEmail()
 
+      const submitButton = await screen.findByLabelText('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()
     })
 
     it('should be enabled when form is valid', async () => {
-      const { getByLabelText } = renderChangeEmail()
-      const submitButton = getByLabelText('Enregistrer les modifications')
+      renderChangeEmail()
+      const submitButton = screen.getByLabelText('Enregistrer les modifications')
 
       await fillInputs({ email: 'valid@email.com', password: 'password>=12' })
 
@@ -83,8 +88,8 @@ describe('<ChangeEmail/>', () => {
       ${'password<12'}  | ${'valid@email.com'}
       ${'password>=12'} | ${''}
     `('should be disabled when form is invalid', async ({ password, email }) => {
-      const { getByLabelText } = renderChangeEmail()
-      const submitButton = getByLabelText('Enregistrer les modifications')
+      renderChangeEmail()
+      const submitButton = screen.getByLabelText('Enregistrer les modifications')
 
       await fillInputs({ email, password })
 
@@ -95,9 +100,7 @@ describe('<ChangeEmail/>', () => {
   describe('When email change succeeds', () => {
     it('should navigate to Profile ', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
@@ -105,9 +108,7 @@ describe('<ChangeEmail/>', () => {
 
     it('should show success snackbar', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(mockShowSuccessSnackBar).toBeCalledWith({
@@ -119,9 +120,7 @@ describe('<ChangeEmail/>', () => {
 
     it('should log analytics', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(analytics.logSaveNewMail).toHaveBeenCalledTimes(1)
@@ -129,8 +128,8 @@ describe('<ChangeEmail/>', () => {
   })
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
-    const { getByLabelText, queryByText } = renderChangeEmail()
-    const submitButton = getByLabelText('Enregistrer les modifications')
+    renderChangeEmail()
+    const submitButton = screen.getByLabelText('Enregistrer les modifications')
 
     await fillInputs({ email: 'EMAIL@domain.ext' })
 
@@ -140,7 +139,7 @@ describe('<ChangeEmail/>', () => {
       jest.advanceTimersByTime(600)
     })
 
-    const errorMessage = queryByText('L’e-mail saisi est identique à ton e-mail actuel')
+    const errorMessage = screen.queryByText('L’e-mail saisi est identique à ton e-mail actuel')
     expect(errorMessage).toBeTruthy()
   })
 
@@ -149,22 +148,18 @@ describe('<ChangeEmail/>', () => {
 
     it('should not navigate', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(navigate).not.toBeCalled()
     })
 
     it('should show error message', async () => {
-      const { queryByText } = renderChangeEmail()
-
+      renderChangeEmail()
       await fillInputs({})
-
       await submitForm()
 
-      const errorMessage = queryByText('Mot de passe incorrect')
+      const errorMessage = screen.queryByText('Mot de passe incorrect')
       expect(errorMessage).toBeTruthy()
     })
 
@@ -186,9 +181,7 @@ describe('<ChangeEmail/>', () => {
 
     it('should not navigate', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(navigate).not.toBeCalled()
@@ -196,9 +189,7 @@ describe('<ChangeEmail/>', () => {
 
     it('should show the generic error message', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(mockShowErrorSnackBar).toBeCalledWith({
@@ -209,9 +200,7 @@ describe('<ChangeEmail/>', () => {
 
     it('should log analytics', async () => {
       renderChangeEmail()
-
       await fillInputs({})
-
       await submitForm()
 
       expect(analytics.logErrorSavingNewEmail).toHaveBeenCalledWith(
