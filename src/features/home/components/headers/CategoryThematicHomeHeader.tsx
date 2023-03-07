@@ -93,6 +93,7 @@ const Title = styled(Typo.Title1)(({ theme }) => ({
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
+  paddingTop: getSpacing(2),
   backgroundColor: colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
 }))
 

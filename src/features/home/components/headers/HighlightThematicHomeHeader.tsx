@@ -121,6 +121,7 @@ const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, ri
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
+  paddingTop: getSpacing(2),
   backgroundColor: colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
 }))
 
