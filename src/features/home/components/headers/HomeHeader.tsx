@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -13,12 +14,8 @@ import { env } from 'libs/environment'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
-import { theme } from 'theme'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -54,25 +51,13 @@ export const HomeHeader: FunctionComponent = function () {
     return 'Ton crédit est expiré'
   }
 
-  const credit = useGetDepositAmountsByAge(user?.birthDate)
-
   const SystemBloc = useMemo(() => {
     if (!isLoggedIn) {
       return <SignupBanner />
     }
 
     if (shouldDisplaySubscriptionBloc) {
-      return (
-        <React.Fragment>
-          <BannerWithBackground
-            leftIcon={StyledBicolorUnlock}
-            navigateTo={{ screen: 'IdentityCheckStepper' }}>
-            <StyledButtonText>Débloque tes {credit}</StyledButtonText>
-            <StyledBodyText>à dépenser sur l’application</StyledBodyText>
-          </BannerWithBackground>
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
-      )
+      return <ActivationBanner />
     }
     if (shouldDisplayGeolocationBloc) {
       return (
@@ -84,7 +69,7 @@ export const HomeHeader: FunctionComponent = function () {
     }
 
     return null
-  }, [isLoggedIn, shouldDisplaySubscriptionBloc, shouldDisplayGeolocationBloc, credit])
+  }, [isLoggedIn, shouldDisplaySubscriptionBloc, shouldDisplayGeolocationBloc])
 
   return (
     <React.Fragment>
@@ -116,16 +101,3 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   border: 1,
   padding: getSpacing(1),
 }))
-
-const StyledButtonText = styled(Typo.ButtonText)({
-  color: theme.colors.white,
-})
-
-const StyledBodyText = styled(Typo.Body)({
-  color: theme.colors.white,
-})
-
-const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  color2: theme.colors.white,
-}))``
