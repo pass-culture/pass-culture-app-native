@@ -301,6 +301,7 @@ export interface RecommendationParametersFields {
   isRecoShuffled?: boolean
   modelEndpoint?: string
   bookTypes?: BookTypes
+  movieGenres?: MovieGenres
 }
 
 type SubcategoriesFields = {
