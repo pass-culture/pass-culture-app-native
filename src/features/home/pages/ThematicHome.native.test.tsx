@@ -6,7 +6,7 @@ import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
@@ -36,8 +36,11 @@ describe('ThematicHome', () => {
   it('should render default header when provided', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<ThematicHome />))
-    expect(await screen.findByText('HeaderTitle')).toBeTruthy()
-    expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
+
+    await waitFor(() => {
+      expect(screen.getByText('HeaderTitle')).toBeTruthy()
+      expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
+    })
   })
 
   it('should show highlight header when provided', async () => {
@@ -57,7 +60,10 @@ describe('ThematicHome', () => {
 
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<ThematicHome />))
-    expect(await screen.findByText('Bloc temps fort')).toBeTruthy()
-    expect(screen.getByText('Un sous-titre')).toBeTruthy()
+
+    await waitFor(() => {
+      expect(screen.getByText('Bloc temps fort')).toBeTruthy()
+      expect(screen.getByText('Un sous-titre')).toBeTruthy()
+    })
   })
 })
