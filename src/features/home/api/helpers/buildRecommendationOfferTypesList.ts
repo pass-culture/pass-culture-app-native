@@ -1,3 +1,4 @@
+import { GenreType } from 'api/gen'
 import { RecommendedOffersParameters } from 'features/home/types'
 import { RecommendedIdsRequest } from 'libs/recommendation/types'
 
@@ -11,12 +12,12 @@ export const buildRecommendationOfferTypesList = ({
   let offerTypesList: RecommendedIdsRequest['offerTypeList'] = []
 
   const formattedBookTypes: RecommendedIdsRequest['offerTypeList'] = bookTypes?.map((bookType) => ({
-    key: 'BOOK',
+    key: GenreType.BOOK,
     value: bookType,
   }))
   const formattedMovieGenres: RecommendedIdsRequest['offerTypeList'] = movieGenres?.map(
     (movieGenre) => ({
-      key: 'MOVIE',
+      key: GenreType.MOVIE,
       value: movieGenre,
     })
   )
