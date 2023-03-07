@@ -6,8 +6,7 @@ import {
   getRecommendationParameters,
   useHomeRecommendedHits,
 } from 'features/home/api/useHomeRecommendedHits'
-import { RecommendedOffersModule } from 'features/home/types'
-import { RecommendationParametersFields } from 'libs/contentful'
+import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
@@ -83,6 +82,7 @@ describe('getRecommendationParameters', () => {
       endingDatetime: '2022-05-08T00:00+00:00',
       beginningDatetime: '2022-09-08T00:00+00:00',
       subcategories: ['Achat instrument'],
+      bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
     }
     const recommendationParameters = getRecommendationParameters(
       parameters,
@@ -96,12 +96,16 @@ describe('getRecommendationParameters', () => {
       isEvent: true,
       isDuo: true,
       subcategories: ['ACHAT_INSTRUMENT'],
+      offerTypeList: [
+        { key: 'BOOK', value: 'Carrière/Concours' },
+        { key: 'BOOK', value: 'Scolaire & Parascolaire' },
+        { key: 'BOOK', value: 'Gestion/entreprise' },
+      ],
     })
   })
 
   it('should return parameters with isRecoShuffled when provided', () => {
-    const parameters: RecommendationParametersFields = {
-      title: 'some parameters',
+    const parameters: RecommendedOffersParameters = {
       isRecoShuffled: true,
     }
     const recommendationParameters = getRecommendationParameters(
@@ -112,6 +116,7 @@ describe('getRecommendationParameters', () => {
       categories: [],
       subcategories: [],
       isRecoShuffled: true,
+      offerTypeList: [],
     })
   })
 })

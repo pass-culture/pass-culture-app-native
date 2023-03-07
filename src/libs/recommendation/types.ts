@@ -21,4 +21,6 @@ export interface RecommendedIdsRequest {
   subcategories?: string[]
   isDuo?: boolean
   isRecoShuffled?: boolean
+  offerTypeList?: Array<OfferTypeValue>
 }
+type OfferTypeValue = { key: 'BOOK'; value: string }
