@@ -38,7 +38,9 @@ describe('useAccountSuspensionStatus', () => {
     simulateSuspensionStatusError()
     const { result } = renderSuspensionDateHook()
 
-    expect(result.current.data).toBeUndefined()
+    await waitFor(() => {
+      expect(result.current.data).toBeUndefined()
+    })
   })
 })
 

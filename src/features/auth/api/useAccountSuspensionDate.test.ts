@@ -35,9 +35,10 @@ describe('useAccountSuspensionDate', () => {
 
   it('should return undefined for unsuspended user', async () => {
     simulateSuspensionDateActiveAccount()
-    const { result } = renderSuspensionDateHook()
+    const { result, unmount } = renderSuspensionDateHook()
 
     expect(result.current.data).toBeUndefined()
+    unmount()
   })
 })
 
