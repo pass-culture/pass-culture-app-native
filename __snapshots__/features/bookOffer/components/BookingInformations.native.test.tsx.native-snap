@@ -133,6 +133,7 @@ Array [
           },
         ]
       }
+      testID="price-line__total-price"
     >
       0,22 €
        
@@ -148,6 +149,7 @@ Array [
           },
         ]
       }
+      testID="price-line__price-detail"
     >
       (
       0,11 €
@@ -826,6 +828,7 @@ Array [
           },
         ]
       }
+      testID="price-line__total-price"
     >
       0,22 €
        
@@ -841,6 +844,7 @@ Array [
           },
         ]
       }
+      testID="price-line__price-detail"
     >
       (
       0,11 €
@@ -1182,6 +1186,7 @@ Array [
           },
         ]
       }
+      testID="price-line__total-price"
     >
       24 €
        
@@ -1197,6 +1202,7 @@ Array [
           },
         ]
       }
+      testID="price-line__price-detail"
     >
       (
       12 €
@@ -1215,7 +1221,7 @@ Array [
           },
         ]
       }
-      testID="price-line-label"
+      testID="price-line__label"
     >
        - 
       A stock label
@@ -1554,6 +1560,7 @@ Array [
           },
         ]
       }
+      testID="price-line__total-price"
     >
       0,11 €
        
@@ -2056,6 +2063,7 @@ Array [
           },
         ]
       }
+      testID="price-line__total-price"
     >
       0,22 €
        
@@ -2071,6 +2079,7 @@ Array [
           },
         ]
       }
+      testID="price-line__price-detail"
     >
       (
       0,11 €

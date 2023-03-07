@@ -125,7 +125,7 @@ describe('<BookingInformations />', () => {
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
 
-    expect(screen.getByTestId('price-line-label')).toBeTruthy()
+    expect(screen.getByTestId('price-line__label')).toBeTruthy()
   })
 
   it('should display location when offer is not digital', async () => {

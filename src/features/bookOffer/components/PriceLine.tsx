@@ -20,22 +20,25 @@ export interface PriceLineProps {
   label?: OfferStockResponse['priceCategoryLabel']
 }
 
+const testIDPrefix = 'price-line'
+function getTestID(str: string) {
+  return `${testIDPrefix}__${str}`
+}
+
 export function PriceLine({ quantity = 1, unitPrice, label }: PriceLineProps) {
   const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
 
   return (
     <React.Fragment>
-      <Typo.Caption>{totalPrice} </Typo.Caption>
+      <Typo.Caption testID={getTestID('total-price')}>{totalPrice} </Typo.Caption>
 
       {quantity > 1 && (
-        <React.Fragment>
-          <Typo.CaptionNeutralInfo>
-            ({formatToFrenchDecimal(unitPrice)} x {quantity} places)
-          </Typo.CaptionNeutralInfo>
-        </React.Fragment>
+        <Typo.CaptionNeutralInfo testID={getTestID('price-detail')}>
+          ({formatToFrenchDecimal(unitPrice)} x {quantity} places)
+        </Typo.CaptionNeutralInfo>
       )}
 
-      {!!label && <Typo.Caption testID="price-line-label"> - {label}</Typo.Caption>}
+      {!!label && <Typo.Caption testID={getTestID('label')}> - {label}</Typo.Caption>}
     </React.Fragment>
   )
 }
