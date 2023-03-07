@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { GeolocationBanner } from 'features/home/components/GeolocationBanner'
+import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { showGeolocPermissionModal, requestGeolocPermission } from 'libs/geolocation/__mocks__'
 import { fireEvent, render } from 'tests/utils'

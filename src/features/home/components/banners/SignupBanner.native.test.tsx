@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SignupBanner } from 'features/home/components/SignupBanner'
+import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 describe('SignupBanner', () => {
