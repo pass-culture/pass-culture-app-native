@@ -1,3 +1,5 @@
+import { GenreType } from 'api/gen'
+
 export interface RecommendedIdsResponse {
   playlist_recommended_offers: string[]
   params: {
@@ -23,4 +25,6 @@ export interface RecommendedIdsRequest {
   isRecoShuffled?: boolean
   offerTypeList?: Array<OfferTypeValue>
 }
-type OfferTypeValue = { key: 'BOOK'; value: string }
+type OfferTypeValue =
+  | { key: GenreType.BOOK; value: string }
+  | { key: GenreType.MOVIE; value: string }

@@ -83,6 +83,7 @@ export const formattedRecommendedOffersModule: RecommendedOffersModule = {
     isDuo: false,
     isRecoShuffled: false,
     bookTypes: ['Carrière/Concours', 'Scolaire & Parascolaire', 'Gestion/entreprise'],
+    movieGenres: ['ACTION', 'BOLLYWOOD'],
   },
 }
 

@@ -144,6 +144,7 @@ export type RecommendedOffersParameters = {
   isRecoShuffled?: boolean
   modelEndpoint?: string
   bookTypes?: string[]
+  movieGenres?: string[]
 }
 
 export type ThematicHighlightModule = {

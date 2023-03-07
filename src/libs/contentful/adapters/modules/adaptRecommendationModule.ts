@@ -16,6 +16,9 @@ const mapRecommendationCategories = (
 const mapBookTypes = (recoCategories: RecommendationParametersFields['bookTypes']) =>
   recoCategories?.fields?.bookTypes
 
+const mapMovieGenres = (recoCategories: RecommendationParametersFields['movieGenres']) =>
+  recoCategories?.fields?.movieGenres
+
 const buildRecommendationParams = (
   recommendationParams: RecommendationParameters
 ): RecommendedOffersModule['recommendationParameters'] => {
@@ -23,11 +26,13 @@ const buildRecommendationParams = (
     recommendationSubcategories,
     recommendationCategories,
     bookTypes,
+    movieGenres,
     title: _title,
     ...otherFields
   } = recommendationParams.fields
   return {
     ...otherFields,
+    movieGenres: mapMovieGenres(movieGenres),
     bookTypes: mapBookTypes(bookTypes),
     subcategories: mapRecommendationSubcategories(recommendationSubcategories),
     categories: mapRecommendationCategories(recommendationCategories),
