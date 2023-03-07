@@ -13,6 +13,7 @@ export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
 export enum ThematicHeaderType {
   'Default' = 'Default',
   'Highlight' = 'Highlight',
+  'Category' = 'Category',
 }
 
 export type DefaultThematicHeader = {
@@ -32,7 +33,17 @@ export type HighlightThematicHeader = {
   introductionParagraph?: string
 }
 
-export type ThematicHeader = DefaultThematicHeader | HighlightThematicHeader
+export type CategoryThematicHeader = {
+  type: ThematicHeaderType.Category
+  title: string
+  subtitle?: string
+  imageUrl: string
+}
+
+export type ThematicHeader =
+  | DefaultThematicHeader
+  | HighlightThematicHeader
+  | CategoryThematicHeader
 
 export type Homepage = {
   tags: HomepageTag[]

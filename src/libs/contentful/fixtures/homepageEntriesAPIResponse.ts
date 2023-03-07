@@ -1,4 +1,5 @@
 import { ContentTypes } from 'libs/contentful'
+import { thematicCategoryInfoFixture } from 'libs/contentful/fixtures/thematicCategoryInfo.fixture'
 import { thematicHighlightInfoFixture } from 'libs/contentful/fixtures/thematicHighlightInfo.fixture'
 
 export const homepageEntriesAPIResponse = {
@@ -81,6 +82,27 @@ export const homepageEntriesAPIResponse = {
         modules: [],
         title: 'Homepage temps fort',
         thematicHeader: thematicHighlightInfoFixture,
+      },
+    },
+    {
+      metadata: {
+        tags: [],
+      },
+      sys: {
+        space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
+        id: '7IuIeovqUykM1uvWwwPPh9',
+        type: 'Entry',
+        createdAt: '2020-10-28T17:32:42.192Z',
+        updatedAt: '2020-10-28T17:32:42.192Z',
+        environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
+        revision: 1,
+        contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
+        locale: 'en-US',
+      },
+      fields: {
+        modules: [],
+        title: 'Home catégorielle',
+        thematicHeader: thematicCategoryInfoFixture,
       },
     },
   ],

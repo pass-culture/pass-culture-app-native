@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
+import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
@@ -10,9 +11,11 @@ import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 
 const Header = ({ thematicHeader }: { thematicHeader?: ThematicHeader }) => {
-  if (thematicHeader?.type === ThematicHeaderType.Highlight) {
+  if (thematicHeader?.type === ThematicHeaderType.Highlight)
     return <HighlightThematicHomeHeader {...thematicHeader} />
-  }
+
+  if (thematicHeader?.type === ThematicHeaderType.Category)
+    return <CategoryThematicHomeHeader {...thematicHeader} />
 
   return (
     <ListHeaderContainer>

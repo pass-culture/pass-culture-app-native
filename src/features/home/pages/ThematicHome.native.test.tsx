@@ -66,4 +66,23 @@ describe('ThematicHome', () => {
       expect(screen.getByText('Un sous-titre')).toBeTruthy()
     })
   })
+
+  it('should show category header when provided', () => {
+    mockUseHomepageData.mockReturnValueOnce({
+      modules,
+      id: 'fakeEntryId',
+      thematicHeader: {
+        type: ThematicHeaderType.Category,
+        imageUrl:
+          'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
+        subtitle: 'Un sous-titre',
+        title: 'Catégorie cinéma',
+      },
+    })
+
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const { getByText } = render(reactQueryProviderHOC(<ThematicHome />))
+    expect(getByText('Un sous-titre')).toBeTruthy()
+    expect(getByText('Catégorie cinéma')).toBeTruthy()
+  })
 })

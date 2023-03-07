@@ -33,8 +33,10 @@ import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
+import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/CategoryThematicHomeHeaderCheatcode'
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
 import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
+import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
 import { TrustedDevice } from 'features/internal/cheatcodes/pages/TrustedDevice/TrustedDevice'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
@@ -398,13 +400,25 @@ export const routes: Route[] = [
     name: 'DefaultThematicHomeHeaderCheatcode',
     component: DefaultThematicHomeHeaderCheatcode,
     hoc: withAsyncErrorBoundary,
-    path: 'cheat-thematic-home-header',
+    path: 'cheat-default-home-header',
   },
   {
     // debug route: in navigation component
     name: 'HighlightThematicHomeHeaderCheatcode',
     component: HighlightThematicHomeHeaderCheatcode,
     path: 'cheat-highlight-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'CategoryThematicHomeHeaderCheatcode',
+    component: CategoryThematicHomeHeaderCheatcode,
+    path: 'cheat-category-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'ThematicHeaders',
+    component: ThematicHeaders,
+    path: 'cheat-thematic-home-header',
   },
   {
     // debug route: in navigation component
