@@ -6,7 +6,7 @@ import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOffer
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { act, cleanup, fireEvent } from 'tests/utils'
+import { fireEvent, screen, waitFor } from 'tests/utils'
 
 jest.mock('api/api')
 jest.mock('features/auth/context/AuthContext')
@@ -57,57 +57,71 @@ describe('<OfferBody />', () => {
     mockdate.set(new Date(2021, 0, 1))
   })
 
-  afterEach(cleanup)
-
   it('should match snapshot for physical offer', async () => {
-    const { toJSON } = await renderOfferBodyPage({ isDigital: false })
-    expect(toJSON()).toMatchSnapshot()
+    renderOfferBodyPage({ isDigital: false })
+    await screen.findByTestId('offer-container')
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should match snapshot for digital offer', async () => {
-    const { toJSON } = await renderOfferBodyPage({ isDigital: true, isDuo: false })
-    expect(toJSON()).toMatchSnapshot()
+    renderOfferBodyPage({ isDigital: true, isDuo: false })
+    await screen.findByTestId('offer-container')
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should show venue banner in where section', async () => {
-    const venue = await renderOfferBodyPage({ isDigital: false })
-    expect(venue.queryByTestId(`Lieu ${offerResponseSnap.venue.name}`)).toBeTruthy()
+    renderOfferBodyPage({ isDigital: false })
+
+    expect(await screen.findByTestId(`Lieu ${offerResponseSnap.venue.name}`)).toBeTruthy()
   })
 
-  it('should show accessibilityDetails', async () => {
-    let wrapper = await renderOfferBodyPage()
-    expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
+  describe('Accessibility details', () => {
+    it('should display accessibility by default', async () => {
+      renderOfferBodyPage()
 
-    wrapper = await renderOfferBodyPage({ accessibility: { visualDisability: false } })
-    expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
+      expect(await screen.findByText('Accessibilité')).toBeTruthy()
+    })
 
-    wrapper = await renderOfferBodyPage({ accessibility: {} })
-    expect(wrapper.queryByText('Accessibilité')).toBeNull()
+    it('should display custom accessibility', async () => {
+      renderOfferBodyPage({ accessibility: { visualDisability: false } })
+
+      expect(await screen.findByText('Accessibilité')).toBeTruthy()
+    })
+
+    it('should not display when no information about accessibility', async () => {
+      renderOfferBodyPage({ accessibility: {} })
+      await screen.findByTestId('offer-container')
+
+      expect(screen.queryByText('Accessibilité')).toBeNull()
+    })
   })
 
-  it('should show withdrawalDetails', async () => {
-    const wrapper = await renderOfferBodyPage(
-      { withdrawalDetails: 'How to withdraw' },
-      { isBeneficiary: true }
-    )
-    expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
+  describe('withdrawalDetails', () => {
+    it('should display for beneficiary user', async () => {
+      renderOfferBodyPage({ withdrawalDetails: 'How to withdraw' }, { isBeneficiary: true })
+
+      expect(await screen.findByText('Modalités de retrait')).toBeTruthy()
+    })
+
+    it('should not display for non beneficiary user', async () => {
+      renderOfferBodyPage({ withdrawalDetails: 'How to withdraw' }, { isBeneficiary: false })
+      await screen.findByTestId('offer-container')
+
+      expect(screen.queryByText('Modalités de retrait')).toBeNull()
+    })
+
+    it('should not display', async () => {
+      renderOfferBodyPage({ withdrawalDetails: undefined })
+      await screen.findByTestId('offer-container')
+
+      expect(screen.queryByText('Modalités de retrait')).toBeNull()
+    })
   })
 
-  it('should show withdrawalDetails for non beneficiary user', async () => {
-    const wrapper = await renderOfferBodyPage(
-      { withdrawalDetails: 'How to withdraw' },
-      { isBeneficiary: false }
-    )
-    expect(wrapper.queryByText('Modalités de retrait')).toBeNull()
-  })
-
-  it('should not show withdrawalDetails', async () => {
-    const wrapper = await renderOfferBodyPage({ withdrawalDetails: undefined })
-    expect(wrapper.queryByText('Modalités de retrait')).toBeNull()
-  })
-
-  it('should not show distance when no address and go to button', async () => {
-    const wrapper = await renderOfferBodyPage({
+  it('should not display distance when no address and go to button', async () => {
+    renderOfferBodyPage({
       venue: {
         id: 1664,
         address: undefined,
@@ -120,32 +134,42 @@ describe('<OfferBody />', () => {
         isPermanent: true,
       },
     })
-    expect(wrapper.queryByText('Voir l’itinéraire')).toBeNull()
-    expect(wrapper.queryByText('Distance')).toBeNull()
+
+    await screen.findByTestId('offer-container')
+
+    expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    expect(screen.queryByText('Distance')).toBeNull()
   })
 
   it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
-    await renderOfferBodyPage()
+    renderOfferBodyPage()
+    await screen.findByTestId('offer-container')
+
     expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
   })
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
+  it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
-    await renderOfferBodyPage()
+    renderOfferBodyPage()
+    await screen.findByTestId('offer-container')
+
     expect(api.getnativev1offersreports).not.toHaveBeenCalled()
   })
 
   it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
-    await renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
+    renderOfferBodyPage(undefined, undefined, { isLoggedIn: false })
+    await screen.findByTestId('offer-container')
+
     expect(api.getnativev1offersreports).not.toBeCalled()
   })
 
   it('should log itinerary analytics', async () => {
-    const wrapper = await renderOfferBodyPage()
-    act(() => {
-      fireEvent.press(wrapper.getByText('Voir l’itinéraire'))
+    renderOfferBodyPage()
+
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+
+    await waitFor(() => {
+      expect(analytics.logConsultItinerary).toBeCalledWith({ offerId, from: 'offer' })
     })
-    expect(analytics.logConsultItinerary).toBeCalledWith({ offerId, from: 'offer' })
   })
 })
