@@ -1,5 +1,5 @@
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
-import { stock1, stock2 } from 'features/bookOffer/fixtures/stocks'
+import { mockStocks, stock1, stock2 } from 'features/bookOffer/fixtures/stocks'
 import {
   getButtonState,
   getTotalBookingSteps,
@@ -7,7 +7,9 @@ import {
   getHourWording,
   getRadioSelectorPriceState,
   getPriceWording,
+  getPreviousStep,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
 
 describe('bookingHelpers', () => {
@@ -263,5 +265,59 @@ describe('getPriceWording', () => {
   it('should return "200 places restantes" when stock is 200', () => {
     const priceWording = getPriceWording(stock1, 25000)
     expect(priceWording).toEqual('200 places restantes')
+  })
+})
+
+describe('getPreviousStep', () => {
+  it('should return to date step when current step is hour', () => {
+    const previousStep = getPreviousStep(Step.HOUR, offerResponseSnap)
+    expect(previousStep).toEqual(Step.DATE)
+  })
+
+  describe('should return to hour step', () => {
+    it('when current step is price', () => {
+      const previousStep = getPreviousStep(Step.PRICE, { ...offerResponseSnap, stocks: mockStocks })
+      expect(previousStep).toEqual(Step.HOUR)
+    })
+
+    it('when current step is duo and has not several stock', () => {
+      const previousStep = getPreviousStep(Step.DUO, { ...offerResponseSnap, stocks: [stock1] })
+      expect(previousStep).toEqual(Step.HOUR)
+    })
+
+    it('when current step is confirmation, offer is not duo and has not several stock', () => {
+      const previousStep = getPreviousStep(Step.CONFIRMATION, {
+        ...offerResponseSnap,
+        stocks: [stock1],
+        isDuo: false,
+      })
+      expect(previousStep).toEqual(Step.HOUR)
+    })
+  })
+
+  describe('should return to price step', () => {
+    it('when current step is duo and has several stocks', () => {
+      const previousStep = getPreviousStep(Step.DUO, {
+        ...offerResponseSnap,
+        stocks: mockStocks,
+      })
+      expect(previousStep).toEqual(Step.PRICE)
+    })
+
+    it('when current step is confirmation, offer is not duo and has several stocks', () => {
+      const previousStep = getPreviousStep(Step.CONFIRMATION, {
+        ...offerResponseSnap,
+        stocks: mockStocks,
+        isDuo: false,
+      })
+      expect(previousStep).toEqual(Step.PRICE)
+    })
+  })
+
+  it('should return to duo step when current step is confirmation and offer is duo', () => {
+    const previousStep = getPreviousStep(Step.CONFIRMATION, {
+      ...offerResponseSnap,
+    })
+    expect(previousStep).toEqual(Step.DUO)
   })
 })

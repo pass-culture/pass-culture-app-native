@@ -1,4 +1,4 @@
-import { OfferStockResponse } from 'api/gen'
+import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -103,4 +103,23 @@ export function getPriceWording(stock: OfferStockResponse, offerCredit: number) 
   }
 
   return `${stock.remainingQuantity} places restantes`
+}
+
+export function getPreviousStep(currentStep: number, offer: OfferResponse) {
+  const stocksWithCategory = offer?.stocks?.filter(
+    (stock) => !stock.isExpired && stock.priceCategoryLabel
+  ).length
+
+  if (
+    (currentStep === Step.DUO || (currentStep === Step.CONFIRMATION && !offer.isDuo)) &&
+    stocksWithCategory <= 1
+  ) {
+    return Step.HOUR
+  } else if (currentStep === Step.CONFIRMATION && !offer.isDuo && stocksWithCategory > 1) {
+    return Step.PRICE
+  } else if (currentStep === Step.CONFIRMATION && offer.isDuo) {
+    return Step.DUO
+  }
+
+  return currentStep - 1
 }
