@@ -13,7 +13,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, cleanup, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -50,19 +50,11 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 describe('<Favorite /> component', () => {
-  beforeEach(() => jest.useFakeTimers())
-  afterEach(async () => {
-    jest.runOnlyPendingTimers()
-    cleanup()
-  })
-
   it('should navigate to the offer when clicking on the favorite', async () => {
-    const { getByText } = renderFavorite()
+    renderFavorite()
 
-    act(() => {
-      const offre = getByText(favorite.offer.name)
-      fireEvent.press(offre)
-    })
+    const offre = screen.getByText(favorite.offer.name)
+    fireEvent.press(offre)
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -72,21 +64,20 @@ describe('<Favorite /> component', () => {
     })
   })
 
-  it('should show distance if geolocation enabled', () => {
+  it('should show distance if geolocation enabled', async () => {
     mockDistance = '10 km'
-    const { queryByText } = renderFavorite()
-    expect(queryByText('10 km')).toBeTruthy()
+    renderFavorite()
+
+    expect(await screen.findByText('10 km')).toBeTruthy()
   })
 
   it('should delete favorite on button click', async () => {
     const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
     simulateBackend()
     mockDistance = '10 km'
-    const { getByText } = renderFavorite()
+    renderFavorite()
 
-    act(() => {
-      fireEvent.press(getByText('Supprimer'))
-    })
+    fireEvent.press(screen.getByText('Supprimer'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, favorite.id)
@@ -99,13 +90,11 @@ describe('<Favorite /> component', () => {
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
     mockDistance = '10 km'
-    const { getByText } = renderFavorite({
+    renderFavorite({
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    act(() => {
-      fireEvent.press(getByText('Supprimer'))
-    })
+    fireEvent.press(screen.getByText('Supprimer'))
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
@@ -116,20 +105,20 @@ describe('<Favorite /> component', () => {
     })
   })
 
-  it('should call share when press share icon', () => {
+  it('should call share when press share icon', async () => {
     const share = jest.spyOn(Share, 'share')
-    const { getByLabelText } = renderFavorite()
+    renderFavorite()
 
-    const shareButton = getByLabelText(`Partager l’offre ${favorite.offer.name}`)
+    const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
     fireEvent.press(shareButton)
 
     expect(share).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when press share icon', () => {
-    const { getByLabelText } = renderFavorite()
+  it('should log analytics when press share icon', async () => {
+    renderFavorite()
 
-    const shareButton = getByLabelText(`Partager l’offre ${favorite.offer.name}`)
+    const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
     fireEvent.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
