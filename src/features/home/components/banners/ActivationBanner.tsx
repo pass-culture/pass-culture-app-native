@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type ActivationBannerProps = {
   title: string
@@ -12,15 +12,12 @@ type ActivationBannerProps = {
 
 export const ActivationBanner = ({ title, subtitle }: ActivationBannerProps) => {
   return (
-    <React.Fragment>
-      <BannerWithBackground
-        leftIcon={StyledBicolorUnlock}
-        navigateTo={{ screen: 'IdentityCheckStepper' }}>
-        <StyledButtonText>{title}</StyledButtonText>
-        <StyledBodyText>{subtitle}</StyledBodyText>
-      </BannerWithBackground>
-      <Spacer.Column numberOfSpaces={8} />
-    </React.Fragment>
+    <BannerWithBackground
+      leftIcon={StyledBicolorUnlock}
+      navigateTo={{ screen: 'IdentityCheckStepper' }}>
+      <StyledButtonText>{title}</StyledButtonText>
+      <StyledBodyText>{subtitle}</StyledBodyText>
+    </BannerWithBackground>
   )
 }
 
