@@ -14,6 +14,7 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
+import { PlaylistType } from 'features/offer/enums'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -51,6 +52,7 @@ interface Props {
   onScroll: () => void
   sameCategorySimilarOffers?: SearchHit[]
   otherCategoriesSimilarOffers?: SearchHit[]
+  shouldUseAlgoliaRecommend?: boolean
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -64,6 +66,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   onScroll,
   sameCategorySimilarOffers,
   otherCategoriesSimilarOffers,
+  shouldUseAlgoliaRecommend,
 }) => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
@@ -100,7 +103,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
-    ({ item, width, height }) => {
+    ({ item, width, height, playlistType }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTile
@@ -118,6 +121,8 @@ export const OfferBody: FunctionComponent<Props> = ({
           height={height}
           analyticsFrom="offer"
           fromOfferId={offerId}
+          shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
+          playlistType={playlistType}
         />
       )
     },
@@ -266,6 +271,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             keyExtractor={keyExtractor}
             title="Dans la même catégorie"
             onEndReached={trackingOnHorizontalScroll}
+            playlistType={PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS}
           />
         </SectionWithDivider>
       )}
@@ -281,6 +287,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             keyExtractor={keyExtractor}
             title="Ça peut aussi te plaire"
             onEndReached={trackingOnHorizontalScroll}
+            playlistType={PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS}
           />
         </SectionWithDivider>
       )}

@@ -1,5 +1,6 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { PlaylistType } from 'features/offer/enums'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -21,4 +22,6 @@ export interface OfferTileProps {
   width: number
   height: number
   fromOfferId?: number
+  shouldUseAlgoliaRecommend?: boolean
+  playlistType?: PlaylistType
 }

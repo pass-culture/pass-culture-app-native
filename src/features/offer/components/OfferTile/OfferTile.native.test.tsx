@@ -3,6 +3,7 @@ import React from 'react'
 import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -63,7 +64,12 @@ describe('OfferTile component', () => {
   })
 
   it('Analytics - should log ConsultOffer that user opened the offer from the list of similar offers', async () => {
-    const propsFromSimilarOffers = { ...props, fromOfferId: 1 }
+    const propsFromSimilarOffers = {
+      ...props,
+      fromOfferId: 1,
+      shouldUseAlgoliaRecommend: false,
+      playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+    }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
     await fireEvent.press(getByTestId('tileImage'))
@@ -72,6 +78,8 @@ describe('OfferTile component', () => {
       from: 'similar_offer',
       moduleName: props.moduleName,
       fromOfferId: 1,
+      shouldUseAlgoliaRecommend: false,
+      playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
     })
   })
 

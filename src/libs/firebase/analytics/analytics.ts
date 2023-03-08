@@ -131,6 +131,8 @@ const logEventAnalytics = {
     homeEntryId?: string
     searchId?: string
     fromOfferId?: number
+    shouldUseAlgoliaRecommend?: boolean
+    playlistType?: PlaylistType
   }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_OFFER, params),
   logConsultTutorial: (from: Referrals) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_TUTORIAL, { from }),
