@@ -13,14 +13,17 @@ const mapRecommendationCategories = (
   recoCategories: RecommendationParametersFields['recommendationCategories']
 ) => recoCategories?.fields?.categories
 
-const mapBookTypes = (recoCategories: RecommendationParametersFields['bookTypes']) =>
-  recoCategories?.fields?.bookTypes
+const mapBookTypes = (recoBookTypes: RecommendationParametersFields['bookTypes']) =>
+  recoBookTypes?.fields?.bookTypes
 
-const mapMovieGenres = (recoCategories: RecommendationParametersFields['movieGenres']) =>
-  recoCategories?.fields?.movieGenres
+const mapMovieGenres = (recoMovieGenres: RecommendationParametersFields['movieGenres']) =>
+  recoMovieGenres?.fields?.movieGenres
 
-const mapMusicTypes = (recoCategories: RecommendationParametersFields['musicTypes']) =>
-  recoCategories?.fields?.musicTypes
+const mapMusicTypes = (recoMusicTypes: RecommendationParametersFields['musicTypes']) =>
+  recoMusicTypes?.fields?.musicTypes
+
+const mapShowTypes = (recoShowTypes: RecommendationParametersFields['showTypes']) =>
+  recoShowTypes?.fields?.showTypes
 
 const buildRecommendationParams = (
   recommendationParams: RecommendationParameters
@@ -31,11 +34,13 @@ const buildRecommendationParams = (
     bookTypes,
     movieGenres,
     musicTypes,
+    showTypes,
     title: _title,
     ...otherFields
   } = recommendationParams.fields
   return {
     ...otherFields,
+    showTypes: mapShowTypes(showTypes),
     musicTypes: mapMusicTypes(musicTypes),
     movieGenres: mapMovieGenres(movieGenres),
     bookTypes: mapBookTypes(bookTypes),

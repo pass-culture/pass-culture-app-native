@@ -1,6 +1,6 @@
 import { ContentTypes, ShowTypes } from 'libs/contentful/types'
 
-export const ShowTypesFixture: ShowTypes = {
+export const showTypesFixture: ShowTypes = {
   sys: {
     space: {
       sys: {
