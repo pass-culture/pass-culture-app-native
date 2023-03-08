@@ -28,3 +28,4 @@ export interface RecommendedIdsRequest {
 type OfferTypeValue =
   | { key: GenreType.BOOK; value: string }
   | { key: GenreType.MOVIE; value: string }
+  | { key: GenreType.MUSIC; value: string }
