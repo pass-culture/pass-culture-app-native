@@ -135,6 +135,26 @@ Array [
       }
     >
       0,22 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+      testID="price-line__price-detail"
+    >
+      (
+      0,11 €
+       x 
+      2
+       places)
     </Text>
     <View
       numberOfSpaces={2}
@@ -809,6 +829,399 @@ Array [
       }
     >
       0,22 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+      testID="price-line__price-detail"
+    >
+      (
+      0,11 €
+       x 
+      2
+       places)
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>,
+]
+`;
+
+exports[`<BookingInformations /> should display stock label 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      mon nom
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      1 décembre 2020, 00h00
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textTransform": "capitalize",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      24 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+      testID="price-line__price-detail"
+    >
+      (
+      12 €
+       x 
+      2
+       places)
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+      testID="price-line__label"
+    >
+       - 
+      A stock label
     </Text>
     <View
       numberOfSpaces={2}
@@ -1146,6 +1559,7 @@ Array [
       }
     >
       0,11 €
+       
     </Text>
     <View
       numberOfSpaces={2}
@@ -1647,6 +2061,26 @@ Array [
       }
     >
       0,22 €
+       
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+      testID="price-line__price-detail"
+    >
+      (
+      0,11 €
+       x 
+      2
+       places)
     </Text>
     <View
       numberOfSpaces={2}
@@ -1670,7 +2104,7 @@ Array [
         ]
       }
     >
-      (0,11 € x 2 places)
+      
     </Text>
   </View>,
 ]

@@ -389,6 +389,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
       }
     >
       20 €
+       
     </Text>
     <View
       numberOfSpaces={2}
@@ -958,6 +959,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
       }
     >
       20 €
+       
     </Text>
     <View
       numberOfSpaces={2}

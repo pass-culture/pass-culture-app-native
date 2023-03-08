@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { formatDate } from 'features/bookOffer/components/CancellationDetails'
+import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -50,14 +50,14 @@ export const BookingInformations: React.FC = () => {
       <Typo.Caption>{fullAddress}</Typo.Caption>
     </StyledAddress>
   )
-  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : 'Gratuit'
+  const price =
+    stock.price > 0 ? (
+      <PriceLine unitPrice={stock.price} label={stock.priceCategoryLabel} quantity={quantity} />
+    ) : (
+      'Gratuit'
+    )
 
   if (mapping[offer.subcategoryId].isEvent) {
-    const subtext =
-      stock.price > 0 && quantity === 2
-        ? `(${formatToFrenchDecimal(stock.price)} x 2 places)`
-        : undefined
-
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
@@ -65,7 +65,7 @@ export const BookingInformations: React.FC = () => {
           <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
         )}
         <Item Icon={LocationBuilding} message={address} />
-        <Item Icon={OrderPrice} message={price} subtext={subtext} />
+        <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
   }
