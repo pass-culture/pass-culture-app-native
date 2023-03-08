@@ -5,13 +5,17 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/onboarding/components/welcomeBackground'
+import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
+const setHasSeenTutorials = () => {
+  analytics.logOnboardingStarted()
+  storage.saveObject('has_seen_tutorials', true)
+}
 
 export const OnboardingWelcome: FunctionComponent = () => (
   <Container>
