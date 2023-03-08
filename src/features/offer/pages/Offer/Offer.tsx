@@ -175,6 +175,7 @@ export const Offer: FunctionComponent = () => {
         onScroll={onScroll}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+        shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
       />
 
       {!!wording && (

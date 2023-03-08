@@ -51,6 +51,7 @@ interface Props {
   onScroll: () => void
   sameCategorySimilarOffers?: SearchHit[]
   otherCategoriesSimilarOffers?: SearchHit[]
+  shouldUseAlgoliaRecommend?: boolean
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -64,6 +65,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   onScroll,
   sameCategorySimilarOffers,
   otherCategoriesSimilarOffers,
+  shouldUseAlgoliaRecommend,
 }) => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
@@ -118,6 +120,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           height={height}
           analyticsFrom="offer"
           fromOfferId={offerId}
+          shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
         />
       )
     },

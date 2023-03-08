@@ -21,4 +21,5 @@ export interface OfferTileProps {
   width: number
   height: number
   fromOfferId?: number
+  shouldUseAlgoliaRecommend?: boolean
 }
