@@ -21,34 +21,34 @@ describe('<ResetPasswordEmailSent />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to previous screen when clicking on ArrowPrevious icon', () => {
+  it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
     renderInitialPage('PreviousScreen')
     act(() => navigationRef.navigate('ResetPasswordEmailSent', { email: '' }))
 
-    fireEvent.press(screen.getByLabelText('Revenir en arrière'))
+    fireEvent.press(await screen.findByLabelText('Revenir en arrière'))
 
-    expect(screen.getByText('PreviousScreenText')).toBeTruthy()
+    expect(screen.queryByText('PreviousScreenText')).toBeTruthy()
   })
 
   it('should NOT display back button when previous screen is ForgottenPassword', () => {
     renderInitialPage('ForgottenPassword')
 
     const leftIconButton = screen.queryByTestId('Revenir en arrière')
-    expect(leftIconButton).toBeFalsy()
+    expect(leftIconButton).toBeNull()
   })
 
-  it('should redirect to Home when clicking on Close icon', () => {
+  it('should redirect to Home when clicking on Close icon', async () => {
     renderInitialPage('ResetPasswordEmailSent')
 
-    fireEvent.press(screen.getByTestId('Revenir à l’accueil'))
+    fireEvent.press(await screen.findByLabelText('Revenir à l’accueil'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should open mail app when clicking on check email button', () => {
+  it('should open mail app when clicking on check email button', async () => {
     renderInitialPage('ResetPasswordEmailSent')
 
-    const checkEmailsButton = screen.getByText('Consulter mes e-mails')
+    const checkEmailsButton = await screen.findByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
 
     expect(openInbox).toHaveBeenCalledTimes(1)
