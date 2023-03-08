@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
@@ -33,11 +33,10 @@ describe('SetPassword Page', () => {
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.press(await screen.findByTestId('Continuer'))
 
-    await act(async () => {
-      fireEvent.press(await screen.findByTestId('Continuer'))
+    await waitFor(() => {
+      expect(props.goToNextStep).toHaveBeenCalledWith({ password: 'user@AZERTY123' })
     })
-
-    expect(props.goToNextStep).toHaveBeenCalledWith({ password: 'user@AZERTY123' })
   })
 })
