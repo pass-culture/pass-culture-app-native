@@ -63,6 +63,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     homeEntryId,
     fromOfferId,
     shouldUseAlgoliaRecommend,
+    playlistType,
     ...offer
   } = props
 
@@ -86,6 +87,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       homeEntryId,
       fromOfferId,
       shouldUseAlgoliaRecommend,
+      playlistType,
     })
   }
 
