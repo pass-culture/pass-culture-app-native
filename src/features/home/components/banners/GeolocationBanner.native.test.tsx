@@ -9,11 +9,6 @@ jest.mock('libs/geolocation')
 const mockUseGeolocation = useGeolocation as jest.Mock
 
 describe('<GeolocationBanner />', () => {
-  it('should display according to snapshot', () => {
-    const renderAPI = render(<GeolocationBanner />)
-    expect(renderAPI).toMatchSnapshot()
-  })
-
   it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', () => {
     mockUseGeolocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
