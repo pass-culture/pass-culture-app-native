@@ -30,7 +30,7 @@ export function PriceLine({ quantity = 1, unitPrice, label }: PriceLineProps) {
 
   return (
     <React.Fragment>
-      <Typo.Caption testID={getTestID('total-price')}>{totalPrice} </Typo.Caption>
+      <Typo.Caption>{totalPrice} </Typo.Caption>
 
       {quantity > 1 && (
         <Typo.CaptionNeutralInfo testID={getTestID('price-detail')}>

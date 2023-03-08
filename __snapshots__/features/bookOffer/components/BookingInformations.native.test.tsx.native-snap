@@ -1013,7 +1013,7 @@ Array [
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -1186,7 +1186,6 @@ Array [
           },
         ]
       }
-      testID="price-line__total-price"
     >
       24 €
        
