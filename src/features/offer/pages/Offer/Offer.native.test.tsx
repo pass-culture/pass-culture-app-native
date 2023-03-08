@@ -28,10 +28,7 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 describe('<Offer />', () => {
-  // fake timers are needed to avoid warning (because we use useTrackOfferSeenDuration)
-  // See https://github.com/facebook/jest/issues/6434
   beforeEach(() => {
-    jest.useFakeTimers()
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
@@ -39,13 +36,16 @@ describe('<Offer />', () => {
       isUserLoading: false,
     })
   })
-  afterEach(() => jest.useRealTimers())
 
   it('animates on scroll', async () => {
     renderOfferPage()
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
-    const scrollContainer = screen.getByTestId('offer-container')
-    await act(async () => await fireEvent.scroll(scrollContainer, scrollEvent))
+
+    await act(async () => {
+      const scrollContainer = screen.getByTestId('offer-container')
+      fireEvent.scroll(scrollContainer, scrollEvent)
+    })
+
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
 
@@ -60,12 +60,10 @@ describe('<Offer />', () => {
 
     renderOfferPage()
 
-    const bookingOfferButton = screen.getByText('Réserver l’offre')
+    const bookingOfferButton = await screen.findByText('Réserver l’offre')
     fireEvent.press(bookingOfferButton)
 
-    await waitFor(() => {
-      expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
-    })
+    expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
   })
 
   it('should log analytics when display authentication modal', async () => {
@@ -78,12 +76,10 @@ describe('<Offer />', () => {
 
     renderOfferPage()
 
-    const bookingOfferButton = screen.getByText('Réserver l’offre')
+    const bookingOfferButton = await screen.findByText('Réserver l’offre')
     fireEvent.press(bookingOfferButton)
 
-    await waitFor(() => {
-      expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
-    })
+    expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
 
   describe('with similar offers', () => {
@@ -327,9 +323,7 @@ describe('<Offer />', () => {
     const fromOfferId = 1
     renderOfferPage(fromOfferId, undefined, true)
 
-    await waitFor(() => {
-      expect(screen.queryByText('Valider la date')).toBeTruthy()
-    })
+    expect(await screen.findByText('Valider la date')).toBeTruthy()
   })
 
   it('should display reservation impossible when user has already booked the offer', async () => {
