@@ -42,6 +42,7 @@ type Props = {
   shouldScrollToEnd?: boolean
   keyboardShouldPersistTaps?: ScrollViewProps['keyboardShouldPersistTaps']
   shouldAddSpacerBetweenHeaderAndContent?: boolean
+  testID?: string
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values
@@ -74,6 +75,7 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldScrollToEnd,
   keyboardShouldPersistTaps,
   shouldAddSpacerBetweenHeaderAndContent = true,
+  testID = 'modal',
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -164,7 +166,7 @@ export const AppModal: FunctionComponent<Props> = ({
       hasBackdrop={shouldDisplayOverlay}
       isVisible={visible}
       onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
-      testID="modal"
+      testID={testID}
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}
       accessibilityLabelledBy={titleId}

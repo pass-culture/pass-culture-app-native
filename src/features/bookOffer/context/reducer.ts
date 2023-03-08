@@ -1,14 +1,16 @@
 export enum Step {
   DATE = 1,
   HOUR = 2,
-  DUO = 3,
-  PRE_VALIDATION = 4,
-  CONFIRMATION = 5,
+  PRICE = 3,
+  DUO = 4,
+  PRE_VALIDATION = 5,
+  CONFIRMATION = 6,
 }
 
 export const STEP_LABEL: Record<Step, string> = {
   [Step.DATE]: 'Date',
   [Step.HOUR]: 'Horaire',
+  [Step.PRICE]: 'Prix',
   [Step.DUO]: 'Nombre de places',
   [Step.PRE_VALIDATION]: 'Pré-validation',
   [Step.CONFIRMATION]: 'Confirmation',
@@ -20,6 +22,7 @@ export type BookingState = {
   step: Step
   quantity: 1 | 2 | undefined
   date: Date | undefined
+  hour: string | undefined
 }
 
 export const initialBookingState: BookingState = {
@@ -28,6 +31,7 @@ export const initialBookingState: BookingState = {
   step: Step.DATE,
   quantity: undefined,
   date: undefined,
+  hour: undefined,
 }
 
 export type Action =
@@ -35,6 +39,7 @@ export type Action =
   | { type: 'VALIDATE_OPTIONS' }
   | { type: 'CHANGE_STEP'; payload: Step }
   | { type: 'SELECT_DATE'; payload: Date }
+  | { type: 'SELECT_HOUR'; payload: string }
   | { type: 'SELECT_STOCK'; payload: number }
   | { type: 'SELECT_QUANTITY'; payload: 1 | 2 }
   | { type: 'RESET' }
@@ -61,6 +66,8 @@ export const bookOfferReducer = (state: BookingState, action: Action): BookingSt
       return { ...state, step: action.payload }
     case 'SELECT_DATE':
       return { ...state, date: action.payload }
+    case 'SELECT_HOUR':
+      return { ...state, hour: action.payload }
     default:
       return state
   }

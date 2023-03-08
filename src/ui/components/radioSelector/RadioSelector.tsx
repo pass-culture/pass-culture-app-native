@@ -64,7 +64,7 @@ export const RadioSelector = ({
         {!!description && <Typo.CaptionNeutralInfo>{description}</Typo.CaptionNeutralInfo>}
       </TextContainer>
       <IconPriceContainer>
-        {!!price && <PriceText type={type}>{price}€</PriceText>}
+        {!!price && <PriceText type={type}>{price}</PriceText>}
         {type === RadioSelectorType.ACTIVE ? (
           <RadioButtonSelectedPrimary testID="radio-button-selected-primary" />
         ) : (

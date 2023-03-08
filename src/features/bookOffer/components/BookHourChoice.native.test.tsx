@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
-import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
+import { mockStocks } from 'features/bookOffer/fixtures/stocks'
+import { IBookingContext } from 'features/bookOffer/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
@@ -10,20 +11,20 @@ import { BookHourChoice } from './BookHourChoice'
 const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
 
-const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-const mockUseBooking = useBookingContext as jest.Mock
+const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn()
+mockUseBookingContext.mockReturnValue({
+  bookingState: {
+    quantity: 1,
+    step: mockStep,
+    date: new Date('2021-03-02T20:00:00'),
+  } as BookingState,
+  dismissModal: jest.fn(),
+  dispatch: mockDispatch,
+})
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
-  useBookingContext: jest.fn(() => ({
-    dispatch: mockDispatch,
-    bookingState: {
-      quantity: 1,
-      step: mockStep,
-      date: new Date('2021-03-02T20:00:00'),
-    } as BookingState,
-    dismissModal: mockDismissModal,
-  })),
+  useBookingContext: () => mockUseBookingContext(),
 }))
 
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
@@ -34,6 +35,7 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   })),
 }))
 
+let mockOffer = mockBaseOffer
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
@@ -46,17 +48,19 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
 jest.mock('react-query')
 
 describe('BookHourChoice when hour is already selected', () => {
-  it('should change step to Hour', () => {
-    mockUseBooking.mockImplementationOnce(() => ({
-      dispatch: mockDispatch,
+  beforeEach(() => {
+    mockUseBookingContext.mockReturnValueOnce({
       bookingState: {
         quantity: undefined,
         step: mockDuoStep,
         date: new Date('2021-03-02T20:00:00'),
       } as BookingState,
-      dismissModal: mockDismissModal,
-    }))
+      dismissModal: jest.fn(),
+      dispatch: mockDispatch,
+    })
+  })
 
+  it('should change step to Hour', () => {
     render(<BookHourChoice />)
 
     expect(screen).toMatchSnapshot()
@@ -70,6 +74,18 @@ describe('BookHourChoice when hour is already selected', () => {
 })
 
 describe('BookHourChoice', () => {
+  beforeEach(() => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: {
+        quantity: 1,
+        step: mockStep,
+        date: new Date('2021-03-02T20:00:00'),
+      } as BookingState,
+      dismissModal: jest.fn(),
+      dispatch: mockDispatch,
+    })
+  })
+
   it('should display filtered stocks for selected Date', () => {
     render(<BookHourChoice />)
 
@@ -122,5 +138,48 @@ describe('BookHourChoice', () => {
     mockCreditOffer = 0
     render(<BookHourChoice />)
     expect(screen.getByTestId('HourChoice148409-price').props.children).toBe('crédit insuffisant')
+  })
+})
+
+describe('BookHourChoice when prices by category feature flag activated', () => {
+  beforeEach(() => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: {
+        quantity: undefined,
+        step: mockStep,
+        date: new Date('2023-04-01T18:00:00'),
+      } as BookingState,
+      dismissModal: jest.fn(),
+      dispatch: mockDispatch,
+    })
+    mockOffer = { ...mockOffer, stocks: mockStocks }
+    mockCreditOffer = 50000
+  })
+
+  it('should render only one hour choice with the minimum price', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.getByText(`dès 210\u00a0€`)).toBeTruthy()
+  })
+})
+
+describe('BookHourChoice when prices by category feature flag desactivated', () => {
+  beforeEach(() => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: {
+        quantity: undefined,
+        step: mockStep,
+        date: new Date('2023-04-01T18:00:00'),
+      } as BookingState,
+      dismissModal: jest.fn(),
+      dispatch: mockDispatch,
+    })
+    mockOffer = { ...mockOffer, stocks: mockStocks }
+    mockCreditOffer = 50000
+  })
+
+  it('should render all hours choices with its prices', () => {
+    render(<BookHourChoice />)
+    expect(screen.getByText(`210\u00a0€`)).toBeTruthy()
+    expect(screen.getByText(`220\u00a0€`)).toBeTruthy()
   })
 })

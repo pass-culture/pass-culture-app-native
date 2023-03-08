@@ -57,4 +57,12 @@ describe('Book Offer reducer', () => {
     const newState = bookOfferReducer(state, { type: 'VALIDATE_OPTIONS' })
     expect(newState.step).toStrictEqual(Step.CONFIRMATION)
   })
+
+  it('should handle SELECT_HOUR', () => {
+    const newState = bookOfferReducer(state, {
+      type: 'SELECT_HOUR',
+      payload: '2023-03-01T20:00:00Z',
+    })
+    expect(newState.hour).toStrictEqual('2023-03-01T20:00:00Z')
+  })
 })

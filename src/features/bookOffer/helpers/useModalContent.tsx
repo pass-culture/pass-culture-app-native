@@ -8,6 +8,7 @@ import { BookingEventChoices } from 'features/bookOffer/components/BookingEventC
 import { BookingImpossible } from 'features/bookOffer/components/BookingImpossible'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { getPreviousStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -70,7 +71,13 @@ const getBookingStepModalContent = (
   return {
     title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
     ...modalLeftIconProps,
-    children: <BookingEventChoices stocks={stocks} offerIsDuo={isDuo} />,
+    children: (
+      <BookingEventChoices
+        stocks={stocks}
+        offerIsDuo={isDuo}
+        enablePricesByCategories={enablePricesByCategories}
+      />
+    ),
   }
 }
 
@@ -126,7 +133,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       ? {
           leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
           leftIcon: ArrowPrevious,
-          onLeftIconPress: () => goToPreviousStep(bookingStep - 1),
+          onLeftIconPress: () => goToPreviousStep(getPreviousStep(bookingStep, offer)),
         }
       : {
           leftIconAccessibilityLabel: undefined,
@@ -141,8 +148,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
     )
   }
 
-  const previousBookingState =
-    !offer.isDuo && bookingStep === Step.CONFIRMATION ? Step.HOUR : Step.DUO
+  const previousBookingState = getPreviousStep(bookingStep, offer)
   const bookingDetailsModalLeftIconProps: ModalLeftIconProps = {
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,

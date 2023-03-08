@@ -24,7 +24,7 @@ describe('<RadioSelector />', () => {
 
   it('should render price when provided', () => {
     render(<RadioSelector {...defaultProps} price="5.00" />)
-    expect(screen.getByText('5.00€')).toBeTruthy()
+    expect(screen.getByText('5.00')).toBeTruthy()
   })
 
   it('should render description when provided', () => {

@@ -55,6 +55,7 @@ interface Props {
   userRemainingCredit: number | null
   offerId: number | undefined
   enablePricesByCategories?: boolean
+  hasSeveralPrices?: boolean
 }
 
 export const getMinAvailableDate = (markedDates: MarkedDates): string | undefined => {
@@ -70,6 +71,13 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
+export const getDayDescription = (price: number, hasSeveralPrices?: boolean) => {
+  let dayDescription = hasSeveralPrices ? 'dès ' : ''
+  dayDescription += formatToFrenchDecimal(price).replace(' ', '')
+
+  return dayDescription
+}
+
 const RNCalendarTheme = {
   // Prevent calendar height from changing when switching month
   minHeight: 415,
@@ -82,6 +90,7 @@ export const Calendar: React.FC<Props> = ({
   userRemainingCredit,
   offerId,
   enablePricesByCategories,
+  hasSeveralPrices,
 }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
   const minDate = getMinAvailableDate(markedDates) || format(new Date(), 'yyyy-dd-MM')
@@ -119,7 +128,7 @@ export const Calendar: React.FC<Props> = ({
                 enablePricesByCategories={enablePricesByCategories}
               />
               {typeof price === 'number' ? (
-                <Caption status={status}>{formatToFrenchDecimal(price).replace(' ', '')}</Caption>
+                <Caption status={status}>{getDayDescription(price, hasSeveralPrices)}</Caption>
               ) : (
                 <Spacer.Column numberOfSpaces={getSpacing(1)} />
               )}
@@ -136,6 +145,7 @@ const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
 const Caption = styled(Typo.Caption)<{ status: OfferStatus }>(({ status, theme }) => ({
   color: status === OfferStatus.BOOKABLE ? theme.colors.primary : theme.colors.greyDark,
+  textAlign: 'center',
 }))
 
 const Container = styled(TouchableOpacity).attrs({

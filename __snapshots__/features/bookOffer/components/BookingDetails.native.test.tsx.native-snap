@@ -495,60 +495,70 @@ exports[`<BookingDetails /> when user has selected options should render correct
     }
   />
   <View
-    accessibilityLabel="Confirmer la réservation"
-    accessibilityState={
-      Object {
-        "disabled": false,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#eb0055",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+        },
+      ]
     }
-    testID="Confirmer la réservation"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
-          },
-        ]
+    <View
+      accessibilityLabel="Confirmer la réservation"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
       }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Confirmer la réservation"
     >
-      Confirmer la réservation
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Confirmer la réservation
+      </Text>
+    </View>
   </View>
   <Text
     nativeID="testUuidV4"
@@ -1065,60 +1075,70 @@ exports[`<BookingDetails /> when user has selected options should render disable
     }
   />
   <View
-    accessibilityLabel="Confirmer la réservation"
-    accessibilityState={
-      Object {
-        "disabled": true,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#F1F1F4",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+        },
+      ]
     }
-    testID="Confirmer la réservation"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
-          },
-        ]
+    <View
+      accessibilityLabel="Confirmer la réservation"
+      accessibilityState={
+        Object {
+          "disabled": true,
+        }
       }
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Confirmer la réservation"
     >
-      Confirmer la réservation
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Confirmer la réservation
+      </Text>
+    </View>
   </View>
   <Text
     nativeID="testUuidV4"

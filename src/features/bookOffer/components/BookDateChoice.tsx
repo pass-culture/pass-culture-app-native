@@ -21,6 +21,8 @@ export const BookDateChoice = ({
   enablePricesByCategories,
 }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
+  const hasPricesStep =
+    enablePricesByCategories && stocks.filter((stock) => !stock.isExpired).length > 1
 
   const showCalendar = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })
@@ -54,6 +56,7 @@ export const BookDateChoice = ({
           userRemainingCredit={userRemainingCredit}
           offerId={bookingState.offerId}
           enablePricesByCategories={enablePricesByCategories}
+          hasSeveralPrices={hasPricesStep}
         />
       ) : (
         <TouchableOpacity onPress={showCalendar}>

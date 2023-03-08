@@ -5,6 +5,10 @@ import styled from 'styled-components/native'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import {
+  getSortedHoursFromDate,
+  getStocksFromHour,
+} from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
@@ -23,6 +27,8 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
+  const hasPricesStep =
+    enablePricesByCategories && stocks.filter((stock) => !stock.isExpired).length > 1
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const selectStock = (stockId: number) => {
@@ -39,38 +45,76 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
     }
   }
 
+  const selectHour = (hour: string) => {
+    dispatch({ type: 'SELECT_HOUR', payload: hour })
+    if (!isDuo) {
+      dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+    }
+  }
+
   const changeHour = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
   const filteredStocks = useMemo(
-    () =>
-      stocks
-        .filter(({ beginningDatetime }) => {
-          if (beginningDatetime === undefined || beginningDatetime === null) return false
-          return selectedDate && beginningDatetime
-            ? formatToKeyDate(beginningDatetime) === selectedDate
-            : false
+    () => {
+      if (hasPricesStep) {
+        const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
+        const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
+        return distinctHours.map((hour) => {
+          const filteredAvailableStocksFromHour = getStocksFromHour(stocks, hour)
+          const minPrice = Math.min(...filteredAvailableStocksFromHour.map((stock) => stock.price))
+          return (
+            <HourChoice
+              key={hour}
+              price={minPrice}
+              hour={formatHour(hour).replace(':', 'h')}
+              selected={hour === bookingState.hour}
+              onPress={() => selectHour(hour)}
+              testID={`HourChoice${hour}`}
+              isBookable
+              offerCredit={offerCredit}
+              hasSeveralPrices
+            />
+          )
         })
-        .sort(
-          (a, b) =>
-            //@ts-expect-error : stocks with no beginningDatetime was filtered
-            new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
-        )
-        .map((stock) => (
-          <HourChoice
-            key={stock.id}
-            price={stock.price}
-            hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
-            selected={stock.id === bookingState.stockId}
-            onPress={() => selectStock(stock.id)}
-            testID={`HourChoice${stock.id}`}
-            isBookable={stock.isBookable}
-            offerCredit={offerCredit}
-          />
-        )),
+      } else {
+        return stocks
+          .filter(({ beginningDatetime }) => {
+            if (beginningDatetime === undefined || beginningDatetime === null) return false
+            return selectedDate && beginningDatetime
+              ? formatToKeyDate(beginningDatetime) === selectedDate
+              : false
+          })
+          .sort(
+            (a, b) =>
+              //@ts-expect-error : stocks with no beginningDatetime was filtered
+              new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
+          )
+          .map((stock) => (
+            <HourChoice
+              key={stock.id}
+              price={stock.price}
+              hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
+              selected={stock.id === bookingState.stockId}
+              onPress={() => selectStock(stock.id)}
+              testID={`HourChoice${stock.id}`}
+              isBookable={stock.isBookable}
+              offerCredit={offerCredit}
+            />
+          ))
+      }
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [stocks, selectedDate, bookingState.stockId, bookingState.quantity, offerCredit]
+    [
+      stocks,
+      selectedDate,
+      bookingState.hour,
+      bookingState.stockId,
+      bookingState.quantity,
+      offerCredit,
+      hasPricesStep,
+    ]
   )
 
   const buttonTitle =
