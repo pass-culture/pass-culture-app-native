@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
@@ -49,10 +49,12 @@ server.use(
 )
 
 describe('<BookingImpossible />', () => {
-  it('should render with CTAs when offer is not yet favorite', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { toJSON } = render(reactQueryProviderHOC(<BookingImpossible />))
-    expect(toJSON()).toMatchSnapshot()
+  it('should render with CTAs when offer is not yet favorite', async () => {
+    renderBookingImpossible()
+
+    await waitFor(() => {
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   it('should render without CTAs when offer is favorite', async () => {
@@ -61,11 +63,9 @@ describe('<BookingImpossible />', () => {
         favorites: [{ offer: { id: offerId } }],
       })
     }
+    renderBookingImpossible(setup)
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const renderAPI = render(reactQueryProviderHOC(<BookingImpossible />, setup))
-
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should have the correct wording when offer is favorite', async () => {
@@ -74,32 +74,29 @@ describe('<BookingImpossible />', () => {
         favorites: [{ offer: { id: offerId } }],
       })
     }
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
-    const redirectionToWebsiteWording = queryByText(
+    renderBookingImpossible(setup)
+
+    const redirectionToWebsiteWording = screen.queryByText(
       'Rends-toi vite sur le site pass Culture afin de la réserver'
     )
+
     expect(redirectionToWebsiteWording).toBeTruthy()
   })
 
-  it("should dismiss modal when clicking on 'Retourner à l'offre'", () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />))
-    fireEvent.press(getByText('Retourner à l’offre'))
-    expect(mockDismissModal).toHaveBeenCalledTimes(1)
+  it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
+    renderBookingImpossible()
+
+    fireEvent.press(screen.getByText('Retourner à l’offre'))
+
+    await waitFor(() => {
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should log analytics event when adding to favorites', async () => {
-    const setup = (queryClient: QueryClient) => {
-      queryClient.setQueryData('favorites', {
-        favorites: [],
-      })
-    }
+    renderBookingImpossible()
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
-
-    fireEvent.press(getByText('Mettre en favoris'))
+    fireEvent.press(screen.getByText('Mettre en favoris'))
 
     await waitFor(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
@@ -111,9 +108,16 @@ describe('<BookingImpossible />', () => {
     })
   })
 
-  it("should log 'BookingImpossibleiOS' on mount", () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<BookingImpossible />))
-    expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
+  it("should log 'BookingImpossibleiOS' on mount", async () => {
+    renderBookingImpossible()
+
+    await waitFor(() => {
+      expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
+    })
   })
 })
+
+const renderBookingImpossible = (setup?: ((queryClient: QueryClient) => void) | undefined) => {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<BookingImpossible />, setup))
+}
