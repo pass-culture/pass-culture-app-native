@@ -12,7 +12,14 @@ import { SeeMoreWithEye } from './SeeMoreWithEye'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,
-  'data' | 'itemWidth' | 'itemHeight' | 'testID' | 'keyExtractor' | 'renderItem' | 'onEndReached'
+  | 'data'
+  | 'itemWidth'
+  | 'itemHeight'
+  | 'testID'
+  | 'keyExtractor'
+  | 'renderItem'
+  | 'onEndReached'
+  | 'playlistType'
 > & {
   title: string
   subtitle?: string
@@ -82,6 +89,7 @@ export const PassPlaylist = (props: Props) => {
         renderFooter={showFooterSeeMore ? props.renderFooter || renderFooter : undefined}
         keyExtractor={props.keyExtractor}
         onEndReached={props.onEndReached}
+        playlistType={props.playlistType}
       />
     </Container>
   )

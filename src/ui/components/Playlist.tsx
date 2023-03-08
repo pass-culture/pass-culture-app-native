@@ -6,6 +6,7 @@ import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from
 import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { PlaylistType } from 'features/offer/enums'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
@@ -21,7 +22,10 @@ export type RenderFooterItem =
   | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
   | undefined
 export type CustomListRenderItem<ItemT> = (
-  info: ListRenderItemInfo<ItemT> & ItemDimensions
+  info: ListRenderItemInfo<ItemT> &
+    ItemDimensions & {
+      playlistType?: PlaylistType
+    }
 ) => React.ReactElement | null
 
 type Props = {
@@ -36,6 +40,7 @@ type Props = {
   renderFooter?: RenderFooterItem
   onEndReached?: () => void
   children?: never
+  playlistType?: PlaylistType
 }
 
 function defaultKeyExtractor(item: any, index: number): string {
@@ -55,6 +60,7 @@ export const Playlist: FunctionComponent<Props> = ({
   itemHeight,
   scrollButtonOffsetY,
   testID,
+  playlistType,
   renderItem,
   keyExtractor,
   renderHeader,
@@ -130,9 +136,10 @@ export const Playlist: FunctionComponent<Props> = ({
         width: itemWidth,
         height: itemHeight,
         target: 'Cell',
+        playlistType,
       })
     },
-    [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight]
+    [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight, playlistType]
   )
 
   const displayLeftScrollButtonForNotTouchDevice = !isTouch && playlistStepIndex > 0
