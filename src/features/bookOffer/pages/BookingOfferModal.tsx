@@ -68,10 +68,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
     if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
   }, [dismissModal, dispatch, enablePricesByCategories, offerId, step])
 
-  const shouldDisplayModalWithCategories =
-    enablePricesByCategories && stocksWithCategory.length >= 1
-
-  return shouldDisplayModalWithCategories ? (
+  return enablePricesByCategories ? (
     <AppModal
       testID="modalWithPricesByCategories"
       noPadding

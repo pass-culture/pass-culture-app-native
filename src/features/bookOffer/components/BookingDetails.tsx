@@ -9,6 +9,7 @@ import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutatio
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -52,6 +53,8 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const isFromSearch = route.params?.from === 'search'
   const fromOfferId = route.params?.fromOfferId
   const algoliaOfferId = offerId?.toString()
+
+  const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
 
   const { mutate } = useBookOfferMutation({
     onSuccess: ({ bookingId }) => {
@@ -99,6 +102,13 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stocks, selectedStock])
 
+  // Change step to confirmation if no event offer
+  useEffect(() => {
+    if (!isEvent && bookingState.step === Step.DATE) {
+      dispatch({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
+    }
+  }, [bookingState.step, dispatch, isEvent])
+
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
 
   const priceInCents = quantity * selectedStock.price
@@ -109,8 +119,6 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
-
-  const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId].isEvent : undefined
 
   return (
     <Container>

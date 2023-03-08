@@ -196,20 +196,15 @@ describe('<BookingOfferModalComponent />', () => {
       expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
     })
 
-    it('should display modal with prices by categories when stocks with categories >= 1', () => {
+    it('should display modal with prices by categories', () => {
       mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
       render(<BookingOfferModalComponent visible offerId={20} />)
       expect(screen.getByTestId('modalWithPricesByCategories')).toBeTruthy()
     })
 
-    describe('should display modal without prices when has no stocks with categories', () => {
+    it('should not display modal without prices by categories', () => {
       render(<BookingOfferModalComponent visible offerId={20} />)
-      expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeTruthy()
-    })
-
-    it('should not display modal with prices by categories when has no stocks with categories', () => {
-      render(<BookingOfferModalComponent visible offerId={20} />)
-      expect(screen.queryByTestId('modalWithPricesByCategories')).toBeNull()
+      expect(screen.queryByTestId('modalWithoutPricesByCategories')).toBeNull()
     })
   })
 })

@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
-import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
+import { BookingState, initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -297,6 +297,31 @@ describe('<BookingDetails />', () => {
       await waitFor(() => {
         expect(analytics.logBookingError).not.toHaveBeenCalled()
       })
+    })
+  })
+
+  it('should change step to confirmation when step is date and offer is not an event', async () => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: mockInitialBookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    })
+    mockUseBookingOffer.mockReturnValueOnce(mockDigitalOffer)
+    await renderBookingDetails(mockDigitalStocks)
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
+  })
+
+  it('should not change step to confirmation when step is date and offer is an event', async () => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: mockInitialBookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    })
+    mockUseBookingOffer.mockReturnValueOnce(mockOffer)
+    await renderBookingDetails(mockStocks)
+    expect(mockDispatch).not.toHaveBeenCalledWith({
+      type: 'CHANGE_STEP',
+      payload: Step.CONFIRMATION,
     })
   })
 
