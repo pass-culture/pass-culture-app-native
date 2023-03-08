@@ -381,15 +381,28 @@ exports[`<BookingDetails /> when user has selected options should render correct
         Array [
           Object {
             "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
           },
         ]
       }
     >
-      20 €
-       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        20 €
+         
+      </Text>
     </Text>
     <View
       numberOfSpaces={2}
@@ -961,15 +974,28 @@ exports[`<BookingDetails /> when user has selected options should render disable
         Array [
           Object {
             "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
           },
         ]
       }
     >
-      20 €
-       
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        20 €
+         
+      </Text>
     </Text>
     <View
       numberOfSpaces={2}
