@@ -387,7 +387,6 @@ exports[`<BookingDetails /> when user has selected options should render correct
           },
         ]
       }
-      testID="price-line__total-price"
     >
       20 €
        
@@ -958,7 +957,6 @@ exports[`<BookingDetails /> when user has selected options should render disable
           },
         ]
       }
-      testID="price-line__total-price"
     >
       20 €
        

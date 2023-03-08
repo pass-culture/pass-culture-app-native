@@ -133,7 +133,6 @@ Array [
           },
         ]
       }
-      testID="price-line__total-price"
     >
       0,22 €
        
@@ -828,7 +827,6 @@ Array [
           },
         ]
       }
-      testID="price-line__total-price"
     >
       0,22 €
        
@@ -1013,7 +1011,7 @@ Array [
         ]
       }
     >
-      1 décembre 2020, 01h00
+      1 décembre 2020, 00h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -1559,7 +1557,6 @@ Array [
           },
         ]
       }
-      testID="price-line__total-price"
     >
       0,11 €
        
@@ -2062,7 +2059,6 @@ Array [
           },
         ]
       }
-      testID="price-line__total-price"
     >
       0,22 €
        
