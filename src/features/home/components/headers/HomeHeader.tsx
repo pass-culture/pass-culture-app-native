@@ -3,8 +3,9 @@ import React, { FunctionComponent, useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
+import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
@@ -25,10 +26,10 @@ export const HomeHeader: FunctionComponent = function () {
   const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
-  const { data: subscription } = useNextSubscriptionStep()
+  const { data } = useHomeBanner()
+  const homeBanner = data?.banner
 
   const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
-  const shouldDisplaySubscriptionBloc = !!subscription?.nextSubscriptionStep
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -52,13 +53,10 @@ export const HomeHeader: FunctionComponent = function () {
   }
 
   const SystemBloc = useMemo(() => {
-    if (!isLoggedIn) {
-      return <SignupBanner />
-    }
+    if (!isLoggedIn) return <SignupBanner />
 
-    if (shouldDisplaySubscriptionBloc) {
-      return <ActivationBanner />
-    }
+    if (homeBanner?.name === BannerName.activation_banner) return <ActivationBanner />
+
     if (shouldDisplayGeolocationBloc) {
       return (
         <React.Fragment>
@@ -69,7 +67,7 @@ export const HomeHeader: FunctionComponent = function () {
     }
 
     return null
-  }, [isLoggedIn, shouldDisplaySubscriptionBloc, shouldDisplayGeolocationBloc])
+  }, [isLoggedIn, homeBanner, shouldDisplayGeolocationBloc])
 
   return (
     <React.Fragment>

@@ -1,31 +1,26 @@
 import mockdate from 'mockdate'
+import { rest } from 'msw'
 import React from 'react'
 
 import {
-  NextSubscriptionStepResponse,
+  BannerName,
+  BannerResponse,
   SubscriptionStatus,
   UserProfileResponse,
   YoungStatusType,
 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { server } from 'tests/server'
+import { render, screen } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
 const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
-
-jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
-const mockedUseBeneficiaryValidationNavigation =
-  useBeneficiaryValidationNavigation as jest.MockedFunction<
-    typeof useBeneficiaryValidationNavigation
-  >
 
 jest.mock('shared/user/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
@@ -42,19 +37,16 @@ const mockedUser = {
   },
 }
 
-const mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
-jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
-  useNextSubscriptionStep: jest.fn(() => ({
-    data: mockNextSubscriptionStep,
-  })),
-}))
-
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
   isUserLoading: false,
   setIsLoggedIn: jest.fn(),
   refetchUser: jest.fn(),
 })
+
+jest.mock('shared/user/useGetDepositAmountsByAge', () => ({
+  useGetDepositAmountsByAge: jest.fn(() => '300\u00a0€'),
+}))
 
 describe('HomeHeader', () => {
   it.each`
@@ -99,10 +91,7 @@ describe('HomeHeader', () => {
 
   it('should display geolocation banner when geolocation is denied', () => {
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
-    mockedUseBeneficiaryValidationNavigation.mockReturnValueOnce({
-      nextBeneficiaryValidationStepNavConfig: undefined,
-      navigateToNextBeneficiaryValidationStep: jest.fn(),
-    })
+
     const { queryByText } = renderHomeHeader()
 
     expect(queryByText('Géolocalise-toi')).toBeTruthy()
@@ -112,46 +101,10 @@ describe('HomeHeader', () => {
     mockUseGeolocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
     })
-    mockedUseBeneficiaryValidationNavigation.mockReturnValueOnce({
-      nextBeneficiaryValidationStepNavConfig: undefined,
-      navigateToNextBeneficiaryValidationStep: jest.fn(),
-    })
     const { queryByText } = renderHomeHeader()
 
     expect(queryByText('Géolocalise-toi')).toBeTruthy()
   })
-
-  it.each`
-    birthdate       | credit   | age
-    ${'2007-11-06'} | ${'20'}  | ${15}
-    ${'2006-11-06'} | ${'30'}  | ${16}
-    ${'2005-11-06'} | ${'30'}  | ${17}
-    ${'2004-11-06'} | ${'300'} | ${18}
-  `(
-    "should display a banner if the user has not finished the identification flow yet (user's age: $age)",
-    ({ birthdate, credit }: { birthdate: string; credit: string }) => {
-      mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
-      mockUseAuthContext.mockReturnValueOnce({
-        user: {
-          ...nonBeneficiaryUser,
-          birthDate: birthdate,
-          status: {
-            statusType: YoungStatusType.eligible,
-            subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
-          },
-        },
-        isLoggedIn: true,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
-
-      const { queryByText } = renderHomeHeader()
-
-      expect(queryByText('Débloque tes ' + credit + ' €')).toBeTruthy()
-      expect(queryByText(' à dépenser sur l’application')).toBeTruthy()
-    }
-  )
 
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
@@ -176,6 +129,24 @@ describe('HomeHeader', () => {
     const { getByText } = renderHomeHeader()
 
     expect(getByText('Débloque ton crédit')).toBeTruthy()
+  })
+
+  it('should display activation banner when banner api call return activation banner', async () => {
+    server.use(
+      rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
+        res(
+          ctx.status(200),
+          ctx.json({
+            banner: {
+              name: BannerName.activation_banner,
+            },
+          })
+        )
+      )
+    )
+
+    renderHomeHeader()
+    expect(await screen.findByText('Débloque tes 300\u00a0€')).toBeTruthy()
   })
 })
 

@@ -11,6 +11,7 @@ export enum QueryKeys {
   FAVORITES = 'favorites',
   FAVORITES_COUNT = 'favoritesCount',
   FIRESTORE_UBBLE_ETA_MESSAGE = 'firestoreUbbleETAMessage',
+  HOME_BANNER = 'homeBanner',
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
   HOMEPAGE_MODULES = 'homepageModules',
