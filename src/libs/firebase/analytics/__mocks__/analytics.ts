@@ -97,6 +97,7 @@ export const analytics: typeof actualAnalytics = {
   logNoSearchResult: jest.fn(),
   logNotificationToggle: jest.fn(),
   logOfferSeenDuration: jest.fn(),
+  logOnboardingStarted: jest.fn(),
   logOpenDMSForeignCitizenURL: jest.fn(),
   logOpenDMSFrenchCitizenURL: jest.fn(),
   logOpenExternalUrl: jest.fn(),

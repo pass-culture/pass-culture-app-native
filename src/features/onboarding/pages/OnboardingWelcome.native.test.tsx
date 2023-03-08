@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OnboardingWelcome } from 'features/onboarding/pages/OnboardingWelcome'
+import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
@@ -49,5 +50,23 @@ describe('OnboardingWelcome', () => {
     fireEvent.press(loginButton)
 
     expect(await storage.readObject('has_seen_tutorials')).toBeTruthy()
+  })
+
+  it('should log analytics when "C’est parti !" is clicked', async () => {
+    const { getByText } = render(<OnboardingWelcome />)
+
+    const button = getByText('C’est parti\u00a0!')
+    fireEvent.press(button)
+
+    expect(analytics.logOnboardingStarted).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when "Se connecter" is clicked', async () => {
+    const { getByText } = render(<OnboardingWelcome />)
+
+    const loginButton = getByText('Se connecter')
+    fireEvent.press(loginButton)
+
+    expect(analytics.logOnboardingStarted).toHaveBeenCalledTimes(1)
   })
 })
