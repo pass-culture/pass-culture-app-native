@@ -117,25 +117,12 @@ export function getPreviousStep(currentStep: number, offer: OfferResponse) {
   return currentStep - 1
 }
 
-export function getSortedHoursFromDatePredicate(
-  stocks: OfferStockResponse[],
-  selectedDate?: string
-) {
-  return (
-    stocks
-      .filter(
-        (stock) =>
-          !stock.isExpired &&
-          stock.beginningDatetime &&
-          formatToKeyDate(stock.beginningDatetime) === selectedDate
-      )
-      .map((stock) => stock.beginningDatetime && stock.beginningDatetime)
-      //@ts-expect-error : stocks with no beginningDatetime was filtered
-      .sort((a, b) => new Date(a).getTime() - new Date(b).getTime()) as string[]
-  )
-}
+const getStockFromDate = (selectedDate?: string) => (stock: OfferStockResponse) =>
+  !stock.isExpired &&
+  stock.beginningDatetime &&
+  formatToKeyDate(stock.beginningDatetime) === selectedDate
 
-export function getStocksFromHourPredicate(stocks: OfferStockResponse[], selectedHour: string) {
+export function getStocksFromHour(stocks: OfferStockResponse[], selectedHour: string) {
   return stocks.filter(
     (stock) =>
       !stock.isExpired &&
@@ -143,4 +130,26 @@ export function getStocksFromHourPredicate(stocks: OfferStockResponse[], selecte
       stock.beginningDatetime &&
       stock.beginningDatetime === selectedHour
   )
+}
+
+export const sortByDateStringPredicate = (
+  a: OfferStockResponse['beginningDatetime'],
+  b: OfferStockResponse['beginningDatetime']
+) => {
+  if (a && b) {
+    return new Date(a).getTime() - new Date(b).getTime()
+  }
+  return -1
+}
+
+const filterBool = <T>(value: T | null | undefined): value is T => {
+  return Boolean(value)
+}
+
+export function getSortedHoursFromDate(stocks: OfferStockResponse[], selectedDate?: string) {
+  return stocks
+    .filter(getStockFromDate(selectedDate))
+    .map((stock) => stock.beginningDatetime)
+    .filter(filterBool)
+    .sort(sortByDateStringPredicate)
 }

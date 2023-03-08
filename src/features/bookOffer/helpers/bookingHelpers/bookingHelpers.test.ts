@@ -8,8 +8,9 @@ import {
   getPriceWording,
   getPreviousStep,
   getBookingSteps,
-  getSortedHoursFromDatePredicate,
-  getStocksFromHourPredicate,
+  getSortedHoursFromDate,
+  getStocksFromHour,
+  sortByDateStringPredicate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -293,9 +294,9 @@ describe('getPreviousStep', () => {
   })
 })
 
-describe('getSortedHoursFromDatePredicate', () => {
+describe('getSortedHoursFromDate', () => {
   it('should return an array of sorted hours from date', () => {
-    const sortedHours = getSortedHoursFromDatePredicate(mockStocks, '2023-04-01')
+    const sortedHours = getSortedHoursFromDate(mockStocks, '2023-04-01')
     expect(sortedHours).toEqual([
       '2023-04-01T18:00:00Z',
       '2023-04-01T18:00:00Z',
@@ -304,9 +305,16 @@ describe('getSortedHoursFromDatePredicate', () => {
   })
 })
 
-describe('getStocksFromHourPredicate', () => {
+describe('getStocksFromHour', () => {
   it('should return an array of stocks from hour', () => {
-    const stocks = getStocksFromHourPredicate(mockStocks, '2023-04-01T18:00:00Z')
+    const stocks = getStocksFromHour(mockStocks, '2023-04-01T18:00:00Z')
     expect(stocks).toEqual([stock2, stock3])
+  })
+})
+
+describe('sortByDateStringPredicate', () => {
+  it('should return -1 when dates not defined', () => {
+    const predicate = sortByDateStringPredicate(undefined, undefined)
+    expect(predicate).toEqual(-1)
   })
 })
