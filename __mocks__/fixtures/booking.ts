@@ -13,7 +13,7 @@ export const mockedBookingApi: BookingReponse = {
   id: 123,
   quantity: 3,
   totalAmount: 4,
-  stock: { id: 431, offer: mockedBookingOfferResponse },
+  stock: { id: 431, offer: mockedBookingOfferResponse, price: 400, priceCategoryLabel: 'Cat 4' },
   token: 'bookingToken',
   dateCreated: '',
 }
