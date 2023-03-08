@@ -1,23 +1,23 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { Spacer, Typo } from 'ui/theme'
 
-export const ActivationBanner = () => {
-  const { user } = useAuthContext()
-  const credit = useGetDepositAmountsByAge(user?.birthDate)
+type ActivationBannerProps = {
+  title: string
+  subtitle: string
+}
 
+export const ActivationBanner = ({ title, subtitle }: ActivationBannerProps) => {
   return (
     <React.Fragment>
       <BannerWithBackground
         leftIcon={StyledBicolorUnlock}
         navigateTo={{ screen: 'IdentityCheckStepper' }}>
-        <StyledButtonText>Débloque tes {credit}</StyledButtonText>
-        <StyledBodyText>à dépenser sur l’application</StyledBodyText>
+        <StyledButtonText>{title}</StyledButtonText>
+        <StyledBodyText>{subtitle}</StyledBodyText>
       </BannerWithBackground>
       <Spacer.Column numberOfSpaces={8} />
     </React.Fragment>

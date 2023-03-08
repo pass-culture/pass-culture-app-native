@@ -54,8 +54,8 @@ export const HomeHeader: FunctionComponent = function () {
 
   const SystemBloc = useMemo(() => {
     if (!isLoggedIn) return <SignupBanner />
-
-    if (homeBanner?.name === BannerName.activation_banner) return <ActivationBanner />
+    if (homeBanner?.name === BannerName.activation_banner)
+      return <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
 
     if (shouldDisplayGeolocationBloc) {
       return (

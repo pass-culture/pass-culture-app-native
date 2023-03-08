@@ -44,10 +44,6 @@ mockUseAuthContext.mockReturnValue({
   refetchUser: jest.fn(),
 })
 
-jest.mock('shared/user/useGetDepositAmountsByAge', () => ({
-  useGetDepositAmountsByAge: jest.fn(() => '300\u00a0€'),
-}))
-
 describe('HomeHeader', () => {
   it.each`
     usertype                     | user                                                                              | isLoggedIn | credit                                | subtitle
@@ -139,6 +135,8 @@ describe('HomeHeader', () => {
           ctx.json({
             banner: {
               name: BannerName.activation_banner,
+              text: 'à dépenser sur l’application',
+              title: 'Débloque tes 1000\u00a0€',
             },
           })
         )
@@ -146,7 +144,8 @@ describe('HomeHeader', () => {
     )
 
     renderHomeHeader()
-    expect(await screen.findByText('Débloque tes 300\u00a0€')).toBeTruthy()
+    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeTruthy()
+    expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
   })
 })
 
