@@ -6,7 +6,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { OfferPartialDescription } from './OfferPartialDescription'
 
@@ -184,14 +184,16 @@ describe('OfferPartialDescription', () => {
       })
     })
     describe("shouldn't be rendered", () => {
-      it('when there is no content on the description page', () => {
+      it('when there is no content on the description page', async () => {
         simulateOfferResponseWithNoDataInDescriptionPage()
         renderOfferDescription({
           ...defaultParams,
           description: undefined,
         })
 
-        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
+        await waitFor(() => {
+          expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
+        })
       })
 
       it('when the description is small enough to be fully readable', async () => {
