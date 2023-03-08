@@ -49,14 +49,12 @@ jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   })),
 }))
 
-const mockLoggedInUser = () => {
-  mockUseAuthContext.mockReturnValueOnce({
-    isLoggedIn: true,
-    isUserLoading: false,
-    setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
-  })
-}
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: true,
+  isUserLoading: false,
+  setIsLoggedIn: jest.fn(),
+  refetchUser: jest.fn(),
+})
 
 describe('HomeHeader', () => {
   it.each`
@@ -100,7 +98,6 @@ describe('HomeHeader', () => {
   })
 
   it('should display geolocation banner when geolocation is denied', () => {
-    mockLoggedInUser()
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
     mockedUseBeneficiaryValidationNavigation.mockReturnValueOnce({
       nextBeneficiaryValidationStepNavConfig: undefined,
@@ -112,7 +109,6 @@ describe('HomeHeader', () => {
   })
 
   it('should display geolocation banner when geolocation is never ask again', () => {
-    mockLoggedInUser()
     mockUseGeolocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
     })
