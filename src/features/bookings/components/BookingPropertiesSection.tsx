@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
+import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useSubcategory } from 'libs/subcategories'
 import { theme } from 'theme'
@@ -13,6 +14,7 @@ import { BicolorProfile as DefaultProfile } from 'ui/svg/icons/BicolorProfile'
 import { Calendar as DefaultCalendar } from 'ui/svg/icons/Calendar'
 import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { OrderPrice as DefaultOrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -82,6 +84,20 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
         />
       )}
+      <Spacer.Column numberOfSpaces={5} />
+      <SectionRow
+        title=""
+        renderTitle={() => (
+          <PriceLine
+            unitPrice={booking.stock.price}
+            quantity={booking.quantity}
+            label={booking.stock.priceCategoryLabel}
+            shouldDisabledStyles
+          />
+        )}
+        type="clickable"
+        icon={OrderPrice}
+      />
     </View>
   )
 }
@@ -108,5 +124,9 @@ const Profile = styled(DefaultProfile).attrs(({ theme }) => ({
 }))``
 
 const LocationBuilding = styled(DefaultLocationBuilding).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``
+
+const OrderPrice = styled(DefaultOrderPrice).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``

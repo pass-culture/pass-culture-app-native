@@ -5,7 +5,7 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -56,10 +56,17 @@ describe('<BookingPropertiesSection />', () => {
       expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
     })
   })
+
+  it('should display price line with price details', () => {
+    renderBookingProperties(booking)
+
+    expect(screen.getByText('8\u00a0€')).toBeTruthy()
+    expect(screen.getByText('(4\u00a0€ x 2 places)')).toBeTruthy()
+    expect(screen.getByTestId('price-line__price-detail')).toBeTruthy()
+  })
 })
 
 function renderBookingProperties(booking: Booking) {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />))
-  return wrapper
+  return render(reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />))
 }

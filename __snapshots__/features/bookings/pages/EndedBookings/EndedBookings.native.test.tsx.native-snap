@@ -228,6 +228,8 @@ Array [
               },
               "withdrawalDetails": null,
             },
+            "price": 400,
+            "priceCategoryLabel": "Cat 4",
           },
           "token": "352UW5",
           "totalAmount": 1900,
