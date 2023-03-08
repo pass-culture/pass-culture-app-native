@@ -1,0 +1,108 @@
+name: Install runtime environment and dependencies
+
+on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        required: true
+      TYPE:
+        type: string
+        required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+jobs:
+  sentry_and_deploy:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Yarn install
+        run: yarn install
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install cocoapods
+        run: cd ios/ && bundle exec pod install
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret from Secret Manager
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
+            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/passculture-app-native-ios-google-services-plist-${{ inputs.ENV }}
+            MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
+            MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
+            MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
+            MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
+      - name: 'Render Template'
+        run: |
+          cp templates_github_ci/.sentryclirc .sentryclirc
+          sed '$d' .sentryclirc
+          echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
+      - name: Setup iOS Google services config
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+      - name: Add ssh key needed
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
+      - name: Deploy hard ios for ${{ inputs.ENV }}
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: echo ${{ inputs.TYPE }}
+        # run: |
+        #  bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
+        env:
+          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
+          MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
+          MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
+          MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
+      - uses: technote-space/workflow-conclusion-action@v3
+        if: ${{ always() }}
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: "C0309RP8K42"
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le déploiement sur `${{ inputs.ENV }}` a échoué :boom:"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+

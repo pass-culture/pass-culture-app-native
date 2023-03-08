@@ -10,13 +10,9 @@ on:
         type: string
         required: true
     secrets:
-      SENTRY_AUTH_TOKEN:
+      GCP_EHP_SERVICE_ACCOUNT:
         required: true
-      ANDROID_APPCENTER_API_TOKEN:
-        required: true
-      IOS_APPCENTER_API_TOKEN:
-        required: true
-      SLACK_BOT_TOKEN:
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
 
 jobs:
@@ -24,54 +20,86 @@ jobs:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup java
+        uses: actions/setup-java@v3
         with:
-          node-version: 18
-      - name: Setup yarn
-        run: npm install -g yarn
-      - uses: actions/cache@v3
-        id: yarn-modules-cache
-        with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Render Template'
-        id: render_template
-        uses: chuhlomin/render-template@v1.6
-        with:
-          template: .sentryclirc
-          vars: |
-            token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Yarn install
+        run: yarn install
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
+            ANDROID_GOOGLE_SERVICES_JSON:passculture-metier-ehp/passculture-app-native-android-google-service-json
+            ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-store-password
+            ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-key-password
+            ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
+            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.6
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
       - name: Deploy soft android for ${{ inputs.ENV }}
         if:  ${{ inputs.TYPE == 'soft' }}
         run: echo ${{ inputs.TYPE }}
           #    run: |
           #      bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
           #    env:
-          #      ANDROID_APPCENTER_API_TOKEN: ${{ secrets.ANDROID_APPCENTER_API_TOKEN }}
+          #      ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - name: Deploy soft ios App for ${{ inputs.ENV }}
         if:  ${{ inputs.TYPE == 'soft' }}
         run: echo ${{ inputs.TYPE }}
           #    run: |
           #      bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
           #    env:
-          #      IOS_APPCENTER_API_TOKEN: ${{ secrets.IOS_APPCENTER_API_TOKEN }}
+          #      IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
+      - name: Create a directory for keystores
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: |
+          mkdir --parents android/keystores/
+      - name: Setup android keystore for ${{ inputs.ENV }} environment
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: |
+          echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > android/keystores/${{ inputs.ENV }}.keystore
+      - name: Setup android keystore properties for ${{ inputs.ENV }} environment
+        if: ${{ inputs.TYPE == 'hard'}}
+        uses: chuhlomin/render-template@v1.6
+        with:
+          template: templates_github_ci/${{ inputs.ENV }}.keystore.properties
+          vars: |
+            ENVIRONMENT: ${{ inputs.ENV }}
+            ANDROID_KEYSTORE_STORE_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_STORE_PASSWORD }}
+            ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
+          result_path: android/keystores/${{ inputs.ENV }}.keystore.properties
+      - name: Setup android Google services config
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
       - name: Deploy hard android for ${{ inputs.ENV }}
         if: ${{ inputs.TYPE == 'hard'}}
         run: echo ${{ inputs.TYPE }}
-        #     run: |
-        #       bundle exec fastlane android deploy --env "${APP_ENV}" --verbose
-      - name: Deploy hard ios for ${{ inputs.ENV }}
-        if: ${{ inputs.TYPE == 'hard'}}
-        run: echo ${{ inputs.TYPE }}
         # run: |
-        #   bundle exec fastlane ios deploy --env "${APP_ENV}" --verbose
+        #   bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
+        env:
+          ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
@@ -99,5 +127,5 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
 

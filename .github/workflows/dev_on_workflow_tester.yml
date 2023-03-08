@@ -3,9 +3,9 @@ name: Tester yaml
 on:
   workflow_call:
     secrets:
-      SONAR_TOKEN:
+      GCP_EHP_SERVICE_ACCOUNT:
         required: true
-      SLACK_BOT_TOKEN:
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
 
 concurrency:
@@ -58,11 +58,22 @@ jobs:
           restore-keys: |
             v1-yarn-test-native-cache-${{ hashFiles('**/yarn.lock') }}
       - run: yarn test:unit:ci
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret
+        id: 'sonar_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: .
   yarn_test_proxy:
@@ -87,11 +98,22 @@ jobs:
           restore-keys: |
             v1-yarn-test-proxy-${{ hashFiles('**/yarn.lock') }}
       - run: yarn --cwd server test:unit:ci 
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for SonarCloud
+        id: 'sonar_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: server
   slack_notify:
@@ -102,6 +124,17 @@ jobs:
       - yarn_test_proxy
       - yarn_test_web
     steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN: passculture-metier-ehp/passculture-app-native-slack-token
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
@@ -129,4 +162,4 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.output.SLACK_BOT_TOKEN }}
