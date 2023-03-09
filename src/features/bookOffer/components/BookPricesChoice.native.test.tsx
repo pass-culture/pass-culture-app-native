@@ -42,25 +42,25 @@ describe('BookPricesChoice', () => {
   it('should render prices of stocks in parameter', () => {
     render(<BookPricesChoice stocks={mockStocks} />)
 
-    expect(screen.getByText('Tribune présidentielle')).toBeTruthy()
     expect(screen.getByText('Pelouse or')).toBeTruthy()
+    expect(screen.getByText('Pelouse')).toBeTruthy()
   })
 
   it('should select price stock when pressing a price and offer is duo', () => {
     render(<BookPricesChoice stocks={mockStocks} isDuo />)
 
-    fireEvent.press(screen.getByText('Tribune présidentielle'))
+    fireEvent.press(screen.getByText('Pelouse or'))
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SELECT_STOCK', payload: 18758 })
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SELECT_STOCK', payload: 18757 })
     expect(mockDispatch).toHaveBeenCalledTimes(1)
   })
 
   it('should select a quantity of 1 in addition to the price stock when pressing a price and offer is not duo', () => {
     render(<BookPricesChoice stocks={mockStocks} />)
 
-    fireEvent.press(screen.getByText('Tribune présidentielle'))
+    fireEvent.press(screen.getByText('Pelouse or'))
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SELECT_STOCK', payload: 18758 })
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SELECT_STOCK', payload: 18757 })
     expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SELECT_QUANTITY', payload: 1 })
   })
 })

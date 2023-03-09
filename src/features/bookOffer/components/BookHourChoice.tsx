@@ -7,7 +7,7 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getSortedHoursFromDate,
-  getStocksFromHour,
+  getStockSortedByPriceFromHour,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -62,7 +62,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
         const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
         const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
         return distinctHours.map((hour) => {
-          const filteredAvailableStocksFromHour = getStocksFromHour(stocks, hour)
+          const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
           const minPrice = Math.min(...filteredAvailableStocksFromHour.map((stock) => stock.price))
           return (
             <HourChoice

@@ -7,8 +7,8 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getPriceWording,
   getRadioSelectorPriceState,
+  getStockSortedByPriceFromHour,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
-import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -27,7 +27,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const titleID = uuidv4()
-  const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
+  const selectedHour = bookingState.hour || ''
 
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
@@ -36,14 +36,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
     }
   }
 
-  const filteredStocks = stocks
-    .filter(
-      (stock) =>
-        !stock.isExpired &&
-        stock.beginningDatetime &&
-        formatToKeyDate(stock.beginningDatetime) === selectedDate
-    )
-    .sort((a, b) => b.price - a.price)
+  const filteredStocks = getStockSortedByPriceFromHour(stocks, selectedHour)
 
   return (
     <React.Fragment>
