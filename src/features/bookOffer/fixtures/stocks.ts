@@ -45,4 +45,19 @@ export const stock3: OfferStockResponse = {
   remainingQuantity: 200,
 }
 
-export const mockStocks = [stock1, stock2, stock3]
+export const stock4: OfferStockResponse = {
+  activationCode: null,
+  beginningDatetime: '2023-04-01T18:00:00Z',
+  bookingLimitDatetime: '2023-04-01T18:00:00Z',
+  cancellationLimitDatetime: '2023-03-08T11:35:34.283195Z',
+  id: 18755,
+  isBookable: true,
+  isExpired: false,
+  isForbiddenToUnderage: false,
+  isSoldOut: false,
+  price: 19000,
+  priceCategoryLabel: 'Carré or',
+  remainingQuantity: 200,
+}
+
+export const mockStocks = [stock1, stock2, stock3, stock4]

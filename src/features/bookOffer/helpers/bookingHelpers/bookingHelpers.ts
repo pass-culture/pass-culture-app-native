@@ -122,14 +122,11 @@ const getStockFromDate = (selectedDate?: string) => (stock: OfferStockResponse) 
   stock.beginningDatetime &&
   formatToKeyDate(stock.beginningDatetime) === selectedDate
 
-export function getStocksFromHour(stocks: OfferStockResponse[], selectedHour: string) {
-  return stocks.filter(
-    (stock) =>
-      !stock.isExpired &&
-      stock.isBookable &&
-      stock.beginningDatetime &&
-      stock.beginningDatetime === selectedHour
-  )
+const getStockFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
+  !stock.isExpired && stock.beginningDatetime && stock.beginningDatetime === selectedHour
+
+export const sortByPricePredicate = (a: OfferStockResponse, b: OfferStockResponse) => {
+  return b.price - a.price
 }
 
 export const sortByDateStringPredicate = (
@@ -152,4 +149,8 @@ export function getSortedHoursFromDate(stocks: OfferStockResponse[], selectedDat
     .map((stock) => stock.beginningDatetime)
     .filter(filterBool)
     .sort(sortByDateStringPredicate)
+}
+
+export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], selectedHour: string) {
+  return stocks.filter(getStockFromHour(selectedHour)).sort(sortByPricePredicate)
 }

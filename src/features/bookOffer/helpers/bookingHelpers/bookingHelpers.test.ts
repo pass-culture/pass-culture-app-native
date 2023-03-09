@@ -1,5 +1,5 @@
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
-import { mockStocks, stock1, stock2, stock3 } from 'features/bookOffer/fixtures/stocks'
+import { mockStocks, stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import {
   getButtonState,
   getButtonWording,
@@ -9,8 +9,8 @@ import {
   getPreviousStep,
   getBookingSteps,
   getSortedHoursFromDate,
-  getStocksFromHour,
   sortByDateStringPredicate,
+  getStockSortedByPriceFromHour,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -300,15 +300,16 @@ describe('getSortedHoursFromDate', () => {
     expect(sortedHours).toEqual([
       '2023-04-01T18:00:00Z',
       '2023-04-01T18:00:00Z',
+      '2023-04-01T18:00:00Z',
       '2023-04-01T20:00:00Z',
     ])
   })
 })
 
-describe('getStocksFromHour', () => {
-  it('should return an array of stocks from hour', () => {
-    const stocks = getStocksFromHour(mockStocks, '2023-04-01T18:00:00Z')
-    expect(stocks).toEqual([stock2, stock3])
+describe('getStockSortedByPriceFromHour', () => {
+  it('should return an array of stocks from highest to lowest price from hour', () => {
+    const stocks = getStockSortedByPriceFromHour(mockStocks, '2023-04-01T18:00:00Z')
+    expect(stocks).toEqual([stock2, stock4, stock3])
   })
 })
 
