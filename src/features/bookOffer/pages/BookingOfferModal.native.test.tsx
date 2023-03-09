@@ -56,7 +56,7 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 
 jest.mock('react-query')
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<BookingOfferModalComponent />', () => {
   afterEach(() => {

@@ -5,7 +5,7 @@ import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
@@ -16,6 +16,8 @@ let mockOffer: OfferResponse | undefined = baseOffer
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 let mockStep = Step.DATE
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: jest.fn(() => ({
@@ -37,7 +39,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('useModalContent', () => {
   it('show default modal if no information yet', () => {
@@ -167,7 +168,7 @@ describe('useModalContent', () => {
 
   describe('When prices by categories feature flag activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+      useFeatureFlagSpy.mockReturnValueOnce(true)
     })
 
     it.each`

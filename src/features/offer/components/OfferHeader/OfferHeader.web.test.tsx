@@ -2,6 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils/web'
 
@@ -15,6 +16,8 @@ mockUseAuthContext.mockImplementation(() => ({
   refetchUser: jest.fn(),
   isUserLoading: false,
 }))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<OfferHeader />', () => {
   it('should fully display the title at the end of the animation', async () => {

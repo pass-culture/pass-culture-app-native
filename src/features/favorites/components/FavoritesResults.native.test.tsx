@@ -16,8 +16,7 @@ import { render, screen, waitFor } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
 
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
