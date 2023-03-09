@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { act, checkAccessibilityFor, render } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
@@ -36,22 +36,22 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should display forced login help message when the query param is given', () => {
+  it('should display forced login help message when the query param is given', async () => {
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
-    const { queryByRole } = renderLogin()
+    renderLogin()
 
-    const snackBar = queryByRole('status')
+    const snackBar = await screen.findByRole('status')
 
     expect(snackBar).toHaveTextContent(
       'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.'
     )
   })
 
-  it('should not display the login help message when the query param is not given', () => {
+  it('should not display the login help message when the query param is not given', async () => {
     useRoute.mockReturnValueOnce({})
-    const { queryByRole } = renderLogin()
+    renderLogin()
 
-    const snackBar = queryByRole('status')
+    const snackBar = await screen.findByRole('status')
 
     expect(snackBar).not.toHaveTextContent(
       'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.'

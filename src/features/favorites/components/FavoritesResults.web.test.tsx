@@ -10,7 +10,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 
 import { FavoritesResults } from './FavoritesResults'
 
@@ -42,33 +42,33 @@ const mockData = {
 } as PaginatedFavoritesResponse
 
 describe('FavoritesResults component', () => {
-  it('should show no result message when list is empty', () => {
+  it('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
       data: mockData,
       isFetching: false,
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
-    const { getByText, queryByText } = renderFavoritesResults()
-    const button = getByText('Découvrir le catalogue')
-    const sortByButton = queryByText('Trier')
+    renderFavoritesResults()
+    const button = await screen.findByText('Découvrir le catalogue')
+    const sortByButton = screen.queryByText('Trier')
+
     expect(button).toBeTruthy()
     expect(sortByButton).toBeFalsy()
   })
 
-  it('should show favorite placeholder on init', () => {
+  it('should show favorite placeholder on init', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
       data: undefined,
       isLoading: true,
     } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
-    const { getByTestId } = renderFavoritesResults()
-    const container = getByTestId('FavoritesResultsPlaceHolder')
-    expect(container).toBeTruthy()
+    renderFavoritesResults()
+    expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeTruthy()
   })
 
-  it('should show number of result and sortBy button', () => {
+  it('should show number of result and sortBy button', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
     // eslint-disable-next-line local-rules/independent-mocks
@@ -81,12 +81,13 @@ describe('FavoritesResults component', () => {
     mockUseRemoveFavorites.mockReturnValue({
       mutate,
     } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
-    const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
-    expect(container).toBeTruthy()
-    const sortByButton = getByText('Trier')
-    expect(sortByButton).toBeTruthy()
+
+    renderFavoritesResults()
+    const paginatedFavorites = await screen.findByText(`4 favoris`)
+    const sortButton = screen.queryByText('Trier')
+
+    expect(paginatedFavorites).toBeTruthy()
+    expect(sortButton).toBeTruthy()
   })
 })
 

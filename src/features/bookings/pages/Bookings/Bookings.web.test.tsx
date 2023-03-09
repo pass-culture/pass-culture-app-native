@@ -24,23 +24,25 @@ describe('Bookings', () => {
     })
   })
 
-  it('should always execute the query (in cache or in network)', () => {
+  it('should always execute the query (in cache or in network)', async () => {
     const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
     renderBookings(bookingsSnap)
 
-    expect(useBookings).toBeCalledTimes(1)
+    await waitFor(() => {
+      expect(useBookings).toBeCalledTimes(1)
+    })
   })
 
   it('should display the right number of ongoing bookings', async () => {
     renderBookings(bookingsSnap)
 
-    expect(screen.queryByText('2 réservations en cours')).toBeTruthy()
+    expect(await screen.findByText('2 réservations en cours')).toBeTruthy()
   })
 
-  it('should display the empty bookings dedicated view', () => {
+  it('should display the empty bookings dedicated view', async () => {
     renderBookings(emptyBookingsSnap)
 
-    expect(screen.queryByText('Découvrir le catalogue')).toBeTruthy()
+    expect(await screen.findByText('Découvrir le catalogue')).toBeTruthy()
   })
 
   it('should display ended bookings CTA with the right number', async () => {

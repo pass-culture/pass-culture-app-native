@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
-import { act, render } from 'tests/utils/web'
+import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
 
@@ -26,11 +26,11 @@ describe('SearchHeader component', () => {
 
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should contain a button to go to the search suggestions view',
-    (view) => {
+    async (view) => {
       useRoute.mockReturnValueOnce({ params: { view } })
-      const { queryByText } = render(<SearchHeader searchInputID={searchInputID} />)
+      render(<SearchHeader searchInputID={searchInputID} />)
 
-      expect(queryByText('Recherche par mots-clés')).toBeTruthy()
+      expect(await screen.findByText('Recherche par mots-clés')).toBeTruthy()
     }
   )
 
@@ -54,25 +54,27 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should not render a button to go to the search suggestion view when not on landing or result', () => {
+  it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
-    const { queryByText } = render(<SearchHeader searchInputID={searchInputID} />)
+    render(<SearchHeader searchInputID={searchInputID} />)
 
-    expect(queryByText('Recherche par mots-clés')).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText('Recherche par mots-clés')).toBeNull()
+    })
   })
 
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should not have focus on search main input',
     async (view) => {
       useRoute.mockReturnValueOnce({ params: { view } }).mockReturnValueOnce({ params: { view } })
-      const { getByRole } = render(<SearchHeader searchInputID={searchInputID} />)
+      render(<SearchHeader searchInputID={searchInputID} />)
 
       await act(async () => {
         await userEvent.tab()
         await userEvent.tab()
       })
 
-      const searchMainInput = getByRole('searchbox', { hidden: true })
+      const searchMainInput = screen.getByRole('searchbox', { hidden: true })
       expect(searchMainInput).not.toHaveFocus()
     }
   )
@@ -81,14 +83,14 @@ describe('SearchHeader component', () => {
     useRoute
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { getByTestId } = render(<SearchHeader searchInputID={searchInputID} />)
+    render(<SearchHeader searchInputID={searchInputID} />)
 
     await act(async () => {
       await userEvent.tab()
       await userEvent.tab()
     })
 
-    const locationFilterButton = getByTestId('Me localiser')
+    const locationFilterButton = screen.getByTestId('Me localiser')
     expect(locationFilterButton).toHaveFocus()
   })
 })
