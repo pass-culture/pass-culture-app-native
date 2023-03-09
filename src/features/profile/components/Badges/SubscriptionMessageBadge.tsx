@@ -18,7 +18,6 @@ import { Spacer } from 'ui/theme'
 type Props = {
   subscriptionMessage: SubscriptionMessage
 }
-
 const CallToAction = ({ subscriptionMessage }: Props) => {
   const { callToActionTitle, callToActionLink, callToActionIcon } =
     subscriptionMessage.callToAction || {}
@@ -47,6 +46,7 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
         <ExternalTouchableLink
           as={ButtonQuaternarySecondary}
           externalNav={{ url: callToActionLink }}
+          openInNewWindow={false}
           icon={ExternalSiteFilled}
           {...sharedButtonProps}
         />
