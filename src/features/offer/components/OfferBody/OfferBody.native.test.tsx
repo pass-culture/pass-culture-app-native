@@ -16,7 +16,7 @@ import {
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { act, cleanup, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 jest.mock('react-query')
@@ -50,7 +50,6 @@ describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
   })
-  afterEach(cleanup)
 
   const onScroll = jest.fn()
 

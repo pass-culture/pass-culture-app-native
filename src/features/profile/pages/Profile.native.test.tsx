@@ -24,7 +24,6 @@ import {
   render,
   act,
   fireEvent,
-  cleanup,
   middleScrollEvent,
   bottomScrollEvent,
 } from 'tests/utils'
@@ -99,7 +98,6 @@ describe('Profile component', () => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
     mockPositionError = null
-    cleanup()
   })
 
   it('should render correctly', async () => {

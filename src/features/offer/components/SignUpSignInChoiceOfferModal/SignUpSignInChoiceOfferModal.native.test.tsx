@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/firebase/analytics'
-import { cleanup, fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
 import { SignUpSignInChoiceOfferModal } from './SignUpSignInChoiceOfferModal'
 
@@ -10,8 +10,6 @@ const OFFER_ID = 123
 const dismissModal = jest.fn()
 
 describe('SignUpSignInChoiceOfferModal', () => {
-  afterEach(cleanup)
-
   it('should match previous snapshot', () => {
     const modal = render(
       <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />

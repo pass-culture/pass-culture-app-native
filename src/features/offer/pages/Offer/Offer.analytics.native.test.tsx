@@ -4,7 +4,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
 import { server } from 'tests/server'
-import { act, cleanup } from 'tests/utils'
+import { act } from 'tests/utils'
 
 server.use(
   rest.get(
@@ -31,8 +31,6 @@ describe('<Offer /> - Analytics', () => {
     contentOffset: { y: 900 },
     contentSize: { height: 1600 },
   }
-
-  afterEach(cleanup)
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
     const offerPage = renderOfferPage()

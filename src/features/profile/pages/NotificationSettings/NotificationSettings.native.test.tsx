@@ -15,7 +15,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
 
@@ -34,10 +34,6 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
 describe('NotificationSettings', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   describe('Display correct switches', () => {
     it('should display the both switches on ios', async () => {
       Platform.OS = 'ios'

@@ -10,7 +10,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/firebase/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
-import { cleanup, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
@@ -59,10 +59,6 @@ jest.mock('react-query')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<BookingOfferModalComponent />', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should dismiss modal when click on rightIconButton and reset state', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
 
@@ -105,9 +101,6 @@ describe('<BookingOfferModalComponent />', () => {
         dispatch: mockDispatch,
       })
     })
-    afterEach(() => {
-      cleanup()
-    })
 
     it('should show pre-validation screen when pressing arrow back on confirmation screen', () => {
       render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
@@ -132,9 +125,6 @@ describe('<BookingOfferModalComponent />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
-    })
-    afterEach(() => {
-      cleanup()
     })
 
     it('should show pre-validation screen when pressing arrow back on confirmation screen', () => {
@@ -180,11 +170,6 @@ describe('<BookingOfferModalComponent />', () => {
         dispatch: mockDispatch,
       })
       useFeatureFlagSpy.mockReturnValue(true)
-    })
-
-    afterEach(() => {
-      cleanup()
-      useFeatureFlagSpy.mockReturnValue(false)
     })
 
     it('should log booking funnel cancellation event when closing the modal', () => {
