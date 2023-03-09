@@ -19,4 +19,5 @@ export enum RemoteStoreFeatureFlags {
   FAV_LIST_FAKE_DOOR = 'favListFakeDoor',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
+  WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
 }

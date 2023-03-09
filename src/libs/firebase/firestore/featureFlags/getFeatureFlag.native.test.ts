@@ -12,6 +12,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR,
     RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
     RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
+    RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
   ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {
