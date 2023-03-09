@@ -229,14 +229,9 @@ describe('getPriceWording', () => {
     expect(priceWording).toEqual('Crédit insuffisant')
   })
 
-  it('should return "1 place restante" when stock is 1', () => {
+  it('should return an empty string when stock is not sold out', () => {
     const priceWording = getPriceWording({ ...stock1, remainingQuantity: 1 }, 25000)
-    expect(priceWording).toEqual('1 place restante')
-  })
-
-  it('should return "200 places restantes" when stock is 200', () => {
-    const priceWording = getPriceWording(stock1, 25000)
-    expect(priceWording).toEqual('200 places restantes')
+    expect(priceWording).toEqual('')
   })
 })
 
