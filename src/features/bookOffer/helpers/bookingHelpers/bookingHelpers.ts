@@ -91,11 +91,8 @@ export function getPriceWording(stock: OfferStockResponse, offerCredit: number) 
     return 'Épuisé'
   } else if (stock.price > offerCredit) {
     return 'Crédit insuffisant'
-  } else if (stock.remainingQuantity === 1) {
-    return '1 place restante'
   }
-
-  return `${stock.remainingQuantity} places restantes`
+  return ''
 }
 
 export function getPreviousStep(currentStep: number, offer: OfferResponse) {
