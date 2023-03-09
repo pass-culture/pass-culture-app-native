@@ -6,7 +6,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { act, cleanup, fireEvent, render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('react-query')
 jest.mock('features/offer/api/useOffer')
@@ -30,7 +30,6 @@ describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
   })
-  afterEach(cleanup)
 
   describe('share on social media', () => {
     it('should open url to share on social medium', async () => {

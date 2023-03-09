@@ -6,7 +6,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render, waitFor } from 'tests/utils'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock

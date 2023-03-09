@@ -10,7 +10,7 @@ import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities
 import { CitiesResponse } from 'libs/place/useCities'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { cleanup, fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 const POSTAL_CODE = '83570'
 const mockDispatch = jest.fn()
@@ -26,8 +26,6 @@ jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () =
 }))
 
 describe('<SetCity/>', () => {
-  afterEach(cleanup)
-
   it('should render correctly', () => {
     const renderAPI = renderSetCity()
     expect(renderAPI).toMatchSnapshot()

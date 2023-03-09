@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, cleanup, render, act } from 'tests/utils/web'
+import { checkAccessibilityFor, render, act } from 'tests/utils/web'
 
 import { Favorites } from './Favorites'
 
@@ -24,10 +24,6 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 describe('<Favorites/>', () => {
   describe('Accessibility', () => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-
-    afterEach(() => {
-      cleanup()
-    })
 
     it('should not have basic accessibility issues when user is logged in', async () => {
       const { container } = renderFavorites({ isLoggedIn: true })

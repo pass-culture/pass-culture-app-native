@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, render, screen, waitFor } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
@@ -23,10 +23,6 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-
-  afterEach(() => {
-    cleanup()
-  })
 
   it('should render correctly', async () => {
     renderFavorites({ isLoggedIn: true })

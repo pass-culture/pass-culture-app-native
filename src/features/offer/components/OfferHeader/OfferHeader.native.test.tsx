@@ -12,7 +12,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { analytics } from 'libs/firebase/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -50,8 +50,7 @@ mockedUseSnackBarContext.mockReturnValue({
   showErrorSnackBar,
 })
 
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<OfferHeader />', () => {
   beforeAll(() => {

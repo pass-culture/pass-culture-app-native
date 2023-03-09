@@ -38,14 +38,10 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
-    })
-
     it('should not have basic accessibility issues for step "date"', async () => {
       mockStep = Step.DATE
       const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)

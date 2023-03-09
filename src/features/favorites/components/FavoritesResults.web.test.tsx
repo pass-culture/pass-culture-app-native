@@ -9,6 +9,7 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
@@ -21,6 +22,8 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/favorites/api/useFavorites')
 const mockUseFavorites = useFavorites as jest.MockedFunction<typeof useFavorites>
