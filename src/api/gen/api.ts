@@ -479,6 +479,16 @@ export interface BookingStockResponse {
    * @memberof BookingStockResponse
    */
   offer: BookingOfferResponse
+  /**
+   * @type {number}
+   * @memberof BookingStockResponse
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof BookingStockResponse
+   */
+  priceCategoryLabel?: string | null
 }
 /**
  * @export

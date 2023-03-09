@@ -20,6 +20,8 @@ export const bookingsSnap: BookingsResponse = {
       quantity: 10,
       stock: {
         id: 150230,
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
         beginningDatetime: '2021-03-14T20:00:00',
         offer: {
           id: 147874,
@@ -61,6 +63,8 @@ export const bookingsSnap: BookingsResponse = {
       stock: {
         id: 150230,
         beginningDatetime: '2021-03-15T20:00:00',
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',
@@ -101,6 +105,8 @@ export const bookingsSnap: BookingsResponse = {
       stock: {
         id: 150230,
         beginningDatetime: '2021-03-15T20:00:00',
+        price: 400,
+        priceCategoryLabel: 'Cat 4',
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',

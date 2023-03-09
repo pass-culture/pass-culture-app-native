@@ -359,6 +359,8 @@ describe('BookingDetails', () => {
           stock: {
             ...mockedBooking.stock.offer,
             offer: { ...mockedBooking.stock.offer, isDigital: false },
+            price: 400,
+            priceCategoryLabel: 'Cat 4',
           },
         }
 

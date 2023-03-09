@@ -350,6 +350,8 @@ exports[`BookingDetails should render correctly 1`] = `
                       },
                       "withdrawalDetails": null,
                     },
+                    "price": 400,
+                    "priceCategoryLabel": "Cat 4",
                   },
                   "token": "352UW4",
                   "totalAmount": 1900,
@@ -816,6 +818,150 @@ exports[`BookingDetails should render correctly 1`] = `
               ]
             }
           />
+          <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "height": 20,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel=""
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
+            accessible={false}
+            collapsable={false}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <View
+                fill="#161617"
+                height={20}
+                width={20}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    40 €
+                     
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="price-line__price-detail"
+                  >
+                    (
+                    4 €
+                     x 
+                    10
+                     places)
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="price-line__label"
+                  >
+                     - 
+                    Cat 4
+                  </Text>
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
         <View
           numberOfSpaces={4}

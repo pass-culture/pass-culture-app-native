@@ -18,6 +18,15 @@ export interface PriceLineProps {
    * Offer stock price category label.
    */
   label?: OfferStockResponse['priceCategoryLabel']
+  /**
+   * By default, this component displays information in `Typo` components in order to get
+   * correct styling for `<BookingInformations />` component.
+   *
+   * By setting this to `true` you can disable the styling.
+   *
+   * @default false
+   */
+  shouldDisabledStyles?: boolean
 }
 
 const testIDPrefix = 'price-line'
@@ -25,20 +34,28 @@ function getTestID(str: string) {
   return `${testIDPrefix}__${str}`
 }
 
-export function PriceLine({ quantity = 1, unitPrice, label }: PriceLineProps) {
+export function PriceLine({
+  quantity = 1,
+  unitPrice,
+  label,
+  shouldDisabledStyles = false,
+}: PriceLineProps) {
   const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
 
+  const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
+  const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
+
   return (
-    <React.Fragment>
-      <Typo.Caption>{totalPrice} </Typo.Caption>
+    <Typo.Body>
+      <MainText>{totalPrice} </MainText>
 
       {quantity > 1 && (
-        <Typo.CaptionNeutralInfo testID={getTestID('price-detail')}>
+        <SecondaryText testID={getTestID('price-detail')}>
           ({formatToFrenchDecimal(unitPrice)} x {quantity} places)
-        </Typo.CaptionNeutralInfo>
+        </SecondaryText>
       )}
 
-      {!!label && <Typo.Caption testID={getTestID('label')}> - {label}</Typo.Caption>}
-    </React.Fragment>
+      {!!label && <MainText testID={getTestID('label')}> - {label}</MainText>}
+    </Typo.Body>
   )
 }
