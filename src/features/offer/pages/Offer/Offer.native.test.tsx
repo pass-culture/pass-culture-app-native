@@ -11,6 +11,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 
@@ -25,7 +26,8 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
     shouldUseAlgoliaRecommend: mockShouldUseAlgoliaRecommend,
   }),
 }))
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<Offer />', () => {
   beforeEach(() => {
