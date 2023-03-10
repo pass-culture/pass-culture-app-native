@@ -13,12 +13,17 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
+import { CaptionNeutralInfo } from 'ui/theme/typography'
 
 type FormValues = {
   email: string
@@ -96,6 +101,20 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         type="login"
         onAdditionalPress={onLogAnalytics}
         params={{ offerId: params?.offerId, preventCancellation: true }}
+      />
+      <Spacer.Column numberOfSpaces={6} />
+      <CaptionNeutralInfo>
+        Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la
+        newsletter.
+      </CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={2} />
+      <ExternalTouchableLink
+        as={ButtonQuaternaryBlack}
+        externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
+        wording="Comment gérer tes données personnelles&nbsp;?"
+        icon={ExternalSiteFilled}
+        justifyContent="flex-start"
+        inline
       />
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
