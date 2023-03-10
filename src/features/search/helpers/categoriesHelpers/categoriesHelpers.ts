@@ -319,12 +319,23 @@ export function getDescription(
   return undefined
 }
 
-export function getDefaultFormView(searchState: SearchState) {
+export function getDefaultFormView(
+  data: SubcategoriesResponseModelv2 | undefined,
+  searchState: SearchState
+) {
   const { offerGenreTypes, offerCategories, offerNativeCategories } = searchState
 
-  if (!offerCategories || !offerNativeCategories) return CategoriesModalView.CATEGORIES
-  if (!offerGenreTypes?.length) return CategoriesModalView.NATIVE_CATEGORIES
-  return CategoriesModalView.GENRES
+  const nativeCategory = data?.nativeCategories.find(
+    (nativeCategory) => nativeCategory.name === offerNativeCategories?.[0]
+  )
+
+  if (offerGenreTypes?.length || nativeCategory?.genreType) return CategoriesModalView.GENRES
+  if (
+    offerNativeCategories?.length ||
+    (offerCategories.length && offerCategories[0] !== SearchGroupNameEnumv2.CARTES_JEUNES)
+  )
+    return CategoriesModalView.NATIVE_CATEGORIES
+  return CategoriesModalView.CATEGORIES
 }
 
 export function getDefaultFormValues(
@@ -343,6 +354,6 @@ export function getDefaultFormValues(
     category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
     nativeCategory: searchState.offerNativeCategories?.[0] || null,
     genreType: searchState.offerGenreTypes?.[0]?.name || null,
-    currentView: getDefaultFormView(searchState),
+    currentView: getDefaultFormView(data, searchState),
   }
 }
