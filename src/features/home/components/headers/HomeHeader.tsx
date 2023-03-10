@@ -53,12 +53,29 @@ export const HomeHeader: FunctionComponent = function () {
   }
 
   const SystemBloc = useMemo(() => {
-    if (!isLoggedIn) return <SignupBanner />
+    if (!isLoggedIn)
+      return (
+        <React.Fragment>
+          <SignupBanner />
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
+      )
 
     if (homeBanner?.name === BannerName.activation_banner)
-      return <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
+      return (
+        <React.Fragment>
+          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
+      )
 
-    if (shouldDisplayGeolocationBloc) return <GeolocationBanner />
+    if (shouldDisplayGeolocationBloc)
+      return (
+        <React.Fragment>
+          <GeolocationBanner />
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
+      )
 
     return null
   }, [isLoggedIn, homeBanner, shouldDisplayGeolocationBloc])
@@ -76,12 +93,7 @@ export const HomeHeader: FunctionComponent = function () {
       <PageContent>
         <Typo.Body>{getSubtitle()}</Typo.Body>
         <Spacer.Column numberOfSpaces={6} />
-        {SystemBloc ? (
-          <React.Fragment>
-            {SystemBloc}
-            <Spacer.Column numberOfSpaces={8} />
-          </React.Fragment>
-        ) : null}
+        {SystemBloc}
       </PageContent>
     </React.Fragment>
   )
