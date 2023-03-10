@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import styled from 'styled-components/native'
+import { ActivityIndicator } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
@@ -38,6 +39,7 @@ const errorCodeToMessage: Record<string, string> = {
 }
 
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
+  const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { bookingState, dismissModal, dispatch } = useBookingContext()
   const selectedStock = useBookingStock()
@@ -56,7 +58,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
 
-  const { mutate } = useBookOfferMutation({
+  const { mutate, isLoading } = useBookOfferMutation({
     onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
@@ -120,7 +122,13 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
-  return (
+  return isLoading ? (
+    <Container>
+      <Spacer.Column numberOfSpaces={8} />
+      <ActivityIndicator size="large" color={theme.colors.primary} />
+      <Spacer.Column numberOfSpaces={8} />
+    </Container>
+  ) : (
     <Container>
       <Banner
         message="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
