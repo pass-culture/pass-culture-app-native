@@ -14,6 +14,7 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
@@ -38,6 +39,20 @@ const errorCodeToMessage: Record<string, string> = {
   STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
 }
 
+const LOADING_MESSAGES: RotatingTextOptions[] = [
+  {
+    message: 'En cours de confirmation...',
+    keepDuration: 5000,
+  },
+  {
+    message: 'Patiente quelques instants...',
+    keepDuration: 5000,
+  },
+  {
+    message: 'On y est presque...',
+  },
+]
+
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -55,6 +70,8 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const isFromSearch = route.params?.from === 'search'
   const fromOfferId = route.params?.fromOfferId
   const algoliaOfferId = offerId?.toString()
+
+  const loadingMessage = useRotatingText(LOADING_MESSAGES)
 
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
 
@@ -123,11 +140,13 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
   return isLoading ? (
-    <Container>
-      <Spacer.Column numberOfSpaces={8} />
+    <Center>
+      <Spacer.Column numberOfSpaces={50} />
       <ActivityIndicator size="large" color={theme.colors.primary} />
-      <Spacer.Column numberOfSpaces={8} />
-    </Container>
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.ButtonText>{loadingMessage}</Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={50} />
+    </Center>
   ) : (
     <Container>
       <Banner
@@ -177,6 +196,12 @@ const ButtonContainer = styled.View({
 })
 
 const Container = styled.View({ width: '100%' })
+
+const Center = styled(Container)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
