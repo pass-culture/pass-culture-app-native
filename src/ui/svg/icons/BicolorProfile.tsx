@@ -50,3 +50,9 @@ export const BicolorProfile = React.memo(
     opacity: opacity ?? 1,
   }))``
 )
+
+export const Profile = styled(NotMemoizedBicolorProfile).attrs(({ size, theme }) => ({
+  color: theme.colors.black,
+  color2: theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

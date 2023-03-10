@@ -1617,10 +1617,11 @@ d’options
             >
               <View
                 height={20}
+                testID="button-icon"
                 width={20}
               >
                 <Text>
-                  undefined-SVG-Mock
+                  button-icon-SVG-Mock
                 </Text>
               </View>
             </View>

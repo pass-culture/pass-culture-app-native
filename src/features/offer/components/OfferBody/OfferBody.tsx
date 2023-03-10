@@ -247,7 +247,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             inline
             wording={isOfferAlreadyReported ? 'Tu as déjà signalé cette offre' : 'Signaler l’offre'}
             disabled={!!isOfferAlreadyReported}
-            icon={() => <Flag />}
+            icon={Flag}
             onPress={showReportOfferDescription}
             justifyContent="flex-start"
           />
