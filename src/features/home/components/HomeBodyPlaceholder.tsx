@@ -58,7 +58,7 @@ const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }
           horizontal
           data={data}
           renderItem={renderPlaceholder}
-          ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
+          ItemSeparatorComponent={Separator}
           showsHorizontalScrollIndicator={false}
         />
       </View>
@@ -102,3 +102,5 @@ const BusinessModulePlaceholder = () => {
 }
 
 const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
+
+const Separator = () => <Spacer.Row numberOfSpaces={4} />

@@ -31,7 +31,7 @@ export function getTickets({ booking, maxNumberOfTicketsToDisplay = 2 }: Tickets
         numberOfExternalBookings > 1 ? `${index + 1}/${numberOfExternalBookings}` : undefined
       return (
         <TicketWithContent
-          key={index}
+          key={seatNumber}
           booking={booking}
           externalBookings={{ seat: seatNumber, seatIndex: seatWithNumberOfSeats, barcode }}
           testID="ticket-with-external-bookings-information"

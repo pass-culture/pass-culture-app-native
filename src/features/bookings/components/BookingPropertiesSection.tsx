@@ -8,9 +8,8 @@ import { Booking } from 'features/bookings/types'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useSubcategory } from 'libs/subcategories'
-import { theme } from 'theme'
 import { SectionRow } from 'ui/components/SectionRow'
-import { BicolorProfile as DefaultProfile } from 'ui/svg/icons/BicolorProfile'
+import { Profile as DefaultProfile } from 'ui/svg/icons/BicolorProfile'
 import { Calendar as DefaultCalendar } from 'ui/svg/icons/Calendar'
 import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -59,7 +58,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             </TitleNameContainer>
           )}
           type="clickable"
-          icon={() => <Profile color={theme.colors.black} color2={theme.colors.black} />}
+          icon={Profile}
         />
       ) : null}
       {propertiesLabels.dateLabel?.length > 0 && (
@@ -69,7 +68,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             title={propertiesLabels.dateLabel}
             renderTitle={renderRowTitle}
             type="clickable"
-            icon={() => <Calendar />}
+            icon={Calendar}
             accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
           />
         </React.Fragment>
@@ -80,7 +79,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           title={propertiesLabels.locationLabel}
           renderTitle={renderRowTitle}
           type="clickable"
-          icon={() => <LocationBuilding />}
+          icon={LocationBuilding}
           accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
         />
       )}

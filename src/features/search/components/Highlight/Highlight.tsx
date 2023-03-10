@@ -39,9 +39,9 @@ export const Highlight: FunctionComponent<HighlightProps> = ({ hit, attribute })
 
   return (
     <React.Fragment>
-      {parts.map((part, partIndex) => {
+      {parts.map((part) => {
         return (
-          <HighlightPart key={partIndex} isHighlighted={part.isHighlighted}>
+          <HighlightPart key={part.value} isHighlighted={part.isHighlighted}>
             {part.value}
           </HighlightPart>
         )

@@ -33,10 +33,10 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
 const logGoToParentsFAQ = () => analytics.logGoToParentsFAQ('ageselection')
 
 export const AgeSelection: FunctionComponent = () => {
-  const AgeSelectionButtons = ageButtons.map(({ age }, index) => {
+  const AgeSelectionButtons = ageButtons.map(({ age }) => {
     return (
       <AgeButton
-        key={index}
+        key={age}
         icon={age ? BicolorAll : undefined}
         dense={!age}
         onBeforeNavigate={async () => onBeforeNavigate(age)}
