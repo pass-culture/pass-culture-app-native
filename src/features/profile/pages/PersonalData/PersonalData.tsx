@@ -4,9 +4,14 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
+import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
+import { Banner } from 'ui/components/Banner'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
@@ -57,7 +62,18 @@ export function PersonalData() {
 
       <StyledSeparator />
 
-      <Spacer.Column numberOfSpaces={2} />
+      <Banner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
+        <Spacer.Column numberOfSpaces={3} />
+        <ExternalTouchableLink
+          as={ButtonQuaternarySecondary}
+          externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
+          wording="Comment gérer tes données personnelles&nbsp;?"
+          icon={ExternalSiteFilled}
+          justifyContent="flex-start"
+          inline
+        />
+      </Banner>
+      <Spacer.Column numberOfSpaces={8} />
       <SectionRow
         title="Supprimer mon compte"
         type="navigable"
