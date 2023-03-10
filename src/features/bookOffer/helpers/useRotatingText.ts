@@ -6,6 +6,8 @@ export type RotatingTextOptions = {
    */
   message: string
   /**
+   * In milliseconds.
+   *
    * If defined, the duration the message will stay on screen.
    * If not defined, the message will stay forever.
    *
@@ -15,7 +17,7 @@ export type RotatingTextOptions = {
 }
 
 /**
- * A hook that you can use to display messages forever.
+ * A hook that you can use to display messages that will change every `keepDuration` milliseconds.
  */
 export function useRotatingText<T extends RotatingTextOptions[]>(
   messages: T
@@ -29,10 +31,14 @@ export function useRotatingText<T extends RotatingTextOptions[]>(
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => {
-        if (messagesRef.current[prev + 1]) {
-          return prev + 1
+        const nextIndex = prev + 1
+        const maybeNextMessage = messagesRef.current[nextIndex]
+
+        if (maybeNextMessage) {
+          return nextIndex
         }
 
+        // the condition handles loop repetition from start
         return currentMessage.keepDuration ? 0 : prev
       })
     }, currentMessage.keepDuration)
