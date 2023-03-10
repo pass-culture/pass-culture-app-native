@@ -8,7 +8,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { plural } from 'libs/plural'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Li } from 'ui/components/Li'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -19,10 +19,10 @@ import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/Locati
 import { LocationPointerNotFilled as DefaultLocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
+type SuggestedPlaceOrVenue = SuggestedPlace | Venue
 
 const isPlace = (hit: SuggestedPlaceOrVenue): hit is SuggestedPlace => !('venueId' in hit)
-const isVenue = (hit: SuggestedPlaceOrVenue): hit is SuggestedVenue => 'venueId' in hit
+const isVenue = (hit: SuggestedPlaceOrVenue): hit is Venue => 'venueId' in hit
 
 export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
   const { label, info } = hit
@@ -67,7 +67,7 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
 
 type Props = {
   query: string
-  setSelectedPlaceOrVenue: (placeOrVenue: SuggestedPlace | SuggestedVenue) => void
+  setSelectedPlaceOrVenue: (placeOrVenue: SuggestedPlace | Venue) => void
 }
 
 export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPlaceOrVenue }) => {

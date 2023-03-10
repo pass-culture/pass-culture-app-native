@@ -4,11 +4,11 @@ import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/Suggested
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { fireEvent, render } from 'tests/utils'
 
 let mockPlaces: SuggestedPlace[] = []
-const mockVenues: SuggestedVenue[] = []
+const mockVenues: Venue[] = []
 
 let mockIsLoading = false
 jest.mock('libs/place', () => ({

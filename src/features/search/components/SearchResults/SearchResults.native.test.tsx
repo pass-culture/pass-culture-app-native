@@ -16,7 +16,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, act, waitFor } from 'tests/utils'
 import { theme } from 'theme'
@@ -92,7 +92,7 @@ const Kourou: SuggestedPlace = {
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
+const venue: Venue = mockedSuggestedVenues[0]
 
 describe('SearchResults component', () => {
   beforeAll(() => {

@@ -11,11 +11,11 @@ import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent, waitFor } from 'tests/utils'
 
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
+const venue: Venue = mockedSuggestedVenues[0]
 
 const mockSearchState: SearchState = {
   ...initialSearchState,

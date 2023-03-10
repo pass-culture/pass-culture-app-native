@@ -3,13 +3,13 @@ import React from 'react'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SuggestedPlaces } from './SuggestedPlaces'
 
 let mockPlaces: SuggestedPlace[] = []
-const mockVenues: SuggestedVenue[] = []
+const mockVenues: Venue[] = []
 
 jest.mock('libs/place', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),

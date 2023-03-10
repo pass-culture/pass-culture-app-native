@@ -23,7 +23,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { SuggestedPlace } from 'libs/place'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { Form } from 'ui/components/Form'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -45,7 +45,7 @@ import { Spacer, Typo } from 'ui/theme'
 type LocationModalFormData = {
   locationChoice: RadioButtonLocation
   aroundRadius: number
-  selectedPlaceOrVenue?: SuggestedVenue | SuggestedPlace
+  selectedPlaceOrVenue?: Venue | SuggestedPlace
   searchPlaceOrVenue: string
 }
 
@@ -214,13 +214,13 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
             ...additionalSearchState,
             locationFilter: {
               locationType: LocationType.VENUE,
-              venue: selectedPlaceOrVenue as SuggestedVenue,
+              venue: selectedPlaceOrVenue as Venue,
             },
           }
           analytics.logChangeSearchLocation(
             {
               type: 'venue',
-              venueId: (selectedPlaceOrVenue as SuggestedVenue).venueId,
+              venueId: (selectedPlaceOrVenue as Venue).venueId,
             },
             searchState.searchId
           )
@@ -283,7 +283,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     [setValue]
   )
 
-  const handlePlaceOrVenueSelect = (placeOrVenue: SuggestedPlace | SuggestedVenue) => {
+  const handlePlaceOrVenueSelect = (placeOrVenue: SuggestedPlace | Venue) => {
     setValueWithValidation('selectedPlaceOrVenue', placeOrVenue)
     setValueWithValidation('searchPlaceOrVenue', placeOrVenue.label)
     setIsSearchInputFocused(false)

@@ -1,6 +1,6 @@
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 
-export const mockedSuggestedVenues: SuggestedVenue[] = [
+export const mockedSuggestedVenues: Venue[] = [
   {
     label: 'Le Petit Rintintin 1',
     info: 'Musée, Paris',

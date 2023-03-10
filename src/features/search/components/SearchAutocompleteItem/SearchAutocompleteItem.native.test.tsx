@@ -12,11 +12,11 @@ import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent, screen } from 'tests/utils'
 
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
+const venue: Venue = mockedSuggestedVenues[0]
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

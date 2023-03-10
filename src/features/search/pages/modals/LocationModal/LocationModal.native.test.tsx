@@ -17,7 +17,7 @@ import {
   GeolocPositionError,
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 
@@ -64,7 +64,7 @@ const Kourou: SuggestedPlace = {
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
+const venue: Venue = mockedSuggestedVenues[0]
 
 const mockPlaces: SuggestedPlace[] = Array.from({ length: 10 }).map((_, index) => ({
   label: `place_${index}`,
@@ -75,7 +75,7 @@ const mockPlaces: SuggestedPlace[] = Array.from({ length: 10 }).map((_, index) =
   },
 }))
 
-const mockVenues: SuggestedVenue[] = Array.from({ length: 10 }).map((_, index) => ({
+const mockVenues: Venue[] = Array.from({ length: 10 }).map((_, index) => ({
   label: `venue_${index}`,
   info: `info_venue_${index}`,
   venueId: index,

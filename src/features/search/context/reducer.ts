@@ -3,7 +3,7 @@ import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { MAX_RADIUS, sortCategories, addOrRemove } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 
 export const initialSearchState: SearchState = {
   beginningDatetime: undefined,
@@ -50,7 +50,7 @@ export type Action =
   | { type: 'SET_LOCATION_EVERYWHERE' }
   | { type: 'SET_LOCATION_AROUND_ME'; payload?: number }
   | { type: 'SET_LOCATION_PLACE'; payload: { aroundRadius?: number; place: SuggestedPlace } }
-  | { type: 'SET_LOCATION_VENUE'; payload: SuggestedVenue }
+  | { type: 'SET_LOCATION_VENUE'; payload: Venue }
   | { type: 'SET_QUERY'; payload: string }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {

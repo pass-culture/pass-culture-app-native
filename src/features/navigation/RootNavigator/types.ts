@@ -6,7 +6,7 @@ import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
-import { SuggestedVenue } from 'libs/venue'
+import { Venue } from 'libs/venue'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
@@ -163,7 +163,7 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
-  LocationFilter?: { selectedVenue?: SuggestedVenue; selectedPlace?: SuggestedPlace }
+  LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   PersonalData: undefined
   SearchFilter: Partial<SearchState>
