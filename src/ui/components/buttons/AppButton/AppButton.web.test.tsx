@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, fireEvent } from 'tests/utils/web'
+import { render, fireEvent, screen } from 'tests/utils/web'
 import { Close } from 'ui/svg/icons/Close'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
@@ -17,35 +17,35 @@ const baseProps = {
 describe('AppButton Component', () => {
   describe('* Icon property', () => {
     it('should display icon when provided', () => {
-      const { queryByTestId } = render(<AppButton {...baseProps} />)
-      expect(queryByTestId('button-icon')).toBeTruthy()
+      render(<AppButton {...baseProps} />)
+      expect(screen.queryByTestId('button-icon')).toBeTruthy()
     })
     it('should not display icon when not provided', () => {
-      const { queryByTestId } = render(<AppButton {...baseProps} icon={undefined} />)
-      expect(queryByTestId('button-icon')).toBeFalsy()
+      render(<AppButton {...baseProps} icon={undefined} />)
+      expect(screen.queryByTestId('button-icon')).toBeFalsy()
     })
   })
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
-      const { queryByTestId } = render(<AppButton {...baseProps} isLoading />)
-      expect(queryByTestId('Chargement en cours')).toBeTruthy()
-      expect(queryByTestId('button-icon')).toBeFalsy()
+      render(<AppButton {...baseProps} isLoading />)
+      expect(screen.queryByTestId('Chargement en cours')).toBeTruthy()
+      expect(screen.queryByTestId('button-icon')).toBeFalsy()
     })
     it('should display right elements when isLoading equals false', () => {
-      const { queryByTestId } = render(<AppButton {...baseProps} isLoading={false} />)
-      expect(queryByTestId('button-icon')).toBeTruthy()
-      expect(queryByTestId('Chargement en cours')).toBeFalsy()
+      render(<AppButton {...baseProps} isLoading={false} />)
+      expect(screen.queryByTestId('button-icon')).toBeTruthy()
+      expect(screen.queryByTestId('Chargement en cours')).toBeFalsy()
     })
   })
   describe('* Disabled property', () => {
     it('should disable handlers when disabled equals true', () => {
       const onPress = jest.fn()
       const onLongPress = jest.fn()
-      const { getByText, rerender } = render(
+      const { rerender } = render(
         <AppButton {...baseProps} disabled onPress={onPress} onLongPress={onLongPress} />
       )
 
-      const button = getByText('Testing Disabled')
+      const button = screen.getByText('Testing Disabled')
       fireEvent.click(button)
       fireEvent.doubleClick(button)
 
@@ -69,15 +69,15 @@ describe('AppButton Component', () => {
   })
   describe('* html tag and type attribute', () => {
     it('should render button tag of type button by default', () => {
-      const { getByTestId } = render(<AppButton {...baseProps} testID="button" />)
-      const button = getByTestId('Testing Disabled')
+      render(<AppButton {...baseProps} testID="button" />)
+      const button = screen.getByTestId('Testing Disabled')
       expect(button.tagName.toLowerCase()).toBe('button')
       expect(button.getAttribute('type')).toBe('button')
     })
     it('should render anchor tag without type if component is an anchor', () => {
       const href = 'https://example.link/'
-      const { getByTestId } = render(<AppButton {...baseProps} testID="link" href={href} />)
-      const link = getByTestId('Testing Disabled')
+      render(<AppButton {...baseProps} testID="link" href={href} />)
+      const link = screen.getByTestId('Testing Disabled')
       expect(link.tagName.toLowerCase()).toBe('a')
       expect(link.getAttribute('href')).toBe(href)
       expect(link.getAttribute('type')).toBeNull()

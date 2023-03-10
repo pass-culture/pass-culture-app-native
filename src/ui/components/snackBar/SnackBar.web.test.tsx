@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { render } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 import { theme } from 'theme'
 import { Check } from 'ui/svg/icons/Check'
 
@@ -10,18 +10,14 @@ import { SnackBarHelperSettings } from './types'
 
 describe('SnackBar Component', () => {
   it('should render the content container when visible=true', async () => {
-    const { queryByTestId, queryByRole } = render(
-      renderHelperSnackBar(true, { message: 'message' })
-    )
-    expect(queryByRole(AccessibilityRole.STATUS)).toBeTruthy()
-    expect(queryByTestId('snackbar-container')).toBeTruthy()
+    render(renderHelperSnackBar(true, { message: 'message' }))
+    expect(screen.queryByRole(AccessibilityRole.STATUS)).toBeTruthy()
+    expect(screen.queryByTestId('snackbar-container')).toBeTruthy()
   })
   it('should render the content container when visible=false (for accessibility updates)', async () => {
-    const { queryByTestId, queryByRole } = render(
-      renderHelperSnackBar(false, { message: 'message' })
-    )
-    expect(queryByRole(AccessibilityRole.STATUS)).toBeTruthy()
-    expect(queryByTestId('snackbar-container')).toBeTruthy()
+    render(renderHelperSnackBar(false, { message: 'message' }))
+    expect(screen.queryByRole(AccessibilityRole.STATUS)).toBeTruthy()
+    expect(screen.queryByTestId('snackbar-container')).toBeTruthy()
   })
 })
 

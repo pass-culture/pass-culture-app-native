@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { CalendarPicker } from './CalendarPicker.web'
 
@@ -13,7 +13,7 @@ describe('CalendarPicker web component', () => {
   })
 
   it('should have validation button', () => {
-    const { getByText } = render(
+    render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -21,12 +21,12 @@ describe('CalendarPicker web component', () => {
         visible
       />
     )
-    const button = getByText('Valider la date')
+    const button = screen.getByText('Valider la date')
     expect(button).not.toBeNull()
   })
 
   it('should validation button close the calendar', () => {
-    const { getByText } = render(
+    render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -34,14 +34,14 @@ describe('CalendarPicker web component', () => {
         visible
       />
     )
-    const button = getByText('Valider la date')
+    const button = screen.getByText('Valider la date')
     fireEvent.click(button)
     expect(button).not.toBeNull()
     expect(mockHideCalendar).toHaveBeenCalledTimes(1)
   })
 
   it('should validation button change the date', () => {
-    const { getByText } = render(
+    render(
       <CalendarPicker
         hideCalendar={mockHideCalendar}
         selectedDate={new Date()}
@@ -49,7 +49,7 @@ describe('CalendarPicker web component', () => {
         visible
       />
     )
-    const button = getByText('Valider la date')
+    const button = screen.getByText('Valider la date')
     fireEvent.click(button)
     expect(button).not.toBeNull()
     expect(mockHideCalendar).toHaveBeenCalledTimes(1)

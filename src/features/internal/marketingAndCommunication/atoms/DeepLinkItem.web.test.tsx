@@ -2,7 +2,7 @@ import React from 'react'
 
 import { DeeplinkItem } from 'features/internal/marketingAndCommunication/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 import {
   hideSnackBar,
   showErrorSnackBar,
@@ -42,9 +42,9 @@ describe('<DeeplinkItem />', () => {
   })
 
   it('should copy the universal link to clipboard', () => {
-    const renderAPI = render(<DeeplinkItem deeplink={deeplink} />)
+    render(<DeeplinkItem deeplink={deeplink} />)
 
-    fireEvent.click(renderAPI.getByTestId('Copier'))
+    fireEvent.click(screen.getByTestId('Copier'))
 
     expect(writeText).toBeCalledWith(deeplink.universalLink)
     expect(showSuccessSnackBar).toBeCalledWith({
@@ -54,9 +54,9 @@ describe('<DeeplinkItem />', () => {
   })
 
   it('should copy the firebase link to clipboard', () => {
-    const renderAPI = render(<DeeplinkItem deeplink={deeplink} />)
+    render(<DeeplinkItem deeplink={deeplink} />)
 
-    fireEvent.click(renderAPI.getByTestId('Copier dans le presse-papier'))
+    fireEvent.click(screen.getByTestId('Copier dans le presse-papier'))
 
     expect(writeText).toBeCalledWith(deeplink.firebaseLink)
     expect(showSuccessSnackBar).toBeCalledWith({

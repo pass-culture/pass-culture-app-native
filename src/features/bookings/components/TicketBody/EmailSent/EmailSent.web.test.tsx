@@ -1,16 +1,15 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
-import { render } from 'tests/utils/web'
+import { render, screen, waitFor } from 'tests/utils/web'
 
 const offerDate = new Date(2022, 11, 17)
 
 describe('<EmailSent/>', () => {
   it('should not display the button "Consulter mes e-mails"', async () => {
-    const { queryByTestId } = render(<EmailSent offerDate={offerDate} />)
-    await waitForExpect(() => {
-      expect(queryByTestId('Consulter mes e-mails')).toBeFalsy()
+    render(<EmailSent offerDate={offerDate} />)
+    await waitFor(() => {
+      expect(screen.queryByTestId('Consulter mes e-mails')).toBeFalsy()
     })
   })
 })

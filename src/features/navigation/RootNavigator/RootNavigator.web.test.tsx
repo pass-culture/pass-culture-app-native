@@ -6,7 +6,7 @@ import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromisesWithAct, render } from 'tests/utils/web'
+import { flushAllPromisesWithAct, render, screen } from 'tests/utils/web'
 
 import { RootNavigator } from './RootNavigator'
 
@@ -39,27 +39,27 @@ describe('<RootNavigator />', () => {
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
-    const renderAPI = await renderRootNavigator()
+    await renderRootNavigator()
 
-    const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
+    const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeFalsy()
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    const renderAPI = await renderRootNavigator()
+    await renderRootNavigator()
 
-    const privacyPolicyTitle = renderAPI.getByText('Respect de ta vie privée')
+    const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeTruthy()
   })
 
   it('should display quick access button if show tabBar and current route is TabNavigator', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    const renderAPI = await renderRootNavigator()
+    await renderRootNavigator()
 
-    const quickAccessButton = renderAPI.queryByText('Accéder au menu de navigation')
+    const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
     expect(quickAccessButton).toBeTruthy()
   })
 
@@ -67,9 +67,9 @@ describe('<RootNavigator />', () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
     mockUseCurrentRoute.mockReturnValueOnce({ name: 'Offer', key: 'key' })
 
-    const renderAPI = await renderRootNavigator()
+    await renderRootNavigator()
 
-    const quickAccessButton = renderAPI.queryByText('Accéder au menu de navigation')
+    const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
     expect(quickAccessButton).toBeNull()
   })
 })
@@ -79,14 +79,14 @@ describe('ForceUpdate display logic', () => {
     mockUseCurrentRoute.mockReturnValueOnce({ name: 'TabNavigator', key: 'key' })
     mockedUseMustUpdateApp.mockReturnValueOnce(true)
 
-    const rootNavigator = await renderRootNavigator()
+    await renderRootNavigator()
 
-    expect(rootNavigator.queryAllByText("Mise à jour de l'application")).toBeTruthy()
+    expect(screen.queryAllByText("Mise à jour de l'application")).toBeTruthy()
   })
 })
 
 async function renderRootNavigator() {
-  const renderAPI = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -96,5 +96,4 @@ async function renderRootNavigator() {
   )
 
   await flushAllPromisesWithAct()
-  return renderAPI
 }

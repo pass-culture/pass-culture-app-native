@@ -6,16 +6,16 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<PhoneValidationTooManyAttempts/>', () => {
   describe('Contact support button', () => {
     it('should open mail app when clicking on contact support button', async () => {
-      const { getByText } = render(<PhoneValidationTooManyAttempts />)
+      render(<PhoneValidationTooManyAttempts />)
 
-      const contactSupportButton = getByText('Contacter le support')
+      const contactSupportButton = screen.getByText('Contacter le support')
       fireEvent.click(contactSupportButton)
 
       await waitForExpect(() => {
@@ -30,9 +30,9 @@ describe('<PhoneValidationTooManyAttempts/>', () => {
 
   describe('Navigate to home button', () => {
     it('should redirect to Home when clicking on homepage button', async () => {
-      const { getByText } = render(<PhoneValidationTooManyAttempts />)
+      render(<PhoneValidationTooManyAttempts />)
 
-      fireEvent.click(getByText('Retourner à l’accueil'))
+      fireEvent.click(screen.getByText('Retourner à l’accueil'))
 
       expect(navigate).toBeCalledWith(...homeNavConfig)
     })

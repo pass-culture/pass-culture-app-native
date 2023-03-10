@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { Profile } from './Profile'
 
@@ -22,8 +22,8 @@ describe('<Profile/>', () => {
   })
 
   it('should not display app share banner', () => {
-    const { queryByText } = render(<Profile />)
+    render(<Profile />)
 
-    expect(queryByText('Partage le pass Culture')).toBeNull()
+    expect(screen.queryByText('Partage le pass Culture')).toBeNull()
   })
 })

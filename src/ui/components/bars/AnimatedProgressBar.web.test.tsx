@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 import { theme } from 'theme'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -33,7 +33,7 @@ describe('AnimatedProgressBar', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = theme.colors.primary
 
-    const { getByText, getByTestId } = render(
+    render(
       <AnimatedProgressBar
         color={expectedBackgroundColor}
         progress={expectedProgress}
@@ -41,13 +41,13 @@ describe('AnimatedProgressBar', () => {
       />
     )
 
-    const progressBar = getByTestId('animated-progress-bar')
+    const progressBar = screen.getByTestId('animated-progress-bar')
     const style = progressBar.style
 
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
     expect(style.flexGrow).toEqual(`${expectedProgress}`)
 
-    const progressBarIcon = getByText('progress-bar-icon-SVG-Mock')
+    const progressBarIcon = screen.getByText('progress-bar-icon-SVG-Mock')
     expect(progressBarIcon).toBeTruthy()
   })
 
@@ -55,7 +55,7 @@ describe('AnimatedProgressBar', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = theme.colors.primary
 
-    const { getByText, getByTestId } = render(
+    render(
       <AnimatedProgressBar
         color={expectedBackgroundColor}
         progress={expectedProgress}
@@ -64,13 +64,13 @@ describe('AnimatedProgressBar', () => {
       />
     )
 
-    const progressBar = getByTestId('animated-progress-bar')
+    const progressBar = screen.getByTestId('animated-progress-bar')
     const style = progressBar.style
 
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
     expect(style.flexGrow).toEqual('1')
 
-    const progressBarIcon = getByText('progress-bar-icon-SVG-Mock')
+    const progressBarIcon = screen.getByText('progress-bar-icon-SVG-Mock')
     expect(progressBarIcon).toBeTruthy()
   })
 })

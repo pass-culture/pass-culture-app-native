@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 describe('<SearchFilter/>', () => {
   describe('Accessibility', () => {
@@ -17,18 +17,18 @@ describe('<SearchFilter/>', () => {
   })
 
   it('should display back button on header', async () => {
-    const { getByTestId } = renderSearchFilter()
+    renderSearchFilter()
 
     await waitFor(() => {
-      expect(getByTestId('Revenir en arrière')).toBeTruthy()
+      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
     })
   })
 
   it('should not display close button on header', async () => {
-    const { queryByTestId } = renderSearchFilter()
+    renderSearchFilter()
 
     await waitFor(() => {
-      expect(queryByTestId('Fermer')).toBeFalsy()
+      expect(screen.queryByTestId('Fermer')).toBeFalsy()
     })
   })
 })

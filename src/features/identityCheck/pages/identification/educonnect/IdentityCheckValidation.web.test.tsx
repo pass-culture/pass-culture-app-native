@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { IdentityCheckValidation } from './IdentityCheckValidation'
 
@@ -15,10 +15,10 @@ describe('<IdentityCheckValidation />', () => {
   })
 
   it('should display user infos with props given', () => {
-    const { getByText } = render(<IdentityCheckValidation />)
-    expect(getByText('John')).toBeTruthy()
-    expect(getByText('Doe')).toBeTruthy()
-    expect(getByText('28/01/1993')).toBeTruthy()
+    render(<IdentityCheckValidation />)
+    expect(screen.getByText('John')).toBeTruthy()
+    expect(screen.getByText('Doe')).toBeTruthy()
+    expect(screen.getByText('28/01/1993')).toBeTruthy()
   })
 
   describe('Accessibility', () => {

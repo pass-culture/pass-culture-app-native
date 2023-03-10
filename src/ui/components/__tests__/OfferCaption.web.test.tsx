@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 
 import { OfferCaption } from '../OfferCaption'
 
@@ -24,14 +24,14 @@ describe('OfferCaption component', () => {
 
   it('should have the isDuo text if user is Beneficiary', () => {
     const renderAPI = render(<OfferCaption {...props} />)
-    expect(renderAPI.getByTestId('priceIsDuo').textContent).toBe('Dès 5€ - Duo')
+    expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€ - Duo')
 
     renderAPI.rerender(<OfferCaption {...props} isDuo={false} />)
-    expect(renderAPI.getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
+    expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
   })
 
   it('should not have the isDuo text if user is not Beneficiary', () => {
-    const { getByTestId } = render(<OfferCaption {...props} isBeneficiary={false} />)
-    expect(getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
+    render(<OfferCaption {...props} isBeneficiary={false} />)
+    expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
   })
 })

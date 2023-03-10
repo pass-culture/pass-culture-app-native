@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
-import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { IdentityCheckEduConnectForm } from './IdentityCheckEduConnectForm'
 
@@ -19,8 +19,8 @@ describe('<IdentityCheckEduConnectForm />', () => {
   })
 
   it('should navigate to next screen and open educonnect tab on press "Connexion avec ÉduConnect"', () => {
-    const { getByText } = render(<IdentityCheckEduConnectForm />)
-    const button = getByText('Ouvrir un onglet ÉduConnect')
+    render(<IdentityCheckEduConnectForm />)
+    const button = screen.getByText('Ouvrir un onglet ÉduConnect')
 
     fireEvent.click(button)
 
