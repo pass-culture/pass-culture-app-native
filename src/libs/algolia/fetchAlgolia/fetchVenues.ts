@@ -1,12 +1,12 @@
 import { Venue } from 'features/venue/types'
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue, FetchVenuesParameters } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
-export const fetchVenues = async (query: string): Promise<Venue[]> => {
+export const fetchVenues = async (query: FetchVenuesParameters['query']): Promise<Venue[]> => {
   const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
 
   try {

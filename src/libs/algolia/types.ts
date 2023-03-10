@@ -52,3 +52,8 @@ export type VenueHit = Pick<
 > & {
   venueTypeCode: VenueTypeCode
 }
+
+
+export interface FetchVenuesParameters {
+  query: string
+}
