@@ -36,6 +36,8 @@ export const env: Environment = {
   FAQ_LINK_EDUCONNECT_URL: 'https://passculture-educonnect.faq',
   FAQ_LINK_LEGAL_GUARDIAN:
     'https://aide.passculture.app/hc/fr/sections/4404926792732-Tuteurs-l%C3%A9gaux',
+  FAQ_LINK_PERSONAL_DATA:
+    'https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs',
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: 'https://passculture-reset-password.faq',
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: 'https://passculture-confirmation-email.faq',
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: true,
