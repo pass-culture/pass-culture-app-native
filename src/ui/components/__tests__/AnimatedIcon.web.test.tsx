@@ -1,8 +1,7 @@
 import React from 'react'
 import { Animated } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
@@ -41,7 +40,7 @@ describe('AnimatedIcon', () => {
     fireEvent.click(screen.getByTestId('dummyPressable'))
     const initialContainer = screen.getByTestId('initial-icon-container')
     const finalContainer = screen.getByTestId('final-icon-container')
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(finalContainer.style.opacity).toBe('1')
     })
     expect(initialContainer.style.opacity).toBe('0')

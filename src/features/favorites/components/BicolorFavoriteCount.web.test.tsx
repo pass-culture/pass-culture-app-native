@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -8,7 +7,7 @@ import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, screen } from 'tests/utils/web'
+import { render, screen, waitFor } from 'tests/utils/web'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
@@ -28,28 +27,28 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should render connected icon', async () => {
     await renderBicolorFavoriteCount({ isLoggedIn: true })
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(screen.getByTestId('bicolor-favorite-count')).toBeTruthy()
     })
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
     await renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(screen.getByText('99')).toBeTruthy()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
     await renderBicolorFavoriteCount({ isLoggedIn: true })
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(screen.getByText(defaultOptions.count.toString())).toBeTruthy()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
     await renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(screen.getByText('0')).toBeTruthy()
     })
   })

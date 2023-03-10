@@ -1,7 +1,6 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
-import { render } from 'tests/utils/web'
+import { render, waitFor } from 'tests/utils/web'
 
 import { remoteConfig } from './remoteConfig.services'
 import { RemoteConfigProvider } from './RemoteConfigProvider'
@@ -15,7 +14,7 @@ describe('<RemoteConfigProvider />', () => {
     mockedRemoteConfigRefresh.mockResolvedValueOnce(true)
     renderRemoteConfigProvider()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(remoteConfig.refresh).toHaveBeenCalledTimes(1)
     })
     expect(remoteConfig.getValues).toHaveBeenCalledTimes(1)
