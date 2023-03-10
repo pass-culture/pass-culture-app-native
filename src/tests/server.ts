@@ -3,6 +3,7 @@ import { setupServer } from 'msw/node'
 
 import {
   AccountState,
+  BannerResponse,
   BookingsResponse,
   CookieConsentRequest,
   CulturalSurveyRequest,
@@ -171,7 +172,10 @@ export const server = setupServer(
   ),
   rest.get(`${BASE_URL}/entries`, async (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
-  })
+  }),
+  rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
+    res(ctx.status(200), ctx.json({}))
+  )
 )
 
 export function requestPasswordResetSuccess() {

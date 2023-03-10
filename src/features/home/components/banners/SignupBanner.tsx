@@ -3,17 +3,14 @@ import styled from 'styled-components/native'
 
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const SignupBanner = () => {
   return (
-    <React.Fragment>
-      <BannerWithBackground leftIcon={StyledBicolorUnlock} navigateTo={{ screen: 'SignupForm' }}>
-        <StyledButtonText>Débloque ton crédit</StyledButtonText>
-        <StyledBodyText>Crée ton compte si tu as entre 15 et 18 ans&nbsp;!</StyledBodyText>
-      </BannerWithBackground>
-      <Spacer.Column numberOfSpaces={8} />
-    </React.Fragment>
+    <BannerWithBackground leftIcon={StyledBicolorUnlock} navigateTo={{ screen: 'SignupForm' }}>
+      <StyledButtonText>Débloque ton crédit</StyledButtonText>
+      <StyledBodyText>Crée ton compte si tu as entre 15 et 18 ans&nbsp;!</StyledBodyText>
+    </BannerWithBackground>
   )
 }
 
