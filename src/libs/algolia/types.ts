@@ -1,3 +1,5 @@
+import { SearchOptions } from '@algolia/client-search'
+
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { SearchState } from 'features/search/types'
 import { AlgoliaHit } from 'libs/algolia'
@@ -53,6 +55,10 @@ export type VenueHit = Pick<
   venueTypeCode: VenueTypeCode
 }
 
+export interface AlgoliaQueryParameters {
+  query: string
+  requestOptions?: SearchOptions //TODO(EveJulliard): rajouter RequestOptions au typage.
+}
 
 export interface FetchVenuesParameters {
   query: string
