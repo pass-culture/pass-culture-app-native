@@ -7,6 +7,7 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
+import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DescriptionContext, SearchState } from 'features/search/types'
 
@@ -319,30 +320,26 @@ export function getDescription(
   return undefined
 }
 
-export function getDefaultFormView(
-  data: SubcategoriesResponseModelv2 | undefined,
-  searchState: SearchState
-) {
+export function getDefaultFormView(tree: MappingTree, searchState: SearchState) {
   const { offerGenreTypes, offerCategories, offerNativeCategories } = searchState
 
-  const nativeCategory = data?.nativeCategories.find(
-    (nativeCategory) => nativeCategory.name === offerNativeCategories?.[0]
-  )
+  const category = tree[offerCategories[0]]
+  const nativeCategories = category?.children
+  const nativeCategory = offerNativeCategories?.length
+    ? nativeCategories?.[offerNativeCategories[0]]
+    : undefined
 
-  if (offerGenreTypes?.length || nativeCategory?.genreType) return CategoriesModalView.GENRES
-  if (
-    offerNativeCategories?.length ||
-    (offerCategories.length && offerCategories[0] !== SearchGroupNameEnumv2.CARTES_JEUNES)
-  )
+  if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
+  if (offerNativeCategories?.length || nativeCategories)
     return CategoriesModalView.NATIVE_CATEGORIES
   return CategoriesModalView.CATEGORIES
 }
 
 export function getDefaultFormValues(
-  data: SubcategoriesResponseModelv2 | undefined,
+  tree: MappingTree | undefined,
   searchState: SearchState
 ): CategoriesModalFormProps {
-  if (!data)
+  if (!tree)
     return {
       category: SearchGroupNameEnumv2.NONE,
       nativeCategory: null,
@@ -354,6 +351,6 @@ export function getDefaultFormValues(
     category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
     nativeCategory: searchState.offerNativeCategories?.[0] || null,
     genreType: searchState.offerGenreTypes?.[0]?.name || null,
-    currentView: getDefaultFormView(data, searchState),
+    currentView: getDefaultFormView(tree, searchState),
   }
 }

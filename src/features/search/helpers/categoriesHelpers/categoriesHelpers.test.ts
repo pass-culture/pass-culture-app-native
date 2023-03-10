@@ -10,12 +10,15 @@ import {
   isOnlyOnline,
   searchGroupOrNativeCategorySortComparator,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { SearchState } from 'features/search/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
 }
+
+const tree = createMappingTree(mockData)
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
@@ -245,9 +248,7 @@ describe('categoriesHelpers', () => {
           offerCategories: [],
         }
 
-        expect(getDefaultFormView(mockData, mockSearchState)).toEqual(
-          CategoriesModalView.CATEGORIES
-        )
+        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.CATEGORIES)
       })
 
       it('when category selected is "Cartes jeunes" because it does not native categories', () => {
@@ -256,9 +257,7 @@ describe('categoriesHelpers', () => {
           offerCategories: [SearchGroupNameEnumv2.CARTES_JEUNES],
         }
 
-        expect(getDefaultFormView(mockData, mockSearchState)).toEqual(
-          CategoriesModalView.CATEGORIES
-        )
+        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.CATEGORIES)
       })
     })
 
@@ -270,7 +269,7 @@ describe('categoriesHelpers', () => {
           offerNativeCategories: [],
         }
 
-        expect(getDefaultFormView(mockData, mockSearchState)).toEqual(
+        expect(getDefaultFormView(tree, mockSearchState)).toEqual(
           CategoriesModalView.NATIVE_CATEGORIES
         )
       })
@@ -282,7 +281,7 @@ describe('categoriesHelpers', () => {
           offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES],
         }
 
-        expect(getDefaultFormView(mockData, mockSearchState)).toEqual(
+        expect(getDefaultFormView(tree, mockSearchState)).toEqual(
           CategoriesModalView.NATIVE_CATEGORIES
         )
       })
@@ -296,7 +295,7 @@ describe('categoriesHelpers', () => {
           offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
         }
 
-        expect(getDefaultFormView(mockData, mockSearchState)).toEqual(CategoriesModalView.GENRES)
+        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.GENRES)
       })
 
       it('when a category, a native category, a genre type categories selected', () => {
@@ -309,7 +308,7 @@ describe('categoriesHelpers', () => {
           ],
         }
 
-        expect(getDefaultFormView(mockData, mockSearchState)).toEqual(CategoriesModalView.GENRES)
+        expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.GENRES)
       })
     })
   })
