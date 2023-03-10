@@ -61,6 +61,10 @@ export const CategoriesModal = ({
   const { isDesktopViewport, modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
+  const tree = useMemo(() => {
+    return createMappingTree(data)
+  }, [data])
+
   const {
     formState: { isSubmitting },
     handleSubmit,
@@ -68,17 +72,13 @@ export const CategoriesModal = ({
     setValue,
     watch,
   } = useForm<CategoriesModalFormProps>({
-    defaultValues: getDefaultFormValues(data, searchState),
+    defaultValues: getDefaultFormValues(tree, searchState),
   })
   const { category, currentView, nativeCategory, genreType } = watch()
 
   useEffect(() => {
-    reset(getDefaultFormValues(data, searchState))
-  }, [data, reset, searchState])
-
-  const tree = useMemo(() => {
-    return createMappingTree(data)
-  }, [data])
+    reset(getDefaultFormValues(tree, searchState))
+  }, [reset, searchState, tree])
 
   const nativeCategories = useMemo(() => {
     return (category &&

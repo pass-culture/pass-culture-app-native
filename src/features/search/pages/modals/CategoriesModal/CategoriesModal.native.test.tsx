@@ -352,6 +352,7 @@ describe('<CategoriesModal/>', () => {
       })
       renderCategories()
       fireEvent.press(screen.getByTestId('Revenir en arrière'))
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
 
       const button = screen.getByText('Rechercher')
@@ -388,6 +389,7 @@ describe('<CategoriesModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
       fireEvent.press(screen.getByTestId('Revenir en arrière'))
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
 
       const searchButton = screen.getByText('Appliquer le filtre')
@@ -413,6 +415,7 @@ describe('<CategoriesModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
       fireEvent.press(screen.getByTestId('Revenir en arrière'))
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
       fireEvent.press(someCategoryFilterCheckbox)
 
@@ -428,6 +431,7 @@ describe('<CategoriesModal/>', () => {
   describe('With "Rechercher" button', () => {
     it('should log PerformSearch event when pressing button', async () => {
       renderCategories()
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
       fireEvent.press(screen.getByTestId('Revenir en arrière'))
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
       fireEvent.press(someCategoryFilterCheckbox)
