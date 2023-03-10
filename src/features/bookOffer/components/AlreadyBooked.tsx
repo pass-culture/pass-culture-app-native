@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -11,7 +12,14 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
-  const { dismissModal } = useBookingContext()
+  const { bookingState, dismissModal, dispatch } = useBookingContext()
+
+  // Change step to confirmation
+  useEffect(() => {
+    if (bookingState.step === Step.DATE) {
+      dispatch({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
+    }
+  }, [bookingState.step, dispatch])
 
   return (
     <Container>
