@@ -13,9 +13,9 @@ import {
   MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
-import { Venue } from 'libs/venue'
 
 import { LocationType } from './enums'
 

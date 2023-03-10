@@ -1,8 +1,8 @@
+import { Venue } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
-import { Venue } from 'libs/venue'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 

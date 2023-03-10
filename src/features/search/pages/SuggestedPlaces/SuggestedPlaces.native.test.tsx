@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
+import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
-import { Venue } from 'libs/venue'
 import { fireEvent, render } from 'tests/utils'
 
 let mockPlaces: SuggestedPlace[] = []

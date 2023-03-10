@@ -1,4 +1,4 @@
-import { Venue } from 'libs/venue'
+import { Venue } from 'features/venue/types'
 
 export const mockedSuggestedVenues: Venue[] = [
   {

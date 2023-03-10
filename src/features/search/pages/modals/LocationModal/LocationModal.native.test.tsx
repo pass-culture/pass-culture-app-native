@@ -7,6 +7,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/firebase/analytics'
 import { ChangeSearchLocationParam } from 'libs/firebase/analytics/analytics'
 import {
@@ -17,7 +18,6 @@ import {
   GeolocPositionError,
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { Venue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 

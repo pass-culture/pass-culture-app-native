@@ -8,11 +8,11 @@ import { SearchAutocompleteItem } from 'features/search/components/SearchAutocom
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { Venue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent, screen } from 'tests/utils'
 

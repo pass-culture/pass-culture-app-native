@@ -1,9 +1,9 @@
 import React from 'react'
 
+import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
-import { Venue } from 'libs/venue'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SuggestedPlaces } from './SuggestedPlaces'

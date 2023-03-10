@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query'
 
+import { Venue } from 'features/venue/types'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
-import { Venue } from 'libs/venue'
 
 const STALE_TIME_VENUES = 5 * 60 * 1000
 
