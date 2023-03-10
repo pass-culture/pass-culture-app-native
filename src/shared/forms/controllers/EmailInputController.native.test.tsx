@@ -9,7 +9,7 @@ type EmailForm = {
   email: string
 }
 
-jest.useFakeTimers()
+jest.useFakeTimers('legacy')
 
 describe('<EmailInputController />', () => {
   it('should show error when form input is invalid', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { GeoCoordinates } from 'libs/geolocation'
-import { render, waitFor } from 'tests/utils'
+import { render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'
 
@@ -41,12 +41,9 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 
 describe('SearchResults component', () => {
   it('should render correctly', async () => {
-    jest.useFakeTimers()
-    jest.advanceTimersByTime(2000)
+    const renderAPI = render(<SearchResults />)
+    await screen.findByTestId('searchResultsFlatlist')
 
-    await waitFor(() => {
-      expect(render(<SearchResults />)).toMatchSnapshot()
-    })
-    jest.useRealTimers()
+    expect(renderAPI).toMatchSnapshot()
   })
 })

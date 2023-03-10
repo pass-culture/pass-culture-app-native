@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchResults component should render correctly 1`] = `
-Array [
-  .c2 {
+Object {
+  "asFragment": [Function],
+  "baseElement": .c2 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
@@ -38,114 +39,7 @@ Array [
   margin-bottom: 12px;
 }
 
-<div
-    className="c0"
-  >
-    <div
-      className="c1"
-    >
-      <div
-        className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-        dir={null}
-      >
-        <div
-          aria-hidden={true}
-          className="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-          dir="ltr"
-        >
-          Case à cocher - 
-          cochée
-        </div>
-        <div
-          aria-checked={true}
-          aria-labelledby="testUuidV4"
-          className="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-          data-testid="Interrupteur"
-          dir={null}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          role="checkbox"
-          style={
-            Object {
-              "transitionDuration": "0s",
-            }
-          }
-          tabIndex="0"
-        >
-          <div
-            className="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
-            dir={null}
-          >
-            <div
-              className="css-view-175oi2r"
-              dir={null}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "aspectRatio": "1",
-                  "backgroundColor": "rgba(255,255,255,1.00)",
-                  "borderBottomLeftRadius": "28px",
-                  "borderBottomRightRadius": "28px",
-                  "borderTopLeftRadius": "28px",
-                  "borderTopRightRadius": "28px",
-                  "boxShadow": "0px 2px 2.5px rgba(22,22,23,0.20)",
-                  "height": "28px",
-                  "justifyContent": "center",
-                  "marginLeft": "26px",
-                  "width": "28px",
-                }
-              }
-            >
-              <div
-                aria-label="Activé"
-                className="css-view-175oi2r"
-                dir={null}
-              >
-                <div
-                  className="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <input
-          checked={true}
-          hidden={true}
-          id="testUuidV4"
-          onChange={[Function]}
-          readOnly={true}
-          type="checkbox"
-        />
-      </div>
-      <div
-        className="css-view-175oi2r r-width-19wmn03"
-        dir={null}
-      />
-      <label
-        className="c2"
-        htmlFor="testUuidV4"
-        id="testUuidV4"
-      >
-        <div
-          className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-          dir="ltr"
-        >
-          Activer le chargement automatique des résultats
-        </div>
-      </label>
-      <div
-        className="css-view-175oi2r r-height-3da1kt"
-        dir={null}
-      />
-    </div>
-  </div>,
-  .c0 {
+.c3 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -159,32 +53,32 @@ Array [
   padding: 0;
 }
 
-.c0:active {
+.c3:active {
   opacity: 0.7;
   outline: none;
 }
 
-.c0:focus {
+.c3:focus {
   outline: auto;
 }
 
-.c0:disabled {
+.c3:disabled {
   cursor: initial;
 }
 
-.c0:hover {
+.c3:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c0:hover:disabled {
+.c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c1 {
+.c4 {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -207,19 +101,19 @@ Array [
   border-radius: 24px;
 }
 
-.c1:hover {
+.c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #eb0055;
   text-decoration-color: #eb0055;
 }
 
-.c1:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 {
+.c5 {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -242,166 +136,19 @@ Array [
   border-radius: 24px;
 }
 
-.c2:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c2:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-<div
-    className="css-view-175oi2r"
-    dir={null}
-  >
-    <div
-      className="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
-      dir={null}
-      onScroll={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      onWheel={[Function]}
-    >
-      <div
-        className="css-view-175oi2r r-flexDirection-18u37iz"
-        dir={null}
-      >
-        <div
-          className="css-view-175oi2r r-width-19wmn03"
-          dir={null}
-        />
-        <ul
-          className="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-          dir={null}
-          role="list"
-        >
-          <li
-            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
-            dir={null}
-            role="listitem"
-          >
-            <button
-              aria-label="Partout : Filtre sélectionné"
-              className="c0 c1 sc-eCImPb c1"
-              data-testid="Partout : Filtre sélectionné"
-              onClick={[Function]}
-              tabIndex="0"
-              title="Partout : Filtre sélectionné"
-              type="button"
-            >
-              <div
-                className="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                data-testid="locationButtonLabel"
-                dir="ltr"
-              >
-                Partout
-              </div>
-              <div
-                className="css-view-175oi2r r-width-10g5efv"
-                dir={null}
-              />
-              <div
-                aria-label="Filtre sélectionné"
-                className="css-view-175oi2r"
-                data-testid="locationButtonIcon"
-                dir={null}
-              >
-                <div
-                  className="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  locationButtonIcon-SVG-Mock
-                </div>
-              </div>
-            </button>
-          </li>
-          <li
-            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
-            dir={null}
-            role="listitem"
-          >
-            <button
-              aria-label="Catégories"
-              className="c0 c2 sc-eCImPb c2"
-              data-testid="Catégories"
-              onClick={[Function]}
-              tabIndex="0"
-              title="Catégories"
-              type="button"
-            >
-              <div
-                className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                data-testid="categoryButtonLabel"
-                dir="ltr"
-              >
-                Catégories
-              </div>
-            </button>
-          </li>
-          <li
-            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
-            dir={null}
-            role="listitem"
-          >
-            <button
-              aria-label="Prix"
-              className="c0 c2 sc-eCImPb c2"
-              data-testid="Prix"
-              onClick={[Function]}
-              tabIndex="0"
-              title="Prix"
-              type="button"
-            >
-              <div
-                className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                data-testid="priceButtonLabel"
-                dir="ltr"
-              >
-                Prix
-              </div>
-            </button>
-          </li>
-          <li
-            className="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
-            dir={null}
-            role="listitem"
-          >
-            <button
-              aria-label="Dates & heures"
-              className="c0 c2 sc-eCImPb c2"
-              data-testid="Dates & heures"
-              onClick={[Function]}
-              tabIndex="0"
-              title="Dates & heures"
-              type="button"
-            >
-              <div
-                className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                data-testid="datesHoursButtonLabel"
-                dir="ltr"
-              >
-                Dates & heures
-              </div>
-            </button>
-          </li>
-        </ul>
-        <div
-          className="css-view-175oi2r r-width-19wmn03"
-          dir={null}
-        />
-      </div>
-    </div>
-    <div
-      className="css-view-175oi2r r-height-tbmifm"
-      dir={null}
-    />
-  </div>,
-  .c0 {
+.c6 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -434,146 +181,875 @@ Array [
   box-sizing: border-box;
 }
 
-.c0:disabled {
+.c6:disabled {
   cursor: initial;
   background: none;
 }
 
-.c0:hover {
+.c6:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c0:hover:disabled {
+.c6:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c1:disabled {
+.c7:disabled {
   background-color: #F1F1F4;
 }
 
-<div
-    className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-    data-testid="searchResults"
-    dir={null}
-  >
-    <div
-      className="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z"
-      data-testid="searchResultsFlatlist"
-      dir={null}
-      onScroll={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      onWheel={[Function]}
-    >
+<body>
+    <div>
       <div
-        className="css-view-175oi2r"
-        dir={null}
-        style={
-          Object {
-            "flexGrow": 1,
-          }
-        }
+        class="c0"
       >
         <div
-          className="css-view-175oi2r"
-          dir={null}
-        />
-        <div
-          className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-minHeight-g8fybc"
-          dir={null}
-          role="status"
+          class="c1"
         >
           <div
-            className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-            dir={null}
-          />
-          <div
-            className="css-view-175oi2r r-flexShrink-1q142lx"
-            dir={null}
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
           >
             <div
-              className="css-view-175oi2r"
-              dir={null}
+              aria-hidden="true"
+              class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+              dir="ltr"
+            >
+              Case à cocher - 
+              cochée
+            </div>
+            <div
+              aria-checked="true"
+              aria-labelledby="testUuidV4"
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+              data-testid="Interrupteur"
+              role="checkbox"
+              style="transition-duration: 0s;"
+              tabindex="0"
             >
               <div
-                className="css-text-1rynq56"
-                dir="ltr"
+                class="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
               >
-                undefined-SVG-Mock
+                <div
+                  class="css-view-175oi2r"
+                  style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 26px;"
+                >
+                  <div
+                    aria-label="Activé"
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input
+              checked=""
+              hidden=""
+              id="testUuidV4"
+              readonly=""
+              type="checkbox"
+            />
+          </div>
+          <div
+            class="css-view-175oi2r r-width-19wmn03"
+          />
+          <label
+            class="c2"
+            for="testUuidV4"
+            id="testUuidV4"
+          >
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+              dir="ltr"
+            >
+              Activer le chargement automatique des résultats
+            </div>
+          </label>
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+        </div>
+      </div>
+      <div
+        class="css-view-175oi2r"
+      >
+        <div
+          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
+        >
+          <div
+            class="css-view-175oi2r r-flexDirection-18u37iz"
+          >
+            <div
+              class="css-view-175oi2r r-width-19wmn03"
+            />
+            <ul
+              class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+              role="list"
+            >
+              <li
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                role="listitem"
+              >
+                <button
+                  aria-label="Partout : Filtre sélectionné"
+                  class="c3 c4 sc-eCImPb c4"
+                  data-testid="Partout : Filtre sélectionné"
+                  tabindex="0"
+                  title="Partout : Filtre sélectionné"
+                  type="button"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    data-testid="locationButtonLabel"
+                    dir="ltr"
+                  >
+                    Partout
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-width-10g5efv"
+                  />
+                  <div
+                    aria-label="Filtre sélectionné"
+                    class="css-view-175oi2r"
+                    data-testid="locationButtonIcon"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      locationButtonIcon-SVG-Mock
+                    </div>
+                  </div>
+                </button>
+              </li>
+              <li
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                role="listitem"
+              >
+                <button
+                  aria-label="Catégories"
+                  class="c3 c5 sc-eCImPb c5"
+                  data-testid="Catégories"
+                  tabindex="0"
+                  title="Catégories"
+                  type="button"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    data-testid="categoryButtonLabel"
+                    dir="ltr"
+                  >
+                    Catégories
+                  </div>
+                </button>
+              </li>
+              <li
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                role="listitem"
+              >
+                <button
+                  aria-label="Prix"
+                  class="c3 c5 sc-eCImPb c5"
+                  data-testid="Prix"
+                  tabindex="0"
+                  title="Prix"
+                  type="button"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    data-testid="priceButtonLabel"
+                    dir="ltr"
+                  >
+                    Prix
+                  </div>
+                </button>
+              </li>
+              <li
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                role="listitem"
+              >
+                <button
+                  aria-label="Dates & heures"
+                  class="c3 c5 sc-eCImPb c5"
+                  data-testid="Dates & heures"
+                  tabindex="0"
+                  title="Dates & heures"
+                  type="button"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    data-testid="datesHoursButtonLabel"
+                    dir="ltr"
+                  >
+                    Dates & heures
+                  </div>
+                </button>
+              </li>
+            </ul>
+            <div
+              class="css-view-175oi2r r-width-19wmn03"
+            />
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-tbmifm"
+        />
+      </div>
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        data-testid="searchResults"
+      >
+        <div
+          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z"
+          data-testid="searchResultsFlatlist"
+        >
+          <div
+            class="css-view-175oi2r"
+            style="flex-grow: 1;"
+          >
+            <div
+              class="css-view-175oi2r"
+            />
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-minHeight-g8fybc"
+              role="status"
+            >
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r r-flexShrink-1q142lx"
+              >
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Pas de résultat
+                </h2>
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  <span
+                    aria-live="assertive"
+                    class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  >
+                    Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+                  </span>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-height-1472mwg"
+              />
+              <div
+                class="css-view-175oi2r"
+              >
+                <button
+                  aria-label="Modifier mes filtres"
+                  class="c6 c7"
+                  data-testid="Modifier mes filtres"
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                    dir="ltr"
+                  >
+                    Modifier mes filtres
+                  </div>
+                </button>
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+            </div>
+            <div
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+  </body>,
+  "container": .c2 {
+  font-family: Montserrat-Regular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #161617;
+  cursor: pointer;
+}
+
+.c0 {
+  overflow: hidden;
+  margin-left: 24px;
+  margin-right: 24px;
+  width: 1px;
+  height: 1px;
+}
+
+.c0:focus-within {
+  width: auto;
+  height: auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.c3 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c3:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c3:focus {
+  outline: auto;
+}
+
+.c3:disabled {
+  cursor: initial;
+}
+
+.c3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c3:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  height: 32px;
+  border-color: #eb0055;
+  border-width: 1px;
+  border-radius: 24px;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #eb0055;
+  text-decoration-color: #eb0055;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  height: 32px;
+  border-color: #161617;
+  border-width: 1px;
+  border-radius: 24px;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:disabled {
+  background-color: #F1F1F4;
+}
+
+<div>
+    <div
+      class="c0"
+    >
+      <div
+        class="c1"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+        >
+          <div
+            aria-hidden="true"
+            class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+            dir="ltr"
+          >
+            Case à cocher - 
+            cochée
+          </div>
+          <div
+            aria-checked="true"
+            aria-labelledby="testUuidV4"
+            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+            data-testid="Interrupteur"
+            role="checkbox"
+            style="transition-duration: 0s;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+            >
+              <div
+                class="css-view-175oi2r"
+                style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 26px;"
+              >
+                <div
+                  aria-label="Activé"
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div
-            className="css-view-175oi2r r-alignItems-1awozwy"
-            dir={null}
-          >
-            <h2
-              aria-level={2}
-              className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
-              dir="ltr"
-              role="heading"
-            >
-              Pas de résultat
-            </h2>
-            <div
-              className="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
-              dir="ltr"
-            >
-              <span
-                aria-live="assertive"
-                className="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                dir={null}
-              >
-                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-              </span>
-            </div>
-          </div>
-          <div
-            className="css-view-175oi2r r-height-1472mwg"
-            dir={null}
-          />
-          <div
-            className="css-view-175oi2r"
-            dir={null}
-          >
-            <button
-              aria-label="Modifier mes filtres"
-              className="c0 c1"
-              data-testid="Modifier mes filtres"
-              onClick={[Function]}
-              onDoubleClick={[Function]}
-              tabIndex={0}
-              type="button"
-            >
-              <div
-                className="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
-                dir="ltr"
-              >
-                Modifier mes filtres
-              </div>
-            </button>
-          </div>
-          <div
-            className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-            dir={null}
+          <input
+            checked=""
+            hidden=""
+            id="testUuidV4"
+            readonly=""
+            type="checkbox"
           />
         </div>
         <div
-          className="css-view-175oi2r"
-          dir={null}
+          class="css-view-175oi2r r-width-19wmn03"
+        />
+        <label
+          class="c2"
+          for="testUuidV4"
+          id="testUuidV4"
         >
           <div
-            className="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
-            dir={null}
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+            dir="ltr"
+          >
+            Activer le chargement automatique des résultats
+          </div>
+        </label>
+        <div
+          class="css-view-175oi2r r-height-3da1kt"
+        />
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r"
+    >
+      <div
+        class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
+      >
+        <div
+          class="css-view-175oi2r r-flexDirection-18u37iz"
+        >
+          <div
+            class="css-view-175oi2r r-width-19wmn03"
           />
+          <ul
+            class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+            role="list"
+          >
+            <li
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              role="listitem"
+            >
+              <button
+                aria-label="Partout : Filtre sélectionné"
+                class="c3 c4 sc-eCImPb c4"
+                data-testid="Partout : Filtre sélectionné"
+                tabindex="0"
+                title="Partout : Filtre sélectionné"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  data-testid="locationButtonLabel"
+                  dir="ltr"
+                >
+                  Partout
+                </div>
+                <div
+                  class="css-view-175oi2r r-width-10g5efv"
+                />
+                <div
+                  aria-label="Filtre sélectionné"
+                  class="css-view-175oi2r"
+                  data-testid="locationButtonIcon"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    locationButtonIcon-SVG-Mock
+                  </div>
+                </div>
+              </button>
+            </li>
+            <li
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              role="listitem"
+            >
+              <button
+                aria-label="Catégories"
+                class="c3 c5 sc-eCImPb c5"
+                data-testid="Catégories"
+                tabindex="0"
+                title="Catégories"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  data-testid="categoryButtonLabel"
+                  dir="ltr"
+                >
+                  Catégories
+                </div>
+              </button>
+            </li>
+            <li
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              role="listitem"
+            >
+              <button
+                aria-label="Prix"
+                class="c3 c5 sc-eCImPb c5"
+                data-testid="Prix"
+                tabindex="0"
+                title="Prix"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  data-testid="priceButtonLabel"
+                  dir="ltr"
+                >
+                  Prix
+                </div>
+              </button>
+            </li>
+            <li
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              role="listitem"
+            >
+              <button
+                aria-label="Dates & heures"
+                class="c3 c5 sc-eCImPb c5"
+                data-testid="Dates & heures"
+                tabindex="0"
+                title="Dates & heures"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  data-testid="datesHoursButtonLabel"
+                  dir="ltr"
+                >
+                  Dates & heures
+                </div>
+              </button>
+            </li>
+          </ul>
+          <div
+            class="css-view-175oi2r r-width-19wmn03"
+          />
+        </div>
+      </div>
+      <div
+        class="css-view-175oi2r r-height-tbmifm"
+      />
+    </div>
+    <div
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      data-testid="searchResults"
+    >
+      <div
+        class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z"
+        data-testid="searchResultsFlatlist"
+      >
+        <div
+          class="css-view-175oi2r"
+          style="flex-grow: 1;"
+        >
+          <div
+            class="css-view-175oi2r"
+          />
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-minHeight-g8fybc"
+            role="status"
+          >
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            />
+            <div
+              class="css-view-175oi2r r-flexShrink-1q142lx"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy"
+            >
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+                dir="ltr"
+                role="heading"
+              >
+                Pas de résultat
+              </h2>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                <span
+                  aria-live="assertive"
+                  class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                >
+                  Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-1472mwg"
+            />
+            <div
+              class="css-view-175oi2r"
+            >
+              <button
+                aria-label="Modifier mes filtres"
+                class="c6 c7"
+                data-testid="Modifier mes filtres"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Modifier mes filtres
+                </div>
+              </button>
+            </div>
+            <div
+              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            />
+          </div>
+          <div
+            class="css-view-175oi2r"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>,
-]
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;
