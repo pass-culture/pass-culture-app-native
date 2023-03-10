@@ -68,8 +68,8 @@ export const DMSIntroduction = (): JSX.Element => {
       mobileBottomFlex={0.5}>
       <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
       <VerticalUl>
-        {informationListItem.map((informationItem, index) => (
-          <Li key={index}>
+        {informationListItem.map((informationItem) => (
+          <Li key={informationItem.label}>
             <InformationWithIcon Icon={informationItem.icon} text={informationItem.label} />
             <Spacer.Column numberOfSpaces={4.5} />
           </Li>

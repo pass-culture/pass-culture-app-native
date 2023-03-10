@@ -81,7 +81,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
       <Container reverse={isEighteen}>
         <View>
           {underageInfo.map(({ age, deposit, position }, index) => (
-            <React.Fragment key={index}>
+            <React.Fragment key={age}>
               <CreditBlock
                 underage
                 creditStatus={getCreditStatusFromAge(userAge, age)}
