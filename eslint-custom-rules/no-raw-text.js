@@ -1,6 +1,6 @@
 const ALLOWED_JSX_TAGS = [
   /^.*Text$/,
-  /^Styled+(Hero|Title[1-4]|Body|ButtonText(|NeutralInfo|Primary|Secondary)|Caption(|NeutralInfo|Primary|Secondary))$/,
+  /^(Styled|)+(Hero|Title[1-4]|Body|ButtonText(|NeutralInfo|Primary|Secondary)|Caption(|NeutralInfo|Primary|Secondary))$/,
 ]
 
 const WHITESPACES_REGEX = /^\s*$/
