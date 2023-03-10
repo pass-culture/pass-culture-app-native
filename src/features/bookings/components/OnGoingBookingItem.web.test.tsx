@@ -11,7 +11,7 @@ describe('OnGoingBookingItem', () => {
   const booking: Booking = bookingsSnap.ongoing_bookings[0]
 
   it('should navigate to the booking details page', () => {
-    renderOnGoingBookingItem(booking)
+    render(<OnGoingBookingItem booking={booking} />)
 
     const item = screen.getByTestId(/Réservation de l’offre/)
     fireEvent.click(item)
@@ -19,7 +19,3 @@ describe('OnGoingBookingItem', () => {
     expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
   })
 })
-
-function renderOnGoingBookingItem(booking: Booking) {
-  return render(<OnGoingBookingItem booking={booking} />)
-}

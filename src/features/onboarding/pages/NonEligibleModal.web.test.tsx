@@ -6,11 +6,9 @@ import { render } from 'tests/utils/web'
 
 describe('NonEligibleModal', () => {
   it.each(Object.values(NonEligible))('should render null in web', (modalType) => {
-    const { container } = renderNonEligibleModal(modalType)
+    const { container } = render(
+      <NonEligibleModal visible hideModal={jest.fn()} modalType={modalType} />
+    )
     expect(container).toBeEmptyDOMElement()
   })
 })
-
-const renderNonEligibleModal = (modalType: NonEligible) => {
-  return render(<NonEligibleModal visible hideModal={jest.fn()} modalType={modalType} />)
-}
