@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useNotifyWebappLinkSent } from 'features/bookOffer/api/useNotifyWebappLinkSent'
+import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useAddFavorite, useFavorite } from 'features/favorites/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -14,7 +15,7 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const BookingImpossible: React.FC = () => {
-  const { bookingState, dismissModal } = useBookingContext()
+  const { bookingState, dismissModal, dispatch } = useBookingContext()
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()
@@ -24,6 +25,13 @@ export const BookingImpossible: React.FC = () => {
     if (typeof offerId == 'undefined') return
     analytics.logBookingImpossibleiOS(offerId)
   }, [offerId])
+
+  // Change step to confirmation
+  useEffect(() => {
+    if (bookingState.step === Step.DATE) {
+      dispatch({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
+    }
+  }, [bookingState.step, dispatch])
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {

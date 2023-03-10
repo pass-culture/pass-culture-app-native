@@ -2,7 +2,8 @@ import * as React from 'react'
 import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
+import { fireEvent, render, screen, useMutationFactory } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
@@ -13,17 +14,15 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+const mockInitialBookingState = initialBookingState
+
 const mockDismissModal = jest.fn()
+const mockDispatch = jest.fn()
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: jest.fn(() => ({
-    bookingState: {
-      offerId: 20,
-      stockId: undefined,
-      step: undefined,
-      quantity: undefined,
-      date: undefined,
-    },
+    bookingState: { ...mockInitialBookingState, offerId: 20 },
     dismissModal: mockDismissModal,
+    dispatch: mockDispatch,
   })),
 }))
 
@@ -48,9 +47,9 @@ describe('<BookingImpossible />', () => {
       // @ts-expect-error ts(2345)
       .mockImplementationOnce(useMutationFactory(useMutationAddFavoriteCallbacks))
 
-    const { getByText } = render(<BookingImpossible />)
+    render(<BookingImpossible />)
 
-    const addToFavoriteButton = getByText('Mettre en favoris')
+    const addToFavoriteButton = screen.getByText('Mettre en favoris')
 
     fireEvent.press(addToFavoriteButton)
 
@@ -61,5 +60,13 @@ describe('<BookingImpossible />', () => {
         onError: () => {},
       }).mutate
     ).toHaveBeenCalledTimes(1)
+  })
+
+  it('should change booking step from date to confirmation', () => {
+    render(<BookingImpossible />)
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'CHANGE_STEP',
+      payload: Step.CONFIRMATION,
+    })
   })
 })
