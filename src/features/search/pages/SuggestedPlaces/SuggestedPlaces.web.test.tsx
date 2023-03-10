@@ -4,7 +4,7 @@ import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { SuggestedVenue } from 'libs/venue'
-import { checkAccessibilityFor, fireEvent, render } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SuggestedPlaces } from './SuggestedPlaces'
 
@@ -21,12 +21,10 @@ const mockSetSelectedPlaceOrVenue = jest.fn()
 describe('<SuggestedPlaces/>', () => {
   it('should trigger onPress when pressing the Space bar on focused place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
-    const { getByTestId } = render(
-      <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
-    )
+    render(<SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />)
 
-    fireEvent.focus(getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`))
-    fireEvent.keyDown(getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`), {
+    fireEvent.focus(screen.getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`))
+    fireEvent.keyDown(screen.getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`), {
       key: 'Spacebar',
     })
 

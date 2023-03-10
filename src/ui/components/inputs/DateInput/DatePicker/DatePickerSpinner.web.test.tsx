@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { MINIMUM_DATE, CURRENT_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
-import { act, fireEvent, render } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 import { DatePickerSpinner } from 'ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web'
 
 const props = {
@@ -41,9 +41,9 @@ describe('<DatePickerSpinner />', () => {
     // FIXME(LucasBeneston): This warning comes from react-native-date-picker
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-    const { getByTestId } = render(<DatePickerSpinner {...props} />)
+    render(<DatePickerSpinner {...props} />)
 
-    const hiddenInput = getByTestId('hidden-input-birthdate')
+    const hiddenInput = screen.getByTestId('hidden-input-birthdate')
 
     act(() => {
       fireEvent.change(hiddenInput, { target: { value: '1985-05-10T08:12:46.241Z' } })
@@ -56,9 +56,9 @@ describe('<DatePickerSpinner />', () => {
     // FIXME(LucasBeneston): This warning comes from react-native-date-picker
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-    const { getByTestId } = render(<DatePickerSpinner {...props} />)
+    render(<DatePickerSpinner {...props} />)
 
-    const hiddenInput = getByTestId('hidden-input-birthdate')
+    const hiddenInput = screen.getByTestId('hidden-input-birthdate')
 
     act(() => {
       fireEvent.change(hiddenInput, { target: { value: '1985-05-1008:12:46.241Z' } })

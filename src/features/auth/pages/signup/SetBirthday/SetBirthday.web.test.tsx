@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
 
@@ -17,19 +17,19 @@ describe('<SetBirthday />', () => {
 
   describe('submit button behavior', () => {
     it('should be disabled the button by default', () => {
-      const { getByTestId } = render(<SetBirthday {...props} />)
+      render(<SetBirthday {...props} />)
 
-      const continueButton = getByTestId('Continuer')
+      const continueButton = screen.getByTestId('Continuer')
       expect(continueButton).toBeDisabled()
     })
 
     it('should be enabled the button when the date is valid', () => {
-      const { getByText, getByTestId } = render(<SetBirthday {...props} />)
-      fireEvent.change(getByTestId('select-Jour'), { target: { value: '1' } })
-      fireEvent.change(getByTestId('select-Mois'), { target: { value: 'Janvier' } })
-      fireEvent.change(getByTestId('select-Année'), { target: { value: '2004' } })
+      render(<SetBirthday {...props} />)
+      fireEvent.change(screen.getByTestId('select-Jour'), { target: { value: '1' } })
+      fireEvent.change(screen.getByTestId('select-Mois'), { target: { value: 'Janvier' } })
+      fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2004' } })
 
-      const continueButton = getByText('Continuer')
+      const continueButton = screen.getByText('Continuer')
       expect(continueButton).toBeEnabled()
     })
   })

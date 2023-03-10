@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, checkAccessibilityFor } from 'tests/utils/web'
+import { fireEvent, render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')
 const mockHideModal = jest.fn()
@@ -16,23 +16,23 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 describe('<QuitIdentityCheckModal/>', () => {
   it('should not display the modal when visible is false', () => {
-    const { queryByText } = renderQuitIdentityCheckModal(false)
+    renderQuitIdentityCheckModal(false)
 
-    const title = queryByText('Veux-tu abandonner la vérification d’identité ?')
+    const title = screen.queryByText('Veux-tu abandonner la vérification d’identité ?')
     expect(title).toBeFalsy()
   })
 
   it('should display the modal when visible is true', () => {
-    const { queryByText } = renderQuitIdentityCheckModal(true)
+    renderQuitIdentityCheckModal(true)
 
-    const title = queryByText('Veux-tu abandonner la vérification d’identité ?')
+    const title = screen.queryByText('Veux-tu abandonner la vérification d’identité ?')
     expect(title).toBeTruthy()
   })
 
   it('should call resume function when clicking on "Continuer la vérification"', () => {
-    const { getByText } = renderQuitIdentityCheckModal(true)
+    renderQuitIdentityCheckModal(true)
 
-    const resumeButton = getByText('Continuer la vérification')
+    const resumeButton = screen.getByText('Continuer la vérification')
     fireEvent.click(resumeButton)
 
     expect(analytics.logContinueIdentityCheck).toHaveBeenCalledTimes(1)
@@ -40,9 +40,9 @@ describe('<QuitIdentityCheckModal/>', () => {
   })
 
   it('should go back to homepage when clicking on "Abandonner la vérification"', async () => {
-    const { getByText } = renderQuitIdentityCheckModal(true)
+    renderQuitIdentityCheckModal(true)
 
-    const abandonButton = getByText('Abandonner la vérification')
+    const abandonButton = screen.getByText('Abandonner la vérification')
     fireEvent.click(abandonButton)
 
     await waitForExpect(() => {

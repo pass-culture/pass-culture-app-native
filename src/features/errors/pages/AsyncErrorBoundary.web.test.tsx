@@ -2,7 +2,7 @@ import React from 'react'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { AsyncError } from 'libs/monitoring'
-import { render, fireEvent, checkAccessibilityFor } from 'tests/utils/web'
+import { render, fireEvent, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 
@@ -29,19 +29,19 @@ describe('AsyncErrorBoundary component', () => {
   })
 
   it('should have back arrow if possible', () => {
-    const { getByTestId, queryByTestId } = render(
+    render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
-    expect(queryByTestId('Revenir en arrière')).toBeTruthy()
+    expect(screen.queryByTestId('Revenir en arrière')).toBeTruthy()
 
-    fireEvent.click(getByTestId('Revenir en arrière'))
+    fireEvent.click(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should call retry with AsyncError', async () => {
     const retry = jest.fn()
-    const { findByText } = render(
+    render(
       <AsyncErrorBoundary
         error={new AsyncError('error', retry)}
         resetErrorBoundary={resetErrorBoundary}
@@ -49,7 +49,7 @@ describe('AsyncErrorBoundary component', () => {
     )
     expect(retry).not.toHaveBeenCalled()
 
-    const button = await findByText('Réessayer')
+    const button = await screen.findByText('Réessayer')
     fireEvent.click(button)
 
     expect(retry).toHaveBeenCalledTimes(1)

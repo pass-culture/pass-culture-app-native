@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
@@ -29,18 +29,18 @@ const DummyComponent: React.FC = () => {
 }
 describe('AnimatedIcon', () => {
   it('should display only the first color before animation', () => {
-    const { getByTestId } = render(<DummyComponent />)
-    const initialContainer = getByTestId('initial-icon-container')
-    const finalContainer = getByTestId('final-icon-container')
+    render(<DummyComponent />)
+    const initialContainer = screen.getByTestId('initial-icon-container')
+    const finalContainer = screen.getByTestId('final-icon-container')
     expect(initialContainer.style.opacity).toBe('1')
     expect(finalContainer.style.opacity).toBe('0')
   })
 
   it('should display only the last color after animation [Web Integration]', async () => {
-    const { getByTestId } = render(<DummyComponent />)
-    fireEvent.click(getByTestId('dummyPressable'))
-    const initialContainer = getByTestId('initial-icon-container')
-    const finalContainer = getByTestId('final-icon-container')
+    render(<DummyComponent />)
+    fireEvent.click(screen.getByTestId('dummyPressable'))
+    const initialContainer = screen.getByTestId('initial-icon-container')
+    const finalContainer = screen.getByTestId('final-icon-container')
     await waitForExpect(() => {
       expect(finalContainer.style.opacity).toBe('1')
     })

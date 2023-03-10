@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 
@@ -16,7 +16,7 @@ describe('AccessibleTabBar', () => {
   })
 
   it('should display the 5 following tabs', () => {
-    const { queryByTestId } = renderTabBar()
+    renderTabBar()
     const expectedTabsTestIds = [
       'Accueil sélectionné',
       'Rechercher des offres',
@@ -26,13 +26,13 @@ describe('AccessibleTabBar', () => {
     ]
 
     expectedTabsTestIds.map((tab) => {
-      expect(queryByTestId(tab)).toBeTruthy()
+      expect(screen.queryByTestId(tab)).toBeTruthy()
     })
   })
 
   it('displays only one selected at a time', () => {
-    const renderAPI = renderTabBar()
-    expect(renderAPI.queryAllByTestId(/sélectionné/)).toHaveLength(1)
+    renderTabBar()
+    expect(screen.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
   it('should identify only one tab as current page', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { render, fireEvent, checkAccessibilityFor } from 'tests/utils/web'
+import { render, fireEvent, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { WebShareModal } from './WebShareModal'
 
@@ -42,19 +42,19 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should dismiss the modal on cancel button click', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('Annuler'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('Annuler'))
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
   it('should copy the link on the copy button click', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('Copier'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('Copier'))
     expect(mockClipboardWriteText).toHaveBeenCalledWith('https://url.com/offer')
   })
 
   it('should open the email on the email button click', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('E-mail'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('E-mail'))
     expect(openUrl).toHaveBeenCalledWith(
       'mailto:?subject=Voici une super offre !&body=https://url.com/offer',
       undefined,
@@ -63,8 +63,8 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should open Facebook when sharing with Facebook', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('Facebook'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('Facebook'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!',
       undefined,
@@ -73,8 +73,8 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should open Twitter when sharing with Twitter', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('Twitter'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('Twitter'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer',
       undefined,
@@ -83,8 +83,8 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should open WhatsApp when sharing with WhatsApp', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('WhatsApp'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('WhatsApp'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer',
       undefined,
@@ -93,8 +93,8 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should open Telegram when sharing with Telegram', () => {
-    const { getByText } = render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(getByText('Telegram'))
+    render(<WebShareModal {...defaultProps} />)
+    fireEvent.click(screen.getByText('Telegram'))
     expect(openUrl).toHaveBeenCalledWith(
       'https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !',
       undefined,

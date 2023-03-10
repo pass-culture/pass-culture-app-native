@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FilterBehaviour } from 'features/search/enums'
-import { render, act, checkAccessibilityFor } from 'tests/utils/web'
+import { render, act, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
 
@@ -11,7 +11,7 @@ jest.mock('features/auth/context/AuthContext')
 
 describe('<PriceModal/>', () => {
   it('should display mobile header modal if mobile viewport', async () => {
-    const { getByTestId } = render(
+    render(
       <PriceModal
         title="Prix"
         accessibilityLabel="Ne pas filtrer sur les prix et retourner aux résultats"
@@ -21,7 +21,7 @@ describe('<PriceModal/>', () => {
       />
     )
 
-    const pageHeader = getByTestId('pageHeader')
+    const pageHeader = screen.getByTestId('pageHeader')
 
     await act(async () => {
       expect(pageHeader).toBeTruthy()

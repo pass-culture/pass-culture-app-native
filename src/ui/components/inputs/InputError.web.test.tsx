@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
+import { render, screen } from 'tests/utils/web'
 
 import { InputError } from './InputError'
 
 describe('InputError Component', () => {
   it('should display the given message', () => {
-    const { queryByText } = render(
+    render(
       <InputError
         visible
         messageId="message"
@@ -15,11 +15,11 @@ describe('InputError Component', () => {
       />
     )
 
-    const text = queryByText('message')
+    const text = screen.queryByText('message')
     expect(text).toBeTruthy()
   })
   it('should hide the given message', () => {
-    const { queryByText } = render(
+    render(
       <InputError
         visible={false}
         messageId="message"
@@ -28,7 +28,7 @@ describe('InputError Component', () => {
       />
     )
 
-    const text = queryByText('message')
+    const text = screen.queryByText('message')
     expect(text).toBeFalsy()
   })
 })

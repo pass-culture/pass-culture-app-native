@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, waitFor } from 'tests/utils/web'
+import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -24,7 +24,7 @@ describe('<OfferHeader />', () => {
     const animatedValue = new Animated.Value(0)
     const offerId = 116656
 
-    const { getByTestId } = render(
+    render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <OfferHeader
@@ -35,7 +35,7 @@ describe('<OfferHeader />', () => {
       )
     )
 
-    const offerHeaderName = getByTestId('offerHeaderName')
+    const offerHeaderName = screen.getByTestId('offerHeaderName')
 
     expect(offerHeaderName.style.opacity).toBe('0')
     act(() => {

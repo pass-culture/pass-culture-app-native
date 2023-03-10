@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { ClippedTag } from '../ClippedTag'
 
@@ -21,7 +21,7 @@ describe('<ClippedTag/>', () => {
   })
 
   it('should delete venueId and ClippedTag when clicking on Clear icon', () => {
-    const { getByTestId } = render(
+    render(
       <ClippedTag
         label={label}
         onPress={removeVenueId}
@@ -29,7 +29,7 @@ describe('<ClippedTag/>', () => {
       />
     )
 
-    const clearIcon = getByTestId('Enlever le lieu')
+    const clearIcon = screen.getByTestId('Enlever le lieu')
     fireEvent.click(clearIcon)
     expect(removeVenueId).toHaveBeenCalledTimes(1)
   })

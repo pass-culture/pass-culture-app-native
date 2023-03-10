@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { screen } from 'tests/utils/web'
 import { theme } from 'theme'
 
 import { Header } from './Header'
@@ -30,39 +31,39 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
-    const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
-    expect(queryByText('Accueil')).toBeTruthy()
-    expect(queryByText('Recherche')).toBeTruthy()
-    expect(queryByText('Réservations')).toBeFalsy()
-    expect(queryByText('Favoris')).toBeTruthy()
-    expect(queryByText('Profil')).toBeTruthy()
+    renderHeader({ isLoggedIn: false, isBeneficiary: false })
+    expect(screen.queryByText('Accueil')).toBeTruthy()
+    expect(screen.queryByText('Recherche')).toBeTruthy()
+    expect(screen.queryByText('Réservations')).toBeFalsy()
+    expect(screen.queryByText('Favoris')).toBeTruthy()
+    expect(screen.queryByText('Profil')).toBeTruthy()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
-    const { queryByText } = renderHeader({ isLoggedIn: false, isBeneficiary: false })
-    expect(queryByText('Accueil')).toBeTruthy()
-    expect(queryByText('Recherche')).toBeTruthy()
-    expect(queryByText('Réservations')).toBeFalsy()
-    expect(queryByText('Favoris')).toBeTruthy()
-    expect(queryByText('Profil')).toBeTruthy()
+    renderHeader({ isLoggedIn: false, isBeneficiary: false })
+    expect(screen.queryByText('Accueil')).toBeTruthy()
+    expect(screen.queryByText('Recherche')).toBeTruthy()
+    expect(screen.queryByText('Réservations')).toBeFalsy()
+    expect(screen.queryByText('Favoris')).toBeTruthy()
+    expect(screen.queryByText('Profil')).toBeTruthy()
   })
 
   it('should render Header for beneficiary and logged in users', () => {
-    const { queryByText } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
-    expect(queryByText('Accueil')).toBeTruthy()
-    expect(queryByText('Recherche')).toBeTruthy()
-    expect(queryByText('Réservations')).toBeTruthy()
-    expect(queryByText('Favoris')).toBeTruthy()
-    expect(queryByText('Profil')).toBeTruthy()
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    expect(screen.queryByText('Accueil')).toBeTruthy()
+    expect(screen.queryByText('Recherche')).toBeTruthy()
+    expect(screen.queryByText('Réservations')).toBeTruthy()
+    expect(screen.queryByText('Favoris')).toBeTruthy()
+    expect(screen.queryByText('Profil')).toBeTruthy()
   })
 
   it('should identify one tab as current page', () => {
-    const { getByTestId } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
-    expect(getByTestId('Home tab')?.getAttribute('aria-current')).toEqual('page')
-    expect(getByTestId('Search tab')?.getAttribute('aria-current')).toBeNull()
-    expect(getByTestId('Bookings tab')?.getAttribute('aria-current')).toBeNull()
-    expect(getByTestId('Favorites tab')?.getAttribute('aria-current')).toBeNull()
-    expect(getByTestId('Profile tab')?.getAttribute('aria-current')).toBeNull()
+    renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    expect(screen.getByTestId('Home tab')?.getAttribute('aria-current')).toEqual('page')
+    expect(screen.getByTestId('Search tab')?.getAttribute('aria-current')).toBeNull()
+    expect(screen.getByTestId('Bookings tab')?.getAttribute('aria-current')).toBeNull()
+    expect(screen.getByTestId('Favorites tab')?.getAttribute('aria-current')).toBeNull()
+    expect(screen.getByTestId('Profile tab')?.getAttribute('aria-current')).toBeNull()
   })
 })
 

@@ -1,28 +1,24 @@
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
-import { act, render } from 'tests/utils/web'
+import { act, render, screen } from 'tests/utils/web'
 
 import { Checkbox } from './Checkbox'
 
 describe('<Checkbox />', () => {
   it('should render an accessible checkbox', () => {
-    const { getByRole } = render(
-      <Checkbox label="I agree to disagree" isChecked={false} onPress={jest.fn()} />
-    )
+    render(<Checkbox label="I agree to disagree" isChecked={false} onPress={jest.fn()} />)
 
-    const checkbox = getByRole('checkbox')
+    const checkbox = screen.getByRole('checkbox')
 
     expect(checkbox).toBeTruthy()
   })
 
   it('is linked to his label', () => {
     const label = 'I agree to disagree'
-    const { getByLabelText, getByRole } = render(
-      <Checkbox label={label} isChecked={false} onPress={jest.fn()} />
-    )
+    render(<Checkbox label={label} isChecked={false} onPress={jest.fn()} />)
 
-    expect(getByLabelText(label)).toEqual(getByRole('checkbox'))
+    expect(screen.getByLabelText(label)).toEqual(screen.getByRole('checkbox'))
   })
 
   it('can be checked with checkbox', async () => {
@@ -54,12 +50,10 @@ describe('<Checkbox />', () => {
   describe('toggle his state', () => {
     it('check the box when is unchecked', async () => {
       const onPressMock = jest.fn()
-      const { getByRole } = render(
-        <Checkbox label={'I agree to disagree'} isChecked={false} onPress={onPressMock} />
-      )
+      render(<Checkbox label={'I agree to disagree'} isChecked={false} onPress={onPressMock} />)
 
       await act(async () => {
-        await userEvent.click(getByRole('checkbox'))
+        await userEvent.click(screen.getByRole('checkbox'))
       })
 
       expect(onPressMock).toHaveBeenCalledWith(true)
@@ -67,12 +61,10 @@ describe('<Checkbox />', () => {
 
     it('uncheck the box when is checked', async () => {
       const onPressMock = jest.fn()
-      const { getByRole } = render(
-        <Checkbox label={'I agree to disagree'} isChecked onPress={onPressMock} />
-      )
+      render(<Checkbox label={'I agree to disagree'} isChecked onPress={onPressMock} />)
 
       await act(async () => {
-        await userEvent.click(getByRole('checkbox'))
+        await userEvent.click(screen.getByRole('checkbox'))
       })
 
       expect(onPressMock).toHaveBeenCalledWith(false)
@@ -114,21 +106,17 @@ describe('<Checkbox />', () => {
 
   describe('have aria-checked attribute', () => {
     it('checked when checkbox is checked', async () => {
-      const { getByRole } = render(
-        <Checkbox label="I agree to disagree" isChecked onPress={jest.fn()} />
-      )
+      render(<Checkbox label="I agree to disagree" isChecked onPress={jest.fn()} />)
 
-      const checkbox = getByRole('checkbox')
+      const checkbox = screen.getByRole('checkbox')
 
       expect(checkbox.getAttribute('aria-checked')).toBe('true')
     })
 
     it('not checked when checkbox is unchecked', async () => {
-      const { getByRole } = render(
-        <Checkbox label="I agree to disagree" isChecked={false} onPress={jest.fn()} />
-      )
+      render(<Checkbox label="I agree to disagree" isChecked={false} onPress={jest.fn()} />)
 
-      const checkbox = getByRole('checkbox')
+      const checkbox = screen.getByRole('checkbox')
 
       expect(checkbox.getAttribute('aria-checked')).toBe('false')
     })
