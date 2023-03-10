@@ -21,33 +21,33 @@ describe('BicolorFavoriteCount component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render non connected icon', async () => {
-    await renderBicolorFavoriteCount({ isLoggedIn: false })
+    renderBicolorFavoriteCount({ isLoggedIn: false })
     expect(screen.queryByTestId('bicolor-favorite-count')).toBeFalsy()
   })
 
   it('should render connected icon', async () => {
-    await renderBicolorFavoriteCount({ isLoggedIn: true })
+    renderBicolorFavoriteCount({ isLoggedIn: true })
     await waitFor(() => {
       expect(screen.getByTestId('bicolor-favorite-count')).toBeTruthy()
     })
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
-    await renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
+    renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
     await waitFor(() => {
       expect(screen.getByText('99')).toBeTruthy()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
-    await renderBicolorFavoriteCount({ isLoggedIn: true })
+    renderBicolorFavoriteCount({ isLoggedIn: true })
     await waitFor(() => {
       expect(screen.getByText(defaultOptions.count.toString())).toBeTruthy()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
-    await renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
+    renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
     await waitFor(() => {
       expect(screen.getByText('0')).toBeTruthy()
     })
@@ -55,7 +55,7 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should not show nbFavorites within badge when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    await renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
+    renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
     expect(screen.queryByTestId('bicolor-favorite-count')).toBeFalsy()
   })
 })
@@ -70,7 +70,7 @@ const defaultOptions = {
   count: 4,
 }
 
-async function renderBicolorFavoriteCount(options: Options = defaultOptions) {
+function renderBicolorFavoriteCount(options: Options = defaultOptions) {
   const { isLoggedIn, count } = { ...defaultOptions, ...options }
   server.use(
     rest.get<Array<FavoriteResponse>>(
