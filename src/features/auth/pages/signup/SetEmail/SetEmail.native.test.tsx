@@ -1,11 +1,15 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/__mocks__/envFixtures'
 import { analytics } from 'libs/firebase/analytics'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { SetEmail } from './SetEmail'
+
+const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
 const props = {
   goToNextStep: jest.fn(),
@@ -173,5 +177,14 @@ describe('<SetEmail />', () => {
       preventCancellation: true,
       offerId: OFFER_ID,
     })
+  })
+
+  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
+    render(<SetEmail {...props} />)
+
+    const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
+    fireEvent.press(faqLink)
+
+    expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
 })
