@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { render } from 'tests/utils'
+import { render } from 'tests/utils/web'
 
 import { remoteConfig } from './remoteConfig.services'
 import { RemoteConfigProvider } from './RemoteConfigProvider'
