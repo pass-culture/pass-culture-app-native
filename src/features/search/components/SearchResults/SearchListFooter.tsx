@@ -7,7 +7,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 
-export interface ListFooterComponentProps {
+export interface SearchListFooterProps {
   isFetchingNextPage: boolean
   hits: SearchHit[]
   nbHits: number
@@ -15,7 +15,7 @@ export interface ListFooterComponentProps {
   onPress?: () => void
 }
 
-export const ListFooterComponent: React.FC<ListFooterComponentProps> = forwardRef(
+export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
   ({ isFetchingNextPage, hits, nbHits, autoScrollEnabled, onPress }, ref) => {
     const showMoreButton = !autoScrollEnabled && hits.length < nbHits
 
@@ -43,7 +43,7 @@ export const ListFooterComponent: React.FC<ListFooterComponentProps> = forwardRe
     )
   }
 )
-ListFooterComponent.displayName = 'ListFooterComponent'
+SearchListFooter.displayName = 'SearchListFooter'
 
 const Footer = styled.View(({ theme }) => ({
   height: theme.tabBar.height + getSpacing(10),

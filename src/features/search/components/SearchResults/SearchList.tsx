@@ -3,7 +3,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { ListHeaderComponent } from 'features/search/components/SearchResults/ListHeaderComponent'
+import { SearchListHeader } from 'features/search/components/SearchResults/SearchListHeader'
 import { SearchListProps } from 'features/search/components/SearchResults/type'
 import { SearchHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
@@ -29,7 +29,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
         testID="searchResultsFlashlist"
         data={hits}
         keyExtractor={keyExtractor}
-        ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}
+        ListHeaderComponent={<SearchListHeader nbHits={nbHits} />}
         ItemSeparatorComponent={Separator}
         renderItem={renderItem}
         refreshing={refreshing}

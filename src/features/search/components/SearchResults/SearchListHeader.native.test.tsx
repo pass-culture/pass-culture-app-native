@@ -6,7 +6,7 @@ import { UserData } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { render, screen } from 'tests/utils'
 
-import { ListHeaderComponent } from './ListHeaderComponent'
+import { SearchListHeader } from './SearchListHeader'
 
 const searchId = uuidv4()
 
@@ -28,24 +28,24 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
-describe('<ListHeaderComponent />', () => {
+describe('<SearchListHeader />', () => {
   it('should display the number of results', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
     })
-    render(<ListHeaderComponent nbHits={10} />)
+    render(<SearchListHeader nbHits={10} />)
 
     expect(screen.getByText('10 résultats')).toBeTruthy()
   })
 
   it('should not display the geolocation button if position is not null', () => {
-    render(<ListHeaderComponent nbHits={10} />)
+    render(<SearchListHeader nbHits={10} />)
     expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
   })
 
   it('should display the geolocation incitation button when position is null', () => {
     mockPosition = null
-    render(<ListHeaderComponent nbHits={10} />)
+    render(<SearchListHeader nbHits={10} />)
 
     expect(screen.getByText('Géolocalise-toi')).toBeTruthy()
   })

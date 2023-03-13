@@ -3,8 +3,8 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { ListFooterComponent } from 'features/search/components/SearchResults/ListFooterComponent'
-import { ListHeaderComponent } from 'features/search/components/SearchResults/ListHeaderComponent'
+import { SearchListFooter } from 'features/search/components/SearchResults/SearchListFooter'
+import { SearchListHeader } from 'features/search/components/SearchResults/SearchListHeader'
 import { SearchListProps } from 'features/search/components/SearchResults/type'
 import { SearchHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
@@ -42,10 +42,10 @@ export const SearchList: React.FC<SearchListProps> = forwardRef<
         testID="searchResultsFlatlist"
         data={hits}
         keyExtractor={keyExtractor}
-        ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}
+        ListHeaderComponent={<SearchListHeader nbHits={nbHits} />}
         ItemSeparatorComponent={Separator}
         ListFooterComponent={
-          <ListFooterComponent
+          <SearchListFooter
             isFetchingNextPage={isFetchingNextPage}
             hits={hits}
             nbHits={nbHits}

@@ -18,11 +18,11 @@ import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export interface ListHeaderComponentProps extends ScrollViewProps {
+export interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
 }
 
-export const ListHeaderComponent: React.FC<ListHeaderComponentProps> = ({ nbHits }) => {
+export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits }) => {
   const { position, showGeolocPermissionModal } = useGeolocation()
   const { userData } = useSearchResults()
   const { params } = useRoute<UseRouteType<'Search'>>()
