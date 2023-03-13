@@ -2,9 +2,9 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
+import { Venue } from 'features/venue/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
@@ -31,7 +31,7 @@ const Kourou: SuggestedPlace = {
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
+const venue: Venue = mockedSuggestedVenues[0]
 
 describe('useLocationChoice', () => {
   it('should return an object with Everywhere icon, Partout label and isSelected boolean when position is not null when LocationType is EVERYWHERE', () => {

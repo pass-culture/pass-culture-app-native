@@ -9,10 +9,10 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, act, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -77,7 +77,7 @@ const Kourou: SuggestedPlace = {
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: SuggestedVenue = mockedSuggestedVenues[0]
+const venue: Venue = mockedSuggestedVenues[0]
 
 const searchId = uuidv4()
 

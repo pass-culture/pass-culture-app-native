@@ -13,9 +13,9 @@ import {
   MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
-import { SuggestedVenue } from 'libs/venue'
 
 import { LocationType } from './enums'
 
@@ -28,7 +28,7 @@ export type LocationFilter =
   | { locationType: LocationType.EVERYWHERE }
   | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
   | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
-  | { locationType: LocationType.VENUE; venue: SuggestedVenue }
+  | { locationType: LocationType.VENUE; venue: Venue }
 
 export enum SearchView {
   Landing = 'Landing',
