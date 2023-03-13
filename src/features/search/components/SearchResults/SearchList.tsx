@@ -26,7 +26,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       <FlashList
         estimatedItemSize={HIT_SIZE}
         ref={ref}
-        testID="searchResultsFlatlist"
+        testID="searchResultsFlashlist"
         data={hits}
         keyExtractor={keyExtractor}
         ListHeaderComponent={<ListHeaderComponent nbHits={nbHits} />}

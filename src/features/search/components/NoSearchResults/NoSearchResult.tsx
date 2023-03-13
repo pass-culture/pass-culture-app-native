@@ -56,7 +56,7 @@ export const NoSearchResult: React.FC = () => {
 
 const ContainerNoOffer = styled.View(({ theme }) => ({
   flexShrink: 0,
-  ...(theme.isDesktopViewport ? {} : { marginTop: -(theme.tabBar.height + getSpacing(10)) }),
+  ...(theme.isMobileViewport && { marginTop: -(theme.tabBar.height + getSpacing(10)) }),
 }))
 
 const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
