@@ -9,7 +9,7 @@ const STALE_TIME_VENUES = 5 * 60 * 1000
 
 export const useVenues = (query: string) => {
   const netInfo = useNetInfoContext()
-  return useQuery<Venue[]>([QueryKeys.VENUES, query], () => fetchVenues(query), {
+  return useQuery<Venue[]>([QueryKeys.VENUES, query], () => fetchVenues({ query: query }), {
     staleTime: STALE_TIME_VENUES,
     enabled: !!netInfo.isConnected && query.length > 0,
   })

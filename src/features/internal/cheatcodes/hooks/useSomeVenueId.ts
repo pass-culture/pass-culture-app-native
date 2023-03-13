@@ -9,7 +9,7 @@ export const useSomeVenueId = () => {
   const [venueId, setVenueId] = useState<number>(fakeVenueId)
 
   useEffect(() => {
-    fetchVenues('')
+    fetchVenues({ query: '' })
       .then(([venue]) => venue.venueId && setVenueId(venue.venueId))
       .catch(() => {
         // The cheatcodes are only in testing
