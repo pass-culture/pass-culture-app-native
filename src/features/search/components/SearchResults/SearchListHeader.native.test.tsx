@@ -10,7 +10,7 @@ import { SearchListHeader } from './SearchListHeader'
 
 const searchId = uuidv4()
 
-const mockUserData: UserData[] = []
+let mockUserData: UserData[] = []
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     userData: mockUserData,
@@ -29,6 +29,10 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 }))
 
 describe('<SearchListHeader />', () => {
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
   it('should display the number of results', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
@@ -48,5 +52,21 @@ describe('<SearchListHeader />', () => {
     render(<SearchListHeader nbHits={10} />)
 
     expect(screen.getByText('Géolocalise-toi')).toBeTruthy()
+  })
+
+  it('should display paddingBottom when nbHits is greater than 0', () => {
+    mockUserData = [{ message: 'message test' }]
+
+    render(<SearchListHeader nbHits={10} />)
+    const bannerContainer = screen.getByTestId('banner-container')
+    expect(bannerContainer.props.style).toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
+  })
+
+  it('should not display paddingBottom when nbHits is equal to 0', () => {
+    mockUserData = [{ message: 'message test' }]
+
+    render(<SearchListHeader nbHits={0} />)
+    const bannerContainer = screen.getByTestId('banner-container')
+    expect(bannerContainer.props.style).not.toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
   })
 })

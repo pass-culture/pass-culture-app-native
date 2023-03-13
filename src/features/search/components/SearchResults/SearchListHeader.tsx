@@ -60,6 +60,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits }) =>
       )}
       {!!shouldDisplayUnavailableOfferMessage && (
         <BannerOfferNotPresentContainer
+          testID="banner-container"
           accessibilityRole={AccessibilityRole.STATUS}
           nbHits={nbHits}>
           <Banner message={unavailableOfferMessage} icon={Error} />
