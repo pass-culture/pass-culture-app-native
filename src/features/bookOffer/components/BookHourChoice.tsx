@@ -64,6 +64,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
         return distinctHours.map((hour) => {
           const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
           const minPrice = Math.min(...filteredAvailableStocksFromHour.map((stock) => stock.price))
+          const isBookable = filteredAvailableStocksFromHour.some((stock) => stock.isBookable)
           return (
             <HourChoice
               key={hour}
@@ -72,7 +73,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
               selected={hour === bookingState.hour}
               onPress={() => selectHour(hour)}
               testID={`HourChoice${hour}`}
-              isBookable
+              isBookable={isBookable}
               offerCredit={offerCredit}
               hasSeveralPrices
             />
