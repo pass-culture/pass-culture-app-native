@@ -4,13 +4,16 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/__mocks__/envFixtures'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils'
+import { superFlushWithAct, render, fireEvent, screen } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
+const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
 const mockedIdentity: Partial<UserProfileResponse> = {
   firstName: 'Rosa',
@@ -89,6 +92,18 @@ describe('PersonalData', () => {
       expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
       expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
     })
+  })
+
+  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
+    await renderPersonalData({
+      isBeneficiary: false,
+      ...mockedIdentity,
+    } as UserProfileResponse)
+
+    const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
+    fireEvent.press(faqLink)
+
+    expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
 })
 
