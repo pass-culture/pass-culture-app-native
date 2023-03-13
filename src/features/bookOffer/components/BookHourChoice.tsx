@@ -28,8 +28,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
   const hasPricesStep =
-    enablePricesByCategories &&
-    stocks.filter((stock) => !stock.isExpired && stock.priceCategoryLabel).length > 1
+    enablePricesByCategories && stocks.some((stock) => !stock.isExpired && stock.priceCategoryLabel)
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const selectStock = (stockId: number) => {
