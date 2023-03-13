@@ -28,7 +28,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
   const hasPricesStep =
-    enablePricesByCategories && stocks.filter((stock) => !stock.isExpired).length > 1
+    enablePricesByCategories && stocks.some((stock) => !stock.isExpired && stock.priceCategoryLabel)
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const selectStock = (stockId: number) => {
@@ -64,6 +64,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
         return distinctHours.map((hour) => {
           const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
           const minPrice = Math.min(...filteredAvailableStocksFromHour.map((stock) => stock.price))
+          const isBookable = filteredAvailableStocksFromHour.some((stock) => stock.isBookable)
           return (
             <HourChoice
               key={hour}
@@ -72,7 +73,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
               selected={hour === bookingState.hour}
               onPress={() => selectHour(hour)}
               testID={`HourChoice${hour}`}
-              isBookable
+              isBookable={isBookable}
               offerCredit={offerCredit}
               hasSeveralPrices
             />
