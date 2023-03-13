@@ -22,14 +22,16 @@ export function getButtonState(bookingState: BookingState) {
 }
 
 export function getBookingSteps(stocks: OfferStockResponse[], offerIsDuo?: boolean) {
-  const stocksNotExpired = stocks.filter((stock) => !stock.isExpired)
+  const stocksWithCategoryNotExpired = stocks.filter(
+    (stock) => !stock.isExpired && stock.priceCategoryLabel
+  )
   let bookingSteps = [Step.DATE, Step.HOUR]
 
-  if (offerIsDuo && stocksNotExpired.length > 1) {
+  if (offerIsDuo && stocksWithCategoryNotExpired.length > 1) {
     bookingSteps = [...bookingSteps, Step.PRICE, Step.DUO]
-  } else if (offerIsDuo && stocksNotExpired.length === 1) {
+  } else if (offerIsDuo && stocksWithCategoryNotExpired.length <= 1) {
     bookingSteps = [...bookingSteps, Step.DUO]
-  } else if (!offerIsDuo && stocksNotExpired.length > 1) {
+  } else if (!offerIsDuo && stocksWithCategoryNotExpired.length > 1) {
     bookingSteps = [...bookingSteps, Step.PRICE]
   }
 
@@ -116,11 +118,15 @@ export function getPreviousStep(currentStep: number, offer: OfferResponse) {
 
 const getStockFromDate = (selectedDate?: string) => (stock: OfferStockResponse) =>
   !stock.isExpired &&
+  stock.priceCategoryLabel &&
   stock.beginningDatetime &&
   formatToKeyDate(stock.beginningDatetime) === selectedDate
 
 const getStockFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
-  !stock.isExpired && stock.beginningDatetime && stock.beginningDatetime === selectedHour
+  !stock.isExpired &&
+  stock.priceCategoryLabel &&
+  stock.beginningDatetime &&
+  stock.beginningDatetime === selectedHour
 
 export const sortByPricePredicate = (a: OfferStockResponse, b: OfferStockResponse) => {
   return b.price - a.price

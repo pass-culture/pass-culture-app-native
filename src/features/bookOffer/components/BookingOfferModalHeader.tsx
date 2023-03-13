@@ -37,7 +37,7 @@ export const BookingOfferModalHeader = ({
   if (step) {
     progressBarValue = (1 / totalSteps) * step
   }
-  const currentStep = step === Step.DUO && stocks.length === 1 ? step - 1 : step
+  const currentStep = step === Step.DUO && stocks.length <= 1 ? step - 1 : step
 
   return (
     <HeaderContainer>
