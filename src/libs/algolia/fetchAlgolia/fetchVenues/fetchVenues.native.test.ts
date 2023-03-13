@@ -2,7 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
-import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
+import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { env } from 'libs/environment'
 import { waitFor } from 'tests/utils'
 

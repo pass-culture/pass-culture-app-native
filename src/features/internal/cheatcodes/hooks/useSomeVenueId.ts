@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
+import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 
 const fakeVenueId = 283
 

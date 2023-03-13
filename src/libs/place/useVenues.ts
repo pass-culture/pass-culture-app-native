@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
 import { Venue } from 'features/venue/types'
-import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
+import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
