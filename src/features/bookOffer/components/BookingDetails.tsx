@@ -74,6 +74,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       }
     },
     onError: (error) => {
+      dismissModal()
       let message = 'En raison d’une erreur technique, l’offre n’a pas pu être réservée'
 
       if (isApiError(error)) {
