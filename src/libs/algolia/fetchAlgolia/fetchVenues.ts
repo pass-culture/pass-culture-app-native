@@ -14,11 +14,15 @@ export const fetchVenues = async (query: FetchVenuesParameters['query']): Promis
   }
 
   try {
-    const response = await venuesIndex.search<AlgoliaVenue>(
+    const rawAlgoliaVenuesResponse = await venuesIndex.search<AlgoliaVenue>(
       algoliaSearchParams.query,
       algoliaSearchParams.requestOptions
     )
-    return response.hits.map(buildSuggestedVenue)
+
+    const algoliaVenues: AlgoliaVenue[] = rawAlgoliaVenuesResponse.hits
+    const adaptedVenues: Venue[] = algoliaVenues.map(buildSuggestedVenue)
+
+    return adaptedVenues
   } catch (error) {
     captureAlgoliaError(error)
     return [] as Venue[]
