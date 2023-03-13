@@ -62,6 +62,7 @@ export interface AlgoliaQueryParameters {
 
 export interface FetchVenuesParameters {
   query: string
+  attributesToHighlight?: string[]
 }
 
 export interface AlgoliaVenue {
