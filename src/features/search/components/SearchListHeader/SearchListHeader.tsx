@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { ScrollViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -22,16 +22,16 @@ export interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
 }
 
+const logActivateGeolocfromSearchResults = () => {
+  analytics.logActivateGeolocfromSearchResults()
+}
+
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits }) => {
   const { position, showGeolocPermissionModal } = useGeolocation()
   const { userData } = useSearchResults()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
   const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''
-
-  const logActivateGeolocfromSearchResults = useCallback(() => {
-    analytics.logActivateGeolocfromSearchResults()
-  }, [])
 
   const onPress = () => {
     logActivateGeolocfromSearchResults()
@@ -78,7 +78,7 @@ const GeolocationButtonContainer = styledButton(Touchable)({
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
   paddingHorizontal: getSpacing(6),
-  ...(nbHits > 0 ? { paddingBottom: getSpacing(4) } : {}),
+  ...(nbHits > 0 && { paddingBottom: getSpacing(4) }),
 }))
 
 const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({

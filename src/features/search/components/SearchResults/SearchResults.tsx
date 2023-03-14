@@ -11,7 +11,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { Hit } from 'features/search/components/Hit/Hit'
-import { SearchList } from 'features/search/components/SearchResults/SearchList'
+import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {

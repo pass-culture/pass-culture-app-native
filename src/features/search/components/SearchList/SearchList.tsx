@@ -3,7 +3,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { SearchListHeader } from 'features/search/components/SearchResults/SearchListHeader'
+import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps } from 'features/search/components/SearchResults/type'
 import { SearchHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
