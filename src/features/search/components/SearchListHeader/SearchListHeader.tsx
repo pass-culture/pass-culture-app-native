@@ -22,10 +22,6 @@ export interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
 }
 
-const logActivateGeolocfromSearchResults = () => {
-  analytics.logActivateGeolocfromSearchResults()
-}
-
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits }) => {
   const { position, showGeolocPermissionModal } = useGeolocation()
   const { userData } = useSearchResults()
@@ -34,7 +30,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits }) =>
   const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''
 
   const onPress = () => {
-    logActivateGeolocfromSearchResults()
+    analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()
   }
 
