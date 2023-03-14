@@ -29,10 +29,10 @@ export async function getAuthenticationHeaders(options?: RequestInit): Promise<H
 // response that we then catch to redirect to the login page.
 // this happens when there is a problem retrieving or refreshing
 // the access token.
-export const NeedsAuthenticationResponse = {
+export const NeedsAuthenticationResponse = new Response('', {
   status: 401,
   statusText: 'NeedsAuthenticationResponse',
-} as Response
+})
 
 export const RefreshTokenExpiredResponse = new Response('', {
   status: 401,
