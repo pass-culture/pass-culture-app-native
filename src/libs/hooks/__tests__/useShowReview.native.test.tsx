@@ -22,6 +22,7 @@ const TestReviewComponent = () => {
   return null
 }
 
+//TODO(Lucas) Trouver une solution pour le web
 describe('useShowReview', () => {
   beforeAll(() => {
     jest.useFakeTimers('legacy')
