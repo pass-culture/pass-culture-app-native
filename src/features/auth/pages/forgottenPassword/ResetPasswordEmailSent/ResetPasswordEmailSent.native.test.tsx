@@ -6,7 +6,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { act, fireEvent, render, screen, flushAllPromises, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -24,14 +24,13 @@ describe('<ResetPasswordEmailSent />', () => {
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
     renderInitialPage('PreviousScreen')
 
-    await act(async () => {
+    act(() => {
       navigationRef.navigate('ResetPasswordEmailSent', { email: '' })
-      await flushAllPromises()
     })
 
-    fireEvent.press(await screen.findByLabelText('Revenir en arrière'))
+    fireEvent.press(screen.getByLabelText('Revenir en arrière'))
 
-    expect(screen.queryByText('PreviousScreenText')).toBeTruthy()
+    expect(await screen.findByText('PreviousScreenText')).toBeTruthy()
   })
 
   it('should NOT display back button when previous screen is ForgottenPassword', async () => {
