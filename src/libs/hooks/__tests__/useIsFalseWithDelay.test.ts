@@ -6,8 +6,14 @@ import { renderHook } from 'tests/utils'
 let condition = false
 const DELAY = 1000
 
-jest.useFakeTimers('legacy')
 describe('useIsFalseWithDelay()', () => {
+  beforeEach(() => {
+    jest.useFakeTimers('legacy')
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
+  })
   it("should always return true if condition is true and doesn't change", () => {
     condition = true
     const { result } = renderUseIsFalseWithDelay(condition)

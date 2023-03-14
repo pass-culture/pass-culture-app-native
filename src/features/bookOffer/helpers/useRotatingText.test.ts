@@ -1,10 +1,15 @@
 import { useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { act, renderHook } from 'tests/utils'
 
-jest.useFakeTimers()
+// jest.useFakeTimers('legacy')
 jest.spyOn(global, 'setInterval')
 
 describe('useRotatingText', () => {
+  beforeEach(() => jest.useFakeTimers('legacy'))
+  afterEach(() => {
+    jest.useRealTimers()
+    jest.resetModules()
+  })
   it('should return a new text every 3 seconds', () => {
     const hook = renderHook(() =>
       useRotatingText([{ message: 'Hello', keepDuration: 3000 }, { message: 'Jest' }])
