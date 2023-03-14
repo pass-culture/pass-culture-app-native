@@ -2585,23 +2585,39 @@ export enum SubscriptionStep {
   'honor-statement' = 'honor-statement',
 }
 /**
+ * An enumeration.
  * @export
- * @interface SubscriptionStepDetails
+ * @enum {string}
  */
-export interface SubscriptionStepDetails {
+export enum SubscriptionStepCompletionState {
+  'completed' = 'completed',
+  'current' = 'current',
+  'disabled' = 'disabled',
+  'retry' = 'retry',
+}
+/**
+ * @export
+ * @interface SubscriptionStepDetailsResponse
+ */
+export interface SubscriptionStepDetailsResponse {
+  /**
+   * @type {SubscriptionStepCompletionState}
+   * @memberof SubscriptionStepDetailsResponse
+   */
+  completionState: SubscriptionStepCompletionState
   /**
    * @type {SubscriptionStep}
-   * @memberof SubscriptionStepDetails
+   * @memberof SubscriptionStepDetailsResponse
    */
   name: SubscriptionStep
   /**
    * @type {string}
-   * @memberof SubscriptionStepDetails
+   * @memberof SubscriptionStepDetailsResponse
    */
   subtitle?: string | null
   /**
    * @type {SubscriptionStepTitle}
-   * @memberof SubscriptionStepDetails
+   * @memberof SubscriptionStepDetailsResponse
    */
   title: SubscriptionStepTitle
 }
@@ -2622,10 +2638,15 @@ export enum SubscriptionStepTitle {
  */
 export interface SubscriptionStepperResponse {
   /**
-   * @type {Array<SubscriptionStepDetails>}
+   * @type {string}
    * @memberof SubscriptionStepperResponse
    */
-  subscriptionStepsToDisplay: Array<SubscriptionStepDetails>
+  errorMessage?: string | null
+  /**
+   * @type {Array<SubscriptionStepDetailsResponse>}
+   * @memberof SubscriptionStepperResponse
+   */
+  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponse>
   /**
    * @type {string}
    * @memberof SubscriptionStepperResponse
@@ -3109,6 +3130,7 @@ export enum VenueTypeCodeKey {
   'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
   'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
   'DIGITAL' = 'DIGITAL',
+
   'FESTIVAL' = 'FESTIVAL',
   'GAMES' = 'GAMES',
   'LIBRARY' = 'LIBRARY',
