@@ -207,14 +207,17 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
         },
       })
     } catch (error) {
-      eventMonitoring.captureException(new Error(NeedsAuthenticationResponse.statusText), {
-        extra: {
-          scope: 'NeedsAuthenticationResponseCannotParseJSON',
-          url: response.url,
-          status: response.status,
-          statusText: response.statusText,
-        },
-      })
+      eventMonitoring.captureException(
+        new Error(NeedsAuthenticationResponse.statusText, { cause: error }),
+        {
+          extra: {
+            scope: 'NeedsAuthenticationResponseCannotParseJSON',
+            url: response.url,
+            status: response.status,
+            statusText: response.statusText,
+          },
+        }
+      )
     }
     navigateToLogin()
     return {}
