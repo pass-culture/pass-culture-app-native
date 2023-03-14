@@ -16,7 +16,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
@@ -54,7 +54,7 @@ describe('HomeHeader', () => {
     ${'not logged in'}           | ${undefined}                                                                      | ${false}   | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
   `(
     '$usertype users should see subtitle: $subtitle',
-    ({
+    async ({
       user,
       isLoggedIn,
       credit,
@@ -74,47 +74,54 @@ describe('HomeHeader', () => {
       })
       mockUseAvailableCredit.mockReturnValueOnce(credit)
 
-      const { getByText } = renderHomeHeader()
-      expect(getByText(subtitle)).toBeTruthy()
+      renderHomeHeader()
+
+      expect(await screen.findByText(subtitle)).toBeTruthy()
     }
   )
 
-  it('should not display geolocation banner when geolocation is granted', () => {
-    const { queryByText } = renderHomeHeader()
+  it('should not display geolocation banner when geolocation is granted', async () => {
+    renderHomeHeader()
 
-    expect(queryByText('Géolocalise-toi')).toBeFalsy()
+    await waitFor(() => {
+      expect(screen.queryByText('Géolocalise-toi')).toBeNull()
+    })
   })
 
-  it('should display geolocation banner when geolocation is denied', () => {
+  it('should display geolocation banner when geolocation is denied', async () => {
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
 
-    const { queryByText } = renderHomeHeader()
+    renderHomeHeader()
 
-    expect(queryByText('Géolocalise-toi')).toBeTruthy()
+    expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
   })
 
-  it('should display geolocation banner when geolocation is never ask again', () => {
+  it('should display geolocation banner when geolocation is never ask again', async () => {
     mockUseGeolocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
     })
-    const { queryByText } = renderHomeHeader()
+    renderHomeHeader()
 
-    expect(queryByText('Géolocalise-toi')).toBeTruthy()
+    expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
   })
 
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
-    const { getByText } = renderHomeHeader()
-    expect(getByText('CheatMenu')).toBeTruthy()
+    renderHomeHeader()
+
+    expect(await screen.findByText('CheatMenu')).toBeTruthy()
   })
 
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    const { queryByText } = renderHomeHeader()
-    expect(queryByText('CheatMenu')).toBeNull()
+    renderHomeHeader()
+
+    await waitFor(() => {
+      expect(screen.queryByText('CheatMenu')).toBeNull()
+    })
   })
 
-  it('should display SignupBanner when user is not logged in', () => {
+  it('should display SignupBanner when user is not logged in', async () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       isUserLoading: false,
@@ -122,9 +129,9 @@ describe('HomeHeader', () => {
       refetchUser: jest.fn(),
     })
 
-    const { getByText } = renderHomeHeader()
+    renderHomeHeader()
 
-    expect(getByText('Débloque ton crédit')).toBeTruthy()
+    expect(await screen.findByText('Débloque ton crédit')).toBeTruthy()
   })
 
   it('should display activation banner when banner api call return activation banner', async () => {
@@ -144,6 +151,7 @@ describe('HomeHeader', () => {
     )
 
     renderHomeHeader()
+
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeTruthy()
     expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
   })
