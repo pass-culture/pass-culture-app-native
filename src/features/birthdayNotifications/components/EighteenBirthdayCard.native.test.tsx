@@ -3,7 +3,7 @@ import Swiper from 'react-native-web-swiper'
 
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
@@ -18,17 +18,16 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-describe('<EighteenBirthdayCard />', () => {
-  it('should render eighteen birthday card', async () => {
-    jest.useFakeTimers('legacy')
-    const firstTutorial = await renderEighteenBirthdayCard()
+/* TODO(LucasBeneston): Remove this mock when update to Jest 28
+  In jest version 28, I don't bring that error :
+  TypeError: requestAnimationFrame is not a function */
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
-    act(() => {
-      jest.runAllTimers()
-    })
+describe('<EighteenBirthdayCard />', () => {
+  it('should render eighteen birthday card', () => {
+    const firstTutorial = renderEighteenBirthdayCard()
 
     expect(firstTutorial).toMatchSnapshot()
-    jest.useRealTimers()
   })
 
   it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', () => {
