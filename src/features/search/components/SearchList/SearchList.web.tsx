@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
-import { SearchListProps } from 'features/search/components/SearchResults/type'
+import { SearchListProps } from 'features/search/types'
 import { SearchHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 

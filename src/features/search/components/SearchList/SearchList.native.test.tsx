@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
-import { SearchListProps } from 'features/search/components/SearchResults/type'
+import { SearchListProps } from 'features/search/types'
 import { UserData } from 'features/search/types'
 import { SearchHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
