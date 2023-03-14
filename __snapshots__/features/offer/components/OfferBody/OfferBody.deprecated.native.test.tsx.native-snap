@@ -1887,6 +1887,7 @@ d’options
                                   >
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={12}
                                       style={
                                         Array [
                                           Object {
@@ -1894,6 +1895,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 12,
                                           },
                                         ]
                                       }
@@ -1901,14 +1903,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap visuel : Non accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={12}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 12,
                                             },
                                           ]
                                         }
@@ -2025,6 +2025,7 @@ d’options
                                     </View>
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={12}
                                       style={
                                         Array [
                                           Object {
@@ -2032,6 +2033,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 12,
                                           },
                                         ]
                                       }
@@ -2039,14 +2041,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap psychique ou cognitif : Accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={12}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 12,
                                             },
                                           ]
                                         }
@@ -2162,6 +2162,7 @@ d’options
                                     </View>
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={12}
                                       style={
                                         Array [
                                           Object {
@@ -2169,6 +2170,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 12,
                                           },
                                         ]
                                       }
@@ -2176,14 +2178,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap moteur : Non accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={12}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 12,
                                             },
                                           ]
                                         }
@@ -2300,6 +2300,7 @@ d’options
                                     </View>
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={0}
                                       style={
                                         Array [
                                           Object {
@@ -2307,6 +2308,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 0,
                                           },
                                         ]
                                       }
@@ -2314,14 +2316,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap auditif : Accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={0}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 0,
                                             },
                                           ]
                                         }
@@ -4957,6 +4957,7 @@ d’options
                                   >
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={12}
                                       style={
                                         Array [
                                           Object {
@@ -4964,6 +4965,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 12,
                                           },
                                         ]
                                       }
@@ -4971,14 +4973,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap visuel : Non accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={12}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 12,
                                             },
                                           ]
                                         }
@@ -5095,6 +5095,7 @@ d’options
                                     </View>
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={12}
                                       style={
                                         Array [
                                           Object {
@@ -5102,6 +5103,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 12,
                                           },
                                         ]
                                       }
@@ -5109,14 +5111,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap psychique ou cognitif : Accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={12}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 12,
                                             },
                                           ]
                                         }
@@ -5232,6 +5232,7 @@ d’options
                                     </View>
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={12}
                                       style={
                                         Array [
                                           Object {
@@ -5239,6 +5240,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 12,
                                           },
                                         ]
                                       }
@@ -5246,14 +5248,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap moteur : Non accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={12}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 12,
                                             },
                                           ]
                                         }
@@ -5370,6 +5370,7 @@ d’options
                                     </View>
                                     <View
                                       accessibilityRole="none"
+                                      rightSpacingValue={0}
                                       style={
                                         Array [
                                           Object {
@@ -5377,6 +5378,7 @@ d’options
                                             "flexBasis": 0,
                                             "flexGrow": 1,
                                             "flexShrink": 1,
+                                            "marginRight": 0,
                                           },
                                         ]
                                       }
@@ -5384,14 +5386,12 @@ d’options
                                       <View
                                         accessibilityLabel="Handicap auditif : Accessible"
                                         accessibilityRole="image"
-                                        rightSpacingValue={0}
                                         style={
                                           Array [
                                             Object {
                                               "flexBasis": 0,
                                               "flexGrow": 1,
                                               "flexShrink": 1,
-                                              "marginRight": 0,
                                             },
                                           ]
                                         }

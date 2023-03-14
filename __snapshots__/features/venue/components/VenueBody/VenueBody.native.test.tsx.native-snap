@@ -3160,6 +3160,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             >
               <View
                 accessibilityRole="none"
+                rightSpacingValue={12}
                 style={
                   Array [
                     Object {
@@ -3167,6 +3168,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "marginRight": 12,
                     },
                   ]
                 }
@@ -3174,14 +3176,12 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 <View
                   accessibilityLabel="Handicap visuel : Accessible"
                   accessibilityRole="image"
-                  rightSpacingValue={12}
                   style={
                     Array [
                       Object {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginRight": 12,
                       },
                     ]
                   }
@@ -3297,6 +3297,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                rightSpacingValue={12}
                 style={
                   Array [
                     Object {
@@ -3304,6 +3305,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "marginRight": 12,
                     },
                   ]
                 }
@@ -3311,14 +3313,12 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 <View
                   accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
                   accessibilityRole="image"
-                  rightSpacingValue={12}
                   style={
                     Array [
                       Object {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginRight": 12,
                       },
                     ]
                   }
@@ -3435,6 +3435,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                rightSpacingValue={12}
                 style={
                   Array [
                     Object {
@@ -3442,6 +3443,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "marginRight": 12,
                     },
                   ]
                 }
@@ -3449,14 +3451,12 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 <View
                   accessibilityLabel="Handicap moteur : Non accessible"
                   accessibilityRole="image"
-                  rightSpacingValue={12}
                   style={
                     Array [
                       Object {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginRight": 12,
                       },
                     ]
                   }
@@ -3573,6 +3573,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               </View>
               <View
                 accessibilityRole="none"
+                rightSpacingValue={0}
                 style={
                   Array [
                     Object {
@@ -3580,6 +3581,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
+                      "marginRight": 0,
                     },
                   ]
                 }
@@ -3587,14 +3589,12 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 <View
                   accessibilityLabel="Handicap auditif : Non accessible"
                   accessibilityRole="image"
-                  rightSpacingValue={0}
                   style={
                     Array [
                       Object {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginRight": 0,
                       },
                     ]
                   }
