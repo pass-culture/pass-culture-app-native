@@ -26,6 +26,7 @@ import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackg
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { VerticalUl } from 'ui/components/Ul'
+import { useCodePushVersion } from 'ui/hooks/useCodePushVersion'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -47,6 +48,7 @@ const OnlineProfile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
   const signOut = useLogoutRoutine()
+  const codePushLabel = useCodePushVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
 
@@ -248,7 +250,10 @@ const OnlineProfile: React.FC = () => {
         )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.CaptionNeutralInfo>Version&nbsp;{Package.version}</Typo.CaptionNeutralInfo>
+          <Typo.CaptionNeutralInfo>
+            Version&nbsp;{Package.version}
+            {codePushLabel ? `-${codePushLabel}` : undefined}
+          </Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />
