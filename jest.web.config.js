@@ -33,7 +33,6 @@ module.exports = {
   transform: {
     ...base.transform,
   },
-  verbose: true,
   globals: {
     __DEV__: true,
   },
