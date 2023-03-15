@@ -36,6 +36,11 @@ describe('19YearsRegistration', () => {
     ok = await FirstLaunch.init(tabBar)
   })
 
+  it('should click on home', async () => {
+    didFirstLaunch(ok)
+    await tabBar.home.click()
+  })
+
   it('should click on search', async () => {
     didFirstLaunch(ok)
     await tabBar.search.click()
@@ -44,11 +49,6 @@ describe('19YearsRegistration', () => {
   it('should click on favorite', async () => {
     didFirstLaunch(ok)
     await tabBar.favorite.click()
-  })
-
-  it('should click on home', async () => {
-    didFirstLaunch(ok)
-    await tabBar.home.click()
   })
 
   it('should click on profile', async () => {
@@ -144,32 +144,4 @@ describe('19YearsRegistration', () => {
       await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(false)
     })
   })
-  /*
-  describe('identity check', () => {
-    it('should start identity verification', async () => {
-      didFirstLaunch(ok)
-      await verifyId.waitForIsShown(true)
-      await verifyId.idcheck.click()
-    })
-    it('should complete profile', async () => {
-      didFirstLaunch(ok)
-      await profile.waitForIsShown(true)
-      await profile.completeProfil.click()
-    })
-    it('should set firstname name', async () => {
-      const prenom = 'prenom'
-      didFirstLaunch(ok)
-      await firstname.waitForIsShown(true)
-      await firstname.firstname.setValue(prenom)
-    })
-    it('should set name', async () => {
-      const nom = 'nom'
-      didFirstLaunch(ok)
-      await name.waitForIsShown(true)
-      await name.name.setValue(nom)
-      await name.submit.click()
-      await name.waitForIsShown(false)
-    })
-  })
-   */
 })
