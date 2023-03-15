@@ -144,32 +144,4 @@ describe('18YearsRegistration', () => {
       await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(false)
     })
   })
-  /*
-  describe('identity check', () => {
-    it('should start identity verification', async () => {
-      didFirstLaunch(ok)
-      await verifyId.waitForIsShown(true)
-      await verifyId.idcheck.click()
-    })
-    it('should complete profile', async () => {
-      didFirstLaunch(ok)
-      await profile.waitForIsShown(true)
-      await profile.completeProfil.click()
-    })
-    it('should set firstname name', async () => {
-      const prenom = 'prenom'
-      didFirstLaunch(ok)
-      await firstname.waitForIsShown(true)
-      await firstname.firstname.setValue(prenom)
-    })
-    it('should set name', async () => {
-      const nom = 'nom'
-      didFirstLaunch(ok)
-      await name.waitForIsShown(true)
-      await name.name.setValue(nom)
-      await name.submit.click()
-      await name.waitForIsShown(false)
-    })
-  })
-   */
 })
