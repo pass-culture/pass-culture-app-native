@@ -45,7 +45,7 @@ class CompleteProfile extends AppScreen {
   constructor() {
     super('Profil Non complété', true)
   }
-  get completeProfil() {
+  get completeProfile() {
     return $$$('Profil Non complété')
   }
 }
@@ -102,7 +102,7 @@ class CompleteStatus extends AppScreen {
   constructor() {
     super('validate-off-icon', true)
   }
-  get completeProfil() {
+  get completeProfile() {
     return $$$('validate-off-icon')
   }
 }
