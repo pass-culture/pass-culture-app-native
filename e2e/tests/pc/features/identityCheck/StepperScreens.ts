@@ -79,7 +79,7 @@ class RegistrationCity extends AppScreen {
     return $$$('searchInput')
   }
 
-  CityOption(city: string) {
+  cityOption(city: string) {
     return $$$(`Proposition de ville 1\u00a0: ${city}`)
   }
   get submit() {

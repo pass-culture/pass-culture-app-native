@@ -184,7 +184,7 @@ describe('17YearsRegistration', () => {
       didFirstLaunch(ok)
       await city.waitForIsShown(true)
       await city.city.setValue(CityPostale)
-      await city.CityOption('Versailles').click()
+      await city.cityOption('Versailles').click()
       // await city.submit.click()
       // await driver.debug()
     })
