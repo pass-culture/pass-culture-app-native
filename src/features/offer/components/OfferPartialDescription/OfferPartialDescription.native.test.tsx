@@ -157,9 +157,7 @@ describe('OfferPartialDescription', () => {
         expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
 
-      //TODO(PC-16305) unskip this test when upgrading to jest 27
-      // eslint-disable-next-line jest/no-disabled-tests
-      it.skip('when the description is small enough to be fully readable and there is image on the description page', async () => {
+      it('when the description is small enough to be fully readable and there is image on the description page', async () => {
         const lines = [
           { text: 'Combattant sans risque, vous devez agir ' },
           { text: 'sans précaution. En effet, pour vous autres ' },
