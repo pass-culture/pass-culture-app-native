@@ -16,7 +16,7 @@ env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 jobs:
   yarn_test_web:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, linux, x64]
     container:
       image: node:16
     steps:
@@ -38,7 +38,7 @@ jobs:
       - run: yarn test:unit:web:ci 
 
   yarn_test_native:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, linux, x64]
     container:
       image: node:16
     steps:
@@ -66,7 +66,7 @@ jobs:
         with:
           projectBaseDir: .
   yarn_test_proxy:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, linux, x64]
     container:
       image: node:16
     steps:
@@ -95,7 +95,7 @@ jobs:
         with:
           projectBaseDir: server
   slack_notify:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, linux, x64]
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native

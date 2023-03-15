@@ -5,7 +5,7 @@ on:
 
 jobs:
   yarn-install:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, linux, x64]
     container:
       image: node:18
     steps:
@@ -22,7 +22,7 @@ jobs:
       - run: yarn install --immutable
         if: steps.yarn-modules-cache.outputs.cache-hit != 'true'
   bundle-install:
-    runs-on: [self-hosted, linux, X64]
+    runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
