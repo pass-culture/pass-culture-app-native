@@ -7,7 +7,7 @@ type IRegistrationScreens = {
   firstname: RegistrationFirstName
   name: RegistrationName
   profile: CompleteProfile
-  statut: CompleteStatut
+  statut: CompleteStatus
   verifyId: VerifyId
 }
 
@@ -15,7 +15,7 @@ class StepperScreens extends AppScreen {
   addressScreen: RegistrationAddress
   cityScreen: RegistrationCity
   completeProfileScreen: CompleteProfile
-  completeStatutScreen: CompleteStatut
+  completeStatutScreen: CompleteStatus
   firstnameScreen: RegistrationFirstName
   nameScreen: RegistrationName
   verifyIdScreen: VerifyId
@@ -98,7 +98,7 @@ class RegistrationAddress extends AppScreen {
   }
 }
 
-class CompleteStatut extends AppScreen {
+class CompleteStatus extends AppScreen {
   constructor() {
     super('validate-off-icon', true)
   }
@@ -112,7 +112,7 @@ export const city = new RegistrationCity()
 export const firstname = new RegistrationFirstName()
 export const name = new RegistrationName()
 export const profile = new CompleteProfile()
-export const statut = new CompleteStatut()
+export const statut = new CompleteStatus()
 export const verifyId = new VerifyId()
 
 export default new StepperScreens({
