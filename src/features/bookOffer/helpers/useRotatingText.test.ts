@@ -1,7 +1,6 @@
 import { useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { act, renderHook } from 'tests/utils'
 
-// jest.useFakeTimers('legacy')
 jest.spyOn(global, 'setInterval')
 
 describe('useRotatingText', () => {

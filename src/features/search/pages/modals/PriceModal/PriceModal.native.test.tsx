@@ -18,7 +18,7 @@ const searchState: SearchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
 const mockDispatch = jest.fn()
 
-/* TODO(LucasBeneston): Remove this mock when update to Jest 28
+/* TODO(PC-21140): Remove this mock when update to Jest 28
   In jest version 28, I don't bring that error :
   TypeError: requestAnimationFrame is not a function */
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')

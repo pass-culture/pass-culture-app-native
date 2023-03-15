@@ -15,7 +15,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 
-/* TODO(LucasBeneston): Remove this mock when update to Jest 28
+/* TODO(PC-21140): Remove this mock when update to Jest 28
   In jest version 28, I don't bring that error :
   TypeError: requestAnimationFrame is not a function */
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
