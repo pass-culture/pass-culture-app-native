@@ -157,7 +157,7 @@ describe('17YearsRegistration', () => {
     it('should start identity verification', async () => {
       didFirstLaunch(ok)
       await verifyId.waitForIsShown(true)
-      await verifyId.idcheck.click()
+      await verifyId.idCheck.click()
     })
     it('should complete profile', async () => {
       didFirstLaunch(ok)
@@ -196,8 +196,8 @@ describe('17YearsRegistration', () => {
     })
     it('should set complete statut', async () => {
       didFirstLaunch(ok)
-      await statut.waitForIsShown(true)
-      await statut.completeProfile.click()
+      await completeStatus.waitForIsShown(true)
+      await completeStatus.completeProfile.click()
       //   await driver.debug()
     })
   })

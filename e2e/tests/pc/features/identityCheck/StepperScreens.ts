@@ -2,12 +2,12 @@ import AppScreen from '../../screenobjects/AppScreen'
 import { $$$ } from '../../helpers/utils/selector'
 
 type IRegistrationScreens = {
+  completeProfile: CompleteProfile
+  completeStatus: CompleteStatus
   registrationAddress: RegistrationAddress
   registrationCity: RegistrationCity
   registrationFirstName: RegistrationFirstName
   registrationName: RegistrationName
-  completeProfile: CompleteProfile
-  completeStatus: CompleteStatus
   verifyId: VerifyId
 }
 
@@ -15,19 +15,19 @@ class StepperScreens extends AppScreen {
   addressScreen: RegistrationAddress
   cityScreen: RegistrationCity
   completeProfileScreen: CompleteProfile
-  completeStatutScreen: CompleteStatus
+  completeStatusScreen: CompleteStatus
   firstnameScreen: RegistrationFirstName
   nameScreen: RegistrationName
   verifyIdScreen: VerifyId
 
   constructor(screens: IRegistrationScreens) {
     super('Stepper', true)
-    this.addressScreen = screens.address
-    this.cityScreen = screens.city
-    this.completeProfileScreen = screens.profile
-    this.completeStatutScreen = screens.statut
-    this.firstnameScreen = screens.firstname
-    this.nameScreen = screens.name
+    this.addressScreen = screens.registrationAddress
+    this.cityScreen = screens.registrationCity
+    this.completeProfileScreen = screens.completeProfile
+    this.completeStatusScreen = screens.completeStatus
+    this.firstnameScreen = screens.registrationFirstName
+    this.nameScreen = screens.registrationName
     this.verifyIdScreen = screens.verifyId
   }
 }
@@ -36,7 +36,7 @@ class VerifyId extends AppScreen {
   constructor() {
     super('Commencer la vérification', true)
   }
-  get idcheck() {
+  get idCheck() {
     return $$$('Commencer la vérification')
   }
 }
@@ -106,21 +106,20 @@ class CompleteStatus extends AppScreen {
     return $$$('validate-off-icon')
   }
 }
-
+export const completeProfile = new CompleteProfile()
+export const completeStatus = new CompleteStatus()
 export const registrationAddress = new RegistrationAddress()
 export const registrationCity = new RegistrationCity()
 export const registrationFirstName = new RegistrationFirstName()
 export const registrationName = new RegistrationName()
-export const completeProfile = new CompleteProfile()
-export const completeStatus = new CompleteStatus()
 export const verifyId = new VerifyId()
 
 export default new StepperScreens({
+  completeProfile,
+  completeStatus,
   registrationAddress,
   registrationCity,
   registrationFirstName,
   registrationName,
-  completeProfile,
-  completeStatus,
   verifyId,
 })
