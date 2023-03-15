@@ -2,32 +2,33 @@ import AppScreen from '../../screenobjects/AppScreen'
 import { $$$ } from '../../helpers/utils/selector'
 
 type IRegistrationScreens = {
-  verifyId: VerifyId
-  profile: CompleteProfile
-  statut: CompleteStatut
+  address: RegistrationAddress
+  city: RegistrationCity
   firstname: RegistrationFirstName
   name: RegistrationName
-  city: RegistrationCity
-  address: RegistrationAddress
+  profile: CompleteProfile
+  statut: CompleteStatut
+  verifyId: VerifyId
 }
 
 class StepperScreens extends AppScreen {
-  verifyIdScreen: VerifyId
-  completeStatutScreen: CompleteStatut
+  addressScreen: RegistrationAddress
+  cityScreen: RegistrationCity
   completeProfileScreen: CompleteProfile
+  completeStatutScreen: CompleteStatut
   firstnameScreen: RegistrationFirstName
   nameScreen: RegistrationName
-  cityScreen: RegistrationCity
-  addressScreen: RegistrationAddress
+  verifyIdScreen: VerifyId
+
   constructor(screens: IRegistrationScreens) {
     super('Stepper', true)
-    this.verifyIdScreen = screens.verifyId
-    this.completeStatutScreen = screens.statut
+    this.addressScreen = screens.address
+    this.cityScreen = screens.city
     this.completeProfileScreen = screens.profile
+    this.completeStatutScreen = screens.statut
     this.firstnameScreen = screens.firstname
     this.nameScreen = screens.name
-    this.cityScreen = screens.city
-    this.addressScreen = screens.address
+    this.verifyIdScreen = screens.verifyId
   }
 }
 
@@ -106,26 +107,20 @@ class CompleteStatut extends AppScreen {
   }
 }
 
-export const firstname = new RegistrationFirstName()
-
-export const name = new RegistrationName()
-
 export const address = new RegistrationAddress()
-
 export const city = new RegistrationCity()
-
-export const verifyId = new VerifyId()
-
+export const firstname = new RegistrationFirstName()
+export const name = new RegistrationName()
 export const profile = new CompleteProfile()
-
 export const statut = new CompleteStatut()
+export const verifyId = new VerifyId()
 
 export default new StepperScreens({
   address,
+  city,
   firstname,
   name,
-  city,
-  verifyId,
   profile,
   statut,
+  verifyId,
 })
