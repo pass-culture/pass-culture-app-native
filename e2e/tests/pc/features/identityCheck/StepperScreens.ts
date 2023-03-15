@@ -2,12 +2,12 @@ import AppScreen from '../../screenobjects/AppScreen'
 import { $$$ } from '../../helpers/utils/selector'
 
 type IRegistrationScreens = {
-  address: RegistrationAddress
-  city: RegistrationCity
-  firstname: RegistrationFirstName
-  name: RegistrationName
-  profile: CompleteProfile
-  statut: CompleteStatus
+  registrationAddress: RegistrationAddress
+  registrationCity: RegistrationCity
+  registrationFirstName: RegistrationFirstName
+  registrationName: RegistrationName
+  completeProfile: CompleteProfile
+  completeStatus: CompleteStatus
   verifyId: VerifyId
 }
 
@@ -107,20 +107,20 @@ class CompleteStatus extends AppScreen {
   }
 }
 
-export const address = new RegistrationAddress()
-export const city = new RegistrationCity()
-export const firstname = new RegistrationFirstName()
-export const name = new RegistrationName()
-export const profile = new CompleteProfile()
-export const statut = new CompleteStatus()
+export const registrationAddress = new RegistrationAddress()
+export const registrationCity = new RegistrationCity()
+export const registrationFirstName = new RegistrationFirstName()
+export const registrationName = new RegistrationName()
+export const completeProfile = new CompleteProfile()
+export const completeStatus = new CompleteStatus()
 export const verifyId = new VerifyId()
 
 export default new StepperScreens({
-  address,
-  city,
-  firstname,
-  name,
-  profile,
-  statut,
+  registrationAddress,
+  registrationCity,
+  registrationFirstName,
+  registrationName,
+  completeProfile,
+  completeStatus,
   verifyId,
 })

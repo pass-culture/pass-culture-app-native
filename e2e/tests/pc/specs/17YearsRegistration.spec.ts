@@ -12,13 +12,12 @@ import { flags } from '../helpers/utils/platform'
 import { getBrightness } from 'react-native-device-info'
 import { verify } from 'crypto'
 import {
-  address,
-  city,
+  registrationCity,
   completeProfile,
-  firstname,
-  name,
-  profile,
-  statut,
+  registrationFirstName,
+  registrationName,
+  registrationAddress,
+  completeStatus,
   verifyId,
 } from '../features/identityCheck/StepperScreens'
 import { processFonts } from 'react-native-screens/lib/typescript/native-stack/views/FontProcessor'
@@ -162,43 +161,43 @@ describe('17YearsRegistration', () => {
     })
     it('should complete profile', async () => {
       didFirstLaunch(ok)
-      await profile.waitForIsShown(true)
-      await profile.completeProfil.click()
+      await completeProfile.waitForIsShown(true)
+      await completeProfile.completeProfile.click()
     })
     it('should set firstname name', async () => {
       const prenom = 'prenom'
       didFirstLaunch(ok)
-      await firstname.waitForIsShown(true)
-      await firstname.firstname.setValue(prenom)
+      await registrationFirstName.waitForIsShown(true)
+      await registrationFirstName.firstname.setValue(prenom)
     })
     it('should set name', async () => {
       const nom = 'nom'
       didFirstLaunch(ok)
-      await name.waitForIsShown(true)
-      await name.name.setValue(nom)
-      await name.submit.click()
-      await name.waitForIsShown(false)
+      await registrationName.waitForIsShown(true)
+      await registrationName.name.setValue(nom)
+      await registrationName.submit.click()
+      await registrationName.waitForIsShown(false)
     })
     it('should set city', async () => {
       const CityPostale = '78000'
       didFirstLaunch(ok)
-      await city.waitForIsShown(true)
-      await city.city.setValue(CityPostale)
-      await city.cityOption('Versailles').click()
+      await registrationCity.waitForIsShown(true)
+      await registrationCity.city.setValue(CityPostale)
+      await registrationCity.cityOption('Versailles').click()
       // await city.submit.click()
       // await driver.debug()
     })
     it('should set adresse', async () => {
       const addressPostale = 'test'
       didFirstLaunch(ok)
-      await address.waitForIsShown(true)
-      await address.address.setValue(addressPostale)
-      await address.submit.click()
+      await registrationAddress.waitForIsShown(true)
+      await registrationAddress.address.setValue(addressPostale)
+      await registrationAddress.submit.click()
     })
     it('should set complete statut', async () => {
       didFirstLaunch(ok)
       await statut.waitForIsShown(true)
-      await statut.completeProfil.click()
+      await statut.completeProfile.click()
       //   await driver.debug()
     })
   })
