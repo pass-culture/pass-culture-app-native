@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import styled from 'styled-components/native'
+import { ActivityIndicator } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
@@ -13,6 +14,7 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
@@ -37,7 +39,22 @@ const errorCodeToMessage: Record<string, string> = {
   STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
 }
 
+const LOADING_MESSAGES: RotatingTextOptions[] = [
+  {
+    message: 'En cours de confirmation...',
+    keepDuration: 5000,
+  },
+  {
+    message: 'Patiente quelques instants...',
+    keepDuration: 5000,
+  },
+  {
+    message: 'On y est presque...',
+  },
+]
+
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
+  const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { bookingState, dismissModal, dispatch } = useBookingContext()
   const selectedStock = useBookingStock()
@@ -54,9 +71,11 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const fromOfferId = route.params?.fromOfferId
   const algoliaOfferId = offerId?.toString()
 
+  const loadingMessage = useRotatingText(LOADING_MESSAGES)
+
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
 
-  const { mutate } = useBookOfferMutation({
+  const { mutate, isLoading } = useBookOfferMutation({
     onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
@@ -120,7 +139,15 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
-  return (
+  return isLoading ? (
+    <Center>
+      <Spacer.Column numberOfSpaces={50} />
+      <ActivityIndicator size="large" color={theme.colors.primary} />
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.ButtonText>{loadingMessage}</Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={50} />
+    </Center>
+  ) : (
     <Container>
       <Banner
         message="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
@@ -169,6 +196,12 @@ const ButtonContainer = styled.View({
 })
 
 const Container = styled.View({ width: '100%' })
+
+const Center = styled(Container)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
