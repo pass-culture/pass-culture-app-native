@@ -22,7 +22,8 @@ export const BookDateChoice = ({
 }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const hasPricesStep =
-    enablePricesByCategories && stocks.some((stock) => !stock.isExpired && stock.priceCategoryLabel)
+    enablePricesByCategories &&
+    stocks.filter((stock) => !stock.isExpired && stock.priceCategoryLabel).length > 1
 
   const showCalendar = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })

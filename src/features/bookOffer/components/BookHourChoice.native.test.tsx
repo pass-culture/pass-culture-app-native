@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
-import { mockStocks } from 'features/bookOffer/fixtures/stocks'
+import { mockStocks, stock1 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -141,7 +141,7 @@ describe('BookHourChoice', () => {
   })
 })
 
-describe('BookHourChoice when prices by category feature flag activated', () => {
+describe('BookHourChoice when prices by category feature flag activated and there are several stocks', () => {
   beforeEach(() => {
     mockUseBookingContext.mockReturnValueOnce({
       bookingState: {
@@ -160,9 +160,55 @@ describe('BookHourChoice when prices by category feature flag activated', () => 
     render(<BookHourChoice enablePricesByCategories />)
     expect(screen.getByText(`dès 210\u00a0€`)).toBeTruthy()
   })
+
+  it('should display hour items with stock selection', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.getByTestId('HourChoice2023-04-01T18:00:00Z-hour')).toBeTruthy()
+    expect(screen.getByTestId('HourChoice2023-04-01T20:00:00Z-hour')).toBeTruthy()
+  })
+
+  it('should not display hour item with stock selection', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.queryByTestId('HourChoice18755-hour')).toBeNull()
+    expect(screen.queryByTestId('HourChoice18756-hour')).toBeNull()
+    expect(screen.queryByTestId('HourChoice18757-hour')).toBeNull()
+    expect(screen.queryByTestId('HourChoice18758-hour')).toBeNull()
+  })
 })
 
-describe('BookHourChoice when prices by category feature flag desactivated', () => {
+describe('BookHourChoice when prices by category feature flag activated and there is only one stock', () => {
+  beforeEach(() => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: {
+        quantity: undefined,
+        step: mockStep,
+        date: new Date('2023-04-01T18:00:00'),
+      } as BookingState,
+      dismissModal: jest.fn(),
+      dispatch: mockDispatch,
+    })
+    mockOffer = { ...mockOffer, stocks: [stock1] }
+    mockCreditOffer = 50000
+  })
+
+  it('should render only one hour choice with the minimum price', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.queryByText(`dès 210\u00a0€`)).toBeNull()
+    expect(screen.getByText(`210\u00a0€`)).toBeTruthy()
+  })
+
+  it('should display hour item with stock selection', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.getByTestId('HourChoice18758-hour')).toBeTruthy()
+  })
+
+  it('should not display hour item without stock selection', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-hour')).toBeNull()
+  })
+})
+
+describe('BookHourChoice when prices by category feature flag desactivated and there are several stocks', () => {
   beforeEach(() => {
     mockUseBookingContext.mockReturnValueOnce({
       bookingState: {
@@ -181,5 +227,53 @@ describe('BookHourChoice when prices by category feature flag desactivated', () 
     render(<BookHourChoice />)
     expect(screen.getByText(`210\u00a0€`)).toBeTruthy()
     expect(screen.getByText(`220\u00a0€`)).toBeTruthy()
+    expect(screen.getByText(`190\u00a0€`)).toBeTruthy()
+    expect(screen.getByText(`100\u00a0€`)).toBeTruthy()
+  })
+
+  it('should display all hour items with stock selection', () => {
+    render(<BookHourChoice />)
+    expect(screen.getByTestId('HourChoice18755-hour')).toBeTruthy()
+    expect(screen.getByTestId('HourChoice18756-hour')).toBeTruthy()
+    expect(screen.getByTestId('HourChoice18757-hour')).toBeTruthy()
+    expect(screen.getByTestId('HourChoice18758-hour')).toBeTruthy()
+  })
+
+  it('should not display hour item without stock selection', () => {
+    render(<BookHourChoice />)
+    expect(screen.queryByTestId('HourChoice2023-04-01T18:00:00Z-hour')).toBeNull()
+    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-hour')).toBeNull()
+  })
+})
+
+describe('BookHourChoice when prices by category feature flag desactivated and there is only one stock', () => {
+  beforeEach(() => {
+    mockUseBookingContext.mockReturnValueOnce({
+      bookingState: {
+        quantity: undefined,
+        step: mockStep,
+        date: new Date('2023-04-01T18:00:00'),
+      } as BookingState,
+      dismissModal: jest.fn(),
+      dispatch: mockDispatch,
+    })
+    mockOffer = { ...mockOffer, stocks: [stock1] }
+    mockCreditOffer = 50000
+  })
+
+  it('should render only one hour choice with its price', () => {
+    render(<BookHourChoice />)
+    expect(screen.getByText(`210\u00a0€`)).toBeTruthy()
+  })
+
+  it('should display all hour items with stock selection', () => {
+    render(<BookHourChoice />)
+
+    expect(screen.getByTestId('HourChoice18758-hour')).toBeTruthy()
+  })
+
+  it('should not display hour item without stock selection', () => {
+    render(<BookHourChoice />)
+    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-hour')).toBeNull()
   })
 })
