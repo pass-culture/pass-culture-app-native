@@ -26,7 +26,9 @@ import {
   fireEvent,
   middleScrollEvent,
   bottomScrollEvent,
+  screen,
 } from 'tests/utils'
+import * as useCodePushVersion from 'ui/hooks/useCodePushVersion'
 
 import { Profile } from './Profile'
 
@@ -89,6 +91,10 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
+const useCodePushVersionSpy = jest
+  .spyOn(useCodePushVersion, 'useCodePushVersion')
+  .mockReturnValue('')
+
 const shareApp = jest.spyOn(Share, 'shareApp')
 
 describe('Profile component', () => {
@@ -109,6 +115,22 @@ describe('Profile component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = await renderProfile()
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
+  })
+
+  it('displays the CodePush version label', async () => {
+    const mockVersion = 'v123'
+    useCodePushVersionSpy.mockReturnValueOnce(mockVersion)
+    await renderProfile()
+
+    expect(screen.getByText(`Version 1.10.5-${mockVersion}`)).toBeTruthy()
+  })
+
+  it('does not display the version label when it is not available', async () => {
+    const mockVersion = ''
+    useCodePushVersionSpy.mockReturnValueOnce(mockVersion)
+
+    await renderProfile()
+    expect(screen.queryByText(`Version 1.10.5-${mockVersion}`)).toBeFalsy()
   })
 
   describe('user settings section', () => {
