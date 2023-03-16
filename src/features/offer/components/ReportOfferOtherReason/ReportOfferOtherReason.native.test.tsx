@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason/ReportOfferOtherReason'
@@ -10,7 +9,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
 
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 const mockDismissModal = jest.fn()
 
 const mockShowErrorSnackBar = jest.fn()

@@ -19,6 +19,11 @@ const searchState = { ...initialSearchState, searchId }
 const mockSearchState = searchState
 const mockDispatch = jest.fn()
 
+/* TODO(PC-21140): Remove this mock when update to Jest 28
+  In jest version 28, I don't bring that error :
+  TypeError: requestAnimationFrame is not a function */
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
+
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -43,7 +48,7 @@ const mockOnClose = jest.fn()
 
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = renderOfferDuoModal()
     await superFlushWithAct()
     jest.advanceTimersByTime(2000)

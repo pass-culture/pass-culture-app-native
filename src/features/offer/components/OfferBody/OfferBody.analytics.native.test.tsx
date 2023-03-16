@@ -6,7 +6,7 @@ import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/c
 import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
 import { server } from 'tests/server'
-import { act, fireEvent, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
@@ -27,7 +27,7 @@ server.use(
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   const trigger = (component: ReactTestInstance) => {
@@ -38,9 +38,7 @@ describe('<OfferBody /> - Analytics', () => {
     })
   }
 
-  // TODO(PC-16305) unskip this test when upgrading jest to 27
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should trigger logOfferSeenDuration after unmount', async () => {
+  it('should trigger logOfferSeenDuration after unmount', async () => {
     renderOfferBodyPage()
 
     await screen.findByText(offerResponseSnap.name)
@@ -48,9 +46,7 @@ describe('<OfferBody /> - Analytics', () => {
 
     screen.unmount()
 
-    await waitFor(() => {
-      expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
   })
 
   it('should log ConsultAccessibilityModalities once when opening accessibility modalities', async () => {

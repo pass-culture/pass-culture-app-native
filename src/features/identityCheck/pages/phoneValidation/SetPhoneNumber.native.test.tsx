@@ -1,5 +1,4 @@
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
@@ -36,7 +35,7 @@ jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () =
   }),
 }))
 
-const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
+const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
 describe('SetPhoneNumber', () => {
   // FIXME(anoukhello): find a way to get snapshot with modal animation

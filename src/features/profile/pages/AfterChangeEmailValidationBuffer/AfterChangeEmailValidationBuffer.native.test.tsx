@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
@@ -11,7 +10,7 @@ import { AfterChangeEmailValidationBuffer } from './AfterChangeEmailValidationBu
 
 jest.mock('react-query')
 
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 const mockUseMutationSuccess = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   mockedUseMutation.mockImplementation((mutationFunction, { onSuccess }) => ({

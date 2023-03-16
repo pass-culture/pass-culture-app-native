@@ -44,6 +44,11 @@ const mockHideGeolocPermissionModal = jest.fn()
 const mockOnPressGeolocPermissionModalButton = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
+/* TODO(PC-21140): Remove this mock when update to Jest 28
+  In jest version 28, I don't bring that error :
+  TypeError: requestAnimationFrame is not a function */
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
+
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
@@ -96,12 +101,9 @@ describe('<LocationModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers()
     const renderAPI = renderLocationModal()
     await superFlushWithAct()
-    jest.advanceTimersByTime(2000)
     expect(renderAPI).toMatchSnapshot()
-    jest.useRealTimers()
   })
 
   describe('should navigate on landing page when location filter modal opened from search box', () => {

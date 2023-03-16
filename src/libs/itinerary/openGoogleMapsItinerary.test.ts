@@ -1,11 +1,9 @@
-import { mocked } from 'ts-jest/utils'
-
 import { openUrl } from 'features/navigation/helpers'
 
 import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 
 jest.mock('features/navigation/helpers')
-const mockOpenUrl = mocked(openUrl)
+const mockOpenUrl = jest.mocked(openUrl)
 
 describe('openGoogleMapsItinerary()', () => {
   it('should open the correct encoded url with address', () => {

@@ -1,7 +1,6 @@
 /* eslint-disable local-rules/independent-mocks */
 import { Platform } from 'react-native'
 import { check, RESULTS } from 'react-native-permissions'
-import { mocked } from 'ts-jest/utils'
 
 import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission.ios'
 
@@ -23,7 +22,7 @@ jest.mock('react-native-permissions', () => ({
     LIMITED: 'limited',
   },
 }))
-const mockCheck = mocked(check)
+const mockCheck = jest.mocked(check)
 
 describe('checkGeolocPermission()', () => {
   Platform.OS = 'ios'

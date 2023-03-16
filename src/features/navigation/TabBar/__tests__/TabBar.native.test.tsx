@@ -1,7 +1,6 @@
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
 import { NavigationHelpers, ParamListBase } from '@react-navigation/native'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import {
   DEFAULT_TAB_ROUTES,
@@ -18,7 +17,7 @@ jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
   )
   return { DEFAULT_TAB_ROUTES, useTabNavigationContext: jest.fn() }
 })
-const mockedUseTabNavigationContext = mocked(useTabNavigationContext)
+const mockedUseTabNavigationContext = jest.mocked(useTabNavigationContext)
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),

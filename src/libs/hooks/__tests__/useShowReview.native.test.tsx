@@ -22,9 +22,10 @@ const TestReviewComponent = () => {
   return null
 }
 
+// TODO(PC-21144) Ne pas afficher en web
 describe('useShowReview', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
   afterEach(() => {
     jest.runOnlyPendingTimers()

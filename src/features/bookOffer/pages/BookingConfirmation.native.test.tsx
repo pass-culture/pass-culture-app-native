@@ -37,7 +37,7 @@ const mockOfferId = 1337
 
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     useRoute.mockReturnValue({
       params: {
         offerId: mockOfferId,

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useMutation } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -15,7 +14,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
 
-const mockedUseMutation = mocked(useMutation)
+const mockedUseMutation = jest.mocked(useMutation)
 
 jest.mock('react-query')
 

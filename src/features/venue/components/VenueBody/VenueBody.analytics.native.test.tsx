@@ -21,7 +21,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 describe('<VenueBody /> - Analytics', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
   })
 
   afterAll(() => {
@@ -31,7 +31,7 @@ describe('<VenueBody /> - Analytics', () => {
   const trigger = (component: ReactTestInstance) => {
     act(() => {
       fireEvent.press(component)
-      jest.advanceTimersByTime(300)
+      jest.runAllTimers()
     })
   }
 

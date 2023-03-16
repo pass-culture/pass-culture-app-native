@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { SearchView } from 'features/search/types'
@@ -22,7 +21,7 @@ jest.mock('react-query')
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = mocked(useVenueOffers)
+const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels

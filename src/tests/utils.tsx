@@ -1,3 +1,8 @@
+// We importe setImmediate here since it is defined only in node environment and since Jest 27, web tests in jsdom environment
+// can not read setImmediate so we import it
+// https://github.com/prisma/prisma/issues/8558#issuecomment-1040378575
+import { setImmediate } from 'timers'
+
 // eslint-disable-next-line no-restricted-imports
 import { render, waitFor as defaultWaitFor } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'

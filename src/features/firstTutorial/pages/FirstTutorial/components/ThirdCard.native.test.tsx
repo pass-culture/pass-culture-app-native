@@ -1,7 +1,6 @@
 /* eslint-disable local-rules/independent-mocks */
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
-import { mocked } from 'ts-jest/utils'
 
 import { analytics } from 'libs/firebase/analytics'
 import { GeolocationWrapper, GeolocPermissionState } from 'libs/geolocation'
@@ -11,7 +10,7 @@ import { GenericAchievement } from 'ui/components/achievements'
 
 import { ThirdCard } from './ThirdCard'
 
-const mockRequestGeolocPermission = mocked(requestGeolocPermission)
+const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
 
 describe('ThirdCard', () => {
   it('should render third card', () => {

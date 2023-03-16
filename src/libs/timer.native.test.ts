@@ -4,7 +4,7 @@ import { act, renderHook } from 'tests/utils'
 
 describe('Timer', () => {
   describe('Undefined start time', () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
 
     it.each([0, null, undefined])('should not start timer on nil starttime (%s)', (starttime) => {
       renderHook(() => Timer.useTimer(starttime, () => false))
@@ -31,7 +31,7 @@ describe('Timer', () => {
       expect(clearLocalIntervalMock).toHaveBeenCalledTimes(1)
     })
     it('should not stop if shouldStop return false', () => {
-      jest.useFakeTimers()
+      jest.useFakeTimers('legacy')
       // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(Dates, 'currentTimestamp').mockReturnValue(1)
       const myInspector = jest.fn((_elapstedTime: number) => false)
@@ -58,7 +58,7 @@ describe('Timer', () => {
       expect(current).toEqual(Timer.TIMER_NOT_INITIALIZED)
     })
     it('should not call onSecondTick when not supplied', () => {
-      jest.useFakeTimers()
+      jest.useFakeTimers('legacy')
       const {
         result: { current },
       } = renderHook(() => Timer.useTimer(Dates.currentTimestamp() - 1, () => false))

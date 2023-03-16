@@ -23,9 +23,7 @@ const storageKeys = Object.keys(EXPECTED_STORAGE) as StorageKey[]
 const setUtmParamsSpy = jest.spyOn(StateFromPath, 'setUtmParameters')
 
 describe('setMarketingParams', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-  })
+  beforeEach(() => jest.useFakeTimers('legacy'))
 
   afterEach(jest.useRealTimers)
 

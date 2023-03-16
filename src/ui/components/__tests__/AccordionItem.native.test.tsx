@@ -10,7 +10,7 @@ const Children = () => <View testID="accordion-child-view" />
 const accordionTitle = 'accordion title'
 
 describe('AccordionItem', () => {
-  beforeAll(() => jest.useFakeTimers())
+  beforeAll(() => jest.useFakeTimers('legacy'))
 
   it("is closed by default - we don't see the children", () => {
     const accordion = renderAccordion()
@@ -29,7 +29,7 @@ describe('AccordionItem', () => {
 
     act(() => {
       fireEvent.press(accordion.getByText('accordion title'))
-      jest.advanceTimersByTime(300)
+      jest.runAllTimers()
     })
 
     expect(accordionBody.props.style).toEqual({ height: 30, overflow: 'hidden' })
@@ -44,7 +44,7 @@ describe('AccordionItem', () => {
 
     act(() => {
       fireEvent.press(accordion.getByText('accordion title'))
-      jest.advanceTimersByTime(300)
+      jest.runAllTimers()
     })
 
     // ArrowNext (right) + 270° => arrow facing down.

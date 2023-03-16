@@ -1,5 +1,3 @@
-import { mocked } from 'ts-jest/utils'
-
 import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { renderHook, waitFor } from 'tests/utils'
@@ -9,9 +7,9 @@ import { GeolocationWrapper, useGeolocation } from './GeolocationWrapper'
 import { getPosition } from './getPosition'
 import { GeolocationError } from './types'
 
-const mockGetPosition = mocked(getPosition)
-const mockCheckGeolocPermission = mocked(checkGeolocPermission)
-const mockRequestGeolocPermission = mocked(requestGeolocPermission)
+const mockGetPosition = jest.mocked(getPosition)
+const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
+const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
 function mockPermissionResult(state: GeolocPermissionState) {
   mockCheckGeolocPermission.mockResolvedValue(state)
   mockRequestGeolocPermission.mockResolvedValue(state)

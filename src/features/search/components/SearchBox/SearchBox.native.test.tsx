@@ -85,7 +85,7 @@ describe('SearchBox component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchBox', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
 
     await waitFor(() => {

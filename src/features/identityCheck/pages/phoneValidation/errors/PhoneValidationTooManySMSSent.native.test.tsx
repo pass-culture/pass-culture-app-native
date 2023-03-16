@@ -1,6 +1,5 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
@@ -22,7 +21,7 @@ jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () =
   }
 })
 
-const mockedPhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
+const mockedPhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
 describe('PhoneValidationTooManySMSSent', () => {
   beforeAll(() => {

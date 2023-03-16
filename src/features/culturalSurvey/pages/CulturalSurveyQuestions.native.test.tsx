@@ -1,6 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
@@ -21,7 +20,7 @@ jest.mock('features/navigation/helpers')
 jest.mock('react-query')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
-const mockedUseCulturalSurveyAnswersMutation = mocked(useCulturalSurveyAnswersMutation)
+const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
 
 const navigationProps = {
   route: {

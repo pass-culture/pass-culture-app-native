@@ -11,7 +11,7 @@ import { act, fireEvent, render } from 'tests/utils'
 jest.mock('features/venue/api/useVenue')
 
 describe('<VenueHeader />', () => {
-  beforeAll(() => jest.useFakeTimers())
+  beforeAll(() => jest.useFakeTimers('legacy'))
   afterAll(() => jest.useRealTimers())
 
   it('should render all icons', () => {
@@ -33,7 +33,7 @@ describe('<VenueHeader />', () => {
 
     act(() => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
-      jest.advanceTimersByTime(100)
+      jest.runAllTimers()
     })
 
     expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()

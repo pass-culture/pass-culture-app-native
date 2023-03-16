@@ -15,6 +15,11 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 
+/* TODO(PC-21140): Remove this mock when update to Jest 28
+  In jest version 28, I don't bring that error :
+  TypeError: requestAnimationFrame is not a function */
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
+
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
@@ -31,6 +36,7 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<Offer />', () => {
   beforeEach(() => {
+    jest.useFakeTimers('legacy')
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

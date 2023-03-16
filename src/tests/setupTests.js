@@ -9,18 +9,19 @@ import { flushAllPromises } from './utils'
 
 global.expect.extend(toHaveNoViolations)
 
+consoleFailTestModule.cft({
+  testFramework: 'jest',
+  spyLibrary: 'jest',
+  console: {
+    debug: false,
+    error: false,
+    log: false,
+    warn: false,
+  },
+})
+
 global.beforeAll(() => {
   server.listen()
-  consoleFailTestModule.cft({
-    testFramework: 'jest',
-    spyLibrary: 'jest',
-    console: {
-      debug: false,
-      error: false,
-      log: false,
-      warn: false,
-    },
-  })
 })
 
 global.afterAll(() => {

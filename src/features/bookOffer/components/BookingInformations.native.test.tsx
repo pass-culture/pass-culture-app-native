@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { initialBookingState } from 'features/bookOffer/context/reducer'
@@ -19,9 +18,9 @@ jest.mock('features/bookOffer/helpers/useBookingStock')
 jest.mock('features/bookOffer/helpers/useBookingOffer')
 
 jest.mock('libs/address/useFormatFullAddress')
-const mockedUseBooking = mocked(useBookingContext)
-const mockedUseBookingOffer = mocked(useBookingOffer)
-const mockedUseBookingStock = mocked(useBookingStock)
+const mockedUseBooking = jest.mocked(useBookingContext)
+const mockedUseBookingOffer = jest.mocked(useBookingOffer)
+const mockedUseBookingStock = jest.mocked(useBookingStock)
 
 const mockSubcategories = placeholderData.subcategories
 jest.mock('libs/subcategories/useSubcategories', () => ({

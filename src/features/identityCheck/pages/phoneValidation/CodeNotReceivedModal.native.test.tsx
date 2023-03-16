@@ -1,5 +1,4 @@
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
@@ -41,7 +40,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-const mockedUsePhoneValidationRemainingAttempts = mocked(usePhoneValidationRemainingAttempts)
+const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
 describe('<CodeNotReceivedModal />', () => {
   const mockFetch = jest.spyOn(global, 'fetch')

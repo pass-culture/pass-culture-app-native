@@ -41,7 +41,7 @@ describe('<DatesHoursModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers('legacy')
     const renderAPI = renderDatesHoursModal()
     await superFlushWithAct()
     expect(renderAPI).toMatchSnapshot()
