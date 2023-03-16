@@ -103,7 +103,7 @@ describe('GenericHome page - Analytics', () => {
     })
   })
 
-  // FIXME(SKADAK): fix this test
+  // FIXME(PC-21142): fix this test
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should trigger logEvent "AllModulesSeen" only once', async () => {
     renderGenericHome()
