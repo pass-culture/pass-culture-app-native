@@ -40,14 +40,14 @@ export function PersonalData() {
 
       <StyledSeparator />
 
-      {!!user?.isBeneficiary && (
+      {user?.isBeneficiary && user?.phoneNumber ? (
         <React.Fragment>
           <Typo.CaptionNeutralInfo>Numéro de téléphone</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{user?.phoneNumber}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
-      )}
+      ) : null}
 
       <Typo.CaptionNeutralInfo>Mot de passe</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />

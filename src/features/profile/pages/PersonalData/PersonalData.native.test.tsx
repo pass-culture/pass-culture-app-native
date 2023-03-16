@@ -1,5 +1,4 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
@@ -8,7 +7,7 @@ import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render, fireEvent, screen } from 'tests/utils'
+import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
@@ -23,81 +22,93 @@ const mockedIdentity: Partial<UserProfileResponse> = {
 }
 
 describe('PersonalData', () => {
-  it('should render personal data success', async () => {
-    const renderedPersonalData = await renderPersonalData({
+  it('should render personal data success', () => {
+    renderPersonalData({
+      ...mockedIdentity,
       isBeneficiary: true,
-      ...mockedIdentity,
     } as UserProfileResponse)
-    expect(renderedPersonalData.toJSON()).toMatchSnapshot()
+
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should render for beneficiary profile', async () => {
-    const { getByText } = await renderPersonalData({
+  it('should render for beneficiary profile', () => {
+    renderPersonalData({
+      ...mockedIdentity,
       isBeneficiary: true,
-      ...mockedIdentity,
     } as UserProfileResponse)
 
-    await waitForExpect(() => {
-      expect(getByText('Prénom et nom')).toBeTruthy()
-      expect(getByText('Rosa Bonheur')).toBeTruthy()
-      expect(getByText('Adresse e-mail')).toBeTruthy()
-      expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
-      expect(getByText('Numéro de téléphone')).toBeTruthy()
-      expect(getByText('+33685974563')).toBeTruthy()
-      expect(getByText('Mot de passe')).toBeTruthy()
-      expect(getByText('*'.repeat(12))).toBeTruthy()
-      expect(getByText('Supprimer mon compte')).toBeTruthy()
-    })
+    expect(screen.queryByText('Prénom et nom')).toBeTruthy()
+    expect(screen.queryByText('Rosa Bonheur')).toBeTruthy()
+    expect(screen.queryByText('Adresse e-mail')).toBeTruthy()
+    expect(screen.queryByText('rosa.bonheur@gmail.com')).toBeTruthy()
+    expect(screen.queryByText('Numéro de téléphone')).toBeTruthy()
+    expect(screen.queryByText('+33685974563')).toBeTruthy()
+    expect(screen.queryByText('Mot de passe')).toBeTruthy()
+    expect(screen.queryByText('*'.repeat(12))).toBeTruthy()
+    expect(screen.queryByText('Supprimer mon compte')).toBeTruthy()
   })
 
-  it('should render for non beneficiary profile', async () => {
-    const { queryByText } = await renderPersonalData({
-      isBeneficiary: false,
+  it('should render for beneficiary profile without phone number', () => {
+    renderPersonalData({
       ...mockedIdentity,
+      isBeneficiary: true,
+      phoneNumber: null,
     } as UserProfileResponse)
 
-    await waitForExpect(() => {
-      expect(queryByText('Adresse e-mail')).toBeTruthy()
-      expect(queryByText('Mot de passe')).toBeTruthy()
-      expect(queryByText('Supprimer mon compte')).toBeTruthy()
-      expect(queryByText('Prénom et nom')).toBeNull()
-      expect(queryByText('Numéro de téléphone')).toBeNull()
-    })
+    expect(screen.queryByText('Prénom et nom')).toBeTruthy()
+    expect(screen.queryByText('Rosa Bonheur')).toBeTruthy()
+    expect(screen.queryByText('Adresse e-mail')).toBeTruthy()
+    expect(screen.queryByText('rosa.bonheur@gmail.com')).toBeTruthy()
+    expect(screen.queryByText('Numéro de téléphone')).toBeNull()
+    expect(screen.queryByText('Mot de passe')).toBeTruthy()
+    expect(screen.queryByText('*'.repeat(12))).toBeTruthy()
+    expect(screen.queryByText('Supprimer mon compte')).toBeTruthy()
   })
 
-  it('should redirect to ChangePassword when clicking on modify password button', async () => {
-    const { getByTestId } = await renderPersonalData({
-      isBeneficiary: false,
+  it('should render for non beneficiary profile', () => {
+    renderPersonalData({
       ...mockedIdentity,
+      isBeneficiary: false,
     } as UserProfileResponse)
 
-    const modifyButton = getByTestId('Modifier mot de passe')
+    expect(screen.queryByText('Prénom et nom')).toBeNull()
+    expect(screen.queryByText('Adresse e-mail')).toBeTruthy()
+    expect(screen.queryByText('Mot de passe')).toBeTruthy()
+    expect(screen.queryByText('Numéro de téléphone')).toBeNull()
+    expect(screen.queryByText('Supprimer mon compte')).toBeTruthy()
+  })
+
+  it('should redirect to ChangePassword when clicking on modify password button', () => {
+    renderPersonalData({
+      ...mockedIdentity,
+      isBeneficiary: false,
+    } as UserProfileResponse)
+
+    const modifyButton = screen.getByTestId('Modifier mot de passe')
     fireEvent.press(modifyButton)
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('ChangePassword', undefined)
-    })
+    expect(navigate).toBeCalledWith('ChangePassword', undefined)
   })
 
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
-    const { getByText } = await renderPersonalData({
-      isBeneficiary: false,
+    renderPersonalData({
       ...mockedIdentity,
+      isBeneficiary: false,
     } as UserProfileResponse)
 
-    const row = getByText('Supprimer mon compte')
-    fireEvent.press(row)
+    const deleteButton = screen.getByText('Supprimer mon compte')
+    fireEvent.press(deleteButton)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
       expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
     })
   })
 
-  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
-    await renderPersonalData({
-      isBeneficiary: false,
+  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', () => {
+    renderPersonalData({
       ...mockedIdentity,
+      isBeneficiary: false,
     } as UserProfileResponse)
 
     const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
@@ -107,7 +118,7 @@ describe('PersonalData', () => {
   })
 })
 
-async function renderPersonalData(response: UserProfileResponse) {
+function renderPersonalData(response: UserProfileResponse) {
   mockedUseAuthContext.mockReturnValueOnce({
     setIsLoggedIn: jest.fn(),
     isLoggedIn: true,
@@ -117,7 +128,5 @@ async function renderPersonalData(response: UserProfileResponse) {
   })
 
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(reactQueryProviderHOC(<PersonalData />))
-  await superFlushWithAct()
-  return wrapper
+  return render(reactQueryProviderHOC(<PersonalData />))
 }
