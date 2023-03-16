@@ -7,6 +7,8 @@ describe('useRotatingText', () => {
   beforeEach(() => jest.useFakeTimers('legacy'))
   afterEach(() => {
     jest.useRealTimers()
+    // We don't really know why this is necessary but we noticed that those tests weren't independant
+    // Reseting modules was the only way to make all tests passed in Jest 27
     jest.resetModules()
   })
   it('should return a new text every 3 seconds', () => {
