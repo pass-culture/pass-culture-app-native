@@ -87,7 +87,7 @@ export const CategoriesModal = ({
   }, [category, tree])
 
   const genreTypes = useMemo(() => {
-    return (nativeCategory && nativeCategories?.[nativeCategory].children) as MappedGenreTypes
+    return (nativeCategory && nativeCategories?.[nativeCategory]?.children) as MappedGenreTypes
   }, [nativeCategory, nativeCategories])
 
   const handleCategorySelect = useCallback(
