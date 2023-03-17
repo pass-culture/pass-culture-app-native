@@ -1,14 +1,13 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { useMutation } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { amplitude } from 'libs/amplitude'
-import { act, fireEvent, render, useMutationFactory, waitFor } from 'tests/utils'
+import { fireEvent, render, useMutationFactory, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -49,10 +48,9 @@ describe('<IdentityCheckHonor/>', () => {
     const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
-    await act(async () => {
-      useMutationCallbacks.onSuccess()
-    })
-    await waitForExpect(() => {
+    useMutationCallbacks.onSuccess()
+
+    await waitFor(() => {
       expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
     })
   })
@@ -72,12 +70,10 @@ describe('<IdentityCheckHonor/>', () => {
     const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
-    await act(async () => {
-      useMutationCallbacks.onSuccess()
-    })
-    await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
+    useMutationCallbacks.onSuccess()
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'BeneficiaryAccountCreated')
     })
   })
 
@@ -93,11 +89,9 @@ describe('<IdentityCheckHonor/>', () => {
     const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
-    await act(async () => {
-      useMutationCallbacks.onSuccess()
-    })
+    useMutationCallbacks.onSuccess()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
     })
   })

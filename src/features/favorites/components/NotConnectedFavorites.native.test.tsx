@@ -1,33 +1,35 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { NotConnectedFavorites } from './NotConnectedFavorites'
 
 describe('NotConnectedFavorites component', () => {
   it('should render not connected favorites', () => {
-    const renderAPI = render(<NotConnectedFavorites />)
-    expect(renderAPI.toJSON()).toMatchSnapshot()
+    render(<NotConnectedFavorites />)
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to SignupForm on button click and log analytics', async () => {
-    const renderAPI = render(<NotConnectedFavorites />)
-    fireEvent.press(renderAPI.getByText(`Créer un compte`))
+    render(<NotConnectedFavorites />)
 
-    await waitForExpect(() => {
+    fireEvent.press(screen.getByText(`Créer un compte`))
+
+    await waitFor(() => {
       expect(navigate).toBeCalledWith('SignupForm', undefined)
       expect(analytics.logSignUpFromFavorite).toBeCalledTimes(1)
     })
   })
 
   it('should navigate to Login on button click log analytics', async () => {
-    const renderAPI = render(<NotConnectedFavorites />)
-    fireEvent.press(renderAPI.getByText(`Se connecter`))
+    render(<NotConnectedFavorites />)
 
-    await waitForExpect(() => {
+    fireEvent.press(screen.getByText(`Se connecter`))
+
+    await waitFor(() => {
       expect(navigate).toBeCalledWith('Login', {})
       expect(analytics.logSignInFromFavorite).toBeCalledTimes(1)
     })

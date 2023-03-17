@@ -1,9 +1,8 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { AccountState } from 'api/gen'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { SuspensionScreen } from './SuspensionScreen'
 
@@ -31,44 +30,42 @@ function mockUseCurrentRoute(name: string) {
 }
 
 describe('<SuspensionsScreen />', () => {
-  it('should display SuspendedAccount component if account is suspended upon user request', async () => {
+  it('should display SuspendedAccount component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
-    const { getByText } = render(<SuspensionScreen />)
-    expect(getByText('Ton compte est désactivé')).toBeTruthy()
+    render(<SuspensionScreen />)
+
+    expect(screen.getByText('Ton compte est désactivé')).toBeTruthy()
   })
 
-  it('should display FraudulentAccount component if account is suspended for fraud', async () => {
+  it('should display FraudulentAccount component if account is suspended for fraud', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED
-    const { getByText } = render(<SuspensionScreen />)
-    expect(getByText('Ton compte a été suspendu')).toBeTruthy()
+    render(<SuspensionScreen />)
+
+    expect(screen.getByText('Ton compte a été suspendu')).toBeTruthy()
   })
 
-  it('should redirect to home if account is not suspended', async () => {
+  it('should redirect to home if account is not suspended', () => {
     mockSuspensionStatus.status = AccountState.ACTIVE
     render(<SuspensionScreen />)
 
-    await waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-    })
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should call sign out function on component unmount', async () => {
+  it('should call sign out function on component unmount', () => {
     mockUseCurrentRoute('TabNavigator')
-    const { unmount } = render(<SuspensionScreen />)
+    render(<SuspensionScreen />)
 
-    unmount()
-    await waitForExpect(() => {
-      expect(mockSignOut).toHaveBeenCalledTimes(1)
-    })
+    screen.unmount()
+
+    expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 
-  it('should not call sign out function if user is redirect to reactivation success screen', async () => {
+  it('should not call sign out function if user is redirect to reactivation success screen', () => {
     mockUseCurrentRoute('AccountReactivationSuccess')
-    const { unmount } = render(<SuspensionScreen />)
+    render(<SuspensionScreen />)
 
-    unmount()
-    await waitForExpect(() => {
-      expect(mockSignOut).not.toBeCalled()
-    })
+    screen.unmount()
+
+    expect(mockSignOut).not.toBeCalled()
   })
 })
