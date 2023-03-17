@@ -240,7 +240,7 @@
     "@wdio/local-runner": "7.26.0",
     "@wdio/mocha-framework": "7.26.0",
     "@wdio/spec-reporter": "7.26.0",
-    "@welldone-software/why-did-you-render": "^6.2.0",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "appcenter-cli": "^2.10.10",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.5",
