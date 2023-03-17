@@ -3,30 +3,30 @@ import CodePush, { LocalPackage } from 'react-native-code-push'
 import { eventMonitoring } from 'libs/monitoring'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useCodePushVersion } from './useCodePushVersion'
+import { useVersion } from './useVersion'
 
-describe('useCodePushVersion', () => {
-  it('returns empty string if CodePush.getUpdateMetadata returns null', async () => {
+describe('useVersion', () => {
+  it('should return only the version when there are not CodePush information', async () => {
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve(null))
 
-    const { result } = renderHook(() => useCodePushVersion())
+    const { result } = renderHook(() => useVersion())
 
-    expect(result.current).toEqual('')
+    expect(result.current).toEqual('Version\u00A01.10.5')
   })
 
-  it('returns version label if CodePush.getUpdateMetadata returns metadata', async () => {
+  it('should return version and CodePush label when there are CodePush information', async () => {
     CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve({ label: 'V4' } as LocalPackage))
 
-    const { result } = renderHook(() => useCodePushVersion())
+    const { result } = renderHook(() => useVersion())
     await waitFor(() => {
-      expect(result.current).toEqual('V4')
+      expect(result.current).toEqual('Version\u00A01.10.5-4')
     })
   })
 
-  it('calls eventMonitoring.captureException on error', async () => {
+  it('should calls eventMonitoring.captureException on error', async () => {
     const error = new Error('CodePush error')
     CodePush.getUpdateMetadata = jest.fn(() => Promise.reject(error))
-    renderHook(() => useCodePushVersion())
+    renderHook(() => useVersion())
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
