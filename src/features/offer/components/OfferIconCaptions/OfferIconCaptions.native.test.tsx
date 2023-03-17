@@ -1,11 +1,10 @@
 import React from 'react'
 import { QueryClient } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { CategoryIdEnum, OfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { OfferIconCaptions } from './OfferIconCaptions'
 
@@ -110,8 +109,9 @@ const userProfileAPIResponse: UserProfileResponse = {
 
 describe('<OfferIconCaptions />', () => {
   it('should match snapshot', async () => {
-    const { toJSON } = await renderOfferIconCaptions({})
-    expect(toJSON()).toMatchSnapshot()
+    renderOfferIconCaptions({})
+
+    expect(screen).toMatchSnapshot()
   })
 
   it.each`
@@ -123,11 +123,11 @@ describe('<OfferIconCaptions />', () => {
   `(
     'should $show Icon isDuo for Duo=$duo offers for beneficiary=$beneficiary users',
     async ({ show, duo, beneficiary }) => {
-      const component = await renderOfferIconCaptions({
+      const component = renderOfferIconCaptions({
         isDuo: duo,
         isBeneficiary: beneficiary,
       })
-      await waitForExpect(() => {
+      await waitFor(() => {
         if (show === 'show') {
           expect(component.queryByText(/À deux !/)).toBeTruthy()
         } else {
@@ -151,15 +151,15 @@ describe('<OfferIconCaptions />', () => {
     ${severalStocks}            | ${true}  | ${false}      | ${'7\u00a0€'}
     ${noBookableStocks}         | ${true}  | ${false}      | ${'Dès 7\u00a0€'}
   `('should show right price', async ({ stocks, isDuo, isBeneficiary, expectedDisplayedPrice }) => {
-    const component = await renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
-    await waitForExpect(() => {
+    const component = renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
+    await waitFor(() => {
       const euro = component.getByTestId('caption-iconPrice')
       expect(euro.props.children).toEqual(expectedDisplayedPrice)
     })
   })
 })
 
-async function renderOfferIconCaptions({
+function renderOfferIconCaptions({
   isDuo = false,
   isBeneficiary = true,
   stocks,
@@ -180,7 +180,7 @@ async function renderOfferIconCaptions({
     queryClient.removeQueries()
   }
 
-  const wrapper = render(
+  return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <OfferIconCaptions
@@ -192,8 +192,4 @@ async function renderOfferIconCaptions({
       setup
     )
   )
-  await waitFor(() => {
-    expect(wrapper.queryByTestId('iconPrice')).toBeTruthy()
-  })
-  return wrapper
 }
