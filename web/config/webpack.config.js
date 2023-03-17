@@ -20,7 +20,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const { DuplicatesPlugin } = require("inspectpack/plugin")
+const { DuplicatesPlugin } = require('inspectpack/plugin')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
@@ -59,7 +59,10 @@ const allCssFiles = fs
 const devCssFiles = allCssFiles.filter((fileName) => fileName.match(/^\d{2}-dev-/))
 const prodCssFiles = allCssFiles.filter((fileName) => !fileName.match(/^\d{2}-dev-/))
 
-const chunkProtectionScript = fs.readFileSync(path.join(__dirname, '../js/chunk-protection.js'), 'utf8')
+const chunkProtectionScript = fs.readFileSync(
+  path.join(__dirname, '../js/chunk-protection.js'),
+  'utf8'
+)
 
 function getCss(files) {
   return files
@@ -186,7 +189,7 @@ module.exports = function (webpackEnv) {
       filename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].js'
         : isEnvDevelopment && 'static/js/bundle.js',
-      // TODO(kopax): remove this when upgrading to webpack 5
+      // TODO(PC-17290): remove this when upgrading to webpack 5 (https://passculture.atlassian.net/browse/PC-17290)
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
@@ -322,9 +325,12 @@ module.exports = function (webpackEnv) {
         //// Those package use bad default import from package.json (for ex: using package.json browser field instead of module)
         //// See https://github.com/webpack/webpack/issues/4674 for details
         // remove when issue is resolved https://github.com/bvaughn/react-error-boundary/issues/114
-        'react-error-boundary': path.join(paths.appNodeModules, 'react-error-boundary/dist/react-error-boundary.esm.js'),
+        'react-error-boundary': path.join(
+          paths.appNodeModules,
+          'react-error-boundary/dist/react-error-boundary.esm.js'
+        ),
         // remove when issue is resolved https://github.com/callstack/react-theme-provider/issues/141
-        'deepmerge': path.join(paths.appNodeModules, 'deepmerge/dist/cjs.js'),
+        deepmerge: path.join(paths.appNodeModules, 'deepmerge/dist/cjs.js'),
 
         // Due to https://github.com/pass-culture/pass-culture-app-native/pull/3418
         // remove when https://github.com/getsentry/sentry-react-native/issues/2409 is resolved
@@ -699,13 +705,20 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-      isEnvProduction && Boolean(process.env.UPLOAD_SOURCEMAPS_TO_SENTRY) &&
+      isEnvProduction &&
+        Boolean(process.env.UPLOAD_SOURCEMAPS_TO_SENTRY) &&
         new SentryWebpackPlugin({
           include: paths.appBuild,
           rewrite: true,
           // for testing, we want to group the source map under one artifact and select sourcemaps using hash
-          release: env.raw.ENV === 'testing' ? `${appPackageJson.version}-web` : `${appPackageJson.version}-web-${env.raw.COMMIT_HASH}`,
-          dist: env.raw.ENV === 'testing' ? `${appPackageJson.build}-web-${env.raw.COMMIT_HASH}` : `${appPackageJson.build}-web`,
+          release:
+            env.raw.ENV === 'testing'
+              ? `${appPackageJson.version}-web`
+              : `${appPackageJson.version}-web-${env.raw.COMMIT_HASH}`,
+          dist:
+            env.raw.ENV === 'testing'
+              ? `${appPackageJson.build}-web-${env.raw.COMMIT_HASH}`
+              : `${appPackageJson.build}-web`,
           cleanArtifacts: false,
           finalize: env.raw.ENV !== 'testing',
           deploy: {
@@ -714,11 +727,13 @@ module.exports = function (webpackEnv) {
             url: env.raw.APP_PUBLIC_URL,
           },
         }),
-      isEnvProduction && Boolean(process.env.BUNDLE_ANALYZER) &&
+      isEnvProduction &&
+        Boolean(process.env.BUNDLE_ANALYZER) &&
         new BundleAnalyzerPlugin({
-          generateStatsFile: true
+          generateStatsFile: true,
         }),
-      isEnvProduction && Boolean(process.env.SHOW_DUPLICATES_PLUGIN) &&
+      isEnvProduction &&
+        Boolean(process.env.SHOW_DUPLICATES_PLUGIN) &&
         new DuplicatesPlugin({
           // Emit compilation warning or error? (Default: `false`)
           emitErrors: false,
@@ -733,8 +748,8 @@ module.exports = function (webpackEnv) {
           // **Note**: Uses posix paths for all matching (e.g., on windows `/` not `\`).
           ignoredPackages: undefined,
           // Display full duplicates information? (Default: `false`)
-          verbose: true
-        })
+          verbose: true,
+        }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.

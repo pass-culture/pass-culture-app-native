@@ -18,7 +18,7 @@ describe('<DateInput />', () => {
 
   describe('touch device', () => {
     it('should render correctly', () => {
-      // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+      // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
       jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       render(<DateInput {...props} />, { theme: { isTouch: true } })

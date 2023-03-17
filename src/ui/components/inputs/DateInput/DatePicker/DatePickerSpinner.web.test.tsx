@@ -16,7 +16,7 @@ describe('<DatePickerSpinner />', () => {
   props.onChange.mockReset()
 
   it('should call onChange with the selected date when a date is selected', () => {
-    // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+    // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
     const { container } = render(<DatePickerSpinner {...props} />)
@@ -38,7 +38,7 @@ describe('<DatePickerSpinner />', () => {
   })
 
   it('should trigger hidden value change when value is valid iso date string', () => {
-    // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+    // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
     render(<DatePickerSpinner {...props} />)
@@ -53,7 +53,7 @@ describe('<DatePickerSpinner />', () => {
   })
 
   it('should not trigger hidden value change when value is invalid string', () => {
-    // FIXME(LucasBeneston): This warning comes from react-native-date-picker
+    // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
     render(<DatePickerSpinner {...props} />)

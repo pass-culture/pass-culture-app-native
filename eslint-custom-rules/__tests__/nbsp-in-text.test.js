@@ -24,17 +24,8 @@ const tests = {
     // &nbsp; for <Text>« myText</Text>
     { code: '<Text>«&nbsp;myText</Text>' },
   ],
-  // TODO(LucasBeneston): add invalid tests
   invalid: [
-    // &nbsp; for <Text>myText !</Text> with characters !, ?, :, » and €
-    // {
-    //   code: '<Text>myText !</Text>',
-    //   errors: [
-    //     {
-    //       suggestions: [{ messageId: 'nbspBefore', output: '<Text>myText&nbsp;!</Text>' }],
-    //     },
-    //   ],
-    // },
+    // TODO(PC-21172): Add invalid tests (https://passculture.atlassian.net/browse/PC-21172)
   ],
 }
 
