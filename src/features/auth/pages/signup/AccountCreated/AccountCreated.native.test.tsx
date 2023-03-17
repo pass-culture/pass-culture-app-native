@@ -1,5 +1,4 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -8,7 +7,7 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { BatchUser } from 'libs/react-native-batch'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, waitFor } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
@@ -33,9 +32,9 @@ describe('<AccountCreated />', () => {
   it('should redirect to native cultural survey page WHEN "On y va !" button is clicked', async () => {
     const renderAPI = renderAccountCreated()
 
-    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+    fireEvent.press(renderAPI.getByText('On y va\u00a0!'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigateFromRef).not.toBeCalled()
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('CulturalSurveyIntro', undefined)
@@ -49,9 +48,9 @@ describe('<AccountCreated />', () => {
     })
     const renderAPI = renderAccountCreated()
 
-    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+    fireEvent.press(renderAPI.getByText('On y va\u00a0!'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigateFromRef).toBeCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
