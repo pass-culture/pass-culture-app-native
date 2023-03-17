@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { PersonalData } from './PersonalData'
 
+jest.mock('features/auth/context/AuthContext')
+
 describe('<PersonalData/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
