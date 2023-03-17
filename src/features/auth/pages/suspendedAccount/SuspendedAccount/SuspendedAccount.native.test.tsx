@@ -1,12 +1,11 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { queriesToInvalidateOnUnsuspend } from 'features/auth/api/useAccountUnsuspend'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -40,32 +39,36 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 describe('<SuspendedAccount />', () => {
   const queryClient = useQueryClient()
   it('should match snapshot', () => {
-    expect(render(<SuspendedAccount />)).toMatchSnapshot()
+    render(<SuspendedAccount />)
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log analytics and redirect to reactivation screen on success', async () => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-    const { getByText } = render(<SuspendedAccount />)
+    render(<SuspendedAccount />)
 
-    await fireEvent.press(getByText('Réactiver mon compte'))
+    fireEvent.press(screen.getByText('Réactiver mon compte'))
+
     expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     useMutationCallbacks.onSuccess()
-    await waitForExpect(() => {
+    await waitFor(() => {
       queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
         expect(queryClient.invalidateQueries).toHaveBeenCalledWith(queryKey)
       )
-      expect(replace).toHaveBeenCalledWith('AccountReactivationSuccess')
+      expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
     })
   })
 
   it('should log analytics and show error snackbar on error', async () => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-    const { getByText } = render(<SuspendedAccount />)
+    render(<SuspendedAccount />)
 
-    await fireEvent.press(getByText('Réactiver mon compte'))
+    fireEvent.press(screen.getByText('Réactiver mon compte'))
+
     expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     const response = {
@@ -73,8 +76,8 @@ describe('<SuspendedAccount />', () => {
       name: 'ApiError',
     }
     useMutationCallbacks.onError(response)
-    await waitForExpect(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+    await waitFor(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
         message: response.content.message,
         timeout: SNACK_BAR_TIME_OUT,
       })
@@ -82,13 +85,17 @@ describe('<SuspendedAccount />', () => {
   })
 
   it('should go to home page when clicking on go to home button', async () => {
-    const { getByText } = render(<SuspendedAccount />)
+    render(<SuspendedAccount />)
 
-    const homeButton = getByText('Retourner à l’accueil')
+    const homeButton = screen.getByText('Retourner à l’accueil')
     fireEvent.press(homeButton)
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(
+        1,
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
       expect(mockSignOut).toBeCalledTimes(1)
     })
   })
