@@ -115,7 +115,7 @@ describe('Profile component', () => {
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
   })
 
-  it('should displays the verdsion with the CodePush version label', async () => {
+  it('should display the version with the CodePush version label', async () => {
     const mockVersion = 'Version\u00A01.10.5-123'
     useVersionSpy.mockReturnValueOnce(mockVersion)
     await renderProfile()
@@ -123,7 +123,7 @@ describe('Profile component', () => {
     expect(screen.getByText(mockVersion)).toBeTruthy()
   })
 
-  it('should does not display the Code push version label when it is not available', async () => {
+  it('should not display the Code push version label when it is not available', async () => {
     await renderProfile()
 
     expect(screen.getByText('Version\u00A01.10.5')).toBeTruthy()

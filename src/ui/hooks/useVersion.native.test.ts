@@ -23,7 +23,7 @@ describe('useVersion', () => {
     })
   })
 
-  it('should calls eventMonitoring.captureException on error', async () => {
+  it('should capture a Sentry issue when there is an error', async () => {
     const error = new Error('CodePush error')
     CodePush.getUpdateMetadata = jest.fn(() => Promise.reject(error))
     renderHook(() => useVersion())
