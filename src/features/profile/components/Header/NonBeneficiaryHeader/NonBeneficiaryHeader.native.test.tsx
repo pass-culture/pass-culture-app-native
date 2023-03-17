@@ -1,13 +1,12 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { NextSubscriptionStepResponse, SubscriptionMessage } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -57,17 +56,17 @@ describe('<NonBeneficiaryHeader/>', () => {
       const { nextBeneficiaryValidationStepNavConfig } =
         useBeneficiaryValidationNavigation(setError)
 
-      const { getByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
 
-      const banner = getByTestId('eligibility-banner')
+      const banner = screen.getByTestId('eligibility-banner')
       fireEvent.press(banner)
 
-      await waitForExpect(() => {
+      await waitFor(() => {
         expect(mockedNavigate).toHaveBeenCalledWith(
           nextBeneficiaryValidationStepNavConfig?.screen,
           nextBeneficiaryValidationStepNavConfig?.params
@@ -76,14 +75,14 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     it('should render the right banner for 18 years old users if user has not completed identity check', () => {
-      const { queryByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
 
-      expect(queryByTestId('eligibility-banner-container')).toBeTruthy()
+      expect(screen.queryByTestId('eligibility-banner-container')).toBeTruthy()
     })
 
     it.each`
@@ -101,15 +100,15 @@ describe('<NonBeneficiaryHeader/>', () => {
           },
         })
 
-        const { queryByText } = render(
+        render(
           <NonBeneficiaryHeader
             eligibilityStartDatetime="2021-03-30T00:00Z"
             eligibilityEndDatetime="2022-02-30T00:00Z"
           />
         )
 
-        expect(queryByText('Débloque tes ' + credit + ' €')).toBeTruthy()
-        expect(queryByText(' à dépenser sur l’application')).toBeTruthy()
+        expect(screen.queryByText('Débloque tes ' + credit + ' €')).toBeTruthy()
+        expect(screen.queryByText(' à dépenser sur l’application')).toBeTruthy()
       }
     )
 
@@ -119,29 +118,29 @@ describe('<NonBeneficiaryHeader/>', () => {
         nextSubscriptionStep: null,
       }
 
-      const { queryByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
 
-      expect(queryByTestId('eligibility-banner')).toBeNull()
+      expect(screen.queryByTestId('eligibility-banner')).toBeNull()
     })
   })
 
   describe('<IdentityCheckPendingBadge/>', () => {
     it('should display identity check pending badge if hasIdentityCheckPending is true', async () => {
-      const { queryByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
 
-      queryByTestId('identity-check-pending-badge')
+      screen.queryByTestId('identity-check-pending-badge')
 
-      expect(queryByTestId('eligibility-banner')).toBeNull()
+      expect(screen.queryByTestId('eligibility-banner')).toBeNull()
     })
   })
 
@@ -152,27 +151,27 @@ describe('<NonBeneficiaryHeader/>', () => {
         subscriptionMessage: mockedSubscriptionMessage,
       }
 
-      const { queryByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-03-30T00:00Z"
           eligibilityEndDatetime="2022-02-30T00:00Z"
         />
       )
 
-      expect(queryByTestId('subscription-message-badge')).toBeTruthy()
+      expect(screen.queryByTestId('subscription-message-badge')).toBeTruthy()
     })
   })
 
   describe('<YoungerBadge/>', () => {
     it('should render the younger badge for user under 18 years old', () => {
-      const { queryByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-03-31T00:00Z"
           eligibilityEndDatetime="2022-03-31T00:00Z"
         />
       )
 
-      expect(queryByTestId('younger-badge')).toBeTruthy()
+      expect(screen.queryByTestId('younger-badge')).toBeTruthy()
     })
   })
 
@@ -184,17 +183,17 @@ describe('<NonBeneficiaryHeader/>', () => {
         hasIdentityCheckPending: false,
       }
 
-      const { queryByTestId } = render(
+      render(
         <NonBeneficiaryHeader
           eligibilityStartDatetime="2021-01-30T00:00Z"
           eligibilityEndDatetime="2022-01-30T00:00Z"
         />
       )
 
-      expect(queryByTestId('subscription-message-badge')).toBeNull()
-      expect(queryByTestId('eligibility-banner')).toBeNull()
-      expect(queryByTestId('identity-check-pending-badge')).toBeNull()
-      expect(queryByTestId('younger-badge')).toBeNull()
+      expect(screen.queryByTestId('subscription-message-badge')).toBeNull()
+      expect(screen.queryByTestId('eligibility-banner')).toBeNull()
+      expect(screen.queryByTestId('identity-check-pending-badge')).toBeNull()
+      expect(screen.queryByTestId('younger-badge')).toBeNull()
     })
   })
 })
