@@ -1,6 +1,5 @@
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -58,9 +57,7 @@ describe('useInitialScreen()', () => {
 
       const { current: screen } = await renderUseInitialScreen()
 
-      await waitForExpect(() => {
-        expect(screen).toEqual(expectedScreen)
-      })
+      expect(screen).toEqual(expectedScreen)
       expect(analytics.logScreenView).toBeCalledTimes(1)
       expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)
     }
