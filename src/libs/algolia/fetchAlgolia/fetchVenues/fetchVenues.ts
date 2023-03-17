@@ -1,7 +1,10 @@
 import { Venue } from 'features/venue/types'
-import { AlgoliaQueryParameters, AlgoliaVenue, FetchVenuesParameters } from 'libs/algolia'
+import { AlgoliaVenue, FetchVenuesParameters } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
+import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
+import { adaptGenericAlgoliaTypes } from 'libs/algolia/fetchAlgolia/helpers/adaptGenericAlgoliaTypes'
 import { env } from 'libs/environment'
 
 export const fetchVenues = async ({
@@ -9,10 +12,10 @@ export const fetchVenues = async ({
   attributesToHighlight = [],
 }: FetchVenuesParameters): Promise<Venue[]> => {
   const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
-  const algoliaSearchParams: AlgoliaQueryParameters = {
-    query: query || '',
-    requestOptions: { attributesToHighlight },
-  }
+  const algoliaSearchParams = buildFetchVenuesQueryParameters({
+    query,
+    attributesToHighlight,
+  })
 
   try {
     const rawAlgoliaVenuesResponse = await venuesIndex.search<AlgoliaVenue>(
@@ -20,8 +23,8 @@ export const fetchVenues = async ({
       algoliaSearchParams.requestOptions
     )
 
-    const algoliaVenues: AlgoliaVenue[] = rawAlgoliaVenuesResponse.hits
-    const adaptedVenues: Venue[] = algoliaVenues.map(buildSuggestedVenue)
+    const rawVenues = adaptGenericAlgoliaTypes(rawAlgoliaVenuesResponse)
+    const adaptedVenues = adaptAlgoliaVenues(rawVenues)
 
     return adaptedVenues
   } catch (error) {
@@ -29,9 +32,3 @@ export const fetchVenues = async ({
     return [] as Venue[]
   }
 }
-
-const buildSuggestedVenue = (venue: AlgoliaVenue): Venue => ({
-  label: venue.name,
-  info: venue.city || venue.offerer_name,
-  venueId: parseInt(venue.objectID),
-})
