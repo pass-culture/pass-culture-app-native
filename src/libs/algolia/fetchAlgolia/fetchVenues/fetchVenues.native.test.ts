@@ -2,7 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
-import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues'
+import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { env } from 'libs/environment'
 import { waitFor } from 'tests/utils'
 
@@ -37,7 +37,7 @@ describe('fetchVenues', () => {
     website: 'https://my.website.com',
   }
   it('should fetch venues', () => {
-    fetchVenues('queryString')
+    fetchVenues({ query: 'queryString' })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
     expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [] })
@@ -57,7 +57,7 @@ describe('fetchVenues', () => {
   `('should fetch venues and format them correctly ', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)
 
-    const venues = await fetchVenues('queryString')
+    const venues = await fetchVenues({ query: 'queryString' })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
     expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [] })
@@ -67,7 +67,7 @@ describe('fetchVenues', () => {
   it('should catch an error', async () => {
     const error = new Error('Async error')
     search.mockRejectedValueOnce(error)
-    fetchVenues('queryString')
+    fetchVenues({ query: 'queryString' })
 
     await waitFor(async () => {
       expect(captureAlgoliaError).toHaveBeenCalledWith(error)

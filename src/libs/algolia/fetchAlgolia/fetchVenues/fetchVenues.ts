@@ -4,9 +4,10 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 
-const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
-
-export const fetchVenues = async (query: FetchVenuesParameters['query']): Promise<Venue[]> => {
+export const fetchVenues = async ({
+  query,
+  attributesToHighlight = [],
+}: FetchVenuesParameters): Promise<Venue[]> => {
   const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
   const algoliaSearchParams: AlgoliaQueryParameters = {
     query: query || '',
@@ -14,11 +15,15 @@ export const fetchVenues = async (query: FetchVenuesParameters['query']): Promis
   }
 
   try {
-    const response = await venuesIndex.search<AlgoliaVenue>(
+    const rawAlgoliaVenuesResponse = await venuesIndex.search<AlgoliaVenue>(
       algoliaSearchParams.query,
       algoliaSearchParams.requestOptions
     )
-    return response.hits.map(buildSuggestedVenue)
+
+    const algoliaVenues: AlgoliaVenue[] = rawAlgoliaVenuesResponse.hits
+    const adaptedVenues: Venue[] = algoliaVenues.map(buildSuggestedVenue)
+
+    return adaptedVenues
   } catch (error) {
     captureAlgoliaError(error)
     return [] as Venue[]
