@@ -1,11 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { reset } from '__mocks__/@react-navigation/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
 import {
@@ -15,59 +14,64 @@ import {
 
 import { GenericAchievement, Props, onRemoveScreenAction } from './GenericAchievement'
 
-describe('<GenericAchievement />', () => {
-  const TestCard = (props: AchievementCardKeyProps) => (
-    <View>
-      <Text>{props.swiperRef ? 'swipeRef exist' : 'swipeRef does not exist'}</Text>
-      <Text>{props.name ? 'name exist' : 'name does not exist'}</Text>
-    </View>
-  )
+const TestCard = (props: AchievementCardKeyProps) => (
+  <View>
+    <Text>{props.swiperRef ? 'swipeRef exist' : 'swipeRef does not exist'}</Text>
+    <Text>{props.name ? 'name exist' : 'name does not exist'}</Text>
+  </View>
+)
 
+describe('<GenericAchievement />', () => {
   it('should render correctly', () => {
-    const renderAPI = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [<TestCard key={1} />],
     })
-    expect(renderAPI).toMatchSnapshot()
+
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect on home and run analytics when pressing skip all button', async () => {
+  it('should redirect on home and run analytics when pressing skip all button', () => {
     const name = 'FirstTutorial'
-    const { getByText } = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: name,
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={1} key={1} />,
       ],
     })
-    const skipAll = await getByText('Tout passer')
+
+    const skipAll = screen.getByText('Tout passer')
     fireEvent.press(skipAll)
+
     expect(reset).toHaveBeenCalledTimes(1)
     expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
     expect(analytics.logHasSkippedTutorial).toHaveBeenCalledWith(`${name}1`)
   })
 
   it('should have a swiperRef passed to each children', () => {
-    const { getByText } = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
-    expect(getByText('swipeRef exist')).toBeTruthy()
-    expect(() => getByText('swipeRef does not exist')).toThrow()
+
+    expect(screen.getByText('swipeRef exist')).toBeTruthy()
+    expect(() => screen.getByText('swipeRef does not exist')).toThrow()
   })
 
-  it('should have an automatically set name passed to each children', async () => {
-    const { getByText } = renderGenericAchievementComponent({
+  it('should have an automatically set name passed to each children', () => {
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
-    expect(await getByText('name exist')).toBeTruthy()
-    expect(() => getByText('name does not exist')).toThrow()
+
+    expect(screen.getByText('name exist')).toBeTruthy()
+    expect(() => screen.getByText('name does not exist')).toThrow()
   })
 
-  it('should call skip custom function on skip', async () => {
+  it('should call skip custom function on skip', () => {
     const skip = jest.fn()
-    const { getByText } = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
@@ -75,35 +79,37 @@ describe('<GenericAchievement />', () => {
       ],
       skip,
     })
-    const button = await getByText('Tout passer')
+
+    const button = screen.getByText('Tout passer')
     fireEvent.press(button)
-    await waitForExpect(() => {
-      expect(skip).toHaveBeenCalledTimes(1)
-    })
+
+    expect(skip).toHaveBeenCalledTimes(1)
   })
 
   it('should have a skip all button when more than one cards', () => {
-    const { queryByText } = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={1} key={1} />,
       ],
     })
-    expect(queryByText('Tout passer')).toBeTruthy()
+
+    expect(screen.queryByText('Tout passer')).toBeTruthy()
   })
 
   it('should not have a skip all button when just one cards', () => {
-    const { queryByText } = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
-    expect(queryByText('Tout passer')).toBeNull()
+
+    expect(screen.queryByText('Tout passer')).toBeNull()
   })
 
-  it('should trigger analytics with a custom name instead of Achievement1', async () => {
+  it('should trigger analytics with a custom name instead of Achievement1', () => {
     const cardCustomName = 'CustomName'
-    const { getByTestId } = renderGenericAchievementComponent({
+    renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [
         <GenericAchievementCard
@@ -127,12 +133,13 @@ describe('<GenericAchievement />', () => {
         />,
       ],
     })
+
     expect(analytics.logScreenView).toHaveBeenCalledWith(cardCustomName)
-    const next = getByTestId('Continuer vers l’étape suivante')
-    fireEvent.press(next)
-    await waitForExpect(() => {
-      expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
-    })
+
+    const nextButton = screen.getByTestId('Continuer vers l’étape suivante')
+    fireEvent.press(nextButton)
+
+    expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
   })
 })
 
