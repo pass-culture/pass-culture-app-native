@@ -122,20 +122,15 @@ Then copy `testing.keystore` into `development.keystore` and `testing.keystore.p
 </details>
 
 <details>
-  <summary>test login credentials</summary>
-  
-In testing, you can use this test account to login:
+  <summary>Test login credentials</summary>
 
-- email: `pctest.jeune97.has-signed-up.v2@example.com`
-- mdp: `user@AZERTY123`
-
-See 1password for more test accounts.
+See in [1password][1] for all testing accounts.
 
 </details>
 
 ### ⬇️ Download
 
-To download the **testing** app, visit Appcenter for [iOS][1] and [Android][2], or use this [url][3].
+To download the **testing** app, visit Appcenter for [iOS][2] and [Android][3].
 For the **staging** app, use these links for [iOS][4] and [Android][5].
 
 ⚠️ Make sure your device is registered in the [device list][6].
@@ -146,9 +141,9 @@ For the **staging** app, use these links for [iOS][4] and [Android][5].
 
 See doc about deployment process [here](./doc/deployment/deployment.md) for the mobile application.
 
-[1]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
-[2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
-[3]: hyperurl.co/pc-testing
+[1]: https://start.1password.com/signin
+[2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
+[3]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
 [4]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
 [5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
 [6]: https://www.notion.so/passcultureapp/d1b6c73219ad4784af8769243f0339f3?v=8c038f65ec4d45e59e5d7fe0d744dffe
