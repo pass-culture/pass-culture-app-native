@@ -10,6 +10,7 @@ const TOP_MOST_USED_DOMAINS = [
   'hotmail.fr',
   'outlook.com',
   'yahoo.com',
+  'yahoo.fr',
   'orange.fr',
   'laposte.net',
   'free.fr',

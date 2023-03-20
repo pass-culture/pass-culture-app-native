@@ -25,7 +25,7 @@ describe('suggestEmail', () => {
     })
 
     describe('when second level domain exists with several top level domains', () => {
-      it.each(['hotmail.fr', 'hotmail.com'])(
+      it.each(['hotmail.fr', 'hotmail.com', 'yahoo.fr', 'yahoo.com'])(
         'should not suggest the other top level domain given "%s"',
         (domain) => {
           const input = `${ADDRESS}@${domain}`
