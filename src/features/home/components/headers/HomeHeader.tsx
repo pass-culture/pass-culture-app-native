@@ -26,10 +26,9 @@ export const HomeHeader: FunctionComponent = function () {
   const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
   const { permissionState } = useGeolocation()
-  const { data } = useHomeBanner()
+  const isGeolocated = permissionState === GeolocPermissionState.GRANTED
+  const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner
-
-  const shouldDisplayGeolocationBloc = permissionState !== GeolocPermissionState.GRANTED
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -69,16 +68,16 @@ export const HomeHeader: FunctionComponent = function () {
         </React.Fragment>
       )
 
-    if (shouldDisplayGeolocationBloc)
+    if (homeBanner?.name === BannerName.geolocation_banner)
       return (
         <React.Fragment>
-          <GeolocationBanner />
+          <GeolocationBanner title={homeBanner.title} subtitle={homeBanner.text} />
           <Spacer.Column numberOfSpaces={8} />
         </React.Fragment>
       )
 
     return null
-  }, [isLoggedIn, homeBanner, shouldDisplayGeolocationBloc])
+  }, [isLoggedIn, homeBanner])
 
   return (
     <React.Fragment>

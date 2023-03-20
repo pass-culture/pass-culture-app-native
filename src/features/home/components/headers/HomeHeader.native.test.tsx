@@ -81,6 +81,7 @@ describe('HomeHeader', () => {
   )
 
   it('should not display geolocation banner when geolocation is granted', async () => {
+    mockGeolocBannerFromBackend()
     renderHomeHeader()
 
     await waitFor(() => {
@@ -90,6 +91,7 @@ describe('HomeHeader', () => {
 
   it('should display geolocation banner when geolocation is denied', async () => {
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+    mockGeolocBannerFromBackend()
 
     renderHomeHeader()
 
@@ -100,6 +102,8 @@ describe('HomeHeader', () => {
     mockUseGeolocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
     })
+    mockGeolocBannerFromBackend()
+
     renderHomeHeader()
 
     expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
@@ -162,4 +166,22 @@ function renderHomeHeader() {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
+}
+
+function mockGeolocBannerFromBackend() {
+  server.use(
+    rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (req, res, ctx) => {
+      const isGeolocated = req.url.searchParams.get('isGeolocated')
+      const json = isGeolocated
+        ? {
+            banner: {
+              name: BannerName.geolocation_banner,
+              title: 'Géolocalise-toi',
+              text: 'Pour trouver des offres autour de toi.',
+            },
+          }
+        : {}
+      return res(ctx.status(200), ctx.json(json))
+    })
+  )
 }
