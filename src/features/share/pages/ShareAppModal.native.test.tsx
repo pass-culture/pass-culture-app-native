@@ -1,10 +1,9 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import * as Share from 'features/share/helpers/shareApp'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ShareAppModal } from './ShareAppModal'
 
@@ -14,40 +13,43 @@ const shareApp = jest.spyOn(Share, 'shareApp').mockResolvedValue()
 
 describe('ShareAppModal', () => {
   it('should match underage modal snapshot when underage', () => {
-    const renderAPI = render(
+    render(
       <ShareAppModal
         visible={visible}
         hideModal={hideModal}
         modalType={ShareAppModalType.NOT_ELIGIBLE}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should match beneficiary modal snapshot when beneficiary', () => {
-    const renderAPI = render(
+    render(
       <ShareAppModal
         visible={visible}
         hideModal={hideModal}
         modalType={ShareAppModalType.BENEFICIARY}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should match booking modal snapshot when booking', () => {
-    const renderAPI = render(
+    render(
       <ShareAppModal
         visible={visible}
         hideModal={hideModal}
         modalType={ShareAppModalType.ON_BOOKING_SUCCESS}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should open native share modal when clicking on "Partager l’appli" button', async () => {
-    const { getByTestId } = render(
+    render(
       <ShareAppModal
         visible={visible}
         hideModal={hideModal}
@@ -55,16 +57,16 @@ describe('ShareAppModal', () => {
       />
     )
 
-    const shareButton = getByTestId('Partager l’appli')
+    const shareButton = screen.getByTestId('Partager l’appli')
     fireEvent.press(shareButton)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(shareApp).toHaveBeenCalledTimes(1)
     })
   })
 
   it('should close modal when clicking on "Partager l’appli" button', () => {
-    const { getByText } = render(
+    render(
       <ShareAppModal
         visible={visible}
         hideModal={hideModal}
@@ -72,7 +74,7 @@ describe('ShareAppModal', () => {
       />
     )
 
-    const shareButton = getByText('Partager l’appli')
+    const shareButton = screen.getByText('Partager l’appli')
     fireEvent.press(shareButton)
 
     expect(hideModal).toBeCalledTimes(1)
@@ -83,11 +85,9 @@ describe('ShareAppModal', () => {
     ShareAppModalType.BENEFICIARY,
     ShareAppModalType.ON_BOOKING_SUCCESS,
   ])('should log analytics when clicking on "Partager l’appli" button', (modalType) => {
-    const { getByTestId } = render(
-      <ShareAppModal visible={visible} hideModal={hideModal} modalType={modalType} />
-    )
+    render(<ShareAppModal visible={visible} hideModal={hideModal} modalType={modalType} />)
 
-    const shareButton = getByTestId('Partager l’appli')
+    const shareButton = screen.getByTestId('Partager l’appli')
     fireEvent.press(shareButton)
 
     expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { type: modalType })
@@ -98,11 +98,9 @@ describe('ShareAppModal', () => {
     ShareAppModalType.BENEFICIARY,
     ShareAppModalType.ON_BOOKING_SUCCESS,
   ])('should log analytics when clicking on "Fermer la modale"', (modalType) => {
-    const { getByTestId } = render(
-      <ShareAppModal visible={visible} hideModal={hideModal} modalType={modalType} />
-    )
+    render(<ShareAppModal visible={visible} hideModal={hideModal} modalType={modalType} />)
 
-    const closeButton = getByTestId('Fermer la modale')
+    const closeButton = screen.getByTestId('Fermer la modale')
     fireEvent.press(closeButton)
 
     expect(analytics.logDismissShareApp).toHaveBeenNthCalledWith(1, modalType)

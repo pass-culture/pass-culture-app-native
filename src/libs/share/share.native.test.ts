@@ -1,8 +1,8 @@
 import { Share } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/firebase/analytics'
 import { share } from 'libs/share'
+import { waitFor } from 'tests/utils'
 
 const defaultContent = { message: 'Message' }
 const defaultOptions = {}
@@ -26,7 +26,7 @@ describe('share()', () => {
   it('should log anayltics when logAnalytics is true', async () => {
     share(defaultContent, defaultOptions, true)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logHasSharedApp).toHaveBeenNthCalledWith(
         1,
         shareMockReturnValue.activityType
@@ -38,7 +38,7 @@ describe('share()', () => {
     shareMock.mockResolvedValueOnce({ action: Share.dismissedAction })
     share(defaultContent, defaultOptions, true)
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logHasDismissedAppSharingModal).toHaveBeenCalledTimes(1)
     })
   })

@@ -1,28 +1,28 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
 import { GenericAchievement } from '../GenericAchievement/GenericAchievement'
 
 import { AchievementCardProps, didFadeIn, GenericAchievementCard } from './GenericAchievementCard'
 
+const animation = GeolocationAnimation
+const buttonCallback = jest.fn()
+const buttonText = 'Submit'
+const pauseAnimationOnRenderAtFrame = 62
+const subTitle = 'Subtitle'
+const text = 'Text'
+const title = 'Title'
+const play = jest.fn()
+const pause = jest.fn()
+
 describe('<GenericAchievementCard />', () => {
-  const animation = GeolocationAnimation
-  const buttonCallback = jest.fn()
-  const buttonText = 'Submit'
-  const pauseAnimationOnRenderAtFrame = 62
-  const subTitle = 'Subtitle'
-  const text = 'Text'
-  const title = 'Title'
-  const play = jest.fn()
-  const pause = jest.fn()
   beforeEach(jest.resetAllMocks)
 
   it('should render correctly', () => {
-    const { getByText } = renderGenericAchievementCardComponent({
+    renderGenericAchievementCardComponent({
       buttonText,
       animation,
       buttonCallback,
@@ -34,17 +34,19 @@ describe('<GenericAchievementCard />', () => {
       index: 0,
       lastIndex: 0,
     })
-    expect(getByText(title, { exact: false })).toBeTruthy()
-    expect(getByText(subTitle, { exact: false })).toBeTruthy()
-    expect(getByText(text)).toBeTruthy()
-    const button = getByText(buttonText)
-    expect(button).toBeTruthy()
+
+    expect(screen.getByText(title, { exact: false })).toBeTruthy()
+    expect(screen.getByText(subTitle, { exact: false })).toBeTruthy()
+    expect(screen.getByText(text)).toBeTruthy()
+
+    const button = screen.getByText(buttonText)
     fireEvent.press(button)
+
     expect(buttonCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should fail to render if not children of GenericAchievement', () => {
-    const { getByText } = renderGenericAchievementCardComponent({
+    renderGenericAchievementCardComponent({
       buttonText,
       animation,
       buttonCallback,
@@ -56,17 +58,19 @@ describe('<GenericAchievementCard />', () => {
       index: 0,
       lastIndex: 0,
     })
-    expect(getByText(title, { exact: false })).toBeTruthy()
-    expect(getByText(subTitle, { exact: false })).toBeTruthy()
-    expect(getByText(text)).toBeTruthy()
-    const button = getByText(buttonText)
-    expect(button).toBeTruthy()
+
+    expect(screen.getByText(title, { exact: false })).toBeTruthy()
+    expect(screen.getByText(subTitle, { exact: false })).toBeTruthy()
+    expect(screen.getByText(text)).toBeTruthy()
+
+    const button = screen.getByText(buttonText)
     fireEvent.press(button)
+
     expect(buttonCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should call card analytics on active index', () => {
-    const { getByTestId } = render(
+    render(
       <GenericAchievement screenName="FirstTutorial">
         <GenericAchievementCard
           buttonText={buttonText}
@@ -94,11 +98,12 @@ describe('<GenericAchievementCard />', () => {
         />
       </GenericAchievement>
     )
-    expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial1')
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    fireEvent.press(getByTestId('Continuer vers l’étape suivante'))
-    expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
-    expect(analytics.logScreenView).toBeCalledTimes(2)
+
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'FirstTutorial1')
+
+    fireEvent.press(screen.getByTestId('Continuer vers l’étape suivante'))
+
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'FirstTutorial2')
   })
 
   it('should have a button available on active index', () => {
@@ -118,7 +123,7 @@ describe('<GenericAchievementCard />', () => {
   })
 
   it('should not have a button when not active index', () => {
-    const { getByTestId, queryByText } = render(
+    render(
       <GenericAchievementCard
         buttonText={buttonText}
         animation={animation}
@@ -132,12 +137,13 @@ describe('<GenericAchievementCard />', () => {
         activeIndex={1}
       />
     )
-    expect(queryByText(buttonText)).toBeNull()
-    expect(getByTestId('invisible-button-height')).toBeTruthy()
+
+    expect(screen.queryByText(buttonText)).toBeNull()
+    expect(screen.getByTestId('invisible-button-height')).toBeTruthy()
   })
 
   it('should have a button and no invisible-button-height when active index', () => {
-    const { queryByTestId, getByText } = render(
+    render(
       <GenericAchievementCard
         buttonText={buttonText}
         animation={animation}
@@ -151,8 +157,9 @@ describe('<GenericAchievementCard />', () => {
         lastIndex={1}
       />
     )
-    expect(getByText(buttonText)).toBeTruthy()
-    expect(queryByTestId('invisible-button-height')).toBeNull()
+
+    expect(screen.getByText(buttonText)).toBeTruthy()
+    expect(screen.queryByTestId('invisible-button-height')).toBeNull()
   })
 
   it('should pause animation when not on active index', async () => {
@@ -176,7 +183,8 @@ describe('<GenericAchievementCard />', () => {
         lastIndex={1}
       />
     )
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(play).not.toBeCalled()
       expect(pause).toBeCalledTimes(1)
     })
@@ -203,7 +211,8 @@ describe('<GenericAchievementCard />', () => {
         lastIndex={1}
       />
     )
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(play).toBeCalledTimes(1)
       expect(play).toBeCalledWith(0, pauseAnimationOnRenderAtFrame)
       expect(pause).not.toBeCalled()
@@ -231,7 +240,8 @@ describe('<GenericAchievementCard />', () => {
         lastIndex={1}
       />
     )
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(didFadeIn).not.toBe(true)
     })
   })
@@ -263,7 +273,8 @@ describe('<GenericAchievementCard />', () => {
         lastIndex={1}
       />
     )
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(didFadeIn).toBe(true)
     })
   })
@@ -291,8 +302,10 @@ describe('<GenericAchievementCard />', () => {
         skip={skip}
       />
     )
+
     const button = getByText('Passer')
     fireEvent.press(button)
+
     expect(skip).toHaveBeenCalledTimes(1)
   })
 })
