@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -18,7 +17,6 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 export const useStepperInfo = (): StepConfig[] => {
   const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
-  const { data: nextSubscriptionStep } = useNextSubscriptionStep()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
@@ -69,28 +67,23 @@ export const useStepperInfo = (): StepConfig[] => {
       label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
+    {
+      name: IdentityCheckStep.PHONE_VALIDATION,
+      icon: {
+        disabled: DisabledSmartphoneIcon,
+        current: BicolorSmartphone,
+        completed: () => (
+          <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+        ),
+      },
+      label: 'Numéro de téléphone',
+      screens:
+        remainingAttempts === 0
+          ? ['PhoneValidationTooManySMSSent']
+          : ['SetPhoneNumber', 'SetPhoneValidationCode'],
+    },
   ]
 
-  if (nextSubscriptionStep?.stepperIncludesPhoneValidation) {
-    return [
-      {
-        name: IdentityCheckStep.PHONE_VALIDATION,
-        icon: {
-          disabled: DisabledSmartphoneIcon,
-          current: BicolorSmartphone,
-          completed: () => (
-            <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
-          ),
-        },
-        label: 'Numéro de téléphone',
-        screens:
-          remainingAttempts === 0
-            ? ['PhoneValidationTooManySMSSent']
-            : ['SetPhoneNumber', 'SetPhoneValidationCode'],
-      },
-      ...steps,
-    ]
-  }
   return steps
 }
 
