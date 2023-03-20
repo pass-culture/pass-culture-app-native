@@ -1,11 +1,10 @@
-import waitForExpect from 'wait-for-expect'
-
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
 import { analytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { storeUtmParams } from 'libs/utm'
+import { waitFor } from 'tests/utils'
 
 jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 
@@ -23,7 +22,8 @@ describe('getStateFromPath()', () => {
         },
       ],
     }
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(state).toEqual(expectedState)
     })
   })
@@ -32,7 +32,8 @@ describe('getStateFromPath()', () => {
     const path = 'offre/777'
     const state = customGetStateFromPath(path, linking.config)
     const expectedState = { routes: [{ name: 'Offer', params: { id: 777 }, path }] }
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(state).toEqual(expectedState)
       expect(analytics.logConsultOffer).toBeCalledWith({ offerId: 777, from: 'deeplink' })
     })
@@ -55,7 +56,8 @@ describe('getStateFromPath()', () => {
           'offre/1188?utm_campaign=push_offre_local&utm_medium=batch&utm_source=push',
           linking.config
         )
-        await waitForExpect(() => {
+
+        await waitFor(() => {
           expect(storeUtmParams).toBeCalledWith({
             campaign: 'push_offre_local',
             source: 'push',
@@ -71,7 +73,8 @@ describe('getStateFromPath()', () => {
 
       it('should save utm parameters in storage if available - search', async () => {
         customGetStateFromPath('recherche/?isDuo=true&utm_campaign=push_offre', linking.config)
-        await waitForExpect(() => {
+
+        await waitFor(() => {
           expect(storeUtmParams).toBeCalledWith({ campaign: 'push_offre' })
           expect(analytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre',
@@ -83,7 +86,8 @@ describe('getStateFromPath()', () => {
 
       it('should not save utm parameters in storage if not available', async () => {
         customGetStateFromPath('offre/1188', linking.config)
-        await waitForExpect(() => {
+
+        await waitFor(() => {
           expect(storeUtmParams).not.toBeCalled()
           expect(analytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
@@ -110,7 +114,8 @@ describe('getStateFromPath()', () => {
           'offre/1188?utm_campaign=push_offre_local&utm_medium=batch&utm_source=push',
           linking.config
         )
-        await waitForExpect(() => {
+
+        await waitFor(() => {
           expect(storeUtmParams).not.toHaveBeenCalled()
           expect(analytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
