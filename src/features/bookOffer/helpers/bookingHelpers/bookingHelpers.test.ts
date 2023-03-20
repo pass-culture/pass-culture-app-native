@@ -10,6 +10,7 @@ import {
   getSortedHoursFromDate,
   sortByDateStringPredicate,
   getStockSortedByPriceFromHour,
+  getDistinctPricesFromAllStock,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -282,5 +283,27 @@ describe('sortByDateStringPredicate', () => {
   it('should return -1 when dates not defined', () => {
     const predicate = sortByDateStringPredicate(undefined, undefined)
     expect(predicate).toEqual(-1)
+  })
+})
+
+describe('getDistinctPricesFromAllStock', () => {
+  it('should return only one price when several stocks have the same price', () => {
+    const distinctPrices = getDistinctPricesFromAllStock([
+      { ...stock1, price: 22000 },
+      stock2,
+      stock3,
+      stock4,
+    ])
+    expect(distinctPrices).toEqual([22000, 10000, 19000])
+  })
+
+  it('should not return several prices when several stocks have the same price', () => {
+    const distinctPrices = getDistinctPricesFromAllStock([
+      { ...stock1, price: 22000 },
+      stock2,
+      stock3,
+      stock4,
+    ])
+    expect(distinctPrices).not.toEqual([22000, 22000, 10000, 19000])
   })
 })

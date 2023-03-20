@@ -99,11 +99,15 @@ export function getPreviousStep(currentStep: number, offer: OfferResponse) {
   return currentStep - 1
 }
 
-const getStockFromDate = (selectedDate?: string) => (stock: OfferStockResponse) =>
-  !stock.isExpired &&
-  stock.priceCategoryLabel &&
-  stock.beginningDatetime &&
-  formatToKeyDate(stock.beginningDatetime) === selectedDate
+const getAllAvailableStockFromOffer = (stock: OfferStockResponse) =>
+  !stock.isExpired && stock.beginningDatetime
+
+export const getStockWithCategoryFromDate =
+  (selectedDate?: string) => (stock: OfferStockResponse) =>
+    !stock.isExpired &&
+    stock.priceCategoryLabel &&
+    stock.beginningDatetime &&
+    formatToKeyDate(stock.beginningDatetime) === selectedDate
 
 const getStockFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
   !stock.isExpired &&
@@ -135,6 +139,12 @@ export function getSortedHoursFromDate(stocks: OfferStockResponse[], selectedDat
     .map((stock) => stock.beginningDatetime)
     .filter(filterBool)
     .sort(sortByDateStringPredicate)
+}
+
+export function getDistinctPricesFromAllStock(stocks: OfferStockResponse[]) {
+  const pricesStocks = stocks.filter(getAllAvailableStockFromOffer).map((stock) => stock.price)
+  const distinctPrices: number[] = [...new Set(pricesStocks)]
+  return distinctPrices
 }
 
 export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], selectedHour: string) {
