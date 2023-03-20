@@ -2,12 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import React from 'react'
 import { UseQueryOptions } from 'react-query'
 import { QueryFunction } from 'react-query/types/core/types'
-import waitForExpect from 'wait-for-expect'
 
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, superFlushWithAct, waitFor } from 'tests/utils'
+import { flushAllPromisesWithAct, render, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
 
@@ -41,14 +40,13 @@ describe('usePersistQuery', () => {
 
       renderUsePersistQuery({ queryKey, queryFn })
 
-      await superFlushWithAct()
-      await waitForExpect(async () => {
-        persistDataStr = await AsyncStorage.getItem(queryKey)
-        expect(persistDataStr).toBeTruthy()
-        if (typeof persistDataStr === 'string') {
-          expect(JSON.parse(persistDataStr)).toEqual(onlineData)
-        }
-      })
+      await flushAllPromisesWithAct()
+
+      persistDataStr = await AsyncStorage.getItem(queryKey)
+      expect(persistDataStr).toBeTruthy()
+      if (typeof persistDataStr === 'string') {
+        expect(JSON.parse(persistDataStr)).toEqual(onlineData)
+      }
     })
 
     it('should fail to save distant data locally and log to sentry', async () => {
@@ -56,16 +54,14 @@ describe('usePersistQuery', () => {
       let persistDataStr = await AsyncStorage.getItem(queryKey)
       expect(persistDataStr).toBeFalsy()
       jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(error)
-
       renderUsePersistQuery({ queryKey, queryFn })
 
-      await superFlushWithAct()
-      await waitForExpect(async () => {
-        persistDataStr = await AsyncStorage.getItem(queryKey)
-        expect(persistDataStr).toBeFalsy()
-        expect(eventMonitoring.captureException).toBeCalledWith(error, {
-          context: { queryKey, data: onlineData },
-        })
+      await flushAllPromisesWithAct()
+
+      persistDataStr = await AsyncStorage.getItem(queryKey)
+      expect(persistDataStr).toBeFalsy()
+      expect(eventMonitoring.captureException).toBeCalledWith(error, {
+        context: { queryKey, data: onlineData },
       })
     })
   })
@@ -80,14 +76,13 @@ describe('usePersistQuery', () => {
     it('should show offline data first, then online data', async () => {
       const persistDataStr = await AsyncStorage.getItem(queryKey)
       expect(persistDataStr).toBeTruthy()
-
       renderUsePersistQuery({ queryKey, queryFn })
 
       // Console error displayed when offline mode
       jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
       expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(offlineData))
 
-      await superFlushWithAct()
+      await flushAllPromisesWithAct()
 
       expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(onlineData))
     })
@@ -97,14 +92,12 @@ describe('usePersistQuery', () => {
       const persistDataStr = await AsyncStorage.getItem(queryKey)
       expect(persistDataStr).toBeTruthy()
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
-
       renderUsePersistQuery({ queryKey, queryFn })
 
-      await superFlushWithAct()
-      await waitForExpect(() => {
-        expect(eventMonitoring.captureException).toBeCalledWith(error, {
-          context: { queryKey },
-        })
+      await flushAllPromisesWithAct()
+
+      expect(eventMonitoring.captureException).toBeCalledWith(error, {
+        context: { queryKey },
       })
     })
 

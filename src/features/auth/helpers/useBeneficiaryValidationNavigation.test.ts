@@ -1,6 +1,5 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
 import { rest } from 'msw'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import {
@@ -28,11 +27,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: () => undefined,
     })
+
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    await waitForExpect(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-    })
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should navigate to Stepper if nextStep is phone-validation', async () => {
@@ -46,11 +44,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: () => undefined,
     })
+
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
-    })
+    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
   })
 
   it('should navigate to stepper if nextStep is IdentityCheck', async () => {
@@ -64,11 +61,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: () => undefined,
     })
+
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
-    })
+    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
   })
 
   it('should navigate to IdentityCheckStepper if nextStep is ProfileCompletion', async () => {
@@ -82,11 +78,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: () => undefined,
     })
+
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
-    })
+    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
   })
 
   it('should navigate to IdentityCheckStepper if nextStep is HonorStatement', async () => {
@@ -100,11 +95,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: () => undefined,
     })
+
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
-    })
+    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
   })
 
   it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is withDMS', async () => {
@@ -120,11 +114,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: () => undefined,
     })
+
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckUnavailable', { withDMS: true })
-    })
+    expect(navigate).toBeCalledWith('IdentityCheckUnavailable', { withDMS: true })
   })
 })
 it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is not withDMS', async () => {
@@ -140,11 +133,10 @@ it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and m
     wrapper: ({ children }) => reactQueryProviderHOC(children),
     initialProps: () => undefined,
   })
+
   await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-  await waitForExpect(() => {
-    expect(navigate).toBeCalledWith('IdentityCheckUnavailable', { withDMS: false })
-  })
+  expect(navigate).toBeCalledWith('IdentityCheckUnavailable', { withDMS: false })
 })
 
 function mockNextStepRequest(nextSubscription: NextSubscriptionStepResponse) {

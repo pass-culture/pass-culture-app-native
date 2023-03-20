@@ -145,7 +145,6 @@ These are tips to avoid `console` within your tests.
 - To avoid `act` warnings:
   - put your expectation in `await waitFor()`
   - if the warning is still here, try to flush promises with `await flushPromises` or try to add `await superFlushWithAct()`, and pass a `number` greater than `50` _(default)_ to flush more promises
-  - try to use `waitForExpect` each time you anticipate expectations that should be made after the execution of asynchrone actions.
 - To test an expected error, clean it from your test (we already have the test description):
   - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test
 
@@ -189,23 +188,6 @@ it('should navigate to the previous when back navigation triggered', () => {
   fireEvent.press(getByTestId('leftIcon'))
 
   expect(goBack).toBeCalledTimes(1)
-})
-```
-
-If `act` warnings appear, try to use `await superFlushWithAct(times)` or wrap the `expect` around `waitForExpect`:
-
-```tsx
-it('should redirect to home page WHEN signin is successful', async () => {
-  const { findByText } = renderLogin()
-  mockSignIn.mockImplementationOnce(() => true)
-
-  const connexionButton = await findByText('Se connecter')
-  fireEvent.press(connexionButton)
-
-  await waitForExpect(() => {
-    expect(mockSignIn).toBeCalledTimes(1)
-    expect(navigate).toBeCalledTimes(1)
-  })
 })
 ```
 

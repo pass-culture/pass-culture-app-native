@@ -1,10 +1,9 @@
 import React from 'react'
-import waitFor from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig, openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { FraudulentAccount } from './FraudulentAccount'
 

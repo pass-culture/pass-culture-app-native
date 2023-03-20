@@ -1,5 +1,4 @@
 import mockdate from 'mockdate'
-import waitForExpect from 'wait-for-expect'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import Package from '__mocks__/package.json'
@@ -344,16 +343,14 @@ describe('useCookies', () => {
         })
       })
 
-      await waitForExpect(() => {
-        expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
-          deviceId,
-          choiceDatetime: TODAY.toISOString(),
-          consent: {
-            mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: ALL_OPTIONAL_COOKIES,
-            refused: [],
-          },
-        })
+      expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
+        deviceId,
+        choiceDatetime: TODAY.toISOString(),
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
       })
     })
 
@@ -372,17 +369,15 @@ describe('useCookies', () => {
         await setUserId(FAKE_USER_ID)
       })
 
-      await waitForExpect(() => {
-        expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
-          userId: FAKE_USER_ID,
-          deviceId,
-          choiceDatetime: TODAY.toISOString(),
-          consent: {
-            mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: ALL_OPTIONAL_COOKIES,
-            refused: [],
-          },
-        })
+      expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
+        userId: FAKE_USER_ID,
+        deviceId,
+        choiceDatetime: TODAY.toISOString(),
+        consent: {
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        },
       })
     })
 
@@ -396,6 +391,7 @@ describe('useCookies', () => {
           refused: [],
         })
       })
+
       await act(async () => {
         await setUserId(FAKE_USER_ID)
       })
