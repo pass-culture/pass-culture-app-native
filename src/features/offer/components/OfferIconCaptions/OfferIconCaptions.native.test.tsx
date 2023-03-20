@@ -123,15 +123,16 @@ describe('<OfferIconCaptions />', () => {
   `(
     'should $show Icon isDuo for Duo=$duo offers for beneficiary=$beneficiary users',
     async ({ show, duo, beneficiary }) => {
-      const component = renderOfferIconCaptions({
+      renderOfferIconCaptions({
         isDuo: duo,
         isBeneficiary: beneficiary,
       })
+
       await waitFor(() => {
         if (show === 'show') {
-          expect(component.queryByText(/À deux !/)).toBeTruthy()
+          expect(screen.queryByText(/À deux !/)).toBeTruthy()
         } else {
-          expect(component.queryByText(/À deux !!/)).toBeNull()
+          expect(screen.queryByText(/À deux !!/)).toBeNull()
         }
       })
     }
@@ -151,11 +152,10 @@ describe('<OfferIconCaptions />', () => {
     ${severalStocks}            | ${true}  | ${false}      | ${'7\u00a0€'}
     ${noBookableStocks}         | ${true}  | ${false}      | ${'Dès 7\u00a0€'}
   `('should show right price', async ({ stocks, isDuo, isBeneficiary, expectedDisplayedPrice }) => {
-    const component = renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
-    await waitFor(() => {
-      const euro = component.getByTestId('caption-iconPrice')
-      expect(euro.props.children).toEqual(expectedDisplayedPrice)
-    })
+    renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
+
+    const euro = await screen.findByTestId('caption-iconPrice')
+    expect(euro.props.children).toEqual(expectedDisplayedPrice)
   })
 })
 
