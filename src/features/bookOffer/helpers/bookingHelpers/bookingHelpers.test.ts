@@ -7,7 +7,6 @@ import {
   getRadioSelectorPriceState,
   getPriceWording,
   getPreviousStep,
-  getBookingSteps,
   getSortedHoursFromDate,
   sortByDateStringPredicate,
   getStockSortedByPriceFromHour,
@@ -101,41 +100,6 @@ describe('bookingHelpers', () => {
         })
         expect(buttonState).toEqual(true)
       })
-    })
-  })
-
-  describe('getBookingSteps', () => {
-    it('should return an array with date and hour steps when only one stock with category not expired and offer is not duo', () => {
-      const stocks = [{ ...stock1, isExpired: true }, stock2]
-      const bookingSteps = getBookingSteps(stocks)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR])
-    })
-
-    it('should return an array with date, hour, price and quantity steps when several stocks  with category not expired and offer is duo', () => {
-      const stocks = [stock1, stock2]
-      const bookingSteps = getBookingSteps(stocks, true)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.PRICE, Step.DUO])
-    })
-
-    it('should return an array with date, hour and duo steps when only one stock with category not expired and offer is duo', () => {
-      const stocks = [{ ...stock1, isExpired: true }, stock2]
-      const bookingSteps = getBookingSteps(stocks, true)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.DUO])
-    })
-
-    it('should return an array with date, hour and duo steps when only one stock without category not expired and offer is duo', () => {
-      const stocks = [
-        { ...stock1, priceCategoryLabel: undefined },
-        { ...stock2, priceCategoryLabel: undefined },
-      ]
-      const bookingSteps = getBookingSteps(stocks, true)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.DUO])
-    })
-
-    it('should return an array with date, hour and price steps when several stock with category not expired and offer is not duo', () => {
-      const stocks = [stock1, stock2]
-      const bookingSteps = getBookingSteps(stocks, false)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.PRICE])
     })
   })
 

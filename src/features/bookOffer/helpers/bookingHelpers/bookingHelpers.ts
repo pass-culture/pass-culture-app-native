@@ -21,23 +21,6 @@ export function getButtonState(bookingState: BookingState) {
   }
 }
 
-export function getBookingSteps(stocks: OfferStockResponse[], offerIsDuo?: boolean) {
-  const stocksWithCategoryNotExpired = stocks.filter(
-    (stock) => !stock.isExpired && stock.priceCategoryLabel
-  )
-  let bookingSteps = [Step.DATE, Step.HOUR]
-
-  if (offerIsDuo && stocksWithCategoryNotExpired.length > 1) {
-    bookingSteps = [...bookingSteps, Step.PRICE, Step.DUO]
-  } else if (offerIsDuo && stocksWithCategoryNotExpired.length <= 1) {
-    bookingSteps = [...bookingSteps, Step.DUO]
-  } else if (!offerIsDuo && stocksWithCategoryNotExpired.length > 1) {
-    bookingSteps = [...bookingSteps, Step.PRICE]
-  }
-
-  return bookingSteps
-}
-
 export function getButtonWording(enablePricesByCategories: boolean, enabled: boolean, step: Step) {
   if (enablePricesByCategories) {
     switch (step) {
