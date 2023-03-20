@@ -25,7 +25,7 @@ export function useVersion() {
   }, [])
 
   // exemple Code Push format : 'v3875' => '3875'
-  const shortCodePushLabel = codePushLabel.substring(1)
+  const shortCodePushLabel = codePushLabel.slice(1)
 
   let version = `Version\u00A0${Package.version}`
   if (codePushLabel) version += `-${shortCodePushLabel}`
