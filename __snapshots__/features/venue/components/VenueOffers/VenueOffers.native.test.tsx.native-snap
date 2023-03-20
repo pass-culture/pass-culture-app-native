@@ -139,6 +139,8 @@ Array [
               "backgroundColor": undefined,
               "minHeight": 1,
               "minWidth": 1,
+              "paddingBottom": 0,
+              "paddingTop": 0,
             }
           }
           contentHeight={250}
@@ -327,6 +329,7 @@ Array [
               "_getHeightOrWidth": [Function],
               "_getLayoutTypeForIndex": [Function],
               "_getSpan": [Function],
+              "_hasExpired": false,
               "_isHorizontal": true,
               "_lastLayoutManager": GridLayoutManager {
                 "_acceptableRelayoutDelta": 1,
@@ -545,6 +548,10 @@ Array [
                 "showsHorizontalScrollIndicator": false,
                 "testID": "offersModuleList",
               },
+              "renderWindowInsets": Object {
+                "height": 0,
+                "width": 0,
+              },
               "shouldRefreshWithAnchoring": true,
             }
           }
@@ -575,6 +582,8 @@ Array [
                 "backgroundColor": undefined,
                 "minHeight": 1,
                 "minWidth": 1,
+                "paddingBottom": 0,
+                "paddingTop": 0,
               },
               "onLayout": [Function],
               "onScrollBeginDrag": [Function],
@@ -618,7 +627,7 @@ Array [
                 style={
                   Object {
                     "paddingLeft": 0,
-                    "paddingTop": undefined,
+                    "paddingTop": 0,
                   }
                 }
               />
@@ -1645,7 +1654,7 @@ Array [
               <View
                 style={
                   Object {
-                    "paddingBottom": undefined,
+                    "paddingBottom": 0,
                     "paddingRight": 0,
                   }
                 }

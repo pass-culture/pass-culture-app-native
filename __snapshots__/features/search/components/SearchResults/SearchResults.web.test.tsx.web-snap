@@ -414,20 +414,17 @@ Object {
         >
           <div
             class="css-view-175oi2r"
-            style="flex-grow: 1;"
+            style="flex: 1;"
           >
             <div
               class="css-view-175oi2r"
             />
             <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-minHeight-g8fybc"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
               role="status"
             >
               <div
-                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              />
-              <div
-                class="css-view-175oi2r r-flexShrink-1q142lx"
+                class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
               >
                 <div
                   class="css-view-175oi2r"
@@ -484,9 +481,6 @@ Object {
                   </div>
                 </button>
               </div>
-              <div
-                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              />
             </div>
             <div
               class="css-view-175oi2r"
@@ -915,20 +909,17 @@ Object {
       >
         <div
           class="css-view-175oi2r"
-          style="flex-grow: 1;"
+          style="flex: 1;"
         >
           <div
             class="css-view-175oi2r"
           />
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-1pi2tsx r-justifyContent-1777fci r-marginHorizontal-1hy1u7s r-minHeight-g8fybc"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
             role="status"
           >
             <div
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-            />
-            <div
-              class="css-view-175oi2r r-flexShrink-1q142lx"
+              class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
             >
               <div
                 class="css-view-175oi2r"
@@ -985,9 +976,6 @@ Object {
                 </div>
               </button>
             </div>
-            <div
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-            />
           </div>
           <div
             class="css-view-175oi2r"

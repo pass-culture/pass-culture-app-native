@@ -1,18 +1,17 @@
 import { useIsFocused, useRoute } from '@react-navigation/native'
+import { FlashList } from '@shopify/flash-list'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ActivityIndicator, ScrollView, View } from 'react-native'
+import { FlatList, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { Hit } from 'features/search/components/Hit/Hit'
-import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
+import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {
@@ -27,36 +26,24 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { SearchHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { Banner } from 'ui/components/Banner'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
-import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { Ul } from 'ui/components/Ul'
-import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
-import { Error } from 'ui/svg/icons/Error'
-import { More } from 'ui/svg/icons/More'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
-
-const keyExtractor = (item: SearchHit) => item.objectID
 
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const flatListRef = useRef<FlatList<SearchHit> | null>(null)
+  const searchListRef = useRef<FlatList<SearchHit> | FlashList<SearchHit> | null>(null)
   const {
     hasNextPage,
     fetchNextPage,
@@ -67,16 +54,12 @@ export const SearchResults: React.FC = () => {
     isLoading,
     isFetching,
     isFetchingNextPage,
-    userData,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
-
-  const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
-  const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -109,7 +92,6 @@ export const SearchResults: React.FC = () => {
     showModal: showDatesHoursModal,
     hideModal: hideDatesHoursModal,
   } = useModal(false)
-  const { position, showGeolocPermissionModal } = useGeolocation()
   const hasPosition = useHasPosition()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -119,10 +101,10 @@ export const SearchResults: React.FC = () => {
     // debouncing scrollToOffset solves it.
     debounce(
       useCallback(() => {
-        if (flatListRef && flatListRef.current) {
-          flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
+        if (searchListRef && searchListRef.current) {
+          searchListRef.current.scrollToOffset({ offset: 0, animated: true })
         }
-      }, [flatListRef])
+      }, [searchListRef])
     ),
     [nbHits, searchState]
   )
@@ -152,96 +134,6 @@ export const SearchResults: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
-  const logActivateGeolocfromSearchResults = useCallback(() => {
-    analytics.logActivateGeolocfromSearchResults()
-  }, [])
-
-  const ListHeaderComponent = useMemo(() => {
-    const shouldDisplayGeolocationButton =
-      position === null &&
-      params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
-      nbHits > 0 &&
-      !shouldDisplayUnavailableOfferMessage
-
-    const onPress = () => {
-      logActivateGeolocfromSearchResults()
-      showGeolocPermissionModal()
-    }
-
-    return (
-      <React.Fragment>
-        <NumberOfResults nbHits={nbHits} />
-        {!!shouldDisplayGeolocationButton && (
-          <GeolocationButtonContainer
-            onPress={onPress}
-            accessibilityLabel="Active ta géolocalisation">
-            <GenericBanner LeftIcon={LocationIcon}>
-              <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
-              <Spacer.Column numberOfSpaces={1} />
-              <Typo.Caption numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Caption>
-            </GenericBanner>
-          </GeolocationButtonContainer>
-        )}
-        {!!shouldDisplayUnavailableOfferMessage && (
-          <BannerOfferNotPresentContainer
-            accessibilityRole={AccessibilityRole.STATUS}
-            nbHits={nbHits}>
-            <Banner message={unavailableOfferMessage} icon={Error} />
-          </BannerOfferNotPresentContainer>
-        )}
-      </React.Fragment>
-    )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    nbHits,
-    searchState.locationFilter.locationType,
-    position,
-    params?.offerCategories,
-    showGeolocPermissionModal,
-    shouldDisplayUnavailableOfferMessage,
-    unavailableOfferMessage,
-  ])
-
-  const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
-
-  const ListFooterComponent = useMemo(
-    () => {
-      const showMoreButton = !autoScrollEnabled && hits.length < nbHits
-      return isFetchingNextPage && hits.length < nbHits ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <ActivityIndicator />
-          <Spacer.Column numberOfSpaces={4} />
-          <Footer />
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          {!!showMoreButton && <Separator />}
-          <Footer>
-            {!!showMoreButton && (
-              <ButtonSecondary
-                mediumWidth
-                icon={More}
-                wording="Afficher plus de résultats"
-                onPress={() => {
-                  const button = (
-                    flatListRef.current?.getNativeScrollRef() as unknown as HTMLElement
-                  ).children[0].lastChild as HTMLElement
-                  const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
-                  offerLink.focus()
-                  offerLink.blur()
-                  onEndReached()
-                }}
-              />
-            )}
-          </Footer>
-        </React.Fragment>
-      )
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isFetchingNextPage, hits.length, autoScrollEnabled]
-  )
-
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -253,6 +145,18 @@ export const SearchResults: React.FC = () => {
       : 'Pas de résultat'
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
+
+  const handlePressFooter = () => {
+    const currentRef = searchListRef.current
+    if (currentRef instanceof FlatList) {
+      const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
+        .lastChild as HTMLElement
+      const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
+      offerLink.focus()
+      offerLink.blur()
+      onEndReached()
+    }
+  }
 
   return (
     <React.Fragment>
@@ -318,26 +222,18 @@ export const SearchResults: React.FC = () => {
         <Spacer.Column numberOfSpaces={3} />
       </View>
       <Container testID="searchResults">
-        <FlatList
-          listAs="ul"
-          itemAs="li"
-          ref={flatListRef}
-          testID="searchResultsFlatlist"
-          data={hits}
-          contentContainerStyle={contentContainerStyle}
-          keyExtractor={keyExtractor}
-          ListHeaderComponent={ListHeaderComponent}
-          ItemSeparatorComponent={Separator}
-          ListFooterComponent={ListFooterComponent}
+        <SearchList
+          ref={searchListRef}
+          isFetchingNextPage={isFetchingNextPage}
+          hits={hits}
+          nbHits={nbHits}
           renderItem={renderItem}
+          autoScrollEnabled={autoScrollEnabled}
+          onEndReached={onEndReached}
+          onScroll={onScroll}
           refreshing={isRefreshing}
           onRefresh={refetch}
-          onEndReached={autoScrollEnabled ? onEndReached : undefined}
-          scrollEnabled={nbHits > 0}
-          ListEmptyComponent={ListEmptyComponent}
-          onScroll={onScroll}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
+          onPress={handlePressFooter}
         />
       </Container>
       {nbHits > 0 && (
@@ -345,7 +241,7 @@ export const SearchResults: React.FC = () => {
           <ScrollToTopButton
             transition={scrollButtonTransition}
             onPress={() => {
-              flatListRef.current?.scrollToOffset({ offset: 0 })
+              searchListRef.current?.scrollToOffset({ offset: 0 })
             }}
           />
           <Spacer.BottomScreen />
@@ -420,21 +316,6 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
-
-const GeolocationButtonContainer = styledButton(Touchable)({
-  paddingLeft: getSpacing(6),
-  paddingRight: getSpacing(6),
-  paddingBottom: getSpacing(4),
-})
-
-const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
-  paddingHorizontal: getSpacing(6),
-  ...(nbHits > 0 ? { paddingBottom: getSpacing(4) } : {}),
-}))
-
-const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
-}))``
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),

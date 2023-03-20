@@ -410,262 +410,172 @@ Array [
     }
     testID="searchResults"
   >
-    <RCTScrollView
-      ItemSeparatorComponent={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "inlineStyle": InlineStyle {
-            "rules": Array [
-              [Function],
-            ],
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
           },
-          "render": [Function],
-          "shouldForwardProp": undefined,
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
+        ]
       }
-      ListEmptyComponent={<NoSearchResult />}
-      ListFooterComponent={
-        <React.Fragment>
-          <Styled(View) />
-        </React.Fragment>
-      }
-      ListHeaderComponent={
-        <React.Fragment>
-          <NumberOfResults
-            nbHits={0}
-          />
-        </React.Fragment>
-      }
-      contentContainerStyle={
-        Object {
-          "flexGrow": 1,
-        }
-      }
-      data={Array []}
-      getItem={[Function]}
-      getItemCount={[Function]}
-      itemAs="li"
-      keyExtractor={[Function]}
-      keyboardDismissMode="on-drag"
-      keyboardShouldPersistTaps="handled"
-      listAs="ul"
-      onContentSizeChange={[Function]}
-      onEndReached={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      refreshing={false}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEnabled={false}
-      scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
-      testID="searchResultsFlatlist"
-      viewabilityConfigCallbackPairs={Array []}
     >
-      <View>
+      <View
+        accessibilityRole="none"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
         <View
-          onLayout={[Function]}
-        />
-        <View
-          accessibilityRole="none"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "height": "100%",
-                "justifyContent": "center",
-                "marginHorizontal": 24,
-                "minHeight": 250,
+                "flexShrink": 0,
+                "marginTop": -104,
               },
             ]
           }
         >
           <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "flexShrink": 0,
-                },
-              ]
-            }
+            height={109.2}
+            width={140}
           >
-            <View
-              height={109.2}
-              width={140}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                    "marginTop": 16,
-                  },
-                ]
-              }
-            >
-              Pas de résultat
+            <Text>
+              undefined-SVG-Mock
             </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "marginTop": 16,
+                },
+              ]
+            }
+          >
+            Pas de résultat
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginTop": 24,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
             <Text
+              accessibilityLiveRegion="assertive"
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginTop": 24,
-                    "textAlign": "center",
                   },
                 ]
               }
             >
-              <Text
-                accessibilityLiveRegion="assertive"
-                style={
-                  Array [
-                    Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-              </Text>
+              Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
             </Text>
-          </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View>
-            <View
-              accessibilityLabel="Modifier mes filtres"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
-              }
-              testID="Modifier mes filtres"
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Modifier mes filtres
-              </Text>
-            </View>
-          </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          />
+          </Text>
         </View>
         <View
-          onLayout={[Function]}
-        >
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View>
           <View
+            accessibilityLabel="Modifier mes filtres"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "height": 104,
-                },
-              ]
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
+              }
             }
-          />
+            testID="Modifier mes filtres"
+          >
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Modifier mes filtres
+            </Text>
+          </View>
         </View>
       </View>
-    </RCTScrollView>
+    </View>
   </View>,
   <Modal
     accessibilityLabelledBy="testUuidV4"

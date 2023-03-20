@@ -34,7 +34,6 @@ export const NoSearchResult: React.FC = () => {
 
   return (
     <Container accessibilityRole={AccessibilityRole.STATUS}>
-      <Spacer.Flex />
       <ContainerNoOffer>
         <StyledNoOffer />
       </ContainerNoOffer>
@@ -51,14 +50,14 @@ export const NoSearchResult: React.FC = () => {
       <View>
         <ButtonPrimary wording="Modifier mes filtres" onPress={onPressUpdateFilters} />
       </View>
-      <Spacer.Flex />
     </Container>
   )
 }
 
-const ContainerNoOffer = styled.View({
+const ContainerNoOffer = styled.View(({ theme }) => ({
   flexShrink: 0,
-})
+  ...(theme.isMobileViewport && { marginTop: -(theme.tabBar.height + getSpacing(10)) }),
+}))
 
 const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
   size: theme.isDesktopViewport
@@ -69,8 +68,6 @@ const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
-  minHeight: 250,
-  height: '100%',
   alignItems: 'center',
   justifyContent: 'center',
   ...(theme.isDesktopViewport ? {} : { marginHorizontal: getSpacing(6) }),

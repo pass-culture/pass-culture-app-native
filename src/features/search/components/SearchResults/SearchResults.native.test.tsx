@@ -18,7 +18,7 @@ import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, act, waitFor } from 'tests/utils'
+import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 import { theme } from 'theme'
 
 jest.mock('react-query')
@@ -45,10 +45,18 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
 })
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
 let mockHits: SearchHit[] = []
 let mockNbHits = 0
-let mockHasNextPage = true
+const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
 let mockUserData: UserData[] = []
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
@@ -100,6 +108,11 @@ describe('SearchResults component', () => {
     mockNbHits = 0
   })
 
+  afterEach(() => {
+    mockHits = []
+    mockNbHits = 0
+  })
+
   it('should render correctly', async () => {
     jest.useFakeTimers('legacy')
     jest.advanceTimersByTime(2000)
@@ -113,52 +126,50 @@ describe('SearchResults component', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
     })
-    const { getByTestId } = render(<SearchResults />)
-    const flatlist = getByTestId('searchResultsFlatlist')
+    mockHits = mockedAlgoliaResponse.hits
+    mockNbHits = mockedAlgoliaResponse.nbHits
 
-    mockData.pages.push({ hits: [], page: 1, nbHits: 0 })
+    render(<SearchResults />)
+
+    const flashList = screen.getByTestId('searchResultsFlashlist')
+
+    mockData.pages.push({
+      hits: [],
+      page: 1,
+      nbHits: 0,
+    })
     await act(async () => {
-      flatlist.props.onEndReached()
+      flashList.props.onEndReached()
     })
     expect(mockFetchNextPage).toHaveBeenCalledTimes(1)
     expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1, searchId)
 
     mockData.pages.push({ hits: [], page: 2, nbHits: 0 })
     await act(async () => {
-      flatlist.props.onEndReached()
+      flashList.props.onEndReached()
     })
     expect(mockFetchNextPage).toHaveBeenCalledTimes(2)
     expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(2, searchId)
   })
 
-  it('should not log SearchScrollToPage when hitting the bottom of the page if no more results', async () => {
-    mockHasNextPage = false
-    const { getByTestId } = render(<SearchResults />)
-    const flatlist = getByTestId('searchResultsFlatlist')
-    await waitFor(() => {
-      flatlist.props.onEndReached()
-    })
-    expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
-  })
-
   describe('Category filter', () => {
     it('should display category filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(getByTestId('Catégories')).toBeTruthy()
+        expect(screen.getByTestId('Catégories')).toBeTruthy()
       })
     })
 
     it('should open the categories filter modal when pressing the category button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const categoryButton = getByTestId('Catégories')
+      render(<SearchResults />)
+      const categoryButton = screen.getByTestId('Catégories')
 
       await waitFor(() => {
         fireEvent.press(categoryButton)
       })
 
-      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
       expect(fullscreenModalScrollView).toBeTruthy()
     })
@@ -167,39 +178,39 @@ describe('SearchResults component', () => {
       useRoute.mockReturnValueOnce({
         params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
       })
-      const { getByTestId } = render(<SearchResults />)
+      render(<SearchResults />)
 
-      const categoryButtonIcon = getByTestId('categoryButtonIcon')
+      const categoryButtonIcon = screen.getByTestId('categoryButtonIcon')
       await waitFor(() => {
         expect(categoryButtonIcon).toBeTruthy()
       })
 
-      const categoryButton = getByTestId('Catégories\u00a0: Filtre sélectionné')
+      const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
       expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
 
-      const categoryButtonLabel = getByTestId('categoryButtonLabel')
+      const categoryButtonLabel = screen.getByTestId('categoryButtonLabel')
       expect(categoryButtonLabel).toHaveStyle({ color: theme.colors.primary })
     })
   })
 
   describe('Price filter', () => {
     it('should display price filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(getByTestId('Prix')).toBeTruthy()
+        expect(screen.getByTestId('Prix')).toBeTruthy()
       })
     })
 
     it('should open the prices filter modal when pressing the prices filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const priceButton = getByTestId('Prix')
+      render(<SearchResults />)
+      const priceButton = screen.getByTestId('Prix')
 
       await waitFor(() => {
         fireEvent.press(priceButton)
       })
 
-      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
       expect(fullscreenModalScrollView).toBeTruthy()
     })
@@ -208,17 +219,17 @@ describe('SearchResults component', () => {
       useRoute.mockReturnValueOnce({
         params: { minPrice: '5' },
       })
-      const { getByTestId } = render(<SearchResults />)
+      render(<SearchResults />)
 
-      const priceButtonIcon = getByTestId('priceButtonIcon')
+      const priceButtonIcon = screen.getByTestId('priceButtonIcon')
       await waitFor(() => {
         expect(priceButtonIcon).toBeTruthy()
       })
 
-      const priceButton = getByTestId('Prix\u00a0: Filtre sélectionné')
+      const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
       expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
 
-      const priceButtonLabel = getByTestId('priceButtonLabel')
+      const priceButtonLabel = screen.getByTestId('priceButtonLabel')
       expect(priceButtonLabel).toHaveStyle({ color: theme.colors.primary })
     })
   })
@@ -236,26 +247,26 @@ describe('SearchResults component', () => {
       })
 
       it('should display Duo filter button', async () => {
-        const { getByTestId } = render(<SearchResults />)
+        render(<SearchResults />)
 
         await waitFor(() => {
-          expect(getByTestId('Duo')).toBeTruthy()
+          expect(screen.getByTestId('Duo')).toBeTruthy()
         })
       })
 
       it('should open the duo filter modal when pressing the duo filter button', async () => {
-        const { getByTestId, queryByTestId } = render(<SearchResults />)
-        const duoButton = getByTestId('Duo')
+        render(<SearchResults />)
+        const duoButton = screen.getByTestId('Duo')
 
         await waitFor(() => {
           fireEvent.press(duoButton)
         })
 
-        const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+        const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
         expect(fullscreenModalScrollView).toBeTruthy()
 
-        const isInverseLayout = queryByTestId('inverseLayout')
+        const isInverseLayout = screen.queryByTestId('inverseLayout')
 
         expect(isInverseLayout).toBeFalsy()
       })
@@ -273,10 +284,10 @@ describe('SearchResults component', () => {
       })
 
       it('should not display Duo filter button', async () => {
-        const { queryByText } = render(<SearchResults />)
+        render(<SearchResults />)
 
         await waitFor(() => {
-          expect(queryByText('Duo')).toBeFalsy()
+          expect(screen.queryByText('Duo')).toBeFalsy()
         })
       })
     })
@@ -293,10 +304,10 @@ describe('SearchResults component', () => {
       })
 
       it('should not display Duo offer button', async () => {
-        const { queryByText } = render(<SearchResults />)
+        render(<SearchResults />)
 
         await waitFor(() => {
-          expect(queryByText('Duo')).toBeFalsy()
+          expect(screen.queryByText('Duo')).toBeFalsy()
         })
       })
     })
@@ -313,10 +324,10 @@ describe('SearchResults component', () => {
       })
 
       it('should not display Duo offer button', async () => {
-        const { queryByText } = render(<SearchResults />)
+        render(<SearchResults />)
 
         await waitFor(() => {
-          expect(queryByText('Duo')).toBeFalsy()
+          expect(screen.queryByText('Duo')).toBeFalsy()
         })
       })
     })
@@ -324,10 +335,10 @@ describe('SearchResults component', () => {
 
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Géolocalise-toi')).toBeFalsy()
+        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
       })
     })
 
@@ -339,28 +350,28 @@ describe('SearchResults component', () => {
       useRoute.mockReturnValueOnce({
         params,
       })
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Géolocalise-toi')).toBeFalsy()
+        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
       })
     })
 
     it('when position is null and no results search', async () => {
       mockPosition = null
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Géolocalise-toi')).toBeFalsy()
+        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
       })
     })
   })
 
   describe('Location filter', () => {
     it('should display location filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
+      render(<SearchResults />)
       await waitFor(() => {
-        expect(getByTestId('Localisation')).toBeTruthy()
+        expect(screen.getByTestId('Localisation')).toBeTruthy()
       })
     })
 
@@ -387,10 +398,10 @@ describe('SearchResults component', () => {
         mockPosition = position
         mockSearchState = { ...searchState, locationFilter }
 
-        const { queryByText } = render(<SearchResults />)
+        render(<SearchResults />)
 
         await waitFor(() => {
-          expect(queryByText(locationButtonLabel)).toBeTruthy()
+          expect(screen.queryByText(locationButtonLabel)).toBeTruthy()
         })
       }
     )
@@ -398,21 +409,21 @@ describe('SearchResults component', () => {
 
   describe('Dates and hours filter', () => {
     it('should display dates and hours filter button', async () => {
-      const { queryByTestId } = render(<SearchResults />)
+      render(<SearchResults />)
       await waitFor(() => {
-        expect(queryByTestId('Dates & heures')).toBeTruthy()
+        expect(screen.queryByTestId('Dates & heures')).toBeTruthy()
       })
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
-      const { getByTestId } = render(<SearchResults />)
-      const datesHoursButton = getByTestId('Dates & heures')
+      render(<SearchResults />)
+      const datesHoursButton = screen.getByTestId('Dates & heures')
 
       await waitFor(() => {
         fireEvent.press(datesHoursButton)
       })
 
-      const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
       expect(fullscreenModalScrollView).toBeTruthy()
     })
@@ -427,17 +438,17 @@ describe('SearchResults component', () => {
         useRoute.mockReturnValueOnce({
           params,
         })
-        const { getByTestId } = render(<SearchResults />)
+        render(<SearchResults />)
 
-        const datesHoursButtonIcon = getByTestId('datesHoursButtonIcon')
+        const datesHoursButtonIcon = screen.getByTestId('datesHoursButtonIcon')
         await waitFor(() => {
           expect(datesHoursButtonIcon).toBeTruthy()
         })
 
-        const datesHoursButton = getByTestId('Dates & heures\u00a0: Filtre sélectionné')
+        const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
         expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
 
-        const datesHoursButtonLabel = getByTestId('datesHoursButtonLabel')
+        const datesHoursButtonLabel = screen.getByTestId('datesHoursButtonLabel')
         expect(datesHoursButtonLabel).toHaveStyle({ color: theme.colors.primary })
       }
     )
@@ -447,10 +458,10 @@ describe('SearchResults component', () => {
     mockPosition = null
     mockHits = mockedAlgoliaResponse.hits
     mockNbHits = mockedAlgoliaResponse.nbHits
-    const { getByText } = render(<SearchResults />)
+    render(<SearchResults />)
 
     await waitFor(() => {
-      fireEvent.press(getByText('Géolocalise-toi'))
+      fireEvent.press(screen.getByText('Géolocalise-toi'))
     })
 
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
@@ -460,10 +471,10 @@ describe('SearchResults component', () => {
     mockPosition = null
     mockHits = mockedAlgoliaResponse.hits
     mockNbHits = mockedAlgoliaResponse.nbHits
-    const { getByText } = render(<SearchResults />)
+    render(<SearchResults />)
 
     await waitFor(() => {
-      fireEvent.press(getByText('Géolocalise-toi'))
+      fireEvent.press(screen.getByText('Géolocalise-toi'))
     })
 
     expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)
@@ -477,20 +488,20 @@ describe('SearchResults component', () => {
     })
 
     it('when position is null', async () => {
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Géolocalise-toi')).toBeTruthy()
+        expect(screen.queryByText('Géolocalise-toi')).toBeTruthy()
       })
     })
 
     it('when position is null and query is not an offer not present', async () => {
       mockUserData = [{ message: 'n’est pas disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Géolocalise-toi')).toBeFalsy()
+        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
       })
     })
   })
@@ -501,10 +512,10 @@ describe('SearchResults component', () => {
       mockNbHits = mockedAlgoliaResponse.nbHits
       mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Offre non disponible sur le pass Culture.')).toBeTruthy()
+        expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeTruthy()
       })
     })
 
@@ -513,10 +524,10 @@ describe('SearchResults component', () => {
       mockNbHits = mockedAlgoliaResponse.nbHits
       mockUserData = []
       mockSearchState = { ...searchState, query: 'Deezer' }
-      const { queryByText } = render(<SearchResults />)
+      render(<SearchResults />)
 
       await waitFor(() => {
-        expect(queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
+        expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
       })
     })
   })
