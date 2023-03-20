@@ -207,55 +207,71 @@ describe('getPriceWording', () => {
 })
 
 describe('getPreviousStep', () => {
+  const defaultBookingState: BookingState = {
+    step: Step.DATE,
+    offerId: offerResponseSnap.id,
+    hour: undefined,
+    stockId: undefined,
+    quantity: undefined,
+    date: undefined,
+  }
+
   it('should return to date step when current step is hour', () => {
-    const previousStep = getPreviousStep(Step.HOUR, offerResponseSnap)
+    const previousStep = getPreviousStep(
+      { ...defaultBookingState, step: Step.HOUR },
+      offerResponseSnap.stocks
+    )
     expect(previousStep).toEqual(Step.DATE)
   })
 
   describe('should return to hour step', () => {
     it('when current step is price', () => {
-      const previousStep = getPreviousStep(Step.PRICE, { ...offerResponseSnap, stocks: mockStocks })
+      const previousStep = getPreviousStep({ ...defaultBookingState, step: Step.PRICE }, mockStocks)
       expect(previousStep).toEqual(Step.HOUR)
     })
 
     it('when current step is duo and has not several stock', () => {
-      const previousStep = getPreviousStep(Step.DUO, { ...offerResponseSnap, stocks: [stock1] })
+      const previousStep = getPreviousStep(
+        { ...defaultBookingState, step: Step.DUO },
+        [stock1],
+        true
+      )
       expect(previousStep).toEqual(Step.HOUR)
     })
 
     it('when current step is confirmation, offer is not duo and has not several stock', () => {
-      const previousStep = getPreviousStep(Step.CONFIRMATION, {
-        ...offerResponseSnap,
-        stocks: [stock1],
-        isDuo: false,
-      })
+      const previousStep = getPreviousStep({ ...defaultBookingState, step: Step.CONFIRMATION }, [
+        stock1,
+      ])
       expect(previousStep).toEqual(Step.HOUR)
     })
   })
 
   describe('should return to price step', () => {
     it('when current step is duo and has several stocks', () => {
-      const previousStep = getPreviousStep(Step.DUO, {
-        ...offerResponseSnap,
-        stocks: mockStocks,
-      })
+      const previousStep = getPreviousStep(
+        { ...defaultBookingState, step: Step.DUO, hour: '2023-04-01T18:00:00Z' },
+        mockStocks,
+        true
+      )
       expect(previousStep).toEqual(Step.PRICE)
     })
 
     it('when current step is confirmation, offer is not duo and has several stocks', () => {
-      const previousStep = getPreviousStep(Step.CONFIRMATION, {
-        ...offerResponseSnap,
-        stocks: mockStocks,
-        isDuo: false,
-      })
+      const previousStep = getPreviousStep(
+        { ...defaultBookingState, step: Step.CONFIRMATION, hour: '2023-04-01T18:00:00Z' },
+        mockStocks
+      )
       expect(previousStep).toEqual(Step.PRICE)
     })
   })
 
   it('should return to duo step when current step is confirmation and offer is duo', () => {
-    const previousStep = getPreviousStep(Step.CONFIRMATION, {
-      ...offerResponseSnap,
-    })
+    const previousStep = getPreviousStep(
+      { ...defaultBookingState, step: Step.CONFIRMATION },
+      mockStocks,
+      true
+    )
     expect(previousStep).toEqual(Step.DUO)
   })
 })

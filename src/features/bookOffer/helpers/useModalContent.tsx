@@ -133,7 +133,8 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       ? {
           leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
           leftIcon: ArrowPrevious,
-          onLeftIconPress: () => goToPreviousStep(getPreviousStep(bookingStep, offer)),
+          onLeftIconPress: () =>
+            goToPreviousStep(getPreviousStep(bookingState, offer?.stocks || [], offer?.isDuo)),
         }
       : {
           leftIconAccessibilityLabel: undefined,
@@ -148,7 +149,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
     )
   }
 
-  const previousBookingState = getPreviousStep(bookingStep, offer)
+  const previousBookingState = getPreviousStep(bookingState, offer?.stocks || [], offer?.isDuo)
   const bookingDetailsModalLeftIconProps: ModalLeftIconProps = {
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,

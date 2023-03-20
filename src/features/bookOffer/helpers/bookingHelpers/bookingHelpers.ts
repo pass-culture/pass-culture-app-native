@@ -1,4 +1,4 @@
-import { OfferResponse, OfferStockResponse } from 'api/gen'
+import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -80,19 +80,29 @@ export function getPriceWording(stock: OfferStockResponse, offerCredit: number) 
   return ''
 }
 
-export function getPreviousStep(currentStep: number, offer: OfferResponse) {
-  const stocksWithCategory = offer?.stocks?.filter(
-    (stock) => !stock.isExpired && stock.priceCategoryLabel
-  ).length
+export function getPreviousStep(
+  bookingState: BookingState,
+  stocks: OfferStockResponse[],
+  offerIsDuo?: boolean
+) {
+  const currentStep = bookingState.step
+  let stocksWithCategory: OfferStockResponse[] = []
+  if (bookingState.hour) {
+    stocksWithCategory = stocks.filter(getStockWithCategoryFromHour(bookingState.hour))
+  } else {
+    stocksWithCategory = bookingState.date
+      ? stocks.filter(getStockWithCategoryFromDate(formatToKeyDate(bookingState.date)))
+      : []
+  }
 
   if (
-    (currentStep === Step.DUO || (currentStep === Step.CONFIRMATION && !offer.isDuo)) &&
-    stocksWithCategory <= 1
+    (currentStep === Step.DUO || (currentStep === Step.CONFIRMATION && !offerIsDuo)) &&
+    stocksWithCategory.length <= 1
   ) {
     return Step.HOUR
-  } else if (currentStep === Step.CONFIRMATION && !offer.isDuo && stocksWithCategory > 1) {
+  } else if (currentStep === Step.CONFIRMATION && !offerIsDuo && stocksWithCategory.length > 1) {
     return Step.PRICE
-  } else if (currentStep === Step.CONFIRMATION && offer.isDuo) {
+  } else if (currentStep === Step.CONFIRMATION && offerIsDuo) {
     return Step.DUO
   }
 
@@ -109,7 +119,7 @@ export const getStockWithCategoryFromDate =
     stock.beginningDatetime &&
     formatToKeyDate(stock.beginningDatetime) === selectedDate
 
-const getStockFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
+export const getStockWithCategoryFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
   !stock.isExpired &&
   stock.priceCategoryLabel &&
   stock.beginningDatetime &&
@@ -148,5 +158,7 @@ export function getDistinctPricesFromAllStock(stocks: OfferStockResponse[]) {
 }
 
 export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], selectedHour: string) {
-  return stocks.filter(getStockFromHour(selectedHour)).sort(sortByPricePredicate)
+  return stocks.filter(getStockWithCategoryFromHour(selectedHour)).sort(sortByPricePredicate)
+}
+
 }
