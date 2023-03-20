@@ -192,23 +192,6 @@ it('should navigate to the previous when back navigation triggered', () => {
 })
 ```
 
-If `act` warnings appear, try to use `await superFlushWithAct(times)` or wrap the `expect` around `waitForExpect`:
-
-```tsx
-it('should redirect to home page WHEN signin is successful', async () => {
-  const { findByText } = renderLogin()
-  mockSignIn.mockImplementationOnce(() => true)
-
-  const connexionButton = await findByText('Se connecter')
-  fireEvent.press(connexionButton)
-
-  await waitForExpect(() => {
-    expect(mockSignIn).toBeCalledTimes(1)
-    expect(navigate).toBeCalledTimes(1)
-  })
-})
-```
-
 #### Mock route params
 
 When the tested component use route params through `useRoute` hook, `params` can be mocked like follow:
