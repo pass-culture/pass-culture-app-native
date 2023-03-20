@@ -26,6 +26,7 @@ import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackg
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { VerticalUl } from 'ui/components/Ul'
+import { useVersion } from 'ui/hooks/useVersion'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -39,14 +40,13 @@ import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
-import Package from '../../../../package.json'
-
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
   const signOut = useLogoutRoutine()
+  const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
 
@@ -248,7 +248,7 @@ const OnlineProfile: React.FC = () => {
         )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.CaptionNeutralInfo>Version&nbsp;{Package.version}</Typo.CaptionNeutralInfo>
+          <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />

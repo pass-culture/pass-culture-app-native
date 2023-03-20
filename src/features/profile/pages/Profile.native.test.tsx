@@ -26,7 +26,9 @@ import {
   fireEvent,
   middleScrollEvent,
   bottomScrollEvent,
+  screen,
 } from 'tests/utils'
+import * as useVersion from 'ui/hooks/useVersion'
 
 import { Profile } from './Profile'
 
@@ -89,6 +91,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
+const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
+
 const shareApp = jest.spyOn(Share, 'shareApp')
 
 describe('Profile component', () => {
@@ -111,11 +115,25 @@ describe('Profile component', () => {
     expect(renderAPI.queryByText('Pas de réseau internet')).toBeTruthy()
   })
 
+  it('should display the version with the CodePush version label', async () => {
+    const mockVersion = 'Version\u00A01.10.5-123'
+    useVersionSpy.mockReturnValueOnce(mockVersion)
+    await renderProfile()
+
+    expect(screen.getByText(mockVersion)).toBeTruthy()
+  })
+
+  it('should not display the Code push version label when it is not available', async () => {
+    await renderProfile()
+
+    expect(screen.getByText('Version\u00A01.10.5')).toBeTruthy()
+  })
+
   describe('user settings section', () => {
     it('should navigate when the personal data row is clicked', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Informations personnelles')
+      const row = screen.getByText('Informations personnelles')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('PersonalData', undefined)
@@ -125,9 +143,9 @@ describe('Profile component', () => {
       it('should display switch ON if geoloc permission is granted', async () => {
         mockPermissionState = GeolocPermissionState.GRANTED
 
-        const { getByTestId, queryByText } = await renderProfile()
-        const geolocSwitch = getByTestId('Interrupteur')
-        const positionErrorMessage = queryByText(
+        await renderProfile()
+        const geolocSwitch = screen.getByTestId('Interrupteur')
+        const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
         expect(positionErrorMessage).toBeFalsy()
@@ -142,25 +160,25 @@ describe('Profile component', () => {
           message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
         }
 
-        const { queryByText } = await renderProfile()
-        expect(queryByText(mockPositionError.message)).toBeTruthy()
+        await renderProfile()
+        expect(screen.queryByText(mockPositionError.message)).toBeTruthy()
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {
         mockPermissionState = GeolocPermissionState.DENIED
-        const { getByTestId } = await renderProfile()
-        const geolocSwitch = getByTestId('Interrupteur')
+        await renderProfile()
+        const geolocSwitch = screen.getByTestId('Interrupteur')
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
       })
 
       it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', async () => {
         // geolocation switch is ON and user wants to switch it OFF
         mockPermissionState = GeolocPermissionState.GRANTED
-        const { getByTestId } = await renderProfile({
+        await renderProfile({
           wrapper: FavoritesWrapper,
         })
 
-        fireEvent.press(getByTestId('Interrupteur'))
+        fireEvent.press(screen.getByTestId('Interrupteur'))
 
         expect(mockFavoriteDispatch).toBeCalledWith({
           type: 'SET_SORT_BY',
@@ -170,9 +188,9 @@ describe('Profile component', () => {
       })
     })
     it('should navigate when the notifications row is clicked', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Notifications')
+      const row = screen.getByText('Notifications')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('NotificationSettings', undefined)
@@ -181,9 +199,9 @@ describe('Profile component', () => {
 
   describe('help section', () => {
     it('should navigate when the how-it-works row is clicked', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Comment ça marche\u00a0?')
+      const row = screen.getByText('Comment ça marche\u00a0?')
       fireEvent.press(row)
 
       await waitForExpect(() => {
@@ -193,9 +211,9 @@ describe('Profile component', () => {
 
     it('should navigate when the faq row is clicked', async () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Centre d’aide')
+      const row = screen.getByText('Centre d’aide')
       fireEvent.press(row)
 
       expect(openUrl).toBeCalledWith(env.FAQ_LINK, undefined, true)
@@ -204,27 +222,27 @@ describe('Profile component', () => {
 
   describe('other section', () => {
     it('should navigate when the accessibility row is clicked', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Accessibilité')
+      const row = screen.getByText('Accessibilité')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('Accessibility', undefined)
     })
 
     it('should navigate when the legal notices row is clicked', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Informations légales')
+      const row = screen.getByText('Informations légales')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('LegalNotices', undefined)
     })
 
     it('should navigate when the confidentiality row is clicked', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Confidentialité')
+      const row = screen.getByText('Confidentialité')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('ConsentSettings', undefined)
@@ -233,14 +251,14 @@ describe('Profile component', () => {
 
   describe('share app section', () => {
     it('should display banner in native', async () => {
-      const { queryByText } = await renderProfile()
-      const banner = queryByText('Partage le pass Culture')
+      await renderProfile()
+      const banner = screen.queryByText('Partage le pass Culture')
       expect(banner).toBeTruthy()
     })
 
     it('should share app on banner press', async () => {
-      const { getByText } = await renderProfile()
-      const banner = getByText('Partage le pass Culture')
+      await renderProfile()
+      const banner = screen.getByText('Partage le pass Culture')
 
       fireEvent.press(banner)
 
@@ -250,16 +268,16 @@ describe('Profile component', () => {
 
   describe('signout section', () => {
     it('should display signout row if the user is connected', async () => {
-      const { getByText } = await renderProfile()
-      const row = getByText('Déconnexion')
+      await renderProfile()
+      const row = screen.getByText('Déconnexion')
       expect(row).toBeTruthy()
     })
 
     it('should NOT display signout row if the user is NOT connected', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: false }))
-      const { queryByText } = await renderProfile()
-      const row = queryByText('Déconnexion')
+      await renderProfile()
+      const row = screen.queryByText('Déconnexion')
       expect(row).toBeFalsy()
     })
 
@@ -269,9 +287,9 @@ describe('Profile component', () => {
         isLoggedIn: true,
         user: nonBeneficiaryUser,
       }))
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Déconnexion')
+      const row = screen.getByText('Déconnexion')
       fireEvent.press(row)
 
       expect(mockSignOut).toHaveBeenCalledTimes(1)
@@ -280,9 +298,9 @@ describe('Profile component', () => {
 
   describe('Analytics', () => {
     it('should log event ConsultTutorial when user clicks on tutorial section', async () => {
-      const { getByText } = await renderProfile()
+      await renderProfile()
 
-      const row = getByText('Comment ça marche\u00a0?')
+      const row = screen.getByText('Comment ça marche\u00a0?')
       fireEvent.press(row)
       expect(analytics.logConsultTutorial).toHaveBeenNthCalledWith(1, 'profile')
     })
@@ -293,8 +311,8 @@ describe('Profile component', () => {
         isLoggedIn: true,
         user: nonBeneficiaryUser,
       }))
-      const { getByTestId } = await renderProfile()
-      const scrollContainer = getByTestId('profile-scrollview')
+      await renderProfile()
+      const scrollContainer = screen.getByTestId('profile-scrollview')
       await act(async () => await fireEvent.scroll(scrollContainer, middleScrollEvent))
       expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(0)
       await act(async () => await fireEvent.scroll(scrollContainer, bottomScrollEvent))
@@ -302,8 +320,8 @@ describe('Profile component', () => {
     })
 
     it('should log event ShareApp on share banner press', async () => {
-      const { getByText } = await renderProfile()
-      const banner = getByText('Partage le pass Culture')
+      await renderProfile()
+      const banner = screen.getByText('Partage le pass Culture')
 
       fireEvent.press(banner)
 
