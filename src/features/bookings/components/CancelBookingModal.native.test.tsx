@@ -72,6 +72,16 @@ describe('<CancelBookingModal />', () => {
     expect(analytics.logConfirmBookingCancellation).toHaveBeenCalledWith(booking.stock.offer.id)
   })
 
+  it('should close modal on success', () => {
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByText } = render(
+      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
+    )
+
+    fireEvent.press(getByText('Annuler ma réservation'))
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
+  })
+
   it('should showErrorSnackBar and close modal on press "Annuler ma réservation"', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const booking = bookingsSnap.ongoing_bookings[0]

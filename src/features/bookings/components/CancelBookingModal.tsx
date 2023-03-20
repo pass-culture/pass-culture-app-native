@@ -50,11 +50,12 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   }
 
   function onError(error: unknown) {
+    dismissModal()
     navigate(...getTabNavConfig('Bookings'))
     showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
   }
 
-  const { mutate } = useCancelBookingMutation({
+  const { mutate: cancelBooking } = useCancelBookingMutation({
     onSuccess,
     onError,
   })
@@ -62,7 +63,8 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const confirmCancelBooking = () => {
     if (netInfo.isConnected) {
       analytics.logConfirmBookingCancellation(booking.stock.offer.id)
-      mutate(booking.id)
+      cancelBooking(booking.id)
+      dismissModal()
     } else {
       dismissModal()
       showErrorSnackBar({
