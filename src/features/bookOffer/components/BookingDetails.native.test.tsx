@@ -158,30 +158,56 @@ describe('<BookingDetails />', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should dismiss modal on successfully booking an offer', async () => {
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-      )
-
-      renderBookingDetails(mockStocks)
-
-      const ConfirmButton = screen.getByText('Confirmer la réservation')
-      fireEvent.press(ConfirmButton)
-
-      await waitFor(() => {
-        expect(mockDismissModal).toHaveBeenCalledTimes(1)
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
-          mockOfferId,
-          undefined,
-          undefined
+    describe('should dismiss modal', () => {
+      it('on successfully booking an offer', async () => {
+        server.use(
+          rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
+            res(ctx.status(204))
+          )
         )
-        expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
-          af_offer_id: mockOffer.id,
-          af_booking_id: mockBookingStock?.id,
-          af_price: mockBookingStock?.price,
-          af_category: mockOffer.subcategoryId,
+
+        renderBookingDetails(mockStocks)
+
+        const ConfirmButton = screen.getByText('Confirmer la réservation')
+        fireEvent.press(ConfirmButton)
+
+        await waitFor(() => {
+          expect(mockDismissModal).toHaveBeenCalledTimes(1)
+          expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
+            mockOfferId,
+            undefined,
+            undefined
+          )
+          expect(campaignTracker.logEvent).toHaveBeenCalledWith(
+            CampaignEvents.COMPLETE_BOOK_OFFER,
+            {
+              af_offer_id: mockOffer.id,
+              af_booking_id: mockBookingStock?.id,
+              af_price: mockBookingStock?.price,
+              af_category: mockOffer.subcategoryId,
+            }
+          )
+          expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
         })
-        expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
+      })
+
+      it('when there is an error when booking an offer', async () => {
+        const response = {}
+
+        server.use(
+          rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
+            res(ctx.status(400), ctx.json(response))
+          )
+        )
+
+        renderBookingDetails(mockStocks)
+
+        const ConfirmButton = screen.getByText('Confirmer la réservation')
+        fireEvent.press(ConfirmButton)
+
+        await waitFor(() => {
+          expect(mockDismissModal).toHaveBeenCalledTimes(1)
+        })
       })
     })
 
