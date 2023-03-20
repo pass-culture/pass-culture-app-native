@@ -112,6 +112,9 @@ export function getPreviousStep(
 const getAllAvailableStockFromOffer = (stock: OfferStockResponse) =>
   !stock.isExpired && stock.beginningDatetime
 
+const getAllAvailableStockWithCategoryFromOffer = (stock: OfferStockResponse) =>
+  !stock.isExpired && stock.priceCategoryLabel && stock.beginningDatetime
+
 export const getStockWithCategoryFromDate =
   (selectedDate?: string) => (stock: OfferStockResponse) =>
     !stock.isExpired &&
@@ -161,4 +164,18 @@ export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], sele
   return stocks.filter(getStockWithCategoryFromHour(selectedHour)).sort(sortByPricePredicate)
 }
 
+export function getStockWithCategory(
+  stocks?: OfferStockResponse[],
+  selectedDate?: Date,
+  selectedHour?: string
+) {
+  if (!stocks) return []
+  if (selectedHour) {
+    return stocks.filter(getStockWithCategoryFromHour(selectedHour))
+  }
+  if (selectedDate) {
+    return stocks.filter(getStockWithCategoryFromDate(formatToKeyDate(selectedDate)))
+  }
+
+  return stocks.filter(getAllAvailableStockWithCategoryFromOffer)
 }

@@ -11,6 +11,7 @@ import {
   sortByDateStringPredicate,
   getStockSortedByPriceFromHour,
   getDistinctPricesFromAllStock,
+  getStockWithCategory,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -321,5 +322,48 @@ describe('getDistinctPricesFromAllStock', () => {
       stock4,
     ])
     expect(distinctPrices).not.toEqual([22000, 22000, 10000, 19000])
+  })
+})
+
+describe('getStockWithCategory', () => {
+  it('should return an empty array when stock not defined', () => {
+    const stockWithCategory = getStockWithCategory()
+    expect(stockWithCategory).toEqual([])
+  })
+
+  it('should return all stock with category when stock defined and hour and date not defined', () => {
+    const stockWithCategory = getStockWithCategory([
+      { ...stock1, priceCategoryLabel: null },
+      stock2,
+      stock3,
+      stock4,
+    ])
+    expect(stockWithCategory).toEqual([stock2, stock3, stock4])
+  })
+
+  it('should return stock with category from hour when stock, hour and date defined', () => {
+    const stockWithCategory = getStockWithCategory(
+      mockStocks,
+      new Date('2023-04-01T20:00:00Z'),
+      '2023-04-01T20:00:00Z'
+    )
+    expect(stockWithCategory).toEqual([stock1])
+  })
+
+  it('should return stock with category from date when stock and date defined and hour not defined', () => {
+    const stockWithCategory = getStockWithCategory(
+      [
+        { ...stock1, beginningDatetime: '2023-04-02T20:00:00Z' },
+        { ...stock2, beginningDatetime: '2023-04-01T20:00:00Z' },
+        stock3,
+        stock4,
+      ],
+      new Date('2023-04-01T20:00:00Z')
+    )
+    expect(stockWithCategory).toEqual([
+      { ...stock2, beginningDatetime: '2023-04-01T20:00:00Z' },
+      stock3,
+      stock4,
+    ])
   })
 })

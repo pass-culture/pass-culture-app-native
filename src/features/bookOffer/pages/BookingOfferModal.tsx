@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
@@ -7,6 +7,7 @@ import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOf
 import { BookingWrapper } from 'features/bookOffer/context/BookingWrapper'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { useOffer } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/firebase/analytics'
@@ -39,9 +40,11 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   const { modal } = useTheme()
 
   const { data: offer } = useOffer({ offerId })
-  const stocksWithCategory =
-    offer?.stocks?.filter((stock) => !stock.isExpired && stock.priceCategoryLabel) || []
-  const hasPricesStep = Boolean(stocksWithCategory.length > 1)
+
+  const stocksWithCategory = useMemo(() => {
+    return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
+  }, [bookingState.date, bookingState.hour, offer?.stocks])
+  const hasPricesStep = enablePricesByCategories && Boolean(stocksWithCategory.length > 1)
 
   const modalLeftIconProps = {
     leftIcon,
