@@ -90,6 +90,24 @@ describe('BookingOfferModalFooter', () => {
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.PRICE })
     })
 
+    it('should reset stock selection when hour selected and has several prices', () => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: {
+          offerId: 1,
+          stockId: undefined,
+          step: Step.HOUR,
+          quantity: undefined,
+          date: new Date('01/02/2021'),
+          hour: '2023-04-01T18:00:00Z',
+        },
+        dispatch: mockDispatch,
+        dismissModal: jest.fn(),
+      })
+      render(<BookingOfferModalFooter hasPricesStep />)
+      fireEvent.press(screen.getByText('Valider lʼhoraire'))
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_STOCK' })
+    })
+
     it('should change step to quantity selection when hour selected, has not several prices and offer is duo', () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
