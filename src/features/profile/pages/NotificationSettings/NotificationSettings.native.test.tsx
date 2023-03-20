@@ -5,8 +5,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import * as RNP from 'react-native-permissions'
 import { NotificationsResponse, PermissionStatus } from 'react-native-permissions'
-import { act, ReactTestInstance } from 'react-test-renderer'
-import waitForExpect from 'wait-for-expect'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
@@ -15,7 +14,7 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen, flushAllPromisesWithAct } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
 
@@ -37,11 +36,12 @@ describe('NotificationSettings', () => {
   describe('Display correct switches', () => {
     it('should display the both switches on ios', async () => {
       Platform.OS = 'ios'
-      const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
-      await waitForExpect(() => {
-        expect(queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
-        expect(queryByText('Autoriser les notifications marketing')).toBeTruthy()
-      })
+      renderNotificationSettings('granted', {} as UserProfileResponse)
+
+      await flushAllPromisesWithAct()
+
+      expect(screen.queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+      expect(screen.queryByText('Autoriser les notifications marketing')).toBeTruthy()
     })
 
     it('should only display the email switch on android', async () => {
@@ -49,27 +49,29 @@ describe('NotificationSettings', () => {
       jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       Platform.OS = 'android'
-      const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
-      await waitForExpect(() => {
-        expect(queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
-        expect(queryByText('Autoriser les notifications marketing')).toBeFalsy()
-      })
+      renderNotificationSettings('granted', {} as UserProfileResponse)
+
+      await flushAllPromisesWithAct()
+
+      expect(screen.queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+      expect(screen.queryByText('Autoriser les notifications marketing')).toBeFalsy()
     })
   })
 
   describe('Display the push switch properly (only iOS)', () => {
     it('should display an enabled switch', async () => {
       Platform.OS = 'ios'
-      const { getAllByTestId } = await renderNotificationSettings('granted', {
+      renderNotificationSettings('granted', {
         subscriptions: {
           marketingEmail: false,
           marketingPush: true,
         },
       } as UserProfileResponse)
-      const pushSwitch = getAllByTestId('Interrupteur')[1]
-      await waitForExpect(() =>
-        expect(pushSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
-      )
+
+      await flushAllPromisesWithAct()
+
+      const pushSwitch = screen.getAllByTestId('Interrupteur')[1]
+      expect(pushSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
     })
 
     it.each<[PermissionStatus, boolean]>([
@@ -82,91 +84,83 @@ describe('NotificationSettings', () => {
       'should display a disabled switch when permission="%s" and marketingPush="%s"',
       async (permission, marketingPush) => {
         Platform.OS = 'ios'
-        const { getAllByTestId } = await renderNotificationSettings(permission, {
+        renderNotificationSettings(permission, {
           subscriptions: {
             marketingEmail: false,
             marketingPush,
           },
         } as UserProfileResponse)
-        const pushSwitch = getAllByTestId('Interrupteur')[1]
-        await waitForExpect(() =>
-          expect(pushSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
-        )
+
+        await flushAllPromisesWithAct()
+
+        const pushSwitch = screen.getAllByTestId('Interrupteur')[1]
+        expect(pushSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
       }
     )
   })
 
   describe('The transitions of the push switch', () => {
     it('should enable the switch when permission=="granted" and push previously not allowed', async () => {
-      const { getAllByTestId } = await renderNotificationSettings('granted', {
+      renderNotificationSettings('granted', {
         subscriptions: {
           marketingEmail: true,
           marketingPush: false,
         },
       } as UserProfileResponse)
-      await act(async () => {
-        await waitForExpect(() => {
-          const toggleSwitch = getAllByTestId('Interrupteur')[1]
-          fireEvent.press(toggleSwitch)
-        })
-      })
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        const toggleSwitch = getAllByTestId('Interrupteur')[1]
-        // expect activated
-        expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
-        expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeTruthy()
-      })
+
+      await flushAllPromisesWithAct()
+
+      const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+      fireEvent.press(toggleSwitch)
+
+      await flushAllPromisesWithAct()
+
+      expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
+      expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeTruthy()
     })
 
     it('should disable the switch when permission=="granted" and push previously allowed', async () => {
-      const { getAllByTestId } = await renderNotificationSettings('granted', {
+      renderNotificationSettings('granted', {
         subscriptions: {
           marketingEmail: true,
           marketingPush: true,
         },
       } as UserProfileResponse)
-      await act(async () => {
-        await waitForExpect(() => {
-          const toggleSwitch = getAllByTestId('Interrupteur')[1]
-          fireEvent.press(toggleSwitch)
-        })
-      })
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        const toggleSwitch = getAllByTestId('Interrupteur')[1]
-        // expect not activated
-        expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
-        expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeFalsy()
-      })
+
+      await flushAllPromisesWithAct()
+
+      const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+      fireEvent.press(toggleSwitch)
+
+      await flushAllPromisesWithAct()
+
+      expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
+      expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeFalsy()
     })
 
     it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
       'should open the modal when permission!="granted" (==%s) and trying to allow',
       async (permission) => {
-        const { getAllByTestId, queryAllByTestId } = await renderNotificationSettings(permission, {
+        renderNotificationSettings(permission, {
           subscriptions: {
             marketingEmail: true,
             marketingPush: false, // the user push setting doesnt care
           },
         } as UserProfileResponse)
-        await act(async () => {
-          await waitForExpect(() => {
-            const toggleSwitch = getAllByTestId('Interrupteur')[1]
-            fireEvent.press(toggleSwitch)
-          })
-        })
-        await superFlushWithAct(10)
-        await waitForExpect(() => {
-          expect(queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
-        })
+
+        const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+        fireEvent.press(toggleSwitch)
+
+        await flushAllPromisesWithAct()
+
+        expect(screen.queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
       }
     )
   })
 
   describe('The behavior of the save button', () => {
     it('should not be displayed when for unauthenticated users', async () => {
-      const { queryByTestId } = await renderNotificationSettings(
+      renderNotificationSettings(
         'granted',
         {
           subscriptions: {},
@@ -174,11 +168,11 @@ describe('NotificationSettings', () => {
         false
       )
       let saveButton: ReactTestInstance | null = null
-      saveButton = queryByTestId('Enregistrer les modifications')
+      saveButton = screen.queryByTestId('Enregistrer les modifications')
 
-      await waitForExpect(() => {
-        expect(saveButton).toBeFalsy()
-      })
+      await flushAllPromisesWithAct()
+
+      expect(saveButton).toBeFalsy()
     })
 
     it('should enable the save button when the email switch changed', async () => {
@@ -188,7 +182,7 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
-      const { getByTestId, getAllByTestId } = await renderNotificationSettings(
+      renderNotificationSettings(
         'granted',
         {
           subscriptions: {
@@ -199,29 +193,21 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await act(async () => {
-        await waitForExpect(() => {
-          const toggleSwitch = getAllByTestId('Interrupteur')[0]
-          fireEvent.press(toggleSwitch)
-        })
-      })
+      await flushAllPromisesWithAct()
+
+      const toggleSwitch = screen.getAllByTestId('Interrupteur')[0]
+      fireEvent.press(toggleSwitch)
 
       let saveButton: ReactTestInstance | null = null
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        saveButton = getByTestId('Enregistrer les modifications')
-        expect(saveButton).toBeEnabled()
-      })
+      saveButton = screen.getByTestId('Enregistrer les modifications')
+      expect(saveButton).toBeEnabled()
 
-      act(() => {
-        saveButton && fireEvent.press(saveButton)
-      })
+      fireEvent.press(saveButton)
 
-      await superFlushWithAct()
-      await waitForExpect(() => {
-        saveButton = getByTestId('Enregistrer les modifications')
-        expect(saveButton).toBeDisabled()
-      })
+      await flushAllPromisesWithAct()
+
+      saveButton = screen.getByTestId('Enregistrer les modifications')
+      expect(saveButton).toBeDisabled()
     })
 
     it('should enable the save button when the push switch changed and call analytics when pressed', async () => {
@@ -232,7 +218,7 @@ describe('NotificationSettings', () => {
           marketingPush: false,
         },
       } as UserProfileResponse)
-      const { getByTestId, getAllByTestId } = await renderNotificationSettings(
+      renderNotificationSettings(
         'granted',
         {
           subscriptions: {
@@ -243,29 +229,21 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await act(async () => {
-        await waitForExpect(() => {
-          const toggleSwitch = getAllByTestId('Interrupteur')[1]
-          fireEvent.press(toggleSwitch)
-        })
-      })
+      await flushAllPromisesWithAct()
 
-      await superFlushWithAct(20)
+      const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+      fireEvent.press(toggleSwitch)
+
       let saveButton: ReactTestInstance | null = null
-      await waitForExpect(() => {
-        saveButton = getByTestId('Enregistrer les modifications')
-        expect(saveButton).toBeEnabled()
-      })
+      saveButton = screen.getByTestId('Enregistrer les modifications')
+      expect(saveButton).toBeEnabled()
 
-      act(() => {
-        saveButton && fireEvent.press(saveButton)
-      })
+      fireEvent.press(saveButton)
 
-      await superFlushWithAct()
-      await waitForExpect(() => {
-        expect(getByTestId('Enregistrer les modifications')).toBeDisabled()
-        expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
-      })
+      await flushAllPromisesWithAct()
+
+      expect(screen.getByTestId('Enregistrer les modifications')).toBeDisabled()
+      expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
     })
   })
 })
@@ -274,7 +252,7 @@ const Stack = createStackNavigator<RootStackParamList>()
 
 const navigationRef = createNavigationContainerRef<RootStackParamList>()
 
-async function renderNotificationSettings(
+function renderNotificationSettings(
   expectedPermission: NotificationsResponse['status'],
   user?: UserProfileResponse,
   isLoggedIn?: boolean
@@ -290,7 +268,7 @@ async function renderNotificationSettings(
     settings: {},
   })
 
-  const wrapper = render(
+  return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer ref={navigationRef}>
@@ -300,9 +278,6 @@ async function renderNotificationSettings(
       </NavigationContainer>
     )
   )
-
-  await superFlushWithAct()
-  return wrapper
 }
 
 const mockApiUpdateProfile = (user?: UserProfileResponse) => {

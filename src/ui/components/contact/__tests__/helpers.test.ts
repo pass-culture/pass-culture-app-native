@@ -1,6 +1,6 @@
 import { Linking, Platform } from 'react-native'
-import waitForExpect from 'wait-for-expect'
 
+import { waitFor } from 'tests/utils'
 import { openPhoneNumber, isValidFrenchPhoneNumber } from 'ui/components/contact/helpers'
 
 describe('openPhoneNumber', () => {
@@ -10,7 +10,8 @@ describe('openPhoneNumber', () => {
   it('should navigate phone keyboard with "telprompt:" if is iOS device', async () => {
     Platform.OS = 'ios'
     openPhoneNumber(phoneNumber)
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(openURL).toBeCalledWith(`telprompt:${phoneNumber}`)
     })
   })
@@ -18,7 +19,8 @@ describe('openPhoneNumber', () => {
   it('should navigate phone keyboard with "tel:" if is Androïd device', async () => {
     Platform.OS = 'android'
     openPhoneNumber(phoneNumber)
-    await waitForExpect(() => {
+
+    await waitFor(() => {
       expect(openURL).toBeCalledWith(`tel:${phoneNumber}`)
     })
   })
@@ -85,6 +87,7 @@ describe('isValidFrenchPhoneNumber function', () => {
     '+33101020304',
   ])('should accept a well formated phone number: %s', (phoneNumber) => {
     const isValid = isValidFrenchPhoneNumber(phoneNumber)
+
     expect(isValid).toBeTruthy()
   })
 
@@ -95,6 +98,7 @@ describe('isValidFrenchPhoneNumber function', () => {
     '33224354m', // includes char
   ])('should reject a well formated phone number: %s', (phoneNumber) => {
     const isValid = isValidFrenchPhoneNumber(phoneNumber)
+
     expect(isValid).toBeFalsy()
   })
 })
