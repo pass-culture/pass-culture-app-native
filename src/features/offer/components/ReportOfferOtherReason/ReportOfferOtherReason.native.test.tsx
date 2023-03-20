@@ -1,10 +1,9 @@
 import React from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason/ReportOfferOtherReason'
 import { QueryKeys } from 'libs/queryKeys'
-import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('react-query')
@@ -27,31 +26,29 @@ describe('<ReportOfferOtherReason />', () => {
     const queryClient = useQueryClient()
 
     it('should enable the button when large input is filled', async () => {
-      const { getByTestId } = renderReportOfferOtherReason()
+      renderReportOfferOtherReason()
 
-      const reportButton = getByTestId('Signaler l’offre')
+      const reportButton = screen.getByTestId('Signaler l’offre')
       expect(reportButton).toBeDisabled()
 
-      const largeTextInput = getByTestId('large-text-input')
+      const largeTextInput = screen.getByTestId('large-text-input')
       fireEvent.changeText(largeTextInput, 'Hello !')
 
-      await waitForExpect(() => {
+      await waitFor(() => {
         expect(reportButton).toBeEnabled()
       })
     })
 
-    it('should show success snackbar on report offer mutation success', async () => {
+    it('should show success snackbar on report offer mutation success', () => {
       const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
         onSuccess: () => {},
         onError: () => {},
       }
       // @ts-expect-error ts(2345)
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+      renderReportOfferOtherReason()
 
-      const { getByTestId } = renderReportOfferOtherReason()
-
-      const reportButton = getByTestId('Signaler l’offre')
-
+      const reportButton = screen.getByTestId('Signaler l’offre')
       fireEvent.press(reportButton)
 
       useMutationCallbacks.onSuccess()
@@ -62,7 +59,7 @@ describe('<ReportOfferOtherReason />', () => {
       expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.REPORTED_OFFERS)
     })
 
-    it('should show error snackbar on report offer mutation error', async () => {
+    it('should show error snackbar on report offer mutation error', () => {
       const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
         onSuccess: () => {},
         onError: () => {},
@@ -73,11 +70,9 @@ describe('<ReportOfferOtherReason />', () => {
         content: { code: 'ERROR', message: 'Une erreur s’est produite' },
         name: 'ApiError',
       }
+      renderReportOfferOtherReason()
 
-      const { getByTestId } = renderReportOfferOtherReason()
-
-      const reportButton = getByTestId('Signaler l’offre')
-
+      const reportButton = screen.getByTestId('Signaler l’offre')
       fireEvent.press(reportButton)
 
       useMutationCallbacks.onError(response)

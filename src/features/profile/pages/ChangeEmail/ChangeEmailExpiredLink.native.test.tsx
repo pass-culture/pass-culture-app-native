@@ -1,5 +1,4 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -7,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
@@ -34,67 +33,56 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = render(<ChangeEmailExpiredLink />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ChangeEmailExpiredLink />)
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly when logged out', () => {
     mockUserLoggedOutOnce()
+    render(<ChangeEmailExpiredLink />)
 
-    const renderAPI = render(<ChangeEmailExpiredLink />)
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to home page when go back to home button is clicked', async () => {
-    const { getByText } = await render(<ChangeEmailExpiredLink />)
+  it('should redirect to home page when go back to home button is clicked', () => {
+    render(<ChangeEmailExpiredLink />)
 
-    fireEvent.press(getByText(`Retourner à l’accueil`))
+    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
 
-    await waitForExpect(() => {
-      expect(navigateFromRef).toBeCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
-    })
+    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
 
-  it('should navigate when clicking on resend email button', async () => {
-    const { getByText } = render(<ChangeEmailExpiredLink />)
+  it('should navigate when clicking on resend email button', () => {
+    render(<ChangeEmailExpiredLink />)
 
-    const resendEmailButton = getByText('Faire une nouvelle demande')
+    const resendEmailButton = screen.getByText('Faire une nouvelle demande')
     fireEvent.press(resendEmailButton)
 
-    await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledWith('ChangeEmail')
-    })
+    expect(navigate).toHaveBeenCalledWith('ChangeEmail')
   })
 
-  it('should log event when clicking on resend email button', async () => {
-    const { getByText } = render(<ChangeEmailExpiredLink />)
+  it('should log event when clicking on resend email button', () => {
+    render(<ChangeEmailExpiredLink />)
 
-    const resendEmailButton = getByText('Faire une nouvelle demande')
+    const resendEmailButton = screen.getByText('Faire une nouvelle demande')
     fireEvent.press(resendEmailButton)
 
-    await waitForExpect(() => {
-      expect(analytics.logSendActivationMailAgain).toHaveBeenCalledWith(1)
-    })
+    expect(analytics.logSendActivationMailAgain).toHaveBeenCalledWith(1)
 
     fireEvent.press(resendEmailButton)
-    await waitForExpect(() => {
-      expect(analytics.logSendActivationMailAgain).toHaveBeenCalledWith(2)
-    })
+
+    expect(analytics.logSendActivationMailAgain).toHaveBeenCalledWith(2)
   })
 
-  it('should navigate when clicking on resend email button when logged out', async () => {
+  it('should navigate when clicking on resend email button when logged out', () => {
     mockUserLoggedOutOnce()
 
-    const { getByText } = render(<ChangeEmailExpiredLink />)
+    render(<ChangeEmailExpiredLink />)
 
-    const resendEmailButton = getByText('Se connecter')
+    const resendEmailButton = screen.getByText('Se connecter')
     fireEvent.press(resendEmailButton)
 
-    await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledWith('Login')
-    })
+    expect(navigate).toHaveBeenCalledWith('Login')
   })
 })

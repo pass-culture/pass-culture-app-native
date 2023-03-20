@@ -1,9 +1,8 @@
 import React from 'react'
 import { useMutation } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { render } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { AfterChangeEmailValidationBuffer } from './AfterChangeEmailValidationBuffer'
@@ -62,15 +61,16 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = renderPage()
-    expect(renderAPI.toJSON()).toMatchSnapshot()
+    renderPage()
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to the login page if the token validation succeeds', async () => {
     mockUseMutationSuccess()
     renderPage()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(mockSignOut).toHaveBeenCalledTimes(1)
       expect(mockShowSuccessSnackBar).toBeCalledWith({
         message:
@@ -83,10 +83,9 @@ describe('<AfterChangeEmailValidationBuffer/>', () => {
 
   it('should navigate to error page if the token validation fails', async () => {
     mockUseMutationError()
-
     renderPage()
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toBeCalledWith('ChangeEmailExpiredLink')
     })
   })
