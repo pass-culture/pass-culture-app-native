@@ -135,7 +135,7 @@ const filterBool = <T>(value: T | null | undefined): value is T => {
 
 export function getSortedHoursFromDate(stocks: OfferStockResponse[], selectedDate?: string) {
   return stocks
-    .filter(getStockFromDate(selectedDate))
+    .filter(getStockWithCategoryFromDate(selectedDate))
     .map((stock) => stock.beginningDatetime)
     .filter(filterBool)
     .sort(sortByDateStringPredicate)
