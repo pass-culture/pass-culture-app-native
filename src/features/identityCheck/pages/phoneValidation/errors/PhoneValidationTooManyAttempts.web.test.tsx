@@ -1,12 +1,11 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -18,7 +17,7 @@ describe('<PhoneValidationTooManyAttempts/>', () => {
       const contactSupportButton = screen.getByText('Contacter le support')
       fireEvent.click(contactSupportButton)
 
-      await waitForExpect(() => {
+      await waitFor(() => {
         expect(openUrl).toBeCalledWith(
           contactSupport.forPhoneNumberConfirmation.url,
           contactSupport.forPhoneNumberConfirmation.params,
@@ -41,7 +40,9 @@ describe('<PhoneValidationTooManyAttempts/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<PhoneValidationTooManyAttempts />)
+
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })
