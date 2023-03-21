@@ -7,6 +7,7 @@ import {
   getAlgoliaFrequentlyBoughtTogether,
   getAlgoliaRelatedProducts,
   getApiRecoSimilarOffers,
+  getCategories,
   getSimilarOffersEndpoint,
   useSimilarOffers,
 } from 'features/offer/api/useSimilarOffers'
@@ -350,5 +351,47 @@ describe('getApiRecoSimilarOffers', () => {
     await getApiRecoSimilarOffers(endpoint)
 
     expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
+  })
+})
+
+describe('getCategories', () => {
+  describe('should return an empty array ', () => {
+    it('when categoryIncluded and categoryExcluded not defined', () => {
+      const categories = getCategories()
+      expect(categories).toEqual([])
+    })
+
+    it('when categoryExcluded defined but not searchGroups', () => {
+      const categories = getCategories(undefined, undefined, SearchGroupNameEnumv2.CARTES_JEUNES)
+      expect(categories).toEqual([])
+    })
+  })
+
+  it('should return an array with category of categoryIncluded parameter when defined', () => {
+    const categories = getCategories(mockSearchGroups, SearchGroupNameEnumv2.CARTES_JEUNES)
+    expect(categories).toEqual([SearchGroupNameEnumv2.CARTES_JEUNES])
+  })
+
+  it('should return an array with all categories except none category and categoryExcluded parameter when it is defined', () => {
+    const categories = getCategories(
+      mockSearchGroups,
+      undefined,
+      SearchGroupNameEnumv2.CARTES_JEUNES
+    )
+    expect(categories).toEqual([
+      SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+      SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+      SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+      SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+      SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+      SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      SearchGroupNameEnumv2.INSTRUMENTS,
+      SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+      SearchGroupNameEnumv2.LIVRES,
+      SearchGroupNameEnumv2.MEDIA_PRESSE,
+      SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+      SearchGroupNameEnumv2.SPECTACLES,
+    ])
   })
 })

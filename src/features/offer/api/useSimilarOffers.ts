@@ -2,7 +2,7 @@ import recommend, { RecommendSearchOptions } from '@algolia/recommend'
 import { getFrequentlyBoughtTogether, getRelatedProducts } from '@algolia/recommend-core'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { Coordinates, SearchGroupNameEnumv2 } from 'api/gen'
+import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
@@ -100,6 +100,27 @@ export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => 
   return similarOffers
 }
 
+export const getCategories = (
+  searchGroups?: SearchGroupResponseModelv2[],
+  categoryIncluded?: SearchGroupNameEnumv2,
+  categoryExcluded?: SearchGroupNameEnumv2
+) => {
+  if (categoryIncluded) {
+    return [categoryIncluded]
+  }
+
+  if (categoryExcluded && searchGroups) {
+    return searchGroups
+      .filter(
+        (searchGroup) =>
+          searchGroup.name !== categoryExcluded && searchGroup.name !== SearchGroupNameEnumv2.NONE
+      )
+      .map((searchGroup) => searchGroup.name)
+  }
+
+  return []
+}
+
 export const useSimilarOffers = ({
   offerId,
   position,
@@ -109,20 +130,10 @@ export const useSimilarOffers = ({
 }: Props) => {
   const { data } = useSubcategories()
 
-  const categories: SearchGroupNameEnumv2[] = useMemo(() => {
-    if (categoryIncluded) {
-      return [categoryIncluded]
-    }
-
-    return (
-      data?.searchGroups
-        .filter(
-          (searchGroup) =>
-            searchGroup.name !== categoryExcluded && searchGroup.name !== SearchGroupNameEnumv2.NONE
-        )
-        .map((searchGroup) => searchGroup.name) || []
-    )
-  }, [categoryExcluded, categoryIncluded, data?.searchGroups])
+  const categories: SearchGroupNameEnumv2[] = useMemo(
+    () => getCategories(data?.searchGroups, categoryIncluded, categoryExcluded),
+    [categoryExcluded, categoryIncluded, data?.searchGroups]
+  )
 
   const { user: profile } = useAuthContext()
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
