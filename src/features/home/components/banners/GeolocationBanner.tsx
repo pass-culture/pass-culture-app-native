@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
@@ -7,7 +7,12 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Spacer, Typo } from 'ui/theme'
 
-export const GeolocationBanner = () => {
+type Props = {
+  title: string
+  subtitle: string
+}
+
+export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle }) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()
 
   const onPressGeolocationBanner = useCallback(async () => {
@@ -21,9 +26,9 @@ export const GeolocationBanner = () => {
   return (
     <Touchable onPress={onPressGeolocationBanner} accessibilityLabel="Active ta géolocalisation">
       <GenericBanner LeftIcon={LocationIcon}>
-        <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
+        <Typo.ButtonText>{title}</Typo.ButtonText>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
+        <Typo.Body numberOfLines={2}>{subtitle}</Typo.Body>
       </GenericBanner>
     </Touchable>
   )

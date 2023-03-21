@@ -223,6 +223,18 @@ export interface BannerMetaModel {
 export enum BannerName {
   'geolocation_banner' = 'geolocation_banner',
   'activation_banner' = 'activation_banner',
+  'retry_identity_check_banner' = 'retry_identity_check_banner',
+}
+/**
+ * @export
+ * @interface BannerQueryParams
+ */
+export interface BannerQueryParams {
+  /**
+   * @type {boolean}
+   * @memberof BannerQueryParams
+   */
+  isGeolocated?: boolean
 }
 /**
  * @export
@@ -3222,11 +3234,12 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_banner <GET>
+     * @param {boolean} [isGeolocated] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getnativev1banner(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/banner`
+    async getnativev1banner(isGeolocated?: boolean, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/banner`.concat(`?isGeolocated=${ isGeolocated }`)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4280,11 +4293,12 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_banner <GET>
+     * @param {boolean} [isGeolocated] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getnativev1banner(options?: any): Promise<BannerResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1banner(options)
+    async getnativev1banner(isGeolocated?: boolean, options?: any): Promise<BannerResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1banner(isGeolocated, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4892,13 +4906,14 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_banner <GET>
+    * @param {boolean} [isGeolocated] 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async getnativev1banner(options?: any) {
+  public async getnativev1banner(isGeolocated?: boolean, options?: any) {
     const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).getnativev1banner(options)
+    return DefaultApiFp(this, configuration).getnativev1banner(isGeolocated, options)
   }
   /**
     * 

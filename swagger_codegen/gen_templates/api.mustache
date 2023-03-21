@@ -102,7 +102,7 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
       }
   {{/required}}
   {{/allParams}}
-      const pathname = `{{{path}}}`{{#pathParams}}.replace(
+      const pathname = `{{{path}}}`{{#queryParams}}.concat(`?{{paramName}}=${ {{paramName}} }`){{/queryParams}}{{#pathParams}}.replace(
         `{${'{{baseName}}'}}`,
         encodeURIComponent(String({{paramName}}))
       ){{/pathParams}}
