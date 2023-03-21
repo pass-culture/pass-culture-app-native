@@ -11,7 +11,7 @@ module.exports = {
     '<rootDir>/jest/jest.web.setup.ts',
   ],
   setupFilesAfterEnv: [...base.setupFilesAfterEnv, '<rootDir>/jest/jest.web.setupAfterEnv.ts'],
-  testRegex: '(?<!.(?:native|ios|android)).(?:test|spec).(?:tsx?|js)$',
+  testRegex: '(?<!.(?:native|ios|android|perf)).(?:test|spec).(?:tsx?|js)$',
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
   moduleNameMapper: {
     ...base.moduleNameMapper,
