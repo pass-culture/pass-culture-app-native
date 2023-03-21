@@ -10,7 +10,10 @@ import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { getButtonWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import {
+  getButtonWording,
+  getStockWithCategory,
+} from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -31,7 +34,7 @@ export const BookingEventChoices: React.FC<Props> = ({
   const creditForOffer = useCreditForOffer(bookingState.offerId)
   const { step, quantity, stockId } = bookingState
 
-  const stocksWithCategory = stocks.filter((stock) => stock.priceCategoryLabel)
+  const stocksWithCategory = getStockWithCategory(stocks)
 
   if (!user) return <React.Fragment />
 

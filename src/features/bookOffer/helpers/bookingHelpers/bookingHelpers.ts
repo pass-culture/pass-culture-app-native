@@ -1,4 +1,4 @@
-import { OfferResponse, OfferStockResponse } from 'api/gen'
+import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -19,23 +19,6 @@ export function getButtonState(bookingState: BookingState) {
     default:
       return false
   }
-}
-
-export function getBookingSteps(stocks: OfferStockResponse[], offerIsDuo?: boolean) {
-  const stocksWithCategoryNotExpired = stocks.filter(
-    (stock) => !stock.isExpired && stock.priceCategoryLabel
-  )
-  let bookingSteps = [Step.DATE, Step.HOUR]
-
-  if (offerIsDuo && stocksWithCategoryNotExpired.length > 1) {
-    bookingSteps = [...bookingSteps, Step.PRICE, Step.DUO]
-  } else if (offerIsDuo && stocksWithCategoryNotExpired.length <= 1) {
-    bookingSteps = [...bookingSteps, Step.DUO]
-  } else if (!offerIsDuo && stocksWithCategoryNotExpired.length > 1) {
-    bookingSteps = [...bookingSteps, Step.PRICE]
-  }
-
-  return bookingSteps
 }
 
 export function getButtonWording(enablePricesByCategories: boolean, enabled: boolean, step: Step) {
@@ -97,32 +80,49 @@ export function getPriceWording(stock: OfferStockResponse, offerCredit: number) 
   return ''
 }
 
-export function getPreviousStep(currentStep: number, offer: OfferResponse) {
-  const stocksWithCategory = offer?.stocks?.filter(
-    (stock) => !stock.isExpired && stock.priceCategoryLabel
-  ).length
+export function getPreviousStep(
+  bookingState: BookingState,
+  stocks: OfferStockResponse[],
+  offerIsDuo?: boolean
+) {
+  const currentStep = bookingState.step
+  let stocksWithCategory: OfferStockResponse[] = []
+  if (bookingState.hour) {
+    stocksWithCategory = stocks.filter(getStockWithCategoryFromHour(bookingState.hour))
+  } else {
+    stocksWithCategory = bookingState.date
+      ? stocks.filter(getStockWithCategoryFromDate(formatToKeyDate(bookingState.date)))
+      : []
+  }
 
   if (
-    (currentStep === Step.DUO || (currentStep === Step.CONFIRMATION && !offer.isDuo)) &&
-    stocksWithCategory <= 1
+    (currentStep === Step.DUO || (currentStep === Step.CONFIRMATION && !offerIsDuo)) &&
+    stocksWithCategory.length <= 1
   ) {
     return Step.HOUR
-  } else if (currentStep === Step.CONFIRMATION && !offer.isDuo && stocksWithCategory > 1) {
+  } else if (currentStep === Step.CONFIRMATION && !offerIsDuo && stocksWithCategory.length > 1) {
     return Step.PRICE
-  } else if (currentStep === Step.CONFIRMATION && offer.isDuo) {
+  } else if (currentStep === Step.CONFIRMATION && offerIsDuo) {
     return Step.DUO
   }
 
   return currentStep - 1
 }
 
-const getStockFromDate = (selectedDate?: string) => (stock: OfferStockResponse) =>
-  !stock.isExpired &&
-  stock.priceCategoryLabel &&
-  stock.beginningDatetime &&
-  formatToKeyDate(stock.beginningDatetime) === selectedDate
+const getAllAvailableStockFromOffer = (stock: OfferStockResponse) =>
+  !stock.isExpired && stock.beginningDatetime
 
-const getStockFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
+const getAllAvailableStockWithCategoryFromOffer = (stock: OfferStockResponse) =>
+  !stock.isExpired && stock.priceCategoryLabel && stock.beginningDatetime
+
+export const getStockWithCategoryFromDate =
+  (selectedDate?: string) => (stock: OfferStockResponse) =>
+    !stock.isExpired &&
+    stock.priceCategoryLabel &&
+    stock.beginningDatetime &&
+    formatToKeyDate(stock.beginningDatetime) === selectedDate
+
+export const getStockWithCategoryFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
   !stock.isExpired &&
   stock.priceCategoryLabel &&
   stock.beginningDatetime &&
@@ -148,12 +148,34 @@ const filterBool = <T>(value: T | null | undefined): value is T => {
 
 export function getSortedHoursFromDate(stocks: OfferStockResponse[], selectedDate?: string) {
   return stocks
-    .filter(getStockFromDate(selectedDate))
+    .filter(getStockWithCategoryFromDate(selectedDate))
     .map((stock) => stock.beginningDatetime)
     .filter(filterBool)
     .sort(sortByDateStringPredicate)
 }
 
+export function getDistinctPricesFromAllStock(stocks: OfferStockResponse[]) {
+  const pricesStocks = stocks.filter(getAllAvailableStockFromOffer).map((stock) => stock.price)
+  const distinctPrices: number[] = [...new Set(pricesStocks)]
+  return distinctPrices
+}
+
 export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], selectedHour: string) {
-  return stocks.filter(getStockFromHour(selectedHour)).sort(sortByPricePredicate)
+  return stocks.filter(getStockWithCategoryFromHour(selectedHour)).sort(sortByPricePredicate)
+}
+
+export function getStockWithCategory(
+  stocks?: OfferStockResponse[],
+  selectedDate?: Date,
+  selectedHour?: string
+) {
+  if (!stocks) return []
+  if (selectedHour) {
+    return stocks.filter(getStockWithCategoryFromHour(selectedHour))
+  }
+  if (selectedDate) {
+    return stocks.filter(getStockWithCategoryFromDate(formatToKeyDate(selectedDate)))
+  }
+
+  return stocks.filter(getAllAvailableStockWithCategoryFromOffer)
 }

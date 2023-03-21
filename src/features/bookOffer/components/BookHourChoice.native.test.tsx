@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
-import { mockStocks, stock1 } from 'features/bookOffer/fixtures/stocks'
+import { mockStocks, stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -152,13 +152,18 @@ describe('BookHourChoice when prices by category feature flag activated and ther
       dismissModal: jest.fn(),
       dispatch: mockDispatch,
     })
-    mockOffer = { ...mockOffer, stocks: mockStocks }
+    mockOffer = { ...mockOffer, stocks: [stock1, stock2, { ...stock3, isBookable: false }, stock4] }
     mockCreditOffer = 50000
   })
 
-  it('should render only one hour choice with the minimum price', () => {
+  it('should render only one hour choice with "dès" and the minimum price available when has several prices for an hour', () => {
     render(<BookHourChoice enablePricesByCategories />)
-    expect(screen.getByText(`dès 210\u00a0€`)).toBeTruthy()
+    expect(screen.getByText(`dès 190\u00a0€`)).toBeTruthy()
+  })
+
+  it('should render only one hour choice without "dès" and the minimum price when has only one price for an hour', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.getByText(`210\u00a0€`)).toBeTruthy()
   })
 
   it('should display hour items with stock selection', () => {
@@ -205,6 +210,12 @@ describe('BookHourChoice when prices by category feature flag activated and ther
   it('should not display hour item without stock selection', () => {
     render(<BookHourChoice enablePricesByCategories />)
     expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-hour')).toBeNull()
+  })
+
+  it('should select the stock when pressing an hour item', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+    fireEvent.press(screen.getByTestId('HourChoice18758-hour'))
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: stock1.id })
   })
 })
 

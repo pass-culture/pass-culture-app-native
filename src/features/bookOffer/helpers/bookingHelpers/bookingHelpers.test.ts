@@ -7,10 +7,11 @@ import {
   getRadioSelectorPriceState,
   getPriceWording,
   getPreviousStep,
-  getBookingSteps,
   getSortedHoursFromDate,
   sortByDateStringPredicate,
   getStockSortedByPriceFromHour,
+  getDistinctPricesFromAllStock,
+  getStockWithCategory,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
@@ -101,41 +102,6 @@ describe('bookingHelpers', () => {
         })
         expect(buttonState).toEqual(true)
       })
-    })
-  })
-
-  describe('getBookingSteps', () => {
-    it('should return an array with date and hour steps when only one stock with category not expired and offer is not duo', () => {
-      const stocks = [{ ...stock1, isExpired: true }, stock2]
-      const bookingSteps = getBookingSteps(stocks)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR])
-    })
-
-    it('should return an array with date, hour, price and quantity steps when several stocks  with category not expired and offer is duo', () => {
-      const stocks = [stock1, stock2]
-      const bookingSteps = getBookingSteps(stocks, true)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.PRICE, Step.DUO])
-    })
-
-    it('should return an array with date, hour and duo steps when only one stock with category not expired and offer is duo', () => {
-      const stocks = [{ ...stock1, isExpired: true }, stock2]
-      const bookingSteps = getBookingSteps(stocks, true)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.DUO])
-    })
-
-    it('should return an array with date, hour and duo steps when only one stock without category not expired and offer is duo', () => {
-      const stocks = [
-        { ...stock1, priceCategoryLabel: undefined },
-        { ...stock2, priceCategoryLabel: undefined },
-      ]
-      const bookingSteps = getBookingSteps(stocks, true)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.DUO])
-    })
-
-    it('should return an array with date, hour and price steps when several stock with category not expired and offer is not duo', () => {
-      const stocks = [stock1, stock2]
-      const bookingSteps = getBookingSteps(stocks, false)
-      expect(bookingSteps).toEqual([Step.DATE, Step.HOUR, Step.PRICE])
     })
   })
 
@@ -242,55 +208,71 @@ describe('getPriceWording', () => {
 })
 
 describe('getPreviousStep', () => {
+  const defaultBookingState: BookingState = {
+    step: Step.DATE,
+    offerId: offerResponseSnap.id,
+    hour: undefined,
+    stockId: undefined,
+    quantity: undefined,
+    date: undefined,
+  }
+
   it('should return to date step when current step is hour', () => {
-    const previousStep = getPreviousStep(Step.HOUR, offerResponseSnap)
+    const previousStep = getPreviousStep(
+      { ...defaultBookingState, step: Step.HOUR },
+      offerResponseSnap.stocks
+    )
     expect(previousStep).toEqual(Step.DATE)
   })
 
   describe('should return to hour step', () => {
     it('when current step is price', () => {
-      const previousStep = getPreviousStep(Step.PRICE, { ...offerResponseSnap, stocks: mockStocks })
+      const previousStep = getPreviousStep({ ...defaultBookingState, step: Step.PRICE }, mockStocks)
       expect(previousStep).toEqual(Step.HOUR)
     })
 
     it('when current step is duo and has not several stock', () => {
-      const previousStep = getPreviousStep(Step.DUO, { ...offerResponseSnap, stocks: [stock1] })
+      const previousStep = getPreviousStep(
+        { ...defaultBookingState, step: Step.DUO },
+        [stock1],
+        true
+      )
       expect(previousStep).toEqual(Step.HOUR)
     })
 
     it('when current step is confirmation, offer is not duo and has not several stock', () => {
-      const previousStep = getPreviousStep(Step.CONFIRMATION, {
-        ...offerResponseSnap,
-        stocks: [stock1],
-        isDuo: false,
-      })
+      const previousStep = getPreviousStep({ ...defaultBookingState, step: Step.CONFIRMATION }, [
+        stock1,
+      ])
       expect(previousStep).toEqual(Step.HOUR)
     })
   })
 
   describe('should return to price step', () => {
     it('when current step is duo and has several stocks', () => {
-      const previousStep = getPreviousStep(Step.DUO, {
-        ...offerResponseSnap,
-        stocks: mockStocks,
-      })
+      const previousStep = getPreviousStep(
+        { ...defaultBookingState, step: Step.DUO, hour: '2023-04-01T18:00:00Z' },
+        mockStocks,
+        true
+      )
       expect(previousStep).toEqual(Step.PRICE)
     })
 
     it('when current step is confirmation, offer is not duo and has several stocks', () => {
-      const previousStep = getPreviousStep(Step.CONFIRMATION, {
-        ...offerResponseSnap,
-        stocks: mockStocks,
-        isDuo: false,
-      })
+      const previousStep = getPreviousStep(
+        { ...defaultBookingState, step: Step.CONFIRMATION, hour: '2023-04-01T18:00:00Z' },
+        mockStocks
+      )
       expect(previousStep).toEqual(Step.PRICE)
     })
   })
 
   it('should return to duo step when current step is confirmation and offer is duo', () => {
-    const previousStep = getPreviousStep(Step.CONFIRMATION, {
-      ...offerResponseSnap,
-    })
+    const previousStep = getPreviousStep(
+      { ...defaultBookingState, step: Step.CONFIRMATION },
+      mockStocks,
+      true
+    )
     expect(previousStep).toEqual(Step.DUO)
   })
 })
@@ -318,5 +300,70 @@ describe('sortByDateStringPredicate', () => {
   it('should return -1 when dates not defined', () => {
     const predicate = sortByDateStringPredicate(undefined, undefined)
     expect(predicate).toEqual(-1)
+  })
+})
+
+describe('getDistinctPricesFromAllStock', () => {
+  it('should return only one price when several stocks have the same price', () => {
+    const distinctPrices = getDistinctPricesFromAllStock([
+      { ...stock1, price: 22000 },
+      stock2,
+      stock3,
+      stock4,
+    ])
+    expect(distinctPrices).toEqual([22000, 10000, 19000])
+  })
+
+  it('should not return several prices when several stocks have the same price', () => {
+    const distinctPrices = getDistinctPricesFromAllStock([
+      { ...stock1, price: 22000 },
+      stock2,
+      stock3,
+      stock4,
+    ])
+    expect(distinctPrices).not.toEqual([22000, 22000, 10000, 19000])
+  })
+})
+
+describe('getStockWithCategory', () => {
+  it('should return an empty array when stock not defined', () => {
+    const stockWithCategory = getStockWithCategory()
+    expect(stockWithCategory).toEqual([])
+  })
+
+  it('should return all stock with category when stock defined and hour and date not defined', () => {
+    const stockWithCategory = getStockWithCategory([
+      { ...stock1, priceCategoryLabel: null },
+      stock2,
+      stock3,
+      stock4,
+    ])
+    expect(stockWithCategory).toEqual([stock2, stock3, stock4])
+  })
+
+  it('should return stock with category from hour when stock, hour and date defined', () => {
+    const stockWithCategory = getStockWithCategory(
+      mockStocks,
+      new Date('2023-04-01T20:00:00Z'),
+      '2023-04-01T20:00:00Z'
+    )
+    expect(stockWithCategory).toEqual([stock1])
+  })
+
+  it('should return stock with category from date when stock and date defined and hour not defined', () => {
+    const stockWithCategory = getStockWithCategory(
+      [
+        { ...stock1, beginningDatetime: '2023-04-02T20:00:00Z' },
+        { ...stock2, beginningDatetime: '2023-04-01T20:00:00Z' },
+        stock3,
+        stock4,
+      ],
+      new Date('2023-04-01T20:00:00Z')
+    )
+    expect(stockWithCategory).toEqual([
+      { ...stock2, beginningDatetime: '2023-04-01T20:00:00Z' },
+      stock3,
+      stock4,
+    ])
   })
 })

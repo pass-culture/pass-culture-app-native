@@ -2,12 +2,14 @@ import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
 
+import { OfferStockResponse } from 'api/gen'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getSortedHoursFromDate,
   getStockSortedByPriceFromHour,
+  getStockWithCategoryFromDate,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -27,11 +29,10 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
-  const hasPricesStep =
-    enablePricesByCategories &&
-    stocks.filter((stock) => !stock.isExpired && stock.priceCategoryLabel).length > 1
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
+  const hasPotentialPricesStep =
+    enablePricesByCategories && stocks.filter(getStockWithCategoryFromDate(selectedDate)).length > 1
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
     if (!isDuo) {
@@ -46,8 +47,11 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
     }
   }
 
-  const selectHour = (hour: string) => {
+  const selectHour = (hour: string, stockFromHour: OfferStockResponse[]) => {
     dispatch({ type: 'SELECT_HOUR', payload: hour })
+    if (stockFromHour.length === 1) {
+      dispatch({ type: 'SELECT_STOCK', payload: stockFromHour[0].id })
+    }
     if (!isDuo) {
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
     }
@@ -59,24 +63,29 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
 
   const filteredStocks = useMemo(
     () => {
-      if (hasPricesStep) {
+      if (hasPotentialPricesStep) {
         const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
         const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
         return distinctHours.map((hour) => {
           const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
-          const minPrice = Math.min(...filteredAvailableStocksFromHour.map((stock) => stock.price))
+          const minPrice = Math.min(
+            ...filteredAvailableStocksFromHour
+              .filter((stock) => stock.isBookable)
+              .map((stock) => stock.price)
+          )
           const isBookable = filteredAvailableStocksFromHour.some((stock) => stock.isBookable)
+          const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
           return (
             <HourChoice
               key={hour}
               price={minPrice}
               hour={formatHour(hour).replace(':', 'h')}
               selected={hour === bookingState.hour}
-              onPress={() => selectHour(hour)}
+              onPress={() => selectHour(hour, filteredAvailableStocksFromHour)}
               testID={`HourChoice${hour}`}
               isBookable={isBookable}
               offerCredit={offerCredit}
-              hasSeveralPrices
+              hasSeveralPrices={hasSeveralPrices}
             />
           )
         })
@@ -115,7 +124,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
       bookingState.stockId,
       bookingState.quantity,
       offerCredit,
-      hasPricesStep,
+      hasPotentialPricesStep,
     ]
   )
 

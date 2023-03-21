@@ -27,6 +27,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
       return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
     }
     if (step === Step.HOUR && hasPricesStep) {
+      dispatch({ type: 'RESET_STOCK' })
       return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
     }
     if (isDuo && ((step === Step.HOUR && !hasPricesStep) || step === Step.PRICE)) {

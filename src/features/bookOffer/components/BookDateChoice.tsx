@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
@@ -21,9 +22,10 @@ export const BookDateChoice = ({
   enablePricesByCategories,
 }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
-  const hasPricesStep =
-    enablePricesByCategories &&
-    stocks.filter((stock) => !stock.isExpired && stock.priceCategoryLabel).length > 1
+  const hasSeveralPrices = useMemo(() => {
+    const distinctPrices = getDistinctPricesFromAllStock(stocks)
+    return distinctPrices.length > 1
+  }, [stocks])
 
   const showCalendar = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })
@@ -57,7 +59,7 @@ export const BookDateChoice = ({
           userRemainingCredit={userRemainingCredit}
           offerId={bookingState.offerId}
           enablePricesByCategories={enablePricesByCategories}
-          hasSeveralPrices={hasPricesStep}
+          hasSeveralPrices={hasSeveralPrices}
         />
       ) : (
         <TouchableOpacity onPress={showCalendar}>
