@@ -92,7 +92,7 @@ export enum AnalyticsEvent {
   NO_SEARCH_RESULT = 'NoSearchResult',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
-  ONBOARDING_STARTED = 'onboardingStarted',
+  ONBOARDING_STARTED = 'OnboardingStarted',
   OPEN_DMS_FOREIGN_CITIZEN_URL = 'OpenDMSForeignCitizenURL',
   OPEN_DMS_FRENCH_CITIZEN_URL = 'OpenDMSFrenchCitizenURL',
   OPEN_EXTERNAL_URL = 'OpenExternalURL',
