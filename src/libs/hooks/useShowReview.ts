@@ -13,6 +13,7 @@ export const useShowReview = () => {
     useReviewInAppInformation()
 
   useEffect(() => {
+    // In web InAppReview.isAvailable() is false, so we never ask a review from the webapp with this hook
     if (InAppReview.isAvailable() && shouldReviewBeRequested && !disableStoreReview) {
       setTimeout(
         () =>
