@@ -6,7 +6,9 @@ import { Coordinates, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
+import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -87,9 +89,12 @@ export const getAlgoliaFrequentlyBoughtTogether = async (
 }
 
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
-  const similarOffers: string[] = await fetch(similarOffersEndpoint)
+  const similarOffers = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
-    .then((data) => data.results)
+    .then((data: SimilarOffersResponse) => {
+      analytics.setDefaultEventParameters(data.params)
+      return data.results
+    })
     .catch(eventMonitoring.captureException)
 
   return similarOffers
@@ -121,7 +126,7 @@ export const useSimilarOffers = ({
 
   const { user: profile } = useAuthContext()
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
-  const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
+  const [similarOffersIds, setSimilarOffersIds] = useState<string | string[]>()
 
   const fetchAlgolia = useCallback(async () => {
     if (!offerId) return
@@ -150,5 +155,7 @@ export const useSimilarOffers = ({
     fetchSimilarOffers()
   }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
 
-  return useAlgoliaSimilarOffers(similarOffersIds || [])
+  return useAlgoliaSimilarOffers(
+    typeof similarOffersIds === 'string' ? [similarOffersIds] : similarOffersIds || []
+  )
 }

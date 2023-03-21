@@ -11,6 +11,7 @@ import {
   useSimilarOffers,
 } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { server } from 'tests/server'
@@ -314,6 +315,16 @@ describe('getApiRecoSimilarOffers', () => {
   const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
   const endpoint = getSimilarOffersEndpoint(mockOfferId, mockUserId) || ''
 
+  const params = {
+    call_id: 1,
+    filtered: true,
+    geo_located: false,
+    model_endpoint: 'default',
+    model_name: 'similar_offers_default_prod',
+    model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+    reco_origin: 'default',
+  }
+
   it('should log sentry when reco similar offers API called with an error', async () => {
     const error = new Error('error')
     fetchApiRecoSpy.mockImplementationOnce(() => Promise.reject(error))
@@ -330,5 +341,14 @@ describe('getApiRecoSimilarOffers', () => {
     const apiReco = await getApiRecoSimilarOffers(endpoint)
 
     expect(apiReco).toEqual(['102280', '102281'])
+  })
+
+  it('should log response body parameters on firebase when fetch call succeeds', async () => {
+    const expectedResponse = respondWith({ params, results: ['102280', '102281'] })
+    fetchApiRecoSpy.mockReturnValueOnce(Promise.resolve(expectedResponse))
+
+    await getApiRecoSimilarOffers(endpoint)
+
+    expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
   })
 })
