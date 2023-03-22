@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { StepButtonState, StepConfig } from 'features/identityCheck/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
@@ -29,10 +31,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       onBeforeNavigate={onPress}
       disabled={state !== 'current'}
       accessibilityLabel={accessibilityLabel}>
-      <StyleContainer>
-        <IconContainer>
-          <Icon />
-        </IconContainer>
+      <StyleContainer LeftIcon={Icon}>
         <StyledButtonText state={state}>{label}</StyledButtonText>
       </StyleContainer>
     </StyledInternalTouchableLink>
@@ -41,10 +40,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       onPress={onPress}
       disabled={state !== 'current'}
       accessibilityLabel={accessibilityLabel}>
-      <StyleContainer>
-        <IconContainer>
-          <Icon />
-        </IconContainer>
+      <StyleContainer LeftIcon={Icon}>
         <StyledButtonText state={state}>{label}</StyledButtonText>
       </StyleContainer>
     </StyledTouchableOpacity>
@@ -60,13 +56,28 @@ const BaseStyleComponent = styled.View(({ theme }) => ({
   borderWidth: '1px',
 }))
 
-const CurrentContainer = styled(BaseStyleComponent)(({ theme }) => ({
+type BaseContainerProps = {
+  LeftIcon?: FunctionComponent<IconInterface>
+  style?: StyleProp<ViewStyle>
+}
+const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style, children }) => (
+  <BaseStyleComponent style={style}>
+    {!!LeftIcon && (
+      <IconContainer>
+        <LeftIcon />
+      </IconContainer>
+    )}
+    {children}
+  </BaseStyleComponent>
+)
+
+const CurrentContainer = styled(BaseContainer)(({ theme }) => ({
   height: getSpacing(23),
   width: '100%',
   borderColor: theme.colors.greySemiDark,
 }))
 
-const DisabledContainer = styled(BaseStyleComponent)(({ theme }) => ({
+const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
   height: getSpacing(22),
   width: '98%',
   borderColor: theme.colors.greyMedium,
