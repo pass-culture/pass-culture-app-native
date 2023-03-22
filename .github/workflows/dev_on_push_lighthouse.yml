@@ -1,0 +1,33 @@
+name: Lighthouse
+on:
+  push:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Audit URL using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        id: lighthouse
+        with:
+          urls: |
+            https://app.testing.passculture.team/accueil
+            https://app.testing.passculture.team/profil
+          temporaryPublicStorage: true # upload lighthouse report
+      - name: Job successful feedback
+        if: ${{ success() }}
+        run: |
+          echo '### Successfully published to Deploy Now :white_check_mark:' >> $GITHUB_STEP_SUMMARY
+          echo "Changes went live under: ${{ steps.project.outputs.site-url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Triggered by **${{ github.actor }}** ∙ deployed from **${{ github.ref_name    }}**" >> $GITHUB_STEP_SUMMARY
+          echo ' ' >> $GITHUB_STEP_SUMMARY
+          echo "**Lighthouse results:**" >> $GITHUB_STEP_SUMMARY
+          echo "Performance: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.performance }}" >> $GITHUB_STEP_SUMMARY
+          echo "Accessibility: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.accessibility }}" >> $GITHUB_STEP_SUMMARY
+          echo "Best-practices: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.best-practices }}" >> $GITHUB_STEP_SUMMARY
+          echo "SEO: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.seo }}" >> $GITHUB_STEP_SUMMARY
+          echo "PWA: ${{ fromJSON(steps.lighthouse.outputs.manifest)[0].summary.pwa }}" >> $GITHUB_STEP_SUMMARY
+          echo ' ' >> $GITHUB_STEP_SUMMARY
+          echo "[Visit documentation](https://docs.ionos.space/)" >> $GITHUB_STEP_SUMMARY
+          echo "[Log in to Deploy Now](https://ionos.space/)" >> $GITHUB_STEP_SUMMARY
