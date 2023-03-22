@@ -179,6 +179,19 @@ describe('BookHourChoice when prices by category feature flag activated and ther
     expect(screen.queryByTestId('HourChoice18757-hour')).toBeNull()
     expect(screen.queryByTestId('HourChoice18758-hour')).toBeNull()
   })
+
+  it('should display "épuisé" when there are not stock bookable on hour item', () => {
+    mockOffer = {
+      ...mockOffer,
+      stocks: [
+        { ...stock2, isBookable: false, remainingQuantity: 0, isSoldOut: true },
+        { ...stock3, isBookable: false, remainingQuantity: 0, isSoldOut: true },
+        { ...stock4, isBookable: false, remainingQuantity: 0, isSoldOut: true },
+      ],
+    }
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.getByText('épuisé')).toBeTruthy()
+  })
 })
 
 describe('BookHourChoice when prices by category feature flag activated and there is only one stock', () => {
@@ -216,6 +229,15 @@ describe('BookHourChoice when prices by category feature flag activated and ther
     render(<BookHourChoice enablePricesByCategories />)
     fireEvent.press(screen.getByTestId('HourChoice18758-hour'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: stock1.id })
+  })
+
+  it('should display "épuisé" when there are not stock bookable on hour item', () => {
+    mockOffer = {
+      ...mockOffer,
+      stocks: [{ ...stock1, isBookable: false, remainingQuantity: 0, isSoldOut: true }],
+    }
+    render(<BookHourChoice enablePricesByCategories />)
+    expect(screen.getByText('épuisé')).toBeTruthy()
   })
 })
 
