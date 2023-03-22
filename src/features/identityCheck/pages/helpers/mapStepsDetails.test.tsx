@@ -1,0 +1,122 @@
+import React from 'react'
+
+import {
+  SubscriptionStep,
+  SubscriptionStepCompletionState,
+  SubscriptionStepperResponse,
+  SubscriptionStepTitle,
+} from 'api/gen'
+import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
+import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
+import {
+  IdentityCheckStepNewStepper,
+  StepConfigNewStepper,
+  StepDetails,
+} from 'features/identityCheck/types'
+import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
+import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
+
+const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay'] = [
+  {
+    name: SubscriptionStep['phone-validation'],
+    completionState: SubscriptionStepCompletionState.disabled,
+    title: SubscriptionStepTitle['Numéro de téléphone'],
+    subtitle: 'Sous-titre Numéro de téléphone',
+  },
+  {
+    name: SubscriptionStep['identity-check'],
+    completionState: SubscriptionStepCompletionState.current,
+    title: SubscriptionStepTitle['Identification'],
+    subtitle: 'Sous-titre Identification',
+  },
+  {
+    name: SubscriptionStep['maintenance'],
+    completionState: SubscriptionStepCompletionState.completed,
+    title: SubscriptionStepTitle['Confirmation'],
+    subtitle: 'Maintenance',
+  },
+  {
+    name: SubscriptionStep['honor-statement'],
+    completionState: SubscriptionStepCompletionState.retry,
+    title: SubscriptionStepTitle['Confirmation'],
+    subtitle: 'Confirmation',
+  },
+]
+describe('mapStepsDetails', () => {
+  const stepsConfig: StepConfigNewStepper[] = [
+    {
+      screens: ['SetPhoneNumber'],
+      name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
+      icon: {
+        disabled: BicolorSmartphone,
+        current: BicolorSmartphone,
+        completed: () => (
+          <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+        ),
+      },
+    },
+    {
+      screens: ['BeneficiaryAccountCreated'],
+      name: IdentityCheckStepNewStepper.PROFILE,
+      icon: {
+        disabled: BicolorProfile,
+        current: BicolorProfile,
+        completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
+      },
+    },
+    {
+      screens: ['BeneficiaryRequestSent'],
+      name: IdentityCheckStepNewStepper.IDENTIFICATION,
+      icon: {
+        disabled: BicolorIdCard,
+        current: BicolorIdCard,
+        completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+      },
+    },
+    {
+      screens: ['DMSIntroduction'],
+      name: IdentityCheckStepNewStepper.CONFIRMATION,
+      icon: {
+        disabled: BicolorLegal,
+        current: BicolorLegal,
+        completed: () => <IconStepDone Icon={BicolorLegal} testID="Confirmation-step-done" />,
+      },
+    },
+  ]
+
+  const expectedStepsDetails: StepDetails[] = [
+    {
+      name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
+      icon: {
+        disabled: BicolorSmartphone,
+        current: BicolorSmartphone,
+        completed: expect.any(Function),
+      },
+      screens: ['SetPhoneNumber'],
+      title: 'Numéro de téléphone',
+    },
+    {
+      name: IdentityCheckStepNewStepper.IDENTIFICATION,
+      icon: {
+        disabled: BicolorIdCard,
+        current: BicolorIdCard,
+        completed: expect.any(Function),
+      },
+      screens: ['BeneficiaryRequestSent'],
+      title: 'Identification',
+    },
+  ]
+
+  it('should map steps info from the back with steps config from the front ', () => {
+    const result = mapStepsDetails(stepsToComplete, stepsConfig)
+    expect(result).toEqual(expectedStepsDetails)
+  })
+
+  it('should only return steps when the associated config exists in-app', () => {
+    const result = mapStepsDetails(stepsToComplete, stepsConfig)
+    expect(stepsToComplete.length).toEqual(3)
+    expect(result.length).toEqual(2)
+  })
+})
