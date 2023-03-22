@@ -52,37 +52,33 @@ export const HomeHeader: FunctionComponent = function () {
     return 'Ton crédit est expiré'
   }
 
-  const SystemBloc = useMemo(() => {
+  const Banner = useMemo(() => {
     if (!isLoggedIn)
       return (
-        <React.Fragment>
+        <BannerContainer>
           <SignupBanner />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
+        </BannerContainer>
       )
 
     if (homeBanner?.name === BannerName.activation_banner)
       return (
-        <React.Fragment>
+        <BannerContainer>
           <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
+        </BannerContainer>
       )
 
     if (homeBanner?.name === BannerName.geolocation_banner)
       return (
-        <React.Fragment>
+        <BannerContainer>
           <GeolocationBanner title={homeBanner.title} subtitle={homeBanner.text} />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
+        </BannerContainer>
       )
 
     if (homeBanner?.name === BannerName.retry_identity_check_banner)
       return (
-        <React.Fragment>
+        <BannerContainer>
           <RetryActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
+        </BannerContainer>
       )
 
     return null
@@ -101,7 +97,7 @@ export const HomeHeader: FunctionComponent = function () {
       <PageContent>
         <Typo.Body>{getSubtitle()}</Typo.Body>
         <Spacer.Column numberOfSpaces={6} />
-        {SystemBloc}
+        {Banner}
       </PageContent>
     </React.Fragment>
   )
@@ -118,3 +114,7 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   border: 1,
   padding: getSpacing(1),
 }))
+
+const BannerContainer = styled.View({
+  marginBottom: getSpacing(8),
+})
