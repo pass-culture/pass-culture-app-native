@@ -9,11 +9,31 @@ export enum IdentityCheckStep {
   END = 'end',
 }
 
+export enum IdentityCheckStepNewStepper {
+  PHONE_VALIDATION = 'phone-validation',
+  PROFILE = 'profile-completion',
+  IDENTIFICATION = 'identity-check',
+  CONFIRMATION = 'honor-statement',
+  END = 'end',
+}
+
 export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 
 export interface StepConfig {
   name: IdentityCheckStep
   label: string
+  icon: Record<StepButtonState, React.FC<IconInterface>>
+  screens: SubscriptionScreen[]
+}
+export interface StepConfigNewStepper {
+  name: IdentityCheckStepNewStepper
+  icon: Record<StepButtonState, React.FC<IconInterface>>
+  screens: SubscriptionScreen[]
+}
+
+export interface StepDetails {
+  name: IdentityCheckStepNewStepper
+  title: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
 }
