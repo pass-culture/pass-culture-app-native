@@ -57,7 +57,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
         <ImageBackground
           source={backgroundSource || BACKGROUND_IMAGE_SOURCE}
           testID="module-background">
-          <GenericBanner LeftIcon={StyledLeftIcon} RighIcon={StyledRightIcon}>
+          <GenericBanner LeftIcon={StyledLeftIcon} RightIcon={StyledRightIcon}>
             {children}
           </GenericBanner>
         </ImageBackground>
