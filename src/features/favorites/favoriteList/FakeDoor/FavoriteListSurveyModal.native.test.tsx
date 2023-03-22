@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FavoriteListSurveyModal } from 'features/FavoriteList/FakeDoor/FavoriteListSurveyModal'
+import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListSurveyModal'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { storage } from 'libs/storage'
 import { fireEvent, render } from 'tests/utils'

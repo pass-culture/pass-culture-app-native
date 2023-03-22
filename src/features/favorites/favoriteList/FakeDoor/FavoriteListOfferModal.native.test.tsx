@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FavoriteListOfferModal } from 'features/FavoriteList/FakeDoor/FavoriteListOfferModal'
+import { FavoriteListOfferModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListOfferModal'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 

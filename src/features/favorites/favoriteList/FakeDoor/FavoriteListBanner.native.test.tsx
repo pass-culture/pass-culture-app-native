@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FavoriteListBanner } from 'features/FavoriteList/FakeDoor/FavoriteListBanner'
+import { FavoriteListBanner } from 'features/favorites/favoriteList/FakeDoor/FavoriteListBanner'
 import { analytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen } from 'tests/utils'
