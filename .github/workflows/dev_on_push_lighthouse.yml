@@ -1,0 +1,15 @@
+name: Lighthouse
+on:
+  pull_request:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+          prCommentEnabled: true
+          urls: 'https://app.testing.passculture.team/accueil,https://app.testing.passculture.team/profil'
