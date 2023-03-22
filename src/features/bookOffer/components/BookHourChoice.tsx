@@ -68,12 +68,16 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
         const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
         return distinctHours.map((hour) => {
           const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
-          const minPrice = Math.min(
-            ...filteredAvailableStocksFromHour
-              .filter((stock) => stock.isBookable)
-              .map((stock) => stock.price)
+          const filteredAvailableStocksFromHourBookable = filteredAvailableStocksFromHour.filter(
+            (stock) => stock.isBookable
           )
-          const isBookable = filteredAvailableStocksFromHour.some((stock) => stock.isBookable)
+          const stocksToGetMinPrice =
+            filteredAvailableStocksFromHourBookable.length > 0
+              ? filteredAvailableStocksFromHourBookable
+              : filteredAvailableStocksFromHour
+          const minPrice = Math.min(...stocksToGetMinPrice.map((stock) => stock.price))
+
+          const isBookable = filteredAvailableStocksFromHourBookable.length > 0
           const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
           return (
             <HourChoice
