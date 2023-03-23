@@ -1,9 +1,15 @@
-import { IdentityCheckStep, StepConfig, StepButtonState } from 'features/identityCheck/types'
+import {
+  IdentityCheckStep,
+  StepConfig,
+  StepButtonState,
+  StepDetails,
+  IdentityCheckStepNewStepper,
+} from 'features/identityCheck/types'
 
 export const getStepState = (
-  steps: StepConfig[],
-  step: IdentityCheckStep,
-  currentStep: IdentityCheckStep | null
+  steps: StepConfig[] | StepDetails[],
+  step: IdentityCheckStep | IdentityCheckStepNewStepper,
+  currentStep: IdentityCheckStep | IdentityCheckStepNewStepper | null
 ): StepButtonState => {
   if (!currentStep) return StepButtonState.DISABLED
   if (currentStep === IdentityCheckStep.END) return StepButtonState.COMPLETED

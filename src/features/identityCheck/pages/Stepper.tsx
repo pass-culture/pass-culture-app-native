@@ -11,11 +11,14 @@ import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
+import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep, IdentityCheckStepNewStepper } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -32,6 +35,10 @@ export const IdentityCheckStepper = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const steps = useSubscriptionSteps()
+  const newStepperSteps = useStepperInfo()
+
+  const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
+
   const context = useSubscriptionContext()
   const currentStep = context.step
 
@@ -87,6 +94,71 @@ export const IdentityCheckStepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
+  //TODO(PC-21375): remove the use of wipStepperRetryUbble
+  const temporaryStepList = wipStepperRetryUbble ? (
+    <VerticalUl>
+      {newStepperSteps.map((step) => (
+        <Li key={step.name}>
+          <StepButtonContainer>
+            {step.name === IdentityCheckStepNewStepper.IDENTIFICATION &&
+            context.identification.method === null ? (
+              <StepButton
+                step={step}
+                state={getStepState(steps, step.name, currentStep)}
+                onPress={() => {
+                  amplitude.logEvent('stepper_clicked', { step: step.name })
+                  analytics.logIdentityCheckStep(step.name)
+                  showEduConnectModal()
+                }}
+              />
+            ) : (
+              <StepButton
+                step={step}
+                state={getStepState(steps, step.name, currentStep)}
+                navigateTo={{ screen: step.screens[0] }}
+                onPress={() => {
+                  amplitude.logEvent('stepper_clicked', { step: step.name })
+                  analytics.logIdentityCheckStep(step.name)
+                }}
+              />
+            )}
+          </StepButtonContainer>
+        </Li>
+      ))}
+    </VerticalUl>
+  ) : (
+    <VerticalUl>
+      {steps.map((step) => (
+        <Li key={step.name}>
+          <StepButtonContainer>
+            {step.name === IdentityCheckStep.IDENTIFICATION &&
+            context.identification.method === null ? (
+              <StepButton
+                step={step}
+                state={getStepState(steps, step.name, currentStep)}
+                onPress={() => {
+                  amplitude.logEvent('stepper_clicked', { step: step.name })
+                  analytics.logIdentityCheckStep(step.name)
+                  showEduConnectModal()
+                }}
+              />
+            ) : (
+              <StepButton
+                step={step}
+                state={getStepState(steps, step.name, currentStep)}
+                navigateTo={{ screen: step.screens[0] }}
+                onPress={() => {
+                  amplitude.logEvent('stepper_clicked', { step: step.name })
+                  analytics.logIdentityCheckStep(step.name)
+                }}
+              />
+            )}
+          </StepButtonContainer>
+        </Li>
+      ))}
+    </VerticalUl>
+  )
+
   return (
     <React.Fragment>
       <Container>
@@ -104,38 +176,7 @@ export const IdentityCheckStepper = () => {
         </Typo.Body>
 
         <Spacer.Column numberOfSpaces={10} />
-
-        <VerticalUl>
-          {steps.map((step) => (
-            <Li key={step.name}>
-              <StepButtonContainer>
-                {step.name === IdentityCheckStep.IDENTIFICATION &&
-                context.identification.method === null ? (
-                  <StepButton
-                    step={step}
-                    state={getStepState(steps, step.name, currentStep)}
-                    onPress={() => {
-                      amplitude.logEvent('stepper_clicked', { step: step.name })
-                      analytics.logIdentityCheckStep(step.name)
-                      showEduConnectModal()
-                    }}
-                  />
-                ) : (
-                  <StepButton
-                    step={step}
-                    state={getStepState(steps, step.name, currentStep)}
-                    navigateTo={{ screen: step.screens[0] }}
-                    onPress={() => {
-                      amplitude.logEvent('stepper_clicked', { step: step.name })
-                      analytics.logIdentityCheckStep(step.name)
-                    }}
-                  />
-                )}
-              </StepButtonContainer>
-            </Li>
-          ))}
-        </VerticalUl>
-
+        {temporaryStepList}
         <Spacer.Flex flex={1} />
 
         <ButtonTertiaryBlack

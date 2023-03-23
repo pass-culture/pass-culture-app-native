@@ -2,7 +2,7 @@ import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import {
-  SubscritpionStepperResponseFixture as mockSubscriptionStepper,
+  SubscriptionStepperResponseFixture as mockSubscriptionStepper,
   SubscritpionStepperResponseWithPhoneValifationFixture as mockSubscriptionStepperWithPhoneValidation,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'

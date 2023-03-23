@@ -5,7 +5,7 @@ import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep, IdentityCheckStepNewStepper } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
@@ -226,7 +226,7 @@ const logEventAnalytics = {
     reason: string | null
     errorType: string | null
   }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
-  logIdentityCheckStep: (nextStep: IdentityCheckStep) =>
+  logIdentityCheckStep: (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_STEP, { nextStep }),
   logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_SUCCESS, params),
