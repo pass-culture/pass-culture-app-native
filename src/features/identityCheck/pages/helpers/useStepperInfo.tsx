@@ -1,10 +1,16 @@
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
+import {
+  IdentityCheckStepNewStepper,
+  StepConfigNewStepper,
+  StepDetails,
+} from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -14,10 +20,11 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
-export const useStepperInfo = (): StepConfig[] => {
+export const useStepperInfo = (): StepDetails[] => {
   const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
+  const { stepToDisplay } = useGetStepperInfo()
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
     'IdentityCheckEduConnect',
@@ -27,15 +34,14 @@ export const useStepperInfo = (): StepConfig[] => {
 
   const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
-  const steps: StepConfig[] = [
+  const stepsConfig: StepConfigNewStepper[] = [
     {
-      name: IdentityCheckStep.PROFILE,
+      name: IdentityCheckStepNewStepper.PROFILE,
       icon: {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
       },
-      label: 'Profil',
       screens: hasSchoolTypes
         ? [
             'SetName',
@@ -47,28 +53,26 @@ export const useStepperInfo = (): StepConfig[] => {
         : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
-      name: IdentityCheckStep.IDENTIFICATION,
+      name: IdentityCheckStepNewStepper.IDENTIFICATION,
       icon: {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
       },
-      label: 'Identification',
       screens:
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
-      name: IdentityCheckStep.CONFIRMATION,
+      name: IdentityCheckStepNewStepper.CONFIRMATION,
       icon: {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
       },
-      label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
     {
-      name: IdentityCheckStep.PHONE_VALIDATION,
+      name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
       icon: {
         disabled: DisabledSmartphoneIcon,
         current: BicolorSmartphone,
@@ -76,7 +80,6 @@ export const useStepperInfo = (): StepConfig[] => {
           <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
         ),
       },
-      label: 'Numéro de téléphone',
       screens:
         remainingAttempts === 0
           ? ['PhoneValidationTooManySMSSent']
@@ -84,7 +87,9 @@ export const useStepperInfo = (): StepConfig[] => {
     },
   ]
 
-  return steps
+  const stepsDetails = mapStepsDetails(stepToDisplay, stepsConfig)
+
+  return stepsDetails
 }
 
 const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (
