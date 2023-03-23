@@ -170,7 +170,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
           <BookingOfferModalHeader
             onClose={onClose}
             modalLeftIconProps={modalLeftIconProps}
-            isEndedUsedBooking={isEndedUsedBooking}
+            title={title}
           />
         }
         fixedModalBottom={
