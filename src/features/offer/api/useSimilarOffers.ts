@@ -95,7 +95,10 @@ export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => 
       analytics.setDefaultEventParameters(data.params)
       return data.results
     })
-    .catch(eventMonitoring.captureException)
+    .catch((e) => {
+      eventMonitoring.captureException(e)
+      return undefined
+    })
 
   return similarOffers
 }
@@ -137,7 +140,7 @@ export const useSimilarOffers = ({
 
   const { user: profile } = useAuthContext()
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
-  const [similarOffersIds, setSimilarOffersIds] = useState<string | string[]>()
+  const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
 
   const fetchAlgolia = useCallback(async () => {
     if (!offerId) return
@@ -166,7 +169,5 @@ export const useSimilarOffers = ({
     fetchSimilarOffers()
   }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
 
-  return useAlgoliaSimilarOffers(
-    typeof similarOffersIds === 'string' ? [similarOffersIds] : similarOffersIds || []
-  )
+  return useAlgoliaSimilarOffers(similarOffersIds || [])
 }
