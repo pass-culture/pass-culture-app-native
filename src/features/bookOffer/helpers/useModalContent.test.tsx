@@ -40,6 +40,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const onPressBookOffer = jest.fn()
+
 describe('useModalContent', () => {
   it('show default modal if no information yet', () => {
     mockOffer = undefined
@@ -195,7 +197,7 @@ describe('useModalContent', () => {
     mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
     mockStep = Step.CONFIRMATION
 
-    const { result } = renderHook(() => useModalContent(true))
+    const { result } = renderHook(() => useModalContent(onPressBookOffer, undefined, true))
 
     expect((result.current.children as any).type.name).toBe('AlreadyBooked')
     expect(result.current.onLeftIconPress).toBeUndefined()
