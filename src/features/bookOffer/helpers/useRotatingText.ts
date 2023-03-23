@@ -20,7 +20,8 @@ export type RotatingTextOptions = {
  * A hook that you can use to display messages that will change every `keepDuration` milliseconds.
  */
 export function useRotatingText<T extends RotatingTextOptions[]>(
-  messages: T
+  messages: T,
+  shouldRun = true
 ): T[number]['message'] {
   const [currentIndex, setCurrentIndex] = useState(0)
   const intervalRef = useRef<number>()
@@ -29,24 +30,26 @@ export function useRotatingText<T extends RotatingTextOptions[]>(
   const currentMessage = messagesRef.current[currentIndex]
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const nextIndex = prev + 1
-        const maybeNextMessage = messagesRef.current[nextIndex]
+    if (shouldRun) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) => {
+          const nextIndex = prev + 1
+          const maybeNextMessage = messagesRef.current[nextIndex]
 
-        if (maybeNextMessage) {
-          return nextIndex
-        }
+          if (maybeNextMessage) {
+            return nextIndex
+          }
 
-        // the condition handles loop repetition from start
-        return currentMessage.keepDuration ? 0 : prev
-      })
-    }, currentMessage.keepDuration)
+          // the condition handles loop repetition from start
+          return currentMessage.keepDuration ? 0 : prev
+        })
+      }, currentMessage.keepDuration)
+    }
 
     return () => {
       clearInterval(intervalRef.current)
     }
-  }, [currentMessage.keepDuration])
+  }, [currentMessage.keepDuration, shouldRun])
 
   return currentMessage.message
 }
