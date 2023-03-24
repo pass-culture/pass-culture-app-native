@@ -4,11 +4,20 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStep, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
+import { SubscriptionStepperResponseFixture as mockSubscriptionStepper } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
+import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import {
+  IdentityCheckStep,
+  IdentityCheckStepNewStepper,
+  StepButtonState,
+  StepConfig,
+} from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
@@ -18,6 +27,16 @@ let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
+
+jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
+  useGetStepperInfo: jest.fn(() => ({
+    stepToComplete: mockUseGetStepperInfo,
+  })),
+}))
+
+const mockUseGetStepperInfo = (useGetStepperInfo as jest.Mock).mockReturnValue({
+  stepToComplete: mockSubscriptionStepper.subscriptionStepsToDisplay,
+})
 
 jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
@@ -95,6 +114,11 @@ const mockStepConfig: Partial<StepConfig[]> = [
 ]
 mockUseSubscriptionSteps.mockReturnValue(mockStepConfig)
 
+jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
+const mockUseStepperInfo = useStepperInfo as jest.Mock
+
+mockUseStepperInfo.mockReturnValue(stepsDetailsFixture)
+
 jest.mock('react-query')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
@@ -156,11 +180,11 @@ describe('Stepper navigation', () => {
     })
   })
   it.each`
-    subscriptionStep                      | stepperLabel             | eventName            | eventParam
-    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${'stepper_clicked'} | ${{ step: 'identification' }}
-    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: 'phone_validation' }}
-    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${'stepper_clicked'} | ${{ step: 'confirmation' }}
-    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${'stepper_clicked'} | ${{ step: 'profile' }}
+    subscriptionStep                                | stepperLabel             | eventName            | eventParam
+    ${IdentityCheckStepNewStepper.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.PHONE_VALIDATION }}
+    ${IdentityCheckStepNewStepper.IDENTIFICATION}   | ${'Identification'}      | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.IDENTIFICATION }}
+    ${IdentityCheckStepNewStepper.CONFIRMATION}     | ${'Confirmation'}        | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.CONFIRMATION }}
+    ${IdentityCheckStepNewStepper.PROFILE}          | ${'Profil'}              | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.PROFILE }}
   `(
     'should trigger $eventName amplitude event with the $eventParam parameter',
     ({
@@ -178,6 +202,13 @@ describe('Stepper navigation', () => {
         ...mockStep,
         nextSubscriptionStep: subscriptionStep,
       }
+      // We override all the stepState with a current state so the fireEvent.press actually triggers the stepper_clicked event
+      const stepsDetailsFixtureWithOnlyCurrentStates = stepsDetailsFixture.map((step) => ({
+        ...step,
+        stepState: StepButtonState.CURRENT,
+      }))
+      mockUseStepperInfo.mockReturnValue(stepsDetailsFixtureWithOnlyCurrentStates)
+
       mockedUseSubscriptionContext.mockReturnValueOnce({
         dispatch: mockIdentityCheckDispatch,
         step: subscriptionStep,
@@ -185,6 +216,7 @@ describe('Stepper navigation', () => {
       })
 
       const stepper = render(<IdentityCheckStepper />)
+
       const stepButton = stepper.getByText(stepperLabel)
       fireEvent.press(stepButton)
 

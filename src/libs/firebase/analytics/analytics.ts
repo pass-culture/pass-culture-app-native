@@ -91,7 +91,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
   logConfirmBookingCancellation: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
-  logConfirmQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
+  logConfirmQuitIdentityCheck: (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
