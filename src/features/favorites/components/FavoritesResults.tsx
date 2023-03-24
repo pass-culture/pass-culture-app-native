@@ -5,13 +5,13 @@ import styled from 'styled-components/native'
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { FavoriteListBanner } from 'features/FavoriteList/FakeDoor/FavoriteListBanner'
 import { useFavorites } from 'features/favorites/api'
 import { Sort } from 'features/favorites/components/Buttons/Sort'
 import { Favorite } from 'features/favorites/components/Favorite'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { FavoriteListBanner } from 'features/favorites/favoriteList/FakeDoor/FavoriteListBanner'
 import {
   sortByAscendingPrice,
   sortByDistanceAroundMe,
