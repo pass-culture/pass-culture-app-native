@@ -334,7 +334,7 @@ Object {
                     >
                       <button
                         aria-label="Fermer la modale"
-                        class="c0 c1 sc-iCfMLu c1"
+                        class="c0 c1 sc-gKclnd c1"
                         data-testid="Fermer la modale"
                         tabindex="0"
                         title="Fermer la modale"
