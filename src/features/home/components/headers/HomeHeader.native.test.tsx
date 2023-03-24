@@ -159,6 +159,28 @@ describe('HomeHeader', () => {
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeTruthy()
     expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
   })
+
+  it('should display retry activation banner when banner api call return retry_identity_check_banner', async () => {
+    server.use(
+      rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
+        res(
+          ctx.status(200),
+          ctx.json({
+            banner: {
+              name: BannerName.retry_identity_check_banner,
+              title: 'Retente ubble',
+              text: 'pour débloquer ton crédit',
+            },
+          })
+        )
+      )
+    )
+
+    renderHomeHeader()
+
+    expect(await screen.findByText('Retente ubble')).toBeTruthy()
+    expect(screen.getByText('pour débloquer ton crédit')).toBeTruthy()
+  })
 })
 
 function renderHomeHeader() {

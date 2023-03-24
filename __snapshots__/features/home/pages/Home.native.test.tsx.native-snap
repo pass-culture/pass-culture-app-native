@@ -221,171 +221,171 @@ exports[`Home page should render correctly 1`] = `
                 }
               />
               <View
-                accessibilityRole="link"
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  Array [
+                    Object {
+                      "marginBottom": 32,
+                    },
+                  ]
                 }
               >
                 <View
+                  accessibilityRole="link"
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "borderRadius": 7,
-                        "overflow": "hidden",
-                      },
-                    ]
+                    Object {
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
                   }
                 >
                   <View
-                    accessibilityIgnoresInvertColors={true}
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#eb0055",
-                          "justifyContent": "center",
-                          "width": "100%",
+                          "borderRadius": 7,
+                          "overflow": "hidden",
                         },
                       ]
                     }
                   >
-                    <Image
-                      source={
-                        Object {
-                          "uri": "",
-                        }
-                      }
-                      style={
-                        Array [
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          },
-                          Object {
-                            "height": undefined,
-                            "width": "100%",
-                          },
-                          undefined,
-                        ]
-                      }
-                      testID="module-background"
-                    />
                     <View
+                      accessibilityIgnoresInvertColors={true}
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "borderColor": "#90949D",
-                            "borderRadius": 7,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "padding": 16,
+                            "backgroundColor": "#eb0055",
+                            "justifyContent": "center",
                             "width": "100%",
                           },
-                          undefined,
                         ]
                       }
                     >
+                      <Image
+                        source={
+                          Object {
+                            "uri": "",
+                          }
+                        }
+                        style={
+                          Array [
+                            Object {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            Object {
+                              "height": undefined,
+                              "width": "100%",
+                            },
+                            undefined,
+                          ]
+                        }
+                        testID="module-background"
+                      />
                       <View
                         style={
                           Array [
                             Object {
-                              "alignContent": "center",
-                              "marginRight": 16,
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 7,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
                             },
+                            undefined,
                           ]
                         }
                       >
                         <View
-                          height={32}
-                          width={32}
+                          style={
+                            Array [
+                              Object {
+                                "alignContent": "center",
+                                "marginRight": 16,
+                              },
+                            ]
+                          }
                         >
-                          <Text>
-                            undefined-SVG-Mock
+                          <View
+                            height={32}
+                            width={32}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": 16,
+                                "textAlign": "start",
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                          >
+                            Débloque ton crédit
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                          >
+                            Crée ton compte si tu as entre 15 et 18 ans !
                           </Text>
                         </View>
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "marginRight": 16,
-                              "textAlign": "start",
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Débloque ton crédit
-                        </Text>
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-Regular",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Crée ton compte si tu as entre 15 et 18 ans !
-                        </Text>
-                      </View>
-                      <View>
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
+                        <View>
+                          <View
+                            height={24}
+                            width={24}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>
                   </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={8}
-                style={
-                  Array [
-                    Object {
-                      "height": 32,
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
         </View>

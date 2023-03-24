@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 
 import { Again } from 'ui/svg/icons/Again'
+import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -130,6 +131,7 @@ export const SocialNetworkIcons = {
 
 export const SecondaryAndBiggerIcons = {
   GreenCheck,
+  ArrowAgain,
   ArrowNext,
   ArrowPrevious,
   Bell,
