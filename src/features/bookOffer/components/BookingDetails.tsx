@@ -71,8 +71,6 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const fromOfferId = route.params?.fromOfferId
   const algoliaOfferId = offerId?.toString()
 
-  const loadingMessage = useRotatingText(LOADING_MESSAGES)
-
   const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId]?.isEvent : undefined
 
   const { mutate, isLoading } = useBookOfferMutation({
@@ -109,6 +107,8 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
     },
   })
+
+  const loadingMessage = useRotatingText(LOADING_MESSAGES, isLoading)
 
   useEffect(() => {
     // For offers of type Thing, we don't manually select a date (thus a stock).

@@ -86,4 +86,29 @@ describe('useRotatingText', () => {
 
     expect(clearInterval).toHaveBeenCalledTimes(1)
   })
+
+  it('should not start until wanted', () => {
+    const hook = renderHook((isLoading = false) =>
+      useRotatingText(
+        [{ message: 'Hello', keepDuration: 3000 }, { message: 'Jest' }],
+        isLoading as boolean /* why do i have to specify type ?? */
+      )
+    )
+
+    expect(hook.result.current).toEqual('Hello')
+
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+    expect(hook.result.current).toEqual('Hello')
+
+    act(() => {
+      hook.rerender(true)
+    })
+    expect(hook.result.current).toEqual('Hello')
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+    expect(hook.result.current).toEqual('Jest')
+  })
 })
