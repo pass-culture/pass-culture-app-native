@@ -235,11 +235,11 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - OpenSSL-Universal (1.1.1100)
-  - Permission-Camera (3.5.0):
+  - Permission-Camera (3.8.0):
     - RNPermissions
-  - Permission-LocationWhenInUse (3.5.0):
+  - Permission-LocationWhenInUse (3.8.0):
     - RNPermissions
-  - Permission-Notifications (3.5.0):
+  - Permission-Notifications (3.8.0):
     - RNPermissions
   - PromisesObjC (2.1.0)
   - RCT-Folly (2021.06.28.00-v2):
@@ -486,8 +486,8 @@ PODS:
     - React
   - react-native-get-random-values (1.7.1):
     - React-Core
-  - react-native-in-app-review (3.2.3):
-    - React
+  - react-native-in-app-review (4.3.3):
+    - React-Core
   - react-native-lottie-splash-screen (1.0.1):
     - React
   - react-native-netinfo (9.0.0):
@@ -598,7 +598,7 @@ PODS:
     - Firebase/RemoteConfig (= 8.15.0)
     - React-Core
     - RNFBApp
-  - RNFlashList (1.2.1):
+  - RNFlashList (1.4.1):
     - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
@@ -606,7 +606,7 @@ PODS:
     - React-Core
   - RNLaunchNavigator (1.0.8):
     - React
-  - RNPermissions (3.5.0):
+  - RNPermissions (3.8.0):
     - React-Core
   - RNScreens (3.18.2):
     - React-Core
@@ -978,9 +978,9 @@ SPEC CHECKSUMS:
   lottie-react-native: a501112fa980529ccb80b9f3ee117a7f98c6af3a
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  Permission-Camera: 4f113f7e3f02d2e65030de8284dfc17f1d237a9a
-  Permission-LocationWhenInUse: 9cd4de3ae72592050bb9eba2d60530c398c7b151
-  Permission-Notifications: 57dee37a4b5d465d9ac02e7ea959de3b6c0b2e7e
+  Permission-Camera: e6d142d7d8b714afe0a83e5e6ae17eb949f1e3e9
+  Permission-LocationWhenInUse: 1c80e4797ae587642a83125e80b86686cefeba53
+  Permission-Notifications: aa91ec29236626ff59cb60e08389c0a59a9d32c5
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: 0f06b6068f530932d10e1a01a5352fad4eaacb74
@@ -1003,7 +1003,7 @@ SPEC CHECKSUMS:
   react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
   react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
-  react-native-in-app-review: 23f4f5b9fcd94339dd5d93c6230557f9c67c7dda
+  react-native-in-app-review: db8bb167a5f238e7ceca5c242d6b36ce8c4404a4
   react-native-lottie-splash-screen: 068688c15dd478301fda00f8d87d7fb7d5b9a93e
   react-native-netinfo: 5b664b2945a8f02102b296f0f812bddd6827ed9c
   react-native-safe-area-context: 9e40fb181dac02619414ba1294d6c2a807056ab9
@@ -1031,11 +1031,11 @@ SPEC CHECKSUMS:
   RNFBFirestore: f36e896a6134becb7371389fe00dc06929303d89
   RNFBPerf: c4b51d204881e99f1fccd491f8756c6be1bb8f3d
   RNFBRemoteConfig: ec7bfe6cff76296f0e5ec8ad0c0149f00d6d92ca
-  RNFlashList: 5318fc0772902ffa55170b35caa95ad5a69da3ef
+  RNFlashList: 8ec7f7454721145fe84566bb9e88bcf58981c9fe
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
-  RNPermissions: e5b6373c08831dc4b6b13a2b798143fac20bb100
+  RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNSentry: f03937a2cf86c7029ba31fbbf5618c55d223cd62
   RNShare: 48b3113cd089a2be8ff0515c3ae7a46a4db8a76b
