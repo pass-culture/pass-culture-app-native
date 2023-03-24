@@ -7,10 +7,6 @@ import { BookingCloseInformation } from './BookingCloseInformation'
 const mockHideModal = jest.fn()
 
 describe('BookingCloseInformation', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('calls hideModal when the "J’ai compris" button is press', () => {
     render(<BookingCloseInformation visible hideModal={mockHideModal} />)
     const button = screen.getByText('J’ai compris')

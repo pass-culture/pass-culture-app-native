@@ -135,15 +135,15 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
 
   const {
     visible: bookingCloseInformationModalVisible,
-    showModal: showBookingCloseInformationModalVisible,
-    hideModal: hideBookingCloseInformationModalVisible,
+    showModal: showBookingCloseInformationModal,
+    hideModal: hideBookingCloseInformationModal,
   } = useModal(false)
 
   const onClose = useCallback(() => {
     dismissModal()
     dispatch({ type: 'RESET' })
     if (isLoading && title.includes('Détails de la réservation')) {
-      showBookingCloseInformationModalVisible()
+      showBookingCloseInformationModal()
     }
     if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
   }, [
@@ -154,7 +154,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
     step,
     isLoading,
     title,
-    showBookingCloseInformationModalVisible,
+    showBookingCloseInformationModal,
   ])
 
   return enablePricesByCategories ? (
@@ -181,7 +181,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
       </AppModal>
       <BookingCloseInformation
         visible={bookingCloseInformationModalVisible}
-        hideModal={hideBookingCloseInformationModalVisible}
+        hideModal={hideBookingCloseInformationModal}
       />
     </React.Fragment>
   ) : (
