@@ -36,6 +36,7 @@ export interface StepDetails {
   title: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
+  stepState: StepButtonState
 }
 
 export type NextScreenOrStep = { screen: SubscriptionScreen } | { step: IdentityCheckStep } | null

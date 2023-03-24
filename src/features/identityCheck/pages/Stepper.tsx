@@ -104,7 +104,7 @@ export const IdentityCheckStepper = () => {
             context.identification.method === null ? (
               <StepButton
                 step={step}
-                state={getStepState(steps, step.name, currentStep)}
+                state={step.stepState}
                 onPress={() => {
                   amplitude.logEvent('stepper_clicked', { step: step.name })
                   analytics.logIdentityCheckStep(step.name)
@@ -114,7 +114,7 @@ export const IdentityCheckStepper = () => {
             ) : (
               <StepButton
                 step={step}
-                state={getStepState(steps, step.name, currentStep)}
+                state={step.stepState}
                 navigateTo={{ screen: step.screens[0] }}
                 onPress={() => {
                   amplitude.logEvent('stepper_clicked', { step: step.name })

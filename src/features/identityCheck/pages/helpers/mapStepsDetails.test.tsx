@@ -10,6 +10,7 @@ import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import {
   IdentityCheckStepNewStepper,
+  StepButtonState,
   StepConfigNewStepper,
   StepDetails,
 } from 'features/identityCheck/types'
@@ -96,6 +97,7 @@ describe('mapStepsDetails', () => {
       },
       screens: ['SetPhoneNumber'],
       title: 'Numéro de téléphone',
+      stepState: StepButtonState.DISABLED,
     },
     {
       name: IdentityCheckStepNewStepper.IDENTIFICATION,
@@ -106,6 +108,18 @@ describe('mapStepsDetails', () => {
       },
       screens: ['BeneficiaryRequestSent'],
       title: 'Identification',
+      stepState: StepButtonState.CURRENT,
+    },
+    {
+      name: IdentityCheckStepNewStepper.CONFIRMATION,
+      icon: {
+        disabled: BicolorLegal,
+        current: BicolorLegal,
+        completed: expect.any(Function),
+      },
+      screens: ['DMSIntroduction'],
+      title: 'Confirmation',
+      stepState: StepButtonState.CURRENT,
     },
   ]
 
@@ -116,7 +130,7 @@ describe('mapStepsDetails', () => {
 
   it('should only return steps when the associated config exists in-app', () => {
     const result = mapStepsDetails(stepsToComplete, stepsConfig)
-    expect(stepsToComplete.length).toEqual(3)
-    expect(result.length).toEqual(2)
+    expect(stepsToComplete.length).toEqual(4)
+    expect(result.length).toEqual(3)
   })
 })
