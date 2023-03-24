@@ -156,12 +156,15 @@ Array [
                     Object {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#F1F1F4",
                       "borderRadius": 8,
-                      "borderWidth": 2,
+                      "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 88,
                       "marginTop": 8,
+                    },
+                    Object {
+                      "borderColor": "#F1F1F4",
+                      "borderWidth": 2,
+                      "height": 88,
                       "width": "98%",
                     },
                   ]
@@ -261,15 +264,21 @@ Array [
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
                       "borderColor": "#90949D",
-                      "borderRadius": 8,
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
                       "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 92,
-                      "marginTop": 8,
+                      "padding": 16,
                       "width": "100%",
                     },
+                    Array [
+                      Object {
+                        "borderColor": "#161617",
+                        "height": 92,
+                        "marginTop": 8,
+                      },
+                    ],
                   ]
                 }
               >
@@ -277,10 +286,8 @@ Array [
                   style={
                     Array [
                       Object {
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
+                        "alignContent": "center",
+                        "marginRight": 16,
                       },
                     ]
                   }
@@ -296,21 +303,44 @@ Array [
                     </Text>
                   </View>
                 </View>
-                <Text
-                  state="current"
+                <View
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
                       },
                     ]
                   }
                 >
-                  Identification
-                </Text>
+                  <Text
+                    state="current"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Identification
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -369,12 +399,14 @@ Array [
                     Object {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 88,
                       "marginTop": 8,
+                    },
+                    Object {
+                      "borderColor": "#CBCDD2",
+                      "height": 88,
                       "width": "98%",
                     },
                   ]
@@ -476,12 +508,14 @@ Array [
                     Object {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 88,
                       "marginTop": 8,
+                    },
+                    Object {
+                      "borderColor": "#CBCDD2",
+                      "height": 88,
                       "width": "98%",
                     },
                   ]
