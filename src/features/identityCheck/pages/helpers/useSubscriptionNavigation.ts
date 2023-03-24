@@ -8,7 +8,11 @@ import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNex
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { IdentityCheckStep, NextScreenOrStep } from 'features/identityCheck/types'
+import {
+  IdentityCheckStep,
+  IdentityCheckStepNewStepper,
+  NextScreenOrStep,
+} from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -34,13 +38,14 @@ export const useSubscriptionNavigation = (): {
 
   const { mutateAsync: patchProfile } = usePatchProfile()
 
-  const saveCheckpoint = async (nextStep: IdentityCheckStep) => {
+  const saveCheckpoint = async (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) => {
     try {
-      if (currentStep === IdentityCheckStep.PROFILE) {
+      if (currentStep === (IdentityCheckStep.PROFILE || IdentityCheckStepNewStepper.PROFILE)) {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }
       await queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      await queryClient.invalidateQueries(QueryKeys.STEPPER_INFO)
       setIsSavingCheckpoint(false)
       dispatch({ type: 'SET_STEP', payload: nextStep })
     } catch (error) {

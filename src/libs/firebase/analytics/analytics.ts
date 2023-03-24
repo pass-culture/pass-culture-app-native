@@ -283,7 +283,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_MODAL, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
-  logQuitIdentityCheck: (nextStep: IdentityCheckStep) =>
+  logQuitIdentityCheck: (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS, { searchId }),
