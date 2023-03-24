@@ -3,6 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { StepButtonState, StepConfig } from 'features/identityCheck/types'
+import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -71,10 +72,10 @@ const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style,
   </BaseStyleComponent>
 )
 
-const CurrentContainer = styled(BaseContainer)(({ theme }) => ({
+const CurrentContainer = styled(GenericBanner)(({ theme }) => ({
   height: getSpacing(23),
-  width: '100%',
-  borderColor: theme.colors.greySemiDark,
+  borderColor: theme.colors.black,
+  marginTop: getSpacing(2),
 }))
 
 const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
