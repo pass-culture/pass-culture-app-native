@@ -2,11 +2,13 @@ import recommend, { RecommendSearchOptions } from '@algolia/recommend'
 import { getFrequentlyBoughtTogether, getRelatedProducts } from '@algolia/recommend-core'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { Coordinates, SearchGroupNameEnumv2 } from 'api/gen'
+import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
+import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -87,12 +89,39 @@ export const getAlgoliaFrequentlyBoughtTogether = async (
 }
 
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
-  const similarOffers: string[] = await fetch(similarOffersEndpoint)
+  const similarOffers = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
-    .then((data) => data.results)
-    .catch(eventMonitoring.captureException)
+    .then((data: SimilarOffersResponse) => {
+      analytics.setDefaultEventParameters(data.params)
+      return data.results
+    })
+    .catch((e) => {
+      eventMonitoring.captureException(e)
+      return undefined
+    })
 
   return similarOffers
+}
+
+export const getCategories = (
+  searchGroups?: SearchGroupResponseModelv2[],
+  categoryIncluded?: SearchGroupNameEnumv2,
+  categoryExcluded?: SearchGroupNameEnumv2
+) => {
+  if (categoryIncluded) {
+    return [categoryIncluded]
+  }
+
+  if (categoryExcluded && searchGroups) {
+    return searchGroups
+      .filter(
+        (searchGroup) =>
+          searchGroup.name !== categoryExcluded && searchGroup.name !== SearchGroupNameEnumv2.NONE
+      )
+      .map((searchGroup) => searchGroup.name)
+  }
+
+  return []
 }
 
 export const useSimilarOffers = ({
@@ -104,20 +133,10 @@ export const useSimilarOffers = ({
 }: Props) => {
   const { data } = useSubcategories()
 
-  const categories: SearchGroupNameEnumv2[] = useMemo(() => {
-    if (categoryIncluded) {
-      return [categoryIncluded]
-    }
-
-    return (
-      data?.searchGroups
-        .filter(
-          (searchGroup) =>
-            searchGroup.name !== categoryExcluded && searchGroup.name !== SearchGroupNameEnumv2.NONE
-        )
-        .map((searchGroup) => searchGroup.name) || []
-    )
-  }, [categoryExcluded, categoryIncluded, data?.searchGroups])
+  const categories: SearchGroupNameEnumv2[] = useMemo(
+    () => getCategories(data?.searchGroups, categoryIncluded, categoryExcluded),
+    [categoryExcluded, categoryIncluded, data?.searchGroups]
+  )
 
   const { user: profile } = useAuthContext()
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)

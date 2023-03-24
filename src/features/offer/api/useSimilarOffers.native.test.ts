@@ -7,10 +7,12 @@ import {
   getAlgoliaFrequentlyBoughtTogether,
   getAlgoliaRelatedProducts,
   getApiRecoSimilarOffers,
+  getCategories,
   getSimilarOffersEndpoint,
   useSimilarOffers,
 } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { server } from 'tests/server'
@@ -314,12 +316,23 @@ describe('getApiRecoSimilarOffers', () => {
   const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
   const endpoint = getSimilarOffersEndpoint(mockOfferId, mockUserId) || ''
 
+  const params = {
+    call_id: 1,
+    filtered: true,
+    geo_located: false,
+    model_endpoint: 'default',
+    model_name: 'similar_offers_default_prod',
+    model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+    reco_origin: 'default',
+  }
+
   it('should log sentry when reco similar offers API called with an error', async () => {
     const error = new Error('error')
     fetchApiRecoSpy.mockImplementationOnce(() => Promise.reject(error))
 
     const apiReco = await getApiRecoSimilarOffers(endpoint)
 
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     expect(apiReco).toEqual(undefined)
   })
 
@@ -330,5 +343,56 @@ describe('getApiRecoSimilarOffers', () => {
     const apiReco = await getApiRecoSimilarOffers(endpoint)
 
     expect(apiReco).toEqual(['102280', '102281'])
+  })
+
+  it('should log response body parameters on firebase when fetch call succeeds', async () => {
+    const expectedResponse = respondWith({ params, results: ['102280', '102281'] })
+    fetchApiRecoSpy.mockReturnValueOnce(Promise.resolve(expectedResponse))
+
+    await getApiRecoSimilarOffers(endpoint)
+
+    expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
+  })
+})
+
+describe('getCategories', () => {
+  describe('should return an empty array ', () => {
+    it('when categoryIncluded and categoryExcluded not defined', () => {
+      const categories = getCategories()
+      expect(categories).toEqual([])
+    })
+
+    it('when categoryExcluded defined but not searchGroups', () => {
+      const categories = getCategories(undefined, undefined, SearchGroupNameEnumv2.CARTES_JEUNES)
+      expect(categories).toEqual([])
+    })
+  })
+
+  it('should return an array with category of categoryIncluded parameter when defined', () => {
+    const categories = getCategories(mockSearchGroups, SearchGroupNameEnumv2.CARTES_JEUNES)
+    expect(categories).toEqual([SearchGroupNameEnumv2.CARTES_JEUNES])
+  })
+
+  it('should return an array with all categories except none category and categoryExcluded parameter when it is defined', () => {
+    const categories = getCategories(
+      mockSearchGroups,
+      undefined,
+      SearchGroupNameEnumv2.CARTES_JEUNES
+    )
+    expect(categories).toEqual([
+      SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+      SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+      SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+      SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+      SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+      SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      SearchGroupNameEnumv2.INSTRUMENTS,
+      SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+      SearchGroupNameEnumv2.LIVRES,
+      SearchGroupNameEnumv2.MEDIA_PRESSE,
+      SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+      SearchGroupNameEnumv2.SPECTACLES,
+    ])
   })
 })
