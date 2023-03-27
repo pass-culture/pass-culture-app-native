@@ -10,7 +10,8 @@ export type GeoCoordinates = {
   longitude: number
 }
 
-export type Position = GeoCoordinates | null
+// A position is either not yet asked (undefined), refused (null) or accepted and retrieved (coordinates)
+export type Position = GeoCoordinates | null | undefined
 
 export type RequestGeolocPermissionParams = {
   onAcceptance?: () => void

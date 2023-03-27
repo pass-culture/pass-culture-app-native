@@ -18,7 +18,7 @@ import {
 } from './types'
 
 const GeolocationContext = React.createContext<IGeolocationContext>({
-  position: null,
+  position: undefined,
   positionError: null,
   permissionState: undefined,
   requestGeolocPermission: async () => {
@@ -34,7 +34,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 }: {
   children: JSX.Element
 }) {
-  const [position, setPosition] = useSafeState<Position>(null)
+  const [position, setPosition] = useSafeState<Position>(undefined)
   const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
     undefined

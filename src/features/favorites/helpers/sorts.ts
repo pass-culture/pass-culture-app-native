@@ -27,7 +27,7 @@ export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
 
 export function sortByDistanceAroundMe(position: Position) {
   return (a: FavoriteResponse, b: FavoriteResponse) => {
-    if (position === null) return 0
+    if (!position) return 0
 
     let aCoordinate, bCoordinate
     if (a.offer.coordinates?.latitude && a.offer.coordinates?.longitude) {
