@@ -346,7 +346,10 @@ module.exports = {
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
         'jest/valid-expect': 'error',
-        'jest/expect-expect': 'error',
+        'jest/expect-expect': [
+          'error',
+          { assertFunctionNames: ['expect', 'measurePerformance'] }
+        ],
       },
     },
   ],
