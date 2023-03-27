@@ -23,7 +23,7 @@ export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 export type IGeolocationContext = {
   position: Position
   positionError: GeolocationError | null
-  permissionState: GeolocPermissionState
+  permissionState: GeolocPermissionState | undefined
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void

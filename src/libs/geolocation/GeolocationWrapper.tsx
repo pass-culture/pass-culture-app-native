@@ -20,7 +20,7 @@ import {
 const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   positionError: null,
-  permissionState: GeolocPermissionState.DENIED,
+  permissionState: undefined,
   requestGeolocPermission: async () => {
     // nothing
   },
@@ -36,8 +36,8 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 }) {
   const [position, setPosition] = useSafeState<Position>(null)
   const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
-  const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
-    GeolocPermissionState.DENIED
+  const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
+    undefined
   )
 
   const {
@@ -162,7 +162,7 @@ export function useGeolocation(): IGeolocationContext {
 function isGranted(permission: GeolocPermissionState) {
   return permission === GeolocPermissionState.GRANTED
 }
-function isRejected(permission: GeolocPermissionState) {
+function isRejected(permission: GeolocPermissionState | undefined) {
   return (
     permission === GeolocPermissionState.DENIED ||
     permission === GeolocPermissionState.NEVER_ASK_AGAIN
