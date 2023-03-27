@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { isApiError } from 'api/apiHelpers'
+import { ApiError, isApiError } from 'api/apiHelpers'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingCloseInformation } from 'features/bookOffer/components/BookingCloseInformation'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
@@ -28,7 +28,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-interface Props {
+interface BookingOfferModalComponentProps {
   visible: boolean
   offerId: number
   isEndedUsedBooking?: boolean
@@ -41,11 +41,12 @@ export const errorCodeToMessage: Record<string, string> = {
   STOCK_NOT_BOOKABLE: 'Oups, cette offre n’est plus disponible\u00a0!',
 }
 
-export const BookingOfferModalComponent: React.FC<Props> = ({
+export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProps> = ({
   visible,
   offerId,
   isEndedUsedBooking,
 }) => {
+  const { data: offer } = useOffer({ offerId })
   const { dismissModal, dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
   const { navigate } = useNavigation<UseNavigationType>()
@@ -58,39 +59,64 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   const fromOfferId = route.params?.fromOfferId
   const algoliaOfferId = offerId?.toString()
 
-  const { mutate, isLoading } = useBookOfferMutation({
-    onSuccess: ({ bookingId }) => {
+  const onBookOfferSuccess = useCallback(
+    ({ bookingId }: { bookingId: number }) => {
       dismissModal()
+
       if (offerId) {
         analytics.logBookingConfirmation(offerId, bookingId, fromOfferId)
-        isFromSearch && algoliaOfferId && logOfferConversion(algoliaOfferId)
+        if (isFromSearch && algoliaOfferId) {
+          logOfferConversion(algoliaOfferId)
+        }
 
-        if (!!selectedStock && !!offer)
+        if (!!selectedStock && !!offer?.subcategoryId) {
           campaignTracker.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
-            af_offer_id: offer.id,
+            af_offer_id: offerId,
             af_booking_id: selectedStock.id,
             af_price: selectedStock.price,
             af_category: offer.subcategoryId,
           })
+        }
         navigate('BookingConfirmation', { offerId, bookingId })
       }
     },
-    onError: (error) => {
+    [
+      algoliaOfferId,
+      dismissModal,
+      fromOfferId,
+      isFromSearch,
+      logOfferConversion,
+      navigate,
+      offer?.subcategoryId,
+      offerId,
+      selectedStock,
+    ]
+  )
+
+  const onBookOfferError = useCallback(
+    (error?: ApiError | Error) => {
       dismissModal()
       let message = 'En raison d’une erreur technique, l’offre n’a pas pu être réservée'
 
       if (isApiError(error)) {
         const { content } = error as { content: { code: string } }
+
         if (content && content.code && content.code in errorCodeToMessage) {
           message = errorCodeToMessage[content.code]
+
           if (typeof offerId === 'number') {
             analytics.logBookingError(offerId, content.code)
           }
         }
       }
-
       showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
     },
+    [dismissModal, offerId, showErrorSnackBar]
+  )
+
+  const { mutate, isLoading } = useBookOfferMutation({
+    onSuccess: onBookOfferSuccess,
+    onError: onBookOfferError,
   })
 
   const onPressBookOffer = () => {
@@ -106,8 +132,6 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
   const { modal } = useTheme()
-
-  const { data: offer } = useOffer({ offerId })
 
   const stocksWithCategory = useMemo(() => {
     return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
@@ -178,11 +202,11 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
         }
         shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
         {children}
+        <BookingCloseInformation
+          visible={bookingCloseInformationModalVisible}
+          hideModal={hideBookingCloseInformationModal}
+        />
       </AppModal>
-      <BookingCloseInformation
-        visible={bookingCloseInformationModalVisible}
-        hideModal={hideBookingCloseInformationModal}
-      />
     </React.Fragment>
   ) : (
     <AppModal
@@ -200,10 +224,9 @@ export const BookingOfferModalComponent: React.FC<Props> = ({
   )
 }
 
-export const BookingOfferModal: React.FC<Props & { dismissModal: () => void }> = ({
-  dismissModal,
-  ...props
-}) => (
+export const BookingOfferModal: React.FC<
+  BookingOfferModalComponentProps & { dismissModal: () => void }
+> = ({ dismissModal, ...props }) => (
   <BookingWrapper dismissModal={dismissModal}>
     <BookingOfferModalComponent {...props} />
   </BookingWrapper>
