@@ -229,6 +229,7 @@ module.exports = {
           '**/service-worker.ts',
           '**/why-did-you-render.js',
           '**/jest.*.ts',
+          'dangerfile.ts',
         ],
         // This is features available with patch-package on eslint-plugin-import
         // Open PR: https://github.com/import-js/eslint-plugin-import/pull/2557/files

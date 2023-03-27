@@ -36,6 +36,6 @@
     "rn-cli.config.js",
     "coverage/**",
     "./server/**",
-    "./e2e/**"
+    "./e2e/**",
   ]
 }
