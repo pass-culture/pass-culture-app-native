@@ -12,6 +12,7 @@ export const getRecommendationEndpoint = ({
 }): string | undefined => {
   let queryParams = ''
   if (!userId) return undefined
+  if (position === undefined) return undefined
   const endpoint = `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${userId}?token=${env.RECOMMENDATION_TOKEN}`
   if (modelEndpoint) {
     queryParams = queryParams + `&modelEndpoint=${modelEndpoint}`
