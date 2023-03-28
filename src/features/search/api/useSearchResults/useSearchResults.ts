@@ -36,7 +36,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         excludedObjectIds: previousPageObjectIds.current,
       })
 
-      analytics.logPerformSearch(searchState)
+      analytics.logPerformSearch(searchState, response.nbHits)
 
       previousPageObjectIds.current = response.hits.map((hit) => hit.objectID)
       return response

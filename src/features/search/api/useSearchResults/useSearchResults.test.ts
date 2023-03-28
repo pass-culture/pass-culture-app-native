@@ -37,7 +37,11 @@ describe('useSearchResults', () => {
       await flushAllPromisesWithAct()
 
       expect(fetchOfferSpy).toHaveBeenCalledTimes(1)
-      expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(1, initialSearchState)
+      expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+        1,
+        initialSearchState,
+        mockedAlgoliaResponse.nbHits
+      )
     })
   })
 })

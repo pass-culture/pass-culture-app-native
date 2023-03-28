@@ -292,8 +292,11 @@ const logEventAnalytics = {
   logResendEmailSignupConfirmationExpiredLink: () =>
     analyticsProvider.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
-  logPerformSearch: (searchState: SearchState) =>
-    analyticsProvider.logEvent(AnalyticsEvent.PERFORM_SEARCH, buildPerformSearchState(searchState)),
+  logPerformSearch: (searchState: SearchState, nbHits: number) =>
+    analyticsProvider.logEvent(AnalyticsEvent.PERFORM_SEARCH, {
+      ...buildPerformSearchState(searchState),
+      searchNbResults: nbHits,
+    }),
   logSearchScrollToPage: (page: number, searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
