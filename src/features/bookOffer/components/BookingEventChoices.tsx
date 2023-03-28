@@ -6,7 +6,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
 import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
-import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
@@ -40,10 +39,6 @@ export const BookingEventChoices: React.FC<Props> = ({
 
   const validateOptions = () => {
     dispatch({ type: 'VALIDATE_OPTIONS' })
-  }
-
-  if (bookingState.step === Step.CONFIRMATION) {
-    return <BookingDetails stocks={stocks} />
   }
 
   // We only need those 2 informations to book an offer (and thus proceed to the next page)

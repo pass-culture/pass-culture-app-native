@@ -52,13 +52,19 @@ const getBookingImpossibleModalContent = (): ModalContent => {
   }
 }
 
-const getNonEventModalContent = (stocks: OfferStockResponse[]): ModalContent => {
+const getNonEventModalContent = (
+  stocks: OfferStockResponse[],
+  onPressBookOffer: VoidFunction,
+  isLoading?: boolean
+): ModalContent => {
   return {
     title: 'Détails de la réservation',
     leftIconAccessibilityLabel: undefined,
     leftIcon: undefined,
     onLeftIconPress: undefined,
-    children: <BookingDetails stocks={stocks} />,
+    children: (
+      <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
+    ),
   }
 }
 
@@ -83,16 +89,24 @@ const getBookingStepModalContent = (
 
 const getBookingDetailsModalContent = (
   stocks: OfferStockResponse[],
-  modalLeftIconProps: ModalLeftIconProps
+  modalLeftIconProps: ModalLeftIconProps,
+  onPressBookOffer: VoidFunction,
+  isLoading?: boolean
 ): ModalContent => {
   return {
     title: 'Détails de la réservation',
     ...modalLeftIconProps,
-    children: <BookingDetails stocks={stocks} />,
+    children: (
+      <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
+    ),
   }
 }
 
-export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
+export const useModalContent = (
+  onPressBookOffer: VoidFunction,
+  isLoading?: boolean,
+  isEndedUsedBooking?: boolean
+): ModalContent => {
   const { bookingState, dispatch } = useBookingContext()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
@@ -124,7 +138,7 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       return getBookingImpossibleModalContent()
     }
 
-    return getNonEventModalContent(stocks)
+    return getNonEventModalContent(stocks, onPressBookOffer, isLoading)
   }
 
   if (bookingState.step !== Step.CONFIRMATION) {
@@ -157,5 +171,10 @@ export const useModalContent = (isEndedUsedBooking?: boolean): ModalContent => {
       goToPreviousStep(enablePricesByCategories ? previousBookingState : Step.PRE_VALIDATION),
   }
 
-  return getBookingDetailsModalContent(stocks, bookingDetailsModalLeftIconProps)
+  return getBookingDetailsModalContent(
+    stocks,
+    bookingDetailsModalLeftIconProps,
+    onPressBookOffer,
+    isLoading
+  )
 }

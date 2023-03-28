@@ -1,8 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponse, OfferStockResponse } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { BookingState, initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as BookingOfferAPI from 'features/bookOffer/helpers/useBookingOffer'
@@ -12,15 +11,13 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
-import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { BookingDetails } from './BookingDetails'
+import { BookingDetails, BookingDetailsProps } from './BookingDetails'
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
@@ -85,6 +82,7 @@ server.use(
     res(ctx.status(200), ctx.json(offerResponseSnap))
   )
 )
+const mockOnPressBookOffer = jest.fn()
 
 describe('<BookingDetails />', () => {
   describe('with initial state', () => {
@@ -99,29 +97,30 @@ describe('<BookingDetails />', () => {
     it('should initialize correctly state when offer isDigital', async () => {
       mockBookingStock = undefined
 
-      renderBookingDetails(mockDigitalStocks)
+      renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
     })
 
     it('should initialize the state when offer isDigital only with first bookable stocks', async () => {
       mockBookingStock = undefined
-
-      renderBookingDetails([{ ...offerStockResponseSnap, isBookable: false, id: 123456 }])
+      const mockStocks = [{ ...offerStockResponseSnap, isBookable: false, id: 123456 }]
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       expect(mockDispatch).not.toHaveBeenCalled()
 
-      renderBookingDetails([
+      const mockOthersStocks = [
         { ...offerStockResponseSnap, isBookable: false, id: 123456 },
         { ...offerStockResponseSnap, isBookable: true, id: 1234567 },
         { ...offerStockResponseSnap, isBookable: true, id: 12345678 },
-      ])
+      ]
+      renderBookingDetails({ stocks: mockOthersStocks, onPressBookOffer: mockOnPressBookOffer })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1234567 })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
       expect(mockDispatch).not.toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 12345678 })
     })
 
     it('should not display the Duo selector when the offer is not duo', () => {
-      renderBookingDetails(mockDigitalStocks)
+      renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
       expect(screen.queryByTestId('DuoChoiceSelector')).toBeNull()
     })
@@ -136,17 +135,17 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should render correctly when offer is an event', async () => {
+    it('should render correctly when offer is an event', () => {
       mockBookingStock = {
         price: 2000,
         id: 148409,
         beginningDatetime: '2021-03-02T20:00:00',
       } as ReturnType<typeof useBookingStock>
 
-      renderBookingDetails(mockStocks)
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       expect(screen).toMatchSnapshot()
     })
-    it('should render disable CTA when user is underage and stock is forbidden to underage', async () => {
+    it('should render disable CTA when user is underage and stock is forbidden to underage', () => {
       mockBookingStock = {
         price: 2000,
         id: 148409,
@@ -154,180 +153,37 @@ describe('<BookingDetails />', () => {
         isForbiddenToUnderage: true,
       } as ReturnType<typeof useBookingStock>
       mockedUseIsUserUnderage.mockReturnValueOnce(true)
-      renderBookingDetails(mockStocks)
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       expect(screen).toMatchSnapshot()
     })
 
-    describe('should dismiss modal', () => {
-      it('on successfully booking an offer', async () => {
-        server.use(
-          rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-            res(ctx.status(204))
-          )
-        )
-
-        renderBookingDetails(mockStocks)
-
-        const ConfirmButton = screen.getByText('Confirmer la réservation')
-        fireEvent.press(ConfirmButton)
-
-        await waitFor(() => {
-          expect(mockDismissModal).toHaveBeenCalledTimes(1)
-          expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(
-            mockOfferId,
-            undefined,
-            undefined
-          )
-          expect(campaignTracker.logEvent).toHaveBeenCalledWith(
-            CampaignEvents.COMPLETE_BOOK_OFFER,
-            {
-              af_offer_id: mockOffer.id,
-              af_booking_id: mockBookingStock?.id,
-              af_price: mockBookingStock?.price,
-              af_category: mockOffer.subcategoryId,
-            }
-          )
-          expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
-        })
+    it('should run validation booking when pressing "Confirmer la réservation" button', () => {
+      renderBookingDetails({
+        stocks: mockStocks,
+        onPressBookOffer: mockOnPressBookOffer,
       })
-
-      it('when there is an error when booking an offer', async () => {
-        const response = {}
-
-        server.use(
-          rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-            res(ctx.status(400), ctx.json(response))
-          )
-        )
-
-        renderBookingDetails(mockStocks)
-
-        const ConfirmButton = screen.getByText('Confirmer la réservation')
-        fireEvent.press(ConfirmButton)
-
-        await waitFor(() => {
-          expect(mockDismissModal).toHaveBeenCalledTimes(1)
-        })
-      })
-    })
-
-    it('should log the origin offer when booked an offer from similar offers', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { fromOfferId: 1 },
-      })
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-      )
-
-      renderBookingDetails(mockDigitalStocks)
-
-      fireEvent.press(screen.getByText('Confirmer la réservation'))
-
-      await waitFor(() => {
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined, 1)
-      })
-    })
-
-    it('should log to algolia conversion when successfully booking an offer and coming from search page', async () => {
-      useRoute.mockReturnValueOnce({ params: { from: 'search' } })
-
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-      )
-
-      renderBookingDetails(mockStocks)
-
       const ConfirmButton = screen.getByText('Confirmer la réservation')
       fireEvent.press(ConfirmButton)
-
-      await waitFor(() => {
-        expect(spyLogOfferConversion).toHaveBeenCalledWith('1337')
-      })
+      expect(mockOnPressBookOffer).toHaveBeenCalledTimes(1)
     })
 
-    it('should not log to algolia conversion when booking an offer but not coming from search page', async () => {
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) => res(ctx.status(204)))
-      )
-
-      renderBookingDetails(mockStocks)
-
-      const ConfirmButton = screen.getByText('Confirmer la réservation')
-      fireEvent.press(ConfirmButton)
-
-      await waitFor(() => {
-        expect(spyLogOfferConversion).not.toHaveBeenCalled()
+    it('should not display the loading screen when booking validation is not in progress', () => {
+      renderBookingDetails({
+        stocks: mockStocks,
+        onPressBookOffer: mockOnPressBookOffer,
       })
+
+      expect(screen.queryByTestId('loadingScreen')).toBeNull()
     })
 
-    it.each`
-      code                     | message
-      ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
-      ${'INSUFFICIENT_CREDIT'} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
-      ${'ALREADY_BOOKED'}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
-      ${'STOCK_NOT_BOOKABLE'}  | ${'Oups, cette offre n’est plus disponible\u00a0!'}
-    `(
-      'should show the error snackbar with message="$message" for errorCode="$code" if booking an offer fails',
-      async ({ code, message }: { code: string | undefined; message: string }) => {
-        const response = code ? { code } : {}
-
-        server.use(
-          rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-            res(ctx.status(400), ctx.json(response))
-          )
-        )
-
-        renderBookingDetails(mockStocks)
-
-        const ConfirmButton = screen.getByText('Confirmer la réservation')
-        fireEvent.press(ConfirmButton)
-
-        await waitFor(() => {
-          expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, { timeout: 5000, message })
-        })
-      }
-    )
-
-    it('should log booking error when error is known', async () => {
-      const response = { code: 'INSUFFICIENT_CREDIT' }
-
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-          res(ctx.status(400), ctx.json(response))
-        )
-      )
-
-      renderBookingDetails(mockStocks)
-
-      const ConfirmButton = screen.getByText('Confirmer la réservation')
-      fireEvent.press(ConfirmButton)
-
-      await waitFor(() => {
-        expect(analytics.logBookingError).toHaveBeenNthCalledWith(
-          1,
-          mockOfferId,
-          'INSUFFICIENT_CREDIT'
-        )
+    it('should display the loading screen when booking validation is in progress', () => {
+      renderBookingDetails({
+        stocks: mockStocks,
+        isLoading: true,
+        onPressBookOffer: mockOnPressBookOffer,
       })
-    })
 
-    it('should log booking error when error is unknown', async () => {
-      const response = {}
-
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-          res(ctx.status(400), ctx.json(response))
-        )
-      )
-
-      renderBookingDetails(mockStocks)
-
-      const ConfirmButton = screen.getByText('Confirmer la réservation')
-      fireEvent.press(ConfirmButton)
-
-      await waitFor(() => {
-        expect(analytics.logBookingError).not.toHaveBeenCalled()
-      })
+      expect(screen.getByTestId('loadingScreen')).toBeTruthy()
     })
   })
 
@@ -338,7 +194,7 @@ describe('<BookingDetails />', () => {
       dispatch: mockDispatch,
     })
     mockUseBookingOffer.mockReturnValueOnce(mockDigitalOffer)
-    renderBookingDetails(mockDigitalStocks)
+    renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
   })
 
@@ -349,7 +205,7 @@ describe('<BookingDetails />', () => {
       dispatch: mockDispatch,
     })
     mockUseBookingOffer.mockReturnValueOnce(mockOffer)
-    renderBookingDetails(mockStocks)
+    renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
     expect(mockDispatch).not.toHaveBeenCalledWith({
       type: 'CHANGE_STEP',
       payload: Step.CONFIRMATION,
@@ -376,7 +232,7 @@ describe('<BookingDetails />', () => {
         EVENEMENT_PATRIMOINE: { isEvent: true },
       })
 
-      renderBookingDetails(mockDigitalStocks)
+      renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
       expect(screen.queryByTestId('DuoChoiceSelector')).toBeNull()
     })
@@ -388,15 +244,22 @@ describe('<BookingDetails />', () => {
         EVENEMENT_PATRIMOINE: { isEvent: false },
       })
 
-      renderBookingDetails(mockDigitalStocks)
+      renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
       expect(await screen.findByTestId('DuoChoiceSelector')).toBeTruthy()
     })
   })
 })
 
-const renderBookingDetails = (stocks: OfferStockResponse[]) =>
-  render(
+function renderBookingDetails({
+  stocks,
+  isLoading = false,
+  onPressBookOffer,
+}: BookingDetailsProps) {
+  return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<BookingDetails stocks={stocks} />)
+    reactQueryProviderHOC(
+      <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
+    )
   )
+}
