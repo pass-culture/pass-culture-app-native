@@ -10,7 +10,7 @@ import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubs
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import {
-  IdentityCheckStep,
+  DeprecatedIdentityCheckStep,
   IdentityCheckStepNewStepper,
   NextScreenOrStep,
 } from 'features/identityCheck/types'
@@ -39,9 +39,13 @@ export const useSubscriptionNavigation = (): {
 
   const { mutateAsync: patchProfile } = usePatchProfile()
 
-  const saveCheckpoint = async (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) => {
+  const saveCheckpoint = async (
+    nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper
+  ) => {
     try {
-      if (currentStep === (IdentityCheckStep.PROFILE || IdentityCheckStepNewStepper.PROFILE)) {
+      if (
+        currentStep === (DeprecatedIdentityCheckStep.PROFILE || IdentityCheckStepNewStepper.PROFILE)
+      ) {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }

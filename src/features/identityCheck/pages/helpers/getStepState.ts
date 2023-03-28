@@ -1,5 +1,5 @@
 import {
-  IdentityCheckStep,
+  DeprecatedIdentityCheckStep,
   StepConfig,
   StepButtonState,
   StepDetails,
@@ -8,11 +8,11 @@ import {
 
 export const getStepState = (
   steps: StepConfig[] | StepDetails[],
-  step: IdentityCheckStep | IdentityCheckStepNewStepper,
-  currentStep: IdentityCheckStep | IdentityCheckStepNewStepper | null
+  step: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper,
+  currentStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper | null
 ): StepButtonState => {
   if (!currentStep) return StepButtonState.DISABLED
-  if (currentStep === IdentityCheckStep.END) return StepButtonState.COMPLETED
+  if (currentStep === DeprecatedIdentityCheckStep.END) return StepButtonState.COMPLETED
 
   const stepIndex = steps.map(({ name }) => name).indexOf(step)
   const currentStepIndex = steps.map(({ name }) => name).indexOf(currentStep)

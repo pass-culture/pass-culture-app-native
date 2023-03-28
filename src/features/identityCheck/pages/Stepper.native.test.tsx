@@ -13,7 +13,7 @@ import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperI
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
-  IdentityCheckStep,
+  DeprecatedIdentityCheckStep,
   IdentityCheckStepNewStepper,
   StepButtonState,
   StepConfig,
@@ -72,7 +72,7 @@ jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps')
 const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
 const mockStepConfig: Partial<StepConfig[]> = [
   {
-    name: IdentityCheckStep.PHONE_VALIDATION,
+    name: DeprecatedIdentityCheckStep.PHONE_VALIDATION,
     label: 'Numéro de téléphone',
     icon: {
       disabled: BicolorProfile,
@@ -82,7 +82,7 @@ const mockStepConfig: Partial<StepConfig[]> = [
     screens: [],
   },
   {
-    name: IdentityCheckStep.IDENTIFICATION,
+    name: DeprecatedIdentityCheckStep.IDENTIFICATION,
     label: 'Identification',
     icon: {
       disabled: BicolorProfile,
@@ -92,7 +92,7 @@ const mockStepConfig: Partial<StepConfig[]> = [
     screens: [],
   },
   {
-    name: IdentityCheckStep.PROFILE,
+    name: DeprecatedIdentityCheckStep.PROFILE,
     label: 'Profil',
     icon: {
       disabled: BicolorProfile,
@@ -102,7 +102,7 @@ const mockStepConfig: Partial<StepConfig[]> = [
     screens: [],
   },
   {
-    name: IdentityCheckStep.CONFIRMATION,
+    name: DeprecatedIdentityCheckStep.CONFIRMATION,
     label: 'Confirmation',
     icon: {
       disabled: BicolorProfile,
@@ -129,7 +129,7 @@ describe('Stepper navigation', () => {
     // profile = completed, identification = current, phone_validation = disabled, confirmation = disabled
     mockedUseSubscriptionContext.mockReturnValueOnce({
       dispatch: mockIdentityCheckDispatch,
-      step: IdentityCheckStep.IDENTIFICATION,
+      step: DeprecatedIdentityCheckStep.IDENTIFICATION,
       identification: { method: null },
     })
     render(<IdentityCheckStepper />)

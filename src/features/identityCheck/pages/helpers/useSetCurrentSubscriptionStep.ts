@@ -4,19 +4,20 @@ import { useCallback, useState } from 'react'
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'
 
 export const getIdentityCheckStep = (
   subscriptionStep: SubscriptionStep | null
-): IdentityCheckStep | null => {
+): DeprecatedIdentityCheckStep | null => {
   if (subscriptionStep === SubscriptionStep['phone-validation'])
-    return IdentityCheckStep.PHONE_VALIDATION
-  if (subscriptionStep === SubscriptionStep['profile-completion']) return IdentityCheckStep.PROFILE
+    return DeprecatedIdentityCheckStep.PHONE_VALIDATION
+  if (subscriptionStep === SubscriptionStep['profile-completion'])
+    return DeprecatedIdentityCheckStep.PROFILE
   if (subscriptionStep === SubscriptionStep['identity-check'])
-    return IdentityCheckStep.IDENTIFICATION
+    return DeprecatedIdentityCheckStep.IDENTIFICATION
   if (subscriptionStep === SubscriptionStep['honor-statement'])
-    return IdentityCheckStep.CONFIRMATION
+    return DeprecatedIdentityCheckStep.CONFIRMATION
   return null
 }
 

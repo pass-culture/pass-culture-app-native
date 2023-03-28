@@ -5,7 +5,7 @@ import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionSt
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -31,7 +31,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
 
   const steps: StepConfig[] = [
     {
-      name: IdentityCheckStep.PROFILE,
+      name: DeprecatedIdentityCheckStep.PROFILE,
       icon: {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
@@ -49,7 +49,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
         : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
-      name: IdentityCheckStep.IDENTIFICATION,
+      name: DeprecatedIdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
@@ -60,7 +60,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
-      name: IdentityCheckStep.CONFIRMATION,
+      name: DeprecatedIdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
@@ -74,7 +74,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
   if (nextSubscriptionStep?.stepperIncludesPhoneValidation) {
     return [
       {
-        name: IdentityCheckStep.PHONE_VALIDATION,
+        name: DeprecatedIdentityCheckStep.PHONE_VALIDATION,
         icon: {
           disabled: DisabledSmartphoneIcon,
           current: BicolorSmartphone,

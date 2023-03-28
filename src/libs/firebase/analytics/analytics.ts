@@ -5,7 +5,10 @@ import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { IdentityCheckStep, IdentityCheckStepNewStepper } from 'features/identityCheck/types'
+import {
+  DeprecatedIdentityCheckStep,
+  IdentityCheckStepNewStepper,
+} from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
@@ -91,8 +94,9 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network }),
   logConfirmBookingCancellation: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId }),
-  logConfirmQuitIdentityCheck: (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) =>
-    analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
+  logConfirmQuitIdentityCheck: (
+    nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper
+  ) => analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, params),
   logConsultApplicationProcessingModal: (offerId: number) =>
@@ -226,7 +230,7 @@ const logEventAnalytics = {
     reason: string | null
     errorType: string | null
   }) => analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_ABORT, params),
-  logIdentityCheckStep: (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) =>
+  logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper) =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_STEP, { nextStep }),
   logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
     analyticsProvider.logEvent(AnalyticsEvent.IDENTITY_CHECK_SUCCESS, params),
@@ -283,7 +287,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_MODAL, { offerId }),
   logQuitFavoriteModalForSignIn: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN, { offerId }),
-  logQuitIdentityCheck: (nextStep: IdentityCheckStep | IdentityCheckStepNewStepper) =>
+  logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper) =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_IDENTITY_CHECK, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS, { searchId }),
