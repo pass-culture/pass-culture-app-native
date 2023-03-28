@@ -1,13 +1,11 @@
+import { removePrefixFromUrl } from 'features/deeplinks/helpers/removePrefixFromUrl'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { NavigationResultState } from 'features/navigation/RootNavigator/types'
 
 import { DeeplinkParts } from '../types'
 
 export function getScreenFromDeeplink(url: string): DeeplinkParts {
-  let pathWithQueryString = url
-  for (const prefix of linking.prefixes) {
-    pathWithQueryString = pathWithQueryString.replace(prefix, '')
-  }
+  const pathWithQueryString = removePrefixFromUrl(url)
   const navigationState = linking.getStateFromPath(pathWithQueryString, linking.config)
   const route = getLastRouteFromState(navigationState)
   const screen = route.name
