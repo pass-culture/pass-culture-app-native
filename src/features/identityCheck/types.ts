@@ -1,7 +1,7 @@
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { IconInterface } from 'ui/svg/icons/types'
 
-export enum IdentityCheckStep {
+export enum DeprecatedIdentityCheckStep {
   PHONE_VALIDATION = 'phone_validation',
   PROFILE = 'profile',
   IDENTIFICATION = 'identification',
@@ -9,16 +9,40 @@ export enum IdentityCheckStep {
   END = 'end',
 }
 
+export enum IdentityCheckStep {
+  PHONE_VALIDATION = 'phone-validation',
+  PROFILE = 'profile-completion',
+  IDENTIFICATION = 'identity-check',
+  CONFIRMATION = 'honor-statement',
+  END = 'end',
+}
+
 export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 
-export interface StepConfig {
-  name: IdentityCheckStep
+export interface DeprecatedStepConfig {
+  name: DeprecatedIdentityCheckStep
   label: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
 }
+export interface StepConfig {
+  name: IdentityCheckStep
+  icon: Record<StepButtonState, React.FC<IconInterface>>
+  screens: SubscriptionScreen[]
+}
 
-export type NextScreenOrStep = { screen: SubscriptionScreen } | { step: IdentityCheckStep } | null
+export interface StepDetails {
+  name: IdentityCheckStep
+  title: string
+  icon: Record<StepButtonState, React.FC<IconInterface>>
+  screens: SubscriptionScreen[]
+  stepState: StepButtonState
+}
+
+export type NextScreenOrStep =
+  | { screen: SubscriptionScreen }
+  | { step: DeprecatedIdentityCheckStep }
+  | null
 
 export enum StepButtonState {
   'COMPLETED' = 'completed',

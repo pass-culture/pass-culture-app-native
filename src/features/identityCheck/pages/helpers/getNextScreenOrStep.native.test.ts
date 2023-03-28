@@ -1,20 +1,20 @@
 import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
 
 const steps = [
   {
-    name: IdentityCheckStep.PROFILE,
+    name: DeprecatedIdentityCheckStep.PROFILE,
     screens: ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
   },
   {
-    name: IdentityCheckStep.IDENTIFICATION,
+    name: DeprecatedIdentityCheckStep.IDENTIFICATION,
     screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],
   },
   {
-    name: IdentityCheckStep.CONFIRMATION,
+    name: DeprecatedIdentityCheckStep.CONFIRMATION,
     screens: ['IdentityCheckHonor'],
   },
-] as StepConfig[]
+] as DeprecatedStepConfig[]
 
 describe('getNextScreenOrStep', () => {
   it('should get the next screen on same step', () => {
@@ -40,15 +40,15 @@ describe('getNextScreenOrStep', () => {
   it('should return next step if last screen of step', () => {
     // Profile
     expect(getNextScreenOrStep(steps, 'IdentityCheckStatus')).toEqual({
-      step: IdentityCheckStep.IDENTIFICATION,
+      step: DeprecatedIdentityCheckStep.IDENTIFICATION,
     })
     // Identification
     expect(getNextScreenOrStep(steps, 'IdentityCheckEnd')).toEqual({
-      step: IdentityCheckStep.CONFIRMATION,
+      step: DeprecatedIdentityCheckStep.CONFIRMATION,
     })
     // Confirmation
     expect(getNextScreenOrStep(steps, 'IdentityCheckHonor')).toEqual({
-      step: IdentityCheckStep.END,
+      step: DeprecatedIdentityCheckStep.END,
     })
   })
 })

@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
+import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
+import { IdentityCheckStep, StepConfig, StepDetails } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -15,11 +16,11 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
-export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
+export const useStepperInfo = (): StepDetails[] => {
   const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
-  const { data: nextSubscriptionStep } = useNextSubscriptionStep()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
+  const { stepToDisplay } = useGetStepperInfo()
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
     'IdentityCheckEduConnect',
@@ -29,15 +30,14 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
 
   const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
-  const steps: DeprecatedStepConfig[] = [
+  const stepsConfig: StepConfig[] = [
     {
-      name: DeprecatedIdentityCheckStep.PROFILE,
+      name: IdentityCheckStep.PROFILE,
       icon: {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
       },
-      label: 'Profil',
       screens: hasSchoolTypes
         ? [
             'SetName',
@@ -49,49 +49,43 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
         : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
-      name: DeprecatedIdentityCheckStep.IDENTIFICATION,
+      name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
       },
-      label: 'Identification',
       screens:
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
-      name: DeprecatedIdentityCheckStep.CONFIRMATION,
+      name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
       },
-      label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
+    },
+    {
+      name: IdentityCheckStep.PHONE_VALIDATION,
+      icon: {
+        disabled: DisabledSmartphoneIcon,
+        current: BicolorSmartphone,
+        completed: () => (
+          <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+        ),
+      },
+      screens:
+        remainingAttempts === 0
+          ? ['PhoneValidationTooManySMSSent']
+          : ['SetPhoneNumber', 'SetPhoneValidationCode'],
     },
   ]
 
-  if (nextSubscriptionStep?.stepperIncludesPhoneValidation) {
-    return [
-      {
-        name: DeprecatedIdentityCheckStep.PHONE_VALIDATION,
-        icon: {
-          disabled: DisabledSmartphoneIcon,
-          current: BicolorSmartphone,
-          completed: () => (
-            <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
-          ),
-        },
-        label: 'Numéro de téléphone',
-        screens:
-          remainingAttempts === 0
-            ? ['PhoneValidationTooManySMSSent']
-            : ['SetPhoneNumber', 'SetPhoneValidationCode'],
-      },
-      ...steps,
-    ]
-  }
-  return steps
+  const stepsDetails = mapStepsDetails(stepToDisplay, stepsConfig)
+
+  return stepsDetails
 }
 
 const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (

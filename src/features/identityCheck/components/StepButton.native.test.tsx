@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { StepButton } from 'features/identityCheck/components/StepButton'
-import { StepButtonState, StepConfig } from 'features/identityCheck/types'
+import { StepButtonState, DeprecatedStepConfig } from 'features/identityCheck/types'
 import { render } from 'tests/utils'
 import { theme } from 'theme'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -35,7 +35,7 @@ const CompletedIcon: React.FC<IconInterface> = () => (
 const step = {
   label,
   icon: { disabled: DisabledIcon, current: CurrentIcon, completed: CompletedIcon },
-} as StepConfig
+} as DeprecatedStepConfig
 
 describe('StepButton', () => {
   describe('button is enabled/disabled', () => {

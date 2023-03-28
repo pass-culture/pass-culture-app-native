@@ -5,10 +5,15 @@ import { useQueryClient } from 'react-query'
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
+import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { IdentityCheckStep, NextScreenOrStep } from 'features/identityCheck/types'
+import {
+  DeprecatedIdentityCheckStep,
+  IdentityCheckStep,
+  NextScreenOrStep,
+} from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -34,13 +39,14 @@ export const useSubscriptionNavigation = (): {
 
   const { mutateAsync: patchProfile } = usePatchProfile()
 
-  const saveCheckpoint = async (nextStep: IdentityCheckStep) => {
+  const saveCheckpoint = async (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) => {
     try {
-      if (currentStep === IdentityCheckStep.PROFILE) {
+      if (currentStep === (DeprecatedIdentityCheckStep.PROFILE || IdentityCheckStep.PROFILE)) {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }
       await queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      invalidateStepperInfoQuery()
       setIsSavingCheckpoint(false)
       dispatch({ type: 'SET_STEP', payload: nextStep })
     } catch (error) {

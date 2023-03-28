@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
@@ -32,9 +32,9 @@ const icon: React.FC<IconInterface> = () => (
 
 jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps')
 const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
-const mockStepConfig: Partial<StepConfig[]> = [
+const mockStepConfig: Partial<DeprecatedStepConfig[]> = [
   {
-    name: IdentityCheckStep.IDENTIFICATION,
+    name: DeprecatedIdentityCheckStep.IDENTIFICATION,
     label: 'Identification',
     icon: { completed: icon, current: icon, disabled: icon },
     screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],

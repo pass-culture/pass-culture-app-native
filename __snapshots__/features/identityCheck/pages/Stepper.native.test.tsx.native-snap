@@ -183,13 +183,12 @@ Array [
                   }
                 >
                   <View
-                    fill="url(#gradienttestUuid)"
                     height={32}
-                    testID="BicolorProfile"
+                    testID="BicolorSmartphone"
                     width={32}
                   >
                     <Text>
-                      BicolorProfile-SVG-Mock
+                      BicolorSmartphone-SVG-Mock
                     </Text>
                   </View>
                 </View>
@@ -293,13 +292,11 @@ Array [
                   }
                 >
                   <View
-                    fill="url(#gradienttestUuid)"
                     height={32}
-                    testID="BicolorProfile"
                     width={32}
                   >
                     <Text>
-                      BicolorProfile-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
                 </View>

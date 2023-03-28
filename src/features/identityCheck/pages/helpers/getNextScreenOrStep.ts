@@ -1,13 +1,13 @@
 import { getCurrentStep } from 'features/identityCheck/pages/helpers/getCurrentStep'
 import {
-  IdentityCheckStep,
+  DeprecatedIdentityCheckStep,
   NextScreenOrStep,
-  StepConfig,
+  DeprecatedStepConfig,
   SubscriptionScreen,
 } from 'features/identityCheck/types'
 
 export const getNextScreenOrStep = (
-  steps: StepConfig[],
+  steps: DeprecatedStepConfig[],
   currentRoute: SubscriptionScreen | null
 ): NextScreenOrStep => {
   if (!currentRoute) return null
@@ -25,5 +25,5 @@ export const getNextScreenOrStep = (
   if (!isLastStep) return { step: steps[currentStepIndex + 1].name }
 
   // Step is complete and is last step
-  return { step: IdentityCheckStep.END }
+  return { step: DeprecatedIdentityCheckStep.END }
 }

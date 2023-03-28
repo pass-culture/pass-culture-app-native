@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
+import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
@@ -12,7 +13,10 @@ export const IdentityCheckEnd = () => {
   const { data: subscription } = useNextSubscriptionStep()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToStepper = () => navigate('IdentityCheckStepper')
+  const navigateToStepper = () => {
+    invalidateStepperInfoQuery()
+    return navigate('IdentityCheckStepper')
+  }
 
   useEffect(() => {
     amplitude.logEvent('screen_view_identity_check_end')

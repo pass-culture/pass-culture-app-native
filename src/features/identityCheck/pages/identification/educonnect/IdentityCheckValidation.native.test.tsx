@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render } from 'tests/utils'
 
@@ -46,7 +46,7 @@ describe('<IdentityCheckValidation />', () => {
     expect(mockNavigateToNextScreen).toBeCalledTimes(1)
     expect(mockNavigateToNextScreen).toHaveBeenCalledWith()
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      payload: IdentityCheckStep.CONFIRMATION,
+      payload: DeprecatedIdentityCheckStep.CONFIRMATION,
       type: 'SET_STEP',
     })
   })

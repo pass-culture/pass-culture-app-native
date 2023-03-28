@@ -6,7 +6,7 @@ import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
@@ -20,7 +20,7 @@ export function IdentityCheckValidation() {
     : ''
 
   const navigateToNextEduConnectStep = async () => {
-    dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
+    dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
     navigateToNextScreen()
   }
 
