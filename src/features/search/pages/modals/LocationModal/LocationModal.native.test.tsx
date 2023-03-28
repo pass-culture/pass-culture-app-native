@@ -16,6 +16,7 @@ import {
   GeolocationError,
   GeolocPermissionState,
   GeolocPositionError,
+  Position,
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -35,7 +36,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockPosition: Position = DEFAULT_POSITION
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()

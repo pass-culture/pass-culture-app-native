@@ -9,11 +9,11 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 
 type FetchOfferArgs = {
   parameters: SearchParametersQuery
-  userLocation: GeoCoordinates | null
+  userLocation: Position
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]

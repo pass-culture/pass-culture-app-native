@@ -60,10 +60,9 @@ export const SearchFilter: React.FC = () => {
       type: 'SET_STATE',
       payload: {
         ...initialSearchState,
-        locationFilter:
-          position !== null
-            ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
-            : { locationType: LocationType.EVERYWHERE },
+        locationFilter: position
+          ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
+          : { locationType: LocationType.EVERYWHERE },
         minPrice: undefined,
         maxPrice: undefined,
         offerGenreTypes: undefined,

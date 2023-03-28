@@ -11,7 +11,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/firebase/analytics'
-import { GeoCoordinates } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, act, waitFor } from 'tests/utils'
@@ -64,7 +64,7 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -407,7 +407,7 @@ describe('SearchBox component', () => {
       locationButtonLabel,
     }: {
       locationFilter: LocationFilter
-      position: GeoCoordinates | null
+      position: Position
       locationButtonLabel: string
     }) => {
       mockSearchState = { ...initialSearchState, locationFilter }
