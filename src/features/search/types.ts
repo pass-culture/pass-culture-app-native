@@ -1,3 +1,5 @@
+import { SearchResponse } from '@algolia/client-search'
+
 import {
   GenreType,
   GenreTypeContentModel,
@@ -109,6 +111,7 @@ export interface SearchListProps {
   onRefresh: (() => void) | null | undefined
   isFetchingNextPage: boolean
   onEndReached: () => void
+  userData: SearchResponse<SearchHit[]>['userData']
   onScroll?: () => void
   onPress?: () => void
 }

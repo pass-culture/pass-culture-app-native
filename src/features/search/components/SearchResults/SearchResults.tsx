@@ -54,6 +54,7 @@ export const SearchResults: React.FC = () => {
     isLoading,
     isFetching,
     isFetchingNextPage,
+    userData,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -234,6 +235,7 @@ export const SearchResults: React.FC = () => {
           refreshing={isRefreshing}
           onRefresh={refetch}
           onPress={handlePressFooter}
+          userData={userData}
         />
       </Container>
       {nbHits > 0 && (
