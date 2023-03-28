@@ -17,7 +17,10 @@ import { Icons } from 'features/internal/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/Illustrations'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
-import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
+import {
+  CallToAction,
+  SubscriptionMessageBadge,
+} from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
@@ -62,7 +65,6 @@ import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -472,16 +474,28 @@ export const AppComponents: FunctionComponent = () => {
 
           <Spacer.Column numberOfSpaces={2} />
 
-          <Banner message="Banner with ExternalTouchableLink" withLightColorMessage>
+          <Banner message="Banner with external" withLightColorMessage>
             <Spacer.Column numberOfSpaces={2} />
-            <ExternalTouchableLink
-              wording="Call to action title"
-              numberOfLines={2}
-              justifyContent="flex-start"
-              as={ButtonQuaternarySecondary}
-              externalNav={{ url: 'callToActionLink' }}
-              icon={ExternalSiteFilled}
-              inline
+            <CallToAction
+              subscriptionMessage={{
+                userMessage: 'Should be external',
+                callToAction: {
+                  callToActionTitle: 'toto',
+                  callToActionLink: 'https://google.com',
+                },
+              }}
+            />
+          </Banner>
+          <Banner message="Banner with internal" withLightColorMessage>
+            <Spacer.Column numberOfSpaces={2} />
+            <CallToAction
+              subscriptionMessage={{
+                userMessage: 'Should be internal',
+                callToAction: {
+                  callToActionTitle: 'toto',
+                  callToActionLink: 'toto',
+                },
+              }}
             />
           </Banner>
         </AccordionItem>
