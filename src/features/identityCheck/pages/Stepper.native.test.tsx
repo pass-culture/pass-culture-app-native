@@ -16,7 +16,7 @@ import {
   DeprecatedIdentityCheckStep,
   IdentityCheckStepNewStepper,
   StepButtonState,
-  StepConfig,
+  DeprecatedStepConfig,
 } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -70,7 +70,7 @@ mockedUseSubscriptionContext.mockReturnValue({
 
 jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps')
 const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
-const mockStepConfig: Partial<StepConfig[]> = [
+const mockStepConfig: Partial<DeprecatedStepConfig[]> = [
   {
     name: DeprecatedIdentityCheckStep.PHONE_VALIDATION,
     label: 'Numéro de téléphone',

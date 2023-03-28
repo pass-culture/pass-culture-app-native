@@ -1,11 +1,11 @@
 import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
-import { DeprecatedIdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
 
 const steps = [
   { name: DeprecatedIdentityCheckStep.PROFILE },
   { name: DeprecatedIdentityCheckStep.IDENTIFICATION },
   { name: DeprecatedIdentityCheckStep.CONFIRMATION },
-] as StepConfig[]
+] as DeprecatedStepConfig[]
 
 describe('getStepState', () => {
   it('when profile is ongoing', () => {

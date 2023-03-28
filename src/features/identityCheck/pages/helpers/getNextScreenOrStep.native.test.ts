@@ -1,5 +1,5 @@
 import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
-import { DeprecatedIdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
 
 const steps = [
   {
@@ -14,7 +14,7 @@ const steps = [
     name: DeprecatedIdentityCheckStep.CONFIRMATION,
     screens: ['IdentityCheckHonor'],
   },
-] as StepConfig[]
+] as DeprecatedStepConfig[]
 
 describe('getNextScreenOrStep', () => {
   it('should get the next screen on same step', () => {

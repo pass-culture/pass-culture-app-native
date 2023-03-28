@@ -19,7 +19,7 @@ export enum IdentityCheckStepNewStepper {
 
 export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 
-export interface StepConfig {
+export interface DeprecatedStepConfig {
   name: DeprecatedIdentityCheckStep
   label: string
   icon: Record<StepButtonState, React.FC<IconInterface>>

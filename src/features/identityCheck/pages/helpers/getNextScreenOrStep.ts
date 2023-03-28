@@ -2,12 +2,12 @@ import { getCurrentStep } from 'features/identityCheck/pages/helpers/getCurrentS
 import {
   DeprecatedIdentityCheckStep,
   NextScreenOrStep,
-  StepConfig,
+  DeprecatedStepConfig,
   SubscriptionScreen,
 } from 'features/identityCheck/types'
 
 export const getNextScreenOrStep = (
-  steps: StepConfig[],
+  steps: DeprecatedStepConfig[],
   currentRoute: SubscriptionScreen | null
 ): NextScreenOrStep => {
   if (!currentRoute) return null

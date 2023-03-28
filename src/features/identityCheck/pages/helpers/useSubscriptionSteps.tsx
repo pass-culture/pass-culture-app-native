@@ -5,7 +5,7 @@ import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionSt
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { DeprecatedIdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -15,7 +15,7 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
-export const useSubscriptionSteps = (): StepConfig[] => {
+export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
   const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { data: nextSubscriptionStep } = useNextSubscriptionStep()
@@ -29,7 +29,7 @@ export const useSubscriptionSteps = (): StepConfig[] => {
 
   const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
-  const steps: StepConfig[] = [
+  const steps: DeprecatedStepConfig[] = [
     {
       name: DeprecatedIdentityCheckStep.PROFILE,
       icon: {

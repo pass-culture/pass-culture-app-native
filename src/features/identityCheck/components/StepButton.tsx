@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { StepButtonState, StepConfig, StepDetails } from 'features/identityCheck/types'
+import { StepButtonState, DeprecatedStepConfig, StepDetails } from 'features/identityCheck/types'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -11,7 +11,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
-  step: StepConfig | StepDetails
+  step: DeprecatedStepConfig | StepDetails
   state: StepButtonState
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress?: () => void
