@@ -59,7 +59,7 @@ describe('mapStepsDetails', () => {
       },
     },
     {
-      screens: ['BeneficiaryAccountCreated'],
+      screens: ['SetName'],
       name: IdentityCheckStepNewStepper.PROFILE,
       icon: {
         disabled: BicolorProfile,
@@ -68,7 +68,7 @@ describe('mapStepsDetails', () => {
       },
     },
     {
-      screens: ['BeneficiaryRequestSent'],
+      screens: ['SelectIDOrigin'],
       name: IdentityCheckStepNewStepper.IDENTIFICATION,
       icon: {
         disabled: BicolorIdCard,
@@ -77,7 +77,7 @@ describe('mapStepsDetails', () => {
       },
     },
     {
-      screens: ['DMSIntroduction'],
+      screens: ['IdentityCheckHonor'],
       name: IdentityCheckStepNewStepper.CONFIRMATION,
       icon: {
         disabled: BicolorLegal,
@@ -106,7 +106,7 @@ describe('mapStepsDetails', () => {
         current: BicolorIdCard,
         completed: expect.any(Function),
       },
-      screens: ['BeneficiaryRequestSent'],
+      screens: ['SelectIDOrigin'],
       title: 'Identification',
       stepState: StepButtonState.CURRENT,
     },
@@ -117,7 +117,7 @@ describe('mapStepsDetails', () => {
         current: BicolorLegal,
         completed: expect.any(Function),
       },
-      screens: ['DMSIntroduction'],
+      screens: ['IdentityCheckHonor'],
       title: 'Confirmation',
       stepState: StepButtonState.CURRENT,
     },
