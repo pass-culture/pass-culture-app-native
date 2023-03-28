@@ -8,7 +8,6 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, act, superFlushWithAct, waitFor, screen } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
@@ -715,21 +714,6 @@ describe('<PriceModal/>', () => {
         payload: expectedSearchParams,
       })
     })
-
-    it('should not log PerformSearch when pressing button', async () => {
-      renderSearchPrice({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-
-      await superFlushWithAct()
-
-      const button = screen.getByText('Appliquer le filtre')
-      await act(async () => {
-        fireEvent.press(button)
-      })
-
-      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
-    })
   })
 
   describe('with "Rechercher" button', () => {
@@ -868,22 +852,6 @@ describe('<PriceModal/>', () => {
           params: expectedSearchParams,
           screen: 'Search',
         })
-      })
-    })
-
-    it('should log PerformSearch when pressing button', async () => {
-      renderSearchPrice()
-
-      await superFlushWithAct()
-
-      const button = screen.getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(button)
-      })
-
-      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-        ...mockSearchState,
-        view: SearchView.Results,
       })
     })
   })

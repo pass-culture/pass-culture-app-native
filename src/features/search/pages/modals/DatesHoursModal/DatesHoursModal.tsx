@@ -18,7 +18,6 @@ import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { SearchState, SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Form } from 'ui/components/Form'
@@ -165,7 +164,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
 
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
-          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }

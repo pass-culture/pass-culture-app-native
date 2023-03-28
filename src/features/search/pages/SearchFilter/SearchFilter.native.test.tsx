@@ -90,19 +90,6 @@ describe('<SearchFilter/>', () => {
     })
   })
 
-  it('should log perform search when pressing Rechercher', async () => {
-    renderSearchFilter()
-
-    fireEvent.press(screen.getByText('Rechercher'))
-
-    await waitFor(() => {
-      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-        ...mockSearchState,
-        view: SearchView.Results,
-      })
-    })
-  })
-
   describe('should update the state when pressing the reset button', () => {
     it('and position is not null', async () => {
       renderSearchFilter()

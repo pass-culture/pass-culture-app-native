@@ -10,7 +10,6 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -93,7 +92,7 @@ describe('SearchBox component', () => {
     })
   })
 
-  it('should call logPerformSearch on submit', async () => {
+  it('should call navigate on submit', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
@@ -111,14 +110,6 @@ describe('SearchBox component', () => {
         searchId,
       })
     )
-    expect(analytics.logPerformSearch).toBeCalledWith({
-      ...initialSearchState,
-      query: 'jazzaza',
-      view: SearchView.Results,
-      offerCategories: mockSearchState.offerCategories,
-      priceRange: mockSearchState.priceRange,
-      searchId,
-    })
   })
 
   it('should not show back button when being on the search landing view', async () => {

@@ -8,7 +8,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { OnPressCategory } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
@@ -30,7 +29,6 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         searchId,
         isOnline: isOnlyOnline(data, pressedCategory) || undefined,
       }
-      analytics.logPerformSearch({ ...newSearchState, view: SearchView.Landing })
       navigate(...getTabNavConfig('Search', newSearchState))
     },
     [data, navigate, searchState]

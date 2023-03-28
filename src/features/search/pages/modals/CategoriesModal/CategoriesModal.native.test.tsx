@@ -6,7 +6,6 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -407,46 +406,6 @@ describe('<CategoriesModal/>', () => {
           type: 'SET_STATE',
           payload: expectedSearchParams,
         })
-      })
-    })
-
-    it('should not log PerformSearch event when pressing button', async () => {
-      renderCategories({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
-      fireEvent.press(someCategoryFilterCheckbox)
-
-      const button = screen.getByText('Appliquer le filtre')
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
-      })
-    })
-  })
-
-  describe('With "Rechercher" button', () => {
-    it('should log PerformSearch event when pressing button', async () => {
-      renderCategories()
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
-      fireEvent.press(someCategoryFilterCheckbox)
-
-      const button = screen.getByText('Rechercher')
-      fireEvent.press(button)
-
-      const expectedSearchParams: SearchState = {
-        ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS],
-        offerNativeCategories: [],
-        offerGenreTypes: [],
-      }
-      await waitFor(() => {
-        expect(analytics.logPerformSearch).toHaveBeenCalledWith(expectedSearchParams)
       })
     })
   })

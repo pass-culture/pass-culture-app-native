@@ -25,7 +25,6 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesSection } from 'features/search/pages/modals/CategoriesModal/CategoriesSection'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -180,7 +179,6 @@ export const CategoriesModal = ({
 
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
-          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }

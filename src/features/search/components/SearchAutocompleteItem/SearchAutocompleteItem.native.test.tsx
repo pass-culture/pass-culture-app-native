@@ -11,7 +11,6 @@ import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render, fireEvent, screen } from 'tests/utils'
@@ -202,21 +201,6 @@ describe('SearchAutocompleteItem component', () => {
       )
     })
 
-    it('should log a search with the query and selected filters on hit click', async () => {
-      render(<SearchAutocompleteItem hit={mockHit} sendEvent={mockSendEvent} />)
-      await fireEvent.press(screen.getByTestId('autocompleteItem'))
-
-      expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-        ...initialSearchState,
-        query: mockHit.query,
-        locationFilter: mockSearchState.locationFilter,
-        priceRange: mockSearchState.priceRange,
-        view: SearchView.Results,
-        searchId,
-        isAutocomplete: true,
-      })
-    })
-
     it('should not display the most popular native category of the query suggestion', async () => {
       render(<SearchAutocompleteItem hit={mockHit} sendEvent={mockSendEvent} />)
 
@@ -345,94 +329,6 @@ describe('SearchAutocompleteItem component', () => {
             isAutocomplete: true,
           })
         )
-      })
-    })
-
-    describe('should log a search with the others selected filters, the query suggestion and', () => {
-      it('its most popular native category when it associated to only one category on hit click', async () => {
-        render(
-          <SearchAutocompleteItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />
-        )
-        await fireEvent.press(screen.getByTestId('autocompleteItem'))
-
-        expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-          ...initialSearchState,
-          query: mockHit.query,
-          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-          offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
-          locationFilter: mockSearchState.locationFilter,
-          priceRange: mockSearchState.priceRange,
-          view: SearchView.Results,
-          searchId,
-          isAutocomplete: true,
-        })
-      })
-
-      it('its most popular native category is associated to several categories and is associated to the most popular category', async () => {
-        render(
-          <SearchAutocompleteItem
-            hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
-            sendEvent={mockSendEvent}
-            shouldShowCategory
-          />
-        )
-        await fireEvent.press(screen.getByTestId('autocompleteItem'))
-
-        expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-          ...initialSearchState,
-          query: mockHitSeveralCategoriesWithAssociationToNativeCategory.query,
-          offerCategories: [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES],
-          offerNativeCategories: [NativeCategoryIdEnumv2.ARTS_VISUELS],
-          locationFilter: mockSearchState.locationFilter,
-          priceRange: mockSearchState.priceRange,
-          view: SearchView.Results,
-          searchId,
-          isAutocomplete: true,
-        })
-      })
-
-      it('its most popular category whe native category associated to several categories and not associated to the most popular category', async () => {
-        render(
-          <SearchAutocompleteItem
-            hit={mockHitSeveraCategoriesWithoutAssociationToNativeCategory}
-            sendEvent={mockSendEvent}
-            shouldShowCategory
-          />
-        )
-        await fireEvent.press(screen.getByTestId('autocompleteItem'))
-
-        expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-          ...initialSearchState,
-          query: mockHitSeveraCategoriesWithoutAssociationToNativeCategory.query,
-          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-          locationFilter: mockSearchState.locationFilter,
-          priceRange: mockSearchState.priceRange,
-          view: SearchView.Results,
-          searchId,
-          isAutocomplete: true,
-        })
-      })
-
-      it('the most popular category when the suggestion has not native category', async () => {
-        render(
-          <SearchAutocompleteItem
-            hit={mockHitWithOnlyCategory}
-            sendEvent={mockSendEvent}
-            shouldShowCategory
-          />
-        )
-        await fireEvent.press(screen.getByTestId('autocompleteItem'))
-
-        expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-          ...initialSearchState,
-          query: mockHitSeveraCategoriesWithoutAssociationToNativeCategory.query,
-          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-          locationFilter: mockSearchState.locationFilter,
-          priceRange: mockSearchState.priceRange,
-          view: SearchView.Results,
-          searchId,
-          isAutocomplete: true,
-        })
       })
     })
 

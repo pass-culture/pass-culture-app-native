@@ -17,7 +17,6 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
 import { SearchState, SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { Banner } from 'ui/components/Banner'
@@ -117,7 +116,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
     switch (filterBehaviour) {
       case FilterBehaviour.SEARCH: {
-        analytics.logPerformSearch(additionalSearchState)
         navigate(...getTabNavConfig('Search', additionalSearchState))
         break
       }

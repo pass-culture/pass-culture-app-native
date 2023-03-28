@@ -571,25 +571,6 @@ describe('<LocationModal/>', () => {
         payload: expectedSearchParams,
       })
     })
-
-    it('should not log PerformSearch when pressing button', async () => {
-      mockSearchState = {
-        ...searchState,
-        view: SearchView.Results,
-      }
-      renderLocationModal({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-
-      await superFlushWithAct()
-
-      const searchButton = screen.getByText('Appliquer le filtre')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
-    })
   })
 
   describe('with "Rechercher" button', () => {
@@ -738,23 +719,6 @@ describe('<LocationModal/>', () => {
         })
       }
     )
-
-    it('should log PerformSearch when pressing search button', async () => {
-      mockSearchState = {
-        ...searchState,
-        view: SearchView.Results,
-      }
-      renderLocationModal()
-
-      await superFlushWithAct()
-
-      const searchButton = screen.getByText('Rechercher')
-      await act(async () => {
-        fireEvent.press(searchButton)
-      })
-
-      expect(analytics.logPerformSearch).toHaveBeenCalledWith(mockSearchState)
-    })
   })
 
   describe('Modal header buttons', () => {
