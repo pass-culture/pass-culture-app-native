@@ -9,10 +9,10 @@ git fetch origin
 
 # Gather baseline perf measurements
 git switch "$BASELINE_BRANCH"
-yarn install --force
+yarn install
 yarn test:perf --baseline
 
 # Gather current perf measurements & compare results
 git switch --detach -
-yarn install --force
+yarn install
 yarn test:perf
