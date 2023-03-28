@@ -102,27 +102,43 @@ describe('<OfferBody />', () => {
     mockdate.set(new Date(2021, 0, 1))
   })
 
-  it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
+  it('should match snapshot for physical offer', async () => {
     renderOfferBody()
+    await screen.findByTestId('offer-container')
 
-    const reportOfferButton = await screen.findByTestId('Signaler l’offre')
-
-    fireEvent.press(reportOfferButton)
     expect(screen).toMatchSnapshot()
   })
 
-  it('should not display similar offers lists when offer has not it', async () => {
+  it('should match snapshot for digital offer', async () => {
+    // Mock useReportedOffer to avoid re-render
+    useReportedOffersMock.mockReturnValueOnce({
+      data: { reportedOffers: [] },
+    } as unknown as UseQueryResult<UserReportedOffersResponse>)
+    mockUseOffer.mockReturnValueOnce({ data: mockDigitalOffer })
     renderOfferBody()
+    await screen.findByTestId('offer-container')
 
-    await screen.findByText('Envoyer sur Instagram')
-
-    expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
-    expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
+    expect(screen).toMatchSnapshot()
   })
 
-  describe('with similar offers', () => {
+  it('should show venue banner in where section', async () => {
+    renderOfferBody()
+
+    expect(await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)).toBeTruthy()
+  })
+
+  describe('similar offers', () => {
     beforeAll(() => {
       mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
+    })
+
+    it('should not display similar offers lists when offer has not it', async () => {
+      renderOfferBody()
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
+      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
     })
 
     it('should display similar offers list when offer has some', async () => {
@@ -277,31 +293,6 @@ describe('<OfferBody /> deprecated', () => {
     mockdate.set(new Date(2021, 0, 1))
   })
 
-  it('should match snapshot for physical offer', async () => {
-    renderOfferBody()
-    await screen.findByTestId('offer-container')
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should match snapshot for digital offer', async () => {
-    // Mock useReportedOffer to avoid re-render
-    useReportedOffersMock.mockReturnValueOnce({
-      data: { reportedOffers: [] },
-    } as unknown as UseQueryResult<UserReportedOffersResponse>)
-    mockUseOffer.mockReturnValueOnce({ data: mockDigitalOffer })
-    renderOfferBody()
-    await screen.findByTestId('offer-container')
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should show venue banner in where section', async () => {
-    renderOfferBody()
-
-    expect(await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)).toBeTruthy()
-  })
-
   describe('Accessibility details', () => {
     it('should not display accessibility when disabilities are not defined', async () => {
       renderOfferBody()
@@ -375,32 +366,43 @@ describe('<OfferBody /> deprecated', () => {
     expect(screen.queryByText('Distance')).toBeNull()
   })
 
-  it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
-    renderOfferBody()
+  describe('report offer', () => {
+    it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
+      renderOfferBody()
 
-    await waitFor(() => {
-      expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
+      const reportOfferButton = await screen.findByTestId('Signaler l’offre')
+
+      fireEvent.press(reportOfferButton)
+      expect(screen).toMatchSnapshot()
     })
-  })
 
-  it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
-    mockUseNetInfo.mockReturnValueOnce({
-      isConnected: false,
-      isInternetReachable: false,
+    it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
+      renderOfferBody()
+
+      await waitFor(() => {
+        expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
+      })
     })
-    renderOfferBody()
-    await screen.findByTestId('offer-container')
 
-    expect(api.getnativev1offersreports).not.toHaveBeenCalled()
-  })
+    it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
+      mockUseNetInfo.mockReturnValueOnce({
+        isConnected: false,
+        isInternetReachable: false,
+      })
+      renderOfferBody()
+      await screen.findByTestId('offer-container')
 
-  it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // First mock for call in OfferBody
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // Second mock for call in useReportedOffers
-    renderOfferBody()
-    await screen.findByTestId('offer-container')
+      expect(api.getnativev1offersreports).not.toHaveBeenCalled()
+    })
 
-    expect(api.getnativev1offersreports).not.toBeCalled()
+    it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // First mock for call in OfferBody
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // Second mock for call in useReportedOffers
+      renderOfferBody()
+      await screen.findByTestId('offer-container')
+
+      expect(api.getnativev1offersreports).not.toBeCalled()
+    })
   })
 })
 
