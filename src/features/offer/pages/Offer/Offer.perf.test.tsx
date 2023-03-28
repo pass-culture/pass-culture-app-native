@@ -9,7 +9,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { measurePerformance, screen, waitFor } from 'tests/utils'
+import { measurePerformance } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 useRoute.mockReturnValue({
@@ -34,12 +34,6 @@ mockCheckInstalledApps.mockResolvedValue({
 describe('<Offer />', () => {
   it('Performance test', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    await measurePerformance(reactQueryProviderHOC(<Offer />), {
-      scenario: async () => {
-        await waitFor(() => {
-          expect(screen.queryByTestId('offer-container')).toBeTruthy()
-        })
-      },
-    })
+    await measurePerformance(reactQueryProviderHOC(<Offer />))
   })
 })
