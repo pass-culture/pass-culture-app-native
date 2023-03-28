@@ -5,6 +5,7 @@ import { useQueryClient } from 'react-query'
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
+import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
@@ -45,7 +46,7 @@ export const useSubscriptionNavigation = (): {
         await patchProfile()
       }
       await queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
-      await queryClient.invalidateQueries(QueryKeys.STEPPER_INFO)
+      invalidateStepperInfoQuery()
       setIsSavingCheckpoint(false)
       dispatch({ type: 'SET_STEP', payload: nextStep })
     } catch (error) {

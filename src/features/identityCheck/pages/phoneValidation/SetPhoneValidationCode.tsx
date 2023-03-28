@@ -12,6 +12,7 @@ import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useVa
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import {
@@ -84,7 +85,8 @@ export const SetPhoneValidationCode = () => {
   }, [showModal])
 
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
+      invalidateStepperInfoQuery()
       navigate('IdentityCheckStepper')
     },
     onError: (err: unknown | ApiError) => {
