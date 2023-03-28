@@ -11,7 +11,7 @@ import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDe
 import {
   IdentityCheckStep,
   StepButtonState,
-  StepConfigNewStepper,
+  StepConfig,
   StepDetails,
 } from 'features/identityCheck/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -46,7 +46,7 @@ const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay']
   },
 ]
 describe('mapStepsDetails', () => {
-  const stepsConfig: StepConfigNewStepper[] = [
+  const stepsConfig: StepConfig[] = [
     {
       screens: ['SetPhoneNumber'],
       name: IdentityCheckStep.PHONE_VALIDATION,

@@ -1,9 +1,9 @@
 import { SubscriptionStepCompletionState, SubscriptionStepperResponse } from 'api/gen'
-import { StepButtonState, StepConfigNewStepper, StepDetails } from 'features/identityCheck/types'
+import { StepButtonState, StepConfig, StepDetails } from 'features/identityCheck/types'
 
 export const mapStepsDetails = (
   stepToDisplayList: SubscriptionStepperResponse['subscriptionStepsToDisplay'],
-  stepConfigList: StepConfigNewStepper[]
+  stepConfigList: StepConfig[]
 ): StepDetails[] => {
   const stepDetailsList = stepToDisplayList.map((step) => {
     const currentStepConfig = stepConfigList.find(

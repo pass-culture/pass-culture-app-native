@@ -6,7 +6,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
-import { IdentityCheckStep, StepConfigNewStepper, StepDetails } from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfig, StepDetails } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -30,7 +30,7 @@ export const useStepperInfo = (): StepDetails[] => {
 
   const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
-  const stepsConfig: StepConfigNewStepper[] = [
+  const stepsConfig: StepConfig[] = [
     {
       name: IdentityCheckStep.PROFILE,
       icon: {

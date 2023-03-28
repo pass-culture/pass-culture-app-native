@@ -25,7 +25,7 @@ export interface DeprecatedStepConfig {
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
 }
-export interface StepConfigNewStepper {
+export interface StepConfig {
   name: IdentityCheckStep
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
