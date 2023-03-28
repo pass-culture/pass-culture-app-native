@@ -9,7 +9,7 @@ import {
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import {
-  IdentityCheckStepNewStepper,
+  IdentityCheckStep,
   StepButtonState,
   StepConfigNewStepper,
   StepDetails,
@@ -49,7 +49,7 @@ describe('mapStepsDetails', () => {
   const stepsConfig: StepConfigNewStepper[] = [
     {
       screens: ['SetPhoneNumber'],
-      name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
+      name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
         disabled: BicolorSmartphone,
         current: BicolorSmartphone,
@@ -60,7 +60,7 @@ describe('mapStepsDetails', () => {
     },
     {
       screens: ['SetName'],
-      name: IdentityCheckStepNewStepper.PROFILE,
+      name: IdentityCheckStep.PROFILE,
       icon: {
         disabled: BicolorProfile,
         current: BicolorProfile,
@@ -69,7 +69,7 @@ describe('mapStepsDetails', () => {
     },
     {
       screens: ['SelectIDOrigin'],
-      name: IdentityCheckStepNewStepper.IDENTIFICATION,
+      name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: BicolorIdCard,
         current: BicolorIdCard,
@@ -78,7 +78,7 @@ describe('mapStepsDetails', () => {
     },
     {
       screens: ['IdentityCheckHonor'],
-      name: IdentityCheckStepNewStepper.CONFIRMATION,
+      name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: BicolorLegal,
         current: BicolorLegal,
@@ -89,7 +89,7 @@ describe('mapStepsDetails', () => {
 
   const expectedStepsDetails: StepDetails[] = [
     {
-      name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
+      name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
         disabled: BicolorSmartphone,
         current: BicolorSmartphone,
@@ -100,7 +100,7 @@ describe('mapStepsDetails', () => {
       stepState: StepButtonState.DISABLED,
     },
     {
-      name: IdentityCheckStepNewStepper.IDENTIFICATION,
+      name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: BicolorIdCard,
         current: BicolorIdCard,
@@ -111,7 +111,7 @@ describe('mapStepsDetails', () => {
       stepState: StepButtonState.CURRENT,
     },
     {
-      name: IdentityCheckStepNewStepper.CONFIRMATION,
+      name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: BicolorLegal,
         current: BicolorLegal,

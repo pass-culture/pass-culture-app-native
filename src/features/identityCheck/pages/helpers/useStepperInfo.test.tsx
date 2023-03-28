@@ -6,7 +6,7 @@ import {
   SubscritpionStepperResponseWithPhoneValifationFixture as mockSubscriptionStepperWithPhoneValidation,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { IdentityCheckStepNewStepper } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 
 let mockIdentityCheckState = mockState
@@ -62,7 +62,7 @@ describe('useStepperInfo', () => {
       profile: { ...mockState.profile, hasSchoolTypes: true },
     }
     const steps = useStepperInfo()
-    const profileStep = steps.find((step) => step.name === IdentityCheckStepNewStepper.PROFILE)
+    const profileStep = steps.find((step) => step.name === IdentityCheckStep.PROFILE)
     expect(profileStep?.screens.includes('IdentityCheckSchoolType')).toEqual(true)
   })
 
@@ -72,7 +72,7 @@ describe('useStepperInfo', () => {
       profile: { ...mockState.profile, hasSchoolTypes: false },
     }
     const steps = useStepperInfo()
-    const profileStep = steps.find((step) => step.name === IdentityCheckStepNewStepper.PROFILE)
+    const profileStep = steps.find((step) => step.name === IdentityCheckStep.PROFILE)
 
     expect(profileStep?.screens.includes('IdentityCheckSchoolType')).toEqual(false)
   })
@@ -89,7 +89,7 @@ describe('useStepperInfo', () => {
 
     const steps = useStepperInfo()
     const phoneValidationStep = steps.find(
-      (step) => step.name === IdentityCheckStepNewStepper.PHONE_VALIDATION
+      (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
 
     expect(phoneValidationStep?.screens.includes('PhoneValidationTooManySMSSent')).toEqual(true)
@@ -108,16 +108,14 @@ describe('useStepperInfo', () => {
     const steps = useStepperInfo()
 
     const phoneValidationStep = steps.find(
-      (step) => step.name === IdentityCheckStepNewStepper.PHONE_VALIDATION
+      (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
     expect(phoneValidationStep?.screens.includes('PhoneValidationTooManySMSSent')).toEqual(false)
   })
 
   it("should return ['SelectIDOrigin'] identity screen list", () => {
     const steps = useStepperInfo()
-    const identityStep = steps.find(
-      (step) => step.name === IdentityCheckStepNewStepper.IDENTIFICATION
-    )
+    const identityStep = steps.find((step) => step.name === IdentityCheckStep.IDENTIFICATION)
     const identificationScreensFlow = identityStep?.screens
 
     expect(identificationScreensFlow).toEqual(['SelectIDOrigin'])

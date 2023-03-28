@@ -14,7 +14,7 @@ import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSu
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
   DeprecatedIdentityCheckStep,
-  IdentityCheckStepNewStepper,
+  IdentityCheckStep,
   StepButtonState,
   DeprecatedStepConfig,
 } from 'features/identityCheck/types'
@@ -180,11 +180,11 @@ describe('Stepper navigation', () => {
     })
   })
   it.each`
-    subscriptionStep                                | stepperLabel             | eventName            | eventParam
-    ${IdentityCheckStepNewStepper.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.PHONE_VALIDATION }}
-    ${IdentityCheckStepNewStepper.IDENTIFICATION}   | ${'Identification'}      | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.IDENTIFICATION }}
-    ${IdentityCheckStepNewStepper.CONFIRMATION}     | ${'Confirmation'}        | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.CONFIRMATION }}
-    ${IdentityCheckStepNewStepper.PROFILE}          | ${'Profil'}              | ${'stepper_clicked'} | ${{ step: IdentityCheckStepNewStepper.PROFILE }}
+    subscriptionStep                      | stepperLabel             | eventName            | eventParam
+    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.PHONE_VALIDATION }}
+    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.IDENTIFICATION }}
+    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.CONFIRMATION }}
+    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.PROFILE }}
   `(
     'should trigger $eventName amplitude event with the $eventParam parameter',
     ({

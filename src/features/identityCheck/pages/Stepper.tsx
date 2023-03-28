@@ -13,10 +13,7 @@ import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import {
-  DeprecatedIdentityCheckStep,
-  IdentityCheckStepNewStepper,
-} from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
@@ -103,7 +100,7 @@ export const IdentityCheckStepper = () => {
       {newStepperSteps.map((step) => (
         <Li key={step.name}>
           <StepButtonContainer>
-            {step.name === IdentityCheckStepNewStepper.IDENTIFICATION &&
+            {step.name === IdentityCheckStep.IDENTIFICATION &&
             context.identification.method === null ? (
               <StepButton
                 step={step}

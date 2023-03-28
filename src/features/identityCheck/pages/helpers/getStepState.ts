@@ -3,13 +3,13 @@ import {
   DeprecatedStepConfig,
   StepButtonState,
   StepDetails,
-  IdentityCheckStepNewStepper,
+  IdentityCheckStep,
 } from 'features/identityCheck/types'
 
 export const getStepState = (
   steps: DeprecatedStepConfig[] | StepDetails[],
-  step: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper,
-  currentStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper | null
+  step: DeprecatedIdentityCheckStep | IdentityCheckStep,
+  currentStep: DeprecatedIdentityCheckStep | IdentityCheckStep | null
 ): StepButtonState => {
   if (!currentStep) return StepButtonState.DISABLED
   if (currentStep === DeprecatedIdentityCheckStep.END) return StepButtonState.COMPLETED

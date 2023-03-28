@@ -9,7 +9,7 @@ export enum DeprecatedIdentityCheckStep {
   END = 'end',
 }
 
-export enum IdentityCheckStepNewStepper {
+export enum IdentityCheckStep {
   PHONE_VALIDATION = 'phone-validation',
   PROFILE = 'profile-completion',
   IDENTIFICATION = 'identity-check',
@@ -26,13 +26,13 @@ export interface DeprecatedStepConfig {
   screens: SubscriptionScreen[]
 }
 export interface StepConfigNewStepper {
-  name: IdentityCheckStepNewStepper
+  name: IdentityCheckStep
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
 }
 
 export interface StepDetails {
-  name: IdentityCheckStepNewStepper
+  name: IdentityCheckStep
   title: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]

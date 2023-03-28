@@ -11,7 +11,7 @@ import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import {
   DeprecatedIdentityCheckStep,
-  IdentityCheckStepNewStepper,
+  IdentityCheckStep,
   NextScreenOrStep,
 } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -39,13 +39,9 @@ export const useSubscriptionNavigation = (): {
 
   const { mutateAsync: patchProfile } = usePatchProfile()
 
-  const saveCheckpoint = async (
-    nextStep: DeprecatedIdentityCheckStep | IdentityCheckStepNewStepper
-  ) => {
+  const saveCheckpoint = async (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) => {
     try {
-      if (
-        currentStep === (DeprecatedIdentityCheckStep.PROFILE || IdentityCheckStepNewStepper.PROFILE)
-      ) {
+      if (currentStep === (DeprecatedIdentityCheckStep.PROFILE || IdentityCheckStep.PROFILE)) {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }

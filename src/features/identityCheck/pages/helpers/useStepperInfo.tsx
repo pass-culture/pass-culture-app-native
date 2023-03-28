@@ -6,11 +6,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
-import {
-  IdentityCheckStepNewStepper,
-  StepConfigNewStepper,
-  StepDetails,
-} from 'features/identityCheck/types'
+import { IdentityCheckStep, StepConfigNewStepper, StepDetails } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -36,7 +32,7 @@ export const useStepperInfo = (): StepDetails[] => {
 
   const stepsConfig: StepConfigNewStepper[] = [
     {
-      name: IdentityCheckStepNewStepper.PROFILE,
+      name: IdentityCheckStep.PROFILE,
       icon: {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
@@ -53,7 +49,7 @@ export const useStepperInfo = (): StepDetails[] => {
         : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
-      name: IdentityCheckStepNewStepper.IDENTIFICATION,
+      name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
@@ -63,7 +59,7 @@ export const useStepperInfo = (): StepDetails[] => {
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
     },
     {
-      name: IdentityCheckStepNewStepper.CONFIRMATION,
+      name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
@@ -72,7 +68,7 @@ export const useStepperInfo = (): StepDetails[] => {
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
     {
-      name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
+      name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
         disabled: DisabledSmartphoneIcon,
         current: BicolorSmartphone,

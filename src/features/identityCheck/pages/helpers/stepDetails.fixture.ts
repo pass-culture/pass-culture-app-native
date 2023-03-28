@@ -1,15 +1,11 @@
-import {
-  IdentityCheckStepNewStepper,
-  StepButtonState,
-  StepDetails,
-} from 'features/identityCheck/types'
+import { IdentityCheckStep, StepButtonState, StepDetails } from 'features/identityCheck/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 
 export const stepsDetailsFixture: StepDetails[] = [
   {
-    name: IdentityCheckStepNewStepper.PHONE_VALIDATION,
+    name: IdentityCheckStep.PHONE_VALIDATION,
     icon: {
       disabled: BicolorSmartphone,
       current: BicolorSmartphone,
@@ -20,7 +16,7 @@ export const stepsDetailsFixture: StepDetails[] = [
     stepState: StepButtonState.COMPLETED,
   },
   {
-    name: IdentityCheckStepNewStepper.IDENTIFICATION,
+    name: IdentityCheckStep.IDENTIFICATION,
     icon: {
       disabled: BicolorIdCard,
       current: BicolorIdCard,
@@ -31,7 +27,7 @@ export const stepsDetailsFixture: StepDetails[] = [
     stepState: StepButtonState.CURRENT,
   },
   {
-    name: IdentityCheckStepNewStepper.PROFILE,
+    name: IdentityCheckStep.PROFILE,
     title: 'Profil',
     icon: {
       disabled: BicolorProfile,
@@ -42,7 +38,7 @@ export const stepsDetailsFixture: StepDetails[] = [
     stepState: StepButtonState.DISABLED,
   },
   {
-    name: IdentityCheckStepNewStepper.CONFIRMATION,
+    name: IdentityCheckStep.CONFIRMATION,
     title: 'Confirmation',
     icon: {
       disabled: BicolorProfile,
