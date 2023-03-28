@@ -2,9 +2,13 @@ import { NativeScrollEvent } from 'react-native'
 
 import { GenreType, SearchGroupNameEnumv2, NativeCategoryIdEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SearchView } from 'features/search/types'
-import { buildPerformSearchState, isCloseToBottom } from 'libs/firebase/analytics/utils'
+import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { LocationFilter, SearchView } from 'features/search/types'
+import {
+  buildLocationFilterParam,
+  buildPerformSearchState,
+  isCloseToBottom,
+} from 'libs/firebase/analytics/utils'
 
 const TODAY = new Date(2023, 0, 3)
 
@@ -254,6 +258,93 @@ describe('[Analytics utils]', () => {
         searchTimeRange: JSON.stringify([18, 22]),
         searchView: SearchView.Results,
       })
+    })
+  })
+
+  describe('buildLocationFilterParam', () => {
+    it('should return all location filter param in a string when type is EVERYWHERE', () => {
+      const everywhereType: LocationFilter = {
+        locationType: LocationType.EVERYWHERE,
+      }
+      const locationFilterParam = buildLocationFilterParam(everywhereType)
+      expect(locationFilterParam).toEqual(JSON.stringify(everywhereType))
+    })
+
+    it('should return all location filter param in a string when type is AROUND_ME', () => {
+      const aroundMeType: LocationFilter = {
+        locationType: LocationType.AROUND_ME,
+        aroundRadius: 100,
+      }
+      const locationFilterParam = buildLocationFilterParam(aroundMeType)
+      expect(locationFilterParam).toEqual(JSON.stringify(aroundMeType))
+    })
+
+    it('should return location type and the name of the venue in a string when type is VENUE', () => {
+      const venueType: LocationFilter = {
+        locationType: LocationType.VENUE,
+        venue: {
+          label: 'Accor Arena',
+          info: 'Salle de spectacle, Paris',
+          venueId: 1,
+        },
+      }
+      const locationFilterParam = buildLocationFilterParam(venueType)
+      expect(locationFilterParam).toEqual(
+        JSON.stringify({ locationType: LocationType.VENUE, label: 'Accor Arena' })
+      )
+    })
+
+    it('should return location type and the truncated name of the venue in a string when type is VENUE', () => {
+      const venueType: LocationFilter = {
+        locationType: LocationType.VENUE,
+        venue: {
+          label: 'Accor Arena, la MEILLEURE salle de France avec une acoustique incroyable',
+          info: 'Salle de spectacle, Paris',
+          venueId: 1,
+        },
+      }
+      const locationFilterParam = buildLocationFilterParam(venueType)
+      expect(locationFilterParam).toEqual(
+        JSON.stringify({
+          locationType: LocationType.VENUE,
+          label: 'Accor Arena, la MEILLEURE salle de France avec une acoustique inc',
+        })
+      )
+    })
+
+    it('should return location type and the name of the place in a string when type is PLACE', () => {
+      const placeType: LocationFilter = {
+        locationType: LocationType.PLACE,
+        place: {
+          label: 'Rue de la Paix, Paris',
+          info: 'Paris',
+          geolocation: { longitude: 2.331196, latitude: 48.869334 },
+        },
+        aroundRadius: 100,
+      }
+      const locationFilterParam = buildLocationFilterParam(placeType)
+      expect(locationFilterParam).toEqual(
+        JSON.stringify({ locationType: LocationType.PLACE, label: 'Rue de la Paix, Paris' })
+      )
+    })
+
+    it('should return location type and the truncated name of the place in a string when type is PLACE', () => {
+      const placeType: LocationFilter = {
+        locationType: LocationType.PLACE,
+        place: {
+          label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Intérêt, Paris',
+          info: 'Paris',
+          geolocation: { longitude: 2.331196, latitude: 48.869334 },
+        },
+        aroundRadius: 100,
+      }
+      const locationFilterParam = buildLocationFilterParam(placeType)
+      expect(locationFilterParam).toEqual(
+        JSON.stringify({
+          locationType: LocationType.PLACE,
+          label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Int',
+        })
+      )
     })
   })
 })

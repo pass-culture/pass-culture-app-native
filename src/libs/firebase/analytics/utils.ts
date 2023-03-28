@@ -1,6 +1,7 @@
 import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 
-import { SearchState } from 'features/search/types'
+import { LocationType } from 'features/search/enums'
+import { LocationFilter, SearchState } from 'features/search/types'
 import { PerformSearchState } from 'libs/firebase/analytics/types'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
@@ -29,11 +30,36 @@ export const prepareLogEventParams = (params: Record<string, unknown>) =>
   }, {})
 
 const STRING_VALUE_MAX_LENGTH = 100
+const LOCATION_LABEL_KEY_LENGTH = 11
 export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
+
+export const buildLocationFilterParam = (locationFilter: LocationFilter) => {
+  if (
+    locationFilter.locationType === LocationType.PLACE ||
+    locationFilter.locationType === LocationType.VENUE
+  ) {
+    const stateWithLocationType = {
+      locationType: locationFilter.locationType,
+    }
+    const maxLabelLength =
+      STRING_VALUE_MAX_LENGTH -
+      JSON.stringify(stateWithLocationType).length -
+      LOCATION_LABEL_KEY_LENGTH
+    const customLocationFilter = {
+      ...stateWithLocationType,
+      label:
+        locationFilter.locationType === LocationType.PLACE
+          ? locationFilter.place.label.slice(0, maxLabelLength)
+          : locationFilter.venue.label.slice(0, maxLabelLength),
+    }
+    return JSON.stringify(customLocationFilter)
+  }
+  return JSON.stringify(locationFilter)
+}
 
 export const buildPerformSearchState = (searchState: SearchState) => {
   const state: PerformSearchState = {
-    searchLocationFilter: JSON.stringify(searchState.locationFilter),
+    searchLocationFilter: buildLocationFilterParam(searchState.locationFilter),
     searchId: searchState.searchId,
     searchView: searchState.view,
   }
