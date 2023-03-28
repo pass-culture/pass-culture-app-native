@@ -3,17 +3,21 @@ import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 
 import { UrlParamsProps } from 'features/navigation/helpers'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
+
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export type InternalNavigationProps = {
   enableNavigate?: boolean // It is used by offline mode to prevent navigation
-  navigateTo: {
-    screen: RootNavigateParams[0]
-    params?: RootNavigateParams[1]
-    withPush?: boolean // If true, uses push instead of navigate
-    fromRef?: boolean // If true, uses navigateFromRef/pushFromRef instead of navigate/push
-  }
+  navigateTo:
+    | {
+        screen: RootNavigateParams[0]
+        params?: RootNavigateParams[1]
+        withPush?: boolean // If true, uses push instead of navigate
+        fromRef?: boolean // If true, uses navigateFromRef/pushFromRef instead of navigate/push
+        internalUrl?: never
+      }
+    | { screen?: never; params?: never; withPush?: never; fromRef?: never; internalUrl: string } // When navigating using in-app urls instead of screen names, we use internalUrl prop (e.g: links from backend).
   externalNav?: never
 }
 
