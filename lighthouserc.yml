@@ -1,6 +1,7 @@
 ci:
   collect:
     numberOfRuns: 5
+    headful: true
     url: https://app.testing.passculture.team/
     settings:
       onlyCategories:
