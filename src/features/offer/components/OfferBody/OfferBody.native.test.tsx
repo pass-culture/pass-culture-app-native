@@ -9,16 +9,20 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
+import { beneficiaryUser } from 'fixtures/user'
 import { SearchHit } from 'libs/algolia'
 import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
-jest.mock('react-query')
+jest.mock('api/api')
+jest.unmock('libs/network/NetInfoWrapper')
 jest.mock('shared/user/useAvailableCredit')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/offer/api/useOffer')
@@ -45,17 +49,32 @@ const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApp
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const mockNativeShare = jest.spyOn(NativeShare, 'share')
 
+const mockUseOffer = jest.fn().mockReturnValue({ data: mockOffer })
+jest.mock('features/offer/api/useOffer', () => ({
+  useOffer: () => mockUseOffer(),
+}))
+
+const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true, user: beneficiaryUser })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
+
+const mockUseNetInfo = jest.fn().mockReturnValue({ isConnected: true, isInternetReachable: true })
+jest.mock('libs/network/useNetInfo', () => ({
+  useNetInfo: () => mockUseNetInfo(),
+}))
+
+const onScroll = jest.fn()
+
+const offerId = 1
+
 describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date(2021, 0, 1))
   })
 
-  const onScroll = jest.fn()
-
-  const offerId = 1
-
   it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
-    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    renderOfferBody()
 
     const reportOfferButton = await screen.findByTestId('Signaler l’offre')
 
@@ -64,7 +83,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should not display similar offers lists when offer has not it', async () => {
-    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+    renderOfferBody()
 
     await screen.findByText('Envoyer sur Instagram')
 
@@ -78,14 +97,10 @@ describe('<OfferBody />', () => {
     })
 
     it('should display similar offers list when offer has some', async () => {
-      render(
-        <OfferBody
-          offerId={offerId}
-          onScroll={onScroll}
-          sameCategorySimilarOffers={mockSearchHits}
-          otherCategoriesSimilarOffers={mockSearchHits}
-        />
-      )
+      renderOfferBody({
+        sameCategorySimilarOffers: mockSearchHits,
+        otherCategoriesSimilarOffers: mockSearchHits,
+      })
 
       await screen.findByText('Envoyer sur Instagram')
 
@@ -95,13 +110,9 @@ describe('<OfferBody />', () => {
 
     describe('Same category similar offers', () => {
       it('should navigate to an offer when pressing on it', async () => {
-        render(
-          <OfferBody
-            offerId={offerId}
-            onScroll={onScroll}
-            sameCategorySimilarOffers={mockSearchHits}
-          />
-        )
+        renderOfferBody({
+          sameCategorySimilarOffers: mockSearchHits,
+        })
 
         await screen.findByText('Envoyer sur Instagram')
 
@@ -116,13 +127,9 @@ describe('<OfferBody />', () => {
 
     describe('Other categories differents from that of the offer', () => {
       it('should navigate to an offer when pressing on it', async () => {
-        render(
-          <OfferBody
-            offerId={offerId}
-            onScroll={onScroll}
-            otherCategoriesSimilarOffers={mockSearchHits}
-          />
-        )
+        renderOfferBody({
+          otherCategoriesSimilarOffers: mockSearchHits,
+        })
 
         await screen.findByText('Envoyer sur Instagram')
 
@@ -141,7 +148,7 @@ describe('<OfferBody />', () => {
       mockCheckInstalledApps.mockResolvedValueOnce({
         [Network.snapchat]: false,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await waitFor(() => {
         expect(screen.queryByText(`Envoyer sur ${[Network.snapchat]}`)).toBeFalsy()
@@ -152,7 +159,7 @@ describe('<OfferBody />', () => {
       mockCheckInstalledApps.mockResolvedValueOnce({
         [Network.snapchat]: true,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await waitFor(() => {
         expect(screen.queryByText(`Envoyer sur ${[Network.snapchat]}`)).toBeTruthy()
@@ -166,7 +173,7 @@ describe('<OfferBody />', () => {
         [Network.whatsapp]: true,
         [Network.telegram]: true,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await waitFor(() => {
         expect(screen.queryAllByText(/Envoyer sur/)).toHaveLength(MAX_NB_OF_SOCIALS_TO_SHOW)
@@ -177,7 +184,7 @@ describe('<OfferBody />', () => {
       mockCheckInstalledApps.mockResolvedValueOnce({
         [Network.snapchat]: hasSocial,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await waitFor(() => {
         expect(screen.queryByText('Plus d’options')).toBeTruthy()
@@ -188,7 +195,7 @@ describe('<OfferBody />', () => {
       mockCheckInstalledApps.mockResolvedValueOnce({
         [Network.snapchat]: true,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await act(async () => {
         const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.snapchat]}`)
@@ -206,7 +213,7 @@ describe('<OfferBody />', () => {
       mockCheckInstalledApps.mockResolvedValueOnce({
         [Network.whatsapp]: true,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await act(async () => {
         const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.whatsapp]}`)
@@ -224,7 +231,7 @@ describe('<OfferBody />', () => {
       mockCheckInstalledApps.mockResolvedValueOnce({
         [Network.snapchat]: true,
       })
-      render(<OfferBody offerId={offerId} onScroll={onScroll} />)
+      renderOfferBody()
 
       await act(async () => {
         const otherButton = screen.getByText('Plus d’options')
@@ -235,3 +242,18 @@ describe('<OfferBody />', () => {
     })
   })
 })
+
+export const renderOfferBody = (
+  additionalProps: {
+    sameCategorySimilarOffers?: SearchHit[]
+    otherCategoriesSimilarOffers?: SearchHit[]
+  } = {}
+) =>
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <NetInfoWrapper>
+        <OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />
+      </NetInfoWrapper>
+    )
+  )
