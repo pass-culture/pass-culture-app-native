@@ -11,6 +11,9 @@ ci:
       categories:performance:
         - warn
         - minScore: 0.5
+      largest-contentful-paint:
+        - error
+        - maxNumericValue: 10_000
 
   upload:
     # upload options here
