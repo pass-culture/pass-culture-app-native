@@ -326,7 +326,7 @@ describe('<OfferBody />', () => {
       expect(screen.queryByText('Modalités de retrait')).toBeNull()
     })
 
-    it('should not display withdrawal details when undefined', async () => {
+    it('should not display withdrawal details when not specified', async () => {
       renderOfferBody()
       await screen.findByTestId('offer-container')
 
