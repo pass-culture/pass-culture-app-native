@@ -286,12 +286,6 @@ describe('<OfferBody />', () => {
       expect(mockNativeShare).toHaveBeenCalledTimes(1)
     })
   })
-})
-
-describe('<OfferBody /> deprecated', () => {
-  beforeAll(() => {
-    mockdate.set(new Date(2021, 0, 1))
-  })
 
   describe('Accessibility details', () => {
     it('should not display accessibility when disabilities are not defined', async () => {

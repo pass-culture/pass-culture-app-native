@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OfferBody /> deprecated report offer should open the report modal upon clicking on 'signaler l'offre' 1`] = `
+exports[`<OfferBody /> report offer should open the report modal upon clicking on 'signaler l'offre' 1`] = `
 <RCTScrollView
   bounces={false}
   onScroll={[MockFunction]}
