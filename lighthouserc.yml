@@ -15,11 +15,3 @@ ci:
         - error
         - maxNumericValue: 10_000
 
-  upload:
-    # upload options here
-
-  server:
-    # server options here
-
-  wizard:
-    # wizard options here
