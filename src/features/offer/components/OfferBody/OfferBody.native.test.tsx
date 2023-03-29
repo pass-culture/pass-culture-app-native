@@ -99,7 +99,7 @@ const offerId = 1
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
-    mockdate.set(new Date(2021, 0, 1))
+    mockdate.set(new Date('2021-01-01'))
   })
 
   it('should match snapshot for physical offer', async () => {
