@@ -1,6 +1,6 @@
 ci:
   collect:
-    staticDistDir: build
+    numberOfRuns: 5
 
   assert:
     # assert options here
