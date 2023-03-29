@@ -1,6 +1,7 @@
 ci:
   collect:
     numberOfRuns: 5
+    url: https://app.testing.passculture.team/
 
   assert:
     # assert options here
