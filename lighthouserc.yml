@@ -6,9 +6,11 @@ ci:
       onlyCategories:
         - performance
 
-
   assert:
-    # assert options here
+    assertions:
+      categories:performance:
+        - warn
+        - minScore: 0.5
 
   upload:
     # upload options here
