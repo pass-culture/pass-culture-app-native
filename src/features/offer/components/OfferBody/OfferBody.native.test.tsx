@@ -14,7 +14,6 @@ import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
@@ -62,15 +61,6 @@ describe('<OfferBody />', () => {
 
     fireEvent.press(reportOfferButton)
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
-    render(<OfferBody offerId={offerId} onScroll={onScroll} />)
-
-    const venueBannerComponent = await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)
-
-    fireEvent.press(venueBannerComponent)
-    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, { venueId: 2090, from: 'offer' })
   })
 
   it('should not display similar offers lists when offer has not it', async () => {
@@ -122,27 +112,6 @@ describe('<OfferBody />', () => {
           id: 102280,
         })
       })
-
-      it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
-        const nativeEventMiddle = {
-          layoutMeasurement: { height: 296 },
-          contentOffset: { x: 200 }, // how far did we scroll
-          contentSize: { height: 296 },
-        }
-        render(
-          <OfferBody
-            offerId={offerId}
-            onScroll={onScroll}
-            sameCategorySimilarOffers={mockSearchHits}
-          />
-        )
-        const scrollView = screen.queryAllByTestId('offersModuleList')[0]
-
-        await waitFor(() => {
-          scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
-        })
-        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
-      })
     })
 
     describe('Other categories differents from that of the offer', () => {
@@ -163,27 +132,6 @@ describe('<OfferBody />', () => {
           fromOfferId: 1,
           id: 102280,
         })
-      })
-
-      it('should log analytics event logPlaylistHorizontalScroll when scrolling on it', async () => {
-        const nativeEventMiddle = {
-          layoutMeasurement: { height: 296, width: 296 },
-          contentOffset: { x: 200 }, // how far did we scroll
-          contentSize: { height: 296, width: 296 },
-        }
-        render(
-          <OfferBody
-            offerId={offerId}
-            onScroll={jest.fn()}
-            otherCategoriesSimilarOffers={mockSearchHits}
-          />
-        )
-        const scrollView = screen.queryAllByTestId('offersModuleList')[0]
-
-        await waitFor(() => {
-          scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
-        })
-        expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
       })
     })
   })

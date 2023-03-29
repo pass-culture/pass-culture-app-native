@@ -5,6 +5,11 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { SearchHit } from 'libs/algolia'
+import {
+  mockedAlgoliaResponse,
+  moreHitsForSimilarOffersPlaylist,
+} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -14,6 +19,10 @@ const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApp
 
 jest.mock('features/auth/context/AuthContext')
 
+const mockSearchHits: SearchHit[] = [
+  ...mockedAlgoliaResponse.hits,
+  ...moreHitsForSimilarOffersPlaylist,
+]
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers('legacy')
@@ -89,6 +98,63 @@ describe('<OfferBody /> - Analytics', () => {
       from: 'offer',
       id: offerId,
       social: 'Other',
+    })
+  })
+
+  it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
+    renderOfferBodyForAnalytics()
+
+    const venueBannerComponent = await screen.findByTestId(`Lieu ${offerResponseSnap.venue.name}`)
+
+    fireEvent.press(venueBannerComponent)
+    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+      venueId: offerResponseSnap.venue.id,
+      from: 'offer',
+    })
+  })
+
+  it('should log when the user scrolls same categories playlist', async () => {
+    const nativeEventMiddle = {
+      layoutMeasurement: { height: 296 },
+      contentOffset: { x: 200 }, // how far did we scroll
+      contentSize: { height: 296 },
+    }
+    renderOfferBodyForAnalytics({
+      sameCategorySimilarOffers: mockSearchHits,
+    })
+
+    const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
+
+    scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+
+    expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log when the user scrolls other categories playlist', async () => {
+    const nativeEventMiddle = {
+      layoutMeasurement: { height: 296, width: 296 },
+      contentOffset: { x: 200 }, // how far did we scroll
+      contentSize: { height: 296, width: 296 },
+    }
+    renderOfferBodyForAnalytics({
+      otherCategoriesSimilarOffers: mockSearchHits,
+    })
+    const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
+
+    scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+
+    expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log when the users consult the itinerary', async () => {
+    renderOfferBodyForAnalytics()
+    await screen.findByTestId('offer-container')
+
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+
+    expect(analytics.logConsultItinerary).toBeCalledWith({
+      offerId: offerResponseSnap.id,
+      from: 'offer',
     })
   })
 })
