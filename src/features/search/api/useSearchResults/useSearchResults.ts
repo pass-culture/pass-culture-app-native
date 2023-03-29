@@ -9,6 +9,7 @@ import { SearchState } from 'features/search/types'
 import { SearchHit } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
+import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -17,7 +18,7 @@ export type Response = Pick<
   'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
 >
 
-const useSearchInfiniteQuery = (searchState: SearchState) => {
+export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { position } = useGeolocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -34,6 +35,9 @@ const useSearchInfiniteQuery = (searchState: SearchState) => {
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
       })
+
+      analytics.logPerformSearch(searchState, response.nbHits)
+
       previousPageObjectIds.current = response.hits.map((hit) => hit.objectID)
       return response
     },

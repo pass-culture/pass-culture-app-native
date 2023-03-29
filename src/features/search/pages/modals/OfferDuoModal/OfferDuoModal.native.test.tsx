@@ -11,7 +11,6 @@ import {
 } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
@@ -215,20 +214,6 @@ describe('<OfferDuoModal/>', () => {
         })
       })
     })
-
-    it('should not log PerformSearch when pressing button', async () => {
-      renderOfferDuoModal({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-
-      const button = screen.getByText('Appliquer le filtre')
-
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(analytics.logPerformSearch).toHaveBeenCalledTimes(0)
-      })
-    })
   })
 
   describe('with "Rechercher" button', () => {
@@ -268,22 +253,6 @@ describe('<OfferDuoModal/>', () => {
             offerIsDuo: false,
           },
           screen: 'Search',
-        })
-      })
-    })
-
-    it('should log PerformSearch when pressing button', async () => {
-      renderOfferDuoModal()
-
-      const button = screen.getByText('Rechercher')
-
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-          ...mockSearchState,
-          view: SearchView.Results,
-          offerIsDuo: false,
         })
       })
     })

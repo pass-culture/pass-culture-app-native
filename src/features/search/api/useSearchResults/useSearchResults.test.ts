@@ -1,4 +1,13 @@
-import { getNextPageParam } from 'features/search/api/useSearchResults/useSearchResults'
+import {
+  getNextPageParam,
+  useSearchInfiniteQuery,
+} from 'features/search/api/useSearchResults/useSearchResults'
+import { initialSearchState } from 'features/search/context/reducer'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffer'
+import { analytics } from 'libs/firebase/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
 describe('useSearchResults', () => {
   describe('getNextPageParam', () => {
@@ -10,6 +19,29 @@ describe('useSearchResults', () => {
     it('should return undefined when page + 1 >= nbPages', () => {
       const page = getNextPageParam({ page: 1, nbPages: 2 })
       expect(page).toStrictEqual(undefined)
+    })
+  })
+
+  describe('useSearchInfiniteQuery', () => {
+    const fetchOfferSpy = jest
+      .spyOn(fetchAlgoliaOffer, 'fetchOffer')
+      .mockResolvedValue(mockedAlgoliaResponse)
+
+    it('should log perform search when received API result', async () => {
+      renderHook(useSearchInfiniteQuery, {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+        initialProps: initialSearchState,
+      })
+
+      await flushAllPromisesWithAct()
+
+      expect(fetchOfferSpy).toHaveBeenCalledTimes(1)
+      expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+        1,
+        initialSearchState,
+        mockedAlgoliaResponse.nbHits
+      )
     })
   })
 })

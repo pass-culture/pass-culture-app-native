@@ -5,7 +5,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
@@ -64,18 +63,6 @@ describe('useShowResultsForCategory', () => {
         searchId,
       },
       screen: 'Search',
-    })
-  })
-
-  it('should log event', () => {
-    const { result: resultCallback } = renderHook(useShowResultsForCategory)
-
-    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
-
-    expect(analytics.logPerformSearch).toHaveBeenCalledWith({
-      ...mockSearchState,
-      searchId,
-      view: SearchView.Landing,
     })
   })
 

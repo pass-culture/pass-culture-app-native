@@ -229,7 +229,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
-          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }

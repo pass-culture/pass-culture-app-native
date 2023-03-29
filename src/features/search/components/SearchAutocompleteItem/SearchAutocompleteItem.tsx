@@ -18,7 +18,6 @@ import {
 import { SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -97,8 +96,6 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
         : undefined,
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
     }
-
-    analytics.logPerformSearch(newSearchState)
 
     navigate(...getTabNavConfig('Search', newSearchState))
   }

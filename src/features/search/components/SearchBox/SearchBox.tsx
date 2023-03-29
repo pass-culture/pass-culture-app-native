@@ -28,7 +28,6 @@ import { useLocationChoice } from 'features/search/helpers/useLocationChoice/use
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { SearchState, SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -180,7 +179,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         searchId,
         isAutocomplete: undefined,
       }
-      analytics.logPerformSearch({ ...searchState, ...partialSearchState })
       pushWithSearch(partialSearchState)
     },
     [locationFilter, pushWithSearch, searchState]

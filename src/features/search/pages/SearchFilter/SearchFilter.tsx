@@ -51,7 +51,6 @@ export const SearchFilter: React.FC = () => {
       ...searchState,
       view: SearchView.Results,
     }
-    analytics.logPerformSearch(additionalSearchState)
     navigate(...getTabNavConfig('Search', additionalSearchState))
   }, [navigate, searchState])
 

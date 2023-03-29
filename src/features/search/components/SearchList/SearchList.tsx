@@ -17,7 +17,17 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
   SearchListProps
 >(
   (
-    { nbHits, hits, renderItem, autoScrollEnabled, refreshing, onRefresh, onEndReached, onScroll },
+    {
+      nbHits,
+      hits,
+      renderItem,
+      autoScrollEnabled,
+      refreshing,
+      onRefresh,
+      onEndReached,
+      onScroll,
+      userData,
+    },
     ref
   ) => {
     const theme = useTheme()
@@ -29,7 +39,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
         testID="searchResultsFlashlist"
         data={hits}
         keyExtractor={keyExtractor}
-        ListHeaderComponent={<SearchListHeader nbHits={nbHits} />}
+        ListHeaderComponent={<SearchListHeader nbHits={nbHits} userData={userData} />}
         ItemSeparatorComponent={Separator}
         renderItem={renderItem}
         refreshing={refreshing}

@@ -1,3 +1,4 @@
+import { SearchResponse } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { ScrollViewProps } from 'react-native'
@@ -5,9 +6,9 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { SearchHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { Banner } from 'ui/components/Banner'
@@ -20,11 +21,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
+  userData: SearchResponse<SearchHit[]>['userData']
 }
 
-export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits }) => {
+export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, userData }) => {
   const { position, showGeolocPermissionModal } = useGeolocation()
-  const { userData } = useSearchResults()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
   const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''

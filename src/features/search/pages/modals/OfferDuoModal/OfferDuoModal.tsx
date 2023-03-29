@@ -13,7 +13,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -120,7 +119,6 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
 
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
-          analytics.logPerformSearch(additionalSearchState)
           navigate(...getTabNavConfig('Search', additionalSearchState))
           break
         }
