@@ -1,0 +1,18 @@
+ci:
+  collect:
+    numberOfRuns: 5
+    headful: true
+    url: https://app.testing.passculture.team/
+    settings:
+      onlyCategories:
+        - performance
+
+  assert:
+    assertions:
+      categories:performance:
+        - warn
+        - minScore: 0.5
+      largest-contentful-paint:
+        - error
+        - maxNumericValue: 10_000
+

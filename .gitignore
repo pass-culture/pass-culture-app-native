@@ -126,3 +126,6 @@ appium.log
 e2e/output
 /credentials.json
 /token.json
+
+# lighthouse
+.lighthouseci

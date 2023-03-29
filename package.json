@@ -193,6 +193,7 @@
     "@babel/runtime": "^7.18.9",
     "@chanzuckerberg/axe-storybook-testing": "^6.3.0",
     "@google-cloud/local-auth": "^2.1.1",
+    "@lhci/cli": "0.11.x",
     "@react-native-community/eslint-config": "^3.1.0",
     "@sentry/webpack-plugin": "^1.19.0",
     "@storybook/addon-a11y": "^6.5.16",
