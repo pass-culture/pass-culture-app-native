@@ -8,6 +8,7 @@ import { LocationType } from 'features/search/enums'
 import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
+import { eventMonitoring } from 'libs/monitoring'
 
 const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
 const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
@@ -113,8 +114,17 @@ const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) =>
       : ''
   )
 
-const buildObjectIdsPredicate = (objectIds: string[]): string[] =>
-  objectIds.map((objectId) => `${FACETS_FILTERS_ENUM.OBJECT_ID}:${objectId}`)
+const buildObjectIdsPredicate = (objectIds: string[]) => {
+  try {
+    return objectIds.map((objectId) => `${FACETS_FILTERS_ENUM.OBJECT_ID}:${objectId}`)
+  } catch (error) {
+    eventMonitoring.captureException(error, {
+      level: 'error',
+      objectIds,
+    })
+    return []
+  }
+}
 
 const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
   offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
