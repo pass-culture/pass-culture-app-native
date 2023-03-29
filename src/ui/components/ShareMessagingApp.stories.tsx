@@ -5,7 +5,7 @@ import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 export default {
-  title: 'ui/ShareMessagingApp',
+  title: 'ui/share/ShareMessagingApp',
   component: ShareMessagingApp,
 } as ComponentMeta<typeof ShareMessagingApp>
 

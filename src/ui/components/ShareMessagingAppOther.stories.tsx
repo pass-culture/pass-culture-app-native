@@ -4,7 +4,7 @@ import React from 'react'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 
 export default {
-  title: 'ui/ShareMessagingAppOther',
+  title: 'ui/share/ShareMessagingAppOther',
   component: ShareMessagingAppOther,
 } as ComponentMeta<typeof ShareMessagingAppOther>
 

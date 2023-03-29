@@ -4,8 +4,8 @@ on:
   push:
 
 permissions:
-      contents: 'read'
-      id-token: 'write'
+  contents: read
+  id-token: write
 jobs:
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
@@ -26,8 +26,8 @@ jobs:
     if: github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
     with:
-      TYPE: "soft"
-      ENV: "testing"
+      TYPE: soft
+      ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -36,8 +36,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/testing')
     uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
     with:
-      TYPE: "hard"
-      ENV: "testing"
+      TYPE: hard
+      ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -46,8 +46,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
     with:
-      TYPE: "hard"
-      ENV: "staging"
+      TYPE: hard
+      ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -56,8 +56,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
-      TYPE: "hard"
-      ENV: "staging"
+      TYPE: hard
+      ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}

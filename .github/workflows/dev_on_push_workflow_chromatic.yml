@@ -1,13 +1,10 @@
 name: 'Chromatic'
 
 on:
-  workflow_call:
-  # push:
-  #   paths:
-  #     - '.storybook/**'
-  #     - 'src/**'
-  #     - 'package.json'
-  #     - 'yarn.lock'
+  push:
+    paths:
+      - '.storybook/**'
+      - 'src/**'
 
 env:
   BUILD_DIR: /tmp/${{ github.sha }}
@@ -24,16 +21,20 @@ jobs:
           # we don't need to have the full history
           # set fetch-depth to an arbitrary number large enough to contain all commits from the main branch
           fetch-depth: '100'
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install dependencies
-        run: yarn
-      - name: Build Storybook
+        run: yarn install
+      - name: Build Storybook 🔧
         run: yarn build-storybook --output-dir $BUILD_DIR
-      - name: Publish to Chromatic
+      - name: Publish to Chromatic 🚀
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: ${{ env.BUILD_DIR }}
           onlyChanged: true
-      - name: Run axe storybook accessibility tests
+      - name: Run axe storybook accessibility tests 🧪
         run: yarn axe-storybook --build-dir $BUILD_DIR

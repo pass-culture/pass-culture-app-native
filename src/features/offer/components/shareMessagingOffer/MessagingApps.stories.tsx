@@ -18,14 +18,16 @@ export default {
 
 const Template: ComponentStory<typeof MessagingApps> = (args) => <MessagingApps {...args} />
 
-export const Default = Template.bind({})
+// TODO(PC-17931): Fix this story
+const Default = Template.bind({})
 Default.args = {
   isEvent: false,
   offerId: 1,
 }
 
-export const Event = Template.bind({})
-Default.args = {
+// TODO(PC-17931): Fix this story
+const Event = Template.bind({})
+Event.args = {
   isEvent: true,
   offerId: 1,
 }
