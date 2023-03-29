@@ -34,8 +34,8 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const steps = useSubscriptionSteps()
-  const newStepperSteps = useStepperInfo()
+  const stepsDeprecated = useSubscriptionSteps()
+  const steps = useStepperInfo()
 
   const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
 
@@ -97,7 +97,7 @@ export const IdentityCheckStepper = () => {
   //TODO(PC-21375): remove the use of wipStepperRetryUbble
   const temporaryStepList = wipStepperRetryUbble ? (
     <VerticalUl>
-      {newStepperSteps.map((step) => (
+      {steps.map((step) => (
         <Li key={step.name}>
           <StepButtonContainer>
             {step.name === IdentityCheckStep.IDENTIFICATION &&
@@ -128,14 +128,14 @@ export const IdentityCheckStepper = () => {
     </VerticalUl>
   ) : (
     <VerticalUl>
-      {steps.map((step) => (
+      {stepsDeprecated.map((step) => (
         <Li key={step.name}>
           <StepButtonContainer>
             {step.name === DeprecatedIdentityCheckStep.IDENTIFICATION &&
             context.identification.method === null ? (
               <StepButton
                 step={step}
-                state={getStepState(steps, step.name, currentStep)}
+                state={getStepState(stepsDeprecated, step.name, currentStep)}
                 onPress={() => {
                   amplitude.logEvent('stepper_clicked', { step: step.name })
                   analytics.logIdentityCheckStep(step.name)
@@ -145,7 +145,7 @@ export const IdentityCheckStepper = () => {
             ) : (
               <StepButton
                 step={step}
-                state={getStepState(steps, step.name, currentStep)}
+                state={getStepState(stepsDeprecated, step.name, currentStep)}
                 navigateTo={{ screen: step.screens[0] }}
                 onPress={() => {
                   amplitude.logEvent('stepper_clicked', { step: step.name })
