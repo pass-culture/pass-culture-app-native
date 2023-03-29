@@ -2,6 +2,10 @@ ci:
   collect:
     numberOfRuns: 5
     url: https://app.testing.passculture.team/
+    settings:
+      onlyCategories:
+        - performance
+
 
   assert:
     # assert options here
