@@ -2,14 +2,18 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
+import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { api } from 'api/api'
+import { UserReportedOffersResponse } from 'api/gen'
+import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
+import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { SearchHit } from 'libs/algolia'
 import {
   mockedAlgoliaResponse,
@@ -28,7 +32,30 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
-
+jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting', () => ({
+  useReasonsForReporting: jest.fn(() => ({
+    data: {
+      reasons: {
+        IMPROPER: {
+          description: 'La date ne correspond pas, mauvaise description...',
+          title: 'La description est non conforme',
+        },
+        INAPPROPRIATE: {
+          description: 'violence, incitation à la haine, nudité...',
+          title: 'Le contenu est inapproprié',
+        },
+        OTHER: {
+          description: '',
+          title: 'Autre',
+        },
+        PRICE_TOO_HIGH: {
+          description: 'comparé à l’offre public',
+          title: 'Le tarif est trop élevé',
+        },
+      },
+    },
+  })),
+}))
 let mockSearchHits: SearchHit[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
@@ -58,6 +85,8 @@ const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true, user: b
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
 }))
+
+const useReportedOffersMock = jest.spyOn(ReportedOffersAPI, 'useReportedOffers')
 
 const mockUseNetInfo = jest.fn().mockReturnValue({ isConnected: true, isInternetReachable: true })
 jest.mock('libs/network/useNetInfo', () => ({
@@ -240,6 +269,138 @@ describe('<OfferBody />', () => {
 
       expect(mockNativeShare).toHaveBeenCalledTimes(1)
     })
+  })
+})
+
+describe('<OfferBody /> deprecated', () => {
+  beforeAll(() => {
+    mockdate.set(new Date(2021, 0, 1))
+  })
+
+  it('should match snapshot for physical offer', async () => {
+    renderOfferBody()
+    await screen.findByTestId('offer-container')
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should match snapshot for digital offer', async () => {
+    // Mock useReportedOffer to avoid re-render
+    useReportedOffersMock.mockReturnValueOnce({
+      data: { reportedOffers: [] },
+    } as unknown as UseQueryResult<UserReportedOffersResponse>)
+    mockUseOffer.mockReturnValueOnce({ data: mockDigitalOffer })
+    renderOfferBody()
+    await screen.findByTestId('offer-container')
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should show venue banner in where section', async () => {
+    renderOfferBody()
+
+    expect(await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)).toBeTruthy()
+  })
+
+  describe('Accessibility details', () => {
+    it('should not display accessibility when disabilities are not defined', async () => {
+      renderOfferBody()
+      await screen.findByTestId('offer-container')
+
+      expect(screen.queryByText('Accessibilité')).toBeNull()
+    })
+
+    it('should display accessibility when disabilities are defined', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: { ...mockOffer, accessibility: { visualDisability: false, audioDisability: false } },
+      })
+      renderOfferBody()
+
+      expect(await screen.findByText('Accessibilité')).toBeTruthy()
+    })
+  })
+
+  describe('withdrawalDetails', () => {
+    it('should display withdrawal details for beneficiary user', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: { ...mockOffer, withdrawalDetails: 'How to withdraw' },
+      })
+      renderOfferBody()
+
+      expect(await screen.findByText('Modalités de retrait')).toBeTruthy()
+    })
+
+    it('should not display withdrawal details for non beneficiary user', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: { ...mockOffer, withdrawalDetails: 'How to withdraw' },
+      })
+      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: nonBeneficiaryUser })
+      renderOfferBody()
+      await screen.findByTestId('offer-container')
+
+      expect(screen.queryByText('Modalités de retrait')).toBeNull()
+    })
+
+    it('should not display withdrawal details when undefined', async () => {
+      renderOfferBody()
+      await screen.findByTestId('offer-container')
+
+      expect(screen.queryByText('Modalités de retrait')).toBeNull()
+    })
+  })
+
+  it('should not display distance when no address and go to button', async () => {
+    // Mock useReportedOffer to avoid re-render
+    useReportedOffersMock.mockReturnValueOnce({
+      data: { reportedOffers: [] },
+    } as unknown as UseQueryResult<UserReportedOffersResponse>)
+    const venueWithoutAddress = {
+      id: 1,
+      offerer: { name: 'PATHE BEAUGRENELLE' },
+      name: 'PATHE BEAUGRENELLE',
+      coordinates: {},
+      isPermanent: true,
+    }
+    mockUseOffer.mockReturnValueOnce({
+      data: {
+        ...mockOffer,
+        venue: venueWithoutAddress,
+      },
+    })
+    renderOfferBody()
+
+    await screen.findByTestId('offer-container')
+
+    expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    expect(screen.queryByText('Distance')).toBeNull()
+  })
+
+  it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
+    renderOfferBody()
+
+    await waitFor(() => {
+      expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
+    mockUseNetInfo.mockReturnValueOnce({
+      isConnected: false,
+      isInternetReachable: false,
+    })
+    renderOfferBody()
+    await screen.findByTestId('offer-container')
+
+    expect(api.getnativev1offersreports).not.toHaveBeenCalled()
+  })
+
+  it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // First mock for call in OfferBody
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // Second mock for call in useReportedOffers
+    renderOfferBody()
+    await screen.findByTestId('offer-container')
+
+    expect(api.getnativev1offersreports).not.toBeCalled()
   })
 })
 
