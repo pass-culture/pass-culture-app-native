@@ -23,6 +23,7 @@ const mockSearchHits: SearchHit[] = [
   ...mockedAlgoliaResponse.hits,
   ...moreHitsForSimilarOffersPlaylist,
 ]
+
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers('legacy')
@@ -36,7 +37,7 @@ describe('<OfferBody /> - Analytics', () => {
     })
   }
 
-  it('should trigger logOfferSeenDuration after unmount', async () => {
+  it('should log when the user has seen the offer after unmount', async () => {
     renderOfferBodyForAnalytics()
 
     await screen.findByText(offerResponseSnap.name)
@@ -47,7 +48,7 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultAccessibilityModalities once when opening accessibility modalities', async () => {
+  it('should log that the user has open accessibility modalities only once', async () => {
     renderOfferBodyForAnalytics()
 
     const accessibilityButton = await screen.findByText('Accessibilité')
@@ -58,7 +59,7 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', async () => {
+  it('should log that the user has open withdrawal modalities only once', async () => {
     renderOfferBodyForAnalytics()
 
     const withdrawalButton = await screen.findByText('Modalités de retrait')
@@ -70,7 +71,7 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
-  it('should log Share with chosen social medium on social medium button press', async () => {
+  it('should log when the user share the offer on a certain medium', async () => {
     mockCheckInstalledApps.mockResolvedValueOnce({
       [Network.snapchat]: true,
     })
@@ -87,7 +88,7 @@ describe('<OfferBody /> - Analytics', () => {
     })
   })
 
-  it('should open native share modal on "Plus d’options" press', async () => {
+  it('should log when the user press "Plus d’options" share button', async () => {
     renderOfferBodyForAnalytics()
 
     const otherButton = await screen.findByText('Plus d’options')
@@ -101,7 +102,7 @@ describe('<OfferBody /> - Analytics', () => {
     })
   })
 
-  it('should log analytics event ConsultVenue when pressing on the venue banner', async () => {
+  it('should log when the user press the venue banner', async () => {
     renderOfferBodyForAnalytics()
 
     const venueBannerComponent = await screen.findByTestId(`Lieu ${offerResponseSnap.venue.name}`)
