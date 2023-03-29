@@ -1,29 +1,18 @@
-import { rest } from 'msw'
+import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
-import { offerId, renderOfferBodyPage } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/firebase/analytics'
-import { server } from 'tests/server'
-import { act, fireEvent, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
 
-server.use(
-  rest.get(
-    `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
-    (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          hits: [],
-        })
-      )
-    }
-  )
-)
+jest.mock('features/auth/context/AuthContext')
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
@@ -39,7 +28,7 @@ describe('<OfferBody /> - Analytics', () => {
   }
 
   it('should trigger logOfferSeenDuration after unmount', async () => {
-    renderOfferBodyPage()
+    renderOfferBodyForAnalytics()
 
     await screen.findByText(offerResponseSnap.name)
     expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
@@ -50,7 +39,7 @@ describe('<OfferBody /> - Analytics', () => {
   })
 
   it('should log ConsultAccessibilityModalities once when opening accessibility modalities', async () => {
-    renderOfferBodyPage()
+    renderOfferBodyForAnalytics()
 
     const accessibilityButton = await screen.findByText('Accessibilité')
     trigger(accessibilityButton)
@@ -61,9 +50,10 @@ describe('<OfferBody /> - Analytics', () => {
   })
 
   it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', async () => {
-    renderOfferBodyPage()
+    renderOfferBodyForAnalytics()
 
     const withdrawalButton = await screen.findByText('Modalités de retrait')
+
     trigger(withdrawalButton)
     expect(analytics.logConsultWithdrawal).toHaveBeenNthCalledWith(1, { offerId })
 
@@ -75,7 +65,7 @@ describe('<OfferBody /> - Analytics', () => {
     mockCheckInstalledApps.mockResolvedValueOnce({
       [Network.snapchat]: true,
     })
-    renderOfferBodyPage()
+    renderOfferBodyForAnalytics()
 
     const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.snapchat]}`)
     fireEvent.press(socialMediumButton)
@@ -89,7 +79,7 @@ describe('<OfferBody /> - Analytics', () => {
   })
 
   it('should open native share modal on "Plus d’options" press', async () => {
-    renderOfferBodyPage()
+    renderOfferBodyForAnalytics()
 
     const otherButton = await screen.findByText('Plus d’options')
     fireEvent.press(otherButton)
@@ -102,3 +92,15 @@ describe('<OfferBody /> - Analytics', () => {
     })
   })
 })
+
+const onScroll = jest.fn()
+const renderOfferBodyForAnalytics = (
+  additionalProps: {
+    sameCategorySimilarOffers?: SearchHit[]
+    otherCategoriesSimilarOffers?: SearchHit[]
+  } = {}
+) =>
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(<OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />)
+  )
