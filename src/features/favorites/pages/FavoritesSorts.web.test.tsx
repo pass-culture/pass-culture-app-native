@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { GeolocPermissionState, GeolocationError, GeoCoordinates, Position } from 'libs/geolocation'
+import { GeolocPermissionState, GeolocationError, GeoCoordinates } from 'libs/geolocation'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>
@@ -11,7 +11,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () =>
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 const mockPermissionState = GeolocPermissionState.GRANTED
-const mockPosition: Position = DEFAULT_POSITION
+const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 const mockPositionError: GeolocationError | null = null
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({

@@ -3,7 +3,7 @@ import React from 'react'
 import { Location } from 'features/search/components/sections/Location/Location'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType, RadioButtonLocation } from 'features/search/enums'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { render, fireEvent, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -17,7 +17,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: Position = DEFAULT_POSITION
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({

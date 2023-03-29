@@ -1,9 +1,9 @@
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 
 export const adaptGeolocationParameters = (
-  geolocation: Position,
+  geolocation: GeoCoordinates | null,
   isGeolocated?: boolean,
   aroundRadius?: number
 ): SearchState['locationFilter'] | undefined => {

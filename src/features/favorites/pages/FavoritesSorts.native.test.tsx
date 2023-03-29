@@ -11,7 +11,6 @@ import {
   GeolocationError,
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-  Position,
 } from 'libs/geolocation'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
@@ -21,7 +20,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () =>
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
-let mockPosition: Position = DEFAULT_POSITION
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()

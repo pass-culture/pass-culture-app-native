@@ -1,5 +1,5 @@
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 
 export const getRecommendationEndpoint = ({
   userId,
@@ -7,12 +7,11 @@ export const getRecommendationEndpoint = ({
   modelEndpoint,
 }: {
   userId: number | undefined
-  position: Position
+  position: GeoCoordinates | null
   modelEndpoint: string | undefined
 }): string | undefined => {
   let queryParams = ''
   if (!userId) return undefined
-  if (position === undefined) return undefined
   const endpoint = `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${userId}?token=${env.RECOMMENDATION_TOKEN}`
   if (modelEndpoint) {
     queryParams = queryParams + `&modelEndpoint=${modelEndpoint}`

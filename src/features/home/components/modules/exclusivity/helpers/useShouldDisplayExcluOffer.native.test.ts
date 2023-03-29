@@ -6,7 +6,7 @@ import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exc
 import { ExclusivityModule } from 'features/home/types'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { renderHook } from 'tests/utils'
 
 let display: ExclusivityModule['displayParameters'] = {
@@ -14,7 +14,7 @@ let display: ExclusivityModule['displayParameters'] = {
   isGeolocated: true,
 }
 
-let mockPosition: Position = null
+let mockPosition: GeoCoordinates | null = null
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     position: mockPosition,

@@ -8,11 +8,11 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 
 type FetchMultipleOffersArgs = {
   paramsList: SearchState[]
-  userLocation: Position
+  userLocation: GeoCoordinates | null
   isUserUnderage: boolean
 }
 

@@ -10,9 +10,6 @@ export type GeoCoordinates = {
   longitude: number
 }
 
-// A position is either not yet asked (undefined), refused (null) or accepted and retrieved (coordinates)
-export type Position = GeoCoordinates | null | undefined
-
 export type RequestGeolocPermissionParams = {
   onAcceptance?: () => void
   onRefusal?: () => void
@@ -22,9 +19,9 @@ export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type IGeolocationContext = {
-  position: Position
+  position: GeoCoordinates | null
   positionError: GeolocationError | null
-  permissionState: GeolocPermissionState | undefined
+  permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void
