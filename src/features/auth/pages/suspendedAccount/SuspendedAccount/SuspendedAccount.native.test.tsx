@@ -49,17 +49,15 @@ describe('<SuspendedAccount />', () => {
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     render(<SuspendedAccount />)
 
-    fireEvent.press(screen.getByText('Réactiver mon compte'))
+    fireEvent.press(await screen.findByText('Réactiver mon compte'))
 
     expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     useMutationCallbacks.onSuccess()
-    await waitFor(() => {
-      queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
-        expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
-      )
-      expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
-    })
+    queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
+      expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
+    )
+    expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
   })
 
   it('should log analytics and show error snackbar on error', async () => {

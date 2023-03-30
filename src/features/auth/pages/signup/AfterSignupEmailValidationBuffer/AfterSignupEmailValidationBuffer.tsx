@@ -13,6 +13,8 @@ import { analytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
+export const DELAY_DURATION = 2000
+
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
 
@@ -20,7 +22,7 @@ export function AfterSignupEmailValidationBuffer() {
   const delayedReplace: typeof replace = (...args: Parameters<typeof replace>) => {
     setTimeout(() => {
       replace(...args)
-    }, 2000)
+    }, DELAY_DURATION)
   }
 
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
