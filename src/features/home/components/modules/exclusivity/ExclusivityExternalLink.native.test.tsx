@@ -1,12 +1,14 @@
 import React from 'react'
+import { Linking } from 'react-native'
 
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { navigateFromRef } from 'features/navigation/navigationRef'
+import { linking } from 'features/navigation/RootNavigator/linking'
 import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+jest.mock('features/navigation/navigationRef')
 
 const props = {
   title: 'Image d’Adèle',
@@ -32,11 +34,25 @@ describe('ExclusivityExternalLink component', () => {
     )
   })
 
-  it('should open url when clicking on the component', () => {
-    const { getByTestId } = render(<ExclusivityExternalLink {...props} />)
+  it('should open external url when clicking on the component and url is not in-app url', async () => {
+    render(<ExclusivityExternalLink {...props} />)
 
-    fireEvent.press(getByTestId('Image d’Adèle'))
+    fireEvent.press(screen.getByTestId('Image d’Adèle'))
 
-    expect(openUrl).toHaveBeenCalledWith(props.url, undefined, false)
+    expect(Linking.openURL).toHaveBeenCalledWith(props.url)
   })
+
+  it.each(linking.prefixes)(
+    'should open internal url when clicking on the component and url is prefixed with %s',
+    (urlPrefix) => {
+      const internalUrl = `${urlPrefix}profil`
+      render(<ExclusivityExternalLink {...props} url={internalUrl} />)
+
+      fireEvent.press(screen.getByTestId('Image d’Adèle'))
+
+      expect(navigateFromRef).toHaveBeenCalledWith('TabNavigator', {
+        screen: 'Profile',
+      })
+    }
+  )
 })
