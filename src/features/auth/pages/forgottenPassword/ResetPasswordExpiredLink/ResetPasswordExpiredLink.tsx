@@ -19,7 +19,7 @@ export function ResetPasswordExpiredLink(props: Props) {
 
   const { email } = props.route.params
   const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
-    QueryKeys.RESET_PASSWORD_EXPIRED_LINK,
+    [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
     () => {
       analytics.logResendEmailResetPasswordExpiredLink()
       return api.postnativev1requestPasswordReset({ email })

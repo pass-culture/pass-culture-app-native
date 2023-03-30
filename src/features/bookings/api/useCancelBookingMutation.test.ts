@@ -27,8 +27,8 @@ describe('[hook] useCancelBookingMutation', () => {
     const { mutationOptions } = returnedMutationValue
     mutationOptions.onSuccess()
     expect(onSuccess).toHaveBeenCalledWith()
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.USER_PROFILE)
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.BOOKINGS)
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.USER_PROFILE])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.BOOKINGS])
   })
 
   it('call api to cancel a booking', () => {

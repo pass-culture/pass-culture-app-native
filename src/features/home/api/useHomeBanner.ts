@@ -9,7 +9,7 @@ export function useHomeBanner(isGeolocated: boolean) {
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
 
-  return useQuery(QueryKeys.HOME_BANNER, () => api.getnativev1banner(isGeolocated), {
+  return useQuery([QueryKeys.HOME_BANNER], () => api.getnativev1banner(isGeolocated), {
     enabled: !!netInfo.isConnected && isLoggedIn,
   })
 }

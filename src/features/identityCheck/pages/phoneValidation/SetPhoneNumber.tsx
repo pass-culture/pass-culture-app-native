@@ -81,7 +81,7 @@ export const SetPhoneNumber = () => {
         },
       })
       navigateToNextScreen()
-      queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
+      queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
     },
     onError: (error: ApiError | unknown) => {
       dispatch({

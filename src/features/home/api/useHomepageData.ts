@@ -21,7 +21,7 @@ const getHomepageNatifContent = async () => {
 }
 const useGetHomepageList = () => {
   const { data: homepages } = useQuery<Homepage[]>(
-    QueryKeys.HOMEPAGE_MODULES,
+    [QueryKeys.HOMEPAGE_MODULES],
     getHomepageNatifContent,
     {
       staleTime: STALE_TIME_CONTENTFUL,

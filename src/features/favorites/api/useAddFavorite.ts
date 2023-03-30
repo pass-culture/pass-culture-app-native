@@ -18,29 +18,29 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
 
   return useMutation((body: FavoriteRequest) => api.postnativev1mefavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
-        QueryKeys.FAVORITES
-      )
+      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
+        QueryKeys.FAVORITES,
+      ])
 
       if (previousFavorites) {
         const favorites = [
           ...previousFavorites.favorites.filter((favoris) => favoris.offer.id !== data.offer.id),
           data,
         ]
-        queryClient.setQueryData(QueryKeys.FAVORITES, { ...previousFavorites, favorites })
-        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, { count: favorites.length })
+        queryClient.setQueryData([QueryKeys.FAVORITES], { ...previousFavorites, favorites })
+        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       } else {
-        queryClient.invalidateQueries(QueryKeys.FAVORITES)
-        queryClient.invalidateQueries(QueryKeys.FAVORITES_COUNT)
+        queryClient.invalidateQueries([QueryKeys.FAVORITES])
+        queryClient.invalidateQueries([QueryKeys.FAVORITES_COUNT])
       }
       if (onSuccess) {
         onSuccess(data)
       }
     },
     onMutate: ({ offerId }) => {
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
-        QueryKeys.FAVORITES
-      )
+      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
+        QueryKeys.FAVORITES,
+      ])
       if (previousFavorites) {
         const favorites = [
           ...previousFavorites.favorites,
@@ -51,12 +51,12 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
           },
         ]
 
-        queryClient.setQueryData(QueryKeys.FAVORITES, {
+        queryClient.setQueryData([QueryKeys.FAVORITES], {
           ...previousFavorites,
           nbFavorites: favorites.length,
           favorites,
         })
-        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, { count: favorites.length })
+        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       }
 
       return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
@@ -74,8 +74,8 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
         timeout: SNACK_BAR_TIME_OUT,
       })
       if (context?.previousFavorites) {
-        queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
-        queryClient.setQueryData(QueryKeys.FAVORITES_COUNT, {
+        queryClient.setQueryData([QueryKeys.FAVORITES], context.previousFavorites)
+        queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], {
           count: context.previousFavorites.length,
         })
       }

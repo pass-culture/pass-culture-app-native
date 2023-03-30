@@ -45,7 +45,7 @@ export const useSubscriptionNavigation = (): {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }
-      await queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      await queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
       invalidateStepperInfoQuery()
       setIsSavingCheckpoint(false)
       dispatch({ type: 'SET_STEP', payload: nextStep })

@@ -9,7 +9,7 @@ export const useGetStepperInfo = (): {
   title: SubscriptionStepperResponse['title']
   subtitle?: SubscriptionStepperResponse['subtitle'] | null
 } => {
-  const { data } = useQuery(QueryKeys.STEPPER_INFO, () => api.getnativev1subscriptionstepper())
+  const { data } = useQuery([QueryKeys.STEPPER_INFO], () => api.getnativev1subscriptionstepper())
   if (data === undefined) {
     return { stepToDisplay: [], title: '' }
   }

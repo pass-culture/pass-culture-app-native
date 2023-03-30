@@ -56,7 +56,7 @@ describe('<ReportOfferOtherReason />', () => {
         message: 'Ton signalement a bien été pris en compte',
         timeout: 5000,
       })
-      expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.REPORTED_OFFERS)
+      expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REPORTED_OFFERS])
     })
 
     it('should show error snackbar on report offer mutation error', () => {

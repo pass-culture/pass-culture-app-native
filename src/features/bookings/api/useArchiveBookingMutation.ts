@@ -20,7 +20,7 @@ export const useArchiveBookingMutation = ({
     () => api.postnativev1bookingsbookingIdtoggleDisplay(bookingId, { ended: true }),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(QueryKeys.BOOKINGS)
+        queryClient.invalidateQueries([QueryKeys.BOOKINGS])
         onSuccess()
       },
       onError,

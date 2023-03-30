@@ -36,7 +36,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
 
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
     onSuccess: () => {
-      queryClient.invalidateQueries(QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS)
+      queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
       props.dismissModal()
     },
     onError: (error: ApiError | unknown) => {

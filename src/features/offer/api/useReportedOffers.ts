@@ -13,7 +13,7 @@ export const useReportedOffers = () => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<UserReportedOffersResponse>(
-    QueryKeys.REPORTED_OFFERS,
+    [QueryKeys.REPORTED_OFFERS],
     () => api.getnativev1offersreports(),
     {
       enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn,

@@ -23,7 +23,7 @@ export const NavigationErrors: FunctionComponent = () => {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
-    QueryKeys.ERROR_ASYNC,
+    [QueryKeys.ERROR_ASYNC],
     () => errorAsync(),
     {
       cacheTime: 0,

@@ -8,7 +8,7 @@ export const useCheckHasCurrentEmailChange = () => {
   const netInfo = useNetInfoContext()
 
   const { data: currentEmailChangeTimestampResponse } = useQuery(
-    QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP,
+    [QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP],
     () => api.getnativev1profiletokenExpiration(),
     { enabled: !!netInfo.isConnected }
   )

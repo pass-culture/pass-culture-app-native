@@ -24,7 +24,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
   const { mutate } = useReportOfferMutation({
     offerId: props.offerId,
     onSuccess: () => {
-      queryClient.invalidateQueries(QueryKeys.REPORTED_OFFERS)
+      queryClient.invalidateQueries([QueryKeys.REPORTED_OFFERS])
       showSuccessSnackBar({
         message: 'Ton signalement a bien été pris en compte',
         timeout: SNACK_BAR_TIME_OUT,

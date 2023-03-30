@@ -16,7 +16,7 @@ export function useIdentificationUrl() {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { mutate: postIdentificationUrl } = useMutation(
-    MutationKeys.IDENTIFICATION_URL,
+    [MutationKeys.IDENTIFICATION_URL],
     async () => {
       try {
         const data = await api.postnativev1ubbleIdentification({ redirectUrl: REDIRECT_URL_UBBLE })

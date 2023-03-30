@@ -18,7 +18,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { email } = props.route.params
   const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery(
-    QueryKeys.SIGNUP_CONFIRMATION_EXPIRED_LINK,
+    [QueryKeys.SIGNUP_CONFIRMATION_EXPIRED_LINK],
     signupConfirmationExpiredLink,
     {
       cacheTime: 0,
