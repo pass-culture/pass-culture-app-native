@@ -20,6 +20,8 @@ interface Props {
 export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   const label = 'label' in step ? step.label : step.title
   const Icon = step.icon[state]
+  // TODO(PC-20931): it fixes typing. Remove next line when deleting DeprecatedStepConfig type
+  const subtitle = 'subtitle' in step ? step.subtitle : null
 
   const iconLabel = state === StepButtonState.COMPLETED ? 'Complété' : 'Non complété'
   const accessibilityLabel = `${label} ${iconLabel}`
@@ -43,6 +45,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       accessibilityLabel={accessibilityLabel}>
       <StyleContainer LeftIcon={Icon}>
         <StyledButtonText state={state}>{label}</StyledButtonText>
+        {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
       </StyleContainer>
     </StyledTouchableOpacity>
   )
@@ -114,3 +117,7 @@ const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
     color: state === StepButtonState.CURRENT ? theme.colors.black : theme.colors.greyDark,
   })
 )
+
+const StepSubtitle = styled(Typo.Caption)<{ state: StepButtonState }>(({ state, theme }) => ({
+  color: state === StepButtonState.CURRENT ? theme.colors.greyDark : theme.colors.greySemiDark,
+}))
