@@ -34,6 +34,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
       return result
     } catch (err) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
+      return null
     }
   }
 
