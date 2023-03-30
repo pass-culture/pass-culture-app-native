@@ -49,4 +49,5 @@ export enum StepButtonState {
   'COMPLETED' = 'completed',
   'CURRENT' = 'current',
   'DISABLED' = 'disabled',
+  'RETRY' = 'retry',
 }

@@ -96,6 +96,7 @@ const styleContainer = {
   [StepButtonState.COMPLETED]: CompletedContainer,
   [StepButtonState.CURRENT]: CurrentContainer,
   [StepButtonState.DISABLED]: DisabledContainer,
+  [StepButtonState.RETRY]: CurrentContainer,
 }
 
 const IconContainer = styled.View({ padding: getSpacing(4) })

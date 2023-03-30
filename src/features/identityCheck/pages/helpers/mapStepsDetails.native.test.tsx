@@ -6,6 +6,7 @@ import {
   SubscriptionStepperResponse,
   SubscriptionStepTitle,
 } from 'api/gen'
+import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import {
@@ -22,13 +23,13 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay'] = [
   {
     name: SubscriptionStep['phone-validation'],
-    completionState: SubscriptionStepCompletionState.disabled,
+    completionState: SubscriptionStepCompletionState.current,
     title: SubscriptionStepTitle['Numéro de téléphone'],
     subtitle: 'Sous-titre Numéro de téléphone',
   },
   {
     name: SubscriptionStep['identity-check'],
-    completionState: SubscriptionStepCompletionState.current,
+    completionState: SubscriptionStepCompletionState.retry,
     title: SubscriptionStepTitle['Identification'],
     subtitle: 'Sous-titre Identification',
   },
@@ -40,7 +41,7 @@ const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay']
   },
   {
     name: SubscriptionStep['honor-statement'],
-    completionState: SubscriptionStepCompletionState.retry,
+    completionState: SubscriptionStepCompletionState.disabled,
     title: SubscriptionStepTitle['Confirmation'],
     subtitle: 'Confirmation',
   },
@@ -56,6 +57,7 @@ describe('mapStepsDetails', () => {
         completed: () => (
           <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
         ),
+        retry: () => <IconRetryStep Icon={BicolorProfile} testID="phone-validation-retry-step" />,
       },
     },
     {
@@ -65,6 +67,7 @@ describe('mapStepsDetails', () => {
         disabled: BicolorProfile,
         current: BicolorProfile,
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
       },
     },
     {
@@ -74,6 +77,7 @@ describe('mapStepsDetails', () => {
         disabled: BicolorIdCard,
         current: BicolorIdCard,
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorProfile} testID="identification-retry-step" />,
       },
     },
     {
@@ -83,6 +87,7 @@ describe('mapStepsDetails', () => {
         disabled: BicolorLegal,
         current: BicolorLegal,
         completed: () => <IconStepDone Icon={BicolorLegal} testID="Confirmation-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorProfile} testID="Confirmation-retry-step" />,
       },
     },
   ]
@@ -94,11 +99,12 @@ describe('mapStepsDetails', () => {
         disabled: BicolorSmartphone,
         current: BicolorSmartphone,
         completed: expect.any(Function),
+        retry: expect.any(Function),
       },
       screens: ['SetPhoneNumber'],
       title: 'Numéro de téléphone',
       subtitle: 'Sous-titre Numéro de téléphone',
-      stepState: StepButtonState.DISABLED,
+      stepState: StepButtonState.CURRENT,
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,
@@ -106,11 +112,12 @@ describe('mapStepsDetails', () => {
         disabled: BicolorIdCard,
         current: BicolorIdCard,
         completed: expect.any(Function),
+        retry: expect.any(Function),
       },
       screens: ['SelectIDOrigin'],
       title: 'Identification',
       subtitle: 'Sous-titre Identification',
-      stepState: StepButtonState.CURRENT,
+      stepState: StepButtonState.RETRY,
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
@@ -118,11 +125,12 @@ describe('mapStepsDetails', () => {
         disabled: BicolorLegal,
         current: BicolorLegal,
         completed: expect.any(Function),
+        retry: expect.any(Function),
       },
       screens: ['IdentityCheckHonor'],
       title: 'Confirmation',
       subtitle: 'Confirmation',
-      stepState: StepButtonState.CURRENT,
+      stepState: StepButtonState.DISABLED,
     },
   ]
 

@@ -3,6 +3,7 @@ import React from 'react'
 import { IdentityCheckMethod } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
@@ -36,6 +37,7 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
       },
       label: 'Profil',
       screens: hasSchoolTypes
@@ -54,6 +56,7 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
       label: 'Identification',
       screens:
@@ -65,6 +68,7 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorLegal} testID="confirmation-retry-step" />,
       },
       label: 'Confirmation',
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
@@ -80,6 +84,9 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
           current: BicolorSmartphone,
           completed: () => (
             <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+          ),
+          retry: () => (
+            <IconRetryStep Icon={BicolorSmartphone} testID="phone-validation-retry-step" />
           ),
         },
         label: 'Numéro de téléphone',
