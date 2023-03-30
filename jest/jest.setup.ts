@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
-jest.unmock('react-query')
+jest.unmock('@tanstack/react-query')
 /* We disable the following warning, which can be safely ignored as the code
   is not executed on a device :
   "Animated: `useNativeDriver` is not supported because the native animated module is missing.
