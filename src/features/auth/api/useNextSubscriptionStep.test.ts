@@ -19,7 +19,7 @@ const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.unmock('react-query')
+jest.unmock('@tanstack/react-query')
 describe('useNextSubscriptionStep', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 

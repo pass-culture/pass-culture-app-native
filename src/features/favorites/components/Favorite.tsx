@@ -1,6 +1,6 @@
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
-import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'

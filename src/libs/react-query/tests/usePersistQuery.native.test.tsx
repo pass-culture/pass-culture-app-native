@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { QueryFunction } from 'react-query/types/core/types'
+import { UseQueryOptions, QueryFunction, QueryKey } from '@tanstack/react-query'
+import React from 'react'
 
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -115,7 +116,7 @@ describe('usePersistQuery', () => {
             usePersistQuery(queryKey, queryFn, {
               // @ts-ignore cast for select occur on return
               select(data) {
-                cursor = data.find((item) => item.id === offlineData[1].id) as TestData
+                cursor = data.find((item: TestData) => item.id === offlineData[1].id) as TestData
                 return cursor
               },
             }),

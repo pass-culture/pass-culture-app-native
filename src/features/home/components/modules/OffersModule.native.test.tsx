@@ -40,7 +40,7 @@ let mockNbHits = mockedAlgoliaResponse.nbHits
 jest.mock('features/home/api/useOfferModule', () => ({
   useOfferModule: jest.fn(() => ({ hits: mockHits, nbHits: mockNbHits })),
 }))
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/auth/context/AuthContext')
 
 const mockSubcategories = placeholderData.subcategories

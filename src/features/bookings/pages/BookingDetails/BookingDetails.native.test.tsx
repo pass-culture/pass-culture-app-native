@@ -1,6 +1,6 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import cloneDeep from 'lodash/cloneDeep'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'

@@ -8,7 +8,7 @@ import { render, fireEvent, screen } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/auth/context/AuthContext')
 
 const mockUseBooking = useBookingContext as jest.Mock

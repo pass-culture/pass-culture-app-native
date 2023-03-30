@@ -1,5 +1,5 @@
+import { QueryObserverResult } from '@tanstack/react-query'
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
@@ -9,7 +9,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('EndedBookings', () => {
   afterEach(jest.restoreAllMocks)

@@ -28,8 +28,8 @@ const mockSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('api/api')
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
+jest.mock('@tanstack/react-query', () => ({
+  ...jest.requireActual('@tanstack/react-query'),
   useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
   usePersistQuery: jest.fn(),
 }))

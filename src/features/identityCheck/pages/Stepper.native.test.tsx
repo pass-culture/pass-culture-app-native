@@ -62,7 +62,7 @@ mockUseStepperInfo.mockReturnValue({
   subtitle: 'Débloque ton crédit',
 })
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 

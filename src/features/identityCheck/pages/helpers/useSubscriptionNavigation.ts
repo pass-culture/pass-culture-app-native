@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'

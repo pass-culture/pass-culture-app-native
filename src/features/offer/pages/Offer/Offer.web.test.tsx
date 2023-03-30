@@ -5,7 +5,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockedOffer: Partial<OfferResponse> | undefined = offerResponseSnap
 jest.mock('features/offer/api/useOffer', () => ({

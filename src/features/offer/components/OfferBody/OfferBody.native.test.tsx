@@ -1,8 +1,8 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React from 'react'
 import { Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
-import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'

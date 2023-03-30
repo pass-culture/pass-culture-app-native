@@ -5,7 +5,7 @@ import { render, act, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/auth/context/AuthContext')
 

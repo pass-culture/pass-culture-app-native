@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useMutation } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
-import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { ChangeBeneficiaryEmailBody } from 'api/gen'

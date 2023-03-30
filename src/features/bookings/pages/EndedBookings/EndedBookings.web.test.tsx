@@ -1,5 +1,5 @@
+import { QueryObserverResult } from '@tanstack/react-query'
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
 
 import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
@@ -8,7 +8,7 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EndedBookings } from './EndedBookings'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('EndedBookings', () => {
   describe('Accessibility', () => {

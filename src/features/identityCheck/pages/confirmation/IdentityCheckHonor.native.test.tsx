@@ -1,6 +1,6 @@
+import { useMutation } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React from 'react'
-import { useMutation } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -9,7 +9,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, useMutationFactory, waitFor } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 

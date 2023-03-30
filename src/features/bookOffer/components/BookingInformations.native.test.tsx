@@ -11,7 +11,7 @@ import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/bookOffer/context/useBookingContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')

@@ -13,7 +13,7 @@ const displayParameters: DisplayParametersFields = {
   layout: 'one-item-medium',
 }
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/home/api/useHomeRecommendedHits', () => ({
   useHomeRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
 }))

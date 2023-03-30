@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import flatten from 'lodash/flatten'
 import { useMemo, useRef } from 'react'
-import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'

@@ -8,7 +8,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/profile/helpers/useIsUserUnderage')
 jest.mock('features/identityCheck/pages/profile/helpers/schoolTypes')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

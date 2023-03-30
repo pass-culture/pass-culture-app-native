@@ -3,7 +3,7 @@ import React from 'react'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({

@@ -1,7 +1,7 @@
 import { ANIMATION_DELAY, useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { act, renderHook } from 'tests/utils'
 
-jest.mock('react-query', () => ({
+jest.mock('@tanstack/react-query', () => ({
   useIsFetching: jest.fn(() => 0).mockImplementationOnce(() => 1),
   useQueryClient: jest
     .fn(() => ({

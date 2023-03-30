@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
 
 import { VenuesModule } from 'features/home/types'
 import { VenueHit } from 'libs/algolia'

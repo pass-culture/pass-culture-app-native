@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ChangePassword } from './ChangePassword'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({

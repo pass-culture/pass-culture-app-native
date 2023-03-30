@@ -1,5 +1,5 @@
+import { QueryClient } from '@tanstack/react-query'
 import React from 'react'
-import { QueryClient } from 'react-query'
 
 import { CategoryIdEnum, OfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
@@ -9,7 +9,7 @@ import { render, screen, waitFor } from 'tests/utils'
 import { OfferIconCaptions } from './OfferIconCaptions'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
+  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
 }))
 
 const defaultBookableStocks: OfferResponse['stocks'] = [

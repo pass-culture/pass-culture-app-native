@@ -31,7 +31,7 @@ import * as useVersion from 'ui/hooks/useVersion'
 
 import { Profile } from './Profile'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({

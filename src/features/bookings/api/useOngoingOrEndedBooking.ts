@@ -1,4 +1,4 @@
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 
 import { BookingReponse, BookingsResponse } from 'api/gen'
 import { useBookings } from 'features/bookings/api'

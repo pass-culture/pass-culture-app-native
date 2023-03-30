@@ -8,7 +8,7 @@ import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/offer/api/useOffer')
 
 const mockSubcategories = placeholderData.subcategories

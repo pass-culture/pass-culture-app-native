@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { AfterChangeEmailValidationBuffer } from './AfterChangeEmailValidationBuffer'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<AfterChangeEmailValidationBuffer/>', () => {
   describe('Accessibility', () => {

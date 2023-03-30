@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
@@ -24,7 +24,7 @@ export const getUbbleETAMessage = () =>
     )
 
 export const useUbbleETAMessage = () => {
-  return useQuery<string>(QueryKeys.FIRESTORE_UBBLE_ETA_MESSAGE, () => getUbbleETAMessage(), {
+  return useQuery<string>([QueryKeys.FIRESTORE_UBBLE_ETA_MESSAGE], () => getUbbleETAMessage(), {
     staleTime: STALE_TIME_FIRESTORE_UBBLE_ETA_MESSAGE,
   })
 }

@@ -1,5 +1,5 @@
+import { UseMutationResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
-import { UseMutationResult } from 'react-query'
 
 import * as algoliaRecommendedHitsAPI from 'features/home/api/useAlgoliaRecommendedHits'
 import {

@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { Profile } from './Profile'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<Profile/>', () => {
   describe('Accessibility', () => {

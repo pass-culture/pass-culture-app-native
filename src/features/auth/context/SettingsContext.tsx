@@ -1,5 +1,5 @@
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import React, { memo, useContext, useMemo } from 'react'
-import { useQuery, UseQueryResult } from 'react-query'
 
 import { api } from 'api/api'
 import { SettingsResponse } from 'api/gen'

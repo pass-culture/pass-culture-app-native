@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
+import { UseQueryResult } from '@tanstack/react-query'
 import React, { useCallback, useMemo } from 'react'
 import { useForm, Controller, FieldPath, ControllerRenderProps } from 'react-hook-form'
-import { UseQueryResult } from 'react-query'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 

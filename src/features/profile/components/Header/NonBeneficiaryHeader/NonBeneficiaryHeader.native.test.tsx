@@ -8,7 +8,7 @@ import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockedNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => {

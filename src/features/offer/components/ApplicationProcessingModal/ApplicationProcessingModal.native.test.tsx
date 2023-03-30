@@ -6,7 +6,7 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const hideModal = jest.fn()
 const offerId = 1

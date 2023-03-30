@@ -1,6 +1,6 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
+import * as reactQueryAPI from '@tanstack/react-query'
 import { rest } from 'msw'
-import * as reactQueryAPI from 'react-query'
 
 import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'

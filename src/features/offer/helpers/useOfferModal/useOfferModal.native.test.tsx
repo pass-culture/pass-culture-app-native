@@ -6,7 +6,7 @@ import { OfferModalProps, useOfferModal } from 'features/offer/helpers/useOfferM
 import { renderHook, render } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockBookingOfferModal = <Text>BookingOfferModal</Text>
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({

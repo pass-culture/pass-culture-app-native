@@ -1,6 +1,6 @@
+import { QueryObserverResult } from '@tanstack/react-query'
 import pick from 'lodash/pick'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { QueryObserverResult } from 'react-query'
 
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'

@@ -5,7 +5,7 @@ import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicatio
 import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const hideModal = jest.fn()
 const offerId = 1

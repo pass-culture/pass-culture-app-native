@@ -10,7 +10,7 @@ import { VerifyEligibility } from './VerifyEligibility'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 
 describe('<VerifyEligibility />', () => {

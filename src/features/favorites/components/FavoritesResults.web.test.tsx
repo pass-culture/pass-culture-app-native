@@ -1,6 +1,6 @@
+import { QueryObserverSuccessResult, UseMutationResult } from '@tanstack/react-query'
 import React from 'react'
 import { Text as MockText } from 'react-native'
-import { QueryObserverSuccessResult, UseMutationResult } from 'react-query'
 
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useFavorites, useRemoveFavorite } from 'features/favorites/api'

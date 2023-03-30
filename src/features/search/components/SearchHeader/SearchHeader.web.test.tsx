@@ -9,7 +9,7 @@ import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('react-instantsearch-hooks', () => ({
   useSearchBox: () => ({

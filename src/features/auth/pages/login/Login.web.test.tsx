@@ -8,7 +8,7 @@ import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('uuid', () => {
   let value = 0

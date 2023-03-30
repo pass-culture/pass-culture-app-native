@@ -1,5 +1,5 @@
+import { useMutation } from '@tanstack/react-query'
 import React from 'react'
-import { useMutation } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { render, screen, waitFor } from 'tests/utils'
@@ -7,7 +7,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { AfterChangeEmailValidationBuffer } from './AfterChangeEmailValidationBuffer'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockedUseMutation = jest.mocked(useMutation)
 const mockUseMutationSuccess = () => {

@@ -37,7 +37,7 @@ jest.mock('features/identityCheck/api/useProfileOptions', () => {
 
 const mockUseIdentityCheckContext = useSubscriptionContext as jest.Mock
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 mockUseIdentityCheckContext.mockImplementation(() => ({
   dispatch: jest.fn(),

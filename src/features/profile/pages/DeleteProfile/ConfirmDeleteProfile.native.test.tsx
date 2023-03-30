@@ -1,5 +1,5 @@
+import { useMutation } from '@tanstack/react-query'
 import React from 'react'
-import { useMutation } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
@@ -15,7 +15,7 @@ import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
 
 const mockedUseMutation = jest.mocked(useMutation)
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({

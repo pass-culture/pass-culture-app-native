@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'

@@ -6,7 +6,7 @@ import { mockedFullAddress as address } from 'libs/address/fixtures/mockedFormat
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { fireEvent, render } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))

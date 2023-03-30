@@ -37,7 +37,7 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
   setIsLoggedIn: jest.fn(),
 }) as jest.Mock
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()

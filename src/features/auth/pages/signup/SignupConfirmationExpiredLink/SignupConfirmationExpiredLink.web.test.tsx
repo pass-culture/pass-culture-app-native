@@ -6,7 +6,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },

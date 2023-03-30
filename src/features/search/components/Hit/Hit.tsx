@@ -1,5 +1,5 @@
+import { useQueryClient } from '@tanstack/react-query'
 import React from 'react'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'

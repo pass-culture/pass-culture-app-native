@@ -1,5 +1,5 @@
+import { QueryClient } from '@tanstack/react-query'
 import { rest } from 'msw'
-import { QueryClient } from 'react-query'
 
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { env } from 'libs/environment'

@@ -8,7 +8,7 @@ import { act, fireEvent, render } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')

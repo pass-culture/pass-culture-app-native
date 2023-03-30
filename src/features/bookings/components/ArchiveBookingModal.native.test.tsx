@@ -23,7 +23,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
+  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
 }))
 
 describe('<ArchiveBookingModal />', () => {

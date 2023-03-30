@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import uniqBy from 'lodash/uniqBy'
-import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'

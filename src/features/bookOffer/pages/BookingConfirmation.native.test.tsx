@@ -10,7 +10,7 @@ import { act, fireEvent, render, waitFor } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/offer/api/useOffer')
 
 jest.mock('shared/user/useAvailableCredit', () => ({
