@@ -133,7 +133,7 @@ function TestApp({
   queryFn: QueryFunction<TestData[]>
   options?: Omit<UseQueryOptions<TestData[]>, 'queryKey'>
 }) {
-  usePersistQuery<TestData[]>(queryKey, queryFn, options)
+  usePersistQuery<TestData[]>(queryKey as unknown as QueryKey, queryFn, options)
   return null
 }
 

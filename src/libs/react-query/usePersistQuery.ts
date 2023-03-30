@@ -49,12 +49,15 @@ export function usePersistQuery<
 >(
   queryKey: TQueryKey,
   queryFn: QueryFunction<TQueryFnData, TQueryKey>,
-  options?: Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, 'queryKey'>
+  options?: Omit<
+    UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
+    'queryKey' | 'initialData'
+  >
 ): UsePersistQueryResult<TData, TError> {
   const netInfo = useNetInfoContext()
   const persistData = useGetPersistData(queryKey)
 
-  const query = useQuery<TQueryFnData, TError, TData, TQueryKey>(queryKey, queryFn, {
+  const query = useQuery(queryKey, queryFn, {
     ...options,
     enabled:
       options?.enabled !== undefined
