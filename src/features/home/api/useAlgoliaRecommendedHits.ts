@@ -16,7 +16,7 @@ export const useAlgoliaRecommendedHits = (
   const moduleQueryKey = moduleId
   const { data: hits } = useQuery(
     [QueryKeys.RECOMMENDATION_HITS, moduleQueryKey],
-    async () => await fetchOfferHits({ objectIds: ids, isUserUnderage }),
+    () => fetchOfferHits({ objectIds: ids, isUserUnderage }),
     { enabled: ids.length > 0 }
   )
 

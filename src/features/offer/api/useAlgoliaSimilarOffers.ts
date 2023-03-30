@@ -12,7 +12,7 @@ export const useAlgoliaSimilarOffers = (ids: string[]): SearchHit[] | undefined 
 
   const { data: hits } = useQuery(
     [QueryKeys.SIMILAR_OFFERS, JSON.stringify(ids)],
-    async () => await fetchOfferHits({ objectIds: ids, isUserUnderage }),
+    () => fetchOfferHits({ objectIds: ids, isUserUnderage }),
     { enabled: ids.length > 0 }
   )
 
