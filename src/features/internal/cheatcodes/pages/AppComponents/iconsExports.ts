@@ -107,6 +107,7 @@ import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
 import { Sun } from 'ui/svg/icons/Sun'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Trash } from 'ui/svg/icons/Trash'
+import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
@@ -130,6 +131,7 @@ export const SocialNetworkIcons = {
 }
 
 export const SecondaryAndBiggerIcons = {
+  TryAgain,
   GreenCheck,
   ArrowAgain,
   ArrowNext,
