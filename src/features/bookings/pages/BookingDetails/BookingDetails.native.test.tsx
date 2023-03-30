@@ -68,7 +68,8 @@ describe('BookingDetails', () => {
     }))
   })
 
-  it('should call useOngoingOrEndedBooking with the right parameters', async () => {
+  // Utilise usePersistQuery à revérifier plus tard
+  it('should call useOngoingOrEndedBooking with the right parameters', () => {
     const useOngoingOrEndedBooking = jest.spyOn(
       ongoingOrEndedBookingAPI,
       'useOngoingOrEndedBooking'
@@ -77,9 +78,9 @@ describe('BookingDetails', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
 
-    await waitFor(() => {
-      expect(useOngoingOrEndedBooking).toBeCalledWith(456)
-    })
+    // await waitFor(() => {
+    expect(useOngoingOrEndedBooking).toBeCalledWith(456)
+    // })
   })
 
   it('should render correctly', async () => {
