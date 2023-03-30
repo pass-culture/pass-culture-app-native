@@ -137,17 +137,17 @@ module.exports = {
           {
             name: 'react-native',
             importNames: ['Image'],
-            message: 'use libs/resizing-image-on-demand/Image',
+            message: 'If images come from our backend, use libs/resizing-image-on-demand/Image instead. Otherwise you can use Image from react-native',
           },
           {
             name: 'react-native',
             importNames: ['ImageBackground'],
-            message: 'use libs/resizing-image-on-demand/ImageBackground',
+            message: 'If images come from our backend, use libs/resizing-image-on-demand/ImageBackground instead. Otherwise you can use ImageBackground from react-native',
           },
           {
             name: 'react-native-fast-image',
             importNames: ['default'],
-            message: 'use libs/resizing-image-on-demand/FastImage',
+            message: 'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',
           },
         ],
         patterns: [
