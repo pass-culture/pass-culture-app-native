@@ -12,7 +12,7 @@ export function useAccountSuspensionDate() {
       try {
         return await api.getnativev1accountsuspensionDate()
       } catch {
-        return undefined
+        return null
       }
     },
     { enabled: !!netInfo.isConnected }

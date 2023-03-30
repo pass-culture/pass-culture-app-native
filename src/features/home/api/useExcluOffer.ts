@@ -14,7 +14,7 @@ export const useExcluOffer = (id: number) => {
         return await api.getnativev1offerofferId(id)
       } catch (error) {
         // do nothing as an offer in contentful may not be in the backend
-        return undefined
+        return null
       }
     },
     { enabled: !!netInfo.isConnected && typeof id === 'number' }

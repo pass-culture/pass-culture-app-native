@@ -13,7 +13,7 @@ export function useAccountSuspensionStatus() {
       try {
         return await api.getnativev1accountsuspensionStatus()
       } catch {
-        return undefined
+        return null
       }
     },
     { enabled: !!netInfo.isConnected }

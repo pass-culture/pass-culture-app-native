@@ -29,8 +29,9 @@ export function SignupConfirmationExpiredLink(props: Props) {
   async function signupConfirmationExpiredLink() {
     try {
       analytics.logResendEmailSignupConfirmationExpiredLink()
-      await api.postnativev1resendEmailValidation({ email })
+      const result = await api.postnativev1resendEmailValidation({ email })
       navigate('SignupConfirmationEmailSent', { email })
+      return result
     } catch (err) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
     }

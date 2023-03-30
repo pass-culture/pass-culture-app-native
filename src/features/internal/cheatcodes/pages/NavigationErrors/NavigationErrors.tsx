@@ -36,6 +36,7 @@ export const NavigationErrors: FunctionComponent = () => {
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
     }
+    return null
   }
 
   if (screenError) {
