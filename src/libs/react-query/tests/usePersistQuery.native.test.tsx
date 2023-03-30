@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { UseQueryOptions, QueryFunction, QueryKey } from '@tanstack/react-query'
-import React from 'react'
+import { QueryFunction } from '@tanstack/react-query'
 
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
