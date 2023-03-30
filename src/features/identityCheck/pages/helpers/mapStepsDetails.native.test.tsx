@@ -97,6 +97,7 @@ describe('mapStepsDetails', () => {
       },
       screens: ['SetPhoneNumber'],
       title: 'Numéro de téléphone',
+      subtitle: 'Sous-titre Numéro de téléphone',
       stepState: StepButtonState.DISABLED,
     },
     {
@@ -108,6 +109,7 @@ describe('mapStepsDetails', () => {
       },
       screens: ['SelectIDOrigin'],
       title: 'Identification',
+      subtitle: 'Sous-titre Identification',
       stepState: StepButtonState.CURRENT,
     },
     {
@@ -119,6 +121,7 @@ describe('mapStepsDetails', () => {
       },
       screens: ['IdentityCheckHonor'],
       title: 'Confirmation',
+      subtitle: 'Confirmation',
       stepState: StepButtonState.CURRENT,
     },
   ]

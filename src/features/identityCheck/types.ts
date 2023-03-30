@@ -34,6 +34,7 @@ export interface StepConfig {
 export interface StepDetails {
   name: IdentityCheckStep
   title: string
+  subtitle?: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
   screens: SubscriptionScreen[]
   stepState: StepButtonState

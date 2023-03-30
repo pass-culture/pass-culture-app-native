@@ -24,6 +24,7 @@ export const stepsDetailsFixture: StepDetails[] = [
     },
     screens: ['BeneficiaryRequestSent'],
     title: 'Identification',
+    subtitle: 'Confirme tes informations',
     stepState: StepButtonState.CURRENT,
   },
   {

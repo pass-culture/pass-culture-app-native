@@ -197,7 +197,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#90949D",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -327,6 +327,21 @@ Array [
                   >
                     Identification
                   </Text>
+                  <Text
+                    state="current"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Confirme tes informations
+                  </Text>
                 </View>
                 <View>
                   <View
@@ -437,7 +452,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#90949D",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -546,7 +561,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#90949D",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
