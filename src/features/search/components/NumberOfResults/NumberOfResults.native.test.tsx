@@ -2,7 +2,7 @@ import React from 'react'
 
 import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { render } from 'tests/utils'
 
@@ -10,7 +10,7 @@ import { NumberOfResults } from './NumberOfResults'
 
 jest.mock('react-query')
 
-const mockPosition: Position = null
+const mockPosition: GeoCoordinates | null = null
 jest.mock('libs/geolocation', () => ({
   useGeolocation: jest.fn(() => ({ position: mockPosition })),
 }))

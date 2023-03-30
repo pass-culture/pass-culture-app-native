@@ -11,7 +11,7 @@ import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/ad
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { VenuesParametersFields } from 'libs/contentful'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
@@ -19,7 +19,7 @@ const attributesToHighlight: string[] = [] // We disable highlighting because we
 // Used for the venue playlists on the homepage
 export const fetchMultipleVenues = async (
   paramsList: VenuesParametersFields[],
-  userLocation: Position
+  userLocation: GeoCoordinates | null
 ): Promise<VenueHit[]> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_VENUES_INDEX_NAME,
@@ -41,7 +41,10 @@ export const fetchMultipleVenues = async (
   }
 }
 
-export const buildVenuesQueryOptions = (params: VenuesParametersFields, userLocation: Position) => {
+export const buildVenuesQueryOptions = (
+  params: VenuesParametersFields,
+  userLocation: GeoCoordinates | null
+) => {
   const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
 
   const locationFilter = adaptGeolocationParameters(userLocation, isGeolocated, aroundRadius) || {

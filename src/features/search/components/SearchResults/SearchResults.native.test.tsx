@@ -14,7 +14,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { SearchHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -79,7 +79,7 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 }))
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
-let mockPosition: Position = DEFAULT_POSITION
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
@@ -392,7 +392,7 @@ describe('SearchResults component', () => {
         locationButtonLabel,
       }: {
         locationFilter: LocationFilter
-        position: Position
+        position: GeoCoordinates | null
         locationButtonLabel: string
       }) => {
         mockPosition = position

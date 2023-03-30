@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'
@@ -29,7 +29,7 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 }))
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
-const mockPosition: Position = DEFAULT_POSITION
+const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({

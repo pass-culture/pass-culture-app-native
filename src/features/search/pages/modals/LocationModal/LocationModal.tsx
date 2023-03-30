@@ -257,7 +257,8 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
   const onResetPress = useCallback(() => {
     reset({
-      locationChoice: position ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
+      locationChoice:
+        position !== null ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
       aroundRadius: MAX_RADIUS,
       searchPlaceOrVenue: '',
       selectedPlaceOrVenue: undefined,

@@ -16,7 +16,6 @@ import {
   GeolocationError,
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-  Position,
 } from 'libs/geolocation'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import {
@@ -57,7 +56,7 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
-let mockPosition: Position = DEFAULT_POSITION
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()

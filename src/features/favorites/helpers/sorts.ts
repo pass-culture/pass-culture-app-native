@@ -1,5 +1,5 @@
 import { FavoriteResponse } from 'api/gen'
-import { Position } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 
 function getOfferPrice({ offer }: FavoriteResponse): number | null {
@@ -25,9 +25,9 @@ export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
   return b.id - a.id
 }
 
-export function sortByDistanceAroundMe(position: Position) {
+export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
   return (a: FavoriteResponse, b: FavoriteResponse) => {
-    if (!position) return 0
+    if (position === null) return 0
 
     let aCoordinate, bCoordinate
     if (a.offer.coordinates?.latitude && a.offer.coordinates?.longitude) {
