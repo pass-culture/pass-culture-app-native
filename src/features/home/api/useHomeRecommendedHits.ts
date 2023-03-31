@@ -6,7 +6,7 @@ import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommen
 import { RecommendedOffersModule } from 'features/home/types'
 import { SearchHit } from 'libs/algolia'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { RecommendedIdsRequest } from 'libs/recommendation/types'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
@@ -51,7 +51,7 @@ export function getRecommendationParameters(
 
 export const useHomeRecommendedHits = (
   userId: number | undefined,
-  position: GeoCoordinates | null,
+  position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
 ): SearchHit[] | undefined => {
