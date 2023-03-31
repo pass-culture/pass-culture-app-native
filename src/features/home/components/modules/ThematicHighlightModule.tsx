@@ -55,7 +55,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
 
   const navigateTo = {
     screen: 'ThematicHome',
-    params: { homeId: toThematicHomeEntryId },
+    params: { homeId: toThematicHomeEntryId, from: 'highlight_thematic_block', moduleId: id },
   }
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 

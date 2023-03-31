@@ -114,7 +114,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL, { offerId }),
   logConsultHome: (params: {
     homeEntryId: string
-    from?: 'category_block'
+    from?: 'category_block' | 'highlight_thematic_block'
     moduleId?: string
     // moduleListId param is only for category block lists
     moduleListId?: string

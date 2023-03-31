@@ -111,4 +111,24 @@ describe('ThematicHome', () => {
       moduleListId: 'moduleListId',
     })
   })
+
+  it('should log ConsultHome when coming from highlight thematic block', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        entryId: 'fakeEntryId',
+        from: 'highlight_thematic_block',
+        moduleId: 'moduleId',
+      },
+    })
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<ThematicHome />))
+
+    await screen.findByText('HeaderTitle')
+
+    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+      homeEntryId: 'fakeEntryId',
+      from: 'highlight_thematic_block',
+      moduleId: 'moduleId',
+    })
+  })
 })

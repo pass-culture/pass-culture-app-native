@@ -185,7 +185,7 @@ export type RootStackParamList = {
   UTMParameters: undefined
   ThematicHome: {
     homeId: string
-    from?: 'category_block'
+    from?: 'category_block' | 'highlight_thematic_block'
     moduleId?: string
     moduleListId?: string
   }
