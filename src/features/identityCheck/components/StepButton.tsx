@@ -12,7 +12,7 @@ import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   step: DeprecatedStepConfig | StepDetails
-  state: StepButtonState
+  state: StepButtonState //TODO(PC-20931): remove this props when removing DeprecatedStepConfig type for step because stepState is included in StepDetails
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress?: () => void
 }
@@ -23,7 +23,23 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   // TODO(PC-20931): it fixes typing. Remove next line when deleting DeprecatedStepConfig type
   const subtitle = 'subtitle' in step ? step.subtitle : null
 
-  const iconLabel = state === StepButtonState.COMPLETED ? 'Complété' : 'Non complété'
+  let iconLabel = ''
+
+  switch (state) {
+    case StepButtonState.COMPLETED:
+      iconLabel = 'complété'
+      break
+    case StepButtonState.CURRENT:
+      iconLabel = 'non complété'
+      break
+    case StepButtonState.DISABLED:
+      iconLabel = 'non complété'
+      break
+    case StepButtonState.RETRY:
+      iconLabel = 'à essayer de nouveau'
+      break
+  }
+
   const accessibilityLabel = `${label} ${iconLabel}`
 
   const StyleContainer = styleContainer[state]
@@ -81,6 +97,12 @@ const CurrentContainer = styled(GenericBanner)(({ theme }) => ({
   marginTop: getSpacing(2),
 }))
 
+const RetryContainer = styled(GenericBanner)(({ theme }) => ({
+  height: getSpacing(23),
+  borderColor: theme.colors.black,
+  marginTop: getSpacing(2),
+}))
+
 const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
   height: getSpacing(22),
   width: '98%',
@@ -96,6 +118,7 @@ const styleContainer = {
   [StepButtonState.COMPLETED]: CompletedContainer,
   [StepButtonState.CURRENT]: CurrentContainer,
   [StepButtonState.DISABLED]: DisabledContainer,
+  [StepButtonState.RETRY]: RetryContainer,
 }
 
 const IconContainer = styled.View({ padding: getSpacing(4) })
@@ -114,7 +137,10 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
 
 const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
   ({ state, theme }) => ({
-    color: state === StepButtonState.CURRENT ? theme.colors.black : theme.colors.greyDark,
+    color:
+      state === StepButtonState.CURRENT || StepButtonState.RETRY
+        ? theme.colors.black
+        : theme.colors.greySemiDark,
   })
 )
 

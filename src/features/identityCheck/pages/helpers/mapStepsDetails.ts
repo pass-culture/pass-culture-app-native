@@ -29,6 +29,6 @@ const mapCompletionState = (state: SubscriptionStepCompletionState) => {
   if (state === SubscriptionStepCompletionState.completed) return StepButtonState.COMPLETED
   if (state === SubscriptionStepCompletionState.current) return StepButtonState.CURRENT
   if (state === SubscriptionStepCompletionState.disabled) return StepButtonState.DISABLED
-  if (state === SubscriptionStepCompletionState.retry) return StepButtonState.CURRENT
+  if (state === SubscriptionStepCompletionState.retry) return StepButtonState.RETRY
   return StepButtonState.DISABLED
 }

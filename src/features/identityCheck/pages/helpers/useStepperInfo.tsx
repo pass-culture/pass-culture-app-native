@@ -3,6 +3,7 @@ import React from 'react'
 import { IdentityCheckMethod } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
+import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
@@ -37,6 +38,7 @@ export const useStepperInfo = (): StepDetails[] => {
         disabled: DisabledProfileIcon,
         current: BicolorProfile,
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
       },
       screens: hasSchoolTypes
         ? [
@@ -54,6 +56,7 @@ export const useStepperInfo = (): StepDetails[] => {
         disabled: DisabledIdCardIcon,
         current: BicolorIdCard,
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
       screens:
         identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
@@ -64,6 +67,7 @@ export const useStepperInfo = (): StepDetails[] => {
         disabled: DisabledConfirmationIcon,
         current: BicolorLegal,
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
+        retry: () => <IconRetryStep Icon={BicolorLegal} testID="confirmation-retry-step" />,
       },
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
@@ -74,6 +78,9 @@ export const useStepperInfo = (): StepDetails[] => {
         current: BicolorSmartphone,
         completed: () => (
           <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
+        ),
+        retry: () => (
+          <IconRetryStep Icon={BicolorSmartphone} testID="phone-validation-retry-step" />
         ),
       },
       screens:

@@ -2,20 +2,28 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { GreenCheck } from 'ui/svg/icons/GreenCheck'
+import { TryAgain } from 'ui/svg/icons/TryAgain'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export const ProfileStepDone: FunctionComponent = () => {
+interface IconStepRetryProps {
+  Icon: FunctionComponent<
+    AccessibleIcon & {
+      transform?: string
+    }
+  >
+  testID?: string
+}
+export const IconRetryStep: FunctionComponent<IconStepRetryProps> = ({ Icon, testID }) => {
   return (
-    <Container testID="profile-step-done">
-      <BicolorProfile
+    <Container testID={testID}>
+      <Icon
         color={theme.colors.greySemiDark}
         color2={theme.colors.greySemiDark}
         size={32}
         transform="translate(0 6) rotate(-8) scale(0.97)"
       />
       <IconContainer>
-        <GreenCheck size={16} />
+        <TryAgain size={16} />
       </IconContainer>
     </Container>
   )
@@ -27,6 +35,6 @@ const IconContainer = styled.View({
   right: 0,
 })
 const Container = styled.View({
-  width: 34,
+  width: 36,
   height: 34,
 })
