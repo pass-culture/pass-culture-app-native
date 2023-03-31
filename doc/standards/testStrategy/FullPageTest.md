@@ -26,6 +26,28 @@ it('should render correctly', async () => {
 
 SVG & Lottie animations are mocked so snapshot can be more lisible. You can test their existence / non-existence by making queries on either their testID or the "mocked" text replacing the actual content of the SVGs / animations.
 
+It can happen that the render function is heavy and repeats itself in each test (for example if it uses `reactQueryProviderHOC` and `msw`, or when you need to wrap your component). You can extract this function into the test file but it shouldn't be the default.
+It is also important to keep this render function synchronous, asynchronous code should be kept for particular tests.
+
+Example of a complex render function:
+
+```jsx
+export const renderOfferBody = (
+  additionalProps: {
+    sameCategorySimilarOffers?: SearchHit[]
+    otherCategoriesSimilarOffers?: SearchHit[]
+  } = {}
+) =>
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <NetInfoWrapper>
+        <OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />
+      </NetInfoWrapper>
+    )
+  )
+```
+
 ---
 
 ## Accessibility
