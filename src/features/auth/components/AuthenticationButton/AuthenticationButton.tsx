@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -27,12 +27,12 @@ type Props = {
   preventCancellation?: boolean
 } & (LoginProps | SignupProps)
 
-export const AuthenticationButton: FunctionComponent<Props> = ({
+export function AuthenticationButton({
   type,
   linkColor,
   params = {},
   onAdditionalPress: onPress,
-}) => {
+}: Props) {
   const isLogin = type === 'login'
   const nextNavigation: {
     screen: RootNavigateParams[0]
