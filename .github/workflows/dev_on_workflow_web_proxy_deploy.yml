@@ -1,0 +1,77 @@
+name: Deploy web proxy
+
+on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+jobs:
+  web_proxy_deploy:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+      - name: 'Push proxy for input env'
+        run: |
+          echo ${{ inputs.ENV }}
+            #          yarn --cwd server deploy:${{ inputs.ENV }}
+      - uses: technote-space/workflow-conclusion-action@v3
+        if: ${{ always() }}
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: "C0309RP8K42"
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le déploiement web proxy sur `${{ inputs.ENV }}` a échoué :boom:"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+

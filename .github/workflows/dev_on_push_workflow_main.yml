@@ -4,11 +4,16 @@ on:
   push:
 
 permissions:
-  contents: read
-  id-token: write
+  contents: 'read'
+  id-token: 'write'
 jobs:
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
+  check-server-folder-changes:
+    name: Check server folder changes
+    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+    with:
+      folder: server
   yarn-linter:
     needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
@@ -58,6 +63,42 @@ jobs:
     with:
       TYPE: hard
       ENV: staging
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-testing:
+    needs: soft-deploy-testing
+    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+    with:
+      ENV: "testing"
+      BUCKET_NAME: "passculture-metier-ehp-testing-decliweb"
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-staging:
+    needs: [hard-deploy-android-staging, hard-deploy-ios-staging]
+    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+    with:
+      ENV: "staging"
+      BUCKET_NAME: "passculture-metier-ehp-staging-decliweb"
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-proxy-testing:
+    needs: [check-server-folder-changes, deploy-web-testing]
+    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+    with:
+      ENV: "testing"
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  deploy-web-proxy-staging:
+    needs: [check-server-folder-changes, deploy-web-staging]
+    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+    with:
+      ENV: "staging"
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}

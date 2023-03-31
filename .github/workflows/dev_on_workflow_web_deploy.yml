@@ -1,0 +1,101 @@
+name: Deploy web
+
+on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        required: true
+      BUCKET_NAME:
+        type: string
+        required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+jobs:
+  web_deploy:
+    runs-on: [self-hosted, linux, x64]
+    environment:
+      name: ${{ inputs.ENV }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - name: Yarn install
+        run: yarn install
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+      - name: Set up Cloud SDK to get gsutils
+        uses: 'google-github-actions/setup-gcloud@v1.1.0'
+        with:
+          version: '>= 416.0.0'
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.6
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
+      - name: 'Push debug log for testing'
+        if: ${{ inputs.ENV == 'testing' }}
+        run: |
+          export SENTRY_LOG_LEVEL="debug webpack -c web/config/webpack.config.js"
+      - name: 'Build web for input env'
+        run: |
+          NODE_OPTIONS='--max-old-space-size=4096' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}
+      - name: 'Push to bucket'
+        run: |
+          echo ${{ inputs.ENV }}
+          #gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
+      - uses: technote-space/workflow-conclusion-action@v3
+        if: ${{ always() }}
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: "C0309RP8K42"
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le déploiement web sur `${{ inputs.ENV }}` a échoué :boom:"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+
