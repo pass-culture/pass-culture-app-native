@@ -53,7 +53,6 @@ export const CallToAction = ({ subscriptionMessage }: Props) => {
     />
   )
 
-  //TODO(EveJulliard) A CHANGER le openInNewWindow={false}
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
