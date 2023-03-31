@@ -34,9 +34,14 @@ export const ThematicHome: FunctionComponent = () => {
 
   useEffect(() => {
     if (id) {
-      analytics.logConsultHome({ homeEntryId: id })
+      analytics.logConsultHome({
+        homeEntryId: id,
+        from: params.from,
+        moduleId: params.moduleId,
+        moduleListId: params.moduleListId,
+      })
     }
-  }, [id])
+  }, [id, params.from, params.moduleId, params.moduleListId])
 
   return (
     <GenericHome

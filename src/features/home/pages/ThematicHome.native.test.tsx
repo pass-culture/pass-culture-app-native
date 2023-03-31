@@ -89,4 +89,26 @@ describe('ThematicHome', () => {
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
+
+  it('should log ConsultHome when coming from category block', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        entryId: 'fakeEntryId',
+        from: 'category_block',
+        moduleId: 'moduleId',
+        moduleListId: 'moduleListId',
+      },
+    })
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<ThematicHome />))
+
+    await screen.findByText('HeaderTitle')
+
+    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+      homeEntryId: 'fakeEntryId',
+      from: 'category_block',
+      moduleId: 'moduleId',
+      moduleListId: 'moduleListId',
+    })
+  })
 })
