@@ -8,16 +8,8 @@ updates:
       - 'Lucasbeneston'
       - 'bruno-ebstein-pass-culture'
       - 'pierrecanthelou'
-  - package-ecosystem: 'RubyGems'
+  - package-ecosystem: 'bundler'
     directory: '/'
-    schedule:
-      interval: 'weekly'
-    reviewers:
-      - 'Lucasbeneston'
-      - 'bruno-ebstein-pass-culture'
-      - 'pierrecanthelou'
-  - package-ecosystem: 'bundle'
-    directory: '/ios'
     schedule:
       interval: 'weekly'
     reviewers:
