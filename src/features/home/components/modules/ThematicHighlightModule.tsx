@@ -21,7 +21,7 @@ type Props = {
   imageUrl: string
   beginningDate: Date
   endingDate: Date
-  thematicHomeEntryId: string
+  toThematicHomeEntryId: string
   index: number
 }
 
@@ -32,7 +32,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   imageUrl,
   beginningDate,
   endingDate,
-  thematicHomeEntryId,
+  toThematicHomeEntryId,
   index,
 }) => {
   const isAlreadyEnded = isBefore(endingDate, new Date())
@@ -44,7 +44,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
         id,
         ContentTypes.THEMATIC_HIGHLIGHT,
         index,
-        thematicHomeEntryId
+        toThematicHomeEntryId
       )
     // should send analytics event only once
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,11 +52,14 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
 
   if (shouldHideModule) return null
 
-  const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
+  const navigateTo = getNavigateToThematicHomeConfig(toThematicHomeEntryId)
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   const sendAnalyticsOnPress = () =>
-    analytics.logHighlightBlockClicked({ moduleId: id, toEntryId: thematicHomeEntryId })
+    analytics.logHighlightBlockClicked({
+      moduleId: id,
+      toEntryId: toThematicHomeEntryId,
+    })
 
   return (
     <StyledInternalTouchableLink navigateTo={navigateTo} onBeforeNavigate={sendAnalyticsOnPress}>
