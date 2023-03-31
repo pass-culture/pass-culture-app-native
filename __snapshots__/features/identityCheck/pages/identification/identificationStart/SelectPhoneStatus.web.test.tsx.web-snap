@@ -89,7 +89,7 @@ Object {
                 >
                   <button
                     aria-label="Revenir en arrière"
-                    class="c0 c1 sc-gsDKAQ c1"
+                    class="c0 c1 sc-fotOHu c1"
                     data-testid="Revenir en arrière"
                     tabindex="0"
                     title="Revenir en arrière"
@@ -400,7 +400,7 @@ Object {
               >
                 <button
                   aria-label="Revenir en arrière"
-                  class="c0 c1 sc-gsDKAQ c1"
+                  class="c0 c1 sc-fotOHu c1"
                   data-testid="Revenir en arrière"
                   tabindex="0"
                   title="Revenir en arrière"
