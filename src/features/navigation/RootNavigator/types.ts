@@ -183,7 +183,12 @@ export type RootStackParamList = {
   Venue: { id: number }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
-  ThematicHome: { homeId: string }
+  ThematicHome: {
+    homeId: string
+    from?: 'category_block'
+    moduleId?: string
+    moduleListId?: string
+  }
   // cheatcodes
   DefaultThematicHomeHeaderCheatcode: undefined
   HighlightThematicHomeHeaderCheatcode: undefined

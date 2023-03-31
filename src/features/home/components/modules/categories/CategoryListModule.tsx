@@ -69,6 +69,9 @@ export const CategoryListModule = ({
           screen: 'ThematicHome',
           params: {
             homeId: homeEntryId,
+            from: 'category_block',
+            moduleId: item.id,
+            moduleListId: id,
           },
         }}
       />
