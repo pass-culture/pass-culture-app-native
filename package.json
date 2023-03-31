@@ -172,7 +172,7 @@
     "react-native-web-lottie": "^1.4.4",
     "react-native-web-swiper": "2.2.1",
     "react-native-webview": "^11.23.0",
-    "react-query": "3.34.16",
+    "react-query": "3.39.3",
     "react-test-renderer": "17.0.2",
     "resize-observer-polyfill": "^1.5.1",
     "search-insights": "^2.2.1",
