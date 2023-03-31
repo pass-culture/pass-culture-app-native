@@ -81,7 +81,8 @@ const UnmemoizedModule = ({
   if (isBusinessModule(item))
     return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
 
-  if (isThematicHighlightModule(item)) return <ThematicHighlightModule {...item} index={index} />
+  if (isThematicHighlightModule(item))
+    return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
 
   if (isCategoryListModule(item))
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />

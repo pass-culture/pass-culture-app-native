@@ -23,6 +23,7 @@ type Props = {
   endingDate: Date
   toThematicHomeEntryId: string
   index: number
+  homeEntryId: string
 }
 
 export const ThematicHighlightModule: FunctionComponent<Props> = ({
@@ -34,6 +35,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   endingDate,
   toThematicHomeEntryId,
   index,
+  homeEntryId,
 }) => {
   const isAlreadyEnded = isBefore(endingDate, new Date())
   const shouldHideModule = isAlreadyEnded
@@ -58,6 +60,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   const sendAnalyticsOnPress = () =>
     analytics.logHighlightBlockClicked({
       moduleId: id,
+      entryId: homeEntryId,
       toEntryId: toThematicHomeEntryId,
     })
 

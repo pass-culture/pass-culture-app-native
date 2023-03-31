@@ -220,7 +220,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_STARTED_CULTURAL_SURVEY),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT),
-  logHighlightBlockClicked: (params: { moduleId: string; toEntryId: string }) =>
+  logHighlightBlockClicked: (params: { moduleId: string; entryId: string; toEntryId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.HIGHLIGHT_BLOCK_CLICKED, params),
   logIdentityCheckAbort: (params: {
     method: IdentityCheckMethod

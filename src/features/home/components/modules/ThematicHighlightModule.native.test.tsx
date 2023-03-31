@@ -10,12 +10,17 @@ const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 const PASSED_DATE = new Date('2020-11-30T00:00:00.000Z')
 mockDate.set(CURRENT_DATE)
 
+const baseThematicHighlightModule = {
+  ...formattedThematicHighlightModule,
+  homeEntryId: 'homeEntryId',
+}
+
 describe('ThematicHighlightModule', () => {
   it('should render if the ending date is not passed', () => {
     render(
       <ThematicHighlightModule
         index={0}
-        {...formattedThematicHighlightModule}
+        {...baseThematicHighlightModule}
         beginningDate={CURRENT_DATE}
         endingDate={CURRENT_DATE}
       />
@@ -27,7 +32,7 @@ describe('ThematicHighlightModule', () => {
     render(
       <ThematicHighlightModule
         index={0}
-        {...formattedThematicHighlightModule}
+        {...baseThematicHighlightModule}
         beginningDate={PASSED_DATE}
         endingDate={PASSED_DATE}
       />
@@ -36,7 +41,7 @@ describe('ThematicHighlightModule', () => {
   })
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
-    render(<ThematicHighlightModule index={0} {...formattedThematicHighlightModule} />)
+    render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
       1,
@@ -51,7 +56,7 @@ describe('ThematicHighlightModule', () => {
     render(
       <ThematicHighlightModule
         index={0}
-        {...formattedThematicHighlightModule}
+        {...baseThematicHighlightModule}
         beginningDate={PASSED_DATE}
         endingDate={PASSED_DATE}
       />
@@ -61,13 +66,14 @@ describe('ThematicHighlightModule', () => {
   })
 
   it('should log HighlightBlockClicked event when pressing', () => {
-    render(<ThematicHighlightModule index={0} {...formattedThematicHighlightModule} />)
+    render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
     const thematicHighlightModule = screen.getByText(formattedThematicHighlightModule.title)
 
     fireEvent.press(thematicHighlightModule)
 
     expect(analytics.logHighlightBlockClicked).toHaveBeenNthCalledWith(1, {
       moduleId: '5Z1FGtRGbE3d1Q5oqHMfe9',
+      entryId: 'homeEntryId',
       toEntryId: '6DCThxvbPFKAo04SVRZtwY',
     })
   })
