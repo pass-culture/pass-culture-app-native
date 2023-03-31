@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import {
-  dayNumber,
+  dayNumbers,
   getDatesInMonth,
   getPastYears,
   getYears,
@@ -13,9 +13,9 @@ import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
 
 type InitialDateProps = {
-  day?: number
+  day?: string
   month?: string
-  year?: number
+  year?: string
 }
 
 const INITIAL_DATE: InitialDateProps = {
@@ -28,10 +28,10 @@ export function DateInputDesktop(props: DatePickerProps) {
   const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
 
   const optionGroups = useMemo(() => {
-    const defaultSelectedYear = props.defaultSelectedDate.getFullYear()
+    const defaultSelectedYear = props.defaultSelectedDate.getFullYear().toString()
     if (date.year === undefined || date.month === undefined || date.day === undefined) {
       return {
-        days: dayNumber,
+        days: dayNumbers,
         months: monthNames,
         years: getPastYears(props.minimumDate.getFullYear(), defaultSelectedYear),
       }
@@ -54,8 +54,8 @@ export function DateInputDesktop(props: DatePickerProps) {
     if (!date.year || !date.month || !date.day) return
 
     const dateMonth = monthNames.indexOf(date.month)
-    const maybeValidDate = new Date(date.year, dateMonth, date.day)
-    return maybeValidDate.getDate() == date.day ? maybeValidDate : undefined
+    const maybeValidDate = new Date(Number(date.year), dateMonth, Number(date.day))
+    return maybeValidDate.getDate() == Number(date.day) ? maybeValidDate : undefined
   }
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export function DateInputDesktop(props: DatePickerProps) {
         <DropDown
           label="Jour"
           placeholder="JJ"
-          options={optionGroups.days.map(String)}
+          options={optionGroups.days}
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
           accessibilityLabel="Entrée pour le jour de la date de naissance"
@@ -96,7 +96,7 @@ export function DateInputDesktop(props: DatePickerProps) {
         <DropDown
           label="Année"
           placeholder="AAAA"
-          options={optionGroups.years.map(String)}
+          options={optionGroups.years}
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
           accessibilityLabel="Entrée pour l’année de la date de naissance"

@@ -28,29 +28,41 @@ export const monthNamesShort = [
   'Nov.',
   'Déc.',
 ]
-export const dayNumber = range(1, 31 + 1)
+
+export const dayNumbers = range(1, 31 + 1).map((num) => String(num))
 export const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 export const dayNamesShort = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
 
 export function getYears(startYear: number, numberOfYears: number) {
-  return range(startYear, startYear + numberOfYears, 1)
+  const endYear = startYear + numberOfYears
+  return range(startYear, endYear, 1).map((year) => year.toString())
 }
 
-export function getPastYears(startYear: number, currentYear: number) {
-  return range(startYear, currentYear + 1, 1).reverse()
+export function getPastYears(startYear: number, currentYear: string) {
+  return range(startYear, parseInt(currentYear) + 1, 1)
+    .reverse()
+    .map((year) => year.toString())
 }
 
 /**
- * Returns a list of dates such as [1, 2, ..., 31].
+ * Returns a list of dates in string such as ["1", "2", ..., "31"].
  * Example :
  * ```ts
- * getDatesInMonth(1, 2009) // february 2009 --> [1, 2, 3, ..., 27, 28]
+ * getDatesInMonth(1, "2009") // february 2009 --> ["1", "2", "3", ..., "27", "28"]
  * ```
  * @param monthIndex Integer value representing the month, beginning with 0 for January to 11 for December
- * @param year Integer value representing the year
+ * @param year String value representing the year
  */
-export function getDatesInMonth(monthIndex: number, year: number) {
+export function getDatesInMonth(monthIndex: number, year: string) {
   const nextMonthIndex = monthIndex + 1
-  const nbOfDaysInMonth = new Date(year, nextMonthIndex, 0).getDate()
-  return range(1, nbOfDaysInMonth + 1)
+  const nbOfDaysInMonth = new Date(Number(year), nextMonthIndex, 0).getDate()
+  return range(1, nbOfDaysInMonth + 1).map((day) => day.toString())
+}
+
+export function getDateValuesString(selectedDate: Date) {
+  return {
+    day: selectedDate.getDate().toString(),
+    month: monthNamesShort[selectedDate.getMonth()],
+    year: selectedDate.getFullYear().toString(),
+  }
 }
