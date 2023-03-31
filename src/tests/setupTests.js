@@ -5,7 +5,6 @@ import { toHaveNoViolations } from 'jest-axe'
 import { server } from 'tests/server'
 
 import { queryCache } from './reactQueryProviderHOC'
-import { flushAllPromises } from './utils'
 
 global.expect.extend(toHaveNoViolations)
 
@@ -31,7 +30,6 @@ global.afterAll(() => {
 
 global.afterEach(async () => {
   queryCache.clear()
-  await flushAllPromises()
 })
 
 // AbortController needs to be mocked because it is not supported in our current version of Jest

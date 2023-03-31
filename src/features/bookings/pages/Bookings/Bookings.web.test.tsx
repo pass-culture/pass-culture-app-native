@@ -11,8 +11,6 @@ import { checkAccessibilityFor, fireEvent, render, waitFor, screen, act } from '
 import { Bookings } from './Bookings'
 
 describe('Bookings', () => {
-  afterEach(jest.restoreAllMocks)
-
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderBookings(bookingsSnap)

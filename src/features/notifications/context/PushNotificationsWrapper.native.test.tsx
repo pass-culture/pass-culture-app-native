@@ -12,8 +12,7 @@ jest.mock('features/notifications/pages/AskNotificationsModal', () => ({
   AskNotificiationsModal: () => null,
 }))
 
-const mockDefaultPlatform = { OS: 'ios', Version: '15.2' }
-jest.mock('react-native/Libraries/Utilities/Platform', () => mockDefaultPlatform)
+jest.mock('react-native/Libraries/Utilities/Platform', () => ({ OS: 'ios', Version: '15.2' }))
 
 const mockCheckNotifications = jest
   .spyOn(Permissions, 'checkNotifications')

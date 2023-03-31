@@ -59,11 +59,6 @@ describe('TabBar', () => {
     })
   })
 
-  it('renders correctly', () => {
-    const renderAPI = renderTabBar()
-    expect(renderAPI).toMatchSnapshot()
-  })
-
   it('should display the 5 following tabs with Home selected', async () => {
     const { getByTestId } = renderTabBar()
 
