@@ -27,7 +27,7 @@ const UnmemoizedModule = ({
 }: {
   item: HomepageModule
   index: number
-  homeEntryId: string | undefined
+  homeEntryId: string
 }) => {
   if (isOffersModule(item))
     return (

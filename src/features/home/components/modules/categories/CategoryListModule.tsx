@@ -17,7 +17,7 @@ type CategoryListProps = {
   title: string
   categoryBlockList: CategoryBlockData[]
   index: number
-  homeEntryId: string | undefined
+  homeEntryId: string
 }
 
 const DESKTOP_COLUMNS = 4
