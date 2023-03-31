@@ -9,11 +9,6 @@ export const reactQueryProviderHOC = (
 ) => {
   const queryClient = new QueryClient({
     queryCache,
-    logger: {
-      log: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
-    },
   })
   if (setup) setup(queryClient)
   return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
