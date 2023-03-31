@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'Lucasbeneston'
+      - 'bruno-ebstein-pass-culture'
+      - 'pierrecanthelou'
+  - package-ecosystem: 'RubyGems'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'Lucasbeneston'
+      - 'bruno-ebstein-pass-culture'
+      - 'pierrecanthelou'
+  - package-ecosystem: 'bundle'
+    directory: '/ios'
+    schedule:
+      interval: 'weekly'
+    reviewers:
+      - 'Lucasbeneston'
+      - 'bruno-ebstein-pass-culture'
+      - 'pierrecanthelou'
