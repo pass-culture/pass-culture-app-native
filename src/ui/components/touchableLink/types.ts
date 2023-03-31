@@ -29,7 +29,6 @@ export type ExternalNavigationProps = {
     onSuccess?: () => void | Promise<void>
     onError?: () => void
   }
-  openInNewWindow?: boolean
   enableNavigate?: never
   navigateTo?: never
 }

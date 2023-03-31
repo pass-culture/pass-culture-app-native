@@ -2,8 +2,6 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { navigateFromRef } from 'features/navigation/navigationRef'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
@@ -80,24 +78,6 @@ describe('<ExternalTouchableLink />', () => {
 
       await waitFor(() => {
         expect(openUrl).toHaveBeenCalledWith(WEBAPP_V2_URL, undefined, true)
-      })
-    })
-
-    it('should open in-app urls in current window or app when openInNewWindow=false', async () => {
-      render(
-        <ExternalTouchableLink
-          externalNav={{
-            url: WEBAPP_V2_URL,
-          }}
-          openInNewWindow={false}>
-          <ExternalTouchableLinkContent />
-        </ExternalTouchableLink>
-      )
-
-      fireEvent.press(screen.getByText(linkText))
-
-      await waitFor(() => {
-        expect(navigateFromRef).toHaveBeenCalledWith(...homeNavConfig)
       })
     })
   })
