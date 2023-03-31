@@ -2,7 +2,6 @@ import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
@@ -27,7 +26,10 @@ export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   filter,
   onBeforePress,
 }) => {
-  const navigateTo = getNavigateToThematicHomeConfig(homeEntryId)
+  const navigateTo = {
+    screen: 'ThematicHome',
+    params: { homeId: homeEntryId },
+  }
   return (
     <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
       <ImageBackground source={{ uri: image }}>

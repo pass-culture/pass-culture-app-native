@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
-import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -54,7 +53,10 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
 
   if (shouldHideModule) return null
 
-  const navigateTo = getNavigateToThematicHomeConfig(toThematicHomeEntryId)
+  const navigateTo = {
+    screen: 'ThematicHome',
+    params: { homeId: toThematicHomeEntryId },
+  }
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   const sendAnalyticsOnPress = () =>
