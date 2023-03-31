@@ -43,6 +43,7 @@ describe('CategoryListModule', () => {
     expect(analytics.logCategoryBlockClicked).toHaveBeenCalledWith({
       moduleId: '2',
       moduleListID: '123',
+      entryId: 'homeEntryId',
       toEntryId: '6DCThxvbPFKAo04SVRZtwY',
     })
   })

@@ -61,6 +61,7 @@ export const CategoryListModule = ({
           analytics.logCategoryBlockClicked({
             moduleId: item.id,
             moduleListID: id,
+            entryId: homeEntryId,
             toEntryId: item.homeEntryId,
           })
         }}

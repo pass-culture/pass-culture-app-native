@@ -72,6 +72,7 @@ const logEventAnalytics = {
   logCategoryBlockClicked: (params: {
     moduleId: string
     moduleListID: string
+    entryId: string
     toEntryId: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, params),
   logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
