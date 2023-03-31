@@ -57,7 +57,8 @@ const useNavigateToNextSubscriptionStep = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (navConfig: NextStepNavConfig) => {
-    if (!navConfig) {
+    // We check if internalUrl is in navConfig for typescript only, but it should not happen here
+    if (!navConfig || 'internalUrl' in navConfig) {
       navigateToHome()
     } else {
       const { screen, params } = navConfig
