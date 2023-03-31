@@ -87,9 +87,9 @@ jobs:
           path: |
             node_modules
             ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
       - run:  yarn install --immutable --cwd server
       - uses: actions/cache@v3
         with:
