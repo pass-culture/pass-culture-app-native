@@ -129,11 +129,7 @@ export const Favorite: React.FC<Props> = (props) => {
       <Animated.View onLayout={onLayout} style={animatedViewStyle}>
         <Container>
           <StyledTouchableLink
-            navigateTo={
-              offer.id
-                ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } }
-                : undefined
-            }
+            navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
             onBeforeNavigate={handlePressOffer}
             accessibilityLabel={accessibilityLabel}>
             <Row>
