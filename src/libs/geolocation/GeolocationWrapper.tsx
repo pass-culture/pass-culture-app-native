@@ -164,6 +164,7 @@ function isGranted(permission: GeolocPermissionState) {
 }
 function isRejected(permission: GeolocPermissionState | undefined) {
   return (
+    !permission ||
     permission === GeolocPermissionState.DENIED ||
     permission === GeolocPermissionState.NEVER_ASK_AGAIN
   )
