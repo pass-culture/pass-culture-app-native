@@ -6,7 +6,6 @@ import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/firebase/analytics'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
@@ -18,6 +17,11 @@ const mockUseHomepageData = useHomepageData as jest.Mock
 
 const modules = [formattedVenuesModule]
 
+jest.mock('@tanstack/react-query', () => ({
+  ...jest.requireActual('@tanstack/react-query'),
+  useQuery: jest.fn().mockReturnValue({ refetch: jest.fn() }),
+}))
+
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
@@ -28,15 +32,13 @@ describe('ThematicHome', () => {
   })
 
   it('should render correctly', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const thematicHome = render(reactQueryProviderHOC(<ThematicHome />))
+    const thematicHome = render(<ThematicHome />)
     await screen.findByText('HeaderTitle')
     expect(thematicHome).toMatchSnapshot()
   })
 
   it('should render default header when provided', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    render(<ThematicHome />)
     expect(await screen.findByText('HeaderTitle')).toBeTruthy()
     expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
   })
@@ -56,8 +58,7 @@ describe('ThematicHome', () => {
       },
     })
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    render(<ThematicHome />)
     expect(await screen.findByText('Bloc temps fort')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
@@ -75,15 +76,14 @@ describe('ThematicHome', () => {
       },
     })
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    render(<ThematicHome />)
     expect(await screen.findByText('Catégorie cinéma')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
 
   it('should log ConsultHome', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    render(<ThematicHome />)
 
     await screen.findByText('HeaderTitle')
 
@@ -100,7 +100,7 @@ describe('ThematicHome', () => {
       },
     })
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    render(<ThematicHome />)
 
     await screen.findByText('HeaderTitle')
 
@@ -121,7 +121,7 @@ describe('ThematicHome', () => {
       },
     })
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    render(<ThematicHome />)
 
     await screen.findByText('HeaderTitle')
 
