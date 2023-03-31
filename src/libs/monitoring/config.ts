@@ -24,5 +24,6 @@ export async function getSentryConfig() {
     release,
     dist,
     tracesSampleRate: 0.01,
+    attachScreenshot: true,
   }
 }

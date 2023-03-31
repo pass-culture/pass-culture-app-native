@@ -16,6 +16,7 @@ describe('eventMonitoring', () => {
         environment: 'development',
         release: `${version}-ios+codepush:label`,
         tracesSampleRate: 0.01,
+        attachScreenshot: true,
       })
     })
 
