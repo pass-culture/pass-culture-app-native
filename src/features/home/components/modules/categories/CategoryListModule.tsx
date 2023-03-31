@@ -65,6 +65,12 @@ export const CategoryListModule = ({
             toEntryId: item.homeEntryId,
           })
         }}
+        navigateTo={{
+          screen: 'ThematicHome',
+          params: {
+            homeId: homeEntryId,
+          },
+        }}
       />
     </CategoryBlockContainer>
   )
