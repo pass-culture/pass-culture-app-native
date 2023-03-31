@@ -3,6 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -52,6 +53,19 @@ describe('Home page', () => {
     renderHome()
 
     expect(await screen.findByText('title')).toBeTruthy()
+  })
+
+  it('should log ConsultHome', async () => {
+    useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
+    mockUseHomepageData.mockReturnValueOnce({
+      modules: [formattedVenuesModule],
+      id: 'fakeEntryId',
+    })
+    renderHome()
+
+    await screen.findByText('Bienvenue !')
+
+    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
 })
 
