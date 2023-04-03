@@ -17,13 +17,13 @@ const mockRemainingAttempts = {
 }
 
 jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
-  useGetStepperInfo: jest.fn(() => ({
-    stepToDisplay: mockUseGetStepperInfo,
-  })),
+  useGetStepperInfo: jest.fn(() => mockUseGetStepperInfo),
 }))
 
 const mockUseGetStepperInfo = (useGetStepperInfo as jest.Mock).mockReturnValue({
   stepToDisplay: mockSubscriptionStepper.subscriptionStepsToDisplay,
+  title: 'Title',
+  subtitle: 'Subtitle',
 })
 
 jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts')
@@ -43,17 +43,23 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 useFeatureFlagSpy.mockReturnValue(false)
 
 describe('useStepperInfo', () => {
-  it('should return 3 steps if there is no phone validation step', () => {
-    const steps = useStepperInfo()
-    expect(steps.length).toEqual(3)
+  it('should return title and subtitle', () => {
+    const { title, subtitle } = useStepperInfo()
+    expect(title).toEqual('Title')
+    expect(subtitle).toEqual('Subtitle')
   })
 
-  it('should return 4 steps if stepperIncludesPhoneValidation is true', () => {
+  it('should return 3 steps if there is no phone validation step', () => {
+    const { stepsDetails } = useStepperInfo()
+    expect(stepsDetails.length).toEqual(3)
+  })
+
+  it('should return 4 steps when useGetStepperInfo returns 4 steps', () => {
     mockUseGetStepperInfo.mockReturnValueOnce({
       stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
     })
-    const steps = useStepperInfo()
-    expect(steps.length).toEqual(4)
+    const { stepsDetails } = useStepperInfo()
+    expect(stepsDetails.length).toEqual(4)
   })
 
   it('should include IdentityCheckSchoolType if reducer has school types', () => {
@@ -61,8 +67,8 @@ describe('useStepperInfo', () => {
       ...mockState,
       profile: { ...mockState.profile, hasSchoolTypes: true },
     }
-    const steps = useStepperInfo()
-    const profileStep = steps.find((step) => step.name === IdentityCheckStep.PROFILE)
+    const { stepsDetails } = useStepperInfo()
+    const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
     expect(profileStep?.screens.includes('IdentityCheckSchoolType')).toEqual(true)
   })
 
@@ -71,8 +77,8 @@ describe('useStepperInfo', () => {
       ...mockState,
       profile: { ...mockState.profile, hasSchoolTypes: false },
     }
-    const steps = useStepperInfo()
-    const profileStep = steps.find((step) => step.name === IdentityCheckStep.PROFILE)
+    const { stepsDetails } = useStepperInfo()
+    const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
 
     expect(profileStep?.screens.includes('IdentityCheckSchoolType')).toEqual(false)
   })
@@ -87,8 +93,8 @@ describe('useStepperInfo', () => {
       isLastAttempt: false,
     })
 
-    const steps = useStepperInfo()
-    const phoneValidationStep = steps.find(
+    const { stepsDetails } = useStepperInfo()
+    const phoneValidationStep = stepsDetails.find(
       (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
 
@@ -105,17 +111,17 @@ describe('useStepperInfo', () => {
       counterResetDatetime: 'time',
       isLastAttempt: false,
     })
-    const steps = useStepperInfo()
+    const { stepsDetails } = useStepperInfo()
 
-    const phoneValidationStep = steps.find(
+    const phoneValidationStep = stepsDetails.find(
       (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
     expect(phoneValidationStep?.screens.includes('PhoneValidationTooManySMSSent')).toEqual(false)
   })
 
   it("should return ['SelectIDOrigin'] identity screen list", () => {
-    const steps = useStepperInfo()
-    const identityStep = steps.find((step) => step.name === IdentityCheckStep.IDENTIFICATION)
+    const { stepsDetails } = useStepperInfo()
+    const identityStep = stepsDetails.find((step) => step.name === IdentityCheckStep.IDENTIFICATION)
     const identificationScreensFlow = identityStep?.screens
 
     expect(identificationScreensFlow).toEqual(['SelectIDOrigin'])

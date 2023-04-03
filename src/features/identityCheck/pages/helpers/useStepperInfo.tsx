@@ -17,11 +17,15 @@ import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
-export const useStepperInfo = (): StepDetails[] => {
+export const useStepperInfo = (): {
+  stepsDetails: StepDetails[]
+  title: string
+  subtitle?: string | null
+} => {
   const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const { stepToDisplay } = useGetStepperInfo()
+  const { stepToDisplay, title, subtitle } = useGetStepperInfo()
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
     'IdentityCheckEduConnect',
@@ -92,7 +96,7 @@ export const useStepperInfo = (): StepDetails[] => {
 
   const stepsDetails = mapStepsDetails(stepToDisplay, stepsConfig)
 
-  return stepsDetails
+  return { stepsDetails, title, subtitle }
 }
 
 const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (
