@@ -4,7 +4,7 @@ import React from 'react'
 import { BottomBanner } from './BottomBanner'
 
 export default {
-  title: 'features/Offer/BottomBanner',
+  title: 'features/offer/BottomBanner',
   component: BottomBanner,
 } as ComponentMeta<typeof BottomBanner>
 
