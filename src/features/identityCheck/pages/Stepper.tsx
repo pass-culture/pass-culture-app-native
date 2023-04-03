@@ -35,7 +35,7 @@ export const IdentityCheckStepper = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const stepsDeprecated = useSubscriptionSteps()
-  const steps = useStepperInfo()
+  const { stepsDetails: steps, title: stepperTitle, subtitle: stepperSubtitle } = useStepperInfo()
 
   const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
 
@@ -93,6 +93,11 @@ export const IdentityCheckStepper = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
+
+  const title = wipStepperRetryUbble ? stepperTitle : 'C’est très rapide\u00a0!'
+  const subtitle = wipStepperRetryUbble
+    ? stepperSubtitle
+    : `Pour débloquer tes ${credit} tu dois suivre les étapes suivantes\u00a0:`
 
   //TODO(PC-21375): remove the use of wipStepperRetryUbble
   const temporaryStepList = wipStepperRetryUbble ? (
@@ -169,11 +174,9 @@ export const IdentityCheckStepper = () => {
           <Spacer.Column numberOfSpaces={4} />
         )}
 
-        <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
+        <StyledTitle1>{title}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Body>
-          Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
-        </Typo.Body>
+        {!!subtitle && <Typo.Body>{subtitle}</Typo.Body>}
 
         <Spacer.Column numberOfSpaces={10} />
         {temporaryStepList}

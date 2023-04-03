@@ -1,6 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
+import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -45,6 +47,15 @@ mockUseSubscriptionSteps.mockReturnValue(mockStepConfig)
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('react-query')
+
+jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
+const mockUseStepperInfo = useStepperInfo as jest.Mock
+
+mockUseStepperInfo.mockReturnValue({
+  stepsDetails: stepsDetailsFixture,
+  title: 'Vas-y',
+  subtitle: 'Débloque ton crédit',
+})
 
 describe('<IdentityCheckStepper/>', () => {
   describe('Accessibility', () => {
