@@ -1,0 +1,13 @@
+name: Run Reassure performance tests
+
+on:
+  pull_request:
+    branches: [master] # Trigger this workflow only when a PR targets master
+
+jobs:
+  test-performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run performance testing script
+        run: ./scripts/reassure-test.sh
