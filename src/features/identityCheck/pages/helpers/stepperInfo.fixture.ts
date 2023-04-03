@@ -35,7 +35,8 @@ export const SubscriptionStepperResponseFixture: SubscriptionStepperResponse = {
     },
   ],
 }
-export const SubscriptionStepperResponseWithPhoneValifationFixture: SubscriptionStepperResponse = {
+
+export const SubscriptionStepperResponseWithPhoneValidationFixture: SubscriptionStepperResponse = {
   ...SubscriptionStepperResponseFixture,
   subscriptionStepsToDisplay: [
     ...SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
