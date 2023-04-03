@@ -197,7 +197,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#90949D",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -452,7 +452,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#90949D",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -561,7 +561,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#90949D",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,

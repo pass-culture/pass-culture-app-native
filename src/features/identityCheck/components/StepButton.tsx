@@ -140,7 +140,7 @@ const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
     color:
       state === (StepButtonState.CURRENT || StepButtonState.RETRY)
         ? theme.colors.black
-        : theme.colors.greySemiDark,
+        : theme.colors.greyDark,
   })
 )
 
