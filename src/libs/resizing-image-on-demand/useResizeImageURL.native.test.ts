@@ -1,9 +1,11 @@
+// to fix bug provoked by export of customRender in test/utils
+// eslint-disable-next-line no-restricted-imports
+import { renderHook } from '@testing-library/react-native'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
-import { renderHook } from 'tests/utils'
 
 jest.mock('libs/environment')
 jest.mock('react-native', () => ({ useWindowDimensions: jest.fn() }))

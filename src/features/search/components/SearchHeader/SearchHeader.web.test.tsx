@@ -21,9 +21,9 @@ jest.mock('react-instantsearch-hooks', () => ({
   }),
 }))
 
-describe('SearchHeader component', () => {
-  const searchInputID = uuidv4()
+const searchInputID = uuidv4()
 
+describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should contain a button to go to the search suggestions view',
     async (view) => {
@@ -36,13 +36,12 @@ describe('SearchHeader component', () => {
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
+    render(<SearchHeader searchInputID={searchInputID} />)
+
     await act(async () => {
-      render(<SearchHeader searchInputID={searchInputID} />)
+      await userEvent.tab()
+      await userEvent.keyboard('{Enter}')
     })
-
-    await userEvent.tab()
-
-    await userEvent.keyboard('{Enter}')
 
     const params = {
       ...initialSearchState,
