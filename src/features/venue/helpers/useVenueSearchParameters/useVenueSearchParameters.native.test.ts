@@ -3,10 +3,10 @@ import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { renderHook } from 'tests/utils'
 
-let mockPosition: GeoCoordinates | null = null
+let mockPosition: Position = null
 jest.mock('libs/geolocation', () => ({
   useGeolocation: jest.fn(() => ({ position: mockPosition })),
 }))

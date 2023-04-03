@@ -18,7 +18,7 @@ import {
   sortByIdDesc,
 } from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
+import { useGeolocation, Position } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { storage } from 'libs/storage'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -31,11 +31,7 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
-function applySortBy(
-  list: Array<FavoriteResponse>,
-  sortBy: FavoriteSortBy,
-  position: GeoCoordinates | null
-) {
+function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, position: Position) {
   if (!list) {
     // fix concurrency sentry/issues/288586
     return []

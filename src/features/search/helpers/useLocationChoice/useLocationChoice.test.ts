@@ -3,7 +3,7 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { Venue } from 'features/venue/types'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -18,7 +18,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-let mockPosition: GeoCoordinates | null = { latitude: 2, longitude: 40 }
+let mockPosition: Position = { latitude: 2, longitude: 40 }
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
