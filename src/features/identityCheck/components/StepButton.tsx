@@ -138,7 +138,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
 const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
   ({ state, theme }) => ({
     color:
-      state === StepButtonState.CURRENT || StepButtonState.RETRY
+      state === (StepButtonState.CURRENT || StepButtonState.RETRY)
         ? theme.colors.black
         : theme.colors.greySemiDark,
   })
