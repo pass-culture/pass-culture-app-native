@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build Storybook 🔧
-        run: yarn build-storybook --output-dir $BUILD_DIR
+        run: yarn build-storybook --webpack-stats-json --output-dir $BUILD_DIR
       - name: Publish to Chromatic 🚀
         uses: chromaui/action@v1
         with:
