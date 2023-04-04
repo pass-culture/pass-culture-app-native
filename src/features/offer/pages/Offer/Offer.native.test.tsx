@@ -331,7 +331,9 @@ describe('<Offer />', () => {
     const fromOfferId = 1
     renderOfferPage(fromOfferId, undefined, true)
 
-    expect(await screen.findByText('Valider la date')).toBeTruthy()
+    await waitFor(() => {
+      expect(screen.queryByText('Valider la date')).toBeTruthy()
+    })
   })
 
   it('should display reservation impossible when user has already booked the offer', async () => {
@@ -371,7 +373,9 @@ describe('<Offer />', () => {
 
     fireEvent.press(screen.getByText('Voir les disponibilités'))
 
-    expect(await screen.findByText('Réservation impossible')).toBeTruthy()
+    await waitFor(() => {
+      expect(screen.queryByText('Réservation impossible')).toBeTruthy()
+    })
   })
 })
 
