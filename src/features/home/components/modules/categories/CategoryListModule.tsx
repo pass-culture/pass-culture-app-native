@@ -68,7 +68,7 @@ export const CategoryListModule = ({
         navigateTo={{
           screen: 'ThematicHome',
           params: {
-            homeId: homeEntryId,
+            homeId: item.homeEntryId,
             from: 'category_block',
             moduleId: item.id,
             moduleListId: id,

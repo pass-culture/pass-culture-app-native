@@ -56,7 +56,7 @@ describe('CategoryListModule', () => {
         title="module"
         categoryBlockList={categoryBlockList}
         index={1}
-        homeEntryId="homeEntryId"
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       />
     )
 
@@ -66,7 +66,7 @@ describe('CategoryListModule', () => {
     await flushAllPromisesWithAct()
 
     expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-      homeId: 'homeEntryId',
+      homeId: '6DCThxvbPFKAo04SVRZtwY',
       from: 'category_block',
       moduleId: '2',
       moduleListId: '123',
