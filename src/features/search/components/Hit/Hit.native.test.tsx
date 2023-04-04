@@ -44,6 +44,7 @@ describe('Hit component', () => {
       offerId,
       from: 'search',
       query: '',
+      offer_display_index: 0,
     })
   })
 
