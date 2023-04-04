@@ -130,7 +130,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
-            SLACK_BOT_TOKEN: passculture-metier-ehp/passculture-app-native-slack-token
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
