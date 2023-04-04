@@ -5,6 +5,7 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -78,5 +79,56 @@ describe('ThematicHome', () => {
     render(reactQueryProviderHOC(<ThematicHome />))
     expect(await screen.findByText('Catégorie cinéma')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
+  })
+
+  it('should log ConsultHome', async () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<ThematicHome />))
+
+    await screen.findByText('HeaderTitle')
+
+    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
+  })
+
+  it('should log ConsultHome when coming from category block', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        entryId: 'fakeEntryId',
+        from: 'category_block',
+        moduleId: 'moduleId',
+        moduleListId: 'moduleListId',
+      },
+    })
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<ThematicHome />))
+
+    await screen.findByText('HeaderTitle')
+
+    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+      homeEntryId: 'fakeEntryId',
+      from: 'category_block',
+      moduleId: 'moduleId',
+      moduleListId: 'moduleListId',
+    })
+  })
+
+  it('should log ConsultHome when coming from highlight thematic block', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        entryId: 'fakeEntryId',
+        from: 'highlight_thematic_block',
+        moduleId: 'moduleId',
+      },
+    })
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<ThematicHome />))
+
+    await screen.findByText('HeaderTitle')
+
+    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+      homeEntryId: 'fakeEntryId',
+      from: 'highlight_thematic_block',
+      moduleId: 'moduleId',
+    })
   })
 })

@@ -17,7 +17,7 @@ type CategoryListProps = {
   title: string
   categoryBlockList: CategoryBlockData[]
   index: number
-  homeEntryId: string | undefined
+  homeEntryId: string
 }
 
 const DESKTOP_COLUMNS = 4
@@ -61,8 +61,18 @@ export const CategoryListModule = ({
           analytics.logCategoryBlockClicked({
             moduleId: item.id,
             moduleListID: id,
+            entryId: homeEntryId,
             toEntryId: item.homeEntryId,
           })
+        }}
+        navigateTo={{
+          screen: 'ThematicHome',
+          params: {
+            homeId: item.homeEntryId,
+            from: 'category_block',
+            moduleId: item.id,
+            moduleListId: id,
+          },
         }}
       />
     </CategoryBlockContainer>

@@ -16,6 +16,6 @@ export const adaptThematicHighlightModule = (
     imageUrl,
     beginningDate: new Date(thematicHighlightInfo.beginningDatetime),
     endingDate: new Date(thematicHighlightInfo.endingDatetime),
-    thematicHomeEntryId: module.fields.thematicHomeEntryId,
+    toThematicHomeEntryId: module.fields.thematicHomeEntryId,
   }
 }

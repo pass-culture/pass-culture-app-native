@@ -168,7 +168,7 @@ export type ThematicHighlightModule = {
   imageUrl: string
   beginningDate: Date
   endingDate: Date
-  thematicHomeEntryId: string
+  toThematicHomeEntryId: string
 }
 
 export type VenuesModule = {

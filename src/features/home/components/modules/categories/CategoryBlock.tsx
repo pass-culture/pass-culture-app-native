@@ -2,9 +2,9 @@ import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface FilterProps {
@@ -14,7 +14,7 @@ interface FilterProps {
 
 export interface CategoryBlockProps {
   title: string
-  homeEntryId: string
+  navigateTo: InternalNavigationProps['navigateTo']
   filter: FilterProps
   image?: string
   onBeforePress: () => void | Promise<void>
@@ -22,22 +22,19 @@ export interface CategoryBlockProps {
 
 export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   title,
-  homeEntryId,
+  navigateTo,
   image,
   filter,
   onBeforePress,
-}) => {
-  const navigateTo = getNavigateToThematicHomeConfig(homeEntryId)
-  return (
-    <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
-      <ImageBackground source={{ uri: image }}>
-        <ContainerWithFilter filter={filter}>
-          <StyledTitle numberOfLines={2}>{title}</StyledTitle>
-        </ContainerWithFilter>
-      </ImageBackground>
-    </StyledInternalTouchableLink>
-  )
-}
+}) => (
+  <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
+    <ImageBackground source={{ uri: image }}>
+      <ContainerWithFilter filter={filter}>
+        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+      </ContainerWithFilter>
+    </ImageBackground>
+  </StyledInternalTouchableLink>
+)
 
 const ContainerWithFilter = styled.View<{ filter: FilterProps }>(({ filter }) => ({
   paddingVertical: getSpacing(4),

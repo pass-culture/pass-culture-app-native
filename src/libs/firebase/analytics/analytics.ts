@@ -22,6 +22,27 @@ export type ChangeSearchLocationParam =
   | { type: 'place' | 'everywhere' | 'aroundMe' }
   | { type: 'venue'; venueId: number | null }
 
+type BaseThematicHome = {
+  homeEntryId: string
+  from?: never
+  moduleId?: never
+  moduleListId?: never
+}
+type CategoryBlockThematicHome = BaseThematicHome & {
+  from: 'category_block'
+  moduleId: string
+  moduleListId: string
+}
+type HighlightThematicBlockThematicHome = BaseThematicHome & {
+  from: 'highlight_thematic_block'
+  moduleId: string
+  moduleListId?: never
+}
+type ConsultHomeParams =
+  | BaseThematicHome
+  | CategoryBlockThematicHome
+  | HighlightThematicBlockThematicHome
+
 const logEventAnalytics = {
   logAcceptNotifications: () => analyticsProvider.logEvent(AnalyticsEvent.ACCEPT_NOTIFICATIONS),
   logAccountDeletion: () => analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_DELETION),
@@ -72,6 +93,7 @@ const logEventAnalytics = {
   logCategoryBlockClicked: (params: {
     moduleId: string
     moduleListID: string
+    entryId: string
     toEntryId: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.CATEGORY_BLOCK_CLICKED, params),
   logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
@@ -111,7 +133,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL, { offerId }),
   logConsultFinishSubscriptionModal: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL, { offerId }),
-  logConsultHome: (params: { homeEntryId: string }) =>
+  logConsultHome: (params: ConsultHomeParams) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultItinerary: (params: OfferIdOrVenueId & { from: Referrals }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ITINERARY, params),
@@ -219,7 +241,7 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.HAS_STARTED_CULTURAL_SURVEY),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT),
-  logHighlightBlockClicked: (params: { moduleId: string; toEntryId: string }) =>
+  logHighlightBlockClicked: (params: { moduleId: string; entryId: string; toEntryId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.HIGHLIGHT_BLOCK_CLICKED, params),
   logIdentityCheckAbort: (params: {
     method: IdentityCheckMethod

@@ -114,6 +114,9 @@ export const screenParamsParser: ParamsParsers = {
   },
   ThematicHome: {
     homeId: identityFn,
+    from: identityFn,
+    moduleId: identityFn,
+    moduleListId: identityFn,
   },
 }
 
