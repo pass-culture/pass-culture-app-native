@@ -22,6 +22,27 @@ export type ChangeSearchLocationParam =
   | { type: 'place' | 'everywhere' | 'aroundMe' }
   | { type: 'venue'; venueId: number | null }
 
+type BaseThematicHome = {
+  homeEntryId: string
+  from?: never
+  moduleId?: never
+  moduleListId?: never
+}
+type CategoryBlockThematicHome = BaseThematicHome & {
+  from: 'category_block'
+  moduleId: string
+  moduleListId: string
+}
+type HighlightThematicBlockThematicHome = BaseThematicHome & {
+  from: 'highlight_thematic_block'
+  moduleId: string
+  moduleListId?: never
+}
+type ConsultHomeParams =
+  | BaseThematicHome
+  | CategoryBlockThematicHome
+  | HighlightThematicBlockThematicHome
+
 const logEventAnalytics = {
   logAcceptNotifications: () => analyticsProvider.logEvent(AnalyticsEvent.ACCEPT_NOTIFICATIONS),
   logAccountDeletion: () => analyticsProvider.logEvent(AnalyticsEvent.ACCOUNT_DELETION),
@@ -112,13 +133,8 @@ const logEventAnalytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL, { offerId }),
   logConsultFinishSubscriptionModal: (offerId: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL, { offerId }),
-  logConsultHome: (params: {
-    homeEntryId: string
-    from?: 'category_block' | 'highlight_thematic_block'
-    moduleId?: string
-    // moduleListId param is only for category block lists
-    moduleListId?: string
-  }) => analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
+  logConsultHome: (params: ConsultHomeParams) =>
+    analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultItinerary: (params: OfferIdOrVenueId & { from: Referrals }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_ITINERARY, params),
   logConsultModalBeneficiaryCeilings: () =>
