@@ -34,8 +34,8 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const steps = useSubscriptionSteps()
-  const newStepperSteps = useStepperInfo()
+  const stepsDeprecated = useSubscriptionSteps()
+  const { stepsDetails: steps, title: stepperTitle, subtitle: stepperSubtitle } = useStepperInfo()
 
   const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
 
@@ -94,10 +94,15 @@ export const IdentityCheckStepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
+  const title = wipStepperRetryUbble ? stepperTitle : 'C’est très rapide\u00a0!'
+  const subtitle = wipStepperRetryUbble
+    ? stepperSubtitle
+    : `Pour débloquer tes ${credit} tu dois suivre les étapes suivantes\u00a0:`
+
   //TODO(PC-21375): remove the use of wipStepperRetryUbble
   const temporaryStepList = wipStepperRetryUbble ? (
     <VerticalUl>
-      {newStepperSteps.map((step) => (
+      {steps.map((step) => (
         <Li key={step.name}>
           <StepButtonContainer>
             {step.name === IdentityCheckStep.IDENTIFICATION &&
@@ -128,14 +133,14 @@ export const IdentityCheckStepper = () => {
     </VerticalUl>
   ) : (
     <VerticalUl>
-      {steps.map((step) => (
+      {stepsDeprecated.map((step) => (
         <Li key={step.name}>
           <StepButtonContainer>
             {step.name === DeprecatedIdentityCheckStep.IDENTIFICATION &&
             context.identification.method === null ? (
               <StepButton
                 step={step}
-                state={getStepState(steps, step.name, currentStep)}
+                state={getStepState(stepsDeprecated, step.name, currentStep)}
                 onPress={() => {
                   amplitude.logEvent('stepper_clicked', { step: step.name })
                   analytics.logIdentityCheckStep(step.name)
@@ -145,7 +150,7 @@ export const IdentityCheckStepper = () => {
             ) : (
               <StepButton
                 step={step}
-                state={getStepState(steps, step.name, currentStep)}
+                state={getStepState(stepsDeprecated, step.name, currentStep)}
                 navigateTo={{ screen: step.screens[0] }}
                 onPress={() => {
                   amplitude.logEvent('stepper_clicked', { step: step.name })
@@ -169,11 +174,9 @@ export const IdentityCheckStepper = () => {
           <Spacer.Column numberOfSpaces={4} />
         )}
 
-        <StyledTitle1>C’est très rapide&nbsp;!</StyledTitle1>
+        <StyledTitle1>{title}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Body>
-          Pour débloquer tes {credit} tu dois suivre les étapes suivantes&nbsp;:
-        </Typo.Body>
+        {!!subtitle && <Typo.Body>{subtitle}</Typo.Body>}
 
         <Spacer.Column numberOfSpaces={10} />
         {temporaryStepList}

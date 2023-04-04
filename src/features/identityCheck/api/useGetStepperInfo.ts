@@ -6,11 +6,17 @@ import { QueryKeys } from 'libs/queryKeys'
 
 export const useGetStepperInfo = (): {
   stepToDisplay: SubscriptionStepperResponse['subscriptionStepsToDisplay']
+  title: SubscriptionStepperResponse['title']
+  subtitle?: SubscriptionStepperResponse['subtitle'] | null
 } => {
   const { data } = useQuery(QueryKeys.STEPPER_INFO, () => api.getnativev1subscriptionstepper())
-  if (data?.subscriptionStepsToDisplay === undefined) {
-    return { stepToDisplay: [] }
+  if (data === undefined) {
+    return { stepToDisplay: [], title: '' }
   }
 
-  return { stepToDisplay: data?.subscriptionStepsToDisplay }
+  return {
+    stepToDisplay: data.subscriptionStepsToDisplay,
+    title: data.title,
+    subtitle: data.subtitle,
+  }
 }
