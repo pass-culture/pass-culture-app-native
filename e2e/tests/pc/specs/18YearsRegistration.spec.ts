@@ -7,6 +7,7 @@ import SignupScreens from '../features/auth/SignupScreens'
 import { getRandomInt } from '../helpers/utils/number'
 import GmailClient, { Email } from '../helpers/GmailClient'
 import { openDeepLinkUrl } from '../helpers/utils/deeplink'
+import { timeout } from '../helpers/utils/time'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -55,6 +56,7 @@ describe('18YearsRegistration', () => {
 
       await SignupScreens.emailScreen.newsletterCheckbox.click()
 
+      await timeout(2000)
       await SignupScreens.emailScreen.submit.click()
       await SignupScreens.emailScreen.waitForIsShown(false)
     })
