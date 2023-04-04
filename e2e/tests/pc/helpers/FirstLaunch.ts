@@ -37,7 +37,7 @@ class FirstLaunch {
       await this.allowIOSAlert()
     }
     await timeout(flags.isWeb ? 8000 : 4000)
-    await CookiesConsent.randomChoice()
+    await CookiesConsent.acceptCookies()
     if (!flags.isWeb && flags.isIOS) {
       // ATT Alert
       await this.allowIOSAlert()
@@ -45,7 +45,7 @@ class FirstLaunch {
     if (!flags.isWeb) {
       await OnboardingWelcome.proceed()
       await OnboardingGeolocation.proceed()
-      await AgeSelection.randomChoiceAge()
+      await AgeSelection.chooseAge()
       await AgeInformation.proceed()
     }
     await timeout(1000)

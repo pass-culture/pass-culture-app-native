@@ -53,9 +53,7 @@ describe('18YearsRegistration', () => {
       await SignupScreens.emailScreen.waitForIsShown(true)
       await SignupScreens.emailScreen.email.setValue(email)
 
-      if (getRandomInt(0, 1) === 1) {
-        await SignupScreens.emailScreen.newsletterCheckbox.click()
-      }
+      await SignupScreens.emailScreen.newsletterCheckbox.click()
 
       await SignupScreens.emailScreen.submit.click()
       await SignupScreens.emailScreen.waitForIsShown(false)
