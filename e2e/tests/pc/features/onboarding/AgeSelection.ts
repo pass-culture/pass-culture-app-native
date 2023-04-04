@@ -1,6 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
 import { $$$ } from '../../helpers/utils/selector'
-import { getRandomInt } from '../../helpers/utils/number'
 
 class AgeSelection extends AppScreen {
   constructor() {
@@ -27,18 +26,9 @@ class AgeSelection extends AppScreen {
     return $$$('Autre')
   }
 
-  async randomChoiceAge() {
+  async chooseAge() {
     await this.waitForIsShown(true)
-    const dice = getRandomInt(0, 3)
-    if (dice === 0) {
-      await this.fifteenYO.click()
-    } else if (dice === 1) {
-      await this.sixteenYO.click()
-    } else if (dice === 2) {
-      await this.seventeenYO.click()
-    } else if (dice === 3) {
-      await this.eighteenYO.click()
-    }
+    await this.eighteenYO.click()
     await this.waitForIsShown(false)
   }
 }

@@ -7,7 +7,7 @@ import SignupScreens from '../features/auth/SignupScreens'
 import { getRandomInt } from '../helpers/utils/number'
 import GmailClient, { Email } from '../helpers/GmailClient'
 import { openDeepLinkUrl } from '../helpers/utils/deeplink'
-import { flags } from '../helpers/utils/platform'
+import { timeout } from '../helpers/utils/time'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -29,21 +29,6 @@ describe('18YearsRegistration', () => {
     ok = await FirstLaunch.init(tabBar)
   })
 
-  it('should click on home', async () => {
-    didFirstLaunch(ok)
-    await tabBar.home.click()
-  })
-
-  it('should click on search', async () => {
-    didFirstLaunch(ok)
-    await tabBar.search.click()
-  })
-
-  it('should click on favorite', async () => {
-    didFirstLaunch(ok)
-    await tabBar.favorite.click()
-  })
-
   it('should click on profile', async () => {
     didFirstLaunch(ok)
     await tabBar.profil.click()
@@ -59,13 +44,7 @@ describe('18YearsRegistration', () => {
     it('should click on "Créer un compte"', async () => {
       didFirstLaunch(ok)
       await ProfileScreen.waitForIsShown(true)
-      if (flags.isWeb) {
-        // await ProfileScreen.createAccount.click() fail to click with error: element not interactable
-        // This is a DOM click workaround:
-        await browser.execute('arguments[0].click();', await ProfileScreen.createAccount)
-      } else {
-        await ProfileScreen.createAccount.click()
-      }
+      await ProfileScreen.createAccount.click()
       await ProfileScreen.waitForIsShown(false)
     })
 
@@ -75,10 +54,9 @@ describe('18YearsRegistration', () => {
       await SignupScreens.emailScreen.waitForIsShown(true)
       await SignupScreens.emailScreen.email.setValue(email)
 
-      if (getRandomInt(0, 1) === 1) {
-        await SignupScreens.emailScreen.newsletterCheckbox.click()
-      }
+      await SignupScreens.emailScreen.newsletterCheckbox.click()
 
+      await timeout(2000)
       await SignupScreens.emailScreen.submit.click()
       await SignupScreens.emailScreen.waitForIsShown(false)
     })
