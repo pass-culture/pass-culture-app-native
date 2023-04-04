@@ -59,6 +59,13 @@ describe('TabBar', () => {
     })
   })
 
+  // TODO(PC-13119): Add native stories for this component
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('render correctly', () => {
+    const renderAPI = renderTabBar()
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should display the 5 following tabs with Home selected', async () => {
     const { getByTestId } = renderTabBar()
 
