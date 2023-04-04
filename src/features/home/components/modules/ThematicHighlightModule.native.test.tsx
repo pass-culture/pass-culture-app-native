@@ -13,7 +13,7 @@ mockDate.set(CURRENT_DATE)
 
 const baseThematicHighlightModule = {
   ...formattedThematicHighlightModule,
-  homeEntryId: 'homeEntryId',
+  homeEntryId: '6nVZ7vaaOM8qOO7wqduuo1',
 }
 
 describe('ThematicHighlightModule', () => {
@@ -74,7 +74,7 @@ describe('ThematicHighlightModule', () => {
 
     expect(analytics.logHighlightBlockClicked).toHaveBeenNthCalledWith(1, {
       moduleId: '5Z1FGtRGbE3d1Q5oqHMfe9',
-      entryId: 'homeEntryId',
+      entryId: '6nVZ7vaaOM8qOO7wqduuo1',
       toEntryId: '6DCThxvbPFKAo04SVRZtwY',
     })
   })
