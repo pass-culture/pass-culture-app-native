@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Banner } from 'ui/components/Banner'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 
 export const IdentityCheckPendingBadge = () => (
-  <Banner icon={BicolorClock} message="Ton inscription est en cours de traitement." />
+  <InfoBanner icon={BicolorClock} message="Ton inscription est en cours de traitement." />
 )

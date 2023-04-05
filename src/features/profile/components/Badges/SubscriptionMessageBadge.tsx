@@ -6,9 +6,9 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
-import { Banner } from 'ui/components/Banner'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Clock } from 'ui/svg/icons/BicolorClock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -74,13 +74,13 @@ export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={2} />
-      <Banner
+      <InfoBanner
         icon={icon}
         message={userMessage}
         withLightColorMessage={!!callToAction?.callToActionTitle}
         testID="subscription-message-badge">
         <CallToAction subscriptionMessage={subscriptionMessage} />
-      </Banner>
+      </InfoBanner>
     </React.Fragment>
   )
 }

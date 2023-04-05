@@ -14,7 +14,7 @@ type Props = ColorMessageProps & {
   testID?: string
 }
 
-export const Banner: FunctionComponent<Props> = ({
+export const InfoBanner: FunctionComponent<Props> = ({
   message,
   withLightColorMessage,
   icon,

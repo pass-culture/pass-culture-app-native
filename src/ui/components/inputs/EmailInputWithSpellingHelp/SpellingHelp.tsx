@@ -2,8 +2,8 @@ import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { Banner } from 'ui/components/Banner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer } from 'ui/theme'
 
@@ -32,7 +32,7 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
   return (
     <Container>
       <Spacer.Column numberOfSpaces={2} />
-      <Banner
+      <InfoBanner
         message={`Veux-tu plutôt dire ${suggestedEmail?.address}@${suggestedEmail?.domain}\u00a0?`}>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonQuaternarySecondary
@@ -43,7 +43,7 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
           wording="Appliquer la modification"
           inline
         />
-      </Banner>
+      </InfoBanner>
     </Container>
   )
 }

@@ -19,8 +19,8 @@ import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearch
 import { SearchState, SearchView } from 'features/search/types'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import { Banner } from 'ui/components/Banner'
 import { Form } from 'ui/components/Form'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -270,7 +270,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       <Form.MaxWidth>
         {!!isLoggedInAndBeneficiary && (
           <View testID="creditBanner">
-            <Banner message={bannerTitle} icon={Error} />
+            <InfoBanner message={bannerTitle} icon={Error} />
             <Spacer.Column numberOfSpaces={6} />
           </View>
         )}
