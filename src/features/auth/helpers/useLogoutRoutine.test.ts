@@ -45,7 +45,7 @@ describe('useLogoutRoutine', () => {
     const queryClient = useQueryClient()
     await renderUseLogoutRoutine()
 
-    expect(queryClient.removeQueries).toHaveBeenCalledWith(query)
+    expect(queryClient.removeQueries).toHaveBeenCalledWith([query])
   })
 })
 
