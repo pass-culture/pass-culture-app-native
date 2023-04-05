@@ -1,12 +1,9 @@
-import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { theme } from 'theme'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { GenericColoredBanner } from './GenericColoredBanner'
 
@@ -39,33 +36,13 @@ WithIcon.args = {
   Icon: BicolorClock,
 }
 
-const ActionButton = () => (
-  <ButtonQuaternarySecondary
-    numberOfLines={2}
-    justifyContent="flex-start"
-    onPress={action('Press\u00a0!')}
-    icon={PlainArrowNext}
-    wording="Call to action message"
-  />
-)
-
-export const WithChildren = Template.bind({})
-WithChildren.args = {
-  message,
-  children: ActionButton,
-}
-
 export const textColor = Template.bind({})
 textColor.args = {
   message,
-  textColor: theme.colors.greyDark,
-  children: ActionButton,
+  textColor: theme.colors.error,
 }
 export const backgroundColor = Template.bind({})
 backgroundColor.args = {
   message,
-  backgroundColor: theme.colors.secondaryLight,
-  textColor: theme.colors.greyDark,
-
-  children: ActionButton,
+  backgroundColor: theme.colors.primaryDark,
 }
