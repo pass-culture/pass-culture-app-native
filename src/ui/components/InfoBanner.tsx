@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { GenericColoredBanner } from 'ui/components/GenericColoredBanner'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
 
 type ColorMessageProps = {
   withLightColorMessage?: boolean
@@ -21,6 +22,7 @@ export const InfoBanner: FunctionComponent<Props> = ({
   testID,
   children,
 }) => {
+  const theme = useTheme()
   const Icon =
     icon &&
     styled(icon).attrs(({ theme }) => ({
@@ -29,38 +31,15 @@ export const InfoBanner: FunctionComponent<Props> = ({
       size: theme.icons.sizes.small,
     }))``
 
+  const textColor = withLightColorMessage ? theme.colors.greyDark : theme.colors.black
   return (
-    <Container testID={testID}>
-      {!!Icon && (
-        <IconContainer>
-          <Icon />
-        </IconContainer>
-      )}
-      <TextContainer>
-        <Caption withLightColorMessage={!!withLightColorMessage}>{message}</Caption>
-        {children}
-      </TextContainer>
-    </Container>
+    <GenericColoredBanner
+      message={message}
+      Icon={Icon}
+      backgroundColor={theme.colors.secondaryLight}
+      textColor={textColor}
+      testID={testID}>
+      {children}
+    </GenericColoredBanner>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  backgroundColor: theme.colors.secondaryLight,
-  borderRadius: getSpacing(2),
-  padding: getSpacing(4),
-}))
-
-const IconContainer = styled.View({
-  paddingRight: getSpacing(4),
-})
-
-const TextContainer = styled.View({
-  flex: 1,
-})
-
-const Caption = styled(Typo.Caption)<ColorMessageProps>(({ theme, withLightColorMessage }) => ({
-  color: withLightColorMessage ? theme.colors.greyDark : theme.colors.black,
-}))

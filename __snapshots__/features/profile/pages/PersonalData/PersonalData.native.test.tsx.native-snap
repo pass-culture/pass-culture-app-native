@@ -492,6 +492,7 @@ Array [
       }
     />
     <View
+      backgroundColor="#f3ecff"
       style={
         Array [
           Object {
@@ -530,7 +531,7 @@ Array [
               },
             ]
           }
-          withLightColorMessage={false}
+          textColor="#161617"
         >
           Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.
         </Text>

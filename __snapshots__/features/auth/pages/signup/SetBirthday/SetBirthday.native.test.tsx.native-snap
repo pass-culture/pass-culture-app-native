@@ -22,6 +22,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     }
   >
     <View
+      backgroundColor="#f3ecff"
       style={
         Array [
           Object {
@@ -78,7 +79,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
               },
             ]
           }
-          withLightColorMessage={false}
+          textColor="#161617"
         >
           Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
         </Text>
