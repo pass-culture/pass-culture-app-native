@@ -1,7 +1,10 @@
 import { rest } from 'msw'
 
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
-import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
+import {
+  SubscriptionStepperErrorResponseFixture,
+  SubscriptionStepperResponseFixture,
+} from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -24,6 +27,23 @@ describe('useGetStepperInfo', () => {
       })
     })
   })
+  it('should return an errorMessage', async () => {
+    server.use(
+      rest.get(env.API_BASE_URL + '/native/v1/subscription/stepper', (_req, res, ctx) =>
+        res(ctx.status(200), ctx.json(SubscriptionStepperErrorResponseFixture))
+      )
+    )
+    const result = renderGetStepperInfo()
+
+    await waitFor(() => {
+      expect(result.result.current).toEqual({
+        stepToDisplay: SubscriptionStepperErrorResponseFixture.subscriptionStepsToDisplay,
+        title: 'Titre Stepper',
+        subtitle: null,
+        errorMessage: 'Tu n’as pas fournis les bons documents',
+      })
+    })
+  })
 
   it('should return empty stepsToDisplay list and titles if the data is undefined', async () => {
     server.use(
@@ -37,6 +57,7 @@ describe('useGetStepperInfo', () => {
       expect(result.result.current).toEqual({
         stepToDisplay: [],
         title: '',
+        errorMessage: null,
       })
     })
   })

@@ -36,6 +36,12 @@ export const SubscriptionStepperResponseFixture: SubscriptionStepperResponse = {
   ],
 }
 
+export const SubscriptionStepperErrorResponseFixture: SubscriptionStepperResponse = {
+  ...SubscriptionStepperResponseFixture,
+  subtitle: null,
+  errorMessage: 'Tu n’as pas fournis les bons documents',
+}
+
 export const SubscriptionStepperResponseWithPhoneValidationFixture: SubscriptionStepperResponse = {
   ...SubscriptionStepperResponseFixture,
   subscriptionStepsToDisplay: [
