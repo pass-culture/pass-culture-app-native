@@ -131,6 +131,16 @@ describe('Stepper navigation', () => {
     render(<IdentityCheckStepper />)
     expect(screen).toMatchSnapshot()
   })
+  it('should display an error message if the identification step failed', () => {
+    mockUseStepperInfo.mockReturnValueOnce({
+      stepsDetails: stepsDetailsFixture,
+      title: 'Vas-y',
+      errorMessage: 'Le document que tu as présenté est expiré.',
+    })
+    render(<IdentityCheckStepper />)
+
+    expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeTruthy()
+  })
 
   it('should stay on stepper when next_step is null and initialCredit is not between 0 and 300 euros', async () => {
     mockNextSubscriptionStep = {

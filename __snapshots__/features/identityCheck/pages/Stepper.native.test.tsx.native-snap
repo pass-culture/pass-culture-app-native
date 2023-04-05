@@ -65,6 +65,16 @@ Array [
           ]
         }
       />
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
       <Text
         style={
           Array [
@@ -80,11 +90,21 @@ Array [
         Débloque ton crédit
       </Text>
       <View
-        numberOfSpaces={10}
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "height": 40,
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
             },
           ]
         }

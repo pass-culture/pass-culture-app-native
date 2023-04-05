@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { ErrorBanner } from 'features/identityCheck/components/ErrorBanner'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/modals/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { StepButton } from 'features/identityCheck/components/StepButton'
@@ -35,7 +36,12 @@ export const IdentityCheckStepper = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const stepsDeprecated = useSubscriptionSteps()
-  const { stepsDetails: steps, title: stepperTitle, subtitle: stepperSubtitle } = useStepperInfo()
+  const {
+    stepsDetails: steps,
+    title: stepperTitle,
+    subtitle: stepperSubtitle,
+    errorMessage,
+  } = useStepperInfo()
 
   const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
 
@@ -176,9 +182,9 @@ export const IdentityCheckStepper = () => {
 
         <StyledTitle1>{title}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        {!!subtitle && <Typo.Body>{subtitle}</Typo.Body>}
-
-        <Spacer.Column numberOfSpaces={10} />
+        {!!subtitle && <StyledSubtitle subtitle={subtitle} />}
+        {!!errorMessage && <StyledErrorMessage errorMessage={errorMessage} />}
+        <Spacer.Column numberOfSpaces={6} />
         {temporaryStepList}
         <Spacer.Flex flex={1} />
 
@@ -217,3 +223,17 @@ const Container = styled.ScrollView.attrs(({ theme }) => ({
 const StepButtonContainer = styled.View({
   alignItems: 'center',
 })
+
+const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
+  <React.Fragment>
+    <Spacer.Column numberOfSpaces={2} />
+    <Typo.Body>{subtitle}</Typo.Body>
+    <Spacer.Column numberOfSpaces={4} />
+  </React.Fragment>
+)
+const StyledErrorMessage = ({ errorMessage }: { errorMessage: string }) => (
+  <React.Fragment>
+    <Spacer.Column numberOfSpaces={4} />
+    <ErrorBanner message={errorMessage} />
+  </React.Fragment>
+)
