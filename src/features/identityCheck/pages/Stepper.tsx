@@ -184,7 +184,7 @@ export const IdentityCheckStepper = () => {
         <Spacer.Column numberOfSpaces={2} />
         {!!subtitle && <StyledSubtitle subtitle={subtitle} />}
         {!!errorMessage && <StyledErrorMessage errorMessage={errorMessage} />}
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={2} />
         {temporaryStepList}
         <Spacer.Flex flex={1} />
 
@@ -228,7 +228,7 @@ const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={2} />
     <Typo.Body>{subtitle}</Typo.Body>
-    <Spacer.Column numberOfSpaces={4} />
+    <Spacer.Column numberOfSpaces={8} />
   </React.Fragment>
 )
 const StyledErrorMessage = ({ errorMessage }: { errorMessage: string }) => (

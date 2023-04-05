@@ -90,21 +90,21 @@ Array [
         Débloque ton crédit
       </Text>
       <View
-        numberOfSpaces={4}
+        numberOfSpaces={8}
         style={
           Array [
             Object {
-              "height": 16,
+              "height": 32,
             },
           ]
         }
       />
       <View
-        numberOfSpaces={6}
+        numberOfSpaces={2}
         style={
           Array [
             Object {
-              "height": 24,
+              "height": 8,
             },
           ]
         }
