@@ -116,6 +116,7 @@ export interface AppThemeType {
     attention: ColorsEnum
     black: ColorsEnum
     error: ColorsEnum
+    errorLight: ColorsEnum
     greenValid: ColorsEnum
     greenLight: ColorsEnum
     greyDark: ColorsEnum
@@ -547,6 +548,7 @@ export const theme: AppThemeType = {
     attention: ColorsEnum.ATTENTION,
     black: ColorsEnum.BLACK,
     error: ColorsEnum.ERROR,
+    errorLight: ColorsEnum.ERROR_LIGHT,
     greenValid: ColorsEnum.GREEN_VALID,
     greenLight: ColorsEnum.GREEN_LIGHT,
     greyDark: ColorsEnum.GREY_DARK,

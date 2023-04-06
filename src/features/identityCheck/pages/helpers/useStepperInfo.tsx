@@ -21,11 +21,12 @@ export const useStepperInfo = (): {
   stepsDetails: StepDetails[]
   title: string
   subtitle?: string | null
+  errorMessage?: string | null
 } => {
   const { profile, identification } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const { stepToDisplay, title, subtitle } = useGetStepperInfo()
+  const { stepToDisplay, title, subtitle, errorMessage } = useGetStepperInfo()
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
     'IdentityCheckEduConnect',
@@ -96,7 +97,7 @@ export const useStepperInfo = (): {
 
   const stepsDetails = mapStepsDetails(stepToDisplay, stepsConfig)
 
-  return { stepsDetails, title, subtitle }
+  return { stepsDetails, title, subtitle, errorMessage }
 }
 
 const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (

@@ -11,8 +11,8 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { SearchHit } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
-import { Banner } from 'ui/components/Banner'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
@@ -60,7 +60,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
           testID="banner-container"
           accessibilityRole={AccessibilityRole.STATUS}
           nbHits={nbHits}>
-          <Banner message={unavailableOfferMessage} icon={Error} />
+          <InfoBanner message={unavailableOfferMessage} icon={Error} />
         </BannerOfferNotPresentContainer>
       )}
     </React.Fragment>

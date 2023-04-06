@@ -26,7 +26,6 @@ import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
-import { Banner } from 'ui/components/Banner'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -45,6 +44,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
@@ -450,15 +450,15 @@ export const AppComponents: FunctionComponent = () => {
         <AccordionItem title="Banners">
           <Spacer.Column numberOfSpaces={2} />
 
-          <Banner message="Banner with message" />
+          <InfoBanner message="Banner with message" />
 
           <Spacer.Column numberOfSpaces={2} />
 
-          <Banner message="Banner with message and icon" icon={Info} />
+          <InfoBanner message="Banner with message and icon" icon={Info} />
 
           <Spacer.Column numberOfSpaces={2} />
 
-          <Banner message="Banner with ButtonQuaternarySecondary" withLightColorMessage>
+          <InfoBanner message="Banner with ButtonQuaternarySecondary" withLightColorMessage>
             <Spacer.Column numberOfSpaces={2} />
             <ButtonQuaternarySecondary
               wording="Call to action title"
@@ -468,11 +468,11 @@ export const AppComponents: FunctionComponent = () => {
               icon={EmailFilled}
               inline
             />
-          </Banner>
+          </InfoBanner>
 
           <Spacer.Column numberOfSpaces={2} />
 
-          <Banner message="Banner with ExternalTouchableLink" withLightColorMessage>
+          <InfoBanner message="Banner with ExternalTouchableLink" withLightColorMessage>
             <Spacer.Column numberOfSpaces={2} />
             <ExternalTouchableLink
               wording="Call to action title"
@@ -483,7 +483,7 @@ export const AppComponents: FunctionComponent = () => {
               icon={ExternalSiteFilled}
               inline
             />
-          </Banner>
+          </InfoBanner>
         </AccordionItem>
 
         <Divider />

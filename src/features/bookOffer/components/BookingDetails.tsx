@@ -15,8 +15,8 @@ import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -98,7 +98,7 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
     </Center>
   ) : (
     <Container>
-      <Banner
+      <InfoBanner
         message="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
         icon={Error}
       />
