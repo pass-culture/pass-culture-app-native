@@ -1,6 +1,8 @@
 name: Lighthouse Web Performance test
 
-on: push
+on:
+  schedule:
+    - cron: '0 5 * * 1-5' # “At 5AM everyday from Monday through Friday.
 
 jobs:
   lighthouse:
