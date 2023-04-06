@@ -1,0 +1,25 @@
+name: Lighthouse Web Performance test
+
+on: push
+
+jobs:
+  lighthouse:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+      - name: run Lighthouse CI
+        run: |
+          yarn global add @lhci/cli@0.11.x
+          lhci autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
