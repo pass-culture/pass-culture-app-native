@@ -37,7 +37,7 @@ export function DateInputDesktop(props: DatePickerProps) {
       }
     }
     const { month: selectedMonth, year: selectedYear } = date
-    const selectedMonthIndex = monthNames.indexOf(selectedMonth)
+    const selectedMonthIndex = monthNames.indexOf(selectedMonth).toString()
     return {
       days: getDatesInMonth(selectedMonthIndex, selectedYear),
       months: monthNames,

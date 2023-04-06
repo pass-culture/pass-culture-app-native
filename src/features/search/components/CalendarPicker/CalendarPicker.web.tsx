@@ -98,7 +98,7 @@ export const CalendarPicker: React.FC<Props> = ({
       month: selectedMobileMonth,
       year: selectedMobileYear,
     } = mobileDateValues
-    const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth)
+    const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth).toString()
     const currentYear = new Date().getFullYear()
 
     const invalid = isBeforeToday(selectedMobileYear, selectedMobileMonthIndex, selectedMobileDay)

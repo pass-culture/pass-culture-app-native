@@ -53,8 +53,8 @@ export function getPastYears(startYear: number, currentYear: string) {
  * @param monthIndex Integer value representing the month, beginning with 0 for January to 11 for December
  * @param year String value representing the year
  */
-export function getDatesInMonth(monthIndex: number, year: string) {
-  const nextMonthIndex = monthIndex + 1
+export function getDatesInMonth(month: string, year: string) {
+  const nextMonthIndex = Number(month) + 1
   const nbOfDaysInMonth = new Date(Number(year), nextMonthIndex, 0).getDate()
   return range(1, nbOfDaysInMonth + 1).map((day) => day.toString())
 }

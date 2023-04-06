@@ -32,7 +32,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
   const optionGroups = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
-    const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth)
+    const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth).toString()
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
