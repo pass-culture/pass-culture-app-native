@@ -1,0 +1,33 @@
+name: Lighthouse Web Performance test
+
+on:
+  schedule:
+    - cron: '0 5 * * 1-5' # “At 5AM everyday from Monday through Friday.
+
+jobs:
+  lighthouse:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+      - name: run Lighthouse CI
+        run: |
+          yarn global add @lhci/cli@0.11.x
+          yarn test:lighthouse --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
+      - name: Upload lighthouse report to artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: lighthouse-report
+          path: ./.lighthouseci/*.html
