@@ -14,10 +14,6 @@ jobs:
       - name: Run Danger.js to publish scores in PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./scripts/reassure-test.sh
-      - name: Run Danger.js to publish scores in PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn danger ci
       - name: Check if pipeline should fail
         run: (! grep "🔴" .reassure/output.md)
