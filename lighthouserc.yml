@@ -1,7 +1,7 @@
 ci:
   collect:
     numberOfRuns: 5
-    headful: true
+    method: psi
     url: https://app.testing.passculture.team/
     settings:
       onlyCategories:
@@ -15,4 +15,3 @@ ci:
       largest-contentful-paint:
         - error
         - maxNumericValue: 10_000
-
