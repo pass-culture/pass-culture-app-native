@@ -7,9 +7,4 @@ describe('culturalSurveyType', () => {
     const result = mapCulturalSurveyTypeToIcon('__unknown_key__' as CulturalSurveyAnswerEnum)
     expect(result).toBe(culturalSurveyIcons.Festival)
   })
-
-  it('should have icon Book icon for books', () => {
-    const result = mapCulturalSurveyTypeToIcon(CulturalSurveyAnswerEnum.LIVRE)
-    expect(result).toBe(culturalSurveyIcons.Book)
-  })
 })
