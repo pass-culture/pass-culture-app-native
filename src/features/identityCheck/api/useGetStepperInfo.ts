@@ -12,7 +12,7 @@ export const useGetStepperInfo = (): {
 } => {
   const { data } = useQuery(QueryKeys.STEPPER_INFO, () => api.getnativev1subscriptionstepper())
   if (data === undefined) {
-    return { stepToDisplay: [], title: '', errorMessage: null }
+    return { stepToDisplay: [], title: '' }
   }
 
   return {

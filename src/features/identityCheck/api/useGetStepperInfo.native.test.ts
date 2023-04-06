@@ -57,7 +57,6 @@ describe('useGetStepperInfo', () => {
       expect(result.result.current).toEqual({
         stepToDisplay: [],
         title: '',
-        errorMessage: null,
       })
     })
   })
