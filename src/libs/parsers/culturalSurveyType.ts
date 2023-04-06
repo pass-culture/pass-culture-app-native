@@ -37,17 +37,6 @@ export const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [CulturalSurveyAnswerEnum.SPECTACLE_THEATRE]: culturalSurveyIcons.Theater,
   [CulturalSurveyAnswerEnum.SANS_ACTIVITES]: null,
   [CulturalSurveyAnswerEnum.SANS_SORTIES]: null,
-  [CulturalSurveyAnswerEnum.PROJECTION_FESTIVAL]: culturalSurveyIcons.Festival,
-  [CulturalSurveyAnswerEnum.PROJECTION_CINEMA]: culturalSurveyIcons.Cinema,
-  [CulturalSurveyAnswerEnum.PROJECTION_VISITE]: culturalSurveyIcons.Museum,
-  [CulturalSurveyAnswerEnum.PROJECTION_CONCERT]: culturalSurveyIcons.Music,
-  [CulturalSurveyAnswerEnum.PROJECTION_CD_VINYLE]: culturalSurveyIcons.Music,
-  [CulturalSurveyAnswerEnum.PROJECTION_SPECTACLE]: culturalSurveyIcons.Show,
-  [CulturalSurveyAnswerEnum.PROJECTION_ACTIVITE_ARTISTIQUE]: culturalSurveyIcons.Brush,
-  [CulturalSurveyAnswerEnum.PROJECTION_LIVRE]: culturalSurveyIcons.Book,
-  [CulturalSurveyAnswerEnum.PROJECTION_CONFERENCE]: culturalSurveyIcons.Micro,
-  [CulturalSurveyAnswerEnum.PROJECTION_JEU]: culturalSurveyIcons.VideoGame,
-  [CulturalSurveyAnswerEnum.PROJECTION_AUTRE]: null,
 }
 
 export const mapCulturalSurveyTypeToIcon = (
