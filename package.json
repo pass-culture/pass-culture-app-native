@@ -61,6 +61,7 @@
     "start:web:testing": "ENV=testing yarn start:web",
     "storybook": "start-storybook -s ./public -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
+    "test:lighthouse": "lhci autorun",
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:perf": "TEST_RUNNER_ARGS='--runInBand --testMatch \"<rootDir>/**/*.perf.test.tsx\"' yarn reassure",
     "test:sw": "node scripts/service-worker-test.mjs",
