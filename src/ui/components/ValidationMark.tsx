@@ -1,6 +1,5 @@
 import React from 'react'
-import { useTheme } from 'styled-components'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { IconInterface } from 'ui/svg/icons/types'

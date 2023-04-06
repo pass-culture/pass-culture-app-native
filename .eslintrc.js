@@ -229,6 +229,7 @@ module.exports = {
           '**/service-worker.ts',
           '**/why-did-you-render.js',
           '**/jest.*.ts',
+          'dangerfile.ts',
         ],
         // This is features available with patch-package on eslint-plugin-import
         // Open PR: https://github.com/import-js/eslint-plugin-import/pull/2557/files
@@ -345,7 +346,10 @@ module.exports = {
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
         'jest/valid-expect': 'error',
-        'jest/expect-expect': 'error',
+        'jest/expect-expect': [
+          'error',
+          { assertFunctionNames: ['expect', 'measurePerformance'] }
+        ],
       },
     },
   ],

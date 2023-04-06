@@ -1,10 +1,15 @@
 import '@testing-library/jest-native/extend-expect'
+
 import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
+import { configure } from 'reassure'
 
 import { server } from 'tests/server'
 
 import { queryCache } from './reactQueryProviderHOC'
+
+// Configuration for performance tests
+configure({ testingLibrary: 'react-native' })
 
 global.expect.extend(toHaveNoViolations)
 
