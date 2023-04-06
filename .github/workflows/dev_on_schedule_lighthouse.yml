@@ -23,3 +23,9 @@ jobs:
         run: |
           yarn global add @lhci/cli@0.11.x
           lhci autorun --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
+      - name: Upload lighthouse report to artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: lighthouse-report
+          path: ./.lighthouseci/*.html
