@@ -1,6 +1,6 @@
 ci:
   collect:
-    numberOfRuns: 5
+    numberOfRuns: 3
     method: psi
     url: https://app.testing.passculture.team/
     settings:
