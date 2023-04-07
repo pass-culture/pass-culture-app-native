@@ -61,6 +61,12 @@ describe('StepButton with DeprecatedStepConfig', () => {
       const { getByTestId } = render(<StepButton step={step} state={StepButtonState.CURRENT} />)
       expect(getByTestId(`${label} non complété`).props.accessibilityState.disabled).toBe(false)
     })
+    it('should be active if step is "retry"', () => {
+      const { getByTestId } = render(<StepButton step={step} state={StepButtonState.RETRY} />)
+      expect(getByTestId(`${label} à essayer de nouveau`).props.accessibilityState.disabled).toBe(
+        false
+      )
+    })
   })
 
   describe('icons', () => {
