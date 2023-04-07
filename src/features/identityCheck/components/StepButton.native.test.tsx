@@ -3,100 +3,39 @@ import React from 'react'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { StepButton } from 'features/identityCheck/components/StepButton'
-import {
-  StepButtonState,
-  DeprecatedStepConfig,
-  StepDetails,
-  IdentityCheckStep,
-} from 'features/identityCheck/types'
+import { StepButtonState, StepDetails, IdentityCheckStep } from 'features/identityCheck/types'
 import { render } from 'tests/utils'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { AccessibleIcon, IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const label = 'Profil'
-const DisabledIcon: React.FC<IconInterface> = () => (
-  <BicolorProfile
-    testID="disabled-icon"
-    opacity={0.5}
-    color={theme.colors.black}
-    color2={theme.colors.black}
-  />
-)
-const CurrentIcon: React.FC<IconInterface> = () => (
-  <BicolorProfile
-    testID="current-icon"
-    opacity={0.5}
-    color={theme.colors.black}
-    color2={theme.colors.black}
-  />
-)
-const CompletedIcon: React.FC<IconInterface> = () => (
-  <BicolorProfile
-    testID="completed-icon"
-    opacity={0.5}
-    color={theme.colors.black}
-    color2={theme.colors.black}
-  />
-)
-const step = {
-  label,
-  icon: { disabled: DisabledIcon, current: CurrentIcon, completed: CompletedIcon },
-} as DeprecatedStepConfig
+describe('StepButton', () => {
+  it.each`
+    stepState                    | stepTestId                               | isDisabled
+    ${StepButtonState.COMPLETED} | ${'Identification complété'}             | ${true}
+    ${StepButtonState.CURRENT}   | ${'Identification non complété'}         | ${false}
+    ${StepButtonState.DISABLED}  | ${'Identification non complété'}         | ${true}
+    ${StepButtonState.RETRY}     | ${'Identification à essayer de nouveau'} | ${false}
+  `(
+    'should return the correct StepButton depending on StepButtonState',
+    ({ stepState, stepTestId, isDisabled }) => {
+      const identificationStep: StepDetails = {
+        name: IdentityCheckStep.IDENTIFICATION,
+        screens: ['SelectIDOrigin'],
+        stepState: stepState,
+        title: 'Identification',
+        icon: {
+          disabled: DisabledIdCardIcon,
+          current: BicolorIdCard,
+          completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+          retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
+        },
+      }
 
-describe('StepButton with DeprecatedStepConfig', () => {
-  describe('button is enabled/disabled', () => {
-    it('should be disabled if step is "completed"', () => {
-      const { getByTestId } = render(<StepButton step={step} state={StepButtonState.COMPLETED} />)
-      expect(getByTestId(`${label} complété`).props.accessibilityState.disabled).toBe(true)
-    })
-
-    it('should be disabled if step is "disabled"', () => {
-      const { getByTestId } = render(<StepButton step={step} state={StepButtonState.DISABLED} />)
-      expect(getByTestId(`${label} non complété`).props.accessibilityState.disabled).toBe(true)
-    })
-
-    it('should be active if step is "current"', () => {
-      const { getByTestId } = render(<StepButton step={step} state={StepButtonState.CURRENT} />)
-      expect(getByTestId(`${label} non complété`).props.accessibilityState.disabled).toBe(false)
-    })
-    it('should be active if step is "retry"', () => {
-      const { getByTestId } = render(<StepButton step={step} state={StepButtonState.RETRY} />)
-      expect(getByTestId(`${label} à essayer de nouveau`).props.accessibilityState.disabled).toBe(
-        false
-      )
-    })
-  })
-
-  describe('icons', () => {
-    it('icon check is displaying when step is completed', () => {
-      const { queryByTestId } = render(<StepButton step={step} state={StepButtonState.COMPLETED} />)
-
-      expect(queryByTestId('completed-icon')).toBeTruthy()
-      expect(queryByTestId('current-icon')).toBeFalsy()
-      expect(queryByTestId('disabled-icon')).toBeFalsy()
-    })
-
-    it('icon check is not displaying when step is disabled', () => {
-      const { queryByTestId } = render(<StepButton step={step} state={StepButtonState.DISABLED} />)
-
-      expect(queryByTestId('disabled-icon')).toBeTruthy()
-      expect(queryByTestId('completed-icon')).toBeFalsy()
-      expect(queryByTestId('current-icon')).toBeFalsy()
-    })
-
-    it('icon check is not displaying when step is current', () => {
-      const { queryByTestId } = render(<StepButton step={step} state={StepButtonState.CURRENT} />)
-
-      expect(queryByTestId('current-icon')).toBeTruthy()
-      expect(queryByTestId('completed-icon')).toBeFalsy()
-      expect(queryByTestId('disabled-icon')).toBeFalsy()
-    })
-  })
-})
-
-describe('StepButton with StepDetails', () => {
+      const stepButton = render(<StepButton step={identificationStep} />)
+      expect(stepButton.getByTestId(stepTestId).props.accessibilityState.disabled).toBe(isDisabled)
+    }
+  )
   it.each`
     stepState                    | stepTestId
     ${StepButtonState.COMPLETED} | ${'Identification complété'}
@@ -119,7 +58,7 @@ describe('StepButton with StepDetails', () => {
         },
       }
 
-      const stepButton = render(<StepButton state={stepState} step={identificationStep} />)
+      const stepButton = render(<StepButton step={identificationStep} />)
 
       expect(stepButton.queryByTestId(stepTestId)).toBeTruthy()
     }

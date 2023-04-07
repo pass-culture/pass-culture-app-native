@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { StepButtonState, DeprecatedStepConfig, StepDetails } from 'features/identityCheck/types'
+import { StepButtonState, StepDetails } from 'features/identityCheck/types'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -11,21 +11,20 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
-  step: DeprecatedStepConfig | StepDetails
-  state: StepButtonState //TODO(PC-20931): remove this props when removing DeprecatedStepConfig type for step because stepState is included in StepDetails
+  step: StepDetails
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress?: () => void
 }
 
-export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
-  const label = 'label' in step ? step.label : step.title
-  const Icon = step.icon[state]
-  // TODO(PC-20931): it fixes typing. Remove next line when deleting DeprecatedStepConfig type
-  const subtitle = 'subtitle' in step ? step.subtitle : null
+export const StepButton = ({ step, navigateTo, onPress }: Props) => {
+  const label = step.title
+  const stepState = step.stepState
+  const Icon = step.icon[stepState]
+  const subtitle = step.subtitle
 
   let iconLabel = ''
 
-  switch (state) {
+  switch (stepState) {
     case StepButtonState.COMPLETED:
       iconLabel = 'complété'
       break
@@ -42,14 +41,14 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
 
   const accessibilityLabel = `${label} ${iconLabel}`
 
-  const StyleContainer = styleContainer[state]
+  const StyleContainer = styleContainer[stepState]
 
   const isDisabled = state === StepButtonState.DISABLED || state === StepButtonState.COMPLETED
 
   const ButtonContent = () => (
     <StyleContainer LeftIcon={Icon}>
-      <StyledButtonText state={state}>{label}</StyledButtonText>
-      {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
+      <StyledButtonText stepState={state}>{label}</StyledButtonText>
+      {!!subtitle && <StepSubtitle stepState={state}>{subtitle}</StepSubtitle>}
     </StyleContainer>
   )
 
@@ -139,18 +138,20 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
 })
 
-const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
-  ({ state, theme }) => ({
+const StyledButtonText = styled(Typo.ButtonText)<{ stepState: StepButtonState }>(
+  ({ stepState, theme }) => ({
     color:
-      state === StepButtonState.CURRENT || state === StepButtonState.RETRY
+      stepState === StepButtonState.CURRENT || stepState === StepButtonState.RETRY
         ? theme.colors.black
         : theme.colors.greyDark,
   })
 )
 
-const StepSubtitle = styled(Typo.Caption)<{ state: StepButtonState }>(({ state, theme }) => ({
-  color:
-    state === StepButtonState.CURRENT || state === StepButtonState.RETRY
-      ? theme.colors.greyDark
-      : theme.colors.greySemiDark,
-}))
+const StepSubtitle = styled(Typo.Caption)<{ stepState: StepButtonState }>(
+  ({ stepState, theme }) => ({
+    color:
+      stepState === StepButtonState.CURRENT || stepState === StepButtonState.RETRY
+        ? theme.colors.greyDark
+        : theme.colors.greySemiDark,
+  })
+)
