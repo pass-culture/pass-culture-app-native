@@ -43,12 +43,13 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
 
   const StyleContainer = styleContainer[stepState]
 
-  const isDisabled = state === StepButtonState.DISABLED || state === StepButtonState.COMPLETED
+  const isDisabled =
+    stepState === StepButtonState.DISABLED || stepState === StepButtonState.COMPLETED
 
   const ButtonContent = () => (
     <StyleContainer LeftIcon={Icon}>
-      <StyledButtonText stepState={state}>{label}</StyledButtonText>
-      {!!subtitle && <StepSubtitle stepState={state}>{subtitle}</StepSubtitle>}
+      <StyledButtonText stepState={stepState}>{label}</StyledButtonText>
+      {!!subtitle && <StepSubtitle stepState={stepState}>{subtitle}</StepSubtitle>}
     </StyleContainer>
   )
 
