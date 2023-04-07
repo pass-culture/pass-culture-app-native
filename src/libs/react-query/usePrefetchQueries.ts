@@ -8,8 +8,8 @@ import { queryClient } from 'libs/react-query/queryClient'
 
 const prefetchQueries = async () => {
   try {
-    await queryClient.prefetchQuery(QueryKeys.HOMEPAGE_MODULES, fetchHomepageNatifContent)
-    await queryClient.prefetchQuery(QueryKeys.SETTINGS, () => api.getnativev1settings())
+    await queryClient.prefetchQuery([QueryKeys.HOMEPAGE_MODULES], fetchHomepageNatifContent)
+    await queryClient.prefetchQuery([QueryKeys.SETTINGS], () => api.getnativev1settings())
   } catch (err) {
     // do nothing in case the pretching of queries fails
   }

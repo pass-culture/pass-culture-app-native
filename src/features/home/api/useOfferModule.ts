@@ -40,8 +40,8 @@ export const useOfferModule = ({
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
-    async () =>
-      await fetchMultipleOffers({
+    () =>
+      fetchMultipleOffers({
         paramsList: parsedParameters,
         userLocation: position,
         isUserUnderage,

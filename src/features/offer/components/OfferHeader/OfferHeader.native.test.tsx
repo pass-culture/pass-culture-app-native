@@ -126,7 +126,7 @@ describe('<OfferHeader />', () => {
     await waitFor(() => {
       expect(screen.getByTestId('animated-icon-favorite-filled')).toBeTruthy()
 
-      const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
+      const mutateData = queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse
       expect(
         mutateData.favorites?.find(
           (f: FavoriteResponse) => f.offer.id === favoriteResponseSnap.offer.id
@@ -134,7 +134,7 @@ describe('<OfferHeader />', () => {
       ).toEqual(favoriteResponseSnap.offer.id)
 
       expect(
-        (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
+        (queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse).favorites?.find(
           (f: FavoriteResponse) => f.id === 1000
         )
       ).toEqual({

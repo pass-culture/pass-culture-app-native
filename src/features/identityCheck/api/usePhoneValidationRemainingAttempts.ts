@@ -5,7 +5,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 export function usePhoneValidationRemainingAttempts() {
   const { data: phoneValidationRemainingAttempts } = useQuery(
-    QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS,
+    [QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS],
     () => api.getnativev1phoneValidationremainingAttempts()
   )
   const isLastAttempt = phoneValidationRemainingAttempts?.remainingAttempts === 1

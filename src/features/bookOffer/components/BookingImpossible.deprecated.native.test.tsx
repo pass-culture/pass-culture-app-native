@@ -59,7 +59,7 @@ describe('<BookingImpossible />', () => {
 
   it('should render without CTAs when offer is favorite', async () => {
     const setup = (queryClient: QueryClient) => {
-      queryClient.setQueryData('favorites', {
+      queryClient.setQueryData(['favorites'], {
         favorites: [{ offer: { id: offerId } }],
       })
     }
@@ -70,7 +70,7 @@ describe('<BookingImpossible />', () => {
 
   it('should have the correct wording when offer is favorite', async () => {
     const setup = (queryClient: QueryClient) => {
-      queryClient.setQueryData('favorites', {
+      queryClient.setQueryData(['favorites'], {
         favorites: [{ offer: { id: offerId } }],
       })
     }

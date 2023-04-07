@@ -56,7 +56,7 @@ describe('<SuspendedAccount />', () => {
     useMutationCallbacks.onSuccess()
     await waitFor(() => {
       queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
-        expect(queryClient.invalidateQueries).toHaveBeenCalledWith(queryKey)
+        expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
       )
       expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
     })

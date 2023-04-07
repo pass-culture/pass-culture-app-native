@@ -8,7 +8,7 @@ const STALE_TIME_PROFILE_OPTIONS = 5 * 60 * 1000
 
 function useProfileOptionsResponse() {
   return useQuery<ProfileOptionsResponse>(
-    QueryKeys.SCHOOL_TYPES,
+    [QueryKeys.SCHOOL_TYPES],
     () => api.getnativev1subscriptionprofileOptions(),
     { staleTime: STALE_TIME_PROFILE_OPTIONS }
   )

@@ -8,12 +8,12 @@ export function useAccountSuspensionStatus() {
   const netInfo = useNetInfoContext()
 
   return useQuery(
-    QueryKeys.ACCOUNT_SUSPENSION_STATUS,
+    [QueryKeys.ACCOUNT_SUSPENSION_STATUS],
     async () => {
       try {
         return await api.getnativev1accountsuspensionStatus()
       } catch {
-        return undefined
+        return null
       }
     },
     { enabled: !!netInfo.isConnected }

@@ -18,7 +18,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { email } = props.route.params
   const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery(
-    QueryKeys.SIGNUP_CONFIRMATION_EXPIRED_LINK,
+    [QueryKeys.SIGNUP_CONFIRMATION_EXPIRED_LINK],
     signupConfirmationExpiredLink,
     {
       cacheTime: 0,
@@ -29,8 +29,9 @@ export function SignupConfirmationExpiredLink(props: Props) {
   async function signupConfirmationExpiredLink() {
     try {
       analytics.logResendEmailSignupConfirmationExpiredLink()
-      await api.postnativev1resendEmailValidation({ email })
+      const result = await api.postnativev1resendEmailValidation({ email })
       navigate('SignupConfirmationEmailSent', { email })
+      return result
     } catch (err) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
     }

@@ -21,7 +21,7 @@ export function useLogoutRoutine(): () => Promise<void> {
       await storage.clear('access_token')
       await clearRefreshToken()
       LoggedInQueryKeys.forEach((queryKey) => {
-        queryClient.removeQueries(queryKey)
+        queryClient.removeQueries([queryKey])
       })
       await AsyncStorage.multiRemove(LoggedInQueryKeys)
     } catch (err) {
