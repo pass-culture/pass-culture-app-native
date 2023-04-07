@@ -43,6 +43,8 @@ describe('FourthCard', () => {
 
     fireEvent.press(getByText('J’ai compris'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AgeSelection')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+      screen: 'Profile',
+    })
   })
 })

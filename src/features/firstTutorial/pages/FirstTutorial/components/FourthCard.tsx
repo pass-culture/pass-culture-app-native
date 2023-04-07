@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { Platform } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { storage } from 'libs/storage'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 import {
@@ -24,9 +24,12 @@ export function FourthCard(props: AchievementCardKeyProps) {
 
   const onButtonPress = useCallback(() => {
     if (Platform.OS === 'web') {
-      reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+      reset({
+        index: 0,
+        routes: [{ name: 'TabNavigator', state: { routes: [{ name: 'Profile' }] } }],
+      })
     } else {
-      navigate('AgeSelection')
+      navigate(...getTabNavConfig('Profile'))
     }
   }, [navigate, reset])
 
