@@ -201,7 +201,10 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
-  Venue: { id: number }
+  Venue: {
+    id: number
+    from?: Referrals
+  }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
   ThematicHome: ThematicHomeParams

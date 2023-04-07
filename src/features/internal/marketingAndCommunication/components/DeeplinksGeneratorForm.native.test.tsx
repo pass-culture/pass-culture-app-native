@@ -1,7 +1,13 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { DeeplinksGeneratorForm } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
+import {
+  DeeplinksGeneratorForm,
+  getDefaultScreenParams,
+} from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
+import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
+import { LocationType } from 'features/search/enums'
+import { SearchView } from 'features/search/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render, fireEvent } from 'tests/utils'
 
@@ -95,4 +101,30 @@ describe('<DeeplinksGeneratorForm />', () => {
         'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D',
     })
   })
+})
+
+describe('getDefaultScreenParams', () => {
+  it('should return an object with view, locationFilter and noFocus params when screen is Search', () => {
+    const defaultParams = getDefaultScreenParams('Search')
+    expect(defaultParams).toEqual({
+      view: SearchView.Results,
+      locationFilter: { locationType: LocationType.EVERYWHERE },
+      noFocus: true,
+    })
+  })
+
+  it('should return an object with from param when screen is Venue', () => {
+    const defaultParams = getDefaultScreenParams('Venue')
+    expect(defaultParams).toEqual({
+      from: 'deeplink',
+    })
+  })
+
+  it.each(['Offer', 'Home', 'Profile', 'SignupForm', 'ThematicHome'])(
+    'should return an empty object when screen is %s',
+    (screen) => {
+      const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)
+      expect(defaultParams).toEqual({})
+    }
+  )
 })
