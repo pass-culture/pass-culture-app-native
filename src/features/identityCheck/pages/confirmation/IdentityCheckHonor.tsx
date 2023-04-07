@@ -37,6 +37,7 @@ export const IdentityCheckHonor = () => {
   } = usePostHonorStatement({
     onSuccess: async () => {
       queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
+      queryClient.invalidateQueries(QueryKeys.HOME_BANNER)
       let userProfile
       try {
         const { data: user } = await refetchUser()
