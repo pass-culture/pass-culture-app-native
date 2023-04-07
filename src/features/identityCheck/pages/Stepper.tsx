@@ -21,7 +21,6 @@ import { analytics } from 'libs/firebase/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
-import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
@@ -50,8 +49,7 @@ export const IdentityCheckStepper = () => {
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { refetchUser, user } = useAuthContext()
-  const credit = useGetDepositAmountsByAge(user?.birthDate)
+  const { refetchUser } = useAuthContext()
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -99,11 +97,6 @@ export const IdentityCheckStepper = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
-
-  const title = wipStepperRetryUbble ? stepperTitle : 'C’est très rapide\u00a0!'
-  const subtitle = wipStepperRetryUbble
-    ? stepperSubtitle
-    : `Pour débloquer tes ${credit} tu dois suivre les étapes suivantes\u00a0:`
 
   //TODO(PC-21375): remove the use of wipStepperRetryUbble
   const temporaryStepList = wipStepperRetryUbble ? (
@@ -180,9 +173,9 @@ export const IdentityCheckStepper = () => {
           <Spacer.Column numberOfSpaces={4} />
         )}
 
-        <StyledTitle1>{title}</StyledTitle1>
+        <StyledTitle1>{stepperTitle}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        {!!subtitle && <StyledSubtitle subtitle={subtitle} />}
+        {!!stepperSubtitle && <StyledSubtitle subtitle={stepperSubtitle} />}
         {!!errorMessage && <StyledErrorMessage errorMessage={errorMessage} />}
         <Spacer.Column numberOfSpaces={2} />
         {temporaryStepList}
