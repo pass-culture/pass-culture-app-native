@@ -26,6 +26,7 @@ export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
+
   const { permissionState } = useGeolocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
