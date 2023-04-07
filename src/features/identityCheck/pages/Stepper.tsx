@@ -10,11 +10,9 @@ import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/com
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { getStepState } from 'features/identityCheck/pages/helpers/getStepState'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
-import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
@@ -34,7 +32,6 @@ export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const stepsDeprecated = useSubscriptionSteps()
   const {
     stepsDetails: steps,
     title: stepperTitle,
@@ -45,7 +42,6 @@ export const IdentityCheckStepper = () => {
   const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
 
   const context = useSubscriptionContext()
-  const currentStep = context.step
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -98,8 +94,7 @@ export const IdentityCheckStepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
-  //TODO(PC-21375): remove the use of wipStepperRetryUbble
-  const temporaryStepList = wipStepperRetryUbble ? (
+  const stepList = (
     <VerticalUl>
       {steps.map((step) => (
         <Li key={step.name}>
@@ -130,37 +125,6 @@ export const IdentityCheckStepper = () => {
         </Li>
       ))}
     </VerticalUl>
-  ) : (
-    <VerticalUl>
-      {stepsDeprecated.map((step) => (
-        <Li key={step.name}>
-          <StepButtonContainer>
-            {step.name === DeprecatedIdentityCheckStep.IDENTIFICATION &&
-            context.identification.method === null ? (
-              <StepButton
-                step={step}
-                state={getStepState(stepsDeprecated, step.name, currentStep)}
-                onPress={() => {
-                  amplitude.logEvent('stepper_clicked', { step: step.name })
-                  analytics.logIdentityCheckStep(step.name)
-                  showEduConnectModal()
-                }}
-              />
-            ) : (
-              <StepButton
-                step={step}
-                state={getStepState(stepsDeprecated, step.name, currentStep)}
-                navigateTo={{ screen: step.screens[0] }}
-                onPress={() => {
-                  amplitude.logEvent('stepper_clicked', { step: step.name })
-                  analytics.logIdentityCheckStep(step.name)
-                }}
-              />
-            )}
-          </StepButtonContainer>
-        </Li>
-      ))}
-    </VerticalUl>
   )
 
   return (
@@ -178,7 +142,7 @@ export const IdentityCheckStepper = () => {
         {!!stepperSubtitle && <StyledSubtitle subtitle={stepperSubtitle} />}
         {!!errorMessage && <StyledErrorMessage errorMessage={errorMessage} />}
         <Spacer.Column numberOfSpaces={2} />
-        {temporaryStepList}
+        {stepList}
         <Spacer.Flex flex={1} />
 
         <ButtonTertiaryBlack
