@@ -30,11 +30,13 @@ describe('FirstTutorial page', () => {
     expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
   })
 
-  it('should navigate to AgeSelection on skip', () => {
+  it('should navigate to Profil on skip', () => {
     const { getByText } = renderFirstTutorial()
 
     fireEvent.press(getByText('Tout passer'))
-    expect(navigate).toHaveBeenNthCalledWith(1, 'AgeSelection')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+      screen: 'Profile',
+    })
   })
 })
 
