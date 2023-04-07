@@ -41,7 +41,7 @@ describe('FourthCard', () => {
       <FourthCard lastIndex={0} activeIndex={0} index={0} swiperRef={ref} />
     )
 
-    fireEvent.press(getByText('Découvrir'))
+    fireEvent.press(getByText('J’ai compris'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'AgeSelection')
   })

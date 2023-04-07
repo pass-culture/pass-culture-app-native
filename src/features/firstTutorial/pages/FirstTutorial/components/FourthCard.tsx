@@ -34,7 +34,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={StarAnimation}
       buttonCallback={onButtonPress}
-      buttonText="Découvrir"
+      buttonText="J’ai compris"
       buttonAccessibilityLabel="Découvrir ton pass Culture"
       pauseAnimationOnRenderAtFrame={62}
       subTitle="quotidiennes"

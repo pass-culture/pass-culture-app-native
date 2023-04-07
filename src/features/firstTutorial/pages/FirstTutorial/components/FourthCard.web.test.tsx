@@ -13,7 +13,7 @@ describe('FourthCard', () => {
     const ref = createRef<Swiper>()
     render(<FourthCard lastIndex={0} activeIndex={0} index={0} swiperRef={ref} />)
 
-    await userEvent.click(screen.getByText('Découvrir'))
+    await userEvent.click(screen.getByText('J’ai compris'))
 
     expect(reset).toHaveBeenNthCalledWith(1, { index: 0, routes: [{ name: homeNavConfig[0] }] })
   })
