@@ -45,7 +45,6 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
     date: formattedDate,
     price: formattedPrice,
   })
-
   function handlePressOffer() {
     if (!offerId) return
     // We pre-populate the query-cache with the data from the search client for a smooth transition
@@ -60,8 +59,13 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
         offerId,
       })
     )
-
-    analytics.logConsultOffer({ offerId, from: 'search', query, searchId })
+    analytics.logConsultOffer({
+      offerId,
+      from: 'search',
+      query,
+      searchId,
+      offer_display_index: index,
+    })
     logClickOnOffer({ objectID, position: index })
   }
 
