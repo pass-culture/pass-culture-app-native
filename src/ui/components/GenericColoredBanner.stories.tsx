@@ -41,8 +41,9 @@ textColor.args = {
   message,
   textColor: theme.colors.error,
 }
+
 export const backgroundColor = Template.bind({})
 backgroundColor.args = {
   message,
-  backgroundColor: theme.colors.primaryDark,
+  backgroundColor: theme.colors.attention,
 }
