@@ -21661,10 +21661,10 @@ react-merge-refs@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
-react-mobile-picker@^0.1.13:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/react-mobile-picker/-/react-mobile-picker-0.1.13.tgz#850624128ba77df1f887638696f4363963c2cedd"
-  integrity sha512-tZV/4ADQ23hYZ3mzLAKeHEpZB0lFJ/65W7FkeecKrpedQJhu2JOuWWclhyCshdabWDzysjcOHV4nxHdN+r8euQ==
+react-mobile-picker@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-mobile-picker/-/react-mobile-picker-0.2.1.tgz#290ddc6a5706a98fd08e06a5f6dea847da356e5a"
+  integrity sha512-8lIgkrhnwubxShtSgLpUFdCqrGNpIzFv1KSQGsRdf1C/yF2bazhMAk4eavEO396ozX99bfKo1Xl+UXmWtcv6TA==
   dependencies:
     prop-types "^15.6.0"
 

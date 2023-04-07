@@ -13,6 +13,7 @@ import {
   monthNames,
   dayNames,
   dayNamesShort,
+  getDateValuesString,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { isBeforeToday } from 'features/search/helpers/isBeforeToday/isBeforeToday'
@@ -75,11 +76,7 @@ export const CalendarPicker: React.FC<Props> = ({
     [name: string]: { selected: boolean; accessibilityLabel: string }
   }>({})
   const [desktopCalendarDate, setDesktopCalendarDate] = useState(selectedDate)
-  const [mobileDateValues, setMobileDateValues] = useState({
-    day: selectedDate.getDate(),
-    month: monthNamesShort[selectedDate.getMonth()],
-    year: selectedDate.getFullYear(),
-  })
+  const [mobileDateValues, setMobileDateValues] = useState(getDateValuesString(selectedDate))
   const bookingDateChoiceErrorId = uuidv4()
 
   useEffect(() => {
@@ -101,7 +98,7 @@ export const CalendarPicker: React.FC<Props> = ({
       month: selectedMobileMonth,
       year: selectedMobileYear,
     } = mobileDateValues
-    const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth)
+    const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth).toString()
     const currentYear = new Date().getFullYear()
 
     const invalid = isBeforeToday(selectedMobileYear, selectedMobileMonthIndex, selectedMobileDay)
@@ -130,7 +127,7 @@ export const CalendarPicker: React.FC<Props> = ({
     if (isTouch) {
       const { year, month, day } = mobileDateValues
       const monthIndex = monthNamesShort.indexOf(month)
-      setSelectedDate(new Date(year, monthIndex, day))
+      setSelectedDate(new Date(Number(year), monthIndex, Number(day)))
     } else {
       setSelectedDate(desktopCalendarDate)
     }

@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import Picker from 'react-mobile-picker'
+import * as ReactMobilePicker from 'react-mobile-picker'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import {
   getDatesInMonth,
+  getDateValuesString,
   getPastYears,
   getYears,
   monthNamesShort,
@@ -16,27 +17,26 @@ import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types
 import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing, Spacer } from 'ui/theme'
 
+interface PickerProps extends ReactMobilePicker.ReactMobilePickerProps {
+  accessibilityDescribedBy?: string
+}
+
 const birthdateInputErrorId = uuidv4()
 
 const ISO8601_DATE_STRING_RE =
   /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/gi
 
 export function DatePickerSpinner(props: DatePickerProps) {
-  const DEFAULT_DATE = {
-    day: props.defaultSelectedDate.getDate(),
-    month: monthNamesShort[props.defaultSelectedDate.getMonth()],
-    year: props.defaultSelectedDate.getFullYear(),
-  }
-  const [date, setDate] = useState(DEFAULT_DATE)
+  const [date, setDate] = useState(getDateValuesString(props.defaultSelectedDate))
   const [hiddenValue, setHiddenValue] = useState(props.defaultSelectedDate.toISOString())
 
   const optionGroups = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
-    const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth)
+    const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth).toString()
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(props.minimumDate.getFullYear(), DEFAULT_DATE.year),
+      year: getPastYears(props.minimumDate.getFullYear(), date.year),
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, monthNamesShort, getYears])
@@ -46,7 +46,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
   }
 
   const dateMonth = monthNamesShort.indexOf(date.month) + 1
-  const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(date.day)}`)
+  const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(Number(date.day))}`)
 
   useEffect(() => {
     props.onChange(birthdate)
@@ -62,11 +62,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
     if (ISO8601_DATE_STRING_RE.test(hiddenValue)) {
       const nextDate = new Date(hiddenValue)
 
-      setDate({
-        day: nextDate.getDate(),
-        month: monthNamesShort[nextDate.getMonth()],
-        year: nextDate.getFullYear(),
-      })
+      setDate(getDateValuesString(nextDate))
     }
   }, [hiddenValue])
 
@@ -99,9 +95,9 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
 // This height will only show 3 rows of the spinner instead of 7
 const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
-const StyledPicker = styled(Picker).attrs(({ theme }) => ({
+const StyledPicker = styled(ReactMobilePicker.default)<PickerProps>(({ theme }) => ({
   height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
-}))``
+}))
 
 const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
