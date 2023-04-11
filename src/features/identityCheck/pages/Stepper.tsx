@@ -16,8 +16,6 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
@@ -38,8 +36,6 @@ export const IdentityCheckStepper = () => {
     subtitle: stepperSubtitle,
     errorMessage,
   } = useStepperInfo()
-
-  const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
 
   const context = useSubscriptionContext()
 
