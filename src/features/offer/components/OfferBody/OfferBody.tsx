@@ -28,7 +28,7 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
-import { formatDatePeriod, formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
+import { formatDates, formatDistance, getDisplayPrice, getFormattedDates } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import {
   useCategoryHomeLabelMapping,
@@ -156,7 +156,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     []
   )
 
-  const formattedDate = formatDatePeriod(dates)
+  const formattedDate = getFormattedDates(dates)
   const shouldDisplayWhenBlock = isEvent && !!formattedDate
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
