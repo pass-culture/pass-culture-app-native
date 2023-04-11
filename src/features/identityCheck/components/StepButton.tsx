@@ -46,26 +46,27 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
 
   const isDisabled = state === StepButtonState.DISABLED || state === StepButtonState.COMPLETED
 
+  const ButtonContent = () => (
+    <StyleContainer LeftIcon={Icon}>
+      <StyledButtonText state={state}>{label}</StyledButtonText>
+      {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
+    </StyleContainer>
+  )
+
   return navigateTo ? (
     <StyledInternalTouchableLink
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={isDisabled}
       accessibilityLabel={accessibilityLabel}>
-      <StyleContainer LeftIcon={Icon}>
-        <StyledButtonText state={state}>{label}</StyledButtonText>
-        {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
-      </StyleContainer>
+      <ButtonContent />
     </StyledInternalTouchableLink>
   ) : (
     <StyledTouchableOpacity
       onPress={onPress}
       disabled={isDisabled}
       accessibilityLabel={accessibilityLabel}>
-      <StyleContainer LeftIcon={Icon}>
-        <StyledButtonText state={state}>{label}</StyledButtonText>
-        {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
-      </StyleContainer>
+      <ButtonContent />
     </StyledTouchableOpacity>
   )
 }
