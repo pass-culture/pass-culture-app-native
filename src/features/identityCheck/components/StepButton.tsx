@@ -54,6 +54,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
       accessibilityLabel={accessibilityLabel}>
       <StyleContainer LeftIcon={Icon}>
         <StyledButtonText state={state}>{label}</StyledButtonText>
+        {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
       </StyleContainer>
     </StyledInternalTouchableLink>
   ) : (
