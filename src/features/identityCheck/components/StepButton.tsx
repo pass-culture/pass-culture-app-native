@@ -46,25 +46,27 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
 
   const isDisabled = state === StepButtonState.DISABLED || state === StepButtonState.COMPLETED
 
+  const ButtonContent = () => (
+    <StyleContainer LeftIcon={Icon}>
+      <StyledButtonText state={state}>{label}</StyledButtonText>
+      {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
+    </StyleContainer>
+  )
+
   return navigateTo ? (
     <StyledInternalTouchableLink
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={isDisabled}
       accessibilityLabel={accessibilityLabel}>
-      <StyleContainer LeftIcon={Icon}>
-        <StyledButtonText state={state}>{label}</StyledButtonText>
-      </StyleContainer>
+      <ButtonContent />
     </StyledInternalTouchableLink>
   ) : (
     <StyledTouchableOpacity
       onPress={onPress}
       disabled={isDisabled}
       accessibilityLabel={accessibilityLabel}>
-      <StyleContainer LeftIcon={Icon}>
-        <StyledButtonText state={state}>{label}</StyledButtonText>
-        {!!subtitle && <StepSubtitle state={state}>{subtitle}</StepSubtitle>}
-      </StyleContainer>
+      <ButtonContent />
     </StyledTouchableOpacity>
   )
 }
@@ -147,5 +149,8 @@ const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
 )
 
 const StepSubtitle = styled(Typo.Caption)<{ state: StepButtonState }>(({ state, theme }) => ({
-  color: state === StepButtonState.CURRENT ? theme.colors.greyDark : theme.colors.greySemiDark,
+  color:
+    state === StepButtonState.CURRENT || state === StepButtonState.RETRY
+      ? theme.colors.greyDark
+      : theme.colors.greySemiDark,
 }))
