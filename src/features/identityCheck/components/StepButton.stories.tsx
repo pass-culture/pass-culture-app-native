@@ -76,6 +76,7 @@ RetryStep.args = {
     name: IdentityCheckStep.IDENTIFICATION,
     screens: ['SelectIDOrigin'],
     title: 'Identification',
+    subtitle: 'Réessaie avec ta pièce d’identité en t’assurant qu’elle soit lisible.',
     icon: {
       disabled: DisabledIdCardIcon,
       current: BicolorIdCard,
