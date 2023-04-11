@@ -1,16 +1,16 @@
-name: 'Chromatic'
+name: Build, test and deploy storybook with Chromatic
 
 on:
-  push:
-    paths:
-      - '.storybook/**'
-      - 'src/**'
+  workflow_call:
+    secrets:
+      CHROMATIC_PROJECT_TOKEN:
+        required: true
 
 env:
   BUILD_DIR: /tmp/${{ github.sha }}
 
 jobs:
-  test-and-publish-storybook:
+  yarn_test_and_publish_storybook_with_chromatic:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
           # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code-and-above
           # we don't need to have the full history
           # set fetch-depth to an arbitrary number large enough to contain all commits from the main branch
-          fetch-depth: '100'
+          fetch-depth: 100
       - name: Setup node
         uses: actions/setup-node@v3
         with:
