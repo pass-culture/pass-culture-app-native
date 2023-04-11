@@ -4,7 +4,7 @@ import { VenueResponse } from 'api/gen'
 import { SearchState } from 'features/search/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
-import { transformOfferHit } from 'libs/algolia/fetchAlgolia'
+import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 

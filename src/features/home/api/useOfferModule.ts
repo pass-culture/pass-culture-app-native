@@ -6,12 +6,9 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
-import {
-  fetchMultipleOffers,
-  filterOfferHit,
-  useTransformOfferHits,
-} from 'libs/algolia/fetchAlgolia'
+import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
+import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'

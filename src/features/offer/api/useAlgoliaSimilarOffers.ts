@@ -3,7 +3,8 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { IncompleteSearchHit } from 'libs/algolia'
-import { fetchOfferHits, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
+import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
