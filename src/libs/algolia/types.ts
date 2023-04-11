@@ -5,6 +5,7 @@ import { SearchState } from 'features/search/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia'
+import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 
 /**
@@ -48,6 +49,13 @@ export interface AlgoliaQueryParameters {
 export interface FetchVenuesParameters {
   query: string
   attributesToHighlight?: string[]
+}
+export interface FetchOfferParameters {
+  parameters: SearchParametersQuery
+  userLocation: Position
+  isUserUnderage: boolean
+  storeQueryID?: (queryID?: string) => void
+  indexSearch?: string
 }
 
 export interface AlgoliaVenue {
