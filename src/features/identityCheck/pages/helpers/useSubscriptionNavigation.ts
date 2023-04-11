@@ -4,10 +4,14 @@ import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { deprecatedGetNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
+import {
+  deprecatedGetNextScreenOrStep,
+  getNextScreenOrStep,
+} from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
+import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import {
   DeprecatedIdentityCheckStep,
@@ -15,14 +19,20 @@ import {
   NextScreenOrStep,
 } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 const useNextScreenOrStep = (): NextScreenOrStep => {
   const { name } = useRoute()
   const steps = useSubscriptionSteps()
+  const { stepsDetails } = useStepperInfo()
   const currentRoute = isSubscriptionRoute(name) ? name : null
-  return deprecatedGetNextScreenOrStep(steps, currentRoute)
+  const wipStepperRetryUbble = useFeatureFlag(RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE)
+  return wipStepperRetryUbble
+    ? getNextScreenOrStep(stepsDetails, currentRoute)
+    : deprecatedGetNextScreenOrStep(steps, currentRoute)
 }
 
 export const useSubscriptionNavigation = (): {
