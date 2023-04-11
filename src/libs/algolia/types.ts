@@ -25,17 +25,20 @@ export type IncompleteSearchHit = AlgoliaHit
 
 export interface Offer {
   offer: {
-    dates?: AlgoliaHit['offer']['dates']
-    isDigital?: AlgoliaHit['offer']['isDigital']
-    isDuo?: AlgoliaHit['offer']['isDuo']
-    isEducational?: AlgoliaHit['offer']['isEducational']
-    name?: AlgoliaHit['offer']['name']
-    prices?: AlgoliaHit['offer']['prices']
+    dates?: number[]
+    isDigital?: boolean
+    isDuo?: boolean
+    isEducational?: boolean
+    name?: string
+    prices?: number[]
     subcategoryId: SubcategoryIdEnum
-    thumbUrl?: AlgoliaHit['offer']['thumbUrl']
+    thumbUrl?: string
   }
-  objectID: AlgoliaHit['objectID']
-  _geoloc: AlgoliaHit['_geoloc']
+  objectID: string
+  _geoloc: {
+    lat?: number | null
+    lng?: number | null
+  }
 }
 
 export type Geoloc = AlgoliaGeoloc
