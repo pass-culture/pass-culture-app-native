@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffer } from 'libs/algolia/fetchAlgolia/fetchOffer'
+import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -22,7 +22,7 @@ export const useVenueOffers = (venueId: number) => {
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venueId],
     () =>
-      fetchOffer({
+      fetchOffers({
         parameters: { ...params, page: 0 },
         userLocation: null,
         isUserUnderage,

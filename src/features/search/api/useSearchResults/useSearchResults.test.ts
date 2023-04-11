@@ -4,7 +4,7 @@ import {
 } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffer'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
@@ -24,7 +24,7 @@ describe('useSearchResults', () => {
 
   describe('useSearchInfiniteQuery', () => {
     const fetchOfferSpy = jest
-      .spyOn(fetchAlgoliaOffer, 'fetchOffer')
+      .spyOn(fetchAlgoliaOffer, 'fetchOffers')
       .mockResolvedValue(mockedAlgoliaResponse)
 
     it('should log perform search when received API result', async () => {

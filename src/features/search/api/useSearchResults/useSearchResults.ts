@@ -7,7 +7,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffer } from 'libs/algolia/fetchAlgolia/fetchOffer'
+import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -29,7 +29,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
     async ({ pageParam: page = 0 }) => {
-      const response = await fetchOffer({
+      const response = await fetchOffers({
         parameters: { page, ...searchState },
         userLocation: position,
         isUserUnderage,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { fetchOffer } from 'libs/algolia/fetchAlgolia/fetchOffer'
+import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 
 const fakeOfferId = 283
 
@@ -10,7 +10,7 @@ export const useSomeOfferId = () => {
   const [offerId, setOfferId] = useState<number>(fakeOfferId)
 
   useEffect(() => {
-    fetchOffer({
+    fetchOffers({
       parameters: { ...initialSearchState, page: 1 },
       isUserUnderage: false,
       userLocation: { latitude: 1, longitude: 1 },

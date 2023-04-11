@@ -20,7 +20,7 @@ type FetchOfferArgs = {
   indexSearch?: string
 }
 
-export const fetchOffer = async ({
+export const fetchOffers = async ({
   parameters,
   userLocation,
   isUserUnderage,
