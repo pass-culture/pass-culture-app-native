@@ -6,7 +6,7 @@ import {
   SubscriptionScreen,
 } from 'features/identityCheck/types'
 
-export const getNextScreenOrStep = (
+export const deprecatedGetNextScreenOrStep = (
   steps: DeprecatedStepConfig[],
   currentRoute: SubscriptionScreen | null
 ): NextScreenOrStep => {

@@ -4,7 +4,7 @@ import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
+import { deprecatedGetNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
@@ -22,7 +22,7 @@ const useNextScreenOrStep = (): NextScreenOrStep => {
   const { name } = useRoute()
   const steps = useSubscriptionSteps()
   const currentRoute = isSubscriptionRoute(name) ? name : null
-  return getNextScreenOrStep(steps, currentRoute)
+  return deprecatedGetNextScreenOrStep(steps, currentRoute)
 }
 
 export const useSubscriptionNavigation = (): {
