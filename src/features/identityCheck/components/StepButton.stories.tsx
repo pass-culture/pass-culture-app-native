@@ -35,7 +35,6 @@ const Template: ComponentStory<typeof StepButton> = (props) => <StepButton {...p
 
 export const Default = Template.bind({})
 Default.args = {
-  state: StepButtonState.CURRENT,
   step: {
     name: IdentityCheckStep.IDENTIFICATION,
     screens: ['SelectIDOrigin'],
@@ -53,7 +52,6 @@ Default.args = {
 
 export const DisabledStep = Template.bind({})
 DisabledStep.args = {
-  state: StepButtonState.DISABLED,
   step: {
     stepState: StepButtonState.DISABLED,
     name: IdentityCheckStep.IDENTIFICATION,
@@ -70,7 +68,6 @@ DisabledStep.args = {
 }
 export const RetryStep = Template.bind({})
 RetryStep.args = {
-  state: StepButtonState.RETRY,
   step: {
     stepState: StepButtonState.RETRY,
     name: IdentityCheckStep.IDENTIFICATION,
@@ -88,7 +85,6 @@ RetryStep.args = {
 }
 export const CompletedStep = Template.bind({})
 CompletedStep.args = {
-  state: StepButtonState.COMPLETED,
   step: {
     stepState: StepButtonState.COMPLETED,
     name: IdentityCheckStep.IDENTIFICATION,
