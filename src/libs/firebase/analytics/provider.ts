@@ -16,7 +16,7 @@ import { AnalyticsProvider } from './types'
 const firebaseAnalytics = firebaseAnalyticsModule()
 firebaseAnalytics.setAnalyticsCollectionEnabled(false)
 
-export const analyticsProvider: AnalyticsProvider = {
+export const firebaseAnalyticsProvider: AnalyticsProvider = {
   enableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(true)
   },

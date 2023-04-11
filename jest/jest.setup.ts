@@ -46,6 +46,9 @@ jest.mock('libs/hooks/useWhiteStatusBar')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/analytics/provider')
 
+/* See the corresponding mocks in libs/analytics/__mocks__ */
+jest.mock('libs/analytics/provider')
+
 jest.mock('libs/appState')
 
 /* See the corresponding mocks in libs/geolocation/__mocks__ */

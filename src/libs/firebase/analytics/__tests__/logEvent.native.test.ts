@@ -8,7 +8,11 @@ jest.mock('@react-native-firebase/analytics', () => () => ({
 }))
 
 jest.unmock('libs/firebase/analytics/provider')
-const { analytics } = jest.requireActual('libs/firebase/analytics/analytics')
+jest.unmock('libs/firebase/analytics/analytics')
+jest.unmock('libs/analytics/provider')
+jest.unmock('libs/analytics/logEventAnalytics')
+
+const { analytics } = jest.requireActual('libs/analytics')
 
 describe('analytics - logEvent', () => {
   it('should cast offerId and bookingId from number to string', () => {

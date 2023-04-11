@@ -1,7 +1,5 @@
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
-type AnalyticsParam = Record<string, unknown>
-
 export type LoginRoutineMethod = 'fromLogin' | 'fromSignup' | 'fromSetEmail'
 
 export interface AnalyticsProvider {
@@ -12,7 +10,7 @@ export interface AnalyticsProvider {
   setUserId: (userId: number) => Promise<void> | void
   logScreenView: (screenName: string) => Promise<void> | void
   logLogin: ({ method }: { method: LoginRoutineMethod }) => Promise<void> | void
-  logEvent: <P extends AnalyticsParam>(name: AnalyticsEvent, params?: P) => Promise<void> | void
+  logEvent: (name: AnalyticsEvent, params?: Record<string, unknown>) => Promise<void> | void
 }
 
 export type OfferAnalyticsData = {

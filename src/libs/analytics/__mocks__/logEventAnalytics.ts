@@ -1,9 +1,6 @@
-import { analytics as actualAnalytics } from '../analytics'
+import { logEventAnalytics as actualLogEventAnalytics } from '../logEventAnalytics'
 
-export const analytics: typeof actualAnalytics = {
-  disableCollection: jest.fn(),
-  enableCollection: jest.fn(),
-  getAppInstanceId: jest.fn().mockReturnValue('firebase_pseudo_id'),
+export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logAcceptNotifications: jest.fn(),
   logAccountDeletion: jest.fn(),
   logAccountReactivation: jest.fn(),
@@ -62,7 +59,6 @@ export const analytics: typeof actualAnalytics = {
   logDismissNotifications: jest.fn(),
   logDismissShareApp: jest.fn(),
   logErrorSavingNewEmail: jest.fn(),
-  logEvent: jest.fn(),
   logExclusivityBlockClicked: jest.fn(),
   logFavoriteListButtonClicked: jest.fn(),
   logFavoriteListDisplayed: jest.fn(),
@@ -90,7 +86,6 @@ export const analytics: typeof actualAnalytics = {
   logIdentityCheckStep: jest.fn(),
   logIdentityCheckSuccess: jest.fn(),
   logLocationToggle: jest.fn(),
-  logLogin: jest.fn(),
   logLogout: jest.fn(),
   logMailTo: jest.fn(),
   logModifyMail: jest.fn(),
@@ -99,7 +94,6 @@ export const analytics: typeof actualAnalytics = {
   logNotificationToggle: jest.fn(),
   logOfferSeenDuration: jest.fn(),
   logOnboardingStarted: jest.fn(),
-  logOpenApp: jest.fn(),
   logOpenDMSForeignCitizenURL: jest.fn(),
   logOpenDMSFrenchCitizenURL: jest.fn(),
   logOpenExternalUrl: jest.fn(),
@@ -118,7 +112,6 @@ export const analytics: typeof actualAnalytics = {
   logResendEmailResetPasswordExpiredLink: jest.fn(),
   logResendEmailSignupConfirmationExpiredLink: jest.fn(),
   logSaveNewMail: jest.fn(),
-  logScreenView: jest.fn(),
   logSearchScrollToPage: jest.fn(),
   logSeeMyBooking: jest.fn(),
   logSelectAge: jest.fn(),
@@ -138,7 +131,4 @@ export const analytics: typeof actualAnalytics = {
   logVenueContact: jest.fn(),
   logVenueSeeAllOffersClicked: jest.fn(),
   logVenueSeeMoreClicked: jest.fn(),
-  setDefaultEventParameters: jest.fn(),
-  setUserId: jest.fn(),
-  useInit: jest.fn(),
 }
