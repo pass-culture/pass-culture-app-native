@@ -12,24 +12,3 @@ export interface AnalyticsProvider {
   logLogin: ({ method }: { method: LoginRoutineMethod }) => Promise<void> | void
   logEvent: (name: AnalyticsEvent, params?: Record<string, unknown>) => Promise<void> | void
 }
-
-export type OfferAnalyticsData = {
-  offerId?: number
-}
-
-export type PerformSearchState = {
-  searchLocationFilter: string
-  searchView: string
-  searchId?: string
-  searchDate?: string
-  searchIsAutocomplete?: boolean
-  searchMaxPrice?: string
-  searchMinPrice?: string
-  searchCategories?: string
-  searchGenreTypes?: string
-  searchOfferIsDuo?: boolean
-  searchOfferIsFree?: boolean
-  searchNativeCategories?: string
-  searchQuery?: string
-  searchTimeRange?: string
-}

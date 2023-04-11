@@ -40,4 +40,25 @@ export type ConsultHomeParams =
   | CategoryBlockThematicHome
   | HighlightThematicBlockThematicHome
 
+export type OfferAnalyticsData = {
+  offerId?: number
+}
+
 export type OfferIdOrVenueId = { offerId: number } | { venueId: number }
+
+export type PerformSearchState = {
+  searchLocationFilter: string
+  searchView: string
+  searchId?: string
+  searchDate?: string
+  searchIsAutocomplete?: boolean
+  searchMaxPrice?: string
+  searchMinPrice?: string
+  searchCategories?: string
+  searchGenreTypes?: string
+  searchOfferIsDuo?: boolean
+  searchOfferIsFree?: boolean
+  searchNativeCategories?: string
+  searchQuery?: string
+  searchTimeRange?: string
+}

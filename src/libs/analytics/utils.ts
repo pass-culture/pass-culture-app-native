@@ -2,7 +2,7 @@ import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 
 import { LocationType } from 'features/search/enums'
 import { LocationFilter, SearchState } from 'features/search/types'
-import { PerformSearchState } from 'libs/firebase/analytics/types'
+import { PerformSearchState } from 'libs/analytics/types'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 

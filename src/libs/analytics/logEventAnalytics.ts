@@ -13,13 +13,14 @@ import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformati
 import { analytics } from 'libs/analytics/provider'
 import {
   ChangeSearchLocationParam,
-  OfferIdOrVenueId,
   ConsultHomeParams,
-} from 'libs/analytics/types'
+  OfferAnalyticsData,
+  OfferIdOrVenueId,
+  buildPerformSearchState,
+  urlWithValueMaxLength,
+} from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
-import { OfferAnalyticsData } from 'libs/firebase/analytics/types'
-import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/firebase/analytics/utils'
 
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
