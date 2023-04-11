@@ -17,3 +17,10 @@ export interface Offer {
     lng?: number | null
   }
 }
+
+export interface OffersWithPage {
+  offers: Offer[]
+  nbOffers: 0
+  page: 0
+  nbPages: 0
+}
