@@ -6,7 +6,7 @@ import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSea
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps } from 'features/search/types'
-import { Offer } from 'libs/algolia'
+import { Offer } from 'shared/offer/types'
 import { getSpacing } from 'ui/theme'
 
 const keyExtractor = (item: Offer) => item.objectID

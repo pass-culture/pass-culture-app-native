@@ -1,6 +1,6 @@
 import { SearchOptions } from '@algolia/client-search'
 
-import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { VenueResponse } from 'api/gen'
 import { SearchState } from 'features/search/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
@@ -22,24 +22,6 @@ export const transformHit = transformOfferHit
 
 // An incomplete search hit may not have a subcategoryId (for retrocompatibility)
 export type IncompleteSearchHit = AlgoliaHit
-
-export interface Offer {
-  offer: {
-    dates?: number[]
-    isDigital?: boolean
-    isDuo?: boolean
-    isEducational?: boolean
-    name?: string
-    prices?: number[]
-    subcategoryId: SubcategoryIdEnum
-    thumbUrl?: string
-  }
-  objectID: string
-  _geoloc: {
-    lat?: number | null
-    lng?: number | null
-  }
-}
 
 export type Geoloc = AlgoliaGeoloc
 

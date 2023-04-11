@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { Offer } from 'libs/algolia'
+import { Offer } from 'shared/offer/types'
 
 export const VenueOffersResponseSnap: Offer[] = [
   {

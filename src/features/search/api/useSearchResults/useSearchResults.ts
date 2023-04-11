@@ -6,12 +6,12 @@ import { useInfiniteQuery } from 'react-query'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
-import { Offer } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
 
 export type Response = Pick<
   SearchResponse<Offer>,

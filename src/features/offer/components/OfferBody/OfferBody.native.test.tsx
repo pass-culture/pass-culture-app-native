@@ -14,13 +14,13 @@ import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessag
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { Offer } from 'libs/algolia'
 import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'

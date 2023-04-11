@@ -3,12 +3,12 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
-import { Offer } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
 
 export const useVenueOffers = (venueId: number) => {
   const transformHits = useTransformOfferHits()

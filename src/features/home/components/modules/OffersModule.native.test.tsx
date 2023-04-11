@@ -3,11 +3,12 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { OffersModuleParameters } from 'features/home/types'
-import { Offer, transformHit } from 'libs/algolia'
+import { transformHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { Offer } from 'shared/offer/types'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 
 import { OffersModule } from './OffersModule'

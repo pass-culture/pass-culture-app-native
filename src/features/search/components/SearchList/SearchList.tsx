@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps } from 'features/search/types'
-import { Offer } from 'libs/algolia'
+import { Offer } from 'shared/offer/types'
 import { getSpacing } from 'ui/theme'
 
 const HIT_SIZE = 130

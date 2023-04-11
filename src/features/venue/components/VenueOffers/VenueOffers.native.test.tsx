@@ -8,9 +8,9 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { Offer } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { Offer } from 'shared/offer/types'
 import { fireEvent, render } from 'tests/utils'
 
 const venueId = venueResponseSnap.id

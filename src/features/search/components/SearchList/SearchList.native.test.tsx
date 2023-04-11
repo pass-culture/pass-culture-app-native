@@ -2,8 +2,8 @@ import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { SearchListProps } from 'features/search/types'
-import { Offer } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')

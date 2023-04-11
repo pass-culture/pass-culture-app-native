@@ -23,7 +23,6 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
-import { Offer } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -35,6 +34,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { Offer } from 'shared/offer/types'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'

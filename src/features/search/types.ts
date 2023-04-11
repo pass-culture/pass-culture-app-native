@@ -16,9 +16,9 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
-import { Offer } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
+import { Offer } from 'shared/offer/types'
 
 import { LocationType } from './enums'
 

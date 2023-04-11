@@ -1,7 +1,6 @@
 import { Hit } from '@algolia/client-search'
 
 import { Response } from 'features/search/api/useSearchResults/useSearchResults'
-import { Offer } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -10,6 +9,7 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
+import { Offer } from 'shared/offer/types'
 
 type FetchOfferArgs = {
   parameters: SearchParametersQuery

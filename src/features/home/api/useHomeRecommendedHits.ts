@@ -4,13 +4,13 @@ import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/bui
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
 import { RecommendedOffersModule } from 'features/home/types'
-import { Offer } from 'libs/algolia'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/geolocation'
 import { RecommendedIdsRequest } from 'libs/recommendation/types'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
+import { Offer } from 'shared/offer/types'
 
 import { useAlgoliaRecommendedHits } from './useAlgoliaRecommendedHits'
 

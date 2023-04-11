@@ -6,7 +6,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
-import { Offer } from 'libs/algolia'
 import {
   fetchMultipleOffers,
   filterOfferHit,
@@ -16,6 +15,7 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
 
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
