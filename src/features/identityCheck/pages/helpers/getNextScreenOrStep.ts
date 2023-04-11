@@ -1,4 +1,4 @@
-import { getCurrentStep } from 'features/identityCheck/pages/helpers/getCurrentStep'
+import { deprecatedGetCurrentStep } from 'features/identityCheck/pages/helpers/getCurrentStep'
 import {
   DeprecatedIdentityCheckStep,
   NextScreenOrStep,
@@ -11,7 +11,7 @@ export const getNextScreenOrStep = (
   currentRoute: SubscriptionScreen | null
 ): NextScreenOrStep => {
   if (!currentRoute) return null
-  const currentStep = getCurrentStep(steps, currentRoute)
+  const currentStep = deprecatedGetCurrentStep(steps, currentRoute)
   if (!currentStep) return null
 
   // Step is not completed
