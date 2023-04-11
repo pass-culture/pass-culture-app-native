@@ -8,86 +8,350 @@ import {
   getUniqueSortedTimestamps,
   formatToCompleteFrenchDate,
   formatToFrenchDate,
+  getFormattedDates,
+  groupByYearAndMonth,
+  decomposeDate,
+  joinArrayElement,
+  GroupResult,
+  formatGroupedDates,
 } from '../formatDates'
 
-const Oct5 = new Date(2020, 9, 5)
-const Nov1 = new Date(2020, 10, 1)
-const Nov12 = new Date(2020, 10, 12)
-const Nov20Morning = new Date(2020, 10, 20, 9, 30)
-const Nov20Evening = new Date(2020, 10, 20, 21)
-const Dec5 = new Date(2020, 11, 5)
-const Jan2021 = new Date(2021, 0, 5)
+const OCTOBER_5_2020 = new Date(2020, 9, 5)
+const NOVEMBER_1_2020 = new Date(2020, 10, 1)
+const NOVEMBER_12_2020 = new Date(2020, 10, 12)
+const NOVEMBER_13_2020 = new Date(2020, 10, 13)
+const DECEMBER_14_2020 = new Date(2020, 11, 14)
+const NOVEMBER_20_2020_MORNING = new Date(2020, 10, 20, 9, 30)
+const NOVEMBER_20_2020_EVENING = new Date(2020, 10, 20, 21)
+const DECEMBER_5_2020 = new Date(2020, 11, 5)
+const JANUARY_5_2021 = new Date(2021, 0, 5)
+const JANUARY_15_2021 = new Date(2021, 0, 15)
+const JANUARY_25_2021 = new Date(2021, 0, 25)
+const AUGUST_5_2021 = new Date(2021, 7, 5)
+const SEPTEMBER_5_2021 = new Date(2021, 8, 5)
+const OCTOBER_5_2021 = new Date(2021, 9, 5)
+const FEBRUARY_2_2022 = new Date(2022, 1, 2)
+
+describe('groupByYearAndMonth', () => {
+  it('should group an array of decomposed dates by year and month', () => {
+    const decomposedDates: ReturnType<typeof decomposeDate>[] = [
+      { year: 2022, month: 'janvier', day: 1 },
+      { year: 2022, month: 'janvier', day: 15 },
+      { year: 2022, month: 'février', day: 10 },
+      { year: 2023, month: 'mars', day: 21 },
+      { year: 2023, month: 'mars', day: 22 },
+      { year: 2023, month: 'avril', day: 5 },
+    ]
+
+    const result = groupByYearAndMonth(decomposedDates)
+
+    const grouped = {
+      2022: {
+        janvier: [1, 15],
+        février: [10],
+      },
+      2023: {
+        mars: [21, 22],
+        avril: [5],
+      },
+    }
+
+    expect(result).toEqual(grouped)
+  })
+
+  it('should return an empty object for an empty array', () => {
+    const result = groupByYearAndMonth([])
+
+    expect(result).toEqual({})
+  })
+})
+
+describe('joinArrayElement', () => {
+  it('joinArrayElement returns the single element when given an array with only one element', () => {
+    expect(joinArrayElement([1])).toEqual(1)
+  })
+
+  it('joinArrayElement joins two elements with "et"', () => {
+    expect(joinArrayElement(['novembre', 'octobre'])).toEqual('novembre et octobre')
+  })
+
+  it('joinArrayElement joins three or more elements with commas and "et"', () => {
+    expect(joinArrayElement([1, 2, 3])).toEqual('1, 2 et 3')
+    expect(joinArrayElement(['foo', 'bar', 'baz'])).toEqual('foo, bar et baz')
+  })
+
+  it('joinArrayElement handles empty arrays', () => {
+    expect(joinArrayElement([])).toEqual(undefined)
+  })
+})
+
+describe('formatGroupedDates', () => {
+  it('should correctly format grouped dates with single days', () => {
+    const grouped: GroupResult = {
+      '2022': {
+        janvier: [1, 3, 5],
+        février: [4, 10, 15],
+      },
+      '2023': {
+        mars: [7, 14, 21],
+      },
+    }
+    const expected = {
+      formatDates: [
+        'les 1, 3 et 5 janvier 2022',
+        'les 4, 10 et 15 février 2022',
+        'les 7, 14 et 21 mars 2023',
+      ],
+      arrayDays: [
+        [1, 3, 5],
+        [4, 10, 15],
+        [7, 14, 21],
+      ],
+    }
+    const result = formatGroupedDates(grouped)
+    expect(result.formatDates).toEqual(expected.formatDates)
+    expect(result.arrayDays).toEqual(expected.arrayDays)
+  })
+
+  it('should correctly format grouped dates with multiple days', () => {
+    const grouped: GroupResult = {
+      '2022': {
+        janvier: [1, 2],
+        février: [4, 5, 6],
+      },
+      '2023': {
+        mars: [7, 8, 9, 10],
+      },
+    }
+    const expected = {
+      formatDates: [
+        'les 1 et 2 janvier 2022',
+        'les 4, 5 et 6 février 2022',
+        'les 7, 8, 9 et 10 mars 2023',
+      ],
+      arrayDays: [
+        [1, 2],
+        [4, 5, 6],
+        [7, 8, 9, 10],
+      ],
+    }
+    const result = formatGroupedDates(grouped)
+    expect(result.formatDates).toEqual(expected.formatDates)
+    expect(result.arrayDays).toEqual(expected.arrayDays)
+  })
+
+  it('should return empty arrays when given an empty object', () => {
+    const grouped: GroupResult = {}
+    const expected = {
+      formatDates: [],
+      arrayDays: [],
+    }
+    const result = formatGroupedDates(grouped)
+    expect(result.formatDates).toEqual(expected.formatDates)
+    expect(result.arrayDays).toEqual(expected.arrayDays)
+  })
+})
+
+describe('getFormattedDates', () => {
+  beforeAll(() => {
+    mockdate.set(NOVEMBER_1_2020)
+  })
+
+  it('should return undefined when undefined or empty array is given', () => {
+    expect(getFormattedDates(undefined)).toEqual(undefined)
+    expect(getFormattedDates([])).toEqual(undefined)
+  })
+
+  it('should return only future dates', () => {
+    expect(
+      getFormattedDates([OCTOBER_5_2020.toISOString(), NOVEMBER_12_2020.toISOString()])
+    ).toEqual(formatToFrenchDate(NOVEMBER_12_2020))
+  })
+
+  it('should return undefined if the dates array is invalid', () => {
+    const dates = ['invalid date']
+    const result = getFormattedDates(dates)
+    expect(result).toEqual(undefined)
+  })
+
+  it('should return a formatted date if there is only one unique dates', () => {
+    const result = getFormattedDates([DECEMBER_14_2020.toISOString()])
+    expect(result).toEqual('14 décembre 2020')
+  })
+
+  it('should return a formatted string of 1 date if there are two similar date ', () => {
+    const result = getFormattedDates([
+      DECEMBER_14_2020.toISOString(),
+      DECEMBER_14_2020.toISOString(),
+    ])
+    expect(result).toEqual('14 décembre 2020')
+  })
+
+  it('should return a formatted string date of two dates with the same month', () => {
+    const result = getFormattedDates([
+      NOVEMBER_12_2020.toISOString(),
+      NOVEMBER_13_2020.toISOString(),
+    ])
+    expect(result).toEqual('les 12 et 13 novembre 2020')
+  })
+
+  // TODO ask if it's good or not
+  it('should return a formatted string date of 2 dates with the same day, smae month, same year, but different hours', () => {
+    const result = getFormattedDates([
+      NOVEMBER_20_2020_MORNING.toISOString(),
+      NOVEMBER_20_2020_EVENING.toISOString(),
+    ])
+    expect(result).toEqual('les 20 et 20 novembre 2020')
+  })
+
+  it('should return a formatted string date that includes three dates with different months', () => {
+    const result = getFormattedDates([
+      AUGUST_5_2021.toISOString(),
+      SEPTEMBER_5_2021.toISOString(),
+      OCTOBER_5_2021.toISOString(),
+    ])
+    expect(result).toEqual('le 5 août 2021, le 5 septembre 2021 et le 5 octobre 2021')
+  })
+
+  it('should return a formatted string date that includes three dates, with two dates in different months of the same year and one dates in a different month and in a different year', () => {
+    const result = getFormattedDates([
+      JANUARY_5_2021.toISOString(),
+      OCTOBER_5_2021.toISOString(),
+      FEBRUARY_2_2022.toISOString(),
+    ])
+    expect(result).toEqual('le 5 janvier 2021, le 5 octobre 2021 et le 2 février 2022')
+  })
+
+  it('should return a formatted string date that includes three dates, with two dates in the same month of the same year and one dates in a different month and in a different year', () => {
+    const result = getFormattedDates([
+      JANUARY_5_2021.toISOString(),
+      JANUARY_15_2021.toISOString(),
+      FEBRUARY_2_2022.toISOString(),
+    ])
+    expect(result).toEqual('les 5 et 15 janvier 2021 et le 2 février 2022')
+  })
+
+  it('should return a formatted string date that includes 4 dates in the same year, with 2 dates in different months and 2 dates in the same month', () => {
+    const result = getFormattedDates([
+      JANUARY_5_2021.toISOString(),
+      JANUARY_15_2021.toISOString(),
+      OCTOBER_5_2021.toISOString(),
+      SEPTEMBER_5_2021.toISOString(),
+    ])
+    expect(result).toEqual('les 5 et 15 janvier 2021, le 5 septembre 2021 et le 5 octobre 2021')
+  })
+
+  it('Should return a formatted string date that includes 4 dates, with 1 dates in a different month and year and 3 dates in the same month and year', () => {
+    const result = getFormattedDates([
+      JANUARY_5_2021.toISOString(),
+      JANUARY_15_2021.toISOString(),
+      JANUARY_25_2021.toISOString(),
+      FEBRUARY_2_2022.toISOString(),
+    ])
+    expect(result).toEqual('les 5, 15 et 25 janvier 2021 et le 2 février 2022')
+  })
+
+  it('should return a formatted string date that includes 5 dates within a period range', () => {
+    expect(
+      getFormattedDates([
+        NOVEMBER_12_2020.toISOString(),
+        NOVEMBER_13_2020.toISOString(),
+        JANUARY_5_2021.toISOString(),
+        JANUARY_25_2021.toISOString(),
+        FEBRUARY_2_2022.toISOString(),
+      ])
+    ).toEqual('Du 12 novembre 2020 au 2 février 2022')
+  })
+})
 
 describe('formatDates', () => {
   beforeAll(() => {
-    mockdate.set(Nov1)
+    mockdate.set(NOVEMBER_1_2020)
   })
 
   it.each`
-    dates             | expected
-    ${undefined}      | ${undefined}
-    ${[]}             | ${undefined}
-    ${[Nov12]}        | ${'12 novembre 2020'}
-    ${[Nov12, Nov12]} | ${'12 novembre 2020'}
-    ${[Dec5]}         | ${'5 décembre 2020'}
-    ${[Dec5, Nov12]}  | ${'Dès le 12 novembre 2020'}
-    ${[Dec5, -Nov12]} | ${'5 décembre 2020'}
-    ${[Oct5, Oct5]}   | ${undefined}
-    ${[Oct5, Nov12]}  | ${'12 novembre 2020'}
+    dates                                   | expected
+    ${undefined}                            | ${undefined}
+    ${[]}                                   | ${undefined}
+    ${[NOVEMBER_12_2020]}                   | ${'12 novembre 2020'}
+    ${[NOVEMBER_12_2020, NOVEMBER_12_2020]} | ${'12 novembre 2020'}
+    ${[DECEMBER_5_2020]}                    | ${'5 décembre 2020'}
+    ${[DECEMBER_5_2020, NOVEMBER_12_2020]}  | ${'Dès le 12 novembre 2020'}
+    ${[DECEMBER_5_2020, -NOVEMBER_12_2020]} | ${'5 décembre 2020'}
+    ${[OCTOBER_5_2020, OCTOBER_5_2020]}     | ${undefined}
+    ${[OCTOBER_5_2020, NOVEMBER_12_2020]}   | ${'12 novembre 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
     const timestampsInSeconds = dates && dates.map((date: Date) => date.valueOf())
-    expect(formatDates(timestampsInSeconds)).toBe(expected)
+    expect(formatDates(timestampsInSeconds)).toEqual(expected)
   })
 })
 
 describe('formatToFrenchDate', () => {
   beforeAll(() => {
-    mockdate.set(Nov1)
+    mockdate.set(NOVEMBER_1_2020)
   })
 
   it.each`
     date                                        | expected
-    ${Nov12}                                    | ${'12 novembre 2020'}
-    ${Oct5}                                     | ${'5 octobre 2020'}
-    ${Oct5.valueOf()}                           | ${'5 octobre 2020'}
+    ${NOVEMBER_12_2020}                         | ${'12 novembre 2020'}
+    ${OCTOBER_5_2020}                           | ${'5 octobre 2020'}
+    ${OCTOBER_5_2020.valueOf()}                 | ${'5 octobre 2020'}
     ${{ day: 5, month: 'octobre', year: 2020 }} | ${'5 octobre 2020'}
     ${'2030-02-05T00:00:00Z'}                   | ${'5 février 2030'}
-    ${Nov12.toString()}                         | ${'12 novembre 2020'}
+    ${NOVEMBER_12_2020.toString()}              | ${'12 novembre 2020'}
   `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
-    expect(formatToFrenchDate(date)).toBe(expected)
+    expect(formatToFrenchDate(date)).toEqual(expected)
   })
 })
 
 describe('formatDatePeriod', () => {
-  beforeAll(() => {
-    mockdate.set(Nov1)
+  it('should return a formatted string date for a period of one day', () => {
+    expect(
+      formatDatePeriod([
+        new Date('2023-04-10T10:00:00Z').getTime(),
+        new Date('2023-04-10T23:59:59Z').getTime(),
+      ])
+    ).toEqual('10 avril 2023')
   })
-  it.each`
-    dates                           | expected
-    ${[]}                           | ${undefined}
-    ${[Nov12]}                      | ${'12 novembre 2020'}
-    ${[Nov12, Nov12]}               | ${'12 novembre 2020'}
-    ${[Nov20Morning, Nov20Evening]} | ${'20 novembre 2020'}
-    ${[Dec5]}                       | ${'5 décembre 2020'}
-    ${[Nov12, Nov12]}               | ${'12 novembre 2020'}
-    ${[Nov1, Nov12, Oct5]}          | ${'Du 1 au 12 novembre 2020'}
-    ${[Dec5, Nov12]}                | ${'Du 12 novembre au 5 décembre 2020'}
-    ${[Jan2021, Nov12]}             | ${'Du 12 novembre 2020 au 5 janvier 2021'}
-  `('formatDatePeriod($dates) \t= $expected', ({ dates, expected }) => {
-    expect(formatDatePeriod(dates)).toBe(expected)
+
+  it('should return a formatted string date for a period of multiple days in the same month and year', () => {
+    expect(
+      formatDatePeriod([
+        new Date('2023-04-10T10:00:00Z').getTime(),
+        new Date('2023-04-15T23:59:59Z').getTime(),
+      ])
+    ).toEqual('Du 10 au 15 avril 2023')
+  })
+
+  it('should return a formatted string date for a period of multiple days in different months and the same year', () => {
+    expect(
+      formatDatePeriod([
+        new Date('2023-04-30T10:00:00Z').getTime(),
+        new Date('2023-05-05T23:59:59Z').getTime(),
+      ])
+    ).toEqual('Du 30 avril au 5 mai 2023')
+  })
+
+  it('should return a formatted string date for a period of multiple days in different years', () => {
+    expect(
+      formatDatePeriod([
+        new Date('2022-12-24T10:00:00Z').getTime(),
+        new Date('2023-01-02T23:59:59Z').getTime(),
+      ])
+    ).toEqual('Du 24 décembre 2022 au 2 janvier 2023')
   })
 })
 
 describe('getUniqueSortedTimestamps', () => {
   beforeAll(() => {
-    mockdate.set(Nov1)
+    mockdate.set(NOVEMBER_1_2020)
   })
   it.each`
-    dates                               | uniqueSortedDates
-    ${[]}                               | ${[]}
-    ${[Nov1, Nov12, Oct5]}              | ${[Nov1, Nov12]}
-    ${[Nov1, Nov12, Oct5, Nov1, Nov12]} | ${[Nov1, Nov12]}
-    ${[Nov1, Nov12, Oct5, Nov12, Oct5]} | ${[Nov1, Nov12]}
+    dates                                                                                     | uniqueSortedDates
+    ${[]}                                                                                     | ${[]}
+    ${[NOVEMBER_1_2020, NOVEMBER_12_2020, OCTOBER_5_2020]}                                    | ${[NOVEMBER_1_2020, NOVEMBER_12_2020]}
+    ${[NOVEMBER_1_2020, NOVEMBER_12_2020, OCTOBER_5_2020, NOVEMBER_1_2020, NOVEMBER_12_2020]} | ${[NOVEMBER_1_2020, NOVEMBER_12_2020]}
+    ${[NOVEMBER_1_2020, NOVEMBER_12_2020, OCTOBER_5_2020, NOVEMBER_12_2020, OCTOBER_5_2020]}  | ${[NOVEMBER_1_2020, NOVEMBER_12_2020]}
   `(
     'getUniqueSortedTimestamps($dates) returns $uniqueSortedDates',
     ({ dates, uniqueSortedDates }: { dates: Date[]; uniqueSortedDates: Date[] }) => {
