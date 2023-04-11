@@ -27,15 +27,14 @@ import { getSpacing, Spacer } from 'ui/theme'
 type GenericHomeProps = {
   Header: JSX.Element
   modules: HomepageModule[]
-  homeId?: string
+  homeId: string
   shouldDisplayScrollToTop?: boolean
 }
 const keyExtractor = (item: HomepageModule) => item.id
 
-const renderModule = (
-  { item, index }: { item: HomepageModule; index: number },
-  homeId: string | undefined
-) => <HomeModule item={item} index={index} homeEntryId={homeId} />
+const renderModule = ({ item, index }: { item: HomepageModule; index: number }, homeId: string) => (
+  <HomeModule item={item} index={index} homeEntryId={homeId} />
+)
 
 const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
   return (

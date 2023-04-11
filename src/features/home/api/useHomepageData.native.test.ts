@@ -3,7 +3,6 @@
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { Homepage } from 'features/home/types'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
-import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -42,16 +41,5 @@ describe('useHomepageModules', () => {
     await waitFor(() => {
       expect(result.current).toEqual(expectedResult)
     })
-  })
-
-  it('should log ConsultHome with specified entryId', async () => {
-    const entryId = homepageEntryIds[0]
-    renderHook(() => useHomepageData(entryId), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    await waitFor(() =>
-      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: entryId })
-    )
   })
 })

@@ -4,7 +4,7 @@ import React, { useCallback } from 'react'
 import { BackHandler, Platform } from 'react-native'
 
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { storage } from 'libs/storage'
 import { GenericAchievement } from 'ui/components/achievements'
 
@@ -24,9 +24,12 @@ export function FirstTutorial({ route }: Props) {
   const onSkip = useCallback(() => {
     storage.saveObject('has_seen_tutorials', true)
     if (Platform.OS === 'web') {
-      reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+      reset({
+        index: 0,
+        routes: [{ name: 'TabNavigator', state: { routes: [{ name: 'Profile' }] } }],
+      })
     } else {
-      navigate('AgeSelection')
+      navigate(...getTabNavConfig('Profile'))
     }
   }, [navigate, reset])
 

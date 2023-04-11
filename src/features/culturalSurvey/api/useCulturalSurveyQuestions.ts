@@ -15,7 +15,7 @@ export function useCulturalSurveyQuestions() {
   const shouldRequestCulturalSurveyQuestions = shouldShowCulturalSurvey(user)
 
   return useQuery<CulturalSurveyQuestionsResponse>(
-    QueryKeys.CULTURAL_SURVEY_QUESTIONS,
+    [QueryKeys.CULTURAL_SURVEY_QUESTIONS],
     () => api.getnativev1culturalSurveyquestions(),
     {
       staleTime: STALE_TIME_CULTURAL_SURVEY_QUESTIONS,

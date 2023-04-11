@@ -1,11 +1,10 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { Homepage } from 'features/home/types'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
-import { analytics } from 'libs/firebase/analytics'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -22,7 +21,7 @@ const getHomepageNatifContent = async () => {
 }
 const useGetHomepageList = () => {
   const { data: homepages } = useQuery<Homepage[]>(
-    QueryKeys.HOMEPAGE_MODULES,
+    [QueryKeys.HOMEPAGE_MODULES],
     getHomepageNatifContent,
     {
       staleTime: STALE_TIME_CONTENTFUL,
@@ -42,14 +41,7 @@ export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
   const homepages = useGetHomepageList()
 
   const selectedHomepage = selectHomepageEntry(homepages || [])
-  const homepageEntryId = selectedHomepage?.id
   const homepage = selectedHomepage ? selectedHomepage : emptyHomepage
-
-  useEffect(() => {
-    if (homepageEntryId) {
-      analytics.logConsultHome({ homeEntryId: homepageEntryId })
-    }
-  }, [homepageEntryId])
 
   return useMemo(() => homepage, [homepage])
 }

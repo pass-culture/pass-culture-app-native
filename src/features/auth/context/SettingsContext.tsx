@@ -37,7 +37,7 @@ const STALE_TIME_APP_SETTINGS = 5 * 60 * 1000
 
 function useAppSettings() {
   const netInfo = useNetInfoContext()
-  return useQuery<SettingsResponse>(QueryKeys.SETTINGS, () => api.getnativev1settings(), {
+  return useQuery<SettingsResponse>([QueryKeys.SETTINGS], () => api.getnativev1settings(), {
     enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable,
     staleTime: STALE_TIME_APP_SETTINGS,
   })

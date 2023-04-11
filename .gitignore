@@ -67,6 +67,9 @@ coverage/
 /dist
 *.back
 
+# Reassure
+.reassure/
+
 # ESLint
 .eslintcache
 

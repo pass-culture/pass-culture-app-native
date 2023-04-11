@@ -9,6 +9,7 @@ import deepmerge from 'deepmerge'
 import flushPromises from 'flush-promises'
 import React, { ReactNode } from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
+import { measurePerformance } from 'reassure'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
@@ -114,6 +115,23 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
   })
 }
 
+type MeasureOptions = Parameters<typeof measurePerformance>[1]
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureOptions) {
+  const { wrapper, ...restOfOptions } = options || {}
+  const Wrapper = wrapper as React.ComponentType
+  return measurePerformance(ui, {
+    wrapper: Wrapper
+      ? (children) => (
+          <DefaultWrapper>
+            <Wrapper>{children}</Wrapper>
+          </DefaultWrapper>
+        )
+      : (children) => <DefaultWrapper>{children}</DefaultWrapper>,
+    ...restOfOptions,
+  })
+}
+
 export function waitFor(cb: () => void, opts = {}): Promise<void> {
   // Default timeout was changed in the new version of @testing-library/react-native,
   // but we need the old value for our tests (especially for navigation)
@@ -124,6 +142,7 @@ export function waitFor(cb: () => void, opts = {}): Promise<void> {
 export * from '@testing-library/react-native'
 
 export { customRender as render }
+export { customMeasurePerformance as measurePerformance }
 
 export const middleScrollEvent = {
   nativeEvent: {

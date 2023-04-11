@@ -18,6 +18,27 @@ export type Referrals =
   | 'similar_offer'
   | 'setemail'
 
+type BaseThematicHome = {
+  homeId: string
+  from?: never
+  moduleId?: never
+  moduleListId?: never
+}
+type CategoryBlockThematicHome = BaseThematicHome & {
+  from: 'category_block'
+  moduleId: string
+  moduleListId: string
+}
+type HighlightThematicBlockThematicHome = BaseThematicHome & {
+  from: 'highlight_thematic_block'
+  moduleId: string
+  moduleListId?: never
+}
+type ThematicHomeParams =
+  | BaseThematicHome
+  | CategoryBlockThematicHome
+  | HighlightThematicBlockThematicHome
+
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
   AccessibilityActionPlan: undefined
@@ -180,10 +201,13 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
-  Venue: { id: number }
+  Venue: {
+    id: number
+    from?: Referrals
+  }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
-  ThematicHome: { homeId: string }
+  ThematicHome: ThematicHomeParams
   // cheatcodes
   DefaultThematicHomeHeaderCheatcode: undefined
   HighlightThematicHomeHeaderCheatcode: undefined

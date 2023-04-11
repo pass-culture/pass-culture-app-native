@@ -7,7 +7,7 @@ import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendati
 
 export const useHomeRecommendedIdsMutation = () => {
   return useMutation(
-    QueryKeys.RECOMMENDATION_OFFER_IDS,
+    [QueryKeys.RECOMMENDATION_OFFER_IDS],
     async (parameters: RecommendedIdsRequest) => {
       const { endpointUrl, ...requestBodyParams } = parameters
       try {

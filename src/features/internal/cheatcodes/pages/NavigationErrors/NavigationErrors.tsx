@@ -23,7 +23,7 @@ export const NavigationErrors: FunctionComponent = () => {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
-    QueryKeys.ERROR_ASYNC,
+    [QueryKeys.ERROR_ASYNC],
     () => errorAsync(),
     {
       cacheTime: 0,
@@ -36,6 +36,7 @@ export const NavigationErrors: FunctionComponent = () => {
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
     }
+    return null
   }
 
   if (screenError) {

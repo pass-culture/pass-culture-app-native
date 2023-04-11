@@ -3,6 +3,8 @@
  * Do not add any imports
  */
 
+import { env } from '../../../config/environment/env'
+
 type Feature = { name: string; isActive: boolean }
 type Features = Array<Feature>
 
@@ -11,7 +13,7 @@ const reset = '\x1b[0m'
 const bright = '\x1b[1m'
 
 class FeatureClient {
-  private static API_BASE_URL = process.env.API_BASE_URL
+  private static API_BASE_URL = env.API_BASE_URL
   private static ENDPOINT = 'native/v1/features'
 
   private async patchFeatures(features: Features) {

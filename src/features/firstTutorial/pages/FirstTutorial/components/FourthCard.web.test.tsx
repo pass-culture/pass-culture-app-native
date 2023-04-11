@@ -3,18 +3,20 @@ import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { render, screen } from 'tests/utils/web'
 
 import { FourthCard } from './FourthCard'
 
 describe('FourthCard', () => {
-  it('should reset navigation on button press', async () => {
+  it('should reset navigation to profil on button press', async () => {
     const ref = createRef<Swiper>()
     render(<FourthCard lastIndex={0} activeIndex={0} index={0} swiperRef={ref} />)
 
-    await userEvent.click(screen.getByText('Découvrir'))
+    await userEvent.click(screen.getByText('J’ai compris'))
 
-    expect(reset).toHaveBeenNthCalledWith(1, { index: 0, routes: [{ name: homeNavConfig[0] }] })
+    expect(reset).toHaveBeenNthCalledWith(1, {
+      index: 0,
+      routes: [{ name: 'TabNavigator', state: { routes: [{ name: 'Profile' }] } }],
+    })
   })
 })

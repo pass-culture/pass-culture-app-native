@@ -178,7 +178,14 @@ PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api)
 docker-compose -f e2e/docker-compose-e2e.yml up
 ```
 
-> Set `PCAPI_DOCKER_TAG` to any valid tag. Each commit of main correspond to tag, prior their merge (so not the hash from `master` but from the PR)
+Or, to start all the containers using the latest `testing` pcapi version for example:
+
+```bash
+PCAPI_DOCKER_TAG=$(curl -sS https://backend.testing.passculture.team/health/api) \
+docker-compose -f e2e/docker-compose-e2e.yml up
+```
+
+> Set `PCAPI_DOCKER_TAG` to any valid tag. Each commit of main correspond to tag, as well as commit from PRs.
 
 **To stop all the containers**
 

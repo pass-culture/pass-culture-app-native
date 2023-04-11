@@ -7,20 +7,20 @@ import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarterna
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
-import { Banner } from './Banner'
+import { InfoBanner } from './InfoBanner'
 
 export default {
-  title: 'ui/banners/Banner',
-  component: Banner,
+  title: 'ui/banners/InfoBanner',
+  component: InfoBanner,
   argTypes: {
     icon: selectArgTypeFromObject({
       BicolorClock,
       NoIcon: undefined,
     }),
   },
-} as ComponentMeta<typeof Banner>
+} as ComponentMeta<typeof InfoBanner>
 
-const Template: ComponentStory<typeof Banner> = (props) => <Banner {...props} />
+const Template: ComponentStory<typeof InfoBanner> = (props) => <InfoBanner {...props} />
 
 const message =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.'

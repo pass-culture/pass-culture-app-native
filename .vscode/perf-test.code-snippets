@@ -1,0 +1,26 @@
+{
+  "Performance test": {
+    "prefix": "perf-test",
+    "scope": "javascriptreact, typescriptreact",
+    "body": [
+      "import React from 'react'",
+      "",
+      "import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'",
+      "import { measurePerformance, screen } from 'tests/utils'",
+      "",
+      "describe('<${1:PageName} />', () => {",
+      "  it('Performance test', async () => {",
+      "\t// eslint-disable-next-line local-rules/no-react-query-provider-hoc",
+      "\tawait measurePerformance(reactQueryProviderHOC(<${1:PageName} />), {",
+      "\t  // Add scenario if necessary",
+      "\t  scenario: async () => {",
+      "\t\tawait screen.findByTestId('${2:testIDToWaitFor}')",
+      "\t  },",
+      "\t})",
+      "  })",
+      "})",
+      ""
+    ],
+    "description": "Create a performance test for a page"
+  }
+}

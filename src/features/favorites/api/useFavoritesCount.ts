@@ -11,7 +11,7 @@ export function useFavoritesCount() {
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
 
-  return useQuery(QueryKeys.FAVORITES_COUNT, () => api.getnativev1mefavoritescount(), {
+  return useQuery([QueryKeys.FAVORITES_COUNT], () => api.getnativev1mefavoritescount(), {
     enabled: !!netInfo.isConnected && isLoggedIn,
     staleTime: STALE_TIME_FAVORITES,
     select: (data: FavoritesCountResponse) => data.count,

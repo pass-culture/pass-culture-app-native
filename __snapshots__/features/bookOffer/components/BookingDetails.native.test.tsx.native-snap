@@ -11,6 +11,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
   }
 >
   <View
+    backgroundColor="#f3ecff"
     style={
       Array [
         Object {
@@ -67,7 +68,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
             },
           ]
         }
-        withLightColorMessage={false}
+        textColor="#161617"
       >
         Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
@@ -604,6 +605,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
   }
 >
   <View
+    backgroundColor="#f3ecff"
     style={
       Array [
         Object {
@@ -660,7 +662,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
             },
           ]
         }
-        withLightColorMessage={false}
+        textColor="#161617"
       >
         Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>

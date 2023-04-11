@@ -53,8 +53,18 @@ Array [
           ]
         }
       >
-        C’est très rapide !
+        Vas-y
       </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
       <View
         numberOfSpaces={2}
         style={
@@ -77,16 +87,24 @@ Array [
           ]
         }
       >
-        Pour débloquer tes 
-        300 €
-         tu dois suivre les étapes suivantes :
+        Débloque ton crédit
       </Text>
       <View
-        numberOfSpaces={10}
+        numberOfSpaces={8}
         style={
           Array [
             Object {
-              "height": 40,
+              "height": 32,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
             },
           ]
         }
@@ -197,7 +215,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -452,7 +470,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -561,7 +579,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,

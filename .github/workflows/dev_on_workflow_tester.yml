@@ -17,8 +17,6 @@ env:
 jobs:
   yarn_test_web:
     runs-on: [self-hosted, linux, x64]
-    container:
-      image: node:16
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
@@ -35,12 +33,10 @@ jobs:
           key: v1-yarn-test-web-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-web-cache-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:web:ci 
+      - run: yarn test:unit:web:ci
 
   yarn_test_native:
     runs-on: [self-hosted, linux, x64]
-    container:
-      image: node:16
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
@@ -90,14 +86,14 @@ jobs:
           key: v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-      - run:  yarn install --immutable --cwd server
+      - run: yarn install --immutable --cwd server
       - uses: actions/cache@v3
         with:
           path: .jest/cache
           key: v1-yarn-test-proxy-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-proxy-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn --cwd server test:unit:ci 
+      - run: yarn --cwd server test:unit:ci
       - name: Connect to Secret Manager
         uses: 'google-github-actions/auth@v1'
         with:
@@ -134,7 +130,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
-            SLACK_BOT_TOKEN: passculture-metier-ehp/passculture-app-native-slack-token
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
@@ -143,7 +139,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
-          channel-id: "C0309RP8K42"
+          channel-id: 'C0309RP8K42'
           payload: |
             {
               "attachments": [

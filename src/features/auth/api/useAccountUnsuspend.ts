@@ -8,7 +8,9 @@ export function useAccountUnsuspend(onSuccess: () => void, onError: (error: unkn
 
   return useMutation(() => api.postnativev1accountunsuspend(), {
     onSuccess: () => {
-      queriesToInvalidateOnUnsuspend.forEach((queryKey) => queryClient.invalidateQueries(queryKey))
+      queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
+        queryClient.invalidateQueries([queryKey])
+      )
       onSuccess()
     },
     onError,

@@ -105,6 +105,7 @@ export const screenParamsParser: ParamsParsers = {
   },
   Venue: {
     id: (value) => (value ? Number(value) : 0),
+    from: identityFn,
   },
   Search: searchParamsParser,
   SearchFilter: searchParamsParser,
@@ -114,6 +115,9 @@ export const screenParamsParser: ParamsParsers = {
   },
   ThematicHome: {
     homeId: identityFn,
+    from: identityFn,
+    moduleId: identityFn,
+    moduleListId: identityFn,
   },
 }
 

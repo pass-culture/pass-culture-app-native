@@ -5,50 +5,44 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 type ColorMessageProps = {
-  withLightColorMessage?: boolean
+  textColor?: string
 }
 
 type Props = ColorMessageProps & {
   message: string
-  icon?: FunctionComponent<IconInterface>
+  backgroundColor: string
+  Icon?: FunctionComponent<IconInterface>
   testID?: string
 }
 
-export const Banner: FunctionComponent<Props> = ({
+export const GenericColoredBanner: FunctionComponent<Props> = ({
   message,
-  withLightColorMessage,
-  icon,
+  textColor,
+  Icon,
   testID,
   children,
+  backgroundColor,
 }) => {
-  const Icon =
-    icon &&
-    styled(icon).attrs(({ theme }) => ({
-      color: theme.colors.greyDark,
-      color2: theme.colors.greyDark,
-      size: theme.icons.sizes.small,
-    }))``
-
   return (
-    <Container testID={testID}>
+    <Container testID={testID} backgroundColor={backgroundColor}>
       {!!Icon && (
         <IconContainer>
           <Icon />
         </IconContainer>
       )}
       <TextContainer>
-        <Caption withLightColorMessage={!!withLightColorMessage}>{message}</Caption>
+        <Caption textColor={textColor}>{message}</Caption>
         {children}
       </TextContainer>
     </Container>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled.View<{ backgroundColor: string }>(({ theme, backgroundColor }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backgroundColor: theme.colors.secondaryLight,
+  backgroundColor: backgroundColor ? backgroundColor : theme.colors.secondaryLight,
   borderRadius: getSpacing(2),
   padding: getSpacing(4),
 }))
@@ -61,6 +55,6 @@ const TextContainer = styled.View({
   flex: 1,
 })
 
-const Caption = styled(Typo.Caption)<ColorMessageProps>(({ theme, withLightColorMessage }) => ({
-  color: withLightColorMessage ? theme.colors.greyDark : theme.colors.black,
+const Caption = styled(Typo.Caption)<ColorMessageProps>(({ theme, textColor }) => ({
+  color: textColor ? textColor : theme.colors.black,
 }))

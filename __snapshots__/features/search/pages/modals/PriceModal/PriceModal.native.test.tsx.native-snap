@@ -354,6 +354,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               testID="creditBanner"
             >
               <View
+                backgroundColor="#f3ecff"
                 style={
                   Array [
                     Object {
@@ -410,7 +411,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         },
                       ]
                     }
-                    withLightColorMessage={false}
+                    textColor="#161617"
                   >
                     Il te reste 70 € sur ton pass Culture.
                   </Text>

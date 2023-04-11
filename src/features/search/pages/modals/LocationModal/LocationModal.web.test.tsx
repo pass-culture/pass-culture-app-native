@@ -5,10 +5,10 @@ import {
   LocationModal,
   LocationModalProps,
 } from 'features/search/pages/modals/LocationModal/LocationModal'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
-const mockPosition: GeoCoordinates | null = { latitude: 2, longitude: 40 }
+const mockPosition: Position = { latitude: 2, longitude: 40 }
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     position: mockPosition,

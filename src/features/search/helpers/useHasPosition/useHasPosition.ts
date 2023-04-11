@@ -7,7 +7,7 @@ export const useHasPosition = () => {
   const { position } = useGeolocation()
 
   const isEverywhereSearch = searchState.locationFilter?.locationType === LocationType.EVERYWHERE
-  const isGeolocatedUser = position !== null
+  const isGeolocatedUser = !!position
 
   return !isEverywhereSearch || (isGeolocatedUser && isEverywhereSearch)
 }

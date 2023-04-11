@@ -3,7 +3,7 @@ import { $$$ } from '../../helpers/utils/selector'
 
 class ProfileScreen extends AppScreen {
   constructor() {
-    super('Profile', true)
+    super('Créer un compte', true)
   }
 
   get createAccount() {

@@ -6,9 +6,9 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { amplitude } from 'libs/amplitude'
-import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { InputError } from 'ui/components/inputs/InputError'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -55,7 +55,7 @@ export const SetName = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          <Banner
+          <InfoBanner
             icon={BicolorIdCard}
             message="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
 Nous les vérifions et ils ne pourront plus être modifiés par la suite."

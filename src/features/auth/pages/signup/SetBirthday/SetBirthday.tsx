@@ -6,9 +6,9 @@ import { useDatePickerErrorHandler } from 'features/auth/helpers/useDatePickerEr
 import { PreValidationSignupStepProps } from 'features/auth/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
-import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer } from 'ui/theme'
@@ -46,7 +46,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <InnerContainer>
-        <Banner
+        <InfoBanner
           message="Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite."
           icon={BicolorIdCard}
         />

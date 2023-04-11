@@ -4,11 +4,9 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStep, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
-import { SubscriptionStepperResponseFixture as mockSubscriptionStepper } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
@@ -27,16 +25,6 @@ let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
-
-jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
-  useGetStepperInfo: jest.fn(() => ({
-    stepToComplete: mockUseGetStepperInfo,
-  })),
-}))
-
-const mockUseGetStepperInfo = (useGetStepperInfo as jest.Mock).mockReturnValue({
-  stepToComplete: mockSubscriptionStepper.subscriptionStepsToDisplay,
-})
 
 jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
@@ -121,7 +109,11 @@ mockUseSubscriptionSteps.mockReturnValue(mockStepConfig)
 jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
 const mockUseStepperInfo = useStepperInfo as jest.Mock
 
-mockUseStepperInfo.mockReturnValue(stepsDetailsFixture)
+mockUseStepperInfo.mockReturnValue({
+  stepsDetails: stepsDetailsFixture,
+  title: 'Vas-y',
+  subtitle: 'Débloque ton crédit',
+})
 
 jest.mock('react-query')
 
@@ -138,6 +130,16 @@ describe('Stepper navigation', () => {
     })
     render(<IdentityCheckStepper />)
     expect(screen).toMatchSnapshot()
+  })
+  it('should display an error message if the identification step failed', () => {
+    mockUseStepperInfo.mockReturnValueOnce({
+      stepsDetails: stepsDetailsFixture,
+      title: 'Vas-y',
+      errorMessage: 'Le document que tu as présenté est expiré.',
+    })
+    render(<IdentityCheckStepper />)
+
+    expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeTruthy()
   })
 
   it('should stay on stepper when next_step is null and initialCredit is not between 0 and 300 euros', async () => {
@@ -183,6 +185,7 @@ describe('Stepper navigation', () => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
+
   it.each`
     subscriptionStep                      | stepperLabel             | eventName            | eventParam
     ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.PHONE_VALIDATION }}
@@ -211,7 +214,11 @@ describe('Stepper navigation', () => {
         ...step,
         stepState: StepButtonState.CURRENT,
       }))
-      mockUseStepperInfo.mockReturnValue(stepsDetailsFixtureWithOnlyCurrentStates)
+      mockUseStepperInfo.mockReturnValue({
+        stepsDetails: stepsDetailsFixtureWithOnlyCurrentStates,
+        title: 'Vas-y',
+        subtitle: 'Débloque ton crédit',
+      })
 
       mockedUseSubscriptionContext.mockReturnValueOnce({
         dispatch: mockIdentityCheckDispatch,

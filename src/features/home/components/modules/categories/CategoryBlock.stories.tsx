@@ -24,18 +24,18 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
   <Container>
     <CategoryBlock
       title={'Le plein de cinéma'}
-      homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       filter={{ color: theme.uniqueColors.brand, opacity: 0.7 }}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
+      navigateTo={{ screen: 'ThematicHome' }}
     />
     <Spacer.Column numberOfSpaces={10} />
     <CategoryBlock
       title={'Le plein de cinéma'}
-      homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       filter={{ color: theme.colors.secondary, opacity: 0.64 }}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
+      navigateTo={{ screen: 'ThematicHome' }}
     />
   </Container>
 )
@@ -45,21 +45,21 @@ export const CategoryBlockWithImage: ComponentStory<typeof CategoryBlock> = () =
   <Container>
     <CategoryBlock
       title={'Le plein de cinéma'}
-      homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       filter={{ color: theme.uniqueColors.brand, opacity: 0.7 }}
       image="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
+      navigateTo={{ screen: 'ThematicHome' }}
     />
     <Spacer.Column numberOfSpaces={10} />
 
     <CategoryBlock
       title={'Le plein de cinéma'}
-      homeEntryId="6DCThxvbPFKAo04SVRZtwY"
       filter={{ color: theme.colors.secondary, opacity: 0.64 }}
       image="https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg"
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
+      navigateTo={{ screen: 'ThematicHome' }}
     />
   </Container>
 )

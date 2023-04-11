@@ -9,7 +9,7 @@ import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render, act } from 'tests/utils/web'
 
 const venue: Venue = mockedSuggestedVenues[0]
 
@@ -84,22 +84,25 @@ jest.mock('uuid', () => ({
 }))
 
 describe('<Search/>', () => {
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockV4
-        .mockReturnValueOnce('searchInputID')
-        .mockReturnValueOnce('searchInputAccessibilityDescribedByID')
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
       const { container } = render(<Search />)
 
-      await waitFor(
-        async () => {
-          const results = await checkAccessibilityFor(container)
-          expect(results).toHaveNoViolations()
-        },
-        { timeout: 10000 }
-      )
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
+    })
+
+    it('should not have basic accessibility issues when offline', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+      const { container } = render(<Search />)
+
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

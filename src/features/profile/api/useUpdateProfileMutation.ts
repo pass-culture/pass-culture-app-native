@@ -11,7 +11,7 @@ export function useUpdateProfileMutation(
   const client = useQueryClient()
   return useMutation((body: UserProfileUpdateRequest) => api.postnativev1profile(body), {
     onSuccess(response: UserProfileResponse) {
-      client.setQueryData(QueryKeys.USER_PROFILE, (old: UserProfileResponse | undefined) => ({
+      client.setQueryData([QueryKeys.USER_PROFILE], (old: UserProfileResponse | undefined) => ({
         ...(old || {}),
         ...response,
       }))

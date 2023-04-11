@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
-import { getNavigateToThematicHomeConfig } from 'features/navigation/helpers/getNavigateToThematicHomeConfig'
 import { ContentTypes } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -21,8 +20,9 @@ type Props = {
   imageUrl: string
   beginningDate: Date
   endingDate: Date
-  thematicHomeEntryId: string
+  toThematicHomeEntryId: string
   index: number
+  homeEntryId: string
 }
 
 export const ThematicHighlightModule: FunctionComponent<Props> = ({
@@ -32,8 +32,9 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   imageUrl,
   beginningDate,
   endingDate,
-  thematicHomeEntryId,
+  toThematicHomeEntryId,
   index,
+  homeEntryId,
 }) => {
   const isAlreadyEnded = isBefore(endingDate, new Date())
   const shouldHideModule = isAlreadyEnded
@@ -44,7 +45,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
         id,
         ContentTypes.THEMATIC_HIGHLIGHT,
         index,
-        thematicHomeEntryId
+        toThematicHomeEntryId
       )
     // should send analytics event only once
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,11 +53,18 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
 
   if (shouldHideModule) return null
 
-  const navigateTo = getNavigateToThematicHomeConfig(thematicHomeEntryId)
+  const navigateTo = {
+    screen: 'ThematicHome',
+    params: { homeId: toThematicHomeEntryId, from: 'highlight_thematic_block', moduleId: id },
+  }
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
   const sendAnalyticsOnPress = () =>
-    analytics.logHighlightBlockClicked({ moduleId: id, toEntryId: thematicHomeEntryId })
+    analytics.logHighlightBlockClicked({
+      moduleId: id,
+      entryId: homeEntryId,
+      toEntryId: toThematicHomeEntryId,
+    })
 
   return (
     <StyledInternalTouchableLink navigateTo={navigateTo} onBeforeNavigate={sendAnalyticsOnPress}>

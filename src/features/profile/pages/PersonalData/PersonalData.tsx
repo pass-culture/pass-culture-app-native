@@ -6,8 +6,8 @@ import { EditButton } from 'features/profile/components/Buttons/EditButton/EditB
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
-import { Banner } from 'ui/components/Banner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { InfoBanner } from 'ui/components/InfoBanner'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -62,7 +62,7 @@ export function PersonalData() {
 
       <StyledSeparator />
 
-      <Banner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
+      <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
         <Spacer.Column numberOfSpaces={3} />
         <ExternalTouchableLink
           as={ButtonQuaternarySecondary}
@@ -72,7 +72,7 @@ export function PersonalData() {
           justifyContent="flex-start"
           inline
         />
-      </Banner>
+      </InfoBanner>
       <Spacer.Column numberOfSpaces={8} />
       <SectionRow
         title="Supprimer mon compte"

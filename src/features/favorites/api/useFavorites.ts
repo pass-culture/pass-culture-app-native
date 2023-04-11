@@ -14,7 +14,7 @@ export function useFavorites() {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
-    QueryKeys.FAVORITES,
+    [QueryKeys.FAVORITES],
     () => api.getnativev1mefavorites(),
     { enabled: !!netInfo.isConnected && isLoggedIn, staleTime: STALE_TIME_FAVORITES }
   )

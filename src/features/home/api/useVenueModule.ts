@@ -17,7 +17,7 @@ export const useVenueModule = ({
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_VENUES_MODULE, id],
-    async () => fetchMultipleVenues(venuesParameters, position),
+    () => fetchMultipleVenues(venuesParameters, position),
     { enabled: !!netInfo.isConnected }
   )
 

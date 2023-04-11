@@ -4,7 +4,7 @@ import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
-import { GeoCoordinates } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/geolocation'
 import { renderHook } from 'tests/utils'
 
 import { useFilterCount } from './useFilterCount'
@@ -26,7 +26,7 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice')
 const mockedUseMaxPrice = jest.mocked(useMaxPrice)
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockPosition: Position = DEFAULT_POSITION
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     position: mockPosition,

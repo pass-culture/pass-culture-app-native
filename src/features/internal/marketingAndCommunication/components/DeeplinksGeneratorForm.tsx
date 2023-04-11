@@ -44,6 +44,22 @@ interface Props {
   onCreate: (generatedDeeplink: GeneratedDeeplink) => void
 }
 
+export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
+  if (screenName === 'Search') {
+    return {
+      view: SearchView.Results,
+      locationFilter: { locationType: LocationType.EVERYWHERE },
+      noFocus: true,
+    }
+  } else if (screenName === 'Venue') {
+    return {
+      from: 'deeplink',
+    }
+  }
+
+  return {}
+}
+
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const { appContentWidth, isMobileViewport } = useTheme()
   const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Home')
@@ -54,15 +70,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const renderScreenItem = (screenName: ScreensUsedByMarketing) => {
     const onSelectScreenName = () => {
       setSelectedScreen(screenName)
-      setScreenParams(
-        screenName !== 'Search'
-          ? {}
-          : {
-              view: SearchView.Results,
-              locationFilter: { locationType: LocationType.EVERYWHERE },
-              noFocus: true,
-            }
-      )
+      setScreenParams(getDefaultScreenParams(screenName))
     }
 
     return (

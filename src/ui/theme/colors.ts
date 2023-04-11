@@ -3,6 +3,7 @@ export enum ColorsEnum {
   ATTENTION = '#ffea00',
   BLACK = '#161617',
   ERROR = '#b60025',
+  ERROR_LIGHT = '#fce8ec',
   GREEN_VALID = '#15884f',
   GREEN_LIGHT = '#2cbe6e',
   GREY_DARK = '#696A6F',

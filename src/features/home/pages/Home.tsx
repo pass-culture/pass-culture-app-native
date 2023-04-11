@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
@@ -7,6 +7,7 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { analytics } from 'libs/firebase/analytics'
 
 const Header = ({ thematicHeader }: { thematicHeader?: { title?: string; subtitle?: string } }) => (
   <ListHeaderContainer>
@@ -27,6 +28,12 @@ const Header = ({ thematicHeader }: { thematicHeader?: { title?: string; subtitl
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id, thematicHeader } = useHomepageData(params?.entryId) || {}
+
+  useEffect(() => {
+    if (id) {
+      analytics.logConsultHome({ homeEntryId: id })
+    }
+  }, [id])
 
   return (
     <GenericHome
