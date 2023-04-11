@@ -149,5 +149,8 @@ const StyledButtonText = styled(Typo.ButtonText)<{ state: StepButtonState }>(
 )
 
 const StepSubtitle = styled(Typo.Caption)<{ state: StepButtonState }>(({ state, theme }) => ({
-  color: state === StepButtonState.CURRENT ? theme.colors.greyDark : theme.colors.greySemiDark,
+  color:
+    state === StepButtonState.CURRENT || state === StepButtonState.RETRY
+      ? theme.colors.greyDark
+      : theme.colors.greySemiDark,
 }))
