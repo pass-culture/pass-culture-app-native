@@ -23,7 +23,7 @@ export const transformHit = transformOfferHit
 // An incomplete search hit may not have a subcategoryId (for retrocompatibility)
 export type IncompleteSearchHit = AlgoliaHit
 
-export interface SearchHit {
+export interface Offer {
   offer: {
     dates?: AlgoliaHit['offer']['dates']
     isDigital?: AlgoliaHit['offer']['isDigital']

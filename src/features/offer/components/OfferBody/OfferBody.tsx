@@ -23,7 +23,7 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -50,12 +50,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   offerId: number
   onScroll: () => void
-  sameCategorySimilarOffers?: SearchHit[]
-  otherCategoriesSimilarOffers?: SearchHit[]
+  sameCategorySimilarOffers?: Offer[]
+  otherCategoriesSimilarOffers?: Offer[]
   shouldUseAlgoliaRecommend?: boolean
 }
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
@@ -102,7 +102,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
-  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+  const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height, playlistType }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (

@@ -1,5 +1,5 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -14,7 +14,7 @@ type FetchOfferHitsArgs = {
 export const fetchOfferHits = async ({
   objectIds,
   isUserUnderage,
-}: FetchOfferHitsArgs): Promise<SearchHit[]> => {
+}: FetchOfferHitsArgs): Promise<Offer[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
     { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
@@ -23,17 +23,17 @@ export const fetchOfferHits = async ({
   )
 
   try {
-    const response = await index.search<SearchHit>('', {
+    const response = await index.search<Offer>('', {
       page: 0,
       hitsPerPage: objectIds.length,
       ...searchParameters,
       attributesToRetrieve: offerAttributesToRetrieve,
       attributesToHighlight: [], // We disable highlighting because we don't need it
     })
-    const hits = response.hits.filter(Boolean) as SearchHit[]
+    const hits = response.hits.filter(Boolean) as Offer[]
     return hits.filter(({ offer }) => !offer.isEducational)
   } catch (error) {
     captureAlgoliaError(error)
-    return [] as SearchHit[]
+    return [] as Offer[]
   }
 }

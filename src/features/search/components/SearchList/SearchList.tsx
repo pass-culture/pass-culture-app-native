@@ -5,15 +5,15 @@ import styled, { useTheme } from 'styled-components/native'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps } from 'features/search/types'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
 const HIT_SIZE = 130
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 export const SearchList: React.FC<SearchListProps> = React.forwardRef<
-  FlashList<SearchHit>,
+  FlashList<Offer>,
   SearchListProps
 >(
   (

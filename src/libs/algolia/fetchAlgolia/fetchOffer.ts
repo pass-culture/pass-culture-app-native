@@ -1,7 +1,7 @@
 import { Hit } from '@algolia/client-search'
 
 import { Response } from 'features/search/api/useSearchResults/useSearchResults'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -31,7 +31,7 @@ export const fetchOffer = async ({
   const index = client.initIndex(indexSearch)
 
   try {
-    const response = await index.search<SearchHit>(parameters.query || '', {
+    const response = await index.search<Offer>(parameters.query || '', {
       page: parameters.page || 0,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...searchParameters,
@@ -47,6 +47,6 @@ export const fetchOffer = async ({
     return response
   } catch (error) {
     captureAlgoliaError(error)
-    return { hits: [] as Hit<SearchHit>[], nbHits: 0, page: 0, nbPages: 0 }
+    return { hits: [] as Hit<Offer>[], nbHits: 0, page: 0, nbPages: 0 }
   }
 }

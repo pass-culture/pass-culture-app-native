@@ -14,7 +14,7 @@ import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessag
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
@@ -56,7 +56,7 @@ jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting'
     },
   })),
 }))
-let mockSearchHits: SearchHit[] = []
+let mockSearchHits: Offer[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
 }))
@@ -402,8 +402,8 @@ describe('<OfferBody />', () => {
 
 export const renderOfferBody = (
   additionalProps: {
-    sameCategorySimilarOffers?: SearchHit[]
-    otherCategoriesSimilarOffers?: SearchHit[]
+    sameCategorySimilarOffers?: Offer[]
+    otherCategoriesSimilarOffers?: Offer[]
   } = {}
 ) =>
   render(

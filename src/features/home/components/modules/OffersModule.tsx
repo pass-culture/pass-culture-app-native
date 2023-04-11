@@ -6,7 +6,7 @@ import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { ContentTypes } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
@@ -28,7 +28,7 @@ type OffersModuleProps = {
   homeEntryId: string | undefined
 }
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
   const { cover, display, search, index, moduleId, homeEntryId } = props
@@ -68,7 +68,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       }
     : undefined
 
-  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+  const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (

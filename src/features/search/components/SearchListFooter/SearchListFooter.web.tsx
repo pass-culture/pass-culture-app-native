@@ -2,14 +2,14 @@ import React, { forwardRef } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export interface SearchListFooterProps {
   isFetchingNextPage: boolean
-  hits: SearchHit[]
+  hits: Offer[]
   nbHits: number
   autoScrollEnabled: boolean
   onPress?: () => void

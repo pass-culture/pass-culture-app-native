@@ -26,7 +26,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
@@ -43,7 +43,7 @@ const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const searchListRef = useRef<FlatList<SearchHit> | FlashList<SearchHit> | null>(null)
+  const searchListRef = useRef<FlatList<Offer> | FlashList<Offer> | null>(null)
   const {
     hasNextPage,
     fetchNextPage,
@@ -122,7 +122,7 @@ export const SearchResults: React.FC = () => {
   }, [hasNextPage])
 
   const renderItem = useCallback(
-    ({ item: hit, index }: { item: SearchHit; index: number }) => (
+    ({ item: hit, index }: { item: Offer; index: number }) => (
       <Hit hit={hit} query={searchState.query} index={index} searchId={searchState.searchId} />
     ),
     [searchState.query, searchState.searchId]

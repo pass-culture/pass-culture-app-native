@@ -4,7 +4,7 @@ import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/bui
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
 import { RecommendedOffersModule } from 'features/home/types'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/geolocation'
 import { RecommendedIdsRequest } from 'libs/recommendation/types'
@@ -54,7 +54,7 @@ export const useHomeRecommendedHits = (
   position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-): SearchHit[] | undefined => {
+): Offer[] | undefined => {
   const recommendationEndpoint = getRecommendationEndpoint({
     userId,
     position,

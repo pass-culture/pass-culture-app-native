@@ -8,7 +8,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -21,7 +21,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
-  userData: SearchResponse<SearchHit[]>['userData']
+  userData: SearchResponse<Offer[]>['userData']
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, userData }) => {

@@ -6,19 +6,16 @@ import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSea
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps } from 'features/search/types'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 const contentContainerStyle = {
   flex: 1,
 }
 
-export const SearchList: React.FC<SearchListProps> = forwardRef<
-  FlatList<SearchHit>,
-  SearchListProps
->(
+export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>, SearchListProps>(
   (
     {
       nbHits,

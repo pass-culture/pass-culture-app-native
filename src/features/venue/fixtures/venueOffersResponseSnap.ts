@@ -1,7 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 
-export const VenueOffersResponseSnap: SearchHit[] = [
+export const VenueOffersResponseSnap: Offer[] = [
   {
     _geoloc: { lat: 47.8898, lng: -2.83593 },
     objectID: '223342',

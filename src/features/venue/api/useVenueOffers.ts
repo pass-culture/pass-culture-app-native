@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffer, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
@@ -31,7 +31,7 @@ export const useVenueOffers = (venueId: number) => {
     {
       enabled: !!netInfo.isConnected,
       select: ({ hits, nbHits }) => ({
-        hits: uniqBy(hits.filter(filterOfferHit).map(transformHits), 'objectID') as SearchHit[],
+        hits: uniqBy(hits.filter(filterOfferHit).map(transformHits), 'objectID') as Offer[],
         nbHits,
       }),
     }

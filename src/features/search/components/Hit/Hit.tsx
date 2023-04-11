@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -17,7 +17,7 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
-  hit: SearchHit
+  hit: Offer
   query: string
   index: number
   searchId?: string

@@ -16,7 +16,7 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
@@ -104,14 +104,14 @@ export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
 
 export interface SearchListProps {
   nbHits: number
-  hits: SearchHit[]
-  renderItem: ({ item, index }: { item: SearchHit; index: number }) => JSX.Element
+  hits: Offer[]
+  renderItem: ({ item, index }: { item: Offer; index: number }) => JSX.Element
   autoScrollEnabled: boolean
   refreshing: boolean
   onRefresh: (() => void) | null | undefined
   isFetchingNextPage: boolean
   onEndReached: () => void
-  userData: SearchResponse<SearchHit[]>['userData']
+  userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
 }

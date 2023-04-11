@@ -1,7 +1,7 @@
 import flatten from 'lodash/flatten'
 
 import { SearchState } from 'features/search/types'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -20,7 +20,7 @@ export const fetchMultipleOffers = async ({
   paramsList,
   userLocation,
   isUserUnderage,
-}: FetchMultipleOffersArgs): Promise<{ hits: SearchHit[]; nbHits: number }> => {
+}: FetchMultipleOffersArgs): Promise<{ hits: Offer[]; nbHits: number }> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.query,
@@ -33,7 +33,7 @@ export const fetchMultipleOffers = async ({
   }))
 
   try {
-    const response = await client.multipleQueries<SearchHit>(queries)
+    const response = await client.multipleQueries<Offer>(queries)
     const { results } = response
 
     return {
@@ -42,6 +42,6 @@ export const fetchMultipleOffers = async ({
     }
   } catch (error) {
     captureAlgoliaError(error)
-    return { hits: [] as SearchHit[], nbHits: 0 }
+    return { hits: [] as Offer[], nbHits: 0 }
   }
 }

@@ -9,7 +9,7 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { Layout } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
@@ -29,7 +29,7 @@ interface Props {
   layout?: Layout
 }
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) => {
   const { data: venue } = useVenue(venueId)
@@ -68,7 +68,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+  const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (

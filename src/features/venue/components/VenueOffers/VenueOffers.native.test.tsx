@@ -8,7 +8,7 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { SearchHit } from 'libs/algolia'
+import { Offer } from 'libs/algolia'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render } from 'tests/utils'
@@ -66,7 +66,7 @@ describe('<VenueOffers />', () => {
   it(`should not display "En voir plus" button if nbHits is same as hits.length`, () => {
     mockUseVenueOffers.mockReturnValueOnce({
       data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
-    } as UseQueryResult<{ hits: SearchHit[]; nbHits: number }, unknown>)
+    } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
     expect(queryByText('En voir plus')).toBeNull()

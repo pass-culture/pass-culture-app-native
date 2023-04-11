@@ -3,7 +3,7 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { OffersModuleParameters } from 'features/home/types'
-import { SearchHit, transformHit } from 'libs/algolia'
+import { Offer, transformHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
@@ -34,7 +34,7 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
-const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as SearchHit[]
+const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as Offer[]
 let mockNbHits = mockedAlgoliaResponse.nbHits
 jest.mock('features/home/api/useOfferModule', () => ({
   useOfferModule: jest.fn(() => ({ hits: mockHits, nbHits: mockNbHits })),
