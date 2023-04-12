@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { useRoute, navigate, replace } from '__mocks__/@react-navigation/native'
+import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
-import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { theme } from 'theme'

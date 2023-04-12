@@ -9,7 +9,7 @@ import { HighlightThematicHomeHeader } from 'features/home/components/headers/Hi
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 
 const Header = ({ thematicHeader }: { thematicHeader?: ThematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight)

@@ -4,7 +4,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, flushAllPromisesWithAct, render, screen } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')

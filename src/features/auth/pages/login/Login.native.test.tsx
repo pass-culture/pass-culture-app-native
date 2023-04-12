@@ -17,9 +17,10 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -70,7 +71,7 @@ describe('<Login/>', () => {
 
     await waitFor(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
-      expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
+      expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
       expect(navigateToHome).toHaveBeenCalledTimes(1)
       expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
       expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })

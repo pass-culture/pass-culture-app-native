@@ -5,7 +5,7 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 

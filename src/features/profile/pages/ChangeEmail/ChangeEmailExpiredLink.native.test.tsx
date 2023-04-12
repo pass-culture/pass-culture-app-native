@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')

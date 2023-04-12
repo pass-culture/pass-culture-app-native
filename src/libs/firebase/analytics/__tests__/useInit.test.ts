@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { analytics } from 'libs/firebase/analytics/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { useInit } from 'libs/firebase/analytics/useInit'
 import { renderHook } from 'tests/utils'
 
@@ -21,12 +21,12 @@ jest.mock('libs/utm', () => ({
 describe('useInit', () => {
   it('should log analytics setDefaultEventParameters if the campaign date started more than 24 hours later', async () => {
     renderHook(() => useInit())
-    expect(analytics.setDefaultEventParameters).toBeCalledWith(undefined)
+    expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith(undefined)
   })
 
   it('should not log analytics setDefaultEventParameters if the campaign date started less than 24 hours ago', async () => {
     mockCampaignDate = START_TWENTY_THREE_HOURS_IN_THE_PAST
     renderHook(() => useInit())
-    expect(analytics.setDefaultEventParameters).not.toBeCalled()
+    expect(firebaseAnalytics.setDefaultEventParameters).not.toBeCalled()
   })
 })

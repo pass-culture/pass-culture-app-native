@@ -1,7 +1,7 @@
 import { amplitude } from 'libs/amplitude'
 import { AmplitudeEvent } from 'libs/amplitude/events'
-import { analytics } from 'libs/analytics/provider'
-import { analytics as firebaseAnalytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 const EVENT_PARAMS = { param: 1 }

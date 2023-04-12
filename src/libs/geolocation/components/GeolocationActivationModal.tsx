@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation/enums'
 import { useGeolocation } from 'libs/geolocation/GeolocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

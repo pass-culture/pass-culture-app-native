@@ -3,8 +3,8 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
+import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
-import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, flushAllPromisesWithAct, render } from 'tests/utils'
 
 describe('CategoryListModule', () => {

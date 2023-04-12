@@ -8,7 +8,7 @@ import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOff
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -92,7 +92,7 @@ export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => 
   const similarOffers = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
     .then((data: SimilarOffersResponse) => {
-      analytics.setDefaultEventParameters(data.params)
+      firebaseAnalytics.setDefaultEventParameters(data.params)
       return data.results
     })
     .catch((e) => {

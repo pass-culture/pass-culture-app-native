@@ -3,8 +3,8 @@ import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
 import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
+import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
-import { analytics } from 'libs/firebase/analytics'
 
 const UnmemoizedExclusivityBanner = ({
   alt,

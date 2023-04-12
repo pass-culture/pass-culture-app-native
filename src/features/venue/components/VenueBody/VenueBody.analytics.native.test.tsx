@@ -3,7 +3,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { act, fireEvent, render } from 'tests/utils'
 
 const venueId = venueResponseSnap.id

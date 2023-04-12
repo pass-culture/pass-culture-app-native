@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/helpers/computePrimaryButtonToDisplay'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'

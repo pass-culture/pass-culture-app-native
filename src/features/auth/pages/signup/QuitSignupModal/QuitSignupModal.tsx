@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'

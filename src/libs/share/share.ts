@@ -1,6 +1,6 @@
 import { Platform, Share, ShareAction } from 'react-native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 
 export type ShareContent = {
   title?: string

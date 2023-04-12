@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { QuitSignupModal } from './QuitSignupModal'

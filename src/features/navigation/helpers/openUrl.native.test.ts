@@ -4,7 +4,7 @@ import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScre
 import { DeeplinkParts } from 'features/deeplinks/types'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 
 import { openUrl } from '../helpers'
 

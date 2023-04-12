@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { render, fireEvent, screen, waitFor } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 

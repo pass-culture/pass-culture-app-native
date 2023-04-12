@@ -8,7 +8,7 @@ import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/V
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenuePartialAccordionDescription } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { parseType, VenueTypeCode } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'

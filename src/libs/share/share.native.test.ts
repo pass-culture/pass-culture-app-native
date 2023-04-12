@@ -1,6 +1,6 @@
 import { Share } from 'react-native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { share } from 'libs/share'
 import { waitFor } from 'tests/utils'
 

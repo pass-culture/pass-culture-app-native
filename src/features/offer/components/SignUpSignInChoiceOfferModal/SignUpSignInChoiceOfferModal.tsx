@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { theme } from 'theme'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'

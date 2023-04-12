@@ -6,7 +6,7 @@ import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { CreditStatus } from 'features/onboarding/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 

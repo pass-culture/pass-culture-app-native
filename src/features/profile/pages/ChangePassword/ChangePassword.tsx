@@ -11,7 +11,7 @@ import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMu
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { AppThemeType } from 'theme'

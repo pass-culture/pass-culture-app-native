@@ -9,9 +9,9 @@ import {
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
-import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, render, waitFor } from 'tests/utils'

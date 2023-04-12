@@ -12,7 +12,7 @@ import {
   useSimilarOffers,
 } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { server } from 'tests/server'
@@ -419,7 +419,7 @@ describe('getApiRecoSimilarOffers', () => {
 
     await getApiRecoSimilarOffers(endpoint)
 
-    expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
+    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
   })
 })
 

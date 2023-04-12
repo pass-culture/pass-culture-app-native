@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'

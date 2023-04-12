@@ -13,7 +13,7 @@ import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/he
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'

@@ -4,8 +4,8 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')

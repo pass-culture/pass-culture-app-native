@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'

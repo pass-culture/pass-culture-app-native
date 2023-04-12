@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'

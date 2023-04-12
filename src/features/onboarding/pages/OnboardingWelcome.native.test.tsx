@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OnboardingWelcome } from 'features/onboarding/pages/OnboardingWelcome'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'
 

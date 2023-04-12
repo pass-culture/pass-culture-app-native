@@ -10,7 +10,7 @@ import { nonBeneficiaryUser } from 'fixtures/user'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render, waitFor } from 'tests/utils'
@@ -128,7 +128,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           1,
           CampaignEvents.COMPLETE_REGISTRATION,
           {
-            af_firebase_pseudo_id: await analytics.getAppInstanceId(),
+            af_firebase_pseudo_id: await firebaseAnalytics.getAppInstanceId(),
             af_user_id: nonBeneficiaryUser.id,
           }
         )

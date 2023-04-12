@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 
 import { reset } from '__mocks__/@react-navigation/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 

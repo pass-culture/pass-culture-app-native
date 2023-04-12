@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoSearchResult } from './NoSearchResult'

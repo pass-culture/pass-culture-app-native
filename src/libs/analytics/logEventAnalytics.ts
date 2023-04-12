@@ -10,8 +10,8 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
-import { analytics } from 'libs/analytics/provider'
 import {
+  analytics,
   ChangeSearchLocationParam,
   ConsultHomeParams,
   OfferAnalyticsData,

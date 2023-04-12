@@ -26,7 +26,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'

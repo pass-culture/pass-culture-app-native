@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListSurveyModal'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'

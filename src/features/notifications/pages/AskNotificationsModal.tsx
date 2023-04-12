@@ -4,7 +4,7 @@ import { Linking, Platform } from 'react-native'
 import { checkNotifications, requestNotifications, RESULTS } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'

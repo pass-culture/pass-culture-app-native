@@ -13,8 +13,9 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -58,7 +59,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   })
 
   const onLogAnalytics = useCallback(() => {
-    analytics.logLogin({ method: 'fromSetEmail' })
+    firebaseAnalytics.logLogin({ method: 'fromSetEmail' })
   }, [])
 
   const goToNextStep = useCallback(

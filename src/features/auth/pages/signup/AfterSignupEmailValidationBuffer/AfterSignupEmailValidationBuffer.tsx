@@ -9,7 +9,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -53,7 +53,7 @@ export function AfterSignupEmailValidationBuffer() {
 
     try {
       const user = await api.getnativev1me()
-      const firebasePseudoId = await analytics.getAppInstanceId()
+      const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
       await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
         af_firebase_pseudo_id: firebasePseudoId,
         af_user_id: user.id,

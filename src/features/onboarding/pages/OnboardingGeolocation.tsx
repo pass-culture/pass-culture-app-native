@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

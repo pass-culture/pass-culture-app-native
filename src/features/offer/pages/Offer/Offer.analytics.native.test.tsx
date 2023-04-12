@@ -2,7 +2,7 @@ import { rest } from 'msw'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { server } from 'tests/server'
 import { act } from 'tests/utils'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import {

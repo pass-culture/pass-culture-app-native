@@ -30,7 +30,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
+import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

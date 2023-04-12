@@ -20,7 +20,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'

@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { navigateToHome } from 'features/navigation/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')

@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
 

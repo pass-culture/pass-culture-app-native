@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { server } from 'tests/server'
 
 jest.unmock('libs/firebase/analytics/analytics')
@@ -16,6 +16,6 @@ server.use(
 
 describe('analytics - getAppInstanceId', () => {
   it('should be null', async () => {
-    expect(await analytics.getAppInstanceId()).toBeNull()
+    expect(await firebaseAnalytics.getAppInstanceId()).toBeNull()
   })
 })

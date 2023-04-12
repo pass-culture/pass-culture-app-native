@@ -10,7 +10,7 @@ import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingPrope
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

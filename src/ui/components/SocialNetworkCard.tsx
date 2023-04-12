@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
 

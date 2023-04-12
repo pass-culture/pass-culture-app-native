@@ -5,7 +5,7 @@ import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 

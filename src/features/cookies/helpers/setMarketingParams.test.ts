@@ -1,7 +1,7 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { setMarketingParams } from 'features/cookies/helpers/setMarketingParams'
 import * as StateFromPath from 'features/navigation/RootNavigator/linking/getStateFromPath'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storage, StorageKey } from 'libs/storage'
 
 const UTM_PARAMS = {
@@ -32,7 +32,7 @@ describe('setMarketingParams', () => {
 
     jest.runOnlyPendingTimers()
 
-    expect(analytics.setDefaultEventParameters).not.toHaveBeenCalled()
+    expect(firebaseAnalytics.setDefaultEventParameters).not.toHaveBeenCalled()
     expect(setUtmParamsSpy).not.toHaveBeenCalled()
   })
 
@@ -58,7 +58,7 @@ describe('setMarketingParams', () => {
 
       jest.runOnlyPendingTimers()
 
-      expect(analytics.setDefaultEventParameters).not.toHaveBeenCalled()
+      expect(firebaseAnalytics.setDefaultEventParameters).not.toHaveBeenCalled()
     })
   })
 
@@ -76,7 +76,7 @@ describe('setMarketingParams', () => {
 
       jest.runOnlyPendingTimers()
 
-      expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
+      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
     })
   })
 })

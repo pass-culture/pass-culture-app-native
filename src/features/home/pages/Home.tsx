@@ -7,7 +7,7 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 
 const Header = ({ thematicHeader }: { thematicHeader?: { title?: string; subtitle?: string } }) => (

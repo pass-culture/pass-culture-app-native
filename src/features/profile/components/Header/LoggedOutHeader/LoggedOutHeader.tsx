@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'

@@ -5,7 +5,7 @@ import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResu
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 const mockFavoritesState = initialFavoritesState

@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { Hit } from './Hit'

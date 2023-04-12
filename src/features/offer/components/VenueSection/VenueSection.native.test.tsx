@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { offerVenueResponseSnap as venue } from 'features/offer/fixtures/offerVenueReponse'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('react-query')

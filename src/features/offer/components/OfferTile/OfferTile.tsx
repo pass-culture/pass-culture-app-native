@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { OfferTileProps } from 'features/offer/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'

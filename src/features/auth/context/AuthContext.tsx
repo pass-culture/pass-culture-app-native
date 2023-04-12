@@ -8,7 +8,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -37,7 +37,7 @@ export const useConnectServicesRequiringUserId = (): ((accessToken: string | nul
       const userId = getUserIdFromAccesstoken(accessToken)
       if (userId) {
         BatchUser.editor().setIdentifier(userId.toString()).save()
-        analytics.setUserId(userId)
+        firebaseAnalytics.setUserId(userId)
         eventMonitoring.setUser({ id: userId.toString() })
         setUserIdToCookiesChoice(userId)
       }

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'

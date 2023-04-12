@@ -2,7 +2,7 @@
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { GeolocationWrapper, GeolocPermissionState } from 'libs/geolocation'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { fireEvent, render, waitFor } from 'tests/utils'

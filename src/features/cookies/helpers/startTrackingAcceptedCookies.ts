@@ -3,7 +3,7 @@ import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGenera
 import { Cookies } from 'features/cookies/types'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 const cookiesNameEnumUTM =
@@ -21,7 +21,9 @@ export const generateUTMKeys = [
 
 export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
   const acceptedGoogleAnalytics = acceptedCookies.includes(CookieNameEnum.GOOGLE_ANALYTICS)
-  acceptedGoogleAnalytics ? analytics.enableCollection() : analytics.disableCollection()
+  acceptedGoogleAnalytics
+    ? firebaseAnalytics.enableCollection()
+    : firebaseAnalytics.disableCollection()
 
   const acceptedAppsFlyers = acceptedCookies.includes(CookieNameEnum.APPSFLYER)
   campaignTracker.useInit(acceptedAppsFlyers)

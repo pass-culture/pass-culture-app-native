@@ -11,7 +11,7 @@ import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrac
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory, UTMParams } from 'features/cookies/types'
 import { navigationRef } from 'features/navigation/navigationRef'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 
 interface Props {
   visible: boolean

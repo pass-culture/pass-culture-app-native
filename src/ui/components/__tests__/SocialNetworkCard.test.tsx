@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SocialNetworkCard } from '../SocialNetworkCard'
