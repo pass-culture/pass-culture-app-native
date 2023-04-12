@@ -39,7 +39,7 @@ const mockStepConfig: Partial<DeprecatedStepConfig[]> = [
     name: DeprecatedIdentityCheckStep.IDENTIFICATION,
     label: 'Identification',
     icon: { completed: icon, current: icon, disabled: icon, retry: icon },
-    screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],
+    screens: ['UbbleWebview', 'IdentityCheckEnd'],
   },
 ]
 mockUseSubscriptionSteps.mockReturnValue(mockStepConfig)

@@ -8,7 +8,7 @@ const steps = [
   },
   {
     name: DeprecatedIdentityCheckStep.IDENTIFICATION,
-    screens: ['IdentityCheckStart', 'UbbleWebview', 'IdentityCheckEnd'],
+    screens: ['UbbleWebview', 'IdentityCheckEnd'],
   },
   {
     name: DeprecatedIdentityCheckStep.CONFIRMATION,
@@ -29,9 +29,6 @@ describe('getNextScreenOrStep', () => {
       screen: 'IdentityCheckStatus',
     })
     // Identification
-    expect(getNextScreenOrStep(steps, 'IdentityCheckStart')).toEqual({
-      screen: 'UbbleWebview',
-    })
     expect(getNextScreenOrStep(steps, 'UbbleWebview')).toEqual({
       screen: 'IdentityCheckEnd',
     })

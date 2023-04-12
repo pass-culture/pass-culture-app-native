@@ -46,8 +46,8 @@ describe('ComeBackLater', () => {
   })
   it("should send a amplitude event when the 'M'identifier plus tard' button is pressed", async () => {
     const { getByText } = render(<ComeBackLater />)
-      // clear the amplitude log event mock to clear the first amplitude event screen_view_come_back_later
-      ; (amplitude.logEvent as jest.Mock).mockClear()
+    // clear the amplitude log event mock to clear the first amplitude event screen_view_come_back_later
+    ;(amplitude.logEvent as jest.Mock).mockClear()
 
     const button = getByText('M’identifier plus tard')
     fireEvent.press(button)
