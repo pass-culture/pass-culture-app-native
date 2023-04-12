@@ -148,7 +148,13 @@ export const getFormattedDates = (dates: string[] | undefined) => {
   if (timestamps.length === 1) return formatToFrenchDate(timestamps[0])
 
   const decomposedDates = timestamps.map(decomposeDate)
-  const grouped = groupByYearAndMonth(decomposedDates)
+
+  // To avoid duplicates dates
+  const uniqueDecomposedDates = Array.from(
+    new Set(decomposedDates.map((date) => JSON.stringify(date)))
+  ).map((dateString) => JSON.parse(dateString))
+
+  const grouped = groupByYearAndMonth(uniqueDecomposedDates)
 
   const { formatDates, arrayDays } = formatGroupedDates(grouped)
 

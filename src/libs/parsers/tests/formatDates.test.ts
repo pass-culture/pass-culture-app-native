@@ -30,6 +30,7 @@ const JANUARY_25_2021 = new Date(2021, 0, 25)
 const AUGUST_5_2021 = new Date(2021, 7, 5)
 const SEPTEMBER_5_2021 = new Date(2021, 8, 5)
 const OCTOBER_5_2021 = new Date(2021, 9, 5)
+const NOVEMBER_13_2021 = new Date(2021, 10, 13)
 const FEBRUARY_2_2022 = new Date(2022, 1, 2)
 
 describe('groupByYearAndMonth', () => {
@@ -195,13 +196,20 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('les 12 et 13 novembre 2020')
   })
 
-  // TODO ask if it's good or not
-  it('should return a formatted string date of 2 dates with the same day, smae month, same year, but different hours', () => {
+  it('should return a formatted string date of 1 dates if there is two same dates', () => {
     const result = getFormattedDates([
       NOVEMBER_20_2020_MORNING.toISOString(),
       NOVEMBER_20_2020_EVENING.toISOString(),
     ])
-    expect(result).toEqual('les 20 et 20 novembre 2020')
+    expect(result).toEqual('le 20 novembre 2020')
+  })
+
+  it('should return a formatted string date of 2 dates with the same day, smae month, but different years', () => {
+    const result = getFormattedDates([
+      NOVEMBER_13_2020.toISOString(),
+      NOVEMBER_13_2021.toISOString(),
+    ])
+    expect(result).toEqual('le 13 novembre 2020 et le 13 novembre 2021')
   })
 
   it('should return a formatted string date that includes three dates with different months', () => {
@@ -239,6 +247,16 @@ describe('getFormattedDates', () => {
       SEPTEMBER_5_2021.toISOString(),
     ])
     expect(result).toEqual('les 5 et 15 janvier 2021, le 5 septembre 2021 et le 5 octobre 2021')
+  })
+
+  it('Should return a formatted string date that includes 4 dates, with 1 dates in a different month and 3 dates in the same month', () => {
+    const result = getFormattedDates([
+      JANUARY_5_2021.toISOString(),
+      JANUARY_15_2021.toISOString(),
+      JANUARY_25_2021.toISOString(),
+      OCTOBER_5_2021.toISOString(),
+    ])
+    expect(result).toEqual('les 5, 15 et 25 janvier 2021 et le 5 octobre 2021')
   })
 
   it('Should return a formatted string date that includes 4 dates, with 1 dates in a different month and year and 3 dates in the same month and year', () => {
