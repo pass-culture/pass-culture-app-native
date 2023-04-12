@@ -10,6 +10,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { AmplitudeEvent } from 'libs/amplitude/events'
 import {
   analytics,
   ChangeSearchLocationParam,
@@ -319,6 +320,7 @@ export const logEventAnalytics = {
   logOnboardingStarted: () => {
     analytics.logEvent({
       firebase: AnalyticsEvent.ONBOARDING_STARTED,
+      amplitude: AmplitudeEvent.ONBOARDING_WELCOME,
     })
   },
   logOpenApp: (params: { appsFlyerUserId?: string }) =>
