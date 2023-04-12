@@ -115,7 +115,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.stock.offer.isDigital = true
 
     const { queryByTestId, queryByText } = renderBookingDetailsCancelButton(booking)
-    const expirationDateMessage = 'Ta réservation expirera le 17/03/2021'
+    const expirationDateMessage = 'Ta réservation sera archivée le 17/03/2021'
 
     expect(queryByTestId('Annuler ma réservation')).toBeTruthy()
     expect(queryByText(expirationDateMessage)).toBeTruthy()
