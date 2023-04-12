@@ -12,7 +12,7 @@ export const BookingExpiration = ({ children, expirationDate }: BookingExpiratio
   if (!expirationDate) {
     return null
   }
-  const expirationDateMessage = `Ta réservation expirera le ${expirationDate}`
+  const expirationDateMessage = `Ta réservation sera archivée le ${expirationDate}`
   return (
     <React.Fragment>
       {children}
