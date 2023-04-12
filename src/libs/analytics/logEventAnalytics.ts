@@ -317,6 +317,14 @@ export const logEventAnalytics = {
     ),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OFFER_SEEN_DURATION }, { offerId, duration }),
+  logOnboardingGeolocationClicked: (params: { type: 'use_my_position' | 'skipped' }) => {
+    analytics.logEvent(
+      {
+        amplitude: AmplitudeEvent.ONBOARDING_GEOLOCATION_CLICKED,
+      },
+      params
+    )
+  },
   logOnboardingStarted: () => {
     analytics.logEvent({
       firebase: AnalyticsEvent.ONBOARDING_STARTED,

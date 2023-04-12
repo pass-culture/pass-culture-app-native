@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OnboardingGeolocation } from 'features/onboarding/pages/OnboardingGeolocation'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 const mockRequestGeolocPermission = jest.fn()
@@ -31,5 +32,27 @@ describe('OnboardingGeolocation', () => {
     fireEvent.press(loginButton)
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when "Utiliser ma position" is clicked', async () => {
+    const { getByLabelText } = render(<OnboardingGeolocation />)
+
+    const loginButton = getByLabelText('Utiliser ma position')
+    fireEvent.press(loginButton)
+
+    expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
+      type: 'use_my_position',
+    })
+  })
+
+  it('should log analytics when skip button is clicked', async () => {
+    const { getByLabelText } = render(<OnboardingGeolocation />)
+
+    const loginButton = getByLabelText('Aller à l’écran suivant')
+    fireEvent.press(loginButton)
+
+    expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
+      type: 'skipped',
+    })
   })
 })

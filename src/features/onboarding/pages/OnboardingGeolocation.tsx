@@ -14,23 +14,25 @@ export const OnboardingGeolocation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { requestGeolocPermission } = useGeolocation()
 
-  const navigateToAgeSelection = useCallback(() => {
+  const onSkip = useCallback(() => {
+    analytics.logOnboardingGeolocationClicked({ type: 'skipped' })
     navigate('AgeSelection')
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {
+    analytics.logOnboardingGeolocationClicked({ type: 'use_my_position' })
     await requestGeolocPermission({
-      onSubmit: navigateToAgeSelection,
+      onSubmit: () => navigate('AgeSelection'),
       onAcceptance: analytics.logHasActivateGeolocFromTutorial,
     })
-  }, [navigateToAgeSelection, requestGeolocPermission])
+  }, [navigate, requestGeolocPermission])
 
   return (
     <GenericInfoPageWhite
       mobileBottomFlex={0.1}
       animation={GeolocationAnimation}
       titleComponent={Typo.Title1}
-      onSkip={navigateToAgeSelection}
+      onSkip={onSkip}
       title="Découvre les offres près de chez toi">
       <StyledBody>
         Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles
