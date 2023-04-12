@@ -700,7 +700,7 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
             ]
           }
         >
-          les 2 et 17 mars 2021
+          Les 2 et 17 mars 2021
         </Text>
       </View>
     </View>
@@ -4175,7 +4175,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             ]
           }
         >
-          les 2 et 17 mars 2021
+          Les 2 et 17 mars 2021
         </Text>
       </View>
     </View>

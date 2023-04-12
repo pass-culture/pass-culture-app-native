@@ -162,6 +162,11 @@ export const OfferBody: FunctionComponent<Props> = ({
     (value) => value !== undefined && value !== null
   )
 
+  const capitalizedFormattedDate =
+    typeof formattedDate === 'string'
+      ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
+      : formattedDate
+
   return (
     <Container
       testID="offer-container"
@@ -196,7 +201,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       <SectionWithDivider visible={shouldDisplayWhenBlock} margin>
         <StyledTitle4>Quand&nbsp;?</StyledTitle4>
-        <SectionBody>{formattedDate}</SectionBody>
+        <SectionBody>{capitalizedFormattedDate}</SectionBody>
       </SectionWithDivider>
 
       <SectionWithDivider visible={!offer.isDigital} margin>
