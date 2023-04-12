@@ -93,6 +93,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logNoSearchResult: jest.fn(),
   logNotificationToggle: jest.fn(),
   logOfferSeenDuration: jest.fn(),
+  logOnboardingAgeInformationClicked: jest.fn(),
   logOnboardingGeolocationClicked: jest.fn(),
   logOnboardingStarted: jest.fn(),
   logOpenApp: jest.fn(),

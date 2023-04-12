@@ -323,6 +323,16 @@ export const logEventAnalytics = {
     ),
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OFFER_SEEN_DURATION }, { offerId, duration }),
+  logOnboardingAgeInformationClicked: (params: {
+    type: 'account_creation' | 'account_creation_skipped'
+  }) => {
+    analytics.logEvent(
+      {
+        amplitude: AmplitudeEvent.ONBOARDING_AGE_INFORMATION_CLICKED,
+      },
+      params
+    )
+  },
   logOnboardingGeolocationClicked: (params: { type: 'use_my_position' | 'skipped' }) => {
     analytics.logEvent(
       {

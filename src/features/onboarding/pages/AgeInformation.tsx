@@ -29,6 +29,10 @@ const logTrySelectDeposit = (age: number) => {
   analytics.logTrySelectDeposit(age)
 }
 
+const onSignupPress = () => {
+  analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })
+}
+
 export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   const { reset } = useNavigation<UseNavigationType>()
   const userAge = route.params.age
@@ -48,6 +52,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
   const onLaterPress = () => {
+    analytics.logOnboardingAgeInformationClicked({ type: 'account_creation_skipped' })
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
 
@@ -56,6 +61,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
       key={1}
       as={ButtonWithLinearGradient}
       wording="Créer un compte"
+      onBeforeNavigate={onSignupPress}
       navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
     />,
     <InternalTouchableLink

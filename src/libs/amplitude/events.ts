@@ -1,4 +1,5 @@
 export enum AmplitudeEvent {
+  ONBOARDING_AGE_INFORMATION_CLICKED = 'onboarding_information_clicked',
   ONBOARDING_AGE_SELECTION_CLICKED = 'onboarding_geolocation_clicked',
   ONBOARDING_AGE_SELECTION_PARENT_CLICKED = 'onboarding_geolocation_clicked',
   ONBOARDING_GEOLOCATION_CLICKED = 'onboarding_geolocation_clicked',
