@@ -210,7 +210,13 @@ export const logEventAnalytics = {
   logFavoriteListDisplayed: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.FAVORITE_LIST_DISPLAYED }, { from }),
   logGoToParentsFAQ: (from: Referrals) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.GO_TO_PARENTS_FAQ }, { from }),
+    analytics.logEvent(
+      {
+        firebase: AnalyticsEvent.GO_TO_PARENTS_FAQ,
+        amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_PARENT_CLICKED,
+      },
+      { from }
+    ),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },
@@ -384,7 +390,13 @@ export const logEventAnalytics = {
   logSeeMyBooking: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MY_BOOKING }, { offerId }),
   logSelectAge: (age: number | string) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SELECT_AGE }, { age }),
+    analytics.logEvent(
+      {
+        firebase: AnalyticsEvent.SELECT_AGE,
+        amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
+      },
+      { age }
+    ),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN },
