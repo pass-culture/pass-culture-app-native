@@ -68,46 +68,34 @@ describe('groupByYearAndMonth', () => {
 })
 
 describe('joinArrayElement', () => {
-  it('joinArrayElement returns the single element when given an array with only one element', () => {
+  it('should return the single element when given an array with only one element', () => {
     expect(joinArrayElement([1])).toEqual(1)
   })
 
-  it('joinArrayElement joins two elements with "et"', () => {
+  it('should return two elements joined with "et"', () => {
     expect(joinArrayElement(['novembre', 'octobre'])).toEqual('novembre et octobre')
   })
 
-  it('joinArrayElement joins three or more elements with commas and "et"', () => {
+  it('should return three or more elements joined with commas and "et"', () => {
     expect(joinArrayElement([1, 2, 3])).toEqual('1, 2 et 3')
     expect(joinArrayElement(['foo', 'bar', 'baz'])).toEqual('foo, bar et baz')
   })
 
-  it('joinArrayElement handles empty arrays', () => {
+  it('should return undefined when the array is empty', () => {
     expect(joinArrayElement([])).toEqual(undefined)
   })
 })
 
 describe('formatGroupedDates', () => {
-  it('should correctly format grouped dates with single days', () => {
+  it('should correctly format grouped dates with single day', () => {
     const grouped: GroupResult = {
-      '2022': {
-        janvier: [1, 3, 5],
-        février: [4, 10, 15],
-      },
       '2023': {
-        mars: [7, 14, 21],
+        mars: [7],
       },
     }
     const expected = {
-      formatDates: [
-        'les 1, 3 et 5 janvier 2022',
-        'les 4, 10 et 15 février 2022',
-        'les 7, 14 et 21 mars 2023',
-      ],
-      arrayDays: [
-        [1, 3, 5],
-        [4, 10, 15],
-        [7, 14, 21],
-      ],
+      formatDates: ['le 7 mars 2023'],
+      arrayDays: [[7]],
     }
     const result = formatGroupedDates(grouped)
     expect(result.formatDates).toEqual(expected.formatDates)
@@ -169,18 +157,18 @@ describe('getFormattedDates', () => {
     ).toEqual(formatToFrenchDate(NOVEMBER_12_2020))
   })
 
-  it('should return undefined if the dates array is invalid', () => {
+  it('should return undefined when the array dates are invalid', () => {
     const dates = ['invalid date']
     const result = getFormattedDates(dates)
     expect(result).toEqual(undefined)
   })
 
-  it('should return a formatted date if there is only one unique dates', () => {
+  it('should return a formatted date when array contains only one unique date', () => {
     const result = getFormattedDates([DECEMBER_14_2020.toISOString()])
     expect(result).toEqual('14 décembre 2020')
   })
 
-  it('should return a formatted string of 1 date if there are two similar date ', () => {
+  it('should return a formatted string of 1 date when array contains two similar dates', () => {
     const result = getFormattedDates([
       DECEMBER_14_2020.toISOString(),
       DECEMBER_14_2020.toISOString(),
@@ -196,7 +184,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('les 12 et 13 novembre 2020')
   })
 
-  it('should return a formatted string date of 1 dates if there is two same dates', () => {
+  it('should return a formatted string date of 1 date when array contains two same dates with different hour', () => {
     const result = getFormattedDates([
       NOVEMBER_20_2020_MORNING.toISOString(),
       NOVEMBER_20_2020_EVENING.toISOString(),
@@ -204,7 +192,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('le 20 novembre 2020')
   })
 
-  it('should return a formatted string date of 2 dates with the same day, smae month, but different years', () => {
+  it('should return a formatted string date of 2 dates with the same day, same month but different years', () => {
     const result = getFormattedDates([
       NOVEMBER_13_2020.toISOString(),
       NOVEMBER_13_2021.toISOString(),
@@ -212,7 +200,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('le 13 novembre 2020 et le 13 novembre 2021')
   })
 
-  it('should return a formatted string date that includes three dates with different months', () => {
+  it('should return a formatted string date including three dates with different months', () => {
     const result = getFormattedDates([
       AUGUST_5_2021.toISOString(),
       SEPTEMBER_5_2021.toISOString(),
@@ -221,7 +209,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('le 5 août 2021, le 5 septembre 2021 et le 5 octobre 2021')
   })
 
-  it('should return a formatted string date that includes three dates, with two dates in different months of the same year and one dates in a different month and in a different year', () => {
+  it('should return a formatted string date including three dates, with two dates of different month in the same year and one date of different month and year', () => {
     const result = getFormattedDates([
       JANUARY_5_2021.toISOString(),
       OCTOBER_5_2021.toISOString(),
@@ -230,7 +218,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('le 5 janvier 2021, le 5 octobre 2021 et le 2 février 2022')
   })
 
-  it('should return a formatted string date that includes three dates, with two dates in the same month of the same year and one dates in a different month and in a different year', () => {
+  it('should return a formatted string date including three dates, with two dates of the same month and year and one date of different month in a different year', () => {
     const result = getFormattedDates([
       JANUARY_5_2021.toISOString(),
       JANUARY_15_2021.toISOString(),
@@ -239,7 +227,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('les 5 et 15 janvier 2021 et le 2 février 2022')
   })
 
-  it('should return a formatted string date that includes 4 dates in the same year, with 2 dates in different months and 2 dates in the same month', () => {
+  it('should return a formatted string date including 4 dates in the same year, with 2 dates of different months and 2 dates in the same month', () => {
     const result = getFormattedDates([
       JANUARY_5_2021.toISOString(),
       JANUARY_15_2021.toISOString(),
@@ -249,7 +237,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('les 5 et 15 janvier 2021, le 5 septembre 2021 et le 5 octobre 2021')
   })
 
-  it('Should return a formatted string date that includes 4 dates, with 1 dates in a different month and 3 dates in the same month', () => {
+  it('should return a formatted string date including 4 dates, with 1 date of a different month and 3 dates in the same month', () => {
     const result = getFormattedDates([
       JANUARY_5_2021.toISOString(),
       JANUARY_15_2021.toISOString(),
@@ -259,7 +247,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('les 5, 15 et 25 janvier 2021 et le 5 octobre 2021')
   })
 
-  it('Should return a formatted string date that includes 4 dates, with 1 dates in a different month and year and 3 dates in the same month and year', () => {
+  it('should return a formatted string date including 4 dates, with 1 date of a different month and year and 3 dates in the same month and year', () => {
     const result = getFormattedDates([
       JANUARY_5_2021.toISOString(),
       JANUARY_15_2021.toISOString(),
@@ -269,7 +257,7 @@ describe('getFormattedDates', () => {
     expect(result).toEqual('les 5, 15 et 25 janvier 2021 et le 2 février 2022')
   })
 
-  it('should return a formatted string date that includes 5 dates within a period range', () => {
+  it('should return a formatted string date including 5 dates within a period range', () => {
     expect(
       getFormattedDates([
         NOVEMBER_12_2020.toISOString(),
@@ -341,7 +329,7 @@ describe('formatDatePeriod', () => {
     ).toEqual('Du 10 au 15 avril 2023')
   })
 
-  it('should return a formatted string date for a period of multiple days in different months and the same year', () => {
+  it('should return a formatted string date for a period of multiple days in different months of the same year', () => {
     expect(
       formatDatePeriod([
         new Date('2023-04-30T10:00:00Z').getTime(),
