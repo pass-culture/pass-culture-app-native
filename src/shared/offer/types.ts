@@ -1,16 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
 
 export interface Offer {
-  offer: {
-    dates?: number[]
-    isDigital?: boolean
-    isDuo?: boolean
-    isEducational?: boolean
-    name?: string
-    prices?: number[]
-    subcategoryId: SubcategoryIdEnum
-    thumbUrl?: string
-  }
+  offer: OfferAttributes
   objectID: string
   _geoloc: {
     lat?: number | null
@@ -18,6 +9,16 @@ export interface Offer {
   }
 }
 
+export interface OfferAttributes {
+  subcategoryId: SubcategoryIdEnum
+  dates?: number[]
+  isDigital?: boolean
+  isDuo?: boolean
+  isEducational?: boolean
+  name?: string
+  prices: number[] | undefined
+  thumbUrl: string | undefined
+}
 export interface OffersWithPage {
   offers: Offer[]
   nbOffers: 0
