@@ -65,6 +65,7 @@ export function VenueDetails({
 const Wrapper = styled(View)`
   flex-direction: row;
   flex-grow: 1;
+  gap: ${getSpacing(2)}px;
 `
 
 const LeftContent = styled(View)`

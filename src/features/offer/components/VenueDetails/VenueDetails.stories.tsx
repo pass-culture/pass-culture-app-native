@@ -6,6 +6,7 @@
 
 import { storiesOf } from '@storybook/react'
 import React from 'react'
+import { StyleSheet, View } from 'react-native'
 
 import { MAP_TYPE_TO_ICON, VenueTypeCode } from 'libs/parsers'
 
@@ -18,7 +19,7 @@ stories.add('Default', () => (
     title="Envie de lire"
     address="Ivry-sur-Seine 94200, 16 rue Gabriel Peri"
     venueType={null}
-    imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+    imageUrl="https://www.luxetdeco.fr/13030-thickbox_default/livre-lumineux-iron-man-marvel.jpg"
   />
 ))
 
@@ -39,13 +40,33 @@ stories.add('With distance', () => (
   />
 ))
 
-Object.keys(MAP_TYPE_TO_ICON).forEach((venueType) =>
-  stories.add(venueType, () => (
+stories.add('Wrapped', () => (
+  <View style={styles.wrapper}>
     <VenueDetails
       title="Envie de lire"
       address="Ivry-sur-Seine 94200, 16 rue Gabriel Peri"
-      venueType={venueType as VenueTypeCode}
+      venueType={null}
+      imageUrl="https://www.luxetdeco.fr/13030-thickbox_default/livre-lumineux-iron-man-marvel.jpg"
       distance="500m"
     />
+  </View>
+))
+
+Object.keys(MAP_TYPE_TO_ICON).forEach((venueType) =>
+  stories.add(venueType, () => (
+    <View style={styles.wrapper}>
+      <VenueDetails
+        title="Envie de lire"
+        address="Ivry-sur-Seine 94200, 16 rue Gabriel Peri"
+        venueType={venueType as VenueTypeCode}
+        distance="500m"
+      />
+    </View>
   ))
 )
+
+const styles = StyleSheet.create({
+  wrapper: {
+    maxWidth: 320,
+  },
+})

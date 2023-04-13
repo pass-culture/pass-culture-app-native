@@ -5,20 +5,20 @@ import { StyleSheet, View } from 'react-native'
 
 import { VenueTypeCodeKey } from 'api/gen'
 
-import { VenueCard, VenueCardProps } from './VenueCard'
+import { VenueSelectionListItem } from './VenueSelectionListItem'
 
 export default {
-  title: 'features/offer/VenueCard',
-  component: VenueCard,
+  title: 'features/offer/VenueSelectionListItem',
+  component: VenueSelectionListItem,
 }
 
-const Template: ComponentStory<typeof VenueCard> = (props: VenueCardProps) => (
-  <VenueCard {...props} />
+const Template: ComponentStory<typeof VenueSelectionListItem> = (props) => (
+  <VenueSelectionListItem {...props} />
 )
 
-const WrappedTemplate: ComponentStory<typeof VenueCard> = (props) => (
+const WrappedTemplate: ComponentStory<typeof VenueSelectionListItem> = (props) => (
   <View style={styles.wrapper}>
-    <Template {...props} />
+    <VenueSelectionListItem {...props} />
   </View>
 )
 
@@ -28,8 +28,9 @@ Default.args = {
   address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   distance: '500m',
   venueType: VenueTypeCodeKey.MUSEUM,
-  onPress: action('pressed!'),
   imageUrl: 'https://www.luxetdeco.fr/13030-thickbox_default/livre-lumineux-iron-man-marvel.jpg',
+  isSelected: false,
+  onSelect: action('select'),
 }
 
 export const Wrapped = WrappedTemplate.bind({})
@@ -38,8 +39,9 @@ Wrapped.args = {
   address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   distance: '500m',
   venueType: VenueTypeCodeKey.MUSEUM,
-  onPress: action('pressed!'),
   imageUrl: 'https://www.luxetdeco.fr/13030-thickbox_default/livre-lumineux-iron-man-marvel.jpg',
+  isSelected: false,
+  onSelect: action('select'),
 }
 
 const styles = StyleSheet.create({
