@@ -21,7 +21,8 @@ export interface OfferAttributes {
 }
 export interface OffersWithPage {
   offers: Offer[]
-  nbOffers: 0
-  page: 0
-  nbPages: 0
+  nbOffers: number
+  page: number
+  nbPages: number
+  userData?: any
 }
