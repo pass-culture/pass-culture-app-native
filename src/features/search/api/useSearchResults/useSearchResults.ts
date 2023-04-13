@@ -26,7 +26,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const previousPageObjectIds = useRef<string[]>([])
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
-    [QueryKeys.SEARCH_RESULTS, searchState],
+    [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffer({
         parameters: { page, ...searchState },

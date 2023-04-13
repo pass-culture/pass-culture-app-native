@@ -3,6 +3,7 @@ import {
   useSearchInfiniteQuery,
 } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
+import { SearchState, SearchView } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffer'
 import { analytics } from 'libs/firebase/analytics'
@@ -42,6 +43,21 @@ describe('useSearchResults', () => {
         initialSearchState,
         mockedAlgoliaResponse.nbHits
       )
+    })
+
+    it('should not fetch again when only view changes', async () => {
+      const { rerender } = renderHook(
+        (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
+        {
+          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await flushAllPromisesWithAct()
+      rerender({ ...initialSearchState, view: SearchView.Suggestions })
+
+      expect(fetchOfferSpy).toHaveBeenCalledTimes(1)
     })
   })
 })

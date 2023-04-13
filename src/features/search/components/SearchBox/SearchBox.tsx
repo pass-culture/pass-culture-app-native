@@ -141,12 +141,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       previousView !== SearchView.Landing &&
       appEnableAutocomplete
     ) {
-      pushWithSearch({
+      return pushWithSearch({
         ...params,
         view: SearchView.Results,
       })
-
-      return
     }
 
     pushWithSearch(
@@ -157,6 +155,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         reset: true,
       }
     )
+
     setQuery('')
   }, [appEnableAutocomplete, locationFilter, params, pushWithSearch])
 
