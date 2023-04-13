@@ -5,12 +5,7 @@ import styled from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const GoogleMessagesRoundSvg = ({
-  color: _color,
-  size,
-  accessibilityLabel,
-  testID,
-}: AccessibleIcon) => {
+const GoogleMessagesRoundSvg = ({ size, accessibilityLabel, testID }: AccessibleIcon) => {
   return (
     <AccessibleSvg
       width={size}
@@ -54,9 +49,6 @@ const GoogleMessagesRoundSvg = ({
   )
 }
 
-export const GoogleMessagesRound = styled(GoogleMessagesRoundSvg).attrs(
-  ({ color, size, theme }) => ({
-    color: color ?? theme.colors.greyDark,
-    size: size ?? theme.icons.sizes.standard,
-  })
-)``
+export const GoogleMessagesRound = styled(GoogleMessagesRoundSvg).attrs(({ size, theme }) => ({
+  size: size ?? theme.icons.sizes.standard,
+}))``
