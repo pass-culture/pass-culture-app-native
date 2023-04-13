@@ -72,6 +72,20 @@ jobs:
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: .
+
+  yarn_test_perf_reassure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run performance testing script
+        run: ./scripts/reassure-test.sh
+      - name: Run Danger.js to publish scores in PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn danger ci
+      - name: Check if pipeline should fail
+        run: (! grep "🔴" .reassure/output.md)
+
   yarn_test_proxy:
     runs-on: [self-hosted, linux, x64]
     container:
@@ -112,6 +126,7 @@ jobs:
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: server
+
   slack_notify:
     runs-on: [self-hosted, linux, x64]
     if: ${{ always() && github.ref == 'refs/heads/master' }}

@@ -2,8 +2,9 @@ name: Run Reassure performance tests
 
 on:
   workflow_call:
-  # pull_request:
-  #   branches: [master] # Trigger this workflow only when a PR targets master
+    # secrets:
+    #   GITHUB_TOKEN:
+    #     required: true
 
 jobs:
   test-performance:
