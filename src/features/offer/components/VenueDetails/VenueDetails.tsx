@@ -9,6 +9,7 @@ import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends ViewProps {
   title: string
@@ -16,6 +17,7 @@ export interface VenueDetailsProps extends ViewProps {
   imageUrl?: string
   venueType: VenueTypeCode | null
   distance?: string
+  isHover?: boolean
 }
 
 export function VenueDetails({
@@ -24,18 +26,19 @@ export function VenueDetails({
   address,
   venueType,
   distance,
+  isHover,
   ...props
 }: VenueDetailsProps) {
   const theme = useTheme()
   const Icon = mapVenueTypeToIcon(venueType)
 
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} testID="venue-details">
       <LeftContent>
         <View>
-          <Typo.ButtonText>{title}</Typo.ButtonText>
+          <Title isHover={isHover}>{title}</Title>
           <Spacer.Column numberOfSpaces={1} />
-          <VenueAddress>{address}</VenueAddress>
+          <VenueAddress isHover={isHover}>{address}</VenueAddress>
         </View>
 
         {distance ? (
@@ -70,11 +73,16 @@ const LeftContent = styled(View)`
   flex-shrink: 1;
 `
 
+const Title = styled(Typo.ButtonText)<{ isHover?: boolean }>(({ theme, isHover }) => ({
+  ...getHoverStyle(theme.colors.black, isHover),
+}))
+
 const VenueAddress = styled(Typo.Caption).attrs({
   numberOfLines: 2,
   ellipsizeMode: 'tail',
-})(({ theme }) => ({
+})<{ isHover?: boolean }>(({ theme, isHover }) => ({
   color: theme.colors.greyDark,
+  ...getHoverStyle(theme.colors.black, isHover),
 }))
 
 const VenueImage = styled(ResizedFastImage)`
