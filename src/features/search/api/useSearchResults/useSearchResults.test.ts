@@ -5,7 +5,7 @@ import {
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
+import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers/fetchOffers'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
