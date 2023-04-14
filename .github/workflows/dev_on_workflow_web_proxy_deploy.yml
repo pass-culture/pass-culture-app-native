@@ -44,8 +44,7 @@ jobs:
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: 'Push proxy for input env'
         run: |
-          echo ${{ inputs.ENV }}
-            #          yarn --cwd server deploy:${{ inputs.ENV }}
+          yarn --cwd server deploy:${{ inputs.ENV }}
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel

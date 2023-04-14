@@ -60,18 +60,16 @@ jobs:
           result_path: .sentryclirc
       - name: Deploy soft android for ${{ inputs.ENV }}
         if:  ${{ inputs.TYPE == 'soft' }}
-        run: echo ${{ inputs.TYPE }}
-          #    run: |
-          #      bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
-          #    env:
-          #      ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
+        run: |
+          bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
+        env:
+          ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - name: Deploy soft ios App for ${{ inputs.ENV }}
         if:  ${{ inputs.TYPE == 'soft' }}
-        run: echo ${{ inputs.TYPE }}
-          #    run: |
-          #      bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
-          #    env:
-          #      IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
+        run: |
+          bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
+        env:
+          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
       - name: Create a directory for keystores
         if: ${{ inputs.TYPE == 'hard'}}
         run: |
@@ -95,9 +93,8 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
       - name: Deploy hard android for ${{ inputs.ENV }}
         if: ${{ inputs.TYPE == 'hard'}}
-        run: echo ${{ inputs.TYPE }}
-        # run: |
-        #   bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
+        run: |
+          bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
         env:
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - uses: technote-space/workflow-conclusion-action@v3

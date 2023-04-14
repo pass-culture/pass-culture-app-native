@@ -68,8 +68,7 @@ jobs:
           NODE_OPTIONS='--max-old-space-size=4096' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}
       - name: 'Push to bucket'
         run: |
-          echo ${{ inputs.ENV }}
-          #gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
+          gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
